@@ -1,0 +1,6 @@
+<clothing-menu></clothing-menu>
+<div class="container">
+
+  <clothing-item *ngFor="let clothing of clothes$ | async" [clothing]="clothing"></clothing-item>
+</div>
+<clothing-footer></clothing-footer>
