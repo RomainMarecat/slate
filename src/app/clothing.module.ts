@@ -13,7 +13,8 @@ import { ClothingService } from './shared/clothing.service';
 import { environment } from './../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { MatCardModule, MatToolbarModule, MatSidenavModule, MatIconModule } from '@angular/material';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { MatCardModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatButtonModule, MatGridListModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -22,10 +23,13 @@ import { MatCardModule, MatToolbarModule, MatSidenavModule, MatIconModule } from
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
+    AngularFireAuthModule,
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
+    MatButtonModule,
+    MatGridListModule,
     ClothingRoutingModule
   ],
    declarations: [

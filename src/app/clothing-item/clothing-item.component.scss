@@ -1,8 +1,10 @@
-.example-card {
-  width: 400px;
+.link-card img {
+  height: 150px;
 }
 
-.example-header-image {
-  background-image: url('http://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.ugly-score {
+  color: red;
+  font-size: 2rem;
+  font-weight: 800;
+  vertical-align: middle;
 }

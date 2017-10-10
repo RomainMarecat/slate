@@ -1,6 +1,28 @@
-<clothing-menu></clothing-menu>
-<div class="container">
-
-  <clothing-item *ngFor="let clothing of clothes$ | async" [clothing]="clothing"></clothing-item>
-</div>
-<clothing-footer></clothing-footer>
+<mat-sidenav-container>
+  <mat-sidenav #sideNav class="leftSideNav" mode="over" opened="false">
+    <div *ngIf="afAuth.authState | async; let user; else showLogin">
+      <mat-card class="item-card">
+        <mat-card-header>
+          <img mat-card-avatar [src]="user?.photoURL">
+          <mat-card-title>
+            {{ user?.displayName }}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="button" (click)="logout()">Logout</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <ng-template #showLogin>
+      <button mat-raised-button color="primary" type="button" (click)="login()">Login with Google</button>
+    </ng-template>
+  </mat-sidenav>
+  <clothing-menu (sidenavEmitter)="sideNav.toggle()"></clothing-menu>
+  <div class="container">
+    <clothing-item *ngFor="let clothing of clothes$ | async" [clothing]="clothing" (updateClothing)=updateClothing($event)></clothing-item>
+  </div>
+  <button mat-mini-fab class="absolute-fab" (click)="addClothing()">
+    <mat-icon>add</mat-icon>
+  </button>
+  <clothing-footer></clothing-footer>
+</mat-sidenav-container>
