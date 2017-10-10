@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'clothing-menu',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  @Output() sidenavEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
+  toggle: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    this.toggle = false;
+  }
+
+  toggleSidenav() {
+    this.sidenavEmitter.emit(!this.toggle);
   }
 
 }

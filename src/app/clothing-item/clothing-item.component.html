@@ -1,22 +1,53 @@
 <div class="row">
-    <div class="col-xs-12">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>{{ clothing.name }}</mat-card-title>
-          <mat-card-subtitle>{{ clothing.description }}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="{{ clothing.thumbnail }}" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            {{ clothing.description }}
-          </p>
-          <p>{{ clothing.price }} €</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>{{ clothing.like }}</button>
-          <button mat-button>{{ clothing.ugly }}</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+  <div class="col-xs-12">
+    <mat-card class="item-card" *ngIf="clothing">
+      <mat-card-header>
+        <img mat-card-avatar [src]="clothing.thumbnail">
+        <mat-card-title>
+          {{ clothing.name }}
+          <span>{{ 'there.is' }} {{ clothing.created_at | date:'medium' }}</span>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <span>{{ clothing.price }} €</span>
+          <a href="{{ clothing.external_reseller }}">{{ clothing.reseller }}</a>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-grid-list cols="3">
+          <mat-grid-tile class="link-container-card">
+            <a class="link-card">
+              <img mat-card-mat-image src="{{ clothing.thumbnail }}" alt="{{clothing.name}}">
+            </a>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <a class="link-card">
+              <img mat-card-mat-image src="{{ clothing.image1 }}" alt="{{clothing.name}}">
+            </a>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <a class="link-card">
+              <img mat-card-mat-image src="{{ clothing.image2 }}" alt="{{clothing.name}}">
+            </a>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <mat-grid-list cols="3">
+          <mat-grid-tile>
+            <button mat-raised-button color="primary" (click)="like(clothing)">
+              <mat-icon aria-label="Example icon-button with a heart icon">thumb_down</mat-icon>
+            </button>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <span class="ugly-score">{{ clothing.ugly }}</span>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-raised-button color="accent" (click)="ugly(clothing)">
+              <mat-icon aria-label="Example icon-button with a heart icon">thumb_up</mat-icon>
+            </button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>
