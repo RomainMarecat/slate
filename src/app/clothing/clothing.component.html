@@ -1,0 +1,23 @@
+<mat-sidenav-container>
+  <mat-sidenav #sideNav class="leftSideNav" mode="over" opened="false">
+    <div *ngIf="afAuth.authState | async; let user; else showLogin">
+      <mat-card class="item-card">
+        <mat-card-header>
+          <img mat-card-avatar [src]="user?.photoURL">
+          <mat-card-title>
+            {{ user?.displayName }}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="button" (click)="logout()">Logout</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <ng-template #showLogin>
+      <button mat-raised-button color="primary" type="button" (click)="login()">Login with Google</button>
+    </ng-template>
+  </mat-sidenav>
+  <clothing-menu (sidenavEmitter)="sideNav.toggle()"></clothing-menu>
+  <router-outlet></router-outlet>
+  <clothing-footer></clothing-footer>
+</mat-sidenav-container>

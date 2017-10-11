@@ -1,2 +1,485 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+/**
+ * No-spacing helpers
+ */
+
+.np {
+  padding: 0em !important;
+}
+
+.npt {
+  padding-top: 0em !important;
+}
+
+.npr {
+  padding-right: 0em !important;
+}
+
+.npb {
+  padding-bottom: 0em !important;
+}
+
+.npl {
+  padding-left: 0em !important;
+}
+
+.pa0 {
+  padding: 0em !important;
+}
+
+.pt0 {
+  padding-top: 0em !important;
+}
+
+.pr0 {
+  padding-right: 0em !important;
+}
+
+.pb0 {
+  padding-bottom: 0em !important;
+}
+
+.pl0 {
+  padding-left: 0em !important;
+}
+
+.pa025 {
+  padding: 0.25em !important;
+}
+
+.pt025 {
+  padding-top: 0.25em !important;
+}
+
+.pr025 {
+  padding-right: 0.25em !important;
+}
+
+.pb025 {
+  padding-bottom: 0.25em !important;
+}
+
+.pl025 {
+  padding-left: 0.25em !important;
+}
+
+.pa05 {
+  padding: 0.5em !important;
+}
+
+.pt05 {
+  padding-top: 0.5em !important;
+}
+
+.pr05 {
+  padding-right: 0.5em !important;
+}
+
+.pb05 {
+  padding-bottom: 0.5em !important;
+}
+
+.pl05 {
+  padding-left: 0.5em !important;
+}
+
+.pa1 {
+  padding: 1em !important;
+}
+
+.pt1 {
+  padding-top: 1em !important;
+}
+
+.pr1 {
+  padding-right: 1em !important;
+}
+
+.pb1 {
+  padding-bottom: 1em !important;
+}
+
+.pl1 {
+  padding-left: 1em !important;
+}
+
+.pa2 {
+  padding: 2em !important;
+}
+
+.pt2 {
+  padding-top: 2em !important;
+}
+
+.pr2 {
+  padding-right: 2em !important;
+}
+
+.pb2 {
+  padding-bottom: 2em !important;
+}
+
+.pl2 {
+  padding-left: 2em !important;
+}
+
+.pa3 {
+  padding: 3em !important;
+}
+
+.pt3 {
+  padding-top: 3em !important;
+}
+
+.pr3 {
+  padding-right: 3em !important;
+}
+
+.pb3 {
+  padding-bottom: 3em !important;
+}
+
+.pl3 {
+  padding-left: 3em !important;
+}
+
+.pa4 {
+  padding: 4em !important;
+}
+
+.pt4 {
+  padding-top: 4em !important;
+}
+
+.pr4 {
+  padding-right: 4em !important;
+}
+
+.pb4 {
+  padding-bottom: 4em !important;
+}
+
+.pl4 {
+  padding-left: 4em !important;
+}
+
+.pa5 {
+  padding: 5em !important;
+}
+
+.pt5 {
+  padding-top: 5em !important;
+}
+
+.pr5 {
+  padding-right: 5em !important;
+}
+
+.pb5 {
+  padding-bottom: 5em !important;
+}
+
+.pl5 {
+  padding-left: 5em !important;
+}
+
+.pa10 {
+  padding: 10 !important;
+}
+
+.pt10 {
+  padding-top: 10 !important;
+}
+
+.pr10 {
+  padding-right: 10 !important;
+}
+
+.pb10 {
+  padding-bottom: 10 !important;
+}
+
+.pl10 {
+  padding-left: 10 !important;
+}
+
+.pa15 {
+  padding: 15 !important;
+}
+
+.pt15 {
+  padding-top: 15 !important;
+}
+
+.pr15 {
+  padding-right: 15 !important;
+}
+
+.pb15 {
+  padding-bottom: 15 !important;
+}
+
+.pl15 {
+  padding-left: 15 !important;
+}
+
+.nm {
+  margin: 0em !important;
+}
+
+.nmt {
+  margin-top: 0em !important;
+}
+
+.nmr {
+  margin-right: 0em !important;
+}
+
+.nmb {
+  margin-bottom: 0em !important;
+}
+
+.nml {
+  margin-left: 0em !important;
+}
+
+.ma0 {
+  margin: 0em !important;
+}
+
+.mt0 {
+  margin-top: 0em !important;
+}
+
+.mr0 {
+  margin-right: 0em !important;
+}
+
+.mb0 {
+  margin-bottom: 0em !important;
+}
+
+.ml0 {
+  margin-left: 0em !important;
+}
+
+.ma025 {
+  margin: 0.25em !important;
+}
+
+.mt025 {
+  margin-top: 0.25em !important;
+}
+
+.mr025 {
+  margin-right: 0.25em !important;
+}
+
+.mb025 {
+  margin-bottom: 0.25em !important;
+}
+
+.ml025 {
+  margin-left: 0.25em !important;
+}
+
+.ma05 {
+  margin: 0.5em !important;
+}
+
+.mt05 {
+  margin-top: 0.5em !important;
+}
+
+.mr05 {
+  margin-right: 0.5em !important;
+}
+
+.mb05 {
+  margin-bottom: 0.5em !important;
+}
+
+.ml05 {
+  margin-left: 0.5em !important;
+}
+
+
+.ma1 {
+  margin: 1em !important;
+}
+
+.mt1 {
+  margin-top: 1em !important;
+}
+
+.mr1 {
+  margin-right: 1em !important;
+}
+
+.mb1 {
+  margin-bottom: 1em !important;
+}
+
+.ml1 {
+  margin-left: 1em !important;
+}
+
+.ma2 {
+  margin: 2em !important;
+}
+
+.mt2 {
+  margin-top: 2em !important;
+}
+
+.mr2 {
+  margin-right: 2em !important;
+}
+
+.mb2 {
+  margin-bottom: 2em !important;
+}
+
+.ml2 {
+  margin-left: 2em !important;
+}
+
+.ma3 {
+  margin: 3em !important;
+}
+
+.mt3 {
+  margin-top: 3em !important;
+}
+
+.mr3 {
+  margin-right: 3em !important;
+}
+
+.mb3 {
+  margin-bottom: 3em !important;
+}
+
+.ml3 {
+  margin-left: 3em !important;
+}
+
+.ma4 {
+  margin: 4em !important;
+}
+
+.mt4 {
+  margin-top: 4em !important;
+}
+
+.mr4 {
+  margin-right: 4em !important;
+}
+
+.mb4 {
+  margin-bottom: 4em !important;
+}
+
+.ml4 {
+  margin-left: 4em !important;
+}
+
+.ma5 {
+  margin: 5em !important;
+}
+
+.mt5 {
+  margin-top: 5em !important;
+}
+
+.mr5 {
+  margin-right: 5em !important;
+}
+
+.mb5 {
+  margin-bottom: 5em !important;
+}
+
+.ml5 {
+  margin-left: 5em !important;
+}
+
+.ma6 {
+  margin: 6em !important;
+}
+
+.mt6 {
+  margin-top: 6em !important;
+}
+
+.mr6 {
+  margin-right: 6em !important;
+}
+
+.mb6 {
+  margin-bottom: 6em !important;
+}
+
+.ml6 {
+  margin-left: 6em !important;
+}
+
+.ma10 {
+  margin: 10em !important;
+}
+
+.mt10 {
+  margin-top: 10em !important;
+}
+
+.mr10 {
+  margin-right: 10em !important;
+}
+
+.mb10 {
+  margin-bottom: 10em !important;
+}
+
+.ml10 {
+  margin-left: 10em !important;
+}
+
+.ma15 {
+  margin: 15em !important;
+}
+
+.mt15 {
+  margin-top: 15em !important;
+}
+
+.mr15 {
+  margin-right: 15em !important;
+}
+
+.mb15 {
+  margin-bottom: 15em !important;
+}
+
+.ml15 {
+  margin-left: 15em !important;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-text {
+  cursor: text;
+}
+
+.cursor-help {
+  cursor: help;
+}

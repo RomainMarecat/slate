@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,36 +15,64 @@ import { environment } from './../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { MatCardModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatButtonModule, MatGridListModule } from '@angular/material';
+import {
+  MatCardModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatButtonModule,
+  MatGridListModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatInputModule,
+  MatCheckboxModule
+} from '@angular/material';
+import { FileUploadModule } from 'ng2-file-upload';
+import { ImageCropperModule } from 'ng2-img-cropper';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ClothingAddComponent } from './clothing-add/clothing-add.component';
+import { ClothingComponent } from './clothing/clothing.component';
+import { ClothingImageComponent } from './clothing-add/clothing-image/clothing-image.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
+    ModalModule.forRoot(),
+    ImageCropperModule,
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
     MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
     ClothingRoutingModule
   ],
-   declarations: [
+  declarations: [
     ClothingListComponent,
     ClothingDetailComponent,
     MenuComponent,
     FooterComponent,
-    ClothingItemComponent
+    ClothingItemComponent,
+    ClothingAddComponent,
+    ClothingComponent,
+    ClothingImageComponent,
   ],
   providers: [
     ClothingService
   ],
   bootstrap: [
-    ClothingListComponent
+    ClothingComponent
   ]
 })
-export class ClothingModule { }
+export class ClothingModule {}
