@@ -1,0 +1,4 @@
+<img-cropper [image]="data" [settings]="cropperSettings" (onCrop)="cropped($event)"></img-cropper>
+<span class="result" *ngIf="data.image">
+<img [src]="data.image"
+ [width]="croppedWidth" [height]="croppedHeight">
