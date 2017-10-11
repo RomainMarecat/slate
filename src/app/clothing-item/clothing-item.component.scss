@@ -1,3 +1,27 @@
+.item-card {
+  overflow: hidden;
+  height: 300px;
+
+  .item-card-title {
+    margin: 0;
+    font-size: 20px;
+    display: inline-block;
+  }
+
+  span.item-card-date {
+    font-size: 16px;
+  }
+
+  .link-container-card {
+    max-height: 150px;
+  }
+
+  .item-card-header {
+    height: 40px;
+  }
+}
+
+
 .link-card img {
   height: 150px;
 }

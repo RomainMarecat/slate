@@ -1,0 +1,50 @@
+import { Injectable } from '@angular/core';
+import { Media } from './media';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
+import * as firebase from 'firebase';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/combineLatest';
+
+@Injectable()
+export class MediaService {
+  mediaCollectionRef: AngularFirestoreCollection < Media > ;
+  medias$: Observable < Media[] | {} > ;
+  publicIdFilter$: BehaviorSubject < string | null > ;
+  urlFilter$: BehaviorSubject < string | null > ;
+
+  constructor(private afs: AngularFirestore) {
+    this.mediaCollectionRef = this.afs.collection < Media > ('media');
+    this.publicIdFilter$ = new BehaviorSubject(null);
+    this.urlFilter$ = new BehaviorSubject(null);
+    this.medias$ = Observable.combineLatest(
+      this.publicIdFilter$,
+      this.urlFilter$
+    ).switchMap(([publicId, url]) =>
+      this.afs.collection('media', ref => {
+        let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+        if (publicId) { query = query.where('public_id', '==', publicId) };
+        if (url) { query = query.where('url', '==', url) };
+        return query;
+      }).valueChanges()
+    );
+  }
+  filterByPublicId(publicId: string | null) {
+    this.publicIdFilter$.next(publicId);
+    return this.publicIdFilter$;
+  }
+
+  filterByUrl(url: string | null) {
+    this.urlFilter$.next(url);
+  }
+
+  getMedias(): Observable < {} | Media[] > {
+    return this.medias$;
+  }
+
+  addMedia(media: Media) {
+    this.mediaCollectionRef.add({ ...media });
+  }
+}

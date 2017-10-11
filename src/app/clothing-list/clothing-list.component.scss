@@ -1,5 +1,14 @@
 .absolute-fab.mat-mini-fab {
-  position: absolute;
+  position: fixed;
   right: 20px;
   bottom: 10px;
+  z-index: 10;
+}
+
+app-clothing-item {
+  width: 100%;
+}
+
+.grid-tile-item {
+  padding-top: 320px;
 }

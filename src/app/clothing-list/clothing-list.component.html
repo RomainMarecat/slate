@@ -1,8 +1,10 @@
-<div class="container">
-  <clothing-item *ngFor="let clothing of clothes$ | async" [clothing]="clothing" (updateClothing)=updateClothing($event)></clothing-item>
-  <div class="text-right">
-    <button mat-mini-fab class="absolute-fab" (click)="addClothing()">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
+<mat-grid-list cols="1" rowHeight="300px">
+  <mat-grid-tile *ngFor="let clothing of clothes$ | async" class="grid-tile-item">
+    <app-clothing-item [clothing]="clothing"></app-clothing-item>
+  </mat-grid-tile>
+</mat-grid-list>
+<div class="text-right">
+  <button mat-mini-fab class="absolute-fab" (click)="addClothing()">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
