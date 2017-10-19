@@ -1,3 +1,59 @@
-<p>
-  clothing-detail works!
-</p>
+<mat-card class="item-card" *ngIf="clothing">
+  <mat-card-header class="item-card-header">
+    <img mat-card-avatar [src]="clothing.thumbnail" *ngIf="clothing.thumbnail">
+    <div class="row">
+      <div class="col-12">
+        <span class="text-left">
+          <mat-icon *ngIf="!clothing || !clothing.thumbnail">account_circle</mat-icon>
+        </span>
+        <mat-card-title>
+          <h2 class="item-card-title">
+            {{ clothing.name }}
+          </h2>
+          <span class="item-card-date text-right">{{ 'à' }} {{ clothing.created_at | date:'short' }}</span>
+        </mat-card-title>
+      </div>
+    </div>
+    <mat-card-subtitle>
+      <span *ngIf="clothing.price">{{ clothing.price }} €</span>
+      <a href="{{ clothing.external_url }}" *ngIf="clothing.external_url">Voir le pull</a>
+      <span *ngIf="clothing.reseller">{{ clothing.reseller }}</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content (click)="clothingDetail()">
+    <mat-grid-list [cols]="cols" rowHeight="100px">
+      <mat-grid-tile class="link-container-card" *ngIf="clothing.image1">
+        <a class="link-card">
+          <app-image [publicId]="clothing.image1" [resize]="resizedImage" *ngIf="clothing.image1"></app-image>
+        </a>
+      </mat-grid-tile>
+      <mat-grid-tile class="link-container-card" *ngIf="clothing.image2">
+        <a class="link-card">
+          <app-image [publicId]="clothing.image2" [resize]="resizedImage" *ngIf="clothing.image2"></app-image>
+        </a>
+      </mat-grid-tile>
+      <mat-grid-tile class="link-container-card" *ngIf="clothing.image3">
+        <a class="link-card">
+          <app-image [publicId]="clothing.image3" [resize]="resizedImage" *ngIf="clothing.image3"></app-image>
+        </a>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-grid-list cols="3" rowHeight="60px">
+      <mat-grid-tile>
+        <button mat-raised-button color="primary" (click)="like(clothing)">
+          <mat-icon aria-label="Example icon-button with a heart icon">thumb_down</mat-icon>
+        </button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <span class="ugly-score">{{ clothing.score }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-raised-button color="accent" (click)="ugly(clothing)">
+          <mat-icon aria-label="Example icon-button with a heart icon">thumb_up</mat-icon>
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-actions>
+</mat-card>

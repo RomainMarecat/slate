@@ -1,43 +1,34 @@
 import { Component, TemplateRef, OnInit } from '@angular/core';
-import { Clothing } from './../shared/clothing';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Clothing } from './../shared/clothing/clothing';
+import { IClothing } from './../shared/clothing/i-clothing';
+import { ClothingService } from './../shared/clothing/clothing.service';
+import { User } from './../shared/user/user';
 
 @Component({
-  selector: 'clothing-add',
+  selector: 'app-clothing-add',
   templateUrl: './clothing-add.component.html',
   styleUrls: ['./clothing-add.component.scss']
 })
 export class ClothingAddComponent implements OnInit {
-  clothing: Clothing;
-  payLoad = '';
-  clothingForm: FormGroup;
-  now: Date;
-  disableDelivery: boolean;
+  clothing: IClothing;
+  thumbnail: string;
+  ratio: string;
+  user: any;
 
-  constructor(private fb: FormBuilder) {
-    this.disableDelivery = false;
-    this.createForm();
-    this.now = new Date();
+  constructor(private router: Router, private clothingService: ClothingService) {
+    this.user = localStorage.getItem('user');
+    this.ratio = '3:5';
   }
 
   ngOnInit() {}
 
-  createForm() {
-    this.clothingForm = this.fb.group({
-      external_url: [''],
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      price: [''],
-      delivery_fee: [{ value: '', disabled: this.disableDelivery }],
-      delivery_free: [{ value: this.disableDelivery }],
-    });
+  onClothingSubmit(clothing: IClothing) {
+    this.clothingService.createClothing(clothing);
+    this.router.navigate(['/']);
   }
 
-  onSubmit() {
-    this.payLoad = JSON.stringify(this.clothingForm.value);
-  }
-
-  changeDeliveryFree(event) {
-    this.disableDelivery = event.checked;
+  onClothingChange(clothing: IClothing) {
+    this.clothing = clothing;
   }
 }

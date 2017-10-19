@@ -1,0 +1,13 @@
+.sidenav-container .mat-drawer-content {
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+
+.mat-drawer-content {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 100%;
+  overflow: auto;
+}

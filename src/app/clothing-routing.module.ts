@@ -4,6 +4,7 @@ import { ClothingAddComponent } from './clothing-add/clothing-add.component';
 import { ClothingListComponent } from './clothing-list/clothing-list.component';
 import { ClothingDetailComponent } from './clothing-detail/clothing-detail.component';
 import { ClothingComponent } from './clothing/clothing.component';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 
 const routes: Routes = [{
     path: '',
@@ -11,14 +12,21 @@ const routes: Routes = [{
     pathMatch: 'full',
     children: [{
       path: '',
-      component: ClothingListComponent
+      component: ComingSoonComponent
     }]
+  },
+  {
+    path: 'list',
+    component: ClothingListComponent
+  },
+  {
+    path: 'coming-soon',
+    component: ComingSoonComponent
   }, {
     path: 'add',
     component: ClothingAddComponent
-  },
-  {
-    path: 'detail/:id',
+  }, {
+    path: 'detail/:key',
     component: ClothingDetailComponent
   },
 ];
