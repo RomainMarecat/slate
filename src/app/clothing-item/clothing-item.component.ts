@@ -1,30 +1,54 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Clothing } from './../shared/clothing';
-import { IClothing } from './../shared/i-clothing';
+import { Router } from '@angular/router';
+import { Clothing } from './../shared/clothing/clothing';
+import { IClothing } from './../shared/clothing/i-clothing';
 
 @Component({
-  selector: 'clothing-item',
+  selector: 'app-clothing-item',
   templateUrl: './clothing-item.component.html',
   styleUrls: ['./clothing-item.component.scss']
 })
 export class ClothingItemComponent implements OnInit {
 
-  @Input('clothing') clothing: IClothing;
-  @Output() updateClothing: EventEmitter<IClothing> = new EventEmitter<IClothing>();
+  _clothing: IClothing;
+  @Output() updateClothing: EventEmitter < IClothing > = new EventEmitter < IClothing > ();
+  cols: number;
+  resizedImage = { height: "100", width: "100" };
 
-  constructor() { }
-I
-  ngOnInit() {
+  constructor(private router: Router) {
+    this.cols = 0;
   }
 
-    ugly(clothing: Clothing) {
-      clothing.ugly++;
-      this.updateClothing.emit(clothing);
-    }
+  ngOnInit() {}
 
-    like(clothing: Clothing) {
-      clothing.ugly--;
-      this.updateClothing.emit(clothing);
-    }
+  ugly(clothing: IClothing) {
+    clothing.score++;
+    this.updateClothing.emit(clothing);
+  }
 
+  like(clothing: IClothing) {
+    clothing.score--;
+    this.updateClothing.emit(clothing);
+  }
+
+  get clothing() {
+    return this._clothing;
+  }
+
+  @Input() set clothing(clothing) {
+    this._clothing = clothing;
+    if (this._clothing.image1) {
+      this.cols++;
+    }
+    if (this._clothing.image2) {
+      this.cols++;
+    }
+    if (this._clothing.image3) {
+      this.cols++;
+    }
+  }
+
+  clothingDetail() {
+    this.router.navigate(['/detail', this.clothing.name])
+  }
 }

@@ -2,92 +2,15 @@
   <div class="row">
     <div class="col-12">
       <h1 class="nm0">Poster un nouveau pull moche</h1>
-      <mat-grid-list cols="2" rowHeight="3:4">
-        <mat-grid-tile>
-          <mat-card>
-            <mat-card-content>
-              <form [formGroup]="clothingForm" (ngSubmit)="onSubmit()" class="form-container">
-                <mat-form-field>
-                  <input type="url" matInput placeholder="Lien vers le pull" formControlName="external_url">
-                </mat-form-field>
-                <mat-form-field>
-                  <input matInput #title maxlength="50" placeholder="Titre" formControlName="name">
-                  <mat-hint align="start"><strong>Donner un titre court à votre pull</strong> </mat-hint>
-                  <mat-hint align="end">{{ clothingForm.get('name').value.length }} / 50</mat-hint>
-                </mat-form-field>
-                <mat-form-field>
-                  <textarea matInput placeholder="Description" formControlName="description"></textarea>
-                  <mat-hint align="start"><strong>Donner un court descriptif à votre pull</strong> </mat-hint>
-                  <mat-hint align="end">{{ clothingForm.get('description').value.length }} / 500</mat-hint>
-                </mat-form-field>
-                <mat-form-field>
-                  <input type="number" matInput placeholder="Prix" formControlName="price">
-                </mat-form-field>
-                <mat-form-field>
-                  <input type="number" matInput placeholder="Frais de livraison" [attr.disabled]="disableDelivery" formControlName="delivery_fee">
-                </mat-form-field>
-                <!-- <section class="checkbox-section">
-  <mat-checkbox class="checkbox-margin" [value]="disableDelivery" (change)="changeDeliveryFree($event)" formControlName="delivery_free">Livraison gratuite</mat-checkbox>
-</section>
- -->
-                <clothing-image></clothing-image>
-                <button mat-raised-button [color]="'primary'">Valider</button>
-              </form>
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-card class="item-card">
-            <mat-card-header>
-              <img mat-card-avatar [src]="clothing?.thumbnail">
-              <mat-card-title>
-                <span *ngIf="!clothingForm.get('name').value">Donnez un titre court et descriptif à votre</span>
-                <span *ngIf="clothingForm.get('name').value">{{ clothingForm.get('name').value }}</span>
-              </mat-card-title>
-              <mat-card-subtitle>
-                <span *ngIf="clothingForm.get('price').value">{{ clothingForm.get('price').value }} €</span>
-                <a href="{{ clothing?.external_reseller }}">{{ clothing?.reseller }}</a>
-              </mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <mat-grid-list cols="3">
-                <mat-grid-tile class="link-container-card">
-                  <a class="link-card">
-                    <img mat-card-mat-image src="{{ clothing?.thumbnail }}" alt="{{clothing?.name}}">
-                  </a>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <a class="link-card">
-                    <img mat-card-mat-image src="{{ clothing?.image1 }}" alt="{{clothing?.name}}">
-                  </a>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <a class="link-card">
-                    <img mat-card-mat-image src="{{ clothing?.image2 }}" alt="{{clothing?.name}}">
-                  </a>
-                </mat-grid-tile>
-              </mat-grid-list>
-            </mat-card-content>
-            <mat-card-actions>
-              <mat-grid-list cols="3">
-                <mat-grid-tile>
-                  <button mat-raised-button color="primary" (click)="like(clothing)">
-                    <mat-icon aria-label="Example icon-button with a heart icon">thumb_down</mat-icon>
-                  </button>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <span class="ugly-score">{{ clothing?.ugly }}</span>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                  <button mat-raised-button color="accent" (click)="ugly(clothing)">
-                    <mat-icon aria-label="Example icon-button with a heart icon">thumb_up</mat-icon>
-                  </button>
-                </mat-grid-tile>
-              </mat-grid-list>
-            </mat-card-actions>
-          </mat-card>
-        </mat-grid-tile>
-      </mat-grid-list>
+      <div class="row">
+        <div class="col-6">
+          <app-clothing-form (clothingChange)="onClothingChange($event)" [_user]="user" (_submit)="onClothingSubmit($event)">
+          </app-clothing-form>
+        </div>
+        <div class="col-6">
+          <app-clothing-preview [clothing]="clothing" [user]="user"></app-clothing-preview>
+        </div>
+      </div>
     </div>
   </div>
 </div>
