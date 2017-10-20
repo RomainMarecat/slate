@@ -10,6 +10,7 @@ export interface IClothing {
 
   url: string;
 
+  description ? : string;
   thumbnail: string;
   image1: string;
   image2 ? : string;

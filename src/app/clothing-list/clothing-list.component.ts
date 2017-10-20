@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./clothing-list.component.scss']
 })
 export class ClothingListComponent implements OnInit {
-  clothes$: Observable < IClothing[] > ;
+  clothes$: Observable < IClothing[] | {} > ;
   clothes: Array < IClothing > ;
   isLoading: boolean;
   rowHeight: number;

@@ -15,6 +15,7 @@ export class ClothingService {
   clothes$: Observable < IClothing[] | {} > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilter$: BehaviorSubject < string | null > ;
+  keyFilters$: BehaviorSubject <string | null >;
   colorFilter$: BehaviorSubject < string | null > ;
   userFilter$: BehaviorSubject < string | null > ;
   imit$: BehaviorSubject < number | 20 > ;
@@ -32,6 +33,7 @@ export class ClothingService {
     this.userFilter$ = new BehaviorSubject(null);
 
     this.clothes$ = Observable.combineLatest(
+      this.keyFilter$,
       this.publishedFilter$,
       this.nameFilter$,
       this.colorFilter$,
@@ -61,8 +63,9 @@ export class ClothingService {
     return this.clothes$.map((clothes: DocumentChangeAction[]) =>
       clothes.map((doc: DocumentChangeAction) => {
         console.log(doc);
-        const clothing = { key: doc.payload.doc.id, ...doc.payload.doc.data() } as IClothing;
-        return clothing;
+        const clothing = doc.payload.doc.data() as IClothing;
+        clothing.key = doc.payload.doc.id;
+        return clothing as IClothing;
       })
     );
   }
