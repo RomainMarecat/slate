@@ -14,15 +14,30 @@ export class ClothingComponent implements OnInit {
 
   ngOnInit() {}
 
-  login() {
+  loginGoogle() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((result) => {
         const user = result.user;
         if (user) {
           localStorage.setItem('user', user);
         }
+      }, (err) => {
+        console.error(err);
       });
   }
+
+  loginFacebook() {
+    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+      .then((result) => {
+        const user = result.user;
+        if (user) {
+          localStorage.setItem('user', user);
+        }
+      }, (err) => {
+        console.error(err);
+      });
+  }
+
   logout() {
     this.afAuth.auth.signOut().then(function() {
       // Sign-out successful.

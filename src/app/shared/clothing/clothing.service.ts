@@ -14,7 +14,7 @@ export class ClothingService {
   clothingCollectionRef: AngularFirestoreCollection < IClothing > ;
   clothes$: Observable < IClothing[] | {} > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
-  nameFilter$: BehaviorSubject < string | null > ;
+  nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject <string | null >;
   colorFilter$: BehaviorSubject < string | null > ;
   userFilter$: BehaviorSubject < string | null > ;
@@ -27,18 +27,19 @@ export class ClothingService {
   query: firebase.firestore.CollectionReference | firebase.firestore.Query;
 
   constructor(private afs: AngularFirestore) {
+    this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(true);
-    this.nameFilter$ = new BehaviorSubject(null);
+    this.nameFilters$ = new BehaviorSubject(null);
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
 
     this.clothes$ = Observable.combineLatest(
-      this.keyFilter$,
+      this.keyFilters$,
       this.publishedFilter$,
-      this.nameFilter$,
+      this.nameFilters$,
       this.colorFilter$,
       this.userFilter$
-    ).switchMap(([published, name, color, user]) =>
+    ).switchMap(([key, published, name, color, user]) =>
       this.afs.collection('clothes', ref => {
         this.query = ref;
         if (published) {
