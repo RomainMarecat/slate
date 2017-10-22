@@ -13,9 +13,6 @@
         </mat-card-actions>
       </mat-card>
     </div>
-    <ng-template #showLogin>
-      <button mat-raised-button color="primary" type="button" (click)="login()">Se connecter avec Google</button>
-    </ng-template>
   </mat-sidenav>
   <app-menu (sidenavEmitter)="sideNav.toggle()"></app-menu>
   <div #root="dir" dir="ltr" class="demo-content">
@@ -24,3 +21,18 @@
     <app-footer></app-footer>
   </div>
 </mat-sidenav-container>
+<ng-template #showLogin>
+  <mat-nav-list>
+    <ul>
+      <li>
+        <h2>Se connecter</h2>
+      </li>
+      <li>
+        <button mat-raised-button color="primary" type="button" (click)="loginGoogle()">Se connecter avec Google</button>
+      </li>
+      <li>
+        <button mat-raised-button color="primary" type="button" (click)="loginFacebook()">Se connecter avec Facebook</button>
+      </li>
+    </ul>
+  </mat-nav-list>
+</ng-template>
