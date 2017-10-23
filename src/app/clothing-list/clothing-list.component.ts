@@ -6,6 +6,8 @@ import { Clothing } from './../shared/clothing/clothing';
 import { IClothing } from './../shared/clothing/i-clothing';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
+import { UserService } from './../shared/user/user.service';
+import { AlertService } from './../shared/alert/alert.service';
 
 @Component({
   selector: 'app-clothing-list',
@@ -21,7 +23,7 @@ export class ClothingListComponent implements OnInit {
   pageLimit: number;
 
   constructor(private clothingService: ClothingService, private router: Router,
-    private meta: Meta, private clothingComponent: ElementRef) {
+    private meta: Meta, private clothingComponent: ElementRef, private userService: UserService, public alertService: AlertService) {
     this.isLoading = true;
     this.headerHeight = 0;
     this.pageLimit = 20;
@@ -40,11 +42,14 @@ export class ClothingListComponent implements OnInit {
   }
 
   updateClothing(clothing: IClothing) {
+    console.log(clothing);
     this.clothingService.updateClothing(clothing);
   }
 
   addClothing() {
     this.router.navigate(['/add']);
+    /*    this.alertService.toast('Il faut se connecter pour ajouter autant de pull moche que vous voulez !');
+     */
   }
 
   /**

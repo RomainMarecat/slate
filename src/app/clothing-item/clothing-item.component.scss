@@ -2,15 +2,26 @@
   overflow: hidden;
   height: 300px;
 
-  .item-card-title {
-    margin: 0;
-    font-size: 20px;
-    display: inline-block;
+  mat-card-header-text {
+    width: 100%;
+  }
+  .item-card-header {
+    display: flex;
+    flex: wrap;
+    justify-content: space-around;
+
+    .item-card-title {
+      margin: 0;
+      font-size: 20px;
+      display: inline-block;
+    }
+
+    span.item-card-date {
+      font-size: 16px;
+    }
   }
 
-  span.item-card-date {
-    font-size: 16px;
-  }
+
 
   .link-container-card {
     max-height: 150px;
@@ -24,11 +35,4 @@
 
 .link-card img {
   height: 150px;
-}
-
-.ugly-score {
-  color: red;
-  font-size: 2rem;
-  font-weight: 800;
-  vertical-align: middle;
 }

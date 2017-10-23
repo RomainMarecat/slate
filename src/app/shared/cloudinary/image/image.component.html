@@ -1,9 +1,9 @@
-<div *ngIf="medias$ | async; let medias">
+<div *ngIf="medias">
   <div *ngFor="let media of medias">
-    <cl-image mat-card-mat-image [public-id]="media.public_id" *ngIf="media && media.public_id && !resize">
+    <cl-image mat-card-md-image [public-id]="media.public_id" *ngIf="media && media.public_id && !resize">
       <cl-transformation [attr.height]="media.cropper.height" [attr.width]="media.cropper.width" [attr.x]="media.cropper.x" [attr.y]="media.cropper.y" crop="fill" [attr.alt]="media?.alt"></cl-transformation>
     </cl-image>
-    <cl-image mat-card-mat-image [public-id]="media.public_id" *ngIf="media && media.public_id && resize">
+    <cl-image mat-card-md-image [public-id]="media.public_id" *ngIf="media && media.public_id && resize">
       <cl-transformation [attr.height]="media.cropper.height" [attr.width]="media.cropper.width" [attr.x]="media.cropper.x" [attr.y]="media.cropper.y" crop="fill" [attr.alt]="media?.alt"></cl-transformation>
       <cl-transformation [attr.height]="resize.height" [attr.width]="resize.width" crop="scale"></cl-transformation>
     </cl-image>
