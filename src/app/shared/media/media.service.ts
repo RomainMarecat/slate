@@ -28,12 +28,21 @@ export class MediaService {
         if (publicId) { query = query.where('public_id', '==', publicId) };
         if (url) { query = query.where('url', '==', url) };
         return query;
-      }).valueChanges()
+      }).snapshotChanges()
     );
   }
-  filterByPublicId(publicId: string | null) {
+  filterByPublicId(publicId: string | null): Observable < {} | Media[] > {
     this.publicIdFilter$.next(publicId);
-    return this.publicIdFilter$;
+    return this.medias$.map((medias: DocumentChangeAction[]) =>
+      medias.map((doc: DocumentChangeAction) => {
+        console.log('Media id : ', doc.payload.doc.id);
+        const media = doc.payload.doc.data() as Media;
+        media.key = doc.payload.doc.id;
+        console.log('Media id : ', doc.payload.doc.id);
+        console.log('Media : ', media);
+
+        return media as Media;
+      }));
   }
 
   filterByUrl(url: string | null) {

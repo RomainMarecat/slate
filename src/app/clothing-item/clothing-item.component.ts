@@ -21,16 +21,6 @@ export class ClothingItemComponent implements OnInit {
 
   ngOnInit() {}
 
-  ugly(clothing: IClothing) {
-    clothing.score++;
-    this.updateClothing.emit(clothing);
-  }
-
-  like(clothing: IClothing) {
-    clothing.score--;
-    this.updateClothing.emit(clothing);
-  }
-
   get clothing() {
     return this._clothing;
   }

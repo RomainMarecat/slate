@@ -49,6 +49,7 @@ import { ClothingFormComponent } from './shared/clothing/clothing-form/clothing-
 import { ClothingPreviewComponent } from './clothing-add/clothing-preview/clothing-preview.component';
 import { ImageComponent } from './shared/cloudinary/image/image.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { ClothingActionComponent } from './clothing-item/clothing-action/clothing-action.component';
 
 export const cloudinaryLib = {
   Cloudinary: Cloudinary
@@ -101,6 +102,7 @@ export const cloudinaryLib = {
     ClothingPreviewComponent,
     ImageComponent,
     ComingSoonComponent,
+    ClothingActionComponent,
   ],
   providers: [
     ClothingService,

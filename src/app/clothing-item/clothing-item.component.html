@@ -39,21 +39,5 @@
       </mat-grid-tile>
     </mat-grid-list>
   </mat-card-content>
-  <mat-card-actions>
-    <mat-grid-list cols="3" rowHeight="60px">
-      <mat-grid-tile>
-        <button mat-raised-button color="primary" (click)="like(clothing)">
-          <mat-icon aria-label="Example icon-button with a heart icon">thumb_down</mat-icon>
-        </button>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <span class="ugly-score">{{ clothing.score }}</span>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <button mat-raised-button color="accent" (click)="ugly(clothing)">
-          <mat-icon aria-label="Example icon-button with a heart icon">thumb_up</mat-icon>
-        </button>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-card-actions>
+  <app-clothing-action [clothing]="clothing" (updateScore)="updateClothing($event)"></app-clothing-action>
 </mat-card>

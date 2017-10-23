@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 export class ImageComponent implements OnInit {
   _publicId: string
   @Input() resize: any;
-  medias$: Observable < Media[] | {} > ;
+  medias: Media[];
   constructor(private mediaService: MediaService) {}
 
   get publicId(): string {
@@ -23,8 +23,9 @@ export class ImageComponent implements OnInit {
     console.log('prev value: ', this._publicId);
     console.log('got publicId: ', publicId);
     this._publicId = publicId;
-    this.mediaService.filterByPublicId(publicId);
-    this.medias$ = this.mediaService.medias$;
+    this.mediaService.filterByPublicId(publicId).subscribe((medias: Media[]) => {
+      this.medias = medias;
+    });
   }
 
   ngOnInit() {}
