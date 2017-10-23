@@ -18,11 +18,17 @@ export class ClothingActionComponent implements OnInit {
 
 
   ugly(clothing: IClothing) {
+    if (!clothing.score) {
+      clothing.score = 0;
+    }
     clothing.score++;
     this.updateScore.emit(clothing);
   }
 
   like(clothing: IClothing) {
+    if (!clothing.score) {
+      clothing.score = 0;
+    }
     clothing.score--;
     this.updateScore.emit(clothing);
   }

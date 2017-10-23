@@ -21,7 +21,7 @@
     <mat-grid-list cols="3" rowHeight="140px">
       <mat-grid-tile>
         <a class="link-card">
-          <app-image [publicId]="clothing?.image1" [resize]="resizedImage"></app-image>
+          <app-image *ngIf="clothing?.image1" [publicId]="clothing?.image1" [resize]="resizedImage"></app-image>
           <span *ngIf="!clothing || !clothing.image1">
             <mat-icon>image</mat-icon>
             Image
@@ -30,7 +30,7 @@
       </mat-grid-tile>
       <mat-grid-tile>
         <a class="link-card">
-          <app-image [publicId]="clothing?.image2" [resize]="resizedImage"></app-image>
+          <app-image *ngIf="clothing?.image2" [publicId]="clothing?.image2" [resize]="resizedImage"></app-image>
           <span *ngIf="!clothing || !clothing.image2">
             <mat-icon>image</mat-icon>
             Image
@@ -39,7 +39,7 @@
       </mat-grid-tile>
       <mat-grid-tile>
         <a class="link-card">
-          <app-image [publicId]="clothing?.image3" [resize]="resizedImage"></app-image>
+          <app-image *ngIf="clothing?.image3" [publicId]="clothing?.image3" [resize]="resizedImage"></app-image>
           <span *ngIf="!clothing || !clothing.image3">
             <mat-icon>image</mat-icon>
             Image

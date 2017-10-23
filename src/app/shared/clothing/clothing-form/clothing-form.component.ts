@@ -15,6 +15,7 @@ export class ClothingFormComponent implements OnInit {
   clothing: IClothing;
   @Input('_user') _user: any;
   disableDelivery: boolean;
+  isLoading: boolean;
   now: Date;
   @Output('_submit') _submit: EventEmitter < IClothing > ;
   image1: Media;
@@ -22,6 +23,7 @@ export class ClothingFormComponent implements OnInit {
   image3: Media;
 
   constructor() {
+    this.isLoading = false;
     this._submit = new EventEmitter < Clothing > ();
     this.clothingChange = new EventEmitter < Clothing > ();
     this.now = new Date();
@@ -40,12 +42,18 @@ export class ClothingFormComponent implements OnInit {
   }
 
   onSubmit() {
+    /*    this.isLoading = true;
+     */
     if (this.form.valid) {
-      this.clothing = { ...this.form.value as IClothing };
-      this.clothing.published = false;
-      this.clothing.created_at = this.now;
-      this.submit();
+      const clothing = { ...this.form.value as IClothing };
+      clothing.published = false;
+      clothing.created_at = this.now;
+      this.submit(clothing);
     }
+  }
+
+  submit(clothing: IClothing) {
+    this._submit.emit(clothing);
   }
 
   createForm() {
@@ -129,9 +137,5 @@ export class ClothingFormComponent implements OnInit {
 
   get deliveryFree() {
     return this.form.get('delivery_free');
-  }
-
-  submit() {
-    this._submit.emit(this.clothing);
   }
 }

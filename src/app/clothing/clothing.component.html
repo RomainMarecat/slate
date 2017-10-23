@@ -1,6 +1,6 @@
 <mat-sidenav-container fullscreen class="sidenav-container">
   <mat-sidenav #sideNav class="leftSideNav" mode="over" opened="false">
-    <div *ngIf="afAuth.authState | async; let user; else showLogin">
+    <div *ngIf="userService.getAuthState() | async; let user; else showLogin">
       <mat-card class="item-card">
         <mat-card-header>
           <img mat-card-avatar [src]="user?.photoURL">
@@ -9,7 +9,7 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-actions>
-          <button mat-raised-button color="primary" type="button" (click)="logout()">Déconnexion</button>
+          <button mat-raised-button color="primary" type="button" (click)="userService.logout()">Déconnexion</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -28,10 +28,10 @@
         <h2>Se connecter</h2>
       </li>
       <li>
-        <button mat-raised-button color="primary" type="button" (click)="loginGoogle()">Se connecter avec Google</button>
+        <button mat-raised-button color="primary" type="button" (click)="userService.loginGoogle()">Se connecter avec Google</button>
       </li>
       <li>
-        <button mat-raised-button color="primary" type="button" (click)="loginFacebook()">Se connecter avec Facebook</button>
+        <button mat-raised-button color="primary" type="button" (click)="userService.loginFacebook()">Se connecter avec Facebook</button>
       </li>
     </ul>
   </mat-nav-list>

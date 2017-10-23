@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ClothingItemComponent } from './clothing-item/clothing-item.component';
 import { ClothingService } from './shared/clothing/clothing.service';
 import { MediaService } from './shared/media/media.service';
+import { UserService } from './shared/user/user.service';
 import { ObjectService } from './shared/util/object.service';
 
 import { environment } from './../environments/environment';
@@ -31,6 +32,7 @@ import {
   MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
+  MatSnackBarModule,
 } from '@angular/material';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
@@ -50,6 +52,8 @@ import { ClothingPreviewComponent } from './clothing-add/clothing-preview/clothi
 import { ImageComponent } from './shared/cloudinary/image/image.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { ClothingActionComponent } from './clothing-item/clothing-action/clothing-action.component';
+import { AlertComponent } from './shared/alert/alert.component';
+import { AlertService } from './shared/alert/alert.service';
 
 export const cloudinaryLib = {
   Cloudinary: Cloudinary
@@ -81,6 +85,7 @@ export const cloudinaryLib = {
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatSnackBarModule,
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     Ng2PageScrollModule,
     AdsenseModule.forRoot({
@@ -88,6 +93,9 @@ export const cloudinaryLib = {
       adSlot: environment.slotAdSense
     }),
     ClothingRoutingModule
+  ],
+  entryComponents: [
+    AlertComponent
   ],
   declarations: [
     ClothingListComponent,
@@ -103,10 +111,13 @@ export const cloudinaryLib = {
     ImageComponent,
     ComingSoonComponent,
     ClothingActionComponent,
+    AlertComponent,
   ],
   providers: [
     ClothingService,
     MediaService,
+    UserService,
+    AlertService,
     ObjectService
   ],
   bootstrap: [

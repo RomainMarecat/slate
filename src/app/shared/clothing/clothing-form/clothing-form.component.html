@@ -35,7 +35,7 @@
       <app-clothing-image [media]="image2" (imageChanged)="onImageChange($event)" *ngIf="clothing.image1"></app-clothing-image>
       <app-clothing-image [media]="image3" (imageChanged)="onImageChange($event)" *ngIf="clothing.image2 && clothing.image3"></app-clothing-image>
       <div class="pa2">
-        <button mat-raised-button color="primary" type="submit" class="btn-add" [disabled]="!form.valid">Valider</button>
+        <button mat-raised-button color="primary" type="submit" class="btn-add" [disabled]="!form.valid || isLoading">Valider</button>
       </div>
     </form>
   </mat-card-content>

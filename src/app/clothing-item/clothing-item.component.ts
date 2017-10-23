@@ -11,7 +11,7 @@ import { IClothing } from './../shared/clothing/i-clothing';
 export class ClothingItemComponent implements OnInit {
 
   _clothing: IClothing;
-  @Output() updateClothing: EventEmitter < IClothing > = new EventEmitter < IClothing > ();
+  @Output() updatedClothing: EventEmitter < IClothing > = new EventEmitter < IClothing > ();
   cols: number;
   resizedImage = { height: "100", width: "100" };
 
@@ -36,6 +36,10 @@ export class ClothingItemComponent implements OnInit {
     if (this._clothing.image3) {
       this.cols++;
     }
+  }
+
+  updateScoreClothing(clothing: IClothing) {
+    this.updatedClothing.emit(clothing);
   }
 
   clothingDetail() {
