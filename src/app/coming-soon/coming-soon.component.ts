@@ -14,7 +14,11 @@ export class ComingSoonComponent implements OnInit {
     this.meta.addTags([
       { name: 'title', content: 'Mon pull Moche' },
       { property: 'keywords', content: 'pull moche noël pas beau ugly sweat' },
-      { name: 'description', content: 'Mon pull moche propose les pulls les plus moches. Ajoute ton pull et découvre la note que les internautes lui ont attribué.' },
+      {
+        name: 'description',
+        content: 'Mon pull moche propose les pulls les plus moches.' +
+          ' Ajoute ton pull et découvre la note que les internautes lui ont attribué.'
+      },
     ]);
   }
 }

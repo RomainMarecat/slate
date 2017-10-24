@@ -5,7 +5,7 @@
 </div> -->
 <div class="row">
   <div class="col-12">
-    <div class="form-group">
+    <div class="form-group mt2">
       <input type="file" ng2FileSelect [uploader]="uploader" multiple />
     </div>
   </div>
@@ -14,13 +14,13 @@
   <div class="image-cropper" [ngClass]="cropperClass">
     <div class="col-12">
       <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
-      <button mat-raised-button color="primary" type="button" (click)="validateImage()">
+      <button mat-raised-button color="primary" type="button" (click)="validateImage()" class="button-image-validation">
         Valider
       </button>
     </div>
   </div>
 </div>
-<div class="row" *ngIf="!objectService.isEmpty(data)">
+<div class="row" *ngIf="!objectService.isEmpty(data)" [ngClass]="'hidden'">
   <div class="col-12">
     <table class="table">
       <thead>

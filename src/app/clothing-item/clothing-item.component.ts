@@ -13,10 +13,11 @@ export class ClothingItemComponent implements OnInit {
   _clothing: IClothing;
   @Output() updatedClothing: EventEmitter < IClothing > = new EventEmitter < IClothing > ();
   cols: number;
-  resizedImage = { height: "100", width: "100" };
+  resizedImage: any;
 
   constructor(private router: Router) {
     this.cols = 0;
+    this.resizedImage = { height: '100', width: '100' };
   }
 
   ngOnInit() {}
@@ -43,6 +44,6 @@ export class ClothingItemComponent implements OnInit {
   }
 
   clothingDetail() {
-    this.router.navigate(['/detail', this.clothing.name])
+    this.router.navigate(['/detail', this.clothing.name]);
   }
 }

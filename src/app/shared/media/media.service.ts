@@ -32,9 +32,15 @@ export class MediaService {
       .switchMap(([publicId, url, limit]) =>
         this.afs.collection('media', ref => {
           let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-          if (publicId) { query = query.where('public_id', '==', publicId) };
-          if (url) { query = query.where('url', '==', url) };
-          if (limit) { query = query.limit(limit) };
+          if (publicId) {
+            query = query.where('public_id', '==', publicId);
+          }
+          if (url) {
+            query = query.where('url', '==', url);
+          }
+          if (limit) {
+            query = query.limit(limit);
+          }
           return query;
         }).snapshotChanges()
       );

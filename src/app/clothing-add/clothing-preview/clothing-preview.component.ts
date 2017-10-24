@@ -9,7 +9,7 @@ import { IClothing } from './../../shared/clothing/i-clothing';
 export class ClothingPreviewComponent implements OnInit {
   @Input() clothing: IClothing;
   @Input() user: any;
-  resizedImage = { height: "140", width: "140" };
+  resizedImage = { height: '140', width: '140' };
 
   constructor() {}
 

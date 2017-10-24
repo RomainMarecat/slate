@@ -10,7 +10,7 @@ import 'rxjs/add/operator/first';
   styleUrls: ['./image.component.scss']
 })
 export class ImageComponent implements OnInit {
-  _publicId: string
+  _publicId: string;
   @Input() resize: any;
   medias: Media[];
   constructor(private mediaService: MediaService) {}
