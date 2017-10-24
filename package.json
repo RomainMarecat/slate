@@ -1,6 +1,6 @@
 {
   "name": "monpullmoche",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "@cloudinary/angular-4.x": "^1.0.0",
+    "@swimlane/ngx-datatable": "^10.3.0",
     "@types/crypto-js": "^3.1.37",
     "angular-pipes": "^6.5.3",
     "angularfire2": "^5.0.0-rc.2",
@@ -43,7 +44,7 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "1.4.7",
+    "@angular/cli": "1.4.9",
     "@angular/compiler-cli": "^4.2.4",
     "@angular/language-service": "^4.2.4",
     "@types/jasmine": "~2.5.53",
@@ -61,6 +62,6 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
-    "typescript": "~2.3.3"
+    "typescript": "^2.4.2"
   }
 }
