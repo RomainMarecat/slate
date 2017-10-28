@@ -15,6 +15,7 @@
     </div>
   </mat-sidenav>
   <app-menu (sidenavEmitter)="sideNav.toggle()"></app-menu>
+  <app-loader></app-loader>
   <div #root="dir" dir="ltr" class="demo-content">
     <router-outlet></router-outlet>
     <ng-adsense [width]="300" [height]="108"></ng-adsense>

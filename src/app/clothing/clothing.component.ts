@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Angulartics2GoogleAnalytics } from 'angulartics2';
 import { UserService } from './../shared/user/user.service';
 import * as firebase from 'firebase/app';
+import { LoaderService } from './../shared/loader/loader.service';
 
 @Component({
   selector: 'app-clothing-index',
@@ -10,7 +11,8 @@ import * as firebase from 'firebase/app';
 })
 export class ClothingComponent implements OnInit {
 
-  constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics, public userService: UserService) {}
+  constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
+    public userService: UserService, private loaderService: LoaderService) {}
 
   ngOnInit() {}
 

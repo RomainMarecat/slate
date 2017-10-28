@@ -85,8 +85,9 @@ export class ClothingService {
     );
   }
 
-  getClothing(key: string) {
-    return this.clothingCollectionRef.valueChanges();
+  getClothing(key: null | string): Observable < IClothing[] > {
+    this.keyFilters$.next(key);
+    return this.getClothes().take(1);
   }
 
   updateClothing(clothing: IClothing) {

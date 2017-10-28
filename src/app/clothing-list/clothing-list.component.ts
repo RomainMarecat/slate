@@ -8,6 +8,7 @@ import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from './../shared/user/user.service';
 import { AlertService } from './../shared/alert/alert.service';
+import { LoaderService } from './../shared/loader/loader.service';
 
 @Component({
   selector: 'app-clothing-list',
@@ -15,23 +16,23 @@ import { AlertService } from './../shared/alert/alert.service';
   styleUrls: ['./clothing-list.component.scss']
 })
 export class ClothingListComponent implements OnInit {
-  clothes$: Observable < IClothing[] | {} > ;
+  clothes$: Observable < IClothing[] > ;
   clothes: Array < IClothing > ;
-  isLoading: boolean;
   rowHeight: number;
   headerHeight: number;
   pageLimit: number;
 
   constructor(private clothingService: ClothingService, private router: Router,
-    private meta: Meta, private clothingComponent: ElementRef, private userService: UserService, public alertService: AlertService) {
-    this.isLoading = true;
+    private meta: Meta, private clothingComponent: ElementRef,
+    private userService: UserService, public alertService: AlertService,
+    private loaderService: LoaderService) {
     this.headerHeight = 0;
     this.pageLimit = 20;
     this.rowHeight = 300;
   }
 
   ngOnInit() {
-    this.isLoading = false;
+    this.loaderService.show();
     this.meta.addTags([
       { name: 'title', content: 'Mon pull Moche' },
       { property: 'og:title', content: '' },
@@ -39,6 +40,7 @@ export class ClothingListComponent implements OnInit {
     ]);
 
     this.loadClothes(this.pageLimit);
+    this.loaderService.hide();
   }
 
   updateClothing(clothing: IClothing) {

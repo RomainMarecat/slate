@@ -28,6 +28,18 @@ export class ClothingItemComponent implements OnInit {
 
   @Input() set clothing(clothing) {
     this._clothing = clothing;
+    this.countCols();
+  }
+
+  updateScoreClothing(clothing: IClothing) {
+    this.updatedClothing.emit(clothing);
+  }
+
+  clothingDetail() {
+    this.router.navigate(['/detail', this.clothing.name]);
+  }
+
+  countCols() {
     if (this._clothing.image1) {
       this.cols++;
     }
@@ -37,13 +49,5 @@ export class ClothingItemComponent implements OnInit {
     if (this._clothing.image3) {
       this.cols++;
     }
-  }
-
-  updateScoreClothing(clothing: IClothing) {
-    this.updatedClothing.emit(clothing);
-  }
-
-  clothingDetail() {
-    this.router.navigate(['/detail', this.clothing.name]);
   }
 }
