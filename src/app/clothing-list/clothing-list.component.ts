@@ -8,6 +8,7 @@ import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from './../shared/user/user.service';
 import { AlertService } from './../shared/alert/alert.service';
+import { LoaderService } from './../shared/loader/loader.service';
 
 @Component({
   selector: 'app-clothing-list',
@@ -15,23 +16,23 @@ import { AlertService } from './../shared/alert/alert.service';
   styleUrls: ['./clothing-list.component.scss']
 })
 export class ClothingListComponent implements OnInit {
-  clothes$: Observable < IClothing[] | {} > ;
+  clothes$: Observable < IClothing[] > ;
   clothes: Array < IClothing > ;
-  isLoading: boolean;
   rowHeight: number;
   headerHeight: number;
   pageLimit: number;
 
   constructor(private clothingService: ClothingService, private router: Router,
-    private meta: Meta, private clothingComponent: ElementRef, private userService: UserService, public alertService: AlertService) {
-    this.isLoading = true;
+    private meta: Meta, private clothingComponent: ElementRef,
+    private userService: UserService, public alertService: AlertService,
+    private loaderService: LoaderService) {
     this.headerHeight = 0;
     this.pageLimit = 20;
     this.rowHeight = 300;
   }
 
   ngOnInit() {
-    this.isLoading = false;
+    this.loaderService.show();
     this.meta.addTags([
       { name: 'title', content: 'Mon pull Moche' },
       { property: 'og:title', content: '' },
@@ -39,51 +40,18 @@ export class ClothingListComponent implements OnInit {
     ]);
 
     this.loadClothes(this.pageLimit);
+    this.loaderService.hide();
   }
 
   updateClothing(clothing: IClothing) {
-    console.log(clothing);
     this.clothingService.updateClothing(clothing);
   }
 
   addClothing() {
     this.router.navigate(['/add']);
-    /*    this.alertService.toast('Il faut se connecter pour ajouter autant de pull moche que vous voulez !');
-     */
-  }
-
-  /**
-   * onScroll Au scroll vertical, Affichage de la suite de résultats
-   * @param {number} offsetY
-   */
-  onScroll(offsetY: number) {
-    // total height of all orders in the viewport
-    const viewHeight = this.clothingComponent.nativeElement.getBoundingClientRect().height - this.headerHeight;
-
-    // check if we scrolled to the end of the viewport;
-    if (!this.isLoading && offsetY + viewHeight + 50 >= this.clothes.length * this.rowHeight) {
-
-      // total number of results to load
-      let limit = this.pageLimit;
-
-      // check if we haven't fetched any results yet
-      if (this.clothes.length === 0) {
-
-        // calculate the number of orders that fit within viewport
-        const pageSize = Math.ceil(viewHeight / this.rowHeight);
-
-        // change the limit to pageSize such that we fill the first page entirely
-        // (otherwise, we won't be able to scroll past it)
-        limit = Math.max(pageSize, this.pageLimit);
-      }
-      this.loadClothes(limit);
-    }
   }
 
   loadClothes(limit: number) {
     this.clothes$ = this.clothingService.getClothes();
-    this.clothes$.subscribe((clothes: Array < Clothing > ) => {
-      this.clothes = clothes;
-    });
   }
 }

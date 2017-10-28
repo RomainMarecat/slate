@@ -13,10 +13,11 @@ export class ClothingItemComponent implements OnInit {
   _clothing: IClothing;
   @Output() updatedClothing: EventEmitter < IClothing > = new EventEmitter < IClothing > ();
   cols: number;
-  resizedImage = { height: "100", width: "100" };
+  resizedImage: any;
 
   constructor(private router: Router) {
     this.cols = 0;
+    this.resizedImage = { height: '100', width: '100' };
   }
 
   ngOnInit() {}
@@ -27,6 +28,18 @@ export class ClothingItemComponent implements OnInit {
 
   @Input() set clothing(clothing) {
     this._clothing = clothing;
+    this.countCols();
+  }
+
+  updateScoreClothing(clothing: IClothing) {
+    this.updatedClothing.emit(clothing);
+  }
+
+  clothingDetail() {
+    this.router.navigate(['/detail', this.clothing.name]);
+  }
+
+  countCols() {
     if (this._clothing.image1) {
       this.cols++;
     }
@@ -36,13 +49,5 @@ export class ClothingItemComponent implements OnInit {
     if (this._clothing.image3) {
       this.cols++;
     }
-  }
-
-  updateScoreClothing(clothing: IClothing) {
-    this.updatedClothing.emit(clothing);
-  }
-
-  clothingDetail() {
-    this.router.navigate(['/detail', this.clothing.name])
   }
 }

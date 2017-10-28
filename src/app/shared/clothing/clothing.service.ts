@@ -16,13 +16,13 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class ClothingService {
   clothingCollectionRef: AngularFirestoreCollection < IClothing > ;
-  clothes$: Observable < IClothing[] | {} > ;
+  clothes$: Observable < DocumentChangeAction[] > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
   colorFilter$: BehaviorSubject < string | null > ;
   userFilter$: BehaviorSubject < string | null > ;
-  limit$: BehaviorSubject < number | 20 > ;
+  limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
   startAfter$: BehaviorSubject < string | null > ;
   orderBy$: BehaviorSubject < string | 'published_at' > ;
@@ -36,22 +36,22 @@ export class ClothingService {
     this.nameFilters$ = new BehaviorSubject(null);
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
-
+    this.limit$ = new BehaviorSubject(20);
+    this.clothingCollectionRef = this.afs.collection('clothes');
     this.clothes$ = Observable.combineLatest(
         this.keyFilters$,
         this.publishedFilter$,
         this.nameFilters$,
         this.colorFilter$,
-        this.userFilter$
+        this.userFilter$,
+        this.limit$
       )
-      .timeout(20000)
+      .timeout(1000)
       .catch(err => {
         console.error(err);
-        this.alertService.toast('On a mis trop de temps pour récupérer tous ces pulls moches. ' +
-          'Du coup, j\'en ai aucun à te proposer. Mais tu peux rafraîchir la page, ça devrait marcher !');
         return Observable.of([]);
       })
-      .switchMap(([key, published, name, color, user]) =>
+      .switchMap(([key, published, name, color, user, limit]) =>
         this.afs.collection('clothes', ref => {
           this.query = ref;
           if (published) {
@@ -66,16 +66,18 @@ export class ClothingService {
           if (user) {
             this.query = this.query.where('user', '==', user);
           }
+          if (limit) {
+            this.query = this.query.limit(limit);
+          }
           return this.query;
         })
         .snapshotChanges()
       );
   }
 
-  getClothes(): Observable < IClothing[] | {} > {
+  getClothes(): Observable < IClothing[] > {
     return this.clothes$.map((clothes: DocumentChangeAction[]) =>
       clothes.map((doc: DocumentChangeAction) => {
-        console.log(doc);
         const clothing = doc.payload.doc.data() as IClothing;
         clothing.key = doc.payload.doc.id;
         return clothing as IClothing;
@@ -83,20 +85,21 @@ export class ClothingService {
     );
   }
 
-  getClothing(key: string) {
-    return this.clothingCollectionRef.valueChanges();
+  getClothing(key: null | string): Observable < IClothing[] > {
+    this.keyFilters$.next(key);
+    return this.getClothes().take(1);
   }
 
-  updateClothing(clothing: IClothing): Promise < void > {
-    return this.afs.collection('clothes').doc(clothing.key).update({ ...clothing });
+  updateClothing(clothing: IClothing) {
+    this.clothingCollectionRef.doc(clothing.key).update({ ...clothing });
   }
 
   createClothing(clothing: IClothing) {
     delete clothing.key;
-    this.afs.collection('clothes').add({ ...clothing });
+    this.clothingCollectionRef.add({ ...clothing });
   }
 
-  deleteClothing(clothing: IClothing): Promise < void > {
-    return this.afs.collection('clothes').doc(clothing.key).delete();
+  deleteClothing(clothing: IClothing) {
+    this.clothingCollectionRef.doc(clothing.key).delete();
   }
 }

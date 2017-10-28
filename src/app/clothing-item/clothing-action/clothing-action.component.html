@@ -1,16 +1,16 @@
 <mat-card-actions>
   <mat-grid-list cols="3" rowHeight="60px">
     <mat-grid-tile>
-      <button mat-raised-button color="accent" (click)="like(clothing)">
-        <mat-icon aria-label="Example icon-button with a heart icon">thumb_down</mat-icon>
+      <button mat-raised-button color="accent" (click)="score(clothing, 'minus')">
+        <mat-icon aria-label="Trop beau pour augmenter son score">thumb_down</mat-icon>
       </button>
     </mat-grid-tile>
     <mat-grid-tile>
       <span class="ugly-score" *ngIf="clothing.score; else showScoreNull">{{ clothing.score }}</span>
     </mat-grid-tile>
     <mat-grid-tile>
-      <button mat-raised-button color="primary" (click)="ugly(clothing)">
-        <mat-icon aria-label="Example icon-button with a heart icon">thumb_up</mat-icon>
+      <button mat-raised-button color="primary" (click)="score(clothing, 'plus')">
+        <mat-icon aria-label="Trop moche son score doit augmenter">thumb_up</mat-icon>
       </button>
     </mat-grid-tile>
   </mat-grid-list>

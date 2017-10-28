@@ -47,7 +47,10 @@ export class ClothingFormComponent implements OnInit {
     if (this.form.valid) {
       const clothing = { ...this.form.value as IClothing };
       clothing.published = false;
-      clothing.created_at = this.now;
+      if (clothing.external_url === 'http://') {
+        clothing.external_url = null;
+      }
+      clothing.score = 0;
       this.submit(clothing);
     }
   }

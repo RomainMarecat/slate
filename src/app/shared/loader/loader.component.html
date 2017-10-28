@@ -1,0 +1,8 @@
+<div [class.loader-hidden]="!show">
+  <div class="loader-overlay">
+    <div>
+      <mat-progress-spinner class="loader-spinner" [color]="color" [mode]="mode" [value]="value" *ngIf="show">
+      </mat-progress-spinner>
+    </div>
+  </div>
+</div>

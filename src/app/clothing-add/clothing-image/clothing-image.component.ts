@@ -141,7 +141,7 @@ export class ClothingImageComponent implements OnInit {
     this.uploader.onErrorItem = (item: any, response: string, status: number, headers: ParsedResponseHeaders) => {
       console.error(response);
       return { item, response, status, headers };
-    }
+    };
   }
 
   uploadAll() {

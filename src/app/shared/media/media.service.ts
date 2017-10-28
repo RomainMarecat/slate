@@ -13,7 +13,7 @@ import 'rxjs/add/operator/timeout';
 @Injectable()
 export class MediaService {
   mediaCollectionRef: AngularFirestoreCollection < Media > ;
-  medias$: Observable < Media[] | {} > ;
+  medias$: Observable < DocumentChangeAction[] > ;
   publicIdFilter$: BehaviorSubject < string | null > ;
   urlFilter$: BehaviorSubject < string | null > ;
   limitFilter$: BehaviorSubject < number | null > ;
@@ -32,33 +32,37 @@ export class MediaService {
       .switchMap(([publicId, url, limit]) =>
         this.afs.collection('media', ref => {
           let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
-          if (publicId) { query = query.where('public_id', '==', publicId) };
-          if (url) { query = query.where('url', '==', url) };
-          if (limit) { query = query.limit(limit) };
+          if (publicId) {
+            query = query.where('public_id', '==', publicId);
+          }
+          if (url) {
+            query = query.where('url', '==', url);
+          }
+          if (limit) {
+            query = query.limit(limit);
+          }
           return query;
         }).snapshotChanges()
       );
   }
 
-  filterByPublicId(publicId: string | null): Observable < {} | Media[] > {
+  filterByPublicId(publicId: string | null): Observable < Media[] > {
     this.publicIdFilter$.next(publicId);
-    return this.medias$.map((medias: DocumentChangeAction[]) =>
-      medias.map((doc: DocumentChangeAction) => {
-        const media = doc.payload.doc.data() as Media;
-        media.key = doc.payload.doc.id;
-        console.log('Media id : ', doc.payload.doc.id);
-        console.log('Media : ', media);
-
-        return media as Media;
-      }));
+    return this.getMedias();
   }
 
   filterByUrl(url: string | null) {
     this.urlFilter$.next(url);
   }
 
-  getMedias(): Observable < {} | Media[] > {
-    return this.medias$;
+  getMedias(): Observable < Media[] > {
+    return this.medias$.map((clothes: DocumentChangeAction[]) =>
+      clothes.map((doc: DocumentChangeAction) => {
+        const media = doc.payload.doc.data() as Media;
+        media.key = doc.payload.doc.id;
+        return media as Media;
+      })
+    );
   }
 
   addMedia(media: Media) {

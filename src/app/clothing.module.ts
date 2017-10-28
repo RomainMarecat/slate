@@ -15,6 +15,8 @@ import { ClothingItemComponent } from './clothing-item/clothing-item.component';
 import { ClothingService } from './shared/clothing/clothing.service';
 import { MediaService } from './shared/media/media.service';
 import { UserService } from './shared/user/user.service';
+import { ScoreService } from './shared/score/score.service';
+import { LoaderService } from './shared/loader/loader.service';
 import { ObjectService } from './shared/util/object.service';
 
 import { environment } from './../environments/environment';
@@ -33,6 +35,7 @@ import {
   MatInputModule,
   MatCheckboxModule,
   MatSnackBarModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
@@ -54,6 +57,9 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { ClothingActionComponent } from './clothing-item/clothing-action/clothing-action.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { AlertService } from './shared/alert/alert.service';
+import { AdminModule } from './admin/admin.module';
+import { UserGuard } from './shared/guard/user.guard';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 export const cloudinaryLib = {
   Cloudinary: Cloudinary
@@ -86,12 +92,14 @@ export const cloudinaryLib = {
     MatSelectModule,
     MatCheckboxModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     Ng2PageScrollModule,
     AdsenseModule.forRoot({
       adClient: environment.clientAdSense,
       adSlot: environment.slotAdSense
     }),
+    AdminModule,
     ClothingRoutingModule
   ],
   entryComponents: [
@@ -112,13 +120,17 @@ export const cloudinaryLib = {
     ComingSoonComponent,
     ClothingActionComponent,
     AlertComponent,
+    LoaderComponent,
   ],
   providers: [
     ClothingService,
     MediaService,
     UserService,
     AlertService,
-    ObjectService
+    ObjectService,
+    LoaderService,
+    ScoreService,
+    UserGuard
   ],
   bootstrap: [
     ClothingComponent
