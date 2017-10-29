@@ -1,7 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { IClothing } from './../../../shared/clothing/i-clothing';
 import { ClothingService } from './../../../shared/clothing/clothing.service';
-import { Observable } from 'rxjs';
+import { ProductService } from './../../shared/product/product.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-product-list',
@@ -11,13 +12,13 @@ import { Observable } from 'rxjs';
 export class ProductListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  // Les colonnes du tableau datatable
   columns: any;
   pageLimit = 20;
   clothes$: Observable < IClothing[] > ;
   isLoading = false;
+  selected: IClothing[];
 
-  constructor(private table: ElementRef, private clothingService: ClothingService) {
+  constructor(private table: ElementRef, private productService: ProductService) {
     this.columns = [{
       prop: 'name',
       name: 'name',
@@ -31,42 +32,25 @@ export class ProductListComponent implements OnInit {
       name: 'published',
       flexGrow: 1
     }, ];
+    this.selected = [];
+  }
+
+  publishClothing() {
+    this.selected.forEach((clothing: IClothing) => {
+      clothing.published = true;
+      clothing.published_at = new Date();
+      this.productService.updateClothing(clothing);
+    });
   }
 
   ngOnInit() {
-    this.clothes$ = this.clothingService.getClothes();
-    /*    this.onScroll(0);
-     */
+    this.clothes$ = this.productService.getClothes();
   }
 
-  /**
-   * onScroll Au scroll vertical, Affichage de la suite de résultats
-   * @param {number} offsetY
-   */
-  onScroll(offsetY: number) {
-
-    this.clothes$.subscribe((clothes: Array < IClothing > ) => {
-      // total height of all orders in the viewport
-      const viewHeight = this.table.nativeElement.getBoundingClientRect().height - this.headerHeight;
-
-      // check if we scrolled to the end of the viewport;
-      if (!this.isLoading && offsetY + viewHeight + 50 >= clothes.length * this.rowHeight) {
-
-        // total number of results to load
-        let limit = this.pageLimit;
-
-        // check if we haven't fetched any results yet
-        if (clothes.length === 0) {
-
-          // calculate the number of orders that fit within viewport
-          const pageSize = Math.ceil(viewHeight / this.rowHeight);
-
-          // change the limit to pageSize such that we fill the first page entirely
-          // (otherwise, we won't be able to scroll past it)
-          limit = Math.max(pageSize, this.pageLimit);
-        }
-        this.clothingService.limit$.next(this.pageLimit);
-      }
-    });
+  onSelect({ selected }) {
+    this.selected.splice(0, this.selected.length);
+    this.selected.push(...selected);
   }
+
+  onActivate(event) {}
 }

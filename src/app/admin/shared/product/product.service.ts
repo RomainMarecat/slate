@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Clothing } from './clothing';
-import { IClothing } from './i-clothing';
-import { AlertService } from './../alert/alert.service';
+import { Clothing } from './../../../shared/clothing/clothing';
+import { IClothing } from './../../../shared/clothing/i-clothing';
+import { AlertService } from './../../../shared/alert/alert.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -14,7 +14,7 @@ import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class ClothingService {
+export class ProductService {
   clothingCollectionRef: AngularFirestoreCollection < IClothing > ;
   clothes$: Observable < DocumentChangeAction[] > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
@@ -32,11 +32,11 @@ export class ClothingService {
 
   constructor(private afs: AngularFirestore, private alertService: AlertService) {
     this.keyFilters$ = new BehaviorSubject(null);
-    this.publishedFilter$ = new BehaviorSubject(true);
+    this.publishedFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
-    this.limit$ = new BehaviorSubject(20);
+    this.limit$ = new BehaviorSubject(null);
     this.clothingCollectionRef = this.afs.collection('clothes');
     this.clothes$ = Observable.combineLatest(
         this.keyFilters$,

@@ -15,5 +15,4 @@ export class ClothingComponent implements OnInit {
     public userService: UserService, private loaderService: LoaderService) {}
 
   ngOnInit() {}
-
 }

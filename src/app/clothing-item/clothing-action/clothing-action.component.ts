@@ -3,6 +3,7 @@ import { Clothing } from './../../shared/clothing/clothing';
 import { IClothing } from './../../shared/clothing/i-clothing';
 import { UserService } from './../../shared/user/user.service';
 import { ScoreService } from './../../shared/score/score.service';
+import { Score } from './../../shared/score/score';
 import { AlertService } from './../../shared/alert/alert.service';
 
 @Component({
@@ -23,7 +24,10 @@ export class ClothingActionComponent implements OnInit {
   score(clothing: IClothing, score: string) {
     this.userService.isAuthenticated().subscribe((authenticated) => {
       if (authenticated) {
+        this.scoreService.filterByClothing(clothing.key);
+        this.scoreService.filterByUser(this.userService.getUser().uid);
         this.scoreService.isAuthorized().subscribe((authorized) => {
+          console.log(authorized);
           if (authorized) {
             this.updateClothingScore(clothing, score);
           } else {
@@ -49,6 +53,12 @@ export class ClothingActionComponent implements OnInit {
     } else {
       clothing.score--;
     }
+    const sco = {
+      created_at: new Date(),
+      user: this.userService.getUser().uid,
+      clothing: clothing.key
+    };
+    this.scoreService.createScore(sco);
     this.updateScore.emit(clothing);
   }
 }

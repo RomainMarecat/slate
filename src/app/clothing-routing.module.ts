@@ -13,7 +13,7 @@ const routes: Routes = [{
     pathMatch: 'full',
     children: [{
       path: '',
-      component: ComingSoonComponent
+      component: ClothingListComponent
     }]
   },
   {

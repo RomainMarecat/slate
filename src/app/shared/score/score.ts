@@ -1,5 +1,5 @@
 export class Score {
-  key: string;
+  key ? : string;
   user: string;
   clothing: string;
   created_at: Date;

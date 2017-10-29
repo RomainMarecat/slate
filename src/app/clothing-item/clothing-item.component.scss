@@ -1,6 +1,22 @@
-.item-card {
-  overflow: hidden;
-  height: 300px;
+mat-card {
+
+
+  @media (max-width: 600px) {
+    min-width: 300px;
+  }
+  /* medium*/
+  @media (min-width: 601px) and (max-width: 992px) {
+    min-width: 400px;
+  }
+  /* large */
+  @media (min-width: 993px) {
+    min-width: 500px;
+  }
+
+  margin: 10px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.07),
+  0 2px 2px 0 rgba(0, 0, 0, 0.07),
+  0 1px 5px 0 rgba(0, 0, 0, 0.07);
 
   mat-card-header-text {
     width: 100%;
@@ -21,18 +37,10 @@
     }
   }
 
-
-
-  .link-container-card {
-    max-height: 150px;
+  mat-card-content {
+    cursor: pointer;
   }
-
   .item-card-header {
     height: 40px;
   }
-}
-
-
-.link-card img {
-  height: 150px;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { SidenavService } from './../shared/sidenav/sidenav.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,17 +7,15 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  @Output() sidenavEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
   toggle: boolean;
 
-  constructor() { }
+  constructor(private sidenavService: SidenavService) {}
 
   ngOnInit() {
     this.toggle = false;
   }
 
   toggleSidenav() {
-    this.sidenavEmitter.emit(!this.toggle);
+    this.sidenavService.open();
   }
-
 }

@@ -17,6 +17,7 @@ import { MediaService } from './shared/media/media.service';
 import { UserService } from './shared/user/user.service';
 import { ScoreService } from './shared/score/score.service';
 import { LoaderService } from './shared/loader/loader.service';
+import { SidenavService } from './shared/sidenav/sidenav.service';
 import { ObjectService } from './shared/util/object.service';
 
 import { environment } from './../environments/environment';
@@ -60,6 +61,8 @@ import { AlertService } from './shared/alert/alert.service';
 import { AdminModule } from './admin/admin.module';
 import { UserGuard } from './shared/guard/user.guard';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { SidenavComponent } from './shared/sidenav/sidenav.component';
+import { ClothingSideComponent } from './clothing-side/clothing-side.component';
 
 export const cloudinaryLib = {
   Cloudinary: Cloudinary
@@ -121,6 +124,8 @@ export const cloudinaryLib = {
     ClothingActionComponent,
     AlertComponent,
     LoaderComponent,
+    SidenavComponent,
+    ClothingSideComponent,
   ],
   providers: [
     ClothingService,
@@ -130,6 +135,7 @@ export const cloudinaryLib = {
     ObjectService,
     LoaderService,
     ScoreService,
+    SidenavService,
     UserGuard
   ],
   bootstrap: [
