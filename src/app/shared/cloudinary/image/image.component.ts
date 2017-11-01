@@ -12,7 +12,7 @@ import 'rxjs/add/operator/first';
 export class ImageComponent implements OnInit {
   _publicId: string;
   @Input() resize: any;
-  medias: Media[];
+  media: Media;
   constructor(private mediaService: MediaService) {}
 
   get publicId(): string {
@@ -26,7 +26,7 @@ export class ImageComponent implements OnInit {
     this._publicId = publicId;
     this.mediaService.filterByPublicId(publicId)
       .subscribe((medias: Media[]) => {
-        this.medias = medias;
+        this.media = medias[0];
       }, (err) => {
         console.error(err);
       });

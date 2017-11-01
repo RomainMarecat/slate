@@ -67,6 +67,12 @@ export class ScoreService {
   }
 
   isAuthorized(): Observable < boolean > {
-    return Observable.of(false);
+    return this.getUsers().take(1).map((items: Score[]) => {
+      return items.length === 0;
+    });
+  }
+
+  createScore(score: Score) {
+    this.scoreCollectionRef.add({ ...score });
   }
 }

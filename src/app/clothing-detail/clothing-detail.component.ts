@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClothingService } from './../shared/clothing/clothing.service';
 import { IClothing } from './../shared/clothing/i-clothing';
@@ -12,6 +12,12 @@ import { Observable } from 'rxjs/Observable';
 export class ClothingDetailComponent implements OnInit {
   clothing: IClothing;
   cols: number;
+  @Output() updatedClothing: EventEmitter < IClothing > = new EventEmitter < IClothing > ();
+  resizedImage = {
+    height: 300,
+    width: 500
+  };
+
   constructor(private clothingService: ClothingService, private activeRoute: ActivatedRoute) {
     this.cols = 0;
   }
@@ -34,6 +40,10 @@ export class ClothingDetailComponent implements OnInit {
     if (this.clothing.image3) {
       this.cols++;
     }
+  }
+
+  updateScoreClothing(clothing: IClothing) {
+    this.updatedClothing.emit(clothing);
   }
 
 }

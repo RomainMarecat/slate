@@ -1,8 +1,6 @@
-<mat-grid-list cols="1" rowHeight="300px">
-  <mat-grid-tile *ngFor="let clothing of clothes$ | async" class="grid-tile-item">
-    <app-clothing-item [clothing]="clothing" (updatedClothing)="updateClothing($event)"></app-clothing-item>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="card-container">
+  <app-clothing-item *ngFor="let clothing of clothes$ | async" class="grid-tile-item" [clothing]="clothing" (updatedClothing)="updateClothing($event)"></app-clothing-item>
+</div>
 <div class="text-right">
   <button mat-mini-fab class="absolute-fab" (click)="addClothing()">
     <mat-icon>add</mat-icon>

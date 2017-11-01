@@ -1,10 +1,10 @@
 <mat-card>
   <mat-card-content class="pb5">
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
-      <mat-form-field>
-        <input type="url" matInput placeholder="Lien vers le pull" formControlName="external_url">
-        <mat-error *ngIf="externalUrl.invalid">Erreur</mat-error>
-      </mat-form-field>
+      <h3>Importer la photo de ton pull</h3>
+      <app-clothing-image [media]="image1" (imageChanged)="onImageChange($event)"></app-clothing-image>
+      <app-clothing-image [media]="image2" (imageChanged)="onImageChange($event)" *ngIf="clothing.image1"></app-clothing-image>
+      <app-clothing-image [media]="image3" (imageChanged)="onImageChange($event)" *ngIf="clothing.image2 && clothing.image3"></app-clothing-image>
       <mat-form-field>
         <input matInput maxlength="50" placeholder="Titre" formControlName="name">
         <mat-hint align="start"><strong>Donner un titre court à votre pull</strong> </mat-hint>
@@ -19,6 +19,11 @@
         <mat-error *ngIf="description.invalid && description.value.length === 0">La description du pull est requise</mat-error>
         <mat-error *ngIf="description.invalid && description.value.length > 0">La description du pull contient des erreurs</mat-error>
       </mat-form-field>
+      <p class="mt3">Déja vu sur un site ? Donnes-nous des informations sur le site où tu l'as trouvé</p>
+      <mat-form-field>
+        <input type="url" matInput placeholder="Lien vers le pull" formControlName="external_url">
+        <mat-error *ngIf="externalUrl.invalid">Erreur</mat-error>
+      </mat-form-field>
       <mat-form-field>
         <input type="number" matInput placeholder="Prix" formControlName="price">
         <mat-error *ngIf="price.invalid && price.value < 0">Le prix ne peut pas être négatif</mat-error>
@@ -31,9 +36,6 @@
         <mat-error *ngIf="deliveryFee.invalid && deliveryFee.value > 9999">Les frais de livraison sont un peu trop chers !</mat-error>
         <mat-error *ngIf="deliveryFee.invalid">Les frais de livraison doivent être un nombre (sans €)</mat-error>
       </mat-form-field>
-      <app-clothing-image [media]="image1" (imageChanged)="onImageChange($event)"></app-clothing-image>
-      <app-clothing-image [media]="image2" (imageChanged)="onImageChange($event)" *ngIf="clothing.image1"></app-clothing-image>
-      <app-clothing-image [media]="image3" (imageChanged)="onImageChange($event)" *ngIf="clothing.image2 && clothing.image3"></app-clothing-image>
       <div class="pa2">
         <button mat-raised-button color="primary" type="submit" class="btn-add" [disabled]="!form.valid || isLoading">Valider</button>
       </div>

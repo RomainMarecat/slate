@@ -17,7 +17,7 @@ export class ClothingItemComponent implements OnInit {
 
   constructor(private router: Router) {
     this.cols = 0;
-    this.resizedImage = { height: '100', width: '100' };
+    this.resizedImage = { height: '240', width: '350' };
   }
 
   ngOnInit() {}

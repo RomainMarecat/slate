@@ -11,4 +11,17 @@
 .link-card {
   height: 140px;
   width: 140px;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-card-actions {
+  .ugly-score {
+    color: red;
+    font-size: 2rem;
+    font-weight: 800;
+    display: inline-block;
+    min-width: 50px;
+    vertical-align: middle;
+  }
 }

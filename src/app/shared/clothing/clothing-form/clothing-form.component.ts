@@ -3,6 +3,7 @@ import { Clothing } from './../clothing';
 import { IClothing } from './../i-clothing';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Media } from './../../media/media';
+import { UserService } from './../../user/user.service';
 
 @Component({
   selector: 'app-clothing-form',
@@ -22,7 +23,7 @@ export class ClothingFormComponent implements OnInit {
   image2: Media;
   image3: Media;
 
-  constructor() {
+  constructor(private userService: UserService) {
     this.isLoading = false;
     this._submit = new EventEmitter < Clothing > ();
     this.clothingChange = new EventEmitter < Clothing > ();
@@ -42,14 +43,13 @@ export class ClothingFormComponent implements OnInit {
   }
 
   onSubmit() {
-    /*    this.isLoading = true;
-     */
     if (this.form.valid) {
       const clothing = { ...this.form.value as IClothing };
       clothing.published = false;
       if (clothing.external_url === 'http://') {
         clothing.external_url = null;
       }
+      clothing.thumbnail = this.userService.getUser().photoURL;
       clothing.score = 0;
       this.submit(clothing);
     }
