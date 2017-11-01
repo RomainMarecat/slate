@@ -52,6 +52,9 @@ export class ClothingListComponent implements OnInit {
   }
 
   loadClothes(limit: number) {
+    this.clothingService.keyFilters$.next(null);
+    this.clothingService.nameFilters$.next(null);
+    this.clothingService.publishedFilter$.next(true);
     this.clothes$ = this.clothingService.getClothes();
   }
 }

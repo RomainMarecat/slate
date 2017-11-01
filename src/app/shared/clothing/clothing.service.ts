@@ -53,6 +53,9 @@ export class ClothingService {
       .switchMap(([key, published, name, color, user, limit]) =>
         this.afs.collection('clothes', ref => {
           this.query = ref;
+          if (key) {
+            this.query = this.query.where('key', '==', key);
+          }
           if (published) {
             this.query = this.query.where('published', '==', published);
           }
@@ -86,7 +89,7 @@ export class ClothingService {
 
   getClothing(key: null | string): Observable < IClothing[] > {
     this.keyFilters$.next(key);
-    return this.getClothes().take(1);
+    return this.getClothes();
   }
 
   updateClothing(clothing: IClothing) {

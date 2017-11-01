@@ -17,7 +17,7 @@ export class ClothingItemComponent implements OnInit {
 
   constructor(private router: Router) {
     this.cols = 0;
-    this.resizedImage = { height: '240', width: '350' };
+    this.resizedImage = { height: '240', width: '240' };
   }
 
   ngOnInit() {}
@@ -36,7 +36,7 @@ export class ClothingItemComponent implements OnInit {
   }
 
   clothingDetail() {
-    this.router.navigate(['/detail', this.clothing.name]);
+    this.router.navigate(['/detail', this.clothing.key + '-' + this.clothing.name]);
   }
 
   countCols() {

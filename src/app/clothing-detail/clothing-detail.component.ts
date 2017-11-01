@@ -23,23 +23,31 @@ export class ClothingDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.clothingService.getClothing(this.activeRoute.params['key'])
-      .subscribe((clothes: IClothing[]) => {
-        this.clothing = clothes[0];
-        this.countCols();
-      });
+    this.activeRoute.params.subscribe((value: { key: string }) => {
+      if (value.key) {
+        const key = value.key.substring(0, value.key.indexOf('-'));
+        this.clothingService.getClothing(key)
+          .subscribe((clothes: IClothing[]) => {
+            clothes.forEach(clothing => this.clothing = clothing);
+            this.countCols();
+          });
+      }
+    });
   }
 
   countCols() {
-    if (this.clothing.image1) {
-      this.cols++;
+    if (this.clothing) {
+      if (this.clothing.image1) {
+        this.cols++;
+      }
+      if (this.clothing.image2) {
+        this.cols++;
+      }
+      if (this.clothing.image3) {
+        this.cols++;
+      }
     }
-    if (this.clothing.image2) {
-      this.cols++;
-    }
-    if (this.clothing.image3) {
-      this.cols++;
-    }
+
   }
 
   updateScoreClothing(clothing: IClothing) {

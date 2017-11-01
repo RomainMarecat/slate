@@ -46,11 +46,11 @@ export class ClothingImageComponent implements OnInit {
 
     this.cropperSettings.noFileInput = true;
 
-    this.cropperSettings.width = 200;
-    this.cropperSettings.height = 200;
+    this.cropperSettings.width = 400;
+    this.cropperSettings.height = 400;
 
-    this.cropperSettings.croppedWidth = 200;
-    this.cropperSettings.croppedHeight = 200;
+    this.cropperSettings.croppedWidth = 240;
+    this.cropperSettings.croppedHeight = 240;
 
     this.cropperSettings.canvasWidth = 500;
     this.cropperSettings.canvasHeight = 300;
