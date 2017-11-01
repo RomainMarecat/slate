@@ -92,7 +92,6 @@ export class ClothingFormComponent implements OnInit {
     });
     this.form.valueChanges
       .subscribe((clothing) => {
-        console.log(this.form);
         this.clothingChange.emit(clothing);
       });
   }
@@ -102,7 +101,6 @@ export class ClothingFormComponent implements OnInit {
   }
 
   onImageChange(media: Media) {
-    console.log(media);
     if (media.position === 1) {
       this.form.patchValue({ image1: media.public_id });
       this.clothing.image1 = media.public_id;

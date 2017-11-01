@@ -27,7 +27,6 @@ export class ClothingActionComponent implements OnInit {
         this.scoreService.filterByClothing(clothing.key);
         this.scoreService.filterByUser(this.userService.getUser().uid);
         this.scoreService.isAuthorized().subscribe((authorized) => {
-          console.log(authorized);
           if (authorized) {
             this.updateClothingScore(clothing, score);
           } else {
