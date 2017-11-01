@@ -20,6 +20,10 @@ export class ProductListComponent implements OnInit {
 
   constructor(private table: ElementRef, private productService: ProductService) {
     this.columns = [{
+      prop: 'image1',
+      name: 'image1',
+      flexGrow: 1
+    }, {
       prop: 'name',
       name: 'name',
       flexGrow: 1

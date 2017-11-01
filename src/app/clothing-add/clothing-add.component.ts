@@ -4,6 +4,7 @@ import { Clothing } from './../shared/clothing/clothing';
 import { IClothing } from './../shared/clothing/i-clothing';
 import { ClothingService } from './../shared/clothing/clothing.service';
 import { User } from './../shared/user/user';
+import { AlertService } from './../shared/alert/alert.service';
 
 @Component({
   selector: 'app-clothing-add',
@@ -16,7 +17,7 @@ export class ClothingAddComponent implements OnInit {
   ratio: string;
   user: any;
 
-  constructor(private router: Router, private clothingService: ClothingService) {
+  constructor(private router: Router, private clothingService: ClothingService, public alertService: AlertService) {
     this.user = localStorage.getItem('user');
     this.ratio = '3:5';
   }
@@ -25,6 +26,7 @@ export class ClothingAddComponent implements OnInit {
 
   onClothingSubmit(clothing: IClothing) {
     this.clothingService.createClothing(clothing);
+    this.alertService.toast('Votre pull est en attente de validation :)', 'info');
     this.router.navigate(['/']);
   }
 
