@@ -21,8 +21,6 @@ export class ImageComponent implements OnInit {
 
   @Input()
   set publicId(publicId: string) {
-    console.log('prev value: ', this._publicId);
-    console.log('got publicId: ', publicId);
     this._publicId = publicId;
     this.mediaService.filterByPublicId(publicId)
       .subscribe((medias: Media[]) => {
