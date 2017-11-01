@@ -53,4 +53,6 @@ export class ProductListComponent implements OnInit {
   }
 
   onActivate(event) {}
+
+  onScroll(event: any) {}
 }
