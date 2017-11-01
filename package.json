@@ -27,7 +27,7 @@
     "@swimlane/ngx-datatable": "^10.3.0",
     "@types/crypto-js": "^3.1.37",
     "angular-pipes": "^6.5.3",
-    "angularfire2": "^5.0.0-rc.2",
+    "angularfire2": "^5.0.0-rc.3",
     "angulartics2": "^2.4.0",
     "bootstrap": "^4.0.0-alpha.6",
     "cloudinary-core": "^2.3.0",
