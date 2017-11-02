@@ -36,7 +36,7 @@ export class ClothingItemComponent implements OnInit {
   }
 
   clothingDetail() {
-    this.router.navigate(['/detail', this.clothing.name]);
+    this.router.navigate(['/detail', this.clothing.key + '-' + this.clothing.name]);
   }
 
   countCols() {
