@@ -89,7 +89,7 @@ export class ClothingService {
 
   getClothing(key: null | string): Observable < IClothing[] > {
     this.keyFilters$.next(key);
-    return this.getClothes();
+    return this.getClothes().take(1);
   }
 
   updateClothing(clothing: IClothing) {
