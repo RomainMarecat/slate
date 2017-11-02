@@ -14,7 +14,7 @@
   <div class="image-cropper" [ngClass]="cropperClass">
     <div class="col-12">
       <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
-      <button mat-raised-button color="primary" type="button" (click)="validateImage()" class="button-image-validation">
+      <button matTooltip="Pense à valider ton image !" matTooltipPosition="right" mat-raised-button color="primary" type="button" (click)="validateImage()" class="button-image-validation">
         Valider
       </button>
     </div>

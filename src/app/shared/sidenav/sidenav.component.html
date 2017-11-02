@@ -2,17 +2,25 @@
   <app-menu></app-menu>
   <mat-sidenav #sidenav class="leftSideNav" mode="over" opened="false">
     <div *ngIf="userService.getAuthState() | async; let user; else showLogin">
-      <mat-card class="item-card">
+      <mat-card class="card-sidebar">
+        <img mat-card-image alt="Sidebar image default" src="/assets/images/sidebar.jpg">
         <mat-card-header>
           <img mat-card-avatar [src]="user?.photoURL">
-          <mat-card-title>
-            {{ user?.displayName }}
-          </mat-card-title>
+          <h2 class="mat-title">{{ user?.displayName }}</h2>
         </mat-card-header>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" type="button" (click)="userService.logout()">Déconnexion</button>
-        </mat-card-actions>
       </mat-card>
+      <mat-list>
+        <mat-list-item>
+          <a class="sidenav-link" mat-raised [routerLink]="['/add']">Ajouter un pull moche</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a class="sidenav-link" mat-raised [routerLink]="['/admin']" *ngIf="user?.displayName === 'Romain Marecat'">Back Office</a>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <button mat-raised-button color="primary" type="button" (click)="userService.logout()">Déconnexion</button>
+        </mat-list-item>
+      </mat-list>
     </div>
   </mat-sidenav>
   <app-loader></app-loader>
@@ -23,17 +31,15 @@
   </div>
 </mat-sidenav-container>
 <ng-template #showLogin>
-  <mat-nav-list>
-    <ul>
-      <li>
-        <h2>Se connecter</h2>
-      </li>
-      <li>
-        <button mat-raised-button color="primary" type="button" (click)="userService.loginGoogle()">Se connecter avec Google</button>
-      </li>
-      <li>
-        <button mat-raised-button color="primary" type="button" (click)="userService.loginFacebook()">Se connecter avec Facebook</button>
-      </li>
-    </ul>
-  </mat-nav-list>
+  <mat-list>
+    <mat-list-item>
+      <h2>Se connecter</h2>
+    </mat-list-item>
+    <mat-list-item>
+      <button mat-raised-button color="primary" type="button" (click)="userService.loginGoogle()">Se connecter avec Google</button>
+    </mat-list-item>
+    <mat-list-item>
+      <button mat-raised-button color="primary" type="button" (click)="userService.loginFacebook()">Se connecter avec Facebook</button>
+    </mat-list-item>
+  </mat-list>
 </ng-template>

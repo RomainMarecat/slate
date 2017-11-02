@@ -4,6 +4,8 @@ import { Clothing } from './../shared/clothing/clothing';
 import { IClothing } from './../shared/clothing/i-clothing';
 import { ClothingService } from './../shared/clothing/clothing.service';
 import { User } from './../shared/user/user';
+import { UserService } from './../shared/user/user.service';
+import { LoaderService } from './../shared/loader/loader.service';
 import { AlertService } from './../shared/alert/alert.service';
 
 @Component({
@@ -17,12 +19,17 @@ export class ClothingAddComponent implements OnInit {
   ratio: string;
   user: any;
 
-  constructor(private router: Router, private clothingService: ClothingService, public alertService: AlertService) {
-    this.user = localStorage.getItem('user');
+  constructor(private router: Router, private clothingService: ClothingService,
+    public alertService: AlertService, private userService: UserService,
+    private loaderService: LoaderService) {
+    this.user = this.userService.getUser();
     this.ratio = '3:5';
+    this.loaderService.show();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loaderService.hide();
+  }
 
   onClothingSubmit(clothing: IClothing) {
     this.clothingService.createClothing(clothing);

@@ -37,6 +37,7 @@ export class ClothingService {
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(20);
+    this.orderBy$ = new BehaviorSubject('published_at');
     this.clothingCollectionRef = this.afs.collection('clothes');
     this.clothes$ = Observable.combineLatest(
         this.keyFilters$,
@@ -44,13 +45,14 @@ export class ClothingService {
         this.nameFilters$,
         this.colorFilter$,
         this.userFilter$,
-        this.limit$
+        this.limit$,
+        this.orderBy$
       )
       .catch(err => {
         console.error(err);
         return Observable.of([]);
       })
-      .switchMap(([key, published, name, color, user, limit]) =>
+      .switchMap(([key, published, name, color, user, limit, orderBy]) =>
         this.afs.collection('clothes', ref => {
           this.query = ref;
           if (key) {
@@ -70,6 +72,9 @@ export class ClothingService {
           }
           if (limit) {
             this.query = this.query.limit(limit);
+          }
+          if (orderBy) {
+            this.query = this.query.orderBy(orderBy);
           }
           return this.query;
         })

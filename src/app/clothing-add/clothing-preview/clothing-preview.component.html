@@ -3,7 +3,7 @@
     <span class="text-left">
       <mat-icon mat-card-avatar *ngIf="!user || !user.photoURL">perm_identity</mat-icon>
     </span>
-    <cl-image mat-card-avatar [public-id]="user.photoURL" *ngIf="user && user.photoURL"></cl-image>
+    <img mat-card-avatar [src]="user && user.photoURL" *ngIf="user && user.photoURL">
     <mat-card-title>
       <span *ngIf="!clothing || !clothing.name">Donnez un titre court et descriptif à votre</span>
       <span *ngIf="clothing && clothing.name">{{ clothing?.name }}</span>
