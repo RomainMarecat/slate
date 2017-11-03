@@ -14,7 +14,7 @@ describe('UserService', () => {
     TestBed.configureTestingModule({
       imports: [
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule.enablePersistence(),
+        AngularFirestoreModule,
         AngularFireAuthModule
       ],
       providers: [

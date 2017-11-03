@@ -1,6 +1,13 @@
 import { Observable } from 'rxjs/Observable';
-import { MockUser } from './mock-user';
+import { mockUser } from './mock-user';
+import { User } from './user';
 
 export class MockUserService {
+  getUser() {
+    return mockUser;
+  }
 
+  getAuthState(): Observable < User > {
+    return Observable.of(mockUser);
+  }
 }
