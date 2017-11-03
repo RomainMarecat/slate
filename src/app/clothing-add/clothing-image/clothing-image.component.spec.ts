@@ -1,34 +1,56 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClothingImageComponent } from './clothing-image.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
-import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '@cloudinary/angular-4.x';
 import {
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
   MatFormFieldModule
 } from '@angular/material';
+import { Cloudinary } from 'cloudinary-core';
+import { CloudinaryModule } from '@cloudinary/angular-4.x';
+import { CloudinaryConfig } from './../../shared/cloudinary/cloudinary-config';
+import { ObjectService } from './../../shared/util/object.service';
+import { MockMediaService } from './../../shared/media/mock-media.service';
+import { MediaService } from './../../shared/media/media.service';
 
 describe('ClothingImageComponent', () => {
   let component: ClothingImageComponent;
-  let fixture: ComponentFixture<ClothingImageComponent>;
+  let fixture: ComponentFixture < ClothingImageComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        ImageCropperModule,
-        FileUploadModule,
-        MatIconModule,
-        MatButtonModule,
-        MatGridListModule,
-        MatFormFieldModule
-      ],
-      declarations: [ ClothingImageComponent ]
-    })
-    .compileComponents();
+        imports: [
+          CommonModule,
+          RouterTestingModule,
+          BrowserModule,
+          HttpModule,
+          RouterTestingModule,
+          BrowserAnimationsModule,
+          ImageCropperModule,
+          FileUploadModule,
+          MatIconModule,
+          MatButtonModule,
+          MatGridListModule,
+          MatFormFieldModule,
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+
+        ],
+        declarations: [ClothingImageComponent],
+        providers: [
+          ObjectService,
+          { provide: MediaService, useClass: MockMediaService },
+
+        ]
+      })
+      .compileComponents();
   }));
 
   beforeEach(() => {

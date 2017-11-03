@@ -32,13 +32,16 @@ import {
   MatButtonModule,
   MatGridListModule,
   MatFormFieldModule,
-  MatListModule,
   MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
+  MatListModule,
   MatSnackBarModule,
-  MatTooltipModule,
   MatProgressSpinnerModule,
+  MatLineModule,
+  MatMenuModule,
+  MatCommonModule,
+  MatTooltipModule
 } from '@angular/material';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
@@ -56,7 +59,6 @@ import { CloudinaryConfig } from './shared/cloudinary/cloudinary-config';
 import { ClothingFormComponent } from './shared/clothing/clothing-form/clothing-form.component';
 import { ClothingPreviewComponent } from './clothing-add/clothing-preview/clothing-preview.component';
 import { ImageComponent } from './shared/cloudinary/image/image.component';
-import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { ClothingActionComponent } from './clothing-item/clothing-action/clothing-action.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { AlertService } from './shared/alert/alert.service';
@@ -92,14 +94,17 @@ export const cloudinaryLib = {
     MatIconModule,
     MatButtonModule,
     MatGridListModule,
-    MatListModule,
     MatFormFieldModule,
-    MatInputModule,
     MatSelectModule,
+    MatInputModule,
     MatCheckboxModule,
+    MatListModule,
     MatSnackBarModule,
-    MatTooltipModule,
     MatProgressSpinnerModule,
+    MatLineModule,
+    MatMenuModule,
+    MatCommonModule,
+    MatTooltipModule,
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     Ng2PageScrollModule,
     AdsenseModule.forRoot({
@@ -124,7 +129,6 @@ export const cloudinaryLib = {
     ClothingFormComponent,
     ClothingPreviewComponent,
     ImageComponent,
-    ComingSoonComponent,
     ClothingActionComponent,
     AlertComponent,
     LoaderComponent,
