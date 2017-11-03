@@ -18,7 +18,9 @@
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item>
-          <button mat-raised-button color="primary" type="button" (click)="userService.logout()">Déconnexion</button>
+          <button role="button" aria-label="Deconnexion" mat-raised-button color="primary" type="button" (click)="userService.logout()">
+            Déconnexion
+          </button>
         </mat-list-item>
       </mat-list>
     </div>

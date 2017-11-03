@@ -37,7 +37,7 @@
         <mat-error *ngIf="deliveryFee.invalid">Les frais de livraison doivent être un nombre (sans €)</mat-error>
       </mat-form-field>
       <div class="pa2">
-        <button mat-raised-button color="primary" type="submit" class="btn-add" [disabled]="!form.valid || isLoading">Valider</button>
+        <button role="button" aria-label="Valider" mat-raised-button color="primary" type="submit" class="btn-add" [disabled]="!form.valid || isLoading">Valider</button>
       </div>
     </form>
   </mat-card-content>

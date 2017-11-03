@@ -3,7 +3,7 @@
     <div class="col-12">
       <mat-card class="item-card mt2" *ngIf="clothing">
         <mat-card-header class="item-card-header">
-          <img mat-card-avatar [src]="clothing.thumbnail" *ngIf="clothing.thumbnail">
+          <img mat-card-avatar [src]="clothing.thumbnail" *ngIf="clothing.thumbnail" [alt]="clothing?.thumbnail">
           <span mat-card-avatar class="text-left">
             <mat-icon *ngIf="!clothing || !clothing.thumbnail">account_circle</mat-icon>
           </span>

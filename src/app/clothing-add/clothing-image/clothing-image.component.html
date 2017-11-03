@@ -14,7 +14,7 @@
   <div class="image-cropper" [ngClass]="cropperClass">
     <div class="col-12">
       <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
-      <button matTooltip="Pense à valider ton image !" matTooltipPosition="right" mat-raised-button color="primary" type="button" (click)="validateImage()" class="button-image-validation">
+      <button role="button" aria-label="Valider l'image au dessus" matTooltip="Pense à valider ton image !" matTooltipPosition="right" mat-raised-button color="primary" type="button" (click)="validateImage()" class="button-image-validation">
         Valider
       </button>
     </div>
@@ -47,13 +47,13 @@
             <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
           </td>
           <td nowrap>
-            <button type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+            <button role="button" aria-label="Démarrer le chargement" type="button" class="btn btn-success btn-xs" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
               <span class="glyphicon glyphicon-upload"></span> Upload
             </button>
-            <button type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
+            <button role="button" aria-label="Annuler le chargement" type="button" class="btn btn-warning btn-xs" (click)="item.cancel()" [disabled]="!item.isUploading">
               <span class="glyphicon glyphicon-ban-circle"></span> Cancel
             </button>
-            <button type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
+            <button role="button" aria-label="Supprimer le chargement" type="button" class="btn btn-danger btn-xs" (click)="item.remove()">
               <span class="glyphicon glyphicon-trash"></span> Remove
             </button>
           </td>
@@ -67,13 +67,13 @@
           <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
         </div>
       </div>
-      <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+      <button role="button" aria-label="Tout charger" type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
         <span class="glyphicon glyphicon-upload"></span> Upload all
       </button>
-      <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+      <button role="button" aria-label="Annuler tout" type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
         <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
       </button>
-      <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+      <button role="button" aria-label="Effacer tout" type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
         <span class="glyphicon glyphicon-trash"></span> Remove all
       </button>
     </div>

@@ -1,9 +1,9 @@
 <mat-card-actions align="center">
-  <button mat-raised-button color="accent" (click)="score(clothing, 'minus')">
+  <button role="button" aria-label="Moins" mat-raised-button color="accent" (click)="score(clothing, 'minus')">
     <mat-icon aria-label="Trop beau pour augmenter son score">thumb_down</mat-icon>
   </button>
   <span class="ugly-score" *ngIf="clothing.score; else showScoreNull">{{ clothing.score }}</span>
-  <button mat-raised-button color="primary" (click)="score(clothing, 'plus')">
+  <button role="button" aria-label="Plus" mat-raised-button color="primary" (click)="score(clothing, 'plus')">
     <mat-icon aria-label="Trop moche son score doit augmenter">thumb_up</mat-icon>
   </button>
 </mat-card-actions>
