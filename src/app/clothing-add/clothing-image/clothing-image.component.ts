@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter, NgZone } from '@angular/core';
 import { Http } from '@angular/http';
 import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
-import { CloudinaryConfig } from './../../shared/cloudinary/cloudinary-config';
 import { Cloudinary } from '@cloudinary/angular-4.x';
 import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
 import { Media } from './../../shared/media/media';
