@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -10,11 +14,16 @@ import {
   MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
+  MatListModule,
   MatSnackBarModule,
   MatProgressSpinnerModule,
 } from '@angular/material';
-import { LoaderComponent } from './../loader/loader.component';
+import { SidenavService } from './sidenav.service';
 import { SidenavComponent } from './sidenav.component';
+import { FooterComponent } from './../../footer/footer.component';
+import { MenuComponent } from './../../menu/menu.component';
+import { AdsenseModule } from 'ng2-adsense';
+import { LoaderComponent } from './../loader/loader.component';
 
 describe('SidenavComponent', () => {
   let component: SidenavComponent;
@@ -23,12 +32,23 @@ describe('SidenavComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-         MatGridListModule,
-         MatSidenavModule,
-         MatCardModule,
-         MatToolbarModule,
+        CommonModule,
+        RouterModule,
+        BrowserModule,
+        HttpModule,
+        AdsenseModule,
+        MatGridListModule,
+        MatListModule,
+        MatSidenavModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatProgressSpinnerModule,
+
       ],
-      declarations: [ SidenavComponent, LoaderComponent ]
+      declarations: [ SidenavComponent, LoaderComponent, FooterComponent, MenuComponent ],
+      providers: [
+        SidenavService
+      ]
     })
     .compileComponents();
   }));
