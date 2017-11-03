@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="col-6">
-      <button mat-raised-button color="primary" (click)="publishClothing()" *ngIf="selected.length > 0">
+      <button role="button" aria-label="Publier un pull moche" mat-raised-button color="primary" (click)="publishClothing()" *ngIf="selected.length > 0">
         <mat-icon aria-label="Published">done</mat-icon>
         Publier
       </button>

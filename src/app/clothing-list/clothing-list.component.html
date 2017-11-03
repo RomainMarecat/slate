@@ -2,7 +2,7 @@
   <app-clothing-item *ngFor="let clothing of clothes$ | async" class="grid-tile-item" [clothing]="clothing" (updatedClothing)="updateClothing($event)"></app-clothing-item>
 </div>
 <div class="text-right">
-  <button mat-mini-fab class="absolute-fab" (click)="addClothing()">
+  <button role="button" aria-label="Ajouter un nouveau pull moche" mat-mini-fab class="absolute-fab" (click)="addClothing()">
     <mat-icon>add</mat-icon>
   </button>
 </div>

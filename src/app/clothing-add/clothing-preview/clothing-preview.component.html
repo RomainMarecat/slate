@@ -3,7 +3,7 @@
     <span class="text-left">
       <mat-icon mat-card-avatar *ngIf="!user || !user.photoURL">perm_identity</mat-icon>
     </span>
-    <cl-image mat-card-avatar [public-id]="user.photoURL" *ngIf="user && user.photoURL"></cl-image>
+    <img mat-card-avatar [src]="user?.photoURL" *ngIf="user && user.photoURL" alt="user?.displayName">
     <mat-card-title>
       <span *ngIf="!clothing || !clothing.name">Donnez un titre court et descriptif à votre</span>
       <span *ngIf="clothing && clothing.name">{{ clothing?.name }}</span>
@@ -23,12 +23,12 @@
     </span>
   </mat-card-content>
   <mat-card-actions align="center">
-    <button mat-raised-button color="primary">
-      <mat-icon aria-label="Example icon-button with a heart icon">thumb_down</mat-icon>
+    <button role="button" aria-label="Moins" mat-raised-button color="accent">
+      <mat-icon aria-label="Moins">thumb_down</mat-icon>
     </button>
     <span class="ugly-score">0</span>
-    <button mat-raised-button color="accent">
-      <mat-icon aria-label="Example icon-button with a heart icon">thumb_up</mat-icon>
+    <button role="button" aria-label="Plus" mat-raised-button color="primary">
+      <mat-icon aria-label="Plus">thumb_up</mat-icon>
     </button>
   </mat-card-actions>
 </mat-card>
