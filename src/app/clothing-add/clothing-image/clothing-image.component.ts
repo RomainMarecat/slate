@@ -123,7 +123,7 @@ export class ClothingImageComponent implements OnInit {
       // see http://cloudinary.com/documentation/upload_images#upload_response
       const res: any = JSON.parse(response);
       this.publicId = res.public_id;
-      this.url = res.url;
+      this.url = res.secure_url;
       this.extension = res.format;
 
       const image: HTMLImageElement = new Image();
