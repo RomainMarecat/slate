@@ -1,5 +1,5 @@
 <mat-card class="item-card" *ngIf="clothing">
-  <app-image [publicId]="clothing.image1" [resize]="resizedImage" *ngIf="clothing.image1" (click)="clothingDetail()"></app-image>
+  <app-image [publicId]="clothing.image1" [resize]="resizedImage" (click)="clothingDetail()" *ngIf="clothing.image1"></app-image>
   <!--   <mat-card-header class="item-card-header">
     <img mat-card-avatar [src]="clothing.thumbnail" *ngIf="clothing.thumbnail">
     <span class="text-left">
