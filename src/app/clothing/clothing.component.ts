@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Angulartics2GoogleAnalytics } from 'angulartics2';
 import { UserService } from './../shared/user/user.service';
-import * as firebase from 'firebase/app';
 import { LoaderService } from './../shared/loader/loader.service';
 
 @Component({

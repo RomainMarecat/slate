@@ -1,4 +1,4 @@
 User-Agent: *
-Disallow: 
+Disallow:
 
-Sitemap: http://monpullmoche.com/sitemap.xml
+Sitemap: https://monpullmoche.com/sitemap.xml

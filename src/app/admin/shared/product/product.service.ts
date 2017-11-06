@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Clothing } from './../../../shared/clothing/clothing';
 import { IClothing } from './../../../shared/clothing/i-clothing';
 import { AlertService } from './../../../shared/alert/alert.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';

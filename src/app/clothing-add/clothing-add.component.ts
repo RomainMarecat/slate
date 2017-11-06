@@ -1,9 +1,7 @@
 import { Component, TemplateRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Clothing } from './../shared/clothing/clothing';
 import { IClothing } from './../shared/clothing/i-clothing';
 import { ClothingService } from './../shared/clothing/clothing.service';
-import { User } from './../shared/user/user';
 import { UserService } from './../shared/user/user.service';
 import { LoaderService } from './../shared/loader/loader.service';
 import { AlertService } from './../shared/alert/alert.service';
