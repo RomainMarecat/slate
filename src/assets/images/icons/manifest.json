@@ -3,6 +3,8 @@
   "background_color": "#ffffff",
   "theme_color": "#7fb069",
   "display": "standalone",
+  "Scope": "/",
+  "start_url": "/",
   "short_name": "MPM",
   "orientation": "portrait",
   "icons": [
