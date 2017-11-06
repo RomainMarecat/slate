@@ -10,7 +10,7 @@ export const environment = {
   },
   cloudinaryApiKey: '635275737532688',
   cloudinaryApiSecret: 'OHdYSMfie1xND2yQtioOYEAfjuA',
-  cloundinaryUrl: 'http://res.cloudinary.com/monpullmoche/image/upload',
+  cloundinaryUrl: 'https://res.cloudinary.com/monpullmoche/image/upload',
   cloudName: 'monpullmoche',
   uploadPreset: 'k0bxujke',
   clientAdSense: 'ca-pub-4195199088767183',

@@ -1,5 +1,5 @@
 <div *ngIf="media" class="image-container">
-  <cl-image mat-card-image [public-id]="media.public_id" [attr.alt]="media?.alt" *ngIf="media && media.public_id && !resize">
+  <cl-image mat-card-image [public-id]="media.public_id" [attr.alt]="media?.alt" quality="auto" *ngIf="media && media.public_id && !resize">
     <cl-transformation [attr.height]="media.cropper.height" [attr.width]="media.cropper.width" [attr.x]="media.cropper.x" [attr.y]="media.cropper.y" crop="fill"></cl-transformation>
   </cl-image>
   <cl-image mat-card-xl-image [public-id]="media.public_id" *ngIf="media && media.public_id && resize" [attr.alt]="media?.alt">
