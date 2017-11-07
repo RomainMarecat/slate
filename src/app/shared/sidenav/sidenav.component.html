@@ -26,7 +26,7 @@
     </div>
   </mat-sidenav>
   <app-loader></app-loader>
-  <div #root="dir" dir="ltr" class="main-content">
+  <div #root="dir" dir="ltr" class="main-content" (swiperight)="sidenav.toggle()">
     <router-outlet></router-outlet>
     <ng-adsense [width]="300" [height]="108"></ng-adsense>
     <app-footer></app-footer>
