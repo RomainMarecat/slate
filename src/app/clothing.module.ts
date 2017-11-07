@@ -43,7 +43,6 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
-import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 import { AdsenseModule } from 'ng2-adsense';
 
@@ -106,7 +105,6 @@ export const cloudinaryLib = {
     MatCommonModule,
     MatTooltipModule,
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
-    Ng2PageScrollModule,
     AdsenseModule.forRoot({
       adClient: environment.clientAdSense,
       adSlot: environment.slotAdSense

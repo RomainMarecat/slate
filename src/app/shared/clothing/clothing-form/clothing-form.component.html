@@ -1,7 +1,9 @@
 <mat-card>
+  <mat-card-title align="center">
+    <h3>Importer la photo de ton pull</h3>
+  </mat-card-title>
   <mat-card-content class="pb5">
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
-      <h3>Importer la photo de ton pull</h3>
       <app-clothing-image [media]="image1" (imageChanged)="onImageChange($event)"></app-clothing-image>
       <app-clothing-image [media]="image2" (imageChanged)="onImageChange($event)" *ngIf="clothing.image1"></app-clothing-image>
       <app-clothing-image [media]="image3" (imageChanged)="onImageChange($event)" *ngIf="clothing.image2 && clothing.image3"></app-clothing-image>

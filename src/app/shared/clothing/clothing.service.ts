@@ -74,7 +74,7 @@ export class ClothingService {
             this.query = this.query.limit(limit);
           }
           if (orderBy) {
-            this.query = this.query.orderBy(orderBy);
+            this.query = this.query.orderBy(orderBy, 'desc');
           }
           return this.query;
         })
