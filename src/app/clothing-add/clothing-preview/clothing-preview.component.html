@@ -8,14 +8,14 @@
     </span>
     <img mat-card-avatar [src]="user?.photoURL" *ngIf="user && user.photoURL" alt="user?.displayName">
     <mat-card-title>
-      <span *ngIf="!clothing || !clothing.name">Donnez un titre court et descriptif à votre</span>
+      <span class="clothing-name" *ngIf="!clothing || !clothing.name">Donnez un titre court et descriptif à votre pull</span>
       <span *ngIf="clothing && clothing.name">{{ clothing?.name }}</span>
     </mat-card-title>
     <mat-card-subtitle>
       <span *ngIf="clothing && clothing.price">{{ clothing.price }} €</span>
       <a href="{{ clothing?.external_url }}" *ngIf="clothing && clothing.reseller">{{ clothing?.reseller }}</a>
       <span *ngIf="clothing && clothing.description">{{ clothing?.description | truncate: 20: '...' }}</span>
-      <span *ngIf="!clothing || !clothing.description">Donnez une description correspondant à ce merveilleux pull</span>
+      <span class="clothing-description" *ngIf="!clothing || !clothing.description">Donnez une description correspondant à ce merveilleux pull</span>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content align="center">

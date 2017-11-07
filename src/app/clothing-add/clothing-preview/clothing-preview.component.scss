@@ -16,7 +16,21 @@
 }
 
 .mat-card-title {
-  min-width: 375px;
+  @media (max-width: 600px) {
+    max-width: 250px;
+  }
+  /* medium*/
+  @media (min-width: 601px) and (max-width: 992px) {
+    min-width: 320px;
+  }
+  /* large */
+  @media (min-width: 993px) {
+    min-width: 375px;
+  }
+  .clothing-name,
+  .clothing-description {
+    overflow: hidden;
+  }
 }
 
 .link-card {
