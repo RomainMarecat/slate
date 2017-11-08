@@ -27,12 +27,13 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 * Improve detail page content with price, external_url, description, publisher
 * Improve list page with publisher icon + username
 * Add score algorithm to get exponential score when lot of user like the pull in score service
-* Add Core system to expose all modules 
+* Add Core system to expose all modules like librairies in TypeScript
 * Start a new project named ionic-monpullmoche with core exposed modules from github
 * Include android in ionic project and deploy on store
 * Add translation for en and all others trad with google traduction :
 We can start with en, es, it, de, be, ru
 * Add the best configuration to pass at more than 30% the performance audit from google dev toolbar
+* 
 
 ## Known bugs
 * [Observable] #rxjs#join#angularfirebase Join column media with column image in clothing class
