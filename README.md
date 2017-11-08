@@ -33,7 +33,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 * Add translation for en and all others trad with google traduction :
 We can start with en, es, it, de, be, ru
 * Add the best configuration to pass at more than 30% the performance audit from google dev toolbar
-* 
+* Upgrade to Angular 5 to get ionic and angular cli app at the same version with the same shared core
 
 ## Known bugs
 * [Observable] #rxjs#join#angularfirebase Join column media with column image in clothing class
