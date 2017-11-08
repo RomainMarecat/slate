@@ -59,6 +59,10 @@ export class ClothingImageComponent implements OnInit {
 
     this.cropperSettings.rounded = false;
     this.cropperSettings.keepAspect = false;
+
+    this.cropperSettings.cropperDrawSettings.dragIconStrokeColor = '#223a00';
+    this.cropperSettings.cropperDrawSettings.strokeColor = '#223a00';
+
     this.data = {};
   }
 
