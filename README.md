@@ -1,6 +1,6 @@
 # Monpullmoche
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.5.
+Monpullmoche was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
 ## Development server
 
@@ -18,10 +18,23 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Features
 
-## Further help
+* Theming : Add colors exposed by multiple custom theme from assets/images/paette.scss
+* Footer with Page up - content - description - nav link - social link
+* Refactoring multiple components to get the best of shared modules and components
+* Improve detail page content with price, external_url, description, publisher
+* Improve list page with publisher icon + username
+* Add score algorithm to get exponential score when lot of user like the pull in score service
+* Add Core system to expose all modules 
+* Start a new project named ionic-monpullmoche with core exposed modules from github
+* Include android in ionic project and deploy on store
+* Add translation for en and all others trad with google traduction :
+We can start with en, es, it, de, be, ru
+* Add the best configuration to pass at more than 30% the performance audit from google dev toolbar
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Known bugs
+* [Observable] #rxjs#join#angularfirebase Join column media with column image in clothing class
+* [Responsive] #mobile#samsungs5 Add clothing form content blocked. I cna't scroll
+* [Accessibility] #addclothing#form Button Validate is too small (All users don't see it)
