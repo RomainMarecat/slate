@@ -1,4 +1,4 @@
-# Monpullmoche
+# Monpullmoche [![Build Status](https://travis-ci.com/RomainStudent/monpullmoche.svg?token=ft2MNN7yrCxWmByy17ND&branch=master)](https://travis-ci.com/RomainStudent/monpullmoche)
 
 Monpullmoche was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
