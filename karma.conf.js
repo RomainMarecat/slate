@@ -10,6 +10,8 @@ module.exports = function(config) {
       watched: false
     }, {
       pattern: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css'
+    }, {
+      pattern: './node_modules/hammerjs/hammer.js'
     }],
     plugins: [
       require('karma-jasmine'),
