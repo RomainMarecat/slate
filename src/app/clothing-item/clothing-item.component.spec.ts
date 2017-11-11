@@ -28,7 +28,7 @@ import { ClothingItemComponent } from './clothing-item.component';
 import { ClothingActionComponent } from './clothing-action/clothing-action.component';
 import { ImageComponent } from './../shared/cloudinary/image/image.component';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '@cloudinary/angular-4.x';
+import { CloudinaryModule } from './../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './../shared/cloudinary/cloudinary-config';
 
 describe('ClothingItemComponent', () => {
@@ -42,6 +42,8 @@ describe('ClothingItemComponent', () => {
           RouterTestingModule,
           BrowserModule,
           HttpModule,
+          MatIconModule,
+          MatCardModule,
           RouterTestingModule,
           BrowserAnimationsModule,
           MatCardModule,

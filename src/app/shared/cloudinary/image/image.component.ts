@@ -11,6 +11,7 @@ export class ImageComponent implements OnInit {
   _publicId: string;
   @Input() resize: any;
   media: Media;
+
   constructor(private mediaService: MediaService) {}
 
   get publicId(): string {
