@@ -18,6 +18,10 @@ export class ScoreService {
   clothingFilter$: BehaviorSubject < string | null > ;
   scoreFilter$: BehaviorSubject < string | null > ;
 
+  /**
+   *
+   * @param {AngularFirestore} afs
+   */
   constructor(private afs: AngularFirestore) {
     this.scoreCollectionRef = this.afs.collection < Score > ('scores');
     this.userFilter$ = new BehaviorSubject(null);
@@ -46,16 +50,30 @@ export class ScoreService {
       );
   }
 
+  /**
+   *
+   * @param {string} user
+   * @returns {Observable<Score[]>}
+   */
   filterByUser(user: string | null): Observable < Score[] > {
     this.userFilter$.next(user);
     return this.getUsers();
   }
 
+  /**
+   *
+   * @param {string} clothing
+   * @returns {Observable<Score[]>}
+   */
   filterByClothing(clothing: string | null): Observable < Score[] > {
     this.clothingFilter$.next(clothing);
     return this.getUsers();
   }
 
+  /**
+   *
+   * @returns {Observable<Score[]>}
+   */
   getUsers(): Observable < Score[] > {
     return this.scores$.map((scores: DocumentChangeAction[]) =>
       scores.map((doc: DocumentChangeAction) => {
@@ -66,12 +84,20 @@ export class ScoreService {
     );
   }
 
+  /**
+   *
+   * @returns {Observable<boolean>}
+   */
   isAuthorized(): Observable < boolean > {
     return this.getUsers().take(1).map((items: Score[]) => {
       return items.length === 0;
     });
   }
 
+  /**
+   *
+   * @param {Score} score
+   */
   createScore(score: Score) {
     this.scoreCollectionRef.add({ ...score });
   }

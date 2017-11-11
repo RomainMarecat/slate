@@ -65,7 +65,6 @@ import { AdminModule } from './admin/admin.module';
 import { UserGuard } from './shared/guard/user.guard';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
-import { ClothingSideComponent } from './clothing-side/clothing-side.component';
 
 export const cloudinaryLib = {
   Cloudinary: Cloudinary
@@ -131,7 +130,6 @@ export const cloudinaryLib = {
     AlertComponent,
     LoaderComponent,
     SidenavComponent,
-    ClothingSideComponent,
   ],
   providers: [
     ClothingService,

@@ -18,6 +18,10 @@ export class MediaService {
   urlFilter$: BehaviorSubject < string | null > ;
   limitFilter$: BehaviorSubject < number | null > ;
 
+  /**
+   *
+   * @param {AngularFirestore} afs
+   */
   constructor(private afs: AngularFirestore) {
     this.mediaCollectionRef = this.afs.collection < Media > ('media');
     this.publicIdFilter$ = new BehaviorSubject(null);
@@ -46,15 +50,28 @@ export class MediaService {
       );
   }
 
+  /**
+   *
+   * @param {string} publicId
+   * @returns {Observable<Media[]>}
+   */
   filterByPublicId(publicId: string | null): Observable < Media[] > {
     this.publicIdFilter$.next(publicId);
     return this.getMedias();
   }
 
+  /**
+   *
+   * @param {string} url
+   */
   filterByUrl(url: string | null) {
     this.urlFilter$.next(url);
   }
 
+  /**
+   *
+   * @returns {Observable<Media[]>}
+   */
   getMedias(): Observable < Media[] > {
     return this.medias$.map((clothes: DocumentChangeAction[]) =>
       clothes.map((doc: DocumentChangeAction) => {
@@ -65,6 +82,10 @@ export class MediaService {
     );
   }
 
+  /**
+   *
+   * @param {Media} media
+   */
   addMedia(media: Media) {
     this.mediaCollectionRef.add({ ...media });
   }

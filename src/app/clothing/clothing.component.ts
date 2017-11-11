@@ -10,6 +10,12 @@ import { LoaderService } from './../shared/loader/loader.service';
 })
 export class ClothingComponent implements OnInit {
 
+  /**
+   * Root Constructor
+   * @param {Angulartics2GoogleAnalytics} private angulartics2GoogleAnalytics
+   * @param {UserService}                 public  userService
+   * @param {LoaderService}               private loaderService
+   */
   constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
     public userService: UserService, private loaderService: LoaderService) {}
 

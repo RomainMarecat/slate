@@ -12,22 +12,22 @@ export class Clothing implements IClothing {
 
   url: string;
 
-  key ? : string;
+  key ?: string;
   user: string;
 
-  description ? : string;
-  external_url ? : string;
+  description ?: string;
+  external_url ?: string;
   thumbnail: string;
   image1: string;
-  image2 ? : string;
-  image3 ? : string;
+  image2 ?: string;
+  image3 ?: string;
   price: number;
-  quantity ? : number;
-  size ? : Array < string > ;
+  quantity ?: number;
+  size ?: Array < string > ;
   published: boolean;
-  delivery_fee ? : number;
-  delivery_free ? : boolean;
-  reseller ? : string;
+  delivery_fee ?: number;
+  delivery_free ?: boolean;
+  reseller ?: string;
 
   constructor() {
     this.score = 0;

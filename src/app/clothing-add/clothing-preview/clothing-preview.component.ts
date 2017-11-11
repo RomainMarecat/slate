@@ -9,14 +9,10 @@ import { IClothing } from './../../shared/clothing/i-clothing';
 export class ClothingPreviewComponent implements OnInit {
   @Input() clothing: IClothing;
   @Input() user: any;
+  // Current image size to display
   resizedImage = { height: '240', width: '240' };
 
   constructor() {}
 
   ngOnInit() {}
-
-  showDetail() {
-
-  }
-
 }

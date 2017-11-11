@@ -30,6 +30,11 @@ export class ClothingService {
   endBefore$: BehaviorSubject < string | null > ;
   query: firebase.firestore.CollectionReference | firebase.firestore.Query;
 
+  /**
+   *
+   * @param {AngularFirestore} afs
+   * @param {AlertService} alertService
+   */
   constructor(private afs: AngularFirestore, private alertService: AlertService) {
     this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(true);
@@ -82,6 +87,10 @@ export class ClothingService {
       );
   }
 
+  /**
+   *
+   * @returns {Observable<IClothing[]>}
+   */
   getClothes(): Observable < IClothing[] > {
     return this.clothes$.map((clothes: DocumentChangeAction[]) =>
       clothes.map((doc: DocumentChangeAction) => {
@@ -92,20 +101,37 @@ export class ClothingService {
     );
   }
 
+  /**
+   *
+   * @param {string} key
+   * @returns {Observable<IClothing[]>}
+   */
   getClothing(key: null | string): Observable < IClothing[] > {
     this.keyFilters$.next(key);
     return this.getClothes().take(1);
   }
 
+  /**
+   *
+   * @param {IClothing} clothing
+   */
   updateClothing(clothing: IClothing) {
     this.clothingCollectionRef.doc(clothing.key).update({ ...clothing });
   }
 
+  /**
+   *
+   * @param {IClothing} clothing
+   */
   createClothing(clothing: IClothing) {
     delete clothing.key;
     this.clothingCollectionRef.add({ ...clothing });
   }
 
+  /**
+   *
+   * @param {IClothing} clothing
+   */
   deleteClothing(clothing: IClothing) {
     this.clothingCollectionRef.doc(clothing.key).delete();
   }

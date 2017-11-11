@@ -22,6 +22,9 @@ export class ClothingDetailComponent implements OnInit {
     this.cols = 0;
   }
 
+  /**
+   * Subscribe on value return by route nav and get unique identified by product key
+   */
   ngOnInit() {
     this.activeRoute.params.subscribe((value: { key: string }) => {
       if (value.key) {
@@ -35,6 +38,9 @@ export class ClothingDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * Dynamic count columns for clothing image
+   */
   countCols() {
     if (this.clothing) {
       if (this.clothing.image1) {
@@ -50,6 +56,10 @@ export class ClothingDetailComponent implements OnInit {
 
   }
 
+  /**
+   * Update current score for the product
+   * @param {IClothing} clothing
+   */
   updateScoreClothing(clothing: IClothing) {
     this.updatedClothing.emit(clothing);
   }

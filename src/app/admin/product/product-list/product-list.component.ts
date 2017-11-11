@@ -1,6 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { IClothing } from './../../../shared/clothing/i-clothing';
-import { ClothingService } from './../../../shared/clothing/clothing.service';
 import { ProductService } from './../../shared/product/product.service';
 import { Observable } from 'rxjs/Observable';
 
@@ -13,11 +12,15 @@ export class ProductListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  pageLimit = 20;
   clothes$: Observable < IClothing[] > ;
   isLoading = false;
   selected: IClothing[];
 
+  /**
+   *
+   * @param {ElementRef} table
+   * @param {ProductService} productService
+   */
   constructor(private table: ElementRef, private productService: ProductService) {
     this.columns = [{
       prop: 'image1',
@@ -39,6 +42,9 @@ export class ProductListComponent implements OnInit {
     this.selected = [];
   }
 
+  /**
+   * set at published at now et activate published to true
+   */
   publishClothing() {
     this.selected.forEach((clothing: IClothing) => {
       clothing.published = true;
@@ -47,10 +53,17 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  /**
+   * Init list of product
+   */
   ngOnInit() {
     this.clothes$ = this.productService.getClothes();
   }
 
+  /**
+   * On select add new list in selection array
+   * @param {any} selected
+   */
   onSelect({ selected }) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);

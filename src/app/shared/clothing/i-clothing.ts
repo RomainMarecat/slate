@@ -10,17 +10,17 @@ export interface IClothing {
 
   url: string;
 
-  description ? : string;
+  description ?: string;
   thumbnail: string;
   image1: string;
-  image2 ? : string;
-  image3 ? : string;
+  image2 ?: string;
+  image3 ?: string;
   price: number;
   published: boolean;
-  delivery_fee ? : number;
-  delivery_free ? : boolean;
-  reseller ? : string;
-  key ? : string;
+  delivery_fee ?: number;
+  delivery_free ?: boolean;
+  reseller ?: string;
+  key ?: string;
   user: string;
-  external_url ? : string;
+  external_url ?: string;
 }
