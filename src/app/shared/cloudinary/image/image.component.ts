@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Media } from './../../media/media';
 import { MediaService } from './../../media/media.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/first';
 
 @Component({
   selector: 'app-image',

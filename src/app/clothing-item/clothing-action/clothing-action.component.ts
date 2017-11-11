@@ -21,6 +21,14 @@ export class ClothingActionComponent implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * Add +1 or -1 on current score
+   * Test if User is authenticated, is Authorized (First time score this item)
+   * If test is true, update IClothing
+   * @param {IClothing} clothing
+   * @param {string}    score    string plus or minus
+   * @todo Update plus or minus string by new alogrithm
+   */
   score(clothing: IClothing, score: string) {
     this.userService.isAuthenticated().subscribe((authenticated) => {
       if (authenticated) {
@@ -43,6 +51,12 @@ export class ClothingActionComponent implements OnInit {
     });
   }
 
+  /**
+   * Create new score in the collection with user id
+   * Update the clothing
+   * @param {IClothing} clothing
+   * @param {string}    score
+   */
   updateClothingScore(clothing: IClothing, score: string) {
     if (!clothing.score) {
       clothing.score = 0;
@@ -52,12 +66,12 @@ export class ClothingActionComponent implements OnInit {
     } else {
       clothing.score--;
     }
-    const sco = {
+    const newScore = {
       created_at: new Date(),
       user: this.userService.getUser().uid,
       clothing: clothing.key
     };
-    this.scoreService.createScore(sco);
+    this.scoreService.createScore(newScore);
     this.updateScore.emit(clothing);
   }
 }

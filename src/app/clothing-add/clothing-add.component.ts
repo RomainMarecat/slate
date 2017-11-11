@@ -13,10 +13,17 @@ import { AlertService } from './../shared/alert/alert.service';
 })
 export class ClothingAddComponent implements OnInit {
   clothing: IClothing;
-  thumbnail: string;
   ratio: string;
   user: any;
 
+  /**
+   *
+   * @param {Router} router
+   * @param {ClothingService} clothingService
+   * @param {AlertService} alertService
+   * @param {UserService} userService
+   * @param {LoaderService} loaderService
+   */
   constructor(private router: Router, private clothingService: ClothingService,
     public alertService: AlertService, private userService: UserService,
     private loaderService: LoaderService) {
@@ -25,16 +32,28 @@ export class ClothingAddComponent implements OnInit {
     this.loaderService.show();
   }
 
+  /**
+   * Show loader
+   */
   ngOnInit() {
     this.loaderService.hide();
   }
 
+  /**
+   * When the form is submitted, we create new product
+   * And show a toast to display info
+   * @param {IClothing} clothing
+   */
   onClothingSubmit(clothing: IClothing) {
     this.clothingService.createClothing(clothing);
     this.alertService.toast('Votre pull est en attente de validation :)', 'info');
     this.router.navigate(['/']);
   }
 
+  /**
+   * Get the new clothing value
+   * @param {IClothing} clothing
+   */
   onClothingChange(clothing: IClothing) {
     this.clothing = clothing;
   }

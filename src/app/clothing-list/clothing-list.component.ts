@@ -16,6 +16,7 @@ import { LoaderService } from './../shared/loader/loader.service';
   styleUrls: ['./clothing-list.component.scss']
 })
 export class ClothingListComponent implements OnInit {
+  // Products collection of Clothing interface
   clothes$: Observable < IClothing[] > ;
   clothes: Array < IClothing > ;
   rowHeight: number;
@@ -31,30 +32,44 @@ export class ClothingListComponent implements OnInit {
     this.rowHeight = 300;
   }
 
+  /**
+   * Show loader and Add meta tags
+   * Diplay All products index by published at
+   */
   ngOnInit() {
     this.loaderService.show();
     this.meta.addTags([
       { name: 'title', content: 'Mon pull Moche' },
-      { property: 'og:title', content: '' },
       { name: 'description', content: 'Découvrez la liste officielle des pulls moches.' },
     ]);
 
     this.loadClothes(this.pageLimit);
-    this.loaderService.hide();
   }
 
+  /**
+   * Update on product
+   * @param {IClothing} clothing
+   */
   updateClothing(clothing: IClothing) {
     this.clothingService.updateClothing(clothing);
   }
 
+  /**
+   * Go to form page Add product
+   */
   addClothing() {
     this.router.navigate(['/add']);
   }
 
+  /**
+   * Load Products with current limit
+   * @param {number} limit
+   */
   loadClothes(limit: number) {
     this.clothingService.keyFilters$.next(null);
     this.clothingService.nameFilters$.next(null);
     this.clothingService.publishedFilter$.next(true);
     this.clothes$ = this.clothingService.getClothes();
+    this.loaderService.hide();
   }
 }

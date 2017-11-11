@@ -7,14 +7,14 @@ import { SidenavService } from './../shared/sidenav/sidenav.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  toggle: boolean;
 
   constructor(private sidenavService: SidenavService) {}
 
-  ngOnInit() {
-    this.toggle = false;
-  }
+  ngOnInit() {}
 
+  /**
+   * Can open or close sidenav
+   */
   toggleSidenav() {
     this.sidenavService.open();
   }

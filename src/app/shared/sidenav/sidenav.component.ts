@@ -17,8 +17,16 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
+  /**
+   *
+   * @param {UserService} userService
+   * @param {SidenavService} sidenavService
+   */
   constructor(public userService: UserService, private sidenavService: SidenavService) {}
 
+  /**
+   * Subscribe to toggle event from sidenav
+   */
   ngOnInit() {
     this.subscription = this.sidenavService.toggleState
       .subscribe((state: ToggleState) => {

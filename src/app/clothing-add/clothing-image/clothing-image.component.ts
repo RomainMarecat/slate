@@ -33,6 +33,14 @@ export class ClothingImageComponent implements OnInit {
   hasBaseDropZoneOver: boolean;
   cropperClass: string;
 
+  /**
+   *
+   * @param {Cloudinary}    private cloudinary
+   * @param {NgZone}        private zone
+   * @param {Http}          private http
+   * @param {ObjectService} public  objectService
+   * @param {MediaService}  private mediaService
+   */
   constructor(private cloudinary: Cloudinary,
     private zone: NgZone,
     private http: Http,
@@ -66,6 +74,10 @@ export class ClothingImageComponent implements OnInit {
     this.data = {};
   }
 
+  /**
+   * Init all cloudinary module
+   * All state of upload Item
+   */
   ngOnInit() {
     const uploaderOptions: FileUploaderOptions = {
       url: `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/image/upload`,
@@ -147,14 +159,26 @@ export class ClothingImageComponent implements OnInit {
     };
   }
 
+  /**
+   * Can upload all image
+   */
   uploadAll() {
     this.uploader.uploadAll();
   }
 
+  /**
+   * Empty function check if object is empty
+   * @todo refacto in object service
+   * @param  {}  obj
+   * @return {boolean}
+   */
   isEmpty(obj): boolean {
     return Object.keys(obj).length === 0;
   }
 
+  /**
+   * Validate a new Image and Cropped size
+   */
   validateImage() {
     const width = this.cropper.cropper.getCropBounds().width;
     const height = this.cropper.cropper.getCropBounds().height;
@@ -175,10 +199,17 @@ export class ClothingImageComponent implements OnInit {
     this.onMediaChange(this.media);
   }
 
+  /**
+   * Cancel current upload
+   */
   onCancelUpload() {
     this.uploaderStatus.emit(this.uploaderMessage);
   }
 
+  /**
+   * Propagate new media to parent
+   * @param {Media} media
+   */
   onMediaChange(media: Media) {
     this.mediaService.addMedia(media);
     this.imageChanged.emit(media);
