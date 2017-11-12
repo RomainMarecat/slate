@@ -1,0 +1,37 @@
+<mat-card class="item-card">
+  <mat-card-title align="center">
+    <h3>Aperçu</h3>
+  </mat-card-title>
+  <mat-card-header>
+    <span class="text-left">
+      <mat-icon mat-card-avatar *ngIf="!user || !user.photoURL">perm_identity</mat-icon>
+    </span>
+    <img mat-card-avatar [src]="user?.photoURL" *ngIf="user && user.photoURL" alt="user?.displayName">
+    <mat-card-title>
+      <span class="product-name" *ngIf="!product || !product.name">Donnez un titre court et descriptif à votre pull</span>
+      <span *ngIf="product && product.name">{{ product?.name }}</span>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <span *ngIf="product && product.price">{{ product.price }} €</span>
+      <a href="{{ product?.external_url }}" *ngIf="product && product.reseller">{{ product?.reseller }}</a>
+      <span *ngIf="product && product.description">{{ product?.description | truncate: 20: '...' }}</span>
+      <span class="product-description" *ngIf="!product || !product.description">Donnez une description correspondant à ce merveilleux pull</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content align="center">
+    <app-image *ngIf="product?.image1" [publicId]="product?.image1" [resize]="resizedImage"></app-image>
+    <span *ngIf="!product || !product.image1">
+      <mat-icon>image</mat-icon>
+      Image
+    </span>
+  </mat-card-content>
+  <mat-card-actions align="center">
+    <button role="button" aria-label="Moins" mat-raised-button color="accent">
+      <mat-icon aria-label="Moins">thumb_down</mat-icon>
+    </button>
+    <span class="ugly-score">0</span>
+    <button role="button" aria-label="Plus" mat-raised-button color="primary">
+      <mat-icon aria-label="Plus">thumb_up</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

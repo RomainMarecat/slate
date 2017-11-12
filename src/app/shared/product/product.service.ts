@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IProduct } from './../../../shared/product/i-product';
-import { AlertService } from './../../../shared/alert/alert.service';
+import { Product } from './product';
+import { IProduct } from './i-product';
+import { AlertService } from './../alert/alert.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -36,11 +37,12 @@ export class ProductService {
    */
   constructor(private afs: AngularFirestore, private alertService: AlertService) {
     this.keyFilters$ = new BehaviorSubject(null);
-    this.publishedFilter$ = new BehaviorSubject(null);
+    this.publishedFilter$ = new BehaviorSubject(true);
     this.nameFilters$ = new BehaviorSubject(null);
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
-    this.limit$ = new BehaviorSubject(null);
+    this.limit$ = new BehaviorSubject(20);
+    this.orderBy$ = new BehaviorSubject('published_at');
     this.productCollectionRef = this.afs.collection('clothes');
     this.products$ = Observable.combineLatest(
         this.keyFilters$,
@@ -48,15 +50,19 @@ export class ProductService {
         this.nameFilters$,
         this.colorFilter$,
         this.userFilter$,
-        this.limit$
+        this.limit$,
+        this.orderBy$
       )
       .catch(err => {
         console.error(err);
         return Observable.of([]);
       })
-      .switchMap(([key, published, name, color, user, limit]) =>
+      .switchMap(([key, published, name, color, user, limit, orderBy]) =>
         this.afs.collection('clothes', ref => {
           this.query = ref;
+          if (key) {
+            this.query = this.query.where('key', '==', key);
+          }
           if (published) {
             this.query = this.query.where('published', '==', published);
           }
@@ -71,6 +77,9 @@ export class ProductService {
           }
           if (limit) {
             this.query = this.query.limit(limit);
+          }
+          if (orderBy) {
+            this.query = this.query.orderBy(orderBy, 'desc');
           }
           return this.query;
         })

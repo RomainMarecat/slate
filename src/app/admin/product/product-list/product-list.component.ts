@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { IClothing } from './../../../shared/clothing/i-clothing';
+import { IProduct } from './../../../shared/product/i-product';
 import { ProductService } from './../../shared/product/product.service';
 import { Observable } from 'rxjs/Observable';
 
@@ -12,9 +12,9 @@ export class ProductListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  clothes$: Observable < IClothing[] > ;
+  products$: Observable < IProduct[] > ;
   isLoading = false;
-  selected: IClothing[];
+  selected: IProduct[];
 
   /**
    *
@@ -45,11 +45,11 @@ export class ProductListComponent implements OnInit {
   /**
    * set at published at now et activate published to true
    */
-  publishClothing() {
-    this.selected.forEach((clothing: IClothing) => {
-      clothing.published = true;
-      clothing.published_at = new Date();
-      this.productService.updateClothing(clothing);
+  publishProduct() {
+    this.selected.forEach((product: IProduct) => {
+      product.published = true;
+      product.published_at = new Date();
+      this.productService.updateProduct(product);
     });
   }
 
@@ -57,7 +57,7 @@ export class ProductListComponent implements OnInit {
    * Init list of product
    */
   ngOnInit() {
-    this.clothes$ = this.productService.getClothes();
+    this.products$ = this.productService.getProducts();
   }
 
   /**

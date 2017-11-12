@@ -1,0 +1,39 @@
+<mat-card class="item-card" *ngIf="product">
+  <app-image [publicId]="product.image1" [resize]="resizedImage" (click)="productDetail()" *ngIf="product.image1"></app-image>
+  <!--   <mat-card-header class="item-card-header">
+    <img mat-card-avatar [src]="product.thumbnail" *ngIf="product.thumbnail">
+    <span class="text-left">
+      <mat-icon *ngIf="!product || !product.thumbnail">account_circle</mat-icon>
+    </span>
+    <mat-card-title>
+      <h2 class="item-card-title">
+        {{ product.name }}
+      </h2>
+      <a class="text-right" href="{{ product.external_url }}" *ngIf="product.external_url">Voir le pull</a>
+      <span *ngIf="product.reseller">{{ product.reseller }}</span>
+      <span class="item-card-date text-right">{{ 'à' }} {{ product.created_at | date:'short' }}</span>
+    </mat-card-title>
+    <mat-card-subtitle>
+    <span *ngIf="product.price">{{ product.price }} €</span>
+    </mat-card-subtitle>
+  </mat-card-header> -->
+  <!--  <mat-card-content (click)="productDetail()">
+    <mat-grid-list [cols]="cols" rowHeight="100px">
+      <mat-grid-tile class="link-container-card" *ngIf="product.image1">
+        <a class="link-card">
+        </a>
+      </mat-grid-tile>
+      <mat-grid-tile class="link-container-card" *ngIf="product.image2">
+        <a class="link-card">
+          <app-image [publicId]="product.image2" [resize]="resizedImage" *ngIf="product.image2"></app-image>
+        </a>
+      </mat-grid-tile>
+      <mat-grid-tile class="link-container-card" *ngIf="product.image3">
+        <a class="link-card">
+          <app-image [publicId]="product.image3" [resize]="resizedImage" *ngIf="product.image3"></app-image>
+        </a>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content> -->
+  <app-product-action [product]="product" (updateScore)="updateScoreProduct($event)"></app-product-action>
+</mat-card>

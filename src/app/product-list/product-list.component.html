@@ -1,0 +1,8 @@
+<div class="card-container">
+  <app-product-item *ngFor="let product of products$ | async" class="grid-tile-item" [product]="product" (updatedProduct)="updateProduct($event)"></app-product-item>
+</div>
+<div class="text-right">
+  <button role="button" aria-label="Ajouter un nouveau pull moche" mat-mini-fab class="absolute-fab" (click)="addProduct()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

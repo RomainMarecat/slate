@@ -14,7 +14,7 @@ export class ScoreService {
   scoreCollectionRef: AngularFirestoreCollection < Score > ;
   scores$: Observable < DocumentChangeAction[] > ;
   userFilter$: BehaviorSubject < string | null > ;
-  clothingFilter$: BehaviorSubject < string | null > ;
+  productFilter$: BehaviorSubject < string | null > ;
   scoreFilter$: BehaviorSubject < string | null > ;
 
   /**
@@ -24,22 +24,22 @@ export class ScoreService {
   constructor(private afs: AngularFirestore) {
     this.scoreCollectionRef = this.afs.collection < Score > ('scores');
     this.userFilter$ = new BehaviorSubject(null);
-    this.clothingFilter$ = new BehaviorSubject(null);
+    this.productFilter$	 = new BehaviorSubject(null);
     this.scoreFilter$ = new BehaviorSubject(null);
     this.scores$ = Observable.combineLatest(
         this.userFilter$,
-        this.clothingFilter$,
+        this.productFilter$	,
         this.scoreFilter$
       )
       .first()
-      .switchMap(([user, clothing, score]) =>
+      .switchMap(([user, product,	 score]) =>
         this.afs.collection('scores', ref => {
           let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
           if (user) {
             query = query.where('user', '==', user);
           }
-          if (clothing) {
-            query = query.where('clothing', '==', clothing);
+          if (product) {
+            query = query.where('product', '==', product);
           }
           if (score) {
             query = query.where('score', '==', score);
@@ -61,11 +61,11 @@ export class ScoreService {
 
   /**
    *
-   * @param {string} clothing
+   * @param {string} product
    * @returns {Observable<Score[]>}
    */
-  filterByClothing(clothing: string | null): Observable < Score[] > {
-    this.clothingFilter$.next(clothing);
+  filterByProduct(product:	 string | null): Observable < Score[] > {
+    this.productFilter$	.next(product);
     return this.getUsers();
   }
 
