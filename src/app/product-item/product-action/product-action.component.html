@@ -1,0 +1,12 @@
+<mat-card-actions align="center" *ngIf="product">
+  <button role="button" aria-label="Moins" mat-raised-button color="accent" (click)="score(product,	 'minus')">
+    <mat-icon aria-label="Trop beau pour augmenter son score">thumb_down</mat-icon>
+  </button>
+  <span class="ugly-score" *ngIf="product?.score; else showScoreNull">{{ product.score }}</span>
+  <button role="button" aria-label="Plus" mat-raised-button color="primary" (click)="score(product,	 'plus')">
+    <mat-icon aria-label="Trop moche son score doit augmenter">thumb_up</mat-icon>
+  </button>
+</mat-card-actions>
+<ng-template #showScoreNull>
+  <span class="ugly-score">0</span>
+</ng-template>

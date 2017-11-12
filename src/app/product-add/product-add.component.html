@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="nm0">Poster un nouveau pull moche</h2>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <app-product-form (productChange)="onProductChange($event)" [_user]="user" (_submit)="onProductSubmit($event)">
+          </app-product-form>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <app-product-preview [product]="product" [user]="user"></app-product-preview>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

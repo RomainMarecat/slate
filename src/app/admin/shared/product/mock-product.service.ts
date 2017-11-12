@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs/Rx';
-import { IClothing } from './../../../shared/clothing/i-clothing';
+import { IProduct } from './../../../shared/product/i-product';
 import { mockProduct } from './mock-product';
 
 export class MockProductService {
-  getClothes(): Observable < Array < IClothing >> {
+  getProducts(): Observable < Array < IProduct >> {
     return Observable.of([mockProduct]);
   }
 }

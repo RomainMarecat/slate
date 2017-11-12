@@ -1,6 +1,6 @@
 export class Score {
   key ?: string;
   user: string;
-  clothing: string;
+  product:	 string;
   created_at: Date;
 }

@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="col-6">
-      <button role="button" aria-label="Publier un pull moche" mat-raised-button color="primary" (click)="publishClothing()" *ngIf="selected.length > 0">
+      <button role="button" aria-label="Publier un pull moche" mat-raised-button color="primary" (click)="publishProduct()" *ngIf="selected.length > 0">
         <mat-icon aria-label="Published">done</mat-icon>
         Publier
       </button>
@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <div class="col-12 mt-2">
-      <ngx-datatable class="material striped scrolling-products" [columnMode]="'force'" [rows]="clothes$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
+      <ngx-datatable class="material striped scrolling-products" [columnMode]="'force'" [rows]="products$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
         <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false">
           <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
             <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />

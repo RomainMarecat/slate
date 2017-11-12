@@ -73,8 +73,8 @@ export class MediaService {
    * @returns {Observable<Media[]>}
    */
   getMedias(): Observable < Media[] > {
-    return this.medias$.map((clothes: DocumentChangeAction[]) =>
-      clothes.map((doc: DocumentChangeAction) => {
+    return this.medias$.map((products: DocumentChangeAction[]) =>
+      products.map((doc: DocumentChangeAction) => {
         const media = doc.payload.doc.data() as Media;
         media.key = doc.payload.doc.id;
         return media as Media;
