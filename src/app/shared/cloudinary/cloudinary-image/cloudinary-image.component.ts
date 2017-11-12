@@ -76,7 +76,7 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
     }
   }
 
-  setElementAttributes(element: Element, attributesLiteral: string[], lazyLoad: boolean) {
+  setElementAttributes(element: HTMLElement, attributesLiteral: string[], lazyLoad: boolean) {
     if (lazyLoad) {
       this.imageSource$ = Observable.of(attributesLiteral['src']);
     }

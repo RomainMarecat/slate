@@ -66,6 +66,22 @@ import { AdminModule } from './admin/admin.module';
 import { UserGuard } from './shared/guard/user.guard';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
+import {
+  HammerGestureConfig,
+  HAMMER_GESTURE_CONFIG,
+} from '@angular/platform-browser';
+
+declare var Hammer: any;
+
+export class MyHammerConfig extends HammerGestureConfig {
+  buildHammer(element: HTMLElement) {
+    let mc = new Hammer(element, {
+      // Add scroll auto on y. Pan-y can activate swipe left and right too
+      touchAction: 'pan-y'
+    });
+    return mc;
+  }
+}
 
 @NgModule({
   imports: [
@@ -142,7 +158,12 @@ import { SidenavComponent } from './shared/sidenav/sidenav.component';
     LoaderService,
     ScoreService,
     SidenavService,
-    UserGuard
+    UserGuard,
+    {
+      // hammer instantion with custom config
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: MyHammerConfig,
+    },
   ],
   bootstrap: [
     ClothingComponent
