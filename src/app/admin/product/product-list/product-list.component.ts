@@ -47,8 +47,13 @@ export class ProductListComponent implements OnInit {
    */
   publishProduct() {
     this.selected.forEach((product: IProduct) => {
-      product.published = true;
-      product.published_at = new Date();
+      if (product.published === false) {
+        product.published = true;
+        if (!product.published_at) {
+          product.published_at = new Date();
+        }
+      }
+
       this.productService.updateProduct(product);
     });
   }

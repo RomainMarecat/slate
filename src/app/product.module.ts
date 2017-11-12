@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
@@ -74,6 +74,7 @@ import {
 
 declare var Hammer: any;
 
+@Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
   buildHammer(element: HTMLElement) {
     const mc = new Hammer(element, {

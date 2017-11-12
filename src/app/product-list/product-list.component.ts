@@ -28,7 +28,7 @@ export class ProductListComponent implements OnInit {
     private userService: UserService, public alertService: AlertService,
     private loaderService: LoaderService) {
     this.headerHeight = 0;
-    this.pageLimit = 20;
+    this.pageLimit = 100;
     this.rowHeight = 300;
   }
 
