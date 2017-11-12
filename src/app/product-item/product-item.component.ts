@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from './../shared/product/product';
 import { IProduct } from './../shared/product/i-product';
+import { DateService } from './../shared/util/date.service';
 
 @Component({
   selector: 'app-product-item',
@@ -14,8 +15,9 @@ export class ProductItemComponent implements OnInit {
   @Output() updatedProduct: EventEmitter < IProduct > = new EventEmitter < IProduct > ();
   cols: number;
   resizedImage: any;
+  humanPublishedAt: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public dateService: DateService) {
     // Add columns number for each images max < 4
     this.cols = 0;
     // Display fixed images for item view
@@ -36,6 +38,7 @@ export class ProductItemComponent implements OnInit {
    * @param IProduct Product
    */
   @Input() set product(product: IProduct) {
+    this.humanPublishedAt = this.dateService.compareDatetoHumanReadableString(product.published_at);
     this._product = product;
     this.countCols();
   }

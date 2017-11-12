@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { NgStringPipesModule } from 'angular-pipes';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { Cloudinary } from 'cloudinary-core';
@@ -18,6 +19,7 @@ describe('ImageComponent', () => {
     TestBed.configureTestingModule({
         imports: [
           CloudinaryModule,
+          NgStringPipesModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
         ],
         declarations: [ImageComponent],

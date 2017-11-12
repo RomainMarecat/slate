@@ -24,6 +24,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { NgStringPipesModule } from 'angular-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './../shared/cloudinary/cloudinary-config';
@@ -33,7 +34,7 @@ import { ProductService } from './../shared/product/product.service';
 import { ProductDetailComponent } from './product-detail.component';
 import { ImageComponent } from './../shared/cloudinary/image/image.component';
 
-describe('productDetailComponent', () => {
+describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
   let fixture: ComponentFixture < ProductDetailComponent > ;
 
@@ -52,6 +53,7 @@ describe('productDetailComponent', () => {
           MatGridListModule,
           MatInputModule,
           MatCheckboxModule,
+          NgStringPipesModule,
           MatListModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
 

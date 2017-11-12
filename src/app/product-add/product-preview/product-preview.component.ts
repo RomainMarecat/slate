@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IProduct } from './../../shared/product/i-product';
+import { DateService } from './../../shared/util/date.service';
 
 @Component({
   selector: 'app-product-preview',
@@ -12,7 +13,7 @@ export class ProductPreviewComponent implements OnInit {
   // Current image size to display
   resizedImage = { height: '240', width: '240' };
 
-  constructor() {}
+  constructor(public dateService: DateService) {}
 
   ngOnInit() {}
 }

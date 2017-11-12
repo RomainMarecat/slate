@@ -19,6 +19,7 @@ import { ScoreService } from './shared/score/score.service';
 import { LoaderService } from './shared/loader/loader.service';
 import { SidenavService } from './shared/sidenav/sidenav.service';
 import { ObjectService } from './shared/util/object.service';
+import { DateService } from './shared/util/date.service';
 
 import { environment } from './../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -155,6 +156,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     UserService,
     AlertService,
     ObjectService,
+    DateService,
     LoaderService,
     ScoreService,
     SidenavService,

@@ -23,6 +23,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { NgStringPipesModule } from 'angular-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductItemComponent } from './product-item.component';
 import { ProductActionComponent } from './product-action/product-action.component';
@@ -30,6 +31,7 @@ import { ImageComponent } from './../shared/cloudinary/image/image.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './../shared/cloudinary/cloudinary-config';
+import { DateService } from './../shared/util/date.service';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -44,12 +46,16 @@ describe('ProductItemComponent', () => {
           HttpModule,
           MatIconModule,
           MatCardModule,
+          NgStringPipesModule,
           RouterTestingModule,
           BrowserAnimationsModule,
           MatCardModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
         ],
-        declarations: [ProductItemComponent, ProductActionComponent, ImageComponent]
+        declarations: [ProductItemComponent, ProductActionComponent, ImageComponent],
+        providers: [
+          { provide: DateService, useClass: DateService }
+        ]
       })
       .compileComponents();
   }));
