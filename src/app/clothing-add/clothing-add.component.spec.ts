@@ -29,7 +29,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { NgStringPipesModule } from 'angular-pipes';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '@cloudinary/angular-4.x';
+import { CloudinaryModule } from './../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './../shared/cloudinary/cloudinary-config';
 import { ClothingActionComponent } from './../clothing-item/clothing-action/clothing-action.component';
 import { MockClothingService } from './../shared/clothing/mock-clothing.service';

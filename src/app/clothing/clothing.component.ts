@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Angulartics2GoogleAnalytics } from 'angulartics2';
+import { Angulartics2 } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { UserService } from './../shared/user/user.service';
 import { LoaderService } from './../shared/loader/loader.service';
 

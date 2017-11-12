@@ -15,7 +15,7 @@ import {
   MatFormFieldModule
 } from '@angular/material';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '@cloudinary/angular-4.x';
+import { CloudinaryModule } from './../../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './../../shared/cloudinary/cloudinary-config';
 import { ObjectService } from './../../shared/util/object.service';
 import { MockMediaService } from './../../shared/media/mock-media.service';

@@ -14,7 +14,8 @@ import {
   MatCheckboxModule,
 } from '@angular/material';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '@cloudinary/angular-4.x';
+import { CloudinaryModule } from './../../cloudinary/cloudinary.module';
+import { CloudinaryConfig } from './../../cloudinary/cloudinary-config';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
@@ -30,7 +31,6 @@ import { UserService } from './../../user/user.service';
 import { ObjectService } from './../../util/object.service';
 import { MediaService } from './../../media/media.service';
 import { MockMediaService } from './../../media/mock-media.service';
-import { CloudinaryConfig } from './../../cloudinary/cloudinary-config';
 
 describe('ClothingFormComponent', () => {
   let component: ClothingFormComponent;

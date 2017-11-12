@@ -23,7 +23,8 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
-import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavService } from './../shared/sidenav/sidenav.service';
 import { FooterComponent } from './../footer/footer.component';
@@ -78,7 +79,12 @@ describe('ClothingComponent', () => {
           MatMenuModule,
           MatCommonModule,
           MatTooltipModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
         ],
         declarations: [
           ClothingComponent,

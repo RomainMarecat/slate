@@ -29,7 +29,7 @@ import { ClothingItemComponent } from './../clothing-item/clothing-item.componen
 import { ClothingActionComponent } from './../clothing-item/clothing-action/clothing-action.component';
 import { ImageComponent } from './../shared/cloudinary/image/image.component';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '@cloudinary/angular-4.x';
+import { CloudinaryModule } from './../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './../shared/cloudinary/cloudinary-config';
 import { ClothingService } from './../shared/clothing/clothing.service';
 import { MockClothingService } from './../shared/clothing/mock-clothing.service';

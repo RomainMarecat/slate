@@ -7,8 +7,7 @@ import * as firebase from 'firebase';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
+import 'rxjs/add/operator/first';
 
 @Injectable()
 export class ScoreService {

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '@cloudinary/angular-4.x';
+import { CloudinaryModule } from './../cloudinary.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CloudinaryConfig } from './../cloudinary-config';
 import { ImageComponent } from './image.component';

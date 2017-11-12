@@ -3,11 +3,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgStringPipesModule } from 'angular-pipes';
 import { ClothingRoutingModule } from './clothing-routing.module';
 import { ClothingListComponent } from './clothing-list/clothing-list.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClothingDetailComponent } from './clothing-detail/clothing-detail.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
@@ -43,18 +43,19 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
-import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { AdsenseModule } from 'ng2-adsense';
+import { Cloudinary } from 'cloudinary-core';
+import { CloudinaryModule } from './shared/cloudinary/cloudinary.module';
+import { CloudinaryConfig } from './shared/cloudinary/cloudinary-config';
 
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
-import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '@cloudinary/angular-4.x';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ClothingAddComponent } from './clothing-add/clothing-add.component';
 import { ClothingComponent } from './clothing/clothing.component';
 import { ClothingImageComponent } from './clothing-add/clothing-image/clothing-image.component';
-import { CloudinaryConfig } from './shared/cloudinary/cloudinary-config';
 import { ClothingFormComponent } from './shared/clothing/clothing-form/clothing-form.component';
 import { ClothingPreviewComponent } from './clothing-add/clothing-preview/clothing-preview.component';
 import { ImageComponent } from './shared/cloudinary/image/image.component';
@@ -66,15 +67,12 @@ import { UserGuard } from './shared/guard/user.guard';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
 
-export const cloudinaryLib = {
-  Cloudinary: Cloudinary
-};
-
 @NgModule({
   imports: [
     BrowserModule,
     CommonModule,
     ReactiveFormsModule,
+    CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
@@ -83,7 +81,6 @@ export const cloudinaryLib = {
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     ModalModule.forRoot(),
-    CloudinaryModule.forRoot(cloudinaryLib, CloudinaryConfig),
     ImageCropperModule,
     FileUploadModule,
     MatCardModule,
@@ -103,7 +100,12 @@ export const cloudinaryLib = {
     MatMenuModule,
     MatCommonModule,
     MatTooltipModule,
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+      developerMode: true,
+      pageTracking: {
+        clearIds: true,
+      },
+    }),
     AdsenseModule.forRoot({
       adClient: environment.clientAdSense,
       adSlot: environment.slotAdSense
