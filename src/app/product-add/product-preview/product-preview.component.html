@@ -2,20 +2,22 @@
   <mat-card-title align="center">
     <h3>Aperçu</h3>
   </mat-card-title>
-  <mat-card-header>
+  <mat-card-header class="item-card-header">
     <span class="text-left">
-      <mat-icon mat-card-avatar *ngIf="!user || !user.photoURL">perm_identity</mat-icon>
+      <mat-icon class="item-card-avatar" mat-card-avatar *ngIf="!user || !user.photoURL">perm_identity</mat-icon>
     </span>
-    <img mat-card-avatar [src]="user?.photoURL" *ngIf="user && user.photoURL" alt="user?.displayName">
+    <img class="item-card-avatar" mat-card-avatar [src]="user?.photoURL" *ngIf="user && user.photoURL" alt="user?.displayName">
     <mat-card-title>
-      <span class="product-name" *ngIf="!product || !product.name">Donnez un titre court et descriptif à votre pull</span>
-      <span *ngIf="product && product.name">{{ product?.name }}</span>
+      <h2 class="item-card-title size--all-l" *ngIf="!product || !product.name">Donnez un titre court et descriptif à votre pull</h2>
+      <span class="item-card-title size--all-xl" *ngIf="product && product.name">{{ product?.name }}</span>
     </mat-card-title>
+    <span class="item-card-date size--all-xs text-right" [innerHtml]="dateService.compareDatetoHumanReadableString()">
+    </span>
     <mat-card-subtitle>
       <span *ngIf="product && product.price">{{ product.price }} €</span>
       <a href="{{ product?.external_url }}" *ngIf="product && product.reseller">{{ product?.reseller }}</a>
-      <span *ngIf="product && product.description">{{ product?.description | truncate: 20: '...' }}</span>
-      <span class="product-description" *ngIf="!product || !product.description">Donnez une description correspondant à ce merveilleux pull</span>
+      <span class="product-description size--all-xs" *ngIf="product && product.description">{{ product.description | truncate: 20: '...' }}</span>
+      <span class="product-description size--all-xs" *ngIf="!product || !product.description">Donnez une description correspondant à ce merveilleux pull</span>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content align="center">

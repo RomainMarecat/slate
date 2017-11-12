@@ -33,6 +33,7 @@ import { MockProductService } from './../../shared/product/mock-product.service'
 import { ProductService } from './../../shared/product/product.service';
 import { ImageComponent } from './../../shared/cloudinary/image/image.component';
 import { ProductPreviewComponent } from './product-preview.component';
+import { DateService } from './../../shared/util/date.service';
 
 describe('ProductPreviewComponent', () => {
   let component: ProductPreviewComponent;
@@ -46,6 +47,7 @@ describe('ProductPreviewComponent', () => {
           BrowserModule,
           HttpModule,
           RouterTestingModule,
+          NgStringPipesModule,
           BrowserAnimationsModule,
           MatCardModule,
           MatIconModule,
@@ -57,7 +59,10 @@ describe('ProductPreviewComponent', () => {
           NgStringPipesModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
         ],
-        declarations: [ProductPreviewComponent, ImageComponent]
+        declarations: [ProductPreviewComponent, ImageComponent],
+        providers: [
+          { provide: DateService, useClass: DateService }
+        ]
       })
       .compileComponents();
   }));

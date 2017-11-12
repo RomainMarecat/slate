@@ -26,7 +26,7 @@ export class ProductFormComponent implements OnInit {
   constructor(private userService: UserService) {
     this.isLoading = false;
     this._submit = new EventEmitter < Product > ();
-    this.productChange	 = new EventEmitter < Product > ();
+    this.productChange = new EventEmitter < Product > ();
     this.now = new Date();
     this.disableDelivery = false;
     this.image1 = new Media();
@@ -104,15 +104,15 @@ export class ProductFormComponent implements OnInit {
     if (media.position === 1) {
       this.form.patchValue({ image1: media.public_id });
       this.product.image1 = media.public_id;
-      this.productChange.emit(this.product)	;
+      this.productChange.emit(this.product);
     } else if (media.position === 2) {
       this.form.patchValue({ image2: media.public_id });
       this.product.image2 = media.public_id;
-      this.productChange.emit(this.product)	;
+      this.productChange.emit(this.product);
     } else {
       this.form.patchValue({ image3: media.public_id });
       this.product.image3 = media.public_id;
-      this.productChange.emit(this.product)	;
+      this.productChange.emit(this.product);
     }
   }
 

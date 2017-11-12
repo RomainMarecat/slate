@@ -54,7 +54,7 @@ export class ProductAddComponent implements OnInit {
    * Get the new product value
    * @param {IProduct} product
    */
-  onproductChange	(product: IProduct) {
+  onProductChange(product: IProduct) {
     this.product = product;
   }
 }

@@ -13,6 +13,25 @@
     top: 25%;
     left: 63%;
   }
+
+  .item-card-header {
+    min-height: 40px;
+    display: flex;
+    flex: wrap;
+    justify-content: space-around;
+    .item-card-title {
+      margin: 0;
+      display: inline-block;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      max-width: 16em;
+    }
+
+    .item-card-avatar {
+      width: 25px;
+      height: 25px;
+    }
+  }
 }
 
 .mat-card-title {
@@ -26,10 +45,6 @@
   /* large */
   @media (min-width: 993px) {
     min-width: 375px;
-  }
-  .product-name,
-  .product-description {
-    overflow: hidden;
   }
 }
 

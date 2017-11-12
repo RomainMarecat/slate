@@ -1,6 +1,4 @@
 mat-card {
-
-
   @media (max-width: 600px) {
     min-width: 300px;
   }
@@ -22,25 +20,29 @@ mat-card {
     width: 100%;
   }
   .item-card-header {
+    min-height: 40px;
+
     display: flex;
     flex: wrap;
     justify-content: space-around;
-
     .item-card-title {
-      margin: 0;
-      font-size: 20px;
-      display: inline-block;
+      cursor: pointer;
+      .item-card-name {
+        margin: 0;
+        display: inline-block;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        max-width: 16em;
+      }
     }
 
-    span.item-card-date {
-      font-size: 16px;
+    .item-card-avatar {
+      width: 25px;
+      height: 25px;
     }
   }
 
-  mat-card-content {
+  app-image {
     cursor: pointer;
-  }
-  .item-card-header {
-    height: 40px;
   }
 }

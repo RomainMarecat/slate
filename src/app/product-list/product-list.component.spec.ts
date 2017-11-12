@@ -23,6 +23,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { NgStringPipesModule } from 'angular-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './product-list.component';
 import { ProductItemComponent } from './../product-item/product-item.component';
@@ -40,6 +41,7 @@ import { AlertService } from './../shared/alert/alert.service';
 import { LoaderService } from './../shared/loader/loader.service';
 import { MockLoaderService } from './../shared/loader/mock-loader.service';
 import { ScoreService } from './../shared/score/score.service';
+import { DateService } from './../shared/util/date.service';
 import { MockScoreService } from './../shared/score/mock-score.service';
 
 describe('ProductListComponent', () => {
@@ -61,6 +63,7 @@ describe('ProductListComponent', () => {
           MatGridListModule,
           MatInputModule,
           MatCheckboxModule,
+          NgStringPipesModule,
           MatListModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
         ],
@@ -71,6 +74,7 @@ describe('ProductListComponent', () => {
           { provide: AlertService, useClass: MockAlertService },
           { provide: LoaderService, useClass: MockLoaderService },
           { provide: ScoreService, useClass: MockScoreService },
+          { provide: DateService, useClass: DateService }
         ]
       })
       .compileComponents();

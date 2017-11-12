@@ -48,6 +48,7 @@ import { MediaService } from './../shared/media/media.service';
 import { MockMediaService } from './../shared/media/mock-media.service';
 import { LoaderService } from './../shared/loader/loader.service';
 import { MockLoaderService } from './../shared/loader/mock-loader.service';
+import { DateService } from './../shared/util/date.service';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
@@ -89,6 +90,7 @@ describe('ProductAddComponent', () => {
           { provide: UserService, useClass: MockUserService },
           { provide: MediaService, useClass: MockMediaService },
           { provide: ProductService, useClass: MockProductService },
+          DateService,
           ObjectService
         ]
       })
