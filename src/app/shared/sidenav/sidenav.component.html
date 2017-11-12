@@ -28,6 +28,7 @@
   <app-loader></app-loader>
   <div #root="dir" dir="ltr" class="main-content" (swiperight)="sidenav.toggle()">
     <router-outlet></router-outlet>
+    <!-- @todo set the width on different size. Mobile is not responsive -->
     <ng-adsense title="ng-adsense" [width]="500" [height]="108"></ng-adsense>
     <app-footer></app-footer>
   </div>
