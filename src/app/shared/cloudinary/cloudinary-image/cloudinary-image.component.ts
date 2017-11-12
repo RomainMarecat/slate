@@ -33,7 +33,7 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
   imageSource$: Observable < string > ;
 
   constructor(private el: ElementRef, private cloudinary: Cloudinary) {
-    this.offset = 100;
+    this.offset = 3000;
     this.defaultImageSplashScreen = '/assets/images/icons/apple-icon.png';
   }
 
