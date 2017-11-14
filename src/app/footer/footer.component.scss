@@ -5,4 +5,7 @@ footer {
   left: 0;
   width: 100%;
   z-index: 0;
+  .mat-toolbar {
+    background-color: #999;
+  }
 }

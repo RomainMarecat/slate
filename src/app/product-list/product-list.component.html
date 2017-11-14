@@ -1,12 +1,23 @@
 <div class="card-welcome">
   <mat-card>
+    <mat-card-content>
+      <mat-icon>photo_camera</mat-icon>
+    </mat-card-content>
     <mat-card-header>
       <mat-card-title>
         <h1 class="welcome-title size--all-xl">
-          Tu as déjà un pull moche ? Envoie-nous ta photo et essaie d'obtenir le meilleur score !
+          Tu as déjà un pull moche ?
         </h1>
       </mat-card-title>
+      <mat-card-subtitle class="card-subtitle">
+        <h2 class="size--all-l">Envoie-nous ta photo et essaie d'obtenir le meilleur score !</h2>
+      </mat-card-subtitle>
     </mat-card-header>
+    <mat-card-actions>
+      <button [routerLink]="['/add']" color="accent" mat-raised-button type="button" role="button" aria-label="Ajout un pull moche">
+        Je poste en un clic !
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>
 <div class="card-container">
