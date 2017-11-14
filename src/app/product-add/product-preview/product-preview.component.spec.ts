@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -24,6 +26,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+
 import { NgStringPipesModule } from 'angular-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../../shared/cloudinary/cloudinary.module';
@@ -57,6 +60,12 @@ describe('ProductPreviewComponent', () => {
           MatCheckboxModule,
           MatListModule,
           NgStringPipesModule,
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
         ],
         declarations: [ProductPreviewComponent, ImageComponent],

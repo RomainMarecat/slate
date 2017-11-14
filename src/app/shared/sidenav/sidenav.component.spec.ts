@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -78,7 +80,13 @@ describe('SidenavComponent', () => {
           MatLineModule,
           MatMenuModule,
           MatCommonModule,
-          MatTooltipModule
+          MatTooltipModule,
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
         ],
         declarations: [SidenavComponent, LoaderComponent, FooterComponent, MenuComponent],
         providers: [
