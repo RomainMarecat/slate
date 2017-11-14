@@ -12,6 +12,14 @@ module.exports = function(config) {
       pattern: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css'
     }, {
       pattern: './node_modules/hammerjs/hammer.js'
+    }, {
+      pattern: './node_modules/@swimlane/ngx-datatable/release/index.css'
+    }, {
+      pattern: './node_modules/@swimlane/ngx-datatable/release/themes/material.css'
+    }, {
+      pattern: './node_modules/bootstrap/dist/css/bootstrap.css'
+    }, {
+      pattern: './node_modules/@swimlane/ngx-datatable/release/assets/icons.css'
     }],
     plugins: [
       require('karma-jasmine'),
@@ -40,8 +48,8 @@ module.exports = function(config) {
 
     customLaunchers: {
       Chrome_travis_ci: {
-          base: 'Chrome',
-          flags: ['--no-sandbox']
+        base: 'Chrome',
+        flags: ['--no-sandbox']
       }
     },
 
