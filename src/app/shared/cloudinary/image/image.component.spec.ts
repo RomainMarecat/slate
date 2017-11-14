@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgStringPipesModule } from 'angular-pipes';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
@@ -21,6 +22,12 @@ describe('ImageComponent', () => {
           CloudinaryModule,
           NgStringPipesModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
         ],
         declarations: [ImageComponent],
         providers: [

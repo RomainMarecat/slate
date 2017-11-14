@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
-  <a mat-button (click)="toggleSidenav()">
+  <a mat-button (click)="toggleSidenav()" angulartics2On="click" angularticsAction="toggleSidenavWithBurger" [angularticsCategory]="'menu.toggle'">
     <mat-icon>menu</mat-icon>
   </a>
-  <h1 id="mpm-logo" class="logo">
+  <h1 id="mpm-logo" class="logo" angulartics2On="mouseover" angularticsAction="hoveredOverHomeLink" [angularticsCategory]="'home.title'">
     <a [routerLink]="['/']">
       <span class="cls-1">mon pull</span>
       <span class="cls-2">MOCHE</span>

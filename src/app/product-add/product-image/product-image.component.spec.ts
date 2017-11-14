@@ -14,6 +14,8 @@ import {
   MatGridListModule,
   MatFormFieldModule
 } from '@angular/material';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './../../shared/cloudinary/cloudinary-config';
@@ -41,7 +43,12 @@ describe('ProductImageComponent', () => {
           MatGridListModule,
           MatFormFieldModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
-
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
         ],
         declarations: [ProductImageComponent],
         providers: [

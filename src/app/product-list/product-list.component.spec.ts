@@ -23,6 +23,8 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgStringPipesModule } from 'angular-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './product-list.component';
@@ -52,7 +54,6 @@ describe('ProductListComponent', () => {
     TestBed.configureTestingModule({
         imports: [
           CommonModule,
-          RouterTestingModule,
           BrowserModule,
           HttpModule,
           RouterTestingModule,
@@ -65,6 +66,12 @@ describe('ProductListComponent', () => {
           MatCheckboxModule,
           NgStringPipesModule,
           MatListModule,
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
         ],
         declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent, ImageComponent],

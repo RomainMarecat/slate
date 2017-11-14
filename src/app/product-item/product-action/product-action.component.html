@@ -1,9 +1,9 @@
-<mat-card-actions align="center" *ngIf="product">
-  <button role="button" aria-label="Moins" mat-raised-button color="accent" (click)="score(product,	 'minus')">
+<mat-card-actions align="center" *ngIf="product" angulartics2On="mouseover" angularticsAction="hoveredOverScoreActions" [angularticsCategory]="'score.actions'">
+  <button role="button" aria-label="Moins" mat-raised-button color="accent" (click)="score(product, 'minus')" angulartics2On="click" angularticsAction="clickedOnScoreMinus" [angularticsCategory]="'score.minus'">
     <mat-icon aria-label="Trop beau pour augmenter son score">thumb_down</mat-icon>
   </button>
   <span class="ugly-score" *ngIf="product?.score; else showScoreNull">{{ product.score }}</span>
-  <button role="button" aria-label="Plus" mat-raised-button color="primary" (click)="score(product,	 'plus')">
+  <button role="button" aria-label="Plus" mat-raised-button color="primary" (click)="score(product, 'plus')" angulartics2On="click" angularticsAction="clickedOnScorePlus" [angularticsCategory]="'score.plus'">
     <mat-icon aria-label="Trop moche son score doit augmenter">thumb_up</mat-icon>
   </button>
 </mat-card-actions>

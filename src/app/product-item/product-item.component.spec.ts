@@ -4,6 +4,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -50,6 +52,12 @@ describe('ProductItemComponent', () => {
           RouterTestingModule,
           BrowserAnimationsModule,
           MatCardModule,
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
         ],
         declarations: [ProductItemComponent, ProductActionComponent, ImageComponent],

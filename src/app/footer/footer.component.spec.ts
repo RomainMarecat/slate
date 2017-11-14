@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import {
   MatCardModule,
@@ -16,6 +17,8 @@ import {
   MatTooltipModule,
   MatProgressSpinnerModule,
 } from '@angular/material';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { FooterComponent } from './footer.component';
 
 describe('FooterComponent', () => {
@@ -25,7 +28,14 @@ describe('FooterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [
-          MatToolbarModule
+          RouterTestingModule,
+          MatToolbarModule,
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
         ],
         declarations: [FooterComponent]
       })

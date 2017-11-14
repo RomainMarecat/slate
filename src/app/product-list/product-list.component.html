@@ -14,7 +14,7 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
-      <button [routerLink]="['/add']" color="accent" mat-raised-button type="button" role="button" aria-label="Ajout un pull moche">
+      <button [routerLink]="['/add']" color="accent" mat-raised-button type="button" role="button" aria-label="Ajout un pull moche" angulartics2On="click" angularticsAction="clickedOnButtonAddProduct" [angularticsCategory]="'product.add'">
         Je poste en un clic !
       </button>
     </mat-card-actions>
@@ -24,7 +24,7 @@
   <app-product-item *ngFor="let product of products$ | async" class="grid-tile-item" [product]="product" (updatedProduct)="updateProduct($event)"></app-product-item>
 </div>
 <div class="text-right">
-  <button role="button" aria-label="Ajouter un nouveau pull moche" mat-mini-fab class="absolute-fab pulse" (click)="addProduct()">
+  <button role="button" aria-label="Ajouter un nouveau pull moche" mat-mini-fab class="absolute-fab pulse" (click)="addProduct()" angulartics2On="click" angularticsAction="clickedOnFabAddProduct" [angularticsCategory]="'product.add'">
     <mat-icon>add</mat-icon>
   </button>
 </div>

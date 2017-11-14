@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { LoaderComponent } from './loader.component';
 import { MatProgressSpinnerModule } from '@angular/material';
 import { LoaderService } from './loader.service';
@@ -12,7 +15,14 @@ describe('LoaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [
-          MatProgressSpinnerModule
+          RouterTestingModule,
+          MatProgressSpinnerModule,
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
         ],
         declarations: [LoaderComponent],
         providers: [

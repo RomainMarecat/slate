@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <mat-card class="item-card mt2" *ngIf="product">
+      <mat-card class="item-card mt2" *ngIf="product" angulartics2On="click" angularticsAction="hoveredOverProductDetail" [angularticsCategory]="'product.detail'">
         <mat-card-header class="item-card-header">
           <img mat-card-avatar [src]="product.thumbnail" *ngIf="product.thumbnail" [alt]="product?.thumbnail">
           <span mat-card-avatar class="text-left">

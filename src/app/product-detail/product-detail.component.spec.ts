@@ -24,6 +24,8 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgStringPipesModule } from 'angular-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../shared/cloudinary/cloudinary.module';
@@ -45,7 +47,6 @@ describe('ProductDetailComponent', () => {
           RouterTestingModule,
           BrowserModule,
           HttpModule,
-          RouterTestingModule,
           BrowserAnimationsModule,
           MatCardModule,
           MatIconModule,
@@ -56,7 +57,12 @@ describe('ProductDetailComponent', () => {
           NgStringPipesModule,
           MatListModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
-
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
         ],
         declarations: [ProductDetailComponent, ProductActionComponent, ImageComponent],
         providers: [
