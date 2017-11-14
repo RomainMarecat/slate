@@ -33,7 +33,7 @@
         <mat-error *ngIf="price.invalid">Le prix doit être un nombre (sans €)</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input type="number" matInput placeholder="Frais de livraison" [attr.disabled]="disableDelivery" formControlName="delivery_fee" angulartics2On="focus" angularticsAction="focusedOnProductDeliveryFee" [angularticsCategory]="'product.delivery_fee'" [angularticsValue]="delivery_fee?.value">
+        <input type="number" matInput placeholder="Frais de livraison" [attr.disabled]="disableDelivery" formControlName="delivery_fee" angulartics2On="focus" angularticsAction="focusedOnProductDeliveryFee" [angularticsCategory]="'product.delivery_fee'" [angularticsValue]="deliveryFee?.value">
         <mat-error *ngIf="deliveryFee.invalid && deliveryFee.value < 0">Les frais de livraison ne peuvent pas être négatifs</mat-error>
         <mat-error *ngIf="deliveryFee.invalid && deliveryFee.value > 9999">Les frais de livraison sont un peu trop chers !</mat-error>
         <mat-error *ngIf="deliveryFee.invalid">Les frais de livraison doivent être un nombre (sans €)</mat-error>
