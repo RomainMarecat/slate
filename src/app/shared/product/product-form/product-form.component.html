@@ -23,7 +23,7 @@
       </mat-form-field>
       <p class="mt3">Déja vu sur un site ? Donnes-nous des informations sur le site où tu l'as trouvé</p>
       <mat-form-field>
-        <input type="url" matInput placeholder="Lien vers le pull" formControlName="external_url" angulartics2On="focus" angularticsAction="focusedOnProductExternalUrl" [angularticsCategory]="'product.external_url'" [angularticsValue]="external_url?.value">
+        <input type="url" matInput placeholder="Lien vers le pull" formControlName="external_url" angulartics2On="focus" angularticsAction="focusedOnProductExternalUrl" [angularticsCategory]="'product.external_url'" [angularticsValue]="externalUrl?.value">
         <mat-error *ngIf="externalUrl.invalid">Erreur</mat-error>
       </mat-form-field>
       <mat-form-field>
