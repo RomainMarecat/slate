@@ -17,6 +17,7 @@ import {
   MatTooltipModule,
   MatProgressSpinnerModule,
 } from '@angular/material';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { FooterComponent } from './footer.component';
@@ -36,6 +37,9 @@ describe('FooterComponent', () => {
               clearIds: true,
             },
           }),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [FooterComponent]
       })

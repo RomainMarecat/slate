@@ -23,6 +23,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,6 +33,7 @@ import { MenuComponent } from './../menu/menu.component';
 import { AdsenseModule } from 'ng2-adsense';
 import { LoaderComponent } from './../shared/loader/loader.component';
 import { UserService } from './../shared/user/user.service';
+import { I18nService } from './../shared/i18n/i18n.service';
 import { MockUserService } from './../shared/user/mock-user.service';
 import { LoaderService } from './../shared/loader/loader.service';
 import { MockLoaderService } from './../shared/loader/mock-loader.service';
@@ -85,6 +87,9 @@ describe('ProductComponent', () => {
               clearIds: true,
             },
           }),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [
           ProductComponent,
@@ -96,6 +101,7 @@ describe('ProductComponent', () => {
         providers: [
           { provide: UserService, useClass: MockUserService },
           { provide: LoaderService, useClass: MockLoaderService },
+          I18nService,
           SidenavService,
           Angulartics2GoogleAnalytics
         ]

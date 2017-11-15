@@ -25,6 +25,7 @@ import {
   MatProgressSpinnerModule,
   MAT_SNACK_BAR_DATA
 } from '@angular/material';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 describe('AlertComponent', () => {
   let component: AlertComponent;
@@ -46,6 +47,9 @@ describe('AlertComponent', () => {
               clearIds: true,
             },
           }),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [AlertComponent],
         providers: [{

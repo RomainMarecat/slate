@@ -24,6 +24,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgStringPipesModule } from 'angular-pipes';
@@ -63,6 +64,9 @@ describe('ProductDetailComponent', () => {
               clearIds: true,
             },
           }),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [ProductDetailComponent, ProductActionComponent, ImageComponent],
         providers: [

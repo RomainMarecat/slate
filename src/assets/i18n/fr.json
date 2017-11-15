@@ -1,0 +1,76 @@
+{
+  "menu": {
+    "title1": "mon pull",
+    "title2": "MOCHE"
+  },
+  "product-item": {
+    "product-action": {
+      "mat-card-actions": {
+        "button": {
+          "minus": {
+            "title": "Moins",
+            "icon": "Trop beau pour augmenter son score"
+          },
+          "plus": {
+            "title": "Plus",
+            "icon": "Trop moche son score doit augmenter"
+          }
+        }
+      }
+    }
+  },
+  "product-list": {
+    "card-title": {
+      "title": "Tu as déjà un pull moche ?"
+    },
+    "card-subtitle": {
+      "title": "Envoie-nous ta photo et essaie d'obtenir le meilleur score !"
+    },
+    "card-actions": {
+      "title": "Je poste en un clic !"
+    },
+    "fab-button": {
+      "title": "Ajouter un nouveau pull moche"
+    }
+  },
+  "product-add": {
+    "title": "Poster un nouveau pull moche",
+    "product-image": {
+      "image-cropper": {
+        "cropper": {
+          "tooltip": {
+            "title": "Ajuster en redimensionnant ou déplaçant le cadre votre image"
+          }
+        }
+      },
+      "image-button-wrapper": {
+        "button": {
+          "aria-label": {
+            "title": "Valider l'image au dessus"
+          },
+          "tooltip": {
+            "title": "Pense à valider ton image !"
+          }
+        }
+      }
+    },
+    "product-preview": {
+      "title": "Aperçu",
+      "name": {
+        "title": "Donnez un titre court et descriptif à votre pull"
+      },
+      "description": {
+        "title": "Donnez une description correspondant à ce merveilleux pull"
+      },
+      "image": {
+        "title": "Image"
+      },
+      "mat-card-actions": {
+        "button": {
+          "minus": "Moins",
+          "plus": "Plus"
+        }
+      }
+    }
+  }
+}

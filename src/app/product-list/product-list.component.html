@@ -5,17 +5,19 @@
     </mat-card-content>
     <mat-card-header>
       <mat-card-title>
-        <h1 class="welcome-title size--all-xl">
-          Tu as déjà un pull moche ?
+        <h1 class="card-title size--all-xl">
+          {{ 'product-list.card-title.title' | translate }}
         </h1>
       </mat-card-title>
       <mat-card-subtitle class="card-subtitle">
-        <h2 class="size--all-l">Envoie-nous ta photo et essaie d'obtenir le meilleur score !</h2>
+        <h2 class="size--all-l">
+          {{ 'product-list.card-subtitle.title' | translate }}
+        </h2>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
       <button [routerLink]="['/add']" color="accent" mat-raised-button type="button" role="button" aria-label="Ajout un pull moche" angulartics2On="click" angularticsAction="clickedOnButtonAddProduct" [angularticsCategory]="'product.add'">
-        Je poste en un clic !
+        {{ 'product-list.card-actions.title' | translate }}
       </button>
     </mat-card-actions>
   </mat-card>
@@ -24,7 +26,7 @@
   <app-product-item *ngFor="let product of products$ | async" class="grid-tile-item" [product]="product" (updatedProduct)="updateProduct($event)"></app-product-item>
 </div>
 <div class="text-right">
-  <button role="button" aria-label="Ajouter un nouveau pull moche" mat-mini-fab class="absolute-fab pulse" (click)="addProduct()" angulartics2On="click" angularticsAction="clickedOnFabAddProduct" [angularticsCategory]="'product.add'">
+  <button role="button" [attr.aria-label]="'product-list.fab-button.title' | translate" mat-mini-fab class="absolute-fab pulse" (click)="addProduct()" angulartics2On="click" angularticsAction="clickedOnFabAddProduct" [angularticsCategory]="'product.add'">
     <mat-icon>add</mat-icon>
   </button>
 </div>

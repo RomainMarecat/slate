@@ -26,6 +26,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavService } from './sidenav.service';
 import { SidenavComponent } from './sidenav.component';
@@ -87,6 +88,9 @@ describe('SidenavComponent', () => {
               clearIds: true,
             },
           }),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [SidenavComponent, LoaderComponent, FooterComponent, MenuComponent],
         providers: [

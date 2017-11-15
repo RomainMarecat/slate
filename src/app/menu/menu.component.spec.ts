@@ -24,6 +24,7 @@ import {
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { SidenavService } from './../shared/sidenav/sidenav.service';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -46,6 +47,9 @@ describe('MenuComponent', () => {
               clearIds: true,
             },
           }),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [MenuComponent],
         providers: [

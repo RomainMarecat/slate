@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2 class="nm0">Poster un nouveau pull moche</h2>
+      <h2 class="nm0" [innerHtml]="'product-add.title'|translate"></h2>
       <div class="row">
         <div class="col-md-6 col-sm-12">
           <app-product-form (productChange)="onProductChange($event)" [_user]="user" (_submit)="onProductSubmit($event)">

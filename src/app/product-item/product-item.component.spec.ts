@@ -25,6 +25,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { NgStringPipesModule } from 'angular-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductItemComponent } from './product-item.component';
@@ -59,6 +60,9 @@ describe('ProductItemComponent', () => {
             },
           }),
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [ProductItemComponent, ProductActionComponent, ImageComponent],
         providers: [

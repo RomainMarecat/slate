@@ -23,6 +23,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgStringPipesModule } from 'angular-pipes';
@@ -73,6 +74,9 @@ describe('ProductListComponent', () => {
             },
           }),
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent, ImageComponent],
         providers: [

@@ -15,7 +15,9 @@ import {
   MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
+  MatTooltipModule
 } from '@angular/material';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../../cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './../../cloudinary/cloudinary-config';
@@ -60,6 +62,7 @@ describe('ProductFormComponent', () => {
           MatFormFieldModule,
           MatInputModule,
           MatSelectModule,
+          MatTooltipModule,
           MatCheckboxModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
@@ -68,6 +71,9 @@ describe('ProductFormComponent', () => {
               clearIds: true,
             },
           }),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [
           ProductFormComponent,

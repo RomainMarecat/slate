@@ -26,7 +26,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
-
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { NgStringPipesModule } from 'angular-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../../shared/cloudinary/cloudinary.module';
@@ -67,6 +67,9 @@ describe('ProductPreviewComponent', () => {
             },
           }),
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [ProductPreviewComponent, ImageComponent],
         providers: [

@@ -54,6 +54,7 @@ import { CloudinaryConfig } from './shared/cloudinary/cloudinary-config';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { SharedModule } from './shared/shared.module';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductComponent } from './product/product.component';
 import { ProductImageComponent } from './product-add/product-image/product-image.component';
@@ -89,7 +90,6 @@ export class MyHammerConfig extends HammerGestureConfig {
   imports: [
     BrowserModule,
     CommonModule,
-    ReactiveFormsModule,
     CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
     FormsModule,
     HttpModule,
@@ -98,6 +98,17 @@ export class MyHammerConfig extends HammerGestureConfig {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+      developerMode: true,
+      pageTracking: {
+        clearIds: true,
+      },
+    }),
+    AdsenseModule.forRoot({
+      adClient: environment.clientAdSense,
+      adSlot: environment.slotAdSense
+    }),
+    AdminModule,
     ModalModule.forRoot(),
     ImageCropperModule,
     FileUploadModule,
@@ -118,18 +129,9 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatMenuModule,
     MatCommonModule,
     MatTooltipModule,
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-      developerMode: true,
-      pageTracking: {
-        clearIds: true,
-      },
-    }),
-    AdsenseModule.forRoot({
-      adClient: environment.clientAdSense,
-      adSlot: environment.slotAdSense
-    }),
-    AdminModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    ReactiveFormsModule,
+    SharedModule,
   ],
   entryComponents: [
     AlertComponent
