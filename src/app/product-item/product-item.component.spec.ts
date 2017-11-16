@@ -35,6 +35,7 @@ import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './../shared/cloudinary/cloudinary-config';
 import { DateService } from './../shared/util/date.service';
+import { I18nService } from './../shared/i18n/i18n.service';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -66,7 +67,8 @@ describe('ProductItemComponent', () => {
         ],
         declarations: [ProductItemComponent, ProductActionComponent, ImageComponent],
         providers: [
-          { provide: DateService, useClass: DateService }
+          { provide: DateService, useClass: DateService },
+          I18nService
         ]
       })
       .compileComponents();

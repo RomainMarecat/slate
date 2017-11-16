@@ -3,7 +3,7 @@
   <mat-sidenav #sidenav class="leftSideNav" mode="over" opened="false">
     <div *ngIf="userService.getAuthState() | async; let user; else showLogin">
       <mat-card class="card-sidebar">
-        <img mat-card-image alt="Sidebar image default" src="/assets/images/sidebar.jpg">
+        <img mat-card-image alt="'sidenav.card.img.alt'|translate" src="/assets/images/sidebar.jpg">
         <mat-card-header>
           <img mat-card-avatar [src]="user?.photoURL">
           <h2 class="mat-title">{{ user?.displayName }}</h2>
@@ -11,15 +11,14 @@
       </mat-card>
       <mat-list>
         <mat-list-item>
-          <a class="sidenav-link" mat-raised [routerLink]="['/add']">Ajouter un pull moche</a>
+          <a class="sidenav-link" mat-raised [routerLink]="['/add']" [innerHtml]="'sidenav.card.list-item.add.title'|translate"></a>
         </mat-list-item>
         <mat-list-item>
-          <a class="sidenav-link" mat-raised [routerLink]="['/admin']" *ngIf="user?.displayName === 'Romain Marecat'">Back Office</a>
+          <a class="sidenav-link" mat-raised [routerLink]="['/admin']" *ngIf="user?.displayName === 'Romain Marecat'" [innerHtml]="'sidenav.card.list-item.admin.title'|translate"></a>
         </mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item>
-          <button role="button" aria-label="Deconnexion" mat-raised-button color="primary" type="button" (click)="userService.logout()">
-            Déconnexion
+          <button role="button" [attr.aria-label]="'sidenav.card.list-item.logout.aria-label'|translate" mat-raised-button color="primary" type="button" (click)="userService.logout()" [innerHtml]="'sidenav.card.list-item.logout.title'|translate">
           </button>
         </mat-list-item>
       </mat-list>
@@ -36,13 +35,14 @@
 <ng-template #showLogin>
   <mat-list>
     <mat-list-item>
-      <h2>Se connecter</h2>
+      <h2 [innerHtml]="'sidenav.card.list-item.login.title'|translate"></h2>
     </mat-list-item>
     <mat-list-item>
-      <button mat-raised-button color="primary" type="button" (click)="userService.loginGoogle()">Se connecter avec Google</button>
+      <button mat-raised-button color="primary" type="button" (click)="userService.loginGoogle()" [innerHtml]="'sidenav.card.list-item.google.title'|translate"></button>
     </mat-list-item>
     <mat-list-item>
-      <button mat-raised-button color="primary" type="button" (click)="userService.loginFacebook()">Se connecter avec Facebook</button>
+      <button mat-raised-button color="primary" type="button" (click)="userService.loginFacebook()" [innerHtml]="'sidenav.card.list-item.facebook.title'|translate">
+      </button>
     </mat-list-item>
   </mat-list>
 </ng-template>

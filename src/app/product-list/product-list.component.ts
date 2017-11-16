@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import { UserService } from './../shared/user/user.service';
 import { AlertService } from './../shared/alert/alert.service';
 import { LoaderService } from './../shared/loader/loader.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-list',
@@ -23,10 +24,21 @@ export class ProductListComponent implements OnInit {
   headerHeight: number;
   pageLimit: number;
 
+  /**
+   * constructor
+   * @param {ProductService}   private productService
+   * @param {Router}           private router
+   * @param {Meta}             private meta
+   * @param {ElementRef}       private ProductComponent
+   * @param {UserService}      private userService
+   * @param {AlertService}     public  alertService
+   * @param {LoaderService}    private loaderService
+   * @param {TranslateService} private translateService
+   */
   constructor(private productService: ProductService, private router: Router,
     private meta: Meta, private ProductComponent: ElementRef,
     private userService: UserService, public alertService: AlertService,
-    private loaderService: LoaderService) {
+    private loaderService: LoaderService, private translateService: TranslateService) {
     this.headerHeight = 0;
     this.pageLimit = 100;
     this.rowHeight = 300;
@@ -38,9 +50,20 @@ export class ProductListComponent implements OnInit {
    */
   ngOnInit() {
     this.loaderService.show();
+    this.translateService.get('meta.title.content')
+      .subscribe((translation: string) => {
+        this.meta.addTag({ name: 'title', content: translation });
+      });
+    this.translateService.get('meta.description.content')
+      .subscribe((translation: string) => {
+        this.meta.addTag({ name: 'description', content: translation });
+      });
+
     this.meta.addTags([
-      { name: 'title', content: 'Mon pull Moche' },
-      { name: 'description', content: 'Découvrez la liste officielle des pulls moches.' },
+      { rel: 'canonical', href: 'https://monpullmoche.com' },
+      { rel: 'alternate', hreflang: 'x-default', href: 'https://monpullmoche.com' },
+      { rel: 'alternate', hreflang: 'en', href: 'https://en.monpullmoche.com' },
+      { rel: 'alternate', hreflang: 'es', href: 'https://es.monpullmoche.com' },
     ]);
 
     this.loadProducts(this.pageLimit);

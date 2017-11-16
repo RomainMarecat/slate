@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { I18nService } from '../i18n/i18n.service';
 
 @Injectable()
 export class DateService {
 
-  constructor() {}
+  constructor(private translateService: TranslateService, private i18nService: I18nService) {}
 
   /**
    * Difference duration between 2 dates, it can be compared to UTC
@@ -29,7 +31,6 @@ export class DateService {
    * Return string date when >= 1 day
    * Compare to UTC format 1970-1-1
    * @param {Date} date
-   * @todo translate
    */
   getHumanReadableDate(date: Date = new Date(), comparePast: Date = new Date()): string {
     const years = date.getUTCFullYear();
@@ -47,13 +48,17 @@ export class DateService {
     const second = seconds.toString();
     // Go always in this case : Refacto all this function
     if (year > 0 || month > 0 || day > 0) {
-      return comparePast.toLocaleDateString('fr');
+      return comparePast.toLocaleDateString(this.i18nService.locale);
     }
     if (year <= 0 && month <= 0 && day <= 0 && hours <= 0 && minutes <= 1 && minutes >= 0) {
-      return 'maintenant';
+      return this.translateService.instant('date.now');
     }
     // Format to string locale fr
-    return 'Il y a  ' + hour + ' h et ' + minute + ' min';
+    return this.translateService.instant('date.prefix', { value: hour }) +
+      this.translateService.instant('date.short_hour') +
+      minute +
+      this.translateService.instant('date.and') +
+      this.translateService.instant('date.short_min');
   }
 
   /**

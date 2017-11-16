@@ -37,6 +37,7 @@ import { ProductService } from './../../shared/product/product.service';
 import { ImageComponent } from './../../shared/cloudinary/image/image.component';
 import { ProductPreviewComponent } from './product-preview.component';
 import { DateService } from './../../shared/util/date.service';
+import { I18nService } from './../../shared/i18n/i18n.service';
 
 describe('ProductPreviewComponent', () => {
   let component: ProductPreviewComponent;
@@ -73,7 +74,8 @@ describe('ProductPreviewComponent', () => {
         ],
         declarations: [ProductPreviewComponent, ImageComponent],
         providers: [
-          { provide: DateService, useClass: DateService }
+          { provide: DateService, useClass: DateService },
+          I18nService
         ]
       })
       .compileComponents();

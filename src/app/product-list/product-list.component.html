@@ -16,8 +16,7 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
-      <button [routerLink]="['/add']" color="accent" mat-raised-button type="button" role="button" aria-label="Ajout un pull moche" angulartics2On="click" angularticsAction="clickedOnButtonAddProduct" [angularticsCategory]="'product.add'">
-        {{ 'product-list.card-actions.title' | translate }}
+      <button [routerLink]="['/add']" color="accent" mat-raised-button type="button" role="button" [attr.aria-label]="'product-list.card-actions.aria-label'|translate" angulartics2On="click" angularticsAction="clickedOnButtonAddProduct" [angularticsCategory]="'product.add'" [innerHtml]="'product-list.card-actions.title' | translate">
       </button>
     </mat-card-actions>
   </mat-card>

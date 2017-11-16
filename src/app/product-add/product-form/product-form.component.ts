@@ -1,9 +1,9 @@
-import { Component, TemplateRef, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Product } from './../product';
-import { IProduct } from './../i-product';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Product } from './../../shared/product/product';
+import { IProduct } from './../../shared/product/i-product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Media } from './../../media/media';
-import { UserService } from './../../user/user.service';
+import { Media } from './../../shared/media/media';
+import { UserService } from './../../shared/user/user.service';
 
 @Component({
   selector: 'app-product-form',

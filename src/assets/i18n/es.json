@@ -1,0 +1,183 @@
+{
+  "snackbar": {
+    "guard": {
+      "no autenticado": "¡Tienes que iniciar sesión para agregar tantos suéteres asquerosos como quieras!"
+    }
+  },
+  "menu": {
+    "title1": "mi suéter",
+    "title2": "MOCK"
+  },
+  "fecha": {
+    "ahora": "ahora",
+    "prefijo": "Hay",
+    "short_hour": "h",
+    "y": "y",
+    "short_minutes": "min"
+  },
+  "sidenav": {
+    "tarjeta": {
+      "list-item": {
+        "agregar": {
+          "título": "Añadir un suéter feo"
+        },
+        "admin": {
+          "título": "Back Office"
+        },
+        "Facebook": {
+          "título": "Conectar con Facebook"
+        },
+        "google": {
+          "título": "Conectar con Google"
+        },
+        "iniciar la sesión": {
+          "título": "Conexión"
+        },
+        "cerrar la sesión": {
+          "título": "Cerrar sesión",
+          "aria-label": "Cerrar sesión"
+        }
+      },
+      "imagen": {
+        "alt": "Imagen de fondo del menú"
+      }
+    }
+  },
+  "usuario": {
+    "access_denied": {
+      "conectar": "Debes conectarte para realizar esta acción"
+    }
+  },
+  "producto-artículo": {
+    "producto-acción": {
+      "mat-card-actions": {
+        "botón": {
+          "menos": {
+            "título": "Menos",
+            "icono": "Demasiado bueno para aumentar su puntaje"
+          },
+          "más": {
+            "título": "Más",
+            "icono": "Demasiado feo su puntaje debe aumentar"
+          }
+        }
+      }
+    }
+  },
+  "lista de productos": {
+    "título de la tarjeta": {
+      "título": "¿Ya tienes un suéter pésimo?"
+    },
+    "tarjeta-subtítulo": {
+      "título": "¡Envíanos tu foto y trata de obtener la mejor puntuación!"
+    },
+    "acciones de tarjeta": {
+      "título": "¡Publiqué en un clic!"
+    },
+    "fab-button": {
+      "título": "Agregar un nuevo suéter pésimo"
+    }
+  },
+  "producto agregado": {
+    "título": "Publica un nuevo suéter feo",
+    "producto-forma": {
+      "título de la tarjeta": {
+        "título": "Importar la foto de su suéter"
+      },
+      "forma": {
+        "nombre": {
+          "título": "Dale un título corto a tu suéter",
+          "marcador de posición": "Título",
+          "longitud": "/ 50",
+          "error": {
+            "longitud": "El nombre del suéter está vacío",
+            "inválido": "El nombre del suéter contiene errores",
+            "obligatorio": "Se requiere el nombre del suéter"
+          }
+        },
+        "descripción": {
+          "título": "Dar una breve descripción de su suéter",
+          "marcador de posición": "Da una breve descripción de tu suéter",
+          "longitud": "/ 2000",
+          "error": {
+            "longitud": "La descripción del suéter está vacía",
+            "inválido": "La descripción de extracción no es válida",
+            "obligatorio": "se requiere la descripción del suéter"
+          }
+        },
+        "delivery_fee": {
+          "marcador de posición": "costos de entrega",
+          "error": {
+            "min": "Los gastos de envío no pueden ser negativos",
+            "max": "¡Los costos de envío son un poco demasiado caros!",
+            "longitud": "Los costos de entrega están vacíos",
+            "inválido": "los costos de envío deben ser un número (sin €)",
+            "obligatorio": "Se requieren cargos de envío"
+          }
+        },
+        "external_url": {
+          "more_about": "Ya se ve en un sitio? Danos información sobre el sitio donde lo encontraste",
+          "marcador de posición": "Enlace al suéter",
+          "error": {
+            "longitud": "El enlace al suéter está vacío",
+            "inválido": "El enlace al suéter es inválido",
+            "obligatorio": "Se requiere el enlace al suéter"
+          }
+        },
+        "precio": {
+          "marcador de posición": "Precio",
+          "error": {
+            "min": "El precio no puede ser negativo",
+            "max": "¡El precio es un poco demasiado caro!",
+            "longitud": "El precio está vacío",
+            "inválido": "El precio debe ser un número (sin €)",
+            "requerido": "Se requiere un precio"
+          }
+        },
+        "validación": {
+          "botón": {
+            "etiqueta": "Validar",
+            "título": "Validar"
+          }
+        }
+      }
+    },
+    "producto-imagen": {
+      "image-cropper": {
+        "cropper": {
+          "información sobre herramientas": {
+            "título": "Ajuste cambiando el tamaño o moviendo el marco de su imagen"
+          }
+        }
+      },
+      "imagen-botón-envoltura": {
+        "botón": {
+          "aria-label": {
+            "título": "Validar la imagen de arriba"
+          },
+          "información sobre herramientas": {
+            "título": "¡Piensa en validar tu imagen!"
+          }
+        }
+      }
+    },
+    "vista previa del producto": {
+      "título": "Vista previa",
+      "nombre": {
+        "título": "Dale un título corto y descriptivo a tu suéter"
+      },
+      "descripción": {
+        "título": "dar una descripción de este maravilloso suéter"
+      },
+      "imagen": {
+        "título": "Imagen"
+      },
+      "mat-card-actions": {
+        "botón": {
+          "menos": "Menos",
+          "más": "más"
+        }
+      }
+    }
+  }
+}

@@ -46,6 +46,7 @@ import { MockLoaderService } from './../shared/loader/mock-loader.service';
 import { ScoreService } from './../shared/score/score.service';
 import { DateService } from './../shared/util/date.service';
 import { MockScoreService } from './../shared/score/mock-score.service';
+import { I18nService } from './../shared/i18n/i18n.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -85,7 +86,8 @@ describe('ProductListComponent', () => {
           { provide: AlertService, useClass: MockAlertService },
           { provide: LoaderService, useClass: MockLoaderService },
           { provide: ScoreService, useClass: MockScoreService },
-          { provide: DateService, useClass: DateService }
+          { provide: DateService, useClass: DateService },
+          I18nService
         ]
       })
       .compileComponents();

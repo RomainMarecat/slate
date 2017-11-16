@@ -58,7 +58,7 @@ import { SharedModule } from './shared/shared.module';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductComponent } from './product/product.component';
 import { ProductImageComponent } from './product-add/product-image/product-image.component';
-import { ProductFormComponent } from './shared/product/product-form/product-form.component';
+import { ProductFormComponent } from './product-add/product-form/product-form.component';
 import { ProductPreviewComponent } from './product-add/product-preview/product-preview.component';
 import { ImageComponent } from './shared/cloudinary/image/image.component';
 import { ProductActionComponent } from './product-item/product-action/product-action.component';

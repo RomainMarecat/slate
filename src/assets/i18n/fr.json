@@ -1,7 +1,60 @@
 {
+  "meta": {
+    "description": {
+      "content": "Découvrez la liste officielle des pulls moches."
+    },
+    "title": {
+      "content": "Mon pull Moche"
+    }
+  },
+  "snackbar": {
+    "guard": {
+      "unauthenticated": "Il faut se connecter pour ajouter autant de pull moche que vous voulez !"
+    }
+  },
   "menu": {
     "title1": "mon pull",
     "title2": "MOCHE"
+  },
+  "date": {
+    "now": "maintenant",
+    "prefix": "Il y a ",
+    "short_hour": "h",
+    "and": " et ",
+    "short_minutes": "min"
+  },
+  "sidenav": {
+    "card": {
+      "list-item": {
+        "add": {
+          "title": "Ajouter un pull moche"
+        },
+        "admin": {
+          "title": "Back Office"
+        },
+        "facebook": {
+          "title": "Se connecter avec Facebook"
+        },
+        "google": {
+          "title": "Se connecter avec Google"
+        },
+        "login": {
+          "title": "Connexion"
+        },
+        "logout": {
+          "title": "Déconnexion",
+          "aria-label": "Déconnexion"
+        }
+      },
+      "image": {
+        "alt": "Image de fond du menu"
+      }
+    }
+  },
+  "user": {
+    "access_denied": {
+      "connect": "Il faut se connecter pour effectuer cette action"
+    }
   },
   "product-item": {
     "product-action": {
@@ -27,7 +80,8 @@
       "title": "Envoie-nous ta photo et essaie d'obtenir le meilleur score !"
     },
     "card-actions": {
-      "title": "Je poste en un clic !"
+      "title": "Je poste en un clic !",
+      "aria-label": "Je poste en un clic !"
     },
     "fab-button": {
       "title": "Ajouter un nouveau pull moche"
@@ -35,6 +89,68 @@
   },
   "product-add": {
     "title": "Poster un nouveau pull moche",
+    "product-form": {
+      "card-title": {
+        "title": "Importer la photo de ton pull"
+      },
+      "form": {
+        "name": {
+          "title": "Donner un titre court à votre pull",
+          "placeholder": "Titre",
+          "length": "/ 50",
+          "error": {
+            "length": "Le nom du pull est vide",
+            "invalid": "Le nom du pull contient des erreurs",
+            "required": "Le nom du pull est requis"
+          }
+        },
+        "description": {
+          "title": "Donner un court descriptif à votre pull",
+          "placeholder": "Donner un court descriptif à votre pull",
+          "length": "/ 2000",
+          "error": {
+            "length": "La description du pull est vide",
+            "invalid": "La description du pull est invalide",
+            "required": "La description du pull est requise"
+          }
+        },
+        "delivery_fee": {
+          "placeholder": "Frais de livraison",
+          "error": {
+            "min": "Les frais de livraison ne peuvent pas être négatifs",
+            "max": "Les frais de livraison sont un peu trop chers !",
+            "length": "Les frais de livraison sont vides",
+            "invalid": "Les frais de livraison doivent être un nombre (sans €)",
+            "required": "Les frais de livraison sont requis"
+          }
+        },
+        "external_url": {
+          "more_about": "Déja vu sur un site ? Donnes-nous des informations sur le site où tu l'as trouvé",
+          "placeholder": "Lien vers le pull",
+          "error": {
+            "length": "Le lien vers le pull est vide",
+            "invalid": "Le lien vers le pull est invalide",
+            "required": "Le lien vers le pull est requis"
+          }
+        },
+        "price": {
+          "placeholder": "Prix",
+          "error": {
+            "min": "Le prix ne peut pas être négatif",
+            "max": "Le prix est un peu trop cher !",
+            "length": "Le prix est vide",
+            "invalid": "Le prix doit être un nombre (sans €)",
+            "required": "Le prix est requise"
+          }
+        },
+        "validation": {
+          "button": {
+            "label": "Valider",
+            "title": "Valider"
+          }
+        }
+      }
+    },
     "product-image": {
       "image-cropper": {
         "cropper": {
