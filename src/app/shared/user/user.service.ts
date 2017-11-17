@@ -27,7 +27,7 @@ export class UserService {
       .map(authState => !!authState)
       .do(authenticated => {
         if (!authenticated) {
-          this.alertService.toast('Il faut se connecter pour effectuer cette action');
+          this.alertService.toast('user.access_denied.connect');
         }
       });
   }

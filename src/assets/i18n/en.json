@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "description": {
+      "content": "Check out the official list of ugly sweats"
+    },
+    "title": {
+      "content": "My ugly sweat"
+    }
+  },
+  "snackbar": {
+    "guard": {
+      "unauthenticated": "You have to login to add as many ugly sweaters as you want!"
+    }
+  },
+  "menu": {
+    "title1": "my ugly",
+    "title2": "SWEAT"
+  },
+  "date": {
+    "now": "now",
+    "prefix": "There is",
+    "short_hour": "",
+    "and": ":",
+    "short_minutes": ""
+  },
+  "sidenav": {
+    "card": {
+      "list-item": {
+        "add": {
+          "title": "Add your ugly sweat"
+        },
+        "admin": {
+          "title": "Back Office"
+        },
+        "facebook": {
+          "title": "Login with Facebook"
+        },
+        "google": {
+          "title": "Login with Google"
+        },
+        "login": {
+          "title": "Login"
+        },
+        "logout": {
+          "title": "Logout",
+          "aria-label": "Logout"
+        }
+      },
+      "image": {
+        "alt": "Background of sidenav"
+      }
+    }
+  },
+  "user": {
+    "access_denied": {
+      "connect": "You must connect to perform this action"
+    }
+  },
+  "product-item": {
+    "product-action": {
+      "mat-card-actions": {
+        "button": {
+          "minus": {
+            "title": "Less",
+            "icon": "Too good to increase his score"
+          },
+
+          "more": {
+            "title": "More",
+            "icon": "Too ugly, his score must increase"
+          }
+        }
+      }
+    }
+  },
+  "product-list": {
+    "card-title": {
+      "title": "Do you already have a lousy sweater ?"
+    },
+    "card-subtitle": {
+      "title": "Send us your photo and try to get the best score !"
+    },
+    "card-actions": {
+      "title": "I post in one click !",
+      "aria-label": "I post in one click !"
+    },
+    "fab-button": {
+      "title": "Add a new lousy sweater"
+    }
+  },
+
+  "product-add": {
+    "title": "Post a new ugly sweater",
+    "product-form": {
+      "card-title": {
+        "title": "Import the photo of your sweater"
+      },
+      "form": {
+        "name": {
+          "title": "Give a short title to your sweater",
+          "placeholder": "Title",
+          "length": "/ 50",
+          "error": {
+            "length": "The name of the sweater is empty",
+            "invalid": "The sweater name contains errors",
+            "required": "The name of the sweater is required"
+          }
+        },
+
+        "description": {
+          "title": "Give a short description to your sweater",
+          "placeholder": "Give a short description to your sweater",
+          "length": "/ 2000",
+          "error": {
+            "length": "The description of the sweater is empty",
+            "invalid": "The pull description is invalid",
+            "required": "The sweater description is required"
+          }
+        },
+
+        "delivery_fee": {
+          "placeholder": "Delivery costs",
+          "error": {
+            "min": "Delivery charges can not be negative",
+            "max": "The delivery costs are a little too expensive!",
+            "length": "Delivery costs are empty",
+            "invalid": "Delivery costs must be a number (without €)",
+            "required": "Delivery charges are required"
+          }
+        },
+
+        "external_url": {
+          "more_about": "Already seen on a site? Give us information on the site where you found it",
+          "placeholder": "Link to the sweater",
+          "error": {
+            "length": "The link to the sweater is empty",
+            "invalid": "The link to the sweater is invalid",
+            "required": "The link to the sweater is required"
+          }
+        },
+
+        "price": {
+          "placeholder": "Price",
+          "error": {
+            "min": "The price can not be negative",
+            "max": "The price is a little too expensive!",
+            "length": "The price is empty",
+            "invalid": "The price must be a number (without €)",
+            "required": "Price is required"
+          }
+        },
+
+        "validation": {
+          "button": {
+            "label": "Save",
+            "title": "Save"
+          }
+        }
+      }
+    },
+    "product-image": {
+      "image-cropper": {
+        "cropper": {
+          "tooltip": {
+            "title": "Adjust by resizing or moving the frame of your image"
+          }
+        }
+      },
+      "image-button-wrapper": {
+        "button": {
+          "aria-label": {
+            "title": "Validate the image above"
+          },
+
+          "tooltip": {
+            "title": "Think about validating your image!"
+          }
+        }
+      }
+    },
+
+    "product-preview": {
+      "title": "Preview",
+      "name": {
+        "title": "Give a short and descriptive title to your sweater"
+      },
+
+      "description": {
+        "title": "Give a description for this wonderful sweater"
+      },
+
+      "picture": {
+        "title": "Image"
+      },
+
+      "mat-card-actions": {
+        "button": {
+          "minus": "Dislike",
+          "plus": "Like"
+        }
+      }
+    }
+  }
+}

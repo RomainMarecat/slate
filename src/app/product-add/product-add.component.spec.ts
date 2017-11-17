@@ -26,6 +26,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
@@ -33,14 +34,13 @@ import { NgStringPipesModule } from 'angular-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './../shared/cloudinary/cloudinary-config';
-import { ProductActionComponent } from './../product-item/product-action/product-action.component';
 import { MockProductService } from './../shared/product/mock-product.service';
 import { ProductService } from './../shared/product/product.service';
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
 import { ProductImageComponent } from './product-image/product-image.component';
 import { ImageComponent } from './../shared/cloudinary/image/image.component';
 import { ProductAddComponent } from './product-add.component';
-import { ProductFormComponent } from './../shared/product/product-form/product-form.component';
+import { ProductFormComponent } from './product-form/product-form.component';
 import { MockAlertService } from './../shared/alert/mock-alert.service';
 import { AlertService } from './../shared/alert/alert.service';
 import { MockUserService } from './../shared/user/mock-user.service';
@@ -51,6 +51,7 @@ import { MockMediaService } from './../shared/media/mock-media.service';
 import { LoaderService } from './../shared/loader/loader.service';
 import { MockLoaderService } from './../shared/loader/mock-loader.service';
 import { DateService } from './../shared/util/date.service';
+import { I18nService } from './../shared/i18n/i18n.service';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
@@ -84,6 +85,9 @@ describe('ProductAddComponent', () => {
               clearIds: true,
             },
           }),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [
           ProductAddComponent,
@@ -99,7 +103,8 @@ describe('ProductAddComponent', () => {
           { provide: MediaService, useClass: MockMediaService },
           { provide: ProductService, useClass: MockProductService },
           DateService,
-          ObjectService
+          ObjectService,
+          I18nService
         ]
       })
       .compileComponents();

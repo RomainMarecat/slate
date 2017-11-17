@@ -13,10 +13,10 @@
 <div class="row">
   <div class="image-cropper" [ngClass]="cropperClass">
     <div class="col-12">
-      <img-cropper #cropper [image]="data" [settings]="cropperSettings" matTooltip="Ajuster en redimensionnant ou déplaçant le cadre votre image" matTooltipPosition="right" angulartics2On="mouseover" angularticsAction="HoveredOverCropProductImage" [angularticsCategory]="'media.crop'"></img-cropper>
+      <img-cropper #cropper [image]="data" [settings]="cropperSettings" [attr.matTooltip]="'product-add.product-image.image-cropper.cropper.tooltip.title'|translate" matTooltipPosition="right" angulartics2On="mouseover" angularticsAction="HoveredOverCropProductImage" [angularticsCategory]="'media.crop'"></img-cropper>
     </div>
-    <div class="col-12 mt2">
-      <button role="button" aria-label="Valider l'image au dessus" matTooltip="Pense à valider ton image !" matTooltipPosition="right" mat-raised-button color="primary" type="button" (click)="validateImage()" class="button-image-validation" angulartics2On="click" angularticsAction="clickedOnUploadProductImage" [angularticsCategory]="'media.save'">
+    <div class="col-12 mt2 image-button-wrapper">
+      <button role="button" [attr.aria-label]="'product-add.product-image.image-button-wrapper.button.aria-label.title'|translate" [attr.matTooltip]="'product-add.product-image.image-button-wrapper.button.tooltip.title'|translate" matTooltipPosition="right" mat-raised-button color="primary" type="button" (click)="validateImage()" class="button-image-validation" angulartics2On="click" angularticsAction="clickedOnUploadProductImage" [angularticsCategory]="'media.save'">
         Valider
       </button>
     </div>

@@ -19,7 +19,7 @@ export class UserGuard implements CanActivate {
       .map(authState => !!authState)
       .do(authenticated => {
         if (!authenticated) {
-          this.alertService.toast('Il faut se connecter pour ajouter autant de pull moche que vous voulez !');
+          this.alertService.toast('snackbar.guard.unauthenticated');
           this.router.navigate(['/']);
         }
       });

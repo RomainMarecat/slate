@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+
 import {
   MatCardModule,
   MatToolbarModule,
@@ -26,6 +27,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ProductActionComponent } from './product-action.component';
 import { MockProductService } from './../../shared/product/mock-product.service';
 import { MockUserService } from './../../shared/user/mock-user.service';
@@ -61,6 +63,9 @@ describe('ProductActionComponent', () => {
               clearIds: true,
             },
           }),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [ProductActionComponent],
         providers: [

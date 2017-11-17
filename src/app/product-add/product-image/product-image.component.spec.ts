@@ -12,8 +12,10 @@ import {
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatTooltipModule
 } from '@angular/material';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Cloudinary } from 'cloudinary-core';
@@ -42,6 +44,7 @@ describe('ProductImageComponent', () => {
           MatButtonModule,
           MatGridListModule,
           MatFormFieldModule,
+          MatTooltipModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
@@ -49,6 +52,9 @@ describe('ProductImageComponent', () => {
               clearIds: true,
             },
           }),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [ProductImageComponent],
         providers: [

@@ -26,7 +26,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
-
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { NgStringPipesModule } from 'angular-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../../shared/cloudinary/cloudinary.module';
@@ -37,6 +37,7 @@ import { ProductService } from './../../shared/product/product.service';
 import { ImageComponent } from './../../shared/cloudinary/image/image.component';
 import { ProductPreviewComponent } from './product-preview.component';
 import { DateService } from './../../shared/util/date.service';
+import { I18nService } from './../../shared/i18n/i18n.service';
 
 describe('ProductPreviewComponent', () => {
   let component: ProductPreviewComponent;
@@ -67,10 +68,14 @@ describe('ProductPreviewComponent', () => {
             },
           }),
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [ProductPreviewComponent, ImageComponent],
         providers: [
-          { provide: DateService, useClass: DateService }
+          { provide: DateService, useClass: DateService },
+          I18nService
         ]
       })
       .compileComponents();

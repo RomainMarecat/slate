@@ -11,6 +11,7 @@ import { CloudinaryConfig } from './../cloudinary-config';
 import { ImageComponent } from './image.component';
 import { MediaService } from './../../media/media.service';
 import { MockMediaService } from './../../media/mock-media.service';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 describe('ImageComponent', () => {
   let component: ImageComponent;
@@ -28,6 +29,9 @@ describe('ImageComponent', () => {
               clearIds: true,
             },
           }),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [ImageComponent],
         providers: [

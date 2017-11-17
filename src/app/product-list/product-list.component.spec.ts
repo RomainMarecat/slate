@@ -23,6 +23,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgStringPipesModule } from 'angular-pipes';
@@ -45,6 +46,7 @@ import { MockLoaderService } from './../shared/loader/mock-loader.service';
 import { ScoreService } from './../shared/score/score.service';
 import { DateService } from './../shared/util/date.service';
 import { MockScoreService } from './../shared/score/mock-score.service';
+import { I18nService } from './../shared/i18n/i18n.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -73,6 +75,9 @@ describe('ProductListComponent', () => {
             },
           }),
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          })
         ],
         declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent, ImageComponent],
         providers: [
@@ -81,7 +86,8 @@ describe('ProductListComponent', () => {
           { provide: AlertService, useClass: MockAlertService },
           { provide: LoaderService, useClass: MockLoaderService },
           { provide: ScoreService, useClass: MockScoreService },
-          { provide: DateService, useClass: DateService }
+          { provide: DateService, useClass: DateService },
+          I18nService
         ]
       })
       .compileComponents();
