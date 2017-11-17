@@ -19,5 +19,6 @@ export const environment = {
   cloudName: 'monpullmoche',
   uploadPreset: 'k0bxujke',
   clientAdSense: 'ca-pub-4195199088767183',
-  slotAdSense: 123456
+  slotAdSense: 123456,
+  slackToken: 'https://hooks.slack.com/services/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',
 };

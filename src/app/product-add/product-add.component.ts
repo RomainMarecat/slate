@@ -5,6 +5,7 @@ import { ProductService } from './../shared/product/product.service';
 import { UserService } from './../shared/user/user.service';
 import { LoaderService } from './../shared/loader/loader.service';
 import { AlertService } from './../shared/alert/alert.service';
+import { NotificationService } from './../shared/slack/notification.service';
 
 @Component({
   selector: 'app-product-add',
@@ -26,7 +27,7 @@ export class ProductAddComponent implements OnInit {
    */
   constructor(private router: Router, private productService: ProductService,
     public alertService: AlertService, private userService: UserService,
-    private loaderService: LoaderService) {
+    private loaderService: LoaderService, private slackNotification: NotificationService) {
     this.user = this.userService.getUser();
     this.ratio = '3:5';
     this.loaderService.show();
@@ -46,7 +47,10 @@ export class ProductAddComponent implements OnInit {
    */
   onProductSubmit(product: IProduct) {
     this.productService.createProduct(product);
-    this.alertService.toast('Votre pull est en attente de validation :)', 'info');
+    this.slackNotification.notifySlack({
+      text: `New product has been send. ${product.name} by ${this.user.displayName}`
+    })
+    this.alertService.toast('snackbar.product-add.submit', 'info');
     this.router.navigate(['/']);
   }
 

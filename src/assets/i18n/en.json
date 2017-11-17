@@ -8,6 +8,9 @@
     }
   },
   "snackbar": {
+    "product-add": {
+      "submit": "Your sweat is waiting for validation :)"
+    },
     "guard": {
       "unauthenticated": "You have to login to add as many ugly sweaters as you want!"
     }
