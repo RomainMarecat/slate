@@ -72,6 +72,7 @@ import {
   HammerGestureConfig,
   HAMMER_GESTURE_CONFIG,
 } from '@angular/platform-browser';
+import { NotificationService } from './shared/slack/notification.service';
 
 declare var Hammer: any;
 
@@ -131,7 +132,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatTooltipModule,
     ProductRoutingModule,
     ReactiveFormsModule,
-    SharedModule,
+    SharedModule
   ],
   entryComponents: [
     AlertComponent
@@ -169,6 +170,7 @@ export class MyHammerConfig extends HammerGestureConfig {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig,
     },
+    NotificationService
   ],
   bootstrap: [
     ProductComponent

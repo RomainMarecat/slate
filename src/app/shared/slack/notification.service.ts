@@ -26,17 +26,16 @@ export class NotificationService {
    */
   notifySlack(slackObject: object): Observable < string > {
     const header = new Headers();
-    header.append('Content-Type', 'application/json');
+    header.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
     return this.http
       .post(
         this.slackUrlToken,
-        slackObject, {
+        `payload=${JSON.stringify(slackObject)}`, {
           headers: header
         })
       .map((response: Response) => {
-        console.log(response);
-        return response.text();
+        return response.json();
       });
   }
 }

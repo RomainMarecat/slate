@@ -49,7 +49,7 @@ export class ProductAddComponent implements OnInit {
     this.productService.createProduct(product);
     this.slackNotification.notifySlack({
       text: `New product has been send. ${product.name} by ${this.user.displayName}`
-    })
+    }).subscribe(res => console.log(res));
     this.alertService.toast('snackbar.product-add.submit', 'info');
     this.router.navigate(['/']);
   }

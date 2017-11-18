@@ -12,8 +12,7 @@ export const SlackUrlToken = new InjectionToken < string > ('SlackUrlToken');
     CommonModule,
     FormsModule,
     HttpModule,
-  ],
-  declarations: []
+  ]
 })
 export class SlackModule {
 

@@ -27,12 +27,13 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   exports: [
+    SlackModule,
     TranslateModule,
-    SlackModule
   ],
   declarations: [],
   providers: [
-    I18nService
+    I18nService,
+
   ]
 })
 export class SharedModule {}

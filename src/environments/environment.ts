@@ -20,5 +20,5 @@ export const environment = {
   uploadPreset: 'k0bxujke',
   clientAdSense: 'ca-pub-4195199088767183',
   slotAdSense: 123456,
-  slackToken: 'https://hooks.slack.com/services/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',
+  slackToken: 'https://hooks.slack.com/services/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',
 };
