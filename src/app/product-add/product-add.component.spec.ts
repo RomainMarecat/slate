@@ -52,6 +52,8 @@ import { LoaderService } from './../shared/loader/loader.service';
 import { MockLoaderService } from './../shared/loader/mock-loader.service';
 import { DateService } from './../shared/util/date.service';
 import { I18nService } from './../shared/i18n/i18n.service';
+import { NotificationService } from './../shared/slack/notification.service';
+import { SlackModule } from './../shared/slack/slack.module';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
@@ -87,7 +89,9 @@ describe('ProductAddComponent', () => {
           }),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
+          }),
+          SlackModule.initializeApp('https://monpullmoche.com')
+
         ],
         declarations: [
           ProductAddComponent,
@@ -104,7 +108,8 @@ describe('ProductAddComponent', () => {
           { provide: ProductService, useClass: MockProductService },
           DateService,
           ObjectService,
-          I18nService
+          I18nService,
+          NotificationService
         ]
       })
       .compileComponents();

@@ -8,6 +8,9 @@
     }
   },
   "snackbar": {
+    "product-add": {
+      "submit": "Votre pull est en attente de validation :)"
+    },
     "guard": {
       "unauthenticated": "Il faut se connecter pour ajouter autant de pull moche que vous voulez !"
     }
