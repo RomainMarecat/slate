@@ -30,6 +30,7 @@ mat-card {
       .item-card-name {
         margin: 0;
         display: inline-block;
+        white-space: nowrap;
         overflow-x: hidden;
         text-overflow: ellipsis;
         max-width: 16em;
