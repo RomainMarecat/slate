@@ -42,7 +42,8 @@ import {
   MatLineModule,
   MatMenuModule,
   MatCommonModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatExpansionModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
@@ -73,6 +74,7 @@ import {
   HAMMER_GESTURE_CONFIG,
 } from '@angular/platform-browser';
 import { NotificationService } from './shared/slack/notification.service';
+import {MatStepperModule} from '@angular/material';
 
 declare var Hammer: any;
 
@@ -127,9 +129,11 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatLineModule,
+    MatExpansionModule,
     MatMenuModule,
     MatCommonModule,
     MatTooltipModule,
+    MatStepperModule,
     ProductRoutingModule,
     ReactiveFormsModule,
     SharedModule

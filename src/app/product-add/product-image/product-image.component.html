@@ -5,7 +5,7 @@
 </div> -->
 <div class="row">
   <div class="col-12">
-    <div class="form-group mt2">
+    <div class="form-group mt2 text-center">
       <input type="file" ng2FileSelect [uploader]="uploader" multiple angulartics2On="click" angularticsAction="chooseProductImage" [angularticsCategory]="'product.image'" />
     </div>
   </div>
@@ -15,14 +15,12 @@
     <div class="col-12">
       <img-cropper #cropper [image]="data" [settings]="cropperSettings" [attr.matTooltip]="'product-add.product-image.image-cropper.cropper.tooltip.title'|translate" matTooltipPosition="right" angulartics2On="mouseover" angularticsAction="HoveredOverCropProductImage" [angularticsCategory]="'media.crop'"></img-cropper>
     </div>
-    <div class="col-12 mt2 image-button-wrapper">
-      <button role="button" [attr.aria-label]="'product-add.product-image.image-button-wrapper.button.aria-label.title'|translate" [attr.matTooltip]="'product-add.product-image.image-button-wrapper.button.tooltip.title'|translate" matTooltipPosition="right" mat-raised-button color="primary" type="button" (click)="validateImage()" class="button-image-validation" angulartics2On="click" angularticsAction="clickedOnUploadProductImage" [angularticsCategory]="'media.save'">
-        Valider
-      </button>
-    </div>
+    <!--     <div class="col-12 mt2 image-button-wrapper">
+      <button role="button" [attr.aria-label]="'product-add.product-image.image-button-wrapper.button.aria-label.title'|translate" [attr.matTooltip]="'product-add.product-image.image-button-wrapper.button.tooltip.title'|translate" matTooltipPosition="right" mat-raised-button color="primary" type="button" (click)="validateImage()" class="button-image-validation" angulartics2On="click" angularticsAction="clickedOnUploadProductImage" [angularticsCategory]="'media.save'" [innerHtml]="'product-add.product-image.image-cropper.cropper.title'|translate"></button>
+    </div> -->
   </div>
 </div>
-<div class="row" *ngIf="!objectService.isEmpty(data)" [ngClass]="'hidden'">
+<!-- <div class="row" *ngIf="!objectService.isEmpty(data)" [ngClass]="'hidden'">
   <div class="col-12">
     <table class="table">
       <thead>
@@ -80,4 +78,4 @@
       </button>
     </div>
   </div>
-</div>
+</div> -->

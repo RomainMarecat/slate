@@ -18,6 +18,7 @@ export class Product implements IProduct {
   description ?: string;
   external_url ?: string;
   thumbnail: string;
+  images?: string[];
   image1: string;
   image2 ?: string;
   image3 ?: string;
