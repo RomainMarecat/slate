@@ -8,6 +8,14 @@
   }
 }
 
-.form-container>* {
+.form-container .mat-form-field {
   width: 100%;
+}
+
+.image-button-wrapper {
+  text-align: right;
+}
+.product-form-step-2-wrapper {
+  display: flex;
+  justify-content: center;
 }

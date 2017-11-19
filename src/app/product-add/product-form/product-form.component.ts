@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Product } from './../../shared/product/product';
 import { IProduct } from './../../shared/product/i-product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Media } from './../../shared/media/media';
 import { UserService } from './../../shared/user/user.service';
+import { ProductImageComponent } from './../product-image/product-image.component';
 
 @Component({
   selector: 'app-product-form',
@@ -11,12 +12,17 @@ import { UserService } from './../../shared/user/user.service';
   styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
+  @ViewChild(ProductImageComponent) productImageComponent: ProductImageComponent;
   form: FormGroup;
+  formDetail: FormGroup;
+  formMedia: FormGroup;
+  formAdditional: FormGroup;
   @Output() productChange: EventEmitter < IProduct > ;
   product: IProduct;
   @Input('_user') _user: any;
   disableDelivery: boolean;
   isLoading: boolean;
+  isLinear: boolean;
   now: Date;
   @Output('_submit') _submit: EventEmitter < IProduct > ;
   image1: Media;
@@ -25,6 +31,7 @@ export class ProductFormComponent implements OnInit {
 
   constructor(private userService: UserService) {
     this.isLoading = false;
+    this.isLinear = false;
     this._submit = new EventEmitter < Product > ();
     this.productChange = new EventEmitter < Product > ();
     this.now = new Date();
@@ -40,6 +47,10 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+  }
+
+  validateImage() {
+    this.productImageComponent.validateImage();
   }
 
   onSubmit() {
@@ -60,40 +71,55 @@ export class ProductFormComponent implements OnInit {
   }
 
   createForm() {
-    this.form = new FormGroup({
-      'external_url': new FormControl('http://', [
-        Validators.minLength(6),
-        Validators.maxLength(250)
-      ]),
+    this.formDetail = new FormGroup({
       'name': new FormControl('', [
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(50)
-      ]),
+      ])
+    });
+
+    this.formAdditional = new FormGroup({
       'description': new FormControl('', [
-        Validators.required,
         Validators.minLength(0),
         Validators.maxLength(2000)
       ]),
-      'price': new FormControl(0, [
+      'external_url': new FormControl('', [
+        Validators.minLength(6),
+        Validators.maxLength(250)
+      ]),
+      'price': new FormControl('', [
         Validators.min(0),
         Validators.max(9999)
       ]),
-      'delivery_fee': new FormControl(0, [
+      'delivery_fee': new FormControl('', [
         Validators.min(0),
         Validators.max(9999)
       ]),
       'delivery_free': new FormControl(false, []),
+    });
+
+    this.formMedia = new FormGroup({
       'image1': new FormControl('', [
         Validators.required,
-      ]),
-      'image2': new FormControl('', []),
-      'image3': new FormControl('', []),
+      ])
     });
-    this.form.valueChanges
-      .subscribe((product) => {
-        this.productChange.emit(product);
-      });
+
+    this.form = new FormGroup({
+      media: this.formMedia,
+      detail: this.formDetail,
+      additional: this.formAdditional
+    });
+
+    this.formMedia.valueChanges.subscribe((product) => {
+      this.productChange.emit(product);
+    });
+    this.formDetail.valueChanges.subscribe((product) => {
+      this.productChange.emit(product);
+    });
+    this.formAdditional.valueChanges.subscribe((product) => {
+      this.productChange.emit(product);
+    });
   }
 
   changeDeliveryFree(event) {
@@ -102,41 +128,41 @@ export class ProductFormComponent implements OnInit {
 
   onImageChange(media: Media) {
     if (media.position === 1) {
-      this.form.patchValue({ image1: media.public_id });
+      this.formMedia.patchValue({ image1: media.public_id });
       this.product.image1 = media.public_id;
       this.productChange.emit(this.product);
     } else if (media.position === 2) {
-      this.form.patchValue({ image2: media.public_id });
+      this.formMedia.patchValue({ image2: media.public_id });
       this.product.image2 = media.public_id;
       this.productChange.emit(this.product);
     } else {
-      this.form.patchValue({ image3: media.public_id });
+      this.formMedia.patchValue({ image3: media.public_id });
       this.product.image3 = media.public_id;
       this.productChange.emit(this.product);
     }
   }
 
   get name() {
-    return this.form.get('name');
+    return this.formDetail.get('name');
   }
 
   get description() {
-    return this.form.get('description');
+    return this.formAdditional.get('description');
   }
 
   get externalUrl() {
-    return this.form.get('external_url');
+    return this.formAdditional.get('external_url');
   }
 
   get price() {
-    return this.form.get('price');
+    return this.formAdditional.get('price');
   }
 
   get deliveryFee() {
-    return this.form.get('delivery_fee');
+    return this.formAdditional.get('delivery_fee');
   }
 
   get deliveryFree() {
-    return this.form.get('delivery_free');
+    return this.formAdditional.get('delivery_free');
   }
 }

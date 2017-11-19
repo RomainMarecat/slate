@@ -10,10 +10,13 @@ import { DateService } from './../../shared/util/date.service';
 export class ProductPreviewComponent implements OnInit {
   @Input() product: IProduct;
   @Input() user: any;
+  now: string;
   // Current image size to display
   resizedImage = { height: '240', width: '240' };
 
   constructor(public dateService: DateService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.now = this.dateService.getHumanReadableDate();
+  }
 }

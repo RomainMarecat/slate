@@ -53,8 +53,8 @@ export class ProductImageComponent implements OnInit {
 
     this.cropperSettings.noFileInput = true;
 
-    this.cropperSettings.width = 400;
-    this.cropperSettings.height = 400;
+    this.cropperSettings.width = 240;
+    this.cropperSettings.height = 240;
 
     this.cropperSettings.croppedWidth = 240;
     this.cropperSettings.croppedHeight = 240;
@@ -164,16 +164,6 @@ export class ProductImageComponent implements OnInit {
    */
   uploadAll() {
     this.uploader.uploadAll();
-  }
-
-  /**
-   * Empty function check if object is empty
-   * @todo refacto in object service
-   * @param  {}  obj
-   * @return {boolean}
-   */
-  isEmpty(obj): boolean {
-    return Object.keys(obj).length === 0;
   }
 
   /**
