@@ -10,7 +10,7 @@
             </mat-card-title>
             <app-product-image [media]="image1" (imageChanged)="onImageChange($event)"></app-product-image>
             <div class="mt2 image-button-wrapper">
-              <button role="button" [attr.aria-label]="'product-add.product-image.image-button-wrapper.button.aria-label.title'|translate" [attr.matTooltip]="'product-add.product-image.image-button-wrapper.button.tooltip.title'|translate" matTooltipPosition="right" mat-raised-button matStepperNext color="primary" type="button" class="button-image-validation" angulartics2On="click" angularticsAction="clickedOnUploadProductImage" [angularticsCategory]="'media.save'" [innerHtml]="'product-add.product-image.image-cropper.cropper.title'|translate" (click)="validateImage()" [disabled]="!productImageComponent?.data"></button>
+              <button role="button" [attr.aria-label]="'product-add.product-form.steps.image.product-image.image-button-wrapper.button.aria-label.title'|translate" [attr.matTooltip]="'product-add.product-form.steps.image.product-image.image-button-wrapper.button.tooltip.title'|translate" matTooltipPosition="right" mat-raised-button matStepperNext color="primary" type="button" class="button-image-validation" angulartics2On="click" angularticsAction="clickedOnUploadProductImage" [angularticsCategory]="'media.save'" [innerHtml]="'product-add.product-form.steps.image.product-image.image-cropper.cropper.title'|translate" (click)="validateImage()" [disabled]="!productImageComponent?.data"></button>
             </div>
           </form>
         </mat-step>
@@ -37,10 +37,10 @@
             <mat-expansion-panel>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  {{ 'product-add.product-form.steps.additional.panel.title'|translate }}
+                  {{ 'product-add.product-form.steps.additional.panel.description.title'|translate }}
                 </mat-panel-title>
                 <mat-panel-description>
-                  {{ 'product-add.product-form.steps.additional.panel.description'|translate }}
+                  {{ 'product-add.product-form.steps.additional.panel.description.description'|translate }}
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <mat-form-field class="mat-form-field">
@@ -54,38 +54,31 @@
             <mat-expansion-panel>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Personal data
+                  {{ 'product-add.product-form.steps.additional.panel.external_url.title'|translate }}
                 </mat-panel-title>
                 <mat-panel-description>
-                  Type your name and age
+                  {{ 'product-add.product-form.steps.additional.panel.external_url.description'|translate }}
                 </mat-panel-description>
               </mat-expansion-panel-header>
-              <mat-form-field>
-                <input matInput placeholder="First name">
+              <mat-form-field class="mat-form-field">
+                <input type="url" matInput [attr.placeholder]="'product-add.product-form.form.external_url.placeholder'|translate" formControlName="external_url" angulartics2On="focus" angularticsAction="focusedOnProductExternalUrl" [angularticsCategory]="'product.external_url'" [angularticsValue]="externalUrl?.value">
+                <mat-error *ngIf="externalUrl.invalid" [innerHtml]="'product-add.product-form.form.external_url.error.invalid'|translate"></mat-error>
               </mat-form-field>
-              <mat-form-field>
-                <input matInput placeholder="Age">
+              <mat-form-field class="mat-form-field">
+                <input type="number" matInput [attr.placeholder]="'product-add.product-form.form.price.placeholder'|translate" formControlName="price" angulartics2On="focus" angularticsAction="focusedOnProductPrice" [angularticsCategory]="'product.price'" [angularticsValue]="price?.value">
+                <mat-error *ngIf="price.invalid && price.value < 0" [innerHtml]="'product-add.product-form.form.price.min'|translate"></mat-error>
+                <mat-error *ngIf="price.invalid && price.value > 9999" [innerHtml]="'product-add.product-form.form.price.max'|translate"></mat-error>
+                <mat-error *ngIf="price.invalid" [innerHtml]="'product-add.product-form.form.price.invalid'|translate"></mat-error>
+              </mat-form-field>
+              <mat-form-field class="mat-form-field">
+                <input type="number" matInput [attr.placeholder]="'product-add.product-form.form.delivery_fee.placeholder'" [attr.disabled]="disableDelivery" formControlName="delivery_fee" angulartics2On="focus" angularticsAction="focusedOnProductDeliveryFee" [angularticsCategory]="'product.delivery_fee'" [angularticsValue]="deliveryFee?.value">
+                <mat-error *ngIf="deliveryFee.invalid && deliveryFee.value < 0" [innerHtml]="'product-add.product-form.form.delivery_fee.min'|translate"></mat-error>
+                <mat-error *ngIf="deliveryFee.invalid && deliveryFee.value > 9999" [innerHtml]="'product-add.product-form.form.delivery_fee.max'|translate"></mat-error>
+                <mat-error *ngIf="deliveryFee.invalid" [innerHtml]="'product-add.product-form.form.delivery_fee.invalid|translate'"></mat-error>
               </mat-form-field>
             </mat-expansion-panel>
-            <p class="mt3" [innerHtml]="'product-add.product-form.form.external_url.more_about'|translate"></p>
-            <mat-form-field class="mat-form-field">
-              <input type="url" matInput [attr.placeholder]="'product-add.product-form.form.external_url.placeholder'|translate" formControlName="external_url" angulartics2On="focus" angularticsAction="focusedOnProductExternalUrl" [angularticsCategory]="'product.external_url'" [angularticsValue]="externalUrl?.value">
-              <mat-error *ngIf="externalUrl.invalid" [innerHtml]="'product-add.product-form.form.external_url.error.invalid'|translate"></mat-error>
-            </mat-form-field>
-            <mat-form-field class="mat-form-field">
-              <input type="number" matInput [attr.placeholder]="'product-add.product-form.form.price.placeholder'|translate" formControlName="price" angulartics2On="focus" angularticsAction="focusedOnProductPrice" [angularticsCategory]="'product.price'" [angularticsValue]="price?.value">
-              <mat-error *ngIf="price.invalid && price.value < 0" [innerHtml]="'product-add.product-form.form.price.min'|translate"></mat-error>
-              <mat-error *ngIf="price.invalid && price.value > 9999" [innerHtml]="'product-add.product-form.form.price.max'|translate"></mat-error>
-              <mat-error *ngIf="price.invalid" [innerHtml]="'product-add.product-form.form.price.invalid'|translate"></mat-error>
-            </mat-form-field>
-            <mat-form-field class="mat-form-field">
-              <input type="number" matInput [attr.placeholder]="'product-add.product-form.form.delivery_fee.placeholder'" [attr.disabled]="disableDelivery" formControlName="delivery_fee" angulartics2On="focus" angularticsAction="focusedOnProductDeliveryFee" [angularticsCategory]="'product.delivery_fee'" [angularticsValue]="deliveryFee?.value">
-              <mat-error *ngIf="deliveryFee.invalid && deliveryFee.value < 0" [innerHtml]="'product-add.product-form.form.delivery_fee.min'|translate"></mat-error>
-              <mat-error *ngIf="deliveryFee.invalid && deliveryFee.value > 9999" [innerHtml]="'product-add.product-form.form.delivery_fee.max'|translate"></mat-error>
-              <mat-error *ngIf="deliveryFee.invalid" [innerHtml]="'product-add.product-form.form.delivery_fee.invalid|translate'"></mat-error>
-            </mat-form-field>
             <div class="product-form-step-3-wrapper pa2">
-              <button mat-raised-button matStepperPrevious [innerHtml]="'product-add.product-form.steps.button.back.title'|translate"></button>
+              <button mat-raised-button matStepperPrevious [innerHtml]="'product-add.product-form.steps.additional.button.back.title'|translate"></button>
               <button role="button" [attr.aria-label]="'product-add.product-form.form.validation.button.title'|translate" mat-raised-button color="primary" type="submit" class="btn-add" [disabled]="!(formMedia.valid && formDetail.valid && formAdditional.valid) || isLoading" angulartics2On="click" angularticsAction="validateProduct" [angularticsCategory]="'product.new'" [innerHtml]="'product-add.product-form.form.validation.button.title'|translate"></button>
             </div>
           </form>

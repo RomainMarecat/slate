@@ -88,11 +88,11 @@ export class ProductFormComponent implements OnInit {
         Validators.minLength(6),
         Validators.maxLength(250)
       ]),
-      'price': new FormControl(0, [
+      'price': new FormControl('', [
         Validators.min(0),
         Validators.max(9999)
       ]),
-      'delivery_fee': new FormControl(0, [
+      'delivery_fee': new FormControl('', [
         Validators.min(0),
         Validators.max(9999)
       ]),

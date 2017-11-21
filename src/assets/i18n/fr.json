@@ -95,7 +95,45 @@
     "product-form": {
       "steps": {
         "image": {
-          "section": "Uploader son image"
+          "section": "Télécharger son image",
+          "product-image": {
+            "image-cropper": {
+              "cropper": {
+                "title": "Valider",
+                "tooltip": {
+                  "title": "Ajuster en redimensionnant ou déplaçant le cadre votre image"
+                }
+              }
+            },
+            "image-button-wrapper": {
+              "button": {
+                "aria-label": {
+                  "title": "Valider l'image au dessus"
+                },
+                "tooltip": {
+                  "title": "Pense à valider ton image !"
+                }
+              }
+            }
+          },
+          "product-preview": {
+            "title": "Aperçu",
+            "name": {
+              "title": "Donnez un titre court et descriptif à votre pull"
+            },
+            "description": {
+              "title": "Donnez une description correspondant à ce merveilleux pull"
+            },
+            "image": {
+              "title": "Image"
+            },
+            "mat-card-actions": {
+              "button": {
+                "minus": "Moins",
+                "plus": "Plus"
+              }
+            }
+          }
         },
         "detail": {
           "section": "Ajouter des informations",
@@ -109,10 +147,27 @@
           }
         },
         "additional": {
+          "button": {
+            "back": {
+              "title": "Retour"
+            }
+          },
+          "section": "Finaliser",
+          "title": "Il est possible d'apporter des précisions sur le pull",
+          "panel": {
+            "description": {
+              "title": "Donner un court descriptif à votre pull",
+              "description": ""
+            },
+            "external_url": {
+              "title": "Déja vu sur un site ? Donnes-nous des informations sur le site où tu l'as trouvé",
+              "description": ""
+            }
+          },
           "product-form": {
             "steps": {
               "image": {
-                "section": "Uploader son image"
+                "section": "Télécharger son image"
               },
               "detail": {
                 "section": "Ajouter des informations"
@@ -157,7 +212,6 @@
                 }
               },
               "external_url": {
-                "more_about": "Déja vu sur un site ? Donnes-nous des informations sur le site où tu l'as trouvé",
                 "placeholder": "Lien vers le pull",
                 "error": {
                   "length": "Le lien vers le pull est vide",
@@ -182,44 +236,9 @@
                 }
               }
             }
-          },
-          "product-image": {
-            "image-cropper": {
-              "cropper": {
-                "title": "Valider",
-                "tooltip": {
-                  "title": "Ajuster en redimensionnant ou déplaçant le cadre votre image"
-                }
-              }
-            },
-            "image-button-wrapper": {
-              "button": {
-                "aria-label": {
-                  "title": "Valider l'image au dessus"
-                },
-                "tooltip": {
-                  "title": "Pense à valider ton image !"
-                }
-              }
-            }
-          },
-          "product-preview": {
-            "title": "Aperçu",
-            "name": {
-              "title": "Donnez un titre court et descriptif à votre pull"
-            },
-            "description": {
-              "title": "Donnez une description correspondant à ce merveilleux pull"
-            },
-            "image": {
-              "title": "Image"
-            },
-            "mat-card-actions": {
-              "button": {
-                "minus": "Moins",
-                "plus": "Plus"
-              }
-            }
           }
         }
       }
+    }
+  }
+}
