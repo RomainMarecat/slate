@@ -6,27 +6,27 @@
   border: dotted 3px red;
 }
 
-
-
-
-
-
-
-
-
-
 /* Default class applied to drop zones on over */
-
 .another-file-over-class {
   border: dotted 3px green;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .button-image-validation {
   width: 50%;
   margin: 0 auto;
-  display: block;
+  display: inline-block;
+}
+
+.image-cropper {
+  width: 100%;
+  text-align: center;
+}
+
+.image-cropper {
+  display: flex;
+  justify-content: center;
 }

@@ -12,6 +12,7 @@ export interface IProduct {
 
   description ?: string;
   thumbnail: string;
+  images?: string[];
   image1: string;
   image2 ?: string;
   image3 ?: string;

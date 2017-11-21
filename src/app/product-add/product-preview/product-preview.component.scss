@@ -1,17 +1,29 @@
 .item-card {
-
+  /* xsmall */
   @media (max-width: 600px) {
     margin-top: 20px;
   }
-  /* medium*/
+  /* small */
   @media (min-width: 601px) and (max-width: 992px) {
     margin-top: 30px;
   }
-  /* large */
+  /* medium */
   @media (min-width: 993px) {
     position: fixed;
     top: 25%;
-    left: 63%;
+    left: auto;
+  }
+  /* large */
+  @media (min-width: 1200px) {
+    position: fixed;
+    top: 25%;
+    left: auto;
+  }
+  /* xlarge */
+  @media (min-width: 1500px) {
+    position: fixed;
+    top: 25%;
+    left: auto;
   }
 
   .item-card-header {
@@ -25,28 +37,39 @@
       overflow-x: hidden;
       text-overflow: ellipsis;
       max-width: 16em;
+      min-width: 200px;
     }
 
     .item-card-avatar {
       width: 25px;
       height: 25px;
     }
+    .mat-card-title {
+      /* xsmall */
+      @media (max-width: 600px) {
+        max-width: 250px;
+      }
+      /* small */
+      @media (min-width: 601px) and (max-width: 992px) {
+        min-width: 320px;
+      }
+      /* medium */
+      @media (min-width: 993px) {
+        min-width: 200px;
+      }
+      /* large */
+      @media (min-width: 1200px) {
+        min-width: 300px;
+      }
+      /* xlarge */
+      @media (min-width: 1500px) {
+        min-width: 400px;
+      }
+    }
   }
 }
 
-.mat-card-title {
-  @media (max-width: 600px) {
-    max-width: 250px;
-  }
-  /* medium*/
-  @media (min-width: 601px) and (max-width: 992px) {
-    min-width: 320px;
-  }
-  /* large */
-  @media (min-width: 993px) {
-    min-width: 375px;
-  }
-}
+
 
 .link-card {
   height: 140px;

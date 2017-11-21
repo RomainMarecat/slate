@@ -7,7 +7,9 @@ import {
   AfterViewInit,
   OnInit,
   OnDestroy,
-  ViewEncapsulation
+  ViewEncapsulation,
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
 import { Cloudinary } from './../cloudinary.service';
 import { CloudinaryTransformationDirective } from './../cloudinary-transformation.directive';
@@ -19,7 +21,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./cloudinary-image.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestroy {
+export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestroy, OnChanges {
 
   @Input('publicId') publicId: string;
 
@@ -40,7 +42,7 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
   ngOnInit(): void {
     // Create an observer instance
     this.observer = new MutationObserver(() => {
-      this.loadImage(true);
+      this.loadImage(false);
 
     });
     // Observe changes to attributes or child transformations to re-render the image
@@ -52,6 +54,14 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
 
   ngOnDestroy(): void {
     this.observer.disconnect();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    // Listen to changes on the data-bound property 'publicId'.
+    // Update component unless this is the first value assigned.
+    if (changes.publicId && !changes.publicId.isFirstChange()) {
+      this.loadImage(false);
+    }
   }
 
   ngAfterViewInit() {
@@ -79,11 +89,15 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
   setElementAttributes(element: HTMLElement, attributesLiteral: string[], lazyLoad: boolean) {
     if (lazyLoad) {
       this.imageSource$ = Observable.of(attributesLiteral['src']);
-    }
-    Object.keys(attributesLiteral).forEach(attrName => {
-      if (attrName !== 'src') {
+      Object.keys(attributesLiteral).forEach(attrName => {
+        if (attrName !== 'src') {
+          element.setAttribute(attrName, attributesLiteral[attrName]);
+        }
+      });
+    } else {
+      Object.keys(attributesLiteral).forEach(attrName => {
         element.setAttribute(attrName, attributesLiteral[attrName]);
-      }
-    });
+      });
+    }
   }
 }

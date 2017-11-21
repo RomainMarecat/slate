@@ -42,7 +42,9 @@ import {
   MatLineModule,
   MatMenuModule,
   MatCommonModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatExpansionModule,
+  MatStepperModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
@@ -127,9 +129,11 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatLineModule,
+    MatExpansionModule,
     MatMenuModule,
     MatCommonModule,
     MatTooltipModule,
+    MatStepperModule,
     ProductRoutingModule,
     ReactiveFormsModule,
     SharedModule

@@ -92,87 +92,6 @@
   },
   "product-add": {
     "title": "Poster un nouveau pull moche",
-    "product-form": {
-      "card-title": {
-        "title": "Importer la photo de ton pull"
-      },
-      "form": {
-        "name": {
-          "title": "Donner un titre court à votre pull",
-          "placeholder": "Titre",
-          "length": "/ 50",
-          "error": {
-            "length": "Le nom du pull est vide",
-            "invalid": "Le nom du pull contient des erreurs",
-            "required": "Le nom du pull est requis"
-          }
-        },
-        "description": {
-          "title": "Donner un court descriptif à votre pull",
-          "placeholder": "Donner un court descriptif à votre pull",
-          "length": "/ 2000",
-          "error": {
-            "length": "La description du pull est vide",
-            "invalid": "La description du pull est invalide",
-            "required": "La description du pull est requise"
-          }
-        },
-        "delivery_fee": {
-          "placeholder": "Frais de livraison",
-          "error": {
-            "min": "Les frais de livraison ne peuvent pas être négatifs",
-            "max": "Les frais de livraison sont un peu trop chers !",
-            "length": "Les frais de livraison sont vides",
-            "invalid": "Les frais de livraison doivent être un nombre (sans €)",
-            "required": "Les frais de livraison sont requis"
-          }
-        },
-        "external_url": {
-          "more_about": "Déja vu sur un site ? Donnes-nous des informations sur le site où tu l'as trouvé",
-          "placeholder": "Lien vers le pull",
-          "error": {
-            "length": "Le lien vers le pull est vide",
-            "invalid": "Le lien vers le pull est invalide",
-            "required": "Le lien vers le pull est requis"
-          }
-        },
-        "price": {
-          "placeholder": "Prix",
-          "error": {
-            "min": "Le prix ne peut pas être négatif",
-            "max": "Le prix est un peu trop cher !",
-            "length": "Le prix est vide",
-            "invalid": "Le prix doit être un nombre (sans €)",
-            "required": "Le prix est requise"
-          }
-        },
-        "validation": {
-          "button": {
-            "label": "Valider",
-            "title": "Valider"
-          }
-        }
-      }
-    },
-    "product-image": {
-      "image-cropper": {
-        "cropper": {
-          "tooltip": {
-            "title": "Ajuster en redimensionnant ou déplaçant le cadre votre image"
-          }
-        }
-      },
-      "image-button-wrapper": {
-        "button": {
-          "aria-label": {
-            "title": "Valider l'image au dessus"
-          },
-          "tooltip": {
-            "title": "Pense à valider ton image !"
-          }
-        }
-      }
-    },
     "product-preview": {
       "title": "Aperçu",
       "name": {
@@ -188,6 +107,124 @@
         "button": {
           "minus": "Moins",
           "plus": "Plus"
+        }
+      }
+    },
+    "product-form": {
+      "steps": {
+        "image": {
+          "section": "Télécharger son image",
+          "card-title": {
+            "title": "Importer la photo de ton pull"
+          },
+          "product-image": {
+            "image-cropper": {
+              "cropper": {
+                "title": "Valider",
+                "tooltip": {
+                  "title": "Ajuster en redimensionnant ou déplaçant le cadre votre image"
+                }
+              }
+            },
+            "image-button-wrapper": {
+              "button": {
+                "aria-label": {
+                  "title": "Valider l'image au dessus"
+                },
+                "tooltip": {
+                  "title": "Pense à valider ton image !"
+                }
+              }
+            }
+          }
+        },
+        "detail": {
+          "section": "Ajouter des informations",
+          "button": {
+            "back": {
+              "title": "Retour"
+            },
+            "next": {
+              "title": "Suivant"
+            }
+          },
+          "form": {
+            "name": {
+              "title": "Donner un titre court à votre pull",
+              "placeholder": "Titre",
+              "length": "/ 50",
+              "error": {
+                "length": "Le nom du pull est vide",
+                "invalid": "Le nom du pull contient des erreurs",
+                "required": "Le nom du pull est requis"
+              }
+            }
+          }
+        },
+        "additional": {
+          "button": {
+            "back": {
+              "title": "Retour"
+            }
+          },
+          "section": "Finaliser",
+          "title": "Il est possible d'apporter des précisions sur le pull",
+          "panel": {
+            "description": {
+              "title": "Donner un court descriptif à votre pull",
+              "description": ""
+            },
+            "external_url": {
+              "title": "Déja vu sur un site ? Donnes-nous des informations sur le site où tu l'as trouvé",
+              "description": ""
+            }
+          },
+          "form": {
+            "description": {
+              "title": "Donner un court descriptif à votre pull",
+              "placeholder": "Donner un court descriptif à votre pull",
+              "length": "/ 2000",
+              "error": {
+                "length": "La description du pull est vide",
+                "invalid": "La description du pull est invalide",
+                "required": "La description du pull est requise"
+              }
+            },
+            "delivery_fee": {
+              "placeholder": "Frais de livraison",
+              "error": {
+                "min": "Les frais de livraison ne peuvent pas être négatifs",
+                "max": "Les frais de livraison sont un peu trop chers !",
+                "length": "Les frais de livraison sont vides",
+                "invalid": "Les frais de livraison doivent être un nombre (sans €)",
+                "required": "Les frais de livraison sont requis"
+              }
+            },
+            "external_url": {
+              "placeholder": "Lien vers le pull",
+              "error": {
+                "length": "Le lien vers le pull est vide",
+                "invalid": "Le lien vers le pull est invalide",
+                "required": "Le lien vers le pull est requis"
+              }
+            },
+            "price": {
+              "placeholder": "Prix",
+              "error": {
+                "min": "Le prix ne peut pas être négatif",
+                "max": "Le prix est un peu trop cher !",
+                "length": "Le prix est vide",
+                "invalid": "Le prix doit être un nombre (sans €)",
+                "required": "Le prix est requise"
+              }
+            },
+            "validation": {
+              "button": {
+                "label": "Valider",
+                "title": "Valider"
+              }
+            }
+          }
         }
       }
     }

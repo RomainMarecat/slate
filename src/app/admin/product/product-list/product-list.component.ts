@@ -31,10 +31,6 @@ export class ProductListComponent implements OnInit {
       name: 'name',
       flexGrow: 1
     }, {
-      prop: 'description',
-      name: 'description',
-      flexGrow: 1
-    }, {
       prop: 'published',
       name: 'published',
       flexGrow: 1
@@ -55,6 +51,15 @@ export class ProductListComponent implements OnInit {
       }
 
       this.productService.updateProduct(product);
+    });
+  }
+
+  /**
+   * Delete a product from list
+   */
+  deleteProduct() {
+    this.selected.forEach((product: IProduct) => {
+      this.productService.deleteProduct(product);
     });
   }
 

@@ -6,6 +6,7 @@ export const mockProduct = {
   url: 'key',
   description: '',
   thumbnail: '',
+  images: [],
   image1: '',
   image2: '',
   image3: '',
