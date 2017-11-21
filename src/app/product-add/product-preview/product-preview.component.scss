@@ -1,17 +1,19 @@
 .item-card {
-
-  @media (max-width: 600px) {
+  // Small devices (landscape phones, 576px and up)
+  @media (min-width: 576px) {
     margin-top: 20px;
-  }
-  /* medium*/
-  @media (min-width: 601px) and (max-width: 992px) {
+  } // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
     margin-top: 30px;
-  }
-  /* large */
-  @media (min-width: 993px) {
+  } // Large devices (desktops, 992px and up)
+  @media (min-width: 992px) {
+    margin-top: 20px;
+  } // Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {
     position: fixed;
-    top: 25%;
-    left: 63%;
+    top: %25;
+    left: auto;
+    right: auto;
   }
 
   .item-card-header {
