@@ -10,6 +10,10 @@
         <mat-icon aria-label="Published">done</mat-icon>
         Publier
       </button>
+      <button role="button" aria-label="Publier un pull moche" mat-raised-button color="accent" (click)="deleteProduct()" *ngIf="selected.length > 0">
+        <mat-icon aria-label="delete">delete</mat-icon>
+        Supprimer
+      </button>
     </div>
   </div>
   <div class="row">
@@ -25,7 +29,6 @@
         </ngx-datatable-column>
         <ngx-datatable-column name="image1"></ngx-datatable-column>
         <ngx-datatable-column name="name"></ngx-datatable-column>
-        <ngx-datatable-column name="description"></ngx-datatable-column>
         <ngx-datatable-column name="published"></ngx-datatable-column>
       </ngx-datatable>
     </div>

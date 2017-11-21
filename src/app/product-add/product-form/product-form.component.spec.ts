@@ -15,7 +15,9 @@ import {
   MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatStepperModule,
+  MatExpansionModule
 } from '@angular/material';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Cloudinary } from 'cloudinary-core';
@@ -63,6 +65,8 @@ describe('ProductFormComponent', () => {
           MatInputModule,
           MatSelectModule,
           MatTooltipModule,
+          MatStepperModule,
+          MatExpansionModule,
           MatCheckboxModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {

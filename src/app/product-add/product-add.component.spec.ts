@@ -24,7 +24,9 @@ import {
   MatLineModule,
   MatMenuModule,
   MatCommonModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatExpansionModule,
+  MatStepperModule,
 } from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -76,6 +78,8 @@ describe('ProductAddComponent', () => {
           MatGridListModule,
           MatInputModule,
           MatCheckboxModule,
+          MatStepperModule,
+          MatExpansionModule,
           MatListModule,
           NgStringPipesModule,
           FileUploadModule,

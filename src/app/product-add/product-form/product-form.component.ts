@@ -54,12 +54,12 @@ export class ProductFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.form.valid) {
-      const product = { ...this.form.value as IProduct };
+    if (this.form.valid &&
+      this.formDetail &&
+      this.formMedia &&
+      this.formAdditional) {
+      const product = { ...this.formMedia.value, ...this.formDetail.value, ...this.formAdditional.value } as IProduct;
       product.published = false;
-      if (product.external_url === 'http://') {
-        product.external_url = null;
-      }
       product.thumbnail = this.userService.getUser().photoURL;
       product.score = 0;
       this.submit(product);

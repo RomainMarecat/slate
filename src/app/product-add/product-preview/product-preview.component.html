@@ -6,7 +6,7 @@
     <span class="text-left">
       <mat-icon class="item-card-avatar" mat-card-avatar *ngIf="!user || !user.photoURL">perm_identity</mat-icon>
     </span>
-    <img class="item-card-avatar" mat-card-avatar [src]="user?.photoURL" *ngIf="user && user.photoURL" alt="user?.displayName">
+    <img class="item-card-avatar" mat-card-avatar [src]="user?.photoURL" *ngIf="user && user.photoURL" [attr.alt]="user?.displayName">
     <mat-card-title>
       <h2 class="item-card-title size--all-l" *ngIf="!product || !product.name" [innerHtml]="'product-add.product-preview.name.title' | translate"></h2>
       <span class="item-card-title size--all-xl" *ngIf="product && product.name">{{ product?.name }}</span>

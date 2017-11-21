@@ -32,6 +32,7 @@ export class ProductImageComponent implements OnInit {
   uploaderMessage: string;
   hasBaseDropZoneOver: boolean;
   cropperClass: string;
+  isUploaded: boolean;
 
   /**
    *
@@ -72,6 +73,7 @@ export class ProductImageComponent implements OnInit {
     this.cropperSettings.cropperDrawSettings.strokeColor = '#223a00';
 
     this.data = {};
+    this.isUploaded = false;
   }
 
   /**
@@ -149,6 +151,8 @@ export class ProductImageComponent implements OnInit {
         this.cropper.setImage(image);
         this.cropperClass = '';
       });
+
+      this.isUploaded = true;
 
       return { item, response, status, headers };
     };

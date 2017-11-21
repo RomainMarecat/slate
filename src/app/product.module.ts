@@ -43,7 +43,8 @@ import {
   MatMenuModule,
   MatCommonModule,
   MatTooltipModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatStepperModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
@@ -74,7 +75,6 @@ import {
   HAMMER_GESTURE_CONFIG,
 } from '@angular/platform-browser';
 import { NotificationService } from './shared/slack/notification.service';
-import {MatStepperModule} from '@angular/material';
 
 declare var Hammer: any;
 
