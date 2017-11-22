@@ -7,7 +7,17 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { Cloudinary, isJsonLikeString, isNamedNodeMap, transformKeyNamesFromKebabToSnakeCase } from './../cloudinary/cloudinary.service';
+import CloudinaryConfiguration from './../cloudinary/cloudinary-configuration.class';
+
+const cloudName = 'service-test';
 describe('MediaService', () => {
+  const config: CloudinaryConfiguration = {
+    cloud_name: cloudName
+  };
+  const cloudinaryCore = require('cloudinary-core');
+  const mockCloudinaryService: Cloudinary = new Cloudinary(cloudinaryCore, config);
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -16,7 +26,10 @@ describe('MediaService', () => {
         AngularFirestoreModule,
         AngularFireAuthModule
       ],
-      providers: [MediaService]
+      providers: [
+        MediaService,
+        { provide: Cloudinary, useValue: mockCloudinaryService },
+      ]
     });
   });
 

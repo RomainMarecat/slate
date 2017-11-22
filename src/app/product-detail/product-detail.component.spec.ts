@@ -36,6 +36,8 @@ import { MockProductService } from './../shared/product/mock-product.service';
 import { ProductService } from './../shared/product/product.service';
 import { ProductDetailComponent } from './product-detail.component';
 import { ImageComponent } from './../shared/cloudinary/image/image.component';
+import { MediaService } from './../shared/media/media.service';
+import { MockMediaService } from './../shared/media/mock-media.service';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
@@ -71,6 +73,7 @@ describe('ProductDetailComponent', () => {
         declarations: [ProductDetailComponent, ProductActionComponent, ImageComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
+          { provide: MediaService, useClass: MockMediaService },
         ]
       })
       .compileComponents();

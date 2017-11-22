@@ -61,6 +61,8 @@ export class ProductFormComponent implements OnInit {
       const product = { ...this.formMedia.value, ...this.formDetail.value, ...this.formAdditional.value } as IProduct;
       product.published = false;
       product.thumbnail = this.userService.getUser().photoURL;
+      product.user = this.userService.getUser().uid;
+      product.creator = this.userService.getUser().displayName;
       product.score = 0;
       this.submit(product);
     }

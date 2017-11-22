@@ -10,6 +10,7 @@ import { UserService } from './../shared/user/user.service';
 import { AlertService } from './../shared/alert/alert.service';
 import { LoaderService } from './../shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from './../../environments/environment';
 
 @Component({
   selector: 'app-product-list',
@@ -60,10 +61,10 @@ export class ProductListComponent implements OnInit {
       });
 
     this.meta.addTags([
+      { property: 'fb:app_id', content: environment.facebook_app_id },
       { rel: 'canonical', href: 'https://monpullmoche.com' },
       { rel: 'alternate', hreflang: 'x-default', href: 'https://monpullmoche.com' },
-      { rel: 'alternate', hreflang: 'en', href: 'https://en.monpullmoche.com' },
-      { rel: 'alternate', hreflang: 'es', href: 'https://es.monpullmoche.com' },
+      { rel: 'alternate', hreflang: 'en', href: 'https://myuglysweat.com' }
     ]);
 
     this.loadProducts(this.pageLimit);

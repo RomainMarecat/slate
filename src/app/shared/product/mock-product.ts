@@ -17,5 +17,6 @@ export const mockProduct = {
   reseller: '',
   key: '',
   user: '',
+  creator: '',
   external_url: '',
 };

@@ -23,5 +23,6 @@ export interface IProduct {
   reseller ?: string;
   key ?: string;
   user: string;
+  creator?: string;
   external_url ?: string;
 }

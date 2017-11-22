@@ -14,6 +14,7 @@ export class Product implements IProduct {
 
   key ?: string;
   user: string;
+  creator?: string;
 
   description ?: string;
   external_url ?: string;
