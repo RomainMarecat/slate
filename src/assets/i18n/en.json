@@ -1,10 +1,10 @@
 {
   "meta": {
     "description": {
-      "content": "Check out the official list of ugly sweatshirts."
+      "content": "Check out the official list of ugly sweaters."
     },
     "title": {
-      "content": "My Ugly Sweat"
+      "content": "My Ugly Sweater"
     }
   },
   "snackbar": {
@@ -12,12 +12,12 @@
       "submit": "Your sweater is waiting for validation :)"
     },
     "guard": {
-      "unauthenticated": "You have to login to add as many ugly sweats as you want!"
+      "unauthenticated": "You have to login to add as many ugly sweaters as you want!"
     }
   },
   "menu": {
     "title1": "my Ugly",
-    "title2": "SWEAT"
+    "title2": "SWEATER"
   },
   "date": {
     "now": "now",
@@ -30,7 +30,7 @@
     "card": {
       "list-item": {
         "add": {
-          "title": "Add an ugly sweat"
+          "title": "Add an ugly sweater"
         },
         "admin": {
           "title": "Back Office"
@@ -75,6 +75,12 @@
       }
     }
   },
+  "product-detail": {
+    "meta": {
+      "og:site_name": "My ugly sweater",
+      "description": "{{value}} - My ugly sweater"
+    }
+  },
   "product-list": {
     "card-title": {
       "title": "Do you already have an ugly sweater ?"
@@ -87,10 +93,14 @@
       "aria-label": "I post in one click!"
     },
     "fab-button": {
-      "title": "Add a new ugly sweat"
+      "title": "Add a new ugly sweater"
     }
   },
   "product-add": {
+    "meta": {
+      "title": "Add new ugly sweater on my ugly sweater",
+      "description": "Add your new ugly sweater on my ugly sweater. Take a new photo and get a good score"
+    },
     "title": "Post a new ugly sweater",
     "product-preview": {
       "title": "Preview",

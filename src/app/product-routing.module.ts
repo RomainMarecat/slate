@@ -25,7 +25,7 @@ const routes: Routes = [{
     canActivate: [UserGuard]
   },
   {
-    path: 'detail/:key',
+    path: 'product/:key',
     component: ProductDetailComponent
   },
 ];

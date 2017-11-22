@@ -55,7 +55,7 @@ export class ProductItemComponent implements OnInit {
    * Go to product page detail
    */
   productDetail() {
-    this.router.navigate(['/detail', this.product.key + '-' + this.product.name]);
+    this.router.navigate(['/product', this.product.key + '-' + this.product.name]);
   }
 
   /**

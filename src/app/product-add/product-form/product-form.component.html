@@ -26,14 +26,14 @@
             </mat-form-field>
             <div class="product-form-step-2-wrapper pa2 d-flex justify-content-around">
               <button class="back" mat-raised-button matStepperPrevious color="accent" [innerHtml]="'product-add.product-form.steps.detail.button.back.title'|translate"></button>
-              <button class="validate" mat-raised-button matStepperNext color="primary" [innerHtml]="'product-add.product-form.steps.detail.button.next.title'|translate">Next</button>
+              <button class="validate" mat-raised-button matStepperNext color="primary" [disabled]="name.invalid" [innerHtml]="'product-add.product-form.steps.detail.button.next.title'|translate">Next</button>
             </div>
           </form>
         </mat-step>
         <mat-step [stepControl]="formAdditional">
           <form [formGroup]="formAdditional" class="form-additional pa2">
             <ng-template matStepLabel>{{ 'product-add.product-form.steps.additional.section'|translate }}</ng-template>
-            <span [innerHtml]="'product-add.product-form.steps.additional.title'|translate"></span>
+            <h3 [innerHtml]="'product-add.product-form.steps.additional.title'|translate"></h3>
             <mat-expansion-panel>
               <mat-expansion-panel-header>
                 <mat-panel-title>

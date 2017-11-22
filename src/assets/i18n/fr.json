@@ -75,6 +75,12 @@
       }
     }
   },
+  "product-detail": {
+    "meta": {
+      "og:site_name": "Mon pull moche",
+      "description": "{{value}} - Mon pull moche"
+    }
+  },
   "product-list": {
     "card-title": {
       "title": "Tu as déjà un pull moche ?"
@@ -91,6 +97,10 @@
     }
   },
   "product-add": {
+    "meta": {
+      "title": "Ajouter un nouveau pull moche sur mon pull moche",
+      "description": "Ajouter un nouveau pull moche sur mon pull moche. Prend une photo et obtient un bon score"
+    },
     "title": "Poster un nouveau pull moche",
     "product-preview": {
       "title": "Aperçu",

@@ -6,6 +6,8 @@ import { UserService } from './../shared/user/user.service';
 import { LoaderService } from './../shared/loader/loader.service';
 import { AlertService } from './../shared/alert/alert.service';
 import { NotificationService } from './../shared/slack/notification.service';
+import { Meta } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-add',
@@ -27,7 +29,8 @@ export class ProductAddComponent implements OnInit {
    */
   constructor(private router: Router, private productService: ProductService,
     public alertService: AlertService, private userService: UserService,
-    private loaderService: LoaderService, private slackNotification: NotificationService) {
+    private loaderService: LoaderService, private slackNotification: NotificationService,
+    private meta: Meta, private translateService: TranslateService) {
     this.user = this.userService.getUser();
     this.ratio = '3:5';
     this.loaderService.show();
@@ -38,6 +41,15 @@ export class ProductAddComponent implements OnInit {
    */
   ngOnInit() {
     this.loaderService.hide();
+    // Title + description
+    this.translateService.get('product-add.meta.title')
+      .subscribe((translation: string) => {
+      this.meta.addTag({ name: 'title', content: translation });
+    });
+      this.translateService.get('product-add.meta.description')
+      .subscribe((translation: string) => {
+      this.meta.addTag({ name: 'description', content: translation });
+    });
   }
 
   /**
