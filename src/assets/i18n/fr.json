@@ -1,7 +1,7 @@
 {
   "meta": {
     "description": {
-      "content": "Découvrez la liste officielle des pulls moches."
+      "content": "Découvre la liste officielle des pulls moches."
     },
     "title": {
       "content": "Mon pull Moche"
@@ -9,10 +9,10 @@
   },
   "snackbar": {
     "product-add": {
-      "submit": "Votre pull est en attente de validation :)"
+      "submit": "Ton pull est en attente de validation :)"
     },
     "guard": {
-      "unauthenticated": "Il faut se connecter pour ajouter autant de pull moche que vous voulez !"
+      "unauthenticated": "Connectes-toi pour ajouter autant de pull moche que tu veux !"
     }
   },
   "menu": {
@@ -95,10 +95,10 @@
     "product-preview": {
       "title": "Aperçu",
       "name": {
-        "title": "Donnez un titre court et descriptif à votre pull"
+        "title": "Donne un titre court et un descriptif à ton pull"
       },
       "description": {
-        "title": "Donnez une description correspondant à ce merveilleux pull"
+        "title": "Donne une description correspondant à ce merveilleux pull"
       },
       "image": {
         "title": "Image"
@@ -113,16 +113,16 @@
     "product-form": {
       "steps": {
         "image": {
-          "section": "Télécharger son image",
+          "section": "Télécharger une image",
           "card-title": {
-            "title": "Importer la photo de ton pull"
+            "title": "Importe la photo de ton pull"
           },
           "product-image": {
             "image-cropper": {
               "cropper": {
                 "title": "Valider",
                 "tooltip": {
-                  "title": "Ajuster en redimensionnant ou déplaçant le cadre votre image"
+                  "title": "Ajuste en redimensionnant ou déplaçant le cadre ton image"
                 }
               }
             },
@@ -150,7 +150,7 @@
           },
           "form": {
             "name": {
-              "title": "Donner un titre court à votre pull",
+              "title": "Donne un titre court à ton pull",
               "placeholder": "Titre",
               "length": "/ 50",
               "error": {
@@ -171,18 +171,18 @@
           "title": "Il est possible d'apporter des précisions sur le pull",
           "panel": {
             "description": {
-              "title": "Donner un court descriptif à votre pull",
+              "title": "Donne un court descriptif à ton pull",
               "description": ""
             },
             "external_url": {
-              "title": "Déja vu sur un site ? Donnes-nous des informations sur le site où tu l'as trouvé",
+              "title": "Déja vu sur un site ? Donne-nous des informations sur le site où tu l'as trouvé",
               "description": ""
             }
           },
           "form": {
             "description": {
-              "title": "Donner un court descriptif à votre pull",
-              "placeholder": "Donner un court descriptif à votre pull",
+              "title": "Donne un court descriptif à ton pull",
+              "placeholder": "Donne un court descriptif à ton pull",
               "length": "/ 2000",
               "error": {
                 "length": "La description du pull est vide",
