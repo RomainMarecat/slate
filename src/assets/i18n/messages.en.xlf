@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="en">
+    <body>
+      
+      
+    <trans-unit id="4af4b59f87f0a5b3f82787b5e2a7d370e2659806" datatype="html" approved="yes">
+        <source>my_ugly</source> <context-group purpose="location">
+          <context context-type="sourcefile">app/menu/menu.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">ngx-translate</note>
+        <note priority="1" from="meaning">my_ugly</note>
+      <target state="translated">my ugly</target></trans-unit><trans-unit id="d5f395dfdf194ce5727b1f3da2d69c2225b1ab99" datatype="html">
+        <source>SWEATER</source> <context-group purpose="location">
+          <context context-type="sourcefile">app/menu/menu.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">ngx-translate</note>
+        <note priority="1" from="meaning">SWEATER</note>
+      <target state="final">SWEATER</target></trans-unit></body>
+  </file>
+</xliff>

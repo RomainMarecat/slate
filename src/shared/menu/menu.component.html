@@ -4,8 +4,14 @@
   </a>
   <h1 id="mpm-logo" class="logo" angulartics2On="mouseover" angularticsAction="hoveredOverHomeLink" [angularticsCategory]="'home.title'">
     <a [routerLink]="['/']">
-      <span class="cls-1">{{ 'menu.title1' | translate }}</span>
-      <span class="cls-2">{{ 'menu.title2' | translate }}</span>
+      <span class="cls-1"
+            i18n="my_ugly|ngx-translate"
+            translate
+      >my_ugly</span>
+      <span class="cls-2"
+            i18n="SWEATER|ngx-translate"
+            translate
+      >SWEATER</span>
     </a>
   </h1>
   <span class="pl-4" [innerHtml]="title" *ngIf="title"></span>
