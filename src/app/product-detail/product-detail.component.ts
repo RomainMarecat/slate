@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { MediaService } from './../shared/media/media.service';
+import { LoaderService } from './../shared/loader/loader.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -22,8 +23,10 @@ export class ProductDetailComponent implements OnInit {
   };
 
   constructor(private productService: ProductService, private activeRoute: ActivatedRoute,
-    private meta: Meta, private translateService: TranslateService, private mediaService: MediaService) {
+    private meta: Meta, private translateService: TranslateService, private mediaService: MediaService,
+    private loaderService: LoaderService) {
     this.cols = 0;
+    this.loaderService.show();
   }
 
   /**
@@ -37,30 +40,33 @@ export class ProductDetailComponent implements OnInit {
           .subscribe((products: IProduct[]) => {
             products.forEach((product) => {
               this.product = product;
+              this.loaderService.hide();
               /* itemscope itemtype="http://schema.org/Product" */
               // Title + description
-              this.translateService.get('product-detail.meta.title', {value: product.name})
+              this.translateService.get('product-detail.meta.title', { value: product.name })
                 .subscribe((translation: string) => {
-                this.meta.addTag({ name: 'title', content: translation });
-              });
-                this.translateService.get('product-detail.meta.description', {value: product.name})
+                  this.meta.addTag({ name: 'title', content: translation });
+                });
+              this.translateService.get('product-detail.meta.description', { value: product.name })
                 .subscribe((translation: string) => {
-                this.meta.addTag({ name: 'description', content: translation });
-              });
+                  this.meta.addTag({ name: 'description', content: translation });
+                });
 
               // Open Graph data
               this.translateService.get('product-detail.meta.og:site_name')
-              .subscribe((translation: string) => {
-                this.meta.addTag({ name: 'og:site_name', content: translation });
-              });
+                .subscribe((translation: string) => {
+                  this.meta.addTag({ name: 'og:site_name', content: translation });
+                });
               this.meta.addTag({ name: 'og:title', content: product.name });
               this.meta.addTag({ name: 'og:type', content: 'article' });
-              this.meta.addTag({ name: 'og:url',
-                content: `https://monpullmoche.com/product/${this.product.key}-${this.product.name}` });
+              this.meta.addTag({
+                name: 'og:url',
+                content: `https://monpullmoche.com/product/${this.product.key}-${this.product.name}`
+              });
               this.meta.addTag({ name: 'og:description', content: product.name });
-              this.meta.addTag({name: 'product:published', content: product.published_at.toString() });
-              this.meta.addTag({name: 'og:price:amount', content: product.price.toString() });
-              this.meta.addTag({name: 'og:price:currency', content: 'EUR' });
+              this.meta.addTag({ name: 'product:published', content: product.published_at.toString() });
+              this.meta.addTag({ name: 'og:price:amount', content: product.price.toString() });
+              this.meta.addTag({ name: 'og:price:currency', content: 'EUR' });
 
               // Twiter Card
               this.meta.addTag({ name: 'twitter:card', content: 'summary' });

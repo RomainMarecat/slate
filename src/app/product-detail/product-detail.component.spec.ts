@@ -38,6 +38,8 @@ import { ProductDetailComponent } from './product-detail.component';
 import { ImageComponent } from './../shared/cloudinary/image/image.component';
 import { MediaService } from './../shared/media/media.service';
 import { MockMediaService } from './../shared/media/mock-media.service';
+import { LoaderService } from './../shared/loader/loader.service';
+import { MockLoaderService } from './../shared/loader/mock-loader.service';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
@@ -74,6 +76,7 @@ describe('ProductDetailComponent', () => {
         providers: [
           { provide: ProductService, useClass: MockProductService },
           { provide: MediaService, useClass: MockMediaService },
+          { provide: LoaderService, useClass: MockLoaderService },
         ]
       })
       .compileComponents();

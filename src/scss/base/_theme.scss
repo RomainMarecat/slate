@@ -10,13 +10,11 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 //
-
-/* $color1: #fffbbd; //Blanc
+$color1: #fffbbd; //Blanc
 $color2: #e6aa68; // light yellow
 $color3: #7fb069; // Vert
 $color4: #223a00; //Noir
-$color5: #ca3c25; //Rouge */
-
+$color5: #ca3c25; //Rouge
 $product-primary: mat-palette($mat-green, 800);
 $product-accent: mat-palette($mat-red, 800);
 $product-warn: mat-palette($mat-orange, 200);
