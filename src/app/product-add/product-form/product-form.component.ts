@@ -31,7 +31,7 @@ export class ProductFormComponent implements OnInit {
 
   constructor(private userService: UserService) {
     this.isLoading = false;
-    this.isLinear = false;
+    this.isLinear = true;
     this._submit = new EventEmitter < Product > ();
     this.productChange = new EventEmitter < Product > ();
     this.now = new Date();

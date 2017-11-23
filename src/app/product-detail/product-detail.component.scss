@@ -1,8 +1,109 @@
+@import './../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import './../../scss/base/theme.scss';
+
 .item-card {
-  .item-card-header {
-    h2 {
-      font-size: 20px;
+  a {
+    color: $color4;
+  }
+  .mat-card-header {
+    position: relative;
+
+    .mat-card-subtitle,
+    .mat-card-title {
       display: inline-block;
+    }
+
+    .mat-card-avatar {
+      @include media-breakpoint-up(xs) {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        left: 10px;
+        top: 0;
+      }
+      @include media-breakpoint-up(sm) {
+        margin: 10px 50px;
+      }
+      @include media-breakpoint-up(md) {
+        margin: 10px 100px;
+      }
+      @include media-breakpoint-up(lg) {
+        margin: 10px 100px;
+      }
+      @include media-breakpoint-up(xl) {
+        margin: 10px 100px;
+      }
+    }
+
+    .mat-card-title {
+      @include media-breakpoint-up(xs) {
+        span {
+          font-size: 8px;
+          display: inline;
+        }
+        h2 {
+          font-size: 14px;
+        }
+      }
+      @include media-breakpoint-up(sm) {
+        margin: 10px 50px;
+        span {
+          display: none;
+        }
+        h2 {
+          font-size: 14px;
+        }
+      }
+      @include media-breakpoint-up(md) {
+        margin: 10px 100px;
+        span {
+          display: none;
+        }
+        h2 {
+          font-size: 20px;
+        }
+      }
+      @include media-breakpoint-up(lg) {
+        margin: 20px 150px;
+        span {
+          display: none;
+        }
+        h2 {
+          font-size: 20px;
+        }
+      }
+      @include media-breakpoint-up(xl) {
+        margin: 20px 250px;
+        span {
+          display: none;
+        }
+        h2 {
+          font-size: 20px;
+        }
+      }
+    }
+
+    .mat-card-subtitle {
+
+      @include media-breakpoint-up(xs) {
+        margin: inherit;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      @include media-breakpoint-up(sm) {
+        margin: 10px 20px;
+      }
+      @include media-breakpoint-up(md) {
+        margin: 10px 30px;
+      }
+      @include media-breakpoint-up(lg) {
+        margin: 10px 40px;
+      }
+      @include media-breakpoint-up(xl) {
+        margin: 10px 50px;
+      }
     }
   }
 }
