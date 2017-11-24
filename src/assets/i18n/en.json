@@ -16,6 +16,9 @@
     }
   },
   "menu": {
+    "connection": {
+      "title": "Login"
+    },
     "title1": "my Ugly",
     "title2": "SWEATER"
   },
