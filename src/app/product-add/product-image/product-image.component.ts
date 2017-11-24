@@ -8,6 +8,7 @@ import { SHA1 } from 'crypto-js';
 import { environment } from './../../../environments/environment';
 import { ObjectService } from './../..//shared/util/object.service';
 import { MediaService } from './../..//shared/media/media.service';
+import { DeviceService } from './../..//shared/device/device.service';
 
 @Component({
   selector: 'app-product-image',
@@ -46,25 +47,14 @@ export class ProductImageComponent implements OnInit {
     private zone: NgZone,
     private http: Http,
     public objectService: ObjectService,
-    private mediaService: MediaService
+    private mediaService: MediaService,
+    private deviceService: DeviceService
   ) {
     this.progressData = 0;
     this.cropperClass = 'hidden';
     this.cropperSettings = new CropperSettings();
 
     this.cropperSettings.noFileInput = true;
-
-    this.cropperSettings.width = 240;
-    this.cropperSettings.height = 240;
-
-    this.cropperSettings.croppedWidth = 240;
-    this.cropperSettings.croppedHeight = 240;
-
-    this.cropperSettings.canvasWidth = 500;
-    this.cropperSettings.canvasHeight = 300;
-
-    this.cropperSettings.minWidth = 10;
-    this.cropperSettings.minHeight = 10;
 
     this.cropperSettings.rounded = false;
     this.cropperSettings.keepAspect = false;
@@ -92,7 +82,7 @@ export class ProductImageComponent implements OnInit {
       }]
     };
     this.uploader = new FileUploader(uploaderOptions);
-
+    this.initCanvas();
     this.uploader.onAfterAddingFile = (fileItem: any) => {
       return fileItem;
     };
@@ -161,6 +151,48 @@ export class ProductImageComponent implements OnInit {
       console.error(response);
       return { item, response, status, headers };
     };
+  }
+
+  initCanvas() {
+    this.cropperSettings.width = 240;
+    this.cropperSettings.height = 240;
+
+    this.cropperSettings.croppedWidth = 240;
+    this.cropperSettings.croppedHeight = 240;
+
+    this.cropperSettings.canvasWidth = 250;
+    this.cropperSettings.canvasHeight = 400;
+
+    this.cropperSettings.minWidth = 10;
+    this.cropperSettings.minHeight = 10;
+
+    if (this.deviceService.isMaterializeSmallAndUp()) {
+      this.cropperSettings.width = 240;
+      this.cropperSettings.height = 240;
+
+      this.cropperSettings.croppedWidth = 240;
+      this.cropperSettings.croppedHeight = 240;
+
+      this.cropperSettings.canvasWidth = 350;
+      this.cropperSettings.canvasHeight = 500;
+
+      this.cropperSettings.minWidth = 10;
+      this.cropperSettings.minHeight = 10;
+    }
+
+    if (this.deviceService.isMaterializeMediumAndUp()) {
+      this.cropperSettings.width = 240;
+      this.cropperSettings.height = 240;
+
+      this.cropperSettings.croppedWidth = 240;
+      this.cropperSettings.croppedHeight = 240;
+
+      this.cropperSettings.canvasWidth = 500;
+      this.cropperSettings.canvasHeight = 300;
+
+      this.cropperSettings.minWidth = 10;
+      this.cropperSettings.minHeight = 10;
+    }
   }
 
   /**

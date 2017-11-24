@@ -5,6 +5,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { I18nService } from './i18n/i18n.service';
+import { DeviceService } from './device/device.service';
 import { SlackModule } from './slack/slack.module';
 import { environment } from './../../environments/environment';
 
@@ -33,7 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [],
   providers: [
     I18nService,
-
+    DeviceService
   ]
 })
 export class SharedModule {}
