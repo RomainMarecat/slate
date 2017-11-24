@@ -38,6 +38,7 @@ import { UserService } from './../../shared/user/user.service';
 import { ObjectService } from './../../shared/util/object.service';
 import { MediaService } from './../../shared/media/media.service';
 import { MockMediaService } from './../../shared/media/mock-media.service';
+import { DeviceService } from './../../shared/device/device.service';
 
 describe('ProductFormComponent', () => {
   let component: ProductFormComponent;
@@ -87,7 +88,8 @@ describe('ProductFormComponent', () => {
           { provide: AlertService, useClass: MockAlertService },
           { provide: UserService, useClass: MockUserService },
           { provide: MediaService, useClass: MockMediaService },
-          ObjectService
+          ObjectService,
+          DeviceService
         ]
       })
       .compileComponents();

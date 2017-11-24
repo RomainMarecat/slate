@@ -194,8 +194,8 @@
           },
           "form": {
             "description": {
-              "title": "Donne un court descriptif à ton pull",
-              "placeholder": "Donne un court descriptif à ton pull",
+              "title": "Descriptif du pull",
+              "placeholder": "description",
               "length": "/ 2000",
               "error": {
                 "length": "La description du pull est vide",

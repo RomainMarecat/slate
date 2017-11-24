@@ -24,6 +24,7 @@ import { CloudinaryConfig } from './../../shared/cloudinary/cloudinary-config';
 import { ObjectService } from './../../shared/util/object.service';
 import { MockMediaService } from './../../shared/media/mock-media.service';
 import { MediaService } from './../../shared/media/media.service';
+import { DeviceService } from './../../shared/device/device.service';
 
 describe('ProductImageComponent', () => {
   let component: ProductImageComponent;
@@ -60,7 +61,7 @@ describe('ProductImageComponent', () => {
         providers: [
           ObjectService,
           { provide: MediaService, useClass: MockMediaService },
-
+          DeviceService
         ]
       })
       .compileComponents();

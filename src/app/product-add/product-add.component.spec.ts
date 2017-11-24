@@ -56,6 +56,7 @@ import { DateService } from './../shared/util/date.service';
 import { I18nService } from './../shared/i18n/i18n.service';
 import { NotificationService } from './../shared/slack/notification.service';
 import { SlackModule } from './../shared/slack/slack.module';
+import { DeviceService } from './../shared/device/device.service';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
@@ -113,6 +114,7 @@ describe('ProductAddComponent', () => {
           DateService,
           ObjectService,
           I18nService,
+          DeviceService,
           NotificationService
         ]
       })
