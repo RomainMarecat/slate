@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu.component';
+import { UserService } from './../shared/user/user.service';
+import { MockUserService } from './../shared/user/mock-user.service';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -53,7 +55,8 @@ describe('MenuComponent', () => {
         ],
         declarations: [MenuComponent],
         providers: [
-          SidenavService
+          SidenavService,
+          { provide: UserService, useClass: MockUserService },
         ]
       })
       .compileComponents();

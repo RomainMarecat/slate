@@ -16,6 +16,9 @@
     }
   },
   "menu": {
+    "connection": {
+      "title": "Se connecter"
+    },
     "title1": "mon pull",
     "title2": "MOCHE"
   },
