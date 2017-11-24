@@ -40,13 +40,15 @@
         span {
           font-size: 8px;
           display: inline;
+          margin-left: 40px;
         }
         h2 {
+          margin-left: 40px;
           font-size: 14px;
         }
       }
       @include media-breakpoint-up(sm) {
-        margin: 10px 50px;
+        margin: 10px 30px 50px;
         span {
           display: none;
         }
