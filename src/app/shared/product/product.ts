@@ -30,6 +30,7 @@ export class Product implements IProduct {
   delivery_fee ?: number;
   delivery_free ?: boolean;
   reseller ?: string;
+  category ?: string;
 
   constructor() {
     this.score = 0;

@@ -25,4 +25,5 @@ export interface IProduct {
   user: string;
   creator?: string;
   external_url ?: string;
+  category ?: string;
 }

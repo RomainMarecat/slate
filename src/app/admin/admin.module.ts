@@ -34,6 +34,7 @@ import { SelectionModule } from './navigation/selection/selection.module';
     MatGridListModule,
     MatButtonModule,
     MatIconModule,
+    MatToolbarModule,
     CategoryModule,
     ProductModule,
     SelectionModule,
