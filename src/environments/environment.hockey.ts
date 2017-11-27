@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  site_name: 'monpullmoche.com',
-  app_name: 'monpullmoche',
+  site_name: 'hockey-france.com',
+  app_name: 'hockey-france',
   firebase: {
     apiKey: 'AIzaSyB1K9_bZJDLq48C-4xAUhNEjP79Q-60YKw',
     authDomain: 'mon-pull-moche.firebaseapp.com',

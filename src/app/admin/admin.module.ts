@@ -22,6 +22,10 @@ import {
   MatSnackBarModule,
   MatProgressSpinnerModule,
 } from '@angular/material';
+import { ProductModule } from './product/product.module';
+import { ArticleModule } from './article/article.module';
+import { CategoryModule } from './navigation/category/category.module';
+import { SelectionModule } from './navigation/selection/selection.module';
 
 @NgModule({
   imports: [
@@ -30,6 +34,9 @@ import {
     MatGridListModule,
     MatButtonModule,
     MatIconModule,
+    CategoryModule,
+    ProductModule,
+    SelectionModule,
     AdminRoutingModule
   ],
   declarations: [HomeComponent, ProductListComponent, ProductComponent],
