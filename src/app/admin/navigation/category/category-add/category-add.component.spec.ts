@@ -23,17 +23,18 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { CategoryListComponent } from './category-list.component';
+import { CategoryAddComponent } from './category-add.component';
 import { CategoryService } from './../shared/category.service';
 import { MockCategoryService } from './../shared/mock-category.service';
 import { MockAlertService } from './../../../../shared/alert/mock-alert.service';
 import { AlertService } from './../../../../shared/alert/alert.service';
 
-describe('CategoryListComponent', () => {
-  let component: CategoryListComponent;
-  let fixture: ComponentFixture < CategoryListComponent > ;
+describe('CategoryAddComponent', () => {
+  let component: CategoryAddComponent;
+  let fixture: ComponentFixture < CategoryAddComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -41,9 +42,10 @@ describe('CategoryListComponent', () => {
           CommonModule,
           BrowserModule,
           HttpModule,
+          FormsModule,
           RouterTestingModule,
+          ReactiveFormsModule,
           BrowserAnimationsModule,
-          NgxDatatableModule,
           MatCardModule,
           MatIconModule,
           MatButtonModule,
@@ -52,18 +54,22 @@ describe('CategoryListComponent', () => {
           MatCheckboxModule,
           MatListModule,
           MatToolbarModule,
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          }),
         ],
-        declarations: [CategoryListComponent],
+        declarations: [CategoryAddComponent],
         providers: [
           { provide: CategoryService, useClass: MockCategoryService },
           { provide: AlertService, useClass: MockAlertService },
+
         ]
       })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CategoryListComponent);
+    fixture = TestBed.createComponent(CategoryAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

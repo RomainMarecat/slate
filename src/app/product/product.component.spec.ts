@@ -55,7 +55,6 @@ describe('ProductComponent', () => {
           RouterTestingModule,
           BrowserModule,
           HttpModule,
-          RouterTestingModule,
           BrowserAnimationsModule,
           AngularFireModule.initializeApp(environment.firebase),
           AngularFirestoreModule,

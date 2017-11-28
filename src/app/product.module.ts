@@ -111,7 +111,6 @@ export class MyHammerConfig extends HammerGestureConfig {
       adClient: environment.clientAdSense,
       adSlot: environment.slotAdSense
     }),
-    AdminModule,
     ModalModule.forRoot(),
     ImageCropperModule,
     FileUploadModule,

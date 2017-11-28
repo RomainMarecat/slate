@@ -5,7 +5,6 @@ import { AdminGuard } from './../../shared/guard/admin.guard';
 const routes: Routes = [
 {
   path: 'navigation',
-  pathMatch: 'full',
   canActivate: [AdminGuard],
 }];
 

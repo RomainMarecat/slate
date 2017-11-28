@@ -37,7 +37,7 @@ export class CategoryService {
     this.publishedFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
-    this.categoryCollectionRef = this.afs.collection('clothes');
+    this.categoryCollectionRef = this.afs.collection('category');
     this.categories$ = Observable.combineLatest(
         this.keyFilters$,
         this.publishedFilter$,
@@ -49,7 +49,7 @@ export class CategoryService {
         return Observable.of([]);
       })
       .switchMap(([key, published, name, limit]) =>
-        this.afs.collection('clothes', ref => {
+        this.afs.collection('category', ref => {
           this.query = ref;
           if (published) {
             this.query = this.query.where('published', '==', published);

@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PostComponent } from './post.component';
+import { PostListComponent } from './post-list/post-list.component';
 import { AdminGuard } from './../../shared/guard/admin.guard';
-import { ProductComponent } from './product.component';
-import { ProductListComponent } from './product-list/product-list.component';
 
-const routes: Routes = [{
+const routes: Routes = [
+{
     path: '',
     redirectTo: 'list',
     canActivate: [AdminGuard],
-    component: ProductComponent
+    component: PostComponent
   },
   {
     path: 'list',
     canActivate: [AdminGuard],
-    component: ProductListComponent
-  },
-];
+    component: PostListComponent
+  }, ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProductRoutingModule {}
+export class PostRoutingModule { }
