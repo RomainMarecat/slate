@@ -36,7 +36,7 @@ import { SharedModule } from './../../../shared/shared.module';
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryComponent } from './category.component';
-import { CategoryService } from './shared/category.service';
+import { CategoryService } from './../../shared/navigation/category/category.service';
 import { CategoryAddComponent } from './category-add/category-add.component';
 
 @NgModule({

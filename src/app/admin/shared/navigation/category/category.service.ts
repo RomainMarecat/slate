@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Category } from './../shared/category';
-import { AlertService } from './../../../../shared/alert/alert.service';
+import { Category } from './category';
+import { AlertService } from '../../../../shared/alert/alert.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';

@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { Category } from './../shared/category';
-import { CategoryService } from './../shared/category.service';
+import { Category } from '../../../shared/navigation/category/category';
+import { CategoryService } from '../../../shared/navigation/category/category.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({

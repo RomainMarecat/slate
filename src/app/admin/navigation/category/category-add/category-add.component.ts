@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { CategoryService } from './../shared/category.service';
-import { Category } from './../shared/category';
+import { CategoryService } from '../../../shared/navigation/category/category.service';
+import { Category } from '../../../shared/navigation/category/category';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from './../../../../shared/alert/alert.service';
 

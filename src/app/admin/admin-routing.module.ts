@@ -14,6 +14,11 @@ const routes: Routes = [{
   },
   {
     canActivate: [AdminGuard],
+    path: 'cms',
+    loadChildren: './cms/cms.module#CmsModule'
+  },
+  {
+    canActivate: [AdminGuard],
     path: 'post',
     loadChildren: './post/post.module#PostModule'
   },
