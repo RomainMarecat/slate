@@ -1,26 +1,27 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { CmsDetail } from './../../shared/cms-detail/cms-detail';
 import { Cms } from './../../shared/cms/cms';
-import { CmsService } from './../../shared/cms/cms.service';
+import { CmsDetailService } from './../../shared/cms-detail/cms-detail.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-cms-list',
-  templateUrl: './cms-list.component.html',
-  styleUrls: ['./cms-list.component.scss']
+  selector: 'app-cms-detail-list',
+  templateUrl: './cms-detail-list.component.html',
+  styleUrls: ['./cms-detail-list.component.scss']
 })
-export class CmsListComponent implements OnInit {
-readonly headerHeight = 50;
+export class CmsDetailListComponent implements OnInit {
+  readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  cmsList$: Observable < Cms[] > ;
-  selected: Cms[];
+  cmsDetails$: Observable < CmsDetail[] > ;
+  selected: CmsDetail[];
   isLoading: boolean;
 
   /**
    * @param {ElementRef} table
-   * @param {cmsService} cmsService
+   * @param {CmsService} CmsService
    */
-  constructor(private table: ElementRef, private cmsService: CmsService) {
+  constructor(private table: ElementRef, private cmsDetailService: CmsDetailService) {
     this.columns = [{
       prop: 'name',
       name: 'name',
@@ -42,8 +43,8 @@ readonly headerHeight = 50;
    * set at published at now et activate published to true
    */
   publishCms() {
-    this.selected.forEach((cms: Cms) => {
-      this.cmsService.updateCms(cms);
+    this.selected.forEach((cmsDetail: CmsDetail) => {
+      this.cmsDetailService.updateCmsDetail(cmsDetail);
     });
   }
 
@@ -51,8 +52,8 @@ readonly headerHeight = 50;
    * Delete a Cms from list
    */
   deleteCms() {
-    this.selected.forEach((cms: Cms) => {
-      this.cmsService.deleteCms(cms);
+    this.selected.forEach((cmsDetail: CmsDetail) => {
+      this.cmsDetailService.deleteCmsDetail(cmsDetail);
     });
   }
 
@@ -60,7 +61,7 @@ readonly headerHeight = 50;
    * Init list of Cms
    */
   ngOnInit() {
-    this.cmsList$ = this.cmsService.getCmss();
+    this.cmsDetails$ = this.cmsDetailService.getCmsDetails();
     this.isLoading = false;
   }
 

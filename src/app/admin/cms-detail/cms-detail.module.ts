@@ -33,12 +33,10 @@ import {
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { SharedModule } from './../../shared/shared.module';
-import { CmsRoutingModule } from './cms-routing.module';
-import { CmsComponent } from './cms.component';
-import { CmsListComponent } from './cms-list/cms-list.component';
-import { CmsDetailComponent } from './cms-detail/cms-detail.component';
-import { CmsAddComponent } from './cms-add/cms-add.component';
-import { CmsService } from './../shared/cms/cms.service';
+import { CmsDetailRoutingModule } from './cms-detail-routing.module';
+import { CmsDetailListComponent } from './cms-detail-list/cms-detail-list.component';
+import { CmsDetailAddComponent } from './cms-detail-add/cms-detail-add.component';
+import { CmsDetailService } from './../shared/cms-detail/cms-detail.service';
 
 @NgModule({
   imports: [
@@ -70,9 +68,11 @@ import { CmsService } from './../shared/cms/cms.service';
     ReactiveFormsModule,
     SharedModule,
     NgxDatatableModule,
-    CmsRoutingModule
+    CmsDetailRoutingModule
   ],
-  declarations: [CmsComponent, CmsListComponent, CmsDetailComponent, CmsAddComponent],
-  providers: [CmsService]
+  declarations: [CmsDetailListComponent, CmsDetailAddComponent],
+  providers: [
+    CmsDetailService
+  ]
 })
-export class CmsModule {}
+export class CmsDetailModule {}

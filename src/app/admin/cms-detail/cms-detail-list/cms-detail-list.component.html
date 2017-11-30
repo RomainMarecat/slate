@@ -2,7 +2,7 @@
   <a mat-button color="primary" [routerLink]="['/admin']">Back office</a>
   <a mat-button color="primary" [routerLink]="['/admin/product']">Products</a>
   <a mat-button color="primary" [routerLink]="['/admin/category']">Categories</a>
-  <a mat-button color="primary" [routerLink]="['/admin/cms']">Cms</a>
+  <a mat-button color="primary" [routerLink]="['/admin/cmsDetail']">CmsDetail</a>
 </mat-toolbar>
 <div class="container">
   <div class="row">
@@ -12,15 +12,15 @@
       </div>
     </div>
     <div class="col-6">
-      <button role="button" aria-label="Publier une cms" mat-raised-button color="primary" (click)="publishCms()" *ngIf="selected.length > 0">
+      <button role="button" aria-label="Publier une cmsDetail" mat-raised-button color="primary" (click)="publishCmsDetail()" *ngIf="selected.length > 0">
         <mat-icon aria-label="Published">done</mat-icon>
         Publier
       </button>
-      <button role="button" aria-label="Supprimer une cms" mat-raised-button color="accent" (click)="deleteCms()" *ngIf="selected.length > 0">
+      <button role="button" aria-label="Supprimer une cmsDetail" mat-raised-button color="accent" (click)="deleteCmsDetail()" *ngIf="selected.length > 0">
         <mat-icon aria-label="delete">delete</mat-icon>
         Supprimer
       </button>
-      <a [routerLink]="['/admin/cms/add']" mat-raised-button color="primary">
+      <a [routerLink]="['/admin/cms-detail/add']" mat-raised-button color="primary">
         <mat-icon aria-label="add">add</mat-icon>
         Ajouter
       </a>
@@ -28,7 +28,7 @@
   </div>
   <div class="row">
     <div class="col-12 mt-2">
-      <ngx-datatable class="material striped scrolling-cms" [columnMode]="'force'" [rows]="cmsList$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
+      <ngx-datatable class="material striped scrolling-cmsDetail" [columnMode]="'force'" [rows]="cmsDetailList$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
         <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false">
           <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
             <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
