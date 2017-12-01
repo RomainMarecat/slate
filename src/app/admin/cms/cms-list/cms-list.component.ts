@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cms } from './../../shared/cms/cms';
 import { CmsService } from './../../shared/cms/cms.service';
 import { Observable } from 'rxjs/Observable';
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./cms-list.component.scss']
 })
 export class CmsListComponent implements OnInit {
-readonly headerHeight = 50;
+  readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
   cmsList$: Observable < Cms[] > ;
@@ -20,7 +21,8 @@ readonly headerHeight = 50;
    * @param {ElementRef} table
    * @param {cmsService} cmsService
    */
-  constructor(private table: ElementRef, private cmsService: CmsService) {
+  constructor(private table: ElementRef, private cmsService: CmsService,
+    private router: Router) {
     this.columns = [{
       prop: 'name',
       name: 'name',
@@ -73,7 +75,16 @@ readonly headerHeight = 50;
     this.selected.push(...selected);
   }
 
-  onActivate(event) {}
+  onActivate(event: any) {
+    if (event.type === 'dblclick' && event.row) {
+      const cms = event.row as Cms;
+      this.showCmsDetail(cms);
+    }
+  }
+
+  showCmsDetail(cms: Cms) {
+    this.router.navigate([`/admin/cms/${cms.key}/cms-details`])
+  }
 
   onScroll(event: any) {}
 }

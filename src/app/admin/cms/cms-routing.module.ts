@@ -27,9 +27,9 @@ const routes: Routes = [{
     canActivate: [AdminGuard],
     component: CmsAddComponent
   }, {
-    path: 'cms/:key/cms-detail',
+    path: ':key/cms-details',
     canActivate: [AdminGuard],
-    loadChildren: './../cms/cms-detail.module#CmsDetailModule'
+    loadChildren: './../cms-detail/cms-detail.module#CmsDetailModule'
   }
 ];
 

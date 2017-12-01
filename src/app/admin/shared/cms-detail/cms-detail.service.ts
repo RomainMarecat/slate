@@ -16,7 +16,7 @@ import 'rxjs/add/operator/catch';
 export class CmsDetailService {
   cmsDetailCollectionRef: AngularFirestoreCollection < CmsDetail > ;
   cmsDetails$: Observable < DocumentChangeAction[] > ;
-  cmsFilter$: BehaviorSubject < boolean | true > ;
+  cmsFilters$: BehaviorSubject < string | null > ;
   nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
@@ -34,13 +34,13 @@ export class CmsDetailService {
    */
   constructor(private afs: AngularFirestore, private alertService: AlertService) {
     this.keyFilters$ = new BehaviorSubject(null);
-    this.cmsFilter$ = new BehaviorSubject(null);
+    this.cmsFilters$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.cmsDetailCollectionRef = this.afs.collection('cms-detail');
     this.cmsDetails$ = Observable.combineLatest(
         this.keyFilters$,
-        this.cmsFilter$,
+        this.cmsFilters$,
         this.nameFilters$,
         this.limit$
       )
@@ -78,6 +78,11 @@ export class CmsDetailService {
         return cmsDetail as CmsDetail;
       })
     );
+  }
+
+  getCmsDetailByCms(cms: string): Observable < CmsDetail[] > {
+    this.cmsFilters$.next(cms);
+    return this.getCmsDetails();
   }
 
   /**

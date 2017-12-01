@@ -1,3 +1,35 @@
-<p>
-  cms-detail-add works!
-</p>
+<mat-grid-list cols="1" rowHeight="500px">
+  <mat-grid-tile>
+    <form [formGroup]="form" (ngSubmit)="saveCms()" class="form">
+      <mat-card class="mat-card">
+        <mat-card-header>
+          <mat-card-title>
+            Ajouter une cms
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="mat-card-content">
+          <mat-form-field class="mat-form-field">
+            <input matInput maxlength="50" [placeholder]="'Nom'|translate" formControlName="name">
+            <mat-hint align="start"><strong [innerHtml]="'Nom de la cms'|translate"></strong></mat-hint>
+            <mat-hint align="end">{{ name.value.length }} {{ '/50'|translate }}</mat-hint>
+            <mat-error *ngIf="name.invalid && name.value.length === 0" [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
+            <mat-error *ngIf="name.invalid && name.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+          </mat-form-field>
+          <mat-form-field class="mat-form-field">
+            <input matInput maxlength="50" [placeholder]="'content'|translate" formControlName="content">
+            <mat-hint align="start"><strong [innerHtml]="'content de la cms'|translate"></strong></mat-hint>
+            <mat-hint align="end">{{ content.value.length }} {{ '/50'|translate }}</mat-hint>
+            <mat-error *ngIf="content.invalid && content.value.length === 0" [innerHtml]="'La content ne peut pas être vide'|translate"></mat-error>
+            <mat-error *ngIf="content.invalid && content.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="d-flex justify-content-around">
+            <button type="button" class="back" mat-raised-button color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/cms']"></button>
+            <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid || form.pristine" [innerHtml]="'Enregistrer'|translate"></button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </mat-grid-tile>
+</mat-grid-list>

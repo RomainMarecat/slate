@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CmsDetail } from './../../shared/cms-detail/cms-detail';
 import { Cms } from './../../shared/cms/cms';
 import { CmsDetailService } from './../../shared/cms-detail/cms-detail.service';
@@ -13,6 +14,7 @@ export class CmsDetailListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
+  cmsKey: string;
   cmsDetails$: Observable < CmsDetail[] > ;
   selected: CmsDetail[];
   isLoading: boolean;
@@ -21,18 +23,19 @@ export class CmsDetailListComponent implements OnInit {
    * @param {ElementRef} table
    * @param {CmsService} CmsService
    */
-  constructor(private table: ElementRef, private cmsDetailService: CmsDetailService) {
+  constructor(private table: ElementRef, private cmsDetailService: CmsDetailService,
+    private activeRoute: ActivatedRoute) {
     this.columns = [{
-      prop: 'name',
-      name: 'name',
-      flexGrow: 1
-    }, {
-      prop: 'site_name',
-      name: 'site_name',
-      flexGrow: 1
-    }, {
       prop: 'key',
       name: 'key',
+      flexGrow: 1
+    }, {
+      prop: 'title',
+      name: 'title',
+      flexGrow: 1
+    }, {
+      prop: 'content',
+      name: 'content',
       flexGrow: 1
     }];
     this.selected = [];
@@ -61,15 +64,22 @@ export class CmsDetailListComponent implements OnInit {
    * Init list of Cms
    */
   ngOnInit() {
-    this.cmsDetails$ = this.cmsDetailService.getCmsDetails();
-    this.isLoading = false;
+    this.isLoading = false
+    this.activeRoute.params.subscribe((value: { key: string }) => {
+      this.cmsKey = value.key;
+      if (value.key) {
+        this.cmsDetails$ = this.cmsDetailService.getCmsDetailByCms(value.key);
+      } else {
+        this.cmsDetails$ = Observable.of([]);
+      }
+    });
   }
 
   /**
    * On select add new list in selection array
-   * @param {any} selected
+   * @param any selected
    */
-  onSelect({ selected }) {
+  onSelect(selected) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }

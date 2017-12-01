@@ -9,7 +9,7 @@ module.exports = function(config) {
       pattern: './src/test.ts',
       watched: false
     }, {
-      pattern: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css'
+      pattern: './src/styles.spec.css'
     }, {
       pattern: './node_modules/hammerjs/hammer.js'
     }, {
