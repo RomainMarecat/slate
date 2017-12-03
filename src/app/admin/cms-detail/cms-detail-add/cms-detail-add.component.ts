@@ -15,6 +15,7 @@ export class CmsDetailAddComponent implements OnInit {
   cmsDetail: CmsDetail;
   cmsKey: string;
   editorConfig: any;
+  content: string;
 
   constructor(private cmsDetailService: CmsDetailService,
     private alertService: AlertService,
@@ -49,10 +50,11 @@ export class CmsDetailAddComponent implements OnInit {
     });
   }
 
-  saveCms() {
-    console.log(this.form);
+  saveCmsDetail() {
+    this.form.patchValue({ 'content': this.content });
     if (this.form.valid === true && this.cmsKey !== null) {
       this.cmsDetail = this.form.value;
+      this.cmsDetail.cms = this.cmsKey;
       this.cmsDetailService.createCmsDetail(this.cmsDetail);
       this.alertService.toast(`Le contenu cms est ajoutée ${this.cmsDetail.title}`, 'info');
       this.reset();
@@ -69,9 +71,5 @@ export class CmsDetailAddComponent implements OnInit {
 
   get title() {
     return this.form.get('title');
-  }
-
-  get content() {
-    return this.form.get('content');
   }
 }
