@@ -30,8 +30,8 @@ import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavService } from './sidenav.service';
 import { SidenavComponent } from './sidenav.component';
-import { FooterComponent } from './../../footer/footer.component';
-import { MenuComponent } from './../../menu/menu.component';
+import { FooterComponent } from '../footer/footer.component';
+import { MenuComponent } from '../menu/menu.component';
 import { AdsenseModule, AdsenseConfig } from 'ng2-adsense';
 import { LoaderComponent } from './../loader/loader.component';
 import { UserService } from './../user/user.service';

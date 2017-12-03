@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { SidenavService } from './../shared/sidenav/sidenav.service';
-import { UserService } from './../shared/user/user.service';
+import { SidenavService } from './../sidenav/sidenav.service';
+import { UserService } from './../user/user.service';
 
 @Component({
   selector: 'app-menu',

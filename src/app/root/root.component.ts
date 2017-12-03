@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Angulartics2 } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { UserService } from './../shared/user/user.service';
 import { LoaderService } from './../shared/loader/loader.service';
 import { I18nService } from './../shared/i18n/i18n.service';
 
 @Component({
-  selector: 'app-product-index',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-root',
+  templateUrl: './root.component.html',
+  styleUrls: ['./root.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class AppRootComponent implements OnInit {
 
   /**
    * Root Constructor

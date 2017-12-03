@@ -71,7 +71,7 @@ export class ProductListComponent implements OnInit {
   }
 
   /**
-   * Update on product
+   * Update on root
    * @param {IProduct} product
    */
   updateProduct(product: IProduct) {
@@ -79,7 +79,7 @@ export class ProductListComponent implements OnInit {
   }
 
   /**
-   * Go to form page Add product
+   * Go to form page Add root
    */
   addProduct() {
     this.router.navigate(['/add']);

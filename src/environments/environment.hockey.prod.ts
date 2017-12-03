@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   site_name: 'app-hockey-france.com',
   app_name: 'app-hockey-france',
   firebase: {

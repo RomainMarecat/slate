@@ -41,18 +41,18 @@ export class ProductAddComponent implements OnInit {
   ngOnInit() {
     this.loaderService.hide();
     // Title + description
-    this.translateService.get('product-add.meta.title')
+    this.translateService.get('root-add.meta.title')
       .subscribe((translation: string) => {
       this.meta.addTag({ name: 'title', content: translation });
     });
-      this.translateService.get('product-add.meta.description')
+      this.translateService.get('root-add.meta.description')
       .subscribe((translation: string) => {
       this.meta.addTag({ name: 'description', content: translation });
     });
   }
 
   /**
-   * When the form is submitted, we create new product
+   * When the form is submitted, we create new root
    * And show a toast to display info
    * @param {IProduct} product
    */
@@ -61,12 +61,12 @@ export class ProductAddComponent implements OnInit {
     this.slackNotification.notifySlack({
       text: `New product has been send. ${product.name} by ${this.user.displayName}`
     }).subscribe(res => console.log(res));
-    this.alertService.toast('snackbar.product-add.submit', 'info');
+    this.alertService.toast('snackbar.root-add.submit', 'info');
     this.router.navigate(['/']);
   }
 
   /**
-   * Get the new product value
+   * Get the new root value
    * @param {IProduct} product
    */
   onProductChange(product: IProduct) {

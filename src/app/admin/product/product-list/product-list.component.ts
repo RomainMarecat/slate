@@ -55,7 +55,7 @@ export class ProductListComponent implements OnInit {
   }
 
   /**
-   * Delete a product from list
+   * Delete a root from list
    */
   deleteProduct() {
     this.selected.forEach((product: IProduct) => {
@@ -64,7 +64,7 @@ export class ProductListComponent implements OnInit {
   }
 
   /**
-   * Init list of product
+   * Init list of root
    */
   ngOnInit() {
     this.products$ = this.productService.getProducts();

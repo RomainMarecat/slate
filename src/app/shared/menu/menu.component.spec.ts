@@ -5,8 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu.component';
-import { UserService } from './../shared/user/user.service';
-import { MockUserService } from './../shared/user/mock-user.service';
+import { UserService } from '../user/user.service';
+import { MockUserService } from '../user/mock-user.service';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -25,7 +25,7 @@ import {
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { SidenavService } from './../shared/sidenav/sidenav.service';
+import { SidenavService } from '../sidenav/sidenav.service';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 describe('MenuComponent', () => {

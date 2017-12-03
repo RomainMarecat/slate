@@ -6,11 +6,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgStringPipesModule } from 'angular-pipes';
-import { ProductRoutingModule } from './product-routing.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { MenuComponent } from './menu/menu.component';
-import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './shared/menu/menu.component';
+import { FooterComponent } from './shared/footer/footer.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductService } from './shared/product/product.service';
 import { MediaService } from './shared/media/media.service';
@@ -58,7 +57,7 @@ import { ImageCropperModule } from 'ng2-img-cropper';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SharedModule } from './shared/shared.module';
 import { ProductAddComponent } from './product-add/product-add.component';
-import { ProductComponent } from './product/product.component';
+import { AppRootComponent } from './root/root.component';
 import { ProductImageComponent } from './product-add/product-image/product-image.component';
 import { ProductFormComponent } from './product-add/product-form/product-form.component';
 import { ProductPreviewComponent } from './product-add/product-preview/product-preview.component';
@@ -66,7 +65,6 @@ import { ImageComponent } from './shared/cloudinary/image/image.component';
 import { ProductActionComponent } from './product-item/product-action/product-action.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { AlertService } from './shared/alert/alert.service';
-import { AdminModule } from './admin/admin.module';
 import { UserGuard } from './shared/guard/user.guard';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { SidenavComponent } from './shared/sidenav/sidenav.component';
@@ -75,6 +73,7 @@ import {
   HAMMER_GESTURE_CONFIG,
 } from '@angular/platform-browser';
 import { NotificationService } from './shared/slack/notification.service';
+import { AppRoutingModule } from './app-routing.module';
 
 declare var Hammer: any;
 
@@ -133,7 +132,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatCommonModule,
     MatTooltipModule,
     MatStepperModule,
-    ProductRoutingModule,
+    AppRoutingModule,
     ReactiveFormsModule,
     SharedModule
   ],
@@ -147,7 +146,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     FooterComponent,
     ProductItemComponent,
     ProductAddComponent,
-    ProductComponent,
+    AppRootComponent,
     ProductImageComponent,
     ProductFormComponent,
     ProductPreviewComponent,
@@ -176,7 +175,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     NotificationService
   ],
   bootstrap: [
-    ProductComponent
+    AppRootComponent
   ]
 })
-export class ProductModule {}
+export class AppModule {}

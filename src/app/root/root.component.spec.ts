@@ -28,8 +28,8 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavService } from './../shared/sidenav/sidenav.service';
-import { FooterComponent } from './../footer/footer.component';
-import { MenuComponent } from './../menu/menu.component';
+import { FooterComponent } from '../shared/footer/footer.component';
+import { MenuComponent } from '../shared/menu/menu.component';
 import { AdsenseModule } from 'ng2-adsense';
 import { LoaderComponent } from './../shared/loader/loader.component';
 import { UserService } from './../shared/user/user.service';
@@ -41,12 +41,12 @@ import { environment } from './../../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { ProductComponent } from './product.component';
+import { AppRootComponent } from './root.component';
 import { SidenavComponent } from './../shared/sidenav/sidenav.component';
 
 describe('ProductComponent', () => {
-  let component: ProductComponent;
-  let fixture: ComponentFixture < ProductComponent > ;
+  let component: AppRootComponent;
+  let fixture: ComponentFixture < AppRootComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -91,7 +91,7 @@ describe('ProductComponent', () => {
           })
         ],
         declarations: [
-          ProductComponent,
+          AppRootComponent,
           SidenavComponent,
           MenuComponent,
           FooterComponent,
@@ -109,7 +109,7 @@ describe('ProductComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductComponent);
+    fixture = TestBed.createComponent(AppRootComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

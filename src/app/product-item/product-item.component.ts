@@ -27,7 +27,7 @@ export class ProductItemComponent implements OnInit {
   ngOnInit() {}
 
   /**
-   * Getter for product
+   * Getter for root
    */
   get product() {
     return this._product;
@@ -52,10 +52,10 @@ export class ProductItemComponent implements OnInit {
   }
 
   /**
-   * Go to product page detail
+   * Go to root page detail
    */
   productDetail() {
-    this.router.navigate(['/product', this.product.key + '-' + this.product.name]);
+    this.router.navigate(['/root', this.product.key + '-' + this.product.name]);
   }
 
   /**
