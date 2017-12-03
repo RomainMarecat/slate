@@ -57,7 +57,7 @@ export class ProductService {
         console.error(err);
         return Observable.of([]);
       })
-      .switchMap(([key, published, name, color, user, limit, orderBy]) =>
+      .switchMap(([key, published, name, color, user, limit, orderBy]: any) =>
         this.afs.collection('clothes', ref => {
           this.query = ref;
           if (key) {

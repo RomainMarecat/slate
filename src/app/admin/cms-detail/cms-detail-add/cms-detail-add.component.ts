@@ -29,13 +29,13 @@ export class CmsDetailAddComponent implements OnInit {
     });
     this.createForm();
     this.editorConfig = {
-      "editable": true,
-      "spellcheck": false,
-      "height": "5rem",
-      "minHeight": "2rem",
-      "placeholder": "Enter text content",
-      "translate": "no",
-      "toolbar": []
+      'editable': true,
+      'spellcheck': false,
+      'height': '5rem',
+      'minHeight': '2rem',
+      'placeholder': 'Enter text content',
+      'translate': 'no',
+      'toolbar': []
     };
   }
 
