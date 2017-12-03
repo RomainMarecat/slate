@@ -30,9 +30,10 @@ import {
     MatGridListModule,
     MatButtonModule,
     MatIconModule,
+    MatToolbarModule,
     AdminRoutingModule
   ],
-  declarations: [HomeComponent, ProductListComponent, ProductComponent],
+  declarations: [HomeComponent],
   providers: [
     ProductService,
     AdminGuard

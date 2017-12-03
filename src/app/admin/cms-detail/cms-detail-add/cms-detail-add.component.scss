@@ -1,0 +1,20 @@
+.mat-card {
+  display: flex;
+  flex-direction: column;
+}
+
+form .mat-form-field {
+  width: 100%;
+}
+
+.editor {
+  label {
+    font-weight: 400;
+    line-height: 1.125;
+    font-size: 75%;
+    b,
+    strong {
+      font-weight: bolder;
+    }
+  }
+}

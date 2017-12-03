@@ -7,6 +7,7 @@ import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { MediaService } from './../shared/media/media.service';
 import { LoaderService } from './../shared/loader/loader.service';
+import { environment } from './../../environments/environment';
 
 @Component({
   selector: 'app-product-detail',
@@ -61,7 +62,7 @@ export class ProductDetailComponent implements OnInit {
               this.meta.addTag({ name: 'og:type', content: 'article' });
               this.meta.addTag({
                 name: 'og:url',
-                content: `https://monpullmoche.com/product/${this.product.key}-${this.product.name}`
+                content: `https://${environment.site_name}/product/${this.product.key}-${this.product.name}`
               });
               this.meta.addTag({ name: 'og:description', content: product.name });
               this.meta.addTag({ name: 'product:published', content: product.published_at.toString() });

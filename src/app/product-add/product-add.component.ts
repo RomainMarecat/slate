@@ -20,7 +20,6 @@ export class ProductAddComponent implements OnInit {
   user: any;
 
   /**
-   *
    * @param {Router} router
    * @param {ProductService} ProductService
    * @param {AlertService} alertService

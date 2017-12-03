@@ -57,6 +57,7 @@ import { I18nService } from './../shared/i18n/i18n.service';
 import { NotificationService } from './../shared/slack/notification.service';
 import { SlackModule } from './../shared/slack/slack.module';
 import { DeviceService } from './../shared/device/device.service';
+import { environment } from './../../environments/environment';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
@@ -95,7 +96,7 @@ describe('ProductAddComponent', () => {
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),
-          SlackModule.initializeApp('https://monpullmoche.com')
+          SlackModule.initializeApp(`https://${environment.site_name}`)
 
         ],
         declarations: [

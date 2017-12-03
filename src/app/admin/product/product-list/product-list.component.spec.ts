@@ -49,6 +49,7 @@ describe('ProductListComponent', () => {
           MatInputModule,
           MatCheckboxModule,
           MatListModule,
+          MatToolbarModule
         ],
         declarations: [ProductListComponent],
         providers: [

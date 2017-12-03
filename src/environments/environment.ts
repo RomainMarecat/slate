@@ -5,6 +5,8 @@
 
 export const environment = {
   production: false,
+  site_name: 'monpullmoche.com',
+  app_name: 'monpullmoche',
   firebase: {
     apiKey: 'AIzaSyB1K9_bZJDLq48C-4xAUhNEjP79Q-60YKw',
     authDomain: 'mon-pull-moche.firebaseapp.com',

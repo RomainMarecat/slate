@@ -12,7 +12,8 @@ import {
   MatGridListModule,
   MatInputModule,
   MatCheckboxModule,
-  MatListModule
+  MatListModule,
+  MatToolbarModule
 } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ProductComponent } from './../product/product.component';
@@ -42,6 +43,8 @@ describe('HomeComponent', () => {
           MatInputModule,
           MatCheckboxModule,
           MatListModule,
+          MatButtonModule,
+          MatToolbarModule
         ],
         declarations: [HomeComponent, ProductComponent, ProductListComponent],
         providers: [

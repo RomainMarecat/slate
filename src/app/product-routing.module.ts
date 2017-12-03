@@ -28,6 +28,10 @@ const routes: Routes = [{
     path: 'product/:key',
     component: ProductDetailComponent
   },
+  {
+    path: 'admin',
+    loadChildren: './admin/admin.module#AdminModule'
+  }
 ];
 
 @NgModule({

@@ -1,11 +1,9 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-    "project":
-    {
+    "project": {
         "name": "monpullmoche"
     },
-    "apps": [
-    {
+    "apps": [{
         "root": "src",
         "outDir": "dist",
         "assets": [
@@ -20,6 +18,7 @@
         "testTsconfig": "tsconfig.spec.json",
         "prefix": "app",
         "styles": [
+            "../node_modules/font-awesome/css/font-awesome.css",
             "../node_modules/@swimlane/ngx-datatable/release/index.css",
             "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
             "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
@@ -30,43 +29,33 @@
             "../node_modules/crypto-js/crypto-js.js"
         ],
         "environmentSource": "environments/environment.ts",
-        "environments":
-        {
+        "environments": {
             "dev": "environments/environment.ts",
             "prod": "environments/environment.prod.ts"
         }
     }],
-    "e2e":
-    {
-        "protractor":
-        {
+    "e2e": {
+        "protractor": {
             "config": "./protractor.conf.js"
         }
     },
-    "lint": [
-    {
+    "lint": [{
         "project": "src/tsconfig.app.json",
         "exclude": "**/node_modules/**"
-    },
-    {
+    }, {
         "project": "src/tsconfig.spec.json",
         "exclude": "**/node_modules/**"
-    },
-    {
+    }, {
         "project": "e2e/tsconfig.e2e.json",
         "exclude": "**/node_modules/**"
     }],
-    "test":
-    {
-        "karma":
-        {
+    "test": {
+        "karma": {
             "config": "./karma.conf.js"
         }
     },
-    "defaults":
-    {
+    "defaults": {
         "styleExt": "scss",
-        "component":
-        {}
+        "component": {}
     }
 }
