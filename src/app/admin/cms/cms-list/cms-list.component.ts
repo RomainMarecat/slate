@@ -83,8 +83,11 @@ export class CmsListComponent implements OnInit {
   }
 
   showCmsDetail(cms: Cms) {
-    this.router.navigate([`/admin/cms/${cms.key}/cms-details`])
+    this.router.navigate([`/admin/cms/${cms.key}/cms-details`]);
   }
 
   onScroll(event: any) {}
+
+  onCheckboxChangeFn(event) {}
+  selectFn(allRowsSelected) {}
 }

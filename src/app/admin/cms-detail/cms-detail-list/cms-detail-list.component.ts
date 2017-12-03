@@ -43,18 +43,18 @@ export class CmsDetailListComponent implements OnInit {
   }
 
   /**
-   * set at published at now et activate published to true
+   * set at published at now and activate published to true
    */
-  publishCms() {
+  publishCmsDetail() {
     this.selected.forEach((cmsDetail: CmsDetail) => {
       this.cmsDetailService.updateCmsDetail(cmsDetail);
     });
   }
 
   /**
-   * Delete a Cms from list
+   * Delete a CmsDetail from list
    */
-  deleteCms() {
+  deleteCmsDetail() {
     this.selected.forEach((cmsDetail: CmsDetail) => {
       this.cmsDetailService.deleteCmsDetail(cmsDetail);
     });
@@ -64,7 +64,7 @@ export class CmsDetailListComponent implements OnInit {
    * Init list of Cms
    */
   ngOnInit() {
-    this.isLoading = false
+    this.isLoading = false;
     this.activeRoute.params.subscribe((value: { key: string }) => {
       this.cmsKey = value.key;
       if (value.key) {
@@ -87,4 +87,7 @@ export class CmsDetailListComponent implements OnInit {
   onActivate(event) {}
 
   onScroll(event: any) {}
+
+  onCheckboxChangeFn(event) {}
+  selectFn(allRowsSelected) {}
 }

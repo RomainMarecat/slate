@@ -14,6 +14,7 @@ export class CmsDetailAddComponent implements OnInit {
   form: FormGroup;
   cmsDetail: CmsDetail;
   cmsKey: string;
+  editorConfig: any;
 
   constructor(private cmsDetailService: CmsDetailService,
     private alertService: AlertService,
@@ -26,11 +27,20 @@ export class CmsDetailAddComponent implements OnInit {
       this.cmsKey = value.key;
     });
     this.createForm();
+    this.editorConfig = {
+      "editable": true,
+      "spellcheck": false,
+      "height": "5rem",
+      "minHeight": "2rem",
+      "placeholder": "Enter text content",
+      "translate": "no",
+      "toolbar": []
+    };
   }
 
   createForm() {
     this.form = new FormGroup({
-      'name': new FormControl('', [
+      'title': new FormControl('', [
         Validators.required,
       ]),
       'content': new FormControl('', [
@@ -57,8 +67,8 @@ export class CmsDetailAddComponent implements OnInit {
     this.cmsDetail = null;
   }
 
-  get name() {
-    return this.form.get('name');
+  get title() {
+    return this.form.get('title');
   }
 
   get content() {

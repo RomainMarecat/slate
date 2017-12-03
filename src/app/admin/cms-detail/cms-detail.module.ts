@@ -31,6 +31,7 @@ import {
   MatStepperModule
 } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgxEditorModule } from 'ngx-editor';
 
 import { SharedModule } from './../../shared/shared.module';
 import { CmsDetailRoutingModule } from './cms-detail-routing.module';
@@ -65,6 +66,7 @@ import { CmsDetailService } from './../shared/cms-detail/cms-detail.service';
     MatCommonModule,
     MatTooltipModule,
     MatStepperModule,
+    NgxEditorModule,
     ReactiveFormsModule,
     SharedModule,
     NgxDatatableModule,

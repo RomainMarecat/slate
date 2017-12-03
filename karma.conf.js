@@ -13,6 +13,8 @@ module.exports = function(config) {
     }, {
       pattern: './node_modules/hammerjs/hammer.js'
     }, {
+      pattern: './node_modules/font-awesome/css/font-awesome.css'
+    }, {
       pattern: './node_modules/@swimlane/ngx-datatable/release/index.css'
     }, {
       pattern: './node_modules/@swimlane/ngx-datatable/release/themes/material.css'
