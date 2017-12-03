@@ -12,6 +12,7 @@ const routes: Routes = [{
     pathMatch: 'full',
     children: [{
       path: '',
+      pathMatch: 'full',
       component: ProductListComponent
     }]
   },

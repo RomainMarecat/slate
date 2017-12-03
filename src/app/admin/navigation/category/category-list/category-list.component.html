@@ -6,16 +6,16 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <div class='selected-column'>
+      <div class='selected-column' *ngIf="selected">
         <h4>Selections <small>({{selected?.length}})</small></h4>
       </div>
     </div>
     <div class="col-6">
-      <button role="button" aria-label="Publier une categorie" mat-raised-button color="primary" (click)="publishCategory()" *ngIf="selected.length > 0">
+      <button role="button" aria-label="Publier une categorie" mat-raised-button color="primary" (click)="publishCategory()" *ngIf="selected && selected?.length > 0">
         <mat-icon aria-label="Published">done</mat-icon>
         Publier
       </button>
-      <button role="button" aria-label="Supprimer une categorie" mat-raised-button color="accent" (click)="deleteCategory()" *ngIf="selected.length > 0">
+      <button role="button" aria-label="Supprimer une categorie" mat-raised-button color="accent" (click)="deleteCategory()" *ngIf="selected && selected?.length > 0">
         <mat-icon aria-label="delete">delete</mat-icon>
         Supprimer
       </button>

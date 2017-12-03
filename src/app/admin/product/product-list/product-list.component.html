@@ -11,11 +11,11 @@
       </div>
     </div>
     <div class="col-6">
-      <button role="button" aria-label="Publier un pull moche" mat-raised-button color="primary" (click)="publishProduct()" *ngIf="selected.length > 0">
+      <button role="button" aria-label="Publier un pull moche" mat-raised-button color="primary" (click)="publishProduct()" *ngIf="selected && selected.length > 0">
         <mat-icon aria-label="Published">done</mat-icon>
         Publier
       </button>
-      <button role="button" aria-label="Publier un pull moche" mat-raised-button color="accent" (click)="deleteProduct()" *ngIf="selected.length > 0">
+      <button role="button" aria-label="Publier un pull moche" mat-raised-button color="accent" (click)="deleteProduct()" *ngIf="selected && selected.length > 0">
         <mat-icon aria-label="delete">delete</mat-icon>
         Supprimer
       </button>
