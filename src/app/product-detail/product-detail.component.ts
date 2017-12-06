@@ -1,13 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from './../shared/product/product.service';
-import { IProduct } from './../shared/product/i-product';
+import { ProductService } from '../../core/shared/product/product.service';
+import { IProduct } from '../../core/shared/product/i-product';
 import { Observable } from 'rxjs/Observable';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
-import { MediaService } from './../shared/media/media.service';
-import { LoaderService } from './../shared/loader/loader.service';
-import { environment } from './../../environments/environment';
+import { MediaService } from '../../core/shared/media/media.service';
+import { LoaderService } from '../../core/shared/loader/loader.service';
+import { environment } from './../../environments/environment.monpullmoche';
 
 @Component({
   selector: 'app-product-detail',
@@ -31,7 +31,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   /**
-   * Subscribe on value return by route nav and get unique identified by root key
+   * Subscribe on value return by route nav and get unique identified by product key
    */
   ngOnInit() {
     this.activeRoute.params.subscribe((value: { key: string }) => {
@@ -44,17 +44,17 @@ export class ProductDetailComponent implements OnInit {
               this.loaderService.hide();
               /* itemscope itemtype="http://schema.org/Product" */
               // Title + description
-              this.translateService.get('root-detail.meta.title', { value: product.name })
+              this.translateService.get('product-detail.meta.title', { value: product.name })
                 .subscribe((translation: string) => {
                   this.meta.addTag({ name: 'title', content: translation });
                 });
-              this.translateService.get('root-detail.meta.description', { value: product.name })
+              this.translateService.get('product-detail.meta.description', { value: product.name })
                 .subscribe((translation: string) => {
                   this.meta.addTag({ name: 'description', content: translation });
                 });
 
               // Open Graph data
-              this.translateService.get('root-detail.meta.og:site_name')
+              this.translateService.get('product-detail.meta.og:site_name')
                 .subscribe((translation: string) => {
                   this.meta.addTag({ name: 'og:site_name', content: translation });
                 });
@@ -65,7 +65,7 @@ export class ProductDetailComponent implements OnInit {
                 content: `https://${environment.site_name}/product/${this.product.key}-${this.product.name}`
               });
               this.meta.addTag({ name: 'og:description', content: product.name });
-              this.meta.addTag({ name: 'root:published', content: product.published_at.toString() });
+              this.meta.addTag({ name: 'product:published', content: product.published_at.toString() });
               this.meta.addTag({ name: 'og:price:amount', content: product.price.toString() });
               this.meta.addTag({ name: 'og:price:currency', content: 'EUR' });
 
@@ -90,7 +90,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   /**
-   * Dynamic count columns for root image
+   * Dynamic count columns for product image
    */
   countCols() {
     if (this.product) {
@@ -108,7 +108,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   /**
-   * Update current score for the root
+   * Update current score for the product
    * @param {IProduct} product
    */
   updateScoreProduct(product: IProduct) {

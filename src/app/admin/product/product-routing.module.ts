@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminGuard } from './../../shared/guard/admin.guard';
+import { AdminGuard } from '../../../core/shared/guard/admin.guard';
 import { ProductComponent } from './product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 

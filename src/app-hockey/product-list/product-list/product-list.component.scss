@@ -1,0 +1,49 @@
+.absolute-fab.mat-mini-fab {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  font-size: 40px;
+}
+
+.card-container,
+.card-welcome {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.card-container {
+  margin-top: 1em;
+}
+
+.card-welcome {
+  .mat-card {
+    .mat-card-header {
+      display: flex;
+      justify-content: center;
+
+      .mat-card-subtitle {
+        text-align: center;
+      }
+    }
+
+    .mat-card-content {
+      display: flex;
+      justify-content: center;
+    }
+
+    .mat-card-actions {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 2em;
+    }
+    width: 100%;
+    .card-title {
+      text-align: center;
+    }
+  }
+  margin-top: 10px;
+}

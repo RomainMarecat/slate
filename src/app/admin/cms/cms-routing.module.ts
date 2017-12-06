@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminGuard } from './../../shared/guard/admin.guard';
+import { AdminGuard } from '../../../core/shared/guard/admin.guard';
 import { CmsComponent } from './cms.component';
 import { CmsListComponent } from './cms-list/cms-list.component';
 import { CmsDetailComponent } from './cms-detail/cms-detail.component';

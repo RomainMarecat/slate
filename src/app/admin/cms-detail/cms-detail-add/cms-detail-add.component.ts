@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CmsDetailService } from './../../shared/cms-detail/cms-detail.service';
 import { CmsDetail } from './../../shared/cms-detail/cms-detail';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AlertService } from './../../../shared/alert/alert.service';
+import { AlertService } from '../../../../core/shared/alert/alert.service';
 
 @Component({
   selector: 'app-cms-detail-add',

@@ -29,8 +29,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CategoryAddComponent } from './category-add.component';
 import { CategoryService } from '../../../shared/navigation/category/category.service';
 import { MockCategoryService } from '../../../shared/navigation/category/mock-category.service';
-import { MockAlertService } from './../../../../shared/alert/mock-alert.service';
-import { AlertService } from './../../../../shared/alert/alert.service';
+import { MockAlertService } from '../../../../../core/shared/alert/mock-alert.service';
+import { AlertService } from '../../../../../core/shared/alert/alert.service';
 
 describe('CategoryAddComponent', () => {
   let component: CategoryAddComponent;

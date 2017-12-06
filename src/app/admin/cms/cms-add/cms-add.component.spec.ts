@@ -28,8 +28,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { CmsService } from './../../shared/cms/cms.service';
 import { MockCmsService } from './../../shared/cms/mock-cms.service';
-import { MockAlertService } from './../../../shared/alert/mock-alert.service';
-import { AlertService } from './../../../shared/alert/alert.service';
+import { MockAlertService } from '../../../../core/shared/alert/mock-alert.service';
+import { AlertService } from '../../../../core/shared/alert/alert.service';
 
 import { CmsAddComponent } from './cms-add.component';
 

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angu
 import { CmsService } from './../../shared/cms/cms.service';
 import { Cms } from './../../shared/cms/cms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AlertService } from './../../../shared/alert/alert.service';
+import { AlertService } from '../../../../core/shared/alert/alert.service';
 
 @Component({
   selector: 'app-cms-add',

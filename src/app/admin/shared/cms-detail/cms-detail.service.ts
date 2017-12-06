@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CmsDetail } from './cms-detail';
-import { AlertService } from '../../../shared/alert/alert.service';
+import { AlertService } from '../../../../core/shared/alert/alert.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';

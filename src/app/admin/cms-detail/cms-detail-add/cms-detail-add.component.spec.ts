@@ -29,8 +29,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { CmsDetailService } from './../../shared/cms-detail/cms-detail.service';
 import { MockCmsDetailService } from './../../shared/cms-detail/mock-cms-detail.service';
-import { MockAlertService } from './../../../shared/alert/mock-alert.service';
-import { AlertService } from './../../../shared/alert/alert.service';
+import { MockAlertService } from '../../../../core/shared/alert/mock-alert.service';
+import { AlertService } from '../../../../core/shared/alert/alert.service';
 
 import { CmsDetailAddComponent } from './cms-detail-add.component';
 

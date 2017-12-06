@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from './../shared/product/product';
-import { IProduct } from './../shared/product/i-product';
-import { DateService } from './../shared/util/date.service';
+import { Product } from '../../core/shared/product/product';
+import { IProduct } from '../../core/shared/product/i-product';
+import { DateService } from '../../core/shared/util/date.service';
 
 @Component({
   selector: 'app-product-item',
@@ -27,7 +27,7 @@ export class ProductItemComponent implements OnInit {
   ngOnInit() {}
 
   /**
-   * Getter for root
+   * Getter for product
    */
   get product() {
     return this._product;
@@ -52,10 +52,10 @@ export class ProductItemComponent implements OnInit {
   }
 
   /**
-   * Go to root page detail
+   * Go to product page detail
    */
   productDetail() {
-    this.router.navigate(['/root', this.product.key + '-' + this.product.name]);
+    this.router.navigate(['/product', this.product.key + '-' + this.product.name]);
   }
 
   /**

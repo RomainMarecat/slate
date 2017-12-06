@@ -29,13 +29,13 @@ import {
 } from '@angular/material';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ProductActionComponent } from './product-action.component';
-import { MockProductService } from './../../shared/product/mock-product.service';
-import { MockUserService } from './../../shared/user/mock-user.service';
-import { UserService } from './../../shared/user/user.service';
-import { MockAlertService } from './../../shared/alert/mock-alert.service';
-import { AlertService } from './../../shared/alert/alert.service';
-import { ScoreService } from './../../shared/score/score.service';
-import { MockScoreService } from './../../shared/score/mock-score.service';
+import { MockProductService } from '../../../core/shared/product/mock-product.service';
+import { MockUserService } from '../../../core/shared/user/mock-user.service';
+import { UserService } from '../../../core/shared/user/user.service';
+import { MockAlertService } from '../../../core/shared/alert/mock-alert.service';
+import { AlertService } from '../../../core/shared/alert/alert.service';
+import { ScoreService } from '../../../core/shared/score/score.service';
+import { MockScoreService } from '../../../core/shared/score/mock-score.service';
 
 describe('ProductActionComponent', () => {
   let component: ProductActionComponent;

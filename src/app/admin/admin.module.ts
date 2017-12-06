@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { AdminGuard } from './../shared/guard/admin.guard';
+import { AdminGuard } from '../../core/shared/guard/admin.guard';
 import { ProductService } from './shared/product/product.service';
 import {
   MatCardModule,

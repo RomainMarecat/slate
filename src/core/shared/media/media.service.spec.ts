@@ -1,0 +1,39 @@
+import { TestBed, inject } from '@angular/core/testing';
+
+import { HttpModule } from '@angular/http';
+import { MediaService } from './media.service';
+import { environment } from '../../../environments/environment.monpullmoche';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { Cloudinary, isJsonLikeString, isNamedNodeMap, transformKeyNamesFromKebabToSnakeCase } from '../cloudinary/cloudinary.service';
+import CloudinaryConfiguration from '../cloudinary/cloudinary-configuration.class';
+
+const cloudName = 'service-test';
+describe('MediaService', () => {
+  const config: CloudinaryConfiguration = {
+    cloud_name: cloudName
+  };
+  const cloudinaryCore = require('cloudinary-core');
+  const mockCloudinaryService: Cloudinary = new Cloudinary(cloudinaryCore, config);
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AngularFireAuthModule
+      ],
+      providers: [
+        MediaService,
+        { provide: Cloudinary, useValue: mockCloudinaryService },
+      ]
+    });
+  });
+
+  it('should be created', inject([MediaService], (service: MediaService) => {
+    expect(service).toBeTruthy();
+  }));
+});

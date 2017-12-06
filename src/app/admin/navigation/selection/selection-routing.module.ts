@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminGuard } from './../../../shared/guard/admin.guard';
+import { AdminGuard } from '../../../../core/shared/guard/admin.guard';
 import { SelectionComponent } from './selection.component';
 import { SelectionListComponent } from './selection-list/selection-list.component';
 

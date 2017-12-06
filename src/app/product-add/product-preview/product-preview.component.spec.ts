@@ -29,15 +29,15 @@ import {
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { NgStringPipesModule } from 'angular-pipes';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from './../../shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from './../../shared/cloudinary/cloudinary-config';
+import { CloudinaryModule } from '../../../core/shared/cloudinary/cloudinary.module';
+import { CloudinaryConfig } from '../../../core/shared/cloudinary/cloudinary-config';
 import { ProductActionComponent } from './../../product-item/product-action/product-action.component';
-import { MockProductService } from './../../shared/product/mock-product.service';
-import { ProductService } from './../../shared/product/product.service';
-import { ImageComponent } from './../../shared/cloudinary/image/image.component';
+import { MockProductService } from '../../../core/shared/product/mock-product.service';
+import { ProductService } from '../../../core/shared/product/product.service';
+import { ImageComponent } from '../../../core/shared/cloudinary/image/image.component';
 import { ProductPreviewComponent } from './product-preview.component';
-import { DateService } from './../../shared/util/date.service';
-import { I18nService } from './../../shared/i18n/i18n.service';
+import { DateService } from '../../../core/shared/util/date.service';
+import { I18nService } from '../../../core/shared/i18n/i18n.service';
 
 describe('ProductPreviewComponent', () => {
   let component: ProductPreviewComponent;

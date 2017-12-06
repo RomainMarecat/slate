@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { Product } from './../../shared/product/product';
-import { IProduct } from './../../shared/product/i-product';
+import { Product } from '../../../core/shared/product/product';
+import { IProduct } from '../../../core/shared/product/i-product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Media } from './../../shared/media/media';
-import { UserService } from './../../shared/user/user.service';
+import { Media } from '../../../core/shared/media/media';
+import { UserService } from '../../../core/shared/user/user.service';
 import { ProductImageComponent } from './../product-image/product-image.component';
 
 @Component({

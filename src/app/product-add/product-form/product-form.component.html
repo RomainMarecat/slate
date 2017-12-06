@@ -71,10 +71,10 @@
                 <mat-error *ngIf="price.invalid" [innerHtml]="'product-add.product-form.steps.additional.form.price.invalid'|translate"></mat-error>
               </mat-form-field>
               <!-- <mat-form-field class="mat-form-field">
-                <input type="number" matInput [placeholder]="'root-add.root-form.steps.additional.form.delivery_fee.placeholder'|translate" [attr.disabled]="disableDelivery" formControlName="delivery_fee" angulartics2On="focus" angularticsAction="focusedOnProductDeliveryFee" [angularticsCategory]="'root.delivery_fee'" [angularticsValue]="deliveryFee?.value">
-                <mat-error *ngIf="deliveryFee.invalid && deliveryFee.value < 0" [innerHtml]="'root-add.root-form.steps.additional.form.delivery_fee.min'|translate"></mat-error>
-                <mat-error *ngIf="deliveryFee.invalid && deliveryFee.value > 9999" [innerHtml]="'root-add.root-form.steps.additional.form.delivery_fee.max'|translate"></mat-error>
-                <mat-error *ngIf="deliveryFee.invalid" [innerHtml]="'root-add.root-form.steps.additional.form.delivery_fee.invalid|translate'"></mat-error>
+                <input type="number" matInput [placeholder]="'product-add.product-form.steps.additional.form.delivery_fee.placeholder'|translate" [attr.disabled]="disableDelivery" formControlName="delivery_fee" angulartics2On="focus" angularticsAction="focusedOnProductDeliveryFee" [angularticsCategory]="'product.delivery_fee'" [angularticsValue]="deliveryFee?.value">
+                <mat-error *ngIf="deliveryFee.invalid && deliveryFee.value < 0" [innerHtml]="'product-add.product-form.steps.additional.form.delivery_fee.min'|translate"></mat-error>
+                <mat-error *ngIf="deliveryFee.invalid && deliveryFee.value > 9999" [innerHtml]="'product-add.product-form.steps.additional.form.delivery_fee.max'|translate"></mat-error>
+                <mat-error *ngIf="deliveryFee.invalid" [innerHtml]="'product-add.product-form.steps.additional.form.delivery_fee.invalid|translate'"></mat-error>
               </mat-form-field> -->
             </mat-expansion-panel>
             <div class="product-form-step-3-wrapper pa2 d-flex justify-content-around">

@@ -1,11 +1,11 @@
 import { Component, TemplateRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IProduct } from './../shared/product/i-product';
-import { ProductService } from './../shared/product/product.service';
-import { UserService } from './../shared/user/user.service';
-import { LoaderService } from './../shared/loader/loader.service';
-import { AlertService } from './../shared/alert/alert.service';
-import { NotificationService } from './../shared/slack/notification.service';
+import { IProduct } from '../../core/shared/product/i-product';
+import { ProductService } from '../../core/shared/product/product.service';
+import { UserService } from '../../core/shared/user/user.service';
+import { LoaderService } from '../../core/shared/loader/loader.service';
+import { AlertService } from '../../core/shared/alert/alert.service';
+import { NotificationService } from '../../core/shared/slack/notification.service';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -41,18 +41,18 @@ export class ProductAddComponent implements OnInit {
   ngOnInit() {
     this.loaderService.hide();
     // Title + description
-    this.translateService.get('root-add.meta.title')
+    this.translateService.get('product-add.meta.title')
       .subscribe((translation: string) => {
-      this.meta.addTag({ name: 'title', content: translation });
-    });
-      this.translateService.get('root-add.meta.description')
+        this.meta.addTag({ name: 'title', content: translation });
+      });
+    this.translateService.get('product-add.meta.description')
       .subscribe((translation: string) => {
-      this.meta.addTag({ name: 'description', content: translation });
-    });
+        this.meta.addTag({ name: 'description', content: translation });
+      });
   }
 
   /**
-   * When the form is submitted, we create new root
+   * When the form is submitted, we create new product
    * And show a toast to display info
    * @param {IProduct} product
    */
@@ -61,15 +61,15 @@ export class ProductAddComponent implements OnInit {
     this.slackNotification.notifySlack({
       text: `New product has been send. ${product.name} by ${this.user.displayName}`
     }).subscribe(res => console.log(res));
-    this.alertService.toast('snackbar.root-add.submit', 'info');
+    this.alertService.toast('snackbar.product-add.submit', 'info');
     this.router.navigate(['/']);
   }
 
   /**
-   * Get the new root value
+   * Get the new product value
    * @param {IProduct} product
    */
   onProductChange(product: IProduct) {
-    this.product = { ...this.product, ...product};
+    this.product = { ...this.product, ...product };
   }
 }

@@ -1,16 +1,16 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { ProductService } from './../shared/product/product.service';
-import { Product } from './../shared/product/product';
-import { IProduct } from './../shared/product/i-product';
+import { ProductService } from '../../core/shared/product/product.service';
+import { Product } from '../../core/shared/product/product';
+import { IProduct } from '../../core/shared/product/i-product';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
-import { UserService } from './../shared/user/user.service';
-import { AlertService } from './../shared/alert/alert.service';
-import { LoaderService } from './../shared/loader/loader.service';
+import { UserService } from '../../core/shared/user/user.service';
+import { AlertService } from '../../core/shared/alert/alert.service';
+import { LoaderService } from '../../core/shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
-import { environment } from './../../environments/environment';
+import { environment } from './../../environments/environment.monpullmoche';
 
 @Component({
   selector: 'app-product-list',
@@ -71,7 +71,7 @@ export class ProductListComponent implements OnInit {
   }
 
   /**
-   * Update on root
+   * Update on product
    * @param {IProduct} product
    */
   updateProduct(product: IProduct) {
@@ -79,7 +79,7 @@ export class ProductListComponent implements OnInit {
   }
 
   /**
-   * Go to form page Add root
+   * Go to form page Add product
    */
   addProduct() {
     this.router.navigate(['/add']);

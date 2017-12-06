@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IProduct } from './../../shared/product/i-product';
-import { DateService } from './../../shared/util/date.service';
+import { IProduct } from '../../../core/shared/product/i-product';
+import { DateService } from '../../../core/shared/util/date.service';
 
 @Component({
   selector: 'app-product-preview',

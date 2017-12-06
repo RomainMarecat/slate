@@ -27,22 +27,22 @@ import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavService } from './../shared/sidenav/sidenav.service';
-import { FooterComponent } from '../shared/footer/footer.component';
-import { MenuComponent } from '../shared/menu/menu.component';
+import { SidenavService } from '../../core/shared/sidenav/sidenav.service';
+import { FooterComponent } from '../../core/shared/footer/footer.component';
+import { MenuComponent } from '../../core/shared/menu/menu.component';
 import { AdsenseModule } from 'ng2-adsense';
-import { LoaderComponent } from './../shared/loader/loader.component';
-import { UserService } from './../shared/user/user.service';
-import { I18nService } from './../shared/i18n/i18n.service';
-import { MockUserService } from './../shared/user/mock-user.service';
-import { LoaderService } from './../shared/loader/loader.service';
-import { MockLoaderService } from './../shared/loader/mock-loader.service';
-import { environment } from './../../environments/environment';
+import { LoaderComponent } from '../../core/shared/loader/loader.component';
+import { UserService } from '../../core/shared/user/user.service';
+import { I18nService } from '../../core/shared/i18n/i18n.service';
+import { MockUserService } from '../../core/shared/user/mock-user.service';
+import { LoaderService } from '../../core/shared/loader/loader.service';
+import { MockLoaderService } from '../../core/shared/loader/mock-loader.service';
+import { environment } from './../../environments/environment.monpullmoche';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRootComponent } from './root.component';
-import { SidenavComponent } from './../shared/sidenav/sidenav.component';
+import { SidenavComponent } from '../../core/shared/sidenav/sidenav.component';
 
 describe('ProductComponent', () => {
   let component: AppRootComponent;

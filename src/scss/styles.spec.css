@@ -11,7 +11,7 @@
 /* Theme for the ripple elements.*/
 
 
-/** The mixins below are shared between mat-menu and mat-select */
+/** The mixins below are core between mat-menu and mat-select */
 
 
 /**
@@ -27,7 +27,7 @@
 
 
 /**
- * This mixin contains shared option styles between the select and
+ * This mixin contains core option styles between the select and
  * autocomplete components.
  */
 

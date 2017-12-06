@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { IProduct } from './../../../shared/product/i-product';
+import { IProduct } from '../../../../core/shared/product/i-product';
 import { ProductService } from './../../shared/product/product.service';
 import { Observable } from 'rxjs/Observable';
 
@@ -55,7 +55,7 @@ export class ProductListComponent implements OnInit {
   }
 
   /**
-   * Delete a root from list
+   * Delete a product from list
    */
   deleteProduct() {
     this.selected.forEach((product: IProduct) => {
@@ -64,7 +64,7 @@ export class ProductListComponent implements OnInit {
   }
 
   /**
-   * Init list of root
+   * Init list of product
    */
   ngOnInit() {
     this.products$ = this.productService.getProducts();

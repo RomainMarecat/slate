@@ -26,8 +26,8 @@ import {
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CmsDetailService } from './../../shared/cms-detail/cms-detail.service';
 import { MockCmsDetailService } from './../../shared/cms-detail/mock-cms-detail.service';
-import { AlertService } from './../../../shared/alert/alert.service';
-import { MockAlertService } from './../../../shared/alert/mock-alert.service';
+import { AlertService } from '../../../../core/shared/alert/alert.service';
+import { MockAlertService } from '../../../../core/shared/alert/mock-alert.service';
 
 import { CmsDetailListComponent } from './cms-detail-list.component';
 

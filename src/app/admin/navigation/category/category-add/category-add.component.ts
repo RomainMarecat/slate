@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angu
 import { CategoryService } from '../../../shared/navigation/category/category.service';
 import { Category } from '../../../shared/navigation/category/category';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AlertService } from './../../../../shared/alert/alert.service';
+import { AlertService } from '../../../../../core/shared/alert/alert.service';
 
 @Component({
   selector: 'app-category-add',

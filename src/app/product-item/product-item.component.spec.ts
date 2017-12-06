@@ -30,12 +30,12 @@ import { NgStringPipesModule } from 'angular-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductItemComponent } from './product-item.component';
 import { ProductActionComponent } from './product-action/product-action.component';
-import { ImageComponent } from './../shared/cloudinary/image/image.component';
+import { ImageComponent } from '../../core/shared/cloudinary/image/image.component';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from './../shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from './../shared/cloudinary/cloudinary-config';
-import { DateService } from './../shared/util/date.service';
-import { I18nService } from './../shared/i18n/i18n.service';
+import { CloudinaryModule } from '../../core/shared/cloudinary/cloudinary.module';
+import { CloudinaryConfig } from '../../core/shared/cloudinary/cloudinary-config';
+import { DateService } from '../../core/shared/util/date.service';
+import { I18nService } from '../../core/shared/i18n/i18n.service';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;

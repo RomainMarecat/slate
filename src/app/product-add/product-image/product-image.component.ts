@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter, NgZone } from '@angular/core';
 import { Http } from '@angular/http';
 import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
-import { Cloudinary } from './../../shared/cloudinary/cloudinary.service';
+import { Cloudinary } from '../../../core/shared/cloudinary/cloudinary.service';
 import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
-import { Media } from './../../shared/media/media';
+import { Media } from '../../../core/shared/media/media';
 import { SHA1 } from 'crypto-js';
-import { environment } from './../../../environments/environment';
-import { ObjectService } from './../..//shared/util/object.service';
-import { MediaService } from './../..//shared/media/media.service';
-import { DeviceService } from './../..//shared/device/device.service';
+import { environment } from './../../../environments/environment.monpullmoche';
+import { ObjectService } from './../../../core/shared/util/object.service';
+import { MediaService } from './../../../core/shared/media/media.service';
+import { DeviceService } from './../../../core/shared/device/device.service';
 
 @Component({
   selector: 'app-product-image',
