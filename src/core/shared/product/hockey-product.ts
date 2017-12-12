@@ -1,8 +1,5 @@
-import { Media } from '../media/media';
-
-export interface IProduct {
+export interface HockeyProduct {
   name: string;
-
   score: number;
 
   created_at: Date;
@@ -12,18 +9,16 @@ export interface IProduct {
 
   description ?: string;
   thumbnail: string;
-  images?: string[];
+  images ?: string[];
   image1: string;
-  image2 ?: string;
-  image3 ?: string;
   price: number;
   published: boolean;
   delivery_fee ?: number;
-  delivery_free ?: boolean;
   reseller ?: string;
   key ?: string;
   user: string;
-  creator?: string;
+  creator ?: string;
   external_url ?: string;
   category ?: string;
+
 }

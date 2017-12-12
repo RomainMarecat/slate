@@ -3,7 +3,7 @@ import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ProductService } from '../../core/shared/product/product.service';
 import { Product } from '../../core/shared/product/product';
-import { IProduct } from '../../core/shared/product/i-product';
+import { ClothingProduct } from '../../core/shared/product/clothing-product';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from '../../core/shared/user/user.service';
@@ -19,8 +19,8 @@ import { environment } from './../../environments/environment.monpullmoche';
 })
 export class ProductListComponent implements OnInit {
   // Products collection of Product interface
-  products$: Observable < IProduct[] > ;
-  products: Array < IProduct > ;
+  products$: Observable < ClothingProduct[] > ;
+  products: Array < ClothingProduct > ;
   rowHeight: number;
   headerHeight: number;
   pageLimit: number;
@@ -72,9 +72,9 @@ export class ProductListComponent implements OnInit {
 
   /**
    * Update on product
-   * @param {IProduct} product
+   * @param {ClothingProduct} product
    */
-  updateProduct(product: IProduct) {
+  updateProduct(product: ClothingProduct) {
     this.productService.updateProduct(product);
   }
 

@@ -1,4 +1,4 @@
-import { IProduct } from './i-product';
+import { ClothingProduct } from './clothing-product';
 import { mockProduct } from './mock-product';
 import { Product } from './product';
 import { AlertService } from '../alert/alert.service';
@@ -14,7 +14,7 @@ import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
 
 export class MockProductService {
-  productCollectionRef: AngularFirestoreCollection < IProduct > ;
+  productCollectionRef: AngularFirestoreCollection < ClothingProduct > ;
   products$: Observable < DocumentChangeAction[] > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
@@ -39,7 +39,7 @@ export class MockProductService {
     this.orderBy$ = new BehaviorSubject('published_at');
   }
 
-  getProducts(): Observable < Array < IProduct >> {
+  getProducts(): Observable < Array < ClothingProduct >> {
     return Observable.of([mockProduct]);
   }
 }

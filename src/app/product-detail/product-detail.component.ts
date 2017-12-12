@@ -1,12 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../core/shared/product/product.service';
-import { IProduct } from '../../core/shared/product/i-product';
+import { ClothingProduct } from '../../core/shared/product/clothing-product';
 import { Observable } from 'rxjs/Observable';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { MediaService } from '../../core/shared/media/media.service';
 import { LoaderService } from '../../core/shared/loader/loader.service';
+import { CloudinaryTagService } from '../../core/shared/cloudinary/cloudinary-tag.service';
 import { environment } from './../../environments/environment.monpullmoche';
 
 @Component({
@@ -15,9 +16,9 @@ import { environment } from './../../environments/environment.monpullmoche';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  product: IProduct;
+  product: ClothingProduct;
   cols: number;
-  @Output() updatedproduct: EventEmitter < IProduct > = new EventEmitter < IProduct > ();
+  @Output() updatedproduct: EventEmitter < ClothingProduct > = new EventEmitter < ClothingProduct > ();
   resizedImage = {
     height: 300,
     width: 500
@@ -25,7 +26,7 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private productService: ProductService, private activeRoute: ActivatedRoute,
     private meta: Meta, private translateService: TranslateService, private mediaService: MediaService,
-    private loaderService: LoaderService) {
+    private loaderService: LoaderService, private cloudinaryTagService: CloudinaryTagService) {
     this.cols = 0;
     this.loaderService.show();
   }
@@ -38,7 +39,7 @@ export class ProductDetailComponent implements OnInit {
       if (value.key) {
         const key = value.key.substring(0, value.key.indexOf('-'));
         this.productService.getProduct(key)
-          .subscribe((products: IProduct[]) => {
+          .subscribe((products: ClothingProduct[]) => {
             products.forEach((product) => {
               this.product = product;
               this.loaderService.hide();
@@ -75,12 +76,12 @@ export class ProductDetailComponent implements OnInit {
               this.meta.addTag({ name: 'twitter:title', content: product.name });
               this.meta.addTag({ name: 'twitter:description', content: product.description });
               this.meta.addTag({ name: 'twitter:creator', content: product.creator });
-              this.meta.addTag({ name: 'twitter:image', content: this.mediaService.getPictureSrc(product.image1) });
+              this.meta.addTag({ name: 'twitter:image', content: this.cloudinaryTagService.getPictureSrc(product.image1) });
 
               // Google +
               this.meta.addTag({ itemprop: 'name', content: product.name });
               this.meta.addTag({ itemprop: 'description', content: product.description });
-              this.meta.addTag({ itemprop: 'image', content: this.mediaService.getPictureSrc(product.image1) });
+              this.meta.addTag({ itemprop: 'image', content: this.cloudinaryTagService.getPictureSrc(product.image1) });
 
             });
             this.countCols();
@@ -109,9 +110,9 @@ export class ProductDetailComponent implements OnInit {
 
   /**
    * Update current score for the product
-   * @param {IProduct} product
+   * @param {ClothingProduct} product
    */
-  updateScoreProduct(product: IProduct) {
+  updateScoreProduct(product: ClothingProduct) {
     this.updatedproduct.emit(product);
   }
 

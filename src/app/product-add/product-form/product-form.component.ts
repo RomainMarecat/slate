@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Product } from '../../../core/shared/product/product';
-import { IProduct } from '../../../core/shared/product/i-product';
+import { ClothingProduct } from '../../../core/shared/product/clothing-product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Media } from '../../../core/shared/media/media';
 import { UserService } from '../../../core/shared/user/user.service';
@@ -17,14 +17,14 @@ export class ProductFormComponent implements OnInit {
   formDetail: FormGroup;
   formMedia: FormGroup;
   formAdditional: FormGroup;
-  @Output() productChange: EventEmitter < IProduct > ;
-  product: IProduct;
+  @Output() productChange: EventEmitter < ClothingProduct > ;
+  product: ClothingProduct;
   @Input('_user') _user: any;
   disableDelivery: boolean;
   isLoading: boolean;
   isLinear: boolean;
   now: Date;
-  @Output('_submit') _submit: EventEmitter < IProduct > ;
+  @Output('_submit') _submit: EventEmitter < ClothingProduct > ;
   image1: Media;
   image2: Media;
   image3: Media;
@@ -58,7 +58,7 @@ export class ProductFormComponent implements OnInit {
       this.formDetail &&
       this.formMedia &&
       this.formAdditional) {
-      const product = { ...this.formMedia.value, ...this.formDetail.value, ...this.formAdditional.value } as IProduct;
+      const product = { ...this.formMedia.value, ...this.formDetail.value, ...this.formAdditional.value } as ClothingProduct;
       product.published = false;
       product.thumbnail = this.userService.getUser().photoURL;
       product.user = this.userService.getUser().uid;
@@ -68,7 +68,7 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
-  submit(product: IProduct) {
+  submit(product: ClothingProduct) {
     this._submit.emit(product);
   }
 

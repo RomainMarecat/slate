@@ -1,3 +1,11 @@
-<p>
-  product-item works!
-</p>
+<mat-card class="item-card" *ngIf="product" angulartics2On="mouseover" angularticsAction="hoveredOverProductItem" [angularticsCategory]="'product.item'">
+  <mat-card-header class="item-card-header">
+    <mat-card-title class="item-card-title" (click)="productDetail()" angulartics2On="click" angularticsAction="clickedOnTitleShowProduct" [angularticsCategory]="'product.detail'">
+      <h2 class="item-card-name size--all-xl">
+        {{ product?.name | truncate: 30: '...'}}
+      </h2>
+    </mat-card-title>
+  </mat-card-header>
+  <app-image [publicId]="product.image1" [resize]="resizedImage" (click)="productDetail()" *ngIf="product.image1" angulartics2On="click" angularticsAction="clickedOnImageShowProduct" [angularticsCategory]="'product.detail'"></app-image>
+  <app-product-action [product]="product" (updateScore)="updateScoreProduct($event)"></app-product-action>
+</mat-card>

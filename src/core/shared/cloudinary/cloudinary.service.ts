@@ -94,7 +94,6 @@ export class Cloudinary {
     this._cloudinaryInstance.responsive(options, false);
   }
 
-
   /**
    * Transforms a set of attributes and chained transformations to an options object that can be consumed by Cloudinary JS API
    * @param attributes HTML element attributes

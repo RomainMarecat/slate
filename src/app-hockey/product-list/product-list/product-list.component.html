@@ -15,5 +15,5 @@
   </mat-card>
 </div>
 <div class="card-container">
-  <app-product-item *ngFor="let product of products$ | async" class="grid-tile-item" [product]="product" (updatedProduct)="updateProduct($event)"></app-product-item>
+  <app-product-item *ngFor="let product of products$ | async" class="grid-tile-item" [product]="product"></app-product-item>
 </div>

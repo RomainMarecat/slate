@@ -1,8 +1,6 @@
-import { IProduct } from './i-product';
-import { FProduct } from './f-product';
-import { Media } from '../media/media';
+import { ClothingProduct } from './clothing-product';
 
-export class Product implements IProduct {
+export class Product implements ClothingProduct {
   name: string;
 
   score: number;
@@ -14,12 +12,12 @@ export class Product implements IProduct {
 
   key ?: string;
   user: string;
-  creator?: string;
+  creator ?: string;
 
   description ?: string;
   external_url ?: string;
   thumbnail: string;
-  images?: string[];
+  images ?: string[];
   image1: string;
   image2 ?: string;
   image3 ?: string;

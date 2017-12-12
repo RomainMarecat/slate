@@ -7,6 +7,7 @@ import {RouterModule} from '@angular/router';
 import {Angulartics2Module} from 'angulartics2';
 import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 import {SharedModule} from '../../core/shared/shared.module';
+import {environment} from '../../environments/environment.hockey';
 
 @NgModule({
   imports: [
@@ -21,8 +22,11 @@ import {SharedModule} from '../../core/shared/shared.module';
         clearIds: true,
       },
     }),
-    SharedModule
+    SharedModule.forRoot(environment)
   ],
-  declarations: [ProductListComponent, ProductItemComponent]
+  declarations: [
+    ProductListComponent,
+    ProductItemComponent
+  ]
 })
 export class ProductListModule { }

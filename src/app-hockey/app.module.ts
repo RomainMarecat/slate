@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppRootComponent } from './root/root.component';
+
+import { AngularFireModule } from 'angularfire2';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -60,6 +62,7 @@ import { UserGuard } from '../core/shared/guard/user.guard';
 import { ProductListModule } from './product-list/product-list.module';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {FirebaseAppName, FirebaseAppProvider} from 'angularfire2';
 
 declare var Hammer: any;
 
@@ -78,7 +81,6 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/' + environment.app_name + '/', '.json');
 }
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -87,6 +89,14 @@ export function createTranslateLoader(http: HttpClient) {
     FormsModule,
     BrowserAnimationsModule,
     NgStringPipesModule,
+    AngularFireModule.initializeApp({
+      apiKey: 'AIzaSyBH-ZNbK4pNUuyi_qBb21xe7eQtZhAy0T0',
+      authDomain: 'hockey-f2b77.firebaseapp.com',
+      databaseURL: 'https://hockey-f2b77.firebaseio.com',
+      projectId: 'hockey-f2b77',
+      storageBucket: 'hockey-f2b77.appspot.com',
+      messagingSenderId: '624874820850'
+    }, 'hockey'),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
       developerMode: true,
       pageTracking: {
@@ -135,19 +145,7 @@ export function createTranslateLoader(http: HttpClient) {
       // hammer instantion with custom config
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig,
-    },
-    ProductService,
-    MediaService,
-    NotificationService,
-    UserService,
-    LoaderService,
-    AlertService,
-    ObjectService,
-    DateService,
-    LoaderService,
-    ScoreService,
-    SidenavService,
-    UserGuard,
+    }
   ]
 })
 export class AppModule {}

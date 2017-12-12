@@ -1,6 +1,6 @@
 import { Component, TemplateRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IProduct } from '../../core/shared/product/i-product';
+import { ClothingProduct } from '../../core/shared/product/clothing-product';
 import { ProductService } from '../../core/shared/product/product.service';
 import { UserService } from '../../core/shared/user/user.service';
 import { LoaderService } from '../../core/shared/loader/loader.service';
@@ -15,7 +15,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./product-add.component.scss']
 })
 export class ProductAddComponent implements OnInit {
-  product: IProduct;
+  product: ClothingProduct;
   ratio: string;
   user: any;
 
@@ -54,9 +54,9 @@ export class ProductAddComponent implements OnInit {
   /**
    * When the form is submitted, we create new product
    * And show a toast to display info
-   * @param {IProduct} product
+   * @param {ClothingProduct} product
    */
-  onProductSubmit(product: IProduct) {
+  onProductSubmit(product: ClothingProduct) {
     this.productService.createProduct(product);
     this.slackNotification.notifySlack({
       text: `New product has been send. ${product.name} by ${this.user.displayName}`
@@ -67,9 +67,9 @@ export class ProductAddComponent implements OnInit {
 
   /**
    * Get the new product value
-   * @param {IProduct} product
+   * @param {ClothingProduct} product
    */
-  onProductChange(product: IProduct) {
+  onProductChange(product: ClothingProduct) {
     this.product = { ...this.product, ...product };
   }
 }

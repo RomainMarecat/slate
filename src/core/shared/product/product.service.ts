@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Product } from './product';
-import { IProduct } from './i-product';
-import { AlertService } from '../alert/alert.service';
+import { ClothingProduct } from './clothing-product';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -15,7 +14,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ProductService {
-  productCollectionRef: AngularFirestoreCollection < IProduct > ;
+  productCollectionRef: AngularFirestoreCollection < ClothingProduct > ;
   products$: Observable < DocumentChangeAction[] > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
@@ -32,10 +31,11 @@ export class ProductService {
 
   /**
    *
-   * @param {AngularFirestore} afs
-   * @param {AlertService} alertService
+   * @param AngularFirestore afs
+   * @param AlertService alertService
    */
-  constructor(private afs: AngularFirestore, private alertService: AlertService) {
+  constructor(private afs: AngularFirestore,
+    @Inject('app_name') appName: string) {
     this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(true);
     this.nameFilters$ = new BehaviorSubject(null);
@@ -89,14 +89,14 @@ export class ProductService {
 
   /**
    *
-   * @returns {Observable<IProduct[]>}
+   * @returns {Observable<ClothingProduct[]>}
    */
-  getProducts(): Observable < IProduct[] > {
+  getProducts(): Observable < ClothingProduct[] > {
     return this.products$.map((products: DocumentChangeAction[]) =>
       products.map((doc: DocumentChangeAction) => {
-        const product = doc.payload.doc.data() as IProduct;
+        const product = doc.payload.doc.data() as ClothingProduct;
         product.key = doc.payload.doc.id;
-        return product as IProduct;
+        return product as ClothingProduct;
       })
     );
   }
@@ -104,35 +104,35 @@ export class ProductService {
   /**
    *
    * @param {string} key
-   * @returns {Observable<IProduct[]>}
+   * @returns {Observable<ClothingProduct[]>}
    */
-  getProduct(key: null | string): Observable < IProduct[] > {
+  getProduct(key: null | string): Observable < ClothingProduct[] > {
     this.keyFilters$.next(key);
     return this.getProducts().take(1);
   }
 
   /**
    *
-   * @param {IProduct} product
+   * @param {ClothingProduct} product
    */
-  updateProduct(product: IProduct) {
+  updateProduct(product: ClothingProduct) {
     this.productCollectionRef.doc(product.key).update({ ...product });
   }
 
   /**
    *
-   * @param {IProduct} product
+   * @param {ClothingProduct} product
    */
-  createProduct(product: IProduct) {
+  createProduct(product: ClothingProduct) {
     delete product.key;
     this.productCollectionRef.add({ ...product });
   }
 
   /**
    *
-   * @param {IProduct} product
+   * @param {ClothingProduct} product
    */
-  deleteProduct(product: IProduct) {
+  deleteProduct(product: ClothingProduct) {
     this.productCollectionRef.doc(product.key).delete();
   }
 }

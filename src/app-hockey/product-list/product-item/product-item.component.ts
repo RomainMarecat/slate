@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {IProduct} from '../../../core/shared/product/i-product';
+import { Component, Input, OnInit } from '@angular/core';
+import { ClothingProduct } from '../../../core/shared/product/clothing-product';
+import { ProductService } from '../../../core/shared/product/product.service';
 
 @Component({
   selector: 'app-product-item',
@@ -7,11 +8,10 @@ import {IProduct} from '../../../core/shared/product/i-product';
   styleUrls: ['./product-item.component.scss']
 })
 export class ProductItemComponent implements OnInit {
-  @Input('product') product: IProduct;
+  @Input('product') product: ClothingProduct;
 
-  constructor() { }
+  constructor(private productService: ProductService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

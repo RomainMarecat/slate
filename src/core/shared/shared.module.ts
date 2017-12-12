@@ -5,6 +5,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { I18nService } from './i18n/i18n.service';
 import { DeviceService } from './device/device.service';
+import { NgStringPipesModule } from 'angular-pipes';²
 import {
   MatCardModule,
   MatToolbarModule,
@@ -29,6 +30,7 @@ import {
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { SlackModule } from './slack/slack.module';
+
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
@@ -38,9 +40,23 @@ import { AdsenseModule } from 'ng2-adsense';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import {AngularFirestore, AngularFirestoreModule} from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { Cloudinary } from 'cloudinary-core';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { CloudinaryConfig } from './cloudinary/cloudinary-config';
+
 import { Environment } from './util/environment';
+import {ProductService} from './product/product.service';
+import {UserService} from './user/user.service';
+import {MediaService} from './media/media.service';
+import {AlertService} from './alert/alert.service';
+import {ObjectService} from './util/object.service';
+import {SidenavService} from './sidenav/sidenav.service';
+import {UserGuard} from './guard/user.guard';
+import {ScoreService} from './score/score.service';
+import {DateService} from './util/date.service';
+import {LoaderService} from './loader/loader.service';
 
 export const production = new InjectionToken < string > ('production');
 export const site_name = new InjectionToken < string > ('site_name');
@@ -66,28 +82,19 @@ export function createTranslateLoader(http: HttpClient, name: string) {
   return new TranslateHttpLoader(http, `./assets/i18n/${name}/`, '.json');
 }
 
+export function createCloudinaryConfig(cloudinaryApiKey: string,
+  cloudinaryApiSecret: string,
+  cloudinaryUrl: string,
+  cloudName: string) {
+  return new CloudinaryConfig(cloudinaryApiKey, cloudinaryApiSecret, cloudinaryUrl, cloudName);
+}
+
 @NgModule({
   imports: [
     AdsenseModule.forRoot({
       adClient: clientAdSense.toString(),
       adSlot: slotAdSense.toString()
     }),
-    AngularFireModule.initializeApp({
-      apiKey: 'AIzaSyB1K9_bZJDLq48C-4xAUhNEjP79Q-60YKw',
-      authDomain: 'mon-pull-moche.firebaseapp.com',
-      databaseURL: 'https://mon-pull-moche.firebaseio.com',
-      projectId: 'mon-pull-moche',
-      storageBucket: 'mon-pull-moche.appspot.com',
-      messagingSenderId: '1050522744023'
-    }, 'monpullmoche'),
-    AngularFireModule.initializeApp({
-      apiKey: 'AIzaSyBH-ZNbK4pNUuyi_qBb21xe7eQtZhAy0T0',
-      authDomain: 'hockey-f2b77.firebaseapp.com',
-      databaseURL: 'https://hockey-f2b77.firebaseio.com',
-      projectId: 'hockey-f2b77',
-      storageBucket: 'hockey-f2b77.appspot.com',
-      messagingSenderId: '624874820850'
-    }, 'hockey'),
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
@@ -96,6 +103,14 @@ export function createTranslateLoader(http: HttpClient, name: string) {
         clearIds: true,
       },
     }),
+    CloudinaryModule.forRoot(
+      { Cloudinary: Cloudinary },
+      {
+        provide: CloudinaryConfig,
+        useFactory: (createCloudinaryConfig),
+        deps: [cloudinaryApiKey, cloudinaryApiSecret, cloundinaryUrl, cloudName]
+      }
+    ),
     HttpModule,
     CommonModule,
     HttpClientModule,
@@ -107,6 +122,7 @@ export function createTranslateLoader(http: HttpClient, name: string) {
         deps: [HttpClient, app_name]
       }
     }),
+    NgStringPipesModule,
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -130,6 +146,7 @@ export function createTranslateLoader(http: HttpClient, name: string) {
   ],
   exports: [
     SlackModule,
+    CloudinaryModule,
     TranslateModule,
     SidenavComponent,
     MenuComponent,
@@ -145,6 +162,17 @@ export function createTranslateLoader(http: HttpClient, name: string) {
     LoaderComponent,
   ],
   providers: [
+    { provide: app_name, useValue: app_name },
+    { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
+    { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, app_name] },
+    UserService,
+    AlertService,
+    ObjectService,
+    DateService,
+    LoaderService,
+    ScoreService,
+    SidenavService,
+    UserGuard,
     I18nService,
     DeviceService
   ]

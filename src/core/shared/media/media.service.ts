@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Media } from './media';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
 import * as firebase from 'firebase';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Cloudinary } from '../cloudinary/cloudinary.service';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
@@ -20,10 +19,13 @@ export class MediaService {
   limitFilter$: BehaviorSubject < number | null > ;
 
   /**
-   *
-   * @param {AngularFirestore} afs
+   * constructor
+   * @param AngularFirestore private afs
+   * @param Cloudinary       private cloudinary
+   * @param [type]
    */
-  constructor(private afs: AngularFirestore, private cloudinary: Cloudinary) {
+  constructor(private afs: AngularFirestore,
+    @Inject('APP_NAME') app_name: string) {
     this.mediaCollectionRef = this.afs.collection < Media > ('media');
     this.publicIdFilter$ = new BehaviorSubject(null);
     this.urlFilter$ = new BehaviorSubject(null);
@@ -67,30 +69,6 @@ export class MediaService {
    */
   filterByUrl(url: string | null) {
     this.urlFilter$.next(url);
-  }
-
-  /**
-   * Get tags from public id of cloudinary
-   * @return {any}
-   */
-  getPictureTags(publicId) {
-    const imageTag = this.cloudinary.imageTag(publicId);
-    return this.getElementAttributes(imageTag.attributes());
-  }
-
-  getPictureSrc(publicId): string {
-    const tags = this.getPictureTags(publicId);
-    return tags.src as string;
-  }
-
-  getElementAttributes(attributesLiteral: string[]) {
-    const attr = {src: ''};
-
-    Object.keys(attributesLiteral).forEach(attrName => {
-      attr[attrName] = attributesLiteral[attrName];
-    });
-
-    return attr;
   }
 
   /**

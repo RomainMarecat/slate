@@ -7,13 +7,10 @@ import { CloudinaryVideoComponent } from './cloudinary-video/cloudinary-video.co
 import { CloudinaryTransformationDirective } from './cloudinary-transformation.directive';
 import { CloudinaryImageSourceDirective } from './cloudinary-image-source.directive';
 import CloudinaryConfiguration from './cloudinary-configuration.class';
-export { CloudinaryVideoComponent } from './cloudinary-video/cloudinary-video.component';
-export { CloudinaryImageComponent } from './cloudinary-image/cloudinary-image.component';
-export { CloudinaryTransformationDirective } from './cloudinary-transformation.directive';
-export { CloudinaryImageSourceDirective } from './cloudinary-image-source.directive';
-export { Cloudinary, provideCloudinary } from './cloudinary.service';
-export { CloudinaryConfiguration };
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { CloudinaryTagService } from './cloudinary-tag.service';
+import { ImageComponent } from './image/image.component';
+import { NgStringPipesModule } from 'angular-pipes';
 
 export const CLOUDINARY_LIB = new InjectionToken('CLOUDINARY_LIB');
 export const CLOUDINARY_CONFIGURATION = new InjectionToken('CLOUDINARY_CONFIGURATION');
@@ -27,19 +24,22 @@ export function createCloudinary(cloudinaryJsLib: any, configuration: any) {
   imports: [
     CommonModule,
     BrowserModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    NgStringPipesModule
   ],
   declarations: [
     CloudinaryImageSourceDirective,
     CloudinaryImageComponent,
     CloudinaryTransformationDirective,
-    CloudinaryVideoComponent
+    CloudinaryVideoComponent,
+    ImageComponent
   ],
   exports: [
     CloudinaryImageSourceDirective,
     CloudinaryImageComponent,
     CloudinaryVideoComponent,
-    CloudinaryTransformationDirective
+    CloudinaryTransformationDirective,
+    ImageComponent
   ]
 })
 export class CloudinaryModule {
@@ -47,6 +47,7 @@ export class CloudinaryModule {
     return {
       ngModule: CloudinaryModule,
       providers: [
+        CloudinaryTagService,
         { provide: CLOUDINARY_LIB, useValue: cloudinaryJsLib },
         { provide: CLOUDINARY_CONFIGURATION, useValue: cloudinaryConfiguration },
         {

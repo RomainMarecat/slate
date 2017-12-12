@@ -2,13 +2,14 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ProductService } from './../../../core/shared/product/product.service';
-import { IProduct } from './../../../core/shared/product/i-product';
+import { ClothingProduct } from '../../../core/shared/product/clothing-product';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from './../../../core/shared/user/user.service';
 import { AlertService } from './../../../core/shared/alert/alert.service';
 import { LoaderService } from './../../../core/shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from './../../../environments/environment.hockey';
+import {HockeyProduct} from '../../../core/shared/product/hockey-product';
 
 @Component({
   selector: 'app-product-list',
@@ -17,8 +18,8 @@ import { environment } from './../../../environments/environment.hockey';
 })
 export class ProductListComponent implements OnInit {
   // Products collection of Product interface
-  products$: Observable < IProduct[] > ;
-  products: Array < IProduct > ;
+  products$: Observable < HockeyProduct[] > ;
+  products: Array < HockeyProduct > ;
   rowHeight: number;
   headerHeight: number;
   pageLimit: number;
@@ -66,21 +67,6 @@ export class ProductListComponent implements OnInit {
     ]);
 
     this.loadProducts(this.pageLimit);
-  }
-
-  /**
-   * Update on product
-   * @param {IProduct} product
-   */
-  updateProduct(product: IProduct) {
-    this.productService.updateProduct(product);
-  }
-
-  /**
-   * Go to form page Add product
-   */
-  addProduct() {
-    this.router.navigate(['/add']);
   }
 
   /**
