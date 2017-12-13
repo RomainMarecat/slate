@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatCardModule,
@@ -41,7 +41,7 @@ describe('CategoryAddComponent', () => {
         imports: [
           CommonModule,
           BrowserModule,
-          HttpModule,
+          HttpClientModule,
           FormsModule,
           RouterTestingModule,
           ReactiveFormsModule,

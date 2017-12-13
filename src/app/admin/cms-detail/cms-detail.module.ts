@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgStringPipesModule } from 'angular-pipes';
 import { environment } from './../../../environments/environment.monpullmoche';
 import { AngularFireModule } from 'angularfire2';
@@ -41,7 +41,7 @@ import { CmsDetailService } from './../shared/cms-detail/cms-detail.service';
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     NgStringPipesModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

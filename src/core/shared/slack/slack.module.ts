@@ -1,6 +1,7 @@
 import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Http, HttpModule} from '@angular/http';
+import { Http } from '@angular/http';
+import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {NotificationService} from './notification.service';
 
@@ -14,7 +15,7 @@ export function createNotificationFactory(http: Http, slackUrl: string) {
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
   ]
 })
 export class SlackModule {

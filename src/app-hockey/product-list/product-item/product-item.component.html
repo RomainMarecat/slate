@@ -6,6 +6,4 @@
       </h2>
     </mat-card-title>
   </mat-card-header>
-  <app-image [publicId]="product.image1" [resize]="resizedImage" (click)="productDetail()" *ngIf="product.image1" angulartics2On="click" angularticsAction="clickedOnImageShowProduct" [angularticsCategory]="'product.detail'"></app-image>
-  <app-product-action [product]="product" (updateScore)="updateScoreProduct($event)"></app-product-action>
 </mat-card>

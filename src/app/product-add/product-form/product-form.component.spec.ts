@@ -25,7 +25,7 @@ import { CloudinaryModule } from '../../../core/shared/cloudinary/cloudinary.mod
 import { CloudinaryConfig } from '../../../core/shared/cloudinary/cloudinary-config';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductImageComponent } from './../product-image/product-image.component';
@@ -48,7 +48,7 @@ describe('ProductFormComponent', () => {
     TestBed.configureTestingModule({
         imports: [
           CommonModule,
-          HttpModule,
+          HttpClientModule,
           FormsModule,
           RouterTestingModule,
           ReactiveFormsModule,

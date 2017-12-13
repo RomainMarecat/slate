@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import {
@@ -47,7 +47,7 @@ describe('ProductItemComponent', () => {
           CommonModule,
           RouterTestingModule,
           BrowserModule,
-          HttpModule,
+          HttpClientModule,
           MatIconModule,
           MatCardModule,
           NgStringPipesModule,

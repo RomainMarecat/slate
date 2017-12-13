@@ -8,6 +8,7 @@ import {Angulartics2Module} from 'angulartics2';
 import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 import {SharedModule} from '../../core/shared/shared.module';
 import {environment} from '../../environments/environment.hockey';
+import {NgStringPipesModule} from 'angular-pipes';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import {environment} from '../../environments/environment.hockey';
         clearIds: true,
       },
     }),
+    NgStringPipesModule,
     SharedModule.forRoot(environment)
   ],
   declarations: [

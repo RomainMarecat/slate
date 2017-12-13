@@ -4,7 +4,7 @@ import * as firebase from 'firebase/app';
 import { User } from './user';
 import { Observable } from 'rxjs/Observable';
 import { AlertService } from '../alert/alert.service';
-import 'rxjs/add/operator/map';
+import {map} from 'rxjs/operators';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
 

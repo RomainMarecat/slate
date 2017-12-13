@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ScoreService } from './score.service';
 import { environment } from '../../../environments/environment.monpullmoche';
 import { AngularFireModule } from 'angularfire2';
@@ -11,7 +11,7 @@ describe('ScoreService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpModule,
+        HttpClientModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         AngularFireAuthModule

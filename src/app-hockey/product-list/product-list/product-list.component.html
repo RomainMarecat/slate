@@ -16,4 +16,6 @@
 </div>
 <div class="card-container">
   <app-product-item *ngFor="let product of products$ | async" class="grid-tile-item" [product]="product"></app-product-item>
+  <div class="" *ngIf="(products$ | async) === null || (products$ | async)?.length <= 0" [innerHtml]="'No data'|translate">
+  </div>
 </div>

@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -57,7 +57,7 @@ describe('ProductListComponent', () => {
         imports: [
           CommonModule,
           BrowserModule,
-          HttpModule,
+          HttpClientModule,
           RouterTestingModule,
           BrowserAnimationsModule,
           MatCardModule,

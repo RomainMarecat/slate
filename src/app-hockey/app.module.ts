@@ -6,7 +6,7 @@ import { AppRootComponent } from './root/root.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgStringPipesModule } from 'angular-pipes';
@@ -63,6 +63,10 @@ import { ProductListModule } from './product-list/product-list.module';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {FirebaseAppName, FirebaseAppProvider} from 'angularfire2';
+import { CloudinaryModule } from '../core/shared/cloudinary/cloudinary.module';
+import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
+import { CloudinaryConfig } from '../core/shared/cloudinary/cloudinary-config';
+import CloudinaryConfiguration from '../core/shared/cloudinary/cloudinary-configuration.class';
 
 declare var Hammer: any;
 
@@ -85,7 +89,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     CommonModule,
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
     NgStringPipesModule,
@@ -107,6 +111,10 @@ export function createTranslateLoader(http: HttpClient) {
       adClient: environment.clientAdSense,
       adSlot: environment.slotAdSense
     }),
+    CloudinaryModule.forRoot(
+      { Cloudinary: CloudinaryCore },
+      environment.cloudinary
+    ),
     ModalModule.forRoot(),
     ImageCropperModule,
     FileUploadModule,

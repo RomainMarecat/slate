@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NotificationService } from './notification.service';
 import { MockNotificationService } from './mock-notification.service';
 
@@ -14,7 +14,7 @@ describe('NotificationService', () => {
       imports: [
         CommonModule,
         BrowserModule,
-        HttpModule,
+        HttpClientModule,
         RouterTestingModule,
       ],
       providers: [{

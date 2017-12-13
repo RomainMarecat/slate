@@ -1,4 +1,4 @@
-export class Environment {
+export interface Environment {
   production: boolean;
   site_name: string;
   app_name: string;
@@ -10,11 +10,13 @@ export class Environment {
     storageBucket: string;
     messagingSenderId: string;
   };
-  cloudinaryApiKey: string;
-  cloudinaryApiSecret: string;
-  cloundinaryUrl: string;
-  cloudName: string;
-  uploadPreset: string;
+  cloudinary: {
+    api_key: string;
+    api_secret: string;
+    cloudinary_url ?: string;
+    cloud_name: string;
+    upload_preset: string;
+  };
   clientAdSense: string;
   slotAdSense: number;
   slackToken: string;

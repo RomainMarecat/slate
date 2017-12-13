@@ -1,7 +1,7 @@
 import { NgModule, Injectable, InjectionToken } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -67,10 +67,12 @@ import { NgStringPipesModule } from 'angular-pipes';
 import { NotificationService } from '../core/shared/slack/notification.service';
 import { AppRoutingModule } from './app-routing.module';
 import { Environment } from './../core/shared/util/environment';
+import {CloudinaryModule} from '../core/shared/cloudinary/cloudinary.module';
+import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
+import { CloudinaryConfig } from '../core/shared/cloudinary/cloudinary-config';
+import CloudinaryConfiguration from '../core/shared/cloudinary/cloudinary-configuration.class';
 
 declare var Hammer: any;
-
-export const APP_NAME = new InjectionToken<string>(environment.app_name);
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
@@ -96,7 +98,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     BrowserModule,
     CommonModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
       developerMode: true,
@@ -108,7 +110,10 @@ export class MyHammerConfig extends HammerGestureConfig {
       adClient: environment.clientAdSense,
       adSlot: environment.slotAdSense
     }),
-
+    CloudinaryModule.forRoot(
+      { Cloudinary: CloudinaryCore },
+      environment.cloudinary
+    ),
     ModalModule.forRoot(),
     NgStringPipesModule,
     ImageCropperModule,
@@ -151,7 +156,6 @@ export class MyHammerConfig extends HammerGestureConfig {
     ProductActionComponent,
   ],
   providers: [
-    { provide: APP_NAME, useValue: APP_NAME },
     {
       // hammer instantion with custom config
       provide: HAMMER_GESTURE_CONFIG,

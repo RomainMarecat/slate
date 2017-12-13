@@ -10,11 +10,13 @@ export const environment = {
     storageBucket: 'mon-pull-moche.appspot.com',
     messagingSenderId: '1050522744023'
   },
-  cloudinaryApiKey: '635275737532688',
-  cloudinaryApiSecret: 'OHdYSMfie1xND2yQtioOYEAfjuA',
-  cloundinaryUrl: 'https://res.cloudinary.com/monpullmoche/image/upload',
-  cloudName: 'monpullmoche',
-  uploadPreset: 'k0bxujke',
+  cloudinary: {
+    api_key: '635275737532688',
+    api_secret: 'OHdYSMfie1xND2yQtioOYEAfjuA',
+    cloundinary_url: 'https://res.cloudinary.com/monpullmoche/image/upload',
+    cloud_name: 'monpullmoche',
+    upload_preset: 'k0bxujke',
+  },
   clientAdSense: 'ca-pub-4195199088767183',
   slotAdSense: 123456,
   slackToken: 'https://hooks.slack.com/services/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',

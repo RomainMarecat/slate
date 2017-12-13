@@ -3,7 +3,7 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AlertService } from '../alert/alert.service';
-import 'rxjs/add/operator/map';
+import {map} from 'rxjs/operators';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
 

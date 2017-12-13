@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AlertComponent } from './alert.component';
 import { Angulartics2Module } from 'angulartics2';
@@ -37,7 +37,7 @@ describe('AlertComponent', () => {
           RouterTestingModule,
           BrowserModule,
           CommonModule,
-          HttpModule,
+          HttpClientModule,
           BrowserAnimationsModule,
           MatIconModule,
           MatSnackBarModule,

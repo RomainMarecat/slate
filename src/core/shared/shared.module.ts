@@ -5,7 +5,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { I18nService } from './i18n/i18n.service';
 import { DeviceService } from './device/device.service';
-import { NgStringPipesModule } from 'angular-pipes';²
+import { NgStringPipesModule } from 'angular-pipes';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -37,42 +37,31 @@ import { FooterComponent } from './footer/footer.component';
 import { AlertComponent } from './alert/alert.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AdsenseModule } from 'ng2-adsense';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
-import {AngularFirestore, AngularFirestoreModule} from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
+import { CLOUDINARY_CONFIGURATION, CloudinaryModule } from './cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './cloudinary/cloudinary-config';
-
+import CloudinaryConfiguration from './cloudinary/cloudinary-configuration.class';
 import { Environment } from './util/environment';
-import {ProductService} from './product/product.service';
-import {UserService} from './user/user.service';
-import {MediaService} from './media/media.service';
-import {AlertService} from './alert/alert.service';
-import {ObjectService} from './util/object.service';
-import {SidenavService} from './sidenav/sidenav.service';
-import {UserGuard} from './guard/user.guard';
-import {ScoreService} from './score/score.service';
-import {DateService} from './util/date.service';
-import {LoaderService} from './loader/loader.service';
+import { ProductService } from './product/product.service';
+import { UserService } from './user/user.service';
+import { MediaService } from './media/media.service';
+import { AlertService } from './alert/alert.service';
+import { ObjectService } from './util/object.service';
+import { SidenavService } from './sidenav/sidenav.service';
+import { UserGuard } from './guard/user.guard';
+import { ScoreService } from './score/score.service';
+import { DateService } from './util/date.service';
+import { LoaderService } from './loader/loader.service';
 
 export const production = new InjectionToken < string > ('production');
 export const site_name = new InjectionToken < string > ('site_name');
 export const app_name = new InjectionToken < string > ('app_name');
 export const firebase = new InjectionToken < FirebaseAppConfig > ('firebase');
-// export const apiKey = new InjectionToken < string > ('apiKey');
-// export const authDomain = new InjectionToken < string > ('authDomain');
-// export const databaseURL = new InjectionToken < string > ('databaseURL');
-// export const projectId = new InjectionToken < string > ('projectId');
-// export const storageBucket = new InjectionToken < string > ('storageBucket');
-// export const messagingSenderId = new InjectionToken < string > ('messagingSenderId');
-export const cloudinaryApiKey = new InjectionToken < string > ('cloudinaryApiKey');
-export const cloudinaryApiSecret = new InjectionToken < string > ('cloudinaryApiSecret');
-export const cloundinaryUrl = new InjectionToken < string > ('cloundinaryUrl');
-export const cloudName = new InjectionToken < string > ('cloudName');
-export const uploadPreset = new InjectionToken < string > ('uploadPreset');
+export const cloudinary = new InjectionToken<CloudinaryConfiguration>('cloudinary')
 export const clientAdSense = new InjectionToken < string > ('clientAdSense');
 export const slotAdSense = new InjectionToken < string > ('slotAdSense');
 export const slackToken = new InjectionToken < string > ('slackToken');
@@ -80,13 +69,6 @@ export const facebook_app_id = new InjectionToken < string > ('facebook_app_id')
 
 export function createTranslateLoader(http: HttpClient, name: string) {
   return new TranslateHttpLoader(http, `./assets/i18n/${name}/`, '.json');
-}
-
-export function createCloudinaryConfig(cloudinaryApiKey: string,
-  cloudinaryApiSecret: string,
-  cloudinaryUrl: string,
-  cloudName: string) {
-  return new CloudinaryConfig(cloudinaryApiKey, cloudinaryApiSecret, cloudinaryUrl, cloudName);
 }
 
 @NgModule({
@@ -103,17 +85,18 @@ export function createCloudinaryConfig(cloudinaryApiKey: string,
         clearIds: true,
       },
     }),
+    /*
+    Doesn't work atm. Maybe provide an Injectable class like Hammer
     CloudinaryModule.forRoot(
-      { Cloudinary: Cloudinary },
+      { Cloudinary: CloudinaryCore },
       {
-        provide: CloudinaryConfig,
-        useFactory: (createCloudinaryConfig),
-        deps: [cloudinaryApiKey, cloudinaryApiSecret, cloundinaryUrl, cloudName]
+        provide: CLOUDINARY_CONFIGURATION,
+        useClass: CloudinaryConfig,
+        useValue: cloudinary
       }
-    ),
-    HttpModule,
-    CommonModule,
+    ),*/
     HttpClientModule,
+    CommonModule,
     SlackModule.forRoot(slackToken),
     TranslateModule.forRoot({
       loader: {
@@ -146,7 +129,6 @@ export function createCloudinaryConfig(cloudinaryApiKey: string,
   ],
   exports: [
     SlackModule,
-    CloudinaryModule,
     TranslateModule,
     SidenavComponent,
     MenuComponent,
@@ -162,6 +144,7 @@ export function createCloudinaryConfig(cloudinaryApiKey: string,
     LoaderComponent,
   ],
   providers: [
+    { provide: cloudinary, useValue: cloudinary },
     { provide: app_name, useValue: app_name },
     { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
     { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, app_name] },
@@ -186,6 +169,7 @@ export class SharedModule {
         { provide: site_name, useValue: config.site_name },
         { provide: app_name, useValue: config.app_name },
         { provide: firebase, useValue: config.firebase },
+        { provide: cloudinary, useValue: config.cloudinary }
       ]
     };
   }

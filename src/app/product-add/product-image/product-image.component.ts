@@ -100,7 +100,7 @@ export class ProductImageComponent implements OnInit {
       form.append('file', fileItem);
       form.append('timestamp', timestamp.toString());
       form.append('signature', signature.toString());
-      form.append('api_key', environment.cloudinaryApiKey);
+      form.append('api_key', environment.cloudinary.api_key);
       form.append('transformation', transform);
 
       fileItem.withCredentials = false;
