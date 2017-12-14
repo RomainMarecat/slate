@@ -8,19 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductItemComponent } from './product-item/product-item.component';
-import { ProductService } from '../core/shared/product/product.service';
-import { MediaService } from '../core/shared/media/media.service';
-import { UserService } from '../core/shared/user/user.service';
-import { ScoreService } from '../core/shared/score/score.service';
-import { LoaderService } from '../core/shared/loader/loader.service';
-import { SidenavService } from '../core/shared/sidenav/sidenav.service';
-import { ObjectService } from '../core/shared/util/object.service';
-import { DateService } from '../core/shared/util/date.service';
 
 import { environment } from './../environments/environment.monpullmoche';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -57,20 +47,12 @@ import { ProductFormComponent } from './product-add/product-form/product-form.co
 import { ProductPreviewComponent } from './product-add/product-preview/product-preview.component';
 import { ProductActionComponent } from './product-item/product-action/product-action.component';
 import { AlertComponent } from '../core/shared/alert/alert.component';
-import { AlertService } from '../core/shared/alert/alert.service';
-import { UserGuard } from '../core/shared/guard/user.guard';
-import {
-  HammerGestureConfig,
-  HAMMER_GESTURE_CONFIG,
-} from '@angular/platform-browser';
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgStringPipesModule } from 'angular-pipes';
-import { NotificationService } from '../core/shared/slack/notification.service';
 import { AppRoutingModule } from './app-routing.module';
-import { Environment } from './../core/shared/util/environment';
 import {CloudinaryModule} from '../core/shared/cloudinary/cloudinary.module';
 import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
-import { CloudinaryConfig } from '../core/shared/cloudinary/cloudinary-config';
-import CloudinaryConfiguration from '../core/shared/cloudinary/cloudinary-configuration.class';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
 
 declare var Hammer: any;
 
@@ -95,6 +77,7 @@ export class MyHammerConfig extends HammerGestureConfig {
       storageBucket: 'mon-pull-moche.appspot.com',
       messagingSenderId: '1050522744023'
     }, 'monpullmoche'),
+    AngularFirestoreModule.enablePersistence(),
     BrowserModule,
     CommonModule,
     FormsModule,

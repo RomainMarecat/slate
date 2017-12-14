@@ -61,7 +61,7 @@ export const production = new InjectionToken < string > ('production');
 export const site_name = new InjectionToken < string > ('site_name');
 export const app_name = new InjectionToken < string > ('app_name');
 export const firebase = new InjectionToken < FirebaseAppConfig > ('firebase');
-export const cloudinary = new InjectionToken<CloudinaryConfiguration>('cloudinary');
+export const cloudinary = new InjectionToken < CloudinaryConfiguration > ('cloudinary');
 export const clientAdSense = new InjectionToken < string > ('clientAdSense');
 export const slotAdSense = new InjectionToken < string > ('slotAdSense');
 export const slackToken = new InjectionToken < string > ('slackToken');
@@ -77,7 +77,6 @@ export function createTranslateLoader(http: HttpClient, name: string) {
       adClient: clientAdSense.toString(),
       adSlot: slotAdSense.toString()
     }),
-    AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
       developerMode: true,
@@ -135,6 +134,9 @@ export function createTranslateLoader(http: HttpClient, name: string) {
     FooterComponent,
     AlertComponent,
     LoaderComponent,
+  ],
+  entryComponents: [
+    AlertComponent
   ],
   declarations: [
     SidenavComponent,

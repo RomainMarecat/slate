@@ -3,16 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductListComponent } from './product-list/product-list/product-list.component';
 
 const routes: Routes = [{
-  // On root we go to root. On other route we start with this route and go on children route
-  path: '',
-  redirectTo: '',
-  pathMatch: 'full',
-  children: [{
+    // On root we go to root. On other route we start with this route and go on children route
     path: '',
+    redirectTo: '',
     pathMatch: 'full',
-    component: ProductListComponent
-  }]
-}];
+    children: [{
+      path: '',
+      pathMatch: 'full',
+      component: ProductListComponent
+    }]
+  },
+  {
+    path: 'admin',
+    loadChildren: './../core/shared/admin/admin.module#AdminModule'
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -10,8 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgStringPipesModule } from 'angular-pipes';
-import { SidenavService } from '../core/shared/sidenav/sidenav.service';
-
 import { environment } from './../environments/environment.hockey';
 
 import {
@@ -49,24 +47,12 @@ import {
 } from '@angular/platform-browser';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductService } from '../core/shared/product/product.service';
-import { MediaService } from '../core/shared/media/media.service';
-import { NotificationService } from '../core/shared/slack/notification.service';
-import { UserService } from '../core/shared/user/user.service';
-import { LoaderService } from '../core/shared/loader/loader.service';
-import { AlertService } from '../core/shared/alert/alert.service';
-import { ObjectService } from '../core/shared/util/object.service';
-import { DateService } from '../core/shared/util/date.service';
-import { ScoreService } from '../core/shared/score/score.service';
-import { UserGuard } from '../core/shared/guard/user.guard';
 import { ProductListModule } from './product-list/product-list.module';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {FirebaseAppName, FirebaseAppProvider} from 'angularfire2';
 import { CloudinaryModule } from '../core/shared/cloudinary/cloudinary.module';
 import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
-import { CloudinaryConfig } from '../core/shared/cloudinary/cloudinary-config';
-import CloudinaryConfiguration from '../core/shared/cloudinary/cloudinary-configuration.class';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 declare var Hammer: any;
 
@@ -101,6 +87,7 @@ export function createTranslateLoader(http: HttpClient) {
       storageBucket: 'hockey-f2b77.appspot.com',
       messagingSenderId: '624874820850'
     }, 'hockey'),
+    AngularFirestoreModule.enablePersistence(),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
       developerMode: true,
       pageTracking: {
@@ -111,8 +98,7 @@ export function createTranslateLoader(http: HttpClient) {
       adClient: environment.clientAdSense,
       adSlot: environment.slotAdSense
     }),
-    CloudinaryModule.forRoot(
-      { Cloudinary: CloudinaryCore },
+    CloudinaryModule.forRoot({ Cloudinary: CloudinaryCore },
       environment.cloudinary
     ),
     ModalModule.forRoot(),
@@ -150,10 +136,9 @@ export function createTranslateLoader(http: HttpClient) {
     AppRootComponent
   ],
   providers: [{
-      // hammer instantion with custom config
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: MyHammerConfig,
-    }
-  ]
+    // hammer instantion with custom config
+    provide: HAMMER_GESTURE_CONFIG,
+    useClass: MyHammerConfig,
+  }]
 })
 export class AppModule {}

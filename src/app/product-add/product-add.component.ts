@@ -8,6 +8,7 @@ import { AlertService } from '../../core/shared/alert/alert.service';
 import { NotificationService } from '../../core/shared/slack/notification.service';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-product-add',
@@ -20,11 +21,11 @@ export class ProductAddComponent implements OnInit {
   user: any;
 
   /**
-   * @param {Router} router
-   * @param {ProductService} ProductService
-   * @param {AlertService} alertService
-   * @param {UserService} userService
-   * @param {LoaderService} loaderService
+   * @param Router router
+   * @param ProductService ProductService
+   * @param AlertService alertService
+   * @param UserService userService
+   * @param LoaderService loaderService
    */
   constructor(private router: Router, private productService: ProductService,
     public alertService: AlertService, private userService: UserService,
@@ -58,9 +59,18 @@ export class ProductAddComponent implements OnInit {
    */
   onProductSubmit(product: ClothingProduct) {
     this.productService.createProduct(product);
-    this.slackNotification.notifySlack({
-      text: `New product has been send. ${product.name} by ${this.user.displayName}`
-    }).subscribe(res => console.log(res));
+    try {
+      this.slackNotification.notifySlack({
+        text: `New product has been send. ${product.name} by ${this.user.displayName}`
+      }).subscribe(
+        (res) => console.log(res),
+        (err: HttpErrorResponse) => {
+          console.error(err);
+        }
+      );
+    } catch (e) {
+      console.error(e);
+    }
     this.alertService.toast('snackbar.product-add.submit', 'info');
     this.router.navigate(['/']);
   }

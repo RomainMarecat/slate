@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter, NgZone } from '@angular/core';
-import { Http } from '@angular/http';
 import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
 import { Cloudinary } from '../../../core/shared/cloudinary/cloudinary.service';
 import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
@@ -9,7 +8,7 @@ import { environment } from './../../../environments/environment.monpullmoche';
 import { ObjectService } from './../../../core/shared/util/object.service';
 import { MediaService } from './../../../core/shared/media/media.service';
 import { DeviceService } from './../../../core/shared/device/device.service';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-product-image',
@@ -37,12 +36,13 @@ export class ProductImageComponent implements OnInit {
   isUploaded: boolean;
 
   /**
-   *
-   * @param {Cloudinary}    private cloudinary
-   * @param {NgZone}        private zone
-   * @param {Http}          private http
-   * @param {ObjectService} public  objectService
-   * @param {MediaService}  private mediaService
+   * [constructor description]
+   * @param {Cloudinary}    private cloudinary    [description]
+   * @param {NgZone}        private zone          [description]
+   * @param {HttpClient}    private http          [description]
+   * @param {ObjectService} public  objectService [description]
+   * @param {MediaService}  private mediaService  [description]
+   * @param {DeviceService} private deviceService [description]
    */
   constructor(private cloudinary: Cloudinary,
     private zone: NgZone,
