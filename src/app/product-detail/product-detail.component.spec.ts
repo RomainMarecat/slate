@@ -35,11 +35,11 @@ import { ProductActionComponent } from './../product-item/product-action/product
 import { MockProductService } from '../../core/shared/product/mock-product.service';
 import { ProductService } from '../../core/shared/product/product.service';
 import { ProductDetailComponent } from './product-detail.component';
-import { ImageComponent } from '../../core/shared/cloudinary/image/image.component';
 import { MediaService } from '../../core/shared/media/media.service';
 import { MockMediaService } from '../../core/shared/media/mock-media.service';
 import { LoaderService } from '../../core/shared/loader/loader.service';
 import { MockLoaderService } from '../../core/shared/loader/mock-loader.service';
+import { environment } from './../../environments/environment.monpullmoche';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
@@ -61,7 +61,7 @@ describe('ProductDetailComponent', () => {
           MatCheckboxModule,
           NgStringPipesModule,
           MatListModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {
@@ -72,7 +72,7 @@ describe('ProductDetailComponent', () => {
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })
         ],
-        declarations: [ProductDetailComponent, ProductActionComponent, ImageComponent],
+        declarations: [ProductDetailComponent, ProductActionComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
           { provide: MediaService, useClass: MockMediaService },

@@ -25,6 +25,7 @@ import { ObjectService } from '../../../core/shared/util/object.service';
 import { MockMediaService } from '../../../core/shared/media/mock-media.service';
 import { MediaService } from '../../../core/shared/media/media.service';
 import { DeviceService } from '../../../core/shared/device/device.service';
+import { environment } from './../../../environments/environment.monpullmoche';
 
 describe('ProductImageComponent', () => {
   let component: ProductImageComponent;
@@ -46,7 +47,7 @@ describe('ProductImageComponent', () => {
           MatGridListModule,
           MatFormFieldModule,
           MatTooltipModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {

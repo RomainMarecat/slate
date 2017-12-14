@@ -36,6 +36,7 @@ import { CloudinaryModule } from '../../core/shared/cloudinary/cloudinary.module
 import { CloudinaryConfig } from '../../core/shared/cloudinary/cloudinary-config';
 import { DateService } from '../../core/shared/util/date.service';
 import { I18nService } from '../../core/shared/i18n/i18n.service';
+import { environment } from './../../environments/environment.monpullmoche';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -60,12 +61,12 @@ describe('ProductItemComponent', () => {
               clearIds: true,
             },
           }),
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })
         ],
-        declarations: [ProductItemComponent, ProductActionComponent, ImageComponent],
+        declarations: [ProductItemComponent, ProductActionComponent],
         providers: [
           { provide: DateService, useClass: DateService },
           I18nService

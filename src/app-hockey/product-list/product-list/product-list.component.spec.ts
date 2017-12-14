@@ -29,7 +29,6 @@ import { NgStringPipesModule } from 'angular-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './product-list.component';
 import { ProductItemComponent } from './../product-item/product-item.component';
-import { ImageComponent } from './../../../core/shared/cloudinary/image/image.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../../../core/shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from './../../../core/shared/cloudinary/cloudinary-config';
@@ -45,6 +44,7 @@ import { ScoreService } from './../../../core/shared/score/score.service';
 import { DateService } from './../../../core/shared/util/date.service';
 import { MockScoreService } from './../../../core/shared/score/mock-score.service';
 import { I18nService } from './../../../core/shared/i18n/i18n.service';
+import { environment } from './../../../environments/environment.hockey';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -71,12 +71,12 @@ describe('ProductListComponent', () => {
               clearIds: true,
             },
           }),
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })
         ],
-        declarations: [ProductListComponent, ProductItemComponent, ImageComponent],
+        declarations: [ProductListComponent, ProductItemComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
           { provide: UserService, useClass: MockUserService },

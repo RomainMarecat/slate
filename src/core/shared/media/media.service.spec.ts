@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment.monpullmoche';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { MockMediaService } from './mock-media.service';
 
 import { Cloudinary, isJsonLikeString, isNamedNodeMap, transformKeyNamesFromKebabToSnakeCase } from '../cloudinary/cloudinary.service';
 import CloudinaryConfiguration from '../cloudinary/cloudinary-configuration.class';
@@ -27,7 +28,7 @@ describe('MediaService', () => {
         AngularFireAuthModule
       ],
       providers: [
-        MediaService,
+        { provide: MediaService, useClass: MockMediaService },
         { provide: Cloudinary, useValue: mockCloudinaryService },
       ]
     });

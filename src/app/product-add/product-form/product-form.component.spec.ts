@@ -39,6 +39,7 @@ import { ObjectService } from '../../../core/shared/util/object.service';
 import { MediaService } from '../../../core/shared/media/media.service';
 import { MockMediaService } from '../../../core/shared/media/mock-media.service';
 import { DeviceService } from '../../../core/shared/device/device.service';
+import { environment } from './../../../environments/environment.monpullmoche';
 
 describe('ProductFormComponent', () => {
   let component: ProductFormComponent;
@@ -69,7 +70,7 @@ describe('ProductFormComponent', () => {
           MatStepperModule,
           MatExpansionModule,
           MatCheckboxModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {

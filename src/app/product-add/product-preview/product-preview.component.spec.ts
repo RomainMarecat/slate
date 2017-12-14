@@ -34,10 +34,10 @@ import { CloudinaryConfig } from '../../../core/shared/cloudinary/cloudinary-con
 import { ProductActionComponent } from './../../product-item/product-action/product-action.component';
 import { MockProductService } from '../../../core/shared/product/mock-product.service';
 import { ProductService } from '../../../core/shared/product/product.service';
-import { ImageComponent } from '../../../core/shared/cloudinary/image/image.component';
 import { ProductPreviewComponent } from './product-preview.component';
 import { DateService } from '../../../core/shared/util/date.service';
 import { I18nService } from '../../../core/shared/i18n/i18n.service';
+import { environment } from './../../../environments/environment.monpullmoche';
 
 describe('ProductPreviewComponent', () => {
   let component: ProductPreviewComponent;
@@ -67,12 +67,12 @@ describe('ProductPreviewComponent', () => {
               clearIds: true,
             },
           }),
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })
         ],
-        declarations: [ProductPreviewComponent, ImageComponent],
+        declarations: [ProductPreviewComponent],
         providers: [
           { provide: DateService, useClass: DateService },
           I18nService

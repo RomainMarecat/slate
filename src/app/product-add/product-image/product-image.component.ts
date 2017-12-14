@@ -9,6 +9,7 @@ import { environment } from './../../../environments/environment.monpullmoche';
 import { ObjectService } from './../../../core/shared/util/object.service';
 import { MediaService } from './../../../core/shared/media/media.service';
 import { DeviceService } from './../../../core/shared/device/device.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-product-image',
@@ -45,7 +46,7 @@ export class ProductImageComponent implements OnInit {
    */
   constructor(private cloudinary: Cloudinary,
     private zone: NgZone,
-    private http: Http,
+    private http: HttpClient,
     public objectService: ObjectService,
     private mediaService: MediaService,
     private deviceService: DeviceService

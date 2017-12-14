@@ -14,5 +14,5 @@ export class CloudinaryConfig implements CloudinaryConfiguration {
     this.upload_preset = cloudinary.upload_preset;
     this.cloud_name = cloudinary.cloud_name;
   }
-};
+}
 

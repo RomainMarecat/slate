@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { Http, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
@@ -40,7 +40,6 @@ import { MockProductService } from '../../core/shared/product/mock-product.servi
 import { ProductService } from '../../core/shared/product/product.service';
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
 import { ProductImageComponent } from './product-image/product-image.component';
-import { ImageComponent } from '../../core/shared/cloudinary/image/image.component';
 import { ProductAddComponent } from './product-add.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { MockAlertService } from '../../core/shared/alert/mock-alert.service';
@@ -86,7 +85,7 @@ describe('ProductAddComponent', () => {
           NgStringPipesModule,
           FileUploadModule,
           ImageCropperModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {
@@ -101,7 +100,6 @@ describe('ProductAddComponent', () => {
           ProductAddComponent,
           ProductImageComponent,
           ProductPreviewComponent,
-          ImageComponent,
           ProductFormComponent
         ],
         providers: [

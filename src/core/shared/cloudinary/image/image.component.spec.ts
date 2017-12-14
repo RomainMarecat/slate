@@ -12,6 +12,7 @@ import { ImageComponent } from './image.component';
 import { MediaService } from '../../media/media.service';
 import { MockMediaService } from '../../media/mock-media.service';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { environment } from './../../../../environments/environment.monpullmoche';
 
 describe('ImageComponent', () => {
   let component: ImageComponent;
@@ -22,7 +23,7 @@ describe('ImageComponent', () => {
         imports: [
           CloudinaryModule,
           NgStringPipesModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {
@@ -33,7 +34,7 @@ describe('ImageComponent', () => {
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })
         ],
-        declarations: [ImageComponent],
+        declarations: [],
         providers: [
           { provide: MediaService, useClass: MockMediaService },
 
