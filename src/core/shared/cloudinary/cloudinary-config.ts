@@ -1,5 +1,5 @@
 import CloudinaryConfiguration from './cloudinary-configuration.class';
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CloudinaryConfig implements CloudinaryConfiguration {
@@ -15,4 +15,3 @@ export class CloudinaryConfig implements CloudinaryConfiguration {
     this.cloud_name = cloudinary.cloud_name;
   }
 }
-
