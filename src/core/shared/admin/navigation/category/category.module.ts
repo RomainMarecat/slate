@@ -38,6 +38,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryComponent } from './category.component';
 import { CategoryService } from './../../shared/navigation/category/category.service';
 import { CategoryAddComponent } from './category-add/category-add.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -68,6 +69,7 @@ import { CategoryAddComponent } from './category-add/category-add.component';
     ReactiveFormsModule,
     SharedModule,
     NgxDatatableModule,
+    TranslateModule,
     CategoryRoutingModule
   ],
   declarations: [CategoryListComponent, CategoryComponent, CategoryAddComponent],

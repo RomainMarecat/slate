@@ -7,7 +7,6 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductComponent } from './product/product.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AdminGuard } from '../guard/admin.guard';
-import { ProductService } from './shared/product/product.service';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -35,7 +34,6 @@ import {
   ],
   declarations: [HomeComponent],
   providers: [
-    ProductService,
     AdminGuard
   ]
 })

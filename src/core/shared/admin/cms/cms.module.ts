@@ -39,6 +39,7 @@ import { CmsListComponent } from './cms-list/cms-list.component';
 import { CmsDetailComponent } from './cms-detail/cms-detail.component';
 import { CmsAddComponent } from './cms-add/cms-add.component';
 import { CmsService } from './../shared/cms/cms.service';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -46,27 +47,9 @@ import { CmsService } from './../shared/cms/cms.service';
     FormsModule,
     HttpClientModule,
     NgStringPipesModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
-    MatLineModule,
-    MatExpansionModule,
-    MatMenuModule,
-    MatCommonModule,
-    MatTooltipModule,
-    MatStepperModule,
     NgxEditorModule,
     ReactiveFormsModule,
+    TranslateModule,
     SharedModule,
     NgxDatatableModule,
     CmsRoutingModule

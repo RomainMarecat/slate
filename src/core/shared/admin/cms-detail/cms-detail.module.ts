@@ -39,47 +39,17 @@ import { CmsDetailListComponent } from './cms-detail-list/cms-detail-list.compon
 import { CmsDetailAddComponent } from './cms-detail-add/cms-detail-add.component';
 import { CmsDetailService } from './../shared/cms-detail/cms-detail.service';
 
-export const app_name = new InjectionToken < string > ('app_name');
-
-export function createTranslateLoader(http: HttpClient, name: string) {
-  return new TranslateHttpLoader(http, `./assets/i18n/${name}/`, '.json');
-}
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
     NgStringPipesModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
-    MatLineModule,
-    MatExpansionModule,
-    MatMenuModule,
-    MatCommonModule,
-    MatTooltipModule,
-    MatStepperModule,
     NgxEditorModule,
     ReactiveFormsModule,
     NgxDatatableModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient, app_name]
-      }
-    }),
+    TranslateModule,
+    SharedModule,
     CmsDetailRoutingModule
   ],
   declarations: [CmsDetailListComponent, CmsDetailAddComponent],

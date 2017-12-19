@@ -13,13 +13,8 @@ export class AppRootComponent implements OnInit {
 
   /**
    * Root Constructor
-   * @param {Angulartics2GoogleAnalytics} private angulartics2GoogleAnalytics
-   * @param {UserService}                 public  userService
-   * @param {LoaderService}               private loaderService
    */
-  constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
-    public userService: UserService, private loaderService: LoaderService,
-    private i18nService: I18nService) {}
+  constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {}
 
   ngOnInit() {}
 }

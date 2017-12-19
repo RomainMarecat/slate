@@ -1,10 +1,6 @@
-import { InjectionToken, NgModule, ModuleWithProviders } from '@angular/core';
+import { InjectionToken, NgModule, ModuleWithProviders, Injectable, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { I18nService } from './i18n/i18n.service';
-import { DeviceService } from './device/device.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgStringPipesModule } from 'angular-pipes';
 import {
   MatCardModule,
@@ -36,75 +32,33 @@ import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { AlertComponent } from './alert/alert.component';
 import { LoaderComponent } from './loader/loader.component';
-import { AdsenseModule } from 'ng2-adsense';
 import { RouterModule } from '@angular/router';
-import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
-import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
-import { CLOUDINARY_CONFIGURATION, CloudinaryModule } from './cloudinary/cloudinary.module';
-import { CloudinaryConfig } from './cloudinary/cloudinary-config';
-import CloudinaryConfiguration from './cloudinary/cloudinary-configuration.class';
 import { Environment } from './util/environment';
-import { ProductService } from './product/product.service';
-import { UserService } from './user/user.service';
-import { MediaService } from './media/media.service';
-import { AlertService } from './alert/alert.service';
-import { ObjectService } from './util/object.service';
-import { SidenavService } from './sidenav/sidenav.service';
-import { UserGuard } from './guard/user.guard';
-import { ScoreService } from './score/score.service';
-import { DateService } from './util/date.service';
-import { LoaderService } from './loader/loader.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HammerModule } from './hammer/hammer.module';
 
-export const production = new InjectionToken < string > ('production');
-export const site_name = new InjectionToken < string > ('site_name');
-export const app_name = new InjectionToken < string > ('app_name');
-export const firebase = new InjectionToken < FirebaseAppConfig > ('firebase');
-export const cloudinary = new InjectionToken < CloudinaryConfiguration > ('cloudinary');
-export const clientAdSense = new InjectionToken < string > ('clientAdSense');
-export const slotAdSense = new InjectionToken < string > ('slotAdSense');
-export const slackToken = new InjectionToken < string > ('slackToken');
-export const facebook_app_id = new InjectionToken < string > ('facebook_app_id');
+export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
 
-export function createTranslateLoader(http: HttpClient, name: string) {
-  return new TranslateHttpLoader(http, `./assets/i18n/${name}/`, '.json');
+@Injectable()
+export class ConfigService {
+  configToken: Environment;
+  constructor(@Inject(CONFIG_TOKEN) configToken) {
+    this.configToken = configToken;
+  }
 }
 
 @NgModule({
   imports: [
-    AdsenseModule.forRoot({
-      adClient: clientAdSense.toString(),
-      adSlot: slotAdSense.toString()
-    }),
     AngularFireAuthModule,
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-      developerMode: true,
-      pageTracking: {
-        clearIds: true,
-      },
-    }),
-    /*
-    Doesn't work atm. Maybe provide an Injectable class like Hammer
-    CloudinaryModule.forRoot(
-      { Cloudinary: CloudinaryCore },
-      {
-        provide: CLOUDINARY_CONFIGURATION,
-        useClass: CloudinaryConfig,
-        useValue: cloudinary
-      }
-    ),*/
-    HttpClientModule,
+    Angulartics2Module,
+    BrowserAnimationsModule,
+    FormsModule,
     CommonModule,
-    SlackModule.forRoot(slackToken),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient, app_name]
-      }
-    }),
-    NgStringPipesModule,
+    HammerModule,
+    HttpClientModule,
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -124,16 +78,44 @@ export function createTranslateLoader(http: HttpClient, name: string) {
     MatCommonModule,
     MatTooltipModule,
     MatStepperModule,
+    NgStringPipesModule,
     RouterModule,
+    ReactiveFormsModule,
+    TranslateModule
   ],
   exports: [
-    SlackModule,
-    TranslateModule,
-    SidenavComponent,
-    MenuComponent,
-    FooterComponent,
     AlertComponent,
+    BrowserAnimationsModule,
+    FooterComponent,
+    FormsModule,
+    HammerModule,
+    HttpClientModule,
     LoaderComponent,
+    MatCardModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatListModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatLineModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatCommonModule,
+    MatTooltipModule,
+    MatStepperModule,
+    MenuComponent,
+    NgStringPipesModule,
+    SlackModule,
+    SidenavComponent,
+    RouterModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     AlertComponent
@@ -146,32 +128,17 @@ export function createTranslateLoader(http: HttpClient, name: string) {
     LoaderComponent,
   ],
   providers: [
-    { provide: cloudinary, useValue: cloudinary },
-    { provide: app_name, useValue: app_name },
-    { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
-    { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, app_name] },
-    UserService,
-    AlertService,
-    ObjectService,
-    DateService,
-    LoaderService,
-    ScoreService,
-    SidenavService,
-    UserGuard,
-    I18nService,
-    DeviceService
+    // Should not have providers for reason explained here
+    // https://angular.io/guide/ngmodule-faq#q-why-child-injector
+    // https://embed.plnkr.co/?show=preview
   ]
 })
 export class SharedModule {
-  static forRoot(config: Environment): ModuleWithProviders {
+  static forRoot(config: InjectionToken < Environment > ): ModuleWithProviders {
     return {
       ngModule: SharedModule,
       providers: [
-        { provide: production, useValue: config.production },
-        { provide: site_name, useValue: config.site_name },
-        { provide: app_name, useValue: config.app_name },
-        { provide: firebase, useValue: config.firebase },
-        { provide: cloudinary, useValue: config.cloudinary }
+        { provide: CONFIG_TOKEN, useValue: config },
       ]
     };
   }

@@ -1,149 +1,27 @@
-import { NgModule, Injectable, InjectionToken } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ProductItemComponent } from './product-item/product-item.component';
-
+import { SharedModule } from '../core/shared/shared.module';
+import { AppRootComponent } from './core/root.component';
+import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
 import { environment } from './../environments/environment.monpullmoche';
-import { AngularFireModule } from 'angularfire2';
-import {
-  MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule,
-  MatExpansionModule,
-  MatStepperModule
-} from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { AdsenseModule } from 'ng2-adsense';
-
-import { FileUploadModule } from 'ng2-file-upload';
-import { ImageCropperModule } from 'ng2-img-cropper';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { SharedModule } from '../core/shared/shared.module';
-import { ProductAddComponent } from './product-add/product-add.component';
-import { AppRootComponent } from './root/root.component';
-import { ProductImageComponent } from './product-add/product-image/product-image.component';
-import { ProductFormComponent } from './product-add/product-form/product-form.component';
-import { ProductPreviewComponent } from './product-add/product-preview/product-preview.component';
-import { ProductActionComponent } from './product-item/product-action/product-action.component';
-import { AlertComponent } from '../core/shared/alert/alert.component';
-import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { NgStringPipesModule } from 'angular-pipes';
-import { AppRoutingModule } from './app-routing.module';
-import {CloudinaryModule} from '../core/shared/cloudinary/cloudinary.module';
-import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
-import {AngularFirestoreModule} from 'angularfire2/firestore';
-
-declare var Hammer: any;
-
-@Injectable()
-export class MyHammerConfig extends HammerGestureConfig {
-  buildHammer(element: HTMLElement) {
-    const mc = new Hammer(element, {
-      // Add scroll auto on y. Pan-y can activate swipe left and right too
-      touchAction: 'pan-y'
-    });
-    return mc;
-  }
-}
 
 @NgModule({
   imports: [
-    AngularFireModule.initializeApp({
-      apiKey: 'AIzaSyB1K9_bZJDLq48C-4xAUhNEjP79Q-60YKw',
-      authDomain: 'mon-pull-moche.firebaseapp.com',
-      databaseURL: 'https://mon-pull-moche.firebaseio.com',
-      projectId: 'mon-pull-moche',
-      storageBucket: 'mon-pull-moche.appspot.com',
-      messagingSenderId: '1050522744023'
-    }, 'monpullmoche'),
-    AngularFirestoreModule.enablePersistence(),
     BrowserModule,
-    CommonModule,
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
+    CoreModule.forRoot(environment),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
       developerMode: true,
       pageTracking: {
         clearIds: true,
       },
     }),
-    AdsenseModule.forRoot({
-      adClient: environment.clientAdSense,
-      adSlot: environment.slotAdSense
-    }),
-    CloudinaryModule.forRoot(
-      { Cloudinary: CloudinaryCore },
-      environment.cloudinary
-    ),
-    ModalModule.forRoot(),
-    NgStringPipesModule,
-    ImageCropperModule,
-    FileUploadModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
-    MatLineModule,
-    MatExpansionModule,
-    MatMenuModule,
-    MatCommonModule,
-    MatTooltipModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    SharedModule.forRoot(environment),
     AppRoutingModule,
   ],
-  entryComponents: [
-    AlertComponent
-  ],
   declarations: [
-    ProductListComponent,
-    ProductDetailComponent,
-    ProductItemComponent,
-    ProductAddComponent,
-    AppRootComponent,
-    ProductImageComponent,
-    ProductFormComponent,
-    ProductPreviewComponent,
-    ProductActionComponent,
-  ],
-  providers: [
-    {
-      // hammer instantion with custom config
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: MyHammerConfig,
-    }
+    AppRootComponent
   ],
   bootstrap: [
     AppRootComponent

@@ -1,0 +1,33 @@
+<mat-grid-list cols="1" rowHeight="500px">
+  <mat-grid-tile>
+    <form [formGroup]="form" (ngSubmit)="saveProduct()" class="form">
+      <mat-card class="mat-card">
+        <mat-card-header>
+          <mat-card-title>
+            Ajouter un produit
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="mat-card-content">
+          <mat-form-field class="mat-form-field">
+            <input matInput maxlength="50" [placeholder]="'Nom'|translate" formControlName="name">
+            <mat-hint align="start"><strong [innerHtml]="'titre du contenu'|translate"></strong></mat-hint>
+            <mat-hint align="end">{{ name.value.length }} {{ '/50'|translate }}</mat-hint>
+            <mat-error *ngIf="name.invalid && name.value.length === 0" [innerHtml]="'Le titre ne peut pas être vide'|translate"></mat-error>
+            <mat-error *ngIf="name.invalid && name.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+          </mat-form-field>
+          <div class="mat-form-field editor mt1">
+            <label class="mat-hint"><strong>Valeur contenu :</strong></label>
+            <app-ngx-editor [config]="editorConfig" [(ngModel)]="description" formControlName="description">
+            </app-ngx-editor>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="d-flex justify-content-around">
+            <button type="button" class="back" mat-raised-button color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/cms']"></button>
+            <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid || form.pristine" [innerHtml]="'Enregistrer'|translate"></button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </mat-grid-tile>
+</mat-grid-list>

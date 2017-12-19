@@ -61,11 +61,11 @@ export class Cloudinary {
 
   constructor(cloudinaryJsLib: any, configuration: CloudinaryConfiguration) {
     // Cloudinary JS already clones the given configuration so no need to clone it here too
-    if (cloudinaryJsLib.CloudinaryJQuery) {
+    /*if (cloudinaryJsLib.CloudinaryJQuery) {
       this._cloudinaryInstance = new cloudinaryJsLib.CloudinaryJQuery(configuration);
-    } else {
-      this._cloudinaryInstance = new cloudinaryJsLib.Cloudinary(configuration);
-    }
+    } else {*/
+    this._cloudinaryInstance = new cloudinaryJsLib.Cloudinary(configuration);
+    /*}*/
   }
 
   get cloudinaryInstance(): any {
@@ -102,7 +102,7 @@ export class Cloudinary {
    * @returns An options object that can be consumed by Cloudinary JS API
    */
   toCloudinaryAttributes(attributes: NamedNodeMap,
-    childTransformations ?: QueryList < CloudinaryTransformationDirective > ): any {
+    childTransformations?: QueryList < CloudinaryTransformationDirective > ): any {
     const options = transformKeyNamesFromKebabToSnakeCase(attributes);
 
     // Add chained transformations

@@ -13,7 +13,7 @@ export interface Environment {
   cloudinary: {
     api_key: string;
     api_secret: string;
-    cloudinary_url ?: string;
+    cloudinary_url?: string;
     cloud_name: string;
     upload_preset: string;
   };

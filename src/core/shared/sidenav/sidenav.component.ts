@@ -4,6 +4,9 @@ import { SidenavService } from './sidenav.service';
 import { Subscription } from 'rxjs/Subscription';
 import { ToggleState } from './toggle';
 import { MatDrawer } from '@angular/material';
+import { LoaderService } from '../loader/loader.service';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { I18nService } from '../i18n/i18n.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -22,7 +25,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
    * @param {UserService} userService
    * @param {SidenavService} sidenavService
    */
-  constructor(public userService: UserService, private sidenavService: SidenavService) {}
+  constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
+    public userService: UserService, private loaderService: LoaderService,
+    private i18nService: I18nService, private sidenavService: SidenavService) {}
 
   /**
    * Subscribe to toggle event from sidenav

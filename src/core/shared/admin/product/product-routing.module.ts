@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
 import { ProductComponent } from './product.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductAddComponent } from './product-add/product-add.component';
 
 const routes: Routes = [{
     path: '',
@@ -14,6 +15,11 @@ const routes: Routes = [{
     path: 'list',
     canActivate: [AdminGuard],
     component: ProductListComponent
+  },
+  {
+    path: 'add',
+    canActivate: [AdminGuard],
+    component: ProductAddComponent
   },
 ];
 
