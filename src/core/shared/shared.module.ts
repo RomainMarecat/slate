@@ -36,7 +36,6 @@ import { RouterModule } from '@angular/router';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Environment } from './util/environment';
 import { TranslateModule } from '@ngx-translate/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HammerModule } from './hammer/hammer.module';
 
@@ -54,7 +53,6 @@ export class ConfigService {
   imports: [
     AngularFireAuthModule,
     Angulartics2Module,
-    BrowserAnimationsModule,
     FormsModule,
     CommonModule,
     HammerModule,
@@ -85,7 +83,6 @@ export class ConfigService {
   ],
   exports: [
     AlertComponent,
-    BrowserAnimationsModule,
     FooterComponent,
     FormsModule,
     HammerModule,

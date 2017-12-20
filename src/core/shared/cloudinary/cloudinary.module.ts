@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import {NgModule, ModuleWithProviders, InjectionToken, Injectable} from '@angular/core';
+import { NgModule, ModuleWithProviders, InjectionToken, Injectable } from '@angular/core';
 import { Cloudinary } from './cloudinary.service';
 import { CloudinaryImageComponent } from './cloudinary-image/cloudinary-image.component';
 import { CloudinaryVideoComponent } from './cloudinary-video/cloudinary-video.component';
@@ -13,8 +12,8 @@ import { ImageComponent } from './image/image.component';
 import { NgStringPipesModule } from 'angular-pipes';
 export { Cloudinary, provideCloudinary } from './cloudinary.service';
 
-export const CLOUDINARY_LIB = new InjectionToken<any>('CLOUDINARY_LIB');
-export const CLOUDINARY_CONFIGURATION = new InjectionToken<CloudinaryConfiguration>('CLOUDINARY_CONFIGURATION');
+export const CLOUDINARY_LIB = new InjectionToken < any > ('CLOUDINARY_LIB');
+export const CLOUDINARY_CONFIGURATION = new InjectionToken < CloudinaryConfiguration > ('CLOUDINARY_CONFIGURATION');
 
 export { CloudinaryConfiguration };
 
@@ -26,7 +25,6 @@ export function createCloudinary(cloudinaryJsLib: any, configuration: Cloudinary
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
     LazyLoadImageModule,
     NgStringPipesModule
   ],

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgStringPipesModule } from 'angular-pipes';
 import { environment } from './../../../../../environments/environment.monpullmoche';
 import { AngularFireModule } from 'angularfire2';
@@ -38,7 +37,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryComponent } from './category.component';
 import { CategoryService } from './../../shared/navigation/category/category.service';
 import { CategoryAddComponent } from './category-add/category-add.component';
-import {TranslateModule} from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [

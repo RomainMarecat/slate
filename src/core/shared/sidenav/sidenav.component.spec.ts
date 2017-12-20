@@ -35,6 +35,7 @@ import { MenuComponent } from '../menu/menu.component';
 import { AdsenseModule, AdsenseConfig } from 'ng2-adsense';
 import { LoaderComponent } from '../loader/loader.component';
 import { UserService } from '../user/user.service';
+import { I18nService } from '../i18n/i18n.service';
 import { MockUserService } from '../user/mock-user.service';
 import { LoaderService } from '../loader/loader.service';
 import { MockLoaderService } from '../loader/mock-loader.service';
@@ -96,6 +97,7 @@ describe('SidenavComponent', () => {
         providers: [
           { provide: UserService, useClass: MockUserService },
           { provide: LoaderService, useClass: MockLoaderService },
+          I18nService,
           SidenavService
         ]
       })
