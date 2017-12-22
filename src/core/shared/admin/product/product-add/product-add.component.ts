@@ -152,4 +152,12 @@ export class ProductAddComponent implements OnInit {
   set category(category) {
     this.form.patchValue({ category: category });
   }
+
+  get published() {
+    return this.form.get('published');
+  }
+
+  set published(published) {
+    this.form.patchValue({ published: published });
+  }
 }

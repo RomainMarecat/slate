@@ -21,7 +21,7 @@
             <div class="d-block">
               <div class="mat-form-field editor mt1">
                 <label class="mat-hint"><strong>Description :</strong></label>
-                <app-ngx-editor [config]="editorConfig" [(ngModel)]="description.value" formControlName="description">
+                <app-ngx-editor [config]="editorConfig" [(ngModel)]="description" formControlName="description">
                 </app-ngx-editor>
               </div>
             </div>
@@ -75,7 +75,7 @@
                 </button>
               </div>
               <div class="col-12">
-                <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="categories$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'></ngx-datatable>
+                <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="categories$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'checkbox'" (select)='onSelect($event)'></ngx-datatable>
               </div>
             </div>
             <div class="d-block">

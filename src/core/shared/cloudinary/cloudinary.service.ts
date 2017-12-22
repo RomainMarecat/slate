@@ -102,7 +102,7 @@ export class Cloudinary {
    * @returns An options object that can be consumed by Cloudinary JS API
    */
   toCloudinaryAttributes(attributes: NamedNodeMap,
-    childTransformations ? : QueryList < CloudinaryTransformationDirective > ): any {
+    childTransformations ?: QueryList < CloudinaryTransformationDirective > ): any {
     const options = transformKeyNamesFromKebabToSnakeCase(attributes);
 
     // Add chained transformations

@@ -4,25 +4,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule
-} from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { CategoryListComponent } from './category-list.component';
@@ -30,6 +11,7 @@ import { CategoryService } from '../../../shared/navigation/category/category.se
 import { MockCategoryService } from '../../../shared/navigation/category/mock-category.service';
 import { MockAlertService } from '../../../../alert/mock-alert.service';
 import { AlertService } from '../../../../alert/alert.service';
+import {SharedModule} from '../../../../shared.module';
 
 describe('CategoryListComponent', () => {
   let component: CategoryListComponent;
@@ -44,14 +26,7 @@ describe('CategoryListComponent', () => {
           RouterTestingModule,
           BrowserAnimationsModule,
           NgxDatatableModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          MatToolbarModule,
+          SharedModule
         ],
         declarations: [CategoryListComponent],
         providers: [

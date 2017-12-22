@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>
-      {{ selection.name }}
+    <mat-card-title *ngIf="selection && selection.name">
+      {{ selection?.name }}
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>

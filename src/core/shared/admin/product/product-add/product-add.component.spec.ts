@@ -23,6 +23,25 @@ import { MockProductService } from '../../shared/product/mock-product.service';
 import { ProductService } from '../../shared/product/product.service';
 import { AlertService } from '../../../alert/alert.service';
 import { MockAlertService } from '../../../alert/mock-alert.service';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { SharedModule } from '../../../shared.module';
+import { CloudinaryModule } from '../../../cloudinary/cloudinary.module';
+import { Cloudinary } from 'cloudinary-core';
+import { environment } from '../../../../../environments/environment.monpullmoche';
+import { ObjectService } from '../../../util/object.service';
+import { MediaService } from '../../../media/media.service';
+import { MockMediaService } from '../../../media/mock-media.service';
+import { LoaderService } from '../../../loader/loader.service';
+import { MockNotificationService } from '../../../slack/mock-notification.service';
+import { UserService } from '../../../user/user.service';
+import { I18nService } from '../../../i18n/i18n.service';
+import { DateService } from '../../../util/date.service';
+import { MockUserService } from '../../../user/mock-user.service';
+import { MockLoaderService } from '../../../loader/mock-loader.service';
+import { DeviceService } from '../../../device/device.service';
+import { NotificationService } from '../../../slack/notification.service';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { Angulartics2Module } from 'angulartics2';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
@@ -38,15 +57,16 @@ describe('ProductAddComponent', () => {
           RouterTestingModule,
           ReactiveFormsModule,
           BrowserAnimationsModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          MatToolbarModule,
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
+          SharedModule,
           NgxEditorModule,
+          NgxDatatableModule,
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),
@@ -55,8 +75,16 @@ describe('ProductAddComponent', () => {
           ProductAddComponent
         ],
         providers: [
+          { provide: AlertService, useClass: MockAlertService },
+          { provide: LoaderService, useClass: MockLoaderService },
+          { provide: UserService, useClass: MockUserService },
+          { provide: MediaService, useClass: MockMediaService },
           { provide: ProductService, useClass: MockProductService },
-          { provide: AlertService, useClass: MockAlertService }
+          { provide: NotificationService, useClass: MockNotificationService },
+          DateService,
+          ObjectService,
+          I18nService,
+          DeviceService,
         ]
       })
       .compileComponents();

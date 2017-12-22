@@ -4,9 +4,9 @@ import { SelectionService } from '../../../shared/navigation/selection/selection
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-Selection-list',
-  templateUrl: './Selection-list.component.html',
-  styleUrls: ['./Selection-list.component.scss']
+  selector: 'app-selection-list',
+  templateUrl: './selection-list.component.html',
+  styleUrls: ['./selection-list.component.scss']
 })
 export class SelectionListComponent implements OnInit {
   readonly headerHeight = 50;
@@ -46,15 +46,15 @@ export class SelectionListComponent implements OnInit {
    * set at published at now et activate published to true
    */
   publishSelection() {
-    this.selected.forEach((Selection: Selection) => {
-      if (Selection.published === false) {
-        Selection.published = true;
-        if (!Selection.published_at) {
-          Selection.published_at = new Date();
+    this.selected.forEach((selection: Selection) => {
+      if (selection.published === false) {
+        selection.published = true;
+        if (!selection.published_at) {
+          selection.published_at = new Date();
         }
       }
 
-      this.selectionService.updateSelection(Selection);
+      this.selectionService.updateSelection(selection);
     });
   }
 
@@ -62,8 +62,8 @@ export class SelectionListComponent implements OnInit {
    * Delete a Selection from list
    */
   deleteSelection() {
-    this.selected.forEach((Selection: Selection) => {
-      this.selectionService.deleteSelection(Selection);
+    this.selected.forEach((selection: Selection) => {
+      this.selectionService.deleteSelection(selection);
     });
   }
 

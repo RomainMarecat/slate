@@ -4,25 +4,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule
-} from '@angular/material';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -31,6 +12,8 @@ import { CategoryService } from '../../../shared/navigation/category/category.se
 import { MockCategoryService } from '../../../shared/navigation/category/mock-category.service';
 import { MockAlertService } from '../../../../alert/mock-alert.service';
 import { AlertService } from '../../../../alert/alert.service';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import {SharedModule} from '../../../../shared.module';
 
 describe('CategoryAddComponent', () => {
   let component: CategoryAddComponent;
@@ -46,14 +29,8 @@ describe('CategoryAddComponent', () => {
           RouterTestingModule,
           ReactiveFormsModule,
           BrowserAnimationsModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          MatToolbarModule,
+          SharedModule,
+          NgxDatatableModule,
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),

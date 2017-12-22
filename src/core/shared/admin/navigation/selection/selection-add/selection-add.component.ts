@@ -16,7 +16,9 @@ export class SelectionAddComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  selections$: Observable < HockeyProduct[] > ;
+  products$: Observable < HockeyProduct[] > ;
+
+
   selected: HockeyProduct[];
   isLoading: boolean;
   form: FormGroup;
@@ -88,16 +90,32 @@ export class SelectionAddComponent implements OnInit {
     return this.form.get('name');
   }
 
+  set name(name) {
+    this.form.patchValue({ name: name });
+  }
+
   get products() {
     return this.form.get('products');
+  }
+
+  set products(products) {
+    this.form.patchValue({ products: products });
   }
 
   get images() {
     return this.form.get('images');
   }
 
+  set images(images) {
+    this.form.patchValue({ images: images });
+  }
+
   get published() {
     return this.form.get('published');
+  }
+
+  set published(published) {
+    this.form.patchValue({ published: published });
   }
 
   /**
@@ -115,7 +133,7 @@ export class SelectionAddComponent implements OnInit {
   addProducts() {
     this.selected.forEach((product: HockeyProduct) => {
       if (product.published === true) {
-        this.form.patchValue({ products: this.form.get('products').value.push(product.key) })
+        this.form.patchValue({ products: this.form.get('products').value.push(product.key) });
       }
     });
   }
