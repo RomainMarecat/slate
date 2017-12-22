@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ClothingProduct } from '../../../product/clothing-product';
+import { HockeyProduct } from '../../../product/hockey-product';
+import { Product } from '../../../product/product';
 import { AlertService } from '../../../alert/alert.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -111,10 +113,10 @@ export class ProductService {
   }
 
   /**
-   *
-   * @param {ClothingProduct} product
+   * createProduct
+   * @param HockeyProduct | ClothingProduct product
    */
-  createProduct(product: ClothingProduct) {
+  createProduct(product: HockeyProduct | ClothingProduct) {
     delete product.key;
     this.productCollectionRef.add({ ...product });
   }

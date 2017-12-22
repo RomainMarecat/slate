@@ -7,33 +7,10 @@ import {
   Injectable,
   Inject
 } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
-import {
-  MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule,
-  MatExpansionModule,
-  MatStepperModule
-} from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { AdsenseModule } from 'ng2-adsense';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -60,11 +37,9 @@ import { ProductService } from '../../core/shared/product/product.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { MediaService } from '../../core/shared/media/media.service';
 import { CloudinaryModule } from '../../core/shared/cloudinary/cloudinary.module';
-import { NgStringPipesModule } from 'angular-pipes';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { ProductAddComponent } from '../product-add/product-add.component';
-import { ProductImageComponent } from '../product-add/product-image/product-image.component';
 import { ProductFormComponent } from '../product-add/product-form/product-form.component';
 import { ProductActionComponent } from '../product-item/product-action/product-action.component';
 import { ProductListComponent } from '../product-list/product-list.component';
@@ -110,9 +85,6 @@ export class ConfigService {
     CloudinaryModule.forRoot({ Cloudinary: CloudinaryCore },
       environment.cloudinary
     ),
-    ModalModule.forRoot(),
-    ImageCropperModule,
-    FileUploadModule,
     SharedModule.forRoot(CONFIG_TOKEN),
     SlackModule.forRoot(slackToken),
     TranslateModule.forRoot({
@@ -133,7 +105,6 @@ export class ConfigService {
     ProductDetailComponent,
     ProductItemComponent,
     ProductAddComponent,
-    ProductImageComponent,
     ProductFormComponent,
     ProductPreviewComponent,
     ProductActionComponent,

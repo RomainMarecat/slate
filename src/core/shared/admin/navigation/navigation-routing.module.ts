@@ -3,9 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
 
 const routes: Routes = [{
-  path: 'navigation',
-  canActivate: [AdminGuard],
-}];
+    canActivate: [AdminGuard],
+    path: 'category',
+    loadChildren: './category/category.module#CategoryModule'
+  },
+  {
+    canActivate: [AdminGuard],
+    path: 'selection',
+    loadChildren: './selection/selection.module#SelectionModule'
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

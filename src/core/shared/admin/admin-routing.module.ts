@@ -10,8 +10,8 @@ const routes: Routes = [{
   },
   {
     canActivate: [AdminGuard],
-    path: 'category',
-    loadChildren: './navigation/category/category.module#CategoryModule'
+    path: 'navigation',
+    loadChildren: './navigation/navigation.module#NavigationModule'
   },
   {
     canActivate: [AdminGuard],

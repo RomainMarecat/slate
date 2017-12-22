@@ -23,7 +23,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
     AppRoutingModule,
   ],
   declarations: [
-    AppRootComponent
+    AppRootComponent,
   ],
   bootstrap: [
     AppRootComponent

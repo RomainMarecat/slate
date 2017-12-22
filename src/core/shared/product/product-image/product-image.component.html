@@ -12,3 +12,8 @@
     </div>
   </div>
 </div>
+<div class="row" *ngIf="displayValidation">
+  <div class="col-12 text-center">
+    <button (click)="validateImage()" mat-raised-button color="primary" aria-label="validation" type="button" role="button" [innerHtml]="'Valider'|translate"></button>
+  </div>
+</div>

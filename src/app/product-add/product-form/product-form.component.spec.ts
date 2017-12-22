@@ -28,7 +28,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductImageComponent } from './../product-image/product-image.component';
+import { ProductImageComponent } from '../../../core/shared/product/product-image/product-image.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { MockAlertService } from './../../../core/shared/alert/mock-alert.service';

@@ -1,10 +1,7 @@
-export class Category {
+export class Selection {
   key ? : string;
   alias ? : string;
   name: string;
-  translations: {
-    fr: string;
-  }
   slug ? : string;
   description: string;
   keywords ? : string;
@@ -15,4 +12,6 @@ export class Category {
   parent ? : string;
   published_at ? : Date;
   published ? : boolean;
+  products ? : string[];
+  images ? : string[];
 }

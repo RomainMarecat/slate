@@ -7,31 +7,10 @@ import {
   Injectable,
   Inject
 } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
-import {
-  MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule,
-  MatExpansionModule,
-  MatStepperModule
-} from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { AdsenseModule } from 'ng2-adsense';
@@ -49,6 +28,7 @@ import { ObjectService } from '../../core/shared/util/object.service';
 import { DateService } from '../../core/shared/util/date.service';
 import { LoaderService } from '../../core/shared/loader/loader.service';
 import { ScoreService } from '../../core/shared/score/score.service';
+import { SelectionService } from '../../core/shared/selection/selection.service';
 import { SidenavService } from '../../core/shared/sidenav/sidenav.service';
 import { UserGuard } from '../../core/shared/guard/user.guard';
 import { I18nService } from '../../core/shared/i18n/i18n.service';
@@ -65,6 +45,7 @@ import { SharedModule } from '../../core/shared/shared.module';
 import { environment } from '../../environments/environment.hockey';
 import { SlackModule } from '../../core/shared/slack/slack.module';
 import { ProductListModule } from '../product-list/product-list.module';
+import { SelectionModule } from '../selection/selection.module';
 
 export const production = new InjectionToken < string > ('production');
 export const site_name = new InjectionToken < string > ('site_name');
@@ -93,7 +74,6 @@ export class ConfigService {
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
@@ -113,7 +93,6 @@ export class ConfigService {
     NgStringPipesModule,
     ImageCropperModule,
     FileUploadModule,
-    ProductListModule,
     SharedModule.forRoot(CONFIG_TOKEN),
     SlackModule.forRoot(slackToken),
     TranslateModule.forRoot({
@@ -123,6 +102,8 @@ export class ConfigService {
         deps: [HttpClient, app_name]
       }
     }),
+    ProductListModule,
+    SelectionModule,
   ],
   exports: [
     AdsenseModule,
@@ -133,6 +114,7 @@ export class ConfigService {
     { provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN] },
     { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
     { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, app_name] },
+    { provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, app_name] },
     UserService,
     AlertService,
     ObjectService,
@@ -142,8 +124,7 @@ export class ConfigService {
     SidenavService,
     UserGuard,
     I18nService,
-    DeviceService,
-
+    DeviceService
   ]
 })
 export class CoreModule {

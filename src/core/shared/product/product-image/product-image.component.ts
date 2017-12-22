@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter, NgZone } from '@angular/core';
 import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
-import { Cloudinary } from '../../../core/shared/cloudinary/cloudinary.service';
+import { Cloudinary } from '../../cloudinary/cloudinary.service';
 import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
-import { Media } from '../../../core/shared/media/media';
+import { Media } from '../../media/media';
 import { SHA1 } from 'crypto-js';
-import { environment } from './../../../environments/environment.monpullmoche';
-import { ObjectService } from './../../../core/shared/util/object.service';
-import { MediaService } from './../../../core/shared/media/media.service';
-import { DeviceService } from './../../../core/shared/device/device.service';
+import { ObjectService } from '../../util/object.service';
+import { MediaService } from '../../media/media.service';
+import { DeviceService } from '../../device/device.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -30,19 +29,20 @@ export class ProductImageComponent implements OnInit {
   url: string;
   extension: string;
   @Input() media: Media;
+  @Input() displayValidation: boolean;
   uploaderMessage: string;
   hasBaseDropZoneOver: boolean;
   cropperClass: string;
   isUploaded: boolean;
 
   /**
-   * [constructor description]
-   * @param {Cloudinary}    private cloudinary    [description]
-   * @param {NgZone}        private zone          [description]
-   * @param {HttpClient}    private http          [description]
-   * @param {ObjectService} public  objectService [description]
-   * @param {MediaService}  private mediaService  [description]
-   * @param {DeviceService} private deviceService [description]
+   * constructor
+   * @param Cloudinary    private cloudinary
+   * @param NgZone        private zone
+   * @param HttpClient    private http
+   * @param ObjectService public  objectService
+   * @param MediaService  private mediaService
+   * @param DeviceService private deviceService
    */
   constructor(private cloudinary: Cloudinary,
     private zone: NgZone,
@@ -51,6 +51,10 @@ export class ProductImageComponent implements OnInit {
     private mediaService: MediaService,
     private deviceService: DeviceService
   ) {
+    if (!this.media) {
+      this.media = new Media();
+    }
+    this.displayValidation = false;
     this.progressData = 0;
     this.cropperClass = 'hidden';
     this.cropperSettings = new CropperSettings();
@@ -97,11 +101,12 @@ export class ProductImageComponent implements OnInit {
         '&upload_preset=' + this.cloudinary.config().upload_preset +
         this.cloudinary.config().api_secret;
       const signature = SHA1(paramsStr);
+
       form.append('upload_preset', this.cloudinary.config().upload_preset);
       form.append('file', fileItem);
       form.append('timestamp', timestamp.toString());
       form.append('signature', signature.toString());
-      form.append('api_key', environment.cloudinary.api_key);
+      form.append('api_key', this.cloudinary.config().api_key);
       form.append('transformation', transform);
 
       fileItem.withCredentials = false;

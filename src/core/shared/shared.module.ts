@@ -21,7 +21,8 @@ import {
   MatCommonModule,
   MatTooltipModule,
   MatExpansionModule,
-  MatStepperModule
+  MatStepperModule,
+  MatRadioModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
@@ -38,6 +39,11 @@ import { Environment } from './util/environment';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HammerModule } from './hammer/hammer.module';
+import {ProductImageComponent} from './product/product-image/product-image.component';
+import {ImageCropperModule} from 'ng2-img-cropper';
+import {ModalModule} from 'ngx-bootstrap';
+import {FileUploadModule} from 'ng2-file-upload';
+import {CloudinaryModule} from './cloudinary/cloudinary.module';
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
 
@@ -53,10 +59,13 @@ export class ConfigService {
   imports: [
     AngularFireAuthModule,
     Angulartics2Module,
+    FileUploadModule,
     FormsModule,
     CommonModule,
+    CloudinaryModule,
     HammerModule,
     HttpClientModule,
+    ImageCropperModule,
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -75,7 +84,9 @@ export class ConfigService {
     MatMenuModule,
     MatCommonModule,
     MatTooltipModule,
+    MatRadioModule,
     MatStepperModule,
+    ModalModule.forRoot(),
     NgStringPipesModule,
     RouterModule,
     ReactiveFormsModule,
@@ -83,10 +94,12 @@ export class ConfigService {
   ],
   exports: [
     AlertComponent,
+    FileUploadModule,
     FooterComponent,
     FormsModule,
     HammerModule,
     HttpClientModule,
+    ImageCropperModule,
     LoaderComponent,
     MatCardModule,
     MatToolbarModule,
@@ -106,23 +119,27 @@ export class ConfigService {
     MatMenuModule,
     MatCommonModule,
     MatTooltipModule,
+    MatRadioModule,
     MatStepperModule,
+    ModalModule,
     MenuComponent,
     NgStringPipesModule,
+    ProductImageComponent,
     SlackModule,
     SidenavComponent,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   entryComponents: [
     AlertComponent
   ],
   declarations: [
-    SidenavComponent,
-    MenuComponent,
-    FooterComponent,
     AlertComponent,
+    FooterComponent,
+    MenuComponent,
     LoaderComponent,
+    ProductImageComponent,
+    SidenavComponent,
   ],
   providers: [
     // Should not have providers for reason explained here

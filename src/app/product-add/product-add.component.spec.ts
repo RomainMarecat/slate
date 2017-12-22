@@ -39,7 +39,7 @@ import { CloudinaryConfig } from '../../core/shared/cloudinary/cloudinary-config
 import { MockProductService } from '../../core/shared/product/mock-product.service';
 import { ProductService } from '../../core/shared/product/product.service';
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
-import { ProductImageComponent } from './product-image/product-image.component';
+import { ProductImageComponent } from '../../core/shared/product/product-image/product-image.component';
 import { ProductAddComponent } from './product-add.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { MockAlertService } from '../../core/shared/alert/mock-alert.service';

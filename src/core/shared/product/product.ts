@@ -1,6 +1,7 @@
 import { ClothingProduct } from './clothing-product';
+import { HockeyProduct } from './hockey-product';
 
-export class Product implements ClothingProduct {
+export class Product implements ClothingProduct, HockeyProduct {
   name: string;
 
   score: number;
@@ -10,25 +11,25 @@ export class Product implements ClothingProduct {
 
   url: string;
 
-  key ?: string;
+  key ? : string;
   user: string;
-  creator ?: string;
+  creator ? : string;
 
-  description ?: string;
-  external_url ?: string;
+  description ? : string;
+  external_url ? : string;
   thumbnail: string;
-  images ?: string[];
+  images ? : string[];
   image1: string;
-  image2 ?: string;
-  image3 ?: string;
+  image2 ? : string;
+  image3 ? : string;
   price: number;
-  quantity ?: number;
-  size ?: Array < string > ;
+  quantity ? : number;
+  size ? : Array < string > ;
   published: boolean;
-  delivery_fee ?: number;
-  delivery_free ?: boolean;
-  reseller ?: string;
-  category ?: string;
+  delivery_fee ? : number;
+  delivery_free ? : boolean;
+  reseller ? : string;
+  category ? : string;
 
   constructor() {
     this.score = 0;

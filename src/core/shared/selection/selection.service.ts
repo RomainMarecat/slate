@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Selection } from './selection';
-import { AlertService } from '../../../../alert/alert.service';
+import { AlertService } from '../alert/alert.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -14,7 +14,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class SelectionService {
-  SelectionCollectionRef: AngularFirestoreCollection < Selection > ;
+  selectionCollectionRef: AngularFirestoreCollection < Selection > ;
   selections$: Observable < DocumentChangeAction[] > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
@@ -32,12 +32,13 @@ export class SelectionService {
    * @param {AngularFirestore} afs
    * @param {AlertService} alertService
    */
-  constructor(private afs: AngularFirestore, private alertService: AlertService) {
+  constructor(private afs: AngularFirestore,
+    @Inject('app_name') appName: string) {
     this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
-    this.SelectionCollectionRef = this.afs.collection('selection');
+    this.selectionCollectionRef = this.afs.collection('selection');
     this.selections$ = Observable.combineLatest(
         this.keyFilters$,
         this.publishedFilter$,
@@ -95,7 +96,7 @@ export class SelectionService {
    * @param {Selection} Selection
    */
   updateSelection(selection: Selection) {
-    this.SelectionCollectionRef.doc(selection.key).update({ ...Selection });
+    this.selectionCollectionRef.doc(selection.key).update({ ...selection });
   }
 
   /**
@@ -104,7 +105,7 @@ export class SelectionService {
    */
   createSelection(selection: Selection) {
     delete selection.key;
-    this.SelectionCollectionRef.add({ ...selection });
+    this.selectionCollectionRef.add({ ...selection });
   }
 
   /**
@@ -112,6 +113,6 @@ export class SelectionService {
    * @param {Selection} Selection
    */
   deleteSelection(selection: Selection) {
-    this.SelectionCollectionRef.doc(selection.key).delete();
+    this.selectionCollectionRef.doc(selection.key).delete();
   }
 }

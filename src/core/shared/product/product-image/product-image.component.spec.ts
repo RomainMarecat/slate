@@ -19,13 +19,13 @@ import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../../../core/shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from '../../../core/shared/cloudinary/cloudinary-config';
-import { ObjectService } from '../../../core/shared/util/object.service';
-import { MockMediaService } from '../../../core/shared/media/mock-media.service';
-import { MediaService } from '../../../core/shared/media/media.service';
-import { DeviceService } from '../../../core/shared/device/device.service';
-import { environment } from './../../../environments/environment.monpullmoche';
+import { CloudinaryModule } from '../../cloudinary/cloudinary.module';
+import { CloudinaryConfig } from '../../cloudinary/cloudinary-config';
+import { ObjectService } from '../../util/object.service';
+import { MockMediaService } from '../../media/mock-media.service';
+import { MediaService } from '../../media/media.service';
+import { DeviceService } from '../../device/device.service';
+import { environment } from '../../../../environments/environment.monpullmoche';
 
 describe('ProductImageComponent', () => {
   let component: ProductImageComponent;

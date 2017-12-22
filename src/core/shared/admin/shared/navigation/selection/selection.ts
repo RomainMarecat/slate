@@ -1,8 +1,10 @@
 export class Selection {
+  key ? : string;
   name: string;
   slug: string;
-  product: string;
-  category: string;
-  published_at: Date;
+  category ? : string;
+  published_at ? : Date;
   published: boolean;
+  image: string;
+  products ? : string[];
 }

@@ -26,28 +26,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader } from '@ngx-translate/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductService } from './../shared/product/product.service';
+import { SharedModule } from '../../shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     NgxDatatableModule,
-    MatGridListModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-    FormsModule,
-    HttpClientModule,
-    NgStringPipesModule,
-    MatCardModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
+    SharedModule,
     NgxEditorModule,
-    ReactiveFormsModule,
     TranslateModule,
     ProductRoutingModule
   ],

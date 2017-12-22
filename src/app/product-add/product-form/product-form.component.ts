@@ -4,7 +4,7 @@ import { ClothingProduct } from '../../../core/shared/product/clothing-product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Media } from '../../../core/shared/media/media';
 import { UserService } from '../../../core/shared/user/user.service';
-import { ProductImageComponent } from './../product-image/product-image.component';
+import { ProductImageComponent } from '../../../core/shared/product/product-image/product-image.component';
 
 @Component({
   selector: 'app-product-form',

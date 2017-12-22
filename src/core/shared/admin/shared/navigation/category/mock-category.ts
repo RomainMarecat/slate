@@ -1,4 +1,7 @@
 export const mockCategory = {
   name: 'Jam',
-  description: 'High School'
+  description: 'High School',
+  translations: {
+    fr: 'Jam'
+  }
 };
