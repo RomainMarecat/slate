@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { SelectionService } from '../../../shared/navigation/selection/selection.service';
 import { Selection } from '../../../shared/navigation/selection/selection';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -17,22 +17,29 @@ export class SelectionAddComponent implements OnInit {
   readonly rowHeight = 50;
   columns: any;
   products$: Observable < HockeyProduct[] > ;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
 
-
-  selected: HockeyProduct[];
+  selected: HockeyProduct[] = [];
   isLoading: boolean;
   form: FormGroup;
   selection: Selection;
-  medias: Media[];
+  medias: Media[] = [];
   _publication = true;
 
   constructor(private selectionService: SelectionService,
-    private alertService: AlertService) {
-    this.medias = [];
-  }
+    private alertService: AlertService) {}
 
   ngOnInit() {
     this.columns = [{
+      width: 50,
+      sortable: false,
+      canAutoResize: false,
+      draggable: false,
+      resizeable: false,
+      cellTemplate: this.checkboxCell,
+      headerTemplate: this.checkboxHeader,
+    }, {
       prop: 'name',
       name: 'name',
       flexGrow: 1
@@ -53,6 +60,7 @@ export class SelectionAddComponent implements OnInit {
       'name': new FormControl('', [
         Validators.required,
       ]),
+      'slug': new FormControl('', []),
       'products': new FormControl([], []),
       'images': new FormControl([], []),
       'published': new FormControl(true, [])
@@ -64,6 +72,9 @@ export class SelectionAddComponent implements OnInit {
     this.form.patchValue({ published: this._publication });
     if (this.form.valid === true) {
       this.selection = this.form.value;
+      if (this.selection.published === true) {
+        this.selection.published_at = new Date();
+      }
       this.selectionService.createSelection(this.selection);
       this.alertService.toast(`La selection est ajoutée ${this.selection.name}`, 'info');
       this.reset();

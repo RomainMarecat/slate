@@ -18,7 +18,7 @@
           <div class="row">
             <div class="col-6">
               <div class='selected-column' *ngIf="selected">
-                <h4>Products <small>({{selected?.length}})</small></h4>
+                <p>Associated Products <small>({{selected?.length}})</small></p>
               </div>
             </div>
             <div class="col-6">
@@ -29,6 +29,12 @@
             </div>
             <div class="col-12">
               <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="products$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'checkbox'" (select)='onSelect($event)'></ngx-datatable>
+              <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+                <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+              </ng-template>
+              <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+              </ng-template>
             </div>
           </div>
           <div class="mat-form-field pa1">

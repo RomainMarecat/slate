@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, TemplateRef, ViewChild } from '@angular/core';
 import { Category } from '../../../shared/navigation/category/category';
 import { CategoryService } from '../../../shared/navigation/category/category.service';
 import { Observable } from 'rxjs/Observable';
@@ -15,6 +15,8 @@ export class CategoryListComponent implements OnInit {
   categories$: Observable < Category[] > ;
   selected: Category[];
   isLoading: boolean;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
 
   /**
    * @param {ElementRef} table
@@ -22,22 +24,45 @@ export class CategoryListComponent implements OnInit {
    */
   constructor(private table: ElementRef, private categoryService: CategoryService) {
     this.columns = [{
-      prop: 'name',
-      name: 'name',
-      flexGrow: 1
-    }, {
-      prop: 'description',
-      name: 'description',
-      flexGrow: 1
-    }, {
-      prop: 'keywords',
-      name: 'keywords',
-      flexGrow: 1
-    }, {
-      prop: 'published',
-      name: 'published',
-      flexGrow: 1
-    }, ];
+        width: 50,
+        sortable: false,
+        canAutoResize: false,
+        draggable: false,
+        resizeable: false,
+        cellTemplate: this.checkboxCell,
+        headerTemplate: this.checkboxHeader,
+      },
+      {
+        prop: 'name',
+        name: 'name',
+        flexGrow: 1
+      },
+      {
+        prop: 'translations.fr',
+        name: 'translations.fr',
+        flexGrow: 1
+      },
+      {
+        prop: 'description',
+        name: 'description',
+        flexGrow: 1
+      },
+      {
+        prop: 'keywords',
+        name: 'keywords',
+        flexGrow: 1
+      },
+      {
+        prop: 'level',
+        name: 'level',
+        flexGrow: 1
+      },
+      {
+        prop: 'published',
+        name: 'published',
+        flexGrow: 1
+      },
+    ];
     this.selected = [];
     this.isLoading = true;
   }
