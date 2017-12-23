@@ -1,10 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { CategoryService } from '../../../shared/navigation/category/category.service';
 import { Category } from '../../../shared/navigation/category/category';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../../alert/alert.service';
 import { StringService } from '../../../../util/string.service';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'app-category-add',
@@ -20,8 +22,12 @@ export class CategoryAddComponent implements OnInit {
   readonly rowHeight = 50;
   columns: any;
   categories$: Observable < Category[] > = Observable.of([]);
-  selected: Category[];
+  selected: Category[] = [];
   isLoading: boolean;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
+
+  // ngModel attributes
   _publication: boolean;
   _rootModel: string;
 
@@ -32,20 +38,40 @@ export class CategoryAddComponent implements OnInit {
 
   ngOnInit() {
     this.columns = [{
-      prop: 'name',
-      name: 'name',
-      flexGrow: 1
-    }, {
-      prop: 'published',
-      name: 'published',
-      flexGrow: 1
-    }, {
-      prop: 'level',
-      name: 'level',
-      flexGrow: 1
-    }];
+        width: 50,
+        sortable: false,
+        canAutoResize: false,
+        draggable: false,
+        resizeable: false,
+        cellTemplate: this.checkboxCell,
+        headerTemplate: this.checkboxHeader,
+      },
+      {
+        prop: 'name',
+        name: 'name',
+        flexGrow: 1
+      }, {
+        prop: 'published',
+        name: 'published',
+        flexGrow: 1
+      }, {
+        prop: 'level',
+        name: 'level',
+        flexGrow: 1
+      }
+    ];
     this.categories$ = this.categoryService.getCategories();
     this.createForm();
+
+    this.form.valueChanges
+      .debounceTime(800)
+      .distinctUntilChanged()
+      .subscribe((value) => {
+        if (value.name) {
+          const slug = StringService.slugify(value.name);
+          this.form.patchValue({ name: value.name, slug: slug, alias: value.name });
+        }
+      });
   }
 
   createForm() {
@@ -76,17 +102,19 @@ export class CategoryAddComponent implements OnInit {
       'lft': new FormControl('', []),
       'rgt': new FormControl('', []),
       'root': new FormControl(false, []),
-      'parent': new FormControl('', []),
+      'parent': new FormControl(null, []),
       'published': new FormControl(true, []),
     });
   }
 
   saveCategory() {
     console.log(this.form);
-
+    this.form.patchValue({ published: this._publication, root: this._rootModel });
     if (this.form.valid === true) {
-      this.form.patchValue({ published: this._publication, root: this._rootModel });
       this.category = this.form.value;
+      if (this.category.published === true) {
+        this.category.published_at = new Date();
+      }
       this.categoryService.createCategory(this.category);
       this.alertService.toast(`La catégorie est ajoutée ${this.category.name}`, 'info');
       this.reset();
@@ -96,7 +124,19 @@ export class CategoryAddComponent implements OnInit {
   reset() {
     this.form.reset({
       name: '',
-      description: ''
+      description: '',
+      translations: {
+        fr: '',
+      },
+      slug: '',
+      alias: '',
+      keywords: '',
+      level: '',
+      lft: '',
+      rgt: '',
+      root: false,
+      parent: null,
+      published: true,
     });
     this.category = null;
   }
@@ -108,6 +148,10 @@ export class CategoryAddComponent implements OnInit {
   onSelect({ selected }) {
     this.selected = [];
     this.selected.push(...selected);
+  }
+
+  onActivate(event) {
+    console.log('Activate Event', event);
   }
 
   /**
@@ -124,8 +168,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set name(name) {
-    const slug = StringService.slugify(name);
-    this.form.patchValue({ name: name, slug: slug });
+    this.form.patchValue({ name: name });
   }
 
   get description() {

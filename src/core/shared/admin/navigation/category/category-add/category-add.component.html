@@ -70,7 +70,14 @@
               </button>
             </div>
             <div class="col-12">
-              <ngx-datatable class="material striped scrolling-parent" [columnMode]="'force'" [rows]="categories$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'checkbox'" (select)='onSelect($event)'></ngx-datatable>
+              <ngx-datatable class="material striped scrolling-parent" [columnMode]="'force'" [rows]="categories$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'checkbox'" (select)="onSelect($event)" (activate)="onActivate($event)">
+              </ngx-datatable>
+              <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+                <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+              </ng-template>
+              <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+              </ng-template>
             </div>
           </div>
           <div class="d-block pa1">
