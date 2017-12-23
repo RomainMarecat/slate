@@ -24,10 +24,13 @@ export class ProductAddComponent implements OnInit {
   categories$: Observable < Category[] > ;
   selected: Category[];
   isLoading: boolean;
+  _publication = true;
+  _descriptionModel: string;
 
   constructor(private productService: ProductService,
     private alertService: AlertService) {
     this.medias = [];
+    this._descriptionModel = '';
   }
 
   ngOnInit() {
@@ -121,6 +124,17 @@ export class ProductAddComponent implements OnInit {
     this.form.patchValue({ price: price });
   }
 
+  get descriptionModel() {
+    return this._descriptionModel;
+  }
+
+  set descriptionModel(description) {
+    this._descriptionModel = description;
+    if (description !== '') {
+      this.form.patchValue({ description: description });
+    }
+  }
+
   get description() {
     return this.form.get('description');
   }
@@ -151,6 +165,14 @@ export class ProductAddComponent implements OnInit {
 
   set category(category) {
     this.form.patchValue({ category: category });
+  }
+
+  get publication() {
+    return this._publication;
+  }
+
+  set publication(publication) {
+    this._publication = publication;
   }
 
   get published() {

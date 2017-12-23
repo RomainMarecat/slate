@@ -22,8 +22,13 @@ export class CategoryAddComponent implements OnInit {
   categories$: Observable < Category[] > = Observable.of([]);
   selected: Category[];
   isLoading: boolean;
+  _publication: boolean;
+  _rootModel: string;
 
-  constructor(private categoryService: CategoryService, private alertService: AlertService) {}
+  constructor(private categoryService: CategoryService, private alertService: AlertService) {
+    this._publication = true;
+    this._rootModel = '';
+  }
 
   ngOnInit() {
     this.columns = [{
@@ -198,12 +203,31 @@ export class CategoryAddComponent implements OnInit {
     this.form.patchValue({ root: root });
   }
 
+  get rootModel() {
+    return this._rootModel;
+  }
+
+  set rootModel(rootModel) {
+    this._rootModel = rootModel;
+    if (rootModel !== '') {
+      this.form.patchValue({ root: rootModel });
+    }
+  }
+
   get parent() {
     return this.form.get('parent');
   }
 
   set parent(parent) {
     this.form.patchValue({ parent: parent });
+  }
+
+  get publication() {
+    return this._publication;
+  }
+
+  set publication(publication) {
+    this._publication = publication;
   }
 
   get published() {

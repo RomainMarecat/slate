@@ -1,12 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { SelectionService } from './selection.service';
-import {mockSelection} from './mock-selection';
-import {AngularFireAuthModule} from 'angularfire2/auth';
-import {AngularFirestoreModule} from 'angularfire2/firestore';
-import {AngularFireModule} from 'angularfire2';
-import {environment} from '../../../../../../environments/environment.monpullmoche';
-import {HttpClientModule} from '@angular/common/http';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../../../../../../environments/environment.monpullmoche';
+import { HttpClientModule } from '@angular/common/http';
+import {MockSelectionService} from './mock-selection.service';
 
 describe('SelectionService', () => {
   beforeEach(() => {
@@ -18,7 +18,8 @@ describe('SelectionService', () => {
         AngularFireAuthModule
       ],
       providers: [
-        {provide: SelectionService, useClass: mockSelection}]
+        { provide: SelectionService, useClass: MockSelectionService }
+      ]
     });
   });
 

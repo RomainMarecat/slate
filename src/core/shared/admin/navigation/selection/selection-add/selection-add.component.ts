@@ -24,6 +24,7 @@ export class SelectionAddComponent implements OnInit {
   form: FormGroup;
   selection: Selection;
   medias: Media[];
+  _publication = true;
 
   constructor(private selectionService: SelectionService,
     private alertService: AlertService) {
@@ -108,6 +109,14 @@ export class SelectionAddComponent implements OnInit {
 
   set images(images) {
     this.form.patchValue({ images: images });
+  }
+
+  get publication() {
+    return this._publication;
+  }
+
+  set publication(publication) {
+    this._publication = publication;
   }
 
   get published() {
