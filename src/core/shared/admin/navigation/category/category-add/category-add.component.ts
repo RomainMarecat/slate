@@ -75,13 +75,9 @@ export class CategoryAddComponent implements OnInit {
       ]),
       'lft': new FormControl('', []),
       'rgt': new FormControl('', []),
-      'root': new FormControl(false, [
-        Validators.required,
-      ]),
+      'root': new FormControl(false, []),
       'parent': new FormControl('', []),
-      'published': new FormControl(true, [
-        Validators.required,
-      ]),
+      'published': new FormControl(true, []),
     });
   }
 
@@ -89,6 +85,7 @@ export class CategoryAddComponent implements OnInit {
     console.log(this.form);
 
     if (this.form.valid === true) {
+      this.form.patchValue({ published: this._publication, root: this._rootModel });
       this.category = this.form.value;
       this.categoryService.createCategory(this.category);
       this.alertService.toast(`La catégorie est ajoutée ${this.category.name}`, 'info');
@@ -209,9 +206,6 @@ export class CategoryAddComponent implements OnInit {
 
   set rootModel(rootModel) {
     this._rootModel = rootModel;
-    if (rootModel !== '') {
-      this.form.patchValue({ root: rootModel });
-    }
   }
 
   get parent() {

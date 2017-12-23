@@ -51,18 +51,14 @@ export class ProductAddComponent implements OnInit {
       'name': new FormControl('', [
         Validators.required,
       ]),
-      'description': new FormControl('', [
-        Validators.required,
-      ]),
+      'description': new FormControl('', []),
       'reseller': new FormControl('', [
         Validators.required,
       ]),
       'url': new FormControl('', [
         Validators.required,
       ]),
-      'published': new FormControl(true, [
-        Validators.required,
-      ]),
+      'published': new FormControl(true, []),
       'price': new FormControl(0, [
         Validators.required,
       ]),
@@ -82,6 +78,7 @@ export class ProductAddComponent implements OnInit {
   }
 
   saveProduct() {
+    this.form.patchValue({ description: this._descriptionModel, published: this._publication });
     if (this.form.valid) {
       this.product = this.form.value;
       this.productService.createProduct(this.product);
@@ -130,9 +127,6 @@ export class ProductAddComponent implements OnInit {
 
   set descriptionModel(description) {
     this._descriptionModel = description;
-    if (description !== '') {
-      this.form.patchValue({ description: description });
-    }
   }
 
   get description() {

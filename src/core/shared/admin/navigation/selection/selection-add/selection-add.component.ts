@@ -55,14 +55,13 @@ export class SelectionAddComponent implements OnInit {
       ]),
       'products': new FormControl([], []),
       'images': new FormControl([], []),
-      'published': new FormControl(true, [
-        Validators.required,
-      ])
+      'published': new FormControl(true, [])
     });
   }
 
   saveSelection() {
     console.log(this.form);
+    this.form.patchValue({ published: this._publication });
     if (this.form.valid === true) {
       this.selection = this.form.value;
       this.selectionService.createSelection(this.selection);
