@@ -1,5 +1,5 @@
-<div class="card-container">
-  <app-selection-item *ngFor="let selection of selections$ | async" class="grid-tile-item" [selection]="selection"></app-selection-item>
-  <div class="" *ngIf="(selections$ | async) === null || (selections$ | async)?.length <= 0" [innerHtml]="'No data'|translate">
-  </div>
-</div>
+<mat-grid-list [cols]="cols | async" gutterSize="16px">
+  <mat-grid-tile *ngFor="let selection of selections">
+    <app-selection-item [selection]="selection"></app-selection-item>
+  </mat-grid-tile>
+</mat-grid-list>

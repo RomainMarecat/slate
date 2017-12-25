@@ -1,6 +1,7 @@
 import { InjectionToken, NgModule, ModuleWithProviders, Injectable, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgStringPipesModule } from 'angular-pipes';
 import {
   MatCardModule,
@@ -39,11 +40,11 @@ import { Environment } from './util/environment';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HammerModule } from './hammer/hammer.module';
-import {ProductImageComponent} from './product/product-image/product-image.component';
-import {ImageCropperModule} from 'ng2-img-cropper';
-import {ModalModule} from 'ngx-bootstrap';
-import {FileUploadModule} from 'ng2-file-upload';
-import {CloudinaryModule} from './cloudinary/cloudinary.module';
+import { ProductImageComponent } from './product/product-image/product-image.component';
+import { ImageCropperModule } from 'ng2-img-cropper';
+import { ModalModule } from 'ngx-bootstrap';
+import { FileUploadModule } from 'ng2-file-upload';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
 
@@ -60,6 +61,7 @@ export class ConfigService {
     AngularFireAuthModule,
     Angulartics2Module,
     FileUploadModule,
+    FlexLayoutModule,
     FormsModule,
     CommonModule,
     CloudinaryModule,
@@ -95,6 +97,7 @@ export class ConfigService {
   exports: [
     AlertComponent,
     FileUploadModule,
+    FlexLayoutModule,
     FooterComponent,
     FormsModule,
     HammerModule,

@@ -4,6 +4,7 @@ import { AdminGuard } from '../../../guard/admin.guard';
 import { SelectionComponent } from './selection.component';
 import { SelectionListComponent } from './selection-list/selection-list.component';
 import { SelectionAddComponent } from './selection-add/selection-add.component';
+import {SelectionEditComponent} from './selection-edit/selection-edit.component';
 
 const routes: Routes = [{
     path: '',
@@ -20,6 +21,11 @@ const routes: Routes = [{
     path: 'add',
     canActivate: [AdminGuard],
     component: SelectionAddComponent
+  },
+  {
+    path: 'edit/:key',
+    canActivate: [AdminGuard],
+    component: SelectionEditComponent
   }
 ];
 

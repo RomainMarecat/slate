@@ -10,6 +10,7 @@ import { SharedModule } from '../../../shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SelectionService } from '../../shared/navigation/selection/selection.service';
+import { SelectionEditComponent } from './selection-edit/selection-edit.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { SelectionService } from '../../shared/navigation/selection/selection.se
   declarations: [
     SelectionComponent,
     SelectionListComponent,
-    SelectionAddComponent
+    SelectionAddComponent,
+    SelectionEditComponent
   ],
   providers: [
     SelectionService

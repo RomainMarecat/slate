@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from '../core/shared/shared.module';
 import { AppRootComponent } from './core/root.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
@@ -23,7 +22,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
     AppRoutingModule,
   ],
   declarations: [
-    AppRootComponent,
+    AppRootComponent
   ],
   bootstrap: [
     AppRootComponent

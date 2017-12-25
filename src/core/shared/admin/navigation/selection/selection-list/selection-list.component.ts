@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Selection } from '../../../shared/navigation/selection/selection';
 import { SelectionService } from '../../../shared/navigation/selection/selection.service';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-selection-list',
@@ -20,7 +21,10 @@ export class SelectionListComponent implements OnInit {
    * @param {ElementRef} table
    * @param {SelectionService} SelectionService
    */
-  constructor(private table: ElementRef, private selectionService: SelectionService) {
+  constructor(private table: ElementRef,
+    private selectionService: SelectionService,
+    private router: Router
+  ) {
     this.columns = [{
       prop: 'name',
       name: 'name',
@@ -84,7 +88,11 @@ export class SelectionListComponent implements OnInit {
     this.selected.push(...selected);
   }
 
-  onActivate(event) {}
+  onActivate(event) {
+    if (event.type === 'dblclick') {
+      this.router.navigate(['/admin/navigation/selection/edit/', event.row.key]);
+    }
+  }
 
   onScroll(event: any) {}
 }
