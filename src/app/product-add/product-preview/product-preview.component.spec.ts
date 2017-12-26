@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
@@ -29,15 +29,15 @@ import {
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { NgStringPipesModule } from 'angular-pipes';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from './../../shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from './../../shared/cloudinary/cloudinary-config';
+import { CloudinaryModule } from '../../../core/shared/cloudinary/cloudinary.module';
+import { CloudinaryConfig } from '../../../core/shared/cloudinary/cloudinary-config';
 import { ProductActionComponent } from './../../product-item/product-action/product-action.component';
-import { MockProductService } from './../../shared/product/mock-product.service';
-import { ProductService } from './../../shared/product/product.service';
-import { ImageComponent } from './../../shared/cloudinary/image/image.component';
+import { MockProductService } from '../../../core/shared/product/mock-product.service';
+import { ProductService } from '../../../core/shared/product/product.service';
 import { ProductPreviewComponent } from './product-preview.component';
-import { DateService } from './../../shared/util/date.service';
-import { I18nService } from './../../shared/i18n/i18n.service';
+import { DateService } from '../../../core/shared/util/date.service';
+import { I18nService } from '../../../core/shared/i18n/i18n.service';
+import { environment } from './../../../environments/environment.monpullmoche';
 
 describe('ProductPreviewComponent', () => {
   let component: ProductPreviewComponent;
@@ -49,7 +49,7 @@ describe('ProductPreviewComponent', () => {
           CommonModule,
           RouterTestingModule,
           BrowserModule,
-          HttpModule,
+          HttpClientModule,
           RouterTestingModule,
           NgStringPipesModule,
           BrowserAnimationsModule,
@@ -67,12 +67,12 @@ describe('ProductPreviewComponent', () => {
               clearIds: true,
             },
           }),
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })
         ],
-        declarations: [ProductPreviewComponent, ImageComponent],
+        declarations: [ProductPreviewComponent],
         providers: [
           { provide: DateService, useClass: DateService },
           I18nService

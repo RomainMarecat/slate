@@ -1,0 +1,5 @@
+<mat-grid-list [cols]="cols | async" gutterSize="16px">
+  <mat-grid-tile *ngFor="let selection of selections">
+    <app-selection-item [selection]="selection"></app-selection-item>
+  </mat-grid-tile>
+</mat-grid-list>

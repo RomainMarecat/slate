@@ -21,24 +21,25 @@ import {
 } from '@angular/material';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from './../../shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from './../../shared/cloudinary/cloudinary-config';
+import { CloudinaryModule } from '../../../core/shared/cloudinary/cloudinary.module';
+import { CloudinaryConfig } from '../../../core/shared/cloudinary/cloudinary-config';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductImageComponent } from './../product-image/product-image.component';
+import { ProductImageComponent } from '../../../core/shared/product/product-image/product-image.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
-import { MockAlertService } from './../../shared//alert/mock-alert.service';
-import { AlertService } from './../../shared/alert/alert.service';
-import { MockUserService } from './../../shared/user/mock-user.service';
-import { UserService } from './../../shared/user/user.service';
-import { ObjectService } from './../../shared/util/object.service';
-import { MediaService } from './../../shared/media/media.service';
-import { MockMediaService } from './../../shared/media/mock-media.service';
-import { DeviceService } from './../../shared/device/device.service';
+import { MockAlertService } from './../../../core/shared/alert/mock-alert.service';
+import { AlertService } from '../../../core/shared/alert/alert.service';
+import { MockUserService } from '../../../core/shared/user/mock-user.service';
+import { UserService } from '../../../core/shared/user/user.service';
+import { ObjectService } from '../../../core/shared/util/object.service';
+import { MediaService } from '../../../core/shared/media/media.service';
+import { MockMediaService } from '../../../core/shared/media/mock-media.service';
+import { DeviceService } from '../../../core/shared/device/device.service';
+import { environment } from './../../../environments/environment.monpullmoche';
 
 describe('ProductFormComponent', () => {
   let component: ProductFormComponent;
@@ -48,7 +49,7 @@ describe('ProductFormComponent', () => {
     TestBed.configureTestingModule({
         imports: [
           CommonModule,
-          HttpModule,
+          HttpClientModule,
           FormsModule,
           RouterTestingModule,
           ReactiveFormsModule,
@@ -69,7 +70,7 @@ describe('ProductFormComponent', () => {
           MatStepperModule,
           MatExpansionModule,
           MatCheckboxModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {

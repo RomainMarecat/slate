@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="form" (ngSubmit)="saveProduct()" class="form">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Ajouter un produit
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="mat-card-content">
+            <div class="d-block">
+              <mat-form-field class="mat-form-field">
+                <input matInput maxlength="50" [placeholder]="'Nom'|translate" formControlName="name">
+                <mat-hint align="start"><strong [innerHtml]="'titre du contenu'|translate"></strong></mat-hint>
+                <mat-hint align="end">{{ name.value.length }} {{ '/50'|translate }}</mat-hint>
+                <mat-error *ngIf="name.invalid && name.value.length === 0" [innerHtml]="'Le titre ne peut pas être vide'|translate"></mat-error>
+                <mat-error *ngIf="name.invalid && name.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="d-block">
+              <div class="mat-form-field editor mt1">
+                <label class="mat-hint"><strong>Description :</strong></label>
+                <app-ngx-editor [config]="editorConfig" [(ngModel)]="descriptionModel" formControlName="description">
+                </app-ngx-editor>
+              </div>
+            </div>
+            <div class="d-block">
+              <div class="mat-form-field">
+                <mat-radio-group class="example-radio-group" [(ngModel)]="publication" formControlName="published">
+                  <mat-radio-button class="example-radio-button" [value]="true">
+                    {{'Publié'}}
+                  </mat-radio-button>
+                  <mat-radio-button class="example-radio-button" [value]="false">
+                    {{'Non publié'}}
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+            <div class="d-block">
+              <mat-form-field class="mat-form-field">
+                <input matInput maxlength="5" [placeholder]="'Prix'|translate" formControlName="price">
+                <mat-error *ngIf="price.invalid && price.value.length === 0" [innerHtml]="'Le prix ne peut pas être vide'|translate"></mat-error>
+                <mat-error *ngIf="price.invalid && price.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="d-block">
+              <mat-form-field class="mat-form-field">
+                <input matInput maxlength="50" [placeholder]="'Revendeur'|translate" formControlName="reseller">
+                <mat-hint align="start"><strong [innerHtml]="'revendeur'|translate"></strong></mat-hint>
+                <mat-hint align="end">{{ reseller.value.length }} {{ '/50'|translate }}</mat-hint>
+                <mat-error *ngIf="reseller.invalid && reseller.value.length === 0" [innerHtml]="'Le revendeur ne peut pas être vide'|translate"></mat-error>
+                <mat-error *ngIf="reseller.invalid && reseller.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="mat-form-field">
+                <input matInput maxlength="50" [placeholder]="'url'|translate" formControlName="url">
+                <mat-hint align="start"><strong [innerHtml]="'url'|translate"></strong></mat-hint>
+                <mat-hint align="end">{{ url.value.length }} {{ '/50'|translate }}</mat-hint>
+                <mat-error *ngIf="url.invalid && url.value.length === 0" [innerHtml]="'L url ne peut pas être vide'|translate"></mat-error>
+                <mat-error *ngIf="url.invalid && url.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row mt1">
+              <div class="col-6">
+                <div class='selected-column' *ngIf="selected">
+                  <h4>Categories <small>({{selected?.length}})</small></h4>
+                </div>
+              </div>
+              <div class="col-6">
+                <button role="button" aria-label="Ajouter les categories selectionnes" mat-raised-button color="primary" (click)="addCategories()" *ngIf="selected && selected?.length > 0">
+                  <mat-icon aria-label="Ajouter les categories selectionnes">done</mat-icon>
+                  Ajouter
+                </button>
+              </div>
+              <div class="col-12">
+                <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="categories$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'checkbox'" (select)='onSelect($event)'></ngx-datatable>
+              </div>
+            </div>
+            <div class="d-block">
+              <app-product-image [displayValidation]="'true'" (imageChanged)="onImageChange($event)"></app-product-image>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="d-flex justify-content-around">
+              <button type="button" class="back" mat-raised-button color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/cms']"></button>
+              <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid || form.pristine" [innerHtml]="'Enregistrer'|translate"></button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

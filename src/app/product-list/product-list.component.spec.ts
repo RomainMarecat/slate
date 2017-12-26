@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -31,22 +31,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './product-list.component';
 import { ProductItemComponent } from './../product-item/product-item.component';
 import { ProductActionComponent } from './../product-item/product-action/product-action.component';
-import { ImageComponent } from './../shared/cloudinary/image/image.component';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from './../shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from './../shared/cloudinary/cloudinary-config';
-import { ProductService } from './../shared/product/product.service';
-import { MockProductService } from './../shared/product/mock-product.service';
-import { MockUserService } from './../shared/user/mock-user.service';
-import { UserService } from './../shared/user/user.service';
-import { MockAlertService } from './../shared/alert/mock-alert.service';
-import { AlertService } from './../shared/alert/alert.service';
-import { LoaderService } from './../shared/loader/loader.service';
-import { MockLoaderService } from './../shared/loader/mock-loader.service';
-import { ScoreService } from './../shared/score/score.service';
-import { DateService } from './../shared/util/date.service';
-import { MockScoreService } from './../shared/score/mock-score.service';
-import { I18nService } from './../shared/i18n/i18n.service';
+import { CloudinaryModule } from '../../core/shared/cloudinary/cloudinary.module';
+import { CloudinaryConfig } from '../../core/shared/cloudinary/cloudinary-config';
+import { ProductService } from '../../core/shared/product/product.service';
+import { MockProductService } from '../../core/shared/product/mock-product.service';
+import { MockUserService } from '../../core/shared/user/mock-user.service';
+import { UserService } from '../../core/shared/user/user.service';
+import { MockAlertService } from '../../core/shared/alert/mock-alert.service';
+import { AlertService } from '../../core/shared/alert/alert.service';
+import { LoaderService } from '../../core/shared/loader/loader.service';
+import { MockLoaderService } from '../../core/shared/loader/mock-loader.service';
+import { ScoreService } from '../../core/shared/score/score.service';
+import { DateService } from '../../core/shared/util/date.service';
+import { MockScoreService } from '../../core/shared/score/mock-score.service';
+import { I18nService } from '../../core/shared/i18n/i18n.service';
+import { environment } from './../../environments/environment.monpullmoche';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -57,7 +57,7 @@ describe('ProductListComponent', () => {
         imports: [
           CommonModule,
           BrowserModule,
-          HttpModule,
+          HttpClientModule,
           RouterTestingModule,
           BrowserAnimationsModule,
           MatCardModule,
@@ -74,12 +74,12 @@ describe('ProductListComponent', () => {
               clearIds: true,
             },
           }),
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })
         ],
-        declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent, ImageComponent],
+        declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
           { provide: UserService, useClass: MockUserService },

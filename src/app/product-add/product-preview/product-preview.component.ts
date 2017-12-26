@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IProduct } from './../../shared/product/i-product';
-import { DateService } from './../../shared/util/date.service';
+import { ClothingProduct } from '../../../core/shared/product/clothing-product';
+import { DateService } from '../../../core/shared/util/date.service';
 
 @Component({
   selector: 'app-product-preview',
@@ -8,7 +8,7 @@ import { DateService } from './../../shared/util/date.service';
   styleUrls: ['./product-preview.component.scss']
 })
 export class ProductPreviewComponent implements OnInit {
-  @Input() product: IProduct;
+  @Input() product: ClothingProduct;
   @Input() user: any;
   now: string;
   // Current image size to display

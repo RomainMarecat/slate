@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import {
@@ -30,12 +30,13 @@ import { NgStringPipesModule } from 'angular-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductItemComponent } from './product-item.component';
 import { ProductActionComponent } from './product-action/product-action.component';
-import { ImageComponent } from './../shared/cloudinary/image/image.component';
+import { ImageComponent } from '../../core/shared/cloudinary/image/image.component';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from './../shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from './../shared/cloudinary/cloudinary-config';
-import { DateService } from './../shared/util/date.service';
-import { I18nService } from './../shared/i18n/i18n.service';
+import { CloudinaryModule } from '../../core/shared/cloudinary/cloudinary.module';
+import { CloudinaryConfig } from '../../core/shared/cloudinary/cloudinary-config';
+import { DateService } from '../../core/shared/util/date.service';
+import { I18nService } from '../../core/shared/i18n/i18n.service';
+import { environment } from './../../environments/environment.monpullmoche';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -47,7 +48,7 @@ describe('ProductItemComponent', () => {
           CommonModule,
           RouterTestingModule,
           BrowserModule,
-          HttpModule,
+          HttpClientModule,
           MatIconModule,
           MatCardModule,
           NgStringPipesModule,
@@ -60,12 +61,12 @@ describe('ProductItemComponent', () => {
               clearIds: true,
             },
           }),
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, CloudinaryConfig),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })
         ],
-        declarations: [ProductItemComponent, ProductActionComponent, ImageComponent],
+        declarations: [ProductItemComponent, ProductActionComponent],
         providers: [
           { provide: DateService, useClass: DateService },
           I18nService

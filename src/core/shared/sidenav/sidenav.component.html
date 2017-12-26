@@ -1,0 +1,46 @@
+<mat-sidenav-container fullscreen class="sidenav-container">
+  <app-menu></app-menu>
+  <mat-sidenav #sidenav class="leftSideNav" mode="over" opened="false">
+    <div *ngIf="userService.getAuthState() | async; let user; else showLogin">
+      <mat-card class="card-sidebar">
+        <img mat-card-image alt="'sidenav.card.img.alt'|translate" src="/assets/images/sidebar.jpg">
+        <mat-card-header>
+          <img mat-card-avatar [src]="user?.photoURL">
+          <h2 class="mat-title">{{ user?.displayName }}</h2>
+        </mat-card-header>
+      </mat-card>
+      <mat-list>
+        <mat-list-item>
+          <a class="sidenav-link" mat-raised [routerLink]="['/add']" [innerHtml]="'sidenav.card.list-item.add.title'|translate"></a>
+        </mat-list-item>
+        <mat-list-item>
+          <a class="sidenav-link" mat-raised [routerLink]="['/admin']" *ngIf="user?.displayName === 'Romain Marecat'" [innerHtml]="'sidenav.card.list-item.admin.title'|translate"></a>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <button role="button" [attr.aria-label]="'sidenav.card.list-item.logout.aria-label'|translate" mat-raised-button color="primary" type="button" (click)="userService.logout()" [innerHtml]="'sidenav.card.list-item.logout.title'|translate">
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-sidenav>
+  <app-loader></app-loader>
+  <div #root="dir" dir="ltr" class="main-content" (swiperight)="sidenav.toggle()">
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </div>
+</mat-sidenav-container>
+<ng-template #showLogin>
+  <mat-list>
+    <mat-list-item>
+      <h2 [innerHtml]="'sidenav.card.list-item.login.title'|translate"></h2>
+    </mat-list-item>
+    <mat-list-item>
+      <button mat-raised-button color="primary" type="button" (click)="userService.loginGoogle()" [innerHtml]="'sidenav.card.list-item.google.title'|translate"></button>
+    </mat-list-item>
+    <mat-list-item>
+      <button mat-raised-button color="primary" type="button" (click)="userService.loginFacebook()" [innerHtml]="'sidenav.card.list-item.facebook.title'|translate">
+      </button>
+    </mat-list-item>
+  </mat-list>
+</ng-template>

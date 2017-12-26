@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from './../shared/product/product';
-import { IProduct } from './../shared/product/i-product';
-import { DateService } from './../shared/util/date.service';
+import { Product } from '../../core/shared/product/product';
+import { ClothingProduct } from '../../core/shared/product/clothing-product';
+import { DateService } from '../../core/shared/util/date.service';
 
 @Component({
   selector: 'app-product-item',
@@ -11,8 +11,8 @@ import { DateService } from './../shared/util/date.service';
 })
 export class ProductItemComponent implements OnInit {
 
-  _product: IProduct;
-  @Output() updatedProduct: EventEmitter < IProduct > = new EventEmitter < IProduct > ();
+  _product: ClothingProduct;
+  @Output() updatedProduct: EventEmitter < ClothingProduct > = new EventEmitter < ClothingProduct > ();
   cols: number;
   resizedImage: any;
   humanPublishedAt: string;
@@ -35,9 +35,9 @@ export class ProductItemComponent implements OnInit {
 
   /**
    * Product binding and auto resize columns
-   * @param IProduct Product
+   * @param ClothingProduct Product
    */
-  @Input() set product(product: IProduct) {
+  @Input() set product(product: ClothingProduct) {
     this.humanPublishedAt = this.dateService.compareDatetoHumanReadableString(product.published_at);
     this._product = product;
     this.countCols();
@@ -45,9 +45,9 @@ export class ProductItemComponent implements OnInit {
 
   /**
    * Update a new score from a new score event
-   * @param {IProduct} product
+   * @param {ClothingProduct} product
    */
-  updateScoreProduct(product: IProduct) {
+  updateScoreProduct(product: ClothingProduct) {
     this.updatedProduct.emit(product);
   }
 
@@ -59,7 +59,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   /**
-   * Count columns for each image in IProduct type
+   * Count columns for each image in ClothingProduct type
    */
   countCols() {
     if (this._product.image1) {

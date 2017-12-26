@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Mon pull moche</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/icons/apple-icon-57x57.png">
@@ -28,22 +27,24 @@
 </head>
 
 <body>
-  <app-product-index>
+  <app-root>
     <div id="loader-wrapper">
       <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
     </div>
-  </app-product-index>
+  </app-root>
   <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }).catch(function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
-    });
+    if (window.location.host.indexOf('localhost') !== -1) {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+          // Registration was successful
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }).catch(function(err) {
+          // registration failed :(
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      }
   }
 
   </script>
@@ -63,7 +64,8 @@
   ga('create', 'UA-97411982-3', window.location.host.indexOf('localhost') !== -1 ? 'auto' : 'none');
 
   </script>
-<!--   <script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
- --></body>
+  <!--   <script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
+ -->
+</body>
 
 </html>

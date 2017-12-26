@@ -1,13 +1,14 @@
 import { Component, TemplateRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IProduct } from './../shared/product/i-product';
-import { ProductService } from './../shared/product/product.service';
-import { UserService } from './../shared/user/user.service';
-import { LoaderService } from './../shared/loader/loader.service';
-import { AlertService } from './../shared/alert/alert.service';
-import { NotificationService } from './../shared/slack/notification.service';
+import { ClothingProduct } from '../../core/shared/product/clothing-product';
+import { ProductService } from '../../core/shared/product/product.service';
+import { UserService } from '../../core/shared/user/user.service';
+import { LoaderService } from '../../core/shared/loader/loader.service';
+import { AlertService } from '../../core/shared/alert/alert.service';
+import { NotificationService } from '../../core/shared/slack/notification.service';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-product-add',
@@ -15,16 +16,16 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./product-add.component.scss']
 })
 export class ProductAddComponent implements OnInit {
-  product: IProduct;
+  product: ClothingProduct;
   ratio: string;
   user: any;
 
   /**
-   * @param {Router} router
-   * @param {ProductService} ProductService
-   * @param {AlertService} alertService
-   * @param {UserService} userService
-   * @param {LoaderService} loaderService
+   * @param Router router
+   * @param ProductService ProductService
+   * @param AlertService alertService
+   * @param UserService userService
+   * @param LoaderService loaderService
    */
   constructor(private router: Router, private productService: ProductService,
     public alertService: AlertService, private userService: UserService,
@@ -43,33 +44,42 @@ export class ProductAddComponent implements OnInit {
     // Title + description
     this.translateService.get('product-add.meta.title')
       .subscribe((translation: string) => {
-      this.meta.addTag({ name: 'title', content: translation });
-    });
-      this.translateService.get('product-add.meta.description')
+        this.meta.addTag({ name: 'title', content: translation });
+      });
+    this.translateService.get('product-add.meta.description')
       .subscribe((translation: string) => {
-      this.meta.addTag({ name: 'description', content: translation });
-    });
+        this.meta.addTag({ name: 'description', content: translation });
+      });
   }
 
   /**
    * When the form is submitted, we create new product
    * And show a toast to display info
-   * @param {IProduct} product
+   * @param {ClothingProduct} product
    */
-  onProductSubmit(product: IProduct) {
+  onProductSubmit(product: ClothingProduct) {
     this.productService.createProduct(product);
-    this.slackNotification.notifySlack({
-      text: `New product has been send. ${product.name} by ${this.user.displayName}`
-    }).subscribe(res => console.log(res));
+    try {
+      this.slackNotification.notifySlack({
+        text: `New product has been send. ${product.name} by ${this.user.displayName}`
+      }).subscribe(
+        (res) => console.log(res),
+        (err: HttpErrorResponse) => {
+          console.error(err);
+        }
+      );
+    } catch (e) {
+      console.error(e);
+    }
     this.alertService.toast('snackbar.product-add.submit', 'info');
     this.router.navigate(['/']);
   }
 
   /**
    * Get the new product value
-   * @param {IProduct} product
+   * @param {ClothingProduct} product
    */
-  onProductChange(product: IProduct) {
-    this.product = { ...this.product, ...product};
+  onProductChange(product: ClothingProduct) {
+    this.product = { ...this.product, ...product };
   }
 }

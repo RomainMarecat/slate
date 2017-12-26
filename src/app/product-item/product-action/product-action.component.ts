@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Product } from './../../shared/product/product';
-import { IProduct } from './../../shared/product/i-product';
-import { UserService } from './../../shared/user/user.service';
-import { ScoreService } from './../../shared/score/score.service';
-import { Score } from './../../shared/score/score';
-import { AlertService } from './../../shared/alert/alert.service';
+import { Product } from '../../../core/shared/product/product';
+import { ClothingProduct } from '../../../core/shared/product/clothing-product';
+import { UserService } from '../../../core/shared/user/user.service';
+import { ScoreService } from '../../../core/shared/score/score.service';
+import { Score } from '../../../core/shared/score/score';
+import { AlertService } from '../../../core/shared/alert/alert.service';
 
 @Component({
   selector: 'app-product-action',
@@ -13,8 +13,8 @@ import { AlertService } from './../../shared/alert/alert.service';
 })
 export class ProductActionComponent implements OnInit {
 
-  @Input() product: IProduct;
-  @Output() updateScore: EventEmitter < IProduct > = new EventEmitter < IProduct > ();
+  @Input() product: ClothingProduct;
+  @Output() updateScore: EventEmitter < ClothingProduct > = new EventEmitter < ClothingProduct > ();
 
   constructor(private userService: UserService, private scoreService: ScoreService,
     private alertService: AlertService) {}
@@ -24,19 +24,19 @@ export class ProductActionComponent implements OnInit {
   /**
    * Add +1 or -1 on current score
    * Test if User is authenticated, is Authorized (First time score this item)
-   * If test is true, update IProduct
-   * @param {IProduct} product
+   * If test is true, update ClothingProduct
+   * @param {ClothingProduct} product
    * @param {string}    score    string plus or minus
    * @todo Update plus or minus string by new alogrithm
    */
-  score(product: IProduct, score: string) {
+  score(product: ClothingProduct, score: string) {
     this.userService.isAuthenticated().subscribe((authenticated) => {
       if (authenticated) {
         this.scoreService.filterByProduct(product.key);
         this.scoreService.filterByUser(this.userService.getUser().uid);
         this.scoreService.isAuthorized().subscribe((authorized) => {
           if (authorized) {
-            this.updateProductScore(product,	 score);
+            this.updateProductScore(product, score);
           } else {
             this.alertService.toast('Vous avez déjà voté', 'error');
           }
@@ -54,10 +54,10 @@ export class ProductActionComponent implements OnInit {
   /**
    * Create new score in the collection with user id
    * Update the Product
-   * @param {IProduct} product
+   * @param {ClothingProduct} product
    * @param {string}    score
    */
-  updateProductScore(product: IProduct, score: string) {
+  updateProductScore(product: ClothingProduct, score: string) {
     if (!product.score) {
       product.score = 0;
     }
@@ -69,7 +69,7 @@ export class ProductActionComponent implements OnInit {
     const newScore = {
       created_at: new Date(),
       user: this.userService.getUser().uid,
-      product:	 product.key
+      product: product.key
     };
     this.scoreService.createScore(newScore);
     this.updateScore.emit(product);
