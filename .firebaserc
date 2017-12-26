@@ -1,6 +1,7 @@
 {
   "projects": {
     "default": "mon-pull-moche",
-    "hockey": "hockey-f2b77"
+    "hockey": "hockey-f2b77",
+    "monpullmoche": "mon-pull-moche"
   }
 }
