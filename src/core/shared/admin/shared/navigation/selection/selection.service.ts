@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Selection } from './selection';
+import { Selection } from './../../../../selection/selection';
 import { AlertService } from '../../../../alert/alert.service';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';

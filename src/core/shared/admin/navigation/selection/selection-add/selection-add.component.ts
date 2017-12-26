@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { SelectionService } from '../../../shared/navigation/selection/selection.service';
-import { Selection } from '../../../shared/navigation/selection/selection';
+import { Selection } from '../../../../../shared/selection/selection';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../../alert/alert.service';
 import { Observable } from 'rxjs/Observable';

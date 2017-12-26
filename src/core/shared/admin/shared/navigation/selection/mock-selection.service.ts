@@ -1,5 +1,5 @@
-import { mockSelection } from './mock-selection';
-import { Selection } from './selection';
+import { mockSelection } from './../../../../selection/mock-selection';
+import { Selection } from './../../../../selection/selection';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';

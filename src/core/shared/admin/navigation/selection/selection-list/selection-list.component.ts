@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { Selection } from '../../../shared/navigation/selection/selection';
+import { Selection } from '../../../../../shared/selection/selection';
 import { SelectionService } from '../../../shared/navigation/selection/selection.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
