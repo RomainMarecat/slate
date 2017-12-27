@@ -4,9 +4,13 @@ import { SelectionService } from '../../../shared/navigation/selection/selection
 import { Selection } from '../../../../../shared/selection/selection';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../../alert/alert.service';
-import { Observable } from 'rxjs/Observable';
 import { HockeyProduct } from '../../../../product/hockey-product';
 import { Media } from '../../../../media/media';
+import { StringService } from '../../../../util/string.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+
 
 @Component({
   selector: 'app-selection-edit',
@@ -57,6 +61,18 @@ export class SelectionEditComponent implements OnInit {
     this.getSelection();
   }
 
+  observeUpdate() {
+    this.form.valueChanges
+      .debounceTime(800)
+      .distinctUntilChanged()
+      .subscribe((value) => {
+        if (value.name) {
+          const slug = StringService.slugify(value.name);
+          this.form.patchValue({ name: value.name, slug: slug, alias: value.name });
+        }
+      });
+  }
+
   getSelection() {
     this.activatedRoute.params.subscribe((value: { key: string }) => {
       console.log(value);
@@ -67,6 +83,7 @@ export class SelectionEditComponent implements OnInit {
             selection.forEach((item: Selection) => {
               this.selection = item;
               this.createForm();
+              this.observeUpdate();
             });
           });
       }
@@ -104,24 +121,14 @@ export class SelectionEditComponent implements OnInit {
     console.log(this.form);
     this.form.patchValue({ published: this._publication });
     if (this.form.valid === true) {
-      this.selection = this.form.value;
+      this.selection = { ...this.selection, ...this.form.value };
       if (this.selection.published === true) {
         this.selection.published_at = new Date();
       }
+      console.log(this.selection);
       this.selectionService.updateSelection(this.selection);
       this.alertService.toast(`La selection ${this.selection.name} est mise à jour`, 'info');
-      this.reset();
     }
-  }
-
-  reset() {
-    this.form.reset({
-      name: '',
-      products: [],
-      published: true,
-      images: []
-    });
-    this.selection = null;
   }
 
   onImageChange(media: Media) {

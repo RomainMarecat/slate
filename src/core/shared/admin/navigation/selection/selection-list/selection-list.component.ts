@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, TemplateRef } from '@angular/core';
 import { Selection } from '../../../../../shared/selection/selection';
 import { SelectionService } from '../../../shared/navigation/selection/selection.service';
 import { Observable } from 'rxjs/Observable';
@@ -12,10 +12,12 @@ import { Router } from '@angular/router';
 export class SelectionListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
-  selections$: Observable < Selection[] > ;
+  columns: any[];
+  selections: Selection[] = [];
   selected: Selection[];
   isLoading: boolean;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
 
   /**
    * @param {ElementRef} table
@@ -26,24 +28,35 @@ export class SelectionListComponent implements OnInit {
     private router: Router
   ) {
     this.columns = [{
-      prop: 'name',
-      name: 'name',
-      flexGrow: 1
-    }, {
-      prop: 'description',
-      name: 'description',
-      flexGrow: 1
-    }, {
-      prop: 'keywords',
-      name: 'keywords',
-      flexGrow: 1
-    }, {
-      prop: 'published',
-      name: 'published',
-      flexGrow: 1
-    }, ];
+        width: 50,
+        sortable: false,
+        canAutoResize: false,
+        draggable: false,
+        resizeable: false,
+        cellTemplate: this.checkboxCell,
+        headerTemplate: this.checkboxHeader,
+      },
+      {
+        prop: 'name',
+        name: 'name',
+        flexGrow: 1
+      }, {
+        prop: 'description',
+        name: 'description',
+        flexGrow: 1
+      }, {
+        prop: 'keywords',
+        name: 'keywords',
+        flexGrow: 1
+      }, {
+        prop: 'published',
+        name: 'published',
+        flexGrow: 1
+      },
+    ];
     this.selected = [];
     this.isLoading = true;
+
   }
 
   /**
@@ -75,8 +88,11 @@ export class SelectionListComponent implements OnInit {
    * Init list of Selection
    */
   ngOnInit() {
-    this.selections$ = this.selectionService.getSelections();
-    this.isLoading = false;
+    this.selectionService.getSelections()
+      .subscribe((selections: Selection[]) => {
+        this.selections = selections;
+        this.isLoading = false;
+      });
   }
 
   /**

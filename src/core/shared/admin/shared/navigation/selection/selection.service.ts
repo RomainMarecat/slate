@@ -95,7 +95,7 @@ export class SelectionService {
    * @param {Selection} Selection
    */
   updateSelection(selection: Selection) {
-    this.SelectionCollectionRef.doc(selection.key).update({ ...Selection });
+    this.SelectionCollectionRef.doc(selection.key).update({ ...selection });
   }
 
   /**
