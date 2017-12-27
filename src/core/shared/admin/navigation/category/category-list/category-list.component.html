@@ -29,7 +29,7 @@
   </div>
   <div class="row">
     <div class="col-12 mt-2">
-      <ngx-datatable class="material striped scrolling-categories" [columnMode]="'force'" [rows]="categories$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
+      <ngx-datatable class="material striped scrolling-categories" [columnMode]="'force'" [rows]="categories" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
       </ngx-datatable>
       <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
         <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />

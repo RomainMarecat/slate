@@ -12,8 +12,8 @@ export class CategoryListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  categories$: Observable < Category[] > ;
-  selected: Category[];
+  categories: Category[] = [];
+  selected: Category[] = [];
   isLoading: boolean;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
@@ -23,6 +23,43 @@ export class CategoryListComponent implements OnInit {
    * @param {CategoryService} CategoryService
    */
   constructor(private table: ElementRef, private categoryService: CategoryService) {
+    this.isLoading = true;
+  }
+
+  /**
+   * set at published at now et activate published to true
+   */
+  publishCategory() {
+    this.selected.forEach((category: Category) => {
+      if (category.published === false) {
+        category.published = true;
+        if (!category.published_at) {
+          category.published_at = new Date();
+        }
+      }
+
+      this.categoryService.updateCategory(category);
+    });
+  }
+
+  /**
+   * Delete a Category from list
+   */
+  deleteCategory() {
+    this.selected.forEach((category: Category) => {
+      this.categoryService.deleteCategory(category);
+    });
+  }
+
+  /**
+   * Init list of Category
+   */
+  ngOnInit() {
+    this.categoryService.getCategories()
+      .subscribe((categories: Category[]) => {
+        this.categories = categories;
+        this.isLoading = false;
+      });
     this.columns = [{
         width: 50,
         sortable: false,
@@ -63,41 +100,6 @@ export class CategoryListComponent implements OnInit {
         flexGrow: 1
       },
     ];
-    this.selected = [];
-    this.isLoading = true;
-  }
-
-  /**
-   * set at published at now et activate published to true
-   */
-  publishCategory() {
-    this.selected.forEach((category: Category) => {
-      if (category.published === false) {
-        category.published = true;
-        if (!category.published_at) {
-          category.published_at = new Date();
-        }
-      }
-
-      this.categoryService.updateCategory(category);
-    });
-  }
-
-  /**
-   * Delete a Category from list
-   */
-  deleteCategory() {
-    this.selected.forEach((category: Category) => {
-      this.categoryService.deleteCategory(category);
-    });
-  }
-
-  /**
-   * Init list of Category
-   */
-  ngOnInit() {
-    this.categories$ = this.categoryService.getCategories();
-    this.isLoading = false;
   }
 
   /**

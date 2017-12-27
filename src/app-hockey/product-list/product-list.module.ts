@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment.hockey';
 import { NgStringPipesModule } from 'angular-pipes';
 import { SharedModule } from '../../core/shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { ProductListRoutingModule } from './product-list-routing.module';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { TranslateModule } from '@ngx-translate/core';
     NgStringPipesModule,
     RouterModule,
     SharedModule,
-    TranslateModule
+    TranslateModule,
+    ProductListRoutingModule
   ],
   declarations: [
     ProductListComponent,

@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Selection } from './../../../core/shared/selection/selection';
+import { SelectionService } from './../../../core/shared/selection/selection.service';
 
 @Component({
   selector: 'app-selection-item',
@@ -8,9 +9,19 @@ import { Selection } from './../../../core/shared/selection/selection';
 })
 export class SelectionItemComponent implements OnInit {
   @Input('selection') selection: Selection;
-
-  constructor() {}
+  @Output('selectedSelection') selectedSelection: EventEmitter < Selection > = new EventEmitter < Selection > ();
+  constructor(private selectionService: SelectionService) {}
 
   ngOnInit() {}
+
+  /*selectionChildren(selection: Selection) {
+    console.log(selection);
+    this.selectionService.parentFilters$.next(selection.key);
+    this.selectionService.getSelections();
+  }
+*/
+  onSelectedSelection(event: MouseEvent) {
+    this.selectedSelection.emit(this.selection);
+  }
 
 }
