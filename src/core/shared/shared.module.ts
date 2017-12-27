@@ -96,6 +96,7 @@ export class ConfigService {
   ],
   exports: [
     AlertComponent,
+    CloudinaryModule,
     FileUploadModule,
     FlexLayoutModule,
     FooterComponent,

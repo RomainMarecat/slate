@@ -14,6 +14,10 @@ const routes: Routes = [{
     }]
   },
   {
+    path: 'selection/:key/products',
+    loadChildren: './product-list/product-list.module#ProductListModule'
+  },
+  {
     path: 'admin',
     loadChildren: './../core/shared/admin/admin.module#AdminModule'
   }

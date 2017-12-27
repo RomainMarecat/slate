@@ -52,7 +52,7 @@
                 </button>
               </div>
               <div class="col-12">
-                <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="products$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'checkbox'" (select)='onSelect($event)'></ngx-datatable>
+                <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="products$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'checkbox'" (select)="onSelect($event)"></ngx-datatable>
                 <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
                   <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
                 </ng-template>

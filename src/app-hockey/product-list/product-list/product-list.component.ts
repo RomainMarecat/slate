@@ -9,7 +9,7 @@ import { AlertService } from './../../../core/shared/alert/alert.service';
 import { LoaderService } from './../../../core/shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from './../../../environments/environment.hockey';
-import {HockeyProduct} from '../../../core/shared/product/hockey-product';
+import { HockeyProduct } from '../../../core/shared/product/hockey-product';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +18,6 @@ import {HockeyProduct} from '../../../core/shared/product/hockey-product';
 })
 export class ProductListComponent implements OnInit {
   // Products collection of Product interface
-  products$: Observable < HockeyProduct[] > ;
   products: Array < HockeyProduct > ;
   rowHeight: number;
   headerHeight: number;
@@ -35,10 +34,14 @@ export class ProductListComponent implements OnInit {
    * @param {LoaderService}    private loaderService
    * @param {TranslateService} private translateService
    */
-  constructor(private productService: ProductService, private router: Router,
-    private meta: Meta, private ProductComponent: ElementRef,
-    private userService: UserService, public alertService: AlertService,
-    private loaderService: LoaderService, private translateService: TranslateService) {
+  constructor(private productService: ProductService,
+    private router: Router,
+    private meta: Meta,
+    private ProductComponent: ElementRef,
+    private userService: UserService,
+    public alertService: AlertService,
+    private loaderService: LoaderService,
+    private translateService: TranslateService) {
     this.headerHeight = 0;
     this.pageLimit = 100;
     this.rowHeight = 300;
@@ -77,7 +80,10 @@ export class ProductListComponent implements OnInit {
     this.productService.keyFilters$.next(null);
     this.productService.nameFilters$.next(null);
     this.productService.publishedFilter$.next(true);
-    this.products$ = this.productService.getProducts();
-    this.loaderService.hide();
+    this.productService.getProducts()
+      .subscribe((products: HockeyProduct[]) => {
+        this.products = products;
+        this.loaderService.hide();
+      });
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SelectionService } from '../../../core/shared/selection/selection.service';
 import { LoaderService } from '../../../core/shared/loader/loader.service';
 import { Selection } from '../../../core/shared/selection/selection';
@@ -17,12 +18,14 @@ export class SelectionListComponent implements OnInit {
   rowHeight: number;
   headerHeight: number;
   pageLimit: number;
+  currentSelectedSelection: Selection;
 
   public cols: Observable < number > ;
 
   constructor(private selectionService: SelectionService,
     private loaderService: LoaderService,
-    private observableMedia: ObservableMedia) {}
+    private observableMedia: ObservableMedia,
+    private router: Router) {}
 
   ngOnInit() {
     const grid = new Map([
@@ -47,9 +50,20 @@ export class SelectionListComponent implements OnInit {
 
   loadSelections(limit: number) {
     this.selectionService.publishedFilter$.next(true);
-    this.selectionService.getSelections().subscribe((rows: Selection[]) => {
-      this.selections = rows;
-      this.loaderService.hide();
-    });
+    this.selectionService.getSelections()
+      .subscribe((rows: Selection[]) => {
+        if (rows.length > 0) {
+          this.selections = rows;
+        } else if (rows.length === 0 && this.currentSelectedSelection) {
+          this.router.navigate(['/selection/' + this.currentSelectedSelection.key + '/products/']);
+        }
+        this.loaderService.hide();
+      });
+  }
+
+  selectSelectionsChildren(selection: Selection) {
+    this.loaderService.show();
+    this.currentSelectedSelection = selection;
+    this.selectionService.parentFilters$.next(selection.key);
   }
 }

@@ -2,5 +2,9 @@
   <mat-card-header class="d-flex">
     <mat-card-title class="align-content-center">{{selection?.name}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image src="http://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
+  <app-image [publicId]="selection.images[0]" (click)="onSelectedSelection($event)" *ngIf="selection?.images && selection?.images?.length > 0; else defaultImage">
+  </app-image>
 </mat-card>
+<ng-template #defaultImage>
+  <img mat-card-image src="http://material.angular.io/assets/img/examples/shiba2.jpg" alt="kiba default" (click)="onSelectedSelection($event)">
+</ng-template>

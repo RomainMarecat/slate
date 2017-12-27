@@ -18,6 +18,7 @@ export class SelectionService {
   selections$: Observable < DocumentChangeAction[] > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
+  parentFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
@@ -37,19 +38,21 @@ export class SelectionService {
     this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
+    this.parentFilters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.selectionCollectionRef = this.afs.collection('selection');
     this.selections$ = Observable.combineLatest(
         this.keyFilters$,
         this.publishedFilter$,
         this.nameFilters$,
+        this.parentFilters$,
         this.limit$
       )
       .catch(err => {
         console.error(err);
         return Observable.of([]);
       })
-      .switchMap(([key, published, name, limit]) =>
+      .switchMap(([key, published, name, parent, limit]) =>
         this.afs.collection('selection', ref => {
           this.query = ref;
           if (published) {
@@ -57,6 +60,9 @@ export class SelectionService {
           }
           if (name) {
             this.query = this.query.where('name', '==', name);
+          }
+          if (parent) {
+            this.query = this.query.where('parent', '==', parent);
           }
           if (limit) {
             this.query = this.query.limit(limit);

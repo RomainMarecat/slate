@@ -9,12 +9,13 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { environment } from '../../environments/environment.hockey';
 import { NgStringPipesModule } from 'angular-pipes';
 import { SharedModule } from '../../core/shared/shared.module';
+import { CloudinaryModule } from '../../core/shared/cloudinary/cloudinary.module';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
-    CommonModule,
+    CloudinaryModule,
     MatIconModule,
     MatCardModule,
     MatButtonModule,

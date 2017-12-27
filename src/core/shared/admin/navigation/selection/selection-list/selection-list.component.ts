@@ -14,7 +14,7 @@ export class SelectionListComponent implements OnInit {
   readonly rowHeight = 50;
   columns: any[];
   selections: Selection[] = [];
-  selected: Selection[];
+  selected: Selection[] = [];
   isLoading: boolean;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
@@ -27,33 +27,7 @@ export class SelectionListComponent implements OnInit {
     private selectionService: SelectionService,
     private router: Router
   ) {
-    this.columns = [{
-        width: 50,
-        sortable: false,
-        canAutoResize: false,
-        draggable: false,
-        resizeable: false,
-        cellTemplate: this.checkboxCell,
-        headerTemplate: this.checkboxHeader,
-      },
-      {
-        prop: 'name',
-        name: 'name',
-        flexGrow: 1
-      }, {
-        prop: 'description',
-        name: 'description',
-        flexGrow: 1
-      }, {
-        prop: 'keywords',
-        name: 'keywords',
-        flexGrow: 1
-      }, {
-        prop: 'published',
-        name: 'published',
-        flexGrow: 1
-      },
-    ];
+
     this.selected = [];
     this.isLoading = true;
 
@@ -93,6 +67,34 @@ export class SelectionListComponent implements OnInit {
         this.selections = selections;
         this.isLoading = false;
       });
+
+    this.columns = [{
+        width: 50,
+        sortable: false,
+        canAutoResize: false,
+        draggable: false,
+        resizeable: false,
+        cellTemplate: this.checkboxCell,
+        headerTemplate: this.checkboxHeader,
+      },
+      {
+        prop: 'name',
+        name: 'name',
+        flexGrow: 1
+      }, {
+        prop: 'description',
+        name: 'description',
+        flexGrow: 1
+      }, {
+        prop: 'keywords',
+        name: 'keywords',
+        flexGrow: 1
+      }, {
+        prop: 'published',
+        name: 'published',
+        flexGrow: 1
+      },
+    ];
   }
 
   /**
