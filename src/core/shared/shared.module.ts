@@ -26,14 +26,7 @@ import {
   MatRadioModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { SlackModule } from './slack/slack.module';
-
-import { SidenavComponent } from './sidenav/sidenav.component';
-import { MenuComponent } from './menu/menu.component';
-import { FooterComponent } from './footer/footer.component';
-import { AlertComponent } from './alert/alert.component';
-import { LoaderComponent } from './loader/loader.component';
 import { RouterModule } from '@angular/router';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Environment } from './util/environment';
@@ -45,6 +38,11 @@ import { ImageCropperModule } from 'ng2-img-cropper';
 import { ModalModule } from 'ngx-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import {MenuModule} from './menu/menu.module';
+import {FooterModule} from './footer/footer.module';
+import {SidenavModule} from './sidenav/sidenav.module';
+import {LoaderModule} from './loader/loader.module';
+import {AlertModule} from './alert/alert.module';
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
 
@@ -58,16 +56,19 @@ export class ConfigService {
 
 @NgModule({
   imports: [
+    AlertModule,
     AngularFireAuthModule,
     Angulartics2Module,
     FileUploadModule,
     FlexLayoutModule,
+    FooterModule,
     FormsModule,
     CommonModule,
     CloudinaryModule,
     HammerModule,
     HttpClientModule,
     ImageCropperModule,
+    LoaderModule,
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -88,23 +89,25 @@ export class ConfigService {
     MatTooltipModule,
     MatRadioModule,
     MatStepperModule,
+    MenuModule,
     ModalModule.forRoot(),
     NgStringPipesModule,
     RouterModule,
     ReactiveFormsModule,
+    SidenavModule,
     TranslateModule
   ],
   exports: [
-    AlertComponent,
+    AlertModule,
     CloudinaryModule,
     FileUploadModule,
     FlexLayoutModule,
-    FooterComponent,
+    FooterModule,
     FormsModule,
     HammerModule,
     HttpClientModule,
     ImageCropperModule,
-    LoaderComponent,
+    LoaderModule,
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -125,25 +128,17 @@ export class ConfigService {
     MatTooltipModule,
     MatRadioModule,
     MatStepperModule,
+    MenuModule,
     ModalModule,
-    MenuComponent,
     NgStringPipesModule,
     ProductImageComponent,
-    SlackModule,
-    SidenavComponent,
     RouterModule,
     ReactiveFormsModule,
-  ],
-  entryComponents: [
-    AlertComponent
+    SlackModule,
+    SidenavModule
   ],
   declarations: [
-    AlertComponent,
-    FooterComponent,
-    MenuComponent,
-    LoaderComponent,
     ProductImageComponent,
-    SidenavComponent,
   ],
   providers: [
     // Should not have providers for reason explained here
