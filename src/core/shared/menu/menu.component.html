@@ -10,6 +10,8 @@
   </h1>
   <span class="menu-spacer"></span>
   <span class="login-wrapper" *ngIf="!(userService.getAuthState() | async)">
-     <button mat-raised-button color="accent" type="button" (click)="userService.loginGoogle()" [innerHtml]="'menu.connection.title'|translate"></button>
+     <button mat-raised-button color="accent" type="button" (click)="userService.loginGoogle()" [innerHtml]="'menu.connection.title'|translate">
+
+     </button>
   </span>
 </mat-toolbar>
