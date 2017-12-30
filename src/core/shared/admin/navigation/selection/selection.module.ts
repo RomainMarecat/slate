@@ -11,6 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SelectionService } from '../../shared/navigation/selection/selection.service';
 import { SelectionEditComponent } from './selection-edit/selection-edit.component';
+import {ProductService} from '../../shared/product/product.service';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { SelectionEditComponent } from './selection-edit/selection-edit.componen
     SelectionEditComponent
   ],
   providers: [
-    SelectionService
+    SelectionService,
+    ProductService
   ]
 })
 export class SelectionModule {}

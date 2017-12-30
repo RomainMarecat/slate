@@ -1,16 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SelectionService } from '../../../shared/navigation/selection/selection.service';
 import { Selection } from '../../../../../shared/selection/selection';
+import { SelectionFormType } from '../../../shared/navigation/selection/form-selection';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../../alert/alert.service';
 import { HockeyProduct } from '../../../../product/hockey-product';
 import { Media } from '../../../../media/media';
 import { StringService } from '../../../../util/string.service';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-
+import { map, switchMap, combineLatest, retry, timeout, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
+import { ProductService } from '../../../shared/product/product.service';
 
 @Component({
   selector: 'app-selection-edit',
@@ -20,13 +20,21 @@ import 'rxjs/add/operator/distinctUntilChanged';
 export class SelectionEditComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
-  products$: Observable < HockeyProduct[] > ;
+
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
 
-  selected: HockeyProduct[] = [];
-  isLoading: boolean;
+  columnsProduct: any;
+  associatedProducts: HockeyProduct[];
+
+  columnsParent: any;
+  parents: Selection[];
+
+  selectedProducts: HockeyProduct[] = [];
+  selectedParent: Selection[] = [];
+  isLoadingProducts: boolean;
+  isLoadingParents: boolean;
+
   form: FormGroup;
   selection: Selection;
   medias: Media[] = [];
@@ -34,10 +42,12 @@ export class SelectionEditComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
     private selectionService: SelectionService,
-    private alertService: AlertService) {}
+    private alertService: AlertService,
+    private router: Router,
+    private productService: ProductService) {}
 
   ngOnInit() {
-    this.columns = [{
+    this.columnsProduct = [{
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -58,7 +68,61 @@ export class SelectionEditComponent implements OnInit {
       name: 'category',
       flexGrow: 1
     }];
+    this.columnsParent = [{
+      width: 50,
+      sortable: false,
+      canAutoResize: false,
+      draggable: false,
+      resizeable: false,
+      cellTemplate: this.checkboxCell,
+      headerTemplate: this.checkboxHeader,
+    }, {
+      prop: 'name',
+      name: 'name',
+      flexGrow: 1
+    }, {
+      prop: 'translations.fr',
+      name: 'fr',
+      flexGrow: 1
+    }, {
+      prop: 'published',
+      name: 'published',
+      flexGrow: 1
+    }, {
+      prop: 'level',
+      name: 'level',
+      flexGrow: 1
+    }];
+    this.createForm();
     this.getSelection();
+    this.isLoadingProducts = true;
+    this.isLoadingParents = true;
+
+    this.selectionService.getSelections()
+      .subscribe((parents: Selection[]) => {
+        this.parents = parents;
+        this.parents.forEach((parent) => {
+          if (this.selection && parent.key === this.selection.parent) {
+            this.selectedParent.push(parent);
+          }
+        });
+        this.isLoadingParents = false;
+      });
+    this.productService.getProducts()
+      .subscribe((products: HockeyProduct[]) => {
+        this.associatedProducts = products;
+        if (this.selection && this.selection.products) {
+          this.associatedProducts.forEach((product: HockeyProduct) => {
+            this.selection.products.forEach((keyProduct: string) => {
+              if (product.key === keyProduct) {
+                this.selectedProducts.push(product);
+              }
+            });
+
+          });
+        }
+        this.isLoadingProducts = false;
+      });
   }
 
   observeUpdate() {
@@ -79,42 +143,19 @@ export class SelectionEditComponent implements OnInit {
       if (value.key) {
         const key = value.key;
         this.selectionService.getSelection(key)
-          .subscribe((selection: Selection[]) => {
-            selection.forEach((item: Selection) => {
-              this.selection = item;
-              this.createForm();
-              this.observeUpdate();
-            });
+          .subscribe((selection: Selection) => {
+            console.log(selection);
+            this.selection = selection;
+            this.createForm(selection);
+            this.observeUpdate();
           });
       }
     });
   }
 
-  createForm() {
-    this.form = new FormGroup({
-      'name': new FormControl(this.selection.name, [
-        Validators.required,
-      ]),
-      'slug': new FormControl(this.selection.slug, []),
-      'alias': new FormControl(this.selection.alias, []),
-      'description': new FormControl(
-        this.selection.description ? this.selection.description : '', []
-      ),
-      'keywords': new FormControl(
-        this.selection.keywords ? this.selection.keywords : '', []
-      ),
-      'level': new FormControl(
-        this.selection.level ? this.selection.level : 1, []),
-      'products': new FormControl(
-        this.selection.products ? this.selection.products : [], []
-      ),
-      'images': new FormControl(
-        this.selection.images ? this.selection.images : [], []
-      ),
-      'root': new FormControl(this.selection.root, []),
-      'published': new FormControl(this.selection.published, []),
-      'published_at': new FormControl(this.selection.published_at, [])
-    });
+  createForm(selection ?: Selection) {
+    const formType = new SelectionFormType(selection);
+    this.form = formType.getForm();
   }
 
   saveSelection() {
@@ -128,6 +169,7 @@ export class SelectionEditComponent implements OnInit {
       console.log(this.selection);
       this.selectionService.updateSelection(this.selection);
       this.alertService.toast(`La selection ${this.selection.name} est mise à jour`, 'info');
+      this.router.navigate(['/admin/navigation/selection']);
     }
   }
 
@@ -143,6 +185,14 @@ export class SelectionEditComponent implements OnInit {
 
   set name(name) {
     this.form.patchValue({ name: name });
+  }
+
+  get fr() {
+    return this.form.get('translations').get('fr');
+  }
+
+  set fr(fr) {
+    this.form.get('translations').patchValue({ fr: fr });
   }
 
   get description() {
@@ -217,20 +267,46 @@ export class SelectionEditComponent implements OnInit {
     this.form.patchValue({ published: published });
   }
 
+  get parent() {
+    return this.form.get('parent');
+  }
+
+  set parent(parent) {
+    this.form.patchValue({ parent: parent });
+  }
+
   /**
    * On select add new list in selection array
    * @param {any} selected
    */
-  onSelect({ selected }) {
-    this.selected.splice(0, this.selected.length);
-    this.selected.push(...selected);
+  onSelectParent({ selected }) {
+    this.selectedParent = [];
+    this.selectedParent.push(selected[0]);
+  }
+
+  /**
+   * Add a parent selection into form control
+   */
+  addParent() {
+    this.selectedParent.forEach((selection: Selection) => {
+      this.form.patchValue({ parent: selection.key });
+    });
+  }
+
+  /**
+   * On select add new list in selection array
+   * @param {any} selected
+   */
+  onSelectProduct({ selected }) {
+    this.selectedProducts.splice(0, this.selectedProducts.length);
+    this.selectedProducts.push(...selected.map((item: HockeyProduct) => item.key));
   }
 
   /**
    * set at published at now et activate published to true
    */
   addProducts() {
-    this.selected.forEach((product: HockeyProduct) => {
+    this.selectedProducts.forEach((product: HockeyProduct) => {
       if (product.published === true) {
         this.form.patchValue({ products: this.form.get('products').value.push(product.key) });
       }

@@ -50,6 +50,7 @@ export class SelectionListComponent implements OnInit {
 
   loadSelections(limit: number) {
     this.selectionService.publishedFilter$.next(true);
+    this.selectionService.parentFilter$.next(null);
     this.selectionService.getSelections()
       .subscribe((rows: Selection[]) => {
         if (rows.length > 0) {
@@ -64,6 +65,6 @@ export class SelectionListComponent implements OnInit {
   selectSelectionsChildren(selection: Selection) {
     this.loaderService.show();
     this.currentSelectedSelection = selection;
-    this.selectionService.parentFilters$.next(selection.key);
+    this.selectionService.parentFilter$.next(selection.key);
   }
 }
