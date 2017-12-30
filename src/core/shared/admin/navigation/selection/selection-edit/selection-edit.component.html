@@ -1,9 +1,16 @@
+<mat-toolbar color="warn">
+  <a mat-button color="primary" [routerLink]="['/admin']">Back office</a>
+  <a mat-button color="primary" [routerLink]="['/admin/product']">Products</a>
+  <a mat-button color="primary" [routerLink]="['/admin/navigation/selection']">Selection</a>
+  <a mat-button color="primary" [routerLink]="['/admin/navigation/category']">Category</a>
+  <a mat-button color="primary" [routerLink]="['/admin/cms']">Cms</a>
+</mat-toolbar>
 <!-- <mat-grid-list cols="1">
   <mat-grid-tile> -->
 <div class="container">
   <div class="row">
     <div class="col-12 pb5">
-      <form [formGroup]="form" (ngSubmit)="saveSelection()" class="form" *ngIf="form">
+      <form [formGroup]="form" (ngSubmit)="saveSelection()" class="form">
         <mat-card class="mat-card">
           <mat-card-header>
             <mat-card-title>
@@ -17,6 +24,13 @@
               <mat-hint align="end">{{ name.value.length }} {{ '/50'|translate }}</mat-hint>
               <mat-error *ngIf="name.invalid && name.value.length === 0" [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
               <mat-error *ngIf="name.invalid && name.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+            </mat-form-field>
+            <mat-form-field class="mat-form-field" formGroupName="translations">
+              <input matInput maxlength="50" [placeholder]="'translation fr'|translate" formControlName="fr">
+              <mat-hint align="start"><strong [innerHtml]="'translation fr'|translate"></strong></mat-hint>
+              <mat-hint align="end">{{ fr.value.length }} {{ '/50'|translate }}</mat-hint>
+              <mat-error *ngIf="fr.invalid && fr.value.length === 0" [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
+              <mat-error *ngIf="fr.invalid && fr.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
             </mat-form-field>
             <mat-form-field class="mat-form-field">
               <input matInput maxlength="500" [placeholder]="'description'|translate" formControlName="description">
@@ -41,18 +55,40 @@
             </mat-form-field>
             <div class="row">
               <div class="col-6">
-                <div class='selected-column' *ngIf="selected">
-                  <p>Associated Products <small>({{selected?.length}})</small></p>
+                <div class="selected-column pt3">
+                  <p>Parent selection<small *ngIf="selectedParent">({{selectedParent?.length}})</small></p>
                 </div>
               </div>
               <div class="col-6">
-                <button role="button" aria-label="Ajouter les produits selectionnes" mat-raised-button color="primary" (click)="addProducts()" *ngIf="selected && selected?.length > 0">
+                <button role="button" type="button" aria-label="Ajouter les produits selectionnes" mat-raised-button color="primary" (click)="addParent()" *ngIf="selectedParent && selectedParent?.length > 0">
+                  <mat-icon aria-label="Ajouter le parent">done</mat-icon>
+                  Ajouter
+                </button>
+              </div>
+              <div class="col-12">
+                <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="parents" [columns]="columnsParent" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoadingParents" [scrollbarV]="true" [selected]="selectedParent" [selectionType]="'checkbox'" (select)='onSelectParent($event)'></ngx-datatable>
+                <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+                  <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                </ng-template>
+                <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+                  <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                </ng-template>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="selected-column pt3" *ngIf="selectedProducts">
+                  <p>Associated Products <small>({{selectedProducts?.length}})</small></p>
+                </div>
+              </div>
+              <div class="col-6">
+                <button role="button" type="button" aria-label="Ajouter les produits selectionnes" mat-raised-button color="primary" (click)="addProducts()" *ngIf="selectedProducts && selectedProducts?.length > 0">
                   <mat-icon aria-label="Ajouter les produits selectionnes">done</mat-icon>
                   Ajouter
                 </button>
               </div>
               <div class="col-12">
-                <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="products$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'checkbox'" (select)="onSelect($event)"></ngx-datatable>
+                <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="associatedProducts" [columns]="columnsProduct" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoadingProducts" [scrollbarV]="true" [selected]="selectedProducts" [selectionType]="'checkbox'" (select)='onSelectProduct($event)'></ngx-datatable>
                 <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
                   <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
                 </ng-template>
@@ -78,7 +114,7 @@
           <mat-card-actions>
             <div class="d-flex justify-content-around">
               <button type="button" class="back" mat-raised-button color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/navigation/selection']"></button>
-              <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid || form.pristine" [innerHtml]="'Enregistrer'|translate"></button>
+              <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid" [innerHtml]="'Enregistrer'|translate"></button>
             </div>
           </mat-card-actions>
         </mat-card>

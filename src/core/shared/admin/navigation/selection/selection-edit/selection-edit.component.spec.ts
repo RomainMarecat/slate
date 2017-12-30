@@ -54,6 +54,7 @@ describe('SelectionEditComponent', () => {
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),
+          RouterTestingModule
         ],
         declarations: [SelectionEditComponent],
         providers: [

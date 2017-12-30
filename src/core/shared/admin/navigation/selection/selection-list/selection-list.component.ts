@@ -82,12 +82,36 @@ export class SelectionListComponent implements OnInit {
         name: 'name',
         flexGrow: 1
       }, {
+        prop: 'translations.fr',
+        name: 'translations.fr',
+        flexGrow: 1
+      }, {
         prop: 'description',
         name: 'description',
         flexGrow: 1
       }, {
         prop: 'keywords',
         name: 'keywords',
+        flexGrow: 1
+      }, {
+        prop: 'level',
+        name: 'level',
+        flexGrow: 1
+      }, {
+        prop: 'parent',
+        name: 'parent',
+        flexGrow: 1
+      }, {
+        prop: 'images',
+        name: 'images',
+        flexGrow: 1
+      }, {
+        prop: 'products',
+        name: 'products',
+        flexGrow: 1
+      }, {
+        prop: 'published_at',
+        name: 'published_at',
         flexGrow: 1
       }, {
         prop: 'published',
@@ -108,6 +132,7 @@ export class SelectionListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
+      console.log(event);
       this.router.navigate(['/admin/navigation/selection/edit/', event.row.key]);
     }
   }

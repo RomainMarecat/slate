@@ -14,6 +14,7 @@ import 'rxjs/add/operator/catch';
 export class MockSelectionService {
   selectionCollectionRef: AngularFirestoreCollection < Selection > ;
   selections$: Observable < DocumentChangeAction[] > ;
+  parentFilter$: BehaviorSubject < string | null > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
@@ -30,6 +31,7 @@ export class MockSelectionService {
   constructor() {
     this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(true);
+    this.parentFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);

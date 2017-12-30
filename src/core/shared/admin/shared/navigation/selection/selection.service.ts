@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Selection } from './../../../../selection/selection';
 import { AlertService } from '../../../../alert/alert.service';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
+import { DocumentChangeAction, Reference, Action } from 'angularfire2/firestore/interfaces';
 import * as firebase from 'firebase';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
+import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class SelectionService {
-  SelectionCollectionRef: AngularFirestoreCollection < Selection > ;
+  selectionCollectionRef: AngularFirestoreCollection < Selection > ;
+  selectionDocumentRef: AngularFirestoreDocument < Selection > ;
   selections$: Observable < DocumentChangeAction[] > ;
+  selection$: Observable < any > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
+  parentFilter$: BehaviorSubject < string | null > ;
   nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
@@ -35,12 +34,14 @@ export class SelectionService {
   constructor(private afs: AngularFirestore, private alertService: AlertService) {
     this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(null);
+    this.parentFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
-    this.SelectionCollectionRef = this.afs.collection('selection');
+    this.selectionCollectionRef = this.afs.collection('selection');
     this.selections$ = Observable.combineLatest(
         this.keyFilters$,
         this.publishedFilter$,
+        this.parentFilter$,
         this.nameFilters$,
         this.limit$
       )
@@ -48,22 +49,25 @@ export class SelectionService {
         console.error(err);
         return Observable.of([]);
       })
-      .switchMap(([key, published, name, limit]) =>
-        this.afs.collection('selection', ref => {
-          this.query = ref;
-          if (published) {
-            this.query = this.query.where('published', '==', published);
-          }
-          if (name) {
-            this.query = this.query.where('name', '==', name);
-          }
-          if (limit) {
-            this.query = this.query.limit(limit);
-          }
-          return this.query;
-        })
-        .snapshotChanges()
-      );
+      .switchMap(([key, published, parent, name, limit]) => {
+        return this.afs.collection('selection', ref => {
+            this.query = ref;
+            if (published) {
+              this.query = this.query.where('published', '==', published);
+            }
+            if (parent) {
+              this.query = this.query.where('parent', '==', parent);
+            }
+            if (name) {
+              this.query = this.query.where('name', '==', name);
+            }
+            if (limit) {
+              this.query = this.query.limit(limit);
+            }
+            return this.query;
+          })
+          .snapshotChanges();
+      });
   }
 
   /**
@@ -80,14 +84,27 @@ export class SelectionService {
     );
   }
 
+  getDocumentSelection(path: string): Observable < Selection > {
+    return this.selection$ = this.selectionCollectionRef
+      .doc(path)
+      .snapshotChanges()
+      .map((action: Action < firebase.firestore.DocumentSnapshot > ) => {
+        const selection = action.payload.data() as Selection;
+        selection.key = action.payload.id;
+        return selection as Selection;
+      });
+  }
+
   /**
    *
    * @param {string} key
    * @returns {Observable<Selection[]>}
    */
-  getSelection(key: null | string): Observable < Selection[] > {
-    this.keyFilters$.next(key);
-    return this.getSelections().take(1);
+  getSelection(key: null | string): Observable < Selection > {
+    if (key) {
+      return this.getDocumentSelection(key);
+    }
+    return Observable.of(null);
   }
 
   /**
@@ -95,7 +112,7 @@ export class SelectionService {
    * @param {Selection} Selection
    */
   updateSelection(selection: Selection) {
-    this.SelectionCollectionRef.doc(selection.key).update({ ...selection });
+    this.selectionCollectionRef.doc(selection.key).update({ ...selection });
   }
 
   /**
@@ -104,7 +121,7 @@ export class SelectionService {
    */
   createSelection(selection: Selection) {
     delete selection.key;
-    this.SelectionCollectionRef.add({ ...selection });
+    this.selectionCollectionRef.add({ ...selection });
   }
 
   /**
@@ -112,6 +129,6 @@ export class SelectionService {
    * @param {Selection} Selection
    */
   deleteSelection(selection: Selection) {
-    this.SelectionCollectionRef.doc(selection.key).delete();
+    this.selectionCollectionRef.doc(selection.key).delete();
   }
 }

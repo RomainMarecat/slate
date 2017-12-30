@@ -6,7 +6,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../../../../../../environments/environment.monpullmoche';
 import { HttpClientModule } from '@angular/common/http';
-import {MockSelectionService} from './mock-selection.service';
+import { MockSelectionService } from './mock-selection.service';
 
 describe('SelectionService', () => {
   beforeEach(() => {
