@@ -1,5 +1,11 @@
-<mat-grid-list [cols]="cols | async" gutterSize="16px">
-  <mat-grid-tile *ngFor="let selection of selections">
-    <app-selection-item [selection]="selection" (selectedSelection)="selectSelectionsChildren($event)"></app-selection-item>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <mat-grid-list [cols]="cols | async" gutterSize="16px">
+        <mat-grid-tile *ngFor="let selection of selections">
+          <app-selection-item [selection]="selection" (selectedSelection)="selectSelectionsChildren($event)"></app-selection-item>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>
