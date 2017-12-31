@@ -1,5 +1,55 @@
-<mat-grid-list [cols]="cols | async" gutterSize="16px">
-  <mat-grid-tile *ngFor="let selection of selections">
-    <app-selection-item [selection]="selection" (selectedSelection)="selectSelectionsChildren($event)"></app-selection-item>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="main-wrapper">
+  <div class="main-inner-wrapper" [ngStyle]="{ 'height': innerHeight}">
+    <div [ngClass]="[selection?.slug, active[selection?.slug]]" *ngFor="let selection of selections">
+      <div class="dropdown-wrapper" [ngClass]="active[selection?.slug]" *ngIf="selection?.slug === 'hockey-player'">
+        <div class="dropdown-inner-wrapper">
+          <div class="content text-white">
+            <ul>
+              <li>Crosse</li>
+              <li>Boulier</li>
+              <li>Mitaine</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="nav-wrapper" [ngClass]="active[selection?.slug]">
+        <div class="nav-inner-wrapper">
+          <div class="content title text-white">
+            <a (click)="onActive(selection)">{{ selection?.translations?.fr }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown-wrapper" [ngClass]="active[selection?.slug]" *ngIf="selection?.slug === 'hockey-goalie'">
+        <div class="dropdown-inner-wrapper">
+          <div class="content text-white">
+            <ul>
+              <li>Crosse</li>
+              <li>Boulier</li>
+              <li>Mitaine</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #emptyBlock>
+</ng-template>
+<ng-template #dropdownTemplate>
+  <div class="dropdown-wrapper" [ngClass]="active[selection?.slug]" *ngIf="selection?.slug === 'hockey-goalie'">
+    <div class="dropdown-inner-wrapper">
+      <div class="content text-white">
+        <ul>
+          <li>Crosse</li>
+          <li>Boulier</li>
+          <li>Mitaine</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!--           <mat-grid-list [cols]="cols | async">
+            <mat-grid-tile>
+              <app-selection-item [selection]="selection" (selectedSelection)="selectSelectionsChildren($event)"></app-selection-item>
+            </mat-grid-tile>
+          </mat-grid-list> -->

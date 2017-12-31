@@ -14,14 +14,7 @@ export class SelectionItemComponent implements OnInit {
 
   ngOnInit() {}
 
-  /*selectionChildren(selection: Selection) {
-    console.log(selection);
-    this.selectionService.parentFilters$.next(selection.key);
-    this.selectionService.getSelections();
-  }
-*/
   onSelectedSelection(event: MouseEvent) {
     this.selectedSelection.emit(this.selection);
   }
-
 }

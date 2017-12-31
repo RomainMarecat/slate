@@ -16,8 +16,8 @@ export class SelectionService {
   selection$: Observable < any > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   parentFilter$: BehaviorSubject < string | null > ;
+  levelFilter$: BehaviorSubject < number | null > ;
   nameFilters$: BehaviorSubject < string | null > ;
-  keyFilters$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
   startAfter$: BehaviorSubject < string | null > ;
@@ -32,14 +32,14 @@ export class SelectionService {
    * @param {AlertService} alertService
    */
   constructor(private afs: AngularFirestore, private alertService: AlertService) {
-    this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(null);
     this.parentFilter$ = new BehaviorSubject(null);
+    this.levelFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.selectionCollectionRef = this.afs.collection('selection');
     this.selections$ = Observable.combineLatest(
-        this.keyFilters$,
+        this.levelFilter$,
         this.publishedFilter$,
         this.parentFilter$,
         this.nameFilters$,
@@ -49,9 +49,12 @@ export class SelectionService {
         console.error(err);
         return Observable.of([]);
       })
-      .switchMap(([key, published, parent, name, limit]) => {
+      .switchMap(([level, published, parent, name, limit]) => {
         return this.afs.collection('selection', ref => {
             this.query = ref;
+            if (level) {
+              this.query = this.query.where('level', '==', level);
+            }
             if (published) {
               this.query = this.query.where('published', '==', published);
             }
