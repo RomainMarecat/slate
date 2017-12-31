@@ -5,5 +5,7 @@ do
 	cp src/sitemap.xml dist/sitemap.xml
 	cp src/robots.txt dist/robots.txt
 	npm run precache
+	firebase use $site
+	firebase deploy
 done
 exit 0

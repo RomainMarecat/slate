@@ -17,4 +17,5 @@ export class Selection {
   published ?: boolean;
   products ?: string[];
   images ?: string[];
+  children ?: Selection[];
 }

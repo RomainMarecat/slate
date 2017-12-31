@@ -1,13 +1,14 @@
 <div class="main-wrapper">
   <div class="main-inner-wrapper" [ngStyle]="{ 'height': innerHeight}">
-    <div [ngClass]="[selection?.slug, active[selection?.slug]]" *ngFor="let selection of selections">
+    <div [ngClass]="[selection?.slug, active[selection?.slug]]" *ngFor="let selection of rootSelections">
       <div class="dropdown-wrapper" [ngClass]="active[selection?.slug]" *ngIf="selection?.slug === 'hockey-player'">
         <div class="dropdown-inner-wrapper">
           <div class="content text-white">
             <ul>
-              <li>Crosse</li>
-              <li>Boulier</li>
-              <li>Mitaine</li>
+              <li *ngFor="let child of selection.children">
+                <a [innerHtml]="child?.translations?.fr">
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -23,9 +24,7 @@
         <div class="dropdown-inner-wrapper">
           <div class="content text-white">
             <ul>
-              <li>Crosse</li>
-              <li>Boulier</li>
-              <li>Mitaine</li>
+              <li *ngFor="let child of selection.children" [innerHtml]="child?.translations?.fr"></li>
             </ul>
           </div>
         </div>
@@ -40,16 +39,9 @@
     <div class="dropdown-inner-wrapper">
       <div class="content text-white">
         <ul>
-          <li>Crosse</li>
-          <li>Boulier</li>
-          <li>Mitaine</li>
+          <li *ngFor="let child of selection.children" [innerHtml]="child?.translations?.fr"></li>
         </ul>
       </div>
     </div>
   </div>
 </ng-template>
-<!--           <mat-grid-list [cols]="cols | async">
-            <mat-grid-tile>
-              <app-selection-item [selection]="selection" (selectedSelection)="selectSelectionsChildren($event)"></app-selection-item>
-            </mat-grid-tile>
-          </mat-grid-list> -->
