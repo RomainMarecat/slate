@@ -1,3 +1,5 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
+
 .main-wrapper {
   height: 100%;
   background: url('/assets/images/hockey/ice-hockey-home.jpg') no-repeat top center fixed;
@@ -21,28 +23,37 @@
         display: inline-block;
         margin-top: 10%;
 
-        &.active {
-          margin-top: 0;
-          display: block;
-          padding-top: 10%;
-        }
-
         .nav-inner-wrapper {
           display: inline-block;
           margin-left: 10%;
         }
+
         &:after {
           content: " ";
           top: 0;
-          right: 30px;
+          right: 50px;
           position: absolute;
           width: 30px;
           height: 100%;
+          z-index: 50;
+
           background-color: #af300b;
           -webkit-transform: skew(-20deg);
           -moz-transform: skew(-20deg);
           -o-transform: skew(-20deg);
           transform: skew(-20deg);
+          @include media-breakpoint-up(xs) {
+            height: 0;
+          }
+          @include media-breakpoint-up(sm) {
+            height: 100%;
+          }
+        }
+
+        &.active {
+          margin-top: 0;
+          display: block;
+          padding-top: 10%;
         }
       }
 
@@ -93,15 +104,23 @@
         &:after {
           content: " ";
           bottom: 0;
-          left: 30px;
+          left: 50px;
           position: absolute;
           width: 30px;
           height: 100%;
+          z-index: 50;
+
           background-color: #131629;
           -webkit-transform: skew(-20deg);
           -moz-transform: skew(-20deg);
           -o-transform: skew(-20deg);
           transform: skew(-20deg);
+          @include media-breakpoint-up(xs) {
+            height: 0;
+          }
+          @include media-breakpoint-up(sm) {
+            height: 100%;
+          }
         }
       }
       .dropdown-wrapper {
@@ -110,6 +129,14 @@
         width: 100%;
         background: #af300b;
         display: none;
+
+        @include media-breakpoint-up(xs) {
+          padding-left: 10px;
+        }
+
+        @include media-breakpoint-up(sm) {
+          padding-left: auto;
+        }
 
         &.active {
           display: flex;
@@ -124,11 +151,34 @@
     }
 
     .nav-wrapper {
-
+      overflow: hidden;
       .nav-inner-wrapper {
         .content {
           font-size: 5em;
           padding: 30px auto;
+          position: relative;
+          z-index: 100;
+
+          @include media-breakpoint-up(xs) {
+            font-size: 2em;
+            padding: 30px auto;
+          }
+          @include media-breakpoint-up(sm) {
+            font-size: 3em;
+            padding: 30px auto;
+          }
+          @include media-breakpoint-up(md) {
+            font-size: 4em;
+            padding: 30px auto;
+          }
+          @include media-breakpoint-up(lg) {
+            font-size: 5em;
+            padding: 30px auto;
+          }
+          @include media-breakpoint-up(xl) {
+            font-size: 5em;
+            padding: 30px auto;
+          }
         }
       }
     }

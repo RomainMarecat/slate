@@ -4,7 +4,6 @@ import { SelectionService } from '../../../core/shared/selection/selection.servi
 import { LoaderService } from '../../../core/shared/loader/loader.service';
 import { Selection } from '../../../core/shared/selection/selection';
 import { Observable } from 'rxjs/Observable';
-import { ObservableMedia } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-selection-list',
@@ -13,40 +12,24 @@ import { ObservableMedia } from '@angular/flex-layout';
 })
 export class SelectionListComponent implements OnInit {
 
-  // Products collection of Product interface
-  selections: Array < Selection > = [];
+  // Root selections
+  rootSelections: Selection[] = [];
+  // Selections collections
+  selections: Selection[] = [];
   rowHeight: number;
   headerHeight: number;
   pageLimit: number;
   currentSelectedSelection: Selection;
   innerHeight: string;
   active = { 'hockey-player': '', 'hockey-goalie': '' };
-  public cols: Observable < number > ;
 
   constructor(private selectionService: SelectionService,
     private loaderService: LoaderService,
-    private observableMedia: ObservableMedia,
     private router: Router) {
     this.innerHeight = (document.documentElement.clientHeight - 65).toString() + 'px';
   }
 
   ngOnInit() {
-    const grid = new Map([
-      ['xs', 1],
-      ['sm', 2],
-      ['md', 2],
-      ['lg', 2],
-      ['xl', 2]
-    ]);
-    let start: number;
-    grid.forEach((cols, mqAlias) => {
-      if (this.observableMedia.isActive(mqAlias)) {
-        start = cols;
-      }
-    });
-    this.cols = this.observableMedia.asObservable()
-      .map(change => grid.get(change.mqAlias))
-      .startWith(start);
     this.loaderService.show();
     this.loadSelections(3);
   }
@@ -54,11 +37,15 @@ export class SelectionListComponent implements OnInit {
   loadSelections(limit: number) {
     this.selectionService.publishedFilter$.next(true);
     this.selectionService.parentFilter$.next(null);
-    this.selectionService.levelFilter$.next(1);
     this.selectionService.getSelections()
       .subscribe((rows: Selection[]) => {
         if (rows.length > 0) {
-          this.selections = rows;
+
+          this.rootSelections = this.selections = rows.filter((row: Selection) => row.level === 1);
+          this.selections = this.selections.map((root: Selection) => {
+            root.children = rows.filter((row: Selection) => row.level > 1 && row.parent === root.key);
+            return root;
+          });
         } else if (rows.length === 0 && this.currentSelectedSelection) {
           this.router.navigate(['/selection/' + this.currentSelectedSelection.key + '/products/']);
         }
@@ -90,8 +77,5 @@ export class SelectionListComponent implements OnInit {
         'hockey-player': ''
       };
     }
-
-    /*    this.selectSelectionsChildren(selection);
-     */
   }
 }
