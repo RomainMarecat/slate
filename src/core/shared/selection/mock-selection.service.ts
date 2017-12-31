@@ -17,6 +17,7 @@ export class MockSelectionService {
   selections$: Observable < DocumentChangeAction[] > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   parentFilter$: BehaviorSubject < string | null > ;
+  levelFilter$: BehaviorSubject < number | null > ;
   nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
   colorFilter$: BehaviorSubject < string | null > ;
@@ -33,6 +34,7 @@ export class MockSelectionService {
     this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(true);
     this.parentFilter$ = new BehaviorSubject(null);
+    this.levelFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);

@@ -1,1 +1,149 @@
+.main-wrapper {
+  height: 100%;
+  background: url('/assets/images/hockey/ice-hockey-home.jpg') no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
+  .main-inner-wrapper {
+    .hockey-goalie {
+      height: 100%;
+      position: relative;
+      display: inline-block;
+      width: 45%;
+      overflow-y: hidden;
+
+      .nav-wrapper {
+        position: relative;
+        background-color: #131629;
+        width: 100%;
+        display: inline-block;
+        margin-top: 10%;
+
+        &.active {
+          margin-top: 0;
+          display: block;
+          padding-top: 10%;
+        }
+
+        .nav-inner-wrapper {
+          display: inline-block;
+          margin-left: 10%;
+        }
+        &:after {
+          content: " ";
+          top: 0;
+          right: 30px;
+          position: absolute;
+          width: 30px;
+          height: 100%;
+          background-color: #af300b;
+          -webkit-transform: skew(-20deg);
+          -moz-transform: skew(-20deg);
+          -o-transform: skew(-20deg);
+          transform: skew(-20deg);
+        }
+      }
+
+      .dropdown-wrapper {
+        display: none;
+        background-color: #131629;
+        padding-left: 10%;
+        height: 100%;
+
+        &.active {
+          display: block;
+        }
+
+        .dropdown-inner-wrapper {}
+      }
+    }
+    .hockey-player {
+      height: 100%;
+      position: relative;
+      width: 45%;
+      float: right;
+      display: flex;
+      flex-direction: column-reverse;
+      overflow-y: hidden;
+      &.active {
+        flex-direction: column;
+      }
+
+      .nav-wrapper {
+        position: relative;
+        clear: both;
+        background-color: #af300b;
+        width: 100%;
+        display: inline-block;
+        margin-bottom: 10%;
+
+        &.active {
+          margin-bottom: 0;
+          display: block;
+          padding-bottom: 10%;
+        }
+
+        .nav-inner-wrapper {
+          float: right;
+          margin-right: 10%;
+        }
+
+        &:after {
+          content: " ";
+          bottom: 0;
+          left: 30px;
+          position: absolute;
+          width: 30px;
+          height: 100%;
+          background-color: #131629;
+          -webkit-transform: skew(-20deg);
+          -moz-transform: skew(-20deg);
+          -o-transform: skew(-20deg);
+          transform: skew(-20deg);
+        }
+      }
+      .dropdown-wrapper {
+        padding-right: 10%;
+        height: 80%;
+        width: 100%;
+        background: #af300b;
+        display: none;
+
+        &.active {
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        .dropdown-inner-wrapper {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+      }
+    }
+
+    .nav-wrapper {
+
+      .nav-inner-wrapper {
+        .content {
+          font-size: 5em;
+          padding: 30px auto;
+        }
+      }
+    }
+
+    .dropdown-wrapper {
+      .dropdown-inner-wrapper {
+
+        ul {
+          padding: 0;
+          li {
+            line-height: 2.25rem;
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+  }
+}

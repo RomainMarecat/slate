@@ -20,6 +20,8 @@ import { User } from '../user/user';
 export class SidenavComponent implements OnInit, OnDestroy {
   authorized: string[] = [];
   isAuthorized = false;
+  // @todo add button with cms
+  cmsDetail: any;
 
   @ViewChild('sidenav') sidenav: MatDrawer;
 

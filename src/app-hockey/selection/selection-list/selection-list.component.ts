@@ -19,13 +19,16 @@ export class SelectionListComponent implements OnInit {
   headerHeight: number;
   pageLimit: number;
   currentSelectedSelection: Selection;
-
+  innerHeight: string;
+  active = { 'hockey-player': '', 'hockey-goalie': '' };
   public cols: Observable < number > ;
 
   constructor(private selectionService: SelectionService,
     private loaderService: LoaderService,
     private observableMedia: ObservableMedia,
-    private router: Router) {}
+    private router: Router) {
+    this.innerHeight = (document.documentElement.clientHeight - 65).toString() + 'px';
+  }
 
   ngOnInit() {
     const grid = new Map([
@@ -51,6 +54,7 @@ export class SelectionListComponent implements OnInit {
   loadSelections(limit: number) {
     this.selectionService.publishedFilter$.next(true);
     this.selectionService.parentFilter$.next(null);
+    this.selectionService.levelFilter$.next(1);
     this.selectionService.getSelections()
       .subscribe((rows: Selection[]) => {
         if (rows.length > 0) {
@@ -65,6 +69,29 @@ export class SelectionListComponent implements OnInit {
   selectSelectionsChildren(selection: Selection) {
     this.loaderService.show();
     this.currentSelectedSelection = selection;
+    this.selectionService.levelFilter$.next(null);
+    this.selectionService.publishedFilter$.next(true);
     this.selectionService.parentFilter$.next(selection.key);
+  }
+
+  onActive(selection: Selection) {
+    // Player
+    if (selection.key === 'TGO8sKZeIUnsuVMXAdJP') {
+      this.active = {
+        'hockey-player': this.active[selection.slug] === '' ?
+          'active' : '',
+        'hockey-goalie': '',
+      };
+      // Goalie
+    } else {
+      this.active = {
+        'hockey-goalie': this.active[selection.slug] === '' ?
+          'active' : '',
+        'hockey-player': ''
+      };
+    }
+
+    /*    this.selectSelectionsChildren(selection);
+     */
   }
 }
