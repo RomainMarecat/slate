@@ -1,4 +1,4 @@
 <div class="info-snackbar" angulartics2On="mouseover" angularticsAction="HoveredOverSnackbarMessage" [angularticsCategory]="'snackbar.message'">
   <mat-icon>error_outline</mat-icon>
-  <span *ngIf="message">{{ message }}</span>
+  <span *ngIf="message" [innerHtml]="message"></span>
 </div>

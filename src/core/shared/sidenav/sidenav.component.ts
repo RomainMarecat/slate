@@ -55,8 +55,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
   getAuthorized() {
     this.userService.getAuthState()
       .subscribe((user: User) => {
-        this.isAuthorized = this.authorized.includes(user.uid) ||
-          this.authorized.includes(user.displayName);
+        this.isAuthorized = (user && user.uid && this.authorized.includes(user.uid)) ||
+          (user && user.displayName && this.authorized.includes(user.displayName));
       });
   }
 
