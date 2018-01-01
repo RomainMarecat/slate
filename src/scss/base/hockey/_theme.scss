@@ -9,6 +9,10 @@ body {
     font-family: 'Fugaz One', cursive;
     text-transform: uppercase;
   }
+
+  .mat-toolbar {
+    background-color: #131629 !important;
+  }
 }
 
 // Plus imports for other components in your app.
@@ -26,6 +30,7 @@ $color2: #e6aa68; // light yellow
 $color3: #7fb069; // Vert
 $color4: #223a00; //Noir
 $color5: #ca3c25; //Rouge
+$color6: #131629; // Bleu
 $product-primary: mat-palette($mat-indigo,
 900);
 $product-accent: mat-palette($mat-red,

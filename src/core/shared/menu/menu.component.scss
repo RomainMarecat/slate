@@ -1,7 +1,13 @@
 @import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
 .mat-toolbar {
-  background-color: #131629;
+  @include media-breakpoint-up(xs) {
+    padding: 0;
+  }
+  @include media-breakpoint-up(sm) {
+    padding: 0 16px;
+  }
 }
+
 
 .mat-button {
   @media (max-width: 600px) {
@@ -22,6 +28,7 @@ a {
   line-height: 64px;
   color: white;
   text-decoration: none;
+  padding: 0;
   img {
     width: 100%;
     height: 60px;
