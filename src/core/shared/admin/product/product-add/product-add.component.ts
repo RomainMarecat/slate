@@ -72,7 +72,6 @@ export class ProductAddComponent implements OnInit {
   }
 
   onImageChange(media: Media) {
-    console.log('image changed');
     this.medias.push(media);
     this.form.patchValue({ images: this.medias.map((image: Media) => image.key) });
   }

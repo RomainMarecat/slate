@@ -31,7 +31,6 @@ export class CmsAddComponent implements OnInit {
   }
 
   saveCms() {
-    console.log(this.form);
     if (this.form.valid === true) {
       this.cms = this.form.value;
       this.cmsService.createCms(this.cms);

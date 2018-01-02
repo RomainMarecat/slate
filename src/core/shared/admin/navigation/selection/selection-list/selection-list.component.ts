@@ -132,7 +132,6 @@ export class SelectionListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      console.log(event);
       this.router.navigate(['/admin/navigation/selection/edit/', event.row.key]);
     }
   }

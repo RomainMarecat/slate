@@ -20,7 +20,7 @@
       "title": "Se connecter"
     },
     "title1": "",
-    "title2": "Hockey"
+    "title2": "Slap.Hockey"
   },
   "date": {
     "now": "maintenant",
@@ -33,7 +33,7 @@
     "card": {
       "list-item": {
         "add": {
-          "title": "Ajouter un pull moche"
+          "title": "Ajouter un produit"
         },
         "admin": {
           "title": "Back Office"
@@ -81,7 +81,7 @@
   "product-detail": {
     "meta": {
       "og:site_name": "Hockey",
-      "description": "{{value}} - Mon pull moche"
+      "description": "{{value}} - Hockey"
     }
   },
   "product-list": {

@@ -9,12 +9,12 @@ import { SelectionService } from './../../../core/shared/selection/selection.ser
 })
 export class SelectionItemComponent implements OnInit {
   @Input('selection') selection: Selection;
-  @Output('selectedSelection') selectedSelection: EventEmitter < Selection > = new EventEmitter < Selection > ();
+  @Output('selected') selected: EventEmitter < Selection > = new EventEmitter < Selection > ();
   constructor(private selectionService: SelectionService) {}
 
   ngOnInit() {}
 
-  onSelectedSelection(event: MouseEvent) {
-    this.selectedSelection.emit(this.selection);
+  onSelected(event: MouseEvent) {
+    this.selected.emit(this.selection);
   }
 }

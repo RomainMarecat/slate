@@ -108,7 +108,6 @@ export class CategoryAddComponent implements OnInit {
   }
 
   saveCategory() {
-    console.log(this.form);
     this.form.patchValue({ published: this._publication, root: this._rootModel });
     if (this.form.valid === true) {
       this.category = this.form.value;
@@ -150,9 +149,7 @@ export class CategoryAddComponent implements OnInit {
     this.selected.push(...selected);
   }
 
-  onActivate(event) {
-    console.log('Activate Event', event);
-  }
+  onActivate(event) {}
 
   /**
    * set at published at now et activate published to true

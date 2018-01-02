@@ -47,7 +47,7 @@
               <mat-error *ngIf="keywords.invalid && keywords.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
             </mat-form-field>
             <mat-form-field class="mat-form-field">
-              <input matInput type="number" maxlength="50" [placeholder]="'level'|translate" formControlName="level">
+              <input matInput type="number" maxlength="1" [placeholder]="'level'|translate" formControlName="level">
               <mat-hint align="start"><strong [innerHtml]="'level'|translate"></strong></mat-hint>
               <mat-hint align="end">{{ level.value.length }} {{ '/50'|translate }}</mat-hint>
               <mat-error *ngIf="level.invalid && level.value.length === 0" [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
@@ -56,7 +56,7 @@
             <div class="row">
               <div class="col-6">
                 <div class="selected-column pt3">
-                  <p>Parent selection<small *ngIf="selectedParent">({{selectedParent?.length}})</small></p>
+                  <p>Parent selection<small *ngIf="selectedParent">({{selectedParent?.length}})</small> {{ selectedParent[0]?.translations?.fr }}</p>
                 </div>
               </div>
               <div class="col-6">

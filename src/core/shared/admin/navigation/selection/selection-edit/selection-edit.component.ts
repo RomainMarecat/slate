@@ -139,12 +139,10 @@ export class SelectionEditComponent implements OnInit {
 
   getSelection() {
     this.activatedRoute.params.subscribe((value: { key: string }) => {
-      console.log(value);
       if (value.key) {
         const key = value.key;
         this.selectionService.getSelection(key)
           .subscribe((selection: Selection) => {
-            console.log(selection);
             this.selection = selection;
             this.createForm(selection);
             this.observeUpdate();
@@ -159,14 +157,12 @@ export class SelectionEditComponent implements OnInit {
   }
 
   saveSelection() {
-    console.log(this.form);
     this.form.patchValue({ published: this._publication });
     if (this.form.valid === true) {
       this.selection = { ...this.selection, ...this.form.value };
       if (this.selection.published === true) {
         this.selection.published_at = new Date();
       }
-      console.log(this.selection);
       this.selectionService.updateSelection(this.selection);
       this.alertService.toast(`La selection ${this.selection.name} est mise à jour`, 'info');
       this.router.navigate(['/admin/navigation/selection']);
@@ -174,7 +170,6 @@ export class SelectionEditComponent implements OnInit {
   }
 
   onImageChange(media: Media) {
-    console.log('image changed');
     this.medias.push(media);
     this.form.patchValue({ images: this.medias.map((image: Media) => image.key) });
   }
@@ -282,12 +277,6 @@ export class SelectionEditComponent implements OnInit {
   onSelectParent({ selected }) {
     this.selectedParent = [];
     this.selectedParent.push(selected[0]);
-  }
-
-  /**
-   * Add a parent selection into form control
-   */
-  addParent() {
     this.selectedParent.forEach((selection: Selection) => {
       this.form.patchValue({ parent: selection.key });
     });
