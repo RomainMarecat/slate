@@ -4,12 +4,11 @@
       <div class="dropdown-wrapper" [ngClass]="active[selection?.slug]" *ngIf="selection?.slug === 'hockey-player'">
         <div class="dropdown-inner-wrapper">
           <div class="content text-white">
-            <ul>
-              <li *ngFor="let child of selection.children">
-                <a [innerHtml]="child?.translations?.fr">
-                </a>
-              </li>
-            </ul>
+            <!-- Missing selection item component to iterate on name and emit new one selected -->
+            <div class="item-wrapper">
+              <app-selection-item (selected)="expandChildren($event)" [selection]="child" *ngFor="let child of selection.children">
+              </app-selection-item>
+            </div>
           </div>
         </div>
       </div>
@@ -23,9 +22,10 @@
       <div class="dropdown-wrapper" [ngClass]="active[selection?.slug]" *ngIf="selection?.slug === 'hockey-goalie'">
         <div class="dropdown-inner-wrapper">
           <div class="content text-white">
-            <ul>
-              <li *ngFor="let child of selection.children" [innerHtml]="child?.translations?.fr"></li>
-            </ul>
+            <div class="item-wrapper">
+              <app-selection-item (selected)="expandChildren($event)" [selection]="child" *ngFor="let child of selection.children">
+              </app-selection-item>
+            </div>
           </div>
         </div>
       </div>
@@ -38,9 +38,10 @@
   <div class="dropdown-wrapper" [ngClass]="active[selection?.slug]" *ngIf="selection?.slug === 'hockey-goalie'">
     <div class="dropdown-inner-wrapper">
       <div class="content text-white">
-        <ul>
-          <li *ngFor="let child of selection.children" [innerHtml]="child?.translations?.fr"></li>
-        </ul>
+        <div class="item-wrapper">
+          <app-selection-item (selected)="expandChildren($event)" [selection]="child" *ngFor="let child of selection.children">
+          </app-selection-item>
+        </div>
       </div>
     </div>
   </div>

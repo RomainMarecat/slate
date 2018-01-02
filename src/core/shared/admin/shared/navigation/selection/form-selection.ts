@@ -4,7 +4,7 @@ import { Selection } from './../../../../selection/selection';
 export class SelectionFormType {
   private form: FormGroup;
 
-  constructor(selection ?: Selection) {
+  constructor(selection ? : Selection) {
     this.createForm(selection);
   }
 
@@ -31,7 +31,7 @@ export class SelectionFormType {
         selection && selection.parent ? selection.parent : null, []
       ),
       'level': new FormControl(
-        selection && selection.level ? selection.level : 1, []),
+        selection && selection.level ? selection.level : 0, []),
       'products': new FormControl(
         selection && selection.products ? selection.products : [], []
       ),

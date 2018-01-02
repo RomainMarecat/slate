@@ -63,7 +63,7 @@ export class ProductAddComponent implements OnInit {
       this.slackNotification.notifySlack({
         text: `New product has been send. ${product.name} by ${this.user.displayName}`
       }).subscribe(
-        (res) => console.log(res),
+        (res) => res,
         (err: HttpErrorResponse) => {
           console.error(err);
         }

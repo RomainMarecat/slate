@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { SelectionService } from '../../../shared/navigation/selection/selection.service';
 import { Selection } from '../../../../../shared/selection/selection';
 import { SelectionFormType } from '../../../shared/navigation/selection/form-selection';
@@ -40,7 +41,8 @@ export class SelectionAddComponent implements OnInit {
 
   constructor(private selectionService: SelectionService,
     private productService: ProductService,
-    private alertService: AlertService) {}
+    private alertService: AlertService,
+    private router: Router) {}
 
   ngOnInit() {
     this.columnsProduct = [{
@@ -124,7 +126,6 @@ export class SelectionAddComponent implements OnInit {
   }
 
   saveSelection() {
-    console.log(this.form);
     this.form.patchValue({ published: this._publication });
     if (this.form.valid === true) {
       this.selection = this.form.value;
@@ -134,6 +135,7 @@ export class SelectionAddComponent implements OnInit {
       this.selectionService.createSelection(this.selection);
       this.alertService.toast(`La selection est ajoutée ${this.selection.name}`, 'info');
       this.reset();
+      this.router.navigate(['/admin/navigation/selection']);
     }
   }
 
@@ -144,7 +146,6 @@ export class SelectionAddComponent implements OnInit {
   }
 
   onImageChange(media: Media) {
-    console.log('image changed');
     this.medias.push(media);
     this.form.patchValue({ images: this.medias.map((image: Media) => image.key) });
   }
@@ -252,16 +253,11 @@ export class SelectionAddComponent implements OnInit {
   onSelectParent({ selected }) {
     this.selectedParent = [];
     this.selectedParent.push(selected[0]);
-  }
-
-  /**
-   * Add a parent selection into form control
-   */
-  addParent() {
     this.selectedParent.forEach((selection: Selection) => {
-      this.form.patchValue({ parent: selection.key });
+      this.form.patchValue({ parent: selection.key, level: selection.level + 1 });
     });
   }
+
 
   /**
    * On select add new list in selection array
