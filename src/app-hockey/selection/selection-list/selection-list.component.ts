@@ -73,11 +73,11 @@ export class SelectionListComponent implements OnInit {
     if (selected.children && selected.children.length > 0) {
       const root = this.findRoot(selected);
       root.children = selected.children;
-      this.rootSelections = this.rootSelections.map((selection: Selection) => {
-        if (selection.key === root.key) {
-          selection = root;
+      this.rootSelections = this.rootSelections.map((item: Selection) => {
+        if (item.key === root.key) {
+          item = root;
         }
-        return selection;
+        return item;
       });
     } else if ((!selected.children || selected.children.length === 0) && this.currentSelectedSelection) {
       this.router.navigate(['/selection/' + this.currentSelectedSelection.key + '/products/']);
@@ -90,7 +90,7 @@ export class SelectionListComponent implements OnInit {
    * @return Selection
    */
   findRoot(object: Selection): Selection {
-    let root = this.findParent(object);
+    const root = this.findParent(object);
     if (root.parent !== null) {
       this.findParent(root);
     }
@@ -141,8 +141,8 @@ export class SelectionListComponent implements OnInit {
   getNestedChildren(
     selections: Selection[],
     parent: string = null): Selection[] {
-    let nested: Selection[] = [];
-    for (let i in selections) {
+    const nested: Selection[] = [];
+    for (const i in selections) {
       if (selections[i] && selections[i].parent === parent) {
         const children = this.getNestedChildren(selections, selections[i].key);
 
@@ -152,7 +152,7 @@ export class SelectionListComponent implements OnInit {
         nested.push(selections[i]);
       }
     }
-    return nested
+    return nested;
   }
 
   /**

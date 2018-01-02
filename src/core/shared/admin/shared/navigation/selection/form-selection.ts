@@ -4,7 +4,7 @@ import { Selection } from './../../../../selection/selection';
 export class SelectionFormType {
   private form: FormGroup;
 
-  constructor(selection ? : Selection) {
+  constructor(selection ?: Selection) {
     this.createForm(selection);
   }
 
