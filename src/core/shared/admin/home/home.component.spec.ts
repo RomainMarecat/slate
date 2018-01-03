@@ -21,6 +21,7 @@ import { ProductListComponent } from './../product/product-list/product-list.com
 import { ProductService } from './../shared/product/product.service';
 import { MockProductService } from './../shared/product/mock-product.service';
 import { HomeComponent } from './home.component';
+import { SharedModule } from '../../shared.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -43,8 +44,8 @@ describe('HomeComponent', () => {
           MatInputModule,
           MatCheckboxModule,
           MatListModule,
-          MatButtonModule,
-          MatToolbarModule
+          MatToolbarModule,
+          SharedModule
         ],
         declarations: [HomeComponent, ProductComponent, ProductListComponent],
         providers: [

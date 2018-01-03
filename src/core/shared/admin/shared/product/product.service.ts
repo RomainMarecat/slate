@@ -13,10 +13,11 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
+import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable()
 export class ProductService {
-  productCollectionRef: AngularFirestoreCollection < ClothingProduct > ;
+  productCollectionRef: AngularFirestoreCollection < Product > ;
   products$: Observable < DocumentChangeAction[] > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
@@ -82,14 +83,14 @@ export class ProductService {
 
   /**
    *
-   * @returns {Observable<ClothingProduct[]>}
+   * @returns {Observable<Product[]>}
    */
-  getProducts(): Observable < ClothingProduct[] > {
+  getProducts(): Observable < Product[] > {
     return this.products$.map((products: DocumentChangeAction[]) =>
       products.map((doc: DocumentChangeAction) => {
-        const product = doc.payload.doc.data() as ClothingProduct;
+        const product = doc.payload.doc.data() as Product;
         product.key = doc.payload.doc.id;
-        return product as ClothingProduct;
+        return product as Product;
       })
     );
   }
@@ -97,35 +98,35 @@ export class ProductService {
   /**
    *
    * @param {string} key
-   * @returns {Observable<ClothingProduct[]>}
+   * @returns {Observable<Product[]>}
    */
-  getProduct(key: null | string): Observable < ClothingProduct[] > {
+  getProduct(key: null | string): Observable < Product[] > {
     this.keyFilters$.next(key);
     return this.getProducts().take(1);
   }
 
   /**
    *
-   * @param {ClothingProduct} product
+   * @param {Product} product
    */
-  updateProduct(product: ClothingProduct) {
+  updateProduct(product: Product) {
     this.productCollectionRef.doc(product.key).update({ ...product });
   }
 
   /**
    * createProduct
-   * @param HockeyProduct | ClothingProduct product
+   * @param HockeyProduct | Product product
    */
-  createProduct(product: HockeyProduct | ClothingProduct) {
+  createProduct(product: HockeyProduct | ClothingProduct): Promise < DocumentReference > {
     delete product.key;
-    this.productCollectionRef.add({ ...product });
+    return this.productCollectionRef.add({ ...product });
   }
 
   /**
    *
-   * @param {ClothingProduct} product
+   * @param {Product} product
    */
-  deleteProduct(product: ClothingProduct) {
+  deleteProduct(product: Product) {
     this.productCollectionRef.doc(product.key).delete();
   }
 }

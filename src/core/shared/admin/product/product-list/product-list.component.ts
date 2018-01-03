@@ -1,7 +1,8 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-import { ClothingProduct } from '../../../product/clothing-product';
+import { Component, OnInit, ElementRef, ViewChild, TemplateRef } from '@angular/core';
+import { Product } from '../../../product/product';
 import { ProductService } from './../../shared/product/product.service';
 import { Observable } from 'rxjs/Observable';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-list',
@@ -12,20 +13,64 @@ export class ProductListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  products$: Observable < ClothingProduct[] > ;
+  products: Product[];
   isLoading = false;
-  selected: ClothingProduct[];
+  selected: Product[];
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
+  @ViewChild('imageCell') imageCell: TemplateRef < any > ;
 
   /**
    *
-   * @param {ElementRef} table
-   * @param {ProductService} productService
+   * @param ElementRef table
+   * @param ProductService productService
    */
-  constructor(private table: ElementRef, private productService: ProductService) {
+  constructor(private table: ElementRef,
+    private productService: ProductService) {
+    this.selected = [];
+  }
+
+  /**
+   * set at published at now et activate published to true
+   */
+  publishProduct() {
+    this.selected.forEach((product: Product) => {
+      if (product.published === false) {
+        product.published = true;
+        if (!product.published_at) {
+          product.published_at = new Date();
+        }
+      }
+      this.productService.updateProduct(product);
+    });
+  }
+
+  /**
+   * Delete a product from list
+   */
+  deleteProduct() {
+    this.selected.forEach((product: Product) => {
+      this.productService.deleteProduct(product);
+    });
+  }
+
+  /**
+   * Init list of product
+   */
+  ngOnInit() {
     this.columns = [{
+      width: 50,
+      sortable: false,
+      canAutoResize: false,
+      draggable: false,
+      resizeable: false,
+      cellTemplate: this.checkboxCell,
+      headerTemplate: this.checkboxHeader,
+    }, {
       prop: 'image1',
       name: 'image1',
-      flexGrow: 1
+      flexGrow: 1,
+      cellTemplate: this.imageCell,
     }, {
       prop: 'name',
       name: 'name',
@@ -35,39 +80,11 @@ export class ProductListComponent implements OnInit {
       name: 'published',
       flexGrow: 1
     }, ];
-    this.selected = [];
-  }
-
-  /**
-   * set at published at now et activate published to true
-   */
-  publishProduct() {
-    this.selected.forEach((product: ClothingProduct) => {
-      if (product.published === false) {
-        product.published = true;
-        if (!product.published_at) {
-          product.published_at = new Date();
-        }
-      }
-
-      this.productService.updateProduct(product);
-    });
-  }
-
-  /**
-   * Delete a product from list
-   */
-  deleteProduct() {
-    this.selected.forEach((product: ClothingProduct) => {
-      this.productService.deleteProduct(product);
-    });
-  }
-
-  /**
-   * Init list of product
-   */
-  ngOnInit() {
-    this.products$ = this.productService.getProducts();
+    this.productService.getProducts()
+      .take(1)
+      .subscribe((products: Product[]) => {
+        this.products = products;
+      });
   }
 
   /**

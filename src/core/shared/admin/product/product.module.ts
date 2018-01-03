@@ -26,6 +26,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader } from '@ngx-translate/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductService } from './../shared/product/product.service';
+import { CategoryService } from './../shared/navigation/category/category.service';
 import { SharedModule } from '../../shared.module';
 
 @NgModule({
@@ -43,7 +44,8 @@ import { SharedModule } from '../../shared.module';
     ProductAddComponent
   ],
   providers: [
-    ProductService
+    ProductService,
+    CategoryService
   ]
 })
 export class ProductModule {}

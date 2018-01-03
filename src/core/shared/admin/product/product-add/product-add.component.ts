@@ -1,11 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../alert/alert.service';
 import { Product } from '../../../product/product';
 import { ProductService } from '../../shared/product/product.service';
 import { Media } from '../../../media/media';
 import { Category } from '../../shared/navigation/category/category';
+import { CategoryService } from '../../shared/navigation/category/category.service';
 import { Observable } from 'rxjs/Observable';
+import * as firebase from 'firebase';
+import DocumentReference = firebase.firestore.DocumentReference;
 
 @Component({
   selector: 'app-product-add',
@@ -21,20 +24,45 @@ export class ProductAddComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  categories$: Observable < Category[] > ;
-  selected: Category[];
+  categories: Category[] = [];
+  selected: Category[] = [];
   isLoading: boolean;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
+
   _publication = true;
   _descriptionModel: string;
 
   constructor(private productService: ProductService,
-    private alertService: AlertService) {
+    private alertService: AlertService,
+    private categoryService: CategoryService) {
     this.medias = [];
     this._descriptionModel = '';
   }
 
   ngOnInit() {
     this.createForm();
+    this.columns = [{
+      width: 50,
+      sortable: false,
+      canAutoResize: false,
+      draggable: false,
+      resizeable: false,
+      cellTemplate: this.checkboxCell,
+      headerTemplate: this.checkboxHeader,
+    }, {
+      prop: 'key',
+      name: 'key',
+      flexGrow: 1
+    }, {
+      prop: 'name',
+      name: 'name',
+      flexGrow: 1
+    }, {
+      prop: 'published',
+      name: 'published',
+      flexGrow: 1
+    }, ];
     this.editorConfig = {
       'editable': true,
       'spellcheck': false,
@@ -44,6 +72,7 @@ export class ProductAddComponent implements OnInit {
       'translate': 'no',
       'toolbar': []
     };
+    this.getCategories();
   }
 
   createForm() {
@@ -73,15 +102,34 @@ export class ProductAddComponent implements OnInit {
 
   onImageChange(media: Media) {
     this.medias.push(media);
-    this.form.patchValue({ images: this.medias.map((image: Media) => image.key) });
+    this.form.patchValue({
+      images: this.medias.map((image: Media) => image.key)
+    });
+    this.alertService.toast('media saved');
   }
 
   saveProduct() {
-    this.form.patchValue({ description: this._descriptionModel, published: this._publication });
+    this.form.patchValue({
+      description: this._descriptionModel,
+      published: this._publication
+    });
     if (this.form.valid) {
       this.product = this.form.value;
-      this.productService.createProduct(this.product);
+      console.log('New product', this.product);
+      this.productService.createProduct(this.product)
+        .then((doc: DocumentReference) => {
+          this.alertService.toast(`product added ${doc.id}`);
+        }, (err) => {
+          this.alertService.toast(`product error ${err}`);
+        });
     }
+  }
+
+  getCategories() {
+    this.categoryService.getCategories()
+      .subscribe((categories: Category[]) => {
+        this.categories = categories;
+      });
   }
 
   /**
@@ -93,14 +141,9 @@ export class ProductAddComponent implements OnInit {
     this.selected.push(...selected);
   }
 
-  /**
-   * set at published at now et activate published to true
-   */
   addCategory() {
     this.selected.forEach((category: Category) => {
-      if (category.published === true) {
-        this.form.patchValue({ category: category.key });
-      }
+      this.form.patchValue({ category: category.key });
     });
   }
 

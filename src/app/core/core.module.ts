@@ -112,7 +112,7 @@ export class ConfigService {
   providers: [
     { provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN] },
     { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
-    { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, app_name] },
+    { provide: MediaService, useClass: MediaService, deps: [AngularFirestore] },
     UserService,
     AlertService,
     ObjectService,
