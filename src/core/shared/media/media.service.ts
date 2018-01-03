@@ -1,31 +1,27 @@
 import { Injectable, Inject } from '@angular/core';
 import { Media } from './media';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
 import * as firebase from 'firebase';
+import { DocumentChangeAction, Reference, Action } from 'angularfire2/firestore/interfaces';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
+import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+
+import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable()
 export class MediaService {
   mediaCollectionRef: AngularFirestoreCollection < Media > ;
   medias$: Observable < DocumentChangeAction[] > ;
+  media$: Observable < Media > ;
   publicIdFilter$: BehaviorSubject < string | null > ;
   urlFilter$: BehaviorSubject < string | null > ;
   limitFilter$: BehaviorSubject < number | null > ;
 
   /**
-   * constructor
-   * @param AngularFirestore private afs
-   * @param Cloudinary       private cloudinary
-   * @param [type]
+   * @param AngularFirestore afs
    */
-  constructor(private afs: AngularFirestore,
-    @Inject('APP_NAME') app_name: string) {
+  constructor(private afs: AngularFirestore) {
     this.mediaCollectionRef = this.afs.collection < Media > ('media');
     this.publicIdFilter$ = new BehaviorSubject(null);
     this.urlFilter$ = new BehaviorSubject(null);
@@ -65,7 +61,7 @@ export class MediaService {
 
   /**
    *
-   * @param {string} url
+   * @param string url
    */
   filterByUrl(url: string | null) {
     this.urlFilter$.next(url);
@@ -73,7 +69,7 @@ export class MediaService {
 
   /**
    *
-   * @returns {Observable<Media[]>}
+   * @returns Observable<Media[]>
    */
   getMedias(): Observable < Media[] > {
     return this.medias$.map((products: DocumentChangeAction[]) =>
@@ -85,11 +81,34 @@ export class MediaService {
     );
   }
 
+  getDocumentMedia(path: string): Observable < Media > {
+    return this.media$ = this.mediaCollectionRef
+      .doc(path)
+      .snapshotChanges()
+      .map((action: Action < firebase.firestore.DocumentSnapshot > ) => {
+        const media = action.payload.data() as Media;
+        media.key = action.payload.id;
+        return media;
+      });
+  }
+
   /**
    *
-   * @param {Media} media
+   * @param string key
+   * @returns Observable<Media>
    */
-  addMedia(media: Media) {
-    this.mediaCollectionRef.add({ ...media });
+  getMedia(key: null | string): Observable < Media > {
+    if (key) {
+      return this.getDocumentMedia(key);
+    }
+    return Observable.of(null);
+  }
+
+  /**
+   *
+   * @param Media media
+   */
+  addMedia(media: Media): Promise < DocumentReference > {
+    return this.mediaCollectionRef.add({ ...media });
   }
 }

@@ -6,6 +6,9 @@ export interface HockeyProduct {
   published_at: Date;
 
   url: string;
+  translations ?: {
+    fr ?: string;
+  };
 
   description ?: string;
   thumbnail: string;

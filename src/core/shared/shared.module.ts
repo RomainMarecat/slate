@@ -38,11 +38,12 @@ import { ImageCropperModule } from 'ng2-img-cropper';
 import { ModalModule } from 'ngx-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
-import {MenuModule} from './menu/menu.module';
-import {FooterModule} from './footer/footer.module';
-import {SidenavModule} from './sidenav/sidenav.module';
-import {LoaderModule} from './loader/loader.module';
-import {AlertModule} from './alert/alert.module';
+import { MenuModule } from './menu/menu.module';
+import { MediaModule } from './media/media.module';
+import { FooterModule } from './footer/footer.module';
+import { SidenavModule } from './sidenav/sidenav.module';
+import { LoaderModule } from './loader/loader.module';
+import { AlertModule } from './alert/alert.module';
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
 
@@ -89,6 +90,7 @@ export class ConfigService {
     MatTooltipModule,
     MatRadioModule,
     MatStepperModule,
+    MediaModule,
     MenuModule,
     ModalModule.forRoot(),
     NgStringPipesModule,
@@ -128,6 +130,7 @@ export class ConfigService {
     MatTooltipModule,
     MatRadioModule,
     MatStepperModule,
+    MediaModule,
     MenuModule,
     ModalModule,
     NgStringPipesModule,

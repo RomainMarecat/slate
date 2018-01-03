@@ -41,14 +41,20 @@
                       </div>
                     </div>
                     <div class="col-6">
-                      <button role="button" aria-label="Ajouter les categories selectionnes" mat-raised-button color="primary" (click)="addCategories()" *ngIf="selected && selected?.length > 0">
+                      <button type="button" role="button" aria-label="Ajouter les categories selectionnes" mat-raised-button color="primary" (click)="addCategory()" *ngIf="selected && selected?.length > 0">
                         <mat-icon aria-label="Ajouter les categories selectionnes">done</mat-icon>
                         Ajouter
                       </button>
                     </div>
                     <div class="col-12">
                       <p>Associer une categorie</p>
-                      <ngx-datatable class="material striped scrolling-categories" [columnMode]="'force'" [rows]="categories$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'checkbox'" (select)='onSelect($event)'></ngx-datatable>
+                      <ngx-datatable class="material striped scrolling-categories" [columnMode]="'force'" [rows]="categories" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'checkbox'" (select)='onSelect($event)'></ngx-datatable>
+                      <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+                        <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                      </ng-template>
+                      <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+                        <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                      </ng-template>
                     </div>
                   </div>
                 </div>
@@ -80,13 +86,13 @@
                 <div class="d-block">
                   <mat-form-field class="mat-form-field">
                     <input matInput type="number" maxlength="5" [placeholder]="'Prix'|translate" formControlName="price">
-                    <mat-error *ngIf="price.invalid && price.value.length === 0" [innerHtml]="'Le prix ne peut pas être vide'|translate"></mat-error>
-                    <mat-error *ngIf="price.invalid && price.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+                    <mat-error *ngIf="price.invalid && price.value && price.value.length === 0" [innerHtml]="'Le prix ne peut pas être vide'|translate"></mat-error>
+                    <mat-error *ngIf="price.invalid && price.value && price.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
                   </mat-form-field>
                 </div>
                 <div class="d-block">
                   <mat-form-field class="mat-form-field">
-                    <input matInput maxlength="50" [placeholder]="'url'|translate" formControlName="url">
+                    <input matInput maxlength="255" [placeholder]="'url'|translate" formControlName="url">
                     <mat-hint align="start"><strong [innerHtml]="'url'|translate"></strong></mat-hint>
                     <mat-hint align="end">{{ url.value.length }} {{ '/50'|translate }}</mat-hint>
                     <mat-error *ngIf="url.invalid && url.value.length === 0" [innerHtml]="'L url ne peut pas être vide'|translate"></mat-error>

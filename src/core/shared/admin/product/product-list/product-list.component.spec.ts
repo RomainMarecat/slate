@@ -28,6 +28,9 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ProductListComponent } from './product-list.component';
 import { ProductService } from './../../shared/product/product.service';
 import { MockProductService } from './../../shared/product/mock-product.service';
+import { SharedModule } from '../../../shared.module';
+import { MediaService } from '../../../media/media.service';
+import { MockMediaService } from '../../../media/mock-media.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -49,12 +52,13 @@ describe('ProductListComponent', () => {
           MatInputModule,
           MatCheckboxModule,
           MatListModule,
-          MatToolbarModule
+          MatToolbarModule,
+          SharedModule,
         ],
         declarations: [ProductListComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
-
+          { provide: MediaService, useClass: MockMediaService },
         ]
       })
       .compileComponents();

@@ -1,6 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
 import { Product } from './product';
-import { ClothingProduct } from './clothing-product';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -14,7 +13,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ProductService {
-  productCollectionRef: AngularFirestoreCollection < ClothingProduct > ;
+  productCollectionRef: AngularFirestoreCollection < Product > ;
   products$: Observable < DocumentChangeAction[] > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
@@ -89,14 +88,14 @@ export class ProductService {
 
   /**
    *
-   * @returns {Observable<ClothingProduct[]>}
+   * @returns {Observable<Product[]>}
    */
-  getProducts(): Observable < ClothingProduct[] > {
+  getProducts(): Observable < Product[] > {
     return this.products$.map((products: DocumentChangeAction[]) =>
       products.map((doc: DocumentChangeAction) => {
-        const product = doc.payload.doc.data() as ClothingProduct;
+        const product = doc.payload.doc.data() as Product;
         product.key = doc.payload.doc.id;
-        return product as ClothingProduct;
+        return product as Product;
       })
     );
   }
@@ -104,35 +103,35 @@ export class ProductService {
   /**
    *
    * @param {string} key
-   * @returns {Observable<ClothingProduct[]>}
+   * @returns {Observable<Product[]>}
    */
-  getProduct(key: null | string): Observable < ClothingProduct[] > {
+  getProduct(key: null | string): Observable < Product[] > {
     this.keyFilters$.next(key);
     return this.getProducts().take(1);
   }
 
   /**
    *
-   * @param {ClothingProduct} product
+   * @param {Product} product
    */
-  updateProduct(product: ClothingProduct) {
+  updateProduct(product: Product) {
     this.productCollectionRef.doc(product.key).update({ ...product });
   }
 
   /**
    *
-   * @param {ClothingProduct} product
+   * @param {Product} product
    */
-  createProduct(product: ClothingProduct) {
+  createProduct(product: Product) {
     delete product.key;
     this.productCollectionRef.add({ ...product });
   }
 
   /**
    *
-   * @param {ClothingProduct} product
+   * @param {Product} product
    */
-  deleteProduct(product: ClothingProduct) {
+  deleteProduct(product: Product) {
     this.productCollectionRef.doc(product.key).delete();
   }
 }

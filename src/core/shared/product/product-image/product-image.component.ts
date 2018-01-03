@@ -8,6 +8,8 @@ import { ObjectService } from '../../util/object.service';
 import { MediaService } from '../../media/media.service';
 import { DeviceService } from '../../device/device.service';
 import { HttpClient } from '@angular/common/http';
+import * as firebase from 'firebase';
+import DocumentReference = firebase.firestore.DocumentReference;
 
 @Component({
   selector: 'app-product-image',
@@ -243,7 +245,12 @@ export class ProductImageComponent implements OnInit {
    * @param {Media} media
    */
   onMediaChange(media: Media) {
-    this.mediaService.addMedia(media);
-    this.imageChanged.emit(media);
+    this.mediaService.addMedia(media).then((doc: DocumentReference) => {
+      console.log('add media doc Reference', doc);
+      media.key = doc.id;
+      this.imageChanged.emit(media);
+    }, (err) => {
+      console.error('onMediaChange:addMedia:err', err);
+    });
   }
 }

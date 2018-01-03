@@ -42,6 +42,8 @@ import { DeviceService } from '../../../device/device.service';
 import { NotificationService } from '../../../slack/notification.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2Module } from 'angulartics2';
+import { CategoryService } from '../../shared/navigation/category/category.service';
+import { MockCategoryService } from '../../shared/navigation/category/mock-category.service';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
@@ -79,6 +81,7 @@ describe('ProductAddComponent', () => {
           { provide: LoaderService, useClass: MockLoaderService },
           { provide: UserService, useClass: MockUserService },
           { provide: MediaService, useClass: MockMediaService },
+          { provide: CategoryService, useClass: MockCategoryService },
           { provide: ProductService, useClass: MockProductService },
           { provide: NotificationService, useClass: MockNotificationService },
           DateService,

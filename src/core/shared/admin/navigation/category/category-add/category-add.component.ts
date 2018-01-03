@@ -96,7 +96,7 @@ export class CategoryAddComponent implements OnInit {
       'keywords': new FormControl('', [
         Validators.required,
       ]),
-      'level': new FormControl('', [
+      'level': new FormControl(1, [
         Validators.required,
       ]),
       'lft': new FormControl('', []),
@@ -130,7 +130,7 @@ export class CategoryAddComponent implements OnInit {
       slug: '',
       alias: '',
       keywords: '',
-      level: '',
+      level: 1,
       lft: '',
       rgt: '',
       root: false,
@@ -138,6 +138,7 @@ export class CategoryAddComponent implements OnInit {
       published: true,
     });
     this.category = null;
+    this.selected = [];
   }
 
   /**
@@ -156,8 +157,14 @@ export class CategoryAddComponent implements OnInit {
    */
   addParent() {
     this.selected.forEach((category: Category) => {
-      this.form.patchValue({ parent: category.key });
+      this.form.patchValue({
+        parent: category.key,
+        level: category.level + 1,
+        root: false
+      });
+      this.alertService.toast(`parent added ${category.name}`);
     });
+
   }
 
   get name() {

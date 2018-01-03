@@ -8,6 +8,9 @@ export class Product implements ClothingProduct, HockeyProduct {
 
   created_at: Date;
   published_at: Date;
+  translations ?: {
+    fr ?: string;
+  };
 
   url: string;
 
