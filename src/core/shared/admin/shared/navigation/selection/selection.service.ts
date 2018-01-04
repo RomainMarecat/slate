@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Selection } from './../../../../selection/selection';
 import { AlertService } from '../../../../alert/alert.service';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DocumentChangeAction, Reference, Action } from 'angularfire2/firestore/interfaces';
 import * as firebase from 'firebase';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable()
 export class SelectionService {
   selectionCollectionRef: AngularFirestoreCollection < Selection > ;
   selectionDocumentRef: AngularFirestoreDocument < Selection > ;
   selections$: Observable < DocumentChangeAction[] > ;
-  selection$: Observable < any > ;
+  selection$: Observable < Selection > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   parentFilter$: BehaviorSubject < string | null > ;
   levelFilter$: BehaviorSubject < number | null > ;
@@ -31,7 +32,8 @@ export class SelectionService {
    * @param {AngularFirestore} afs
    * @param {AlertService} alertService
    */
-  constructor(private afs: AngularFirestore, private alertService: AlertService) {
+  constructor(private afs: AngularFirestore,
+    private alertService: AlertService) {
     this.publishedFilter$ = new BehaviorSubject(null);
     this.parentFilter$ = new BehaviorSubject(null);
     this.levelFilter$ = new BehaviorSubject(null);
@@ -94,14 +96,14 @@ export class SelectionService {
       .map((action: Action < firebase.firestore.DocumentSnapshot > ) => {
         const selection = action.payload.data() as Selection;
         selection.key = action.payload.id;
-        return selection as Selection;
+        return selection;
       });
   }
 
   /**
    *
-   * @param {string} key
-   * @returns {Observable<Selection[]>}
+   * @param string key
+   * @returns Observable<Selection[]>
    */
   getSelection(key: null | string): Observable < Selection > {
     if (key) {

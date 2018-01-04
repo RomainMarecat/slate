@@ -44,7 +44,7 @@ export class ProductService {
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
-    this.productCollectionRef = this.afs.collection('clothes');
+    this.productCollectionRef = this.afs.collection('product');
     this.products$ = Observable.combineLatest(
         this.keyFilters$,
         this.publishedFilter$,
@@ -58,7 +58,7 @@ export class ProductService {
         return Observable.of([]);
       })
       .switchMap(([key, published, name, color, user, limit]) =>
-        this.afs.collection('clothes', ref => {
+        this.afs.collection('product', ref => {
           this.query = ref;
           if (published) {
             this.query = this.query.where('published', '==', published);
@@ -118,7 +118,6 @@ export class ProductService {
    * @param HockeyProduct | Product product
    */
   createProduct(product: HockeyProduct | ClothingProduct): Promise < DocumentReference > {
-    delete product.key;
     return this.productCollectionRef.add({ ...product });
   }
 

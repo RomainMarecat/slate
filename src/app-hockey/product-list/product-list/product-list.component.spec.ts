@@ -5,24 +5,14 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import {
   MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule
+  MatListModule
 } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgStringPipesModule } from 'angular-pipes';
@@ -31,7 +21,6 @@ import { ProductListComponent } from './product-list.component';
 import { ProductItemComponent } from './../product-item/product-item.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../../../core/shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from './../../../core/shared/cloudinary/cloudinary-config';
 import { ProductService } from './../../../core/shared/product/product.service';
 import { MockProductService } from './../../../core/shared/product/mock-product.service';
 import { MockUserService } from './../../../core/shared/user/mock-user.service';
@@ -45,6 +34,8 @@ import { DateService } from './../../../core/shared/util/date.service';
 import { MockScoreService } from './../../../core/shared/score/mock-score.service';
 import { I18nService } from './../../../core/shared/i18n/i18n.service';
 import { environment } from './../../../environments/environment.hockey';
+import {SelectionService} from '../../../core/shared/selection/selection.service';
+import {MockSelectionService} from '../../../core/shared/selection/mock-selection.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -79,6 +70,7 @@ describe('ProductListComponent', () => {
         declarations: [ProductListComponent, ProductItemComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
+          { provide: SelectionService, useClass: MockSelectionService },
           { provide: UserService, useClass: MockUserService },
           { provide: AlertService, useClass: MockAlertService },
           { provide: LoaderService, useClass: MockLoaderService },

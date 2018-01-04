@@ -9,6 +9,7 @@ import { CategoryService } from '../../shared/navigation/category/category.servi
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase';
 import DocumentReference = firebase.firestore.DocumentReference;
+import { ProductImageComponent } from './../../../product/product-image/product-image.component';
 
 @Component({
   selector: 'app-product-add',
@@ -30,6 +31,7 @@ export class ProductAddComponent implements OnInit {
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
 
+  @ViewChild(ProductImageComponent) productImageComponent: ProductImageComponent;
   _publication = true;
   _descriptionModel: string;
 
@@ -108,6 +110,22 @@ export class ProductAddComponent implements OnInit {
     this.alertService.toast('media saved');
   }
 
+  reset() {
+    this.medias = [];
+    this._descriptionModel = '';
+    this.selected = [];
+    this.productImageComponent.clearUpload();
+    this.form.reset({
+      name: '',
+      description: '',
+      reseller: '',
+      url: '',
+      published: true,
+      price: 0,
+      images: [],
+    });
+  }
+
   saveProduct() {
     this.form.patchValue({
       description: this._descriptionModel,
@@ -119,6 +137,7 @@ export class ProductAddComponent implements OnInit {
       this.productService.createProduct(this.product)
         .then((doc: DocumentReference) => {
           this.alertService.toast(`product added ${doc.id}`);
+          this.reset();
         }, (err) => {
           this.alertService.toast(`product error ${err}`);
         });

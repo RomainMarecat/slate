@@ -67,7 +67,7 @@ export class ProductListComponent implements OnInit {
       { rel: 'alternate', hreflang: 'en', href: 'https://myuglysweat.com' }
     ]);
 
-    this.loadProducts(this.pageLimit);
+    this.loadProducts();
   }
 
   /**
@@ -87,11 +87,9 @@ export class ProductListComponent implements OnInit {
 
   /**
    * Load Products with current limit
-   * @param {number} limit
    */
-  loadProducts(limit: number) {
-    this.productService.keyFilters$.next(null);
-    this.productService.nameFilters$.next(null);
+  loadProducts() {
+    this.productService.nameFilter$.next(null);
     this.productService.publishedFilter$.next(true);
     this.products$ = this.productService.getProducts();
     this.loaderService.hide();

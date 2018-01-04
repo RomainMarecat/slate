@@ -6,6 +6,7 @@ import { SelectionFormType } from '../../../shared/navigation/selection/form-sel
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../../alert/alert.service';
 import { HockeyProduct } from '../../../../product/hockey-product';
+import { Product } from '../../../../product/product';
 import { Media } from '../../../../media/media';
 import { StringService } from '../../../../util/string.service';
 import { Observable } from 'rxjs/Observable';
@@ -30,7 +31,7 @@ export class SelectionEditComponent implements OnInit {
   columnsParent: any;
   parents: Selection[];
 
-  selectedProducts: HockeyProduct[] = [];
+  selectedProducts: Product[] = [];
   selectedParent: Selection[] = [];
   isLoadingProducts: boolean;
   isLoadingParents: boolean;
@@ -288,17 +289,17 @@ export class SelectionEditComponent implements OnInit {
    */
   onSelectProduct({ selected }) {
     this.selectedProducts.splice(0, this.selectedProducts.length);
-    this.selectedProducts.push(...selected.map((item: HockeyProduct) => item.key));
+    this.selectedProducts.push(...selected);
   }
 
   /**
    * set at published at now et activate published to true
    */
   addProducts() {
-    this.selectedProducts.forEach((product: HockeyProduct) => {
-      if (product.published === true) {
-        this.form.patchValue({ products: this.form.get('products').value.push(product.key) });
-      }
+    this.selectedProducts.forEach((product: Product) => {
+      const productsKey = this.form.get('products').value as string[];
+      productsKey.push(product.key);
+      this.form.patchValue({ products: productsKey });
     });
   }
 }

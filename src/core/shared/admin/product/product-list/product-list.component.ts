@@ -21,7 +21,6 @@ export class ProductListComponent implements OnInit {
   @ViewChild('imageCell') imageCell: TemplateRef < any > ;
 
   /**
-   *
    * @param ElementRef table
    * @param ProductService productService
    */
@@ -67,13 +66,21 @@ export class ProductListComponent implements OnInit {
       cellTemplate: this.checkboxCell,
       headerTemplate: this.checkboxHeader,
     }, {
-      prop: 'image1',
-      name: 'image1',
+      prop: 'images',
+      name: 'images',
       flexGrow: 1,
       cellTemplate: this.imageCell,
     }, {
       prop: 'name',
       name: 'name',
+      flexGrow: 1
+    }, {
+      prop: 'category',
+      name: 'category',
+      flexGrow: 1
+    }, {
+      prop: 'price',
+      name: 'price',
       flexGrow: 1
     }, {
       prop: 'published',

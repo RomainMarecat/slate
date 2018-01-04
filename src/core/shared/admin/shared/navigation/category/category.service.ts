@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Category } from './category';
 import { AlertService } from '../../../../alert/alert.service';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
+import { DocumentChangeAction, Reference, Action } from 'angularfire2/firestore/interfaces';
 import * as firebase from 'firebase';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable()
 export class CategoryService {
   categoryCollectionRef: AngularFirestoreCollection < Category > ;
   categories$: Observable < DocumentChangeAction[] > ;
+  category$: Observable < Category > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
@@ -32,7 +30,8 @@ export class CategoryService {
    * @param {AngularFirestore} afs
    * @param {AlertService} alertService
    */
-  constructor(private afs: AngularFirestore, private alertService: AlertService) {
+  constructor(private afs: AngularFirestore,
+    private alertService: AlertService) {
     this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
@@ -80,14 +79,27 @@ export class CategoryService {
     );
   }
 
+  getDocumentCategory(path: string): Observable < Category > {
+    return this.category$ = this.categoryCollectionRef
+      .doc(path)
+      .snapshotChanges()
+      .map((action: Action < firebase.firestore.DocumentSnapshot > ) => {
+        const category = action.payload.data() as Category;
+        category.key = action.payload.id;
+        return category;
+      });
+  }
+
   /**
    *
-   * @param {string} key
-   * @returns {Observable<Category[]>}
+   * @param string key
+   * @returns Observable<Category>
    */
-  getCategory(key: null | string): Observable < Category[] > {
-    this.keyFilters$.next(key);
-    return this.getCategories().take(1);
+  getCategory(key: null | string): Observable < Category > {
+    if (key) {
+      return this.getDocumentCategory(key);
+    }
+    return Observable.of(null);
   }
 
   /**

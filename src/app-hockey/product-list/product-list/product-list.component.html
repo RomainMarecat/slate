@@ -1,5 +1,5 @@
 <div class="card-container">
   <app-product-item *ngFor="let product of products" class="grid-tile-item" [product]="product"></app-product-item>
-  <div *ngIf="products && products?.length <= 0" [innerHtml]="'Produits bientôt disponibles ...'|translate">
+  <div *ngIf="products && products?.length <= 0 && !isLoading" [innerHtml]="'Produits bientôt disponibles ...'|translate">
   </div>
 </div>
