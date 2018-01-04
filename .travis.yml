@@ -9,8 +9,8 @@ before_script:
 - npm install
 before_deploy:
 - ./node_modules/@angular/cli/bin/ng build -aot --env=prod --app=monpullmoche -prod
-- cp src/sitemap.xml dist/sitemap.xml
-- cp src/robots.txt dist/robots.txt
+- cp src/app/sitemap.xml dist/sitemap.xml
+- cp src/app/robots.txt dist/robots.txt
 - npm run precache
 deploy:
   - skip_cleanup: true
