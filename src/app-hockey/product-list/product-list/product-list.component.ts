@@ -1,9 +1,11 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../../core/shared/product/product.service';
 import { ClothingProduct } from '../../../core/shared/product/clothing-product';
 import { Observable } from 'rxjs/Observable';
+import { SelectionService } from './../../../core/shared/selection/selection.service';
+import { Selection } from './../../../core/shared/selection/selection';
 import { UserService } from './../../../core/shared/user/user.service';
 import { AlertService } from './../../../core/shared/alert/alert.service';
 import { LoaderService } from './../../../core/shared/loader/loader.service';
@@ -18,10 +20,12 @@ import { HockeyProduct } from '../../../core/shared/product/hockey-product';
 })
 export class ProductListComponent implements OnInit {
   // Products collection of Product interface
-  products: Array < HockeyProduct > ;
+  products: Array < HockeyProduct > = [];
   rowHeight: number;
   headerHeight: number;
   pageLimit: number;
+  isLoading: boolean;
+  selection: Selection;
 
   /**
    * constructor
@@ -35,7 +39,9 @@ export class ProductListComponent implements OnInit {
    * @param {TranslateService} private translateService
    */
   constructor(private productService: ProductService,
+    private selectionService: SelectionService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private meta: Meta,
     private ProductComponent: ElementRef,
     private userService: UserService,
@@ -45,6 +51,7 @@ export class ProductListComponent implements OnInit {
     this.headerHeight = 0;
     this.pageLimit = 100;
     this.rowHeight = 300;
+    this.isLoading = true;
   }
 
   /**
@@ -69,21 +76,31 @@ export class ProductListComponent implements OnInit {
       { rel: 'alternate', hreflang: 'en', href: 'https://myuglysweat.com' }
     ]);
 
-    this.loadProducts(this.pageLimit);
+    this.loadProducts();
   }
 
   /**
-   * Load Products with current limit
-   * @param {number} limit
+   * Load Products by selection
    */
-  loadProducts(limit: number) {
-    this.productService.keyFilters$.next(null);
-    this.productService.nameFilters$.next(null);
-    this.productService.publishedFilter$.next(true);
-    this.productService.getProducts()
-      .subscribe((products: HockeyProduct[]) => {
-        this.products = products;
-        this.loaderService.hide();
-      });
+  loadProducts() {
+    this.activatedRoute.params.subscribe((value: { key: string }) => {
+      if (value.key) {
+        const key = value.key;
+        this.selectionService.getSelection(key)
+          .subscribe((selection: Selection) => {
+            this.selection = selection;
+            if (this.selection && this.selection.products) {
+              this.productService.getProducts()
+                .subscribe((products) => {
+                  this.products = products.filter((product: HockeyProduct) => {
+                    return this.selection.products.includes(product.key);
+                  });
+                  this.isLoading = false;
+                  this.loaderService.hide();
+                });
+            }
+          });
+      }
+    });
   }
 }

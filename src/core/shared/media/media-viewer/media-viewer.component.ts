@@ -21,7 +21,4 @@ export class MediaViewerComponent implements OnInit {
         this.media = media;
       });
   }
-
-
-
 }

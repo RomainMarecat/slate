@@ -16,9 +16,9 @@ import 'rxjs/add/operator/catch';
 export class MockProductService {
   productCollectionRef: AngularFirestoreCollection < ClothingProduct > ;
   products$: Observable < DocumentChangeAction[] > ;
+  product$: Observable < Product > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
-  nameFilters$: BehaviorSubject < string | null > ;
-  keyFilters$: BehaviorSubject < string | null > ;
+  nameFilter$: BehaviorSubject < string | null > ;
   colorFilter$: BehaviorSubject < string | null > ;
   userFilter$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
@@ -30,9 +30,8 @@ export class MockProductService {
   query: firebase.firestore.CollectionReference | firebase.firestore.Query;
 
   constructor() {
-    this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(true);
-    this.nameFilters$ = new BehaviorSubject(null);
+    this.nameFilter$ = new BehaviorSubject(null);
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(20);

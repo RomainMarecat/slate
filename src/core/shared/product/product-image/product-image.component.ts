@@ -240,6 +240,10 @@ export class ProductImageComponent implements OnInit {
     this.uploaderStatus.emit(this.uploaderMessage);
   }
 
+  clearUpload() {
+    this.data = {};
+  }
+
   /**
    * Propagate new media to parent
    * @param {Media} media

@@ -76,14 +76,14 @@ export class SelectionListComponent implements OnInit {
         resizeable: false,
         cellTemplate: this.checkboxCell,
         headerTemplate: this.checkboxHeader,
+      }, {
+        prop: 'translations.fr',
+        name: 'translations.fr',
+        flexGrow: 1
       },
       {
         prop: 'name',
         name: 'name',
-        flexGrow: 1
-      }, {
-        prop: 'translations.fr',
-        name: 'translations.fr',
         flexGrow: 1
       }, {
         prop: 'description',

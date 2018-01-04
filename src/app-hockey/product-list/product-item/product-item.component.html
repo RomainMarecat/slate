@@ -6,7 +6,8 @@
       </h2>
     </mat-card-title>
   </mat-card-header>
+  <app-image mat-card-image [key]="image" [resize]="{height: 200}" *ngIf="image">
+  </app-image>
   <mat-card-content>
-    <p>test</p>
   </mat-card-content>
 </mat-card>

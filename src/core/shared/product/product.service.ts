@@ -1,23 +1,21 @@
 import { Inject, Injectable } from '@angular/core';
 import { Product } from './product';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
+import { DocumentChangeAction, Reference, Action } from 'angularfire2/firestore/interfaces';
 import * as firebase from 'firebase';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable()
 export class ProductService {
   productCollectionRef: AngularFirestoreCollection < Product > ;
   products$: Observable < DocumentChangeAction[] > ;
+  product$: Observable < Product > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
-  nameFilters$: BehaviorSubject < string | null > ;
-  keyFilters$: BehaviorSubject < string | null > ;
+  nameFilter$: BehaviorSubject < string | null > ;
+  keyFilter$: BehaviorSubject < string | null > ;
   colorFilter$: BehaviorSubject < string | null > ;
   userFilter$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
@@ -35,55 +33,51 @@ export class ProductService {
    */
   constructor(private afs: AngularFirestore,
     @Inject('app_name') appName: string) {
-    this.keyFilters$ = new BehaviorSubject(null);
-    this.publishedFilter$ = new BehaviorSubject(true);
-    this.nameFilters$ = new BehaviorSubject(null);
+    this.keyFilter$ = new BehaviorSubject(null);
+    this.publishedFilter$ = new BehaviorSubject(null);
+    this.nameFilter$ = new BehaviorSubject(null);
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
-    this.limit$ = new BehaviorSubject(20);
-    this.orderBy$ = new BehaviorSubject('published_at');
-    this.productCollectionRef = this.afs.collection('clothes');
+    this.limit$ = new BehaviorSubject(null);
+    this.orderBy$ = new BehaviorSubject(null);
+    this.productCollectionRef = this.afs.collection('product');
     this.products$ = Observable.combineLatest(
-        this.keyFilters$,
         this.publishedFilter$,
-        this.nameFilters$,
+        this.nameFilter$,
         this.colorFilter$,
         this.userFilter$,
         this.limit$,
         this.orderBy$
       )
-      .catch(err => {
-        console.error(err);
-        return Observable.of([]);
-      })
-      .switchMap(([key, published, name, color, user, limit, orderBy]: any) =>
-        this.afs.collection('clothes', ref => {
-          this.query = ref;
-          if (key) {
-            this.query = this.query.where('key', '==', key);
-          }
-          if (published) {
-            this.query = this.query.where('published', '==', published);
-          }
-          if (name) {
-            this.query = this.query.where('name', '==', name);
-          }
-          if (color) {
-            this.query = this.query.where('color', '==', color);
-          }
-          if (user) {
-            this.query = this.query.where('user', '==', user);
-          }
-          if (limit) {
-            this.query = this.query.limit(limit);
-          }
-          if (orderBy) {
-            this.query = this.query.orderBy(orderBy, 'desc');
-          }
-          return this.query;
-        })
-        .snapshotChanges()
-      );
+      .switchMap(([published, name, color, user, limit, orderBy]) => {
+        return this.afs.collection('product', ref => {
+            this.query = ref;
+
+            if (published === false || published !== null) {
+              this.query = this.query.where('published', '==', published);
+            } else {
+              this.query = this.query.where('published', '==', true);
+            }
+
+            if (name) {
+              this.query = this.query.where('name', '==', name);
+            }
+            if (color) {
+              this.query = this.query.where('color', '==', color);
+            }
+            if (user) {
+              this.query = this.query.where('user', '==', user);
+            }
+            if (limit) {
+              this.query = this.query.limit(limit);
+            }
+            if (orderBy) {
+              this.query = this.query.orderBy(orderBy, 'desc');
+            }
+            return this.query;
+          })
+          .snapshotChanges();
+      });
   }
 
   /**
@@ -91,23 +85,37 @@ export class ProductService {
    * @returns {Observable<Product[]>}
    */
   getProducts(): Observable < Product[] > {
-    return this.products$.map((products: DocumentChangeAction[]) =>
-      products.map((doc: DocumentChangeAction) => {
+    return this.products$.map((products: DocumentChangeAction[]) => {
+      console.log('products', products);
+      return products.map((doc: DocumentChangeAction) => {
         const product = doc.payload.doc.data() as Product;
         product.key = doc.payload.doc.id;
         return product as Product;
-      })
-    );
+      });
+    });
+  }
+
+  getDocumentProduct(path: string): Observable < Product > {
+    return this.product$ = this.productCollectionRef
+      .doc(path)
+      .snapshotChanges()
+      .map((action: Action < firebase.firestore.DocumentSnapshot > ) => {
+        const product = action.payload.data() as Product;
+        product.key = action.payload.id;
+        return product;
+      });
   }
 
   /**
    *
-   * @param {string} key
-   * @returns {Observable<Product[]>}
+   * @param string key
+   * @returns Observable<Product>
    */
-  getProduct(key: null | string): Observable < Product[] > {
-    this.keyFilters$.next(key);
-    return this.getProducts().take(1);
+  getProduct(key: null | string): Observable < Product > {
+    if (key) {
+      return this.getDocumentProduct(key);
+    }
+    return Observable.of(null);
   }
 
   /**

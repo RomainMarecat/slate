@@ -38,7 +38,7 @@
         <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
       </ng-template>
       <ng-template #imageCell ngx-datatable-cell-template let-value="value">
-        <app-media-viewer [key]="value" [resize]="{height: headerHeight}"></app-media-viewer>
+        <app-media-viewer [key]="item" [resize]="{height: headerHeight}" *ngFor="let item of value"></app-media-viewer>
       </ng-template>
     </div>
   </div>

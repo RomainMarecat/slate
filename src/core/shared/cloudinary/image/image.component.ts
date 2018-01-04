@@ -9,6 +9,7 @@ import { MediaService } from '../../media/media.service';
 })
 export class ImageComponent implements OnInit {
   _publicId: string;
+  _key: string;
   @Input() resize: any;
   media: Media;
 
@@ -16,6 +17,10 @@ export class ImageComponent implements OnInit {
 
   get publicId(): string {
     return this._publicId;
+  }
+
+  get key(): string {
+    return this._key;
   }
 
   @Input()
@@ -29,6 +34,16 @@ export class ImageComponent implements OnInit {
       });
   }
 
+  @Input()
+  set key(key: string) {
+    this._key = key;
+    this.mediaService.getMedia(key)
+      .subscribe((media: Media) => {
+        this.media = media;
+      }, (err) => {
+        console.error(err);
+      });
+  }
   ngOnInit() {}
 
 }
