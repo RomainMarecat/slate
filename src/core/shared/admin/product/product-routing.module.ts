@@ -21,6 +21,11 @@ const routes: Routes = [{
     canActivate: [AdminGuard],
     component: ProductAddComponent
   },
+  {
+    path: 'edit/:key',
+    canActivate: [AdminGuard],
+    component: ProductAddComponent
+  },
 ];
 
 @NgModule({

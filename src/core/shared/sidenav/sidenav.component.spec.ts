@@ -43,6 +43,7 @@ import { environment } from '../../../environments/environment.monpullmoche';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { MenuService } from './../menu/menu.service';
 
 describe('SidenavComponent', () => {
   let component: SidenavComponent;
@@ -98,7 +99,8 @@ describe('SidenavComponent', () => {
           { provide: UserService, useClass: MockUserService },
           { provide: LoaderService, useClass: MockLoaderService },
           I18nService,
-          SidenavService
+          MenuService,
+          SidenavService,
         ]
       })
       .compileComponents();

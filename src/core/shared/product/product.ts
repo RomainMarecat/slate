@@ -3,6 +3,9 @@ import { HockeyProduct } from './hockey-product';
 
 export class Product implements ClothingProduct, HockeyProduct {
   name: string;
+  slug ?: string;
+  alias ?: string;
+  keywords ?: string;
 
   score: number;
 

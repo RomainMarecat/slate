@@ -27,6 +27,7 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { SidenavService } from '../sidenav/sidenav.service';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { MenuService } from './menu.service';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -55,6 +56,7 @@ describe('MenuComponent', () => {
         ],
         declarations: [MenuComponent],
         providers: [
+          MenuService,
           SidenavService,
           { provide: UserService, useClass: MockUserService },
         ]

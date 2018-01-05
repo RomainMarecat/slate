@@ -22,6 +22,7 @@ import { ProductService } from './../shared/product/product.service';
 import { MockProductService } from './../shared/product/mock-product.service';
 import { SharedModule } from '../../shared.module';
 import { MediaService } from '../../media/media.service';
+import { MenuService } from '../../menu/menu.service';
 import { MockMediaService } from '../../media/mock-media.service';
 
 describe('ProductComponent', () => {
@@ -37,18 +38,11 @@ describe('ProductComponent', () => {
           RouterTestingModule,
           BrowserAnimationsModule,
           NgxDatatableModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          MatToolbarModule,
           SharedModule
         ],
-        declarations: [ProductComponent, ProductListComponent],
+        declarations: [ProductComponent],
         providers: [
+          { provide: MenuService, useClass: MenuService },
           { provide: ProductService, useClass: MockProductService },
           { provide: MediaService, useClass: MockMediaService },
         ]
