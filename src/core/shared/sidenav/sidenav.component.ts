@@ -37,7 +37,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     private i18nService: I18nService, private sidenavService: SidenavService) {
     this.authorized = [];
     this.authorized.push('6glT4N2SUMW2HWibhefumuRiVIh2');
-    this.authorized.push('Thibault Marecat');
+    this.authorized.push('oIAtyPwagRfIKxSwX6O3ncGocyD3');
   }
 
   /**
@@ -55,8 +55,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   getAuthorized() {
     this.userService.getAuthState()
       .subscribe((user: User) => {
-        this.isAuthorized = (user && user.uid && this.authorized.includes(user.uid)) ||
-          (user && user.displayName && this.authorized.includes(user.displayName));
+        this.isAuthorized = (user && user.uid && this.authorized.includes(user.uid));
       });
   }
 
