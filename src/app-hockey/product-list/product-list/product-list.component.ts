@@ -90,17 +90,21 @@ export class ProductListComponent implements OnInit {
           .subscribe((selection: Selection) => {
             this.selection = selection;
             if (this.selection && this.selection.products) {
-              this.productService.getProducts()
-                .subscribe((products) => {
-                  this.products = products.filter((product: HockeyProduct) => {
-                    return this.selection.products.includes(product.key);
-                  });
-                  this.isLoading = false;
-                  this.loaderService.hide();
-                });
+              this.getProducts();
             }
           });
       }
     });
+  }
+
+  getProducts() {
+    this.productService.getProducts()
+      .subscribe((products) => {
+        this.products = products.filter((product: HockeyProduct) => {
+          return this.selection.products.includes(product.key);
+        });
+        this.isLoading = false;
+        this.loaderService.hide();
+      });
   }
 }

@@ -27,6 +27,7 @@ import { AlertService } from '../../core/shared/alert/alert.service';
 import { ObjectService } from '../../core/shared/util/object.service';
 import { DateService } from '../../core/shared/util/date.service';
 import { LoaderService } from '../../core/shared/loader/loader.service';
+import { MenuService } from '../../core/shared/menu/menu.service';
 import { ScoreService } from '../../core/shared/score/score.service';
 import { SelectionService } from '../../core/shared/selection/selection.service';
 import { SidenavService } from '../../core/shared/sidenav/sidenav.service';
@@ -115,16 +116,17 @@ export class ConfigService {
     { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
     { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, app_name] },
     { provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, app_name] },
-    UserService,
     AlertService,
-    ObjectService,
     DateService,
+    DeviceService,
+    I18nService,
     LoaderService,
+    MenuService,
+    ObjectService,
     ScoreService,
     SidenavService,
     UserGuard,
-    I18nService,
-    DeviceService
+    UserService,
   ]
 })
 export class CoreModule {

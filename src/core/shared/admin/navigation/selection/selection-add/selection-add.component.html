@@ -1,15 +1,6 @@
-<mat-toolbar color="warn">
-  <a mat-button color="primary" [routerLink]="['/admin']">Back office</a>
-  <a mat-button color="primary" [routerLink]="['/admin/product']">Products</a>
-  <a mat-button color="primary" [routerLink]="['/admin/navigation/selection']">Selection</a>
-  <a mat-button color="primary" [routerLink]="['/admin/navigation/category']">Category</a>
-  <a mat-button color="primary" [routerLink]="['/admin/cms']">Cms</a>
-</mat-toolbar>
 <div class="container">
   <div class="row">
     <div class="col-12 pt3 pb5">
-      <!-- <mat-grid-list cols="1" rowHeight="700px">
-  <mat-grid-tile> -->
       <form [formGroup]="form" (ngSubmit)="saveSelection()" class="form">
         <mat-card class="mat-card">
           <mat-card-header>

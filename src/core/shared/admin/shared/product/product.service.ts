@@ -3,22 +3,19 @@ import { ClothingProduct } from '../../../product/clothing-product';
 import { HockeyProduct } from '../../../product/hockey-product';
 import { Product } from '../../../product/product';
 import { AlertService } from '../../../alert/alert.service';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
+import { DocumentChangeAction, Reference, Action } from 'angularfire2/firestore/interfaces';
 import * as firebase from 'firebase';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable()
 export class ProductService {
   productCollectionRef: AngularFirestoreCollection < Product > ;
   products$: Observable < DocumentChangeAction[] > ;
+  product$: Observable < Product > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
@@ -95,22 +92,35 @@ export class ProductService {
     );
   }
 
+  getDocumentProduct(path: string): Observable < Product > {
+    return this.product$ = this.productCollectionRef
+      .doc(path)
+      .snapshotChanges()
+      .map((action: Action < firebase.firestore.DocumentSnapshot > ) => {
+        const product = action.payload.data() as Product;
+        product.key = action.payload.id;
+        return product;
+      });
+  }
+
   /**
    *
-   * @param {string} key
-   * @returns {Observable<Product[]>}
+   * @param string key
+   * @returns Observable<Product>
    */
-  getProduct(key: null | string): Observable < Product[] > {
-    this.keyFilters$.next(key);
-    return this.getProducts().take(1);
+  getProduct(key: null | string): Observable < Product > {
+    if (key) {
+      return this.getDocumentProduct(key);
+    }
+    return Observable.of(null);
   }
 
   /**
    *
    * @param {Product} product
    */
-  updateProduct(product: Product) {
-    this.productCollectionRef.doc(product.key).update({ ...product });
+  updateProduct(product: Product): Promise < void > {
+    return this.productCollectionRef.doc(product.key).update({ ...product });
   }
 
   /**

@@ -1,11 +1,4 @@
-<mat-toolbar color="warn">
-  <a mat-button color="primary" [routerLink]="['/admin']">Back office</a>
-  <a mat-button color="primary" [routerLink]="['/admin/product']">Products</a>
-  <a mat-button color="primary" [routerLink]="['/admin/navigation/selection']">Selection</a>
-  <a mat-button color="primary" [routerLink]="['/admin/navigation/category']">Category</a>
-  <a mat-button color="primary" [routerLink]="['/admin/cms']">Cms</a>
-</mat-toolbar>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-6">
       <div class='selected-column'>
@@ -17,20 +10,18 @@
         <mat-icon aria-label="Published">done</mat-icon>
         Publier
       </button>
-      <button role="button" aria-label="Supprimer le produit" mat-raised-button color="accent" (click)="deleteProduct()" *ngIf="selected && selected.length > 0">
+      <button role="button" aria-label="Supprimer le produit" mat-raised-button color="accent" (click)="deleteProducts()" *ngIf="selected && selected.length > 0">
         <mat-icon aria-label="delete">delete</mat-icon>
         Supprimer
-      </button>
-      <button mat-raised-button color="primary" type="button" aria-label="Ajouter un produit" [routerLink]="['/admin/product/add']">
-        <mat-icon>add</mat-icon>
-        Ajouter
       </button>
     </div>
   </div>
   <div class="row">
-    <div class="col-12 mt-2">
-      <ngx-datatable class="material striped scrolling-products" [columnMode]="'force'" [rows]="products" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
-      </ngx-datatable>
+    <div class="col-12">
+      <div class="px-2">
+        <ngx-datatable class="material striped scrolling-products" [columnMode]="'force'" [rows]="products" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
+        </ngx-datatable>
+      </div>
       <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
         <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
       </ng-template>
@@ -40,6 +31,14 @@
       <ng-template #imageCell ngx-datatable-cell-template let-value="value">
         <app-media-viewer [key]="item" [resize]="{height: headerHeight}" *ngFor="let item of value"></app-media-viewer>
       </ng-template>
+      <ng-template #actionsCell let-row="row">
+        <a (click)="deleteProduct(row)">
+          <mat-icon>delete</mat-icon>
+        </a>
+      </ng-template>
     </div>
   </div>
+  <button color="primary" type="button" aria-label="Ajouter un produit" [routerLink]="['/admin/product/add']" mat-mini-fab class="absolute-fab pulse">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>

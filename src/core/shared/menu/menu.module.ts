@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MenuComponent} from './menu.component';
-import {MatButtonModule, MatIconModule, MatToolbarModule} from '@angular/material';
-import {TranslateModule} from '@ngx-translate/core';
-import {RouterModule} from '@angular/router';
-import {Angulartics2Module} from 'angulartics2';
+import { MenuComponent } from './menu.component';
+import { MatButtonModule, MatIconModule, MatToolbarModule } from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
+import { Angulartics2Module } from 'angulartics2';
+import { MenuService } from './menu.service';
 
 @NgModule({
   imports: [
@@ -23,4 +24,4 @@ import {Angulartics2Module} from 'angulartics2';
     MenuComponent
   ]
 })
-export class MenuModule { }
+export class MenuModule {}

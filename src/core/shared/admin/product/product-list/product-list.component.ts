@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild, TemplateRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from '../../../product/product';
 import { ProductService } from './../../shared/product/product.service';
+import { MenuService } from './../../../menu/menu.service';
 import { Observable } from 'rxjs/Observable';
 import { take } from 'rxjs/operators';
 
@@ -16,15 +18,17 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   isLoading = false;
   selected: Product[];
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
+  @ViewChild('actionsCell') actionsCell: TemplateRef < any > ;
   @ViewChild('imageCell') imageCell: TemplateRef < any > ;
 
   /**
    * @param ElementRef table
    * @param ProductService productService
    */
-  constructor(private table: ElementRef,
+  constructor(private router: Router,
+    private table: ElementRef,
+    private menuService: MenuService,
     private productService: ProductService) {
     this.selected = [];
   }
@@ -47,16 +51,21 @@ export class ProductListComponent implements OnInit {
   /**
    * Delete a product from list
    */
-  deleteProduct() {
+  deleteProducts() {
     this.selected.forEach((product: Product) => {
       this.productService.deleteProduct(product);
     });
+  }
+
+  deleteProduct(product: Product) {
+    this.productService.deleteProduct(product);
   }
 
   /**
    * Init list of product
    */
   ngOnInit() {
+    this.menuService.nextTitle('Products');
     this.columns = [{
       width: 50,
       sortable: false,
@@ -64,15 +73,14 @@ export class ProductListComponent implements OnInit {
       draggable: false,
       resizeable: false,
       cellTemplate: this.checkboxCell,
-      headerTemplate: this.checkboxHeader,
     }, {
       prop: 'images',
       name: 'images',
       flexGrow: 1,
       cellTemplate: this.imageCell,
     }, {
-      prop: 'name',
-      name: 'name',
+      prop: 'translations.fr',
+      name: 'name (fr)',
       flexGrow: 1
     }, {
       prop: 'category',
@@ -86,6 +94,11 @@ export class ProductListComponent implements OnInit {
       prop: 'published',
       name: 'published',
       flexGrow: 1
+    }, {
+      prop: 'key',
+      name: 'Actions',
+      flexGrow: 1,
+      cellTemplate: this.actionsCell
     }, ];
     this.productService.getProducts()
       .take(1)
@@ -103,7 +116,11 @@ export class ProductListComponent implements OnInit {
     this.selected.push(...selected);
   }
 
-  onActivate(event) {}
+  onActivate(event) {
+    if (event.type === 'dblclick') {
+      this.router.navigate(['/admin/product/edit/', event.row.key]);
+    }
+  }
 
   onScroll(event: any) {}
 

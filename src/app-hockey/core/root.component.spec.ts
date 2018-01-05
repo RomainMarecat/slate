@@ -44,6 +44,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { SidenavComponent } from '../../core/shared/sidenav/sidenav.component';
 import { AppRootComponent } from './root.component';
 import { SharedModule } from '../../core/shared/shared.module';
+import { MenuService } from '../../core/shared/menu/menu.service';
 
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
@@ -99,6 +100,7 @@ describe('AppRootComponent', () => {
           { provide: UserService, useClass: MockUserService },
           { provide: LoaderService, useClass: MockLoaderService },
           I18nService,
+          MenuService,
           SidenavService,
           Angulartics2GoogleAnalytics
         ]

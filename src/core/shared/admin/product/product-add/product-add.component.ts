@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../alert/alert.service';
+import { StringService } from '../../../util/string.service';
 import { Product } from '../../../product/product';
 import { ProductService } from '../../shared/product/product.service';
 import { Media } from '../../../media/media';
@@ -10,6 +12,8 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase';
 import DocumentReference = firebase.firestore.DocumentReference;
 import { ProductImageComponent } from './../../../product/product-image/product-image.component';
+import { ProductFormType } from './../../shared/product/form-product';
+import { map, switchMap, combineLatest, retry, timeout, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-add',
@@ -35,7 +39,9 @@ export class ProductAddComponent implements OnInit {
   _publication = true;
   _descriptionModel: string;
 
-  constructor(private productService: ProductService,
+  constructor(private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private productService: ProductService,
     private alertService: AlertService,
     private categoryService: CategoryService) {
     this.medias = [];
@@ -44,6 +50,46 @@ export class ProductAddComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.getProduct();
+    this.createColumns();
+    this.createEditorConfig();
+    this.getCategories();
+  }
+
+  createForm() {
+    const formType = new ProductFormType(this.product);
+    this.form = formType.getForm();
+  }
+
+  getProduct() {
+    this.activatedRoute.params.subscribe((value: { key: string }) => {
+      if (value.key) {
+        const key = value.key;
+        this.productService.getProduct(key)
+          .subscribe((product: Product) => {
+            this.product = product;
+            this.descriptionModel = product.description;
+            this.createForm();
+            setTimeout(() => {
+              this.observeUpdate();
+            }, 2000);
+          });
+      }
+    });
+  }
+
+  observeUpdate() {
+    this.form.valueChanges
+      .debounceTime(800)
+      .subscribe((value) => {
+        if (value.name) {
+          const slug = StringService.slugify(value.name);
+          this.form.patchValue({ name: value.name, slug: slug, alias: value.name });
+        }
+      });
+  }
+
+  createColumns() {
     this.columns = [{
       width: 50,
       sortable: false,
@@ -65,41 +111,18 @@ export class ProductAddComponent implements OnInit {
       name: 'published',
       flexGrow: 1
     }, ];
+  }
+
+  createEditorConfig() {
     this.editorConfig = {
       'editable': true,
       'spellcheck': false,
       'height': '5rem',
       'minHeight': '2rem',
-      'placeholder': 'Enter Description',
+      'placeholder': 'Contenu de la description...',
       'translate': 'no',
       'toolbar': []
     };
-    this.getCategories();
-  }
-
-  createForm() {
-    this.form = new FormGroup({
-      'name': new FormControl('', [
-        Validators.required,
-      ]),
-      'description': new FormControl('', []),
-      'reseller': new FormControl('', [
-        Validators.required,
-      ]),
-      'url': new FormControl('', [
-        Validators.required,
-      ]),
-      'published': new FormControl(true, []),
-      'price': new FormControl(0, [
-        Validators.required,
-      ]),
-      'images': new FormControl([], [
-        Validators.required,
-      ]),
-      'category': new FormControl('', [
-        Validators.required,
-      ]),
-    });
   }
 
   onImageChange(media: Media) {
@@ -117,6 +140,9 @@ export class ProductAddComponent implements OnInit {
     this.productImageComponent.clearUpload();
     this.form.reset({
       name: '',
+      translations: {
+        fr: ''
+      },
       description: '',
       reseller: '',
       url: '',
@@ -132,15 +158,31 @@ export class ProductAddComponent implements OnInit {
       published: this._publication
     });
     if (this.form.valid) {
-      this.product = this.form.value;
-      console.log('New product', this.product);
-      this.productService.createProduct(this.product)
-        .then((doc: DocumentReference) => {
-          this.alertService.toast(`product added ${doc.id}`);
-          this.reset();
-        }, (err) => {
-          this.alertService.toast(`product error ${err}`);
-        });
+      this.product = { ...this.product, ...this.form.value };
+      if (this.product.key) {
+        if (this.product.published === true) {
+          this.product.published_at = new Date();
+        }
+        console.log('Update product', this.product);
+        this.productService.updateProduct(this.product)
+          .then((doc) => {
+            this.alertService.toast(`product updated ${this.product.translations.fr}`);
+            this.reset();
+          }, (err) => {
+            this.alertService.toast(`product error ${err}`);
+          });
+        this.router.navigate(['/admin/product']);
+      } else {
+        console.log('New product', this.product);
+
+        this.productService.createProduct(this.product)
+          .then((doc: DocumentReference) => {
+            this.alertService.toast(`product added ${doc.id}`);
+            this.reset();
+          }, (err) => {
+            this.alertService.toast(`product error ${err}`);
+          });
+      }
     }
   }
 
@@ -163,6 +205,7 @@ export class ProductAddComponent implements OnInit {
   addCategory() {
     this.selected.forEach((category: Category) => {
       this.form.patchValue({ category: category.key });
+      this.alertService.toast('categorie selectionnée');
     });
   }
 
@@ -220,6 +263,14 @@ export class ProductAddComponent implements OnInit {
 
   set category(category) {
     this.form.patchValue({ category: category });
+  }
+
+  get fr() {
+    return this.form.get('translations').get('fr');
+  }
+
+  set fr(fr) {
+    this.form.get('translations').patchValue({ fr: fr });
   }
 
   get publication() {
