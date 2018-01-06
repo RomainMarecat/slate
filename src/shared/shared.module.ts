@@ -23,7 +23,8 @@ import {
   MatTooltipModule,
   MatExpansionModule,
   MatStepperModule,
-  MatRadioModule
+  MatRadioModule,
+  MatDialogModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { SlackModule } from './slack/slack.module';
@@ -43,7 +44,7 @@ import { MediaModule } from './media/media.module';
 import { FooterModule } from './footer/footer.module';
 import { SidenavModule } from './sidenav/sidenav.module';
 import { LoaderModule } from './loader/loader.module';
-import { AlertModule } from './popup/alert.module';
+import { PopupModule } from './popup/popup.module';
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
 
@@ -57,7 +58,6 @@ export class ConfigService {
 
 @NgModule({
   imports: [
-    AlertModule,
     AngularFireAuthModule,
     Angulartics2Module,
     FileUploadModule,
@@ -71,6 +71,7 @@ export class ConfigService {
     ImageCropperModule,
     LoaderModule,
     MatCardModule,
+    MatDialogModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
@@ -94,13 +95,13 @@ export class ConfigService {
     MenuModule,
     ModalModule.forRoot(),
     NgStringPipesModule,
+    PopupModule,
     RouterModule,
     ReactiveFormsModule,
     SidenavModule,
     TranslateModule
   ],
   exports: [
-    AlertModule,
     CloudinaryModule,
     FileUploadModule,
     FlexLayoutModule,
@@ -111,6 +112,7 @@ export class ConfigService {
     ImageCropperModule,
     LoaderModule,
     MatCardModule,
+    MatDialogModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
@@ -134,6 +136,7 @@ export class ConfigService {
     MenuModule,
     ModalModule,
     NgStringPipesModule,
+    PopupModule,
     ProductImageComponent,
     RouterModule,
     ReactiveFormsModule,

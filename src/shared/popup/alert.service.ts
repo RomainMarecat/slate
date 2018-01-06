@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { AlertComponent } from './alert.component';
+import { AlertComponent } from './snackbar/alert.component';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()

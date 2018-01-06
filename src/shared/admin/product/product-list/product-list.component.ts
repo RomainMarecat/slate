@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { Product } from '../../../product/product';
 import { ProductService } from './../../shared/product/product.service';
 import { MenuService } from './../../../menu/menu.service';
-import { Observable } from 'rxjs/Observable';
 import { take } from 'rxjs/operators';
+import { DialogComponent } from './../../../popup/dialog/dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-product-list',
@@ -26,7 +27,8 @@ export class ProductListComponent implements OnInit {
    * @param ElementRef table
    * @param ProductService productService
    */
-  constructor(private router: Router,
+  constructor(public dialog: MatDialog,
+    private router: Router,
     private table: ElementRef,
     private menuService: MenuService,
     private productService: ProductService) {
@@ -59,6 +61,23 @@ export class ProductListComponent implements OnInit {
 
   deleteProduct(product: Product) {
     this.productService.deleteProduct(product);
+  }
+
+  confirmDelete(product: Product) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '500px',
+      data: {
+        title: 'Confirmation de suppression du produit',
+        content: 'Voulez-vous continuer de supprimer le produit ?'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.deleteProduct(product);
+      }
+      console.log('The dialog was closed', result);
+    });
   }
 
   /**
