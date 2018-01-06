@@ -36,6 +36,7 @@ import { I18nService } from './../../../shared/i18n/i18n.service';
 import { environment } from './../../../environments/environment.hockey';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { MockSelectionService } from '../../../shared/selection/mock-selection.service';
+import { MenuService } from '../../../shared/menu/menu.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -76,7 +77,8 @@ describe('ProductListComponent', () => {
           { provide: LoaderService, useClass: MockLoaderService },
           { provide: ScoreService, useClass: MockScoreService },
           { provide: DateService, useClass: DateService },
-          I18nService
+          I18nService,
+          MenuService,
         ]
       })
       .compileComponents();

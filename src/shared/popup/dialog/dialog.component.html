@@ -1,0 +1,6 @@
+<h2 mat-dialog-title [innerHtml]="data?.title"></h2>
+<mat-dialog-content [innerHtml]="data?.content"></mat-dialog-content>
+<mat-dialog-actions class="d-flex justify-content-between">
+  <button mat-raised-button [mat-dialog-close]="false">Annuler</button>
+  <button mat-raised-button [mat-dialog-close]="true" color="primary">Supprimer</button>
+</mat-dialog-actions>

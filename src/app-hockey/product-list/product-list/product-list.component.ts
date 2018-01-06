@@ -12,6 +12,7 @@ import { LoaderService } from './../../../shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from './../../../environments/environment.hockey';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
+import { MenuService } from './../../../shared/menu/menu.service';
 
 @Component({
   selector: 'app-product-list',
@@ -28,15 +29,17 @@ export class ProductListComponent implements OnInit {
   selection: Selection;
 
   /**
-   * constructor
-   * @param {ProductService}   private productService
-   * @param {Router}           private router
-   * @param {Meta}             private meta
-   * @param {ElementRef}       private ProductComponent
-   * @param {UserService}      private userService
-   * @param {AlertService}     public  alertService
-   * @param {LoaderService}    private loaderService
-   * @param {TranslateService} private translateService
+   * @param ProductService   private productService
+   * @param SelectionService private selectionService
+   * @param Router           private router
+   * @param ActivatedRoute   private activatedRoute
+   * @param Meta             private meta
+   * @param ElementRef       private ProductComponent
+   * @param UserService      private userService
+   * @param MenuService      private menuService
+   * @param AlertService     public  alertService
+   * @param LoaderService    private loaderService
+   * @param TranslateService private translateService
    */
   constructor(private productService: ProductService,
     private selectionService: SelectionService,
@@ -45,6 +48,7 @@ export class ProductListComponent implements OnInit {
     private meta: Meta,
     private ProductComponent: ElementRef,
     private userService: UserService,
+    private menuService: MenuService,
     public alertService: AlertService,
     private loaderService: LoaderService,
     private translateService: TranslateService) {
@@ -59,6 +63,7 @@ export class ProductListComponent implements OnInit {
    * Diplay All products index by published at
    */
   ngOnInit() {
+    this.menuService.nextTitle('');
     this.loaderService.show();
     this.translateService.get('meta.title.content')
       .subscribe((translation: string) => {
@@ -71,9 +76,9 @@ export class ProductListComponent implements OnInit {
 
     this.meta.addTags([
       { property: 'fb:app_id', content: environment.facebook_app_id },
-      { rel: 'canonical', href: 'https://monpullmoche.com' },
-      { rel: 'alternate', hreflang: 'x-default', href: 'https://monpullmoche.com' },
-      { rel: 'alternate', hreflang: 'en', href: 'https://myuglysweat.com' }
+      { rel: 'canonical', href: 'https://hockey-f2b77.firebaseapp.com' },
+      { rel: 'alternate', hreflang: 'x-default', href: 'https://hockey-f2b77.firebaseapp.com' },
+      { rel: 'alternate', hreflang: 'en', href: 'https://hockey-f2b77.firebaseapp.com' }
     ]);
 
     this.loadProducts();

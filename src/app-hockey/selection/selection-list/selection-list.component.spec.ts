@@ -20,6 +20,7 @@ import { DeviceService } from '../../../shared/device/device.service';
 import { NotificationService } from '../../../shared/slack/notification.service';
 import { MockSelectionService } from '../../../shared/selection/mock-selection.service';
 import { ProductService } from '../../../shared/product/product.service';
+import { MenuService } from '../../../shared/menu/menu.service';
 import { MockProductService } from '../../../shared/product/mock-product.service';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -47,9 +48,10 @@ describe('SelectionListComponent', () => {
           { provide: ProductService, useClass: MockProductService },
           { provide: NotificationService, useClass: MockNotificationService },
           DateService,
-          ObjectService,
-          I18nService,
           DeviceService,
+          I18nService,
+          MenuService,
+          ObjectService,
         ]
       })
       .compileComponents();

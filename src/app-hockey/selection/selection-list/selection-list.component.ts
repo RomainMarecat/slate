@@ -3,8 +3,10 @@ import { Router } from '@angular/router';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { Selection } from '../../../shared/selection/selection';
+import { MenuService } from '../../../shared/menu/menu.service';
 import { Observable } from 'rxjs/Observable';
-import { take } from 'rxjs/operators';
+import { take, map, debounceTime } from 'rxjs/operators';
+import 'rxjs/add/observable/fromEvent';
 
 @Component({
   selector: 'app-selection-list',
@@ -21,7 +23,7 @@ export class SelectionListComponent implements OnInit {
   headerHeight: number;
   pageLimit: number;
   currentSelectedSelection: Selection;
-  innerHeight: string;
+  innerHeight: string = (document.documentElement.clientHeight - 65).toString() + 'px';
   active = { 'hockey-player': '', 'hockey-goalie': '' };
 
   /**
@@ -30,16 +32,24 @@ export class SelectionListComponent implements OnInit {
    * @param LoaderService    private loaderService
    * @param Router           private router
    */
-  constructor(private selectionService: SelectionService,
+  constructor(private menuService: MenuService,
+    private selectionService: SelectionService,
     private loaderService: LoaderService,
     private router: Router) {
-    this.innerHeight = (document.documentElement.clientHeight - 65).toString() + 'px';
+    const $resizeEvent = Observable.fromEvent(window, 'resize')
+      .map(() =>
+        (document.documentElement.clientHeight - 65).toString() + 'px'
+      )
+      .debounceTime(500);
+
+    $resizeEvent.subscribe(height => this.innerHeight = height);
   }
 
   /**
    * Init all selections
    */
   ngOnInit() {
+    this.menuService.nextTitle('');
     this.loaderService.show();
     this.loadSelections();
   }
