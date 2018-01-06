@@ -1,13 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../core/shared/product/product.service';
-import { ClothingProduct } from '../../core/shared/product/clothing-product';
+import { ProductService } from '../../shared/product/product.service';
+import { ClothingProduct } from '../../shared/product/clothing-product';
 import { Observable } from 'rxjs/Observable';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
-import { MediaService } from '../../core/shared/media/media.service';
-import { LoaderService } from '../../core/shared/loader/loader.service';
-import { CloudinaryTagService } from '../../core/shared/cloudinary/cloudinary-tag.service';
+import { MediaService } from '../../shared/media/media.service';
+import { LoaderService } from '../../shared/loader/loader.service';
+import { CloudinaryTagService } from '../../shared/cloudinary/cloudinary-tag.service';
 import { environment } from './../../environments/environment.monpullmoche';
 
 @Component({

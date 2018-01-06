@@ -1,17 +1,17 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProductService } from './../../../core/shared/product/product.service';
-import { ClothingProduct } from '../../../core/shared/product/clothing-product';
+import { ProductService } from './../../../shared/product/product.service';
+import { ClothingProduct } from '../../../shared/product/clothing-product';
 import { Observable } from 'rxjs/Observable';
-import { SelectionService } from './../../../core/shared/selection/selection.service';
-import { Selection } from './../../../core/shared/selection/selection';
-import { UserService } from './../../../core/shared/user/user.service';
-import { AlertService } from './../../../core/shared/alert/alert.service';
-import { LoaderService } from './../../../core/shared/loader/loader.service';
+import { SelectionService } from '../../../shared/selection/selection.service';
+import { Selection } from '../../../shared/selection/selection';
+import { UserService } from '../../../shared/user/user.service';
+import { AlertService } from '../../../shared/popup/alert.service';
+import { LoaderService } from './../../../shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from './../../../environments/environment.hockey';
-import { HockeyProduct } from '../../../core/shared/product/hockey-product';
+import { HockeyProduct } from '../../../shared/product/hockey-product';
 
 @Component({
   selector: 'app-product-list',

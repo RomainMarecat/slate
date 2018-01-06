@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../../core/shared/product/product';
-import { ClothingProduct } from '../../core/shared/product/clothing-product';
-import { DateService } from '../../core/shared/util/date.service';
+import { Product } from '../../shared/product/product';
+import { ClothingProduct } from '../../shared/product/clothing-product';
+import { DateService } from '../../shared/util/date.service';
 
 @Component({
   selector: 'app-product-item',

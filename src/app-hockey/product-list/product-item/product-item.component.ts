@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HockeyProduct } from '../../../core/shared/product/hockey-product';
-import { ProductService } from '../../../core/shared/product/product.service';
+import { HockeyProduct } from '../../../shared/product/hockey-product';
+import { ProductService } from '../../../shared/product/product.service';
 
 @Component({
   selector: 'app-product-item',

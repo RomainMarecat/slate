@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Selection } from './../../../core/shared/selection/selection';
-import { SelectionService } from './../../../core/shared/selection/selection.service';
+import { Selection } from '../../../shared/selection/selection';
+import { SelectionService } from '../../../shared/selection/selection.service';
 
 @Component({
   selector: 'app-selection-item',
