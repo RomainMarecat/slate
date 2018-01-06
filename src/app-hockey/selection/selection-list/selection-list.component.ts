@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SelectionService } from '../../../core/shared/selection/selection.service';
-import { LoaderService } from '../../../core/shared/loader/loader.service';
-import { Selection } from '../../../core/shared/selection/selection';
+import { SelectionService } from '../../../shared/selection/selection.service';
+import { LoaderService } from '../../../shared/loader/loader.service';
+import { Selection } from '../../../shared/selection/selection';
 import { Observable } from 'rxjs/Observable';
 import { take } from 'rxjs/operators';
 

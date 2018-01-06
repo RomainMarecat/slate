@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { UserGuard } from '../core/shared/guard/user.guard';
+import { UserGuard } from '../shared/guard/user.guard';
 
 const routes: Routes = [{
     // On root we go to root. On other route we start with this route and go on children route
@@ -31,7 +31,7 @@ const routes: Routes = [{
   },
   {
     path: 'admin',
-    loadChildren: './../core/shared/admin/admin.module#AdminModule'
+    loadChildren: './../shared/admin/admin.module#AdminModule'
   }
 ];
 

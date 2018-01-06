@@ -10,12 +10,12 @@ import { NgStringPipesModule } from 'angular-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { CloudinaryModule } from '../../../core/shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from '../../../shared/cloudinary/cloudinary.module';
 import { Cloudinary } from 'cloudinary-core';
 import { environment } from '../../../environments/environment.hockey';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { ProductService } from '../../../core/shared/product/product.service';
-import { MockProductService } from '../../../core/shared/product/mock-product.service';
+import { ProductService } from '../../../shared/product/product.service';
+import { MockProductService } from '../../../shared/product/mock-product.service';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;

@@ -8,7 +8,7 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { environment } from '../../environments/environment.hockey';
 import { NgStringPipesModule } from 'angular-pipes';
-import { SharedModule } from '../../core/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductListRoutingModule } from './product-list-routing.module';
 

@@ -1,0 +1,18 @@
+@import '../../../node_modules/bootstrap/scss/bootstrap-grid';
+footer {
+  height: 56px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  .mat-toolbar {
+    background-color: #999;
+  }
+  @include media-breakpoint-up(xs) {
+    display: none;
+  }
+  @include media-breakpoint-up(sm) {
+    display: block;
+  }
+}

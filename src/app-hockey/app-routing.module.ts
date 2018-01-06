@@ -19,7 +19,7 @@ const routes: Routes = [{
   },
   {
     path: 'admin',
-    loadChildren: './../core/shared/admin/admin.module#AdminModule'
+    loadChildren: './../shared/admin/admin.module#AdminModule'
   }
 ];
 

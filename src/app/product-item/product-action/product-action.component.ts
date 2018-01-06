@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Product } from '../../../core/shared/product/product';
-import { ClothingProduct } from '../../../core/shared/product/clothing-product';
-import { UserService } from '../../../core/shared/user/user.service';
-import { ScoreService } from '../../../core/shared/score/score.service';
-import { Score } from '../../../core/shared/score/score';
-import { AlertService } from '../../../core/shared/alert/alert.service';
+import { Product } from '../../../shared/product/product';
+import { ClothingProduct } from '../../../shared/product/clothing-product';
+import { UserService } from '../../../shared/user/user.service';
+import { ScoreService } from '../../../shared/score/score.service';
+import { Score } from '../../../shared/score/score';
+import { AlertService } from '../../../shared/popup/alert.service';
 
 @Component({
   selector: 'app-product-action',

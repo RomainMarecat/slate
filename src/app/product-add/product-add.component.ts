@@ -1,11 +1,11 @@
 import { Component, TemplateRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ClothingProduct } from '../../core/shared/product/clothing-product';
-import { ProductService } from '../../core/shared/product/product.service';
-import { UserService } from '../../core/shared/user/user.service';
-import { LoaderService } from '../../core/shared/loader/loader.service';
-import { AlertService } from '../../core/shared/alert/alert.service';
-import { NotificationService } from '../../core/shared/slack/notification.service';
+import { ClothingProduct } from '../../shared/product/clothing-product';
+import { ProductService } from '../../shared/product/product.service';
+import { UserService } from '../../shared/user/user.service';
+import { LoaderService } from '../../shared/loader/loader.service';
+import { AlertService } from '../../shared/popup/alert.service';
+import { NotificationService } from '../../shared/slack/notification.service';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';

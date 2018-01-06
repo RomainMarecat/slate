@@ -29,16 +29,16 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgStringPipesModule } from 'angular-pipes';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../../core/shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from '../../core/shared/cloudinary/cloudinary-config';
+import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
+import { CloudinaryConfig } from '../../shared/cloudinary/cloudinary-config';
 import { ProductActionComponent } from './../product-item/product-action/product-action.component';
-import { MockProductService } from '../../core/shared/product/mock-product.service';
-import { ProductService } from '../../core/shared/product/product.service';
+import { MockProductService } from '../../shared/product/mock-product.service';
+import { ProductService } from '../../shared/product/product.service';
 import { ProductDetailComponent } from './product-detail.component';
-import { MediaService } from '../../core/shared/media/media.service';
-import { MockMediaService } from '../../core/shared/media/mock-media.service';
-import { LoaderService } from '../../core/shared/loader/loader.service';
-import { MockLoaderService } from '../../core/shared/loader/mock-loader.service';
+import { MediaService } from '../../shared/media/media.service';
+import { MockMediaService } from '../../shared/media/mock-media.service';
+import { LoaderService } from '../../shared/loader/loader.service';
+import { MockLoaderService } from '../../shared/loader/mock-loader.service';
 import { environment } from './../../environments/environment.monpullmoche';
 
 describe('ProductDetailComponent', () => {
