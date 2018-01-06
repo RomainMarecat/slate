@@ -46,7 +46,6 @@ import { MenuService } from '../../menu/menu.service';
   ],
   providers: [
     CategoryService,
-    MenuService,
     ProductService,
   ]
 })
