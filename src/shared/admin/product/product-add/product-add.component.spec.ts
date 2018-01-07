@@ -44,6 +44,8 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2Module } from 'angulartics2';
 import { CategoryService } from '../../shared/navigation/category/category.service';
 import { MockCategoryService } from '../../shared/navigation/category/mock-category.service';
+import { VariantService } from '../../../variant/variant.service';
+import { MockVariantService } from '../../../variant/mock-variant.service';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
@@ -84,6 +86,7 @@ describe('ProductAddComponent', () => {
           { provide: CategoryService, useClass: MockCategoryService },
           { provide: ProductService, useClass: MockProductService },
           { provide: NotificationService, useClass: MockNotificationService },
+          { provide: VariantService, useClass: MockVariantService },
           DateService,
           ObjectService,
           I18nService,

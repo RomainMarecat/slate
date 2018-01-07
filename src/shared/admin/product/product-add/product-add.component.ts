@@ -14,6 +14,7 @@ import DocumentReference = firebase.firestore.DocumentReference;
 import { ProductImageComponent } from './../../../product/product-image/product-image.component';
 import { ProductFormType } from './../../shared/product/form-product';
 import { map, switchMap, combineLatest, retry, timeout, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
+import { VariantService } from '../../../variant/variant.service';
 
 @Component({
   selector: 'app-product-add',
@@ -43,7 +44,8 @@ export class ProductAddComponent implements OnInit {
     private router: Router,
     private productService: ProductService,
     private alertService: AlertService,
-    private categoryService: CategoryService) {
+    private categoryService: CategoryService,
+    private variantService: VariantService) {
     this.medias = [];
     this._descriptionModel = '';
   }

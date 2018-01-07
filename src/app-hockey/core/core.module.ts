@@ -7,9 +7,8 @@ import {
   Injectable,
   Inject
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
@@ -47,6 +46,8 @@ import { environment } from '../../environments/environment.hockey';
 import { SlackModule } from '../../shared/slack/slack.module';
 import { ProductListModule } from '../product-list/product-list.module';
 import { SelectionModule } from '../selection/selection.module';
+import { VariantService } from '../../shared/variant/variant.service';
+import { VisitorService } from '../../shared/firestore/visitor.service';
 
 export const production = new InjectionToken < string > ('production');
 export const site_name = new InjectionToken < string > ('site_name');
@@ -63,6 +64,7 @@ export function createTranslateLoader(http: HttpClient, name: string) {
 }
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
+export const TABLE_VARIANT = new InjectionToken < string > ('variant');
 
 @Injectable()
 export class ConfigService {
@@ -116,6 +118,7 @@ export class ConfigService {
     { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
     { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, app_name] },
     { provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, app_name] },
+    { provide: VariantService, useClass: VisitorService, deps: [AngularFirestore, TABLE_VARIANT] },
     AlertService,
     DateService,
     DeviceService,
