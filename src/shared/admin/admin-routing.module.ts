@@ -10,6 +10,11 @@ const routes: Routes = [{
   },
   {
     canActivate: [AdminGuard],
+    path: 'attribute',
+    loadChildren: './attribute/attribute.module#AttributeModule'
+  },
+  {
+    canActivate: [AdminGuard],
     path: 'navigation',
     loadChildren: './navigation/navigation.module#NavigationModule'
   },

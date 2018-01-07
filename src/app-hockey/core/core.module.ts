@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { AngularFireModule } from 'angularfire2';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { AdsenseModule } from 'ng2-adsense';
@@ -20,7 +19,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
 import { UserService } from '../../shared/user/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
 import { ObjectService } from '../../shared/util/object.service';
@@ -34,10 +33,9 @@ import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { DeviceService } from '../../shared/device/device.service';
 import CloudinaryConfiguration from '../../shared/cloudinary/cloudinary-configuration.class';
-import { FirebaseAppConfig } from 'angularfire2';
+import { FirebaseAppConfig, AngularFireModule } from 'angularfire2';
 import { Environment } from '../../shared/util/environment';
 import { ProductService } from '../../shared/product/product.service';
-import { AngularFirestore } from 'angularfire2/firestore';
 import { MediaService } from '../../shared/media/media.service';
 import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
 import { NgStringPipesModule } from 'angular-pipes';
@@ -46,7 +44,7 @@ import { environment } from '../../environments/environment.hockey';
 import { SlackModule } from '../../shared/slack/slack.module';
 import { ProductListModule } from '../product-list/product-list.module';
 import { SelectionModule } from '../selection/selection.module';
-import { VariantService } from '../../shared/variant/variant.service';
+import { AttributeService } from '../../shared/attribute/attribute.service';
 import { VisitorService } from '../../shared/firestore/visitor.service';
 
 export const production = new InjectionToken < string > ('production');
@@ -64,7 +62,7 @@ export function createTranslateLoader(http: HttpClient, name: string) {
 }
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
-export const TABLE_VARIANT = new InjectionToken < string > ('variant');
+export const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
 
 @Injectable()
 export class ConfigService {
@@ -118,7 +116,8 @@ export class ConfigService {
     { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
     { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, app_name] },
     { provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, app_name] },
-    { provide: VariantService, useClass: VisitorService, deps: [AngularFirestore, TABLE_VARIANT] },
+    { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
+    { provide: AttributeService, useClass: VisitorService, deps: [AngularFirestore, TABLE_ATTRIBUTE] },
     AlertService,
     DateService,
     DeviceService,
@@ -149,7 +148,7 @@ export class CoreModule {
         { provide: site_name, useValue: config.site_name },
         { provide: app_name, useValue: config.app_name },
         { provide: firebase, useValue: config.firebase },
-        { provide: cloudinary, useValue: config.cloudinary }
+        { provide: cloudinary, useValue: config.cloudinary },
       ]
     };
   }

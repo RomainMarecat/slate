@@ -30,7 +30,7 @@ export class VisitorService {
    * @param AngularFirestore afs
    * @param string           table
    */
-  constructor(private afs: AngularFirestore, @Inject('table') table: string) {
+  constructor(private afs: AngularFirestore, @Inject('TABLE') table: string) {
     this.table = table;
     this.columnFilter$ = new BehaviorSubject(null);
     this.valueFilter$ = new BehaviorSubject(null);

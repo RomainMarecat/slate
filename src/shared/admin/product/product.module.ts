@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ProductRoutingModule } from './product-routing.module';
@@ -10,7 +10,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ProductService } from './../shared/product/product.service';
 import { CategoryService } from './../shared/navigation/category/category.service';
 import { SharedModule } from '../../shared.module';
-import { VariantService } from '../../variant/variant.service';
+import { AttributeService } from '../../attribute/attribute.service';
+import { AngularFirestore } from 'angularfire2/firestore';
+
+const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
 
 @NgModule({
   imports: [
@@ -29,7 +32,9 @@ import { VariantService } from '../../variant/variant.service';
   providers: [
     CategoryService,
     ProductService,
-    VariantService,
+    { provide: TABLE_ATTRIBUTE, useValue: 'Attribute' },
+    { provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE] },
+
   ]
 })
 export class ProductModule {}

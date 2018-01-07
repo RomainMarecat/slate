@@ -14,7 +14,8 @@ import DocumentReference = firebase.firestore.DocumentReference;
 import { ProductImageComponent } from './../../../product/product-image/product-image.component';
 import { ProductFormType } from './../../shared/product/form-product';
 import { map, switchMap, combineLatest, retry, timeout, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
-import { VariantService } from '../../../variant/variant.service';
+import { AttributeService } from '../../../attribute/attribute.service';
+import { Attribute } from '../../../attribute/attribute';
 
 @Component({
   selector: 'app-product-add',
@@ -30,6 +31,7 @@ export class ProductAddComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
+  attributes: Attribute[] = [];
   categories: Category[] = [];
   selected: Category[] = [];
   isLoading: boolean;
@@ -45,7 +47,7 @@ export class ProductAddComponent implements OnInit {
     private productService: ProductService,
     private alertService: AlertService,
     private categoryService: CategoryService,
-    private variantService: VariantService) {
+    private attributeService: AttributeService) {
     this.medias = [];
     this._descriptionModel = '';
   }
@@ -56,6 +58,7 @@ export class ProductAddComponent implements OnInit {
     this.createColumns();
     this.createEditorConfig();
     this.getCategories();
+    this.getAttributes();
   }
 
   createForm() {
@@ -186,6 +189,13 @@ export class ProductAddComponent implements OnInit {
           });
       }
     }
+  }
+
+  getAttributes() {
+    this.attributeService.getAttributes()
+      .subscribe((attributes: Attribute[]) => {
+        this.attributes = attributes;
+      });
   }
 
   getCategories() {
