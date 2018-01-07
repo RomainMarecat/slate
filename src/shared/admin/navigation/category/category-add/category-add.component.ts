@@ -133,7 +133,7 @@ export class CategoryAddComponent implements OnInit {
       level: 1,
       lft: '',
       rgt: '',
-      root: false,
+      root: true,
       parent: null,
       published: true,
     });

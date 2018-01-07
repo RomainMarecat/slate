@@ -27,8 +27,8 @@ export class VisitorService {
   table: string;
 
   /**
-   * @param AngularFirestore private          afs
-   * @param string                            table
+   * @param AngularFirestore afs
+   * @param string           table
    */
   constructor(private afs: AngularFirestore, @Inject('table') table: string) {
     this.table = table;
