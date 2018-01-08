@@ -24,8 +24,12 @@ export class ProductListComponent implements OnInit {
   @ViewChild('imageCell') imageCell: TemplateRef < any > ;
 
   /**
-   * @param ElementRef table
-   * @param ProductService productService
+   *
+   * @param MatDialog      public  dialog
+   * @param Router         private router
+   * @param ElementRef     private table
+   * @param MenuService    private menuService
+   * @param ProductService private productService
    */
   constructor(public dialog: MatDialog,
     private router: Router,

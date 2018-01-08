@@ -30,13 +30,13 @@ export class VisitorService {
    * @param AngularFirestore afs
    * @param string           table
    */
-  constructor(private afs: AngularFirestore, @Inject('TABLE') table: string) {
+  constructor(private afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
     this.table = table;
     this.columnFilter$ = new BehaviorSubject(null);
     this.valueFilter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.orderBy$ = new BehaviorSubject(null);
-    this.collectionRef = this.afs.collection('product');
+    this.collectionRef = this.afs.collection(this.table);
     this.documents$ = Observable.combineLatest(
         this.columnFilter$,
         this.valueFilter$,

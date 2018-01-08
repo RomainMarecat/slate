@@ -16,6 +16,7 @@ import { ProductFormType } from './../../shared/product/form-product';
 import { map, switchMap, combineLatest, retry, timeout, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { Attribute } from '../../../attribute/attribute';
+import { startWith } from 'rxjs/operators/startWith';
 
 @Component({
   selector: 'app-product-add',
@@ -31,16 +32,18 @@ export class ProductAddComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  attributes: Attribute[] = [];
   categories: Category[] = [];
   selected: Category[] = [];
+  filteredAttributes: Observable < any[] > ;
+
   isLoading: boolean;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
-
   @ViewChild(ProductImageComponent) productImageComponent: ProductImageComponent;
+
   _publication = true;
   _descriptionModel: string;
+  _attributesModel: Attribute[] = [];
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -194,7 +197,7 @@ export class ProductAddComponent implements OnInit {
   getAttributes() {
     this.attributeService.getAttributes()
       .subscribe((attributes: Attribute[]) => {
-        this.attributes = attributes;
+        this._attributesModel = attributes;
       });
   }
 
@@ -299,5 +302,21 @@ export class ProductAddComponent implements OnInit {
 
   set published(published) {
     this.form.patchValue({ published: published });
+  }
+
+  get attributes() {
+    return this.form.get('attributes');
+  }
+
+  set attributes(attributes) {
+    this.form.patchValue({ attributes: attributes });
+  }
+
+  get attributesModel() {
+    return this._attributesModel;
+  }
+
+  set attributesModel(attributesModel) {
+    this._attributesModel = attributesModel;
   }
 }

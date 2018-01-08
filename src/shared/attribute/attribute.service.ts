@@ -12,11 +12,29 @@ import { Attribute } from './attribute';
 @Injectable()
 export class AttributeService extends VisitorService {
 
-  constructor(afs: AngularFirestore, @Inject('TABLE_ATTRIBUTES') table: string) {
+  constructor(afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
     super(afs, table);
   }
 
   getAttributes(): Observable < Attribute[] > {
+    console.log(this.table);
     return super.getDocuments() as Observable < Attribute[] > ;
+  }
+
+  getAttribute(key: string): Observable < Attribute > {
+    return super.getDocument(key) as Observable < Attribute > ;
+  }
+
+  createAttribute(attribute: Attribute): Promise < any > {
+    return super.createDocument(attribute);
+  }
+
+  updateAttribute(attribute: Attribute) {
+    return super.updateDocument(attribute);
+  }
+
+
+  deleteAttribute(attribute: Attribute) {
+    return super.deleteDocument(attribute);
   }
 }

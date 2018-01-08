@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgStringPipesModule } from 'angular-pipes';
+import { DragulaModule } from 'ng2-dragula';
 import {
+  MatAutocompleteModule,
   MatCardModule,
   MatToolbarModule,
   MatSidenavModule,
@@ -66,10 +68,12 @@ export class ConfigService {
     FormsModule,
     CommonModule,
     CloudinaryModule,
+    DragulaModule,
     HammerModule,
     HttpClientModule,
     ImageCropperModule,
     LoaderModule,
+    MatAutocompleteModule,
     MatCardModule,
     MatDialogModule,
     MatToolbarModule,
@@ -103,6 +107,7 @@ export class ConfigService {
   ],
   exports: [
     CloudinaryModule,
+    DragulaModule,
     FileUploadModule,
     FlexLayoutModule,
     FooterModule,
@@ -111,6 +116,7 @@ export class ConfigService {
     HttpClientModule,
     ImageCropperModule,
     LoaderModule,
+    MatAutocompleteModule,
     MatCardModule,
     MatDialogModule,
     MatToolbarModule,
@@ -141,7 +147,8 @@ export class ConfigService {
     RouterModule,
     ReactiveFormsModule,
     SlackModule,
-    SidenavModule
+    SidenavModule,
+    TranslateModule
   ],
   declarations: [
     ProductImageComponent,

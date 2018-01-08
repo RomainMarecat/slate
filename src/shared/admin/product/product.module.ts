@@ -13,7 +13,7 @@ import { SharedModule } from '../../shared.module';
 import { AttributeService } from '../../attribute/attribute.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 
-const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
+const TABLE_NAME = new InjectionToken < string > ('attribute');
 
 @NgModule({
   imports: [
@@ -32,8 +32,8 @@ const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
   providers: [
     CategoryService,
     ProductService,
-    { provide: TABLE_ATTRIBUTE, useValue: 'Attribute' },
-    { provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE] },
+    { provide: TABLE_NAME, useValue: 'attribute' },
+    { provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_NAME] },
 
   ]
 })

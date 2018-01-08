@@ -62,7 +62,7 @@ export function createTranslateLoader(http: HttpClient, name: string) {
 }
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
-export const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
+export const TABLE_NAME = new InjectionToken < string > ('attribute');
 
 @Injectable()
 export class ConfigService {
@@ -116,8 +116,8 @@ export class ConfigService {
     { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
     { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, app_name] },
     { provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, app_name] },
-    { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
-    { provide: AttributeService, useClass: VisitorService, deps: [AngularFirestore, TABLE_ATTRIBUTE] },
+    { provide: TABLE_NAME, useValue: 'attribute' },
+    { provide: AttributeService, useClass: VisitorService, deps: [AngularFirestore, TABLE_NAME] },
     AlertService,
     DateService,
     DeviceService,
