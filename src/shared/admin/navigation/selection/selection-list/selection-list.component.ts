@@ -3,6 +3,7 @@ import { Selection } from '../../../../selection/selection';
 import { SelectionService } from '../../../shared/navigation/selection/selection.service';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { MenuService } from './../../../../menu/menu.service';
 
 @Component({
   selector: 'app-selection-list',
@@ -25,12 +26,12 @@ export class SelectionListComponent implements OnInit {
    */
   constructor(private table: ElementRef,
     private selectionService: SelectionService,
-    private router: Router
+    private router: Router,
+    private menuService: MenuService
   ) {
 
     this.selected = [];
     this.isLoading = true;
-
   }
 
   /**
@@ -62,6 +63,7 @@ export class SelectionListComponent implements OnInit {
    * Init list of Selection
    */
   ngOnInit() {
+    this.menuService.nextTitle('Selection');
     this.selectionService.getSelections()
       .subscribe((selections: Selection[]) => {
         this.selections = selections;

@@ -36,6 +36,9 @@ export class Product implements ClothingProduct, HockeyProduct {
   delivery_free ?: boolean;
   reseller ?: string;
   category ?: string;
+  attributes ?: {
+
+  };
 
   constructor() {
     this.score = 0;

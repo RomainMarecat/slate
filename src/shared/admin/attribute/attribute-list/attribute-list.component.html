@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <div class="d-block">
+        <app-attribute-edit>
+        </app-attribute-edit>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <div class="row">
+        <div class="col-6">
+          <div class='selected-column'>
+            <h4>Selections <small>({{selected?.length}})</small></h4>
+          </div>
+        </div>
+        <div class="col-6">
+          <button role="button" aria-label="Supprimer l'attribut" mat-raised-button color="accent" (click)="deleteAttributes()" *ngIf="selected && selected.length > 0">
+            <mat-icon aria-label="delete">delete</mat-icon>
+            Supprimer
+          </button>
+        </div>
+      </div>
+      <div class="row px-2">
+        <div class="col-12">
+          <ngx-datatable class="material striped scrolling-attributes" [columnMode]="'force'" [rows]="attributes" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
+          </ngx-datatable>
+        </div>
+      </div>
+      <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+        <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+      </ng-template>
+      <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
+        <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+      </ng-template>
+      <ng-template #actionsCell let-row="row">
+        <a (click)="confirmDelete(row)">
+          <mat-icon>delete</mat-icon>
+        </a>
+      </ng-template>
+    </div>
+  </div>
+  <button color="primary" type="button" aria-label="Ajouter un attribut" [routerLink]="['/admin/attribute/add']" mat-mini-fab class="absolute-fab pulse">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

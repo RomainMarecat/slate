@@ -14,7 +14,9 @@ import DocumentReference = firebase.firestore.DocumentReference;
 import { ProductImageComponent } from './../../../product/product-image/product-image.component';
 import { ProductFormType } from './../../shared/product/form-product';
 import { map, switchMap, combineLatest, retry, timeout, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
-import { VariantService } from '../../../variant/variant.service';
+import { AttributeService } from '../../../attribute/attribute.service';
+import { Attribute } from '../../../attribute/attribute';
+import { startWith } from 'rxjs/operators/startWith';
 
 @Component({
   selector: 'app-product-add',
@@ -32,20 +34,23 @@ export class ProductAddComponent implements OnInit {
   columns: any;
   categories: Category[] = [];
   selected: Category[] = [];
+  filteredAttributes: Observable < any[] > ;
+
   isLoading: boolean;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
-
   @ViewChild(ProductImageComponent) productImageComponent: ProductImageComponent;
+
   _publication = true;
   _descriptionModel: string;
+  _attributesModel: Attribute[] = [];
 
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
     private alertService: AlertService,
     private categoryService: CategoryService,
-    private variantService: VariantService) {
+    private attributeService: AttributeService) {
     this.medias = [];
     this._descriptionModel = '';
   }
@@ -56,6 +61,7 @@ export class ProductAddComponent implements OnInit {
     this.createColumns();
     this.createEditorConfig();
     this.getCategories();
+    this.getAttributes();
   }
 
   createForm() {
@@ -188,6 +194,13 @@ export class ProductAddComponent implements OnInit {
     }
   }
 
+  getAttributes() {
+    this.attributeService.getAttributes()
+      .subscribe((attributes: Attribute[]) => {
+        this._attributesModel = attributes;
+      });
+  }
+
   getCategories() {
     this.categoryService.getCategories()
       .subscribe((categories: Category[]) => {
@@ -289,5 +302,21 @@ export class ProductAddComponent implements OnInit {
 
   set published(published) {
     this.form.patchValue({ published: published });
+  }
+
+  get attributes() {
+    return this.form.get('attributes');
+  }
+
+  set attributes(attributes) {
+    this.form.patchValue({ attributes: attributes });
+  }
+
+  get attributesModel() {
+    return this._attributesModel;
+  }
+
+  set attributesModel(attributesModel) {
+    this._attributesModel = attributesModel;
   }
 }

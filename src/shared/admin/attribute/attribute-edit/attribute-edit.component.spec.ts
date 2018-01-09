@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductAddComponent } from './product-add.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -47,9 +46,11 @@ import { MockCategoryService } from '../../shared/navigation/category/mock-categ
 import { AttributeService } from '../../../attribute/attribute.service';
 import { MockAttributeService } from '../../../attribute/mock-attribute.service';
 
-describe('ProductAddComponent', () => {
-  let component: ProductAddComponent;
-  let fixture: ComponentFixture < ProductAddComponent > ;
+import { AttributeEditComponent } from './attribute-edit.component';
+
+describe('AttributeEditComponent', () => {
+  let component: AttributeEditComponent;
+  let fixture: ComponentFixture < AttributeEditComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -74,10 +75,9 @@ describe('ProductAddComponent', () => {
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),
+
         ],
-        declarations: [
-          ProductAddComponent
-        ],
+        declarations: [AttributeEditComponent],
         providers: [
           { provide: AlertService, useClass: MockAlertService },
           { provide: LoaderService, useClass: MockLoaderService },
@@ -97,7 +97,7 @@ describe('ProductAddComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductAddComponent);
+    fixture = TestBed.createComponent(AttributeEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

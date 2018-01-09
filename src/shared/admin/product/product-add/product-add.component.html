@@ -66,6 +66,14 @@
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="d-block mt-1">
+                  <mat-form-field class="mat-form-field">
+                    <input matInput placeholder="Attributs" aria-label="Attributs" [matAutocomplete]="auto" formControlName="attributes">
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let attribute of attributesModel" [value]="attribute.name">
+                        <span>{{ attribute.translations.fr }}</span>
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">

@@ -1,10 +1,6 @@
 import { NgModule, InjectionToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { ProductRoutingModule } from './product-routing.module';
-import { ProductComponent } from './product.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductAddComponent } from './product-add/product-add.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductService } from './../shared/product/product.service';
@@ -13,7 +9,11 @@ import { SharedModule } from '../../shared.module';
 import { AttributeService } from '../../attribute/attribute.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 
-const TABLE_NAME = new InjectionToken < string > ('attribute');
+import { AttributeRoutingModule } from './attribute-routing.module';
+import { AttributeListComponent } from './attribute-list/attribute-list.component';
+import { AttributeEditComponent } from './attribute-edit/attribute-edit.component';
+
+const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
 
 @NgModule({
   imports: [
@@ -21,20 +21,19 @@ const TABLE_NAME = new InjectionToken < string > ('attribute');
     NgxDatatableModule,
     SharedModule,
     NgxEditorModule,
-    TranslateModule,
-    ProductRoutingModule
+    AttributeRoutingModule
   ],
   declarations: [
-    ProductComponent,
-    ProductListComponent,
-    ProductAddComponent
+    AttributeEditComponent,
+    AttributeListComponent
   ],
   providers: [
-    CategoryService,
-    ProductService,
-    { provide: TABLE_NAME, useValue: 'attribute' },
-    { provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_NAME] },
-
+    { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
+    {
+      provide: AttributeService,
+      useClass: AttributeService,
+      deps: [AngularFirestore, TABLE_ATTRIBUTE]
+    },
   ]
 })
-export class ProductModule {}
+export class AttributeModule {}

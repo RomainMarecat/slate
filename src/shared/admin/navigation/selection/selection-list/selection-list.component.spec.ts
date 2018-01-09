@@ -22,6 +22,7 @@ import { MockMediaService } from '../../../../media/mock-media.service';
 import { MockLoaderService } from '../../../../loader/mock-loader.service';
 import { ProductService } from '../../../shared/product/product.service';
 import { DeviceService } from '../../../../device/device.service';
+import { MenuService } from '../../../../menu/menu.service';
 import { NotificationService } from '../../../../slack/notification.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2Module } from 'angulartics2';
@@ -60,6 +61,7 @@ describe('SelectionListComponent', () => {
           DateService,
           ObjectService,
           I18nService,
+          MenuService,
           DeviceService,
         ]
       })

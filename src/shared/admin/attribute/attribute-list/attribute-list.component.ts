@@ -1,27 +1,26 @@
 import { Component, OnInit, ElementRef, ViewChild, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../../../product/product';
-import { ProductService } from './../../shared/product/product.service';
+import { Attribute } from '../../../attribute/attribute';
+import { AttributeService } from './../../../attribute/attribute.service';
 import { MenuService } from './../../../menu/menu.service';
 import { take } from 'rxjs/operators';
 import { DialogComponent } from './../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'app-attribute-list',
+  templateUrl: './attribute-list.component.html',
+  styleUrls: ['./attribute-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class AttributeListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  products: Product[];
+  attributes: Attribute[];
   isLoading = false;
-  selected: Product[];
+  selected: Attribute[];
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
   @ViewChild('actionsCell') actionsCell: TemplateRef < any > ;
-  @ViewChild('imageCell') imageCell: TemplateRef < any > ;
 
   /**
    *
@@ -29,45 +28,30 @@ export class ProductListComponent implements OnInit {
    * @param Router         private router
    * @param ElementRef     private table
    * @param MenuService    private menuService
-   * @param ProductService private productService
+   * @param AttributeService private attributeService
    */
   constructor(public dialog: MatDialog,
     private router: Router,
     private table: ElementRef,
     private menuService: MenuService,
-    private productService: ProductService) {
+    private attributeService: AttributeService) {
     this.selected = [];
   }
 
   /**
-   * set at published at now et activate published to true
+   * Delete a Attribute from list
    */
-  publishProduct() {
-    this.selected.forEach((product: Product) => {
-      if (product.published === false) {
-        product.published = true;
-        if (!product.published_at) {
-          product.published_at = new Date();
-        }
-      }
-      this.productService.updateProduct(product);
+  deleteAttributes() {
+    this.selected.forEach((attribute: Attribute) => {
+      this.attributeService.deleteAttribute(attribute);
     });
   }
 
-  /**
-   * Delete a product from list
-   */
-  deleteProducts() {
-    this.selected.forEach((product: Product) => {
-      this.productService.deleteProduct(product);
-    });
+  deleteAttribute(attribute: Attribute) {
+    this.attributeService.deleteAttribute(attribute);
   }
 
-  deleteProduct(product: Product) {
-    this.productService.deleteProduct(product);
-  }
-
-  confirmDelete(product: Product) {
+  confirmDelete(attribute: Attribute) {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '500px',
       data: {
@@ -78,17 +62,17 @@ export class ProductListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        this.deleteProduct(product);
+        this.deleteAttribute(attribute);
       }
       console.log('The dialog was closed', result);
     });
   }
 
   /**
-   * Init list of product
+   * Init list of Attribute
    */
   ngOnInit() {
-    this.menuService.nextTitle('Products');
+    this.menuService.nextTitle('Attributs');
     this.columns = [{
       width: 50,
       sortable: false,
@@ -97,25 +81,24 @@ export class ProductListComponent implements OnInit {
       resizeable: false,
       cellTemplate: this.checkboxCell,
     }, {
-      prop: 'images',
-      name: 'images',
-      flexGrow: 1,
-      cellTemplate: this.imageCell,
+      prop: 'name',
+      name: 'name',
+      flexGrow: 1
     }, {
       prop: 'translations.fr',
       name: 'name (fr)',
       flexGrow: 1
     }, {
-      prop: 'category',
-      name: 'category',
+      prop: 'type',
+      name: 'type',
       flexGrow: 1
     }, {
-      prop: 'price',
-      name: 'price',
+      prop: 'order_by',
+      name: 'order_by',
       flexGrow: 1
     }, {
-      prop: 'published',
-      name: 'published',
+      prop: 'terms',
+      name: 'terms',
       flexGrow: 1
     }, {
       prop: 'key',
@@ -123,10 +106,10 @@ export class ProductListComponent implements OnInit {
       flexGrow: 1,
       cellTemplate: this.actionsCell
     }, ];
-    this.productService.getProducts()
+    this.attributeService.getAttributes()
       .take(1)
-      .subscribe((products: Product[]) => {
-        this.products = products;
+      .subscribe((attributes: Attribute[]) => {
+        this.attributes = attributes;
       });
   }
 
@@ -141,7 +124,7 @@ export class ProductListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate(['/admin/product/edit/', event.row.key]);
+      this.router.navigate(['/admin/attribute/edit/', event.row.key]);
     }
   }
 
