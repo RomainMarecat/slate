@@ -2,7 +2,7 @@
   <mat-card-header class="item-card-header">
     <mat-card-title class="item-card-title" (click)="productDetail()" angulartics2On="click" angularticsAction="clickedOnTitleShowProduct" [angularticsCategory]="'product.detail'">
       <h2 class="item-card-name size--all-xl">
-        {{ product?.name | truncate: 30: '...'}}
+        {{ product?.name | shorten: 30: '...'}}
       </h2>
     </mat-card-title>
   </mat-card-header>

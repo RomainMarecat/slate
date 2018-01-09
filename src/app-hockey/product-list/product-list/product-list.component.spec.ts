@@ -12,10 +12,10 @@ import {
   MatCheckboxModule,
   MatListModule
 } from '@angular/material';
+import { NgPipesModule } from 'ngx-pipes';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { NgStringPipesModule } from 'angular-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './product-list.component';
 import { ProductItemComponent } from './../product-item/product-item.component';
@@ -55,8 +55,8 @@ describe('ProductListComponent', () => {
           MatGridListModule,
           MatInputModule,
           MatCheckboxModule,
-          NgStringPipesModule,
           MatListModule,
+          NgPipesModule,
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {

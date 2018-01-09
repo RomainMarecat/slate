@@ -1,14 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction, Reference, Action } from 'angularfire2/firestore/interfaces';
-import * as firebase from 'firebase';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
-import DocumentReference = firebase.firestore.DocumentReference;
 import { Product } from '../product/product';
 import { Document } from './document';
-import DocumentData = firebase.firestore.DocumentData;
+import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
+import { CollectionReference, Query, DocumentSnapshot, DocumentReference, DocumentData } from '@firebase/firestore-types';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class VisitorService {
@@ -23,7 +21,7 @@ export class VisitorService {
   orderBy$: BehaviorSubject < string | 'published_at' > ;
   endAt$: BehaviorSubject < string | null > ;
   endBefore$: BehaviorSubject < string | null > ;
-  query: firebase.firestore.CollectionReference | firebase.firestore.Query;
+  query: CollectionReference | Query;
   table: string;
 
   /**
@@ -80,7 +78,7 @@ export class VisitorService {
     return this.document$ = this.collectionRef
       .doc(path)
       .snapshotChanges()
-      .map((action: Action < firebase.firestore.DocumentSnapshot > ) => {
+      .map((action: Action < DocumentSnapshot > ) => {
         const product = action.payload.data() as Document;
         product.key = action.payload.id;
         return product;

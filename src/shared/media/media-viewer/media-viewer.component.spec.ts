@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MediaViewerComponent } from './media-viewer.component';
 import { CloudinaryModule } from '../../cloudinary/cloudinary.module';
-import { NgStringPipesModule } from 'angular-pipes';
+import { NgPipesModule } from 'ngx-pipes';
 import { Cloudinary } from '../../cloudinary/cloudinary.service';
 import { environment } from '../../../environments/environment.hockey';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -19,7 +19,7 @@ describe('MediaViewerComponent', () => {
     TestBed.configureTestingModule({
         imports: [
           CloudinaryModule,
-          NgStringPipesModule,
+          NgPipesModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,

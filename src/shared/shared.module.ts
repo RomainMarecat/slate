@@ -2,8 +2,8 @@ import { InjectionToken, NgModule, ModuleWithProviders, Injectable, Inject } fro
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgStringPipesModule } from 'angular-pipes';
 import { DragulaModule } from 'ng2-dragula';
+import { NgPipesModule } from 'ngx-pipes';
 import {
   MatAutocompleteModule,
   MatCardModule,
@@ -98,7 +98,7 @@ export class ConfigService {
     MediaModule,
     MenuModule,
     ModalModule.forRoot(),
-    NgStringPipesModule,
+    NgPipesModule,
     PopupModule,
     RouterModule,
     ReactiveFormsModule,
@@ -141,7 +141,7 @@ export class ConfigService {
     MediaModule,
     MenuModule,
     ModalModule,
-    NgStringPipesModule,
+    NgPipesModule,
     PopupModule,
     ProductImageComponent,
     RouterModule,

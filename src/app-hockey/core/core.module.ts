@@ -38,7 +38,6 @@ import { Environment } from '../../shared/util/environment';
 import { ProductService } from '../../shared/product/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
-import { NgStringPipesModule } from 'angular-pipes';
 import { SharedModule } from '../../shared/shared.module';
 import { environment } from '../../environments/environment.hockey';
 import { SlackModule } from '../../shared/slack/slack.module';
@@ -91,7 +90,6 @@ export class ConfigService {
       environment.cloudinary
     ),
     ModalModule.forRoot(),
-    NgStringPipesModule,
     ImageCropperModule,
     FileUploadModule,
     SharedModule.forRoot(CONFIG_TOKEN),

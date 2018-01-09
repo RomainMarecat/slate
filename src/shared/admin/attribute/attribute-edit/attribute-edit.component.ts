@@ -4,10 +4,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
 import { StringService } from '../../../../shared/util/string.service';
 import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase';
-import DocumentReference = firebase.firestore.DocumentReference;
+import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
+import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 import { ProductFormType } from './../../shared/product/form-product';
-import { map, switchMap, combineLatest, retry, timeout, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { Attribute } from './../../../attribute/attribute';
 import { AttributeFormType } from './../../shared/attribute/form-attribute';
@@ -72,7 +73,6 @@ export class AttributeEditComponent implements OnInit {
     this.form.valueChanges
       .debounceTime(800)
       .subscribe((value) => {
-        console.log(this.form.valid, this.form.value, value);
         if (value.name) {
           const slug = StringService.slugify(value.name);
           this.form.patchValue({ name: value.name, slug: slug });

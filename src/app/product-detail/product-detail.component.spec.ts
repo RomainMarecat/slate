@@ -27,7 +27,7 @@ import {
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { NgStringPipesModule } from 'angular-pipes';
+import { NgPipesModule } from 'ngx-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from '../../shared/cloudinary/cloudinary-config';
@@ -59,7 +59,7 @@ describe('ProductDetailComponent', () => {
           MatGridListModule,
           MatInputModule,
           MatCheckboxModule,
-          NgStringPipesModule,
+          NgPipesModule,
           MatListModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {

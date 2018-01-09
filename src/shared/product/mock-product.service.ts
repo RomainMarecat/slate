@@ -2,11 +2,12 @@ import { ClothingProduct } from './clothing-product';
 import { mockProduct } from './mock-product';
 import { Product } from './product';
 import { AlertService } from '../popup/alert.service';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
-import * as firebase from 'firebase';
+import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
+import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
@@ -27,7 +28,7 @@ export class MockProductService {
   orderBy$: BehaviorSubject < string | 'published_at' > ;
   endAt$: BehaviorSubject < string | null > ;
   endBefore$: BehaviorSubject < string | null > ;
-  query: firebase.firestore.CollectionReference | firebase.firestore.Query;
+  query: CollectionReference | Query;
 
   constructor() {
     this.publishedFilter$ = new BehaviorSubject(true);

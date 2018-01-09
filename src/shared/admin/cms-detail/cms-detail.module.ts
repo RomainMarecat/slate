@@ -1,7 +1,6 @@
 import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NgStringPipesModule } from 'angular-pipes';
 import { environment } from './../../../environments/environment.hockey';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -44,7 +43,6 @@ import { CmsDetailService } from './../shared/cms-detail/cms-detail.service';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    NgStringPipesModule,
     NgxEditorModule,
     ReactiveFormsModule,
     NgxDatatableModule,

@@ -8,8 +8,10 @@ import { ObjectService } from '../../util/object.service';
 import { MediaService } from '../../media/media.service';
 import { DeviceService } from '../../device/device.service';
 import { HttpClient } from '@angular/common/http';
-import * as firebase from 'firebase';
-import DocumentReference = firebase.firestore.DocumentReference;
+import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
+import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-image',

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgStringPipesModule } from 'angular-pipes';
 import { environment } from './../../../environments/environment.hockey';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -45,7 +44,6 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    NgStringPipesModule,
     NgxEditorModule,
     ReactiveFormsModule,
     TranslateModule,
