@@ -1,12 +1,10 @@
 import { mockSelection } from './mock-selection';
 import { Selection } from './selection';
-import { AlertService } from '../../shared/popup/alert.service';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
-import * as firebase from 'firebase';
-import 'rxjs/add/operator/switchMap';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
+import { CollectionReference, Query, DocumentSnapshot } from '@firebase/firestore-types';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
@@ -28,7 +26,7 @@ export class MockSelectionService {
   orderBy$: BehaviorSubject < string | 'published_at' > ;
   endAt$: BehaviorSubject < string | null > ;
   endBefore$: BehaviorSubject < string | null > ;
-  query: firebase.firestore.CollectionReference | firebase.firestore.Query;
+  query: CollectionReference | Query;
 
   constructor() {
     this.keyFilters$ = new BehaviorSubject(null);

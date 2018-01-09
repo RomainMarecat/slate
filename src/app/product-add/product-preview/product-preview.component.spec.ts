@@ -27,7 +27,7 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
-import { NgStringPipesModule } from 'angular-pipes';
+import { NgPipesModule } from 'ngx-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from '../../../shared/cloudinary/cloudinary-config';
@@ -51,7 +51,7 @@ describe('ProductPreviewComponent', () => {
           BrowserModule,
           HttpClientModule,
           RouterTestingModule,
-          NgStringPipesModule,
+          NgPipesModule,
           BrowserAnimationsModule,
           MatCardModule,
           MatIconModule,
@@ -60,7 +60,6 @@ describe('ProductPreviewComponent', () => {
           MatInputModule,
           MatCheckboxModule,
           MatListModule,
-          NgStringPipesModule,
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {

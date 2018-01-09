@@ -1,11 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction, Reference, Action } from 'angularfire2/firestore/interfaces';
-import * as firebase from 'firebase';
+import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
+import { CollectionReference, Query, DocumentSnapshot } from '@firebase/firestore-types';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
-import DocumentReference = firebase.firestore.DocumentReference;
 import { VisitorService } from './../firestore/visitor.service';
 import { Attribute } from './attribute';
 

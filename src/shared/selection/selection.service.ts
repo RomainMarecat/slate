@@ -1,11 +1,10 @@
 import { Injectable, Inject } from '@angular/core';
 import { Selection } from './selection';
-import { AlertService } from '../../shared/popup/alert.service';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
+import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction, Reference, Action } from 'angularfire2/firestore/interfaces';
-import * as firebase from 'firebase';
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 
 @Injectable()
@@ -23,12 +22,12 @@ export class SelectionService {
   orderBy$: BehaviorSubject < string | 'published_at' > ;
   endAt$: BehaviorSubject < string | null > ;
   endBefore$: BehaviorSubject < string | null > ;
-  query: firebase.firestore.CollectionReference | firebase.firestore.Query;
+  query: CollectionReference | Query;
 
   /**
    *
-   * @param {AngularFirestore} afs
-   * @param {AlertService} alertService
+   * @param AngularFirestore afs
+   * @param AlertService alertService
    */
   constructor(private afs: AngularFirestore,
     @Inject('app_name') appName: string) {
@@ -91,7 +90,7 @@ export class SelectionService {
     return this.selection$ = this.selectionCollectionRef
       .doc(path)
       .snapshotChanges()
-      .map((action: Action < firebase.firestore.DocumentSnapshot > ) => {
+      .map((action: Action < DocumentSnapshot > ) => {
         const selection = action.payload.data() as Selection;
         selection.key = action.payload.id;
         return selection as Selection;

@@ -16,7 +16,7 @@
     <mat-card-subtitle>
       <span *ngIf="product && product.price">{{ product.price }} €</span>
       <a href="{{ product?.external_url }}" *ngIf="product && product.reseller">{{ product?.reseller }}</a>
-      <span class="product-description size--all-xs" *ngIf="product && product.description">{{ product.description | truncate: 20: '...' }}</span>
+      <span class="product-description size--all-xs" *ngIf="product && product.description">{{ product.description | shorten: 20: '...' }}</span>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content align="center">

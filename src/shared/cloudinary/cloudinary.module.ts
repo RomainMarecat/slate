@@ -9,8 +9,8 @@ import CloudinaryConfiguration from './cloudinary-configuration.class';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { CloudinaryTagService } from './cloudinary-tag.service';
 import { ImageComponent } from './image/image.component';
-import { NgStringPipesModule } from 'angular-pipes';
 export { Cloudinary, provideCloudinary } from './cloudinary.service';
+import { NgPipesModule } from 'ngx-pipes';
 
 export const CLOUDINARY_LIB = new InjectionToken < any > ('CLOUDINARY_LIB');
 export const CLOUDINARY_CONFIGURATION = new InjectionToken < CloudinaryConfiguration > ('CLOUDINARY_CONFIGURATION');
@@ -26,7 +26,7 @@ export function createCloudinary(cloudinaryJsLib: any, configuration: Cloudinary
   imports: [
     CommonModule,
     LazyLoadImageModule,
-    NgStringPipesModule
+    NgPipesModule
   ],
   declarations: [
     CloudinaryImageSourceDirective,

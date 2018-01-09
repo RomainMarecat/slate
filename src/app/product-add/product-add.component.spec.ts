@@ -32,7 +32,6 @@ import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-tran
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
-import { NgStringPipesModule } from 'angular-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
 import { CloudinaryConfig } from '../../shared/cloudinary/cloudinary-config';
@@ -58,6 +57,7 @@ import { SlackModule } from '../../shared/slack/slack.module';
 import { DeviceService } from '../../shared/device/device.service';
 import { environment } from './../../environments/environment.monpullmoche';
 import { MockNotificationService } from '../../shared/slack/mock-notification.service';
+import { NgPipesModule } from 'ngx-pipes';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
@@ -82,7 +82,7 @@ describe('ProductAddComponent', () => {
           MatStepperModule,
           MatExpansionModule,
           MatListModule,
-          NgStringPipesModule,
+          NgPipesModule,
           FileUploadModule,
           ImageCropperModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),

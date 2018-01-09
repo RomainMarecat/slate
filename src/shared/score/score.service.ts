@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Score } from './score';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
-import * as firebase from 'firebase';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
+import { CollectionReference, Query, DocumentSnapshot } from '@firebase/firestore-types';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/combineLatest';
@@ -24,17 +24,17 @@ export class ScoreService {
   constructor(private afs: AngularFirestore) {
     this.scoreCollectionRef = this.afs.collection < Score > ('scores');
     this.userFilter$ = new BehaviorSubject(null);
-    this.productFilter$	 = new BehaviorSubject(null);
+    this.productFilter$ = new BehaviorSubject(null);
     this.scoreFilter$ = new BehaviorSubject(null);
     this.scores$ = Observable.combineLatest(
         this.userFilter$,
-        this.productFilter$	,
+        this.productFilter$,
         this.scoreFilter$
       )
       .first()
-      .switchMap(([user, product,	 score]) =>
+      .switchMap(([user, product, score]) =>
         this.afs.collection('scores', ref => {
-          let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          let query: CollectionReference | Query = ref;
           if (user) {
             query = query.where('user', '==', user);
           }
@@ -64,8 +64,8 @@ export class ScoreService {
    * @param {string} product
    * @returns {Observable<Score[]>}
    */
-  filterByProduct(product:	 string | null): Observable < Score[] > {
-    this.productFilter$	.next(product);
+  filterByProduct(product: string | null): Observable < Score[] > {
+    this.productFilter$.next(product);
     return this.getUsers();
   }
 

@@ -3,11 +3,10 @@ import { Category } from './category';
 import { AlertService } from '../../../../popup/alert.service';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction, Reference, Action } from 'angularfire2/firestore/interfaces';
-import * as firebase from 'firebase';
+import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
+import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
-import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable()
 export class CategoryService {
@@ -23,7 +22,7 @@ export class CategoryService {
   orderBy$: BehaviorSubject < string | 'published_at' > ;
   endAt$: BehaviorSubject < string | null > ;
   endBefore$: BehaviorSubject < string | null > ;
-  query: firebase.firestore.CollectionReference | firebase.firestore.Query;
+  query: CollectionReference | Query;
 
   /**
    *
@@ -83,7 +82,7 @@ export class CategoryService {
     return this.category$ = this.categoryCollectionRef
       .doc(path)
       .snapshotChanges()
-      .map((action: Action < firebase.firestore.DocumentSnapshot > ) => {
+      .map((action: Action < DocumentSnapshot > ) => {
         const category = action.payload.data() as Category;
         category.key = action.payload.id;
         return category;

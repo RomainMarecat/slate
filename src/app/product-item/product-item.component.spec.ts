@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+
 import {
   MatCardModule,
   MatToolbarModule,
@@ -26,7 +27,7 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
-import { NgStringPipesModule } from 'angular-pipes';
+import { NgPipesModule } from 'ngx-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductItemComponent } from './product-item.component';
 import { ProductActionComponent } from './product-action/product-action.component';
@@ -51,7 +52,7 @@ describe('ProductItemComponent', () => {
           HttpClientModule,
           MatIconModule,
           MatCardModule,
-          NgStringPipesModule,
+          NgPipesModule,
           RouterTestingModule,
           BrowserAnimationsModule,
           MatCardModule,

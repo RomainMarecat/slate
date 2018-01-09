@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { NgStringPipesModule } from 'angular-pipes';
+import { NgPipesModule } from 'ngx-pipes';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { Cloudinary } from 'cloudinary-core';
@@ -22,7 +22,7 @@ describe('ImageComponent', () => {
     TestBed.configureTestingModule({
         imports: [
           CloudinaryModule,
-          NgStringPipesModule,
+          NgPipesModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,

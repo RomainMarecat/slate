@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatCardModule, MatIconModule } from '@angular/material';
-import { NgStringPipesModule } from 'angular-pipes';
+import { NgPipesModule } from 'ngx-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
@@ -30,7 +30,7 @@ describe('ProductItemComponent', () => {
           HttpClientModule,
           MatIconModule,
           MatCardModule,
-          NgStringPipesModule,
+          NgPipesModule,
           RouterTestingModule,
           BrowserAnimationsModule,
           MatCardModule,

@@ -1,13 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
 import { Media } from './media';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase';
-import { DocumentChangeAction, Reference, Action } from 'angularfire2/firestore/interfaces';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
+import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
-
-import DocumentReference = firebase.firestore.DocumentReference;
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class MediaService {
@@ -34,7 +32,7 @@ export class MediaService {
       .first()
       .switchMap(([publicId, url, limit]) =>
         this.afs.collection('media', ref => {
-          let query: firebase.firestore.CollectionReference | firebase.firestore.Query = ref;
+          let query: CollectionReference | Query = ref;
           if (publicId) {
             query = query.where('public_id', '==', publicId);
           }
@@ -85,7 +83,7 @@ export class MediaService {
     return this.media$ = this.mediaCollectionRef
       .doc(path)
       .snapshotChanges()
-      .map((action: Action < firebase.firestore.DocumentSnapshot > ) => {
+      .map((action: Action < DocumentSnapshot > ) => {
         const media = action.payload.data() as Media;
         media.key = action.payload.id;
         return media;
