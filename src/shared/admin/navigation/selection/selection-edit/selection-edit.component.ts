@@ -152,7 +152,7 @@ export class SelectionEditComponent implements OnInit {
     });
   }
 
-  createForm(selection ? : Selection) {
+  createForm(selection ?: Selection) {
     const formType = new SelectionFormType(selection);
     this.form = formType.getForm();
   }
