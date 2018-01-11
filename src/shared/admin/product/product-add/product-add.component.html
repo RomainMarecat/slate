@@ -105,11 +105,11 @@
                 </div>
                 <div class="d-block">
                   <mat-form-field class="mat-form-field">
-                    <input matInput maxlength="255" [placeholder]="'Lien vers le site'|translate" formControlName="url">
+                    <input matInput maxlength="255" [placeholder]="'Lien vers le site'|translate" formControlName="external_url">
                     <mat-hint align="start"><strong [innerHtml]="'Url du site web proposant le produit'|translate"></strong></mat-hint>
-                    <mat-hint align="end">{{ url.value.length }} {{ '/255'|translate }}</mat-hint>
-                    <mat-error *ngIf="url.invalid && url.value.length === 0" [innerHtml]="'la chaîne de caractère ne peut pas être vide'|translate"></mat-error>
-                    <mat-error *ngIf="url.invalid && url.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+                    <mat-hint align="end">{{ external_url.value.length }} {{ '/255'|translate }}</mat-hint>
+                    <mat-error *ngIf="external_url.invalid && external_url.value.length === 0" [innerHtml]="'la chaîne de caractère ne peut pas être vide'|translate"></mat-error>
+                    <mat-error *ngIf="external_url.invalid && external_url.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
                   </mat-form-field>
                 </div>
               </div>

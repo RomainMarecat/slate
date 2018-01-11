@@ -30,7 +30,7 @@ export class ProductFormType {
       'reseller': new FormControl(product && product.reseller ? product.reseller : '', [
         Validators.required,
       ]),
-      'url': new FormControl(product && product.url ? product.url : '', [
+      'external_url': new FormControl(product && product.external_url ? product.external_url : '', [
         Validators.required,
       ]),
       'published': new FormControl(product && product.published ? product.published : true, []),
@@ -62,7 +62,7 @@ export class ProductFormType {
       slug: '',
       alias: '',
       reseller: '',
-      url: '',
+      external_url: '',
       price: 0,
       images: [],
       category: null,

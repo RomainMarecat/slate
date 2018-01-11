@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
 import { ProductService } from '../../../shared/product/product.service';
+import { CloudinaryUploadService } from './../../../shared/cloudinary/cloudinary-upload.service';
 
 @Component({
   selector: 'app-product-item',
@@ -10,13 +11,25 @@ import { ProductService } from '../../../shared/product/product.service';
 export class ProductItemComponent implements OnInit {
   @Input('product') product: HockeyProduct;
   image: string;
+  traited: string[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,
+    private cloudinaryUploadService: CloudinaryUploadService) {}
 
   ngOnInit() {
     if (this.product) {
+
       this.product.images.map((image: string) => {
-        this.image = image;
+        console.log('image', image);
+        // Care care Loop can be insecure and DDOS upload media
+        if (this.traited.indexOf(image) === -1) {
+          if (image.indexOf('http') === -1) {
+            this.image = image;
+          } else {
+            this.cloudinaryUploadService.uploadImage(this.product, image);
+          }
+          this.traited.push(image);
+        }
       });
     }
   }

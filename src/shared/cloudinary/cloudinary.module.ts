@@ -11,6 +11,7 @@ import { CloudinaryTagService } from './cloudinary-tag.service';
 import { ImageComponent } from './image/image.component';
 export { Cloudinary, provideCloudinary } from './cloudinary.service';
 import { NgPipesModule } from 'ngx-pipes';
+import { CloudinaryUploadService } from './cloudinary-upload.service';
 
 export const CLOUDINARY_LIB = new InjectionToken < any > ('CLOUDINARY_LIB');
 export const CLOUDINARY_CONFIGURATION = new InjectionToken < CloudinaryConfiguration > ('CLOUDINARY_CONFIGURATION');
@@ -49,6 +50,7 @@ export class CloudinaryModule {
       ngModule: CloudinaryModule,
       providers: [
         CloudinaryTagService,
+        CloudinaryUploadService,
         { provide: CLOUDINARY_LIB, useValue: cloudinaryJsLib },
         { provide: CLOUDINARY_CONFIGURATION, useValue: cloudinaryConfiguration },
         {

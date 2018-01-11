@@ -154,7 +154,7 @@ export class ProductAddComponent implements OnInit {
       },
       description: '',
       reseller: '',
-      url: '',
+      external_url: '',
       published: true,
       price: 0,
       images: [],
@@ -265,12 +265,12 @@ export class ProductAddComponent implements OnInit {
     this.form.patchValue({ reseller: reseller });
   }
 
-  get url() {
-    return this.form.get('url');
+  get external_url() {
+    return this.form.get('external_url');
   }
 
-  set url(url) {
-    this.form.patchValue({ url: url });
+  set external_url(external_url) {
+    this.form.patchValue({ external_url: external_url });
   }
 
   get category() {

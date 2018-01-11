@@ -1,11 +1,11 @@
 export class Media {
-  key: string;
+  key ?: string;
   public_id: string;
   url: string;
   alt: string;
   public: boolean;
   extension: string;
-  position: number;
+  position ?: number;
   cropper: {
     width: number;
     height: number;

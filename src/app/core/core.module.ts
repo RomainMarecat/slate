@@ -14,6 +14,7 @@ import { Angulartics2Module } from 'angulartics2';
 import { AdsenseModule } from 'ng2-adsense';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MenuService } from '../../shared/menu/menu.service';
 
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
@@ -115,6 +116,7 @@ export class ConfigService {
     { provide: MediaService, useClass: MediaService, deps: [AngularFirestore] },
     UserService,
     AlertService,
+    MenuService,
     ObjectService,
     DateService,
     LoaderService,

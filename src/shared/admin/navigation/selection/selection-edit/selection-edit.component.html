@@ -5,7 +5,8 @@
         <mat-card class="mat-card">
           <mat-card-header>
             <mat-card-title>
-              Editer la selection {{ selection?.name }}
+              Editer la selection {{ selection?.translations?.fr }}
+              <span *ngIf="selection?.key">({{selection.key}})</span>
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="mat-card-content">
@@ -45,19 +46,13 @@
               <mat-error *ngIf="level.invalid && level.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
             </mat-form-field>
             <div class="row">
-              <div class="col-6">
+              <div class="col-12">
                 <div class="selected-column pt3">
                   <p>Parent selection<small *ngIf="selectedParent">({{selectedParent?.length}})</small> {{ selectedParent[0]?.translations?.fr }}</p>
                 </div>
               </div>
-              <div class="col-6">
-                <button role="button" type="button" aria-label="Ajouter les produits selectionnes" mat-raised-button color="primary" (click)="addParent()" *ngIf="selectedParent && selectedParent?.length > 0">
-                  <mat-icon aria-label="Ajouter le parent">done</mat-icon>
-                  Ajouter
-                </button>
-              </div>
               <div class="col-12">
-                <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="parents" [columns]="columnsParent" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoadingParents" [scrollbarV]="true" [selected]="selectedParent" [selectionType]="'checkbox'" (select)='onSelectParent($event)'></ngx-datatable>
+                <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="parents" [columns]="columnsParent" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoadingParents" [scrollbarV]="true" [selected]="selectedParent" [selectionType]="'single'" (select)='onSelectParent($event)'></ngx-datatable>
                 <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
                   <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
                 </ng-template>

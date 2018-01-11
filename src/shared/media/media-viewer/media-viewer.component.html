@@ -1,1 +1,1 @@
-<app-image [publicId]="media?.public_id" [resize]="resize"></app-image>
+<app-image [publicId]="media?.public_id" [resize]="resize" *ngIf="media && media.public_id"></app-image>
