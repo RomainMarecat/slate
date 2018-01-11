@@ -279,7 +279,7 @@ export class SelectionEditComponent implements OnInit {
     this.selectedParent = [];
     this.selectedParent.push(selected[0]);
     this.selectedParent.forEach((selection: Selection) => {
-      this.form.patchValue({ parent: selection.key });
+      this.form.patchValue({ parent: selection.key, level: selection.level + 1 });
     });
   }
 

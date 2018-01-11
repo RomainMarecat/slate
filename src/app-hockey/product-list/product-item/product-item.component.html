@@ -1,13 +1,14 @@
-<mat-card class="item-card" *ngIf="product" angulartics2On="mouseover" angularticsAction="hoveredOverProductItem" [angularticsCategory]="'product.item'">
-  <mat-card-header class="item-card-header">
-    <mat-card-title class="item-card-title" (click)="productDetail()" angulartics2On="click" angularticsAction="clickedOnTitleShowProduct" [angularticsCategory]="'product.detail'">
-      <h2 class="item-card-name size--all-xl">
-        {{ product?.name | shorten: 30: '...'}}
+<mat-card class="mat-card" *ngIf="product" angulartics2On="mouseover" angularticsAction="hoveredOverProductItem" [angularticsCategory]="'product.item'" fxFlex="100" fxFlex.xs="100" fxLayout="center center">
+  <mat-card-header class="mat-card-header">
+    <mat-card-title class="mat-card-title" (click)="productDetail()" angulartics2On="click" angularticsAction="clickedOnTitleShowProduct" [angularticsCategory]="'product.detail'">
+      <h2 class="mat-card-name size--all-xl">
+        {{ product?.name | shorten: 50: '...'}}
       </h2>
     </mat-card-title>
   </mat-card-header>
   <app-image mat-card-image [key]="image" [resize]="{height: 200}" *ngIf="image">
   </app-image>
   <mat-card-content>
+    <span [innerHtml]="product.price + '€'"></span>
   </mat-card-content>
 </mat-card>

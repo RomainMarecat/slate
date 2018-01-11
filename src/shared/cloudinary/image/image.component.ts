@@ -27,6 +27,7 @@ export class ImageComponent implements OnInit {
   set publicId(publicId: string) {
     this._publicId = publicId;
     this.mediaService.filterByPublicId(publicId)
+      .take(1)
       .subscribe((medias: Media[]) => {
         this.media = medias[0];
       }, (err) => {
@@ -38,6 +39,7 @@ export class ImageComponent implements OnInit {
   set key(key: string) {
     this._key = key;
     this.mediaService.getMedia(key)
+      .take(1)
       .subscribe((media: Media) => {
         this.media = media;
       }, (err) => {

@@ -66,61 +66,64 @@ export class SelectionListComponent implements OnInit {
     this.menuService.nextTitle('Selection');
     this.selectionService.getSelections()
       .subscribe((selections: Selection[]) => {
+        console.log(selections);
         this.selections = selections;
         this.isLoading = false;
       });
 
     this.columns = [{
-        width: 50,
-        sortable: false,
-        canAutoResize: false,
-        draggable: false,
-        resizeable: false,
-        cellTemplate: this.checkboxCell,
-        headerTemplate: this.checkboxHeader,
-      }, {
-        prop: 'translations.fr',
-        name: 'translations.fr',
-        flexGrow: 1
-      },
-      {
-        prop: 'name',
-        name: 'name',
-        flexGrow: 1
-      }, {
-        prop: 'description',
-        name: 'description',
-        flexGrow: 1
-      }, {
-        prop: 'keywords',
-        name: 'keywords',
-        flexGrow: 1
-      }, {
-        prop: 'level',
-        name: 'level',
-        flexGrow: 1
-      }, {
-        prop: 'parent',
-        name: 'parent',
-        flexGrow: 1
-      }, {
-        prop: 'images',
-        name: 'images',
-        flexGrow: 1
-      }, {
-        prop: 'products',
-        name: 'products',
-        flexGrow: 1
-      }, {
-        prop: 'published_at',
-        name: 'published_at',
-        flexGrow: 1
-      }, {
-        prop: 'published',
-        name: 'published',
-        flexGrow: 1
-      },
-    ];
+      width: 50,
+      sortable: false,
+      canAutoResize: false,
+      draggable: false,
+      resizeable: false,
+      cellTemplate: this.checkboxCell,
+      headerTemplate: this.checkboxHeader,
+    }, {
+      prop: 'translations.fr',
+      name: 'translations.fr',
+      flexGrow: 1
+    }, {
+      prop: 'key',
+      name: 'Id',
+      flexGrow: 1
+    }, {
+      prop: 'name',
+      name: 'name',
+      flexGrow: 1
+    }, {
+      prop: 'description',
+      name: 'description',
+      flexGrow: 1
+    }, {
+      prop: 'keywords',
+      name: 'keywords',
+      flexGrow: 1
+    }, {
+      prop: 'level',
+      name: 'level',
+      flexGrow: 1
+    }, {
+      prop: 'parent',
+      name: 'parent',
+      flexGrow: 1
+    }, {
+      prop: 'images',
+      name: 'images',
+      flexGrow: 1
+    }, {
+      prop: 'products',
+      name: 'products',
+      flexGrow: 1
+    }, {
+      prop: 'published_at',
+      name: 'published_at',
+      flexGrow: 1
+    }, {
+      prop: 'published',
+      name: 'published',
+      flexGrow: 1
+    }, ];
   }
 
   /**

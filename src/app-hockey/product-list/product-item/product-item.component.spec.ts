@@ -16,6 +16,8 @@ import { environment } from '../../../environments/environment.hockey';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ProductService } from '../../../shared/product/product.service';
 import { MockProductService } from '../../../shared/product/mock-product.service';
+import { MockMediaService } from '../../../shared/media/mock-media.service';
+import { MediaService } from '../../../shared/media/media.service';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -48,6 +50,7 @@ describe('ProductItemComponent', () => {
         declarations: [ProductItemComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
+          { provide: MediaService, useClass: MockMediaService },
         ]
       })
       .compileComponents();
