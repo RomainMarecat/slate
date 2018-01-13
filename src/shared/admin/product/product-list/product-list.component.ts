@@ -6,6 +6,9 @@ import { MenuService } from './../../../menu/menu.service';
 import { take } from 'rxjs/operators';
 import { DialogComponent } from './../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
+import { CloudinaryUploadService } from './../../../cloudinary/cloudinary-upload.service';
+import { debounceTime } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-product-list',
@@ -19,6 +22,7 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   isLoading = false;
   selected: Product[];
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
   @ViewChild('actionsCell') actionsCell: TemplateRef < any > ;
   @ViewChild('imageCell') imageCell: TemplateRef < any > ;
@@ -35,7 +39,8 @@ export class ProductListComponent implements OnInit {
     private router: Router,
     private table: ElementRef,
     private menuService: MenuService,
-    private productService: ProductService) {
+    private productService: ProductService,
+    private cloudinaryUploadService: CloudinaryUploadService) {
     this.selected = [];
   }
 
@@ -51,6 +56,19 @@ export class ProductListComponent implements OnInit {
         }
       }
       this.productService.updateProduct(product);
+    });
+  }
+
+  uploadMedia() {
+    this.products.forEach((product: Product, indexProducts: number) => {
+      console.log('product', (indexProducts + 1).toString() + '/' + this.products.length);
+      product.images.forEach((image: string, indexImages: number) => {
+        console.log('image', (indexImages + 1).toString() + '/' + product.images.length);
+        if (image.indexOf('http') !== -1) {
+          this.cloudinaryUploadService.uploadImage(product, image);
+          console.log('product name', product.translations.fr, 'added');
+        }
+      });
     });
   }
 
@@ -72,7 +90,8 @@ export class ProductListComponent implements OnInit {
       width: '500px',
       data: {
         title: 'Confirmation de suppression du produit',
-        content: 'Voulez-vous continuer de supprimer le produit ?'
+        content: 'Voulez-vous continuer de supprimer le produit ?',
+        cta: 'Supprimer'
       }
     });
 
@@ -95,6 +114,7 @@ export class ProductListComponent implements OnInit {
       canAutoResize: false,
       draggable: false,
       resizeable: false,
+      headerTemplate: this.checkboxHeader,
       cellTemplate: this.checkboxCell,
     }, {
       prop: 'images',
@@ -123,10 +143,12 @@ export class ProductListComponent implements OnInit {
       flexGrow: 1,
       cellTemplate: this.actionsCell
     }, ];
+    this.isLoading = true;
     this.productService.getProducts()
-      .take(1)
       .subscribe((products: Product[]) => {
+        console.log('reloaded products');
         this.products = products;
+        this.isLoading = false;
       });
   }
 

@@ -26,7 +26,7 @@ describe('CloudinaryUploadService', () => {
       ],
       providers: [
         CloudinaryUploadService,
-        { provide: Cloudinary, useValue: null },
+        { provide: Cloudinary, useValue: MockCloudinaryService },
         { provide: ProductService, useClass: MockProductService },
         { provide: MediaService, useClass: MockMediaService },
       ]

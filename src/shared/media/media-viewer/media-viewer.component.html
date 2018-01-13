@@ -1,1 +1,3 @@
-<app-image [publicId]="media?.public_id" [resize]="resize" *ngIf="media && media.public_id"></app-image>
+<app-cloudinary-image mat-card-image [publicId]="media?.public_id" [attr.alt]="media?.alt" secure="true" quality="auto" *ngIf="media">
+  <div appClTransformation [attr.height]="resize?.height" [attr.width]="resize?.width" crop="scale" *ngIf="resize"></div>
+</app-cloudinary-image>

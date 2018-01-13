@@ -18,27 +18,26 @@ export class CloudinaryUploadService {
     private productService: ProductService,
     private mediaService: MediaService) {}
 
-  uploadImage(product: Product, url: string) {
+  uploadImage(product: Product, url: string): void {
     console.log(this.cloudinary.config().upload_preset);
     const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/image/upload`;
     const body = this.getSignature(url);
 
-    return this.http.post(
+    this.http.post(
       cloudinaryUrl,
       this.getSignature(url)
-    ).subscribe(response => {
-
+    ).subscribe(response =>
       this.createMedia(url, response, product)
-        .then((doc: DocumentReference) => {
-          console.log('Add media doc Reference', doc);
-          const index = product.images.indexOf(url);
-          product.images.splice(index, 1);
-          product.images.push(doc.id);
-          this.productService.updateProduct(product);
-        }, (err) => {
-          console.error('onMediaChange:addMedia:err', err);
-        });
-    });
+      .then((doc: DocumentReference) => {
+        console.log('Add media doc Reference', doc.id);
+        const index = product.images.indexOf(url);
+        product.images.splice(index, 1);
+        product.images.push(doc.id);
+        this.productService.updateProduct(product);
+      }, (err) => {
+        console.error('onMediaChange:addMedia:err', err);
+      })
+    );
   }
 
   createMedia(url: string, response: any, product: Product): Promise < any > {

@@ -11,7 +11,6 @@ import { CloudinaryUploadService } from './../../../shared/cloudinary/cloudinary
 export class ProductItemComponent implements OnInit {
   @Input('product') product: HockeyProduct;
   image: string;
-  traited: string[] = [];
 
   constructor(private productService: ProductService,
     private cloudinaryUploadService: CloudinaryUploadService) {}
@@ -22,13 +21,8 @@ export class ProductItemComponent implements OnInit {
       this.product.images.map((image: string) => {
         console.log('image', image);
         // Care care Loop can be insecure and DDOS upload media
-        if (this.traited.indexOf(image) === -1) {
-          if (image.indexOf('http') === -1) {
-            this.image = image;
-          } else {
-            this.cloudinaryUploadService.uploadImage(this.product, image);
-          }
-          this.traited.push(image);
+        if (image.indexOf('http') === -1) {
+          this.image = image;
         }
       });
     }

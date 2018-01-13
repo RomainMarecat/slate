@@ -49,6 +49,7 @@ export class SelectionListComponent implements OnInit {
    * Init all selections
    */
   ngOnInit() {
+    console.log('selection init');
     this.menuService.nextTitle('');
     this.loaderService.show();
     this.loadSelections();
@@ -81,6 +82,7 @@ export class SelectionListComponent implements OnInit {
   expandChildren(selection: Selection) {
     this.currentSelectedSelection = selection;
     const selected = this.findOneBy(selection, 'key', selection.key);
+    console.log('expandChildren', selection, selected);
     if (selected.children && selected.children.length > 0) {
       const root = this.findRoot(selected);
       root.children = selected.children;
@@ -91,7 +93,7 @@ export class SelectionListComponent implements OnInit {
         return item;
       });
     } else if ((!selected.children || selected.children.length === 0) && this.currentSelectedSelection) {
-      this.router.navigate(['/selection/' + this.currentSelectedSelection.key + '/products/']);
+      this.router.navigate(['/selection/' + this.currentSelectedSelection.key + '/products']);
     }
   }
 
@@ -101,9 +103,10 @@ export class SelectionListComponent implements OnInit {
    * @return Selection
    */
   findRoot(object: Selection): Selection {
-    const root = this.findParent(object);
+    let root = this.findParent(object);
+
     if (root.parent !== null) {
-      this.findParent(root);
+      root = this.findRoot(root);
     }
 
     return root;
@@ -123,9 +126,9 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * findOneBy predicate in tree
-   * @param {Selection} object
-   * @param {string column
-   * @param {string}    value
+   * @param Selection object
+   * @param string column
+   * @param string    value
    */
   findOneBy(object: Selection, column: string = 'id', value: string) {
     if (object[column] === value) {

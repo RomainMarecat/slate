@@ -18,4 +18,7 @@ export class DialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  isString(str: any): boolean {
+    return typeof str === 'string';
+  }
 }
