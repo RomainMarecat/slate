@@ -1,13 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Media } from '../../media/media';
 import { MediaService } from '../../media/media.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss']
 })
-export class ImageComponent implements OnInit {
+export class ImageComponent {
   _publicId: string;
   _key: string;
   @Input() resize: any;
@@ -46,6 +47,4 @@ export class ImageComponent implements OnInit {
         console.error(err);
       });
   }
-  ngOnInit() {}
-
 }

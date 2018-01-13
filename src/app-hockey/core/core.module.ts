@@ -75,7 +75,8 @@ export class ConfigService {
   imports: [
     CommonModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule.enablePersistence(),
+    AngularFirestoreModule,
+    // AngularFirestoreModule.enablePersistence(),
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
       developerMode: true,
       pageTracking: {

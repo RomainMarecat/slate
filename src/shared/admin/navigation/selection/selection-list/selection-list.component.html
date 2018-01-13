@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-6">
       <div class='selected-column' *ngIf="selected">
@@ -29,6 +29,9 @@
       </ng-template>
       <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
         <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+      </ng-template>
+      <ng-template #productsCell let-row="row">
+        <button (click)="showProducts(row)" color="primary" mat-raised-button>Voir les produits</button>
       </ng-template>
     </div>
   </div>

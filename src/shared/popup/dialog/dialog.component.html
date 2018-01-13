@@ -1,6 +1,16 @@
 <h2 mat-dialog-title [innerHtml]="data?.title"></h2>
-<mat-dialog-content [innerHtml]="data?.content"></mat-dialog-content>
+<mat-dialog-content>
+  <div *ngIf="data?.content?.length === 0">No data</div>
+  <div *ngIf="data?.content?.length >= 1 && !isString(data?.content)">
+    <div *ngFor="let item of data?.content">
+      <span *ngIf="item?.key">{{item?.key}}</span>
+      <span *ngIf="item?.translations?.fr">{{item?.translations?.fr}}</span>
+    </div>
+  </div>
+  <div *ngIf="isString(data?.content)" [innerHtml]="data?.content">
+  </div>
+</mat-dialog-content>
 <mat-dialog-actions class="d-flex justify-content-between">
   <button mat-raised-button [mat-dialog-close]="false">Annuler</button>
-  <button mat-raised-button [mat-dialog-close]="true" color="primary">Supprimer</button>
+  <button mat-raised-button [mat-dialog-close]="true" color="primary" [innerHTML]="data?.cta ? data?.cta : 'Supprimer'"></button>
 </mat-dialog-actions>

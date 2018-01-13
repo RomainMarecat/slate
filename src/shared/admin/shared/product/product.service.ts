@@ -83,7 +83,11 @@ export class ProductService {
    */
   getProducts(): Observable < Product[] > {
     return this.products$.map((products: DocumentChangeAction[]) =>
-      products.map((doc: DocumentChangeAction) => {
+      products
+      .filter((doc: DocumentChangeAction) => {
+        return doc.payload.doc.exists === true;
+      })
+      .map((doc: DocumentChangeAction) => {
         const product = doc.payload.doc.data() as Product;
         product.key = doc.payload.doc.id;
         return product as Product;

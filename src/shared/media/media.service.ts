@@ -6,6 +6,7 @@ import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class MediaService {

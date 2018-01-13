@@ -37,6 +37,7 @@ import { environment } from './../../../environments/environment.hockey';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { MockSelectionService } from '../../../shared/selection/mock-selection.service';
 import { MenuService } from '../../../shared/menu/menu.service';
+import { SharedModule } from '../../../shared/shared.module';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -66,7 +67,8 @@ describe('ProductListComponent', () => {
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
+          }),
+          SharedModule
         ],
         declarations: [ProductListComponent, ProductItemComponent],
         providers: [

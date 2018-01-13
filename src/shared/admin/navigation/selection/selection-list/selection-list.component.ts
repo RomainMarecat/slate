@@ -4,6 +4,10 @@ import { SelectionService } from '../../../shared/navigation/selection/selection
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { MenuService } from './../../../../menu/menu.service';
+import { Product } from './../../../../product/product';
+import { ProductService } from './../../../shared/product/product.service';
+import { DialogComponent } from './../../../../popup/dialog/dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-selection-list',
@@ -19,6 +23,7 @@ export class SelectionListComponent implements OnInit {
   isLoading: boolean;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
+  @ViewChild('productsCell') productsCell: TemplateRef < any > ;
 
   /**
    * @param {ElementRef} table
@@ -26,8 +31,10 @@ export class SelectionListComponent implements OnInit {
    */
   constructor(private table: ElementRef,
     private selectionService: SelectionService,
+    private productService: ProductService,
     private router: Router,
-    private menuService: MenuService
+    private menuService: MenuService,
+    public dialog: MatDialog
   ) {
 
     this.selected = [];
@@ -57,6 +64,27 @@ export class SelectionListComponent implements OnInit {
     this.selected.forEach((selection: Selection) => {
       this.selectionService.deleteSelection(selection);
     });
+  }
+
+  showProducts(selection: Selection) {
+    this.productService.getProducts()
+      .subscribe((products) => {
+        products = products.filter((product: Product) => {
+          return selection.products.includes(product.key);
+        });
+
+        const dialogRef = this.dialog.open(DialogComponent, {
+          width: '500px',
+          data: {
+            content: products,
+            cta: 'Fermer'
+          }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed', result);
+        });
+      });
   }
 
   /**
@@ -108,12 +136,9 @@ export class SelectionListComponent implements OnInit {
       name: 'parent',
       flexGrow: 1
     }, {
-      prop: 'images',
-      name: 'images',
-      flexGrow: 1
-    }, {
       prop: 'products',
       name: 'products',
+      cellTemplate: this.productsCell,
       flexGrow: 1
     }, {
       prop: 'published_at',
