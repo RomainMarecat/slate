@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductItemComponent } from './product-item.component';
+import { ProductActionComponent } from './../product-action/product-action.component';
 import { CommonModule } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
@@ -47,7 +48,7 @@ describe('ProductItemComponent', () => {
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })
         ],
-        declarations: [ProductItemComponent],
+        declarations: [ProductItemComponent, ProductActionComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
           { provide: MediaService, useClass: MockMediaService },

@@ -61,10 +61,10 @@ export class SelectionListComponent implements OnInit {
   loadSelections() {
     this.selectionService.publishedFilter$.next(true);
     this.selectionService.parentFilter$.next(null);
+    // We need to subscribe all time because,
+    // we can back to the view
     this.selectionService.getSelections()
-      .take(1)
       .subscribe((rows: Selection[]) => {
-        console.log(rows);
         this.selections = rows;
         if (rows.length > 0) {
           if (this.selectionService.parentFilter$.getValue() === null) {
