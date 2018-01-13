@@ -19,6 +19,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './product-list.component';
 import { ProductItemComponent } from './../product-item/product-item.component';
+import { ProductActionComponent } from './../product-action/product-action.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../../../shared/cloudinary/cloudinary.module';
 import { ProductService } from './../../../shared/product/product.service';
@@ -70,7 +71,7 @@ describe('ProductListComponent', () => {
           }),
           SharedModule
         ],
-        declarations: [ProductListComponent, ProductItemComponent],
+        declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
           { provide: SelectionService, useClass: MockSelectionService },

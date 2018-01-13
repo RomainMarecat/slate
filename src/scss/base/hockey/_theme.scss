@@ -25,12 +25,10 @@ body {
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 //
-$color1: #fffbbd; //Blanc
-$color2: #e6aa68; // light yellow
-$color3: #7fb069; // Vert
-$color4: #223a00; //Noir
-$color5: #ca3c25; //Rouge
-$color6: #131629; // Bleu
+$color1: #131629; // Bleu
+$color2: #ffffff; // Blanc
+$color3: #af300b; // Rouge
+$color5: #af8401;
 $product-primary: mat-palette($mat-indigo,
 900);
 $product-accent: mat-palette($mat-red,

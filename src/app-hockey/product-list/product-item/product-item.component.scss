@@ -1,3 +1,25 @@
 .mat-card {
   width: 300px;
+
+  .mat-card-price {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .mat-card-old-price {
+    text-decoration: line-through;
+    margin-left: 5px;
+    font-size: 12px;
+    color: #999;
+  }
+
+  .app-product-action {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mat-card-product-detail {
+    margin-left: 10px;
+  }
 }
