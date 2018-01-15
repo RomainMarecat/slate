@@ -32,7 +32,7 @@ export class ProductDetailComponent implements OnInit {
             .subscribe((product: HockeyProduct) => {
               console.log(product);
               this.product = product;
-            })
+            });
         }
       }
     });
