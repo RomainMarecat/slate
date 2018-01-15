@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
 import { ProductService } from '../../../shared/product/product.service';
 import { CloudinaryUploadService } from './../../../shared/cloudinary/cloudinary-upload.service';
+import { StringService } from '../../../shared/util/string.service';
 
 @Component({
   selector: 'app-product-item',
@@ -27,8 +28,11 @@ export class ProductItemComponent implements OnInit {
     }
   }
 
-  productDetail(product: HockeyProduct) {
-    /*this.router.navigate(['/product/:key']);*/
+  productDetail(event: any) {
+    this.router.navigate([
+      '/product/',
+      this.product.key + '-' + StringService.slugify(this.product.name)
+    ]);
   }
 
   updateScoreProduct(product: HockeyProduct) {
