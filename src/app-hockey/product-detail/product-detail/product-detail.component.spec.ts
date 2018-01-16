@@ -29,36 +29,43 @@ import { MenuService } from '../../../shared/menu/menu.service';
 import { SharedModule } from '../../../shared/shared.module';
 
 import { ProductDetailComponent } from './product-detail.component';
+import { ProductActionComponent } from './../product-action/product-action.component';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
-  let fixture: ComponentFixture<ProductDetailComponent>;
+  let fixture: ComponentFixture < ProductDetailComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-      CommonModule,
-        HttpClientTestingModule,
-        RouterTestingModule,
-        BrowserAnimationsModule,
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-          developerMode: true,
-          pageTracking: {
-            clearIds: true,
-          },
-        }),
-        CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-        TranslateModule.forRoot({
-          loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-        }),
-        SharedModule
-      ],
-      declarations: [ ProductDetailComponent ],
-      providers: [
-        { provide: ProductService, useClass: MockProductService },
-      ]
-    })
-    .compileComponents();
+        imports: [
+          CommonModule,
+          HttpClientTestingModule,
+          RouterTestingModule,
+          BrowserAnimationsModule,
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          }),
+          SharedModule
+        ],
+        declarations: [ProductDetailComponent, ProductActionComponent],
+        providers: [
+          { provide: ProductService, useClass: MockProductService },
+          { provide: SelectionService, useClass: MockSelectionService },
+          { provide: UserService, useClass: MockUserService },
+          { provide: AlertService, useClass: MockAlertService },
+          { provide: LoaderService, useClass: MockLoaderService },
+          { provide: ScoreService, useClass: MockScoreService },
+          { provide: DateService, useClass: DateService },
+        ]
+      })
+      .compileComponents();
   }));
 
   beforeEach(() => {
