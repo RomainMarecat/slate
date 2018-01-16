@@ -1,19 +1,19 @@
 <mat-card class="mat-card" *ngIf="product" angulartics2On="mouseover" angularticsAction="hoveredOverProductItem" [angularticsCategory]="'product.item'" fxFlex="100" fxFlex.xs="100" fxLayout="center center">
-  <mat-card-header class="mat-card-header">
-    <mat-card-title class="mat-card-title" (click)="productDetail()" angulartics2On="click" angularticsAction="clickedOnTitleShowProduct" [angularticsCategory]="'product.detail'">
+  <mat-card-header class="mat-card-header" (click)="productDetail($event)">
+    <mat-card-title class="mat-card-title" angulartics2On="click" angularticsAction="clickedOnTitleShowProduct" [angularticsCategory]="'product.detail'">
       <h2 class="mat-card-name size--all-xl">
         {{ product?.name | shorten: 80: '...'}}
       </h2>
     </mat-card-title>
   </mat-card-header>
-  <app-image mat-card-image [key]="image" [resize]="{height: 200}" *ngIf="image">
+  <app-image class="app-image" mat-card-image [key]="image" [resize]="{height: 200}" *ngIf="image" (click)="productDetail($event)">
   </app-image>
-  <mat-card-content class="w-100">
+  <!-- <mat-card-content class="w-100">
     <span class="mat-card-price" [innerHtml]="(product.price).toString() + '€'" *ngIf="product?.price"></span>
     <span class="mat-card-old-price" [innerHtml]="(product.old_price).toString() + '€'" *ngIf="product?.old_price"></span>
     <span class="mat-card-product-detail align-self-end d-inline-flex">
       <button mat-raised-button color="warning" type="button" (click)="productDetail()">Voir le produit</button>
     </span>
-  </mat-card-content>
+  </mat-card-content> -->
   <app-product-action class="app-product-action" [product]="product" (updateScore)="updateScoreProduct($event)"></app-product-action>
 </mat-card>

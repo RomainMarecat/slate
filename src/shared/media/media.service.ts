@@ -73,9 +73,12 @@ export class MediaService {
   getMedias(): Observable < Media[] > {
     return this.medias$.map((products: DocumentChangeAction[]) =>
       products.map((doc: DocumentChangeAction) => {
-        const media = doc.payload.doc.data() as Media;
-        media.key = doc.payload.doc.id;
-        return media as Media;
+        if (doc.payload.doc.exists) {
+          const media = doc.payload.doc.data() as Media;
+          media.key = doc.payload.doc.id;
+          return media as Media;
+        }
+        return null;
       })
     );
   }
@@ -85,9 +88,12 @@ export class MediaService {
       .doc(path)
       .snapshotChanges()
       .map((action: Action < DocumentSnapshot > ) => {
-        const media = action.payload.data() as Media;
-        media.key = action.payload.id;
-        return media;
+        if (action.payload.exists) {
+          const media = action.payload.data() as Media;
+          media.key = action.payload.id;
+          return media;
+        }
+        return null;
       });
   }
 

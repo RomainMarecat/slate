@@ -3,23 +3,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import {
-  MatCardModule,
-  MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule
-} from '@angular/material';
 import { NgPipesModule } from 'ngx-pipes';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductListComponent } from './product-list.component';
-import { ProductItemComponent } from './../product-item/product-item.component';
-import { ProductActionComponent } from './../product-action/product-action.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../../../shared/cloudinary/cloudinary.module';
 import { ProductService } from './../../../shared/product/product.service';
@@ -40,9 +28,12 @@ import { MockSelectionService } from '../../../shared/selection/mock-selection.s
 import { MenuService } from '../../../shared/menu/menu.service';
 import { SharedModule } from '../../../shared/shared.module';
 
-describe('ProductListComponent', () => {
-  let component: ProductListComponent;
-  let fixture: ComponentFixture < ProductListComponent > ;
+import { ProductDetailComponent } from './product-detail.component';
+import { ProductActionComponent } from './../product-action/product-action.component';
+
+describe('ProductDetailComponent', () => {
+  let component: ProductDetailComponent;
+  let fixture: ComponentFixture < ProductDetailComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -51,14 +42,6 @@ describe('ProductListComponent', () => {
           HttpClientTestingModule,
           RouterTestingModule,
           BrowserAnimationsModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          NgPipesModule,
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {
@@ -71,7 +54,7 @@ describe('ProductListComponent', () => {
           }),
           SharedModule
         ],
-        declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent],
+        declarations: [ProductDetailComponent, ProductActionComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
           { provide: SelectionService, useClass: MockSelectionService },
@@ -80,15 +63,13 @@ describe('ProductListComponent', () => {
           { provide: LoaderService, useClass: MockLoaderService },
           { provide: ScoreService, useClass: MockScoreService },
           { provide: DateService, useClass: DateService },
-          I18nService,
-          MenuService,
         ]
       })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductListComponent);
+    fixture = TestBed.createComponent(ProductDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

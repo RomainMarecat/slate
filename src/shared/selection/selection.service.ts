@@ -79,9 +79,12 @@ export class SelectionService {
   getSelections(): Observable < Selection[] > {
     return this.selections$.map((selections: DocumentChangeAction[]) =>
       selections.map((doc: DocumentChangeAction) => {
-        const selection = doc.payload.doc.data() as Selection;
-        selection.key = doc.payload.doc.id;
-        return selection as Selection;
+        if (doc.payload.doc.exists) {
+          const selection = doc.payload.doc.data() as Selection;
+          selection.key = doc.payload.doc.id;
+          return selection as Selection;
+        }
+        return null;
       })
     );
   }

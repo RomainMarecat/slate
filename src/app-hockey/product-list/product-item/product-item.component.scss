@@ -1,6 +1,10 @@
 .mat-card {
   width: 300px;
 
+  .mat-card-header {
+    cursor: pointer;
+  }
+
   .mat-card-price {
     font-weight: 700;
     font-size: 20px;
@@ -21,5 +25,9 @@
 
   .mat-card-product-detail {
     margin-left: 10px;
+  }
+
+  .app-image {
+    cursor: pointer;
   }
 }

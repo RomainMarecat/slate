@@ -63,9 +63,11 @@ export class VisitorService {
   getDocuments(): Observable < any[] > {
     return this.documents$.map((documents: DocumentChangeAction[]) => {
       return documents.map((document: DocumentChangeAction) => {
-        const doc = document.payload.doc.data() as Document;
-        doc.key = document.payload.doc.id;
-        return doc;
+        if (document.payload.doc.exists) {
+          const doc = document.payload.doc.data() as Document;
+          doc.key = document.payload.doc.id;
+          return doc;
+        }
       });
     });
   }
@@ -79,9 +81,12 @@ export class VisitorService {
       .doc(path)
       .snapshotChanges()
       .map((action: Action < DocumentSnapshot > ) => {
-        const product = action.payload.data() as Document;
-        product.key = action.payload.id;
-        return product;
+        if (action.payload.exists) {
+          const product = action.payload.data() as Document;
+          product.key = action.payload.id;
+          return product;
+        }
+        return null;
       });
   }
 

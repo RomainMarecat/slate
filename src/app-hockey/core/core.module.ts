@@ -42,6 +42,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { environment } from '../../environments/environment.hockey';
 import { SlackModule } from '../../shared/slack/slack.module';
 import { ProductListModule } from '../product-list/product-list.module';
+import { ProductDetailModule } from '../product-detail/product-detail.module';
 import { SelectionModule } from '../selection/selection.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { VisitorService } from '../../shared/firestore/visitor.service';
@@ -105,6 +106,7 @@ export class ConfigService {
     }),
     ProductListModule,
     SelectionModule,
+    ProductDetailModule
   ],
   exports: [
     AdsenseModule,

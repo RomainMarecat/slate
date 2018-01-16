@@ -18,6 +18,10 @@ const routes: Routes = [{
     loadChildren: './product-list/product-list.module#ProductListModule'
   },
   {
+    path: 'product/:key',
+    loadChildren: './product-detail/product-detail.module#ProductDetailModule'
+  },
+  {
     path: 'admin',
     loadChildren: './../shared/admin/admin.module#AdminModule'
   }
