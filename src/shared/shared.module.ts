@@ -106,6 +106,7 @@ export class ConfigService {
     TranslateModule
   ],
   exports: [
+    Angulartics2Module,
     CloudinaryModule,
     DragulaModule,
     FileUploadModule,

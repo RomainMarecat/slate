@@ -30,7 +30,7 @@ export class ProductItemComponent implements OnInit {
 
   productDetail(event: any) {
     this.router.navigate([
-      '/product/',
+      '/product/' +
       this.product.key + '-' + StringService.slugify(this.product.name)
     ]);
   }

@@ -1,0 +1,12 @@
+<mat-card-actions class="mat-card-actions" align="center" *ngIf="product" angulartics2On="mouseover" angularticsAction="hoveredOverScoreActions" [angularticsCategory]="'score.actions'">
+  <button role="button" [attr.aria-label]="'product-item.product-action.mat-card-actions.button.minus.title'|translate" mat-raised-button color="accent" (click)="score(product, 'minus')" angulartics2On="click" angularticsAction="clickedOnScoreMinus" [angularticsCategory]="'score.minus'">
+    <mat-icon [attr.aria-label]="'product-item.product-action.mat-card-actions.button.minus.icon'|translate">thumb_down</mat-icon>
+  </button>
+  <span class="mat-score" *ngIf="product?.score; else showScoreNull">{{ product.score }}</span>
+  <button role="button" [attr.aria-label]="'product-item.product-action.mat-card-actions.button.plus.title'|translate" mat-raised-button color="primary" (click)="score(product, 'plus')" angulartics2On="click" angularticsAction="clickedOnScorePlus" [angularticsCategory]="'score.plus'">
+    <mat-icon [attr.aria-label]="'product-item.product-action.mat-card-actions.button.plus.icon'|translate">thumb_up</mat-icon>
+  </button>
+</mat-card-actions>
+<ng-template #showScoreNull>
+  <span class="mat-score">0</span>
+</ng-template>
