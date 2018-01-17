@@ -9,7 +9,8 @@
     "test": "ng test --single-run",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "precache": "sw-precache --verbose --config=sw-precache-config.js"
+    "precache": "sw-precache --verbose --config=sw-precache-config.js",
+    "extract-i18n": "ng xi18n --output-path src/assets/i18n && xliffmerge --profile ./xliffmerge.json"
   },
   "private": true,
   "dependencies": {
@@ -70,6 +71,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "npm": "^5.6.0",
+    "ngx-i18nsupport": "^0.10.0",
     "protractor": "~5.1.2",
     "sw-precache": "^5.2.0",
     "ts-node": "~3.2.0",
