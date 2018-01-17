@@ -38,4 +38,8 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  updateScoreProduct(event: any) {
+
+  }
+
 }
