@@ -47,6 +47,7 @@ import { FooterModule } from './footer/footer.module';
 import { SidenavModule } from './sidenav/sidenav.module';
 import { LoaderModule } from './loader/loader.module';
 import { PopupModule } from './popup/popup.module';
+import { ResponsiveModule } from 'ngx-responsive'
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
 
@@ -100,8 +101,8 @@ export class ConfigService {
     ModalModule.forRoot(),
     NgPipesModule,
     PopupModule,
-    RouterModule,
     ReactiveFormsModule,
+    RouterModule,
     SidenavModule,
     TranslateModule
   ],
@@ -145,8 +146,8 @@ export class ConfigService {
     NgPipesModule,
     PopupModule,
     ProductImageComponent,
-    RouterModule,
     ReactiveFormsModule,
+    RouterModule,
     SlackModule,
     SidenavModule,
     TranslateModule

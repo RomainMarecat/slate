@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../../../product/product';
 import { ProductService } from './../../shared/product/product.service';
@@ -13,7 +13,8 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  styleUrls: ['./product-list.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductListComponent implements OnInit {
   readonly headerHeight = 50;
@@ -22,10 +23,16 @@ export class ProductListComponent implements OnInit {
   products: Product[];
   isLoading = false;
   selected: Product[];
+  expanded: any = {};
+  @ViewChild('dataTableComponentTable') dataTableComponentTable: any;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
   @ViewChild('actionsCell') actionsCell: TemplateRef < any > ;
   @ViewChild('imageCell') imageCell: TemplateRef < any > ;
+  @ViewChild('priceCell') priceCell: TemplateRef < any > ;
+  @ViewChild('desktopCell') desktopCell: TemplateRef < any > ;
+  @ViewChild('desktopHeader') desktopHeader: TemplateRef < any > ;
+  @ViewChild('translationsFrCell') translationsFrCell: TemplateRef < any > ;
 
   /**
    *
@@ -109,7 +116,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     this.menuService.nextTitle('Products');
     this.columns = [{
-      width: 50,
+      width: 75,
       sortable: false,
       canAutoResize: false,
       draggable: false,
@@ -120,29 +127,39 @@ export class ProductListComponent implements OnInit {
       prop: 'images',
       name: 'images',
       flexGrow: 1,
+      minWidth: 50,
       cellTemplate: this.imageCell,
     }, {
       prop: 'translations.fr',
       name: 'name (fr)',
-      flexGrow: 1
+      minWidth: 200,
+      flexGrow: 2,
+      cellTemplate: this.translationsFrCell,
     }, {
       prop: 'category',
       name: 'category',
-      flexGrow: 1
+      flexGrow: 1,
+      headerTemplate: this.desktopHeader,
+      cellTemplate: this.desktopCell,
     }, {
       prop: 'price',
       name: 'price',
-      flexGrow: 1
+      flexGrow: 1,
+      headerTemplate: this.desktopHeader,
+      cellTemplate: this.priceCell,
     }, {
       prop: 'published',
       name: 'published',
-      flexGrow: 1
+      flexGrow: 1,
+      headerTemplate: this.desktopHeader,
+      cellTemplate: this.desktopCell,
     }, {
       prop: 'key',
       name: 'Actions',
       flexGrow: 1,
-      cellTemplate: this.actionsCell
-    }, ];
+      headerTemplate: this.desktopHeader,
+      cellTemplate: this.actionsCell,
+    }];
     this.isLoading = true;
     this.productService.getProducts()
       .subscribe((products: Product[]) => {
@@ -165,6 +182,15 @@ export class ProductListComponent implements OnInit {
     if (event.type === 'dblclick') {
       this.router.navigate(['/admin/product/edit/', event.row.key]);
     }
+  }
+
+  toggleExpandRow(row) {
+    console.log('Toggled Expand Row!', row);
+    this.dataTableComponentTable.rowDetail.toggleExpandRow(row);
+  }
+
+  onDetailToggle(event) {
+    console.log('Detail Toggled', event);
   }
 
   onScroll(event: any) {}
