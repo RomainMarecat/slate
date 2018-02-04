@@ -75,7 +75,7 @@ export class ConfigService {
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
-    'domain': environment.site_name
+    'domain': environment.cookie.domain
   },
   position: 'bottom',
   theme: 'block',
