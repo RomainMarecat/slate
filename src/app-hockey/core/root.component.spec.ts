@@ -23,6 +23,7 @@ import {
   MatCommonModule,
   MatTooltipModule
 } from '@angular/material';
+import { NgcCookieConsentModule, NgcCookieConsentService, WindowService, NgcCookieConsentConfig } from 'ngx-cookieconsent';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
@@ -45,6 +46,34 @@ import { SidenavComponent } from '../../shared/sidenav/sidenav.component';
 import { AppRootComponent } from './root.component';
 import { SharedModule } from '../../shared/shared.module';
 import { MenuService } from '../../shared/menu/menu.service';
+
+export const cookieConfig: NgcCookieConsentConfig = {
+  cookie: {
+    'domain': environment.site_name
+  },
+  position: 'bottom',
+  theme: 'block',
+  palette: {
+    popup: {
+      background: '#131629',
+      text: '#ffffff',
+      link: '#ffffff'
+    },
+    button: {
+      background: '#af300b',
+      text: '#ffffff',
+      border: 'transparent'
+    }
+  },
+  type: 'info',
+  content: {
+    message: 'This website uses cookies to ensure you get the best experience on our website.',
+    dismiss: 'Got it !',
+    deny: 'Refuse cookies',
+    link: 'Learn more',
+    href: 'https://cookiesandyou.com'
+  }
+};
 
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
@@ -82,6 +111,7 @@ describe('AppRootComponent', () => {
           MatMenuModule,
           MatCommonModule,
           MatTooltipModule,
+          NgcCookieConsentModule.forRoot(cookieConfig),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {
@@ -99,6 +129,8 @@ describe('AppRootComponent', () => {
         providers: [
           { provide: UserService, useClass: MockUserService },
           { provide: LoaderService, useClass: MockLoaderService },
+          { provide: NgcCookieConsentService, useClass: NgcCookieConsentService },
+          { provide: WindowService, useClass: WindowService },
           I18nService,
           MenuService,
           SidenavService,
