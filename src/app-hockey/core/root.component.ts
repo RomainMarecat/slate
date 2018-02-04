@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NgcCookieConsentService, NgcStatusChangeEvent, NgcInitializeEvent } from 'ngx-cookieconsent';
+import { Subscription } from 'rxjs/Subscription';
+import { Meta, Title } from '@angular/platform-browser';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { UserService } from '../../shared/user/user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
@@ -11,7 +13,14 @@ import { environment } from '../../environments/environment.hockey';
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.scss']
 })
-export class AppRootComponent implements OnInit {
+export class AppRootComponent implements OnInit, OnDestroy {
+
+  // Keep refs to subscriptions to be able to unsubscribe later
+  private popupOpenSubscription: Subscription;
+  private popupCloseSubscription: Subscription;
+  private initializeSubscription: Subscription;
+  private statusChangeSubscription: Subscription;
+  private revokeChoiceSubscription: Subscription;
 
   /**
    * Root Constructor
@@ -20,7 +29,10 @@ export class AppRootComponent implements OnInit {
     public userService: UserService,
     private loaderService: LoaderService,
     private i18nService: I18nService,
-    private meta: Meta) {
+    private ccService: NgcCookieConsentService,
+    private meta: Meta,
+    private title: Title) {
+    this.title.setTitle('hockey');
     this.meta.addTags([
       { rel: 'icon', type: 'image/x-icon', href: `/assets/images/${environment.app_name}/icons/favicon.ico` },
       { rel: 'apple-touch-icon', sizes: '57x57', href: `/assets/images/${environment.app_name}/icons/apple-icon-57x57.png` },
@@ -46,5 +58,40 @@ export class AppRootComponent implements OnInit {
     ]);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // subscribe to cookieconsent observables to react to main events
+    this.popupOpenSubscription = this.ccService.popupOpen$.subscribe(
+      () => {
+        // you can use this.ccService.getConfig() to do stuff...
+      });
+
+    this.popupCloseSubscription = this.ccService.popupClose$.subscribe(
+      () => {
+        // you can use this.ccService.getConfig() to do stuff...
+      });
+
+    this.initializeSubscription = this.ccService.initialize$.subscribe(
+      (event: NgcInitializeEvent) => {
+        // you can use this.ccService.getConfig() to do stuff...
+      });
+
+    this.statusChangeSubscription = this.ccService.statusChange$.subscribe(
+      (event: NgcStatusChangeEvent) => {
+        // you can use this.ccService.getConfig() to do stuff...
+      });
+
+    this.revokeChoiceSubscription = this.ccService.revokeChoice$.subscribe(
+      () => {
+        // you can use this.ccService.getConfig() to do stuff...
+      });
+  }
+
+  ngOnDestroy() {
+    // unsubscribe to cookieconsent observables to prevent memory leaks
+    this.popupOpenSubscription.unsubscribe();
+    this.popupCloseSubscription.unsubscribe();
+    this.initializeSubscription.unsubscribe();
+    this.statusChangeSubscription.unsubscribe();
+    this.revokeChoiceSubscription.unsubscribe();
+  }
 }

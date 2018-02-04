@@ -23,10 +23,12 @@
             "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
             "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
             "../node_modules/bootstrap/dist/css/bootstrap.css",
+            "../node_modules/cookieconsent/build/cookieconsent.min.css",
             "./scss/styles.monpullmoche.scss"
         ],
         "scripts": [
-            "../node_modules/crypto-js/crypto-js.js"
+            "../node_modules/crypto-js/crypto-js.js",
+            "../node_modules/cookieconsent/build/cookieconsent.min.js"
         ],
         "environmentSource": "environments/environment.monpullmoche.ts",
         "environments": {
@@ -53,10 +55,12 @@
             "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
             "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
             "../node_modules/bootstrap/dist/css/bootstrap.css",
+            "../node_modules/cookieconsent/build/cookieconsent.min.css",
             "./scss/styles.hockey.scss"
         ],
         "scripts": [
-            "../node_modules/crypto-js/crypto-js.js"
+            "../node_modules/crypto-js/crypto-js.js",
+            "../node_modules/cookieconsent/build/cookieconsent.min.js"
         ],
         "environmentSource": "environments/environment.hockey.ts",
         "environments": {

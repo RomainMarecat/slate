@@ -14,6 +14,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { AdsenseModule } from 'ng2-adsense';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
 
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
@@ -72,6 +73,34 @@ export class ConfigService {
   }
 }
 
+export const cookieConfig: NgcCookieConsentConfig = {
+  cookie: {
+    'domain': environment.site_name
+  },
+  position: 'bottom',
+  theme: 'block',
+  palette: {
+    popup: {
+      background: '#131629',
+      text: '#ffffff',
+      link: '#ffffff'
+    },
+    button: {
+      background: '#af300b',
+      text: '#ffffff',
+      border: 'transparent'
+    }
+  },
+  type: 'info',
+  content: {
+    message: 'This website uses cookies to ensure you get the best experience on our website.',
+    dismiss: 'Got it !',
+    deny: 'Refuse cookies',
+    link: 'Learn more',
+    href: 'https://cookiesandyou.com'
+  }
+};
+
 @NgModule({
   imports: [
     CommonModule,
@@ -93,6 +122,7 @@ export class ConfigService {
       environment.cloudinary
     ),
     ModalModule.forRoot(),
+    NgcCookieConsentModule.forRoot(cookieConfig),
     ImageCropperModule,
     FileUploadModule,
     SharedModule.forRoot(CONFIG_TOKEN),

@@ -69,8 +69,8 @@
                   <mat-form-field class="mat-form-field">
                     <input matInput placeholder="Attributs" aria-label="Attributs" [matAutocomplete]="auto" formControlName="attributes">
                     <mat-autocomplete #auto="matAutocomplete">
-                      <mat-option *ngFor="let attribute of attributesModel" [value]="attribute.name">
-                        <span>{{ attribute.translations.fr }}</span>
+                      <mat-option *ngFor="let attribute of attributesModel" [value]="attribute?.translations?.fr">
+                        <span>{{ attribute?.translations?.fr }}</span>
                       </mat-option>
                     </mat-autocomplete>
                   </mat-form-field>
