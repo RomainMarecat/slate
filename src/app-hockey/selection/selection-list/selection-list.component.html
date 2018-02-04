@@ -32,17 +32,4 @@
     </div>
   </div>
 </div>
-<ng-template #emptyBlock>
-</ng-template>
-<ng-template #dropdownTemplate>
-  <div class="dropdown-wrapper" [ngClass]="active[selection?.slug]" *ngIf="selection?.slug === 'hockey-goalie'">
-    <div class="dropdown-inner-wrapper">
-      <div class="content text-white">
-        <div class="item-wrapper">
-          <app-selection-item (selected)="expandChildren($event)" [selection]="child" *ngFor="let child of selection.children">
-          </app-selection-item>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template>
+<app-hockey-selection-slider></app-hockey-selection-slider>

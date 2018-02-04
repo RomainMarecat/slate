@@ -1,10 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SelectionSliderComponent } from './../selection-slider/selection-slider.component';
-import { SelectionListComponent } from './selection-list.component';
 import { SharedModule } from '../../../shared/shared.module';
-import { SelectionItemComponent } from '../selection-item/selection-item.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+import { SelectionSliderComponent } from './selection-slider.component';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { MediaService } from '../../../shared/media/media.service';
 import { MockNotificationService } from '../../../shared/slack/mock-notification.service';
@@ -26,24 +24,19 @@ import { MockProductService } from '../../../shared/product/mock-product.service
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('SelectionListComponent', () => {
-  let component: SelectionListComponent;
-  let fixture: ComponentFixture < SelectionListComponent > ;
+describe('SelectionSliderComponent', () => {
+  let component: SelectionSliderComponent;
+  let fixture: ComponentFixture < SelectionSliderComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [
-          RouterTestingModule,
           SharedModule,
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),
         ],
-        declarations: [
-          SelectionListComponent,
-          SelectionItemComponent,
-          SelectionSliderComponent
-        ],
+        declarations: [SelectionSliderComponent],
         providers: [
           { provide: SelectionService, useClass: MockSelectionService },
           { provide: AlertService, useClass: MockAlertService },
@@ -63,7 +56,7 @@ describe('SelectionListComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectionListComponent);
+    fixture = TestBed.createComponent(SelectionSliderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

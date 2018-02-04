@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SelectionListComponent } from './selection-list/selection-list.component';
 import { SelectionItemComponent } from './selection-item/selection-item.component';
+import { SelectionSliderComponent } from './selection-slider/selection-slider.component';
 import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { Angulartics2Module } from 'angulartics2';
@@ -22,6 +23,10 @@ import { TranslateModule } from '@ngx-translate/core';
     SharedModule,
     TranslateModule,
   ],
-  declarations: [SelectionListComponent, SelectionItemComponent]
+  declarations: [
+    SelectionListComponent,
+    SelectionItemComponent,
+    SelectionSliderComponent
+  ]
 })
 export class SelectionModule {}

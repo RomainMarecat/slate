@@ -3,42 +3,32 @@
   <mat-sidenav #sidenav class="leftSideNav" mode="over" opened="false">
     <div *ngIf="userService.getAuthState() | async; let user; else showLogin">
       <mat-card class="card-sidebar">
-        <img mat-card-image alt="'sidenav.card.img.alt'|translate" src="/assets/images/sidebar.jpg">
+        <!--         <img mat-card-image alt="'sidenav.card.img.alt'|translate" src="/assets/images/sidebar.jpg">
+ -->
         <mat-card-header>
           <img mat-card-avatar [src]="user?.photoURL">
           <h2 class="mat-title">{{ user?.displayName }}</h2>
         </mat-card-header>
       </mat-card>
-      <mat-list>
+      <mat-list class="pt-0">
         <mat-list-item *ngIf="cmsDetail?.add === true">
           <a class="sidenav-link" mat-raised [routerLink]="['/add']" [innerHtml]="'sidenav.card.list-item.add.title'|translate"></a>
         </mat-list-item>
-        <div *ngIf="isAuthorized">
-          <mat-list-item>
-            <a class="sidenav-link" mat-raised [routerLink]="['/admin']" [innerHtml]="'sidenav.card.list-item.admin.title'|translate"></a>
-          </mat-list-item>
-          <mat-list-item>
-            <a mat-button class="sidenav-link" color="primary" [routerLink]="['/admin/product']">Products</a>
-          </mat-list-item>
-          <mat-list-item>
-            <a mat-button class="sidenav-link" color="primary" [routerLink]="['/admin/attribute']">Attributs</a>
-          </mat-list-item>
-          <mat-list-item>
-            <a mat-button class="sidenav-link" color="primary" [routerLink]="['/admin/navigation/selection']">Selection</a>
-          </mat-list-item>
-          <mat-list-item>
-            <a mat-button class="sidenav-link" color="primary" [routerLink]="['/admin/navigation/category']">Category</a>
-          </mat-list-item>
-          <mat-list-item>
-            <a mat-button class="sidenav-link" color="primary" [routerLink]="['/admin/cms']">Cms</a>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>
-            <button role="button" [attr.aria-label]="'sidenav.card.list-item.logout.aria-label'|translate" mat-raised-button color="primary" type="button" (click)="userService.logout()" [innerHtml]="'sidenav.card.list-item.logout.title'|translate">
-            </button>
-          </mat-list-item>
-        </div>
       </mat-list>
+      <mat-nav-list *ngIf="isAuthorized" class="pt-0">
+        <a mat-list-item class="heading" [routerLink]="['/admin']">
+          {{ 'sidenav.card.list-item.admin.title'|translate }}
+        </a>
+        <a mat-list-item class="sidenav-link" [routerLink]="['/admin/product']">Products</a>
+        <a mat-list-item class="sidenav-link" [routerLink]="['/admin/attribute']">Attributs</a>
+        <a mat-list-item class="sidenav-link" [routerLink]="['/admin/navigation/selection']">Selection</a>
+        <a mat-list-item class="sidenav-link" [routerLink]="['/admin/navigation/category']">Category</a>
+        <a mat-list-item class="sidenav-link" [routerLink]="['/admin/cms']">Cms</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item class="heading" (click)="userService.logout()">
+          {{ 'sidenav.card.list-item.logout.title'|translate }}
+        </a>
+      </mat-nav-list>
     </div>
   </mat-sidenav>
   <app-loader></app-loader>
