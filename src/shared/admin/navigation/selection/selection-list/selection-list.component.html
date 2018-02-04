@@ -10,14 +10,14 @@
         <mat-icon aria-label="Published">done</mat-icon>
         Publier
       </button>
+      <button role="button" aria-label="Publier une selection" mat-raised-button color="warn" (click)="unpublishSelection()" *ngIf="selected && selected?.length > 0">
+        <mat-icon aria-label="Unpublished">power_settings_new</mat-icon>
+        Dépublier
+      </button>
       <button role="button" aria-label="Supprimer une selection" mat-raised-button color="accent" (click)="deleteSelection()" *ngIf="selected && selected?.length > 0">
         <mat-icon aria-label="delete">delete</mat-icon>
         Supprimer
       </button>
-      <a [routerLink]="['/admin/navigation/selection/add']" mat-raised-button color="primary">
-        <mat-icon aria-label="add">add</mat-icon>
-        Ajouter
-      </a>
     </div>
   </div>
   <div class="row">
@@ -33,6 +33,18 @@
       <ng-template #productsCell let-row="row">
         <button (click)="showProducts(row)" color="primary" mat-raised-button>Voir les produits</button>
       </ng-template>
+      <ng-template #publishedCell let-value="value" let-row="row">
+        <span *ngIf="value === true" class="text-success">publié</span>
+        <span *ngIf="value === false" class="text-danger">non publié</span>
+      </ng-template>
+      <ng-template #actionsCell let-row="row">
+        <button mat-icon-button color="warn" type="button" role="button" aria-label="Changer l'etat" (click)="changePublishedStatus(row)">
+          <mat-icon aria-label="changer l'etat">compare_arrows</mat-icon>
+        </button>
+      </ng-template>
     </div>
   </div>
 </div>
+<button color="primary" type="button" aria-label="Ajouter une selection" [routerLink]="['/admin/navigation/selection/add']" mat-mini-fab class="absolute-fab pulse">
+  <mat-icon>add</mat-icon>
+</button>

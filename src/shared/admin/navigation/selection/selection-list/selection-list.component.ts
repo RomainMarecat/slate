@@ -24,6 +24,8 @@ export class SelectionListComponent implements OnInit {
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
   @ViewChild('productsCell') productsCell: TemplateRef < any > ;
+  @ViewChild('publishedCell') publishedCell: TemplateRef < any > ;
+  @ViewChild('actionsCell') actionsCell: TemplateRef < any > ;
 
   /**
    * @param {ElementRef} table
@@ -55,6 +57,27 @@ export class SelectionListComponent implements OnInit {
 
       this.selectionService.updateSelection(selection);
     });
+  }
+
+  unpublishSelection() {
+    this.selected.forEach((selection: Selection) => {
+      if (selection.published === true) {
+        selection.published = false;
+        selection.published_at = null;
+      }
+
+      this.selectionService.updateSelection(selection);
+    });
+  }
+
+  changePublishedStatus(selection: Selection) {
+    selection.published = !selection.published;
+    if (selection.published === false) {
+      selection.published_at = null;
+    } else {
+      selection.published_at = new Date();
+    }
+    this.selectionService.updateSelection(selection);
   }
 
   /**
@@ -147,7 +170,15 @@ export class SelectionListComponent implements OnInit {
     }, {
       prop: 'published',
       name: 'published',
+      cellTemplate: this.publishedCell,
+      width: 50,
       flexGrow: 1
+    }, {
+      prop: 'id',
+      name: 'actions',
+      cellTemplate: this.actionsCell,
+      width: 50,
+      flexGrow: 1,
     }, ];
   }
 
