@@ -35,6 +35,10 @@ $product-accent: mat-palette($mat-red,
 800);
 $product-warn: mat-palette($mat-orange,
 200);
+$white: mat-palette($mat-grey,
+50);
+$black: mat-palette($mat-grey,
+900);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($product-primary,

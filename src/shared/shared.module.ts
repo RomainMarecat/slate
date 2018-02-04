@@ -47,7 +47,7 @@ import { FooterModule } from './footer/footer.module';
 import { SidenavModule } from './sidenav/sidenav.module';
 import { LoaderModule } from './loader/loader.module';
 import { PopupModule } from './popup/popup.module';
-import { ResponsiveModule } from 'ngx-responsive'
+import { ResponsiveModule } from 'ngx-responsive';
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
 
