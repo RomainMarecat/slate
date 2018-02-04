@@ -67,12 +67,6 @@
                   <p>Associated Products <small>({{selectedProducts?.length}})</small></p>
                 </div>
               </div>
-              <div class="col-6">
-                <button role="button" type="button" aria-label="Ajouter les produits selectionnes" mat-raised-button color="primary" (click)="addProducts()" *ngIf="selectedProducts && selectedProducts?.length > 0">
-                  <mat-icon aria-label="Ajouter les produits selectionnes">done</mat-icon>
-                  Ajouter
-                </button>
-              </div>
               <div class="col-12">
                 <ngx-datatable class="material striped scrolling-selections" [columnMode]="'force'" [rows]="associatedProducts" [columns]="columnsProduct" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoadingProducts" [scrollbarV]="true" [selected]="selectedProducts" [selectionType]="'checkbox'" (select)='onSelectProduct($event)'></ngx-datatable>
                 <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">

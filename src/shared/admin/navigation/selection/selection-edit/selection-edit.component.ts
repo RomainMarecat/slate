@@ -285,19 +285,14 @@ export class SelectionEditComponent implements OnInit {
 
   /**
    * On select add new list in selection array
+   * set at published at now et activate published to true
    * @param {any} selected
    */
   onSelectProduct({ selected }) {
+    const productsKey = [];
     this.selectedProducts.splice(0, this.selectedProducts.length);
     this.selectedProducts.push(...selected);
-  }
-
-  /**
-   * set at published at now et activate published to true
-   */
-  addProducts() {
     this.selectedProducts.forEach((product: Product) => {
-      const productsKey = this.form.get('products').value as string[];
       productsKey.push(product.key);
       this.form.patchValue({ products: productsKey });
     });

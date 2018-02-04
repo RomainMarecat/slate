@@ -67,8 +67,8 @@ export class ProductListComponent implements OnInit {
   }
 
   uploadMedia() {
-    this.products.forEach((product: Product, indexProducts: number) => {
-      console.log('product', (indexProducts + 1).toString() + '/' + this.products.length);
+    this.selected.forEach((product: Product, indexProducts: number) => {
+      console.log('product', (indexProducts + 1).toString() + '/' + this.selected.length);
       product.images.forEach((image: string, indexImages: number) => {
         console.log('image', (indexImages + 1).toString() + '/' + product.images.length);
         if (image.indexOf('http') !== -1) {

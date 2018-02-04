@@ -14,7 +14,7 @@
         <mat-icon aria-label="delete">delete</mat-icon>
         Supprimer
       </button>
-      <button role="button" aria-label="Télécharger les images" mat-raised-button color="accent" (click)="uploadMedia()">
+      <button role="button" aria-label="Télécharger les images" mat-raised-button color="accent" (click)="uploadMedia()" *ngIf="selected && selected.length > 0">
         <mat-icon aria-label="image">add_a_photo</mat-icon>
         Télécharger les images
       </button>

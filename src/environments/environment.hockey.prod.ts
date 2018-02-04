@@ -2,6 +2,9 @@ export const environment = {
   production: true,
   site_name: 'hockey.com',
   app_name: 'hockey',
+  cookie: {
+    domain: 'hockey-f2b77.firebaseapp.com'
+  },
   firebase: {
     apiKey: 'AIzaSyBH-ZNbK4pNUuyi_qBb21xe7eQtZhAy0T0',
     authDomain: 'hockey-f2b77.firebaseapp.com',
