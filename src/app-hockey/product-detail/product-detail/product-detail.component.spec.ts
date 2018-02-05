@@ -30,6 +30,8 @@ import { SharedModule } from '../../../shared/shared.module';
 
 import { ProductDetailComponent } from './product-detail.component';
 import { ProductActionComponent } from './../product-action/product-action.component';
+import { ProductAttributeComponent } from './../product-attribute/product-attribute.component';
+import { ProductDescriptionComponent } from './../product-description/product-description.component';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
@@ -54,7 +56,12 @@ describe('ProductDetailComponent', () => {
           }),
           SharedModule
         ],
-        declarations: [ProductDetailComponent, ProductActionComponent],
+        declarations: [
+          ProductDetailComponent,
+          ProductActionComponent,
+          ProductAttributeComponent,
+          ProductDescriptionComponent
+        ],
         providers: [
           { provide: ProductService, useClass: MockProductService },
           { provide: SelectionService, useClass: MockSelectionService },

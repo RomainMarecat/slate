@@ -2,6 +2,8 @@ export interface HockeyProduct {
   name: string;
   score: number;
 
+  brand ?: string;
+
   created_at: Date;
   published_at: Date;
 
@@ -23,5 +25,6 @@ export interface HockeyProduct {
   creator ?: string;
   external_url ?: string;
   category ?: string;
+  attributes ?: Array < any > ;
 
 }

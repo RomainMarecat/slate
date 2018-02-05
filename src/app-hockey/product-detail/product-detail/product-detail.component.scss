@@ -1,15 +1,14 @@
 @import '~@angular/material/theming';
-
 @import '../../../scss/base/hockey/theme.scss';
 
-.mat-card {
-  .mat-card-content {
-    .detail-wrapper:nth-child(2n) {
-      background-color: $color1;
-      color: mat-color($white);
-      .detail-content {
-        flex-direction: row-reverse !important;
-      }
-    }
+.product-layout {
+  background-color: $color2;
+}
+
+.title {
+  .main-title {
+    max-width: 300px;
+    font-weight: bold;
+    font-size: 50px;
   }
 }

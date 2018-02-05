@@ -1,0 +1,20 @@
+@import '~@angular/material/theming';
+@import '../../../scss/base/hockey/theme.scss';
+
+.attribute-main {
+  color: $color1;
+  font-size: 30px;
+  .attribute-content {
+    .mat-chip {
+      font-size: 20px;
+    }
+  }
+}
+
+.detail-wrapper:nth-child(2n+1) {
+  /*   background-color: $color1;
+  color: mat-color($white); */
+  .detail-content {
+    flex-direction: row-reverse !important;
+  }
+}

@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+
+@import '../../../scss/base/hockey/theme.scss';
+
+.detail-description {
+  .content {
+    font-size: 20px;
+    color: $color1;
+  }
+}

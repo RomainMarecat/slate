@@ -7,6 +7,7 @@ export class Product implements ClothingProduct, HockeyProduct {
   alias ?: string;
   keywords ?: string;
 
+  brand ?: string;
   score: number;
 
   created_at: Date;
@@ -37,9 +38,7 @@ export class Product implements ClothingProduct, HockeyProduct {
   delivery_free ?: boolean;
   reseller ?: string;
   category ?: string;
-  attributes ?: {
-
-  };
+  attributes ?: Array < any > ;
 
   constructor() {
     this.score = 0;

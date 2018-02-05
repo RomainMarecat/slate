@@ -11,6 +11,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductActionComponent } from './product-action/product-action.component';
 import { ProductDetailRoutingModule } from './product-detail-routing.module';
+import { ProductAttributeComponent } from './product-attribute/product-attribute.component';
+import { ProductDescriptionComponent } from './product-description/product-description.component';
 
 @NgModule({
   imports: [
@@ -21,7 +23,8 @@ import { ProductDetailRoutingModule } from './product-detail-routing.module';
   declarations: [
     ProductDetailComponent,
     ProductActionComponent,
-
+    ProductAttributeComponent,
+    ProductDescriptionComponent
   ]
 })
 export class ProductDetailModule {}

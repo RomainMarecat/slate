@@ -26,7 +26,8 @@ import {
   MatExpansionModule,
   MatStepperModule,
   MatRadioModule,
-  MatDialogModule
+  MatDialogModule,
+  MatChipsModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { SlackModule } from './slack/slack.module';
@@ -76,6 +77,7 @@ export class ConfigService {
     LoaderModule,
     MatAutocompleteModule,
     MatCardModule,
+    MatChipsModule,
     MatDialogModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -120,6 +122,7 @@ export class ConfigService {
     LoaderModule,
     MatAutocompleteModule,
     MatCardModule,
+    MatChipsModule,
     MatDialogModule,
     MatToolbarModule,
     MatSidenavModule,
