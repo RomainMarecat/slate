@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+@import '../../../scss/base/hockey/theme.scss';
+
+.mat-card {
+  .mat-card-content {
+    .detail-wrapper:nth-child(2n) {
+      background-color: $color1;
+      color: mat-color($white);
+      .detail-content {
+        flex-direction: row-reverse !important;
+      }
+    }
+  }
+}

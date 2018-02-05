@@ -1,5 +1,5 @@
 <div class="wrapper product-layout" fxLayoutGap="10px 10px" fxLayoutAlign="center stretch" fxLayoutAlign.xs="space-around stretch" fxLayout="column" fxLayout.xs="column" fxLayoutWrap>
-  <mat-card *ngIf="product" angulartics2On="click" angularticsAction="hoveredOverProductDetail" [angularticsCategory]="'product.detail'">
+  <mat-card class="mat-card px-0" *ngIf="product" angulartics2On="click" angularticsAction="hoveredOverProductDetail" [angularticsCategory]="'product.detail'">
     <mat-card-header class="mat-card-header d-flex justify-content-center">
       <mat-card-title class="mat-card-title">
         <span *ngIf="product?.creator">{{ product.creator }}</span>
@@ -14,8 +14,18 @@
         <span *ngIf="product.reseller">{{ product.reseller }}</span>
       </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content *ngIf="product.images">
-      <app-image [key]="image" [resize]="resizedImage" *ngFor="let image of product.images"></app-image>
+    <mat-card-content class="mat-card-content" *ngIf="product.images" fxLayout="column">
+      <div class="detail-wrapper py-5" *ngFor="let image of product.images">
+        <div class="detail-content" fxLayout="row" fxLayoutAlign="space-around stretch">
+          <div class="detail-image">
+            <app-image [key]="image" [resize]="resizedImage"></app-image>
+          </div>
+          <div class="detail-description">
+            <p class="p-0" [innerHTML]="product?.description">
+            </p>
+          </div>
+        </div>
+      </div>
     </mat-card-content>
   </mat-card>
   <mat-card>
