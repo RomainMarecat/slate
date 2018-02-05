@@ -3,8 +3,6 @@
   <mat-sidenav #sidenav class="leftSideNav" mode="over" opened="false">
     <div *ngIf="userService.getAuthState() | async; let user; else showLogin">
       <mat-card class="card-sidebar">
-        <!--         <img mat-card-image alt="'sidenav.card.img.alt'|translate" src="/assets/images/sidebar.jpg">
- -->
         <mat-card-header>
           <img mat-card-avatar [src]="user?.photoURL">
           <h2 class="mat-title">{{ user?.displayName }}</h2>

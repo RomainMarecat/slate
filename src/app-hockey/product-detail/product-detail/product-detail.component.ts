@@ -30,7 +30,10 @@ export class ProductDetailComponent implements OnInit {
         if (key) {
           this.productService.getProduct(key)
             .subscribe((product: HockeyProduct) => {
-              console.log(product);
+              product.attributes = product.attributes.map((attribute: any) => {
+                attribute.label = attribute.label.trim().replace(/ /g, '');
+                return attribute;
+              });
               this.product = product;
             });
         }

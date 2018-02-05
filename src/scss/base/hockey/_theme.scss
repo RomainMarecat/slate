@@ -1,19 +1,7 @@
 @import "~@angular/material/prebuilt-themes/purple-green.css";
 @import '~@angular/material/theming';
 @import url('https://fonts.googleapis.com/css?family=Material+Icons|Fugaz+One|Gentium+Book+Basic');
-body {
-  font-family: 'Gentium Book Basic',
-  serif;
 
-  .title {
-    font-family: 'Fugaz One', cursive;
-    text-transform: uppercase;
-  }
-
-  .main-menu {
-    background-color: #131629 !important;
-  }
-}
 
 // Plus imports for other components in your app.
 // Include the common styles for Angular Material. We include this here so that you only
@@ -49,3 +37,18 @@ $product-warn);
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($theme);
+
+body {
+  font-family: 'Gentium Book Basic',
+  serif;
+  background-color: $color2;
+
+  .title {
+    font-family: 'Fugaz One', cursive;
+    text-transform: uppercase;
+  }
+
+  .main-menu {
+    background-color: #131629 !important;
+  }
+}

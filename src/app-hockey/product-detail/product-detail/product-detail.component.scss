@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+@import '../../../scss/base/hockey/theme.scss';
+
+.product-layout {
+  background-color: $color2;
+}
+
+.title {
+  .main-title {
+    max-width: 300px;
+    font-weight: bold;
+    font-size: 50px;
+  }
+}
