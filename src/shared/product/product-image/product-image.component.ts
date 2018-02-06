@@ -176,7 +176,7 @@ export class ProductImageComponent implements OnInit {
     this.cropperSettings.minWidth = 10;
     this.cropperSettings.minHeight = 10;
 
-    if (this.deviceService.isMaterializeSmallAndUp()) {
+    if (this.deviceService.isSmallAndUp()) {
       this.cropperSettings.width = 240;
       this.cropperSettings.height = 240;
 
@@ -190,7 +190,7 @@ export class ProductImageComponent implements OnInit {
       this.cropperSettings.minHeight = 10;
     }
 
-    if (this.deviceService.isMaterializeMediumAndUp()) {
+    if (this.deviceService.isMediumAndUp()) {
       this.cropperSettings.width = 240;
       this.cropperSettings.height = 240;
 

@@ -1,4 +1,5 @@
 @import '~@angular/material/theming';
+@import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
 @import '../../../scss/base/hockey/theme.scss';
 
 .product-layout {
@@ -10,5 +11,21 @@
     max-width: 300px;
     font-weight: bold;
     font-size: 50px;
+
+    @include media-breakpoint-up(xs) {
+      font-size: 20px;
+    }
+    @include media-breakpoint-up(sm) {
+      font-size: 25px;
+    }
+    @include media-breakpoint-up(md) {
+      font-size: 30px;
+    }
+    @include media-breakpoint-up(lg) {
+      font-size: 40px;
+    }
+    @include media-breakpoint-up(xl) {
+      font-size: 50px;
+    }
   }
 }
