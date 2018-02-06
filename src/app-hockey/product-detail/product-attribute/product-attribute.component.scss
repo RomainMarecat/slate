@@ -1,4 +1,5 @@
 @import '~@angular/material/theming';
+@import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
 @import '../../../scss/base/hockey/theme.scss';
 
 .attribute-main {
@@ -16,5 +17,20 @@
   color: mat-color($white); */
   .detail-content {
     flex-direction: row-reverse !important;
+    @include media-breakpoint-up(xs) {
+      flex-direction: column !important;
+    }
+    @include media-breakpoint-up(sm) {
+      flex-direction: column !important;
+    }
+    @include media-breakpoint-up(md) {
+      flex-direction: row-reverse !important;
+    }
+    @include media-breakpoint-up(lg) {
+      flex-direction: row-reverse !important;
+    }
+    @include media-breakpoint-up(xl) {
+      flex-direction: row-reverse !important;
+    }
   }
 }

@@ -1,17 +1,17 @@
 <div class="detail-wrapper" fxLayout="column">
   <mat-divider></mat-divider>
-  <div class="detail-content  py-5" fxLayout="row" fxLayoutAlign="space-around stretch">
+  <div class="detail-content  py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column" fxLayoutAlign.xs="center stretch">
     <div class="detail-image">
       <app-image [key]="product?.images[1]" [resize]="resizedImage" *ngIf="product?.images[1]"></app-image>
     </div>
     <div class="product-attributes-wrapper">
       <div class="attribute-main" fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let attribute of product?.attributes">
-        <div class="attribute-header">
+        <div class="attribute-header" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutAlign.xs="center stretch">
           <div class="attibute-title">
             {{ attribute?.label }}
           </div>
         </div>
-        <div class="attribute-content" fxLayout="row" fxLayoutAlign="start stretch">
+        <div class="attribute-content" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutAlign.xs="center stretch">
           <mat-chip-list>
             <mat-chip class="mat-chip" [selected]="true" *ngFor="let option of attribute?.options; let i = index; " [color]="colors[i]">
               {{ option }}
@@ -24,7 +24,7 @@
 </div>
 <div class="detail-wrapper" fxLayout="column" *ngFor="let image of product?.images; let i = index; ">
   <mat-divider></mat-divider>
-  <div class="detail-content  py-5" fxLayout="row" fxLayoutAlign="space-around stretch">
+  <div class="detail-content  py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutAlign.xs="center stretch">
     <div class="detail-image">
       <app-image [key]="image" [resize]="resizedImage" *ngIf="image"></app-image>
     </div>

@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../../../shared/cloudinary/cloudinary.module';
 import { SharedModule } from '../../../shared/shared.module';
+import { DeviceService } from '../../../shared/device/device.service';
 import { ProductAttributeComponent } from './product-attribute.component';
 import { environment } from './../../../environments/environment.hockey';
 
@@ -37,7 +38,10 @@ describe('ProductAttributeComponent', () => {
           }),
           SharedModule
         ],
-        declarations: [ProductAttributeComponent]
+        declarations: [ProductAttributeComponent],
+        providers: [
+          { provide: DeviceService, useClass: DeviceService },
+        ]
       })
       .compileComponents();
   }));

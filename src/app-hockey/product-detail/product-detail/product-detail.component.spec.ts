@@ -14,6 +14,7 @@ import { ProductService } from './../../../shared/product/product.service';
 import { MockProductService } from './../../../shared/product/mock-product.service';
 import { MockUserService } from '../../../shared/user/mock-user.service';
 import { UserService } from '../../../shared/user/user.service';
+import { DeviceService } from '../../../shared/device/device.service';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { LoaderService } from './../../../shared/loader/loader.service';
@@ -63,6 +64,7 @@ describe('ProductDetailComponent', () => {
           ProductDescriptionComponent
         ],
         providers: [
+          { provide: DeviceService, useClass: DeviceService },
           { provide: ProductService, useClass: MockProductService },
           { provide: SelectionService, useClass: MockSelectionService },
           { provide: UserService, useClass: MockUserService },

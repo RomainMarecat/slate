@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../shared/product/product.service';
+import { DeviceService } from '../../../shared/device/device.service';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
 
 @Component({
@@ -12,15 +13,19 @@ export class ProductDetailComponent implements OnInit {
 
   product: HockeyProduct;
 
-  resizedImage = {
-    height: 300,
+  resizedImage: {
+    height: number,
   };
 
   constructor(private activatedRoute: ActivatedRoute,
-    private productService: ProductService) {}
+    private productService: ProductService,
+    private deviceService: DeviceService) {
+    this.resizedImage = { height: 400 };
+  }
 
   ngOnInit() {
     this.getProduct();
+    this.resizedImage.height = this.deviceService.isSmallAndDown() ? 300 : 400;
   }
 
   getProduct() {

@@ -16,7 +16,7 @@ export class DeviceService {
 
   constructor() {}
 
-  isMaterializeSmallAndUp(): boolean {
+  isSmallAndUp(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth >= this.extraSmallScreenUp) {
         return true;
@@ -26,7 +26,7 @@ export class DeviceService {
     return false;
   }
 
-  isMaterializeMediumAndUp(): boolean {
+  isMediumAndUp(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth >= this.smallScreenUp) {
         return true;
@@ -35,7 +35,7 @@ export class DeviceService {
     return false;
   }
 
-  isMaterializeLargeAndUp(): boolean {
+  isLargeAndUp(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth >= this.mediumScreenUp) {
         return true;
@@ -44,7 +44,7 @@ export class DeviceService {
     return false;
   }
 
-  isMaterializeExtraLargeAndUp(): boolean {
+  isExtraLargeAndUp(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth >= this.largeScreenUp) {
         return true;
@@ -53,7 +53,7 @@ export class DeviceService {
     return false;
   }
 
-  isMaterializeExtraSmallAndDown(): boolean {
+  isExtraSmallAndDown(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth <= this.extraSmallScreen) {
         return true;
@@ -62,7 +62,7 @@ export class DeviceService {
     return false;
   }
 
-  isMaterializeSmallAndDown(): boolean {
+  isSmallAndDown(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth <= this.smallScreen) {
         return true;
@@ -71,7 +71,7 @@ export class DeviceService {
     return false;
   }
 
-  isMaterializeMediumAndDown(): boolean {
+  isMediumAndDown(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth <= this.mediumScreen) {
         return true;
@@ -80,7 +80,7 @@ export class DeviceService {
     return false;
   }
 
-  isMaterializeLargeAndDown(): boolean {
+  isLargeAndDown(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth <= this.largeScreen) {
         return true;
@@ -89,7 +89,7 @@ export class DeviceService {
     return false;
   }
 
-  isMaterializeSmallOnly(): boolean {
+  isSmallOnly(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth >= this.extraSmallScreenUp &&
         window.innerWidth <= this.smallScreen) {
@@ -99,7 +99,7 @@ export class DeviceService {
     return false;
   }
 
-  isMaterializeMediumOnly(): boolean {
+  isMediumOnly(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth >= this.smallScreenUp &&
         window.innerWidth <= this.mediumScreen) {
@@ -109,7 +109,7 @@ export class DeviceService {
     return false;
   }
 
-  isMaterializeLargeOnly(): boolean {
+  isLargeOnly(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth >= this.mediumScreenUp &&
         window.innerWidth <= this.largeScreen) {
@@ -119,7 +119,7 @@ export class DeviceService {
     return false;
   }
 
-  isMaterializeExtraLargeOnly(): boolean {
+  isExtraLargeOnly(): boolean {
     if (window && window.innerWidth) {
       if (window.innerWidth >= this.largeScreenUp &&
         window.innerWidth <= this.extraLargeScreen) {

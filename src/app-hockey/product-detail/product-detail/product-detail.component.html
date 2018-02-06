@@ -1,6 +1,6 @@
 <div class="wrapper product-layout" fxLayoutGap="10px 10px" fxLayoutAlign="center stretch" fxLayoutAlign.xs="space-around stretch" fxLayout="column" fxLayout.xs="column" fxLayoutWrap>
   <div *ngIf="product" angulartics2On="click" angularticsAction="hoveredOverProductDetail" [angularticsCategory]="'product.detail'">
-    <div class="py-5" fxLayout="row" fxLayoutAlign="space-around stretch">
+    <div class="py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column" fxLayoutAlign.xs="center center">
       <div class="title">
         <span *ngIf="product?.creator">{{ product.creator }}</span>
         <h2 class="main-title">
@@ -10,10 +10,10 @@
         <app-product-description [description]="product?.description"></app-product-description>
       </div>
       <div>
-        <div class="score-wrapper px-5" fxLayout="row" fxLayoutAlign="end center">
+        <div class="score-wrapper px-5" fxLayout="row" fxLayoutAlign="end center" fxLayoutAlign.xs="center center">
           <app-product-action class="app-product-action" [product]="product" (updateScore)="updateScoreProduct($event)"></app-product-action>
         </div>
-        <app-image class="app-image" mat-card-image [key]="product.images[0]" [resize]="{height: 400}" *ngIf="product.images[0]"></app-image>
+        <app-image class="app-image" mat-card-image [key]="product.images[0]" [resize]="resizedImage" *ngIf="product.images[0]"></app-image>
       </div>
     </div>
     <div class="content" *ngIf="product.images">
@@ -22,9 +22,11 @@
     <div>
       <div fxLayout="column" class="py-5">
         <span class="mat-card-date">{{ product.created_at | date:'short' }}</span>
-        <div class="reseller" fxLayout="row" fxLayoutAlign="space-around stretch">
+        <div class="reseller" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column" fxLayoutAlign.xs="center center">
           <span *ngIf="product.price">{{ product.price }} €</span>
-          <a href="{{ product.external_url }}" *ngIf="product.external_url" target="_blank">Comparer le produit</a>
+          <a href="{{ product.external_url }}" *ngIf="product.external_url" target="_blank">
+            Comparer le produit
+          </a>
           <span *ngIf="product.reseller">{{ product.reseller }}</span>
         </div>
       </div>
