@@ -21,9 +21,11 @@ export class ProductListComponent implements OnInit {
   readonly rowHeight = 50;
   columns: any;
   products: Product[];
+  cache: Product[];
   isLoading = false;
   selected: Product[];
   expanded: any = {};
+  columnSelected: string;
   @ViewChild('dataTableComponentTable') dataTableComponentTable: any;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
@@ -33,6 +35,8 @@ export class ProductListComponent implements OnInit {
   @ViewChild('desktopCell') desktopCell: TemplateRef < any > ;
   @ViewChild('desktopHeader') desktopHeader: TemplateRef < any > ;
   @ViewChild('translationsFrCell') translationsFrCell: TemplateRef < any > ;
+  @ViewChild('publicationCell') publicationCell: TemplateRef < any > ;
+  publications: Array < object > ;
 
   /**
    *
@@ -49,6 +53,37 @@ export class ProductListComponent implements OnInit {
     private productService: ProductService,
     private cloudinaryUploadService: CloudinaryUploadService) {
     this.selected = [];
+    this.publications = [{
+        name: 'Publié',
+        value: 'published',
+        color: 'primary',
+        selected: false
+      },
+      {
+        name: 'Non publié',
+        value: 'unpublished',
+        color: 'accent',
+        selected: false
+      }
+    ];
+  }
+
+
+  private updatePublication(product: Product) {
+    if (product.published === true) {
+      if (!product.published_at) {
+        product.published_at = new Date();
+      }
+    } else {
+      product.published_at = null;
+    }
+
+    this.productService.updateProduct(product);
+  }
+
+  updateProductPublication(product: Product, event: { source: any, value: boolean }) {
+    product.published = event.value;
+    this.updatePublication(product);
   }
 
   /**
@@ -58,22 +93,25 @@ export class ProductListComponent implements OnInit {
     this.selected.forEach((product: Product) => {
       if (product.published === false) {
         product.published = true;
-        if (!product.published_at) {
-          product.published_at = new Date();
-        }
+        this.updatePublication(product);
       }
-      this.productService.updateProduct(product);
+    });
+  }
+
+  unpublishProduct() {
+    this.selected.forEach((product: Product) => {
+      if (product.published === true) {
+        product.published = false;
+        this.updatePublication(product);
+      }
     });
   }
 
   uploadMedia() {
     this.selected.forEach((product: Product, indexProducts: number) => {
-      console.log('product', (indexProducts + 1).toString() + '/' + this.selected.length);
       product.images.forEach((image: string, indexImages: number) => {
-        console.log('image', (indexImages + 1).toString() + '/' + product.images.length);
         if (image.indexOf('http') !== -1) {
           this.cloudinaryUploadService.uploadImage(product, image);
-          console.log('product name', product.translations.fr, 'added');
         }
       });
     });
@@ -106,7 +144,6 @@ export class ProductListComponent implements OnInit {
       if (result === true) {
         this.deleteProduct(product);
       }
-      console.log('The dialog was closed', result);
     });
   }
 
@@ -152,7 +189,7 @@ export class ProductListComponent implements OnInit {
       name: 'published',
       flexGrow: 1,
       headerTemplate: this.desktopHeader,
-      cellTemplate: this.desktopCell,
+      cellTemplate: this.publicationCell,
     }, {
       prop: 'key',
       name: 'Actions',
@@ -163,8 +200,8 @@ export class ProductListComponent implements OnInit {
     this.isLoading = true;
     this.productService.getProducts()
       .subscribe((products: Product[]) => {
-        console.log('reloaded products');
         this.products = products;
+        this.cache = products;
         this.isLoading = false;
       });
   }
@@ -185,15 +222,41 @@ export class ProductListComponent implements OnInit {
   }
 
   toggleExpandRow(row) {
-    console.log('Toggled Expand Row!', row);
     this.dataTableComponentTable.rowDetail.toggleExpandRow(row);
   }
 
-  onDetailToggle(event) {
-    console.log('Detail Toggled', event);
-  }
+  onDetailToggle(event) {}
 
   onScroll(event: any) {}
 
   onCheckboxChangeFn(event) {}
+
+  /**
+   * Filtre sur les colonnes du produit
+   * @param {string } }} event [description]
+   */
+  updateFilter(value: any) {
+    if (value) {
+      const column = this.columnSelected;
+      let needle = value;
+      if (typeof needle === 'string') {
+        needle = needle.toLowerCase();
+      }
+
+      // filter our data
+      const temp = this.cache.filter((product: Product) => {
+        if (column === 'translations.fr') {
+          return product.translations.fr.toLowerCase().indexOf(needle) !== -1 || !needle;
+        } else if (column === 'price') {
+          return product.price.toString(10).indexOf(needle) !== -1 || !needle;
+        } else if (column === 'published') {
+          return product.published === needle || !needle;
+        }
+        return product[column].toLowerCase().indexOf(needle) !== -1 || !needle;
+      });
+
+      // update the rows
+      this.products = temp;
+    }
+  }
 }
