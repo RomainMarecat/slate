@@ -1,11 +1,6 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-6 col-xs-offset-1 col-xs-10">
-      <div class='selected-column'>
-        <h4>Selections <small>({{selected?.length}})</small></h4>
-      </div>
-    </div>
-    <div class="col-sm-6 col-xs-offset-1 col-xs-10">
+  <div class="row" fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column" fxLayoutAlign.xs="center stretch">
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
       <button role="button" aria-label="Publier le produit" mat-raised-button color="primary" (click)="publishProduct()" *ngIf="selected && selected.length > 0">
         <mat-icon aria-label="Published">done</mat-icon>
         Publier
@@ -18,6 +13,36 @@
         <mat-icon aria-label="image">add_a_photo</mat-icon>
         Télécharger les images
       </button>
+    </div>
+    <div>
+      <mat-card>
+        <mat-card-content>
+          <form>
+            <mat-form-field class="mat-form-field">
+              <mat-select placeholder="Filtrer sur une colonne" [(ngModel)]="columnSelected" name="column">
+                <div *ngFor="let column of columns">
+                  <mat-option [value]="column.prop" *ngIf="column?.prop">
+                    {{ column.name }}
+                  </mat-option>
+                </div>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="mat-form-field" *ngIf="columnSelected !== 'published'">
+              <input matInput type="text" placeholder="Crosse, Bauer, X900, 59.90, ..." (keyup)="updateFilter($event.target.value)">
+            </mat-form-field>
+            <div class="form-radio" *ngIf="columnSelected === 'published'">
+              <mat-radio-group name="published" [selected]="value ? published : unpublished" class="publication-radio-group" [value]="value" (change)="updateFilter($event.value)">
+                <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
+                  <span class="text-success">Publié</span>
+                </mat-radio-button>
+                <mat-radio-button #unpublished class="publication-radio-button" [value]="false" color="accent">
+                  <span class="text-danger">Non publié</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
   <div class="row">
@@ -50,6 +75,7 @@
       </ng-template>
       <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
         <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+        <span>({{selected?.length}})</span>
       </ng-template>
       <!-- Cell Template -->
       <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn" let-row="row" let-expanded="expanded">
@@ -67,6 +93,16 @@
       </ng-template>
       <ng-template #desktopCell let-value="value" ngx-datatable-cell-template>
         <span class="mobile-hidden">{{value}}</span>
+      </ng-template>
+      <ng-template #publicationCell let-value="value" let-row="row" ngx-datatable-cell-template>
+        <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group" [value]="value" (change)="updateProductPublication(row, $event)">
+          <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
+            <span class="text-success">Publié</span>
+          </mat-radio-button>
+          <mat-radio-button #unpublished class="publication-radio-button" [value]="false" color="accent">
+            <span class="text-danger">Non publié</span>
+          </mat-radio-button>
+        </mat-radio-group>
       </ng-template>
       <ng-template #priceCell let-value="value" ngx-datatable-cell-template>
         <span class="mobile-hidden">{{value}} €</span>

@@ -18,12 +18,10 @@ export class MediaViewerComponent implements OnInit {
 
   ngOnInit() {
     if (this.key && this.key.indexOf('http') === -1) {
-      console.log('enterMediaviewer');
       this.mediaService.getMedia(this.key)
         .subscribe((media: Media) => {
-          console.log('then', media);
           this.media = media;
-        }, (err) => console.log(err));
+        }, (err) => console.error(err));
     }
   }
 }
