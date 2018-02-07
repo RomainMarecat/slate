@@ -1,10 +1,32 @@
 // Import theming functions
 @import '~@angular/material/theming';
+@import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
 @import '../../../scss/base/hockey/theme.scss';
+.leftSidenav {
+  width: 250px;
+}
+
+.rightSidenav {
+  margin-top: 60px;
+  width: 100%;
+  @include media-breakpoint-up(xs) {
+    width: 100%;
+  }
+  @include media-breakpoint-up(sm) {
+    width: 300px;
+  }
+  @include media-breakpoint-up(md) {
+    width: 400px;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 500px;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 500px;
+  }
+}
 
 .mat-sidenav {
-  width: 250px;
-
   button {
     display: flex;
     width: 100%;

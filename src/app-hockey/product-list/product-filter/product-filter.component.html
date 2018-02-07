@@ -1,11 +1,11 @@
 <mat-toolbar color="warn" class="d-flex" class="mat-toolbar filter-menu">
   <span class="menu-spacer"></span>
   <span class="filter-wrapper">
-    <button mat-raised-button color="primary" type="button" (click)="toggleSortSidenav($event)">
-      {{ 'sort'|translate }}
+    <button mat-raised-button color="primary" type="button" (click)="toggleSidenavFilter('sort')">
+      {{ 'menu.sort'|translate }}
     </button>
-    <button mat-raised-button color="primary" type="button" (click)="toggleFilterSidenav($event)">
-      {{ 'filter'|translate }}
+    <button mat-raised-button color="primary" type="button" (click)="toggleSidenavFilter('filter')">
+      {{ 'menu.filter'|translate }}
     </button>
   </span>
 </mat-toolbar>

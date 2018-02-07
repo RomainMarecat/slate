@@ -12,11 +12,7 @@ export class ProductFilterComponent implements OnInit {
 
   ngOnInit() {}
 
-  toggleSortSidenav(event: Event) {
-    this.sidenavService.open();
-  }
-
-  toggleFilterSidenav(event: Event) {
-    this.sidenavService.open();
+  toggleSidenavFilter(event: string) {
+    this.sidenavService.open('right', event);
   }
 }

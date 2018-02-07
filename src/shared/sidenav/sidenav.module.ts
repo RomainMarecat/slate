@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FooterModule } from '../footer/footer.module';
 import { RouterModule } from '@angular/router';
 import { LoaderModule } from '../loader/loader.module';
-import { SidenavFilterComponent } from './sidenav-filter/sidenav-filter.component';
 
 @NgModule({
   imports: [
@@ -25,11 +24,9 @@ import { SidenavFilterComponent } from './sidenav-filter/sidenav-filter.componen
   ],
   declarations: [
     SidenavComponent,
-    SidenavFilterComponent
   ],
   exports: [
     SidenavComponent,
-    SidenavFilterComponent
   ]
 })
 export class SidenavModule {}

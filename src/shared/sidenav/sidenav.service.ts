@@ -10,11 +10,11 @@ export class SidenavService {
 
   constructor() {}
 
-  open() {
-    this.toggleSubject.next( < ToggleState > { open: true });
+  open(side ?: string, view ?: string) {
+    this.toggleSubject.next( < ToggleState > { open: true, side: side ? side : 'left', view: view ? view : '' });
   }
 
-  toggle() {
-    this.toggleSubject.next( < ToggleState > { open: true });
+  toggle(side ?: string, view ?: string) {
+    this.toggleSubject.next( < ToggleState > { open: true, side: side ? side : 'left', view: view ? view : '' });
   }
 }

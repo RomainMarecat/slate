@@ -28,22 +28,22 @@ import {
 } from '@angular/material';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavService } from './sidenav.service';
+import { SidenavService } from './../sidenav.service';
 import { SidenavComponent } from './sidenav.component';
-import { FooterComponent } from '../../shared/footer/footer.component';
-import { MenuComponent } from '../../shared/menu/menu.component';
+import { FooterComponent } from '../../../shared/footer/footer.component';
+import { MenuComponent } from '../../../shared/menu/menu.component';
 import { AdsenseModule, AdsenseConfig } from 'ng2-adsense';
-import { LoaderComponent } from '../../shared/loader/loader.component';
-import { UserService } from '../user/user.service';
-import { I18nService } from '../../shared/i18n/i18n.service';
-import { MockUserService } from '../user/mock-user.service';
-import { LoaderService } from '../../shared/loader/loader.service';
-import { MockLoaderService } from '../../shared/loader/mock-loader.service';
-import { environment } from '../../environments/environment.hockey';
+import { LoaderComponent } from '../../../shared/loader/loader.component';
+import { UserService } from '../../user/user.service';
+import { I18nService } from '../../../shared/i18n/i18n.service';
+import { MockUserService } from '../../user/mock-user.service';
+import { LoaderService } from '../../../shared/loader/loader.service';
+import { MockLoaderService } from '../../../shared/loader/mock-loader.service';
+import { environment } from '../../../environments/environment.hockey';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { MenuService } from '../../shared/menu/menu.service';
+import { MenuService } from '../../../shared/menu/menu.service';
 
 describe('SidenavComponent', () => {
   let component: SidenavComponent;

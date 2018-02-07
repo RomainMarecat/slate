@@ -22,10 +22,13 @@ export class SidenavComponent implements OnInit, OnDestroy {
   isAuthorized = false;
   // @todo add button with cms
   cmsDetail: any;
+  viewFilter: boolean;
 
+  @ViewChild('sidenavFilter') sidenavFilter: MatDrawer;
   @ViewChild('sidenav') sidenav: MatDrawer;
 
-  private subscription: Subscription;
+  private subscriptionSidenav: Subscription;
+  private subscriptionSidenavFilter: Subscription;
 
   /**
    *
@@ -44,9 +47,23 @@ export class SidenavComponent implements OnInit, OnDestroy {
    * Subscribe to toggle event from sidenav
    */
   ngOnInit() {
-    this.subscription = this.sidenavService.toggleState
+    this.subscriptionSidenav = this.sidenavService.toggleState
       .subscribe((state: ToggleState) => {
-        this.sidenav.toggle();
+        if (state.side === 'left') {
+          this.sidenav.toggle();
+        }
+      });
+
+    this.subscriptionSidenavFilter = this.sidenavService.toggleState
+      .subscribe((state: ToggleState) => {
+        if (state.side === 'right') {
+          this.viewFilter = false;
+          this.sidenavFilter.toggle();
+          if (state.view === 'filter') {
+            this.viewFilter = true;
+          }
+
+        }
       });
 
     this.getAuthorized();
@@ -60,6 +77,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptionSidenav.unsubscribe();
+    this.subscriptionSidenavFilter.unsubscribe();
   }
 }
