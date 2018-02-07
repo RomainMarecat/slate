@@ -1,15 +1,15 @@
 import { Component, OnInit, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
-import { UserService } from '../user/user.service';
-import { SidenavService } from './sidenav.service';
+import { UserService } from '../../user/user.service';
+import { SidenavService } from './../sidenav.service';
 import { Subscription } from 'rxjs/Subscription';
-import { ToggleState } from './toggle';
+import { ToggleState } from './../toggle';
 import { MatDrawer } from '@angular/material';
-import { LoaderService } from '../../shared/loader/loader.service';
+import { LoaderService } from '../../../shared/loader/loader.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { I18nService } from '../../shared/i18n/i18n.service';
+import { I18nService } from '../../../shared/i18n/i18n.service';
 import { Observable } from 'rxjs/Observable';
 import { reduce, map, debounceTime } from 'rxjs/operators';
-import { User } from '../user/user';
+import { User } from '../../user/user';
 
 @Component({
   selector: 'app-sidenav',

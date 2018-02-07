@@ -1,7 +1,6 @@
 // Import theming functions
 @import '~@angular/material/theming';
-
-@import '../../scss/base/hockey/theme.scss';
+@import '../../../scss/base/hockey/theme.scss';
 
 .mat-sidenav {
   width: 250px;

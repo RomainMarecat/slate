@@ -1,0 +1,17 @@
+<mat-sidenav #sidenavFilter class="rightSideNav" mode="over" opened="false">
+  <div *ngIf="sort; else filter">
+    <mat-list class="pt-0">
+      <mat-list-item>
+        <a class="sidenav-link" mat-raised>item1</a>
+      </mat-list-item>
+    </mat-list>
+    <mat-nav-list class="pt-0">
+      <a mat-list-item class="heading">
+        item2
+      </a>
+    </mat-nav-list>
+  </div>
+</mat-sidenav>
+<ng-template #filter>
+  Filter
+</ng-template>
