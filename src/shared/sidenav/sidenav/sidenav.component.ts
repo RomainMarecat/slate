@@ -1,15 +1,15 @@
 import { Component, OnInit, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
-import { UserService } from '../user/user.service';
-import { SidenavService } from './sidenav.service';
+import { UserService } from '../../user/user.service';
+import { SidenavService } from './../sidenav.service';
 import { Subscription } from 'rxjs/Subscription';
-import { ToggleState } from './toggle';
+import { ToggleState } from './../toggle';
 import { MatDrawer } from '@angular/material';
-import { LoaderService } from '../../shared/loader/loader.service';
+import { LoaderService } from '../../../shared/loader/loader.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { I18nService } from '../../shared/i18n/i18n.service';
+import { I18nService } from '../../../shared/i18n/i18n.service';
 import { Observable } from 'rxjs/Observable';
 import { reduce, map, debounceTime } from 'rxjs/operators';
-import { User } from '../user/user';
+import { User } from '../../user/user';
 
 @Component({
   selector: 'app-sidenav',
@@ -22,10 +22,13 @@ export class SidenavComponent implements OnInit, OnDestroy {
   isAuthorized = false;
   // @todo add button with cms
   cmsDetail: any;
+  viewFilter: boolean;
 
+  @ViewChild('sidenavFilter') sidenavFilter: MatDrawer;
   @ViewChild('sidenav') sidenav: MatDrawer;
 
-  private subscription: Subscription;
+  private subscriptionSidenav: Subscription;
+  private subscriptionSidenavFilter: Subscription;
 
   /**
    *
@@ -44,9 +47,23 @@ export class SidenavComponent implements OnInit, OnDestroy {
    * Subscribe to toggle event from sidenav
    */
   ngOnInit() {
-    this.subscription = this.sidenavService.toggleState
+    this.subscriptionSidenav = this.sidenavService.toggleState
       .subscribe((state: ToggleState) => {
-        this.sidenav.toggle();
+        if (state.side === 'left') {
+          this.sidenav.toggle();
+        }
+      });
+
+    this.subscriptionSidenavFilter = this.sidenavService.toggleState
+      .subscribe((state: ToggleState) => {
+        if (state.side === 'right') {
+          this.viewFilter = false;
+          this.sidenavFilter.toggle();
+          if (state.view === 'filter') {
+            this.viewFilter = true;
+          }
+
+        }
       });
 
     this.getAuthorized();
@@ -60,6 +77,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.subscriptionSidenav.unsubscribe();
+    this.subscriptionSidenavFilter.unsubscribe();
   }
 }

@@ -42,7 +42,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRootComponent } from './root.component';
-import { SidenavComponent } from '../../shared/sidenav/sidenav.component';
+import { SidenavComponent } from '../../shared/sidenav/sidenav/sidenav.component';
 import { MenuService } from '../../shared/menu/menu.service';
 
 describe('ProductComponent', () => {

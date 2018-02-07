@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductActionComponent } from './product-action/product-action.component';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { Angulartics2Module } from 'angulartics2';
@@ -29,7 +30,8 @@ import { ProductListRoutingModule } from './product-list-routing.module';
   declarations: [
     ProductListComponent,
     ProductActionComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    ProductFilterComponent
   ]
 })
 export class ProductListModule {}

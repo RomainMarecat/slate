@@ -20,7 +20,9 @@
       "title": "Se connecter"
     },
     "title1": "",
-    "title2": "Slate Hockey"
+    "title2": "Slate Hockey",
+    "sort": "Trier",
+    "filter": "Filtrer"
   },
   "date": {
     "now": "maintenant",

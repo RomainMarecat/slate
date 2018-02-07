@@ -1,6 +1,6 @@
 <mat-sidenav-container fullscreen class="sidenav-container">
   <app-menu></app-menu>
-  <mat-sidenav #sidenav class="leftSideNav" mode="over" opened="false">
+  <mat-sidenav #sidenav class="leftSidenav mat-sidenav" mode="over" opened="false">
     <div *ngIf="userService.getAuthState() | async; let user; else showLogin">
       <mat-card class="card-sidebar">
         <mat-card-header>
@@ -29,6 +29,22 @@
       </mat-nav-list>
     </div>
   </mat-sidenav>
+  <mat-sidenav #sidenavFilter class="rightSidenav mat-sidenav" mode="over" opened="false" position="end">
+    <div *ngIf="!viewFilter; else filter">
+      <mat-list class="pt-5">
+        <mat-list-item>
+          <a class="sidenav-link" mat-raised>Trier par bientôt disponible...</a>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-sidenav>
+  <ng-template #filter>
+    <mat-list class="pt-5">
+      <mat-list-item>
+        <a class="sidenav-link" mat-raised>Filtrer par bientôt disponible...</a>
+      </mat-list-item>
+    </mat-list>
+  </ng-template>
   <app-loader></app-loader>
   <!-- old div for swipe right functionalty -->
   <!-- <div #root="dir" dir="ltr" class="main-content" (swiperight)="sidenav.toggle()"> -->

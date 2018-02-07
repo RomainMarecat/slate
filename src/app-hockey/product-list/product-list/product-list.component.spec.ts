@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './product-list.component';
 import { ProductItemComponent } from './../product-item/product-item.component';
 import { ProductActionComponent } from './../product-action/product-action.component';
+import { ProductFilterComponent } from './../product-filter/product-filter.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from './../../../shared/cloudinary/cloudinary.module';
 import { ProductService } from './../../../shared/product/product.service';
@@ -39,6 +40,7 @@ import { SelectionService } from '../../../shared/selection/selection.service';
 import { MockSelectionService } from '../../../shared/selection/mock-selection.service';
 import { MenuService } from '../../../shared/menu/menu.service';
 import { SharedModule } from '../../../shared/shared.module';
+import { SidenavService } from '../../../shared/sidenav/sidenav.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -71,7 +73,12 @@ describe('ProductListComponent', () => {
           }),
           SharedModule
         ],
-        declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent],
+        declarations: [
+          ProductListComponent,
+          ProductItemComponent,
+          ProductActionComponent,
+          ProductFilterComponent
+        ],
         providers: [
           { provide: ProductService, useClass: MockProductService },
           { provide: SelectionService, useClass: MockSelectionService },
@@ -80,6 +87,7 @@ describe('ProductListComponent', () => {
           { provide: LoaderService, useClass: MockLoaderService },
           { provide: ScoreService, useClass: MockScoreService },
           { provide: DateService, useClass: DateService },
+          { provide: SidenavService, useClass: SidenavService },
           I18nService,
           MenuService,
         ]

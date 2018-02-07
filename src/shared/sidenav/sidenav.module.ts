@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidenavComponent } from './sidenav.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatSidenavModule } from '@angular/material';
 import { MenuModule } from '../menu/menu.module';
 import { TranslateModule } from '@ngx-translate/core';
@@ -22,7 +22,11 @@ import { LoaderModule } from '../loader/loader.module';
     RouterModule,
     TranslateModule,
   ],
-  declarations: [SidenavComponent],
-  exports: [SidenavComponent]
+  declarations: [
+    SidenavComponent,
+  ],
+  exports: [
+    SidenavComponent,
+  ]
 })
 export class SidenavModule {}
