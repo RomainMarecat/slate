@@ -47,6 +47,7 @@ import { MediaModule } from './media/media.module';
 import { FooterModule } from './footer/footer.module';
 import { SidenavModule } from './sidenav/sidenav.module';
 import { LoaderModule } from './loader/loader.module';
+import { FacetModule } from './facet/facet.module';
 import { PopupModule } from './popup/popup.module';
 import { ResponsiveModule } from 'ngx-responsive';
 
@@ -64,6 +65,7 @@ export class ConfigService {
   imports: [
     AngularFireAuthModule,
     Angulartics2Module,
+    FacetModule,
     FileUploadModule,
     FlexLayoutModule,
     FooterModule,
@@ -112,6 +114,7 @@ export class ConfigService {
     Angulartics2Module,
     CloudinaryModule,
     DragulaModule,
+    FacetModule,
     FileUploadModule,
     FlexLayoutModule,
     FooterModule,

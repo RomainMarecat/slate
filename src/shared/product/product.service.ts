@@ -3,9 +3,10 @@ import { Product } from './product';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot } from '@firebase/firestore-types';
+import { CollectionReference, Query, DocumentSnapshot, OrderByDirection } from '@firebase/firestore-types';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+import { Sort } from './../facet/sort/sort.component';
 
 @Injectable()
 export class ProductService {
@@ -20,7 +21,7 @@ export class ProductService {
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
   startAfter$: BehaviorSubject < string | null > ;
-  orderBy$: BehaviorSubject < string | 'published_at' > ;
+  orderBy$: BehaviorSubject < Sort > ;
   endAt$: BehaviorSubject < string | null > ;
   endBefore$: BehaviorSubject < string | null > ;
   query: CollectionReference | Query;
@@ -71,7 +72,7 @@ export class ProductService {
               this.query = this.query.limit(limit);
             }
             if (orderBy) {
-              this.query = this.query.orderBy(orderBy, 'desc');
+              this.query = this.query.orderBy(orderBy.column, orderBy.direction as OrderByDirection);
             }
             return this.query;
           })
@@ -85,7 +86,6 @@ export class ProductService {
    */
   getProducts(): Observable < Product[] > {
     return this.products$.map((products: DocumentChangeAction[]) => {
-      console.log('products', products);
       return products.map((doc: DocumentChangeAction) => {
         const product = doc.payload.doc.data() as Product;
         product.key = doc.payload.doc.id;

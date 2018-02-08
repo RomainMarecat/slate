@@ -36,8 +36,10 @@ export class SidenavComponent implements OnInit, OnDestroy {
    * @param {SidenavService} sidenavService
    */
   constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
-    public userService: UserService, private loaderService: LoaderService,
-    private i18nService: I18nService, private sidenavService: SidenavService) {
+    public userService: UserService,
+    private loaderService: LoaderService,
+    private i18nService: I18nService,
+    private sidenavService: SidenavService) {
     this.authorized = [];
     this.authorized.push('6glT4N2SUMW2HWibhefumuRiVIh2');
     this.authorized.push('oIAtyPwagRfIKxSwX6O3ncGocyD3');

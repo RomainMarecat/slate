@@ -7,7 +7,6 @@ import { ImageCropperModule } from 'ng2-img-cropper';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../cloudinary.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { CloudinaryConfig } from '../cloudinary-config';
 import { ImageComponent } from './image.component';
 import { MediaService } from '../../media/media.service';
 import { MockMediaService } from '../../media/mock-media.service';

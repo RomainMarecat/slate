@@ -34,7 +34,6 @@ import { ProductActionComponent } from './product-action/product-action.componen
 import { ImageComponent } from '../../shared/cloudinary/image/image.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from '../../shared/cloudinary/cloudinary-config';
 import { DateService } from '../../shared/util/date.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { environment } from './../../environments/environment.monpullmoche';

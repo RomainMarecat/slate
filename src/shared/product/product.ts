@@ -29,6 +29,7 @@ export class Product implements ClothingProduct, HockeyProduct {
   image1: string;
   image2 ?: string;
   image3 ?: string;
+  promo ?: number;
   price: number;
   old_price ?: number;
   quantity ?: number;

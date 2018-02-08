@@ -1,0 +1,24 @@
+// Import theming functions
+@import '~@angular/material/theming';
+@import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import '../../../scss/base/hockey/theme.scss';
+.sidenav-link {
+  text-decoration: none;
+  color: mat-color($black);
+
+  &:hover,
+   :active,
+   :focus {
+    color: mat-color($black);
+    text-decoration: none;
+  }
+}
+
+.heading {
+  background-color: mat-color($product-primary) !important;
+  color: mat-color($white) !important;
+}
+
+.button-close-wrapper {
+  width: 40px;
+}

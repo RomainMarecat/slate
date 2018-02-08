@@ -44,6 +44,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppRootComponent } from './root.component';
 import { SidenavComponent } from '../../shared/sidenav/sidenav/sidenav.component';
 import { MenuService } from '../../shared/menu/menu.service';
+import { ProductService } from '../../shared/product/product.service';
+import { MockProductService } from '../../shared/product/mock-product.service';
+import { SharedModule } from './../../shared/shared.module';
 
 describe('ProductComponent', () => {
   let component: AppRootComponent;
@@ -64,6 +67,12 @@ describe('ProductComponent', () => {
             adClient: environment.clientAdSense,
             adSlot: environment.slotAdSense
           }),
+          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+            developerMode: true,
+            pageTracking: {
+              clearIds: true,
+            },
+          }),
           MatCardModule,
           MatToolbarModule,
           MatSidenavModule,
@@ -81,26 +90,18 @@ describe('ProductComponent', () => {
           MatMenuModule,
           MatCommonModule,
           MatTooltipModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
+          }),
+          SharedModule
         ],
         declarations: [
           AppRootComponent,
-          SidenavComponent,
-          MenuComponent,
-          FooterComponent,
-          LoaderComponent,
         ],
         providers: [
           { provide: UserService, useClass: MockUserService },
           { provide: LoaderService, useClass: MockLoaderService },
+          { provide: ProductService, useClass: MockProductService },
           I18nService,
           MenuService,
           SidenavService,

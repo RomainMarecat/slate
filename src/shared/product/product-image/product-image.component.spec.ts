@@ -20,7 +20,6 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../cloudinary/cloudinary.module';
-import { CloudinaryConfig } from '../../cloudinary/cloudinary-config';
 import { ObjectService } from './../../util/object.service';
 import { MockMediaService } from '../../media/mock-media.service';
 import { MediaService } from '../../media/media.service';

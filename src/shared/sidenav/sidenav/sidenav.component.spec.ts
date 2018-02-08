@@ -44,6 +44,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MenuService } from '../../../shared/menu/menu.service';
+import { ProductService } from '../../../shared/product/product.service';
+import { MockProductService } from '../../../shared/product/mock-product.service';
+import { FacetModule } from './../../facet/facet.module';
+import { FilterModule } from './../../facet/filter/filter.module';
+import { SortModule } from './../../facet/sort/sort.module';
 
 describe('SidenavComponent', () => {
   let component: SidenavComponent;
@@ -67,6 +72,7 @@ describe('SidenavComponent', () => {
           AngularFirestoreModule,
           AngularFireAuthModule,
           AdsenseModule.forRoot(options),
+          FilterModule,
           MatCardModule,
           MatToolbarModule,
           MatSidenavModule,
@@ -92,12 +98,14 @@ describe('SidenavComponent', () => {
           }),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
+          }),
+          SortModule
         ],
         declarations: [SidenavComponent, LoaderComponent, FooterComponent, MenuComponent],
         providers: [
           { provide: UserService, useClass: MockUserService },
           { provide: LoaderService, useClass: MockLoaderService },
+          { provide: ProductService, useClass: MockProductService },
           I18nService,
           MenuService,
           SidenavService,
