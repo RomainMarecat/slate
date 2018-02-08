@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FooterModule } from '../footer/footer.module';
 import { RouterModule } from '@angular/router';
 import { LoaderModule } from '../loader/loader.module';
+import { FacetModule } from '../facet/facet.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { LoaderModule } from '../loader/loader.module';
     MenuModule,
     RouterModule,
     TranslateModule,
+    FacetModule,
   ],
   declarations: [
     SidenavComponent,

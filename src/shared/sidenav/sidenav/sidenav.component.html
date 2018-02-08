@@ -29,21 +29,11 @@
       </mat-nav-list>
     </div>
   </mat-sidenav>
-  <mat-sidenav #sidenavFilter class="rightSidenav mat-sidenav" mode="over" opened="false" position="end">
-    <div *ngIf="!viewFilter; else filter">
-      <mat-list class="pt-5">
-        <mat-list-item>
-          <a class="sidenav-link" mat-raised>Trier par bientôt disponible...</a>
-        </mat-list-item>
-      </mat-list>
-    </div>
+  <mat-sidenav #sidenavFilter class="rightSidenav mat-sidenav" mode="over" opened="true" position="end">
+    <app-facet-sort *ngIf="!viewFilter; else filter"></app-facet-sort>
   </mat-sidenav>
   <ng-template #filter>
-    <mat-list class="pt-5">
-      <mat-list-item>
-        <a class="sidenav-link" mat-raised>Filtrer par bientôt disponible...</a>
-      </mat-list-item>
-    </mat-list>
+    <app-facet-filter></app-facet-filter>
   </ng-template>
   <app-loader></app-loader>
   <!-- old div for swipe right functionalty -->
