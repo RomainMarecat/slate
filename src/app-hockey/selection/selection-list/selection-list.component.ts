@@ -49,7 +49,6 @@ export class SelectionListComponent implements OnInit {
    * Init all selections
    */
   ngOnInit() {
-    console.log('selection init');
     this.menuService.nextTitle('');
     this.loaderService.show();
     this.loadSelections();

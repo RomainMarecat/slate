@@ -46,6 +46,8 @@ import { SidenavComponent } from '../../shared/sidenav/sidenav/sidenav.component
 import { AppRootComponent } from './root.component';
 import { SharedModule } from '../../shared/shared.module';
 import { MenuService } from '../../shared/menu/menu.service';
+import { ProductService } from '../../shared/product/product.service';
+import { MockProductService } from '../../shared/product/mock-product.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -131,6 +133,7 @@ describe('AppRootComponent', () => {
           { provide: LoaderService, useClass: MockLoaderService },
           { provide: NgcCookieConsentService, useClass: NgcCookieConsentService },
           { provide: WindowService, useClass: WindowService },
+          { provide: ProductService, useClass: MockProductService },
           I18nService,
           MenuService,
           SidenavService,

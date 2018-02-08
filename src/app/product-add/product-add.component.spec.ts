@@ -34,7 +34,6 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from '../../shared/cloudinary/cloudinary-config';
 import { MockProductService } from '../../shared/product/mock-product.service';
 import { ProductService } from '../../shared/product/product.service';
 import { ProductPreviewComponent } from './product-preview/product-preview.component';

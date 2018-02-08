@@ -16,6 +16,7 @@ export interface HockeyProduct {
   thumbnail: string;
   images ?: string[];
   image1: string;
+  promo ?: number;
   price: number;
   published: boolean;
   delivery_fee ?: number;

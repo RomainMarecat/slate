@@ -33,7 +33,6 @@ import { ProductItemComponent } from './../product-item/product-item.component';
 import { ProductActionComponent } from './../product-item/product-action/product-action.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from '../../shared/cloudinary/cloudinary-config';
 import { ProductService } from '../../shared/product/product.service';
 import { MockProductService } from '../../shared/product/mock-product.service';
 import { MockUserService } from '../../shared/user/mock-user.service';
