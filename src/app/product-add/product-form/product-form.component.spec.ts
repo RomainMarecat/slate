@@ -22,7 +22,6 @@ import {
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../../shared/cloudinary/cloudinary.module';
-import { CloudinaryConfig } from '../../../shared/cloudinary/cloudinary-config';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
