@@ -14,9 +14,9 @@
   <a mat-list-item class="sidenav-link heading text-center" fxLayout="row" fxLayoutAlign="center stretch" (click)="close()">
     <span>Trier</span>
   </a>
-  <a mat-list-item class="sidenav-link" (click)="onSort(facet.column, facet.direction, i)" *ngFor="let facet of facets; let i = index; ">
+  <a mat-list-item class="sidenav-link" (click)="onSort(facet.column, facet.direction, i)" *ngFor="let facet of facets; let i = index; " fxLayout="row" fxLayoutAlign="space-between stretch">
     <span>{{ facet.name }}</span>
-    <span *ngIf="facet.selected" class="facet-check">
+    <span *ngIf="facet.selected" class="facet-check" fxLayout="row" fxLayoutAlign="center stretch">
       <mat-icon>check</mat-icon>
     </span>
   </a>
