@@ -6,6 +6,13 @@ export class Sort {
   direction: string;
 }
 
+export class SortFacet {
+  column: string;
+  direction: string;
+  name: string;
+  selected: boolean;
+}
+
 @Component({
   selector: 'app-facet-sort',
   templateUrl: './sort.component.html',
@@ -15,19 +22,59 @@ export class SortComponent implements OnInit {
 
   @Output('closeSidenav') closeSidenav: EventEmitter < boolean > = new EventEmitter < boolean > ();
   @Output('sorted') sorted: EventEmitter < Sort > = new EventEmitter < Sort > ();
+  facets: SortFacet[];
 
   constructor(private productService: ProductService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.facets = [{
+      name: 'Pertinence',
+      column: 'revelance',
+      direction: 'asc',
+      selected: true
+    }, {
+      name: 'Prix : les moins chers',
+      column: 'price',
+      direction: 'asc',
+      selected: false
+    }, {
+      name: 'Prix : les plus chers',
+      column: 'price',
+      direction: 'desc',
+      selected: false
+    }, {
+      name: 'Prix : En promotion',
+      column: 'promo',
+      direction: 'asc',
+      selected: false
+    }, {
+      name: 'Les Nouveaux produits',
+      column: 'published_at',
+      direction: 'desc',
+      selected: false
+    }, {
+      name: 'Les produits les plus proches',
+      column: 'country',
+      direction: 'asc',
+      selected: false
+    }];
+  }
 
   close() {
     this.closeSidenav.emit(true);
   }
 
-  onSort(column: string, direction: string) {
+  onSort(column: string, direction: string, index: number) {
     const sort = { column: column, direction: direction } as Sort;
     this.sorted.emit(sort);
+    this.facets = this.facets.map((facet, i) => {
+      facet.selected = false;
+      if (index === i) {
+        facet.selected = true;
+      }
+      return facet;
+    });
+    this.productService.publishedFilter$.next(null);
     this.productService.orderBy$.next(sort);
   }
-
 }
