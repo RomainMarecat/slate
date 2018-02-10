@@ -64,8 +64,7 @@ export class SortComponent implements OnInit {
     this.closeSidenav.emit(true);
   }
 
-  onSort(column: string, direction: string, index: number) {
-    const sort = { column: column, direction: direction } as Sort;
+  onSort(sort: Sort, index: number) {
     this.sorted.emit(sort);
     this.facets = this.facets.map((facet, i) => {
       facet.selected = false;

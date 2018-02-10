@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
+import { MatListModule, MatButtonModule, MatIconModule, MatExpansionModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { SortModule } from './../sort/sort.module';
 import { FilterComponent } from './filter.component';
 import { CategoryComponent } from './category/category.component';
 import { AttributeComponent } from './attribute/attribute.component';
@@ -9,12 +13,17 @@ import { CountryComponent } from './country/country.component';
 import { LocationComponent } from './location/location.component';
 import { ProductDescriptionComponent } from './product-description/product-description.component';
 import { ProductBestSellerComponent } from './product-best-seller/product-best-seller.component';
-import { MatListModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatListModule
+    MatListModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatListModule,
+    SortModule,
   ],
   declarations: [
     FilterComponent,

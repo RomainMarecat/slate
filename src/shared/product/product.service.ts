@@ -7,6 +7,7 @@ import { CollectionReference, Query, DocumentSnapshot, OrderByDirection } from '
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 import { Sort } from './../facet/sort/sort.component';
+import { Filter } from './../facet/filter/filter.component';
 
 @Injectable()
 export class ProductService {
@@ -17,6 +18,7 @@ export class ProductService {
   nameFilter$: BehaviorSubject < string | null > ;
   keyFilter$: BehaviorSubject < string | null > ;
   colorFilter$: BehaviorSubject < string | null > ;
+  filter$: BehaviorSubject < Filter | null > ;
   userFilter$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
@@ -38,6 +40,7 @@ export class ProductService {
     this.nameFilter$ = new BehaviorSubject(null);
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
+    this.filter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.orderBy$ = new BehaviorSubject(null);
     this.productCollectionRef = this.afs.collection('product');
@@ -46,10 +49,11 @@ export class ProductService {
         this.nameFilter$,
         this.colorFilter$,
         this.userFilter$,
+        this.filter$,
         this.limit$,
         this.orderBy$
       )
-      .switchMap(([published, name, color, user, limit, orderBy]) => {
+      .switchMap(([published, name, color, user, filter, limit, orderBy]) => {
         return this.afs.collection('product', ref => {
             this.query = ref;
 
@@ -67,6 +71,9 @@ export class ProductService {
             }
             if (user) {
               this.query = this.query.where('user', '==', user);
+            }
+            if (filter) {
+              this.query = this.query.where(filter.column, filter.operator, filter.value);
             }
             if (limit) {
               this.query = this.query.limit(limit);

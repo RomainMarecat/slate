@@ -14,13 +14,13 @@
   <a mat-list-item class="sidenav-link heading text-center" fxLayout="row" fxLayoutAlign="center stretch" (click)="close()">
     <span>Trier</span>
   </a>
-  <a mat-list-item class="sidenav-link" (click)="onSort(facet.column, facet.direction, i)" *ngFor="let facet of facets; let i = index; " fxLayout="row" fxLayoutAlign="space-between stretch">
+  <a mat-list-item class="sidenav-link" (click)="onSort(facet, i)" *ngFor="let facet of facets; let i = index; " fxLayout="row" fxLayoutAlign="space-between stretch">
     <span>{{ facet.name }}</span>
     <span *ngIf="facet.selected" class="facet-check" fxLayout="row" fxLayoutAlign="center stretch">
       <mat-icon>check</mat-icon>
     </span>
   </a>
-  <a class="sidenav-link p-4 mt-4" fxLayout="row" fxLayoutAlign="end stretch" (click)="close()">
+  <a mat-list-item class="sidenav-link mt-4 text-center" fxLayout="row" fxLayoutAlign="center stretch" (click)="close()">
     <button class="button-validate" mat-raised-button color="primary" type="button" fxLayout="row" fxLayoutAlign="center stretch">
       Valider
     </button>

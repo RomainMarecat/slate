@@ -5,7 +5,6 @@
 .sidenav-link {
   text-decoration: none;
   color: mat-color($black);
-
   &:hover,
    :active,
    :focus {
@@ -24,7 +23,8 @@
 }
 
 .button-validate {
-  width: 50%;
+  width: 200px;
+  font-size: 16px;
 }
 
 .facet-check {
