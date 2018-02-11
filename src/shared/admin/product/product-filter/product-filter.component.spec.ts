@@ -25,7 +25,6 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { ProductListComponent } from './product-list.component';
 import { ProductService } from './../../shared/product/product.service';
 import { MockProductService } from './../../shared/product/mock-product.service';
 import { SharedModule } from '../../../shared.module';
@@ -38,11 +37,13 @@ import { MockCloudinaryUploadService } from './../../../cloudinary/mock-cloudina
 import { Cloudinary } from './../../../cloudinary/cloudinary.service';
 import { MockCloudinaryService } from './../../../cloudinary/mock-cloudinary.service';
 import { environment } from '../../../../environments/environment.hockey';
-import { ProductFilterComponent } from './../product-filter/product-filter.component';
 
-describe('ProductListComponent', () => {
-  let component: ProductListComponent;
-  let fixture: ComponentFixture < ProductListComponent > ;
+import { ProductFilterComponent } from './product-filter.component';
+
+describe('ProductFilterComponent', () => {
+  let component: ProductFilterComponent;
+  let fixture: ComponentFixture < ProductFilterComponent > ;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [
@@ -55,19 +56,13 @@ describe('ProductListComponent', () => {
           CloudinaryModule.forRoot({ Cloudinary: MockCloudinaryService }, environment.cloudinary),
           SharedModule,
         ],
-        declarations: [ProductListComponent, ProductFilterComponent],
-        providers: [
-          MenuService,
-          { provide: ProductService, useClass: MockProductService },
-          { provide: MediaService, useClass: MockMediaService },
-          { provide: CloudinaryUploadService, useClass: MockCloudinaryUploadService },
-        ]
+        declarations: [ProductFilterComponent]
       })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductListComponent);
+    fixture = TestBed.createComponent(ProductFilterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

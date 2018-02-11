@@ -18,6 +18,7 @@ import { map, switchMap, combineLatest, retry, timeout, debounceTime, distinctUn
 import { AttributeService } from '../../../attribute/attribute.service';
 import { Attribute } from '../../../attribute/attribute';
 import { startWith } from 'rxjs/operators/startWith';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-product-add',
@@ -51,7 +52,8 @@ export class ProductAddComponent implements OnInit {
     private productService: ProductService,
     private alertService: AlertService,
     private categoryService: CategoryService,
-    private attributeService: AttributeService) {
+    private attributeService: AttributeService,
+    private dragulaService: DragulaService) {
     this.medias = [];
     this._descriptionModel = '';
   }
@@ -63,6 +65,7 @@ export class ProductAddComponent implements OnInit {
     this.createEditorConfig();
     this.getCategories();
     this.getAttributes();
+    this.subscribeDragAndDrop();
   }
 
   createForm() {
@@ -199,6 +202,7 @@ export class ProductAddComponent implements OnInit {
     this.attributeService.getAttributes()
       .subscribe((attributes: Attribute[]) => {
         this._attributesModel = attributes;
+        console.log(this._attributesModel);
       });
   }
 
@@ -224,6 +228,47 @@ export class ProductAddComponent implements OnInit {
       this.alertService.toast('categorie selectionnée');
     });
   }
+
+  subscribeDragAndDrop() {
+    this.dragulaService.drag.subscribe((value) => {
+      console.log(`drag: ${value[0]}`);
+      this.onDrag(value.slice(1));
+    });
+    this.dragulaService.drop.subscribe((value) => {
+      console.log(`drop: ${value[0]}`);
+      this.onDrop(value.slice(1));
+    });
+    this.dragulaService.over.subscribe((value) => {
+      console.log(`over: ${value[0]}`);
+      this.onOver(value.slice(1));
+    });
+    this.dragulaService.out.subscribe((value) => {
+      console.log(`out: ${value[0]}`);
+      this.onOut(value.slice(1));
+    });
+  }
+
+  private onDrag(args) {
+    const [e, el] = args;
+    // do something
+  }
+
+  private onDrop(args) {
+    const [e, el] = args;
+    // do something
+  }
+
+  private onOver(args) {
+    const [e, el, container] = args;
+    // do something
+  }
+
+  private onOut(args) {
+    const [e, el, container] = args;
+    // do something
+  }
+
+
 
   get name() {
     return this.form.get('name');

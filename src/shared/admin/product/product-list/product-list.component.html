@@ -1,125 +1,104 @@
-<div class="container-fluid">
-  <div class="row" fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column" fxLayoutAlign.xs="center stretch">
-    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
-      <button role="button" aria-label="Publier le produit" mat-raised-button color="primary" (click)="publishProduct()" *ngIf="selected && selected.length > 0">
-        <mat-icon aria-label="Published">done</mat-icon>
-        Publier
-      </button>
-      <button role="button" aria-label="Supprimer le produit" mat-raised-button color="accent" (click)="deleteProducts()" *ngIf="selected && selected.length > 0">
-        <mat-icon aria-label="delete">delete</mat-icon>
-        Supprimer
-      </button>
-      <button role="button" aria-label="Télécharger les images" mat-raised-button color="accent" (click)="uploadMedia()" *ngIf="selected && selected.length > 0">
-        <mat-icon aria-label="image">add_a_photo</mat-icon>
-        Télécharger les images
-      </button>
-    </div>
-    <div>
-      <mat-card>
-        <mat-card-content>
-          <form>
-            <mat-form-field class="mat-form-field">
-              <mat-select placeholder="Filtrer sur une colonne" [(ngModel)]="columnSelected" name="column">
-                <div *ngFor="let column of columns">
-                  <mat-option [value]="column.prop" *ngIf="column?.prop">
-                    {{ column.name }}
-                  </mat-option>
-                </div>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="mat-form-field" *ngIf="columnSelected !== 'published'">
-              <input matInput type="text" placeholder="Crosse, Bauer, X900, 59.90, ..." (keyup)="updateFilter($event.target.value)">
-            </mat-form-field>
-            <div class="form-radio" *ngIf="columnSelected === 'published'">
-              <mat-radio-group name="published" [selected]="value ? published : unpublished" class="publication-radio-group" [value]="value" (change)="updateFilter($event.value)">
-                <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
-                  <span class="text-success">Publié</span>
-                </mat-radio-button>
-                <mat-radio-button #unpublished class="publication-radio-button" [value]="false" color="accent">
-                  <span class="text-danger">Non publié</span>
-                </mat-radio-button>
-              </mat-radio-group>
-            </div>
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
+<div class="row" fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column" fxLayoutAlign.xs="center stretch">
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" *ngIf="selected && selected.length > 0">
+    <button role="button" aria-label="Publier le produit" mat-raised-button color="primary" (click)="publishProduct()" *ngIf="selected && selected.length > 0">
+      <mat-icon aria-label="Published">done</mat-icon>
+      Publier
+    </button>
+    <button role="button" aria-label="Supprimer le produit" mat-raised-button color="accent" (click)="deleteProducts()" *ngIf="selected && selected.length > 0">
+      <mat-icon aria-label="delete">delete</mat-icon>
+      Supprimer
+    </button>
+    <button role="button" aria-label="Télécharger les images" mat-raised-button color="accent" (click)="uploadMedia()" *ngIf="selected && selected.length > 0">
+      <mat-icon aria-label="image">add_a_photo</mat-icon>
+      Télécharger les images
+    </button>
   </div>
-  <div class="row">
-    <div class="col-12">
-      <div class="px-2 my-2">
-        <ngx-datatable #dataTableComponentTable class="material striped scrolling-products expandable" [columnMode]="'force'" [rows]="products" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
-          <ngx-datatable-row-detail [rowHeight]="100" #detailRow (toggle)="onDetailToggle($event)">
-            <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
-              <table class="mat-table">
-                <tr>
-                  <th *ngIf="row?.category">category</th>
-                  <th *ngFor="let attribute of row?.attributes">{{ attribute.label }}</th>
-                </tr>
-                <tr *ngIf="row?.category">
-                  <td>{{row?.category}}</td>
-                </tr>
-                <tr>
-                  <td *ngFor="let attribute of row?.attributes">
-                    <span *ngFor="let option of attribute?.options">{{ option }}</span>
-                  </td>
-                </tr>
-              </table>
-            </ng-template>
-          </ngx-datatable-row-detail>
-        </ngx-datatable>
-      </div>
-      <!-- Header Template -->
-      <ng-template #desktopHeader let-column="column" let-sort="sortFn" ngx-datatable-header-template>
-        <span class="mobile-hidden">{{column.name}}</span>
-      </ng-template>
-      <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
-        <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
-        <span>({{selected?.length}})</span>
-      </ng-template>
-      <!-- Cell Template -->
-      <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn" let-row="row" let-expanded="expanded">
-        <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
-        <button mat-icon-button role="button" type="button" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded" title="Expand/Collapse Row" (click)="toggleExpandRow(row)" class="desktop-hidden">
-        </button>
-      </ng-template>
-      <ng-template #imageCell ngx-datatable-cell-template let-value="value">
-        <app-media-viewer class="py-0" [key]="item" [resize]="{height: headerHeight}" *ngFor="let item of value"></app-media-viewer>
-      </ng-template>
-      <ng-template #actionsCell let-row="row" ngx-datatable-cell-template>
+  <div>
+    <app-admin-product-filter (filtered)="updateFilter($event)"></app-admin-product-filter>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="px-2 my-2">
+      <ngx-datatable #dataTableComponentTable class="material striped scrolling-products expandable" [columnMode]="'force'" [rows]="products" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
+        <ngx-datatable-row-detail [rowHeight]="100" #detailRow (toggle)="onDetailToggle($event)">
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+            <table class="mat-table">
+              <tr>
+                <th *ngIf="row?.category">category</th>
+                <th *ngFor="let attribute of row?.attributes">{{ attribute.label }}</th>
+              </tr>
+              <tr *ngIf="row?.category">
+                <td>{{row?.category}}</td>
+              </tr>
+              <tr>
+                <td *ngFor="let attribute of row?.attributes">
+                  <span *ngFor="let option of attribute?.options">{{ option }}</span>
+                </td>
+              </tr>
+            </table>
+          </ng-template>
+        </ngx-datatable-row-detail>
+      </ngx-datatable>
+    </div>
+    <!-- Header Template -->
+    <ng-template #desktopHeader let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+      <span class="mobile-hidden">{{column.name}}</span>
+    </ng-template>
+    <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+      <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+      <span>({{selected?.length}})</span>
+    </ng-template>
+    <!-- Cell Template -->
+    <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn" let-row="row" let-expanded="expanded">
+      <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+      <button mat-icon-button role="button" type="button" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded" title="Expand/Collapse Row" (click)="toggleExpandRow(row)" class="desktop-hidden">
+      </button>
+    </ng-template>
+    <ng-template #imageCell ngx-datatable-cell-template let-value="value">
+      <app-media-viewer class="py-0" [key]="item" [resize]="{height: headerHeight}" *ngFor="let item of value"></app-media-viewer>
+    </ng-template>
+    <ng-template #actionsCell let-row="row" ngx-datatable-cell-template>
+      <div class="product-actions" fxLayout="row" fxLayoutAlign="space-around stretch">
+        <a class="mobile-hidden" [routerLink]="showProduct(row)">
+          <mat-icon>remove_red_eye</mat-icon>
+        </a>
+        <a class="mobile-hidden" (click)="editProduct(row)">
+          <mat-icon>mode_edit</mat-icon>
+        </a>
         <a class="mobile-hidden" (click)="confirmDelete(row)">
           <mat-icon>delete</mat-icon>
         </a>
-      </ng-template>
-      <ng-template #desktopCell let-value="value" ngx-datatable-cell-template>
-        <span class="mobile-hidden">{{value}}</span>
-      </ng-template>
-      <ng-template #publicationCell let-value="value" let-row="row" ngx-datatable-cell-template>
-        <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group" [value]="value" (change)="updateProductPublication(row, $event)">
-          <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
-            <span class="text-success">Publié</span>
-          </mat-radio-button>
-          <mat-radio-button #unpublished class="publication-radio-button" [value]="false" color="accent">
-            <span class="text-danger">Non publié</span>
-          </mat-radio-button>
-        </mat-radio-group>
-      </ng-template>
-      <ng-template #priceCell let-value="value" ngx-datatable-cell-template>
-        <span class="mobile-hidden">{{value}} €</span>
-      </ng-template>
-      <ng-template #translationsFrCell let-value="value" let-row="row" ngx-datatable-cell-template>
-        <span class="mobile-hidden">{{value}}</span>
-        <p class="desktop-hidden">{{value}}</p>
-        <div class="desktop-hidden d-block">
-          <span *ngIf="row.published" class="text-success">publié</span>
-          <span *ngIf="!row.published" class="text-danger">non publié</span>
-          <span>|</span>
-          <span *ngIf="row.price">{{ row.price }} €</span>
-        </div>
-      </ng-template>
-    </div>
+      </div>
+    </ng-template>
+    <ng-template #desktopCell let-value="value" ngx-datatable-cell-template>
+      <span class="mobile-hidden">{{value}}</span>
+    </ng-template>
+    <ng-template #publicationCell let-value="value" let-row="row" ngx-datatable-cell-template>
+      <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group" [value]="value" (change)="updateProductPublication(row, $event)">
+        <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
+          <span class="text-success">Publié</span>
+        </mat-radio-button>
+        <mat-radio-button #unpublished class="publication-radio-button" [value]="false" color="accent">
+          <span class="text-danger">Non publié</span>
+        </mat-radio-button>
+      </mat-radio-group>
+    </ng-template>
+    <ng-template #priceCell let-value="value" ngx-datatable-cell-template>
+      <span class="mobile-hidden">{{value}} €</span>
+    </ng-template>
+    <ng-template #translationsFrCell let-value="value" let-row="row" ngx-datatable-cell-template>
+      <span class="mobile-hidden">{{value}}</span>
+      <p class="desktop-hidden">{{value}}</p>
+      <div class="desktop-hidden d-block">
+        <span *ngIf="row.published" class="text-success">publié</span>
+        <span *ngIf="!row.published" class="text-danger">non publié</span>
+        <span>|</span>
+        <span *ngIf="row.price">{{ row.price }} €</span>
+      </div>
+    </ng-template>
   </div>
-  <button color="primary" type="button" aria-label="Ajouter un produit" [routerLink]="['/admin/product/add']" mat-mini-fab class="absolute-fab pulse">
-    <mat-icon>add</mat-icon>
-  </button>
 </div>
+<button color="primary" type="button" aria-label="Ajouter un produit" [routerLink]="['/admin/product/add']" mat-mini-fab class="absolute-fab pulse">
+  <mat-icon>add</mat-icon>
+</button>

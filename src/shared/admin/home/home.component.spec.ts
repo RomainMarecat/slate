@@ -21,7 +21,8 @@ import { ProductListComponent } from '../../../shared/admin/product/product-list
 import { ProductService } from '../../../shared/admin/shared/product/product.service';
 import { MockProductService } from '../../../shared/admin/shared/product/mock-product.service';
 import { HomeComponent } from './home.component';
-import { SharedModule } from '../../../shared/shared.module';
+import { SharedModule } from '../../shared.module';
+import { ProductFilterComponent } from './../product/product-filter/product-filter.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -47,7 +48,7 @@ describe('HomeComponent', () => {
           MatToolbarModule,
           SharedModule
         ],
-        declarations: [HomeComponent, ProductComponent, ProductListComponent],
+        declarations: [HomeComponent, ProductComponent, ProductListComponent, ProductFilterComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
         ]
