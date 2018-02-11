@@ -17,8 +17,8 @@ export class SortComponent implements OnInit {
 
   }
 
-  onClose() {
-    this.closeSidenav.emit(true);
+  onClose(close ?: boolean) {
+    this.closeSidenav.emit(close);
   }
 
   onSort(sort: Sort) {
