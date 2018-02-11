@@ -1,5 +1,49 @@
-<mat-nav-list class="pt-5">
-  <mat-list-item>
-    <a class="sidenav-link" mat-raised>Filtrer par bientôt disponible...</a>
-  </mat-list-item>
+<div class="header-wrapper" fxLayout="row" fxLayoutAlign="space-between stretch">
+  <div class="button-close-wrapper">
+    <button mat-icon-button type="button" fxLayout="row" fxLayoutAlign="center center" (click)="close()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+  </div>
+  <div class="button-close-wrapper">
+    <button mat-icon-button type="button" fxLayout="row" fxLayoutAlign="center center" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-nav-list class="pt-0">
+  <a mat-list-item class="sidenav-link heading text-center" fxLayout="row" fxLayoutAlign="center stretch" (click)="close()">
+    <span>Filtrer</span>
+  </a>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Trier
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-facet-sort-item></app-facet-sort-item>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngFor="let facet of facets">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span>{{ facet.name }}</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-facet-attribute *ngIf="facet.column === 'attribute'" (filtered)="onFilter($event)"></app-facet-attribute>
+      <app-facet-category *ngIf="facet.column === 'category'" (filtered)="onFilter($event)"></app-facet-category>
+      <app-facet-country *ngIf="facet.column === 'country'" (filtered)="onFilter($event)"></app-facet-country>
+      <app-facet-delivery *ngIf="facet.column === 'delivery'" (filtered)="onFilter($event)"></app-facet-delivery>
+      <app-facet-location *ngIf="facet.column === 'location'" (filtered)="onFilter($event)"></app-facet-location>
+      <app-facet-price *ngIf="facet.column === 'price'" (filtered)="onFilter($event)"></app-facet-price>
+      <app-facet-product-best-seller *ngIf="facet.column === 'best-seller'" (filtered)="onFilter($event)"></app-facet-product-best-seller>
+      <app-facet-product-best-score *ngIf="facet.column === 'best-score'" (filtered)="onFilter($event)"></app-facet-product-best-score>
+      <app-facet-product-brand *ngIf="facet.column === 'brand'" (filtered)="onFilter($event)"></app-facet-product-brand>
+      <app-facet-product-description *ngIf="facet.column === 'description'" (filtered)="onFilter($event)"></app-facet-product-description>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <a mat-list-item class="sidenav-link mt-4 text-center" fxLayout="row" fxLayoutAlign="center stretch" (click)="validate()">
+    <button class="button-validate" mat-raised-button color="primary" type="button" fxLayout="row" fxLayoutAlign="center stretch">
+      Valider
+    </button>
+  </a>
 </mat-nav-list>

@@ -1,10 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { ProductService } from './../../product/product.service';
-
-export class Sort {
-  column: string;
-  direction: string;
-}
+import { Sort } from './shared/sort';
 
 @Component({
   selector: 'app-facet-sort',
@@ -16,18 +11,17 @@ export class SortComponent implements OnInit {
   @Output('closeSidenav') closeSidenav: EventEmitter < boolean > = new EventEmitter < boolean > ();
   @Output('sorted') sorted: EventEmitter < Sort > = new EventEmitter < Sort > ();
 
-  constructor(private productService: ProductService) {}
+  constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
 
-  close() {
+  }
+
+  onClose() {
     this.closeSidenav.emit(true);
   }
 
-  onSort(column: string, direction: string) {
-    const sort = { column: column, direction: direction } as Sort;
+  onSort(sort: Sort) {
     this.sorted.emit(sort);
-    this.productService.orderBy$.next(sort);
   }
-
 }

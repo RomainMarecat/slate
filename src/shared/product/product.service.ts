@@ -3,10 +3,11 @@ import { Product } from './product';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot, OrderByDirection } from '@firebase/firestore-types';
+import { CollectionReference, Query, DocumentSnapshot, OrderByDirection, WhereFilterOp } from '@firebase/firestore-types';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
-import { Sort } from './../facet/sort/sort.component';
+import { Sort } from './../facet/sort/shared/sort';
+import { Filter } from './../facet/filter/shared/filter';
 
 @Injectable()
 export class ProductService {
@@ -17,6 +18,7 @@ export class ProductService {
   nameFilter$: BehaviorSubject < string | null > ;
   keyFilter$: BehaviorSubject < string | null > ;
   colorFilter$: BehaviorSubject < string | null > ;
+  filter$: BehaviorSubject < Filter[] | null > ;
   userFilter$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
@@ -38,6 +40,7 @@ export class ProductService {
     this.nameFilter$ = new BehaviorSubject(null);
     this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
+    this.filter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.orderBy$ = new BehaviorSubject(null);
     this.productCollectionRef = this.afs.collection('product');
@@ -46,10 +49,11 @@ export class ProductService {
         this.nameFilter$,
         this.colorFilter$,
         this.userFilter$,
+        this.filter$,
         this.limit$,
         this.orderBy$
       )
-      .switchMap(([published, name, color, user, limit, orderBy]) => {
+      .switchMap(([published, name, color, user, filter, limit, orderBy]) => {
         return this.afs.collection('product', ref => {
             this.query = ref;
 
@@ -67,6 +71,11 @@ export class ProductService {
             }
             if (user) {
               this.query = this.query.where('user', '==', user);
+            }
+            if (filter) {
+              filter.forEach((fil: Filter) => {
+                this.query = this.query.where(fil.column, fil.operator as WhereFilterOp, fil.value);
+              });
             }
             if (limit) {
               this.query = this.query.limit(limit);

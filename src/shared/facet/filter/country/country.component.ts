@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Filter } from './../shared/filter';
+import { MatSelectChange } from '@angular/material';
 
 @Component({
   selector: 'app-facet-country',
@@ -6,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./country.component.scss']
 })
 export class CountryComponent implements OnInit {
+  @Input('form') form: FormGroup;
+  @Output('filtered') filtered: EventEmitter < Filter > = new EventEmitter < Filter > ();
+  options: Array < string > ;
 
-  constructor() {}
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.options = [
+      'France',
+      'Canada',
+      'Etat-Unis',
+    ];
+    this.form = this.formBuilder.group({
+      country: ['', Validators.required]
+    });
+  }
 
+  get country() {
+    return this.form.get('country');
+  }
+
+  onFilter(selectChange: MatSelectChange) {
+    this.filtered.emit({ value: selectChange.value, operator: '==', column: 'country' });
+  }
 }

@@ -1,3 +1,14 @@
-<p>
-  price works!
-</p>
+<div [formGroup]="form" fxLayout="row" fxLayoutAlign="space-around stretch">
+  <mat-form-field class="mat-form-field" formGroupName="price">
+    <input matInput type="number" [placeholder]="'facet.filter.price.min.placeholder'|translate" formControlName="min">
+    <mat-error *ngIf="min.invalid && min.value < 0" [innerHtml]="'facet.filter.price.min'|translate"></mat-error>
+    <mat-error *ngIf="min.invalid && min.value > 9999" [innerHtml]="'facet.filter.price.max'|translate"></mat-error>
+    <mat-error *ngIf="min.invalid" [innerHtml]="'facet.filter.price.invalid'|translate"></mat-error>
+  </mat-form-field>
+  <mat-form-field class="mat-form-field" formGroupName="price">
+    <input matInput type="number" [placeholder]="'facet.filter.price.max.placeholder'|translate" formControlName="max">
+    <mat-error *ngIf="max.invalid && max.value < 0" [innerHtml]="'facet.filter.price.max'|translate"></mat-error>
+    <mat-error *ngIf="max.invalid && max.value > 9999" [innerHtml]="'facet.filter.price.max'|translate"></mat-error>
+    <mat-error *ngIf="max.invalid" [innerHtml]="'facet.filter.price.invalid'|translate"></mat-error>
+  </mat-form-field>
+</div>

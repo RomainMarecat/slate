@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatIconModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { MatIconModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
-import { AttributeComponent } from './attribute.component';
+import { ProductBrandComponent } from './product-brand.component';
 
-describe('AttributeComponent', () => {
-  let component: AttributeComponent;
-  let fixture: ComponentFixture < AttributeComponent > ;
+describe('ProductBrandComponent', () => {
+  let component: ProductBrandComponent;
+  let fixture: ComponentFixture < ProductBrandComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,18 +20,19 @@ describe('AttributeComponent', () => {
           FormsModule,
           ReactiveFormsModule,
           MatIconModule,
+          MatSelectModule,
           MatFormFieldModule,
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),
         ],
-        declarations: [AttributeComponent]
+        declarations: [ProductBrandComponent]
       })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AttributeComponent);
+    fixture = TestBed.createComponent(ProductBrandComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

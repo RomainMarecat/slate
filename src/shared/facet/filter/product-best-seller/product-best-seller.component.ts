@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-facet-product-best-seller',
@@ -6,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-best-seller.component.scss']
 })
 export class ProductBestSellerComponent implements OnInit {
+  @Input('form') form: FormGroup;
+  color = 'primary';
+  checked = false;
+  disabled = false;
 
-  constructor() {}
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      seller: [this.checked, Validators.required]
+    });
+  }
+
+  get seller() {
+    return this.form.get('seller');
+  }
 
 }

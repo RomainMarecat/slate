@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SortComponent } from './sort.component';
 import { MatListModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SortContainerComponent } from './sort-container/sort-container.component';
+import { SortItemComponent } from './sort-item/sort-item.component';
 
 @NgModule({
   imports: [
@@ -12,7 +14,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     MatListModule,
   ],
-  declarations: [SortComponent],
-  exports: [SortComponent]
+  declarations: [
+    SortComponent,
+    SortContainerComponent,
+    SortItemComponent
+  ],
+  exports: [
+    SortComponent,
+    SortContainerComponent,
+    SortItemComponent
+  ]
 })
 export class SortModule {}

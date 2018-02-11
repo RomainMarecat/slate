@@ -1,28 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CommonModule } from '@angular/common';
 import { MatListModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ProductService } from '../../../shared/product/product.service';
-import { MockProductService } from '../../../shared/product/mock-product.service';
+import { ProductService } from '../../../../shared/product/product.service';
+import { MockProductService } from '../../../../shared/product/mock-product.service';
 
-import { SortComponent } from './sort.component';
-import { SortItemComponent } from './sort-item/sort-item.component';
-import { SortContainerComponent } from './sort-container/sort-container.component';
+import { SortItemComponent } from './sort-item.component';
 
-describe('SortComponent', () => {
-  let component: SortComponent;
-  let fixture: ComponentFixture < SortComponent > ;
+describe('SortItemComponent', () => {
+  let component: SortItemComponent;
+  let fixture: ComponentFixture < SortItemComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [
-          CommonModule,
           FlexLayoutModule,
           MatButtonModule,
           MatIconModule,
           MatListModule,
         ],
-        declarations: [SortComponent, SortContainerComponent, SortItemComponent],
+        declarations: [SortItemComponent],
         providers: [
           { provide: ProductService, useClass: MockProductService },
         ]
@@ -31,7 +27,7 @@ describe('SortComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SortComponent);
+    fixture = TestBed.createComponent(SortItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

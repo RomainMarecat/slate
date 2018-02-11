@@ -1,30 +1,13 @@
-<div class="header-wrapper" fxLayout="row" fxLayoutAlign="end stretch">
+<div class="header-wrapper" fxLayout="row" fxLayoutAlign="space-between stretch">
+  <div class="button-close-wrapper">
+    <button mat-icon-button type="button" fxLayout="row" fxLayoutAlign="center center" (click)="close()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+  </div>
   <div class="button-close-wrapper">
     <button mat-icon-button type="button" fxLayout="row" fxLayoutAlign="center center" (click)="close()">
       <mat-icon>close</mat-icon>
     </button>
   </div>
 </div>
-<mat-nav-list class="pt-0">
-  <a mat-list-item class="sidenav-link heading text-center" mat-raised fxLayout="row" fxLayoutAlign="center stretch" (click)="close()">
-    <span>Trier</span>
-  </a>
-  <a mat-list-item class="sidenav-link" mat-raised (click)="onSort('revelance', 'asc')">
-    Pertinence
-  </a>
-  <a mat-list-item class="sidenav-link" mat-raised (click)="onSort('price', 'asc')">
-    Prix : les moins chers
-  </a>
-  <a mat-list-item class="sidenav-link" mat-raised (click)="onSort('price', 'desc')">
-    Prix : les plus chers
-  </a>
-  <a mat-list-item class="sidenav-link" mat-raised (click)="onSort('promo', 'desc')">
-    Prix : En promotion
-  </a>
-  <a mat-list-item class="sidenav-link" mat-raised (click)="onSort('published_at', 'desc')">
-    Les Nouveaux produits
-  </a>
-  <a mat-list-item class="sidenav-link" mat-raised (click)="onSort('country', 'asc')">
-    Les produits les plus proches
-  </a>
-</mat-nav-list>
+<app-facet-sort-container (closed)="onClose($event)"></app-facet-sort-container>
