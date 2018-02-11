@@ -31,6 +31,30 @@
     "and": " et ",
     "short_minutes": "min"
   },
+  "facet": {
+    "filter": {
+      "description": {
+        "placeholder": "Rechercher des mots clés dans la description"
+      },
+      "brand": {
+        "placeholder": "Rechercher vos marques préférées"
+      },
+      "country": {
+        "placeholder": "Rechercher uniquement dans un pays"
+      },
+      "delivery": {
+        "placeholder": "Modes de livraison acceptés"
+      },
+      "price": {
+        "min": {
+          "placeholder": "Min"
+        },
+        "max": {
+          "placeholder": "Max"
+        }
+      }
+    }
+  },
   "sidenav": {
     "card": {
       "list-item": {

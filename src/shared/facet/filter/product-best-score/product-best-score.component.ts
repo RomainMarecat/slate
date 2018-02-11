@@ -2,12 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-facet-location',
-  templateUrl: './location.component.html',
-  styleUrls: ['./location.component.scss']
+  selector: 'app-facet-product-best-score',
+  templateUrl: './product-best-score.component.html',
+  styleUrls: ['./product-best-score.component.scss']
 })
-export class LocationComponent implements OnInit {
-
+export class ProductBestScoreComponent implements OnInit {
   @Input('form') form: FormGroup;
   color = 'primary';
   checked = false;
@@ -17,12 +16,12 @@ export class LocationComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      location: [this.checked, Validators.required]
+      score: [this.checked, Validators.required]
     });
   }
 
-  get location() {
-    return this.form.get('location');
+  get score() {
+    return this.form.get('score');
   }
 
 }

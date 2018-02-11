@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-facet-delivery',
@@ -6,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delivery.component.scss']
 })
 export class DeliveryComponent implements OnInit {
+  @Input('form') form: FormGroup;
 
-  constructor() {}
+  options: Array < string > ;
 
-  ngOnInit() {}
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.options = [
+      'Achat en ligne',
+      'En magasin',
+      'Livraison express',
+      'Remise en main propre',
+    ];
+    this.form = this.formBuilder.group({
+      delivery: ['', Validators.required]
+    });
+  }
+
+  get delivery() {
+    return this.form.get('delivery');
+  }
 
 }

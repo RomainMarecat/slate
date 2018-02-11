@@ -1,5 +1,5 @@
 <mat-form-field class="mat-form-field" [formGroup]="form">
-  <mat-select (selectionChange)="onFilter($event)" [placeholder]="'facet.filter.country.placeholder'|translate" formControlName="country">
+  <mat-select multiple="true" [placeholder]="'facet.filter.brand.placeholder'|translate" formControlName="brand">
     <mat-option *ngFor="let option of options" [value]="option">{{ option }}
     </mat-option>
   </mat-select>

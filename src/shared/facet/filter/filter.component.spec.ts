@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CategoryComponent } from './category/category.component';
 import { AttributeComponent } from './attribute/attribute.component';
@@ -9,12 +11,25 @@ import { CountryComponent } from './country/country.component';
 import { LocationComponent } from './location/location.component';
 import { ProductDescriptionComponent } from './product-description/product-description.component';
 import { ProductBestSellerComponent } from './product-best-seller/product-best-seller.component';
+import { ProductBestScoreComponent } from './product-best-score/product-best-score.component';
+import { ProductBrandComponent } from './product-brand/product-brand.component';
 import { FilterComponent } from './filter.component';
-import { MatListModule, MatButtonModule, MatIconModule } from '@angular/material';
+import {
+  MatListModule,
+  MatButtonModule,
+  MatIconModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatInputModule,
+  MatSlideToggleModule,
+  MatCommonModule
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductService } from '../../../shared/product/product.service';
 import { MockProductService } from '../../../shared/product/mock-product.service';
-
+import { SortModule } from '../sort/sort.module';
+import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 describe('FilterComponent', () => {
   let component: FilterComponent;
@@ -23,8 +38,23 @@ describe('FilterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [
+          BrowserAnimationsModule,
           CommonModule,
-          MatListModule
+          FormsModule,
+          ReactiveFormsModule,
+          MatFormFieldModule,
+          MatListModule,
+          MatExpansionModule,
+          MatIconModule,
+          MatInputModule,
+          MatButtonModule,
+          MatSlideToggleModule,
+          MatSelectModule,
+          MatCommonModule,
+          SortModule,
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          }),
         ],
         declarations: [
           FilterComponent,
@@ -34,8 +64,10 @@ describe('FilterComponent', () => {
           DeliveryComponent,
           CountryComponent,
           LocationComponent,
+          ProductBrandComponent,
           ProductDescriptionComponent,
-          ProductBestSellerComponent
+          ProductBestSellerComponent,
+          ProductBestScoreComponent
         ],
         providers: [
           { provide: ProductService, useClass: MockProductService },

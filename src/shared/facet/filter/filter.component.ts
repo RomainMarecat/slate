@@ -1,20 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductService } from './../../product/product.service';
-
-export class Filter {
-  column: string;
-  operator: string;
-  value: string;
-}
-
-
-export class FilterFacet {
-  column: string;
-  operator: string;
-  value: string;
-  name: string;
-  selected: boolean;
-}
+import { Filter } from './shared/filter';
+import { FilterFacet } from './shared/filter-facet';
 
 @Component({
   selector: 'app-facet-filter',
@@ -23,53 +10,101 @@ export class FilterFacet {
 })
 export class FilterComponent implements OnInit {
   @Output('closeSidenav') closeSidenav: EventEmitter < boolean > = new EventEmitter < boolean > ();
-  @Output('filtered') filtered: EventEmitter < Filter > = new EventEmitter < Filter > ();
+  @Output('filtered') filtered: EventEmitter < Array < Filter > > = new EventEmitter < Array < Filter > > ();
   facets: FilterFacet[];
+  filters: Array < Filter > = [];
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.facets = [{
-      name: 'Catégorie',
-      column: 'category',
-      operator: '==',
-      value: '',
-      selected: true
-    }, {
-      name: 'Prix',
-      column: 'price',
-      operator: '==',
-      value: '',
-      selected: false
-    }, {
-      name: 'Marque',
-      column: 'brand',
-      operator: '==',
-      value: '',
-      selected: false
-    }, {
-      name: 'Taille',
-      column: 'size',
-      operator: '==',
-      value: '',
-      selected: false
-    }];
+    this.facets = [
+      // {
+      //   name: 'Catégorie',
+      //   column: 'category',
+      //   operator: '==',
+      //   value: '',
+      //   selected: true
+      // },
+      {
+        name: 'Les produits les plus vendus',
+        column: 'best-seller',
+        operator: '==',
+        value: '',
+        selected: false
+      }, {
+        name: 'Les produits les mieux notés',
+        column: 'best-score',
+        operator: '==',
+        value: '',
+        selected: false
+      }, {
+        name: 'Prix',
+        column: 'price',
+        operator: '==',
+        value: '',
+        selected: false
+      }, {
+        name: 'Marque',
+        column: 'brand',
+        operator: '==',
+        value: '',
+        selected: false
+      },
+      // {
+      //   name: 'Attributs',
+      //   column: 'attribute',
+      //   operator: '==',
+      //   value: '',
+      //   selected: false
+      // },
+      {
+        name: 'Rechercher dans la descripion',
+        column: 'description',
+        operator: '==',
+        value: '',
+        selected: false
+      }, {
+        name: 'Pays',
+        column: 'country',
+        operator: '==',
+        value: '',
+        selected: false
+      }, {
+        name: 'Près de chez moi',
+        column: 'location',
+        operator: '==',
+        value: '',
+        selected: false
+      }, {
+        name: 'Mode de livraison',
+        column: 'delivery',
+        operator: '==',
+        value: '',
+        selected: false
+      }
+    ];
   }
 
   close() {
     this.closeSidenav.emit(true);
   }
 
-  onFilter(filter: Filter, index: number) {
-    this.filtered.emit(filter);
-    this.facets = this.facets.map((facet, i) => {
-      facet.selected = false;
-      if (index === i) {
-        facet.selected = true;
-      }
-      return facet;
-    });
+  validate() {
     this.productService.publishedFilter$.next(null);
-    this.productService.filter$.next(filter);
+    this.productService.filter$.next(this.filters);
+    this.filtered.emit(this.filters);
+
+    this.close();
+  }
+
+  onFilter(filter: Filter) {
+    if (filter) {
+      this.filters.push(filter);
+    }
+  }
+
+  reset() {
+    this.filters = [];
+    this.productService.filter$.next(null);
   }
 }

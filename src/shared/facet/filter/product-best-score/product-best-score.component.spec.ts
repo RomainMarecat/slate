@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatIconModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import { MatIconModule, MatInputModule, MatFormFieldModule, MatSlideToggleModule } from '@angular/material';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
-import { AttributeComponent } from './attribute.component';
+import { ProductBestScoreComponent } from './product-best-score.component';
 
-describe('AttributeComponent', () => {
-  let component: AttributeComponent;
-  let fixture: ComponentFixture < AttributeComponent > ;
+describe('ProductBestScoreComponent', () => {
+  let component: ProductBestScoreComponent;
+  let fixture: ComponentFixture < ProductBestScoreComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,18 +20,19 @@ describe('AttributeComponent', () => {
           FormsModule,
           ReactiveFormsModule,
           MatIconModule,
+          MatSlideToggleModule,
           MatFormFieldModule,
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),
         ],
-        declarations: [AttributeComponent]
+        declarations: [ProductBestScoreComponent]
       })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AttributeComponent);
+    fixture = TestBed.createComponent(ProductBestScoreComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

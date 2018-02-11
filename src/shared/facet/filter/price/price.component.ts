@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-facet-price',
@@ -6,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./price.component.scss']
 })
 export class PriceComponent implements OnInit {
+  @Input('form') form: FormGroup;
 
-  constructor() {}
+  constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      price: this.formBuilder.group({
+        min: [''],
+        max: ['']
+      })
+    });
+  }
 
+  get min() {
+    return this.form.get('price').get('min');
+  }
+
+  get max() {
+    return this.form.get('price').get('max');
+  }
 }

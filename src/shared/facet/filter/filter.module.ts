@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatListModule, MatButtonModule, MatIconModule, MatExpansionModule } from '@angular/material';
+import {
+  MatListModule,
+  MatButtonModule,
+  MatIconModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatRadioModule,
+  MatSlideToggleModule,
+} from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SortModule } from './../sort/sort.module';
 import { FilterComponent } from './filter.component';
@@ -13,17 +24,26 @@ import { CountryComponent } from './country/country.component';
 import { LocationComponent } from './location/location.component';
 import { ProductDescriptionComponent } from './product-description/product-description.component';
 import { ProductBestSellerComponent } from './product-best-seller/product-best-seller.component';
+import { ProductBrandComponent } from './product-brand/product-brand.component';
+import { ProductBestScoreComponent } from './product-best-score/product-best-score.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatListModule,
     FlexLayoutModule,
     MatButtonModule,
     MatExpansionModule,
+    MatFormFieldModule,
     MatIconModule,
+    MatInputModule,
     MatListModule,
+    MatSelectModule,
+    MatSlideToggleModule,
     SortModule,
+    TranslateModule
   ],
   declarations: [
     FilterComponent,
@@ -34,7 +54,9 @@ import { ProductBestSellerComponent } from './product-best-seller/product-best-s
     CountryComponent,
     LocationComponent,
     ProductDescriptionComponent,
-    ProductBestSellerComponent
+    ProductBestSellerComponent,
+    ProductBrandComponent,
+    ProductBestScoreComponent,
   ],
   exports: [
     FilterComponent,
@@ -45,7 +67,9 @@ import { ProductBestSellerComponent } from './product-best-seller/product-best-s
     CountryComponent,
     LocationComponent,
     ProductDescriptionComponent,
-    ProductBestSellerComponent
+    ProductBestSellerComponent,
+    ProductBrandComponent,
+    ProductBestScoreComponent,
   ]
 })
 export class FilterModule {}

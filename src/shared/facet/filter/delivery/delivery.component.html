@@ -1,3 +1,6 @@
-<p>
-  delivery works!
-</p>
+<mat-form-field class="mat-form-field" [formGroup]="form">
+  <mat-select multiple="true" [placeholder]="'facet.filter.delivery.placeholder'|translate" formControlName="delivery">
+    <mat-option *ngFor="let option of options" [value]="option">{{ option }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

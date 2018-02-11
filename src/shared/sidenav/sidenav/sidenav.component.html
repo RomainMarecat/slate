@@ -33,7 +33,7 @@
     <app-facet-sort *ngIf="!viewFilter; else filter" (closeSidenav)="sidenavFilter.close()"></app-facet-sort>
   </mat-sidenav>
   <ng-template #filter>
-    <app-facet-filter></app-facet-filter>
+    <app-facet-filter (closeSidenav)="sidenavFilter.close()"></app-facet-filter>
   </ng-template>
   <app-loader></app-loader>
   <!-- old div for swipe right functionalty -->

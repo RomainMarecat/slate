@@ -10,19 +10,4 @@
     </button>
   </div>
 </div>
-<mat-nav-list class="pt-0">
-  <a mat-list-item class="sidenav-link heading text-center" fxLayout="row" fxLayoutAlign="center stretch" (click)="close()">
-    <span>Trier</span>
-  </a>
-  <a mat-list-item class="sidenav-link" (click)="onSort(facet, i)" *ngFor="let facet of facets; let i = index; " fxLayout="row" fxLayoutAlign="space-between stretch">
-    <span>{{ facet.name }}</span>
-    <span *ngIf="facet.selected" class="facet-check" fxLayout="row" fxLayoutAlign="center stretch">
-      <mat-icon>check</mat-icon>
-    </span>
-  </a>
-  <a mat-list-item class="sidenav-link mt-4 text-center" fxLayout="row" fxLayoutAlign="center stretch" (click)="close()">
-    <button class="button-validate" mat-raised-button color="primary" type="button" fxLayout="row" fxLayoutAlign="center stretch">
-      Valider
-    </button>
-  </a>
-</mat-nav-list>
+<app-facet-sort-container (closed)="onClose($event)"></app-facet-sort-container>
