@@ -22,6 +22,4 @@ export class SortContainerComponent implements OnInit {
   close() {
     this.closed.emit(true);
   }
-
-
 }
