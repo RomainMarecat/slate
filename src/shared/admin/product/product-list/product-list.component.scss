@@ -12,7 +12,16 @@
   font-size: 40px;
 }
 
+.product-actions {
+  a {
+    cursor: pointer;
+  }
+}
+
 @media screen and (max-width: 800px) {
+  .mat-card {
+    width: 250px;
+  }
   .desktop-hidden {
     display: initial;
   }
@@ -25,13 +34,15 @@
 }
 
 @media screen and (min-width: 800px) {
+  .mat-card {
+    width: 500px;
+  }
   .desktop-hidden {
     display: none !important;
   }
   .mobile-hidden {
     display: initial;
   }
-
   .ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell:nth-child(2) {
     padding: 0rem 1.2rem;
   }

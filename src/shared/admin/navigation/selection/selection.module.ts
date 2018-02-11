@@ -26,7 +26,7 @@ import { ProductService } from '../../shared/product/product.service';
     SelectionComponent,
     SelectionListComponent,
     SelectionAddComponent,
-    SelectionEditComponent
+    SelectionEditComponent,
   ],
   providers: [
     SelectionService,

@@ -61,23 +61,27 @@
             </div>
           </mat-card-content>
         </mat-card>
-        <mat-card class="mt-3">
+        <mat-card class="mt-3 drag-wrapper">
           <mat-card-content>
             <div class="row">
               <div class="col-xs-12 col-sm-6">
                 <div class="d-block mt-1">
-                  <mat-form-field class="mat-form-field">
-                    <input matInput placeholder="Attributs" aria-label="Attributs" [matAutocomplete]="auto" formControlName="attributes">
-                    <mat-autocomplete #auto="matAutocomplete">
-                      <mat-option *ngFor="let attribute of attributesModel" [value]="attribute?.translations?.fr">
-                        <span>{{ attribute?.translations?.fr }}</span>
-                      </mat-option>
-                    </mat-autocomplete>
-                  </mat-form-field>
+                  <h4>Liste des attributs diponibles</h4>
+                  <div class="wrapper">
+                    <div class="container" [dragula]="'attributes-bag'">
+                      <div *ngFor="let attribute of attributesModel" [innerHtml]="attribute?.translations?.fr"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="d-block mt-1">
+                  <h4>Attributs du produit</h4>
+                  <div class="wrapper">
+                    <div class="container" [dragula]="'product-attributes'">
+                      <div *ngFor="let attribute of product?.attributes" [innerHtml]="attribute.label"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

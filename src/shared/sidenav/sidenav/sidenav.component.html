@@ -29,7 +29,7 @@
       </mat-nav-list>
     </div>
   </mat-sidenav>
-  <mat-sidenav #sidenavFilter class="rightSidenav mat-sidenav" mode="over" opened="true" position="end">
+  <mat-sidenav #sidenavFilter class="rightSidenav mat-sidenav" mode="over" opened="false" position="end">
     <app-facet-sort *ngIf="!viewFilter; else filter" (closeSidenav)="sidenavFilter.close()"></app-facet-sort>
   </mat-sidenav>
   <ng-template #filter>

@@ -5,6 +5,7 @@ import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductAddComponent } from './product-add/product-add.component';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductService } from './../shared/product/product.service';
@@ -12,12 +13,14 @@ import { CategoryService } from './../shared/navigation/category/category.servic
 import { SharedModule } from '../../shared.module';
 import { AttributeService } from '../../attribute/attribute.service';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { DragulaModule } from 'ng2-dragula';
 
 const TABLE_NAME = new InjectionToken < string > ('attribute');
 
 @NgModule({
   imports: [
     CommonModule,
+    DragulaModule,
     NgxDatatableModule,
     SharedModule,
     NgxEditorModule,
@@ -27,7 +30,8 @@ const TABLE_NAME = new InjectionToken < string > ('attribute');
   declarations: [
     ProductComponent,
     ProductListComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    ProductFilterComponent
   ],
   providers: [
     CategoryService,

@@ -1,0 +1,28 @@
+<mat-card class="mat-card">
+  <mat-card-content>
+    <form fxLayout="row" fxLayoutAlign="space-around stretch">
+      <mat-form-field class="mat-form-field">
+        <mat-select placeholder="Filtrer sur une colonne" [(ngModel)]="columnSelected" name="column">
+          <div *ngFor="let column of columns">
+            <mat-option [value]="column.prop" *ngIf="column?.prop">
+              {{ column.name }}
+            </mat-option>
+          </div>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="mat-form-field" *ngIf="columnSelected !== 'published'">
+        <input matInput type="text" placeholder="Crosse, Bauer, X900, 59.90, ..." (keyup)="updateFilter($event.target.value)">
+      </mat-form-field>
+      <div class="form-radio" *ngIf="columnSelected === 'published'">
+        <mat-radio-group name="published" [selected]="value ? published : unpublished" class="publication-radio-group" [value]="value" (change)="updateFilter($event.value)">
+          <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
+            <span class="text-success">Publié</span>
+          </mat-radio-button>
+          <mat-radio-button #unpublished class="publication-radio-button" [value]="false" color="accent">
+            <span class="text-danger">Non publié</span>
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

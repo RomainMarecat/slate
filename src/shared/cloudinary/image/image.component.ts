@@ -27,24 +27,28 @@ export class ImageComponent {
   @Input()
   set publicId(publicId: string) {
     this._publicId = publicId;
-    this.mediaService.filterByPublicId(publicId)
-      .take(1)
-      .subscribe((medias: Media[]) => {
-        this.media = medias[0];
-      }, (err) => {
-        console.error(err);
-      });
+    if (publicId && publicId.includes('http') === false) {
+      this.mediaService.filterByPublicId(publicId)
+        .take(1)
+        .subscribe((medias: Media[]) => {
+          this.media = medias[0];
+        }, (err) => {
+          console.error(err);
+        });
+    }
   }
 
   @Input()
   set key(key: string) {
     this._key = key;
-    this.mediaService.getMedia(key)
-      .take(1)
-      .subscribe((media: Media) => {
-        this.media = media;
-      }, (err) => {
-        console.error(err);
-      });
+    if (key && key.includes('http') === false) {
+      this.mediaService.getMedia(key)
+        .take(1)
+        .subscribe((media: Media) => {
+          this.media = media;
+        }, (err) => {
+          console.error(err);
+        });
+    }
   }
 }

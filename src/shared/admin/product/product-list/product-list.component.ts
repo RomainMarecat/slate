@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material';
 import { CloudinaryUploadService } from './../../../cloudinary/cloudinary-upload.service';
 import { debounceTime } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
+import { StringService } from './../../../util/string.service';
+import { Filter } from './../../../facet/filter/shared/filter';
 
 @Component({
   selector: 'app-product-list',
@@ -25,7 +27,6 @@ export class ProductListComponent implements OnInit {
   isLoading = false;
   selected: Product[];
   expanded: any = {};
-  columnSelected: string;
   @ViewChild('dataTableComponentTable') dataTableComponentTable: any;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
@@ -147,6 +148,19 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  showProduct(product: Product) {
+    return ([
+      '/product/',
+      product.key,
+      '-',
+      StringService.slugify(product.name)
+    ]).join('');
+  }
+
+  editProduct(product: Product) {
+    this.router.navigate(['/admin/product/edit/', product.key]);
+  }
+
   /**
    * Init list of product
    */
@@ -235,10 +249,10 @@ export class ProductListComponent implements OnInit {
    * Filtre sur les colonnes du produit
    * @param {string } }} event [description]
    */
-  updateFilter(value: any) {
-    if (value) {
-      const column = this.columnSelected;
-      let needle = value;
+  updateFilter(filter: Filter) {
+    if (filter.value && filter.column) {
+      const column = filter.column;
+      let needle = filter.value;
       if (typeof needle === 'string') {
         needle = needle.toLowerCase();
       }
@@ -250,7 +264,7 @@ export class ProductListComponent implements OnInit {
         } else if (column === 'price') {
           return product.price.toString(10).indexOf(needle) !== -1 || !needle;
         } else if (column === 'published') {
-          return product.published === needle || !needle;
+          return product.published === (needle.toString() === 'true') || !needle;
         }
         return product[column].toLowerCase().indexOf(needle) !== -1 || !needle;
       });
