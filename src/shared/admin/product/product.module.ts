@@ -14,6 +14,7 @@ import { SharedModule } from '../../shared.module';
 import { AttributeService } from '../../attribute/attribute.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { DragulaModule } from 'ng2-dragula';
+import { ProductImageOrderComponent } from './product-image-order/product-image-order.component';
 
 const TABLE_NAME = new InjectionToken < string > ('attribute');
 
@@ -31,7 +32,8 @@ const TABLE_NAME = new InjectionToken < string > ('attribute');
     ProductComponent,
     ProductListComponent,
     ProductAddComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    ProductImageOrderComponent
   ],
   providers: [
     CategoryService,
