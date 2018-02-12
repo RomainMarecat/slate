@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, OnDestroy, EventEmitter } from '@angular/core';
 import { Product } from './../../../../shared/product/product';
 import { DragulaService } from 'ng2-dragula';
 
@@ -7,9 +7,10 @@ import { DragulaService } from 'ng2-dragula';
   templateUrl: './product-image-order.component.html',
   styleUrls: ['./product-image-order.component.scss']
 })
-export class ProductImageOrderComponent implements OnInit {
+export class ProductImageOrderComponent implements OnInit, OnDestroy {
 
   @Input('product') product: Product;
+  @Output('imagesChanged') imagesChanged: EventEmitter < Array < string >> = new EventEmitter < Array < string >> ();
 
   constructor(private dragulaService: DragulaService) {}
 
@@ -18,43 +19,35 @@ export class ProductImageOrderComponent implements OnInit {
   }
 
   subscribeDragAndDrop() {
-    this.dragulaService.drag.subscribe((value) => {
-      console.log(`drag: ${value[0]}`);
-      this.onDrag(value.slice(1));
+    this.dragulaService.dropModel.subscribe((value) => {
+      console.log(`dropModel: ${value[0]}`);
+      this.onDropModel(value.slice(1));
     });
-    this.dragulaService.drop.subscribe((value) => {
-      console.log(`drop: ${value[0]}`);
-      this.onDrop(value.slice(1));
-    });
-    this.dragulaService.over.subscribe((value) => {
-      console.log(`over: ${value[0]}`);
-      this.onOver(value.slice(1));
-    });
-    this.dragulaService.out.subscribe((value) => {
-      console.log(`out: ${value[0]}`);
-      this.onOut(value.slice(1));
+    this.dragulaService.removeModel.subscribe((value) => {
+      console.log(`removeModel: ${value[0]}`);
+      this.onRemoveModel(value.slice(1));
     });
   }
 
-  private onDrag(args) {
-    const [e, el] = args;
-    // do something
+  private onDropModel(args: any): void {
+    let [el, target, source] = args;
+    console.log('onDropModel:');
+    console.log(el);
+    console.log(target);
+    console.log(source);
+    this.imagesChanged.emit(this.product.images);
   }
 
-  private onDrop(args) {
-    const [e, el] = args;
-    // do something
+  private onRemoveModel(args: any): void {
+    let [el, source] = args;
+    console.log('onRemoveModel:');
+    console.log(el);
+    console.log(source);
   }
 
-  private onOver(args) {
-    const [e, el, container] = args;
-    // do something
-  }
-
-  private onOut(args) {
-    console.log(args);
-    const [e, el, container] = args;
-    console.log(e, el, container);
+  ngOnDestroy() {
+    this.dragulaService.dropModel.unsubscribe();
+    this.dragulaService.removeModel.unsubscribe();
   }
 
 }

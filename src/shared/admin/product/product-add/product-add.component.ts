@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
@@ -25,7 +25,7 @@ import { DragulaService } from 'ng2-dragula';
   templateUrl: './product-add.component.html',
   styleUrls: ['./product-add.component.scss']
 })
-export class ProductAddComponent implements OnInit {
+export class ProductAddComponent implements OnInit, OnDestroy {
   form: FormGroup;
   product: Product;
   editorConfig: any;
@@ -135,6 +135,13 @@ export class ProductAddComponent implements OnInit {
       'translate': 'no',
       'toolbar': []
     };
+  }
+
+  onImagesChange(images: Array < string > ) {
+    this.form.patchValue({
+      images: images
+    });
+    this.alertService.toast('media order changed');
   }
 
   onImageChange(media: Media) {
@@ -268,7 +275,12 @@ export class ProductAddComponent implements OnInit {
     // do something
   }
 
-
+  ngOnDestroy() {
+    this.dragulaService.drag.unsubscribe();
+    this.dragulaService.drop.unsubscribe();
+    this.dragulaService.over.unsubscribe();
+    this.dragulaService.out.unsubscribe();
+  }
 
   get name() {
     return this.form.get('name');
