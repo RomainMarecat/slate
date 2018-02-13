@@ -73,12 +73,12 @@
           </div>
         </div>
         <div fxLayout="column" fxLayoutAlign="center stretch">
-          <div fxLayout="row" fxLayoutAlign="space-around stretch">
+          <div fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column" fxLayoutAlign.xs="center stretch">
             <div class="selected-column pt3" *ngIf="selectedProducts">
               <p>Associated Products <small>({{selectedProducts?.length}})</small></p>
             </div>
           </div>
-          <div fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px">
+          <div fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px" fxLayout.xs="column" fxLayoutAlign.xs="center stretch">
             <div fxFlex="50">
               <ngx-datatable class="material striped scrolling-products-selections" [columnMode]="'force'" [rows]="associatedProducts" [columns]="columnsProduct" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoadingProducts" [scrollbarV]="true" [selected]="selectedProducts" [selectionType]="'checkbox'" (select)='onSelectProduct($event)'></ngx-datatable>
             </div>
