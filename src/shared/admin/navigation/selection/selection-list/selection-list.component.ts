@@ -118,7 +118,9 @@ export class SelectionListComponent implements OnInit {
     this.selectionService.getSelections()
       .subscribe((selections: Selection[]) => {
         console.log(selections);
-        this.selections = selections;
+        this.selections = selections.sort((prev: Selection, next: Selection) => {
+          return prev.translations.fr > next.translations.fr ? 1 : -1;
+        });
         this.isLoading = false;
       });
 

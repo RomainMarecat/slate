@@ -30,19 +30,12 @@ export class ProductImageOrderComponent implements OnInit, OnDestroy {
   }
 
   private onDropModel(args: any): void {
-    let [el, target, source] = args;
-    console.log('onDropModel:');
-    console.log(el);
-    console.log(target);
-    console.log(source);
+    const [el, target, source] = args;
     this.imagesChanged.emit(this.product.images);
   }
 
   private onRemoveModel(args: any): void {
-    let [el, source] = args;
-    console.log('onRemoveModel:');
-    console.log(el);
-    console.log(source);
+    const [el, source] = args;
   }
 
   ngOnDestroy() {

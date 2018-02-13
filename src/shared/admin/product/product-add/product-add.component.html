@@ -130,6 +130,9 @@
                 <div class="col-12">
                   <div class='selected-column' *ngIf="selected">
                     <h4>Associer une categorie</h4>
+                    <p class="text-danger" *ngIf="category.invalid === true">
+                      Aucune catégorie associée au produit
+                    </p>
                   </div>
                 </div>
                 <div class="col-12">
@@ -161,7 +164,7 @@
       <mat-card-actions>
         <div class="d-flex justify-content-around">
           <button type="button" class="back" mat-raised-button color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/product']"></button>
-          <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid || form.pristine" [innerHtml]="'Enregistrer'|translate"></button>
+          <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid" [innerHtml]="'Enregistrer'|translate"></button>
         </div>
       </mat-card-actions>
     </mat-card>

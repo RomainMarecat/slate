@@ -94,6 +94,7 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     this.form.valueChanges
       .debounceTime(800)
       .subscribe((value) => {
+        console.log(this.form.valid, this.form.controls);
         if (value.name) {
           const slug = StringService.slugify(value.name);
           this.form.patchValue({ name: value.name, slug: slug, alias: value.name });
