@@ -24,6 +24,7 @@ export class SelectionEditComponent implements OnInit {
 
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
+  @ViewChild('publicationCell') publicationCell: TemplateRef < any > ;
 
   columnsProduct: any;
   associatedProducts: HockeyProduct[];
@@ -63,7 +64,8 @@ export class SelectionEditComponent implements OnInit {
     }, {
       prop: 'published',
       name: 'published',
-      flexGrow: 1
+      flexGrow: 1,
+      cellTemplate: this.publicationCell
     }, {
       prop: 'category',
       name: 'category',
@@ -88,7 +90,8 @@ export class SelectionEditComponent implements OnInit {
     }, {
       prop: 'published',
       name: 'published',
-      flexGrow: 1
+      flexGrow: 1,
+      cellTemplate: this.publicationCell
     }, {
       prop: 'level',
       name: 'level',
@@ -110,10 +113,12 @@ export class SelectionEditComponent implements OnInit {
         this.isLoadingParents = false;
       });
     this.productService.getProducts()
-      .subscribe((products: HockeyProduct[]) => {
-        this.associatedProducts = products;
+      .subscribe((products: Product[]) => {
+        this.associatedProducts = products.sort((prev: Product, next: Product) => {
+          return prev.translations.fr > next.translations.fr ? 1 : -1;
+        });
         if (this.selection && this.selection.products) {
-          this.associatedProducts.forEach((product: HockeyProduct) => {
+          this.associatedProducts.forEach((product: Product) => {
             this.selection.products.forEach((keyProduct: string) => {
               if (product.key === keyProduct) {
                 this.selectedProducts.push(product);
@@ -152,7 +157,7 @@ export class SelectionEditComponent implements OnInit {
     });
   }
 
-  createForm(selection ?: Selection) {
+  createForm(selection ? : Selection) {
     const formType = new SelectionFormType(selection);
     this.form = formType.getForm();
   }

@@ -1,60 +1,31 @@
-.form {
-  max-width: 100%;
-  width: 100%;
-  margin-bottom: 100px;
-  .mat-form-field {
-    width: 100%;
-  }
-  .block-image {
-    min-height: 30vh;
-  }
-  .scrolling-categories {
-    height: 40vh;
-  }
-}
-
-.absolute-fab.mat-mini-fab {
-  position: fixed;
-  left: 32px;
-  top: 74px;
-  z-index: 10;
-}
-
 .drag-wrapper {
-  ul {
-    margin: 0;
-    padding: 0;
-  }
+  display: table;
   .gh-fork {
     position: fixed;
     top: 0;
     right: 0;
     border: 0;
   }
-  /* dragula-specific example page styles */
-  .wrapper {
-    display: table;
-  }
-  .container {
+  .drag-container {
     display: table-cell;
     background-color: rgba(255, 255, 255, 0.2);
-    width: 50%;
+    width: 250px;
   }
-  .container:nth-child(odd) {
+  .drag-container:nth-child(odd) {
     background-color: rgba(0, 0, 0, 0.2);
   }
   /*
  * note that styling gu-mirror directly is a bad practice because it's too generic.
  * you're better off giving the draggable elements a unique class and styling that directly!
  */
-  .container div,
+  .drag-container div,
   .gu-mirror {
     margin: 10px;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.2);
     transition: opacity 0.4s ease-in-out;
   }
-  .container div {
+  .drag-container div {
     cursor: move;
     cursor: grab;
     cursor: -moz-grab;
@@ -65,10 +36,10 @@
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
   }
-  .container .ex-moved {
+  .drag-container .ex-moved {
     background-color: #e74c3c;
   }
-  .container.ex-over {
+  .drag-container.ex-over {
     background-color: rgba(255, 255, 255, 0.3);
   }
   .handle {

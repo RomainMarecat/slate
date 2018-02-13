@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductAddComponent } from './product-add.component';
+import { ProductImageOrderComponent } from './../product-image-order/product-image-order.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -76,7 +77,8 @@ describe('ProductAddComponent', () => {
           }),
         ],
         declarations: [
-          ProductAddComponent
+          ProductAddComponent,
+          ProductImageOrderComponent,
         ],
         providers: [
           { provide: AlertService, useClass: MockAlertService },
