@@ -3,11 +3,9 @@
     <form fxLayout="row" fxLayoutAlign="space-around stretch">
       <mat-form-field class="mat-form-field">
         <mat-select placeholder="Filtrer sur une colonne" [(ngModel)]="columnSelected" name="column">
-          <div *ngFor="let column of columns">
-            <mat-option [value]="column.prop" *ngIf="column?.prop">
-              {{ column.name }}
-            </mat-option>
-          </div>
+          <mat-option [value]="column?.prop" *ngFor="let column of columns">
+            {{ column.name }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="mat-form-field" *ngIf="columnSelected !== 'published'">

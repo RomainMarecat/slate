@@ -256,21 +256,23 @@ export class ProductListComponent implements OnInit {
       if (typeof needle === 'string') {
         needle = needle.toLowerCase();
       }
+      if (this.cache.length > 0) {
+        // filter our data
+        const temp = this.cache.filter((product: Product) => {
+          if (column === 'translations.fr') {
+            return product.translations.fr.toLowerCase().indexOf(needle) !== -1 || !needle;
+          } else if (column === 'price') {
+            return product.price.toString(10).indexOf(needle) !== -1 || !needle;
+          } else if (column === 'published') {
+            return product.published === (needle.toString() === 'true') || !needle;
+          }
+          return product[column].toLowerCase().indexOf(needle) !== -1 || !needle;
+        });
 
-      // filter our data
-      const temp = this.cache.filter((product: Product) => {
-        if (column === 'translations.fr') {
-          return product.translations.fr.toLowerCase().indexOf(needle) !== -1 || !needle;
-        } else if (column === 'price') {
-          return product.price.toString(10).indexOf(needle) !== -1 || !needle;
-        } else if (column === 'published') {
-          return product.published === (needle.toString() === 'true') || !needle;
-        }
-        return product[column].toLowerCase().indexOf(needle) !== -1 || !needle;
-      });
+        // update the rows
+        this.products = temp;
+      }
 
-      // update the rows
-      this.products = temp;
     }
   }
 }
