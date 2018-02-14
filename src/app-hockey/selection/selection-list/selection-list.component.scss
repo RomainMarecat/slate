@@ -9,6 +9,11 @@
   background-size: cover;
 
   .main-inner-wrapper {
+    .content {
+      a {
+        cursor: pointer;
+      }
+    }
     .hockey-goalie {
       height: 100%;
       position: relative;
