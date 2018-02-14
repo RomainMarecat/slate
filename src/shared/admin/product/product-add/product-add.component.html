@@ -8,8 +8,11 @@
           </button>
         </mat-card-subtitle>
         <mat-card-title>
-          <span>
+          <span *ngIf="!product?.key">
             Ajouter un produit
+          </span>
+          <span *ngIf="product?.key">
+            Editer un produit
           </span>
         </mat-card-title>
       </mat-card-header>
