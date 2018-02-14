@@ -8,7 +8,7 @@ import { Filter } from './../../../facet/filter/shared/filter';
 })
 export class ProductFilterComponent implements OnInit {
   @Output('filtered') filtered: EventEmitter < Filter > = new EventEmitter < Filter > ();
-  columnSelected: string;
+  columnSelected = 'translations.fr';
   columns: any;
 
   constructor() {}
@@ -19,11 +19,12 @@ export class ProductFilterComponent implements OnInit {
 
   getColumns() {
     return [{
-      prop: 'images',
-      name: 'images',
-    }, {
       prop: 'translations.fr',
       name: 'name (fr)',
+      selected: true
+    }, {
+      prop: 'images',
+      name: 'images',
     }, {
       prop: 'category',
       name: 'category',

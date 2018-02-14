@@ -1,8 +1,12 @@
 <div class="row" fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column" fxLayoutAlign.xs="center stretch">
-  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" *ngIf="selected && selected.length > 0">
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxLayoutGap.xs="5px" *ngIf="selected && selected.length > 0">
     <button role="button" aria-label="Publier le produit" mat-raised-button color="primary" (click)="publishProduct()" *ngIf="selected && selected.length > 0">
       <mat-icon aria-label="Published">done</mat-icon>
       Publier
+    </button>
+    <button role="button" aria-label="Dépublier le produit" mat-raised-button color="warn" (click)="unpublishProduct()" *ngIf="selected && selected.length > 0">
+      <mat-icon aria-label="unpublished">done</mat-icon>
+      Dépublier
     </button>
     <button role="button" aria-label="Supprimer le produit" mat-raised-button color="accent" (click)="deleteProducts()" *ngIf="selected && selected.length > 0">
       <mat-icon aria-label="delete">delete</mat-icon>
@@ -55,19 +59,21 @@
       <button mat-icon-button role="button" type="button" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded" title="Expand/Collapse Row" (click)="toggleExpandRow(row)" class="desktop-hidden">
       </button>
     </ng-template>
-    <ng-template #imageCell ngx-datatable-cell-template let-value="value">
-      <app-media-viewer class="py-0" [key]="item" [resize]="{height: headerHeight}" *ngFor="let item of value"></app-media-viewer>
+    <ng-template #imageCell ngx-datatable-cell-template let-value="value" let-row="row">
+      <a (click)="editProduct(row)">
+        <app-media-viewer class="py-0" [key]="item" [resize]="{height: headerHeight}" *ngFor="let item of value"></app-media-viewer>
+      </a>
     </ng-template>
     <ng-template #actionsCell let-row="row" ngx-datatable-cell-template>
       <div class="product-actions" fxLayout="row" fxLayoutAlign="space-around stretch">
-        <a class="mobile-hidden" [routerLink]="showProduct(row)">
-          <mat-icon>remove_red_eye</mat-icon>
+        <a class="mobile-hidden" [routerLink]="showProduct(row)" aria-label="Suppr">
+          <mat-icon aria-hidden="true">remove_red_eye</mat-icon>
         </a>
-        <a class="mobile-hidden" (click)="editProduct(row)">
-          <mat-icon>mode_edit</mat-icon>
+        <a class="mobile-hidden" (click)="editProduct(row)" aria-label="Edit">
+          <mat-icon aria-hidden="true">mode_edit</mat-icon>
         </a>
-        <a class="mobile-hidden" (click)="confirmDelete(row)">
-          <mat-icon>delete</mat-icon>
+        <a class="mobile-hidden" (click)="confirmDelete(row)" aria-label="Del">
+          <mat-icon aria-hidden="true">delete</mat-icon>
         </a>
       </div>
     </ng-template>
@@ -109,5 +115,5 @@
   </div>
 </div>
 <button color="primary" type="button" aria-label="Ajouter un produit" [routerLink]="['/admin/product/add']" mat-mini-fab class="absolute-fab pulse">
-  <mat-icon>add</mat-icon>
+  <mat-icon aria-hidden="true">add</mat-icon>
 </button>

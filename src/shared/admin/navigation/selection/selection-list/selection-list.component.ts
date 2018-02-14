@@ -26,6 +26,8 @@ export class SelectionListComponent implements OnInit {
   @ViewChild('productsCell') productsCell: TemplateRef < any > ;
   @ViewChild('publishedCell') publishedCell: TemplateRef < any > ;
   @ViewChild('actionsCell') actionsCell: TemplateRef < any > ;
+  @ViewChild('desktopCell') desktopCell: TemplateRef < any > ;
+  @ViewChild('desktopHeader') desktopHeader: TemplateRef < any > ;
 
   /**
    * @param {ElementRef} table
@@ -133,25 +135,34 @@ export class SelectionListComponent implements OnInit {
       cellTemplate: this.checkboxCell,
       headerTemplate: this.checkboxHeader,
     }, {
+      width: 100,
       prop: 'translations.fr',
       name: 'translations.fr',
       flexGrow: 1
     }, {
       prop: 'key',
       name: 'Id',
-      flexGrow: 1
+      flexGrow: 1,
+      headerTemplate: this.desktopHeader,
+      cellTemplate: this.desktopCell
     }, {
       prop: 'name',
       name: 'name',
-      flexGrow: 1
+      flexGrow: 1,
+      headerTemplate: this.desktopHeader,
+      cellTemplate: this.desktopCell
     }, {
       prop: 'description',
       name: 'description',
-      flexGrow: 1
+      flexGrow: 1,
+      headerTemplate: this.desktopHeader,
+      cellTemplate: this.desktopCell
     }, {
       prop: 'keywords',
       name: 'keywords',
-      flexGrow: 1
+      flexGrow: 1,
+      headerTemplate: this.desktopHeader,
+      cellTemplate: this.desktopCell
     }, {
       prop: 'level',
       name: 'level',
@@ -159,25 +170,32 @@ export class SelectionListComponent implements OnInit {
     }, {
       prop: 'parent',
       name: 'parent',
-      flexGrow: 1
+      flexGrow: 1,
+      headerTemplate: this.desktopHeader,
+      cellTemplate: this.desktopCell
     }, {
       prop: 'products',
       name: 'products',
+      headerTemplate: this.desktopHeader,
       cellTemplate: this.productsCell,
       flexGrow: 1
     }, {
       prop: 'published_at',
       name: 'published_at',
-      flexGrow: 1
+      flexGrow: 1,
+      headerTemplate: this.desktopHeader,
+      cellTemplate: this.desktopCell
     }, {
       prop: 'published',
       name: 'published',
+      headerTemplate: this.desktopHeader,
       cellTemplate: this.publishedCell,
       width: 50,
       flexGrow: 1
     }, {
       prop: 'id',
       name: 'actions',
+      headerTemplate: this.desktopHeader,
       cellTemplate: this.actionsCell,
       width: 50,
       flexGrow: 1,

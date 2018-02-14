@@ -27,18 +27,24 @@
       <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
         <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
       </ng-template>
+      <ng-template #desktopHeader let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+        <span class="mobile-hidden">{{column.name}}</span>
+      </ng-template>
+      <ng-template #desktopCell let-value="value" ngx-datatable-cell-template>
+        <span class="mobile-hidden">{{value}}</span>
+      </ng-template>
       <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
         <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
       </ng-template>
       <ng-template #productsCell let-row="row">
-        <button (click)="showProducts(row)" color="primary" mat-raised-button>Voir les produits</button>
+        <button class="mobile-hidden" (click)="showProducts(row)" color="primary" mat-raised-button>Voir les produits</button>
       </ng-template>
       <ng-template #publishedCell let-value="value" let-row="row">
-        <span *ngIf="value === true" class="text-success">publié</span>
-        <span *ngIf="value === false" class="text-danger">non publié</span>
+        <span *ngIf="value === true" class="text-success mobile-hidden">publié</span>
+        <span *ngIf="value === false" class="text-danger mobile-hidden">non publié</span>
       </ng-template>
       <ng-template #actionsCell let-row="row">
-        <button mat-icon-button color="warn" type="button" role="button" aria-label="Changer l'etat" (click)="changePublishedStatus(row)">
+        <button class="mobile-hidden" mat-icon-button color="warn" type="button" role="button" aria-label="Changer l'etat" (click)="changePublishedStatus(row)">
           <mat-icon aria-label="changer l'etat">compare_arrows</mat-icon>
         </button>
       </ng-template>

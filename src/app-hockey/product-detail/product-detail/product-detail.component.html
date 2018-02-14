@@ -22,12 +22,12 @@
     <div>
       <div fxLayout="column" class="py-5">
         <span class="mat-card-date">{{ product.created_at | date:'short' }}</span>
-        <div class="reseller" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column" fxLayoutAlign.xs="center center">
-          <span *ngIf="product.price">{{ product.price }} €</span>
-          <a href="{{ product.external_url }}" *ngIf="product.external_url" target="_blank">
+        <div class="reseller" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column" fxLayoutAlign.xs="center center" *ngFor="let reseller of product?.resellers">
+          <span *ngIf="reseller?.price">{{ reseller?.price }} €</span>
+          <a href="{{ reseller?.external_url }}" *ngIf="resseller?.external_url" target="_blank">
             Comparer le produit
           </a>
-          <span *ngIf="product.reseller">{{ product.reseller }}</span>
+          <span *ngIf="reseller?.name">{{ reseller?.name }}</span>
         </div>
       </div>
     </div>

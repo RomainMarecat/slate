@@ -14,6 +14,7 @@ export const mockProduct = {
   delivery_fee: 1,
   delivery_free: true,
   reseller: '',
+  resellers: ['kdijfdsof322'],
   key: '',
   user: '',
   external_url: '',

@@ -38,6 +38,7 @@ export class Product implements ClothingProduct, HockeyProduct {
   delivery_fee ?: number;
   delivery_free ?: boolean;
   reseller ?: string;
+  resellers ?: string[];
   category ?: string;
   attributes ?: Array < any > ;
 
