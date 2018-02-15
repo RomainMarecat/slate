@@ -2,10 +2,9 @@ import { Injectable, Inject } from '@angular/core';
 import { Selection } from './selection';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
+import { CollectionReference, Query, DocumentSnapshot } from '@firebase/firestore-types';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class SelectionService {
@@ -26,8 +25,8 @@ export class SelectionService {
 
   /**
    *
-   * @param AngularFirestore afs
-   * @param AlertService alertService
+   * @param {AngularFirestore} afs
+   * @param {string} appName
    */
   constructor(private afs: AngularFirestore,
     @Inject('app_name') appName: string) {

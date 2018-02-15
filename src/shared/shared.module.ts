@@ -38,7 +38,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HammerModule } from './hammer/hammer.module';
 import { ProductImageComponent } from './product/product-image/product-image.component';
-import { ImageCropperModule } from 'ng2-img-cropper';
+import { ImageCropperModule } from 'ngx-img-cropper';
 import { ModalModule } from 'ngx-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
@@ -49,6 +49,7 @@ import { SidenavModule } from './sidenav/sidenav.module';
 import { LoaderModule } from './loader/loader.module';
 import { FacetModule } from './facet/facet.module';
 import { PopupModule } from './popup/popup.module';
+import { PartnerModule } from './partner/partner.module';
 import { ResponsiveModule } from 'ngx-responsive';
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
@@ -104,6 +105,7 @@ export class ConfigService {
     MenuModule,
     ModalModule.forRoot(),
     NgPipesModule,
+    PartnerModule,
     PopupModule,
     ReactiveFormsModule,
     RouterModule,
@@ -150,6 +152,7 @@ export class ConfigService {
     MenuModule,
     ModalModule,
     NgPipesModule,
+    PartnerModule,
     PopupModule,
     ProductImageComponent,
     ReactiveFormsModule,

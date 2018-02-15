@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
 import { StringService } from '../../../../shared/util/string.service';
 import { Product } from '../../../product/product';
@@ -9,28 +9,26 @@ import { Media } from '../../../media/media';
 import { Category } from '../../shared/navigation/category/category';
 import { CategoryService } from '../../shared/navigation/category/category.service';
 import { Observable } from 'rxjs/Observable';
-import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { DocumentReference } from '@firebase/firestore-types';
 import { ProductImageComponent } from './../../../product/product-image/product-image.component';
 import { ProductFormType } from './../../shared/product/form-product';
-import { map, switchMap, combineLatest, retry, timeout, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
 import { AttributeService } from '../../../attribute/attribute.service';
+import { PartnerService } from '../../shared/partner/partner.service';
+import { Partner } from '../../../partner/partner';
 import { Attribute } from '../../../attribute/attribute';
-import { startWith } from 'rxjs/operators/startWith';
 import { DragulaService } from 'ng2-dragula';
 
 @Component({
-  selector: 'app-product-add',
-  templateUrl: './product-add.component.html',
-  styleUrls: ['./product-add.component.scss']
+  selector: 'app-product-edit',
+  templateUrl: './product-edit.component.html',
+  styleUrls: ['./product-edit.component.scss']
 })
-export class ProductAddComponent implements OnInit, OnDestroy {
+export class ProductEditComponent implements OnInit, OnDestroy {
   form: FormGroup;
   product: Product;
   editorConfig: any;
-  medias: Media[];
-
+  medias: Media[] = [];
+  partnersModel: Partner[] = [];
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
@@ -44,7 +42,7 @@ export class ProductAddComponent implements OnInit, OnDestroy {
   @ViewChild(ProductImageComponent) productImageComponent: ProductImageComponent;
 
   _publication = true;
-  _descriptionModel: string;
+  _descriptionModel = '';
   _attributesModel: Attribute[] = [];
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -53,10 +51,8 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     private alertService: AlertService,
     private categoryService: CategoryService,
     private attributeService: AttributeService,
-    private dragulaService: DragulaService) {
-    this.medias = [];
-    this._descriptionModel = '';
-  }
+    private dragulaService: DragulaService,
+    private partnerService: PartnerService) {}
 
   ngOnInit() {
     this.createForm();
@@ -66,6 +62,7 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     this.getCategories();
     this.getAttributes();
     this.subscribeDragAndDrop();
+    this.getPartners();
   }
 
   createForm() {
@@ -94,7 +91,6 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     this.form.valueChanges
       .debounceTime(800)
       .subscribe((value) => {
-        console.log(this.form.valid, this.form.controls);
         if (value.name) {
           const slug = StringService.slugify(value.name);
           this.form.patchValue({ name: value.name, slug: slug, alias: value.name });
@@ -210,7 +206,6 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     this.attributeService.getAttributes()
       .subscribe((attributes: Attribute[]) => {
         this._attributesModel = attributes;
-        console.log(this._attributesModel);
       });
   }
 
@@ -235,6 +230,13 @@ export class ProductAddComponent implements OnInit, OnDestroy {
       this.form.patchValue({ category: category.key });
       this.alertService.toast('categorie selectionnée');
     });
+  }
+
+  getPartners() {
+    this.partnerService.getPartners()
+      .subscribe((partners: Partner[]) => {
+        this.partnersModel = partners;
+      });
   }
 
   subscribeDragAndDrop() {
@@ -283,20 +285,16 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     this.dragulaService.out.unsubscribe();
   }
 
+  addPartnerForm() {
+
+  }
+
   get name() {
     return this.form.get('name');
   }
 
   set name(name) {
     this.form.patchValue({ name: name });
-  }
-
-  get price() {
-    return this.form.get('price');
-  }
-
-  set price(price) {
-    this.form.patchValue({ price: price });
   }
 
   get descriptionModel() {
@@ -315,22 +313,6 @@ export class ProductAddComponent implements OnInit, OnDestroy {
     this.form.patchValue({ description: description });
   }
 
-  get reseller() {
-    return this.form.get('reseller');
-  }
-
-  set reseller(reseller) {
-    this.form.patchValue({ reseller: reseller });
-  }
-
-  get external_url() {
-    return this.form.get('external_url');
-  }
-
-  set external_url(external_url) {
-    this.form.patchValue({ external_url: external_url });
-  }
-
   get category() {
     return this.form.get('category');
   }
@@ -345,6 +327,14 @@ export class ProductAddComponent implements OnInit, OnDestroy {
 
   set fr(fr) {
     this.form.get('translations').patchValue({ fr: fr });
+  }
+
+  get partners() {
+    return this.form.get('partners');
+  }
+
+  set partners(partners) {
+    this.form.get('partners').patchValue({ partners: partners });
   }
 
   get publication() {

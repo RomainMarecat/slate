@@ -3,7 +3,7 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgPipesModule } from 'ngx-pipes';
 import { FileUploadModule } from 'ng2-file-upload';
-import { ImageCropperModule } from 'ng2-img-cropper';
+import { ImageCropperModule } from 'ngx-img-cropper';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../cloudinary.module';
 import { ModalModule } from 'ngx-bootstrap/modal';

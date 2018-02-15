@@ -1,4 +1,4 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Product } from './../../../product/product';
 
 export class ProductFormType {
@@ -27,11 +27,8 @@ export class ProductFormType {
       'keywords': new FormControl(
         product && product.keywords ? product.keywords : '', []
       ),
-      'reseller': new FormControl(product && product.reseller ? product.reseller : '', [
-        Validators.required,
-      ]),
-      'external_url': new FormControl(product && product.external_url ? product.external_url : '', [
-        Validators.required,
+      'partners': new FormArray([
+        this.addPartnerForm(product)
       ]),
       'published': new FormControl(product && product.published ? product.published : true, []),
       'price': new FormControl(product && product.price ? product.price : 0, [
@@ -44,6 +41,20 @@ export class ProductFormType {
         Validators.required,
       ]),
       'attributes': new FormControl(product && product.attributes ? product.attributes : null, []),
+    });
+  }
+
+  addPartnerForm(product) {
+    return new FormGroup({
+      'reseller': new FormControl(product && product.reseller ? product.reseller : '', [
+        Validators.required,
+      ]),
+      'external_url': new FormControl(product && product.external_url ? product.external_url : '', [
+        Validators.required,
+      ]),
+      'price': new FormControl(product && product.price ? product.price : 0, [
+        Validators.required,
+      ]),
     });
   }
 

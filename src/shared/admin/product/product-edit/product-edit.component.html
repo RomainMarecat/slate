@@ -100,31 +100,42 @@
     <mat-card class="mt-3 mat-card">
       <mat-card-content>
         <div class="row">
-          <div class="col-xs-12 col-sm-6">
-            <div class="d-block mt-1">
-              <mat-form-field class="mat-form-field">
-                <input matInput maxlength="100" [placeholder]="'Revendeur'|translate" formControlName="reseller">
-                <mat-hint align="start"><strong [innerHtml]="'Nom du site web/magasin proposant le produit'|translate"></strong></mat-hint>
-                <mat-hint align="end">{{ reseller.value.length }} {{ '/100'|translate }}</mat-hint>
-                <mat-error *ngIf="reseller.invalid && reseller.value.length === 0" [innerHtml]="'Le revendeur ne peut pas être vide'|translate"></mat-error>
-                <mat-error *ngIf="reseller.invalid && reseller.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
-              </mat-form-field>
-            </div>
-            <div class="d-block">
-              <mat-form-field class="mat-form-field">
-                <input matInput type="number" maxlength="5" [placeholder]="'Prix'|translate" formControlName="price">
-                <mat-error *ngIf="price.invalid && price.value && price.value.length === 0" [innerHtml]="'Le prix ne peut pas être vide'|translate"></mat-error>
-                <mat-error *ngIf="price.invalid && price.value && price.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
-              </mat-form-field>
-            </div>
-            <div class="d-block">
-              <mat-form-field class="mat-form-field">
-                <input matInput maxlength="255" [placeholder]="'Lien vers le site'|translate" formControlName="external_url">
-                <mat-hint align="start"><strong [innerHtml]="'Url du site web proposant le produit'|translate"></strong></mat-hint>
-                <mat-hint align="end">{{ external_url.value.length }} {{ '/255'|translate }}</mat-hint>
-                <mat-error *ngIf="external_url.invalid && external_url.value.length === 0" [innerHtml]="'la chaîne de caractère ne peut pas être vide'|translate"></mat-error>
-                <mat-error *ngIf="external_url.invalid && external_url.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
-              </mat-form-field>
+          <div class="col-xs-12 col-sm-6" formGroupName="partners">
+            <h4>Ajouter/Editer des revendeurs</h4>
+            <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let partner of partners; let i = index;">
+              <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+                <div fxFlex="10">
+                  <mat-chip-list>
+                    <mat-chip>{{ partner.name }}</mat-chip>
+                  </mat-chip-list>
+                </div>
+                <div class="mt-1" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px" fxFlex="90" [formGroupName]="i">
+                  <mat-form-field class="mat-form-field" fxFlex="33">
+                    <input matInput maxlength="100" [placeholder]="'Revendeur'|translate" formControlName="reseller">
+                    <mat-hint align="start"><strong [innerHtml]="'Nom du site web/magasin proposant le produit'|translate"></strong></mat-hint>
+                    <mat-hint align="end">{{ partners?.controls[i]?.controls?.reseller?.value?.length }} {{ '/100'|translate }}</mat-hint>
+                    <mat-error *ngIf="partners?.controls[i]?.controls?.reseller?.invalid && partners?.controls[i]?.controls?.reseller?.controls?.value?.length === 0" [innerHtml]="'Le revendeur ne peut pas être vide'|translate"></mat-error>
+                    <mat-error *ngIf="partners?.controls[i]?.controls?.reseller?.invalid && partners?.controls[i]?.controls?.reseller?.value?.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error> -->
+                  </mat-form-field>
+                  <mat-form-field class="mat-form-field" fxFlex="10">
+                    <input matInput type="number" maxlength="5" [placeholder]="'Prix'|translate" formControlName="price">
+                    <mat-error *ngIf="partners.controls[i].controls.price.invalid && partners.controls[i].controls.price.value && partners.controls[i].controls.price.value.length === 0" [innerHtml]="'Le prix ne peut pas être vide'|translate"></mat-error>
+                    <mat-error *ngIf="partners.controls[i].controls.price.invalid && partners.controls[i].controls.price.value && partners.controls[i].controls.price.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="mat-form-field" fxFlex="57">
+                    <input matInput maxlength="255" [placeholder]="'Lien vers le site'|translate" formControlName="external_url">
+                    <mat-hint align="start"><strong [innerHtml]="'Url du site web proposant le produit'|translate"></strong></mat-hint>
+                    <mat-hint align="end">{{ partners.controls[i].controls.external_url.value.length }} {{ '/255'|translate }}</mat-hint>
+                    <mat-error *ngIf="partners.controls[i].controls.external_url.invalid && partners.controls[i].controls.external_url.value.length === 0" [innerHtml]="'la chaîne de caractère ne peut pas être vide'|translate"></mat-error>
+                    <mat-error *ngIf="partners.controls[i].controls.external_url.invalid && partners.controls[i].controls.external_url.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="button-add wrapper mt-5" fxLayout="row" fxLayoutAlign="center stretch">
+                <button type="button" role="button" aria-label="Ajouter un revendeur supplémentaire" mat-mini-fab color="primary" (click)="addPartnerForm()">
+                  <mat-icon aria-hidden="true">add</mat-icon>
+                </button>
+              </div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6">

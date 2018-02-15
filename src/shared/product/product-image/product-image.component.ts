@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter, NgZone } from '@angular/core';
-import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
+import { ImageCropperComponent, CropperSettings } from 'ngx-img-cropper';
 import { Cloudinary } from '../../cloudinary/cloudinary.service';
 import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
 import { Media } from '../../media/media';
@@ -8,10 +8,7 @@ import { ObjectService } from '../../util/object.service';
 import { MediaService } from '../../media/media.service';
 import { DeviceService } from '../../device/device.service';
 import { HttpClient } from '@angular/common/http';
-import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+import { DocumentReference } from '@firebase/firestore-types';
 
 @Component({
   selector: 'app-product-image',
@@ -24,8 +21,6 @@ export class ProductImageComponent implements OnInit {
   @Output() progressStatus: EventEmitter < number > = new EventEmitter < number > ();
   data: any;
   progressData: number;
-  croppedWidth: number;
-  croppedHeight: number;
   cropperSettings: CropperSettings;
   @ViewChild('cropper', undefined) public cropper: ImageCropperComponent;
   uploader: FileUploader;
@@ -35,7 +30,6 @@ export class ProductImageComponent implements OnInit {
   @Input() media: Media;
   @Input() displayValidation: boolean;
   uploaderMessage: string;
-  hasBaseDropZoneOver: boolean;
   cropperClass: string;
   isUploaded: boolean;
 

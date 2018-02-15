@@ -1,30 +1,29 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
-import { ProductComponent } from './product.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductEditComponent } from './product-edit/product-edit.component';
+import { PartnerListComponent } from './partner-list/partner-list.component';
+import { PartnerEditComponent } from './partner-edit/partner-edit.component';
 
 const routes: Routes = [{
     path: '',
     redirectTo: 'list',
     canActivate: [AdminGuard],
-    component: ProductComponent
+    component: PartnerListComponent
   },
   {
     path: 'list',
     canActivate: [AdminGuard],
-    component: ProductListComponent
+    component: PartnerListComponent
   },
   {
     path: 'add',
     canActivate: [AdminGuard],
-    component: ProductEditComponent
+    component: PartnerEditComponent
   },
   {
     path: 'edit/:key',
     canActivate: [AdminGuard],
-    component: ProductEditComponent
+    component: PartnerEditComponent
   },
 ];
 
@@ -32,4 +31,4 @@ const routes: Routes = [{
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProductRoutingModule {}
+export class PartnerRoutingModule {}
