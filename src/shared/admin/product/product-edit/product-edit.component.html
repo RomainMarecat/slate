@@ -102,7 +102,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6" formGroupName="offers">
             <h4>Ajouter/Editer des revendeurs</h4>
-            <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let offer of offers?.value; let i = index;">
+            <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let offer of offers?.controls; let i = index;">
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
                 <div fxFlex="10">
                   <mat-chip-list>
@@ -124,11 +124,11 @@
                   </mat-form-field>
                 </div>
               </div>
-              <div class="button-add wrapper mt-5" fxLayout="row" fxLayoutAlign="center stretch">
-                <button type="button" role="button" aria-label="Ajouter un revendeur supplémentaire" mat-mini-fab color="primary" (click)="addOfferForm()">
-                  <mat-icon aria-hidden="true">add</mat-icon>
-                </button>
-              </div>
+            </div>
+            <div class="button-add wrapper mt-5" fxLayout="row" fxLayoutAlign="center stretch">
+              <button type="button" role="button" aria-label="Ajouter un revendeur supplémentaire" mat-mini-fab color="primary" (click)="addOfferForm()">
+                <mat-icon aria-hidden="true">add</mat-icon>
+              </button>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6">

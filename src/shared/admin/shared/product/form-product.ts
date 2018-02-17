@@ -6,11 +6,62 @@ import { Offer } from './../../../offer/offer';
 export class ProductFormType {
   private form: FormGroup;
 
-  constructor(product ?: Product, partners ?: Array < Partner > , offers ?: Array < Offer > ) {
-    this.createForm(product, partners, offers);
+  constructor(product ?: Product, offers ?: Array < Offer > ) {
+    this.createForm(product, offers);
   }
 
-  createForm(product: Product, partners: Array < Partner >= [], offers: Array < Offer > = []) {
+  static newOffer(): FormGroup {
+    return new FormGroup({
+      'key': new FormControl('', []),
+      'product': new FormControl('', [
+        Validators.required,
+      ]),
+      'partner': new FormControl('', [
+        Validators.required,
+      ]),
+      'external_url': new FormControl('', [
+        Validators.required,
+      ]),
+      'price': new FormControl(0, [
+        Validators.required,
+      ]),
+    });
+  }
+
+  static createOfferForm(product ?: Product, offers: Array < Offer > = []): FormArray {
+    const offersForm: FormArray = new FormArray([new FormControl()]);
+    if (product && product.offers && product.offers.length > 0) {
+      product.offers.forEach((offer: string) => {
+        offersForm.push(ProductFormType.newOffer());
+      });
+    }
+    offers.forEach((offer: Offer) => {
+      if (offers.includes(offer)) {
+        offersForm.push(new FormGroup({
+          'key': new FormControl(offer.key ? offer.key : '', []),
+          'product': new FormControl(offer.product ? offer.product : '', [
+            Validators.required,
+          ]),
+          'partner': new FormControl(offer.partner ? offer.partner : '', [
+            Validators.required,
+          ]),
+          'external_url': new FormControl(offer.external_url ? offer.external_url : '', [
+            Validators.required,
+          ]),
+          'price': new FormControl(offer && offer.price ? offer.price : 0, [
+            Validators.required,
+          ]),
+        }));
+      }
+    });
+    // if (product && offersForm.length === 0) {
+    //   offersForm.push(ProductFormType.newOffer());
+    // }
+
+    return offersForm;
+  }
+
+  createForm(product: Product, offers: Array < Offer > = []): FormGroup {
     this.form = new FormGroup({
       'name': new FormControl(product && product.name ? product.name : '', [
         Validators.required,
@@ -29,7 +80,8 @@ export class ProductFormType {
       'keywords': new FormControl(
         product && product.keywords ? product.keywords : '', []
       ),
-      'offers': this.addOfferForm(product && product.offers ? product.offers : [], partners, offers),
+      // 'offers': ProductFormType.createOfferForm(product ? product : null, offers),
+      'offers': new FormArray([]),
       'published': new FormControl(product && product.published ? product.published : true, []),
       'price': new FormControl(product && product.price ? product.price : 0, [
         Validators.required,
@@ -42,30 +94,11 @@ export class ProductFormType {
       ]),
       'attributes': new FormControl(product && product.attributes ? product.attributes : null, []),
     });
+
+    return this.form;
   }
 
-  addOfferForm(productOffers: Array < string > , partners: Array < Partner > , offers: Array < Offer > ): FormArray {
-    const offersForm: FormArray = new FormArray([]);
-    offers.forEach((offer: Offer) => {
-      if (offers.includes(offer)) {
-        offersForm.push(new FormGroup({
-          'key': new FormControl(offer.key ? offer.key : '', []),
-          'product': new FormControl(offer.product ? offer.product : '', []),
-          'partner': new FormControl(offer.partner ? offer.partner : '', []),
-          'external_url': new FormControl(offer.external_url ? offer.external_url : '', [
-            Validators.required,
-          ]),
-          'price': new FormControl(offer && offer.price ? offer.price : 0, [
-            Validators.required,
-          ]),
-        }));
-      }
-    });
-
-    return offersForm;
-  }
-
-  getForm() {
+  getForm(): FormGroup {
     return this.form;
   }
 
