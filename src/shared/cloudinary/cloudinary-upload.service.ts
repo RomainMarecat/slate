@@ -19,7 +19,6 @@ export class CloudinaryUploadService {
     private mediaService: MediaService) {}
 
   uploadImage(product: Product, url: string): void {
-    console.log(this.cloudinary.config().upload_preset);
     const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/image/upload`;
     const body = this.getSignature(url);
 
@@ -29,7 +28,6 @@ export class CloudinaryUploadService {
     ).subscribe(response =>
       this.createMedia(url, response, product)
       .then((doc: DocumentReference) => {
-        console.log('Add media doc Reference', doc.id);
         const index = product.images.indexOf(url);
         product.images.splice(index, 1);
         product.images.push(doc.id);

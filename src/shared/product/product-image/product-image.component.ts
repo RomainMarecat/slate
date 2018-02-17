@@ -246,7 +246,6 @@ export class ProductImageComponent implements OnInit {
    */
   onMediaChange(media: Media) {
     this.mediaService.addMedia(media).then((doc: DocumentReference) => {
-      console.log('add media doc Reference', doc);
       media.key = doc.id;
       this.imageChanged.emit(media);
     }, (err) => {

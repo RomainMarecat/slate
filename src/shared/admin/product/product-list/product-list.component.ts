@@ -69,7 +69,10 @@ export class ProductListComponent implements OnInit {
     ];
   }
 
-
+  /**
+   * Update a publication
+   * @param product
+   */
   private updatePublication(product: Product) {
     if (product.published === true) {
       if (!product.published_at) {
@@ -82,6 +85,11 @@ export class ProductListComponent implements OnInit {
     this.productService.updateProduct(product);
   }
 
+  /**
+   * set published value
+   * @param product
+   * @param event
+   */
   updateProductPublication(product: Product, event: { source: any, value: boolean }) {
     product.published = event.value;
     this.updatePublication(product);
@@ -99,6 +107,9 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  /**
+   * Unpublish product
+   */
   unpublishProduct() {
     this.selected.forEach((product: Product) => {
       if (product.published === true) {
@@ -108,6 +119,9 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  /**
+   * Upload medias from product selected list
+   */
   uploadMedia() {
     this.selected.forEach((product: Product, indexProducts: number) => {
       product.images.forEach((image: string, indexImages: number) => {
@@ -127,10 +141,18 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  /**
+   * delete a single product after confirmation
+   * @param product
+   */
   deleteProduct(product: Product) {
     this.productService.deleteProduct(product);
   }
 
+  /**
+   * confirm to delete message product
+   * @param product
+   */
   confirmDelete(product: Product) {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '500px',
@@ -148,6 +170,11 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  /**
+   * route to show product preview
+   * @param product
+   * @returns {string}
+   */
   showProduct(product: Product) {
     return ([
       '/product/',
@@ -157,6 +184,10 @@ export class ProductListComponent implements OnInit {
     ]).join('');
   }
 
+  /**
+   * route to edit product
+   * @param product
+   */
   editProduct(product: Product) {
     this.router.navigate(['/admin/product/edit/', product.key]);
   }
@@ -229,12 +260,20 @@ export class ProductListComponent implements OnInit {
     this.selected.push(...selected);
   }
 
+  /**
+   * on product activation
+   * @param event
+   */
   onActivate(event) {
     if (event.type === 'dblclick') {
       this.router.navigate(['/admin/product/edit/', event.row.key]);
     }
   }
 
+  /**
+   * expand row
+   * @param row
+   */
   toggleExpandRow(row) {
     this.dataTableComponentTable.rowDetail.toggleExpandRow(row);
   }
@@ -247,7 +286,7 @@ export class ProductListComponent implements OnInit {
 
   /**
    * Filtre sur les colonnes du produit
-   * @param {string } }} event [description]
+   * @param string event
    */
   updateFilter(filter: Filter) {
     if (filter.value && filter.column) {

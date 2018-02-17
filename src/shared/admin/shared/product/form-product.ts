@@ -10,19 +10,17 @@ export class ProductFormType {
     this.createForm(product, offers);
   }
 
-  static newOffer(): FormGroup {
+  static newOffer(offer ?: Offer): FormGroup {
     return new FormGroup({
-      'key': new FormControl('', []),
-      'product': new FormControl('', [
+      'key': new FormControl(offer && offer.key ? offer.key : '', []),
+      'product': new FormControl(offer && offer.product ? offer.product : '', []),
+      'partner': new FormControl(offer && offer.partner ? offer.partner : '', [
         Validators.required,
       ]),
-      'partner': new FormControl('', [
+      'external_url': new FormControl(offer && offer.external_url ? offer.external_url : '', [
         Validators.required,
       ]),
-      'external_url': new FormControl('', [
-        Validators.required,
-      ]),
-      'price': new FormControl(0, [
+      'price': new FormControl(offer && offer.price ? offer.price : 0, [
         Validators.required,
       ]),
     });

@@ -32,6 +32,13 @@ export class AttributeEditComponent implements OnInit {
   _term = '';
   _orderByModel = 'name';
 
+  /**
+   *
+   * @param activatedRoute
+   * @param router
+   * @param alertService
+   * @param attributeService
+   */
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
     private alertService: AlertService,
@@ -47,6 +54,7 @@ export class AttributeEditComponent implements OnInit {
     const formType = new AttributeFormType(this.attribute);
     this.form = formType.getForm();
   }
+
 
   getAttribute() {
     this.activatedRoute.params.subscribe((value: { key: string }) => {
@@ -99,7 +107,6 @@ export class AttributeEditComponent implements OnInit {
     if (this.form.valid) {
       this.attribute = { ...this.attribute, ...this.form.value };
       if (this.attribute.key) {
-        console.log('Update attribute', this.attribute);
         this.attributeService.updateAttribute(this.attribute)
           .then((doc) => {
             this.alertService.toast(`attribute updated ${this.attribute.translations.fr}`);
@@ -109,8 +116,6 @@ export class AttributeEditComponent implements OnInit {
           });
         this.router.navigate(['/admin/attribute']);
       } else {
-        console.log('New attribute', this.attribute);
-
         this.attributeService.createAttribute(this.attribute)
           .then((doc: DocumentReference) => {
             this.alertService.toast(`attribute added ${doc.id}`);
@@ -122,6 +127,10 @@ export class AttributeEditComponent implements OnInit {
     }
   }
 
+  /**
+   *
+   * @param event
+   */
   addTerm(event: any) {
     this._termsModel.push(this._term);
     this.form.patchValue({ terms: this._termsModel });

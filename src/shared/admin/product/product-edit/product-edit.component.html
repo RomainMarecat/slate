@@ -3,7 +3,7 @@
     <mat-card class="mat-card mt-3">
       <mat-card-header fxLayout="row" fxLayoutAlign="center stretch">
         <mat-card-subtitle>
-          <button mat-icon-button color="warn" mat-mini-fab class="absolute-fab" [routerLink]="['/admin/product']">
+          <button type="button" role="button" mat-icon-button color="warn" mat-mini-fab class="absolute-fab" [routerLink]="['/admin/product']">
             <mat-icon aria-label="back">arrow_left</mat-icon>
           </button>
         </mat-card-subtitle>
@@ -104,24 +104,29 @@
             <h4>Ajouter/Editer des revendeurs</h4>
             <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let offer of offers?.controls; let i = index;">
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                <div fxFlex="10">
-                  <mat-chip-list>
-                    <!-- Call component who get by id partner name -->
-                  </mat-chip-list>
-                </div>
-                <div class="mt-1" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px" fxFlex="90" [formGroupName]="i">
+                <div class="mt-1" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px" fxFlex="100" [formGroupName]="i">
+                  <mat-form-field class="mat-form-field" fxFlex="50">
+                    <mat-select placeholder="Sélectionner un partenaire" name="partner" formControlName="partner">
+                      <mat-option [value]="partner?.key" *ngFor="let partner of partners">
+                        {{ partner?.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                   <mat-form-field class="mat-form-field" fxFlex="10">
                     <input matInput type="number" maxlength="5" [placeholder]="'Prix'|translate" formControlName="price">
                     <mat-error *ngIf="offers.controls[i].controls.price.invalid && offers.controls[i].controls.price.value && offers.controls[i].controls.price.value.length === 0" [innerHtml]="'Le prix ne peut pas être vide'|translate"></mat-error>
                     <mat-error *ngIf="offers.controls[i].controls.price.invalid && offers.controls[i].controls.price.value && offers.controls[i].controls.price.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
                   </mat-form-field>
-                  <mat-form-field class="mat-form-field" fxFlex="57">
-                    <input matInput maxlength="255" [placeholder]="'Lien vers le site'|translate" formControlName="external_url">
+                  <mat-form-field class="mat-form-field" fxFlex="40">
+                    <input matInput type="url" maxlength="255" [placeholder]="'Lien vers le site'|translate" formControlName="external_url">
                     <mat-hint align="start"><strong [innerHtml]="'Url du site web proposant le produit'|translate"></strong></mat-hint>
                     <mat-hint align="end">{{ offers.controls[i].controls.external_url.value.length }} {{ '/255'|translate }}</mat-hint>
                     <mat-error *ngIf="offers.controls[i].controls.external_url.invalid && offers.controls[i].controls.external_url.value.length === 0" [innerHtml]="'la chaîne de caractère ne peut pas être vide'|translate"></mat-error>
                     <mat-error *ngIf="offers.controls[i].controls.external_url.invalid && offers.controls[i].controls.external_url.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
                   </mat-form-field>
+                  <button type="button" mat-icon-button color="accent" (click)="deleteOffer(i)">
+                    <mat-icon aria-label="Supprimer">delete</mat-icon>
+                  </button>
                 </div>
               </div>
             </div>
@@ -170,8 +175,8 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="d-flex justify-content-around">
-          <button type="button" class="back" mat-raised-button color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/product']"></button>
-          <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid" [innerHtml]="'Enregistrer'|translate"></button>
+          <button type="button" class="back" role="button" color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/product']"></button>
+          <button type="submit" class="validate" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid" [innerHtml]="'Enregistrer'|translate"></button>
         </div>
       </mat-card-actions>
     </mat-card>

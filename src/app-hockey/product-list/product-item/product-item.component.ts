@@ -24,7 +24,6 @@ export class ProductItemComponent implements OnInit {
 
   ngOnInit() {
     if (this.product) {
-      console.log(this.product.images);
       if (this.product.images[0] && this.product.images[0].indexOf('http') === -1) {
         this.image = this.product.images[0];
       }

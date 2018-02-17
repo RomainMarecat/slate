@@ -60,7 +60,6 @@ export class PartnerEditComponent implements OnInit {
         if (this.partner.published === true) {
           this.partner.published_at = new Date();
         }
-        console.log('Update partner', this.partner);
         this.partnerService.updatePartner(this.partner)
           .then((doc) => {
             this.alertService.toast(`partner updated ${this.partner.name}`);
@@ -70,8 +69,6 @@ export class PartnerEditComponent implements OnInit {
           });
         this.router.navigate(['/admin/partner']);
       } else {
-        console.log('New partner', this.partner);
-
         this.partnerService.createPartner(this.partner)
           .then((doc: DocumentReference) => {
             this.alertService.toast(`partner added ${doc.id}`);
@@ -102,14 +99,6 @@ export class PartnerEditComponent implements OnInit {
 
   set website(website) {
     this.form.patchValue({ website: website });
-  }
-
-  get fr() {
-    return this.form.get('translations').get('fr');
-  }
-
-  set fr(fr) {
-    this.form.get('translations').patchValue({ fr: fr });
   }
 
   get published() {

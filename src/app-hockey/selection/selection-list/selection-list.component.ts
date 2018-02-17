@@ -81,7 +81,6 @@ export class SelectionListComponent implements OnInit {
   expandChildren(selection: Selection) {
     this.currentSelectedSelection = selection;
     const selected = this.findOneBy(selection, 'key', selection.key);
-    console.log('expandChildren', selection, selected);
     if (selected.children && selected.children.length > 0) {
       const root = this.findRoot(selected);
       root.children = selected.children;

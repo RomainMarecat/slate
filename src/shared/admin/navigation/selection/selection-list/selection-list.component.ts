@@ -106,9 +106,7 @@ export class SelectionListComponent implements OnInit {
           }
         });
 
-        dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed', result);
-        });
+        dialogRef.afterClosed().subscribe(result => {});
       });
   }
 
@@ -119,7 +117,6 @@ export class SelectionListComponent implements OnInit {
     this.menuService.nextTitle('Selection');
     this.selectionService.getSelections()
       .subscribe((selections: Selection[]) => {
-        console.log(selections);
         this.selections = selections.sort((prev: Selection, next: Selection) => {
           return prev.translations.fr > next.translations.fr ? 1 : -1;
         });

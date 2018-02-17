@@ -2,7 +2,7 @@
   <mat-card class="mat-card">
     <mat-card-header fxLayout="row" fxLayoutAlign="center stretch">
       <mat-card-subtitle *ngIf="showBackButton === true">
-        <button mat-icon-button color="warn" mat-mini-fab class="absolute-fab" [routerLink]="['/admin/partner']">
+        <button type="button" color="warn" mat-mini-fab class="absolute-fab" [routerLink]="['/admin/partner']">
           <mat-icon aria-label="back">arrow_left</mat-icon>
         </button>
       </mat-card-subtitle>
@@ -25,7 +25,7 @@
           <mat-error *ngIf="name.invalid && name.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
         </mat-form-field>
         <mat-form-field class="mat-form-field">
-          <input matInput maxlength="255" [placeholder]="'Lien vers le site'|translate" formControlName="website">
+          <input matInput type="url" maxlength="255" [placeholder]="'Lien vers le site'|translate" formControlName="website">
           <mat-hint align="start"><strong [innerHtml]="'Url du site web'|translate"></strong></mat-hint>
           <mat-hint align="end">{{ website.value.length }} {{ '/255'|translate }}</mat-hint>
           <mat-error *ngIf="website.invalid && website.value.length === 0" [innerHtml]="'la chaîne de caractère ne peut pas être vide'|translate"></mat-error>
@@ -47,8 +47,8 @@
     </mat-card-content>
     <mat-card-actions>
       <div class="d-flex justify-content-around">
-        <button type="button" class="back" mat-raised-button color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/partner']"></button>
-        <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid" [innerHtml]="'Enregistrer'|translate"></button>
+        <button type="button" class="back" role="button" color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/partner']"></button>
+        <button type="submit" class="validate" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid" [innerHtml]="'Enregistrer'|translate"></button>
       </div>
     </mat-card-actions>
   </mat-card>
