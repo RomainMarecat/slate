@@ -1,12 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Product } from '../product/product';
 import { Document } from './document';
 import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot, DocumentReference, DocumentData } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 @Injectable()
 export class VisitorService {
@@ -25,8 +23,9 @@ export class VisitorService {
   table: string;
 
   /**
-   * @param AngularFirestore afs
-   * @param string           table
+   *
+   * @param {AngularFirestore} afs
+   * @param {string} table
    */
   constructor(private afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
     this.table = table;

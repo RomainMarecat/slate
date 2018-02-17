@@ -17,7 +17,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
 
 import { FileUploadModule } from 'ng2-file-upload';
-import { ImageCropperModule } from 'ng2-img-cropper';
+import { ImageCropperModule } from 'ngx-img-cropper';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
@@ -46,7 +46,9 @@ import { ProductListModule } from '../product-list/product-list.module';
 import { ProductDetailModule } from '../product-detail/product-detail.module';
 import { SelectionModule } from '../selection/selection.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
+import { PartnerService } from '../../shared/partner/partner.service';
 import { VisitorService } from '../../shared/firestore/visitor.service';
+import {OfferService} from '../../shared/offer/offer.service';
 
 export const production = new InjectionToken < string > ('production');
 export const site_name = new InjectionToken < string > ('site_name');
@@ -63,7 +65,17 @@ export function createTranslateLoader(http: HttpClient, name: string) {
 }
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
-export const TABLE_NAME = new InjectionToken < string > ('attribute');
+export const TABLE_PRODUCT = new InjectionToken < string > ('product');
+export const TABLE_CATEGORY = new InjectionToken < string > ('category');
+export const TABLE_SELECTION = new InjectionToken < string > ('selection');
+export const TABLE_SCORE = new InjectionToken < string > ('score');
+export const TABLE_CMS = new InjectionToken < string > ('cms');
+export const TABLE_CMS_DETAIL = new InjectionToken < string > ('cms_detail');
+export const TABLE_MEDIA = new InjectionToken < string > ('media');
+export const TABLE_POST = new InjectionToken < string > ('post');
+export const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
+export const TABLE_OFFER = new InjectionToken < string > ('offer');
+export const TABLE_PARTNER = new InjectionToken < string > ('partner');
 
 @Injectable()
 export class ConfigService {
@@ -145,11 +157,25 @@ export const cookieConfig: NgcCookieConsentConfig = {
   ],
   providers: [
     { provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN] },
+    { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
+    { provide: TABLE_PARTNER, useValue: 'partner' },
+    { provide: TABLE_PRODUCT, useValue: 'product' },
+    { provide: TABLE_CATEGORY, useValue: 'category' },
+    { provide: TABLE_SELECTION, useValue: 'selection' },
+    { provide: TABLE_SCORE, useValue: 'score' },
+    { provide: TABLE_CMS, useValue: 'cms' },
+    { provide: TABLE_CMS_DETAIL, useValue: 'cms_detail' },
+    { provide: TABLE_OFFER, useValue: 'offer' },
+    { provide: TABLE_POST, useValue: 'post' },
+    { provide: TABLE_MEDIA, useValue: 'media' },
+    { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
+    { provide: TABLE_PARTNER, useValue: 'partner' },
     { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
-    { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, app_name] },
-    { provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, app_name] },
-    { provide: TABLE_NAME, useValue: 'attribute' },
-    { provide: AttributeService, useClass: VisitorService, deps: [AngularFirestore, TABLE_NAME] },
+    { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA] },
+    { provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION] },
+    { provide: AttributeService, useClass: VisitorService, deps: [AngularFirestore, TABLE_ATTRIBUTE] },
+    { provide: OfferService, useClass: VisitorService, deps: [AngularFirestore, TABLE_OFFER] },
+    { provide: PartnerService, useClass: VisitorService, deps: [AngularFirestore, TABLE_PARTNER] },
     AlertService,
     DateService,
     DeviceService,

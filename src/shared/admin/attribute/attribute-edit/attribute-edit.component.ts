@@ -1,14 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
 import { StringService } from '../../../../shared/util/string.service';
-import { Observable } from 'rxjs/Observable';
-import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
-import { ProductFormType } from './../../shared/product/form-product';
+import { DocumentReference } from '@firebase/firestore-types';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { Attribute } from './../../../attribute/attribute';
 import { AttributeFormType } from './../../shared/attribute/form-attribute';

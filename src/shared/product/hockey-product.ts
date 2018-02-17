@@ -21,7 +21,7 @@ export interface HockeyProduct {
   published: boolean;
   delivery_fee ?: number;
   reseller ?: string;
-  resellers ?: string[];
+  offers ?: string[];
   key ?: string;
   user: string;
   creator ?: string;

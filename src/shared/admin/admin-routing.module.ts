@@ -30,6 +30,11 @@ const routes: Routes = [{
   },
   {
     canActivate: [AdminGuard],
+    path: 'partner',
+    loadChildren: './partner/partner.module#PartnerModule'
+  },
+  {
+    canActivate: [AdminGuard],
     path: 'product',
     loadChildren: './product/product.module#ProductModule'
   },

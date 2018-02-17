@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
 import { ProductComponent } from './product.component';
 import { ProductListComponent } from './product-list/product-list.component';
-import { ProductAddComponent } from './product-add/product-add.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 const routes: Routes = [{
     path: '',
@@ -19,12 +19,12 @@ const routes: Routes = [{
   {
     path: 'add',
     canActivate: [AdminGuard],
-    component: ProductAddComponent
+    component: ProductEditComponent
   },
   {
     path: 'edit/:key',
     canActivate: [AdminGuard],
-    component: ProductAddComponent
+    component: ProductEditComponent
   },
 ];
 

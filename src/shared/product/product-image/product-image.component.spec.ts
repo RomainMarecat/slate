@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductImageComponent } from './product-image.component';
 import { FileUploadModule } from 'ng2-file-upload';
-import { ImageCropperModule } from 'ng2-img-cropper';
+import { ImageCropperModule } from 'ngx-img-cropper';
 import {
   MatIconModule,
   MatButtonModule,

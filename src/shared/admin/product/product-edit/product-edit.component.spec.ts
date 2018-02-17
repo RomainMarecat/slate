@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductAddComponent } from './product-add.component';
+import { ProductEditComponent } from './product-edit.component';
 import { ProductImageOrderComponent } from './../product-image-order/product-image-order.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
@@ -47,20 +47,21 @@ import { CategoryService } from '../../shared/navigation/category/category.servi
 import { MockCategoryService } from '../../shared/navigation/category/mock-category.service';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { MockAttributeService } from '../../../attribute/mock-attribute.service';
+import { PartnerService } from '../../shared/partner/partner.service';
+import { MockPartnerService } from '../../shared/partner/mock-partner.service';
+import { OfferService } from '../../shared/offer/offer.service';
+import { MockOfferService } from '../../shared/offer/mock-offer.service';
 
-describe('ProductAddComponent', () => {
-  let component: ProductAddComponent;
-  let fixture: ComponentFixture < ProductAddComponent > ;
+describe('ProductEditComponent', () => {
+  let component: ProductEditComponent;
+  let fixture: ComponentFixture < ProductEditComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [
           CommonModule,
           BrowserModule,
-          HttpClientModule,
-          FormsModule,
           RouterTestingModule,
-          ReactiveFormsModule,
           BrowserAnimationsModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           SharedModule,
@@ -77,18 +78,20 @@ describe('ProductAddComponent', () => {
           }),
         ],
         declarations: [
-          ProductAddComponent,
+          ProductEditComponent,
           ProductImageOrderComponent,
         ],
         providers: [
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: UserService, useClass: MockUserService },
-          { provide: MediaService, useClass: MockMediaService },
-          { provide: CategoryService, useClass: MockCategoryService },
-          { provide: ProductService, useClass: MockProductService },
-          { provide: NotificationService, useClass: MockNotificationService },
           { provide: AttributeService, useClass: MockAttributeService },
+          { provide: AlertService, useClass: MockAlertService },
+          { provide: CategoryService, useClass: MockCategoryService },
+          { provide: LoaderService, useClass: MockLoaderService },
+          { provide: MediaService, useClass: MockMediaService },
+          { provide: NotificationService, useClass: MockNotificationService },
+          { provide: PartnerService, useClass: MockPartnerService },
+          { provide: OfferService, useClass: MockOfferService },
+          { provide: ProductService, useClass: MockProductService },
+          { provide: UserService, useClass: MockUserService },
           DateService,
           ObjectService,
           I18nService,
@@ -99,7 +102,7 @@ describe('ProductAddComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductAddComponent);
+    fixture = TestBed.createComponent(ProductEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

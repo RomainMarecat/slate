@@ -1,0 +1,67 @@
+<div class="partner-list-wrapper py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px">
+  <ngx-datatable fxFlex="70" #dataTableComponentTable class="material striped scrolling-partners expandable" [columnMode]="'force'" [rows]="partners" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'></ngx-datatable>
+  <app-partner-edit fxFlex="30"></app-partner-edit>
+</div>
+<!-- <button color="primary" type="button" aria-label="Ajouter un partenaire" [routerLink]="['/admin/partner/add']" mat-mini-fab class="absolute-fab pulse">
+  <mat-icon aria-hidden="true">add</mat-icon>
+</button> -->
+<!-- Header Template -->
+<ng-template #desktopHeader let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+  <span class="mobile-hidden">{{column.name}}</span>
+</ng-template>
+<ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+  <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+  <span>({{selected?.length}})</span>
+</ng-template>
+<!-- Cell Template -->
+<ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn" let-row="row" let-expanded="expanded">
+  <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+  <button mat-icon-button role="button" type="button" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded" title="Expand/Collapse Row" (click)="toggleExpandRow(row)" class="desktop-hidden">
+  </button>
+</ng-template>
+<ng-template #imageCell ngx-datatable-cell-template let-value="value" let-row="row">
+  <a (click)="editPartner(row)">
+    <app-media-viewer class="py-0" [key]="item" [resize]="{height: headerHeight}" *ngFor="let item of value"></app-media-viewer>
+  </a>
+</ng-template>
+<ng-template #actionsCell let-row="row" ngx-datatable-cell-template>
+  <div class="partner-actions" fxLayout="row" fxLayoutAlign="space-around stretch">
+    <a class="mobile-hidden" (click)="editPartner(row)" aria-label="Edit">
+      <mat-icon aria-hidden="true">mode_edit</mat-icon>
+    </a>
+    <a class="mobile-hidden" (click)="confirmDelete(row)" aria-label="Del">
+      <mat-icon aria-hidden="true">delete</mat-icon>
+    </a>
+  </div>
+</ng-template>
+<ng-template #desktopCell let-value="value" ngx-datatable-cell-template>
+  <span class="mobile-hidden">{{value}}</span>
+</ng-template>
+<ng-template #publicationCell let-value="value" let-row="row" ngx-datatable-cell-template>
+  <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group mobile-hidden" [value]="value" (change)="updatePartnerPublication(row, $event)">
+    <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
+      <span class="text-success">Publié</span>
+    </mat-radio-button>
+    <mat-radio-button #unpublished class="publication-radio-button" [value]="false" color="accent">
+      <span class="text-danger">Non publié</span>
+    </mat-radio-button>
+  </mat-radio-group>
+</ng-template>
+<ng-template #priceCell let-value="value" ngx-datatable-cell-template>
+  <span class="mobile-hidden">{{value}} €</span>
+</ng-template>
+<ng-template #translationsFrCell let-value="value" let-row="row" ngx-datatable-cell-template>
+  <span class="mobile-hidden">{{value}}</span>
+  <p class="desktop-hidden">{{value}}</p>
+  <div class="desktop-hidden" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+    <span *ngIf="row.published" class="text-success">publié</span>
+    <span *ngIf="!row.published" class="text-danger">non publié</span>
+    <span>|</span>
+    <a (click)="editPartner(row)">
+      <mat-icon>mode_edit</mat-icon>
+    </a>
+    <a (click)="confirmDelete(row)">
+      <mat-icon>delete</mat-icon>
+    </a>
+  </div>
+</ng-template>
