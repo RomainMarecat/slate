@@ -67,25 +67,19 @@ export class PartnerListComponent implements OnInit {
       prop: 'name',
       name: 'Nom',
       flexGrow: 1,
-      headerTemplate: this.desktopHeader,
-      cellTemplate: this.desktopCell,
     }, {
       prop: 'website',
       name: 'Site web',
       flexGrow: 1,
-      headerTemplate: this.desktopHeader,
-      cellTemplate: this.desktopCell,
     }, {
       prop: 'published',
       name: 'Publication',
       flexGrow: 1,
-      headerTemplate: this.desktopHeader,
       cellTemplate: this.publicationCell,
     }, {
       prop: 'key',
       name: 'Actions',
       flexGrow: 1,
-      headerTemplate: this.desktopHeader,
       cellTemplate: this.actionsCell,
     }];
   }
@@ -126,6 +120,10 @@ export class PartnerListComponent implements OnInit {
         this.updatePublication(partner);
       }
     });
+  }
+
+  editPartner(partner: Partner) {
+    this.router.navigate(['/admin/partner/edit/', partner.key]);
   }
 
   /**

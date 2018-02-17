@@ -7,6 +7,10 @@ export class MockUserService {
     return mockUser;
   }
 
+  isAdmin(): Observable < boolean > {
+    return Observable.of(true);
+  }
+
   getAuthState(): Observable < User > {
     return Observable.of(mockUser);
   }

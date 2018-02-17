@@ -10,7 +10,6 @@ import 'rxjs/add/operator/do';
 export class AdminGuard implements CanActivate {
   authorized: string[] = [];
 
-
   constructor(private afAuth: AngularFireAuth, private router: Router) {
     this.authorized.push('6glT4N2SUMW2HWibhefumuRiVIh2');
     this.authorized.push('oIAtyPwagRfIKxSwX6O3ncGocyD3');

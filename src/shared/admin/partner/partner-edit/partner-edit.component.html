@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="savePartner()" class="form" fxLayout="row" fxLayoutAlign="center stretch">
   <mat-card class="mat-card">
     <mat-card-header fxLayout="row" fxLayoutAlign="center stretch">
-      <mat-card-subtitle>
+      <mat-card-subtitle *ngIf="showBackButton === true">
         <button mat-icon-button color="warn" mat-mini-fab class="absolute-fab" [routerLink]="['/admin/partner']">
           <mat-icon aria-label="back">arrow_left</mat-icon>
         </button>

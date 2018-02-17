@@ -2,8 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
 import { ProductService } from '../../../shared/product/product.service';
+import { UserService } from '../../../shared/user/user.service';
 import { CloudinaryUploadService } from './../../../shared/cloudinary/cloudinary-upload.service';
 import { StringService } from '../../../shared/util/string.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-product-item',
@@ -13,10 +15,12 @@ import { StringService } from '../../../shared/util/string.service';
 export class ProductItemComponent implements OnInit {
   @Input('product') product: HockeyProduct;
   image: string;
+  editable: Observable < boolean > = Observable.of(false);
 
   constructor(private router: Router,
     private productService: ProductService,
-    private cloudinaryUploadService: CloudinaryUploadService) {}
+    private cloudinaryUploadService: CloudinaryUploadService,
+    private userService: UserService) {}
 
   ngOnInit() {
     if (this.product) {
@@ -25,6 +29,7 @@ export class ProductItemComponent implements OnInit {
         this.image = this.product.images[0];
       }
     }
+    this.editable = this.userService.isAdmin();
   }
 
   productDetail(event: any) {
