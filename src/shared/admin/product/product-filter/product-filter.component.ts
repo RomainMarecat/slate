@@ -10,7 +10,7 @@ export class ProductFilterComponent implements OnInit {
   @Output('filtered') filtered: EventEmitter < Filter > = new EventEmitter < Filter > ();
   columnSelected = 'translations.fr';
   columns: any;
-  filterText: string = '';
+  filterText = '';
 
   constructor() {}
 
