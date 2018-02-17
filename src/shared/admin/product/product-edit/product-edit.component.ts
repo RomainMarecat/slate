@@ -39,7 +39,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   selected: Category[] = [];
   filteredAttributes: Observable < any[] > ;
 
-  isLoading: boolean = false;
+  isLoading = false;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
   @ViewChild(ProductImageComponent) productImageComponent: ProductImageComponent;
