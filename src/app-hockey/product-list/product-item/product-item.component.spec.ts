@@ -4,7 +4,7 @@ import { ProductItemComponent } from './product-item.component';
 import { ProductActionComponent } from './../product-action/product-action.component';
 import { CommonModule } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatCardModule, MatIconModule } from '@angular/material';
 import { NgPipesModule } from 'ngx-pipes';
@@ -19,6 +19,9 @@ import { ProductService } from '../../../shared/product/product.service';
 import { MockProductService } from '../../../shared/product/mock-product.service';
 import { MockMediaService } from '../../../shared/media/mock-media.service';
 import { MediaService } from '../../../shared/media/media.service';
+import { MockUserService } from '../../../shared/user/mock-user.service';
+import { UserService } from '../../../shared/user/user.service';
+
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -30,7 +33,7 @@ describe('ProductItemComponent', () => {
           CommonModule,
           RouterTestingModule,
           BrowserModule,
-          HttpClientModule,
+          HttpClientTestingModule,
           MatIconModule,
           MatCardModule,
           NgPipesModule,
@@ -52,6 +55,7 @@ describe('ProductItemComponent', () => {
         providers: [
           { provide: ProductService, useClass: MockProductService },
           { provide: MediaService, useClass: MockMediaService },
+          { provide: UserService, useClass: MockUserService },
         ]
       })
       .compileComponents();

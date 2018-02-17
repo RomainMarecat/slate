@@ -13,6 +13,8 @@ import { PartnerFormType } from '../../shared/partner/form-partner';
   styleUrls: ['./partner-edit.component.scss']
 })
 export class PartnerEditComponent implements OnInit {
+  @Input() showBackButton = true;
+
   form: FormGroup;
   partner: Partner;
   _publication = true;

@@ -10,8 +10,11 @@ import 'rxjs/add/operator/do';
 
 @Injectable()
 export class UserService {
+  authorized: string[] = [];
 
   constructor(private afAuth: AngularFireAuth, private alertService: AlertService) {
+    this.authorized.push('6glT4N2SUMW2HWibhefumuRiVIh2');
+    this.authorized.push('oIAtyPwagRfIKxSwX6O3ncGocyD3');
     this.afAuth.auth.onAuthStateChanged((user) => {
       if (!user) {
         this.clear();
@@ -19,6 +22,19 @@ export class UserService {
     }, (err) => {
       this.clear();
     });
+  }
+
+  isAdmin(): Observable < boolean > {
+    return this.afAuth.authState
+      .take(1)
+      .map(authState => {
+        return authState && this.authorized.includes(authState.uid);
+      })
+      .do(authenticated => {
+        if (!authenticated) {
+          return false;
+        }
+      });
   }
 
   isAuthenticated(): Observable < boolean > {

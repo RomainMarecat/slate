@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormArray } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
 import { StringService } from '../../../../shared/util/string.service';
 import { Product } from '../../../product/product';
@@ -30,7 +30,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   product: Product;
   editorConfig: any;
   medias: Media[] = [];
-  partnersModel: Partner[] = [];
+  partners: Partner[] = [];
   productOffers: Offer[] = [];
   readonly headerHeight = 50;
   readonly rowHeight = 50;
@@ -239,7 +239,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   getPartners() {
     this.partnerService.getPartners()
       .subscribe((partners: Partner[]) => {
-        this.partnersModel = partners;
+        this.partners = partners;
       });
   }
 
@@ -296,8 +296,16 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.dragulaService.out.unsubscribe();
   }
 
-  addPartnerForm() {
+  addOfferForm() {
+    if (typeof this.product.offers === 'undefined') {
+      this.product.offers = [];
+    }
+    this.offers.push(ProductFormType.newOffer());
+    console.log('add offer');
+  }
 
+  get offers(): FormArray {
+    return this.form.get('offers') as FormArray;
   }
 
   get name() {
@@ -338,22 +346,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   set fr(fr) {
     this.form.get('translations').patchValue({ fr: fr });
-  }
-
-  get partners() {
-    return this.form.get('partners');
-  }
-
-  set partners(partners) {
-    this.form.get('partners').patchValue({ partners: partners });
-  }
-
-  get offers() {
-    return this.form.get('offers');
-  }
-
-  set offers(offers) {
-    this.form.get('offers').patchValue({ offers: offers });
   }
 
   get publication() {
