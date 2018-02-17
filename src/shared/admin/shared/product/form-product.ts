@@ -1,14 +1,16 @@
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Product } from './../../../product/product';
+import { Partner } from './../../../partner/partner';
+import { Offer } from './../../../offer/offer';
 
 export class ProductFormType {
   private form: FormGroup;
 
-  constructor(product ?: Product) {
-    this.createForm(product);
+  constructor(product ?: Product, partners ?: Array < Partner > , offers ?: Array < Offer > ) {
+    this.createForm(product, partners, offers);
   }
 
-  createForm(product: Product) {
+  createForm(product: Product, partners: Array < Partner >= [], offers: Array < Offer > = []) {
     this.form = new FormGroup({
       'name': new FormControl(product && product.name ? product.name : '', [
         Validators.required,
@@ -27,9 +29,7 @@ export class ProductFormType {
       'keywords': new FormControl(
         product && product.keywords ? product.keywords : '', []
       ),
-      'partners': new FormArray([
-        this.addPartnerForm(product)
-      ]),
+      'offers': this.addOfferForm(product && product.offers ? product.offers : [], partners, offers),
       'published': new FormControl(product && product.published ? product.published : true, []),
       'price': new FormControl(product && product.price ? product.price : 0, [
         Validators.required,
@@ -44,18 +44,25 @@ export class ProductFormType {
     });
   }
 
-  addPartnerForm(product) {
-    return new FormGroup({
-      'reseller': new FormControl(product && product.reseller ? product.reseller : '', [
-        Validators.required,
-      ]),
-      'external_url': new FormControl(product && product.external_url ? product.external_url : '', [
-        Validators.required,
-      ]),
-      'price': new FormControl(product && product.price ? product.price : 0, [
-        Validators.required,
-      ]),
+  addOfferForm(productOffers: Array < string > , partners: Array < Partner > , offers: Array < Offer > ): FormArray {
+    const offersForm: FormArray = new FormArray([]);
+    offers.forEach((offer: Offer) => {
+      if (offers.includes(offer)) {
+        offersForm.push(new FormGroup({
+          'key': new FormControl(offer.key ? offer.key : '', []),
+          'product': new FormControl(offer.product ? offer.product : '', []),
+          'partner': new FormControl(offer.partner ? offer.partner : '', []),
+          'external_url': new FormControl(offer.external_url ? offer.external_url : '', [
+            Validators.required,
+          ]),
+          'price': new FormControl(offer && offer.price ? offer.price : 0, [
+            Validators.required,
+          ]),
+        }));
+      }
     });
+
+    return offersForm;
   }
 
   getForm() {

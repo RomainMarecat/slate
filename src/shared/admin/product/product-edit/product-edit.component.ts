@@ -15,8 +15,10 @@ import { ProductFormType } from './../../shared/product/form-product';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { Partner } from '../../../partner/partner';
+import { Offer } from '../../../offer/offer';
 import { Attribute } from '../../../attribute/attribute';
 import { DragulaService } from 'ng2-dragula';
+import { OfferService } from '../../shared/offer/offer.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -29,6 +31,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   editorConfig: any;
   medias: Media[] = [];
   partnersModel: Partner[] = [];
+  productOffers: Offer[] = [];
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
@@ -52,7 +55,8 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     private categoryService: CategoryService,
     private attributeService: AttributeService,
     private dragulaService: DragulaService,
-    private partnerService: PartnerService) {}
+    private partnerService: PartnerService,
+    private offerService: OfferService) {}
 
   ngOnInit() {
     this.createForm();
@@ -239,6 +243,13 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       });
   }
 
+  getProductOffers() {
+    this.offerService.getOffers()
+      .subscribe((offers: Offer[]) => {
+        this.productOffers = offers;
+      });
+  }
+
   subscribeDragAndDrop() {
     this.dragulaService.drag.subscribe((value) => {
       console.log(`drag: ${value[0]}`);
@@ -335,6 +346,14 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   set partners(partners) {
     this.form.get('partners').patchValue({ partners: partners });
+  }
+
+  get offers() {
+    return this.form.get('offers');
+  }
+
+  set offers(offers) {
+    this.form.get('offers').patchValue({ offers: offers });
   }
 
   get publication() {

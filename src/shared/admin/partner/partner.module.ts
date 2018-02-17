@@ -8,6 +8,7 @@ import { SharedModule } from '../../shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { PartnerService } from './../shared/partner/partner.service';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { PartnerOffersComponent } from './partner-offers/partner-offers.component';
 
 const TABLE_NAME = new InjectionToken < string > ('partner');
 
@@ -18,7 +19,7 @@ const TABLE_NAME = new InjectionToken < string > ('partner');
     PartnerRoutingModule,
     SharedModule
   ],
-  declarations: [PartnerListComponent, PartnerEditComponent],
+  declarations: [PartnerListComponent, PartnerEditComponent, PartnerOffersComponent],
   providers: [
     { provide: TABLE_NAME, useValue: 'partner' },
     { provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_NAME] },

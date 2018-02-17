@@ -51,6 +51,7 @@ import { FacetModule } from './facet/facet.module';
 import { PopupModule } from './popup/popup.module';
 import { PartnerModule } from './partner/partner.module';
 import { ResponsiveModule } from 'ngx-responsive';
+import { OfferModule } from './offer/offer.module';
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
 
@@ -105,6 +106,7 @@ export class ConfigService {
     MenuModule,
     ModalModule.forRoot(),
     NgPipesModule,
+    OfferModule,
     PartnerModule,
     PopupModule,
     ReactiveFormsModule,
@@ -152,6 +154,7 @@ export class ConfigService {
     MenuModule,
     ModalModule,
     NgPipesModule,
+    OfferModule,
     PartnerModule,
     PopupModule,
     ProductImageComponent,

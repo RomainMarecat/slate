@@ -49,6 +49,8 @@ import { AttributeService } from '../../../attribute/attribute.service';
 import { MockAttributeService } from '../../../attribute/mock-attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { MockPartnerService } from '../../shared/partner/mock-partner.service';
+import { OfferService } from '../../shared/offer/offer.service';
+import { MockOfferService } from '../../shared/offer/mock-offer.service';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
@@ -87,6 +89,7 @@ describe('ProductEditComponent', () => {
           { provide: MediaService, useClass: MockMediaService },
           { provide: NotificationService, useClass: MockNotificationService },
           { provide: PartnerService, useClass: MockPartnerService },
+          { provide: OfferService, useClass: MockOfferService },
           { provide: ProductService, useClass: MockProductService },
           { provide: UserService, useClass: MockUserService },
           DateService,

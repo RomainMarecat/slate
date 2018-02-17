@@ -48,6 +48,7 @@ import { SelectionModule } from '../selection/selection.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { VisitorService } from '../../shared/firestore/visitor.service';
+import {OfferService} from '../../shared/offer/offer.service';
 
 export const production = new InjectionToken < string > ('production');
 export const site_name = new InjectionToken < string > ('site_name');
@@ -73,6 +74,7 @@ export const TABLE_CMS_DETAIL = new InjectionToken < string > ('cms_detail');
 export const TABLE_MEDIA = new InjectionToken < string > ('media');
 export const TABLE_POST = new InjectionToken < string > ('post');
 export const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
+export const TABLE_OFFER = new InjectionToken < string > ('offer');
 export const TABLE_PARTNER = new InjectionToken < string > ('partner');
 
 @Injectable()
@@ -163,6 +165,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     { provide: TABLE_SCORE, useValue: 'score' },
     { provide: TABLE_CMS, useValue: 'cms' },
     { provide: TABLE_CMS_DETAIL, useValue: 'cms_detail' },
+    { provide: TABLE_OFFER, useValue: 'offer' },
     { provide: TABLE_POST, useValue: 'post' },
     { provide: TABLE_MEDIA, useValue: 'media' },
     { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
@@ -171,6 +174,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA] },
     { provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION] },
     { provide: AttributeService, useClass: VisitorService, deps: [AngularFirestore, TABLE_ATTRIBUTE] },
+    { provide: OfferService, useClass: VisitorService, deps: [AngularFirestore, TABLE_OFFER] },
     { provide: PartnerService, useClass: VisitorService, deps: [AngularFirestore, TABLE_PARTNER] },
     AlertService,
     DateService,
