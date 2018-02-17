@@ -39,7 +39,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   selected: Category[] = [];
   filteredAttributes: Observable < any[] > ;
 
-  isLoading: boolean;
+  isLoading: boolean = false;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
   @ViewChild(ProductImageComponent) productImageComponent: ProductImageComponent;
@@ -48,6 +48,18 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   _descriptionModel = '';
   _attributesModel: Attribute[] = [];
 
+  /**
+   *
+   * @param activatedRoute
+   * @param router
+   * @param productService
+   * @param alertService
+   * @param categoryService
+   * @param attributeService
+   * @param dragulaService
+   * @param partnerService
+   * @param offerService
+   */
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
@@ -58,6 +70,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     private partnerService: PartnerService,
     private offerService: OfferService) {}
 
+  /**
+   * Init component
+   */
   ngOnInit() {
     this.createForm();
     this.getProduct();
@@ -69,11 +84,17 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.getPartners();
   }
 
+  /**
+   * product form
+   */
   createForm() {
     const formType = new ProductFormType(this.product);
     this.form = formType.getForm();
   }
 
+  /**
+   * get product from route key
+   */
   getProduct() {
     this.activatedRoute.params.subscribe((value: { key: string }) => {
       if (value.key) {
@@ -83,6 +104,11 @@ export class ProductEditComponent implements OnInit, OnDestroy {
             this.product = product;
             this.descriptionModel = product.description;
             this.createForm();
+            this.product.offers.forEach((offerKey: string) => {
+              this.offerService.getOffer(offerKey).subscribe((offer: Offer) => {
+                this.offers.push(ProductFormType.newOffer(offer));
+              });
+            });
             setTimeout(() => {
               this.observeUpdate();
             }, 2000);
@@ -91,6 +117,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * observe form change
+   */
   observeUpdate() {
     this.form.valueChanges
       .debounceTime(800)
@@ -102,6 +131,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * create all category columns
+   */
   createColumns() {
     this.columns = [{
       width: 50,
@@ -126,6 +158,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     }, ];
   }
 
+  /**
+   * editor config for description product
+   */
   createEditorConfig() {
     this.editorConfig = {
       'editable': true,
@@ -138,6 +173,10 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     };
   }
 
+  /**
+   * images array changes function of emitter
+   * @param images
+   */
   onImagesChange(images: Array < string > ) {
     this.form.patchValue({
       images: images
@@ -145,6 +184,10 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.alertService.toast('media order changed');
   }
 
+  /**
+   * image change function of emitter
+   * @param media
+   */
   onImageChange(media: Media) {
     this.medias.push(media);
     this.form.patchValue({
@@ -153,6 +196,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.alertService.toast('media saved');
   }
 
+  /**
+   * reset all form control
+   */
   reset() {
     this.medias = [];
     this._descriptionModel = '';
@@ -163,49 +209,106 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       translations: {
         fr: ''
       },
+      offers: [],
       description: '',
-      reseller: '',
-      external_url: '',
       published: true,
-      price: 0,
       images: [],
     });
   }
 
+  /**
+   * save the product and their offers
+   */
   saveProduct() {
     this.form.patchValue({
       description: this._descriptionModel,
       published: this._publication
     });
     if (this.form.valid) {
-      this.product = { ...this.product, ...this.form.value };
+      const offers = (this.form.value).offers;
+      this.product = {
+        ...this.product,
+        ...this.form.value,
+        ...{ offers: offers.filter((o) => o.key && o.key !== '').map((off) => off.key) }
+      };
       if (this.product.key) {
         if (this.product.published === true) {
           this.product.published_at = new Date();
         }
-        console.log('Update product', this.product);
         this.productService.updateProduct(this.product)
           .then((doc) => {
-            this.alertService.toast(`product updated ${this.product.translations.fr}`);
-            this.reset();
-          }, (err) => {
-            this.alertService.toast(`product error ${err}`);
-          });
-        this.router.navigate(['/admin/product']);
+            this.saveOffer(offers, { id: this.product.key });
+          }, (err) => this.addError(err));
       } else {
-        console.log('New product', this.product);
-
         this.productService.createProduct(this.product)
           .then((doc: DocumentReference) => {
-            this.alertService.toast(`product added ${doc.id}`);
-            this.reset();
-          }, (err) => {
-            this.alertService.toast(`product error ${err}`);
-          });
+            this.saveOffer(this.form.get('offers').value, doc);
+          }, (err) => this.addError(err));
       }
     }
   }
 
+  /**
+   * save an offer in db
+   * @param offers
+   * @param doc
+   */
+  saveOffer(offers: Offer[], doc: { id: string }) {
+    offers.forEach((offer: Offer) => {
+      // Set product value id
+      offer.product = doc.id;
+
+      if (offer.key) {
+        this.offerService.updateOffer(offer).then(() => {
+          this.addFinally();
+        }, (err) => this.addError(err));
+      } else {
+        this.offerService.createOffer(offer).then((res) => {
+          this.addProductOffer(res.id);
+        }, (err) => this.addError(err));
+      }
+    });
+  }
+
+  /**
+   * delete an offer
+   * @param index
+   */
+  deleteOffer(index: number) {
+    this.offers.removeAt(index);
+  }
+
+  /**
+   * add a new offer in form Array control
+   * @param key
+   */
+  addProductOffer(key: string) {
+    this.product.offers.push(key);
+    this.productService.updateProduct(this.product).then((doc) => {
+      this.addFinally();
+    }, (err) => this.addError(err));
+  }
+
+  /**
+   * error function to toast error on all subcriber
+   * @param err
+   */
+  addError(err) {
+    this.alertService.toast(`product error ${err}`);
+  }
+
+  /**
+   * After the product saved
+   */
+  addFinally() {
+    this.alertService.toast(`product saved ${this.product.translations.fr}`);
+    this.reset();
+    this.router.navigate(['/admin/product']);
+  }
+
+  /**
+   * subscribe to attributes
+   */
   getAttributes() {
     this.attributeService.getAttributes()
       .subscribe((attributes: Attribute[]) => {
@@ -213,6 +316,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * subscribe to categories
+   */
   getCategories() {
     this.categoryService.getCategories()
       .subscribe((categories: Category[]) => {
@@ -229,6 +335,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.selected.push(...selected);
   }
 
+  /**
+   * Add a new category in product
+   */
   addCategory() {
     this.selected.forEach((category: Category) => {
       this.form.patchValue({ category: category.key });
@@ -236,6 +345,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * subscribe to partners list
+   */
   getPartners() {
     this.partnerService.getPartners()
       .subscribe((partners: Partner[]) => {
@@ -243,52 +355,59 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       });
   }
 
-  getProductOffers() {
-    this.offerService.getOffers()
-      .subscribe((offers: Offer[]) => {
-        this.productOffers = offers;
-      });
-  }
-
+  /**
+   * Dra an drop system for attributes
+   */
   subscribeDragAndDrop() {
     this.dragulaService.drag.subscribe((value) => {
-      console.log(`drag: ${value[0]}`);
       this.onDrag(value.slice(1));
     });
     this.dragulaService.drop.subscribe((value) => {
-      console.log(`drop: ${value[0]}`);
       this.onDrop(value.slice(1));
     });
     this.dragulaService.over.subscribe((value) => {
-      console.log(`over: ${value[0]}`);
       this.onOver(value.slice(1));
     });
     this.dragulaService.out.subscribe((value) => {
-      console.log(`out: ${value[0]}`);
       this.onOut(value.slice(1));
     });
   }
 
+  /**
+   *
+   * @param args
+   */
   private onDrag(args) {
     const [e, el] = args;
-    // do something
   }
 
+  /**
+   *
+   * @param args
+   */
   private onDrop(args) {
     const [e, el] = args;
-    // do something
   }
 
+  /**
+   *
+   * @param args
+   */
   private onOver(args) {
     const [e, el, container] = args;
-    // do something
   }
 
+  /**
+   *
+   * @param args
+   */
   private onOut(args) {
     const [e, el, container] = args;
-    // do something
   }
 
+  /**
+   * destroy all subscriptions
+   */
   ngOnDestroy() {
     this.dragulaService.drag.unsubscribe();
     this.dragulaService.drop.unsubscribe();
@@ -296,14 +415,20 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.dragulaService.out.unsubscribe();
   }
 
+  /**
+   * push a ne offer in form array offers
+   */
   addOfferForm() {
     if (typeof this.product.offers === 'undefined') {
       this.product.offers = [];
     }
     this.offers.push(ProductFormType.newOffer());
-    console.log('add offer');
   }
 
+  /**
+   * get offers controls cast to FormArray
+   * @returns {FormArray}
+   */
   get offers(): FormArray {
     return this.form.get('offers') as FormArray;
   }

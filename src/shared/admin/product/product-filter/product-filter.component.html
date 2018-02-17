@@ -9,8 +9,13 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field class="mat-form-field" *ngIf="columnSelected !== 'published'">
-        <input matInput type="text" placeholder="Crosse, Bauer, X900, 59.90, ..." (keyup)="updateFilter($event.target.value)">
+        <input matInput type="text" [(ngModel)]="filterText" placeholder="Crosse, Bauer, X900, 59.90, ..." (keyup)="updateFilter($event.target.value)" [ngModelOptions]="{standalone: true}">
       </mat-form-field>
+      <div>
+        <button type="submit" mat-raised-button color="primary" (click)="updateFilter(filterText)">
+          Filtrer
+        </button>
+      </div>
       <div class="form-radio" *ngIf="columnSelected === 'published'">
         <mat-radio-group name="published" [selected]="value ? published : unpublished" class="publication-radio-group" [value]="value" (change)="updateFilter($event.value)">
           <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">

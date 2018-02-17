@@ -16,7 +16,6 @@ export class AttributeService extends VisitorService {
   }
 
   getAttributes(): Observable < Attribute[] > {
-    console.log(this.table);
     return super.getDocuments() as Observable < Attribute[] > ;
   }
 

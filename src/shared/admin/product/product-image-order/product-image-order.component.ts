@@ -20,11 +20,9 @@ export class ProductImageOrderComponent implements OnInit, OnDestroy {
 
   subscribeDragAndDrop() {
     this.dragulaService.dropModel.subscribe((value) => {
-      console.log(`dropModel: ${value[0]}`);
       this.onDropModel(value.slice(1));
     });
     this.dragulaService.removeModel.subscribe((value) => {
-      console.log(`removeModel: ${value[0]}`);
       this.onRemoveModel(value.slice(1));
     });
   }

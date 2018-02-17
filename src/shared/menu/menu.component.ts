@@ -28,7 +28,6 @@ export class MenuComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.menuService.menuState
       .subscribe((title: string) => {
-        console.log(title);
         this.title = title;
       });
   }

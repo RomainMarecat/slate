@@ -17,11 +17,11 @@ export class OfferService extends VisitorService {
 
   getOffers(): Observable < Offer[] > {
     console.log(this.table);
-    return super.getDocuments() as Observable < Offer[] > ;
+    return <Observable < Offer[] >> super.getDocuments();
   }
 
   getOffer(key: string): Observable < Offer > {
-    return super.getDocument(key) as Observable < Offer > ;
+    return <Observable < Offer > > super.getDocument(key);
   }
 
   createOffer(offer: Offer): Promise < any > {

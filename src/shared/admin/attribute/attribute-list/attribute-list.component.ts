@@ -64,7 +64,6 @@ export class AttributeListComponent implements OnInit {
       if (result === true) {
         this.deleteAttribute(attribute);
       }
-      console.log('The dialog was closed', result);
     });
   }
 
