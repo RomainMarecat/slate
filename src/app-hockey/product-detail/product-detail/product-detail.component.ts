@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../shared/product/product.service';
+import { CommentService } from '../../../shared/comment/comment.service';
 import { DeviceService } from '../../../shared/device/device.service';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
+import { Comment } from '../../../shared/comment/comment';
 
 @Component({
   selector: 'app-hockey-product-detail',
@@ -13,13 +15,17 @@ export class ProductDetailComponent implements OnInit {
 
   product: HockeyProduct;
 
+  // User comments
+  comments: Comment[] = [];
+
   resizedImage: {
     height: number,
   };
 
   constructor(private activatedRoute: ActivatedRoute,
     private productService: ProductService,
-    private deviceService: DeviceService) {
+    private deviceService: DeviceService,
+    private commentService: CommentService) {
     this.resizedImage = { height: 400 };
   }
 
@@ -40,6 +46,7 @@ export class ProductDetailComponent implements OnInit {
                 return attribute;
               });
               this.product = product;
+              this.getComments();
             });
         }
       }
@@ -48,6 +55,22 @@ export class ProductDetailComponent implements OnInit {
 
   updateScoreProduct(event: any) {
 
+  }
+
+  getComments() {
+    this.commentService.getComments()
+      .subscribe((comments: Comment[]) => {
+        comments.push({
+          key: '154563263',
+          commentText: 'Lorem Ipsum',
+          commentTime: new Date(),
+          creator: 'Many Court',
+          entity_key: '5453236',
+          entity_type: 'product',
+          order: 1
+        });
+        this.comments = comments;
+      }, (err) => console.log(err));
   }
 
 }

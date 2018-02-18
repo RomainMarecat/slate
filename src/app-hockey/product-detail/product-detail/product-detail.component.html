@@ -32,4 +32,10 @@
       </div>
     </div>
   </div>
+  <div class="user-comment-wrapper" fxLayout="column" fxLayoutGap="10px 10px" fxLayoutAlign="center stretch">
+    <app-comment-list [comments]="comments"></app-comment-list>
+    <div class="add-wrapper" fxLayout="row" fxLayoutAlign="center center">
+      <app-comment-add></app-comment-add>
+    </div>
+  </div>
 </div>

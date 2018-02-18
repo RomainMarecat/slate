@@ -52,6 +52,7 @@ import { PopupModule } from './popup/popup.module';
 import { PartnerModule } from './partner/partner.module';
 import { ResponsiveModule } from 'ngx-responsive';
 import { OfferModule } from './offer/offer.module';
+import { CommentModule } from './comment/comment.module';
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
 
@@ -72,6 +73,7 @@ export class ConfigService {
     FlexLayoutModule,
     FooterModule,
     FormsModule,
+    CommentModule,
     CommonModule,
     CloudinaryModule,
     DragulaModule,
@@ -116,6 +118,7 @@ export class ConfigService {
   ],
   exports: [
     Angulartics2Module,
+    CommentModule,
     CloudinaryModule,
     DragulaModule,
     FacetModule,
