@@ -1,4 +1,14 @@
-<button type="button" color="primary" mat-raised-button (click)="addCommentForm()">
+<form class="form-comment" (ngSubmit)="addComment()" [formGroup]="form" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="30px">
+  <mat-form-field class="mat-form-field">
+    <textarea matInput [placeholder]="'Commentaire'|translate" matTextareaAutosize matAutosizeMinRows="5" matAutosizeMaxRows="10" formControlName="commentText" angulartics2On="focus" angularticsAction="focusedOnProductcommentText" [angularticsCategory]="'product.commentText'" [angularticsValue]="commentText?.value"></textarea>
+    <mat-hint align="start"><strong [innerHtml]="'Vous pouvez sauter des lignes'|translate"></strong></mat-hint>
+    <mat-hint align="end">{{ commentText.value.length }} {{ '/2000'|translate }}</mat-hint>
+    <mat-error *ngIf="commentText.invalid && commentText.value.length === 0" [innerHtml]="'Un commentaire ne peut pas être vide'|translate"></mat-error>
+    <mat-error *ngIf="commentText.invalid && commentText.value.length > 0" [innerHtml]="'Le commentaire contient un caractère invalide'|translate"></mat-error>
+  </mat-form-field>
+  <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Envoyer'|translate" mat-raised-button color="primary" [disabled]="form.invalid || form.pristine" [innerHtml]="'Envoyer'|translate"></button>
+</form>
+<button type="button" color="primary" mat-raised-button (click)="addCommentForm()" *ngIf="!form">
   Ajouter un commentaire
   <mat-icon>add</mat-icon>
 </button>
