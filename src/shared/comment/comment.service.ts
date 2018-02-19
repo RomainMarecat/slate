@@ -24,7 +24,6 @@ export class CommentService extends VisitorService {
   }
 
   createComment(comment: Comment): Promise < any > {
-    console.log('cool');
     return super.createDocument(comment);
   }
 

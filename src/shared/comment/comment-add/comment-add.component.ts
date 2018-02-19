@@ -9,7 +9,7 @@ import { Comment } from './../comment';
 export class CommentAddComponent implements OnInit {
   form: FormGroup;
 
-  @Output() comment: EventEmitter < Comment > = new EventEmitter < Comment > ();
+  @Output() commentCreated: EventEmitter < Comment > = new EventEmitter < Comment > ();
 
   constructor() {}
 
@@ -29,7 +29,7 @@ export class CommentAddComponent implements OnInit {
 
   addComment() {
     if (this.form.valid) {
-      this.comment.emit(this.form.value);
+      this.commentCreated.emit(this.form.value);
     }
   }
 

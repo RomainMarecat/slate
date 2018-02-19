@@ -50,7 +50,7 @@ export class ProductDetailComponent implements OnInit {
                 return attribute;
               });
               this.product = product;
-              this.getMockComments();
+              this.getComments();
             });
         }
       }
