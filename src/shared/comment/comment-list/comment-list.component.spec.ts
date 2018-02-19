@@ -8,12 +8,16 @@ import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-tran
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { CommentListComponent } from './comment-list.component';
+import { CommentEditComponent } from './../comment-edit/comment-edit.component';
+import { CommentDetailComponent } from './../comment-detail/comment-detail.component';
+import { CommentAddComponent } from './../comment-add/comment-add.component';
 import {
   MatCardModule,
   MatIconModule,
   MatButtonModule
 } from '@angular/material';
 import { CommentService } from './../comment.service';
+import { MockCommentService } from './../mock-comment.service';
 
 describe('CommentListComponent', () => {
   let component: CommentListComponent;
@@ -39,9 +43,9 @@ describe('CommentListComponent', () => {
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),
         ],
-        declarations: [CommentListComponent],
+        declarations: [CommentListComponent, CommentEditComponent, CommentAddComponent, CommentDetailComponent],
         providers: [
-          CommentService
+          { provide: CommentService, useClass: MockCommentService }
         ]
       })
       .compileComponents();

@@ -15,6 +15,7 @@ import {
 
 import { CommentDetailComponent } from './comment-detail.component';
 import { CommentService } from './../comment.service';
+import { MockCommentService } from './../mock-comment.service';
 
 describe('CommentDetailComponent', () => {
   let component: CommentDetailComponent;
@@ -42,7 +43,7 @@ describe('CommentDetailComponent', () => {
         ],
         declarations: [CommentDetailComponent],
         providers: [
-          CommentService
+          { provide: CommentService, useClass: MockCommentService }
         ]
       })
       .compileComponents();
