@@ -48,7 +48,8 @@ import { SelectionModule } from '../selection/selection.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { VisitorService } from '../../shared/firestore/visitor.service';
-import {OfferService} from '../../shared/offer/offer.service';
+import { OfferService } from '../../shared/offer/offer.service';
+import { CommentService } from '../../shared/comment/comment.service';
 
 export const production = new InjectionToken < string > ('production');
 export const site_name = new InjectionToken < string > ('site_name');
@@ -69,6 +70,7 @@ export const TABLE_PRODUCT = new InjectionToken < string > ('product');
 export const TABLE_CATEGORY = new InjectionToken < string > ('category');
 export const TABLE_SELECTION = new InjectionToken < string > ('selection');
 export const TABLE_SCORE = new InjectionToken < string > ('score');
+export const TABLE_COMMENT = new InjectionToken < string > ('comment');
 export const TABLE_CMS = new InjectionToken < string > ('cms');
 export const TABLE_CMS_DETAIL = new InjectionToken < string > ('cms_detail');
 export const TABLE_MEDIA = new InjectionToken < string > ('media');
@@ -158,24 +160,24 @@ export const cookieConfig: NgcCookieConsentConfig = {
   providers: [
     { provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN] },
     { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
-    { provide: TABLE_PARTNER, useValue: 'partner' },
-    { provide: TABLE_PRODUCT, useValue: 'product' },
     { provide: TABLE_CATEGORY, useValue: 'category' },
-    { provide: TABLE_SELECTION, useValue: 'selection' },
-    { provide: TABLE_SCORE, useValue: 'score' },
+    { provide: TABLE_COMMENT, useValue: 'comment' },
     { provide: TABLE_CMS, useValue: 'cms' },
     { provide: TABLE_CMS_DETAIL, useValue: 'cms_detail' },
+    { provide: TABLE_MEDIA, useValue: 'media' },
     { provide: TABLE_OFFER, useValue: 'offer' },
     { provide: TABLE_POST, useValue: 'post' },
-    { provide: TABLE_MEDIA, useValue: 'media' },
-    { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
     { provide: TABLE_PARTNER, useValue: 'partner' },
-    { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
+    { provide: TABLE_PRODUCT, useValue: 'product' },
+    { provide: TABLE_SELECTION, useValue: 'selection' },
+    { provide: TABLE_SCORE, useValue: 'score' },
+    { provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE] },
+    { provide: CommentService, useClass: CommentService, deps: [AngularFirestore, TABLE_COMMENT] },
     { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA] },
+    { provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER] },
+    { provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER] },
+    { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
     { provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION] },
-    { provide: AttributeService, useClass: VisitorService, deps: [AngularFirestore, TABLE_ATTRIBUTE] },
-    { provide: OfferService, useClass: VisitorService, deps: [AngularFirestore, TABLE_OFFER] },
-    { provide: PartnerService, useClass: VisitorService, deps: [AngularFirestore, TABLE_PARTNER] },
     AlertService,
     DateService,
     DeviceService,

@@ -10,7 +10,7 @@ import { PartnerService } from './../shared/partner/partner.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { PartnerOffersComponent } from './partner-offers/partner-offers.component';
 
-const TABLE_NAME = new InjectionToken < string > ('partner');
+const TABLE_PARTNER = new InjectionToken < string > ('partner');
 
 @NgModule({
   imports: [
@@ -21,8 +21,8 @@ const TABLE_NAME = new InjectionToken < string > ('partner');
   ],
   declarations: [PartnerListComponent, PartnerEditComponent, PartnerOffersComponent],
   providers: [
-    { provide: TABLE_NAME, useValue: 'partner' },
-    { provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_NAME] },
+    { provide: TABLE_PARTNER, useValue: 'partner' },
+    { provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER] },
   ]
 })
 export class PartnerModule {}

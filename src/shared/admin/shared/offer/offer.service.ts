@@ -11,7 +11,7 @@ import { Offer } from './../../../offer/offer';
 @Injectable()
 export class OfferService extends VisitorService {
 
-  constructor(afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
+  constructor(afs: AngularFirestore, @Inject('TABLE_OFFER') table: string) {
     super(afs, table);
   }
 

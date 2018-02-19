@@ -1,0 +1,16 @@
+<mat-card class="mat-card m-2">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>{{ comment?.creator }}</mat-card-title>
+    <mat-card-subtitle>{{ comment?.commentTime }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{ comment?.commentText }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" fxFlex="50">LIKE</button>
+    <button mat-button color="accent" fxFlex="50">COMMENT</button>
+  </mat-card-actions>
+</mat-card>

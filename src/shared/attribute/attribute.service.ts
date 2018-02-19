@@ -11,7 +11,7 @@ import { Attribute } from './attribute';
 @Injectable()
 export class AttributeService extends VisitorService {
 
-  constructor(afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
+  constructor(afs: AngularFirestore, @Inject('TABLE_ATTRIBUTE') table: string) {
     super(afs, table);
   }
 

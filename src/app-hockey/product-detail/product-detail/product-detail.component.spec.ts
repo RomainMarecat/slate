@@ -28,6 +28,8 @@ import { SelectionService } from '../../../shared/selection/selection.service';
 import { MockSelectionService } from '../../../shared/selection/mock-selection.service';
 import { MenuService } from '../../../shared/menu/menu.service';
 import { SharedModule } from '../../../shared/shared.module';
+import { CommentService } from '../../../shared/comment/comment.service';
+import { MockCommentService } from '../../../shared/comment/mock-comment.service';
 
 import { ProductDetailComponent } from './product-detail.component';
 import { ProductActionComponent } from './../product-action/product-action.component';
@@ -64,14 +66,15 @@ describe('ProductDetailComponent', () => {
           ProductDescriptionComponent
         ],
         providers: [
+          { provide: AlertService, useClass: MockAlertService },
+          { provide: CommentService, useClass: MockCommentService },
+          { provide: DateService, useClass: DateService },
           { provide: DeviceService, useClass: DeviceService },
+          { provide: LoaderService, useClass: MockLoaderService },
           { provide: ProductService, useClass: MockProductService },
+          { provide: ScoreService, useClass: MockScoreService },
           { provide: SelectionService, useClass: MockSelectionService },
           { provide: UserService, useClass: MockUserService },
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: ScoreService, useClass: MockScoreService },
-          { provide: DateService, useClass: DateService },
         ]
       })
       .compileComponents();
