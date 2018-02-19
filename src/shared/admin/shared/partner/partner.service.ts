@@ -11,7 +11,7 @@ import { Partner } from './../../../partner/partner';
 @Injectable()
 export class PartnerService extends VisitorService {
 
-  constructor(afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
+  constructor(afs: AngularFirestore, @Inject('TABLE_PARTNER') table: string) {
     super(afs, table);
   }
 

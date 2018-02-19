@@ -11,13 +11,31 @@ import { CommentListComponent } from './comment-list.component';
 import { CommentEditComponent } from './../comment-edit/comment-edit.component';
 import { CommentDetailComponent } from './../comment-detail/comment-detail.component';
 import { CommentAddComponent } from './../comment-add/comment-add.component';
-import {
-  MatCardModule,
-  MatIconModule,
-  MatButtonModule
-} from '@angular/material';
 import { CommentService } from './../comment.service';
 import { MockCommentService } from './../mock-comment.service';
+import { NgModule, InjectionToken } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import {
+  MatCardModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatButtonModule,
+  MatGridListModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatInputModule,
+  MatCheckboxModule,
+  MatListModule,
+  MatSnackBarModule,
+  MatProgressSpinnerModule,
+  MatLineModule,
+  MatMenuModule,
+  MatCommonModule,
+  MatTooltipModule
+} from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 describe('CommentListComponent', () => {
   let component: CommentListComponent;
@@ -33,6 +51,12 @@ describe('CommentListComponent', () => {
           HttpClientTestingModule,
           RouterTestingModule,
           BrowserAnimationsModule,
+          FlexLayoutModule,
+          FormsModule,
+          MatInputModule,
+          MatFormFieldModule,
+          ReactiveFormsModule,
+          TranslateModule,
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {

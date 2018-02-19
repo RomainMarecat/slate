@@ -10,10 +10,14 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import {
   MatCardModule,
   MatIconModule,
-  MatButtonModule
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule
 } from '@angular/material';
 import { CommentAddComponent } from './comment-add.component';
 import { CommentService } from './../comment.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('CommentAddComponent', () => {
   let component: CommentAddComponent;
@@ -22,10 +26,15 @@ describe('CommentAddComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [
+          FlexLayoutModule,
+          FormsModule,
+          ReactiveFormsModule,
           CommonModule,
           MatButtonModule,
           MatIconModule,
           MatCardModule,
+          MatFormFieldModule,
+          MatInputModule,
           HttpClientTestingModule,
           RouterTestingModule,
           BrowserAnimationsModule,

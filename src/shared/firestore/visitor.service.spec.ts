@@ -10,7 +10,7 @@ export function createFakeVisitor(afs: AngularFirestore, name: string) {
   return new VisitorService(afs, name);
 }
 
-export const TABLE_NAME = new InjectionToken < string > ('product');
+export const TABLE_NAME = new InjectionToken < string > ('test');
 
 describe('VisitorService', () => {
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('VisitorService', () => {
         AngularFireAuthModule
       ],
       providers: [
-        { provide: TABLE_NAME, useValue: 'product' },
+        { provide: TABLE_NAME, useValue: 'test' },
         {
           provide: VisitorService,
           useFactory: (createFakeVisitor),

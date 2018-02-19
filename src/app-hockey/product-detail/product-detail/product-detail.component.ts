@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../shared/product/product.service';
 import { CommentService } from '../../../shared/comment/comment.service';
 import { DeviceService } from '../../../shared/device/device.service';
+import { UserService } from '../../../shared/user/user.service';
+import { AlertService } from '../../../shared/popup/alert.service';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
 import { Comment } from '../../../shared/comment/comment';
 
@@ -25,7 +27,9 @@ export class ProductDetailComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private deviceService: DeviceService,
-    private commentService: CommentService) {
+    private commentService: CommentService,
+    private userService: UserService,
+    private alertService: AlertService) {
     this.resizedImage = { height: 400 };
   }
 
@@ -55,6 +59,19 @@ export class ProductDetailComponent implements OnInit {
 
   updateScoreProduct(event: any) {
 
+  }
+
+  onCommentCreated(comment: Comment) {
+    comment.creator = this.userService.getUser().displayName;
+    comment.commentTime = new Date();
+    comment.entity_key = this.product.key;
+    comment.entity_type = 'Product';
+    comment.order = this.comments.length + 1;
+    this.commentService.createComment(comment).then((doc) => {
+      this.alertService.toast('Commentaire enregistré', 'success');
+    }, (err) => {
+      this.alertService.toast(err, 'error');
+    });
   }
 
   getComments() {

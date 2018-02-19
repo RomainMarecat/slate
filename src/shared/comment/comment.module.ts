@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -28,6 +28,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CommentService } from './comment.service';
 
 @NgModule({
   imports: [

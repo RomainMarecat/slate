@@ -11,19 +11,20 @@ import { Comment } from './comment';
 @Injectable()
 export class CommentService extends VisitorService {
 
-  constructor(afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
+  constructor(afs: AngularFirestore, @Inject('TABLE_COMMENT') table: string) {
     super(afs, table);
   }
 
   getComments(): Observable < Comment[] > {
-    return super.getDocuments() as Observable < Comment[] > ;
+    return <Observable < Comment[] >> super.getDocuments();
   }
 
   getComment(key: string): Observable < Comment > {
-    return super.getDocument(key) as Observable < Comment > ;
+    return <Observable < Comment >> super.getDocument(key);
   }
 
   createComment(comment: Comment): Promise < any > {
+    console.log('cool');
     return super.createDocument(comment);
   }
 

@@ -1,6 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-
+import { Comment } from './../comment';
 @Component({
   selector: 'app-comment-add',
   templateUrl: './comment-add.component.html',
@@ -9,7 +9,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 export class CommentAddComponent implements OnInit {
   form: FormGroup;
 
-  @Output() comment: Comment;
+  @Output() comment: EventEmitter < Comment > = new EventEmitter < Comment > ();
 
   constructor() {}
 
@@ -29,7 +29,7 @@ export class CommentAddComponent implements OnInit {
 
   addComment() {
     if (this.form.valid) {
-      this.comment = this.form.value;
+      this.comment.emit(this.form.value);
     }
   }
 
