@@ -64,6 +64,7 @@ export function createTranslateLoader(http: HttpClient, name: string) {
 }
 
 export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
+export const TABLE_PRODUCT = new InjectionToken < string > ('clothes');
 
 @Injectable()
 export class ConfigService {
@@ -111,8 +112,9 @@ export class ConfigService {
     ProductActionComponent,
   ],
   providers: [
+    { provide: TABLE_PRODUCT, useValue: 'clothes' },
     { provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN] },
-    { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, app_name] },
+    { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT] },
     { provide: MediaService, useClass: MediaService, deps: [AngularFirestore] },
     UserService,
     AlertService,

@@ -41,7 +41,7 @@ export class ProductService extends VisitorService {
     this.filters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.orderBy$ = new BehaviorSubject(null);
-    this.productCollectionRef = this.afs.collection('product');
+    this.productCollectionRef = this.afs.collection(table);
     this.products$ = Observable.combineLatest(
         this.publishedFilter$,
         this.userFilter$,
@@ -50,7 +50,7 @@ export class ProductService extends VisitorService {
         this.orderBy$
       )
       .switchMap(([published, user, filters, limit, orderBy]) => {
-        return this.afs.collection('product', ref => {
+        return this.afs.collection(table, ref => {
             this.query = ref;
 
             if (published === false || published !== null) {
