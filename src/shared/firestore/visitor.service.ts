@@ -3,8 +3,22 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Document } from './document';
 import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
+import {
+  CollectionReference,
+  Query,
+  DocumentSnapshot,
+  DocumentReference,
+  WhereFilterOp,
+  OrderByDirection
+} from '@firebase/firestore-types';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Filter } from './../facet/filter/shared/filter';
+import { Sort } from './../facet/sort/shared/sort';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/timeout';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class VisitorService {
@@ -13,10 +27,11 @@ export class VisitorService {
   document$: Observable < Document > ;
   columnFilter$: BehaviorSubject < string | null > ;
   valueFilter$: BehaviorSubject < string | null > ;
+  filters$: BehaviorSubject < Filter[] | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
   startAfter$: BehaviorSubject < string | null > ;
-  orderBy$: BehaviorSubject < string | 'published_at' > ;
+  orderBy$: BehaviorSubject < Sort | null > ;
   endAt$: BehaviorSubject < string | null > ;
   endBefore$: BehaviorSubject < string | null > ;
   query: CollectionReference | Query;
@@ -27,27 +42,34 @@ export class VisitorService {
    * @param {AngularFirestore} afs
    * @param {string} table
    */
-  constructor(private afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
+  constructor(public afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
     this.table = table;
     this.columnFilter$ = new BehaviorSubject(null);
     this.valueFilter$ = new BehaviorSubject(null);
+    this.filters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.orderBy$ = new BehaviorSubject(null);
     this.collectionRef = this.afs.collection(this.table);
     this.documents$ = Observable.combineLatest(
         this.columnFilter$,
         this.valueFilter$,
+        this.filters$,
         this.limit$,
         this.orderBy$
       )
-      .switchMap(([column, value, limit, orderBy]) => {
+      .switchMap(([column, value, filters, limit, orderBy]) => {
         return this.afs.collection(this.table, ref => {
             this.query = ref;
             if (limit) {
               this.query = this.query.limit(limit);
             }
+            if (filters) {
+              filters.forEach((filter: Filter) => {
+                this.query = this.query.where(filter.column, filter.operator as WhereFilterOp, filter.value);
+              });
+            }
             if (orderBy) {
-              this.query = this.query.orderBy(orderBy, 'desc');
+              this.query = this.query.orderBy(orderBy.column, orderBy.direction as OrderByDirection);
             }
             return this.query;
           })

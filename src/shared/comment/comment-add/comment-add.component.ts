@@ -23,6 +23,12 @@ export class CommentAddComponent implements OnInit {
     });
   }
 
+  reset() {
+    this.form.reset({
+      commentText: ''
+    });
+  }
+
   addCommentForm() {
 
   }
@@ -30,6 +36,7 @@ export class CommentAddComponent implements OnInit {
   addComment() {
     if (this.form.valid) {
       this.commentCreated.emit(this.form.value);
+      this.reset();
     }
   }
 

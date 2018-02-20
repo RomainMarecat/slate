@@ -8,6 +8,7 @@ import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces'
 import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+import { Filter } from './../facet/filter/shared/filter';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
@@ -18,9 +19,7 @@ export class MockProductService {
   productCollectionRef: AngularFirestoreCollection < ClothingProduct > ;
   products$: Observable < DocumentChangeAction[] > ;
   product$: Observable < Product > ;
-  publishedFilter$: BehaviorSubject < boolean | true > ;
-  nameFilter$: BehaviorSubject < string | null > ;
-  colorFilter$: BehaviorSubject < string | null > ;
+  filters$: BehaviorSubject < Filter[] > ;
   userFilter$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
@@ -31,9 +30,7 @@ export class MockProductService {
   query: CollectionReference | Query;
 
   constructor() {
-    this.publishedFilter$ = new BehaviorSubject(true);
-    this.nameFilter$ = new BehaviorSubject(null);
-    this.colorFilter$ = new BehaviorSubject(null);
+    this.filters$ = new BehaviorSubject([{ column: 'published', operator: '==', value: true }]);
     this.userFilter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(20);
     this.orderBy$ = new BehaviorSubject('published_at');

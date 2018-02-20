@@ -1,5 +1,26 @@
+@import '~@angular/material/theming';
+@import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import '../../../scss/base/hockey/theme.scss';
+
+
 .mat-card {
-  width: 50vh;
+  width: 100vh;
+
+  @include media-breakpoint-up(xs) {
+    width: 40vh;
+  }
+  @include media-breakpoint-up(sm) {
+    width: 60vh;
+  }
+  @include media-breakpoint-up(md) {
+    width: 80vh;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 100vh;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 100vh;
+  }
   .header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;

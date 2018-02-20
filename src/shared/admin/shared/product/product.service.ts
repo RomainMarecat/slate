@@ -18,7 +18,6 @@ export class ProductService {
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
-  colorFilter$: BehaviorSubject < string | null > ;
   userFilter$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
@@ -37,7 +36,6 @@ export class ProductService {
     this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
-    this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.productCollectionRef = this.afs.collection('product');
@@ -45,7 +43,6 @@ export class ProductService {
         this.keyFilters$,
         this.publishedFilter$,
         this.nameFilters$,
-        this.colorFilter$,
         this.userFilter$,
         this.limit$
       )
@@ -53,7 +50,7 @@ export class ProductService {
         console.error(err);
         return Observable.of([]);
       })
-      .switchMap(([key, published, name, color, user, limit]) =>
+      .switchMap(([key, published, name, user, limit]) =>
         this.afs.collection('product', ref => {
           this.query = ref;
           if (published) {
@@ -61,9 +58,6 @@ export class ProductService {
           }
           if (name) {
             this.query = this.query.where('name', '==', name);
-          }
-          if (color) {
-            this.query = this.query.where('color', '==', color);
           }
           if (user) {
             this.query = this.query.where('user', '==', user);

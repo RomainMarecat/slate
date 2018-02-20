@@ -11,6 +11,7 @@ import { AlertService } from '../../shared/popup/alert.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from './../../environments/environment.monpullmoche';
+import { Filter } from './../../shared/facet/filter/shared/filter';
 
 @Component({
   selector: 'app-product-list',
@@ -89,8 +90,13 @@ export class ProductListComponent implements OnInit {
    * Load Products with current limit
    */
   loadProducts() {
-    this.productService.nameFilter$.next(null);
-    this.productService.publishedFilter$.next(true);
+    this.productService.filters$.next(null);
+    const filters: Filter[] = [{
+      column: 'published',
+      operator: '==',
+      value: true
+    }];
+    this.productService.filters$.next(filters);
     this.products$ = this.productService.getProducts();
     this.loaderService.hide();
   }

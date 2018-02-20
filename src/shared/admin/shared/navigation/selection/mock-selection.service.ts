@@ -19,7 +19,6 @@ export class MockSelectionService {
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
-  colorFilter$: BehaviorSubject < string | null > ;
   userFilter$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
@@ -34,7 +33,6 @@ export class MockSelectionService {
     this.publishedFilter$ = new BehaviorSubject(true);
     this.parentFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
-    this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(20);
     this.orderBy$ = new BehaviorSubject('published_at');

@@ -8,22 +8,21 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 import { Sort } from './../facet/sort/shared/sort';
 import { Filter } from './../facet/filter/shared/filter';
+import { VisitorService } from './../firestore/visitor.service';
 
 @Injectable()
-export class ProductService {
+export class ProductService extends VisitorService {
   productCollectionRef: AngularFirestoreCollection < Product > ;
   products$: Observable < DocumentChangeAction[] > ;
   product$: Observable < Product > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
-  nameFilter$: BehaviorSubject < string | null > ;
   keyFilter$: BehaviorSubject < string | null > ;
-  colorFilter$: BehaviorSubject < string | null > ;
-  filter$: BehaviorSubject < Filter[] | null > ;
+  filters$: BehaviorSubject < Filter[] | null > ;
   userFilter$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
   startAfter$: BehaviorSubject < string | null > ;
-  orderBy$: BehaviorSubject < Sort > ;
+  orderBy$: BehaviorSubject < Sort | null > ;
   endAt$: BehaviorSubject < string | null > ;
   endBefore$: BehaviorSubject < string | null > ;
   query: CollectionReference | Query;
@@ -33,27 +32,24 @@ export class ProductService {
    * @param AngularFirestore afs
    * @param AlertService alertService
    */
-  constructor(private afs: AngularFirestore,
-    @Inject('app_name') appName: string) {
+  constructor(afs: AngularFirestore,
+    @Inject('TABLE_PRODUCT') table: string) {
+    super(afs, table);
     this.keyFilter$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(null);
-    this.nameFilter$ = new BehaviorSubject(null);
-    this.colorFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);
-    this.filter$ = new BehaviorSubject(null);
+    this.filters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.orderBy$ = new BehaviorSubject(null);
     this.productCollectionRef = this.afs.collection('product');
     this.products$ = Observable.combineLatest(
         this.publishedFilter$,
-        this.nameFilter$,
-        this.colorFilter$,
         this.userFilter$,
-        this.filter$,
+        this.filters$,
         this.limit$,
         this.orderBy$
       )
-      .switchMap(([published, name, color, user, filter, limit, orderBy]) => {
+      .switchMap(([published, user, filters, limit, orderBy]) => {
         return this.afs.collection('product', ref => {
             this.query = ref;
 
@@ -62,19 +58,12 @@ export class ProductService {
             } else {
               this.query = this.query.where('published', '==', true);
             }
-
-            if (name) {
-              this.query = this.query.where('name', '==', name);
-            }
-            if (color) {
-              this.query = this.query.where('color', '==', color);
-            }
             if (user) {
               this.query = this.query.where('user', '==', user);
             }
-            if (filter) {
-              filter.forEach((fil: Filter) => {
-                this.query = this.query.where(fil.column, fil.operator as WhereFilterOp, fil.value);
+            if (filters) {
+              filters.forEach((filter: Filter) => {
+                this.query = this.query.where(filter.column, filter.operator as WhereFilterOp, filter.value);
               });
             }
             if (limit) {

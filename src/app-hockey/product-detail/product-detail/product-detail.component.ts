@@ -7,6 +7,7 @@ import { UserService } from '../../../shared/user/user.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
 import { Comment } from '../../../shared/comment/comment';
+import { Filter } from '../../../shared/facet/filter/shared/filter';
 
 @Component({
   selector: 'app-hockey-product-detail',
@@ -75,31 +76,19 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getComments() {
+    const filters: Filter[] = [{
+      column: 'entity_key',
+      operator: '==',
+      value: this.product.key
+    }, {
+      column: 'entity_type',
+      operator: '==',
+      value: 'Product',
+    }];
+    this.commentService.filters$.next(filters);
     this.commentService.getComments()
       .subscribe((comments: Comment[]) => {
         this.comments = comments;
       }, (err) => console.log(err));
-  }
-
-  getMockComments() {
-    this.comments = [{
-        key: '154563263',
-        commentText: 'Lorem Ipsum',
-        commentTime: new Date(),
-        creator: 'Many Court',
-        entity_key: '5453236',
-        entity_type: 'product',
-        order: 1
-      },
-      {
-        key: '154563263',
-        commentText: 'Lorem Ipsum',
-        commentTime: new Date(),
-        creator: 'Many Court',
-        entity_key: '5453236',
-        entity_type: 'product',
-        order: 2
-      }
-    ];
   }
 }
