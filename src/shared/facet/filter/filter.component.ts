@@ -91,7 +91,7 @@ export class FilterComponent implements OnInit {
 
   validate() {
     this.productService.publishedFilter$.next(null);
-    this.productService.filter$.next(this.filters);
+    this.productService.filters$.next(this.filters);
     this.filtered.emit(this.filters);
 
     this.close();
@@ -105,6 +105,6 @@ export class FilterComponent implements OnInit {
 
   reset() {
     this.filters = [];
-    this.productService.filter$.next(null);
+    this.productService.filters$.next(null);
   }
 }

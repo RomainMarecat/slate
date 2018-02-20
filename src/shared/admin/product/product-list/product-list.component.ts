@@ -299,9 +299,9 @@ export class ProductListComponent implements OnInit {
         // filter our data
         const temp = this.cache.filter((product: Product) => {
           if (column === 'translations.fr') {
-            return product.translations.fr.toLowerCase().indexOf(needle) !== -1 || !needle;
+            return product.translations.fr.toLowerCase().indexOf(needle.toString()) !== -1 || !needle;
           } else if (column === 'price') {
-            return product.price.toString(10).indexOf(needle) !== -1 || !needle;
+            return product.price.toString(10).indexOf(needle.toString()) !== -1 || !needle;
           } else if (column === 'published') {
             return product.published === (needle.toString() === 'true') || !needle;
           }

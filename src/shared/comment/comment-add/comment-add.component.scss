@@ -1,5 +1,27 @@
+@import '~@angular/material/theming';
+@import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import '../../../scss/base/hockey/theme.scss';
+
+
 .form-comment {
-  width: 50vh;
+  width: 100vh;
+
+  @include media-breakpoint-up(xs) {
+    width: 40vh;
+  }
+  @include media-breakpoint-up(sm) {
+    width: 60vh;
+  }
+  @include media-breakpoint-up(md) {
+    width: 80vh;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 100vh;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 100vh;
+  }
+
   &>* {
     width: 100%;
   }

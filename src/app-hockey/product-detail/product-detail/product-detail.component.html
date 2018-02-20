@@ -1,9 +1,3 @@
-<div class="user-comment-wrapper" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
-  <app-comment-list [comments]="comments"></app-comment-list>
-  <div class="add-wrapper" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px 10px">
-    <app-comment-add (commentCreated)="onCommentCreated($event)"></app-comment-add>
-  </div>
-</div>
 <div class="wrapper product-layout" fxLayoutGap="10px 10px" fxLayoutAlign="center stretch" fxLayoutAlign.xs="space-around stretch" fxLayout="column" fxLayout.xs="column" fxLayoutWrap>
   <div *ngIf="product" angulartics2On="click" angularticsAction="hoveredOverProductDetail" [angularticsCategory]="'product.detail'">
     <div class="py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column" fxLayoutAlign.xs="center center">
@@ -37,5 +31,11 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="user-comment-wrapper" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
+  <app-comment-list [comments]="comments"></app-comment-list>
+  <div class="add-wrapper" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px 10px">
+    <app-comment-add (commentCreated)="onCommentCreated($event)"></app-comment-add>
   </div>
 </div>
