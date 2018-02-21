@@ -1,0 +1,44 @@
+@import '~@angular/material/theming';
+@import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import '../../../scss/base/hockey/theme.scss';
+
+.mat-card-title {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 20px 50px 60px;
+}
+
+.mat-card-content {
+  .offer-link {
+    font-size: 56px;
+    font-weight: 300;
+    line-height: 1;
+    padding: 50px 20px;
+    background-color: mat-color($white);
+    color: mat-color($black);
+    &:focus,
+    &:hover,
+    &:active{
+      color: mat-color($black);
+    }
+  }
+
+  .mat-button-focus-overlay {
+    color: mat-color($black);
+    background-color: transparent;
+  }
+}
+
+.show-link {
+  margin-top: 20px;
+  padding: 10px 30px;
+  span {
+    font-size: 20px;
+  }
+  &:focus,
+  &:hover,
+  &:active{
+    color: mat-color($white);
+    background: mat-color($product-primary);
+  }
+}

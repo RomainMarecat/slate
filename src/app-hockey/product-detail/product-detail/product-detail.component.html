@@ -1,4 +1,7 @@
 <div class="wrapper product-layout" fxLayoutGap="10px 10px" fxLayoutAlign="center stretch" fxLayoutAlign.xs="space-around stretch" fxLayout="column" fxLayout.xs="column" fxLayoutWrap>
+  <div class="partner-offer-wrapper">
+    <app-offer-list [product]="product" *ngIf="product && product.key"></app-offer-list>
+  </div>
   <div *ngIf="product" angulartics2On="click" angularticsAction="hoveredOverProductDetail" [angularticsCategory]="'product.detail'">
     <div class="py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column" fxLayoutAlign.xs="center center">
       <div class="title">
