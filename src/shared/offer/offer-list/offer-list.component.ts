@@ -21,14 +21,16 @@ export class OfferListComponent implements OnInit {
   }
 
   getOffers() {
-    const filters: Filter[] = [
-      { column: 'product', operator: '==', value: this.product.key }
-    ];
-    this.offerService.filters$.next(filters);
-    this.offerService.getOffers().subscribe((offers: Offer[]) => {
-      this.offers = offers;
-    }, (err) => {
-      this.alertService.toast('Les offres n\'ont pas été trouvées');
-    });
+    if (this.product && this.product.key) {
+      const filters: Filter[] = [
+        {column: 'product', operator: '==', value: this.product.key}
+      ];
+      this.offerService.filters$.next(filters);
+      this.offerService.getOffers().subscribe((offers: Offer[]) => {
+        this.offers = offers;
+      }, (err) => {
+        this.alertService.toast('Les offres n\'ont pas été trouvées');
+      });
+    }
   }
 }

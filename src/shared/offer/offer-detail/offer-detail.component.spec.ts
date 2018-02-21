@@ -1,6 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { OfferDetailComponent } from './offer-detail.component';
+import {OfferDetailComponent} from './offer-detail.component';
+import {CommonModule} from '@angular/common';
+import {MatButtonModule, MatCardModule, MatIconModule} from '@angular/material';
+import {PartnerModule} from '../../partner/partner.module';
 
 describe('OfferDetailComponent', () => {
   let component: OfferDetailComponent;
@@ -8,9 +11,16 @@ describe('OfferDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OfferDetailComponent ]
+      imports: [
+        CommonModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        PartnerModule
+      ],
+      declarations: [OfferDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

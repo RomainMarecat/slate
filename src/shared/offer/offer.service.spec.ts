@@ -1,11 +1,23 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { OfferService } from './offer.service';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {environment} from '../../environments/environment.hockey';
+import {AngularFireModule} from 'angularfire2';
+import {HttpClientModule} from '@angular/common/http';
+import {MockOfferService} from './mock-offer.service';
 
 describe('OfferService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [OfferService]
+      imports: [
+        HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+      ],
+      providers: [
+        { provide: OfferService, useClass: MockOfferService },
+      ]
     });
   });
 
