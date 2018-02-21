@@ -263,6 +263,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
           this.addFinally();
         }, (err) => this.addError(err));
       } else {
+        offer.published_at = new Date();
         this.offerService.createOffer(offer).then((res) => {
           this.addProductOffer(res.id);
         }, (err) => this.addError(err));

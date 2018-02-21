@@ -1,1 +1,3 @@
-<app-offer-detail fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" fxLayoutWrap *ngFor="let offer of offers"></app-offer-detail>
+<div class="offer-wrapper" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" fxLayoutWrap>
+  <app-offer-detail fxFlex="30" [offer]="offer" *ngFor="let offer of offers"></app-offer-detail>
+</div>

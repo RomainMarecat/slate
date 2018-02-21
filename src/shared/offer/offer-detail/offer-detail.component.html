@@ -1,9 +1,13 @@
 <mat-card>
-  <mat-card-header>
-    <mat-card-title>{{ offer?.price }}</mat-card-title>
+  <mat-card-header  fxLayout="row" fxLayoutAlign="center stretch">
+    <mat-card-title>
+      <app-partner-name [key]="offer?.partner" *ngIf="offer?.partner"></app-partner-name>
+    </mat-card-title>
     <mat-card-subtitle>{{ offer?.published_at}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content></mat-card-content>
+  <mat-card-content>
+    <a mat-button target="_blank" [href]="offer?.external_url" *ngIf="offer?.external_url">{{ offer?.price }} </a>
+  </mat-card-content>
   <mat-card-actions>
     <a mat-raised-button target="_blank" color="primary" [href]="offer?.external_url" *ngIf="offer?.external_url">Voir l'offre</a>
   </mat-card-actions>
