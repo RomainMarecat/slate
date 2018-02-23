@@ -1,0 +1,36 @@
+@import '~@angular/material/theming';
+@import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import '../../../scss/base/hockey/theme.scss';
+
+.mat-card {
+  height: 300px;
+}
+
+.mat-card-subtitle {
+  color: mat-color($mat-grey, 700);
+}
+
+.mat-card-content {
+  a {
+    font-size: 25px;
+    text-align: center;
+    width: 100%;
+    color: mat-color($mat-grey, 700);
+    .mat-button-focus-overlay {
+      background: transparent;
+    }
+  }
+}
+
+.mat-card-actions {
+  a {
+    font-size: 20px;
+    text-align: center;
+    margin: 50px auto;
+    display: block;
+    height: 60px;
+    line-height: 60px;
+    width: 50%;
+    color: mat-color($white);
+  }
+}
