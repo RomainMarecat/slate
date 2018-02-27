@@ -6,6 +6,7 @@ import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {PartnerModule} from '../partner/partner.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {PartnerModule} from '../partner/partner.module';
     MatButtonModule,
     MatIconModule,
     FlexLayoutModule,
-    PartnerModule
+    PartnerModule,
+    TranslateModule,
   ],
   declarations: [
     OfferListComponent,
