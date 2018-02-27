@@ -31,6 +31,8 @@ export class AttributeFormType {
       'terms': new FormControl(attribute && attribute.terms ? attribute.terms : [], [
         Validators.required,
       ]),
+      'term': new FormControl('', [
+      ]),
     });
   }
 
