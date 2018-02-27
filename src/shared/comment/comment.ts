@@ -8,4 +8,5 @@ export class Comment {
   // Entity type where the comment locate
   entity_type: string;
   order: number;
+  avatar?: string;
 }

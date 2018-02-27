@@ -1,6 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OfferListComponent } from './offer-list.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {CommonModule} from '@angular/common';
+import {AlertService} from '../../popup/alert.service';
+import {MockAlertService} from '../../popup/mock-alert.service';
+import {OfferService} from '../offer.service';
+import {MockOfferService} from '../mock-offer.service';
+import {OfferDetailComponent} from '../offer-detail/offer-detail.component';
+import {MatButtonModule, MatCardModule, MatIconModule} from '@angular/material';
+import {PartnerModule} from '../../partner/partner.module';
+import {PartnerService} from '../../partner/partner.service';
+import {MockPartnerService} from '../../admin/shared/partner/mock-partner.service';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;
@@ -8,7 +19,20 @@ describe('OfferListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OfferListComponent ]
+      imports: [
+        FlexLayoutModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        CommonModule,
+        PartnerModule,
+      ],
+      declarations: [ OfferListComponent, OfferDetailComponent ],
+      providers: [
+        {provide: OfferService, useClass: MockOfferService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: PartnerService, useClass: MockPartnerService}
+      ]
     })
     .compileComponents();
   }));
