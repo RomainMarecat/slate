@@ -4,6 +4,21 @@
 
 .mat-card {
   height: 300px;
+  @include media-breakpoint-up(xs) {
+    height: auto;
+  }
+  @include media-breakpoint-up(sm) {
+    height: auto;
+  }
+  @include media-breakpoint-up(md) {
+    height: auto;
+  }
+  @include media-breakpoint-up(lg) {
+    height: 250px;
+  }
+  @include media-breakpoint-up(xl) {
+    height: 300px;
+  }
 }
 
 .mat-card-subtitle {
@@ -32,5 +47,26 @@
     line-height: 60px;
     width: 50%;
     color: mat-color($white);
+
+    @include media-breakpoint-up(xs) {
+      margin: 50px auto 0;
+      font-size: 15px;
+      text-align: center;
+      width: 100%;
+    }
+    @include media-breakpoint-up(sm) {
+      margin: 50px auto 0;
+      width: 75%;
+    }
+    @include media-breakpoint-up(md) {
+      margin: 50px auto 0;
+      width: 50%;
+    }
+    @include media-breakpoint-up(lg) {
+      margin: 50px auto 0;
+    }
+    @include media-breakpoint-up(xl) {
+      margin: 50px auto;
+    }
   }
 }
