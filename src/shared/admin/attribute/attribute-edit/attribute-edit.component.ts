@@ -99,6 +99,11 @@ export class AttributeEditComponent implements OnInit {
   }
 
   saveAttribute() {
+    if (this.form.value.term !== '') {
+      this.addTerm(this.form.value.term);
+      return;
+    }
+
     this.form.patchValue({
       type: this._typeModel,
       order_by: this._orderByModel,
