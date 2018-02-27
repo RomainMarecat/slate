@@ -12,6 +12,7 @@ import {MatButtonModule, MatCardModule, MatIconModule} from '@angular/material';
 import {PartnerModule} from '../../partner/partner.module';
 import {PartnerService} from '../../partner/partner.service';
 import {MockPartnerService} from '../../admin/shared/partner/mock-partner.service';
+import {TranslateFakeLoader, TranslateLoader, TranslateModule} from '@ngx-translate/core';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;
@@ -20,12 +21,15 @@ describe('OfferListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        FlexLayoutModule,
+        CommonModule,
         MatCardModule,
         MatButtonModule,
         MatIconModule,
-        CommonModule,
         PartnerModule,
+        FlexLayoutModule,
+        TranslateModule.forRoot({
+          loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+        }),
       ],
       declarations: [ OfferListComponent, OfferDetailComponent ],
       providers: [

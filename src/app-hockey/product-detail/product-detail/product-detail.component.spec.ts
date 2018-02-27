@@ -26,7 +26,6 @@ import { I18nService } from './../../../shared/i18n/i18n.service';
 import { environment } from './../../../environments/environment.hockey';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { MockSelectionService } from '../../../shared/selection/mock-selection.service';
-import { MenuService } from '../../../shared/menu/menu.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { CommentService } from '../../../shared/comment/comment.service';
 import { MockCommentService } from '../../../shared/comment/mock-comment.service';

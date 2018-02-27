@@ -15,7 +15,9 @@ describe('OfferService', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
       ],
-      providers: [{provide: OfferService, useClass: MockOfferService}]
+      providers: [
+        { provide: OfferService, useClass: MockOfferService },
+      ]
     });
   });
 

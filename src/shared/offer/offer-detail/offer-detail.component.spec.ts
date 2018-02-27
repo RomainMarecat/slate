@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import { OfferDetailComponent } from './offer-detail.component';
-import {MatCardModule} from '@angular/material';
 import {CommonModule} from '@angular/common';
+import {MatButtonModule, MatCardModule, MatIconModule} from '@angular/material';
 import {PartnerModule} from '../../partner/partner.module';
 
 describe('OfferDetailComponent', () => {
@@ -12,13 +12,15 @@ describe('OfferDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MatCardModule,
         CommonModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
         PartnerModule
       ],
-      declarations: [ OfferDetailComponent ]
+      declarations: [OfferDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
