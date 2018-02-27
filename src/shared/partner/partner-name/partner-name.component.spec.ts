@@ -10,7 +10,7 @@ describe('PartnerNameComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PartnerNameComponent],
+      declarations: [ PartnerNameComponent ],
       providers: [
         {provide: PartnerService, useClass: MockPartnerService}
       ]

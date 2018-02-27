@@ -1,16 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OfferListComponent } from './offer-list.component';
-import {OfferDetailComponent} from '../offer-detail/offer-detail.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {CommonModule} from '@angular/common';
-import {MatButtonModule, MatCardModule, MatIconModule} from '@angular/material';
-import {PartnerModule} from '../../partner/partner.module';
+import {AlertService} from '../../popup/alert.service';
+import {MockAlertService} from '../../popup/mock-alert.service';
 import {OfferService} from '../offer.service';
 import {MockOfferService} from '../mock-offer.service';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import {OfferDetailComponent} from '../offer-detail/offer-detail.component';
+import {MatButtonModule, MatCardModule, MatIconModule} from '@angular/material';
+import {PartnerModule} from '../../partner/partner.module';
+import {PartnerService} from '../../partner/partner.service';
+import {MockPartnerService} from '../../admin/shared/partner/mock-partner.service';
 import {TranslateFakeLoader, TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {MockAlertService} from '../../popup/mock-alert.service';
-import {AlertService} from '../../popup/alert.service';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;
@@ -32,7 +34,8 @@ describe('OfferListComponent', () => {
       declarations: [ OfferListComponent, OfferDetailComponent ],
       providers: [
         {provide: OfferService, useClass: MockOfferService},
-        {provide: AlertService, useClass: MockAlertService}
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: PartnerService, useClass: MockPartnerService}
       ]
     })
     .compileComponents();
