@@ -13,7 +13,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule.forRoot(environment),
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
       developerMode: true,
       pageTracking: {
         clearIds: true,
@@ -28,4 +28,5 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
     AppRootComponent
   ]
 })
-export class AppModule {}
+export class AppModule {
+}
