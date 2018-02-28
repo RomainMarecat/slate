@@ -1,0 +1,8 @@
+<div class="partner-list-wrapper py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px"
+     fxLayout.xs="column" fxLayoutAlign.xs="center stretch" fxLayoutGap.xs="10px">
+  <ngx-datatable fxFlex="70" #dataTableComponentTable class="material striped scrolling-offers expandable"
+                 [columnMode]="'force'" [rows]="offers" [columns]="columns" [headerHeight]="headerHeight"
+                 [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true"
+                 (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'"
+                 (activate)="onActivate($event)" (select)='onSelect($event)'></ngx-datatable>
+</div>
