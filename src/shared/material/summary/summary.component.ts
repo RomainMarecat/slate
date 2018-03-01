@@ -45,57 +45,37 @@ export class SummaryComponent implements OnInit {
             link: ''
           },
           {
-            title: 'Radio Button',
+            title: 'Select',
             link: ''
           },
           {
-            title: 'Radio Button',
+            title: 'Slider',
             link: ''
           },
           {
-            title: 'Radio Button',
-            link: ''
-          },
-          {
-            title: 'Radio Button',
-            link: ''
-          },
-          {
-            title: 'Radio Button',
-            link: ''
-          },
-          {
-            title: 'Radio Button',
+            title: 'Slide toggle',
             link: ''
           },
         ]
       },
       {
-        title: 'Form Controls',
+        title: 'Navigation',
         groups: [{
-            title: '',
+            title: 'Menu',
             link: ''
           },
           {
-            title: '',
+            title: 'Sidenav',
             link: ''
           },
           {
-            title: '',
+            title: 'Toolbar',
             link: ''
           },
-          {
-            title: '',
-            link: ''
-          },
-          {
-            title: '',
-            link: ''
-          }
         ]
       },
       {
-        title: 'Form Controls',
+        title: 'Layout',
         groups: [{
             title: '',
             link: ''
