@@ -6,6 +6,9 @@ import { FormModule } from './form/form.module';
 import { LayoutModule } from './layout/layout.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { PopupModule } from './popup/popup.module';
+import { SummaryComponent } from './summary/summary.component';
+import { MaterialRoutingModule } from './material-routing.module';
+import { MatIconModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -15,8 +18,21 @@ import { PopupModule } from './popup/popup.module';
     FormModule,
     LayoutModule,
     NavigationModule,
-    PopupModule
+    PopupModule,
+    MaterialRoutingModule,
+    MatIconModule
   ],
-  declarations: []
+  declarations: [ SummaryComponent ],
+  exports: [
+    CommonModule,
+    ButtonModule,
+    DatatableModule,
+    FormModule,
+    LayoutModule,
+    NavigationModule,
+    PopupModule,
+    SummaryComponent
+  ]
 })
-export class MaterialModule { }
+export class MaterialModule {
+}

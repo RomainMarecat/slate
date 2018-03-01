@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
+export class MaterialModule {
+  title: string;
+  groups: Array < MaterialComponent >
+}
+
+export class MaterialComponent {
+  title: string;
+  link: string;
+}
+
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
@@ -7,9 +17,155 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SummaryComponent implements OnInit {
 
-  constructor() { }
+  materialsModules: Array < MaterialModule > = [];
+
+  constructor() {}
 
   ngOnInit() {
+    this.materialsModules = [{
+        title: 'Form Controls',
+        groups: [{
+            title: 'Autocomplete',
+            link: ''
+          },
+          {
+            title: 'Checkbox',
+            link: ''
+          },
+          {
+            title: 'Dqtepicker',
+            link: ''
+          },
+          {
+            title: 'Input',
+            link: ''
+          },
+          {
+            title: 'Radio Button',
+            link: ''
+          },
+          {
+            title: 'Radio Button',
+            link: ''
+          },
+          {
+            title: 'Radio Button',
+            link: ''
+          },
+          {
+            title: 'Radio Button',
+            link: ''
+          },
+          {
+            title: 'Radio Button',
+            link: ''
+          },
+          {
+            title: 'Radio Button',
+            link: ''
+          },
+          {
+            title: 'Radio Button',
+            link: ''
+          },
+        ]
+      },
+      {
+        title: 'Form Controls',
+        groups: [{
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          }
+        ]
+      },
+      {
+        title: 'Form Controls',
+        groups: [{
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          }
+        ]
+      },
+      {
+        title: 'Form Controls',
+        groups: [{
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          }
+        ]
+      },
+      {
+        title: 'Form Controls',
+        groups: [{
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          },
+          {
+            title: '',
+            link: ''
+          }
+        ]
+      }
+    ];
   }
-
 }
