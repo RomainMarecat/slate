@@ -12,6 +12,14 @@ import { TabsComponent } from './tabs/tabs.component';
   imports: [
     CommonModule
   ],
-  declarations: [CardComponent, DividerComponent, ExpansionPanelComponent, GridListComponent, ListComponent, StepperComponent, TabsComponent]
+  declarations: [
+    CardComponent,
+    DividerComponent,
+    ExpansionPanelComponent,
+    GridListComponent,
+    ListComponent,
+    StepperComponent,
+    TabsComponent
+  ]
 })
-export class LayoutModule { }
+export class LayoutModule {}
