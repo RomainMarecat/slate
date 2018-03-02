@@ -8,7 +8,8 @@ import { NavigationModule } from './navigation/navigation.module';
 import { PopupModule } from './popup/popup.module';
 import { SummaryComponent } from './summary/summary.component';
 import { MaterialRoutingModule } from './material-routing.module';
-import { MatIconModule } from '@angular/material';
+import { MatCardModule, MatIconModule } from '@angular/material';
+import { NgxCarouselModule } from 'ngx-carousel';
 
 @NgModule({
   imports: [
@@ -20,7 +21,9 @@ import { MatIconModule } from '@angular/material';
     NavigationModule,
     PopupModule,
     MaterialRoutingModule,
-    MatIconModule
+    MatCardModule,
+    MatIconModule,
+    NgxCarouselModule
   ],
   declarations: [ SummaryComponent ],
   exports: [

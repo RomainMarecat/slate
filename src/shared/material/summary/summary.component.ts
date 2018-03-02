@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxCarousel } from 'ngx-carousel';
 
 export class MaterialModule {
   title: string;
-  groups: Array < MaterialComponent >
+  groups: Array < MaterialComponent > ;
 }
 
 export class MaterialComponent {
   title: string;
   link: string;
+  image: string;
 }
 
 @Component({
@@ -16,7 +18,7 @@ export class MaterialComponent {
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit {
-
+  carouselMaterialComponents: NgxCarousel;
   materialsModules: Array < MaterialModule > = [];
 
   constructor() {}
@@ -26,35 +28,43 @@ export class SummaryComponent implements OnInit {
         title: 'Form Controls',
         groups: [{
             title: 'Autocomplete',
-            link: ''
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Checkbox',
-            link: ''
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: 'Dqtepicker',
-            link: ''
+            title: 'Datepicker',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Input',
-            link: ''
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Radio Button',
-            link: ''
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Select',
-            link: ''
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Slider',
-            link: ''
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Slide toggle',
-            link: ''
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
         ]
       },
@@ -62,90 +72,143 @@ export class SummaryComponent implements OnInit {
         title: 'Navigation',
         groups: [{
             title: 'Menu',
-            link: ''
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Sidenav',
-            link: ''
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Toolbar',
-            link: ''
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
         ]
       },
       {
         title: 'Layout',
         groups: [{
-            title: '',
-            link: ''
+            title: 'Card',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'Divider',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'Expansion Panel',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'Grid list',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'List',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
+          },
+          {
+            title: 'Stepper',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
+          },
+          {
+            title: 'Tabs',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           }
         ]
       },
       {
-        title: 'Form Controls',
+        title: 'Buttons & Indicators',
         groups: [{
-            title: '',
-            link: ''
+            title: 'Button',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'Button Toggle',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'Chips',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'Icon',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'Progress spinner',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
+          },
+          {
+            title: 'Progress bar',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           }
         ]
       },
       {
-        title: 'Form Controls',
+        title: 'Popups & Modals',
         groups: [{
-            title: '',
-            link: ''
+            title: 'Dialog',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'Snackbar',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'Tooltip',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
+          }
+        ]
+      },
+      {
+        title: 'Datatable',
+        groups: [{
+            title: 'Paginator',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'Sort header',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
-            title: '',
-            link: ''
+            title: 'Table',
+            link: '',
+            image: '/assets/images/hockey/icons/apple-icon.png'
           }
         ]
       }
     ];
+
+    this.carouselMaterialComponents = {
+      grid: { xs: 1, sm: 3, md: 4, lg: 6, all: 230 },
+      speed: 600,
+      interval: 3000,
+      point: {
+        visible: false
+      },
+      load: 2,
+      touch: true
+    };
   }
 }
