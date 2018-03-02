@@ -10,12 +10,14 @@ import { SummaryComponent } from './summary/summary.component';
 import { MaterialRoutingModule } from './material-routing.module';
 import { MatCardModule, MatIconModule } from '@angular/material';
 import { NgxCarouselModule } from 'ngx-carousel';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     ButtonModule,
     DatatableModule,
+    FlexLayoutModule,
     FormModule,
     LayoutModule,
     NavigationModule,

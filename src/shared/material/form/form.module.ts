@@ -6,10 +6,12 @@ import { InputComponent } from './input/input.component';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
 import { SelectComponent } from './select/select.component';
 import { SliderComponent } from './slider/slider.component';
+import { FormRoutingModule } from './form-routing.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormRoutingModule
   ],
   declarations: [CheckboxComponent, DatepickerComponent, InputComponent, RadioButtonComponent, SelectComponent, SliderComponent]
 })

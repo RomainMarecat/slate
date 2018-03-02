@@ -28,42 +28,42 @@ export class SummaryComponent implements OnInit {
         title: 'Form Controls',
         groups: [{
             title: 'Autocomplete',
-            link: '',
+            link: '/admin/material/form/component/autocomplete',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Checkbox',
-            link: '',
+            link: '/admin/material/form/component/checkbox',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Datepicker',
-            link: '',
+            link: '/admin/material/form/component/datepicker',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Input',
-            link: '',
+            link: '/admin/material/form/component/input',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Radio Button',
-            link: '',
+            link: '/admin/material/form/component/button',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Select',
-            link: '',
+            link: '/admin/material/form/component/select',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Slider',
-            link: '',
+            link: '/admin/material/form/component/slider',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Slide toggle',
-            link: '',
+            link: '/admin/material/form/component/slide-toggle',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
         ]
@@ -72,17 +72,17 @@ export class SummaryComponent implements OnInit {
         title: 'Navigation',
         groups: [{
             title: 'Menu',
-            link: '',
+            link: '/admin/material/navigation/component/menu',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Sidenav',
-            link: '',
+            link: '/admin/material/navigation/component/sidenav',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Toolbar',
-            link: '',
+            link: '/admin/material/navigation/component/toolbar',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
         ]
@@ -91,37 +91,37 @@ export class SummaryComponent implements OnInit {
         title: 'Layout',
         groups: [{
             title: 'Card',
-            link: '',
+            link: '/admin/material/layout/component/card',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Divider',
-            link: '',
+            link: '/admin/material/layout/component/divider',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Expansion Panel',
-            link: '',
+            link: '/admin/material/layout/component/expansion-panel',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Grid list',
-            link: '',
+            link: '/admin/material/layout/component/grid-list',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'List',
-            link: '',
+            link: '/admin/material/layout/component/list',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Stepper',
-            link: '',
+            link: '/admin/material/layout/component/stepper',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Tabs',
-            link: '',
+            link: '/admin/material/layout/component/tabs',
             image: '/assets/images/hockey/icons/apple-icon.png'
           }
         ]
@@ -130,32 +130,32 @@ export class SummaryComponent implements OnInit {
         title: 'Buttons & Indicators',
         groups: [{
             title: 'Button',
-            link: '',
+            link: '/admin/material/button-indicators/component/button',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Button Toggle',
-            link: '',
+            link: '/admin/material/button-indicators/component/toggle',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Chips',
-            link: '',
+            link: '/admin/material/button-indicators/component/chips',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Icon',
-            link: '',
+            link: '/admin/material/button-indicators/component/icon',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Progress spinner',
-            link: '',
+            link: '/admin/material/button-indicators/component/progress-spinner',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Progress bar',
-            link: '',
+            link: '/admin/material/button-indicators/component/progress-bar',
             image: '/assets/images/hockey/icons/apple-icon.png'
           }
         ]
@@ -164,17 +164,17 @@ export class SummaryComponent implements OnInit {
         title: 'Popups & Modals',
         groups: [{
             title: 'Dialog',
-            link: '',
+            link: '/admin/material/popup/component/dialog',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Snackbar',
-            link: '',
+            link: '/admin/material/popup/component/snackbar',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Tooltip',
-            link: '',
+            link: '/admin/material/popup/component/tooltip',
             image: '/assets/images/hockey/icons/apple-icon.png'
           }
         ]
@@ -183,17 +183,17 @@ export class SummaryComponent implements OnInit {
         title: 'Datatable',
         groups: [{
             title: 'Paginator',
-            link: '',
+            link: '/admin/material/datatable/component/paginator',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Sort header',
-            link: '',
+            link: '/admin/material/datatable/component/sort-header',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
             title: 'Table',
-            link: '',
+            link: '/admin/material/datatable/component/table',
             image: '/assets/images/hockey/icons/apple-icon.png'
           }
         ]

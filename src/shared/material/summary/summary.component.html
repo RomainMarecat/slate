@@ -1,15 +1,17 @@
 <div class="docs-component-viewer-nav">
   <div class="docs-component-viewer-nav-content" *ngFor="let materialsModule of materialsModules">
-    <mat-card>
+    <mat-card class="mat-card">
       <mat-card-title>{{ materialsModule.title}}</mat-card-title>
       <mat-card-content>
         <ngx-carousel [inputs]="carouselMaterialComponents">
           <ngx-tile NgxCarouselItem *ngFor="let materialComponent of materialsModule.groups">
             <div class="wBg">
-              <h4>{{ materialComponent?.title }}</h4>
+              <h4><a [routerLink]="materialComponent.link">{{ materialComponent?.title }}</a></h4>
               <p *ngIf="materialComponent?.description">{{ materialComponent.description }}</p>
-              <div class="tile" [style.background]="'url(' + materialComponent?.image + ')'">
-              </div>
+              <a [routerLink]="materialComponent.link">
+                <div class="tile" [style.background]="'url(' + materialComponent?.image + ')'">
+                </div>
+              </a>
             </div>
           </ngx-tile>
           <button NgxCarouselPrev class="leftRs">&lt;</button>
