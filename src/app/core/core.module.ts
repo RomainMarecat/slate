@@ -16,9 +16,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MenuService } from '../../shared/menu/menu.service';
 
-import { FileUploadModule } from 'ng2-file-upload';
-import { ImageCropperModule } from 'ngx-img-cropper';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { UserService } from '../../shared/user/user.service';

@@ -1,0 +1,47 @@
+<div class="mat-autocomplete-wrapper" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="50px">
+  <div class="auto-complete-example" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px">
+
+    <form class="form" fxLayout="column" fxLayoutAlign="center center">
+      <h2>Autocomplete state example</h2>
+      <mat-form-field class="mat-form-field">
+        <input matInput placeholder="State" aria-label="State" [matAutocomplete]="autoState" [formControl]="stateCtrl">
+        <mat-autocomplete #autoState="matAutocomplete">
+          <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+            <img aria-hidden src="{{state.flag}}" height="25"/>
+            <span>{{ state.name }}</span> |
+            <small>Population: {{state.population}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-slide-toggle
+        [checked]="stateCtrl.disabled"
+        (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
+        Disable Input?
+      </mat-slide-toggle>
+    </form>
+
+    <form class="form instructors" fxLayout="column" fxLayoutAlign="center center">
+      <h2>Autocomplete instructor example</h2>
+      <h3 class="instructor-select-title">
+        Réservez une session de ski ou de sport
+      </h3>
+      <mat-form-field class="mat-form-field">
+        <input #instructorInput matInput placeholder="Type the name of your instructor here"
+               i18n-placeholder="instructor selector placeholder" [matAutocomplete]="autoInstructor"
+               [formControl]="instructorCtrl"
+               [ngModel]="instructorSelected" (ngModelChange)="onInstructorSelected($event)">
+      </mat-form-field>
+      <div id="instructor-select-container" class="white">
+        <mat-autocomplete #autoInstructor="matAutocomplete" [displayWith]="handleChoice()" class="blue">
+          <mat-option *ngFor="let instructor of filteredInstructors | async" [value]="instructor?.firstname + ' ' + instructor?.lastname"
+                      class="valign-wrapper">
+            <img class="circle img-responsive instructor-select-item-img valign" [src]="instructor?.picture"/>
+            <span
+              class="valign">{{ instructor?.firstname + ' ' + instructor?.lastname }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </div>
+    </form>
+  </div>
+</div>

@@ -4,7 +4,7 @@ import { ButtonModule } from './button/button.module';
 import { DatatableModule } from './datatable/datatable.module';
 import { FormModule } from './form/form.module';
 import { LayoutModule } from './layout/layout.module';
-import { NavigationModule } from './navigation/navigation.module';
+import { NavModule } from './navigation/nav.module';
 import { PopupModule } from './popup/popup.module';
 import { SummaryComponent } from './summary/summary.component';
 import { MaterialRoutingModule } from './material-routing.module';
@@ -20,7 +20,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     FormModule,
     LayoutModule,
-    NavigationModule,
+    NavModule,
     PopupModule,
     MaterialRoutingModule,
     MatCardModule,
@@ -34,7 +34,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DatatableModule,
     FormModule,
     LayoutModule,
-    NavigationModule,
+    NavModule,
     PopupModule,
     SummaryComponent
   ]

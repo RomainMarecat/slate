@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { DialogComponent } from './dialog/dialog.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
+import { PopupRoutingModule } from './popup-routing.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    PopupRoutingModule
   ],
-  declarations: [DialogComponent, SnackbarComponent, TooltipComponent]
+  declarations: [ DialogComponent, SnackbarComponent, TooltipComponent ]
 })
-export class PopupModule { }
+export class PopupModule {
+}

@@ -7,12 +7,34 @@ import { RadioButtonComponent } from './radio-button/radio-button.component';
 import { SelectComponent } from './select/select.component';
 import { SliderComponent } from './slider/slider.component';
 import { FormRoutingModule } from './form-routing.module';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
+import { MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatSlideToggleModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
+    FlexLayoutModule,
+    MatSlideToggleModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
     FormRoutingModule
   ],
-  declarations: [CheckboxComponent, DatepickerComponent, InputComponent, RadioButtonComponent, SelectComponent, SliderComponent]
+  declarations: [
+    AutocompleteComponent,
+    CheckboxComponent,
+    DatepickerComponent,
+    InputComponent,
+    RadioButtonComponent,
+    SelectComponent,
+    SliderComponent,
+    SlideToggleComponent
+  ]
 })
-export class FormModule { }
+export class FormModule {
+}

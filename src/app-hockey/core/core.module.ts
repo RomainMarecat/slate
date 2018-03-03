@@ -18,7 +18,6 @@ import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsen
 
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
-import { ModalModule } from 'ngx-bootstrap/modal';
 import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
 import { UserService } from '../../shared/user/user.service';
@@ -135,7 +134,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
     CloudinaryModule.forRoot({ Cloudinary: CloudinaryCore },
       environment.cloudinary
     ),
-    ModalModule.forRoot(),
     NgcCookieConsentModule.forRoot(cookieConfig),
     ImageCropperModule,
     FileUploadModule,

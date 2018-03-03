@@ -7,8 +7,14 @@ import { InputComponent } from './input/input.component';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
 import { SelectComponent } from './select/select.component';
 import { SliderComponent } from './slider/slider.component';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 
 const routes: Routes = [ {
+  path: 'component/autocomplete',
+  canActivate: [ AdminGuard ],
+  component: AutocompleteComponent
+}, {
   path: 'component/checkbox',
   canActivate: [ AdminGuard ],
   component: CheckboxComponent
@@ -37,6 +43,10 @@ const routes: Routes = [ {
     path: 'component/slider',
     canActivate: [ AdminGuard ],
     component: SliderComponent
+  }, {
+    path: 'component/slide-toggle',
+    canActivate: [ AdminGuard ],
+    component: SlideToggleComponent
   }, ];
 
 @NgModule({

@@ -39,7 +39,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HammerModule } from './hammer/hammer.module';
 import { ProductImageComponent } from './product/product-image/product-image.component';
 import { ImageCropperModule } from 'ngx-img-cropper';
-import { ModalModule } from 'ngx-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { MenuModule } from './menu/menu.module';
@@ -50,7 +49,6 @@ import { LoaderModule } from './loader/loader.module';
 import { FacetModule } from './facet/facet.module';
 import { PopupModule } from './popup/popup.module';
 import { PartnerModule } from './partner/partner.module';
-import { ResponsiveModule } from 'ngx-responsive';
 import { OfferModule } from './offer/offer.module';
 import { CommentModule } from './comment/comment.module';
 
@@ -106,7 +104,6 @@ export class ConfigService {
     MatStepperModule,
     MediaModule,
     MenuModule,
-    ModalModule.forRoot(),
     NgPipesModule,
     OfferModule,
     PartnerModule,
@@ -155,7 +152,6 @@ export class ConfigService {
     MatStepperModule,
     MediaModule,
     MenuModule,
-    ModalModule,
     NgPipesModule,
     OfferModule,
     PartnerModule,

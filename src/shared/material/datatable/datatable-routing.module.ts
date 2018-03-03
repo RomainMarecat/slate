@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
-import { CheckboxComponent } from './checkbox/checkbox.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { SortHeaderComponent } from './sort-header/sort-header.component';
 import { TableComponent } from './table/table.component';

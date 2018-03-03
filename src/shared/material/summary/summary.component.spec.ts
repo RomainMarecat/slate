@@ -4,6 +4,8 @@ import { MatCardModule, MatIconModule } from '@angular/material';
 import { NgxCarouselModule } from 'ngx-carousel';
 
 import { SummaryComponent } from './summary.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SummaryComponent', () => {
   let component: SummaryComponent;
@@ -15,7 +17,9 @@ describe('SummaryComponent', () => {
           CommonModule,
           MatCardModule,
           MatIconModule,
-          NgxCarouselModule
+          NgxCarouselModule,
+          NoopAnimationsModule,
+          RouterTestingModule
         ],
         declarations: [SummaryComponent]
       })

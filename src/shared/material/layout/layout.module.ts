@@ -7,10 +7,12 @@ import { GridListComponent } from './grid-list/grid-list.component';
 import { ListComponent } from './list/list.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { LayoutRoutingModule } from './layout-routing.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    LayoutRoutingModule
   ],
   declarations: [
     CardComponent,

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
-import { CheckboxComponent } from './checkbox/checkbox.component';
 import { CardComponent } from './card/card.component';
 import { DividerComponent } from './divider/divider.component';
 import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
@@ -44,11 +43,11 @@ const routes: Routes = [ {
     path: 'component/tabs',
     canActivate: [ AdminGuard ],
     component: TabsComponent
-  },];
+  }, ];
 
 @NgModule({
   imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ]
 })
-export class FormRoutingModule {
+export class LayoutRoutingModule {
 }

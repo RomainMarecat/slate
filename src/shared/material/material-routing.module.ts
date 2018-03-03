@@ -9,7 +9,7 @@ const routes: Routes = [{
     component: SummaryComponent
   },
   {
-    path: 'button',
+    path: 'button-indicators',
     canActivate: [AdminGuard],
     loadChildren: './button/button.module#ButtonModule'
   },
@@ -31,7 +31,7 @@ const routes: Routes = [{
   {
     path: 'navigation',
     canActivate: [AdminGuard],
-    loadChildren: './navigation/navigation.module#NavigationModule'
+    loadChildren: './navigation/nav.module#NavModule'
   },
   {
     path: 'popup',

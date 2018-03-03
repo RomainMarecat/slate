@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
-import { CheckboxComponent } from './checkbox/checkbox.component';
 import { MenuComponent } from './menu/menu.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
-const routes: Routes = [{
+const routes: Routes = [ {
   path: 'component/menu',
-  canActivate: [AdminGuard],
+  canActivate: [ AdminGuard ],
   component: MenuComponent
 }, {
   path: 'component/sidenav',
-  canActivate: [AdminGuard],
+  canActivate: [ AdminGuard ],
   component: SidenavComponent
-},{
+}, {
   path: 'component/toolbar',
-  canActivate: [AdminGuard],
+  canActivate: [ AdminGuard ],
   component: ToolbarComponent
-},];
+}, ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forChild(routes) ],
+  exports: [ RouterModule ]
 })
-export class NavigationRoutingModule {}
+export class NavRoutingModule {
+}

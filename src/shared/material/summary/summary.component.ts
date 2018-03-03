@@ -48,7 +48,7 @@ export class SummaryComponent implements OnInit {
           },
           {
             title: 'Radio Button',
-            link: '/admin/material/form/component/button',
+            link: '/admin/material/form/component/radio-button',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {
