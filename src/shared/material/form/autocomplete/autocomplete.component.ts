@@ -4,27 +4,26 @@ import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 
 export class State {
-  constructor(public name: string, public population: string, public flag: string) {
-  }
+  constructor(public name: string, public population: string, public flag: string) {}
 }
 
 export class Instructor {
   firstname: string;
   lastname: string;
-  picture?: string;
+  picture ? : string;
 }
 
 @Component({
   selector: 'app-autocomplete',
   templateUrl: './autocomplete.component.html',
-  styleUrls: [ './autocomplete.component.scss' ]
+  styleUrls: ['./autocomplete.component.scss']
 })
 export class AutocompleteComponent implements OnInit {
 
   stateCtrl: FormControl = new FormControl();
   instructorCtrl: FormControl = new FormControl();
 
-  filteredStates: Observable<any[]>;
+  filteredStates: Observable < any[] > ;
   filteredInstructors: any;
   instructorSelected: any;
   instructors: Instructor[];
@@ -40,14 +39,13 @@ export class AutocompleteComponent implements OnInit {
     this.filteredInstructors = this.instructorCtrl.valueChanges
       .startWith('')
       .map(val => this.instructors.filter(instructor => {
-        return val && val.length && ((instructor.firstname.toLowerCase().indexOf(val.toLowerCase()) >= 0
-          || instructor.lastname.toLowerCase().indexOf(val.toLowerCase()) >= 0));
+        return val && val.length && ((instructor.firstname.toLowerCase().indexOf(val.toLowerCase()) >= 0 ||
+          instructor.lastname.toLowerCase().indexOf(val.toLowerCase()) >= 0));
       }));
   }
 
   ngOnInit() {
-    this.states = [
-      {
+    this.states = [{
         name: 'Arkansas',
         population: '2.978M',
         flag: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Arkansas.svg'
@@ -69,8 +67,7 @@ export class AutocompleteComponent implements OnInit {
       }
     ];
 
-    this.instructors = [
-      {
+    this.instructors = [{
         firstname: 'Kara',
         lastname: 'Evans',
         picture: 'http://placehold.it/32x32'
@@ -100,17 +97,8 @@ export class AutocompleteComponent implements OnInit {
 
   filterStates(name: string) {
     return this.states.filter(state =>
-    state.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
+      state.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 
-  onInstructorSelected(instructor: Instructor) {
-    console.log(instructor);
-  }
-
-  handleChoice(instructor) {
-    if (instructor) {
-      return instructor.firstname + ' ' + instructor.lastname;
-    }
-  }
-
+  onInstructorSelected(instructor: Instructor) {}
 }
