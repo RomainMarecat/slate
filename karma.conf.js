@@ -45,16 +45,18 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: [(process.env.TRAVIS) ? 'Chrome_travis_ci' : 'Chrome'],
+    browsers: [(process.env.TRAVIS) ? 'Chrome_travis_ci' : 'Chrome'], // 'ChromeHeadless', 'MyHeadlessChrome'
     singleRun: false,
-
     customLaunchers: {
       Chrome_travis_ci: {
         base: 'Chrome',
         flags: ['--no-sandbox']
+      },
+      MyHeadlessChrome: {
+        base: 'ChromeHeadless',
+        flags: ['--disable-translate', '--disable-extensions', '--remote-debugging-port=9223']
       }
     },
-
     browserNoActivityTimeout: 60000
   });
 };

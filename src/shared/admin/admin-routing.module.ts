@@ -3,11 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AdminGuard } from '../guard/admin.guard';
 
-const routes: Routes = [ {
-  path: '',
-  canActivate: [ AdminGuard ],
-  component: HomeComponent
-},
+const routes: Routes = [
+  {
+    path: '',
+    canActivate: [ AdminGuard ],
+    component: HomeComponent
+  },
   {
     canActivate: [ AdminGuard ],
     path: 'attribute',
@@ -42,6 +43,11 @@ const routes: Routes = [ {
     canActivate: [ AdminGuard ],
     path: 'product',
     loadChildren: './product/product.module#ProductModule'
+  },
+  {
+    canActivate: [ AdminGuard ],
+    path: 'material',
+    loadChildren: './../material/material.module#MaterialModule'
   },
 ];
 
