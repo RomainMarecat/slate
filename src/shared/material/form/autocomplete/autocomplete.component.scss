@@ -1,25 +1,13 @@
+
+.mat-form-field {
+    width: 100%;
+}
+
 img {
   vertical-align: middle;
 }
 
-
 .instructors {
-  .mat-form-field {
-    width: 95%;
-    margin: 1em;
-    input {
-      border: none;
-      box-shadow: none;
-      margin: 0;
-      padding: 0;
-      height: 2rem;
-    }
-  }
-
-  .mat-input-underline {
-    display: none;
-  }
-
   .instructor-select-item-img {
     height: 80%;
     margin-right: 1rem;
@@ -32,30 +20,21 @@ img {
 
   .instructor-select-title {
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    font-size: 3em;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   }
 
-  .mat-input-ripple {
-    .mat-focused {
-      color: yellow;
-      background-color: yellow;
-    }
-  }
-
-  #instructor-select-container {
+  .instructor-select-container {
     width: 90%;
     margin: auto;
   }
 
 
   /* small */
-
   @media (max-width: 600px) {
     .instructor-select-title {
-      font-size: 1.5em !important;
+      font-size: 1.5em;
     }
-    #instructor-select-container {
+    .instructor-select-container {
       width: 90%;
     }
   }
@@ -64,7 +43,7 @@ img {
   /* medium*/
 
   @media (min-width: 601px) and (max-width: 992px) {
-    #instructor-select-container {
+    .instructor-select-container {
       width: 60%;
     }
   }
@@ -73,7 +52,7 @@ img {
   /* large */
 
   @media (min-width: 993px) {
-    #instructor-select-container {
+    .instructor-select-container {
       width: 50%;
     }
   }
