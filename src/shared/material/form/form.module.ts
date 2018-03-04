@@ -10,17 +10,25 @@ import { FormRoutingModule } from './form-routing.module';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import {
-  MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule,
+  MAT_DATE_LOCALE,
+  MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule,
+  MatInputModule,
+  MatNativeDateModule,
+  MatRadioModule,
   MatSlideToggleModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
     MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule,
     MatRadioModule,
     MatCardModule,
     MatSlideToggleModule,
@@ -29,7 +37,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    FormRoutingModule
+    FormRoutingModule,
+    TranslateModule
   ],
   declarations: [
     AutocompleteComponent,
@@ -40,6 +49,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SelectComponent,
     SliderComponent,
     SlideToggleComponent
+  ],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
   ]
 })
 export class FormModule {

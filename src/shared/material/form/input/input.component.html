@@ -1,3 +1,396 @@
-<p>
-  input works!
-</p>
+<div class="input-wrapper" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px">
+  <h2>Input Example</h2>
+  <form [formGroup]="form">
+    <div class="input-example-wrapper" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px"
+         fxLayoutWrap>
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Simple input example
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <input matInput placeholder="The placeholder">
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Date
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <input #date matInput type="date" placeholder="Enter a date" formControlName="date">
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a date'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">
+                {{ date.value.length }} {{ '/10'|translate }}
+              </mat-hint>
+              <mat-error *ngIf="date.invalid && date.value.length === 0">
+                {{ 'Date can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="date.invalid && date.value.length > 0">
+                {{ 'Date is invalid'|translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Datetime local
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <input matInput type="datetime-local" placeholder="Enter a datetime-local"
+                     formControlName="datetime-local">
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a date and a time'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">
+                {{ datetimeLocal.value.length }} {{ '/16'|translate }}
+              </mat-hint>
+              <mat-error *ngIf="datetimeLocal.invalid && datetimeLocal.value.length === 0">
+                {{ 'Datetime can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="datetimeLocal.invalid && datetimeLocal.value.length > 0">
+                {{ 'Datetime is invalid'|translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Email
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <mat-label>Label email</mat-label>
+              <input matInput type="email" placeholder="Enter an email" formControlName="email">
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter an email'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">
+                {{ email.value.length }} {{ '/100'|translate }}
+              </mat-hint>
+              <mat-error *ngIf="email.invalid && email.value.length === 0">
+                {{ 'Email can not be empty'|translate }}
+              </mat-error>
+              <mat-error *ngIf="email.invalid && email.value === null">
+                {{ 'Email can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="email.hasError('required')">
+                This field is required
+              </mat-error>
+              <mat-error *ngIf="email.hasError('pattern')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="email.hasError('minLength')">
+                Please enter a greater email address than 3 caracters
+              </mat-error>
+              <mat-error *ngIf="email.hasError('maxLength')">
+                Please enter a smaller email address than 100 caracters
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Month
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <input matInput type="month" placeholder="Enter a month" formControlName="month">
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a month'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">
+                {{ month.value.length }} {{ '/10'|translate }}
+              </mat-hint>
+              <mat-error *ngIf="month.invalid && month.value.length === 0">
+                {{ 'Month can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="month.invalid && month.value.length > 0">
+                {{ 'Month is invalid'|translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Number
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <input matInput type="number" placeholder="Enter a number" formControlName="number">
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a number'|translate"></strong>
+              </mat-hint>
+              <mat-error *ngIf="number.invalid && number.value <= 0">
+                {{ 'Please insert greater number than 0'|translate }}
+              </mat-error>
+              <mat-error *ngIf="number.hasError('required')">
+                This field is required
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Price
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <input matInput type="price" placeholder="Enter a price" formControlName="price">
+              <mat-icon matSuffix>euro_symbol</mat-icon>
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a price'|translate"></strong>
+              </mat-hint>
+              <mat-error *ngIf="price.invalid && price.value <= 0">
+                {{ 'Please insert greater price than 0'|translate }}
+              </mat-error>
+              <mat-error *ngIf="price.hasError('required')">
+                This field is required
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Password
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <input matInput type="password" placeholder="Enter a password" formControlName="password">
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a password'|translate"></strong>
+              </mat-hint>
+              <mat-error *ngIf="password.invalid && password.value.length === 0">
+                {{ 'Password can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="password.invalid && password.value.length > 0">
+                {{ 'Password is invalid'|translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Search
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <input matInput type="search" placeholder="Enter a search" formControlName="search">
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a search'|translate"></strong>
+              </mat-hint>
+              <mat-error *ngIf="search.invalid && search.value.length === 0">
+                {{ 'Search can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="search.invalid && search.value.length > 0">
+                {{ 'Search is invalid'|translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Tel
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <input matInput type="tel" placeholder="Enter a tel" formControlName="tel">
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a tel'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">
+                {{ tel.value.length }} {{ '/10'|translate }}
+              </mat-hint>
+              <mat-error *ngIf="tel.invalid && tel.value.length === 0">
+                {{ 'Tel can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="tel.invalid && tel.value.length > 0">
+                {{ 'Tel is invalid'|translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Time
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <input matInput type="time" placeholder="Enter a time" formControlName="time">
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a time'|translate"></strong>
+              </mat-hint>
+              <mat-error *ngIf="time.invalid && time.value.length === 0">
+                {{ 'Time can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="time.invalid && time.value.length > 0">
+                {{ 'Time is invalid'|translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Url
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <span matPrefix>https://&nbsp;</span>
+              <input matInput type="url" placeholder="Enter a url" formControlName="url">
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a url'|translate"></strong>
+              </mat-hint>
+              <mat-error *ngIf="url.invalid && url.value.length === 0">
+                {{ 'Url can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="url.invalid && url.value.length > 0">
+                {{ 'Url is invalid'|translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Week
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <input matInput type="week" placeholder="Enter a week" formControlName="week">
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a week'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">
+                {{ week.value.length }} {{ '/8'|translate }}
+              </mat-hint>
+              <mat-error *ngIf="week.invalid && week.value.length === 0">
+                {{ 'Week can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="week.invalid && week.value.length > 0">
+                {{ 'Week is invalid'|translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Textarea
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <textarea matTextareaAutosize matInput placeholder="Enter a textarea" formControlName="textarea">
+              </textarea>
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a textarea'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">
+                {{ textarea.value.length }} {{ '/1000'|translate }}
+              </mat-hint>
+              <mat-error *ngIf="textarea.invalid && textarea.value.length === 0">
+                {{ 'Textarea can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="textarea.invalid && textarea.value.length > 0">
+                {{ 'Textarea is invalid'|translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="input-content">
+        <mat-card class="mat-card">
+          <mat-card-header>
+            <mat-card-title>
+              Input Textarea extension
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field>
+              <textarea matTextareaAutosize matInput placeholder="Enter a textareaExtension" formControlName="textarea-extension">
+              </textarea>
+              <mat-hint align="start">
+                <strong [innerHtml]="'Enter a textareaExtension'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">
+                {{ textareaExtension.value.length }} {{ '/1000'|translate }}
+              </mat-hint>
+              <mat-error *ngIf="textareaExtension.invalid && textareaExtension.value.length === 0">
+                {{ 'Textarea extension can not be null'|translate }}
+              </mat-error>
+              <mat-error *ngIf="textareaExtension.invalid && textareaExtension.value.length > 0">
+                {{ 'Textarea extension is invalid'|translate }}
+              </mat-error>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </form>
+</div>

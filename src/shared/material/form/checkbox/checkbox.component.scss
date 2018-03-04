@@ -16,3 +16,9 @@
 .mat-card {
   margin: 20px;
 }
+
+.mat-form-field--no-underline {
+  .mat-form-field-underline {
+    background-color: transparent;
+  }
+}
