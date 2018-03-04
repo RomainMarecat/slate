@@ -7,6 +7,7 @@ import {
   MatInputModule, MatRadioModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CheckboxComponent', () => {
   let component: CheckboxComponent;
@@ -15,6 +16,7 @@ describe('CheckboxComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        BrowserAnimationsModule,
         FlexLayoutModule,
         MatCardModule,
         MatCheckboxModule,

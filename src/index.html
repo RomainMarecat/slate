@@ -34,7 +34,7 @@
     </div>
   </app-root>
   <script>
-  if (window.location.host.indexOf('localhost') !== -1) {
+  if (window.location.host.indexOf('localhost') === -1) {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
         // Registration was successful

@@ -1,3 +1,29 @@
-<p>
-  datepicker works!
-</p>
+<div class="mat-datepicker-wrapper" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px">
+  <h2>Datepicker example</h2>
+  <div class="datepicker-examples-wrapper" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px">
+    <mat-card class="datepicker-simple mat-card">
+      <mat-card-header>
+        <mat-card-title>
+          Datepicker Simple
+        </mat-card-title>
+      </mat-card-header>
+      <mat-form-field>
+        <input matInput [matDatepicker]="pickerSimple" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="pickerSimple"></mat-datepicker-toggle>
+        <mat-datepicker #pickerSimple></mat-datepicker>
+      </mat-form-field>
+    </mat-card>
+    <mat-card class="datepicker-birthdate mat-card">
+      <mat-card-header>
+        <mat-card-title>
+          Datepicker Birthdate
+        </mat-card-title>
+      </mat-card-header>
+      <mat-form-field>
+        <input matInput [matDatepicker]="pickerBirthdate" placeholder="Choose a birthdate">
+        <mat-datepicker-toggle matSuffix [for]="pickerBirthdate"></mat-datepicker-toggle>
+        <mat-datepicker #pickerBirthdate startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+    </mat-card>
+  </div>
+</div>
