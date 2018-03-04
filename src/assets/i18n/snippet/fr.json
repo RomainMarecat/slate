@@ -1,0 +1,54 @@
+{
+  "snackbar": {
+    "product-add": {
+      "submit": "Ton pull est en attente de validation :)"
+    },
+    "guard": {
+      "unauthenticated": "Connectes-toi pour ajouter autant de pull moche que tu veux !"
+    }
+  },
+  "menu": {
+    "connection": {
+      "title": "Se connecter"
+    },
+    "title1": "Snippet",
+    "title2": ""
+  },
+  "date": {
+    "now": "maintenant",
+    "prefix": "Il y a ",
+    "short_hour": "h",
+    "and": " et ",
+    "short_minutes": "min"
+  },
+  "sidenav": {
+    "card": {
+      "list-item": {
+        "admin": {
+          "title": "Back Office"
+        },
+        "facebook": {
+          "title": "Se connecter avec Facebook"
+        },
+        "google": {
+          "title": "Se connecter avec Google"
+        },
+        "login": {
+          "title": "Connexion"
+        },
+        "logout": {
+          "title": "Déconnexion",
+          "aria-label": "Déconnexion"
+        }
+      },
+      "image": {
+        "alt": "Image de fond du menu"
+      }
+    }
+  },
+  "user": {
+    "access_denied": {
+      "connect": "Il faut se connecter pour effectuer cette action"
+    }
+  }
+}
