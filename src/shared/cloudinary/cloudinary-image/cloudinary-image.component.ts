@@ -71,8 +71,8 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
   loadImage(lazyLoad: boolean) {
     if (!this.publicId) {
       throw new Error(
-        'You must set the public id of the image to load, e.g. <app-cloudinary-image' +
-        'publicId={{photo.public_id}}...></app-cloudinary-image>'
+        'You must set the public id of the image to load, e.g. <app-monpullmoche-cloudinary-image' +
+        'publicId={{photo.public_id}}...></app-monpullmoche-cloudinary-image>'
       );
     }
     const nativeElement = this.el.nativeElement;

@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent implements OnInit {
+  checked = false;
+  indeterminate = false;
+  align = 'start';
+  disabled = false;
 
   constructor() { }
 

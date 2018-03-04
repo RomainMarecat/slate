@@ -1,10 +1,10 @@
 <div class="docs-component-viewer-nav">
   <div class="docs-component-viewer-nav-content" *ngFor="let materialsModule of materialsModules">
     <mat-card class="mat-card">
-      <mat-card-title>{{ materialsModule.title}}</mat-card-title>
+      <mat-card-title class="mat-card-title">{{ materialsModule.title}}</mat-card-title>
       <mat-card-content>
         <ngx-carousel [inputs]="carouselMaterialComponents">
-          <ngx-tile NgxCarouselItem *ngFor="let materialComponent of materialsModule.groups">
+          <ngx-tile NgxCarouselItem *ngFor="let materialComponent of materialsModule.groups" class="ngx-tile">
             <div class="wBg">
               <h4><a [routerLink]="materialComponent.link">{{ materialComponent?.title }}</a></h4>
               <p *ngIf="materialComponent?.description">{{ materialComponent.description }}</p>

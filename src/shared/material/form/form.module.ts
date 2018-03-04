@@ -9,7 +9,10 @@ import { SliderComponent } from './slider/slider.component';
 import { FormRoutingModule } from './form-routing.module';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
-import { MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatSlideToggleModule } from '@angular/material';
+import {
+  MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatRadioModule,
+  MatSlideToggleModule
+} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -17,6 +20,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     CommonModule,
     FlexLayoutModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatCardModule,
     MatSlideToggleModule,
     MatAutocompleteModule,
     MatInputModule,
