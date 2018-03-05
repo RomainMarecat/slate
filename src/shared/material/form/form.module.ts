@@ -20,6 +20,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatSlideToggleModule,
     MatAutocompleteModule,
     MatInputModule,
+    NgxEditorModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,

@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 @Component({
-selector: 'app-input',
-templateUrl: './input.component.html',
-styleUrls: ['./input.component.scss']
+  selector: 'app-input',
+  templateUrl: './input.component.html',
+  styleUrls: [ './input.component.scss' ],
+  encapsulation: ViewEncapsulation.None
 })
 export class InputComponent implements OnInit {
 
+  editorConfig: any;
   form: FormGroup = new FormGroup({
     'date': new FormControl('', [
       Validators.required,
@@ -71,9 +73,26 @@ export class InputComponent implements OnInit {
     ]),
   });
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.createEditorConfig();
+  }
+
+  /**
+   * editor config for description product
+   */
+  createEditorConfig() {
+    this.editorConfig = {
+      'editable': true,
+      'spellcheck': false,
+      'height': '5rem',
+      'minHeight': '2rem',
+      'placeholder': 'Contenu...',
+      'translate': 'no',
+      'toolbar': []
+    };
   }
 
   get date() {
