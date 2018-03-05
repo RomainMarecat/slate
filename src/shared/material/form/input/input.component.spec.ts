@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxEditorModule } from 'ngx-editor';
 
 describe('InputComponent', () => {
   let component: InputComponent;
@@ -23,13 +24,14 @@ describe('InputComponent', () => {
         MatCardModule,
         MatIconModule,
         MatButtonModule,
+        NgxEditorModule,
         TranslateModule.forRoot({
-          loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
       declarations: [ InputComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
