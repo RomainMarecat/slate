@@ -4,11 +4,26 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { NavRoutingModule } from './nav-routing.module';
+import {
+  MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatMenuModule, MatSidenavModule,
+  MatToolbarModule
+} from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
-    NavRoutingModule
+    MatMenuModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    NavRoutingModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    TranslateModule,
   ],
   declarations: [MenuComponent, SidenavComponent, ToolbarComponent]
 })

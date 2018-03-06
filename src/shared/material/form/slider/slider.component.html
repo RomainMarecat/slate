@@ -1,3 +1,24 @@
-<p>
-  slider works!
-</p>
+<div class="slider-wrapper" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px"
+     fxLayoutGap.xs="10px">
+  <h2>Select Example</h2>
+  <div class="slider-example-wrapper" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px"
+       fxLayoutWrap fxLayout.xs="column" fxLayoutAlign.xs="center center" fxLayoutGap.xs="0">
+    <div class="slider-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            Default Example
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form>
+            <mat-slider [formControl]="defaultControl"></mat-slider>
+          </form>
+        </mat-card-content>
+        <mat-card-footer>
+          <p> Selected value: {{defaultControl.value}} </p>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>

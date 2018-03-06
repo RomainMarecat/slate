@@ -14,7 +14,7 @@ import {
   MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule,
   MatInputModule,
   MatNativeDateModule,
-  MatRadioModule,
+  MatRadioModule, MatSelectModule, MatSliderModule,
   MatSlideToggleModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,11 +28,13 @@ import { NgxEditorModule } from 'ngx-editor';
     FlexLayoutModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    MatSelectModule,
     MatNativeDateModule,
     MatIconModule,
     MatRadioModule,
     MatCardModule,
     MatSlideToggleModule,
+    MatSliderModule,
     MatAutocompleteModule,
     MatInputModule,
     NgxEditorModule,

@@ -1,6 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SlideToggleComponent } from './slide-toggle.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule,
+  MatSlideToggleModule
+} from '@angular/material';
 
 describe('SlideToggleComponent', () => {
   let component: SlideToggleComponent;
@@ -8,6 +15,18 @@ describe('SlideToggleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        BrowserAnimationsModule,
+        FlexLayoutModule,
+        FormsModule,
+        MatSelectModule,
+        MatCardModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSlideToggleModule,
+        MatFormFieldModule,
+        ReactiveFormsModule
+      ],
       declarations: [ SlideToggleComponent ]
     })
     .compileComponents();

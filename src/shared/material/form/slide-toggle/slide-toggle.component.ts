@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-slide-toggle',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./slide-toggle.component.scss']
 })
 export class SlideToggleComponent implements OnInit {
+
+  yoloControl = new FormControl();
 
   constructor() { }
 
