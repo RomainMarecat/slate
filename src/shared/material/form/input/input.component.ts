@@ -71,6 +71,16 @@ export class InputComponent implements OnInit {
       Validators.minLength(1),
       Validators.maxLength(1000)
     ]),
+    'firstname': new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(255)
+    ]),
+    'lastname': new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(255)
+    ]),
   });
 
   constructor() {
@@ -205,5 +215,21 @@ export class InputComponent implements OnInit {
 
   set textareaExtension(textareaExtension) {
     this.form.patchValue({'textarea-extension': textareaExtension});
+  }
+
+  get firstname() {
+    return this.form.get('firstname');
+  }
+
+  set firstname(firstname) {
+    this.form.patchValue({firstname: firstname});
+  }
+
+  get lastname() {
+    return this.form.get('lastname');
+  }
+
+  set lastname(lastname) {
+    this.form.patchValue({lastname: lastname});
   }
 }
