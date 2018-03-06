@@ -1,3 +1,56 @@
-<p>
-  radio-button works!
-</p>
+<div class="radio-wrapper" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px" fxLayoutGap.xs="10px">
+  <h2>Radio Button Example</h2>
+  <div class="radio-example-wrapper" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px"
+       fxLayoutWrap fxLayout.xs="column" fxLayoutAlign.xs="center center" fxLayoutGap.xs="0">
+    <div class="radio-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            Season ngModel Example
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason" fxLayout="column"
+                           fxLayoutAlign="center start">
+            <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+              {{season}}
+            </mat-radio-button>
+          </mat-radio-group>
+
+        </mat-card-content>
+        <mat-card-footer class="p-2">
+          <div class="example-selected-value">Your favorite season is: {{favoriteSeason}}</div>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+
+    <div class="radio-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            Form Radio Example
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="form">
+            <mat-form-field floatPlaceholder="always" class="mat-form-field--no-underline">
+              <input matInput placeholder="Season" style="display: none">
+              <mat-radio-group class="example-radio-group" fxLayout="column"
+                               fxLayoutAlign="center start" [formControlName]="'season'">
+                <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+                  {{season}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </mat-form-field>
+          </form>
+
+        </mat-card-content>
+        <mat-card-footer class="p-2">
+          <div class="example-selected-value">Your favorite season is: {{ season.value }}</div>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+
+</div>
+

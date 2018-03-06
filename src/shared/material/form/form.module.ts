@@ -14,12 +14,13 @@ import {
   MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule,
   MatInputModule,
   MatNativeDateModule,
-  MatRadioModule,
+  MatRadioModule, MatSelectModule, MatSliderModule,
   MatSlideToggleModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   imports: [
@@ -27,13 +28,16 @@ import { TranslateModule } from '@ngx-translate/core';
     FlexLayoutModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    MatSelectModule,
     MatNativeDateModule,
     MatIconModule,
     MatRadioModule,
     MatCardModule,
     MatSlideToggleModule,
+    MatSliderModule,
     MatAutocompleteModule,
     MatInputModule,
+    NgxEditorModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,

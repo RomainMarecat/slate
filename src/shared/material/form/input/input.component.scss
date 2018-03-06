@@ -1,3 +1,16 @@
 .mat-card {
   margin: 10px;
 }
+
+.mat-form-field--no-underline {
+  .mat-form-field-underline {
+    background-color: transparent;
+  }
+}
+
+.textarea-extension-card {
+  width: 100%;
+  .mat-form-field {
+    width: 100%;
+  }
+}

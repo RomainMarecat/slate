@@ -1,3 +1,34 @@
-<p>
-  toolbar works!
-</p>
+<div class="menu-wraper" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px" fxLayoutGap.xs="10px">
+  <h2>Menu Example</h2>
+  <div class="menu-example-wrapper" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px"
+       fxLayoutWrap fxLayout.xs="column" fxLayoutAlign.xs="center center" fxLayoutGap.xs="0">
+    <div class="input-content">
+      <mat-card class="mat-card">
+        <mat-card-header>
+          <mat-card-title>
+            Simple menu example
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-toolbar color="primary" class="mat-toolbar main-menu">
+            <a mat-button>
+              <mat-icon>menu</mat-icon>
+            </a>
+            <h1 class="logo">
+              <a>
+                <span class="cls-1">{{ 'menu.title1' | translate }}</span>
+              </a>
+            </h1>
+            <span class="menu-spacer"></span>
+            <span class="login-wrapper">
+              <button mat-raised-button color="accent" type="button" [innerHtml]="'menu.connection.title'|translate">
+              </button>
+            </span>
+          </mat-toolbar>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

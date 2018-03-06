@@ -1,3 +1,108 @@
-<p>
-  select works!
-</p>
+<div class="select-wrapper" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px" fxLayoutGap.xs="10px">
+  <h2>Select Example</h2>
+  <div class="select-example-wrapper" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px"
+       fxLayoutWrap fxLayout.xs="column" fxLayoutAlign.xs="center center" fxLayoutGap.xs="0">
+    <div class="select-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            NgModel Example
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form>
+            <mat-form-field>
+              <mat-select placeholder="Favorite food" [(ngModel)]="selectedValue" name="food">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+        <mat-card-footer>
+          <p> Selected value: {{selectedValue}} </p>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <div class="select-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            Form Select Example
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form>
+            <mat-form-field>
+              <mat-select placeholder="Favorite animal" [formControl]="animalControl" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let animal of animals" [value]="animal">
+                  {{animal.name}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
+              <mat-hint>{{animalControl.value?.sound}}</mat-hint>
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+        <mat-card-footer>
+          <p> Selected value: {{animalControl?.value?.name}} </p>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <div class="select-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            Form multi Select Example
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form>
+            <mat-form-field>
+              <mat-select placeholder="Toppings" [formControl]="toppings" multiple>
+                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+        <mat-card-footer>
+          <p> Selected value: {{toppings.value}} </p>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <div class="select-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            Form Group Select Example
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form>
+            <mat-form-field>
+              <mat-select placeholder="Pokemon" [formControl]="pokemonControl">
+                <mat-option>-- None --</mat-option>
+                <mat-optgroup *ngFor="let group of pokemonGroups" [label]="group.name"
+                              [disabled]="group.disabled">
+                  <mat-option *ngFor="let pokemon of group.pokemon" [value]="pokemon.value">
+                    {{ pokemon.viewValue }}
+                  </mat-option>
+                </mat-optgroup>
+              </mat-select>
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+        <mat-card-footer>
+          <p> Selected value: {{pokemonControl.value}} </p>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+
+
+
+
+
+  </div>
+</div>
