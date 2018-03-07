@@ -1,3 +1,132 @@
-<p>
-  card works!
-</p>
+<div class="mat-card-example-wrapper p-2" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px 0px">
+  <h2 class="p-5">Card example</h2>
+  <div class="mat-card-example-container" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-around stretch">
+    <div class="mat-card-content">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Simple Card</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <div class="mat-card-content">
+      <mat-card class="mat-card kangaroo">
+        <img class="mat-card-image" mat-card-image src="/assets/images/material/kangaroo.jpg">
+        <mat-card-header>
+          <mat-card-title>Kangaroo Valley Safari</mat-card-title>
+          <mat-card-subtitle>
+            Cards are a convenient means of displaying content composed of different elements.
+          </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <div class="mat-card-content">
+      <mat-card class="mat-card music">
+        <mat-card-header>
+          <mat-card-title>Unlimited Music Now</mat-card-title>
+          <mat-card-subtitle class="mat-card-subtitle">
+            Listen your favorite music and albums
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions class="p-2">
+          <button mat-button>Listen now</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="mat-card-content">
+      <mat-card class="mat-card album" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="30px">
+        <mat-card-header>
+          <mat-card-title>SuperModel</mat-card-title>
+          <mat-card-subtitle class="mat-card-subtitle">
+            Foster the people
+          </mat-card-subtitle>
+        </mat-card-header>
+        <img class="mat-card-image" mat-card-image src="/assets/images/material/album.jpg">
+      </mat-card>
+    </div>
+
+    <div class="mat-card-content">
+      <div class="note">
+        <mat-toolbar>
+          <mat-icon>menu</mat-icon>
+          <span>Notes</span>
+        </mat-toolbar>
+        <div class="cards" fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="10px" fxLayoutWrap>
+          <mat-card class="mat-card blue">
+            <mat-card-header>
+              <mat-card-title>Jennifer call</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions>
+              <span>{{ now | date: 'medium' }}</span>
+              <mat-icon>phone</mat-icon>
+            </mat-card-actions>
+          </mat-card>
+          <mat-card class="mat-card dark-grey">
+            <mat-card-header>
+              <mat-card-title>Colors :</mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayout="column" fxLayoutAlign="start start">
+              <mat-checkbox class="colors" *ngFor="let color of colors" [value]="color">
+                {{ color }}
+              </mat-checkbox>
+            </mat-card-content>
+            <mat-card-actions>
+              <span>Campbell</span>
+              <mat-icon>location</mat-icon>
+            </mat-card-actions>
+          </mat-card>
+          <mat-card class="mat-card blue-grey">
+            <mat-card-header>
+              <mat-card-title>To Bring :</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-radio-group class="example-radio-group" fxLayout="column">
+                <mat-radio-button *ngFor="let season of seasons" [value]="season">
+                  {{season}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </mat-card-content>
+          </mat-card>
+          <mat-card class="mat-card grey">
+            <mat-card-header>
+              <mat-card-title>
+                <h2>Clean Desk</h2>
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+          <mat-card class="mat-card grey">
+            <mat-card-header>
+              <mat-card-title>
+                <h3>Orelsan tickets on sale 06/26</h3>
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+          <mat-card class="mat-card orange recipe">
+            <img class="mat-card-image" mat-card-image src="/assets/images/material/recipe.jpg">
+            <mat-card-header>
+              <mat-card-title>Tartiflette</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-list>
+                  <mat-list-item>Lardon</mat-list-item>
+                  <mat-list-item>Patate</mat-list-item>
+                  <mat-list-item>Roblochon</mat-list-item>
+                  <mat-list-item>Fromage</mat-list-item>
+                  <mat-list-item>Crème</mat-list-item>
+                  <mat-list-item>Vin Blanc</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button color="accent">
+                like
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,77 @@
+@import '~@angular/material/theming';
+@import './../../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import '../../../../scss/base/hockey/theme.scss';
+
+.mat-card {
+
+}
+
+.kangaroo {
+  width: 300px;
+  .mat-card-image {
+    height: 200px;
+  }
+}
+
+.music {
+  background: mat-color(mat-palette($mat-teal, 900));
+  * {
+    color: mat-color($white);
+  }
+}
+
+.album {
+  width: 350px;
+  background: mat-color(mat-palette($mat-purple, 800));
+  .mat-card-image {
+    height: 100px;
+    width: 100px;
+  }
+  * {
+    color: mat-color($white);
+  }
+}
+
+.note {
+  width: 600px;
+
+  .mat-card {
+    min-width: 250px;
+    max-width: 300px;
+  }
+
+  .blue {
+    background: mat-color(mat-palette($mat-blue, 300));
+    * {
+      color: mat-color($white);
+    }
+  }
+
+  .grey {
+    background: mat-color(mat-palette($mat-grey, 700));
+    * {
+      color: mat-color($white);
+    }
+  }
+
+  .dark-grey {
+    background: mat-color(mat-palette($mat-grey, 800));
+    * {
+      color: mat-color($white);
+    }
+  }
+
+  .blue-grey {
+    background: mat-color(mat-palette($mat-blue-grey, 700));
+    * {
+      color: mat-color($white);
+    }
+  }
+
+  .orange {
+    background: mat-color(mat-palette($mat-orange, 700));
+    * {
+      color: mat-color($white);
+    }
+  }
+}
