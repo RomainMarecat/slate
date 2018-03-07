@@ -7,10 +7,17 @@ import { IconComponent } from './icon/icon.component';
 import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { ButtonRoutingModule } from './button-routing.module';
+import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
+    FlexLayoutModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
     ButtonRoutingModule
   ],
   declarations: [ButtonComponent, ButtonToggleComponent, ChipsComponent, IconComponent, ProgressSpinnerComponent, ProgressBarComponent]
