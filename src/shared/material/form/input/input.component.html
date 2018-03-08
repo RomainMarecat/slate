@@ -400,13 +400,15 @@
               Input Name
             </mat-card-title>
           </mat-card-header>
-          <mat-card-content fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+          <mat-card-content fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px"
+                            fxLayout.xs="column" fxLayoutAlign.xs="center stretch" fxLayoutGap.xs="10px">
             <div class="account-icon">
               <mat-icon>account_circle</mat-icon>
             </div>
             <mat-form-field>
               <mat-label>firstname</mat-label>
-              <input matInput type="firstname" placeholder="firstname" formControlName="firstname" autocomplete="firstname">
+              <input matInput type="firstname" placeholder="firstname" formControlName="firstname"
+                     autocomplete="firstname">
               <mat-error *ngIf="firstname.invalid && firstname.value.length === 0">
                 {{ 'firstname can not be empty'|translate }}
               </mat-error>

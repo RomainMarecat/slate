@@ -1,10 +1,10 @@
 {
   "meta": {
-    "description": {
-      "content": "Découvre tous les articles de hockey"
-    },
     "title": {
-      "content": "Hockey"
+      "selection": "Slate Hockey"
+    },
+    "description": {
+      "selection": "Découvre tous les articles de hockey"
     }
   },
   "snackbar": {

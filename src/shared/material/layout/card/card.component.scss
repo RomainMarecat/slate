@@ -2,10 +2,6 @@
 @import './../../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
 @import '../../../../scss/base/hockey/theme.scss';
 
-.mat-card {
-
-}
-
 .kangaroo {
   width: 300px;
   .mat-card-image {
@@ -32,12 +28,23 @@
   }
 }
 
+mat-checkbox,
+mat-radio-button {
+  color: mat-color($white);
+
+}
+
 .note {
   width: 600px;
 
-  .mat-card {
-    min-width: 250px;
-    max-width: 300px;
+  @include media-breakpoint-up(xs) {
+    width: 95%;
+  }
+  @include media-breakpoint-up(sm) {
+    width: 300px;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 600px;
   }
 
   .blue {
@@ -69,6 +76,10 @@
   }
 
   .orange {
+    .mat-card-image {
+      height: 200px;
+    }
+
     background: mat-color(mat-palette($mat-orange, 700));
     * {
       color: mat-color($white);

@@ -7,6 +7,8 @@ import { MenuService } from '../../../shared/menu/menu.service';
 import { Observable } from 'rxjs/Observable';
 import { take, map, debounceTime } from 'rxjs/operators';
 import 'rxjs/add/observable/fromEvent';
+import { Meta, Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-selection-list',
@@ -32,10 +34,13 @@ export class SelectionListComponent implements OnInit {
    * @param LoaderService    private loaderService
    * @param Router           private router
    */
-  constructor(private menuService: MenuService,
+  constructor(private translateService: TranslateService,
+    private menuService: MenuService,
     private selectionService: SelectionService,
     private loaderService: LoaderService,
-    private router: Router) {
+    private router: Router,
+    private meta: Meta,
+    private title: Title) {
     const $resizeEvent = Observable.fromEvent(window, 'resize')
       .map(() =>
         (document.documentElement.clientHeight - 65).toString() + 'px'
@@ -49,6 +54,11 @@ export class SelectionListComponent implements OnInit {
    * Init all selections
    */
   ngOnInit() {
+    this.translateService.get(['meta.title.selection', 'meta.description.selection'])
+      .subscribe((translations: string[]) => {
+        this.meta.addTag({ name: 'description', content: translations['meta.description.selection'] });
+        this.title.setTitle(translations['meta.title.selection']);
+      });
     this.menuService.nextTitle('');
     this.loaderService.show();
     this.loadSelections();
