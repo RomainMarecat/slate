@@ -61,6 +61,6 @@ module.exports = function(config) {
         flags: ['--disable-translate', '--disable-extensions', '--remote-debugging-port=9223']
       }
     },
-    browserNoActivityTimeout: 60000
+    browserNoActivityTimeout: 90000
   });
 };
