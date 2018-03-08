@@ -135,7 +135,7 @@ export class SummaryComponent implements OnInit {
           },
           {
             title: 'Button Toggle',
-            link: '/admin/material/button-indicators/component/toggle',
+            link: '/admin/material/button-indicators/component/button-toggle',
             image: '/assets/images/hockey/icons/apple-icon.png'
           },
           {

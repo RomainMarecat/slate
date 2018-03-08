@@ -13,12 +13,16 @@
   margin: 0 10px;
 }
 
-.mat-card {
-  margin: 20px;
+.mat-checkbox-wrapper {
+  .mat-card {
+    margin: 20px;
+  }
+  .mat-form-field--no-underline {
+    .mat-form-field-underline {
+      background-color: transparent;
+    }
+  }
+
 }
 
-.mat-form-field--no-underline {
-  .mat-form-field-underline {
-    background-color: transparent;
-  }
-}
+

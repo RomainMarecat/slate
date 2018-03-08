@@ -1,0 +1,12 @@
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+}
+
+
+.icon-content {
+  .mat-icon {
+    @include md-icon-size(64px);
+  }
+}

@@ -1,16 +1,18 @@
-.mat-card {
-  margin: 10px;
-}
-
-.mat-form-field--no-underline {
-  .mat-form-field-underline {
-    background-color: transparent;
+.input-wrapper {
+  .mat-card {
+    margin: 10px;
   }
-}
 
-.textarea-extension-card {
-  width: 100%;
-  .mat-form-field {
+  .mat-form-field--no-underline {
+    .mat-form-field-underline {
+      background-color: transparent;
+    }
+  }
+
+  .textarea-extension-card {
     width: 100%;
+    .mat-form-field {
+      width: 100%;
+    }
   }
 }

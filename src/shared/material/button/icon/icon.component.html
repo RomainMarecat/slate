@@ -1,3 +1,16 @@
-<p>
-  icon works!
-</p>
+<div class="Icon-wrapper" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px">
+  <div class="Icon-title" fxLayout="row" fxLayoutAlign="center center">
+    <h2 class="p-3">Icon example</h2>
+  </div>
+  <div class="group">
+    <mat-form-field fxLayout="row" fxLayoutAlign="center center">
+      <input placeholder="Filter by keyword" matInput type="search" [(ngModel)]="search" class="w-50">
+    </mat-form-field>
+  </div>
+  <div class="Icon-example-wrapper" fxLayout="column" fxLayoutAlign="center center">
+    <h3 class="mt-5">Basic Icon</h3>
+    <div class="icon-content" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutWrap fxLayoutGap="30px">
+      <mat-icon class="mat-icon" *ngFor="let icon of icons" matTooltip="{{ icon }}">{{ icon }}</mat-icon>
+    </div>
+  </div>
+</div>
