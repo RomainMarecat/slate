@@ -1,3 +1,72 @@
-<p>
-  button works!
-</p>
+<div class="button-wrapper" fxLayout="column" fxLayoutAlign="center stretch">
+  <div class="button-title" fxLayout="row" fxLayoutAlign="center center">
+    <h2>Button example</h2>
+  </div>
+  <div class="button-example-wrapper">
+    <h3>Basic Buttons</h3>
+    <div class="button-row" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutWrap>
+      <button mat-button>Basic</button>
+      <button mat-button color="primary">Primary</button>
+      <button mat-button color="accent">Accent</button>
+      <button mat-button color="warn">Warn</button>
+      <button mat-button disabled>Disabled</button>
+      <a mat-button routerLink=".">Link</a>
+    </div>
+  </div>
+
+
+  <div class="button-example-wrapper">
+    <h3>Raised Buttons</h3>
+    <div class="button-row" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutWrap>
+      <button mat-raised-button>Basic</button>
+      <button mat-raised-button color="primary">Primary</button>
+      <button mat-raised-button color="accent">Accent</button>
+      <button mat-raised-button color="warn">Warn</button>
+      <button mat-raised-button disabled>Disabled</button>
+      <a mat-raised-button routerLink=".">Link</a>
+    </div>
+  </div>
+
+  <div class="button-example-wrapper">
+    <h3>Icon Buttons</h3>
+    <div class="button-row" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutWrap>
+      <button mat-icon-button>
+        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+      </button>
+      <button mat-icon-button color="accent">
+        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+      </button>
+      <button mat-icon-button color="warn">
+        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+      </button>
+      <button mat-icon-button disabled>
+        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+      </button>
+    </div>
+  </div>
+
+
+  <div class="button-example-wrapper">
+    <h3>Mini Fab Buttons</h3>
+    <div class="button-row" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutWrap>
+      <button mat-mini-fab>Basic</button>
+      <button mat-mini-fab color="primary">Primary</button>
+      <button mat-mini-fab color="accent">Accent</button>
+      <button mat-mini-fab color="warn">Warn</button>
+      <button mat-mini-fab disabled>Disabled</button>
+      <button mat-mini-fab>
+        <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+      </button>
+      <a mat-mini-fab routerLink=".">Link</a>
+    </div>
+  </div>
+
+  <div class="button-example-wrapper">
+    <button color="primary" type="button" aria-label="Add" mat-mini-fab class="absolute-fab pulse">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

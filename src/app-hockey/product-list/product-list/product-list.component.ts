@@ -1,8 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../../shared/product/product.service';
-import { ClothingProduct } from '../../../shared/product/clothing-product';
 import { Observable } from 'rxjs/Observable';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { Selection } from '../../../shared/selection/selection';
@@ -29,22 +28,24 @@ export class ProductListComponent implements OnInit {
   selection: Selection;
 
   /**
-   * @param ProductService   private productService
-   * @param SelectionService private selectionService
-   * @param Router           private router
-   * @param ActivatedRoute   private activatedRoute
-   * @param Meta             private meta
-   * @param ElementRef       private ProductComponent
-   * @param UserService      private userService
-   * @param MenuService      private menuService
-   * @param AlertService     public  alertService
-   * @param LoaderService    private loaderService
-   * @param TranslateService private translateService
+   * @param productService
+   * @param selectionService
+   * @param router
+   * @param activatedRoute
+   * @param title
+   * @param meta
+   * @param ProductComponent
+   * @param userService
+   * @param menuService
+   * @param alertService
+   * @param loaderService
+   * @param translateService
    */
   constructor(private productService: ProductService,
     private selectionService: SelectionService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private title: Title,
     private meta: Meta,
     private ProductComponent: ElementRef,
     private userService: UserService,
@@ -65,13 +66,10 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     this.menuService.nextTitle('');
     this.loaderService.show();
-    this.translateService.get('meta.title.content')
-      .subscribe((translation: string) => {
-        this.meta.addTag({ name: 'title', content: translation });
-      });
-    this.translateService.get('meta.description.content')
-      .subscribe((translation: string) => {
-        this.meta.addTag({ name: 'description', content: translation });
+    this.translateService.get(['meta.title.product-list', 'meta.description.product-list'])
+      .subscribe((translations: string[]) => {
+        this.meta.addTag({ name: 'description', content: translations['meta.description.product-list'] });
+        this.title.setTitle(translations['meta.title.product-list']);
       });
 
     this.meta.addTags([
