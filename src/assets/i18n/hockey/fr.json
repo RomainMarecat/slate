@@ -1,9 +1,11 @@
 {
   "meta": {
     "title": {
+      "product-list": "Liste des produits - Slate Hockey",
       "selection": "Slate Hockey"
     },
     "description": {
+      "product-list": "Les produits de la sélection",
       "selection": "Découvre tous les articles de hockey"
     }
   },

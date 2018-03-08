@@ -1,3 +1,23 @@
-<p>
-  divider works!
-</p>
+<div class="divider-wrapper p-5">
+  <div class="divider-example-wrapper" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="50px">
+    <h2>Divider example</h2>
+    <div class="divider-example">
+      <mat-list>
+        <h3 mat-subheader>Folders</h3>
+        <mat-list-item *ngFor="let folder of folders; last as last">
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>{{folder.name}}</h4>
+          <p mat-line class="demo-2"> {{folder.updated}} </p>
+          <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 md-subheader class="p-4">Notes</h3>
+        <mat-list-item *ngFor="let note of notes">
+          <mat-icon md-list-icon>note</mat-icon>
+          <h4 md-line>{{note.name}}</h4>
+          <p md-line class="demo-2"> {{note.updated}} </p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>

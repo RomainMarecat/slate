@@ -8,11 +8,12 @@ import { AlertService } from '../../../shared/popup/alert.service';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
 import { Comment } from '../../../shared/comment/comment';
 import { Filter } from '../../../shared/facet/filter/shared/filter';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-hockey-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.scss']
+  styleUrls: [ './product-detail.component.scss' ]
 })
 export class ProductDetailComponent implements OnInit {
 
@@ -25,13 +26,26 @@ export class ProductDetailComponent implements OnInit {
     height: number,
   };
 
-  constructor(private activatedRoute: ActivatedRoute,
-    private productService: ProductService,
-    private deviceService: DeviceService,
-    private commentService: CommentService,
-    private userService: UserService,
-    private alertService: AlertService) {
-    this.resizedImage = { height: 400 };
+  /**
+   *
+   * @param {Meta} meta
+   * @param {Title} title
+   * @param {ActivatedRoute} activatedRoute
+   * @param {ProductService} productService
+   * @param {DeviceService} deviceService
+   * @param {CommentService} commentService
+   * @param {UserService} userService
+   * @param {AlertService} alertService
+   */
+  constructor(private meta: Meta,
+              private title: Title,
+              private activatedRoute: ActivatedRoute,
+              private productService: ProductService,
+              private deviceService: DeviceService,
+              private commentService: CommentService,
+              private userService: UserService,
+              private alertService: AlertService) {
+    this.resizedImage = {height: 400};
   }
 
   ngOnInit() {
@@ -46,6 +60,8 @@ export class ProductDetailComponent implements OnInit {
         if (key) {
           this.productService.getProduct(key)
             .subscribe((product: HockeyProduct) => {
+              this.meta.addTag({name: 'description', content: product.description});
+              this.title.setTitle(product.name);
               product.attributes = product.attributes.map((attribute: any) => {
                 attribute.label = attribute.label.trim().replace(/ /g, '');
                 return attribute;
@@ -76,7 +92,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getComments() {
-    const filters: Filter[] = [{
+    const filters: Filter[] = [ {
       column: 'entity_key',
       operator: '==',
       value: this.product.key
@@ -84,7 +100,7 @@ export class ProductDetailComponent implements OnInit {
       column: 'entity_type',
       operator: '==',
       value: 'Product',
-    }];
+    } ];
     this.commentService.filters$.next(filters);
     this.commentService.getComments()
       .subscribe((comments: Comment[]) => {
