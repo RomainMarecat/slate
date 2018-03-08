@@ -45,14 +45,18 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: [(process.env.TRAVIS) ? 'Chrome_travis_ci' : 'Chrome'], // 'ChromeHeadless', 'MyHeadlessChrome'
+    browsers: [(process.env.TRAVIS) ? 'HeadlessChromeTravisCi' : 'HeadlessChrome'], // 'ChromeHeadless', 'MyHeadlessChrome'
     singleRun: false,
     customLaunchers: {
-      Chrome_travis_ci: {
+      ChromeTravisCi: {
         base: 'Chrome',
         flags: ['--no-sandbox']
       },
-      MyHeadlessChrome: {
+      HeadlessChromeTravisCi: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-translate', '--disable-extensions', '--remote-debugging-port=9223']
+      },
+      HeadlessChrome: {
         base: 'ChromeHeadless',
         flags: ['--disable-translate', '--disable-extensions', '--remote-debugging-port=9223']
       }

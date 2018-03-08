@@ -1,3 +1,23 @@
-<p>
-  button-toggle works!
-</p>
+<div class="button-wrapper" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="50px">
+  <div class="button-title" fxLayout="row" fxLayoutAlign="center center">
+    <h2>Button example</h2>
+  </div>
+  <div class="button-example-wrapper" fxLayout="column" fxLayoutAlign="center center">
+    <h3>Basic Toggle Button</h3>
+    <mat-button-toggle-group #group="matButtonToggleGroup">
+      <mat-button-toggle value="left">
+        <mat-icon>format_align_left</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="center">
+        <mat-icon>format_align_center</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="right">
+        <mat-icon>format_align_right</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="justify" disabled>
+        <mat-icon>format_align_justify</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <div class="example-selected-value">Selected value: {{group.value}}</div>
+  </div>
+</div>

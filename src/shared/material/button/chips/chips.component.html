@@ -1,3 +1,46 @@
-<p>
-  chips works!
-</p>
+<div class="chips-wrapper" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px">
+  <div class="chips-title" fxLayout="row" fxLayoutAlign="center center">
+    <h2 class="p-3">Chips example</h2>
+  </div>
+  <div class="chips-example-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+
+    <h3 class="mt-5">Basic Chips</h3>
+    <div class="chips-row" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutWrap fxLayoutGap="20px">
+      <mat-chip-list>
+        <mat-chip>One fish</mat-chip>
+        <mat-chip>Two fish</mat-chip>
+        <mat-chip color="primary" selected="true">Primary fish</mat-chip>
+        <mat-chip color="accent" selected="true">Accent fish</mat-chip>
+      </mat-chip-list>
+    </div>
+
+    <h3 class="mt-5">Add/Remove Chips</h3>
+    <div class="chips-row" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutWrap fxLayoutGap="10px">
+      <mat-form-field class="demo-chip-list">
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                    [removable]="removable" (remove)="remove(fruit)">
+            {{fruit.name}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="New fruit..."
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="add($event)"/>
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+
+
+    <h3 class="mt-5">Colors Chips</h3>
+    <div class="chips-row" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutWrap fxLayoutGap="20px">
+      <mat-chip-list class="mat-chip-list-stacked">
+        <mat-chip *ngFor="let chip of availableColors" selected="true" [color]="chip.color">
+          {{chip.name}}
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+</div>
