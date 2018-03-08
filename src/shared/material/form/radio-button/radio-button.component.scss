@@ -1,9 +1,11 @@
-.mat-card {
-  margin: 10px;
-}
+.radio-wrapper {
+  .mat-card {
+    margin: 10px;
+  }
 
-.mat-form-field--no-underline {
-  .mat-form-field-underline {
-    background-color: transparent;
+  .mat-form-field--no-underline {
+    .mat-form-field-underline {
+      background-color: transparent;
+    }
   }
 }
