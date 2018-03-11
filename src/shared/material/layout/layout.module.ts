@@ -9,15 +9,20 @@ import { StepperComponent } from './stepper/stepper.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatDividerModule, MatIconModule, MatListModule, MatRadioModule,
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDividerModule, MatExpansionModule, MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule, MatInputModule,
+  MatListModule, MatRadioModule, MatStepperModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
+    FormsModule,
     MatCardModule,
     MatToolbarModule,
     MatCheckboxModule,
@@ -25,9 +30,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatButtonModule,
     MatListModule,
     MatDividerModule,
-    MatListModule,
+    MatGridListModule,
+    MatTabsModule,
     MatIconModule,
-    LayoutRoutingModule
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatStepperModule,
+    LayoutRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     CardComponent,
