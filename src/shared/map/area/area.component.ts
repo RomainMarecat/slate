@@ -54,18 +54,32 @@ export class AreaComponent implements OnInit {
    * Draw all lines with path2D
    */
   paintAreas() {
-    const ctx: CanvasRenderingContext2D =
-      this.mapRef.nativeElement.getContext('2d');
+    const canvas: any = document.getElementById('map');
+    // const ctx = canvas.getContext('2d');
+    const ctx: CanvasRenderingContext2D = this.mapRef.nativeElement.getContext('2d');
     ctx.beginPath();
     this.areas.forEach((area) => {
       const p = new Path2D(area.path);
-      ctx.fillStyle = 'blue';
-      ctx.strokeStyle = '#131629';
-      ctx.lineWidth = 2;
+      ctx.fillStyle = 'rgb(61, 106, 190)';
+      ctx.strokeStyle = 'rgb(30, 53, 125)';
+      ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
+      ctx.lineWidth = 3;
+      ctx.miterLimit = 10;
 
       ctx.fill(p);
       ctx.stroke(p);
+    });
+
+    canvas.addEventListener('click', e => {
+      const bound = canvas.getBoundingClientRect();
+      const x = e.pageX - bound.top;
+      const y = e.pageY - bound.left;
+      this.areas.forEach((area, index) => {
+        if (ctx.isPointInPath(x, y)) {
+          console.log(index);
+        }
+      });
     });
 
     ctx.closePath();
