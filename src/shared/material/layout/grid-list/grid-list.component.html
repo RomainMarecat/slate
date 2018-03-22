@@ -1,3 +1,24 @@
-<p>
-  grid-list works!
-</p>
+<div class="grid-list-wrapper" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="20px">
+  <div class="grid-list-title" fxLayout="row" fxLayoutAlign="center center">
+    <h2 class="p-3">Grid list example</h2>
+  </div>
+  <div class="grid-list-example-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+
+    <div class="grid-list-row" fxLayout="column" fxLayoutAlign="start center">
+      <h3 class="mt-5">Basic grid list</h3>
+      <div class="element-wrapper">
+
+        <mat-grid-list cols="4" rowHeight="100px">
+          <mat-grid-tile
+            *ngFor="let tile of tiles"
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows"
+            [style.background]="tile.color">
+            {{tile.text}}
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </div>
+</div>

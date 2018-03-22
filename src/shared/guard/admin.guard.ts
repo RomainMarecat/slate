@@ -5,14 +5,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
+import { adminsID } from './admin';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
   authorized: string[] = [];
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {
-    this.authorized.push('6glT4N2SUMW2HWibhefumuRiVIh2');
-    this.authorized.push('oIAtyPwagRfIKxSwX6O3ncGocyD3');
+    this.authorized = adminsID;
   }
 
   canActivate(

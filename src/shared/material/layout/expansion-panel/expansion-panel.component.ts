@@ -6,10 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./expansion-panel.component.scss']
 })
 export class ExpansionPanelComponent implements OnInit {
+  panelOpenState = false;
+
+  step = 0;
+
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+  prevStep() {
+    this.step--;
   }
 
 }

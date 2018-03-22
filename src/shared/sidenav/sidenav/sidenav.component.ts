@@ -10,6 +10,7 @@ import { I18nService } from '../../../shared/i18n/i18n.service';
 import { Observable } from 'rxjs/Observable';
 import { reduce, map, debounceTime } from 'rxjs/operators';
 import { User } from '../../user/user';
+import { adminsID } from '../../guard/admin';
 
 @Component({
   selector: 'app-sidenav',
@@ -41,9 +42,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     private i18nService: I18nService,
     private sidenavService: SidenavService) {
     this.viewFilter = true;
-    this.authorized = [];
-    this.authorized.push('6glT4N2SUMW2HWibhefumuRiVIh2');
-    this.authorized.push('oIAtyPwagRfIKxSwX6O3ncGocyD3');
+    this.authorized = adminsID;
   }
 
   /**

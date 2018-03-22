@@ -15,7 +15,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatProgressBarModule,
-  MatProgressSpinnerModule,
+  MatProgressSpinnerModule, MatRadioModule, MatSliderModule,
   MatTooltipModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -36,6 +36,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     MatInputModule,
+    MatRadioModule,
+    MatSliderModule,
     MatTooltipModule,
     ButtonRoutingModule
   ],

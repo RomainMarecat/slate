@@ -51,12 +51,14 @@ import { PopupModule } from './popup/popup.module';
 import { PartnerModule } from './partner/partner.module';
 import { OfferModule } from './offer/offer.module';
 import { CommentModule } from './comment/comment.module';
+import { MapModule } from './map/map.module';
 
-export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
+export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
 @Injectable()
 export class ConfigService {
   configToken: Environment;
+
   constructor(@Inject(CONFIG_TOKEN) configToken) {
     this.configToken = configToken;
   }
@@ -79,6 +81,7 @@ export class ConfigService {
     HttpClientModule,
     ImageCropperModule,
     LoaderModule,
+    MapModule,
     MatAutocompleteModule,
     MatCardModule,
     MatChipsModule,
@@ -127,6 +130,7 @@ export class ConfigService {
     HttpClientModule,
     ImageCropperModule,
     LoaderModule,
+    MapModule,
     MatAutocompleteModule,
     MatCardModule,
     MatChipsModule,
@@ -173,11 +177,11 @@ export class ConfigService {
   ]
 })
 export class SharedModule {
-  static forRoot(config: InjectionToken < Environment > ): ModuleWithProviders {
+  static forRoot(config: InjectionToken<Environment>): ModuleWithProviders {
     return {
       ngModule: SharedModule,
       providers: [
-        { provide: CONFIG_TOKEN, useValue: config },
+        {provide: CONFIG_TOKEN, useValue: config},
       ]
     };
   }
