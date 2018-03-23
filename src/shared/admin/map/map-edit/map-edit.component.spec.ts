@@ -29,13 +29,13 @@ describe('MapEditComponent', () => {
         CommonModule,
         BrowserModule,
         HttpClientTestingModule,
-        RouterTestingModule,
         BrowserAnimationsModule,
         NgxDatatableModule,
         TranslateModule.forRoot({
           loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
         }),
         SharedModule,
+        RouterTestingModule,
       ],
       declarations: [ MapEditComponent, MapAreasComponent ],
       providers: [

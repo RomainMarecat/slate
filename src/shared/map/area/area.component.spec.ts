@@ -4,6 +4,7 @@ import { AreaComponent } from './area.component';
 import { CommonModule } from '@angular/common';
 import { AreaService } from '../shared/area.service';
 import { MockAreaService } from '../shared/mock-area.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AreaComponent', () => {
   let component: AreaComponent;
@@ -12,7 +13,8 @@ describe('AreaComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule
+        CommonModule,
+        RouterTestingModule,
       ],
       declarations: [ AreaComponent ],
       providers: [
