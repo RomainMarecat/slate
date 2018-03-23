@@ -9,6 +9,7 @@ import { MockMapService } from '../shared/mock-map.service';
 import { MapService } from '../shared/map.service';
 import { MockAreaService } from '../shared/mock-area.service';
 import { AreaService } from '../shared/area.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('MapComponent', () => {
   let component: MapComponent;
@@ -17,7 +18,8 @@ describe('MapComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule
+        CommonModule,
+        RouterTestingModule
       ],
       declarations: [ MapComponent, AreaComponent ],
       providers: [

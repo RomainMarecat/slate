@@ -48,6 +48,7 @@ import { CommentService } from '../../shared/comment/comment.service';
 import { HomeModule } from '../home/home.module';
 import { MapService } from '../../shared/map/shared/map.service';
 import { AreaService } from '../../shared/map/shared/area.service';
+import { MenincarProductModule } from '../product/menincar-product.module';
 
 export const production = new InjectionToken < string > ('production');
 export const site_name = new InjectionToken < string > ('site_name');
@@ -147,7 +148,8 @@ export const cookieConfig: NgcCookieConsentConfig = {
         deps: [HttpClient, app_name]
       }
     }),
-    HomeModule
+    HomeModule,
+    MenincarProductModule
   ],
   exports: [
     AdsenseModule,
