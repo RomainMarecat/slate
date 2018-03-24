@@ -27,7 +27,7 @@ import {
   MatStepperModule,
   MatRadioModule,
   MatDialogModule,
-  MatChipsModule
+  MatChipsModule, MatProgressBarModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { SlackModule } from './slack/slack.module';
@@ -97,6 +97,7 @@ export class ConfigService {
     MatCheckboxModule,
     MatListModule,
     MatSnackBarModule,
+    MatProgressBarModule,
     MatProgressSpinnerModule,
     MatLineModule,
     MatExpansionModule,
@@ -146,6 +147,7 @@ export class ConfigService {
     MatCheckboxModule,
     MatListModule,
     MatSnackBarModule,
+    MatProgressBarModule,
     MatProgressSpinnerModule,
     MatLineModule,
     MatExpansionModule,
