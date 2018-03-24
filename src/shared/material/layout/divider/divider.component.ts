@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DividerComponent implements OnInit {
 
-  folders: object[] = [
+  folders: any[] = [
     { name: 'WIP', updated: new Date()},
     { name: 'Desktop', updated: new Date()},
     { name: 'Download', updated: new Date()},
     { name: 'Documents', updated: new Date()},
   ];
-  notes: object[] = [{name: 'Clean desk'}, {name: 'call Marco'}, {name: 'go home at 19'}];
+  notes: any[] = [{name: 'Clean desk'}, {name: 'call Marco'}, {name: 'go home at 19'}];
 
   constructor() { }
 

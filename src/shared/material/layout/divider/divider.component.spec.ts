@@ -38,6 +38,7 @@ describe('DividerComponent', () => {
   });
 
   it('should create', () => {
+    console.log('135 bug ?');
     expect(component).toBeTruthy();
   });
 });
