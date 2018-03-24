@@ -10,6 +10,10 @@ import { MapService } from '../shared/map.service';
 import { MockAreaService } from '../shared/mock-area.service';
 import { AreaService } from '../shared/area.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AreaListComponent } from '../area-list/area-list.component';
+import { AreaDrawComponent } from '../area-draw/area-draw.component';
+import { MatListModule } from '@angular/material';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 describe('MapComponent', () => {
   let component: MapComponent;
@@ -19,9 +23,13 @@ describe('MapComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
-        RouterTestingModule
+        MatListModule,
+        RouterTestingModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
       ],
-      declarations: [ MapComponent, AreaComponent ],
+      declarations: [ MapComponent, AreaComponent, AreaListComponent, AreaDrawComponent ],
       providers: [
         { provide: AlertService, useClass: MockAlertService },
         { provide: MapService, useClass: MockMapService },

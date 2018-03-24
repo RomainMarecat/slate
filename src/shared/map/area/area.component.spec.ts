@@ -5,6 +5,9 @@ import { CommonModule } from '@angular/common';
 import { AreaService } from '../shared/area.service';
 import { MockAreaService } from '../shared/mock-area.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AreaListComponent } from '../area-list/area-list.component';
+import { AreaDrawComponent } from '../area-draw/area-draw.component';
+import { MatListModule } from '@angular/material';
 
 describe('AreaComponent', () => {
   let component: AreaComponent;
@@ -14,9 +17,10 @@ describe('AreaComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
+        MatListModule,
         RouterTestingModule,
       ],
-      declarations: [ AreaComponent ],
+      declarations: [ AreaComponent, AreaListComponent, AreaDrawComponent ],
       providers: [
         {provide: AreaService, useClass: MockAreaService}
       ]

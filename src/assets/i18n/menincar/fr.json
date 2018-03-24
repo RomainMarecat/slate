@@ -9,6 +9,11 @@
       "selection": "Découvre toutes les voitures de Men In Car"
     }
   },
+  "home": {
+    "main": {
+      "title": "Trouvez la bonne affaire parmi toutes nos petites annonces sur Men in car."
+    }
+  },
   "snackbar": {
     "product-add": {
       "submit": "Ton pull est en attente de validation :)"

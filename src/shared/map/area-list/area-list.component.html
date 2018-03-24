@@ -1,0 +1,7 @@
+<div class="list-row" fxLayout="column" fxLayoutAlign="start center">
+  <div class="element-wrapper" fxLayout="row" fxLayoutAlign="center stretch">
+    <mat-nav-list class="mat-nav-list" fxLayout="column" fxLayoutAlign="center end">
+      <a mat-list-item *ngFor="let area of areas" [routerLink]="getLink(area)">{{ area.name }}</a>
+    </mat-nav-list>
+  </div>
+</div>

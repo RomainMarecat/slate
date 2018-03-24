@@ -24,7 +24,7 @@ import {
   MatLineModule,
   MatMenuModule,
   MatCommonModule,
-  MatTooltipModule
+  MatTooltipModule, MatProgressBarModule
 } from '@angular/material';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,7 +52,7 @@ import { SortModule } from './../../facet/sort/sort.module';
 
 describe('SidenavComponent', () => {
   let component: SidenavComponent;
-  let fixture: ComponentFixture < SidenavComponent > ;
+  let fixture: ComponentFixture<SidenavComponent>;
 
   beforeEach(async(() => {
     const options = {
@@ -61,56 +61,57 @@ describe('SidenavComponent', () => {
       layout: 'z1',
     };
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          RouterModule,
-          BrowserModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          AngularFireModule.initializeApp(environment.firebase),
-          AngularFirestoreModule,
-          AngularFireAuthModule,
-          AdsenseModule.forRoot(options),
-          FilterModule,
-          MatCardModule,
-          MatToolbarModule,
-          MatSidenavModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatFormFieldModule,
-          MatSelectModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          MatSnackBarModule,
-          MatProgressSpinnerModule,
-          MatLineModule,
-          MatMenuModule,
-          MatCommonModule,
-          MatTooltipModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-          SortModule
-        ],
-        declarations: [SidenavComponent, LoaderComponent, FooterComponent, MenuComponent],
-        providers: [
-          { provide: UserService, useClass: MockUserService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: ProductService, useClass: MockProductService },
-          I18nService,
-          MenuService,
-          SidenavService,
-        ]
-      })
+      imports: [
+        CommonModule,
+        RouterModule,
+        BrowserModule,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        AdsenseModule.forRoot(options),
+        FilterModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatListModule,
+        MatSnackBarModule,
+        MatProgressSpinnerModule,
+        MatProgressBarModule,
+        MatLineModule,
+        MatMenuModule,
+        MatCommonModule,
+        MatTooltipModule,
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+        SortModule
+      ],
+      declarations: [ SidenavComponent, LoaderComponent, FooterComponent, MenuComponent ],
+      providers: [
+        {provide: UserService, useClass: MockUserService},
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: ProductService, useClass: MockProductService},
+        I18nService,
+        MenuService,
+        SidenavService,
+      ]
+    })
       .compileComponents();
   }));
 

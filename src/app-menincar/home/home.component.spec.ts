@@ -42,11 +42,12 @@ describe('HomeComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        SharedModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ HomeComponent, MapComponent, AreaComponent ],
+      declarations: [ HomeComponent],
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: AreaService, useClass: MockAreaService},

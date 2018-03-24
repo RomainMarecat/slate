@@ -1,2 +1,6 @@
-<!--<h1>Map</h1>-->
-<app-area fxLayout="row" fxLayoutAlign="start stretch" [map]="map"></app-area>
+<div class="map-wrapper mt-2" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="20px">
+
+  <h1 class="main-title">{{ 'home.main.title'|translate }}</h1>
+  <app-area [map]="map"></app-area>
+
+</div>

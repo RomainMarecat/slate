@@ -1,8 +1,7 @@
 <div [class.loader-hidden]="!show">
   <div class="loader-overlay" angulartics2On="mouseover" angularticsAction="HoveredOverLoaderSpinner" [angularticsCategory]="'loader.show'">
     <div>
-      <mat-progress-spinner class="loader-spinner" [color]="color" [mode]="mode" [value]="value" *ngIf="show">
-      </mat-progress-spinner>
+      <mat-progress-bar class="loader-spinner" [mode]="mode" *ngIf="show"></mat-progress-bar>
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { LoaderComponent } from './loader.component';
-import { MatProgressSpinnerModule } from '@angular/material';
+import { MatProgressBarModule, MatProgressSpinnerModule } from '@angular/material';
 import { LoaderService } from './loader.service';
 import { MockLoaderService } from './mock-loader.service';
 
@@ -16,7 +16,7 @@ describe('LoaderComponent', () => {
     TestBed.configureTestingModule({
         imports: [
           RouterTestingModule,
-          MatProgressSpinnerModule,
+          MatProgressBarModule,
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {
