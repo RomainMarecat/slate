@@ -8,6 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AreaListComponent } from '../area-list/area-list.component';
 import { AreaDrawComponent } from '../area-draw/area-draw.component';
 import { MatListModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 describe('AreaComponent', () => {
   let component: AreaComponent;
@@ -18,6 +19,7 @@ describe('AreaComponent', () => {
       imports: [
         CommonModule,
         MatListModule,
+        FlexLayoutModule,
         RouterTestingModule,
       ],
       declarations: [ AreaComponent, AreaListComponent, AreaDrawComponent ],
@@ -25,7 +27,7 @@ describe('AreaComponent', () => {
         {provide: AreaService, useClass: MockAreaService}
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

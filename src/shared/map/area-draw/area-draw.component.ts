@@ -2,6 +2,8 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Area } from '../shared/area';
 import { Path2DConstructor } from '../shared/path2d';
 import { Router } from '@angular/router';
+import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import 'rxjs/add/operator/take';
 
 declare var Path2D: Path2DConstructor;
 
@@ -16,11 +18,23 @@ export class AreaDrawComponent implements OnInit {
   _areas: Area[];
   width = 600;
   height = 550;
+  containerHeight = 550;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private media: ObservableMedia) {
+  }
+
+  getContainerHeight(): string {
+    return this.containerHeight.toString() + 'px';
   }
 
   ngOnInit() {
+    this.media.asObservable()
+      .take(1)
+      .subscribe((change: MediaChange) => {
+        if (change.mqAlias === 'xs') {
+          this.containerHeight = window.innerHeight * 0.5;
+        }
+      });
   }
 
   @Input() set areas(areas) {

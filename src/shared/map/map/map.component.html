@@ -1,4 +1,10 @@
-<div class="map-wrapper mt-2" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="20px">
+<div class="map-wrapper mt-2"
+     fxLayout="row"
+     fxLayoutAlign="center stretch"
+     fxLayoutGap="20px"
+     fxLayout.xs="column"
+     fxLayoutAlign.xs="start center"
+     fxLayoutGap.xs="10px">
 
   <h1 class="main-title">{{ 'home.main.title'|translate }}</h1>
   <app-area [map]="map"></app-area>
