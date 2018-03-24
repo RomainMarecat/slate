@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AreaDrawComponent } from './area-draw.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 describe('AreaDrawComponent', () => {
   let component: AreaDrawComponent;
@@ -12,11 +13,12 @@ describe('AreaDrawComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
+        FlexLayoutModule,
         RouterTestingModule,
       ],
       declarations: [ AreaDrawComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

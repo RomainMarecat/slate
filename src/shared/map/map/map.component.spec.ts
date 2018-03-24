@@ -14,6 +14,7 @@ import { AreaListComponent } from '../area-list/area-list.component';
 import { AreaDrawComponent } from '../area-draw/area-draw.component';
 import { MatListModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 describe('MapComponent', () => {
   let component: MapComponent;
@@ -23,6 +24,7 @@ describe('MapComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
+        FlexLayoutModule,
         MatListModule,
         RouterTestingModule,
         TranslateModule.forRoot({
@@ -31,12 +33,12 @@ describe('MapComponent', () => {
       ],
       declarations: [ MapComponent, AreaComponent, AreaListComponent, AreaDrawComponent ],
       providers: [
-        { provide: AlertService, useClass: MockAlertService },
-        { provide: MapService, useClass: MockMapService },
-        { provide: AreaService, useClass: MockAreaService },
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: MapService, useClass: MockMapService},
+        {provide: AreaService, useClass: MockAreaService},
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
