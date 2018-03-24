@@ -2,6 +2,7 @@
   "projects": {
     "default": "hockey-f2b77",
     "hockey": "hockey-f2b77",
+    "menincar": "menincar-384269",
     "monpullmoche": "mon-pull-moche"
   }
 }
