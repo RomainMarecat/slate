@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { AreaService } from '../shared/area.service';
 import { Area } from '../shared/area';
 import { Map } from '../shared/map';
 import { Filter } from '../../facet/filter/shared/filter';
 import { take } from 'rxjs/operators';
+import { AreaDrawComponent } from '../area-draw/area-draw.component';
 
 @Component({
   selector: 'app-area',
@@ -11,7 +12,7 @@ import { take } from 'rxjs/operators';
   styleUrls: [ './area.component.scss' ]
 })
 export class AreaComponent implements OnInit {
-
+  @ViewChild(AreaDrawComponent) areaDrawComponent: AreaDrawComponent;
   areas: Area[] = [];
   _map: Map;
 
@@ -44,5 +45,9 @@ export class AreaComponent implements OnInit {
 
   get map(): Map {
     return this._map;
+  }
+
+  onHoveredArea(area: Area) {
+    this.areaDrawComponent.drawHoveredArea(area);
   }
 }

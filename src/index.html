@@ -33,18 +33,11 @@
       <div class="loader-section section-right"></div>
     </div>
   </app-root>
-  <script>
-  if (window.location.host.indexOf('localhost') === -1) {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-        // Registration was successful
-      }).catch(function(err) {
-        // registration failed :(
-      });
-    }
-  }
-
-  </script>
+  <noscript>
+    <h3 style="color: #673ab7; font-family: Helvetica; margin: 2rem;">
+      Sorry, but app is not available without javascript
+    </h3>
+  </noscript>
   <script async>
   (function(i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;

@@ -18,6 +18,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app-menincar",
+      "serviceWorker": true,
       "styles": [
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
@@ -52,6 +53,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app-hockey",
+      "serviceWorker": true,
       "styles": [
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
@@ -86,6 +88,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
+      "serviceWorker": true,
       "styles": [
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
@@ -119,6 +122,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app-snippet",
+      "serviceWorker": true,
       "styles": [
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",

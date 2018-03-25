@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Area } from '../shared/area';
 
 @Component({
@@ -8,6 +8,7 @@ import { Area } from '../shared/area';
 })
 export class AreaListComponent implements OnInit {
   _areas: Area[];
+  @Output() areaHovered: EventEmitter<Area> = new EventEmitter<Area>();
 
   constructor() {
   }
@@ -25,5 +26,9 @@ export class AreaListComponent implements OnInit {
 
   getLink(area: Area) {
     return '/selection/' + area.key + '-' + (area.name).toLowerCase() + '/products';
+  }
+
+  onHoverArea(area: Area) {
+    this.areaHovered.emit(area);
   }
 }
