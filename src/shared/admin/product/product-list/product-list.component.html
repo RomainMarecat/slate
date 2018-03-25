@@ -1,4 +1,4 @@
-<div class="row" fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column" fxLayoutAlign.xs="center stretch">
+<div class="row" fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column" fxLayoutAlign.xs="start center">
   <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxLayoutGap.xs="5px" *ngIf="selected && selected.length > 0">
     <button role="button" aria-label="Publier le produit" mat-raised-button color="primary" (click)="publishProduct()" *ngIf="selected && selected.length > 0">
       <mat-icon aria-label="Published">done</mat-icon>
@@ -17,7 +17,7 @@
       Télécharger les images
     </button>
   </div>
-  <div>
+  <div fxLayout="row" fxLayoutAlign="center stretch">
     <app-admin-product-filter (filtered)="updateFilter($event)"></app-admin-product-filter>
   </div>
 </div>
