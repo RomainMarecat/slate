@@ -19,6 +19,7 @@ export class AreaDrawComponent implements OnInit {
   width = 600;
   height = 550;
   containerHeight = 550;
+  paths: any[] = [];
 
   constructor(private router: Router, private media: ObservableMedia) {
   }
@@ -52,12 +53,11 @@ export class AreaDrawComponent implements OnInit {
   paintAreas() {
     const canvas: any = document.getElementById('map');
     const context: CanvasRenderingContext2D = this.mapRef.nativeElement.getContext('2d');
-    const paths = [];
     this.areas.forEach((area: Area, index: number) => {
       const path2D = new Path2D(area.path);
-      this.drawArea(context, path2D);
+      this.drawPath(context, path2D);
 
-      paths.push({area: area, path2D: path2D});
+      this.paths.push({area: area, path2D: path2D});
     });
 
     /**
@@ -69,12 +69,12 @@ export class AreaDrawComponent implements OnInit {
       const mouseY = e.offsetY;
 
       this.mapRef.nativeElement.style.cursor = 'default';
-      paths.forEach((path) => {
+      this.paths.forEach((path) => {
         if (context.isPointInPath(path.path2D, mouseX, mouseY)) {
-          this.drawHoveredArea(context, path.path2D);
+          this.drawHoveredPath(context, path.path2D);
           this.mapRef.nativeElement.style.cursor = 'pointer';
         } else {
-          this.drawArea(context, path.path2D);
+          this.drawPath(context, path.path2D);
         }
       });
     });
@@ -82,7 +82,7 @@ export class AreaDrawComponent implements OnInit {
     canvas.addEventListener('click', (e: MouseEvent) => {
       const mouseX = e.offsetX;
       const mouseY = e.offsetY;
-      paths.forEach((path) => {
+      this.paths.forEach((path) => {
         if (context.isPointInPath(path.path2D, mouseX, mouseY)) {
           this.router.navigate([ '/selection/' + path.area.key + '-' + (path.area.name).toLowerCase() + '/products' ]);
         }
@@ -90,7 +90,18 @@ export class AreaDrawComponent implements OnInit {
     });
   }
 
-  drawArea(context: CanvasRenderingContext2D, path2D: Path2D) {
+  drawHoveredArea(area: Area) {
+    const context: CanvasRenderingContext2D = this.mapRef.nativeElement.getContext('2d');
+    this.paths.forEach((path) => {
+      if (path.area.key === area.key) {
+        this.drawHoveredPath(context, path.path2D);
+      } else {
+        this.drawPath(context, path.path2D);
+      }
+    });
+  }
+
+  drawPath(context: CanvasRenderingContext2D, path2D: Path2D) {
     context.fillStyle = '#3d6abe';
     context.strokeStyle = '#1e357d';
     context.lineCap = 'round';
@@ -101,7 +112,7 @@ export class AreaDrawComponent implements OnInit {
     context.stroke(path2D);
   }
 
-  drawHoveredArea(context: CanvasRenderingContext2D, path2D: Path2D) {
+  drawHoveredPath(context: CanvasRenderingContext2D, path2D: Path2D) {
     context.fillStyle = '#f56b2a';
     context.strokeStyle = '#1e357d';
     context.lineCap = 'round';

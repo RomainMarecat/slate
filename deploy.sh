@@ -1,10 +1,9 @@
 #!/bin/bash
-for site in hockey
+for site in menincar
 do
 	./node_modules/@angular/cli/bin/ng build -aot --env=prod --app=$site -prod
 	cp src/app-$site/sitemap.xml dist/sitemap.xml
 	cp src/app-$site/robots.txt dist/robots.txt
-	npm run precache
 	firebase use $site
 	firebase deploy
 done

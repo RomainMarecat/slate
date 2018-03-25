@@ -11,7 +11,7 @@ import { environment } from '../environments/environment.menincar';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule.forRoot(environment),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   declarations: [
     AppRootComponent

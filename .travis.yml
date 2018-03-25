@@ -9,7 +9,6 @@ before_deploy:
   - ./node_modules/@angular/cli/bin/ng build -aot --env=prod --app=hockey -prod
   - cp src/app-hockey/sitemap.xml dist/sitemap.xml
   - cp src/app-hockey/robots.txt dist/robots.txt
-  - npm run precache
   - firebase use default
 deploy:
   # - skip_cleanup: true
