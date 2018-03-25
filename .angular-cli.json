@@ -131,7 +131,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/cookieconsent/build/cookieconsent.min.css",
         "../node_modules/dragula/dist/dragula.css",
-        "./scss/styles.hockey.scss"
+        "./scss/styles.snippet.scss"
       ],
       "scripts": [
         "../node_modules/crypto-js/crypto-js.js",
