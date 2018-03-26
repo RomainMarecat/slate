@@ -90,7 +90,7 @@ export class ProductFormType {
       'category': new FormControl(product && product.category ? product.category : '', [
         Validators.required,
       ]),
-      'attributes': new FormControl(product && product.attributes ? product.attributes : null, []),
+      'attributes': new FormControl(product && product.attributes ? product.attributes : [], []),
     });
 
     return this.form;

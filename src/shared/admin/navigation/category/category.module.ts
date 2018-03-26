@@ -33,11 +33,13 @@ import { CategoryComponent } from './category.component';
 import { CategoryService } from './../../shared/navigation/category/category.service';
 import { CategoryAddComponent } from './category-add/category-add.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    FlexLayoutModule,
     HttpClientModule,
     MatCardModule,
     MatToolbarModule,

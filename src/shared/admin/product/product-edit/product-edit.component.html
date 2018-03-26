@@ -78,7 +78,7 @@
             <div class="d-block mt-1">
               <h4>Liste des attributs diponibles</h4>
               <div class="wrapper">
-                <div class="container" [dragula]="'attributes-bag'">
+                <div class="container bag" [dragula]="'attributes-bag'">
                   <div *ngFor="let attribute of attributesModel" [innerHtml]="attribute?.translations?.fr"></div>
                 </div>
               </div>
@@ -88,8 +88,8 @@
             <div class="d-block mt-1">
               <h4>Attributs du produit</h4>
               <div class="wrapper">
-                <div class="container" [dragula]="'product-attributes'">
-                  <div *ngFor="let attribute of product?.attributes" [innerHtml]="attribute.label"></div>
+                <div class="container bag" [dragula]="'product-attributes'" [dragulaOptions]="options" [dragulaModel]="form.controls.attributes.value">
+                  <div *ngFor="let attribute of form.controls.attributes.value" [innerHtml]="attribute.label"></div>
                 </div>
               </div>
             </div>
