@@ -33,7 +33,7 @@ export class AreaDrawComponent implements OnInit {
       .take(1)
       .subscribe((change: MediaChange) => {
         if (change.mqAlias === 'xs') {
-          this.containerHeight = window.innerHeight * 0.5;
+          this.containerHeight = window.innerWidth * 0.91;
         }
       });
   }

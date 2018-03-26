@@ -22,7 +22,7 @@ export class MapComponent implements OnInit {
       .subscribe((maps) => {
         this.map = maps[ 0 ];
       }, (err) => {
-        console.log(err);
+        console.error(err);
       });
   }
 

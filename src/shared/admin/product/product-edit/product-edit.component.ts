@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, TemplateRef } from '@angular/c
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormArray } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
-import { StringService } from '../../../../shared/util/string.service';
+import { StringService } from '../../../util/string.service';
 import { Product } from '../../../product/product';
 import { ProductService } from '../../shared/product/product.service';
 import { Media } from '../../../media/media';
@@ -10,8 +10,8 @@ import { Category } from '../../shared/navigation/category/category';
 import { CategoryService } from '../../shared/navigation/category/category.service';
 import { Observable } from 'rxjs/Observable';
 import { DocumentReference } from '@firebase/firestore-types';
-import { ProductImageComponent } from './../../../product/product-image/product-image.component';
-import { ProductFormType } from './../../shared/product/form-product';
+import { ProductImageComponent } from '../../../product/product-image/product-image.component';
+import { ProductFormType } from '../../shared/product/form-product';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { Partner } from '../../../partner/partner';
@@ -19,11 +19,14 @@ import { Offer } from '../../../offer/offer';
 import { Attribute } from '../../../attribute/attribute';
 import { DragulaService } from 'ng2-dragula';
 import { OfferService } from '../../shared/offer/offer.service';
+import 'rxjs/add/operator/take';
+
+
 
 @Component({
   selector: 'app-product-edit',
   templateUrl: './product-edit.component.html',
-  styleUrls: ['./product-edit.component.scss']
+  styleUrls: [ './product-edit.component.scss' ]
 })
 export class ProductEditComponent implements OnInit, OnDestroy {
   form: FormGroup;
@@ -37,16 +40,15 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   columns: any;
   categories: Category[] = [];
   selected: Category[] = [];
-  filteredAttributes: Observable < any[] > ;
-
+  filteredAttributes: Observable<any[]>;
   isLoading = false;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
   @ViewChild(ProductImageComponent) productImageComponent: ProductImageComponent;
 
   _publication = true;
   _descriptionModel = '';
-  _attributesModel: Attribute[] = [];
+  _attributesModel: any[] = [];
 
   /**
    *
@@ -61,14 +63,15 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    * @param offerService
    */
   constructor(private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private productService: ProductService,
-    private alertService: AlertService,
-    private categoryService: CategoryService,
-    private attributeService: AttributeService,
-    private dragulaService: DragulaService,
-    private partnerService: PartnerService,
-    private offerService: OfferService) {}
+              private router: Router,
+              private productService: ProductService,
+              private alertService: AlertService,
+              private categoryService: CategoryService,
+              private attributeService: AttributeService,
+              private dragulaService: DragulaService,
+              private partnerService: PartnerService,
+              private offerService: OfferService) {
+  }
 
   /**
    * Init component
@@ -126,7 +129,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
-          this.form.patchValue({ name: value.name, slug: slug, alias: value.name });
+          this.form.patchValue({name: value.name, slug: slug, alias: value.name});
         }
       });
   }
@@ -135,7 +138,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    * create all category columns
    */
   createColumns() {
-    this.columns = [{
+    this.columns = [ {
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -165,8 +168,8 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.editorConfig = {
       'editable': true,
       'spellcheck': false,
-      'height': '5rem',
-      'minHeight': '2rem',
+      // 'height': '5rem',
+      'minHeight': '10rem',
       'placeholder': 'Contenu de la description...',
       'translate': 'no',
       'toolbar': []
@@ -177,7 +180,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    * images array changes function of emitter
    * @param images
    */
-  onImagesChange(images: Array < string > ) {
+  onImagesChange(images: Array<string>) {
     this.form.patchValue({
       images: images
     });
@@ -229,7 +232,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       this.product = {
         ...this.product,
         ...this.form.value,
-        ...{ offers: offers.filter((o) => o.key && o.key !== '').map((off) => off.key) }
+        ...{offers: offers.filter((o) => o.key && o.key !== '').map((off) => off.key)}
       };
       if (this.product.key) {
         if (this.product.published === true) {
@@ -237,7 +240,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
         }
         this.productService.updateProduct(this.product)
           .then((doc) => {
-            this.saveOffer(offers, { id: this.product.key });
+            this.saveOffer(offers, {id: this.product.key});
           }, (err) => this.addError(err));
       } else {
         this.productService.createProduct(this.product)
@@ -304,7 +307,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   addFinally() {
     this.alertService.toast(`product saved ${this.product.translations.fr}`);
     this.reset();
-    this.router.navigate(['/admin/product']);
+    this.router.navigate([ '/admin/product' ]);
   }
 
   /**
@@ -312,8 +315,11 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    */
   getAttributes() {
     this.attributeService.getAttributes()
+      .take(1)
       .subscribe((attributes: Attribute[]) => {
-        this._attributesModel = attributes;
+        this._attributesModel = attributes.map((attribute: Attribute) => {
+          return {label: attribute.translations.fr, options: attribute.terms};
+        });
       });
   }
 
@@ -331,7 +337,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    * On select add reinit and add category in selection array
    * @param any selected
    */
-  onSelect({ selected }) {
+  onSelect({selected}) {
     this.selected = [];
     this.selected.push(...selected);
   }
@@ -341,7 +347,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    */
   addCategory() {
     this.selected.forEach((category: Category) => {
-      this.form.patchValue({ category: category.key });
+      this.form.patchValue({category: category.key});
       this.alertService.toast('categorie selectionnée');
     });
   }
@@ -360,67 +366,35 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    * Dra an drop system for attributes
    */
   subscribeDragAndDrop() {
-    this.dragulaService.drag.subscribe((value) => {
-      this.onDrag(value.slice(1));
+    this.dragulaService.dropModel.subscribe((value) => {
+      this.onDropModel(value.slice(1));
     });
-    this.dragulaService.drop.subscribe((value) => {
-      this.onDrop(value.slice(1));
-    });
-    this.dragulaService.over.subscribe((value) => {
-      this.onOver(value.slice(1));
-    });
-    this.dragulaService.out.subscribe((value) => {
-      this.onOut(value.slice(1));
+    this.dragulaService.removeModel.subscribe((value) => {
+      this.onRemoveModel(value.slice(1));
     });
   }
 
-  /**
-   *
-   * @param args
-   */
-  private onDrag(args) {
-    const [e, el] = args;
+  private onDropModel(args: any): void {
+    const [ el, target, source ] = args;
   }
 
-  /**
-   *
-   * @param args
-   */
-  private onDrop(args) {
-    const [e, el] = args;
-  }
-
-  /**
-   *
-   * @param args
-   */
-  private onOver(args) {
-    const [e, el, container] = args;
-  }
-
-  /**
-   *
-   * @param args
-   */
-  private onOut(args) {
-    const [e, el, container] = args;
+  private onRemoveModel(args: any): void {
+    const [ el, source ] = args;
   }
 
   /**
    * destroy all subscriptions
    */
   ngOnDestroy() {
-    this.dragulaService.drag.unsubscribe();
-    this.dragulaService.drop.unsubscribe();
-    this.dragulaService.over.unsubscribe();
-    this.dragulaService.out.unsubscribe();
+    this.dragulaService.dropModel.unsubscribe();
+    this.dragulaService.removeModel.unsubscribe();
   }
 
   /**
    * push a ne offer in form array offers
    */
   addOfferForm() {
-    if (typeof this.product.offers === 'undefined') {
+    if (this.product && typeof this.product.offers === 'undefined') {
       this.product.offers = [];
     }
     this.offers.push(ProductFormType.newOffer());
@@ -439,7 +413,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   set name(name) {
-    this.form.patchValue({ name: name });
+    this.form.patchValue({name: name});
   }
 
   get descriptionModel() {
@@ -455,7 +429,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   set description(description) {
-    this.form.patchValue({ description: description });
+    this.form.patchValue({description: description});
   }
 
   get category() {
@@ -463,7 +437,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   set category(category) {
-    this.form.patchValue({ category: category });
+    this.form.patchValue({category: category});
   }
 
   get fr() {
@@ -471,7 +445,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   set fr(fr) {
-    this.form.get('translations').patchValue({ fr: fr });
+    this.form.get('translations').patchValue({fr: fr});
   }
 
   get publication() {
@@ -487,7 +461,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   set published(published) {
-    this.form.patchValue({ published: published });
+    this.form.patchValue({published: published});
   }
 
   get attributes() {
@@ -495,7 +469,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   set attributes(attributes) {
-    this.form.patchValue({ attributes: attributes });
+    this.form.patchValue({attributes: attributes});
   }
 
   get attributesModel() {

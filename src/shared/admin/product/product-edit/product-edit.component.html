@@ -3,7 +3,8 @@
     <mat-card class="mat-card mt-3">
       <mat-card-header fxLayout="row" fxLayoutAlign="center stretch">
         <mat-card-subtitle>
-          <button type="button" role="button" mat-icon-button color="warn" mat-mini-fab class="absolute-fab" [routerLink]="['/admin/product']">
+          <button type="button" role="button" mat-icon-button color="warn" mat-mini-fab class="absolute-fab"
+                  [routerLink]="['/admin/product']">
             <mat-icon aria-label="back">arrow_left</mat-icon>
           </button>
         </mat-card-subtitle>
@@ -36,8 +37,10 @@
                 <input matInput maxlength="100" [placeholder]="'Nom du produit'|translate" formControlName="name">
                 <mat-hint align="start"><strong [innerHtml]="'Nom du produit'|translate"></strong></mat-hint>
                 <mat-hint align="end">{{ name.value.length }} {{ '/100'|translate }}</mat-hint>
-                <mat-error *ngIf="name.invalid && name.value.length === 0" [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
-                <mat-error *ngIf="name.invalid && name.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+                <mat-error *ngIf="name.invalid && name.value.length === 0"
+                           [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
+                <mat-error *ngIf="name.invalid && name.value.length > 0"
+                           [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
               </mat-form-field>
             </div>
             <div class="d-block">
@@ -45,8 +48,10 @@
                 <input matInput maxlength="100" [placeholder]="'Nom en français'|translate" formControlName="fr">
                 <mat-hint align="start"><strong [innerHtml]="'Nom français'|translate"></strong></mat-hint>
                 <mat-hint align="end">{{ fr.value.length }} {{ '/100'|translate }}</mat-hint>
-                <mat-error *ngIf="fr.invalid && fr.value.length === 0" [innerHtml]="'Le nom français ne peut pas être vide'|translate"></mat-error>
-                <mat-error *ngIf="fr.invalid && fr.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+                <mat-error *ngIf="fr.invalid && fr.value.length === 0"
+                           [innerHtml]="'Le nom français ne peut pas être vide'|translate"></mat-error>
+                <mat-error *ngIf="fr.invalid && fr.value.length > 0"
+                           [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
               </mat-form-field>
             </div>
             <div class="d-block">
@@ -58,13 +63,16 @@
             </div>
           </div>
           <div class="col-xs-12 col-sm-6">
-            <div fxLayout="row" fxLayoutAlign="space-around strech" fxLayout.xs="column" fxLayoutAlign.xs="center center">
+            <div fxLayout="row" fxLayoutAlign="space-around strech" fxLayout.xs="column"
+                 fxLayoutAlign.xs="center center">
               <div class="block-image">
                 <p>Image du produit</p>
-                <app-product-image [displayValidation]="'true'" (imageChanged)="onImageChange($event)"></app-product-image>
+                <app-product-image [displayValidation]="'true'"
+                                   (imageChanged)="onImageChange($event)"></app-product-image>
               </div>
               <div *ngIf="product?.images && product.images.length > 0">
-                <app-admin-product-image-order [product]="product" (imagesChanged)="onImagesChange($event)"></app-admin-product-image-order>
+                <app-admin-product-image-order [product]="product"
+                                               (imagesChanged)="onImagesChange($event)"></app-admin-product-image-order>
               </div>
             </div>
           </div>
@@ -78,8 +86,13 @@
             <div class="d-block mt-1">
               <h4>Liste des attributs diponibles</h4>
               <div class="wrapper">
-                <div class="container" [dragula]="'attributes-bag'">
-                  <div *ngFor="let attribute of attributesModel" [innerHtml]="attribute?.translations?.fr"></div>
+                <div class="container bag"
+                     [dragula]="'product-attributes'"
+                     [dragulaModel]="attributesModel">
+                  <div *ngIf="attributesModel?.length === 0">
+                    No content
+                  </div>
+                  <div *ngFor="let attribute of attributesModel" [innerHtml]="attribute?.label"></div>
                 </div>
               </div>
             </div>
@@ -88,8 +101,13 @@
             <div class="d-block mt-1">
               <h4>Attributs du produit</h4>
               <div class="wrapper">
-                <div class="container" [dragula]="'product-attributes'">
-                  <div *ngFor="let attribute of product?.attributes" [innerHtml]="attribute.label"></div>
+                <div class="container bag"
+                     [dragula]="'product-attributes'"
+                     [dragulaModel]="attributes?.value">
+                  <div *ngIf="attributes?.value?.length === 0">
+                    No content
+                  </div>
+                  <div *ngFor="let attribute of attributes.value" [innerHtml]="attribute?.label"></div>
                 </div>
               </div>
             </div>
@@ -102,9 +120,11 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6" formGroupName="offers">
             <h4>Ajouter/Editer des revendeurs</h4>
-            <div fxLayout="column" fxLayoutAlign="space-around stretch" *ngFor="let offer of offers?.controls; let i = index;">
+            <div fxLayout="column" fxLayoutAlign="space-around stretch"
+                 *ngFor="let offer of offers?.controls; let i = index;">
               <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
-                <div class="mt-1" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px" fxFlex="100" [formGroupName]="i">
+                <div class="mt-1" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px" fxFlex="100"
+                     [formGroupName]="i">
                   <mat-form-field class="mat-form-field" fxFlex="50">
                     <mat-select placeholder="Sélectionner un partenaire" name="partner" formControlName="partner">
                       <mat-option [value]="partner?.key" *ngFor="let partner of partners">
@@ -113,16 +133,29 @@
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field class="mat-form-field" fxFlex="10">
-                    <input matInput type="number" maxlength="5" [placeholder]="'Prix'|translate" formControlName="price">
-                    <mat-error *ngIf="offers.controls[i].controls.price.invalid && offers.controls[i].controls.price.value && offers.controls[i].controls.price.value.length === 0" [innerHtml]="'Le prix ne peut pas être vide'|translate"></mat-error>
-                    <mat-error *ngIf="offers.controls[i].controls.price.invalid && offers.controls[i].controls.price.value && offers.controls[i].controls.price.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+                    <input matInput type="number" maxlength="5" [placeholder]="'Prix'|translate"
+                           formControlName="price">
+                    <mat-error
+                      *ngIf="offers.controls[i].controls.price.invalid && offers.controls[i].controls.price.value && offers.controls[i].controls.price.value.length === 0"
+                      [innerHtml]="'Le prix ne peut pas être vide'|translate"></mat-error>
+                    <mat-error
+                      *ngIf="offers.controls[i].controls.price.invalid && offers.controls[i].controls.price.value && offers.controls[i].controls.price.value.length > 0"
+                      [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
                   </mat-form-field>
                   <mat-form-field class="mat-form-field" fxFlex="40">
-                    <input matInput type="url" maxlength="255" [placeholder]="'Lien vers le site'|translate" formControlName="external_url">
-                    <mat-hint align="start"><strong [innerHtml]="'Url du site web proposant le produit'|translate"></strong></mat-hint>
-                    <mat-hint align="end">{{ offers.controls[i].controls.external_url.value.length }} {{ '/255'|translate }}</mat-hint>
-                    <mat-error *ngIf="offers.controls[i].controls.external_url.invalid && offers.controls[i].controls.external_url.value.length === 0" [innerHtml]="'la chaîne de caractère ne peut pas être vide'|translate"></mat-error>
-                    <mat-error *ngIf="offers.controls[i].controls.external_url.invalid && offers.controls[i].controls.external_url.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+                    <input matInput type="url" maxlength="255" [placeholder]="'Lien vers le site'|translate"
+                           formControlName="external_url">
+                    <mat-hint align="start"><strong
+                      [innerHtml]="'Url du site web proposant le produit'|translate"></strong></mat-hint>
+                    <mat-hint align="end">{{ offers.controls[i].controls.external_url.value.length }} {{
+                      '/255'|translate }}
+                    </mat-hint>
+                    <mat-error
+                      *ngIf="offers.controls[i].controls.external_url.invalid && offers.controls[i].controls.external_url.value.length === 0"
+                      [innerHtml]="'la chaîne de caractère ne peut pas être vide'|translate"></mat-error>
+                    <mat-error
+                      *ngIf="offers.controls[i].controls.external_url.invalid && offers.controls[i].controls.external_url.value.length > 0"
+                      [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
                   </mat-form-field>
                   <button type="button" mat-icon-button color="accent" (click)="deleteOffer(i)">
                     <mat-icon aria-label="Supprimer">delete</mat-icon>
@@ -131,7 +164,8 @@
               </div>
             </div>
             <div class="button-add wrapper mt-5" fxLayout="row" fxLayoutAlign="center stretch">
-              <button type="button" role="button" aria-label="Ajouter un revendeur supplémentaire" mat-mini-fab color="primary" (click)="addOfferForm()">
+              <button type="button" role="button" aria-label="Ajouter un revendeur supplémentaire" mat-mini-fab
+                      color="primary" (click)="addOfferForm()">
                 <mat-icon aria-hidden="true">add</mat-icon>
               </button>
             </div>
@@ -150,10 +184,14 @@
                 <div class="col-12">
                   <div class="row">
                     <div class="col-6">
-                      <p>La catégorie selectionnée <small>({{selected?.length}})</small></p>
+                      <p>La catégorie selectionnée
+                        <small>({{selected?.length}})</small>
+                      </p>
                     </div>
                     <div class="col-6">
-                      <button type="button" role="button" aria-label="Ajouter les categories selectionnes" mat-raised-button color="primary" (click)="addCategory()" *ngIf="selected && selected?.length > 0">
+                      <button type="button" role="button" aria-label="Ajouter les categories selectionnes"
+                              mat-raised-button color="primary" (click)="addCategory()"
+                              *ngIf="selected && selected?.length > 0">
                         <mat-icon aria-label="Ajouter les categories selectionnes">done</mat-icon>
                         Ajouter
                       </button>
@@ -161,11 +199,16 @@
                   </div>
                   <div class="row">
                     <div class="col-12">
-                      <ngx-datatable class="material striped scrolling-categories" [columnMode]="'force'" [rows]="categories" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'single'" (select)='onSelect($event)'></ngx-datatable>
+                      <ngx-datatable class="material striped scrolling-categories" [columnMode]="'force'"
+                                     [rows]="categories" [columns]="columns" [headerHeight]="headerHeight"
+                                     [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true"
+                                     [selected]="selected" [selectionType]="'single'"
+                                     (select)='onSelect($event)'></ngx-datatable>
                     </div>
                   </div>
-                  <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
-                    <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                  <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                               let-onCheckboxChangeFn="onCheckboxChangeFn">
+                    <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
                   </ng-template>
                 </div>
               </div>
@@ -175,8 +218,10 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="d-flex justify-content-around">
-          <button type="button" class="back" role="button" color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/product']"></button>
-          <button type="submit" class="validate" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid" [innerHtml]="'Enregistrer'|translate"></button>
+          <button type="button" class="back" role="button" color="accent" mat-raised-button
+                  [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/product']"></button>
+          <button type="submit" class="validate" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button
+                  color="primary" [disabled]="form.invalid" [innerHtml]="'Enregistrer'|translate"></button>
         </div>
       </mat-card-actions>
     </mat-card>

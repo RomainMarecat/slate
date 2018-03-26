@@ -138,9 +138,8 @@ export class MapAreasComponent implements OnInit {
     const area: Area = {...row, ...data};
     this.areaService.updateDocument(area)
       .then((res) => {
-        console.log(res);
       }, (err) => {
-        console.log(err);
+        console.error(err);
       });
   }
 

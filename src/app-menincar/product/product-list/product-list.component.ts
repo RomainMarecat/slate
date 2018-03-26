@@ -85,7 +85,8 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts()
       .subscribe((products) => {
         this.products = products.filter((product: CarProduct) => {
-          return product.area === this.area.key;
+          // return product.area === this.area.key
+          return 1;
         });
         this.isLoading = false;
         this.loaderService.hide();

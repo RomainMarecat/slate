@@ -87,10 +87,8 @@ export class ProductFormType {
       'images': new FormControl(product && product.images ? product.images : [], [
         Validators.required,
       ]),
-      'category': new FormControl(product && product.category ? product.category : '', [
-        Validators.required,
-      ]),
-      'attributes': new FormControl(product && product.attributes ? product.attributes : null, []),
+      'category': new FormControl(product && product.category ? product.category : ''),
+      'attributes': new FormControl(product && product.attributes ? product.attributes : [], []),
     });
 
     return this.form;
