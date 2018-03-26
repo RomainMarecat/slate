@@ -168,8 +168,8 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.editorConfig = {
       'editable': true,
       'spellcheck': false,
-      'height': '5rem',
-      'minHeight': '2rem',
+      // 'height': '5rem',
+      'minHeight': '10rem',
       'placeholder': 'Contenu de la description...',
       'translate': 'no',
       'toolbar': []
