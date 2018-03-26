@@ -16,7 +16,6 @@ export class OfferService extends VisitorService {
   }
 
   getOffers(): Observable < Offer[] > {
-    console.log(this.table);
     return <Observable < Offer[] >> super.getDocuments();
   }
 

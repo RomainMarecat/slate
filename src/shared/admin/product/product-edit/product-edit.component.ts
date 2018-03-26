@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, TemplateRef } from '@angular/c
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormArray } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
-import { StringService } from '../../../../shared/util/string.service';
+import { StringService } from '../../../util/string.service';
 import { Product } from '../../../product/product';
 import { ProductService } from '../../shared/product/product.service';
 import { Media } from '../../../media/media';
@@ -10,8 +10,8 @@ import { Category } from '../../shared/navigation/category/category';
 import { CategoryService } from '../../shared/navigation/category/category.service';
 import { Observable } from 'rxjs/Observable';
 import { DocumentReference } from '@firebase/firestore-types';
-import { ProductImageComponent } from './../../../product/product-image/product-image.component';
-import { ProductFormType } from './../../shared/product/form-product';
+import { ProductImageComponent } from '../../../product/product-image/product-image.component';
+import { ProductFormType } from '../../shared/product/form-product';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { Partner } from '../../../partner/partner';
@@ -19,6 +19,9 @@ import { Offer } from '../../../offer/offer';
 import { Attribute } from '../../../attribute/attribute';
 import { DragulaService } from 'ng2-dragula';
 import { OfferService } from '../../shared/offer/offer.service';
+import 'rxjs/add/operator/take';
+
+
 
 @Component({
   selector: 'app-product-edit',
@@ -38,10 +41,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   categories: Category[] = [];
   selected: Category[] = [];
   filteredAttributes: Observable<any[]>;
-  options: any = {
-    removeOnSpill: false
-  };
-
   isLoading = false;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
@@ -49,7 +48,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   _publication = true;
   _descriptionModel = '';
-  _attributesModel: Attribute[] = [];
+  _attributesModel: any[] = [];
 
   /**
    *
@@ -316,8 +315,11 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    */
   getAttributes() {
     this.attributeService.getAttributes()
+      .take(1)
       .subscribe((attributes: Attribute[]) => {
-        this._attributesModel = attributes;
+        this._attributesModel = attributes.map((attribute: Attribute) => {
+          return {label: attribute.translations.fr, options: attribute.terms};
+        });
       });
   }
 
@@ -364,67 +366,35 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    * Dra an drop system for attributes
    */
   subscribeDragAndDrop() {
-    this.dragulaService.drag.subscribe((value) => {
-      this.onDrag(value.slice(1));
+    this.dragulaService.dropModel.subscribe((value) => {
+      this.onDropModel(value.slice(1));
     });
-    this.dragulaService.drop.subscribe((value) => {
-      this.onDrop(value.slice(1));
-    });
-    this.dragulaService.over.subscribe((value) => {
-      this.onOver(value.slice(1));
-    });
-    this.dragulaService.out.subscribe((value) => {
-      this.onOut(value.slice(1));
+    this.dragulaService.removeModel.subscribe((value) => {
+      this.onRemoveModel(value.slice(1));
     });
   }
 
-  /**
-   *
-   * @param args
-   */
-  private onDrag(args) {
-    const [ e, el ] = args;
+  private onDropModel(args: any): void {
+    const [ el, target, source ] = args;
   }
 
-  /**
-   *
-   * @param args
-   */
-  private onDrop(args) {
-    const [ e, el ] = args;
-  }
-
-  /**
-   *
-   * @param args
-   */
-  private onOver(args) {
-    const [ e, el, container ] = args;
-  }
-
-  /**
-   *
-   * @param args
-   */
-  private onOut(args) {
-    const [ e, el, container ] = args;
+  private onRemoveModel(args: any): void {
+    const [ el, source ] = args;
   }
 
   /**
    * destroy all subscriptions
    */
   ngOnDestroy() {
-    this.dragulaService.drag.unsubscribe();
-    this.dragulaService.drop.unsubscribe();
-    this.dragulaService.over.unsubscribe();
-    this.dragulaService.out.unsubscribe();
+    this.dragulaService.dropModel.unsubscribe();
+    this.dragulaService.removeModel.unsubscribe();
   }
 
   /**
    * push a ne offer in form array offers
    */
   addOfferForm() {
-    if (typeof this.product.offers === 'undefined') {
+    if (this.product && typeof this.product.offers === 'undefined') {
       this.product.offers = [];
     }
     this.offers.push(ProductFormType.newOffer());

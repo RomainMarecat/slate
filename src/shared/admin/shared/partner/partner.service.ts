@@ -16,7 +16,6 @@ export class PartnerService extends VisitorService {
   }
 
   getPartners(): Observable < Partner[] > {
-    console.log(this.table);
     return super.getDocuments() as Observable < Partner[] > ;
   }
 

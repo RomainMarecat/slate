@@ -105,6 +105,6 @@ export class ProductDetailComponent implements OnInit {
     this.commentService.getComments()
       .subscribe((comments: Comment[]) => {
         this.comments = comments;
-      }, (err) => console.log(err));
+      }, (err) => console.error(err));
   }
 }
