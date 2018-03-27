@@ -20,6 +20,7 @@ import { Attribute } from '../../../attribute/attribute';
 import { DragulaService } from 'ng2-dragula';
 import { OfferService } from '../../shared/offer/offer.service';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/debounceTime';
 
 
 
@@ -197,6 +198,10 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       images: this.medias.map((image: Media) => image.key)
     });
     this.alertService.toast('media saved');
+  }
+
+  onImageRefChanged(event: any) {
+    console.log(event);
   }
 
   /**
