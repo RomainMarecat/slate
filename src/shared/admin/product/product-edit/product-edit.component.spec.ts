@@ -1,3 +1,4 @@
+///<reference path="../../../../environments/environment.hockey.ts"/>
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductEditComponent } from './product-edit.component';
@@ -51,6 +52,9 @@ import { PartnerService } from '../../shared/partner/partner.service';
 import { MockPartnerService } from '../../shared/partner/mock-partner.service';
 import { OfferService } from '../../shared/offer/offer.service';
 import { MockOfferService } from '../../shared/offer/mock-offer.service';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
@@ -59,20 +63,23 @@ describe('ProductEditComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [
-          CommonModule,
-          BrowserModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-          SharedModule,
-          NgxEditorModule,
-          NgxDatatableModule,
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {
               clearIds: true,
             },
           }),
+          BrowserModule,
+          BrowserAnimationsModule,
+          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
+          CommonModule,
+          AngularFireModule.initializeApp(environment.firebase),
+          AngularFireStorageModule,
+          NgxDatatableModule,
+          NgxEditorModule,
+          HttpClientTestingModule,
+          RouterTestingModule,
+          SharedModule,
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),

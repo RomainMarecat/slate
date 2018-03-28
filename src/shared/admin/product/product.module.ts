@@ -18,6 +18,7 @@ import { DragulaModule } from 'ng2-dragula';
 import { ProductImageOrderComponent } from './product-image-order/product-image-order.component';
 import { OfferService } from '../shared/offer/offer.service';
 import { ProductOffersComponent } from './product-offers/product-offers.component';
+import { StorageModule } from '../../storage/storage.module';
 
 const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
 const TABLE_OFFER = new InjectionToken < string > ('offer');
@@ -30,6 +31,7 @@ const TABLE_PARTNER = new InjectionToken < string > ('partner');
     NgxDatatableModule,
     SharedModule,
     NgxEditorModule,
+    StorageModule,
     TranslateModule,
     ProductRoutingModule
   ],

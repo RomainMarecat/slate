@@ -52,6 +52,7 @@ import { PartnerModule } from './partner/partner.module';
 import { OfferModule } from './offer/offer.module';
 import { CommentModule } from './comment/comment.module';
 import { MapModule } from './map/map.module';
+import { StorageModule } from './storage/storage.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -115,6 +116,7 @@ export class ConfigService {
     ReactiveFormsModule,
     RouterModule,
     SidenavModule,
+    StorageModule,
     TranslateModule
   ],
   exports: [
@@ -167,6 +169,7 @@ export class ConfigService {
     RouterModule,
     SlackModule,
     SidenavModule,
+    StorageModule,
     TranslateModule
   ],
   declarations: [

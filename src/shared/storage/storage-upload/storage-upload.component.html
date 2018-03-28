@@ -1,0 +1,5 @@
+<input type="file" (change)="uploadFile($event)"/>
+<mat-progress-bar [mode]="'determinate'"
+                  [value]="uploadPercent"
+                  *ngIf="uploadPercent"></mat-progress-bar>
+<a [href]="downloadURL" *ngIf="downloadURL">{{ downloadURL }}</a>
