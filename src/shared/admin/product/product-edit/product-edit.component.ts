@@ -23,7 +23,6 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/debounceTime';
 
 
-
 @Component({
   selector: 'app-product-edit',
   templateUrl: './product-edit.component.html',
@@ -46,6 +45,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
   @ViewChild(ProductImageComponent) productImageComponent: ProductImageComponent;
+  imageStorageConfig: any;
 
   _publication = true;
   _descriptionModel = '';
@@ -88,6 +88,13 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.getPartners();
   }
 
+  createImageStorageConfig() {
+    this.imageStorageConfig = {
+      model: this.product.key,
+      alt: this.product.name,
+    };
+  }
+
   /**
    * product form
    */
@@ -108,6 +115,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
             this.product = product;
             this.descriptionModel = product.description;
             this.createForm();
+            this.createImageStorageConfig();
             this.product.offers.forEach((offerKey: string) => {
               this.offerService.getOffer(offerKey).subscribe((offer: Offer) => {
                 this.offers.push(ProductFormType.newOffer(offer));

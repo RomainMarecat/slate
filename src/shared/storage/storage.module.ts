@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StorageUploadComponent } from './storage-upload/storage-upload.component';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { MatProgressBarModule } from '@angular/material';
+import { StorageDetailComponent } from './storage-detail/storage-detail.component';
 
 @NgModule({
   imports: [
@@ -10,7 +11,15 @@ import { MatProgressBarModule } from '@angular/material';
     AngularFireStorageModule,
     MatProgressBarModule
   ],
-  declarations: [StorageUploadComponent],
-  exports: [StorageUploadComponent]
+  declarations: [
+    StorageUploadComponent,
+    StorageDetailComponent
+
+  ],
+  exports: [
+    StorageUploadComponent,
+    StorageDetailComponent
+  ]
 })
-export class StorageModule { }
+export class StorageModule {
+}

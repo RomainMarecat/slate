@@ -68,8 +68,9 @@
               <div class="block-image">
                 <p>Image du produit</p>
                 <app-storage-upload [folder]="'products'"
-                                    [metadata]="{product: product?.key}"
+                                    [metadata]="imageStorageConfig"
                                     (imageRefChanged)="onImageRefChanged($event)"></app-storage-upload>
+                <app-storage-detail [downloadURL]="downloadURL"></app-storage-detail>
                 <app-product-image [displayValidation]="'true'"
                                    (imageChanged)="onImageChange($event)"></app-product-image>
               </div>

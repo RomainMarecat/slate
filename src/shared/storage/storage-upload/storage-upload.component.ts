@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireStorage } from 'angularfire2/storage';
+import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+import * as firebase from 'firebase/app';
+import UploadTaskSnapshot = firebase.storage.UploadTaskSnapshot;
 
 @Component({
   selector: 'app-storage-upload',
@@ -24,9 +26,10 @@ export class StorageUploadComponent implements OnInit {
   }
 
   uploadFile(event: any) {
+    this.uploadPercent = 0;
     const file = event.target.files[ 0 ];
     const filePath = (this.folder ? this.folder + '/' : '') + event.target.files[ 0 ].name;
-    let imageRef = null;
+    let imageRef: AngularFireUploadTask = null;
     if (this.metadata) {
       const ref = this.storage.ref(filePath);
       imageRef = ref.put(file, {customMetadata: this.metadata});
@@ -39,6 +42,9 @@ export class StorageUploadComponent implements OnInit {
     // get notified when the download URL is available
     imageRef.downloadURL().subscribe(downloadURL => this.downloadURL = downloadURL);
 
-    this.imageRefChanged.emit(imageRef);
+    imageRef.then((taskSnapshot) => {
+      console.log('task', taskSnapshot);
+      this.imageRefChanged.emit(taskSnapshot);
+    });
   }
 }
