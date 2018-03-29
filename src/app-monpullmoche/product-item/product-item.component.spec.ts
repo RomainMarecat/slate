@@ -9,34 +9,19 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import {
   MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
   MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule
 } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { NgPipesModule } from 'ngx-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductItemComponent } from './product-item.component';
 import { ProductActionComponent } from './product-action/product-action.component';
-import { ImageComponent } from '../../shared/cloudinary/image/image.component';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
 import { DateService } from '../../shared/util/date.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
-import { environment } from './../../environments/environment.monpullmoche';
+import { environment } from '../../environments/environment.monpullmoche';
+import { MediaModule } from '../../shared/media/media.module';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -62,6 +47,7 @@ describe('ProductItemComponent', () => {
             },
           }),
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
+          MediaModule,
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })

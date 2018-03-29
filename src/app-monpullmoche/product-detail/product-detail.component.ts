@@ -7,7 +7,7 @@ import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { MediaService } from '../../shared/media/media.service';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { CloudinaryTagService } from '../../shared/cloudinary/cloudinary-tag.service';
+import { CloudinaryTagService } from '../../shared/media/cloudinary/cloudinary-tag.service';
 import { environment } from './../../environments/environment.monpullmoche';
 
 @Component({

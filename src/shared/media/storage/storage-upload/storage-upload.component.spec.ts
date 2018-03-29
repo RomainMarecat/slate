@@ -4,10 +4,12 @@ import { StorageUploadComponent } from './storage-upload.component';
 import { MatProgressBarModule } from '@angular/material';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { CommonModule } from '@angular/common';
-import { environment } from '../../../environments/environment.menincar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { environment } from '../../../../environments/environment.menincar';
+import { MockMediaService } from '../../mock-media.service';
+import { MediaService } from '../../media.service';
 
 describe('StorageUploadComponent', () => {
   let component: StorageUploadComponent;
@@ -23,9 +25,12 @@ describe('StorageUploadComponent', () => {
         HttpClientTestingModule,
         MatProgressBarModule
       ],
-      declarations: [ StorageUploadComponent ]
+      declarations: [ StorageUploadComponent ],
+      providers: [
+        {provide: MediaService, useClass: MockMediaService}
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

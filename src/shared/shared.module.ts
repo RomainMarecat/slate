@@ -37,10 +37,8 @@ import { Environment } from './util/environment';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HammerModule } from './hammer/hammer.module';
-import { ProductImageComponent } from './product/product-image/product-image.component';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { FileUploadModule } from 'ng2-file-upload';
-import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { MenuModule } from './menu/menu.module';
 import { MediaModule } from './media/media.module';
 import { FooterModule } from './footer/footer.module';
@@ -52,7 +50,6 @@ import { PartnerModule } from './partner/partner.module';
 import { OfferModule } from './offer/offer.module';
 import { CommentModule } from './comment/comment.module';
 import { MapModule } from './map/map.module';
-import { StorageModule } from './storage/storage.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -76,7 +73,6 @@ export class ConfigService {
     FormsModule,
     CommentModule,
     CommonModule,
-    CloudinaryModule,
     DragulaModule,
     HammerModule,
     HttpClientModule,
@@ -116,13 +112,11 @@ export class ConfigService {
     ReactiveFormsModule,
     RouterModule,
     SidenavModule,
-    StorageModule,
     TranslateModule
   ],
   exports: [
     Angulartics2Module,
     CommentModule,
-    CloudinaryModule,
     DragulaModule,
     FacetModule,
     FileUploadModule,
@@ -164,16 +158,11 @@ export class ConfigService {
     OfferModule,
     PartnerModule,
     PopupModule,
-    ProductImageComponent,
     ReactiveFormsModule,
     RouterModule,
     SlackModule,
     SidenavModule,
-    StorageModule,
     TranslateModule
-  ],
-  declarations: [
-    ProductImageComponent,
   ],
   providers: [
     // Should not have providers for reason explained here

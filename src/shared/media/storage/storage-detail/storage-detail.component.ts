@@ -8,7 +8,13 @@ import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/st
 })
 export class StorageDetailComponent implements OnInit {
 
+  @Input() height: string;
+
+  @Input() width: string;
+
   _downloadURL: string;
+
+  _metadata: any;
 
   storageRef: AngularFireStorageReference;
 
@@ -23,6 +29,7 @@ export class StorageDetailComponent implements OnInit {
   @Input('path') set path(path) {
     this._path = path;
     this.getDownloadURL(path);
+    this.getMetadata(path);
   }
 
   @Input('downloadURL') set downloadURL(downloadURL) {
@@ -37,10 +44,21 @@ export class StorageDetailComponent implements OnInit {
     return this._path;
   }
 
+  get metadata() {
+    return this._metadata;
+  }
+
   getDownloadURL(path: string) {
     this.storageRef = this.storage.ref(path);
     this.storageRef.getDownloadURL()
       .take(1)
-      .subscribe(downloadURL = this._downloadURL = downloadURL);
+      .subscribe(downloadURL => this._downloadURL = downloadURL);
+  }
+
+  getMetadata(path: string) {
+    this.storageRef = this.storage.ref(path);
+    this.storageRef.getMetadata()
+      .take(1)
+      .subscribe(metadata => this._metadata = metadata);
   }
 }

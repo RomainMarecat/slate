@@ -1,21 +1,18 @@
-import { Component, OnInit, ElementRef, ViewChild, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, TemplateRef, ViewEncapsulation, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../../../product/product';
-import { ProductService } from './../../shared/product/product.service';
-import { MenuService } from './../../../menu/menu.service';
-import { take } from 'rxjs/operators';
-import { DialogComponent } from './../../../popup/dialog/dialog.component';
+import { ProductService } from '../../shared/product/product.service';
+import { MenuService } from '../../../menu/menu.service';
+import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
-import { CloudinaryUploadService } from './../../../cloudinary/cloudinary-upload.service';
-import { debounceTime } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
-import { StringService } from './../../../util/string.service';
-import { Filter } from './../../../facet/filter/shared/filter';
+import { CloudinaryUploadService } from '../../../media/cloudinary/cloudinary-upload.service';
+import { StringService } from '../../../util/string.service';
+import { Filter } from '../../../facet/filter/shared/filter';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss'],
+  styleUrls: [ './product-list.component.scss' ],
   encapsulation: ViewEncapsulation.None
 })
 export class ProductListComponent implements OnInit {
@@ -28,38 +25,41 @@ export class ProductListComponent implements OnInit {
   selected: Product[];
   expanded: any = {};
   @ViewChild('dataTableComponentTable') dataTableComponentTable: any;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
-  @ViewChild('actionsCell') actionsCell: TemplateRef < any > ;
-  @ViewChild('imageCell') imageCell: TemplateRef < any > ;
-  @ViewChild('priceCell') priceCell: TemplateRef < any > ;
-  @ViewChild('desktopCell') desktopCell: TemplateRef < any > ;
-  @ViewChild('desktopHeader') desktopHeader: TemplateRef < any > ;
-  @ViewChild('translationsFrCell') translationsFrCell: TemplateRef < any > ;
-  @ViewChild('publicationCell') publicationCell: TemplateRef < any > ;
-  publications: Array < object > ;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
+  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
+  @ViewChild('imageCell') imageCell: TemplateRef<any>;
+  @ViewChild('priceCell') priceCell: TemplateRef<any>;
+  @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
+  @ViewChild('desktopHeader') desktopHeader: TemplateRef<any>;
+  @ViewChild('translationsFrCell') translationsFrCell: TemplateRef<any>;
+  @ViewChild('publicationCell') publicationCell: TemplateRef<any>;
+  publications: Array<object>;
+  cloudinary = false;
 
   /**
    *
-   * @param MatDialog      public  dialog
-   * @param Router         private router
-   * @param ElementRef     private table
-   * @param MenuService    private menuService
-   * @param ProductService private productService
+   * @param dialog
+   * @param router
+   * @param table
+   * @param menuService
+   * @param productService
+   * @param cloudinaryUploadService
    */
   constructor(public dialog: MatDialog,
-    private router: Router,
-    private table: ElementRef,
-    private menuService: MenuService,
-    private productService: ProductService,
-    private cloudinaryUploadService: CloudinaryUploadService) {
+              private router: Router,
+              private table: ElementRef,
+              private menuService: MenuService,
+              private productService: ProductService,
+              @Optional() private cloudinaryUploadService: CloudinaryUploadService) {
+    this.cloudinary = !!cloudinaryUploadService;
     this.selected = [];
-    this.publications = [{
-        name: 'Publié',
-        value: 'published',
-        color: 'primary',
-        selected: false
-      },
+    this.publications = [ {
+      name: 'Publié',
+      value: 'published',
+      color: 'primary',
+      selected: false
+    },
       {
         name: 'Non publié',
         value: 'unpublished',
@@ -189,7 +189,7 @@ export class ProductListComponent implements OnInit {
    * @param product
    */
   editProduct(product: Product) {
-    this.router.navigate(['/admin/product/edit/', product.key]);
+    this.router.navigate([ '/admin/product/edit/', product.key ]);
   }
 
   /**
@@ -197,7 +197,7 @@ export class ProductListComponent implements OnInit {
    */
   ngOnInit() {
     this.menuService.nextTitle('Products');
-    this.columns = [{
+    this.columns = [ {
       width: 75,
       sortable: false,
       canAutoResize: false,
@@ -241,7 +241,7 @@ export class ProductListComponent implements OnInit {
       flexGrow: 1,
       headerTemplate: this.desktopHeader,
       cellTemplate: this.actionsCell,
-    }];
+    } ];
     this.isLoading = true;
     this.productService.getProducts()
       .subscribe((products: Product[]) => {
@@ -255,7 +255,7 @@ export class ProductListComponent implements OnInit {
    * On select add new list in selection array
    * @param {any} selected
    */
-  onSelect({ selected }) {
+  onSelect({selected}) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
@@ -266,7 +266,7 @@ export class ProductListComponent implements OnInit {
    */
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate(['/admin/product/edit/', event.row.key]);
+      this.router.navigate([ '/admin/product/edit/', event.row.key ]);
     }
   }
 
@@ -278,11 +278,14 @@ export class ProductListComponent implements OnInit {
     this.dataTableComponentTable.rowDetail.toggleExpandRow(row);
   }
 
-  onDetailToggle(event) {}
+  onDetailToggle(event) {
+  }
 
-  onScroll(event: any) {}
+  onScroll(event: any) {
+  }
 
-  onCheckboxChangeFn(event) {}
+  onCheckboxChangeFn(event) {
+  }
 
   /**
    * Filtre sur les colonnes du produit
@@ -305,7 +308,7 @@ export class ProductListComponent implements OnInit {
           } else if (column === 'published') {
             return product.published === (needle.toString() === 'true') || !needle;
           }
-          return product[column].toLowerCase().indexOf(needle) !== -1 || !needle;
+          return product[ column ].toLowerCase().indexOf(needle) !== -1 || !needle;
         });
 
         // update the rows

@@ -14,7 +14,6 @@ import { StorageDetailComponent } from './storage-detail/storage-detail.componen
   declarations: [
     StorageUploadComponent,
     StorageDetailComponent
-
   ],
   exports: [
     StorageUploadComponent,

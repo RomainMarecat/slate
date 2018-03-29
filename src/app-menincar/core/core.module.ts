@@ -32,12 +32,12 @@ import { SidenavService } from '../../shared/sidenav/sidenav.service';
 import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { DeviceService } from '../../shared/device/device.service';
-import CloudinaryConfiguration from '../../shared/cloudinary/cloudinary-configuration.class';
+import CloudinaryConfiguration from '../../shared/media/cloudinary/cloudinary-configuration.class';
 import { FirebaseAppConfig, AngularFireModule } from 'angularfire2';
 import { Environment } from '../../shared/util/environment';
 import { ProductService } from '../../shared/product/product.service';
 import { MediaService } from '../../shared/media/media.service';
-import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
 import { SharedModule } from '../../shared/shared.module';
 import { environment } from '../../environments/environment.menincar';
 import { SlackModule } from '../../shared/slack/slack.module';
@@ -136,9 +136,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
       adClient: environment.clientAdSense,
       adSlot: environment.slotAdSense
     }),
-    CloudinaryModule.forRoot({Cloudinary: CloudinaryCore},
-      environment.cloudinary
-    ),
+    CloudinaryModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     ImageCropperModule,
     FileUploadModule,
@@ -214,7 +212,7 @@ export class CoreModule {
         {provide: site_name, useValue: config.site_name},
         {provide: app_name, useValue: config.app_name},
         {provide: firebase, useValue: config.firebase},
-        {provide: cloudinary, useValue: config.cloudinary},
+        {provide: cloudinary, useValue: config.cloudinary ? config.cloudinary : null},
       ]
     };
   }

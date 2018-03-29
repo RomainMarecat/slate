@@ -1,16 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MediaViewerComponent } from './media-viewer/media-viewer.component';
 import { MediaService } from './media.service';
-import { CloudinaryModule } from './../cloudinary/cloudinary.module';
+import { StorageModule } from './storage/storage.module';
+import { ImageComponent } from './image/image.component';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { ImageCropperModule } from 'ngx-img-cropper';
 
 @NgModule({
   imports: [
     CommonModule,
+    CloudinaryModule,
+    ImageCropperModule,
+    StorageModule
+  ],
+  declarations: [
+    ImageComponent,
+  ],
+  exports: [
+    StorageModule,
+    ImageComponent,
     CloudinaryModule
   ],
-  declarations: [MediaViewerComponent],
-  exports: [MediaViewerComponent],
   providers: [
     MediaService
   ]

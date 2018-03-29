@@ -10,7 +10,7 @@ import { Category } from '../../shared/navigation/category/category';
 import { CategoryService } from '../../shared/navigation/category/category.service';
 import { Observable } from 'rxjs/Observable';
 import { DocumentReference } from '@firebase/firestore-types';
-import { ProductImageComponent } from '../../../product/product-image/product-image.component';
+import { ImageProductComponent } from '../../../media/cloudinary/image-product/image-product.component';
 import { ProductFormType } from '../../shared/product/form-product';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
@@ -21,6 +21,8 @@ import { DragulaService } from 'ng2-dragula';
 import { OfferService } from '../../shared/offer/offer.service';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/debounceTime';
+import * as firebase from 'firebase/app';
+import UploadTaskSnapshot = firebase.storage.UploadTaskSnapshot;
 
 
 @Component({
@@ -44,9 +46,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   isLoading = false;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
-  @ViewChild(ProductImageComponent) productImageComponent: ProductImageComponent;
+  @ViewChild(ImageProductComponent) ImageProductComponent: ImageProductComponent;
   imageStorageConfig: any;
-
+  downloadURL: string;
   _publication = true;
   _descriptionModel = '';
   _attributesModel: any[] = [];
@@ -208,8 +210,8 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.alertService.toast('media saved');
   }
 
-  onImageRefChanged(event: any) {
-    console.log(event);
+  onImageRefChanged(task: UploadTaskSnapshot) {
+    this.downloadURL = task.downloadURL;
   }
 
   /**
@@ -219,7 +221,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.medias = [];
     this._descriptionModel = '';
     this.selected = [];
-    this.productImageComponent.clearUpload();
+    this.ImageProductComponent.clearUpload();
     this.form.reset({
       name: '',
       translations: {

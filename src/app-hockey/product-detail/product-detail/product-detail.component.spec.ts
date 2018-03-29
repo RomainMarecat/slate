@@ -9,7 +9,7 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from './../../../shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from './../../../shared/media/cloudinary/cloudinary.module';
 import { ProductService } from './../../../shared/product/product.service';
 import { MockProductService } from './../../../shared/product/mock-product.service';
 import { MockUserService } from '../../../shared/user/mock-user.service';

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductImageComponent } from './product-image.component';
+import { ImageProductComponent } from './image-product.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import {
@@ -15,20 +15,20 @@ import {
   MatFormFieldModule,
   MatTooltipModule
 } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../../cloudinary/cloudinary.module';
-import { ObjectService } from './../../util/object.service';
-import { MockMediaService } from '../../media/mock-media.service';
-import { MediaService } from '../../media/media.service';
-import { DeviceService } from '../../device/device.service';
-import { environment } from '../../../environments/environment.hockey';
+import { CloudinaryModule } from '../cloudinary.module';
+import { environment } from '../../../../environments/environment.hockey';
+import { ObjectService } from '../../../util/object.service';
+import { MediaService } from '../../media.service';
+import { MockMediaService } from '../../mock-media.service';
+import { DeviceService } from '../../../device/device.service';
 
-describe('ProductImageComponent', () => {
-  let component: ProductImageComponent;
-  let fixture: ComponentFixture < ProductImageComponent > ;
+describe('ImageProductComponent', () => {
+  let component: ImageProductComponent;
+  let fixture: ComponentFixture < ImageProductComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -46,7 +46,6 @@ describe('ProductImageComponent', () => {
           MatGridListModule,
           MatFormFieldModule,
           MatTooltipModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
             pageTracking: {
@@ -57,7 +56,7 @@ describe('ProductImageComponent', () => {
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })
         ],
-        declarations: [ProductImageComponent],
+        declarations: [ImageProductComponent],
         providers: [
           ObjectService,
           { provide: MediaService, useClass: MockMediaService },
@@ -68,7 +67,7 @@ describe('ProductImageComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductImageComponent);
+    fixture = TestBed.createComponent(ImageProductComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
