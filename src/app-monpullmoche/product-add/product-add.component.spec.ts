@@ -33,11 +33,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
 import { MockProductService } from '../../shared/product/mock-product.service';
 import { ProductService } from '../../shared/product/product.service';
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
-import { ProductImageComponent } from '../../shared/product/product-image/product-image.component';
+import { ImageProductComponent } from '../../shared/media/cloudinary/image-product/image-product.component';
 import { ProductAddComponent } from './product-add.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { MockAlertService } from '../../shared/popup/mock-alert.service';
@@ -52,11 +52,11 @@ import { MockLoaderService } from '../../shared/loader/mock-loader.service';
 import { DateService } from '../../shared/util/date.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { NotificationService } from '../../shared/slack/notification.service';
-import { SlackModule } from '../../shared/slack/slack.module';
 import { DeviceService } from '../../shared/device/device.service';
-import { environment } from './../../environments/environment.monpullmoche';
+import { environment } from '../../environments/environment.monpullmoche';
 import { MockNotificationService } from '../../shared/slack/mock-notification.service';
 import { NgPipesModule } from 'ngx-pipes';
+import { MediaModule } from '../../shared/media/media.module';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
@@ -84,6 +84,7 @@ describe('ProductAddComponent', () => {
           NgPipesModule,
           FileUploadModule,
           ImageCropperModule,
+          MediaModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
@@ -97,7 +98,6 @@ describe('ProductAddComponent', () => {
         ],
         declarations: [
           ProductAddComponent,
-          ProductImageComponent,
           ProductPreviewComponent,
           ProductFormComponent
         ],

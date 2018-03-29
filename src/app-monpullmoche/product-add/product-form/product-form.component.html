@@ -8,9 +8,9 @@
             <mat-card-title align="center">
               <h3 [innerHtml]="'product-add.product-form.steps.image.card-title.title'|translate"></h3>
             </mat-card-title>
-            <app-product-image [media]="image1" (imageChanged)="onImageChange($event)"></app-product-image>
+            <app-image-product [media]="image1" (imageChanged)="onImageChange($event)"></app-image-product>
             <div class="mt2 product-form-step-1-wrapper d-flex justify-content-end">
-              <button role="button" [attr.aria-label]="'product-add.product-form.steps.image.product-image.image-button-wrapper.button.aria-label.title'|translate" [attr.matTooltip]="'product-add.product-form.steps.image.product-image.image-button-wrapper.button.tooltip.title'|translate" matTooltipPosition="right" mat-raised-button matStepperNext color="primary" type="button" class="button-image-validation" angulartics2On="click" angularticsAction="clickedOnUploadProductImage" [angularticsCategory]="'media.save'" [innerHtml]="'product-add.product-form.steps.image.product-image.image-cropper.cropper.title'|translate" (click)="validateImage()" [disabled]="!productImageComponent?.isUploaded"></button>
+              <button role="button" [attr.aria-label]="'product-add.product-form.steps.image.product-image.image-button-wrapper.button.aria-label.title'|translate" [attr.matTooltip]="'product-add.product-form.steps.image.product-image.image-button-wrapper.button.tooltip.title'|translate" matTooltipPosition="right" mat-raised-button matStepperNext color="primary" type="button" class="button-image-validation" angulartics2On="click" angularticsAction="clickedOnUploadProductImage" [angularticsCategory]="'media.save'" [innerHtml]="'product-add.product-form.steps.image.product-image.image-cropper.cropper.title'|translate" (click)="validateImage()" [disabled]="!ImageProductComponent?.isUploaded"></button>
             </div>
           </form>
         </mat-step>

@@ -9,7 +9,7 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { environment } from '../../environments/environment.hockey';
 import { SharedModule } from '../../shared/shared.module';
-import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({

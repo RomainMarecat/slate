@@ -1,18 +1,24 @@
-<div class="row" fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column" fxLayoutAlign.xs="start center">
-  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxLayoutGap.xs="5px" *ngIf="selected && selected.length > 0">
-    <button role="button" aria-label="Publier le produit" mat-raised-button color="primary" (click)="publishProduct()" *ngIf="selected && selected.length > 0">
+<div class="row" fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column"
+     fxLayoutAlign.xs="start center">
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" fxLayoutGap.xs="5px"
+       *ngIf="selected && selected.length > 0">
+    <button role="button" aria-label="Publier le produit" mat-raised-button color="primary" (click)="publishProduct()"
+            *ngIf="selected && selected.length > 0">
       <mat-icon aria-label="Published">done</mat-icon>
       Publier
     </button>
-    <button role="button" aria-label="Dépublier le produit" mat-raised-button color="warn" (click)="unpublishProduct()" *ngIf="selected && selected.length > 0">
+    <button role="button" aria-label="Dépublier le produit" mat-raised-button color="warn" (click)="unpublishProduct()"
+            *ngIf="selected && selected.length > 0">
       <mat-icon aria-label="unpublished">done</mat-icon>
       Dépublier
     </button>
-    <button role="button" aria-label="Supprimer le produit" mat-raised-button color="accent" (click)="deleteProducts()" *ngIf="selected && selected.length > 0">
+    <button role="button" aria-label="Supprimer le produit" mat-raised-button color="accent" (click)="deleteProducts()"
+            *ngIf="selected && selected.length > 0">
       <mat-icon aria-label="delete">delete</mat-icon>
       Supprimer
     </button>
-    <button role="button" aria-label="Télécharger les images" mat-raised-button color="accent" (click)="uploadMedia()" *ngIf="selected && selected.length > 0">
+    <button role="button" aria-label="Télécharger les images" mat-raised-button color="accent" (click)="uploadMedia()"
+            *ngIf="selected && selected.length > 0">
       <mat-icon aria-label="image">add_a_photo</mat-icon>
       Télécharger les images
     </button>
@@ -24,7 +30,11 @@
 <div class="row">
   <div class="col-12">
     <div class="px-2 my-2">
-      <ngx-datatable #dataTableComponentTable class="material striped scrolling-products expandable" [columnMode]="'force'" [rows]="products" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
+      <ngx-datatable #dataTableComponentTable class="material striped scrolling-products expandable"
+                     [columnMode]="'force'" [rows]="products" [columns]="columns" [headerHeight]="headerHeight"
+                     [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true"
+                     (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'"
+                     (activate)="onActivate($event)" (select)='onSelect($event)'>
         <ngx-datatable-row-detail [rowHeight]="100" #detailRow (toggle)="onDetailToggle($event)">
           <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
             <table class="mat-table">
@@ -49,19 +59,23 @@
     <ng-template #desktopHeader let-column="column" let-sort="sortFn" ngx-datatable-header-template>
       <span class="mobile-hidden">{{column.name}}</span>
     </ng-template>
-    <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
-      <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+    <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                 let-selectFn="selectFn">
+      <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
       <span>({{selected?.length}})</span>
     </ng-template>
     <!-- Cell Template -->
-    <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn" let-row="row" let-expanded="expanded">
-      <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
-      <button mat-icon-button role="button" type="button" [class.datatable-icon-right]="!expanded" [class.datatable-icon-down]="expanded" title="Expand/Collapse Row" (click)="toggleExpandRow(row)" class="desktop-hidden">
+    <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                 let-onCheckboxChangeFn="onCheckboxChangeFn" let-row="row" let-expanded="expanded">
+      <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
+      <button mat-icon-button role="button" type="button" [class.datatable-icon-right]="!expanded"
+              [class.datatable-icon-down]="expanded" title="Expand/Collapse Row" (click)="toggleExpandRow(row)"
+              class="desktop-hidden">
       </button>
     </ng-template>
     <ng-template #imageCell ngx-datatable-cell-template let-value="value" let-row="row">
       <a (click)="editProduct(row)">
-        <app-media-viewer class="py-0" [key]="item" [resize]="{height: headerHeight}" *ngFor="let item of value"></app-media-viewer>
+        <app-image class="py-0" [key]="item" [resize]="{height: headerHeight}" *ngFor="let item of value"></app-image>
       </a>
     </ng-template>
     <ng-template #actionsCell let-row="row" ngx-datatable-cell-template>
@@ -81,7 +95,8 @@
       <span class="mobile-hidden">{{value}}</span>
     </ng-template>
     <ng-template #publicationCell let-value="value" let-row="row" ngx-datatable-cell-template>
-      <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group mobile-hidden" [value]="value" (change)="updateProductPublication(row, $event)">
+      <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group mobile-hidden"
+                       [value]="value" (change)="updateProductPublication(row, $event)">
         <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
           <span class="text-success">Publié</span>
         </mat-radio-button>
@@ -114,6 +129,7 @@
     </ng-template>
   </div>
 </div>
-<button color="primary" type="button" aria-label="Ajouter un produit" [routerLink]="['/admin/product/add']" mat-mini-fab class="absolute-fab pulse">
+<button color="primary" type="button" aria-label="Ajouter un produit" [routerLink]="['/admin/product/add']" mat-mini-fab
+        class="absolute-fab pulse">
   <mat-icon aria-hidden="true">add</mat-icon>
 </button>

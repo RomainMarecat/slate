@@ -9,7 +9,7 @@ import {
   OnDestroy,
   ViewEncapsulation,
   OnChanges,
-  SimpleChanges
+  SimpleChanges, Optional
 } from '@angular/core';
 import { Cloudinary } from '../cloudinary.service';
 import { CloudinaryTransformationDirective } from '../cloudinary-transformation.directive';
@@ -34,7 +34,7 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
   defaultImageSplashScreen: string;
   imageSource$: Observable < string > ;
 
-  constructor(private el: ElementRef, private cloudinary: Cloudinary) {
+  constructor(private el: ElementRef, @Optional() private cloudinary: Cloudinary) {
     this.offset = 3000;
     this.defaultImageSplashScreen = '/assets/images/icons/apple-icon.png';
   }
@@ -75,14 +75,17 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
         'publicId={{photo.public_id}}...></app-monpullmoche-cloudinary-image>'
       );
     }
-    const nativeElement = this.el.nativeElement;
-    const image = nativeElement.children[0];
-    const options = this.cloudinary.toCloudinaryAttributes(nativeElement.attributes, this.transformations);
+    if (this.cloudinary) {
 
-    const imageTag = this.cloudinary.imageTag(this.publicId, options);
-    this.setElementAttributes(image, imageTag.attributes(), lazyLoad);
-    if (options.responsive) {
-      this.cloudinary.responsive(image, options);
+      const nativeElement = this.el.nativeElement;
+      const image = nativeElement.children[0];
+      const options = this.cloudinary.toCloudinaryAttributes(nativeElement.attributes, this.transformations);
+
+      const imageTag = this.cloudinary.imageTag(this.publicId, options);
+      this.setElementAttributes(image, imageTag.attributes(), lazyLoad);
+      if (options.responsive) {
+        this.cloudinary.responsive(image, options);
+      }
     }
   }
 

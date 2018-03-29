@@ -6,33 +6,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {
   MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
   MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule
 } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgPipesModule } from 'ngx-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './product-list.component';
-import { ProductItemComponent } from './../product-item/product-item.component';
-import { ProductActionComponent } from './../product-item/product-action/product-action.component';
+import { ProductItemComponent } from '../product-item/product-item.component';
+import { ProductActionComponent } from '../product-item/product-action/product-action.component';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
 import { ProductService } from '../../shared/product/product.service';
 import { MockProductService } from '../../shared/product/mock-product.service';
 import { MockUserService } from '../../shared/user/mock-user.service';
@@ -45,7 +35,8 @@ import { ScoreService } from '../../shared/score/score.service';
 import { DateService } from '../../shared/util/date.service';
 import { MockScoreService } from '../../shared/score/mock-score.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
-import { environment } from './../../environments/environment.monpullmoche';
+import { environment } from '../../environments/environment.monpullmoche';
+import { MediaModule } from '../../shared/media/media.module';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -76,7 +67,8 @@ describe('ProductListComponent', () => {
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
+          }),
+          MediaModule
         ],
         declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent],
         providers: [

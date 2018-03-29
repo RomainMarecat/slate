@@ -6,16 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatCheckboxModule,
-  MatGridListModule,
-  MatInputModule,
-  MatListModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatCardModule,
-  MatIconModule
-} from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgxEditorModule } from 'ngx-editor';
 import { MockProductService } from '../../shared/product/mock-product.service';
@@ -24,7 +14,6 @@ import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../shared.module';
-import { CloudinaryModule } from '../../../cloudinary/cloudinary.module';
 import { Cloudinary } from 'cloudinary-core';
 import { environment } from '../../../../environments/environment.hockey';
 import { ObjectService } from '../../../util/object.service';
@@ -35,7 +24,6 @@ import { MockNotificationService } from '../../../slack/mock-notification.servic
 import { UserService } from '../../../user/user.service';
 import { I18nService } from '../../../i18n/i18n.service';
 import { DateService } from '../../../util/date.service';
-import { MockUserService } from '../../../user/mock-user.service';
 import { MockLoaderService } from '../../../loader/mock-loader.service';
 import { DeviceService } from '../../../device/device.service';
 import { NotificationService } from '../../../slack/notification.service';
@@ -47,6 +35,8 @@ import { AttributeService } from '../../../attribute/attribute.service';
 import { MockAttributeService } from '../../../attribute/mock-attribute.service';
 
 import { AttributeEditComponent } from './attribute-edit.component';
+import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
+import { MockUserService } from '../../../user/mock-user.service';
 
 describe('AttributeEditComponent', () => {
   let component: AttributeEditComponent;

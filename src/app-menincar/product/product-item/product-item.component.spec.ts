@@ -5,7 +5,7 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { MatCardModule, MatIconModule } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { CloudinaryModule } from '../../../shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
 import { CommonModule } from '@angular/common';
 import { NgPipesModule } from 'ngx-pipes';
 import { environment } from '../../../environments/environment.hockey';
@@ -20,6 +20,7 @@ import { ProductService } from '../../../shared/product/product.service';
 import { MockUserService } from '../../../shared/user/mock-user.service';
 import { MockMediaService } from '../../../shared/media/mock-media.service';
 import { UserService } from '../../../shared/user/user.service';
+import { MediaModule } from '../../../shared/media/media.module';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -45,6 +46,7 @@ describe('ProductItemComponent', () => {
           },
         }),
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        MediaModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })

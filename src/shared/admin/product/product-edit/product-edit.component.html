@@ -63,15 +63,20 @@
             </div>
           </div>
           <div class="col-xs-12 col-sm-6">
-            <div fxLayout="row" fxLayoutAlign="space-around strech" fxLayout.xs="column"
+            <p>Image du produit</p>
+            <div fxLayout="row"
+                 fxLayoutAlign="space-around strech"
+                 fxLayout.xs="column"
                  fxLayoutAlign.xs="center center">
               <div class="block-image">
-                <p>Image du produit</p>
                 <app-storage-upload [folder]="'products'"
-                                    [metadata]="{product: product?.key}"
+                                    [metadata]="imageStorageConfig"
+                                    (imageChanged)="onImageChange($event)"
                                     (imageRefChanged)="onImageRefChanged($event)"></app-storage-upload>
-                <app-product-image [displayValidation]="'true'"
-                                   (imageChanged)="onImageChange($event)"></app-product-image>
+                <app-storage-detail [downloadURL]="downloadURL"></app-storage-detail>
+
+                <app-image-product [displayValidation]="'true'"
+                                   (imageChanged)="onImageChange($event)"></app-image-product>
               </div>
               <div *ngIf="product?.images && product.images.length > 0">
                 <app-admin-product-image-order [product]="product"
@@ -79,6 +84,7 @@
               </div>
             </div>
           </div>
+
         </div>
       </mat-card-content>
     </mat-card>

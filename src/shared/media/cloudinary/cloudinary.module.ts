@@ -8,13 +8,19 @@ import { CloudinaryImageSourceDirective } from './cloudinary-image-source.direct
 import CloudinaryConfiguration from './cloudinary-configuration.class';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { CloudinaryTagService } from './cloudinary-tag.service';
-import { ImageComponent } from './image/image.component';
+import { ImageCropperModule } from 'ngx-img-cropper';
+
 export { Cloudinary, provideCloudinary } from './cloudinary.service';
 import { NgPipesModule } from 'ngx-pipes';
 import { CloudinaryUploadService } from './cloudinary-upload.service';
+import { ImageProductComponent } from './image-product/image-product.component';
+import { MediaViewerComponent } from './media-viewer/media-viewer.component';
+import { Angulartics2Module } from 'angulartics2';
+import { TranslateModule } from '@ngx-translate/core';
+import { FileUploadModule } from 'ng2-file-upload';
 
-export const CLOUDINARY_LIB = new InjectionToken < any > ('CLOUDINARY_LIB');
-export const CLOUDINARY_CONFIGURATION = new InjectionToken < CloudinaryConfiguration > ('CLOUDINARY_CONFIGURATION');
+export const CLOUDINARY_LIB = new InjectionToken<any>('CLOUDINARY_LIB');
+export const CLOUDINARY_CONFIGURATION = new InjectionToken<CloudinaryConfiguration>('CLOUDINARY_CONFIGURATION');
 
 export { CloudinaryConfiguration };
 
@@ -25,23 +31,29 @@ export function createCloudinary(cloudinaryJsLib: any, configuration: Cloudinary
 
 @NgModule({
   imports: [
+    Angulartics2Module,
     CommonModule,
+    FileUploadModule,
+    ImageCropperModule,
     LazyLoadImageModule,
-    NgPipesModule
+    NgPipesModule,
+    TranslateModule
   ],
   declarations: [
     CloudinaryImageSourceDirective,
     CloudinaryImageComponent,
     CloudinaryTransformationDirective,
     CloudinaryVideoComponent,
-    ImageComponent
+    ImageProductComponent,
+    MediaViewerComponent
   ],
   exports: [
     CloudinaryImageSourceDirective,
     CloudinaryImageComponent,
     CloudinaryVideoComponent,
     CloudinaryTransformationDirective,
-    ImageComponent
+    ImageProductComponent,
+    MediaViewerComponent
   ]
 })
 export class CloudinaryModule {
@@ -51,12 +63,12 @@ export class CloudinaryModule {
       providers: [
         CloudinaryTagService,
         CloudinaryUploadService,
-        { provide: CLOUDINARY_LIB, useValue: cloudinaryJsLib },
-        { provide: CLOUDINARY_CONFIGURATION, useValue: cloudinaryConfiguration },
+        {provide: CLOUDINARY_LIB, useValue: cloudinaryJsLib},
+        {provide: CLOUDINARY_CONFIGURATION, useValue: cloudinaryConfiguration},
         {
           provide: Cloudinary,
           useFactory: createCloudinary,
-          deps: [CLOUDINARY_LIB, CLOUDINARY_CONFIGURATION]
+          deps: [ CLOUDINARY_LIB, CLOUDINARY_CONFIGURATION ]
         }
       ]
     };

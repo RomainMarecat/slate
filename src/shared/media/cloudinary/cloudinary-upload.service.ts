@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
-import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Cloudinary } from './cloudinary.service';
 import { SHA1 } from 'crypto-js';
-import { Observable } from 'rxjs/Observable';
-import { Product } from './../product/product';
-import { ProductService } from './../product/product.service';
-import { Media } from './../media/media';
-import { MediaService } from './../media/media.service';
 import { DocumentReference } from '@firebase/firestore-types';
+import { MediaService } from '../media.service';
+import { Media } from '../media';
+import { ProductService } from '../../product/product.service';
+import { Product } from '../../product/product';
 
 @Injectable()
 export class CloudinaryUploadService {

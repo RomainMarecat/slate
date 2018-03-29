@@ -1,10 +1,9 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Media } from './media';
 import { Observable } from 'rxjs/Observable';
 import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
 import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/toPromise';
 
@@ -18,7 +17,7 @@ export class MediaService {
   limitFilter$: BehaviorSubject < number | null > ;
 
   /**
-   * @param AngularFirestore afs
+   * @param afs
    */
   constructor(private afs: AngularFirestore) {
     this.mediaCollectionRef = this.afs.collection < Media > ('media');

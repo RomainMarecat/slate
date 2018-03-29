@@ -29,7 +29,7 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgPipesModule } from 'ngx-pipes';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../../shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
 import { ProductActionComponent } from './../product-item/product-action/product-action.component';
 import { MockProductService } from '../../shared/product/mock-product.service';
 import { ProductService } from '../../shared/product/product.service';
@@ -39,6 +39,7 @@ import { MockMediaService } from '../../shared/media/mock-media.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MockLoaderService } from '../../shared/loader/mock-loader.service';
 import { environment } from './../../environments/environment.monpullmoche';
+import { MediaModule } from '../../shared/media/media.module';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
@@ -60,6 +61,7 @@ describe('ProductDetailComponent', () => {
           MatCheckboxModule,
           NgPipesModule,
           MatListModule,
+          MediaModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,

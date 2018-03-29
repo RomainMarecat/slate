@@ -13,13 +13,6 @@ export const environment = {
     storageBucket: 'menincar-384269.appspot.com',
     messagingSenderId: '25862177025'
   },
-  cloudinary: {
-    api_key: '962883135875625',
-    api_secret: 'J86ULC7Hd5QW1TdNCsnUFTagIrw',
-    cloundinary_url: 'https://res.cloudinary.com/hockey/image/upload',
-    cloud_name: 'hockey',
-    upload_preset: 'eia1acu0',
-  },
   clientAdSense: 'ca-pub-4195199088767183',
   slotAdSense: 123456,
   slackToken: 'https://hooks.slack.com/services/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',
