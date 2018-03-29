@@ -8,8 +8,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MockMediaService } from './mock-media.service';
 
-import { Cloudinary, isJsonLikeString, isNamedNodeMap, transformKeyNamesFromKebabToSnakeCase } from '../cloudinary/cloudinary.service';
-import CloudinaryConfiguration from '../cloudinary/cloudinary-configuration.class';
+import { Cloudinary } from './cloudinary/cloudinary.service';
+import CloudinaryConfiguration from './cloudinary/cloudinary-configuration.class';
 
 const cloudName = 'service-test';
 describe('MediaService', () => {

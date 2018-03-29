@@ -19,15 +19,15 @@ import {
   MatStepperModule,
   MatExpansionModule
 } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../../../shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductImageComponent } from '../../../shared/product/product-image/product-image.component';
+import { ImageProductComponent } from '../../../shared/media/cloudinary/image-product/image-product.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
@@ -38,7 +38,8 @@ import { ObjectService } from '../../../shared/util/object.service';
 import { MediaService } from '../../../shared/media/media.service';
 import { MockMediaService } from '../../../shared/media/mock-media.service';
 import { DeviceService } from '../../../shared/device/device.service';
-import { environment } from './../../../environments/environment.monpullmoche';
+import { environment } from '../../../environments/environment.monpullmoche';
+import { MediaModule } from '../../../shared/media/media.module';
 
 describe('ProductFormComponent', () => {
   let component: ProductFormComponent;
@@ -69,6 +70,7 @@ describe('ProductFormComponent', () => {
           MatStepperModule,
           MatExpansionModule,
           MatCheckboxModule,
+          MediaModule,
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
           Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
             developerMode: true,
@@ -82,7 +84,6 @@ describe('ProductFormComponent', () => {
         ],
         declarations: [
           ProductFormComponent,
-          ProductImageComponent
         ],
         providers: [
           { provide: AlertService, useClass: MockAlertService },

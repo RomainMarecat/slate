@@ -11,7 +11,7 @@ import { NgPipesModule } from 'ngx-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { CloudinaryModule } from '../../../shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
 import { Cloudinary } from 'cloudinary-core';
 import { environment } from '../../../environments/environment.hockey';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -21,6 +21,7 @@ import { MockMediaService } from '../../../shared/media/mock-media.service';
 import { MediaService } from '../../../shared/media/media.service';
 import { MockUserService } from '../../../shared/user/mock-user.service';
 import { UserService } from '../../../shared/user/user.service';
+import { MediaModule } from '../../../shared/media/media.module';
 
 
 describe('ProductItemComponent', () => {
@@ -47,6 +48,7 @@ describe('ProductItemComponent', () => {
             },
           }),
           CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
+          MediaModule,
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })

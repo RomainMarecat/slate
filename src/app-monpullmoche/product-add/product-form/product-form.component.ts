@@ -4,7 +4,7 @@ import { ClothingProduct } from '../../../shared/product/clothing-product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Media } from '../../../shared/media/media';
 import { UserService } from '../../../shared/user/user.service';
-import { ProductImageComponent } from '../../../shared/product/product-image/product-image.component';
+import { ImageProductComponent } from '../../../shared/media/cloudinary/image-product/image-product.component';
 
 @Component({
   selector: 'app-product-form',
@@ -12,7 +12,7 @@ import { ProductImageComponent } from '../../../shared/product/product-image/pro
   styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
-  @ViewChild(ProductImageComponent) productImageComponent: ProductImageComponent;
+  @ViewChild(ImageProductComponent) imageProductComponent: ImageProductComponent;
   form: FormGroup;
   formDetail: FormGroup;
   formMedia: FormGroup;
@@ -50,7 +50,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   validateImage() {
-    this.productImageComponent.validateImage();
+    this.imageProductComponent.validateImage();
   }
 
   onSubmit() {

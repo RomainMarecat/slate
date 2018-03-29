@@ -2,6 +2,7 @@ export interface Environment {
   production: boolean;
   site_name: string;
   app_name: string;
+  image?: string;
   firebase: {
     apiKey: string;
     authDomain: string;
@@ -10,7 +11,7 @@ export interface Environment {
     storageBucket: string;
     messagingSenderId: string;
   };
-  cloudinary: {
+  cloudinary?: {
     api_key: string;
     api_secret: string;
     cloudinary_url?: string;

@@ -8,9 +8,16 @@
             <mat-card-title align="center">
               <h3 [innerHtml]="'product-add.product-form.steps.image.card-title.title'|translate"></h3>
             </mat-card-title>
-            <app-product-image [media]="image1" (imageChanged)="onImageChange($event)"></app-product-image>
+            <app-image-product [media]="image1" (imageChanged)="onImageChange($event)"></app-image-product>
             <div class="mt2 product-form-step-1-wrapper d-flex justify-content-end">
-              <button role="button" [attr.aria-label]="'product-add.product-form.steps.image.product-image.image-button-wrapper.button.aria-label.title'|translate" [attr.matTooltip]="'product-add.product-form.steps.image.product-image.image-button-wrapper.button.tooltip.title'|translate" matTooltipPosition="right" mat-raised-button matStepperNext color="primary" type="button" class="button-image-validation" angulartics2On="click" angularticsAction="clickedOnUploadProductImage" [angularticsCategory]="'media.save'" [innerHtml]="'product-add.product-form.steps.image.product-image.image-cropper.cropper.title'|translate" (click)="validateImage()" [disabled]="!productImageComponent?.isUploaded"></button>
+              <button role="button"
+                      [attr.aria-label]="'product-add.product-form.steps.image.product-image.image-button-wrapper.button.aria-label.title'|translate"
+                      [attr.matTooltip]="'product-add.product-form.steps.image.product-image.image-button-wrapper.button.tooltip.title'|translate"
+                      matTooltipPosition="right" mat-raised-button matStepperNext color="primary" type="button"
+                      class="button-image-validation" angulartics2On="click"
+                      angularticsAction="clickedOnUploadProductImage" [angularticsCategory]="'media.save'"
+                      [innerHtml]="'product-add.product-form.steps.image.product-image.image-cropper.cropper.title'|translate"
+                      (click)="validateImage()" [disabled]="!imageProductComponent?.isUploaded"></button>
             </div>
           </form>
         </mat-step>
@@ -18,15 +25,26 @@
           <form [formGroup]="formDetail" class="form-detail">
             <ng-template matStepLabel>{{ 'product-add.product-form.steps.detail.section'|translate }}</ng-template>
             <mat-form-field class="mat-form-field pa2">
-              <input matInput maxlength="50" [placeholder]="'product-add.product-form.steps.detail.form.name.placeholder'|translate" formControlName="name" angulartics2On="focus" angularticsAction="focusedOnProductName" [angularticsCategory]="'product.name'" [angularticsValue]="name?.value">
-              <mat-hint align="start"><strong [innerHtml]="'product-add.product-form.steps.detail.form.name.title'|translate"></strong></mat-hint>
-              <mat-hint align="end">{{ name.value.length }} {{ 'product-add.product-form.steps.detail.form.name.length'|translate }}</mat-hint>
-              <mat-error *ngIf="name.invalid && name.value.length === 0" [innerHtml]="'product-add.product-form.steps.detail.form.name.error.length'|translate"></mat-error>
-              <mat-error *ngIf="name.invalid && name.value.length > 0" [innerHtml]="'product-add.product-form.steps.detail.form.name.error.invalid'|translate"></mat-error>
+              <input matInput maxlength="50"
+                     [placeholder]="'product-add.product-form.steps.detail.form.name.placeholder'|translate"
+                     formControlName="name" angulartics2On="focus" angularticsAction="focusedOnProductName"
+                     [angularticsCategory]="'product.name'" [angularticsValue]="name?.value">
+              <mat-hint align="start"><strong
+                [innerHtml]="'product-add.product-form.steps.detail.form.name.title'|translate"></strong></mat-hint>
+              <mat-hint align="end">{{ name.value.length }} {{
+                'product-add.product-form.steps.detail.form.name.length'|translate }}
+              </mat-hint>
+              <mat-error *ngIf="name.invalid && name.value.length === 0"
+                         [innerHtml]="'product-add.product-form.steps.detail.form.name.error.length'|translate"></mat-error>
+              <mat-error *ngIf="name.invalid && name.value.length > 0"
+                         [innerHtml]="'product-add.product-form.steps.detail.form.name.error.invalid'|translate"></mat-error>
             </mat-form-field>
             <div class="product-form-step-2-wrapper pa2 d-flex justify-content-around">
-              <button class="back" mat-raised-button matStepperPrevious color="accent" [innerHtml]="'product-add.product-form.steps.detail.button.back.title'|translate"></button>
-              <button class="validate" mat-raised-button matStepperNext color="primary" [disabled]="name.invalid" [innerHtml]="'product-add.product-form.steps.detail.button.next.title'|translate">Next</button>
+              <button class="back" mat-raised-button matStepperPrevious color="accent"
+                      [innerHtml]="'product-add.product-form.steps.detail.button.back.title'|translate"></button>
+              <button class="validate" mat-raised-button matStepperNext color="primary" [disabled]="name.invalid"
+                      [innerHtml]="'product-add.product-form.steps.detail.button.next.title'|translate">Next
+              </button>
             </div>
           </form>
         </mat-step>
@@ -44,11 +62,21 @@
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <mat-form-field class="mat-form-field">
-                <textarea matInput [placeholder]="'product-add.product-form.steps.additional.form.description.placeholder'|translate" formControlName="description" angulartics2On="focus" angularticsAction="focusedOnProductDescription" [angularticsCategory]="'product.description'" [angularticsValue]="description?.value"></textarea>
-                <mat-hint align="start"><strong [innerHtml]="'product-add.product-form.steps.additional.form.description.title'|translate"></strong></mat-hint>
-                <mat-hint align="end">{{ description.value.length }} {{ 'product-add.product-form.steps.additional.form.description.length'|translate }}</mat-hint>
-                <mat-error *ngIf="description.invalid && description.value.length === 0" [innerHtml]="'product-add.product-form.steps.additional.form.description.error.length'|translate"></mat-error>
-                <mat-error *ngIf="description.invalid && description.value.length > 0" [innerHtml]="'product-add.product-form.steps.additional.form.description.error.invalid'|translate"></mat-error>
+                <textarea matInput
+                          [placeholder]="'product-add.product-form.steps.additional.form.description.placeholder'|translate"
+                          formControlName="description" angulartics2On="focus"
+                          angularticsAction="focusedOnProductDescription" [angularticsCategory]="'product.description'"
+                          [angularticsValue]="description?.value"></textarea>
+                <mat-hint align="start"><strong
+                  [innerHtml]="'product-add.product-form.steps.additional.form.description.title'|translate"></strong>
+                </mat-hint>
+                <mat-hint align="end">{{ description.value.length }} {{
+                  'product-add.product-form.steps.additional.form.description.length'|translate }}
+                </mat-hint>
+                <mat-error *ngIf="description.invalid && description.value.length === 0"
+                           [innerHtml]="'product-add.product-form.steps.additional.form.description.error.length'|translate"></mat-error>
+                <mat-error *ngIf="description.invalid && description.value.length > 0"
+                           [innerHtml]="'product-add.product-form.steps.additional.form.description.error.invalid'|translate"></mat-error>
               </mat-form-field>
             </mat-expansion-panel>
             <mat-expansion-panel>
@@ -61,19 +89,37 @@
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <mat-form-field class="mat-form-field">
-                <input type="url" matInput [placeholder]="'product-add.product-form.steps.additional.form.external_url.placeholder'|translate" formControlName="external_url" angulartics2On="focus" angularticsAction="focusedOnProductExternalUrl" [angularticsCategory]="'product.external_url'" [angularticsValue]="externalUrl?.value">
-                <mat-error *ngIf="externalUrl.invalid" [innerHtml]="'product-add.product-form.steps.additional.form.external_url.error.invalid'|translate"></mat-error>
+                <input type="url" matInput
+                       [placeholder]="'product-add.product-form.steps.additional.form.external_url.placeholder'|translate"
+                       formControlName="external_url" angulartics2On="focus"
+                       angularticsAction="focusedOnProductExternalUrl" [angularticsCategory]="'product.external_url'"
+                       [angularticsValue]="externalUrl?.value">
+                <mat-error *ngIf="externalUrl.invalid"
+                           [innerHtml]="'product-add.product-form.steps.additional.form.external_url.error.invalid'|translate"></mat-error>
               </mat-form-field>
               <mat-form-field class="mat-form-field">
-                <input type="number" matInput [placeholder]="'product-add.product-form.steps.additional.form.price.placeholder'|translate" formControlName="price" angulartics2On="focus" angularticsAction="focusedOnProductPrice" [angularticsCategory]="'product.price'" [angularticsValue]="price?.value">
-                <mat-error *ngIf="price.invalid && price.value < 0" [innerHtml]="'product-add.product-form.steps.additional.form.price.min'|translate"></mat-error>
-                <mat-error *ngIf="price.invalid && price.value > 9999" [innerHtml]="'product-add.product-form.steps.additional.form.price.max'|translate"></mat-error>
-                <mat-error *ngIf="price.invalid" [innerHtml]="'product-add.product-form.steps.additional.form.price.invalid'|translate"></mat-error>
+                <input type="number" matInput
+                       [placeholder]="'product-add.product-form.steps.additional.form.price.placeholder'|translate"
+                       formControlName="price" angulartics2On="focus" angularticsAction="focusedOnProductPrice"
+                       [angularticsCategory]="'product.price'" [angularticsValue]="price?.value">
+                <mat-error *ngIf="price.invalid && price.value < 0"
+                           [innerHtml]="'product-add.product-form.steps.additional.form.price.min'|translate"></mat-error>
+                <mat-error *ngIf="price.invalid && price.value > 9999"
+                           [innerHtml]="'product-add.product-form.steps.additional.form.price.max'|translate"></mat-error>
+                <mat-error *ngIf="price.invalid"
+                           [innerHtml]="'product-add.product-form.steps.additional.form.price.invalid'|translate"></mat-error>
               </mat-form-field>
             </mat-expansion-panel>
             <div class="product-form-step-3-wrapper pa2 d-flex justify-content-around">
-              <button class="back" mat-raised-button matStepperPrevious color="accent" mat-raised-button [innerHtml]="'product-add.product-form.steps.additional.button.back.title'|translate"></button>
-              <button class="validate" mat-raised-button role="button" [attr.aria-label]="'product-add.product-form.form.validation.button.title'|translate" mat-raised-button color="primary" type="submit" class="btn-add" [disabled]="!(formMedia.valid && formDetail.valid && formAdditional.valid) || isLoading" angulartics2On="click" angularticsAction="validateProduct" [angularticsCategory]="'product.new'" [innerHtml]="'product-add.product-form.steps.additional.form.validation.button.title'|translate" (click)="onSubmit()"></button>
+              <button class="back" mat-raised-button matStepperPrevious color="accent" mat-raised-button
+                      [innerHtml]="'product-add.product-form.steps.additional.button.back.title'|translate"></button>
+              <button class="validate" mat-raised-button role="button"
+                      [attr.aria-label]="'product-add.product-form.form.validation.button.title'|translate"
+                      mat-raised-button color="primary" type="submit" class="btn-add"
+                      [disabled]="!(formMedia.valid && formDetail.valid && formAdditional.valid) || isLoading"
+                      angulartics2On="click" angularticsAction="validateProduct" [angularticsCategory]="'product.new'"
+                      [innerHtml]="'product-add.product-form.steps.additional.form.validation.button.title'|translate"
+                      (click)="onSubmit()"></button>
             </div>
           </form>
         </mat-step>

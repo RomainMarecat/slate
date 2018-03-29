@@ -8,7 +8,7 @@ import {
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { CloudinaryModule } from '../../../shared/cloudinary/cloudinary.module';
+import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
 import { CommonModule } from '@angular/common';
 import { NgPipesModule } from 'ngx-pipes';
 import { environment } from '../../../environments/environment.hockey';

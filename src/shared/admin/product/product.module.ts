@@ -8,8 +8,8 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { TranslateModule } from '@ngx-translate/core';
-import { ProductService } from './../shared/product/product.service';
-import { CategoryService } from './../shared/navigation/category/category.service';
+import { ProductService } from '../shared/product/product.service';
+import { CategoryService } from '../shared/navigation/category/category.service';
 import { SharedModule } from '../../shared.module';
 import { AttributeService } from '../../attribute/attribute.service';
 import { PartnerService } from '../shared/partner/partner.service';
@@ -18,7 +18,6 @@ import { DragulaModule } from 'ng2-dragula';
 import { ProductImageOrderComponent } from './product-image-order/product-image-order.component';
 import { OfferService } from '../shared/offer/offer.service';
 import { ProductOffersComponent } from './product-offers/product-offers.component';
-import { StorageModule } from '../../storage/storage.module';
 
 const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
 const TABLE_OFFER = new InjectionToken < string > ('offer');
@@ -31,7 +30,6 @@ const TABLE_PARTNER = new InjectionToken < string > ('partner');
     NgxDatatableModule,
     SharedModule,
     NgxEditorModule,
-    StorageModule,
     TranslateModule,
     ProductRoutingModule
   ],

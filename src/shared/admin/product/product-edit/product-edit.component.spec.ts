@@ -1,24 +1,10 @@
-///<reference path="../../../../environments/environment.hockey.ts"/>
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductEditComponent } from './product-edit.component';
-import { ProductImageOrderComponent } from './../product-image-order/product-image-order.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatCheckboxModule,
-  MatGridListModule,
-  MatInputModule,
-  MatListModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatCardModule,
-  MatIconModule
-} from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgxEditorModule } from 'ngx-editor';
 import { MockProductService } from '../../shared/product/mock-product.service';
@@ -27,8 +13,6 @@ import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../shared.module';
-import { CloudinaryModule } from '../../../cloudinary/cloudinary.module';
-import { Cloudinary } from 'cloudinary-core';
 import { environment } from '../../../../environments/environment.hockey';
 import { ObjectService } from '../../../util/object.service';
 import { MediaService } from '../../../media/media.service';
@@ -55,6 +39,9 @@ import { MockOfferService } from '../../shared/offer/mock-offer.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ProductImageOrderComponent } from '../product-image-order/product-image-order.component';
+import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
+import { Cloudinary } from 'cloudinary-core';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;

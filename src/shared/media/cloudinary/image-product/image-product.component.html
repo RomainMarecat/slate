@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-12">
+    <div class="form-group mt2 text-center" *ngIf="cloudinaryActive">
+      <input type="file" ng2FileSelect [uploader]="uploader" multiple angulartics2On="click"
+             angularticsAction="chooseProductImage" [angularticsCategory]="'product.image'"/>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="image-cropper" [ngClass]="cropperClass" *ngIf="cloudinaryActive">
+    <div class="col-12">
+      <img-cropper #cropper [image]="data" [settings]="cropperSettings"
+                   [attr.matTooltip]="'product-add.product-form.steps.image.product-image.image-cropper.cropper.tooltip.title'|translate"
+                   matTooltipPosition="right" angulartics2On="mouseover" angularticsAction="HoveredOverCropProductImage"
+                   [angularticsCategory]="'media.crop'"></img-cropper>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="displayValidation && cloudinaryActive">
+  <div class="col-12 text-center">
+    <button [disabled]="!publicId" (click)="validateImage()" mat-raised-button color="primary" aria-label="validation"
+            type="button" role="button" [innerHtml]="'Valider'|translate"></button>
+  </div>
+</div>
