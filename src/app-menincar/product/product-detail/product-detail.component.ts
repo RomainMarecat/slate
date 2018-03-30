@@ -41,8 +41,6 @@ export class ProductDetailComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private productService: ProductService,
               private deviceService: DeviceService,
-              private commentService: CommentService,
-              private userService: UserService,
               private alertService: AlertService) {
     this.resizedImage = {height: 400};
   }

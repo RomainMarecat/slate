@@ -10,27 +10,15 @@ import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { ObjectService } from '../../shared/util/object.service';
 import { DateService } from '../../shared/util/date.service';
 import { DeviceService } from '../../shared/device/device.service';
-import { NotificationService } from '../../shared/slack/notification.service';
-import { MockNotificationService } from '../../shared/slack/mock-notification.service';
 import { AlertService } from '../../shared/popup/alert.service';
-import { UserService } from '../../shared/user/user.service';
-import { MediaService } from '../../shared/media/media.service';
-import { MockMediaService } from '../../shared/media/mock-media.service';
 import { ProductService } from '../../shared/product/product.service';
 import { LoaderService } from '../../shared/loader/loader.service';
-import { MockUserService } from '../../shared/user/mock-user.service';
 import { MenuService } from '../../shared/menu/menu.service';
 import { SelectionService } from '../../shared/selection/selection.service';
 import { MockSelectionService } from '../../shared/selection/mock-selection.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
-import { MockOfferService } from '../../shared/offer/mock-offer.service';
-import { OfferService } from '../../shared/offer/offer.service';
-import { PartnerService } from '../../shared/partner/partner.service';
-import { MockPartnerService } from '../../shared/partner/mock-partner.service';
 import { MockAreaService } from '../../shared/map/shared/mock-area.service';
 import { AreaService } from '../../shared/map/shared/area.service';
-import { MapComponent } from '../../shared/map/map/map.component';
-import { AreaComponent } from '../../shared/map/area/area.component';
 import { MockMapService } from '../../shared/map/shared/mock-map.service';
 import { MapService } from '../../shared/map/shared/map.service';
 
@@ -53,12 +41,14 @@ describe('HomeComponent', () => {
         {provide: AreaService, useClass: MockAreaService},
         {provide: MapService, useClass: MockMapService},
         {provide: LoaderService, useClass: MockLoaderService},
+        {provide: ProductService, useClass: MockProductService},
         DateService,
         DeviceService,
         I18nService,
         MenuService,
         ObjectService,
         {provide: SelectionService, useClass: MockSelectionService}
+
       ]
     })
       .compileComponents();
