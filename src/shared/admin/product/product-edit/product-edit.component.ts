@@ -52,6 +52,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   _publication = true;
   _descriptionModel = '';
   _attributesModel: any[] = [];
+  isSaving = false;
 
   /**
    *
@@ -238,6 +239,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    * save the product and their offers
    */
   saveProduct() {
+    this.isSaving = true;
     this.form.patchValue({
       description: this._descriptionModel,
       published: this._publication
@@ -256,13 +258,21 @@ export class ProductEditComponent implements OnInit, OnDestroy {
         }
         this.productService.updateProduct(this.product)
           .then((doc) => {
+            this.isSaving = false;
             this.saveOffer(offers, {id: this.product.key});
-          }, (err) => this.addError(err));
+          }, (err) => {
+            this.isSaving = false;
+            this.addError(err);
+          });
       } else {
         this.productService.createProduct(this.product)
           .then((doc: DocumentReference) => {
+            this.isSaving = false;
             this.saveOffer(this.form.get('offers').value, doc);
-          }, (err) => this.addError(err));
+          }, (err) => {
+            this.isSaving = false;
+            this.addError(err);
+          });
       }
     }
   }

@@ -230,7 +230,7 @@
           <button type="button" class="back" role="button" color="accent" mat-raised-button
                   [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/product']"></button>
           <button type="submit" class="validate" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button
-                  color="primary" [disabled]="form.invalid" [innerHtml]="'Enregistrer'|translate"></button>
+                  color="primary" [disabled]="form.invalid || isSaving" [innerHtml]="'Enregistrer'|translate"></button>
         </div>
       </mat-card-actions>
     </mat-card>
