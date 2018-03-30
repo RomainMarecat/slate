@@ -1,0 +1,31 @@
+<button mat-raised-button
+        color="primary"
+        type="button"
+        (click)="onActiveSearch(true)"
+        *ngIf="!showSearch">
+  <mat-icon>search</mat-icon>
+  <span>{{ 'search'|translate }}</span>
+</button>
+
+<form (ngSubmit)="onSearch()" [formGroup]="form" *ngIf="showSearch">
+  <button mat-icon-button
+          type="submit"
+          color="primary">
+    <mat-icon>search</mat-icon>
+  </button>
+
+  <mat-form-field>
+    <input matInput type="search" [(value)]="form.controls.search.value" [formControl]="form.controls.search">
+  </mat-form-field>
+
+  <button mat-icon-button
+          type="button"
+          color="primary"
+          (click)="onActiveSearch(false)">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <ul>
+    <li *ngFor="let product of products">{{ product.name }}</li>
+  </ul>
+</form>

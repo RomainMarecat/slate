@@ -15,6 +15,13 @@
       "title": "Trouvez la bonne affaire parmi toutes nos petites annonces sur Men in car."
     }
   },
+  "product": {
+    "add": {
+      "button": {
+        "title": "Déposer une annonce"
+      }
+    }
+  },
   "snackbar": {
     "product-add": {
       "submit": "Ton pull est en attente de validation :)"

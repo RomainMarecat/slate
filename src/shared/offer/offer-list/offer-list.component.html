@@ -1,4 +1,4 @@
-<div class="offer-wrapper" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="10px" fxLayoutWrap>
+<div class="offer-wrapper" fxLayout="row" fxLayoutAlign="center wrap" fxLayoutGap="10px">
   <app-offer-detail fxFlex="30" [offer]="offer" *ngFor="let offer of offers"></app-offer-detail>
   <p *ngIf="offers && offers.length === 0">{{ 'Aucune offre pour le moment'|translate }}</p>
 </div>

@@ -29,8 +29,8 @@ export class ProductService extends VisitorService {
 
   /**
    *
-   * @param AngularFirestore afs
-   * @param AlertService alertService
+   * @param afs
+   * @param table
    */
   constructor(afs: AngularFirestore,
     @Inject('TABLE_PRODUCT') table: string) {

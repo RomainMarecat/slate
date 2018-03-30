@@ -247,7 +247,8 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       this.product = {
         ...this.product,
         ...this.form.value,
-        ...{offers: offers.filter((o) => o.key && o.key !== '').map((off) => off.key)}
+        ...{offers: offers.filter((o) => o.key && o.key !== '').map((off) => off.key)},
+        ...{keywords: this.form.controls.name.value.toLowerCase().split(' ')}
       };
       if (this.product.key) {
         if (this.product.published === true) {

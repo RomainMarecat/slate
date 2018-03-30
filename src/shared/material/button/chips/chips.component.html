@@ -6,7 +6,7 @@
 
 
     <h3 class="mt-5">Basic Chips</h3>
-    <div class="chips-row" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutWrap fxLayoutGap="20px">
+    <div class="chips-row" fxLayout="row" fxLayoutAlign="space-around wrap" fxLayoutGap="20px">
       <mat-chip-list>
         <mat-chip>One fish</mat-chip>
         <mat-chip>Two fish</mat-chip>
@@ -16,7 +16,7 @@
     </div>
 
     <h3 class="mt-5">Add/Remove Chips</h3>
-    <div class="chips-row" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutWrap fxLayoutGap="10px">
+    <div class="chips-row" fxLayout="row" fxLayoutAlign="center wrap" fxLayoutGap="10px">
       <mat-form-field class="demo-chip-list">
         <mat-chip-list #chipList>
           <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
@@ -35,7 +35,7 @@
 
 
     <h3 class="mt-5">Colors Chips</h3>
-    <div class="chips-row" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutWrap fxLayoutGap="20px">
+    <div class="chips-row" fxLayout="row" fxLayoutAlign="space-around wrap" fxLayoutGap="20px">
       <mat-chip-list class="mat-chip-list-stacked">
         <mat-chip *ngFor="let chip of availableColors" selected="true" [color]="chip.color">
           {{chip.name}}

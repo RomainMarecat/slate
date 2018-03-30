@@ -1,14 +1,49 @@
 <div class="main-wrapper">
   <div class="main-content">
     <!--<ul>-->
-      <!--<li>country picker</li>-->
-      <!--<li>selection picker</li>-->
-      <!--<li>entreprise connection + add fast car</li>-->
-      <!--<li>connection and alert subscription</li>-->
-      <!--<li>search bar</li>-->
+    <!--<li>selection picker</li>-->
+    <!--<li>entreprise connection + add fast car</li>-->
+    <!--<li>connection and alert subscription</li>-->
+    <!--<li>search bar</li>-->
     <!--</ul>-->
+    <div class="map-wrapper mt-2"
+         fxLayout="row"
+         fxLayoutAlign="center stretch"
+         fxLayoutGap="20px"
+         fxLayout.xs="column"
+         fxLayoutAlign.xs="start center"
+         fxLayoutGap.xs="10px">
+      <div class="main-title-wrapper">
 
-    <app-map></app-map>
+        <h1 class="main-title">{{ 'home.main.title'|translate }}</h1>
+
+        <div fxLayout="column"
+             fxLayoutAlign="start start"
+             fxLayoutGap="20px">
+
+          <div class="product-add-wrapper"
+               fxLayout="row"
+               fxLayoutAlign="start wrap"
+               fxLayoutGap="20px">
+            <button mat-raised-button
+                    color="primary"
+                    class="button-add-product">
+              <mat-icon>add</mat-icon>
+              <span>{{ 'product.add.button.title'|translate }}</span>
+            </button>
+
+
+          </div>
+
+
+          <app-product-search></app-product-search>
+        </div>
+
+      </div>
+
+      <app-map></app-map>
+    </div>
+
 
   </div>
 </div>

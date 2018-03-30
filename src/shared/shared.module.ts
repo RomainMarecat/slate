@@ -50,6 +50,7 @@ import { PartnerModule } from './partner/partner.module';
 import { OfferModule } from './offer/offer.module';
 import { CommentModule } from './comment/comment.module';
 import { MapModule } from './map/map.module';
+import { ProductModule } from './product/product.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -109,6 +110,7 @@ export class ConfigService {
     OfferModule,
     PartnerModule,
     PopupModule,
+    ProductModule,
     ReactiveFormsModule,
     RouterModule,
     SidenavModule,
@@ -158,6 +160,7 @@ export class ConfigService {
     OfferModule,
     PartnerModule,
     PopupModule,
+    ProductModule,
     ReactiveFormsModule,
     RouterModule,
     SlackModule,

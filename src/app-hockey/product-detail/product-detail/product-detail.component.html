@@ -1,7 +1,10 @@
-<div class="wrapper product-layout" fxLayoutGap="10px 10px" fxLayoutAlign="center stretch" fxLayoutAlign.xs="space-around stretch" fxLayout="column" fxLayout.xs="column" fxLayoutWrap>
+<div class="wrapper product-layout" fxLayoutGap="10px 10px" fxLayoutAlign="center stretch"
+     fxLayoutAlign.xs="space-around wrap" fxLayout="column" fxLayout.xs="column">
 
-  <div *ngIf="product" angulartics2On="click" angularticsAction="hoveredOverProductDetail" [angularticsCategory]="'product.detail'">
-    <div class="py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column" fxLayoutAlign.xs="center center">
+  <div *ngIf="product" angulartics2On="click" angularticsAction="hoveredOverProductDetail"
+       [angularticsCategory]="'product.detail'">
+    <div class="py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column"
+         fxLayoutAlign.xs="center center">
       <div class="title">
         <span *ngIf="product?.creator">{{ product.creator }}</span>
         <h2 class="main-title">
@@ -12,9 +15,11 @@
       </div>
       <div>
         <div class="score-wrapper px-5" fxLayout="row" fxLayoutAlign="end center" fxLayoutAlign.xs="center center">
-          <app-product-action class="app-product-action" [product]="product" (updateScore)="updateScoreProduct($event)"></app-product-action>
+          <app-product-action class="app-product-action" [product]="product"
+                              (updateScore)="updateScoreProduct($event)"></app-product-action>
         </div>
-        <app-image class="app-image" mat-card-image [key]="product.images[0]" [resize]="resizedImage" *ngIf="product.images[0]"></app-image>
+        <app-image class="app-image" mat-card-image [key]="product.images[0]" [resize]="resizedImage"
+                   *ngIf="product.images[0]"></app-image>
       </div>
     </div>
     <div class="content" *ngIf="product.images">
@@ -23,7 +28,8 @@
     <div>
       <div fxLayout="column" class="py-5">
         <span class="mat-card-date">{{ product.created_at | date:'short' }}</span>
-        <div class="reseller" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column" fxLayoutAlign.xs="center center" *ngFor="let reseller of product?.offers">
+        <div class="reseller" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column"
+             fxLayoutAlign.xs="center center" *ngFor="let reseller of product?.offers">
           <span *ngIf="reseller?.price">{{ reseller?.price }} €</span>
           <a href="{{ reseller?.external_url }}" *ngIf="resseller?.external_url" target="_blank">
             Comparer le produit

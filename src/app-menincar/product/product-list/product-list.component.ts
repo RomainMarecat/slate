@@ -82,6 +82,7 @@ export class ProductListComponent implements OnInit {
   }
 
   getProducts() {
+    this.productService.filters$.next(null);
     this.productService.getProducts()
       .subscribe((products) => {
         this.products = products.filter((product: CarProduct) => {
