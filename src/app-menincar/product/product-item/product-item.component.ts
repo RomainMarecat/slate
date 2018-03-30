@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CarProduct } from '../../../shared/product/car-product';
 import { Router } from '@angular/router';
+import { StringService } from '../../../shared/util/string.service';
 
 @Component({
   selector: 'app-menincar-product-item',
@@ -16,10 +17,10 @@ export class ProductItemComponent implements OnInit {
   }
 
   productDetail(event: any) {
-    // this.router.navigate([
-    //   '/product/' +
-    //   this.product.key + '-' + StringService.slugify(this.product.name)
-    // ]);
+    this.router.navigate([
+      '/product/' +
+      this.product.key + '-' + StringService.slugify(this.product.name)
+    ]);
   }
 
 }

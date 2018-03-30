@@ -1,14 +1,25 @@
 <div class="main-wrapper">
   <div class="main-content">
     <!--<ul>-->
-      <!--<li>country picker</li>-->
-      <!--<li>selection picker</li>-->
-      <!--<li>entreprise connection + add fast car</li>-->
-      <!--<li>connection and alert subscription</li>-->
-      <!--<li>search bar</li>-->
+    <!--<li>selection picker</li>-->
+    <!--<li>entreprise connection + add fast car</li>-->
+    <!--<li>connection and alert subscription</li>-->
+    <!--<li>search bar</li>-->
     <!--</ul>-->
 
     <app-map></app-map>
+
+    <div class="product-add-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="center wrap"
+         fxLayoutGap="20px">
+      <button mat-raised-button
+              color="primary"
+              class="button-add-product">
+        <mat-icon>add</mat-icon>
+        <span>{{ 'product.add.button.title'|translate }}</span>
+      </button>
+    </div>
 
   </div>
 </div>
