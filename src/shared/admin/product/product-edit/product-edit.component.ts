@@ -6,8 +6,7 @@ import { StringService } from '../../../util/string.service';
 import { Product } from '../../../product/product';
 import { ProductService } from '../../shared/product/product.service';
 import { Media } from '../../../media/media';
-import { Category } from '../../shared/navigation/category/category';
-import { CategoryService } from '../../shared/navigation/category/category.service';
+import { CategoryService } from '../../../category/category.service';
 import { Observable } from 'rxjs/Observable';
 import { DocumentReference } from '@firebase/firestore-types';
 import { ImageProductComponent } from '../../../media/cloudinary/image-product/image-product.component';
@@ -15,15 +14,14 @@ import { ProductFormType } from '../../shared/product/form-product';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { Partner } from '../../../partner/partner';
+import { Category } from '../../../category/category';
 import { Offer } from '../../../offer/offer';
 import { Attribute } from '../../../attribute/attribute';
 import { DragulaService } from 'ng2-dragula';
 import { OfferService } from '../../shared/offer/offer.service';
+import { UploadTaskSnapshot } from '@firebase/storage-types';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/debounceTime';
-import * as firebase from 'firebase/app';
-import UploadTaskSnapshot = firebase.storage.UploadTaskSnapshot;
-
 
 @Component({
   selector: 'app-product-edit',
@@ -52,6 +50,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   _publication = true;
   _descriptionModel = '';
   _attributesModel: any[] = [];
+  isSaving = false;
 
   /**
    *
@@ -238,6 +237,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    * save the product and their offers
    */
   saveProduct() {
+    this.isSaving = true;
     this.form.patchValue({
       description: this._descriptionModel,
       published: this._publication
@@ -256,13 +256,21 @@ export class ProductEditComponent implements OnInit, OnDestroy {
         }
         this.productService.updateProduct(this.product)
           .then((doc) => {
+            this.isSaving = false;
             this.saveOffer(offers, {id: this.product.key});
-          }, (err) => this.addError(err));
+          }, (err) => {
+            this.isSaving = false;
+            this.addError(err);
+          });
       } else {
         this.productService.createProduct(this.product)
           .then((doc: DocumentReference) => {
+            this.isSaving = false;
             this.saveOffer(this.form.get('offers').value, doc);
-          }, (err) => this.addError(err));
+          }, (err) => {
+            this.isSaving = false;
+            this.addError(err);
+          });
       }
     }
   }

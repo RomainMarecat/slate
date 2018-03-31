@@ -9,7 +9,7 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
 import { NgxEditorModule } from 'ngx-editor';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductService } from '../shared/product/product.service';
-import { CategoryService } from '../shared/navigation/category/category.service';
+import { CategoryService } from '../../category/category.service';
 import { SharedModule } from '../../shared.module';
 import { AttributeService } from '../../attribute/attribute.service';
 import { PartnerService } from '../shared/partner/partner.service';

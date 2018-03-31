@@ -7,8 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { CategoryListComponent } from './category-list.component';
-import { CategoryService } from '../../../shared/navigation/category/category.service';
-import { MockCategoryService } from '../../../shared/navigation/category/mock-category.service';
+import { CategoryService } from '../../../../category/category.service';
+import { MockCategoryService } from '../../../../category/mock-category.service';
 import { MockAlertService } from '../../../../popup/mock-alert.service';
 import { AlertService } from '../../../../popup/alert.service';
 import {SharedModule} from '../../../../shared.module';

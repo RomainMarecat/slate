@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,10 +30,13 @@ import { SharedModule } from '../../../shared.module';
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryComponent } from './category.component';
-import { CategoryService } from './../../shared/navigation/category/category.service';
+import { CategoryService } from '../../../category/category.service';
 import { CategoryAddComponent } from './category-add/category-add.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularFirestore } from 'angularfire2/firestore';
+
+const TABLE_CATEGORY = new InjectionToken < string > ('attribute');
 
 @NgModule({
   imports: [
@@ -69,7 +72,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   declarations: [CategoryListComponent, CategoryComponent, CategoryAddComponent],
   providers: [
-    CategoryService
+    { provide: TABLE_CATEGORY, useValue: 'category' },
+    {
+      provide: CategoryService,
+      useClass: CategoryService,
+      deps: [AngularFirestore, TABLE_CATEGORY]
+    },
   ]
 })
 export class CategoryModule {}

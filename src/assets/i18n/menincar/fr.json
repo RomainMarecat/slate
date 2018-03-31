@@ -13,6 +13,16 @@
   "home": {
     "main": {
       "title": "Trouvez la bonne affaire parmi toutes nos petites annonces sur Men in car."
+    },
+    "search": {
+      "title": "Rechercher",
+      "placeholder": "Recherche non disponible"
+    },
+    "brand": {
+      "placeholder": "Entrer votre marque"
+    },
+    "model": {
+      "placeholder": "Entrer votre modèle"
     }
   },
   "product": {
