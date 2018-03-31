@@ -54,6 +54,7 @@ export class CategoryListComponent implements OnInit {
    * Init list of Category
    */
   ngOnInit() {
+    this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
     this.categoryService.getCategories()
       .subscribe((categories: Category[]) => {
         this.categories = categories;

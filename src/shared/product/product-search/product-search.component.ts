@@ -50,6 +50,7 @@ export class ProductSearchComponent implements OnInit {
       operator: '==',
       value: 1
     } ]);
+    this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
     this.categoryService.getCategories()
       .take(1)
       .subscribe(brands => this.brands = brands);
@@ -57,7 +58,6 @@ export class ProductSearchComponent implements OnInit {
     this.filteredBrands.subscribe((brands: Category[]) => {
       this.brandSelected = brands[0];
       if (brands && brands.length > 0) {
-        this.categoryService.filters$.next(null);
         this.categoryService.filters$.next([ {
           column: 'level',
           operator: '==',
@@ -67,6 +67,7 @@ export class ProductSearchComponent implements OnInit {
           operator: '==',
           value: brands[0].key
         } ]);
+        this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
         this.categoryService.getCategories()
           .take(1)
           .subscribe(models => {

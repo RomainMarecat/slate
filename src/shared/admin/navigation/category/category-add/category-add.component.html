@@ -13,57 +13,68 @@
               <input matInput maxlength="50" [placeholder]="'Nom'|translate" formControlName="name">
               <mat-hint align="start"><strong [innerHtml]="'Nom de la catégorie'|translate"></strong></mat-hint>
               <mat-hint align="end">{{ name.value.length }} {{ '/50'|translate }}</mat-hint>
-              <mat-error *ngIf="name.invalid && name.value.length === 0" [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
-              <mat-error *ngIf="name.invalid && name.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+              <mat-error *ngIf="name.invalid && name.value.length === 0"
+                         [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
+              <mat-error *ngIf="name.invalid && name.value.length > 0"
+                         [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
             </mat-form-field>
             <mat-form-field class="mat-form-field" formGroupName="translations">
               <input matInput maxlength="50" [placeholder]="'fr'|translate" formControlName="fr">
               <mat-hint align="start"><strong [innerHtml]="'Traduction francaise'|translate"></strong></mat-hint>
               <mat-hint align="end">{{ fr.value.length }} {{ '/50'|translate }}</mat-hint>
-              <mat-error *ngIf="fr.invalid && fr.value.length === 0" [innerHtml]="'La fr ne peut pas être vide'|translate"></mat-error>
-              <mat-error *ngIf="fr.invalid && fr.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+              <mat-error *ngIf="fr.invalid && fr.value.length === 0"
+                         [innerHtml]="'La fr ne peut pas être vide'|translate"></mat-error>
+              <mat-error *ngIf="fr.invalid && fr.value.length > 0"
+                         [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
             </mat-form-field>
           </mat-card-content>
           <mat-form-field class="mat-form-field">
             <input matInput maxlength="500" [placeholder]="'Description'|translate" formControlName="description">
             <mat-hint align="start"><strong [innerHtml]="'Description de la catégorie'|translate"></strong></mat-hint>
             <mat-hint align="end">{{ description.value.length }} {{ '/50'|translate }}</mat-hint>
-            <mat-error *ngIf="description.invalid && description.value.length === 0" [innerHtml]="'La description ne peut pas être vide'|translate"></mat-error>
-            <mat-error *ngIf="description.invalid && description.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+            <mat-error *ngIf="description.invalid && description.value.length === 0"
+                       [innerHtml]="'La description ne peut pas être vide'|translate"></mat-error>
+            <mat-error *ngIf="description.invalid && description.value.length > 0"
+                       [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
           </mat-form-field>
           <mat-form-field class="mat-form-field">
             <input matInput maxlength="50" [placeholder]="'keywords'|translate" formControlName="keywords">
             <mat-hint align="start"><strong [innerHtml]="'keywords de la catégorie'|translate"></strong></mat-hint>
             <mat-hint align="end">{{ keywords.value.length }} {{ '/50'|translate }}</mat-hint>
-            <mat-error *ngIf="keywords.invalid && keywords.value.length === 0" [innerHtml]="'La keywords ne peut pas être vide'|translate"></mat-error>
-            <mat-error *ngIf="keywords.invalid && keywords.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+            <mat-error *ngIf="keywords.invalid && keywords.value.length === 0"
+                       [innerHtml]="'La keywords ne peut pas être vide'|translate"></mat-error>
+            <mat-error *ngIf="keywords.invalid && keywords.value.length > 0"
+                       [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
           </mat-form-field>
           <mat-form-field class="mat-form-field">
             <input type="number" readonly matInput [placeholder]="'level'|translate" formControlName="level">
             <mat-hint align="start"><strong [innerHtml]="'level de la catégorie'|translate"></strong></mat-hint>
-            <mat-error *ngIf="level.invalid && level.value.length === 0" [innerHtml]="'La level ne peut pas être vide'|translate"></mat-error>
-            <mat-error *ngIf="level.invalid && level.value && level.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+            <mat-error *ngIf="level.invalid && level.value.length === 0"
+                       [innerHtml]="'La level ne peut pas être vide'|translate"></mat-error>
+            <mat-error *ngIf="level.invalid && level.value && level.value.length > 0"
+                       [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
           </mat-form-field>
           <div class="d-block mt1">
             <div class="col-6">
               <div class='selected-column' *ngIf="selected">
-                <h4>Parent category <small>({{selected?.length}})</small></h4>
+                <h4>Parent category
+                  <small>({{selected?.length}})</small>
+                </h4>
               </div>
             </div>
-            <div class="col-6">
-              <button type="button" role="button" aria-label="Ajouter le parent selectionnes" mat-raised-button color="primary" (click)="addParent()" *ngIf="selected && selected?.length > 0">
-                <mat-icon aria-label="Ajouter les categories selectionnes">done</mat-icon>
-                Ajouter une categorie parente
-              </button>
-            </div>
             <div class="col-12">
-              <ngx-datatable class="material striped scrolling-parent" [columnMode]="'force'" [rows]="categories$|async" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected" [selectionType]="'single'" (select)="onSelect($event)" (activate)="onActivate($event)">
+              <ngx-datatable class="material striped scrolling-parent" [columnMode]="'force'" [rows]="categories$|async"
+                             [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight"
+                             [loadingIndicator]="isLoading" [scrollbarV]="true" [selected]="selected"
+                             [selectionType]="'single'" (select)="onSelect($event)" (activate)="onActivate($event)">
               </ngx-datatable>
-              <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
-                <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+              <ng-template #checkboxHeader ngx-datatable-header-template let-value="value"
+                           let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+                <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
               </ng-template>
-              <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
-                <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+              <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                           let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
               </ng-template>
             </div>
           </div>
@@ -93,8 +104,14 @@
           </div>
           <mat-card-actions>
             <div class="d-flex justify-content-around">
-              <button type="button" class="back" mat-raised-button color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/navigation/category']"></button>
-              <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid || form.pristine" [innerHtml]="'Enregistrer'|translate"></button>
+              <button type="button" class="back" mat-raised-button color="accent" mat-raised-button
+                      [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/navigation/category']"></button>
+              <button type="submit" class="validate" mat-raised-button role="button"
+                      [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary"
+                      [disabled]="form.invalid || form.pristine || isLoading">
+                <mat-icon *ngIf="isLoading">sync</mat-icon>
+                <span>{{ 'Enregistrer'|translate }}</span>
+              </button>
             </div>
           </mat-card-actions>
         </mat-card>
