@@ -4,28 +4,72 @@
         (click)="onActiveSearch(true)"
         *ngIf="!showSearch">
   <mat-icon>search</mat-icon>
-  <span>{{ 'search'|translate }}</span>
+  <span>{{ 'home.search.title'|translate }}</span>
 </button>
 
-<form (ngSubmit)="onSearch()" [formGroup]="form" *ngIf="showSearch">
-  <button mat-icon-button
-          type="submit"
-          color="primary">
-    <mat-icon>search</mat-icon>
-  </button>
+<form (ngSubmit)="onSearch()"
+      [formGroup]="form"
+      fxLayout="column"
+      fxLayoutAlign="start start"
+      fxLayoutGap="10px"
+      fxLayout.xs="column"
+      fxLayoutAlign.xs="start center"
+      fxLayoutGap.xs="5px"
+      *ngIf="showSearch">
 
-  <mat-form-field>
-    <input matInput type="search" [(value)]="form.controls.search.value" [formControl]="form.controls.search">
+  <div class="search-wrapper">
+    <button mat-icon-button
+            type="submit"
+            color="primary">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <mat-form-field class="mat-form-field search">
+      <input matInput
+             type="search"
+             [placeholder]="'home.search.placeholder'|translate"
+             [(value)]="form.controls.search.value"
+             [formControl]="form.controls.search">
+    </mat-form-field>
+
+    <button mat-icon-button
+            type="button"
+            color="primary"
+            (click)="onActiveSearch(false)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-form-field class="mat-form-field">
+    <input #brandInput
+           matInput
+           [placeholder]="'home.brand.placeholder'|translate"
+           [matAutocomplete]="autoBrand"
+           [formControl]="form.controls.brand">
   </mat-form-field>
+  <div class="brand-select-container" class="white">
+    <mat-autocomplete #autoBrand="matAutocomplete">
+      <mat-option *ngFor="let brand of filteredBrands | async"
+                  [value]="brand?.name">
+        <span>{{ brand?.name }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </div>
 
-  <button mat-icon-button
-          type="button"
-          color="primary"
-          (click)="onActiveSearch(false)">
-    <mat-icon>close</mat-icon>
-  </button>
+  <mat-form-field class="mat-form-field" *ngIf="brandSelected">
+    <input #modelInput
+           matInput
+           [placeholder]="'home.model.placeholder'|translate"
+           [matAutocomplete]="autoModel"
+           [formControl]="form.controls.model">
+  </mat-form-field>
+  <div class="model-select-container" class="white">
+    <mat-autocomplete #autoModel="matAutocomplete">
+      <mat-option *ngFor="let model of filteredModels | async"
+                  [value]="model?.name">
+        <span>{{ model?.name }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </div>
 
-  <ul>
-    <li *ngFor="let product of products">{{ product.name }}</li>
-  </ul>
 </form>

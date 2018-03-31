@@ -1,17 +1,18 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
-import { CategoryService } from '../../../shared/navigation/category/category.service';
-import { Category } from '../../../shared/navigation/category/category';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { CategoryService } from '../../../../category/category.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../../popup/alert.service';
 import { StringService } from '../../../../util/string.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { Category } from '../../../../category/category';
+import { DocumentReference } from '@firebase/firestore-types';
 
 @Component({
   selector: 'app-category-add',
   templateUrl: './category-add.component.html',
-  styleUrls: ['./category-add.component.scss']
+  styleUrls: [ './category-add.component.scss' ]
 })
 export class CategoryAddComponent implements OnInit {
   form: FormGroup;
@@ -21,11 +22,11 @@ export class CategoryAddComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  categories$: Observable < Category[] > = Observable.of([]);
+  categories$: Observable<Category[]> = Observable.of([]);
   selected: Category[] = [];
   isLoading: boolean;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
 
   // ngModel attributes
   _publication: boolean;
@@ -37,15 +38,15 @@ export class CategoryAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.columns = [{
-        width: 50,
-        sortable: false,
-        canAutoResize: false,
-        draggable: false,
-        resizeable: false,
-        cellTemplate: this.checkboxCell,
-        headerTemplate: this.checkboxHeader,
-      },
+    this.columns = [ {
+      width: 50,
+      sortable: false,
+      canAutoResize: false,
+      draggable: false,
+      resizeable: false,
+      cellTemplate: this.checkboxCell,
+      headerTemplate: this.checkboxHeader,
+    },
       {
         prop: 'name',
         name: 'name',
@@ -69,7 +70,7 @@ export class CategoryAddComponent implements OnInit {
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
-          this.form.patchValue({ name: value.name, slug: slug, alias: value.name });
+          this.form.patchValue({name: value.name, slug: slug, alias: value.name});
         }
       });
   }
@@ -93,9 +94,7 @@ export class CategoryAddComponent implements OnInit {
       'alias': new FormControl('', [
         Validators.required,
       ]),
-      'keywords': new FormControl('', [
-        Validators.required,
-      ]),
+      'keywords': new FormControl(''),
       'level': new FormControl(1, [
         Validators.required,
       ]),
@@ -108,15 +107,26 @@ export class CategoryAddComponent implements OnInit {
   }
 
   saveCategory() {
-    this.form.patchValue({ published: this._publication, root: this._rootModel });
+    this.form.patchValue({published: this._publication, root: this._rootModel});
     if (this.form.valid === true) {
       this.category = this.form.value;
       if (this.category.published === true) {
         this.category.published_at = new Date();
       }
-      this.categoryService.createCategory(this.category);
-      this.alertService.toast(`La catégorie est ajoutée ${this.category.name}`, 'info');
-      this.reset();
+
+      this.categoryService.createCategory(this.category)
+        .then((doc: DocumentReference) => {
+          this.category.key = doc.id;
+          this.categoryService.updateCategory(this.category)
+            .then(() => {
+              this.alertService.toast(`La catégorie est ajoutée ${this.category.name}`, 'info');
+              this.reset();
+            }, (err) => {
+              this.alertService.toast(err);
+            });
+        }, (err) => {
+          this.alertService.toast(err);
+        });
     }
   }
 
@@ -145,12 +155,13 @@ export class CategoryAddComponent implements OnInit {
    * On select add reinit and add category in selection array
    * @param any selected
    */
-  onSelect({ selected }) {
+  onSelect({selected}) {
     this.selected = [];
     this.selected.push(...selected);
   }
 
-  onActivate(event) {}
+  onActivate(event) {
+  }
 
   /**
    * set at published at now et activate published to true
@@ -172,7 +183,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set name(name) {
-    this.form.patchValue({ name: name });
+    this.form.patchValue({name: name});
   }
 
   get description() {
@@ -180,7 +191,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set description(description) {
-    this.form.patchValue({ description: description });
+    this.form.patchValue({description: description});
   }
 
   get fr() {
@@ -188,7 +199,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set fr(fr) {
-    this.form.get('translations').patchValue({ fr: fr });
+    this.form.get('translations').patchValue({fr: fr});
   }
 
   get slug() {
@@ -196,7 +207,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set slug(slug) {
-    this.form.patchValue({ slug: slug });
+    this.form.patchValue({slug: slug});
   }
 
   get alias() {
@@ -204,7 +215,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set alias(alias) {
-    this.form.patchValue({ alias: alias });
+    this.form.patchValue({alias: alias});
   }
 
   get keywords() {
@@ -212,7 +223,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set keywords(keywords) {
-    this.form.patchValue({ keywords: keywords });
+    this.form.patchValue({keywords: keywords});
   }
 
   get level() {
@@ -220,7 +231,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set level(level) {
-    this.form.patchValue({ level: level });
+    this.form.patchValue({level: level});
   }
 
   get lft() {
@@ -228,7 +239,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set lft(lft) {
-    this.form.patchValue({ lft: lft });
+    this.form.patchValue({lft: lft});
   }
 
   get rgt() {
@@ -236,7 +247,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set rgt(rgt) {
-    this.form.patchValue({ rgt: rgt });
+    this.form.patchValue({rgt: rgt});
   }
 
   get root() {
@@ -244,7 +255,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set root(root) {
-    this.form.patchValue({ root: root });
+    this.form.patchValue({root: root});
   }
 
   get rootModel() {
@@ -260,7 +271,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set parent(parent) {
-    this.form.patchValue({ parent: parent });
+    this.form.patchValue({parent: parent});
   }
 
   get publication() {
@@ -276,6 +287,6 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set published(published) {
-    this.form.patchValue({ published: published });
+    this.form.patchValue({published: published});
   }
 }

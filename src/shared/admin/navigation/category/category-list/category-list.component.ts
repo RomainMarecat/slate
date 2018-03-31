@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef, TemplateRef, ViewChild } from '@angular/core';
-import { Category } from '../../../shared/navigation/category/category';
-import { CategoryService } from '../../../shared/navigation/category/category.service';
-import { Observable } from 'rxjs/Observable';
+import { CategoryService } from '../../../../category/category.service';
+import { Category } from '../../../../category/category';
 
 @Component({
   selector: 'app-category-list',

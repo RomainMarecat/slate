@@ -1,12 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { environment } from '../../../../../environments/environment.hockey';
+import { environment } from '../../environments/environment.hockey';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { MockAlertService } from '../../../../popup/mock-alert.service';
-import { AlertService } from '../../../../popup/alert.service';
+import { MockAlertService } from '../popup/mock-alert.service';
+import { AlertService } from '../popup/alert.service';
 
 import { CategoryService } from './category.service';
+import { MockCategoryService } from './mock-category.service';
 
 describe('CategoryService', () => {
   beforeEach(() => {
@@ -17,13 +18,13 @@ describe('CategoryService', () => {
         AngularFireAuthModule
       ],
       providers: [
-        CategoryService,
-        { provide: AlertService, useClass: MockAlertService },
+        {provide: CategoryService, useClass: MockCategoryService},
+        {provide: AlertService, useClass: MockAlertService},
       ]
     });
   });
 
-  it('should be created', inject([CategoryService], (service: CategoryService) => {
+  it('should be created', inject([ CategoryService ], (service: CategoryService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -8,8 +8,8 @@ import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { CategoryAddComponent } from './category-add.component';
-import { CategoryService } from '../../../shared/navigation/category/category.service';
-import { MockCategoryService } from '../../../shared/navigation/category/mock-category.service';
+import { CategoryService } from '../../../../category/category.service';
+import { MockCategoryService } from '../../../../category/mock-category.service';
 import { MockAlertService } from '../../../../popup/mock-alert.service';
 import { AlertService } from '../../../../popup/alert.service';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
