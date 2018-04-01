@@ -1,3 +1,23 @@
-<p>
-  product-edit works!
-</p>
+<div class="product-edit-wrapper"
+     fxLayout="column"
+     fxLayoutAlign="start center"
+     fxLayoutGap="20px">
+  <div class="main-title"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+
+    <h1>{{ 'product-edit.title'|translate }}</h1>
+  </div>
+  <div class="form-edit-wrapper"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+
+    <form [formGroup]="form">
+
+
+    </form>
+  </div>
+</div>
+
+
+
