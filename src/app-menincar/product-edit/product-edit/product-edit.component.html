@@ -13,7 +13,19 @@
        fxLayoutAlign="center stretch">
 
     <form [formGroup]="form">
-
+      <mat-form-field>
+        <mat-select placeholder="{{ 'product-edit.brand.placeholder'|translate }}"
+                    [formControl]="form.controls.brand">
+          <mat-option *ngFor="let brand of brands"
+                      [value]="brand">
+            {{brand.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls.brand.hasError('required')">
+          {{ 'error.required.brand'|translate }}
+        </mat-error>
+        <mat-hint>{{ 'form.required'|translate }}</mat-hint>
+      </mat-form-field>
 
     </form>
   </div>

@@ -33,7 +33,10 @@
     }
   },
   "product-edit": {
-    "title": "Déposer une annonce"
+    "title": "Déposer une annonce",
+    "brand": {
+      "placeholder": "Choisir une marque"
+    }
   },
   "snackbar": {
     "product-add": {
@@ -42,6 +45,14 @@
     "guard": {
       "unauthenticated": "Connectes-toi pour ajouter autant de pull moche que tu veux !"
     }
+  },
+  "error": {
+    "required": {
+      "brand": "La marque est requise"
+    }
+  },
+  "form": {
+    "required": "Champs requis"
   },
   "menu": {
     "connection": {
