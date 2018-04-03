@@ -12,9 +12,9 @@
        fxLayout="row"
        fxLayoutAlign="center stretch">
 
-    <form [formGroup]="form">
+    <form [formGroup]="form" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
       <mat-form-field>
-        <mat-select placeholder="{{ 'product-edit.brand.placeholder'|translate }}"
+        <mat-select placeholder="{{ 'product-edit.placeholder.brand'|translate }}"
                     [formControl]="form.controls.brand">
           <mat-option *ngFor="let brand of brands"
                       [value]="brand">
@@ -26,7 +26,80 @@
         </mat-error>
         <mat-hint>{{ 'form.required'|translate }}</mat-hint>
       </mat-form-field>
-
+      <mat-form-field>
+        <mat-select placeholder="{{ 'product-edit.placeholder.model'|translate }}"
+                    [formControl]="form.controls.model">
+          <mat-option *ngFor="let model of models"
+                      [value]="model">
+            {{model.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls.model.hasError('required')">
+          {{ 'error.required.model'|translate }}
+        </mat-error>
+        <mat-hint>{{ 'form.required'|translate }}</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [placeholder]="'product-edit.placeholder.regDate'|translate"
+                    [formControl]="form.controls.regDate">
+          <mat-option *ngFor="let regDate of regDates | reverse"
+                      [value]="regDate">
+            {{ regDate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [placeholder]="'product-edit.placeholder.gearbox'|translate"
+                    [formControl]="form.controls.gearbox">
+          <mat-option *ngFor="let gearbox of gearboxs"
+                      [value]="gearbox">
+            {{ gearbox }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [placeholder]="'product-edit.placeholder.fuel'|translate"
+                    [formControl]="form.controls.fuel">
+          <mat-option *ngFor="let fuel of fuels"
+                      [value]="fuel">
+            {{ fuel }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [placeholder]="'product-edit.placeholder.mileage'|translate"
+                    [formControl]="form.controls.mileage">
+          <mat-option *ngFor="let mileage of mileages"
+                      [value]="mileage">
+            {{ mileage }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput
+                  matTextareaAutosize
+                  [placeholder]="'product-edit.placeholder.description'|translate"
+                  [formControl]="form.controls.description">
+        </textarea>
+        <mat-error *ngIf="form.controls.description.hasError('required')">
+          {{ 'error.required.description'|translate }}
+        </mat-error>
+        <mat-hint>{{ 'form.required'|translate }}</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               type="price"
+               [placeholder]="'product-edit.placeholder.price'|translate"
+               [formControl]="form.controls.price">
+        <mat-icon matSuffix>euro_symbol</mat-icon>
+        <mat-hint>{{ 'form.required'|translate }}</mat-hint>
+        <mat-error *ngIf="form.controls.price.invalid && form.controls.price.value <= 0">
+          {{ 'Please insert greater price than 0'|translate }}
+        </mat-error>
+        <mat-error *ngIf="form.controls.price.hasError('required')">
+          {{ 'error.required.price'|translate }}
+        </mat-error>
+      </mat-form-field>
     </form>
   </div>
 </div>

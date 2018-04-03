@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CommonModule } from '@angular/common';
+import { MockCategoryService } from '../../../shared/category/mock-category.service';
+import { CategoryService } from '../../../shared/category/category.service';
+import { RangePipe } from 'ngx-pipes';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
@@ -24,7 +27,11 @@ describe('ProductEditComponent', () => {
         }),
         SharedModule
       ],
-      declarations: [ ProductEditComponent ]
+      declarations: [ ProductEditComponent ],
+      providers: [
+        {provide: CategoryService, useClass: MockCategoryService},
+        RangePipe
+      ]
     })
       .compileComponents();
   }));

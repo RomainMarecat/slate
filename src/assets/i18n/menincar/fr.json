@@ -19,10 +19,10 @@
       "placeholder": "Recherche non disponible"
     },
     "brand": {
-      "placeholder": "Entrer votre marque"
+      "placeholder": "Choisir votre marque"
     },
     "model": {
-      "placeholder": "Entrer votre modèle"
+      "placeholder": "Choisir votre modèle"
     }
   },
   "product": {
@@ -34,8 +34,17 @@
   },
   "product-edit": {
     "title": "Déposer une annonce",
-    "brand": {
-      "placeholder": "Choisir une marque"
+    "placeholder": {
+      "brand": "Choisir une marque",
+      "model": "Choisir un modèle",
+      "regDate": "Choisir une année",
+      "gearbox": "Choisir une boîte de vitesse",
+      "fuel": "Choisir un carburant",
+      "mileage": "Choisir le kilométrage",
+      "description": "Choisir une description",
+      "price": "Choisir un prix",
+      "images": "Choisir une image",
+      "location": "Choisir votre région"
     }
   },
   "snackbar": {
@@ -48,11 +57,25 @@
   },
   "error": {
     "required": {
-      "brand": "La marque est requise"
+      "brand": "La marque est requise",
+      "model": "Le modèle est requis",
+      "price": "Le prix est requis",
+      "description": "La description est requise"
     }
   },
   "form": {
     "required": "Champs requis"
+  },
+  "fuel": {
+    "gasoline": "Essence",
+    "gasoil": "Diesel",
+    "electric": "Electrique",
+    "GPL": "GPL",
+    "Hybrid": "Hybride"
+  },
+  "gearbox": {
+    "manual": "Manuel",
+    "automatic": "Automatique"
   },
   "menu": {
     "connection": {
