@@ -61,16 +61,26 @@ export class CategoryAddComponent implements OnInit {
         flexGrow: 1
       }
     ];
+    this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
     this.categories$ = this.categoryService.getCategories();
     this.createForm();
 
     this.form.valueChanges
-      .debounceTime(800)
+      .debounceTime(1000)
       .distinctUntilChanged()
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
-          this.form.patchValue({name: value.name, slug: slug, alias: value.name});
+          this.form.patchValue({
+            name: value.name.trim(),
+            slug: slug,
+            translations: {
+              fr: value.translations.fr ? value.translations.fr : value.name.trim()
+            },
+            alias: value.name.trim().toLowerCase(),
+            keywords: value.name.trim().toLowerCase(),
+            description: value.description && value.name !== value.description ? value.description : value.name
+          });
         }
       });
   }
@@ -107,6 +117,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   saveCategory() {
+    this.isLoading = true;
     this.form.patchValue({published: this._publication, root: this._rootModel});
     if (this.form.valid === true) {
       this.category = this.form.value;
@@ -121,12 +132,17 @@ export class CategoryAddComponent implements OnInit {
             .then(() => {
               this.alertService.toast(`La catégorie est ajoutée ${this.category.name}`, 'info');
               this.reset();
+              this.isLoading = false;
             }, (err) => {
               this.alertService.toast(err);
+              this.isLoading = false;
             });
         }, (err) => {
           this.alertService.toast(err);
+          this.isLoading = false;
         });
+    } else {
+      this.isLoading = false;
     }
   }
 
@@ -158,6 +174,7 @@ export class CategoryAddComponent implements OnInit {
   onSelect({selected}) {
     this.selected = [];
     this.selected.push(...selected);
+    this.addParent();
   }
 
   onActivate(event) {
@@ -173,7 +190,7 @@ export class CategoryAddComponent implements OnInit {
         level: category.level + 1,
         root: false
       });
-      this.alertService.toast(`parent added ${category.name}`);
+      this.alertService.toast(`parent selected ${category.name}`);
     });
 
   }

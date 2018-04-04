@@ -25,9 +25,12 @@
                fxLayout="row"
                fxLayoutAlign="start wrap"
                fxLayoutGap="20px">
-            <button mat-raised-button
-                    color="primary"
-                    class="button-add-product">
+            <button
+              type="button"
+              mat-raised-button
+              color="primary"
+              class="button-add-product"
+              (click)="addProduct()">
               <mat-icon>add</mat-icon>
               <span>{{ 'product.add.button.title'|translate }}</span>
             </button>

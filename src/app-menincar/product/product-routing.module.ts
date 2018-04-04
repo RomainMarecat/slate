@@ -16,11 +16,6 @@ const routes: Routes = [
     component: ProductDetailComponent
   },
   {
-    path: 'product/add',
-    pathMatch: 'full',
-    component: ProductEditComponent
-  },
-  {
     path: 'product/:key/edit',
     pathMatch: 'full',
     component: ProductEditComponent

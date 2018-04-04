@@ -19,6 +19,9 @@ const routes: Routes = [ {
   }, {
     path: 'selection/:key/products',
     loadChildren: './product/menincar-product.module#MenincarProductModule'
+  }, {
+    path: 'product/add/new',
+    loadChildren: './product-edit/menincar-product-edit.module#MenincarProductEditModule'
   },
 ];
 
