@@ -6,6 +6,13 @@ import 'rxjs/add/operator/take';
 import { Observable } from 'rxjs/Observable';
 import { RangePipe } from 'ngx-pipes';
 import { TranslateService } from '@ngx-translate/core';
+import { MatSelectChange } from '@angular/material';
+import { CarProduct, mileages } from '../../../shared/product/car-product';
+import { Location } from '@angular/common';
+import { OfferService } from '../../../shared/offer/offer.service';
+import { CarOffer, Offer } from '../../../shared/offer/offer';
+import { AlertService } from '../../../shared/popup/alert.service';
+import { ProductService } from '../../../shared/product/product.service';
 
 @Component({
   selector: 'app-menincar-product-edit',
@@ -21,17 +28,18 @@ export class ProductEditComponent implements OnInit {
   nowYear = new Date().getFullYear();
   regDates: number[] = this.rangePipe.transform(this.nowYear - 70, 70 + 1);
   fuels: any[] = [];
-  mileages: string[] = [];
+  mileages: number[] = [];
   gearboxs: any[] = [];
 
   static getForm(): FormGroup {
     return new FormGroup({
       brand: new FormControl('', [ Validators.required ]),
       model: new FormControl({value: '', disabled: true}, [ Validators.required ]),
+      product: new FormControl({value: '', disabled: true}, [ Validators.required ]),
       regDate: new FormControl('', [ Validators.required ]),
       mileage: new FormControl('', [ Validators.required ]),
-      fuel: new FormControl('', [ Validators.required ]),
-      gearbox: new FormControl('', [ Validators.required ]),
+      fuel: new FormControl(''),
+      gearbox: new FormControl(''),
       reseller_type: new FormControl(''),
       // 'offer_type': new FormControl(''),
       name: new FormControl('', [ Validators.required ]),
@@ -39,7 +47,7 @@ export class ProductEditComponent implements OnInit {
 
       price: new FormControl('', [ Validators.required ]),
       images: new FormArray([
-        new FormControl('')
+        new FormControl(null)
       ]),
       location: new FormControl('', [ Validators.required ]),
       user: new FormGroup({
@@ -50,7 +58,11 @@ export class ProductEditComponent implements OnInit {
     });
   }
 
-  constructor(private categoryService: CategoryService,
+  constructor(private location: Location,
+              private alertService: AlertService,
+              private categoryService: CategoryService,
+              private offerService: OfferService,
+              private productService: ProductService,
               private rangePipe: RangePipe,
               private translate: TranslateService) {
   }
@@ -60,6 +72,7 @@ export class ProductEditComponent implements OnInit {
     this.getBrands();
     this.getFuels();
     this.getGearboxs();
+    this.mileages = mileages;
   }
 
   getCategories(): Observable<Category[]> {
@@ -92,6 +105,14 @@ export class ProductEditComponent implements OnInit {
         value: brand.key,
         operator: '=='
       } ]);
+    this.getCategories()
+      .take(1)
+      .subscribe((models) => {
+        this.models = models;
+        if (models.length === 0) {
+          this.form.controls.model.disable();
+        }
+      });
   }
 
   getFuels() {
@@ -112,5 +133,48 @@ export class ProductEditComponent implements OnInit {
 
         });
       });
+  }
+
+  getProducts(model: Category) {
+    this.productService.filters$.next([
+      {
+        column: 'model',
+        operator: '==',
+        value: model.key
+      }
+    ]);
+    this.productService.getProducts()
+      .take(1)
+      .subscribe((products: CarProduct[]) => {
+        if (products.length > 0) {
+          this.form.patchValue({ product: products[0]});
+        } else {
+          this.alertService.toast('error.model.product.empty');
+        }
+      });
+  }
+
+  onBrandChange(brand: MatSelectChange) {
+    this.form.controls.model.enable();
+    this.getModels(brand.value);
+  }
+
+  onModelChange(model: MatSelectChange) {
+    this.form.controls.product.enable();
+    this.getProducts(model.value);
+  }
+
+  onSubmit(event: any) {
+    console.log('form value :', this.form.value, this.form.valid);
+
+    const offer: CarOffer = this.form.value as CarOffer;
+    if (this.form.valid) {
+      this.offerService.createOffer(offer)
+        .then((doc) => {
+          this.alertService.toast('offer.saved' + doc.id);
+        }, (err) => {
+          this.alertService.toast(err);
+        });
+    }
   }
 }

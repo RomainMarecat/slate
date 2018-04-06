@@ -10,6 +10,10 @@
       "selection": "Découvre toutes les voitures de Men In Car"
     }
   },
+  "cta": {
+    "cancel": "Annuler",
+    "save": "Enregistrer"
+  },
   "home": {
     "main": {
       "title": "Trouvez la bonne affaire parmi toutes nos petites annonces sur Men in car."
@@ -37,6 +41,7 @@
     "placeholder": {
       "brand": "Choisir une marque",
       "model": "Choisir un modèle",
+      "product": "Choisir une version",
       "regDate": "Choisir une année",
       "gearbox": "Choisir une boîte de vitesse",
       "fuel": "Choisir un carburant",
@@ -56,9 +61,17 @@
     }
   },
   "error": {
+    "model": {
+      "product": {
+        "empty": "Aucune version de véhicule n'est proposée pour ce type de modèle"
+      }
+    },
     "required": {
       "brand": "La marque est requise",
       "model": "Le modèle est requis",
+      "product": "La version est requise",
+      "regDate": "L'année de mise en circulation est requise",
+      "mileage": "Le nombre de kilomètre au compteur est requis",
       "price": "Le prix est requis",
       "description": "La description est requise"
     }

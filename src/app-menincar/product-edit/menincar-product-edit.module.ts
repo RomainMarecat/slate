@@ -5,6 +5,7 @@ import { ProductEditRoutingModule } from './product-edit-routing.module';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { SharedModule } from '../../shared/shared.module';
 import { NgArrayPipesModule, RangePipe } from 'ngx-pipes';
+import { OfferService } from '../../shared/offer/offer.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { NgArrayPipesModule, RangePipe } from 'ngx-pipes';
     ProductEditRoutingModule
   ],
   declarations: [ProductEditComponent],
-  providers: [RangePipe]
+  providers: [RangePipe, OfferService]
 })
 export class MenincarProductEditModule { }

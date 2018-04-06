@@ -18,7 +18,6 @@ import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsen
 
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
-import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
 import { UserService } from '../../shared/user/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
@@ -32,12 +31,10 @@ import { SidenavService } from '../../shared/sidenav/sidenav.service';
 import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { DeviceService } from '../../shared/device/device.service';
-import CloudinaryConfiguration from '../../shared/media/cloudinary/cloudinary-configuration.class';
 import { FirebaseAppConfig, AngularFireModule } from 'angularfire2';
 import { Environment } from '../../shared/util/environment';
 import { ProductService } from '../../shared/product/product.service';
 import { MediaService } from '../../shared/media/media.service';
-import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
 import { SharedModule } from '../../shared/shared.module';
 import { environment } from '../../environments/environment.menincar';
 import { SlackModule } from '../../shared/slack/slack.module';
@@ -51,12 +48,12 @@ import { AreaService } from '../../shared/map/shared/area.service';
 import { MenincarProductModule } from '../product/menincar-product.module';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { CategoryService } from '../../shared/category/category.service';
+import { MenincarProductEditModule } from '../product-edit/menincar-product-edit.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
 export const app_name = new InjectionToken<string>('app_name');
 export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
-export const cloudinary = new InjectionToken<CloudinaryConfiguration>('cloudinary');
 export const clientAdSense = new InjectionToken<string>('clientAdSense');
 export const slotAdSense = new InjectionToken<string>('slotAdSense');
 export const slackToken = new InjectionToken<string>('slackToken');
@@ -137,7 +134,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
       adClient: environment.clientAdSense,
       adSlot: environment.slotAdSense
     }),
-    CloudinaryModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     ImageCropperModule,
     FileUploadModule,
@@ -151,7 +147,8 @@ export const cookieConfig: NgcCookieConsentConfig = {
       }
     }),
     HomeModule,
-    MenincarProductModule
+    MenincarProductModule,
+    MenincarProductEditModule,
   ],
   exports: [
     AdsenseModule,
@@ -213,8 +210,7 @@ export class CoreModule {
         {provide: production, useValue: config.production},
         {provide: site_name, useValue: config.site_name},
         {provide: app_name, useValue: config.app_name},
-        {provide: firebase, useValue: config.firebase},
-        {provide: cloudinary, useValue: config.cloudinary ? config.cloudinary : null},
+        {provide: firebase, useValue: config.firebase}
       ]
     };
   }

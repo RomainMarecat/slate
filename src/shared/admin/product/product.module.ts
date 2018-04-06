@@ -21,6 +21,7 @@ import { ProductOffersComponent } from './product-offers/product-offers.componen
 
 const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
 const TABLE_OFFER = new InjectionToken < string > ('offer');
+const TABLE_CATEGORY = new InjectionToken < string > ('category');
 const TABLE_PARTNER = new InjectionToken < string > ('partner');
 
 @NgModule({
@@ -46,10 +47,12 @@ const TABLE_PARTNER = new InjectionToken < string > ('partner');
     ProductService,
     { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
     { provide: TABLE_OFFER, useValue: 'offer' },
+    { provide: TABLE_CATEGORY, useValue: 'category' },
     { provide: TABLE_PARTNER, useValue: 'partner' },
     { provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE] },
     { provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER] },
     { provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER] },
+    { provide: CategoryService, useClass: CategoryService, deps: [AngularFirestore, TABLE_CATEGORY] },
 
   ]
 })
