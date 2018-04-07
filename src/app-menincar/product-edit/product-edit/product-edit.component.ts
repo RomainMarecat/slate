@@ -30,6 +30,7 @@ export class ProductEditComponent implements OnInit {
   fuels: any[] = [];
   mileages: number[] = [];
   gearboxs: any[] = [];
+  products: CarProduct[] = [];
 
   static getForm(): FormGroup {
     return new FormGroup({
