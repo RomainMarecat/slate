@@ -27,6 +27,32 @@ export interface CarProduct {
   creator ?: string;
   external_url ?: string;
   category ?: string;
-  attributes ?: Array < any > ;
+  attributes ?: Array<any>;
   area ?: string;
+  yearMin ?: number;
+  yearMax ?: number;
+  fuel?: string;
+  gearbox ?: string;
+  door_number ?: number;
+  type ?: string;
 }
+
+export const mileages: number[] = [
+  10000,
+  20000,
+  30000,
+  40000,
+  50000,
+  60000,
+  70000,
+  80000,
+  90000,
+  100000,
+  120000,
+  150000,
+  175000,
+  200000,
+  230000,
+  250000,
+  300000
+];

@@ -10,6 +10,12 @@ import { CommonModule } from '@angular/common';
 import { MockCategoryService } from '../../../shared/category/mock-category.service';
 import { CategoryService } from '../../../shared/category/category.service';
 import { RangePipe } from 'ngx-pipes';
+import { AlertService } from '../../../shared/popup/alert.service';
+import { MockAlertService } from '../../../shared/popup/mock-alert.service';
+import { OfferService } from '../../../shared/offer/offer.service';
+import { ProductService } from '../../../shared/product/product.service';
+import { MockOfferService } from '../../../shared/offer/mock-offer.service';
+import { MockProductService } from '../../../shared/product/mock-product.service';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
@@ -30,6 +36,9 @@ describe('ProductEditComponent', () => {
       declarations: [ ProductEditComponent ],
       providers: [
         {provide: CategoryService, useClass: MockCategoryService},
+        {provide: OfferService, useClass: MockOfferService},
+        {provide: ProductService, useClass: MockProductService},
+        {provide: AlertService, useClass: MockAlertService},
         RangePipe
       ]
     })

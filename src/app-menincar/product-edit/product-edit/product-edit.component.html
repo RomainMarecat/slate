@@ -12,10 +12,11 @@
        fxLayout="row"
        fxLayoutAlign="center stretch">
 
-    <form [formGroup]="form" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
       <mat-form-field>
         <mat-select placeholder="{{ 'product-edit.placeholder.brand'|translate }}"
-                    [formControl]="form.controls.brand">
+                    [formControl]="form.controls.brand"
+                    (change)="onBrandChange($event)">
           <mat-option *ngFor="let brand of brands"
                       [value]="brand">
             {{brand.name}}
@@ -28,7 +29,8 @@
       </mat-form-field>
       <mat-form-field>
         <mat-select placeholder="{{ 'product-edit.placeholder.model'|translate }}"
-                    [formControl]="form.controls.model">
+                    [formControl]="form.controls.model"
+                    (change)="onModelChange($event)">
           <mat-option *ngFor="let model of models"
                       [value]="model">
             {{model.name}}
@@ -40,6 +42,19 @@
         <mat-hint>{{ 'form.required'|translate }}</mat-hint>
       </mat-form-field>
       <mat-form-field>
+        <mat-select placeholder="{{ 'product-edit.placeholder.product'|translate }}"
+                    [formControl]="form.controls.product">
+          <mat-option *ngFor="let product of products"
+                      [value]="product">
+            {{product.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls.product.hasError('required')">
+          {{ 'error.required.product'|translate }}
+        </mat-error>
+        <mat-hint>{{ 'form.required'|translate }}</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
         <mat-select [placeholder]="'product-edit.placeholder.regDate'|translate"
                     [formControl]="form.controls.regDate">
           <mat-option *ngFor="let regDate of regDates | reverse"
@@ -47,6 +62,10 @@
             {{ regDate }}
           </mat-option>
         </mat-select>
+        <mat-hint>{{ 'form.required'|translate }}</mat-hint>
+        <mat-error *ngIf="form.controls.regDate.hasError('required')">
+          {{ 'error.required.regDate'|translate }}
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-select [placeholder]="'product-edit.placeholder.gearbox'|translate"
@@ -74,9 +93,15 @@
             {{ mileage }}
           </mat-option>
         </mat-select>
+        <mat-hint>{{ 'form.required'|translate }}</mat-hint>
+        <mat-error *ngIf="form.controls.mileage.hasError('required')">
+          {{ 'error.required.mileage'|translate }}
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <textarea matInput
+                  name="description"
+                  title="description"
                   matTextareaAutosize
                   [placeholder]="'product-edit.placeholder.description'|translate"
                   [formControl]="form.controls.description">
@@ -88,7 +113,9 @@
       </mat-form-field>
       <mat-form-field>
         <input matInput
-               type="price"
+               name="price"
+               title="price"
+               type="number"
                [placeholder]="'product-edit.placeholder.price'|translate"
                [formControl]="form.controls.price">
         <mat-icon matSuffix>euro_symbol</mat-icon>
@@ -100,9 +127,14 @@
           {{ 'error.required.price'|translate }}
         </mat-error>
       </mat-form-field>
+      <div class="button-wrapper" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="50px">
+        <button mat-raised-button color="warn" type="button" (click)="location.back()" role="link">
+          {{ 'cta.cancel'|translate }}
+        </button>
+        <button mat-raised-button color="primary" type="submit" role="button">
+          {{ 'cta.save'|translate }}
+        </button>
+      </div>
     </form>
   </div>
 </div>
-
-
-
