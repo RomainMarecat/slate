@@ -59,7 +59,7 @@ export class ProductEditComponent implements OnInit {
     });
   }
 
-  constructor(private location: Location,
+  constructor(public location: Location,
               private alertService: AlertService,
               private categoryService: CategoryService,
               private offerService: OfferService,
