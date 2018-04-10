@@ -16,4 +16,5 @@ import { NgArrayPipesModule, RangePipe } from 'ngx-pipes';
   declarations: [ProductEditComponent],
   providers: [RangePipe]
 })
-export class MenincarProductEditModule { }
+export class CarProductEditModule { }
+ùù

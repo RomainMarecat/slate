@@ -45,10 +45,11 @@ import { CommentService } from '../../shared/comment/comment.service';
 import { HomeModule } from '../home/home.module';
 import { MapService } from '../../shared/map/shared/map.service';
 import { AreaService } from '../../shared/map/shared/area.service';
-import { MenincarProductModule } from '../product/menincar-product.module';
+import { CarProductModule } from '../product/car-product.module';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { CategoryService } from '../../shared/category/category.service';
-import { MenincarProductEditModule } from '../product-edit/menincar-product-edit.module';
+import { CarProductEditModule } from '../product-edit/car-product-edit.module';
+
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -147,8 +148,8 @@ export const cookieConfig: NgcCookieConsentConfig = {
       }
     }),
     HomeModule,
-    MenincarProductModule,
-    MenincarProductEditModule,
+    CarProductModule,
+    CarProductEditModule,
   ],
   exports: [
     AdsenseModule,

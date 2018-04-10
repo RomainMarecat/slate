@@ -4,10 +4,15 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'product/add',
     pathMatch: 'full',
     component: ProductEditComponent
   },
+  {
+    path: 'product/:key/edit',
+    pathMatch: 'full',
+    component: ProductEditComponent
+  }
 ];
 
 @NgModule({
