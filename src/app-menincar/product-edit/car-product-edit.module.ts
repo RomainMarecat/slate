@@ -17,4 +17,3 @@ import { NgArrayPipesModule, RangePipe } from 'ngx-pipes';
   providers: [RangePipe]
 })
 export class CarProductEditModule { }
-ùù

@@ -31,6 +31,7 @@ export class ProductEditComponent implements OnInit {
   mileages: number[] = [];
   gearboxs: any[] = [];
   products: CarProduct[] = [];
+  productsRef: Observable<CarProduct[]>;
 
   static getForm(): FormGroup {
     return new FormGroup({
@@ -137,6 +138,8 @@ export class ProductEditComponent implements OnInit {
   }
 
   getProducts(model: Category) {
+    console.log(model);
+    this.productsRef = this.productService.getProducts();
     this.productService.filters$.next([
       {
         column: 'model',
@@ -144,12 +147,14 @@ export class ProductEditComponent implements OnInit {
         value: model.key
       }
     ]);
-    this.productService.getProducts()
+    this.productsRef
       .take(1)
       .subscribe((products: CarProduct[]) => {
+        console.log(this.products);
         if (products.length > 0) {
           this.form.patchValue({ product: products[0]});
         } else {
+          this.form.controls.product.disable();
           this.alertService.toast('error.model.product.empty');
         }
       });

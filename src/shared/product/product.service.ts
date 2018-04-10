@@ -6,9 +6,9 @@ import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces'
 import { CollectionReference, Query, DocumentSnapshot, OrderByDirection, WhereFilterOp } from '@firebase/firestore-types';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
-import { Sort } from './../facet/sort/shared/sort';
-import { Filter } from './../facet/filter/shared/filter';
-import { VisitorService } from './../firestore/visitor.service';
+import { Sort } from '../facet/sort/shared/sort';
+import { Filter } from '../facet/filter/shared/filter';
+import { VisitorService } from '../firestore/visitor.service';
 
 @Injectable()
 export class ProductService extends VisitorService {
