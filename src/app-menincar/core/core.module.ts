@@ -50,7 +50,6 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { CategoryService } from '../../shared/category/category.service';
 import { CarProductEditModule } from '../product-edit/car-product-edit.module';
 
-
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
 export const app_name = new InjectionToken<string>('app_name');

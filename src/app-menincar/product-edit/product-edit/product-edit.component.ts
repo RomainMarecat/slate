@@ -138,7 +138,6 @@ export class ProductEditComponent implements OnInit {
   }
 
   getProducts(model: Category) {
-    console.log(model);
     this.productsRef = this.productService.getProducts();
     this.productService.filters$.next([
       {
