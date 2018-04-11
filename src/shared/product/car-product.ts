@@ -3,6 +3,7 @@ export interface CarProduct {
   score: number;
 
   brand ?: string;
+  model ?: string;
 
   created_at: Date;
   published_at: Date;

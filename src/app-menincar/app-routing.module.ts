@@ -18,10 +18,10 @@ const routes: Routes = [ {
     loadChildren: './../shared/admin/admin.module#AdminModule'
   }, {
     path: 'selection/:key/products',
-    loadChildren: './product/menincar-product.module#MenincarProductModule'
+    loadChildren: './product/car-product.module#CarProductModule'
   }, {
     path: 'product/add/new',
-    loadChildren: './product-edit/menincar-product-edit.module#MenincarProductEditModule'
+    loadChildren: './product-edit/car-product-edit.module#CarProductEditModule'
   },
 ];
 
