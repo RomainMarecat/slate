@@ -12,7 +12,8 @@
        fxLayout="row"
        fxLayoutAlign="center stretch">
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" fxLayout="column" fxLayoutAlign="start center"
+          fxLayoutGap="20px">
       <mat-form-field>
         <mat-select placeholder="{{ 'product-edit.placeholder.brand'|translate }}"
                     [formControl]="form.controls.brand"
@@ -127,6 +128,11 @@
           {{ 'error.required.price'|translate }}
         </mat-error>
       </mat-form-field>
+      <div class="mat-form-field negotiable_price">
+        <mat-slide-toggle [formControl]="form.controls.negotiable_price">
+          {{ 'product-edit.placeholder.negotiable_price'|translate }}
+        </mat-slide-toggle>
+      </div>
       <div class="button-wrapper" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="50px">
         <button mat-raised-button color="warn" type="button" (click)="location.back()" role="link">
           {{ 'cta.cancel'|translate }}

@@ -46,7 +46,7 @@ export class ProductEditComponent implements OnInit {
       // 'offer_type': new FormControl(''),
       name: new FormControl('', [ Validators.required ]),
       description: new FormControl('', [ Validators.required, Validators.max(4000) ]),
-
+      negotiable_price: new FormControl(false ),
       price: new FormControl('', [ Validators.required ]),
       images: new FormArray([
         new FormControl(null)
