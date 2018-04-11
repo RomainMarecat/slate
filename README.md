@@ -39,8 +39,10 @@ Run `ng lint -fix`
 
 ## Features
 
-https://github.com/RomainStudent/slate/projects
-
+https://github.com/RomainStudent/slate/
+- A calendar / meeting project
+- CCV project Blog
+- Recipe
 
 ## Firebase 
 Adding a new environment

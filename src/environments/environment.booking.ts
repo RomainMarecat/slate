@@ -1,16 +1,16 @@
 export const environment = {
   production: false,
-  site_name: 'snippet.com',
-  app_name: 'snippet',
+  site_name: 'booking.com',
+  app_name: 'booking',
   cookie: {
     domain: 'localhost'
   },
   firebase: {
     apiKey: 'AIzaSyAN6P0GKiJcYdGKZ-svTKlXjNFGVuTvtFY',
-    authDomain: 'snippet-384269.firebaseapp.com',
-    databaseURL: 'https://snippet-384269.firebaseio.com',
-    projectId: 'snippet-384269',
-    storageBucket: 'snippet-384269.appspot.com',
+    authDomain: 'booking-384269.firebaseapp.com',
+    databaseURL: 'https://booking-384269.firebaseio.com',
+    projectId: 'booking-384269',
+    storageBucket: 'booking-384269.appspot.com',
     messagingSenderId: '25862177025'
   },
   clientAdSense: 'ca-pub-4195199088767183',

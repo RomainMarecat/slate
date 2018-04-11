@@ -1,24 +1,17 @@
 export const environment = {
   production: true,
-  site_name: 'snippet.io',
+  site_name: 'snippet.com',
   app_name: 'snippet',
   cookie: {
-    domain: 'hockey-f2b77.firebaseapp.com'
+    domain: 'snippet-384269.firebaseapp.com'
   },
   firebase: {
-    apiKey: 'AIzaSyBH-ZNbK4pNUuyi_qBb21xe7eQtZhAy0T0',
-    authDomain: 'hockey-f2b77.firebaseapp.com',
-    databaseURL: 'https://hockey-f2b77.firebaseio.com',
-    projectId: 'hockey-f2b77',
-    storageBucket: 'hockey-f2b77.appspot.com',
-    messagingSenderId: '624874820850'
-  },
-  cloudinary: {
-    api_key: '962883135875625',
-    api_secret: 'J86ULC7Hd5QW1TdNCsnUFTagIrw',
-    cloundinary_url: 'https://res.cloudinary.com/hockey/image/upload',
-    cloud_name: 'hockey',
-    upload_preset: 'eia1acu0',
+    apiKey: 'AIzaSyAN6P0GKiJcYdGKZ-svTKlXjNFGVuTvtFY',
+    authDomain: 'snippet-384269.firebaseapp.com',
+    databaseURL: 'https://snippet-384269.firebaseio.com',
+    projectId: 'snippet-384269',
+    storageBucket: 'snippet-384269.appspot.com',
+    messagingSenderId: '25862177025'
   },
   clientAdSense: 'ca-pub-4195199088767183',
   slotAdSense: 123456,

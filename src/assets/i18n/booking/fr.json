@@ -1,0 +1,346 @@
+{
+  "meta": {
+    "title": {
+      "homepage": "Men In Car - Trouvez la bonne voiture",
+      "product-list": "Liste des voitures - Men In Car",
+      "selection": "Men In Car"
+    },
+    "description": {
+      "product-list": "Les produits de la sélection",
+      "selection": "Découvre toutes les voitures de Men In Car"
+    }
+  },
+  "cta": {
+    "cancel": "Annuler",
+    "save": "Enregistrer"
+  },
+  "home": {
+    "main": {
+      "title": "Trouvez la bonne affaire parmi toutes nos petites annonces sur Men in car."
+    },
+    "search": {
+      "title": "Rechercher",
+      "placeholder": "Recherche non disponible"
+    },
+    "brand": {
+      "placeholder": "Choisir votre marque"
+    },
+    "model": {
+      "placeholder": "Choisir votre modèle"
+    }
+  },
+  "product": {
+    "add": {
+      "button": {
+        "title": "Déposer une annonce"
+      }
+    }
+  },
+  "product-edit": {
+    "title": "Déposer une annonce",
+    "placeholder": {
+      "brand": "Choisir une marque",
+      "model": "Choisir un modèle",
+      "product": "Choisir une version",
+      "regDate": "Choisir une année",
+      "gearbox": "Choisir une boîte de vitesse",
+      "fuel": "Choisir un carburant",
+      "mileage": "Choisir le kilométrage",
+      "description": "Choisir une description",
+      "price": "Choisir un prix",
+      "images": "Choisir une image",
+      "location": "Choisir votre région"
+    }
+  },
+  "snackbar": {
+    "product-add": {
+      "submit": "Ton pull est en attente de validation :)"
+    },
+    "guard": {
+      "unauthenticated": "Connectes-toi pour ajouter autant de pull moche que tu veux !"
+    }
+  },
+  "error": {
+    "model": {
+      "product": {
+        "empty": "Aucune version de véhicule n'est proposée pour ce type de modèle"
+      }
+    },
+    "required": {
+      "brand": "La marque est requise",
+      "model": "Le modèle est requis",
+      "product": "La version est requise",
+      "regDate": "L'année de mise en circulation est requise",
+      "mileage": "Le nombre de kilomètre au compteur est requis",
+      "price": "Le prix est requis",
+      "description": "La description est requise"
+    }
+  },
+  "form": {
+    "required": "Champs requis"
+  },
+  "fuel": {
+    "gasoline": "Essence",
+    "gasoil": "Diesel",
+    "electric": "Electrique",
+    "GPL": "GPL",
+    "Hybrid": "Hybride"
+  },
+  "gearbox": {
+    "manual": "Manuel",
+    "automatic": "Automatique"
+  },
+  "menu": {
+    "connection": {
+      "title": "Se connecter"
+    },
+    "title1": "",
+    "title2": "Booking",
+    "sort": "Trier",
+    "filter": "Filtrer"
+  },
+  "date": {
+    "now": "maintenant",
+    "prefix": "Il y a ",
+    "short_hour": "h",
+    "and": " et ",
+    "short_minutes": "min"
+  },
+  "facet": {
+    "filter": {
+      "description": {
+        "placeholder": "Rechercher des mots clés dans la description"
+      },
+      "brand": {
+        "placeholder": "Rechercher vos marques préférées"
+      },
+      "country": {
+        "placeholder": "Rechercher uniquement dans un pays"
+      },
+      "delivery": {
+        "placeholder": "Modes de livraison acceptés"
+      },
+      "price": {
+        "min": {
+          "placeholder": "Min"
+        },
+        "max": {
+          "placeholder": "Max"
+        }
+      }
+    }
+  },
+  "sidenav": {
+    "card": {
+      "list-item": {
+        "add": {
+          "title": "Ajouter un produit"
+        },
+        "admin": {
+          "title": "Back Office"
+        },
+        "facebook": {
+          "title": "Se connecter avec Facebook"
+        },
+        "google": {
+          "title": "Se connecter avec Google"
+        },
+        "login": {
+          "title": "Connexion"
+        },
+        "logout": {
+          "title": "Déconnexion",
+          "aria-label": "Déconnexion"
+        }
+      },
+      "image": {
+        "alt": "Image de fond du menu"
+      }
+    }
+  },
+  "user": {
+    "access_denied": {
+      "connect": "Il faut se connecter pour effectuer cette action"
+    }
+  },
+  "product-item": {
+    "product-action": {
+      "mat-card-actions": {
+        "button": {
+          "minus": {
+            "title": "Moins",
+            "icon": "Trop beau pour augmenter son score"
+          },
+          "plus": {
+            "title": "Plus",
+            "icon": "Trop moche son score doit augmenter"
+          }
+        }
+      }
+    }
+  },
+  "product-detail": {
+    "meta": {
+      "og:site_name": "Men In Car",
+      "description": "{{value}} - Men In Car"
+    }
+  },
+  "product-list": {
+    "card-title": {
+      "title": "Men In Car title"
+    },
+    "card-subtitle": {
+      "title": "Men In Car subtitle"
+    },
+    "card-actions": {
+      "title": "Je poste en un clic !",
+      "aria-label": "Je poste en un clic !"
+    },
+    "fab-button": {
+      "title": "Ajouter un nouveau pull moche"
+    }
+  },
+  "product-add": {
+    "meta": {
+      "title": "Ajouter un nouveau pull moche sur mon pull moche",
+      "description": "Ajouter un nouveau pull moche sur mon pull moche. Prend une photo et obtient un bon score"
+    },
+    "title": "Poster un nouveau pull moche",
+    "product-preview": {
+      "title": "Aperçu",
+      "name": {
+        "title": "Donne un titre court et un descriptif à ton pull"
+      },
+      "description": {
+        "title": "Donne une description correspondant à ce merveilleux pull"
+      },
+      "image": {
+        "title": "Image"
+      },
+      "mat-card-actions": {
+        "button": {
+          "minus": "Moins",
+          "plus": "Plus"
+        }
+      }
+    },
+    "product-form": {
+      "steps": {
+        "image": {
+          "section": "Télécharger une image",
+          "card-title": {
+            "title": "Importe la photo de ton pull"
+          },
+          "product-image": {
+            "image-cropper": {
+              "cropper": {
+                "title": "Valider",
+                "tooltip": {
+                  "title": "Ajuste en redimensionnant ou déplaçant le cadre ton image"
+                }
+              }
+            },
+            "image-button-wrapper": {
+              "button": {
+                "aria-label": {
+                  "title": "Valider l'image au dessus"
+                },
+                "tooltip": {
+                  "title": "Pense à valider ton image !"
+                }
+              }
+            }
+          }
+        },
+        "detail": {
+          "section": "Ajouter des informations",
+          "button": {
+            "back": {
+              "title": "Retour"
+            },
+            "next": {
+              "title": "Suivant"
+            }
+          },
+          "form": {
+            "name": {
+              "title": "Donne un titre court à ton pull",
+              "placeholder": "Titre",
+              "length": "/ 50",
+              "error": {
+                "length": "Le nom du pull est vide",
+                "invalid": "Le nom du pull contient des erreurs",
+                "required": "Le nom du pull est requis"
+              }
+            }
+          }
+        },
+        "additional": {
+          "button": {
+            "back": {
+              "title": "Retour"
+            }
+          },
+          "section": "Finaliser",
+          "title": "Il est possible d'apporter des précisions sur le pull",
+          "panel": {
+            "description": {
+              "title": "Donne un court descriptif à ton pull",
+              "description": ""
+            },
+            "external_url": {
+              "title": "Déja vu sur un site ? Donne-nous des informations sur le site où tu l'as trouvé",
+              "description": ""
+            }
+          },
+          "form": {
+            "description": {
+              "title": "Descriptif du pull",
+              "placeholder": "description",
+              "length": "/ 2000",
+              "error": {
+                "length": "La description du pull est vide",
+                "invalid": "La description du pull est invalide",
+                "required": "La description du pull est requise"
+              }
+            },
+            "delivery_fee": {
+              "placeholder": "Frais de livraison",
+              "error": {
+                "min": "Les frais de livraison ne peuvent pas être négatifs",
+                "max": "Les frais de livraison sont un peu trop chers !",
+                "length": "Les frais de livraison sont vides",
+                "invalid": "Les frais de livraison doivent être un nombre (sans €)",
+                "required": "Les frais de livraison sont requis"
+              }
+            },
+            "external_url": {
+              "placeholder": "Lien vers le pull",
+              "error": {
+                "length": "Le lien vers le pull est vide",
+                "invalid": "Le lien vers le pull est invalide",
+                "required": "Le lien vers le pull est requis"
+              }
+            },
+            "price": {
+              "placeholder": "Prix",
+              "error": {
+                "min": "Le prix ne peut pas être négatif",
+                "max": "Le prix est un peu trop cher !",
+                "length": "Le prix est vide",
+                "invalid": "Le prix doit être un nombre (sans €)",
+                "required": "Le prix est requise"
+              }
+            },
+            "validation": {
+              "button": {
+                "label": "Valider",
+                "title": "Valider"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

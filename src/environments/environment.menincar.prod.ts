@@ -3,7 +3,7 @@ export const environment = {
   site_name: 'menincar.com',
   app_name: 'menincar',
   cookie: {
-    domain: 'menincar-f2b77.firebaseapp.com'
+    domain: 'menincar-384269.firebaseapp.com'
   },
   firebase: {
     apiKey: 'AIzaSyAN6P0GKiJcYdGKZ-svTKlXjNFGVuTvtFY',
