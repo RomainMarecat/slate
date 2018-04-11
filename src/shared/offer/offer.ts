@@ -17,6 +17,7 @@ export interface CarOffer {
   fuel: string;
 
   partner?: string;
+  negotiable_price: boolean;
   price: number;
   images: string[];
   location: string;

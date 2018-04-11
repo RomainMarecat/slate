@@ -36,44 +36,44 @@ import { Environment } from '../../shared/util/environment';
 import { ProductService } from '../../shared/product/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { SharedModule } from '../../shared/shared.module';
-import { environment } from '../../environments/environment.hockey';
+import { environment } from '../../environments/environment.blog';
 import { SlackModule } from '../../shared/slack/slack.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { OfferService } from '../../shared/offer/offer.service';
 import { CommentService } from '../../shared/comment/comment.service';
-import { DashboardModule } from '../dashboard/dashboard.module';
 
-export const production = new InjectionToken < string > ('production');
-export const site_name = new InjectionToken < string > ('site_name');
-export const app_name = new InjectionToken < string > ('app_name');
-export const firebase = new InjectionToken < FirebaseAppConfig > ('firebase');
-export const clientAdSense = new InjectionToken < string > ('clientAdSense');
-export const slotAdSense = new InjectionToken < string > ('slotAdSense');
-export const slackToken = new InjectionToken < string > ('slackToken');
-export const facebook_app_id = new InjectionToken < string > ('facebook_app_id');
+export const production = new InjectionToken<string>('production');
+export const site_name = new InjectionToken<string>('site_name');
+export const app_name = new InjectionToken<string>('app_name');
+export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
+export const clientAdSense = new InjectionToken<string>('clientAdSense');
+export const slotAdSense = new InjectionToken<string>('slotAdSense');
+export const slackToken = new InjectionToken<string>('slackToken');
+export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export function createTranslateLoader(http: HttpClient, name: string) {
   return new TranslateHttpLoader(http, `./assets/i18n/${name}/`, '.json');
 }
 
-export const CONFIG_TOKEN = new InjectionToken < Environment > ('Registered config');
-export const TABLE_PRODUCT = new InjectionToken < string > ('product');
-export const TABLE_CATEGORY = new InjectionToken < string > ('category');
-export const TABLE_SELECTION = new InjectionToken < string > ('selection');
-export const TABLE_SCORE = new InjectionToken < string > ('score');
-export const TABLE_COMMENT = new InjectionToken < string > ('comment');
-export const TABLE_CMS = new InjectionToken < string > ('cms');
-export const TABLE_CMS_DETAIL = new InjectionToken < string > ('cms_detail');
-export const TABLE_MEDIA = new InjectionToken < string > ('media');
-export const TABLE_POST = new InjectionToken < string > ('post');
-export const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
-export const TABLE_OFFER = new InjectionToken < string > ('offer');
-export const TABLE_PARTNER = new InjectionToken < string > ('partner');
+export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
+export const TABLE_PRODUCT = new InjectionToken<string>('product');
+export const TABLE_CATEGORY = new InjectionToken<string>('category');
+export const TABLE_SELECTION = new InjectionToken<string>('selection');
+export const TABLE_SCORE = new InjectionToken<string>('score');
+export const TABLE_COMMENT = new InjectionToken<string>('comment');
+export const TABLE_CMS = new InjectionToken<string>('cms');
+export const TABLE_CMS_DETAIL = new InjectionToken<string>('cms_detail');
+export const TABLE_MEDIA = new InjectionToken<string>('media');
+export const TABLE_POST = new InjectionToken<string>('post');
+export const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
+export const TABLE_OFFER = new InjectionToken<string>('offer');
+export const TABLE_PARTNER = new InjectionToken<string>('partner');
 
 @Injectable()
 export class ConfigService {
   configToken: Environment;
+
   constructor(@Inject(CONFIG_TOKEN) configToken) {
     this.configToken = configToken;
   }
@@ -114,7 +114,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     /*    AngularFirestoreModule,
      */
     AngularFirestoreModule.enablePersistence(),
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
       developerMode: true,
       pageTracking: {
         clearIds: true,
@@ -133,10 +133,9 @@ export const cookieConfig: NgcCookieConsentConfig = {
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [HttpClient, app_name]
+        deps: [ HttpClient, app_name ]
       }
-    }),
-    DashboardModule
+    })
   ],
   exports: [
     AdsenseModule,
@@ -144,26 +143,26 @@ export const cookieConfig: NgcCookieConsentConfig = {
     SharedModule
   ],
   providers: [
-    { provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN] },
-    { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
-    { provide: TABLE_CATEGORY, useValue: 'category' },
-    { provide: TABLE_COMMENT, useValue: 'comment' },
-    { provide: TABLE_CMS, useValue: 'cms' },
-    { provide: TABLE_CMS_DETAIL, useValue: 'cms_detail' },
-    { provide: TABLE_MEDIA, useValue: 'media' },
-    { provide: TABLE_OFFER, useValue: 'offer' },
-    { provide: TABLE_POST, useValue: 'post' },
-    { provide: TABLE_PARTNER, useValue: 'partner' },
-    { provide: TABLE_PRODUCT, useValue: 'product' },
-    { provide: TABLE_SELECTION, useValue: 'selection' },
-    { provide: TABLE_SCORE, useValue: 'scores' },
-    { provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE] },
-    { provide: CommentService, useClass: CommentService, deps: [AngularFirestore, TABLE_COMMENT] },
-    { provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA] },
-    { provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER] },
-    { provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER] },
-    { provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT] },
-    { provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION] },
+    {provide: ConfigService, useClass: ConfigService, deps: [ CONFIG_TOKEN ]},
+    {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
+    {provide: TABLE_CATEGORY, useValue: 'category'},
+    {provide: TABLE_COMMENT, useValue: 'comment'},
+    {provide: TABLE_CMS, useValue: 'cms'},
+    {provide: TABLE_CMS_DETAIL, useValue: 'cms_detail'},
+    {provide: TABLE_MEDIA, useValue: 'media'},
+    {provide: TABLE_OFFER, useValue: 'offer'},
+    {provide: TABLE_POST, useValue: 'post'},
+    {provide: TABLE_PARTNER, useValue: 'partner'},
+    {provide: TABLE_PRODUCT, useValue: 'product'},
+    {provide: TABLE_SELECTION, useValue: 'selection'},
+    {provide: TABLE_SCORE, useValue: 'scores'},
+    {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
+    {provide: CommentService, useClass: CommentService, deps: [ AngularFirestore, TABLE_COMMENT ]},
+    {provide: MediaService, useClass: MediaService, deps: [ AngularFirestore, TABLE_MEDIA ]},
+    {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},
+    {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
+    {provide: ProductService, useClass: ProductService, deps: [ AngularFirestore, TABLE_PRODUCT ]},
+    {provide: SelectionService, useClass: SelectionService, deps: [ AngularFirestore, TABLE_SELECTION ]},
     AlertService,
     DateService,
     DeviceService,
@@ -179,7 +178,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
 })
 export class CoreModule {
 
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule /*, @Inject('CONFIG') config: Environment*/ ) {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule /*, @Inject('CONFIG') config: Environment*/) {
     if (parentModule) {
       throw new Error(
         'CoreModule is already loaded. Import it in the AppModule only');
@@ -190,10 +189,10 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        { provide: production, useValue: config.production },
-        { provide: site_name, useValue: config.site_name },
-        { provide: app_name, useValue: config.app_name },
-        { provide: firebase, useValue: config.firebase },
+        {provide: production, useValue: config.production},
+        {provide: site_name, useValue: config.site_name},
+        {provide: app_name, useValue: config.app_name},
+        {provide: firebase, useValue: config.firebase},
       ]
     };
   }

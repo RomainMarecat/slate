@@ -46,7 +46,6 @@
       "gearbox": "Choisir une boîte de vitesse",
       "fuel": "Choisir un carburant",
       "mileage": "Choisir le kilométrage",
-      "negotiable_price": "Prix négociable",
       "description": "Choisir une description",
       "price": "Choisir un prix",
       "images": "Choisir une image",
@@ -96,7 +95,7 @@
       "title": "Se connecter"
     },
     "title1": "",
-    "title2": "CAR",
+    "title2": "recipe",
     "sort": "Trier",
     "filter": "Filtrer"
   },
