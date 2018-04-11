@@ -13,6 +13,7 @@ export const environment = {
     storageBucket: 'menincar-384269.appspot.com',
     messagingSenderId: '25862177025'
   },
+  googleMapApiKey: 'AIzaSyAn-C_BQH5PtKUJpxZNJLGCooZOcDCTg-U',
   clientAdSense: 'ca-pub-4195199088767183',
   slotAdSense: 123456,
   slackToken: 'https://hooks.slack.com/services/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',

@@ -133,6 +133,11 @@
           {{ 'product-edit.placeholder.negotiable_price'|translate }}
         </mat-slide-toggle>
       </div>
+      <div class="map-wrapper">
+        <agm-map class="agm-map" [latitude]="lat" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+      </div>
       <div class="button-wrapper" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="50px">
         <button mat-raised-button color="warn" type="button" (click)="location.back()" role="link">
           {{ 'cta.cancel'|translate }}

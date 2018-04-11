@@ -16,6 +16,8 @@ import { OfferService } from '../../../shared/offer/offer.service';
 import { ProductService } from '../../../shared/product/product.service';
 import { MockOfferService } from '../../../shared/offer/mock-offer.service';
 import { MockProductService } from '../../../shared/product/mock-product.service';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from '../../../environments/environment.menincar';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
@@ -24,6 +26,9 @@ describe('ProductEditComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        AgmCoreModule.forRoot({
+          apiKey: environment.googleMapApiKey
+        }),
         CommonModule,
         HttpClientTestingModule,
         RouterTestingModule,

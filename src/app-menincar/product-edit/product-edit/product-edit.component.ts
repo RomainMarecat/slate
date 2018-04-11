@@ -31,7 +31,8 @@ export class ProductEditComponent implements OnInit {
   mileages: number[] = [];
   gearboxs: any[] = [];
   products: CarProduct[] = [];
-  productsRef: Observable<CarProduct[]>;
+  lat = 51.678418;
+  lng = 7.809007;
 
   static getForm(): FormGroup {
     return new FormGroup({
@@ -44,7 +45,6 @@ export class ProductEditComponent implements OnInit {
       gearbox: new FormControl(''),
       reseller_type: new FormControl(''),
       // 'offer_type': new FormControl(''),
-      name: new FormControl('', [ Validators.required ]),
       description: new FormControl('', [ Validators.required, Validators.max(4000) ]),
       negotiable_price: new FormControl(false ),
       price: new FormControl('', [ Validators.required ]),
@@ -138,18 +138,18 @@ export class ProductEditComponent implements OnInit {
   }
 
   getProducts(model: Category) {
-    this.productsRef = this.productService.getProducts();
     this.productService.filters$.next([
       {
-        column: 'model',
+        column: 'category',
         operator: '==',
         value: model.key
       }
     ]);
-    this.productsRef
+    this.productService
+      .getProducts()
       .take(1)
       .subscribe((products: CarProduct[]) => {
-        console.log(this.products);
+        this.products = [...products];
         if (products.length > 0) {
           this.form.patchValue({ product: products[0]});
         } else {
@@ -171,6 +171,9 @@ export class ProductEditComponent implements OnInit {
 
   onSubmit(event: any) {
     console.log('form value :', this.form.value, this.form.valid);
+    Object.entries(this.form.controls).forEach(([ key, value ]) => {
+      console.log(key, value.valid, value.errors);
+    });
 
     const offer: CarOffer = this.form.value as CarOffer;
     if (this.form.valid) {
