@@ -143,12 +143,11 @@
           [zoomControl]="mapConfig.zoomControl"
           (mapClick)="onMapClick($event)">
           <agm-marker
-            (markerClick)="clickedMarker(marker.label, i)"
             [latitude]="marker.lat"
             [longitude]="marker.lng"
             [label]="marker.label|translate"
             [markerDraggable]="marker.draggable"
-            (dragEnd)="markerDragEnd(marker, $event)"
+            (dragEnd)="markerDragEnd(marker)"
             *ngIf="marker">
 
             <agm-info-window>

@@ -60,7 +60,10 @@ export class ProductEditComponent implements OnInit {
       images: new FormArray([
         new FormControl(null)
       ]),
-      location: new FormControl('', [ Validators.required ]),
+      location: new FormGroup({
+        latitude: new FormControl(null, [Validators.required]),
+        longitude: new FormControl(null, [Validators.required]),
+      }),
       user: new FormGroup({
         username: new FormControl(''),
         email: new FormControl(''),
@@ -185,10 +188,12 @@ export class ProductEditComponent implements OnInit {
       label: 'product-edit.label.meeting',
       draggable: true
     };
+
+    this.form.patchValue({location: {latitude: this.marker.lat, longitude: this.marker.lng}});
   }
 
-  clickedMarker(label: string, index: number) {
-    console.log(`clicked the marker: ${label || index}`)
+  markerDragEnd(marker: Marker) {
+    this.form.patchValue({location: {latitude: marker.lat, longitude: marker.lng}});
   }
 
   onSubmit(event: any) {
