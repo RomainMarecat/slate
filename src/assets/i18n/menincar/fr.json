@@ -51,6 +51,9 @@
       "price": "Choisir un prix",
       "images": "Choisir une image",
       "location": "Choisir votre région"
+    },
+    "label": {
+      "meeting": "Votre lieu de rendez-vous"
     }
   },
   "snackbar": {
