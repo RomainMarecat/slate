@@ -134,8 +134,28 @@
         </mat-slide-toggle>
       </div>
       <div class="map-wrapper">
-        <agm-map class="agm-map" [latitude]="lat" [longitude]="lng">
-          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <agm-map
+          class="agm-map"
+          [latitude]="mapConfig.lat"
+          [longitude]="mapConfig.lng"
+          [streetViewControl]="mapConfig.streetViewControl"
+          [zoom]="mapConfig.zoom"
+          [zoomControl]="mapConfig.zoomControl"
+          (mapClick)="onMapClick($event)">
+          <agm-marker
+            (markerClick)="clickedMarker(marker.label, i)"
+            [latitude]="marker.lat"
+            [longitude]="marker.lng"
+            [label]="marker.label|translate"
+            [markerDraggable]="marker.draggable"
+            (dragEnd)="markerDragEnd(marker, $event)"
+            *ngIf="marker">
+
+            <agm-info-window>
+              <strong>{{ marker.label|translate }}</strong>
+            </agm-info-window>
+
+          </agm-marker>
         </agm-map>
       </div>
       <div class="button-wrapper" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="50px">

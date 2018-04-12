@@ -4,3 +4,10 @@ export class Map {
   published: boolean;
   published_at: Date;
 }
+
+export interface Marker {
+  lat: number;
+  lng: number;
+  label?: string;
+  draggable: boolean;
+}

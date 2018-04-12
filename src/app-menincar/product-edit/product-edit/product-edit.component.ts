@@ -13,6 +13,7 @@ import { OfferService } from '../../../shared/offer/offer.service';
 import { CarOffer, Offer } from '../../../shared/offer/offer';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { ProductService } from '../../../shared/product/product.service';
+import { Marker } from '../../../shared/map/shared/map';
 
 @Component({
   selector: 'app-menincar-product-edit',
@@ -31,8 +32,16 @@ export class ProductEditComponent implements OnInit {
   mileages: number[] = [];
   gearboxs: any[] = [];
   products: CarProduct[] = [];
-  lat = 51.678418;
-  lng = 7.809007;
+  mapConfig = {
+    lat: 48.8534100,
+    lng: 2.3488000,
+    zoom: 5,
+    disableDefaultUI: false,
+    zoomControl: false,
+    streetViewControl: false,
+    markerDraggable: true
+  };
+  marker: Marker = null;
 
   static getForm(): FormGroup {
     return new FormGroup({
@@ -46,7 +55,7 @@ export class ProductEditComponent implements OnInit {
       reseller_type: new FormControl(''),
       // 'offer_type': new FormControl(''),
       description: new FormControl('', [ Validators.required, Validators.max(4000) ]),
-      negotiable_price: new FormControl(false ),
+      negotiable_price: new FormControl(false),
       price: new FormControl('', [ Validators.required ]),
       images: new FormArray([
         new FormControl(null)
@@ -149,9 +158,9 @@ export class ProductEditComponent implements OnInit {
       .getProducts()
       .take(1)
       .subscribe((products: CarProduct[]) => {
-        this.products = [...products];
+        this.products = [ ...products ];
         if (products.length > 0) {
-          this.form.patchValue({ product: products[0]});
+          this.form.patchValue({product: products[ 0 ]});
         } else {
           this.form.controls.product.disable();
           this.alertService.toast('error.model.product.empty');
@@ -167,6 +176,19 @@ export class ProductEditComponent implements OnInit {
   onModelChange(model: MatSelectChange) {
     this.form.controls.product.enable();
     this.getProducts(model.value);
+  }
+
+  onMapClick(event: {coords: {lat: number, lng: number}}) {
+    this.marker = {
+      lat: event.coords.lat,
+      lng: event.coords.lng,
+      label: 'product-edit.label.meeting',
+      draggable: true
+    };
+  }
+
+  clickedMarker(label: string, index: number) {
+    console.log(`clicked the marker: ${label || index}`)
   }
 
   onSubmit(event: any) {
