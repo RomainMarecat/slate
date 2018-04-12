@@ -59,10 +59,12 @@ export class ProductDetailComponent implements OnInit {
             .subscribe((product: CarProduct) => {
               this.meta.addTag({name: 'description', content: product.description});
               this.title.setTitle(product.name);
-              product.attributes = product.attributes.map((attribute: any) => {
-                attribute.label = attribute.label.trim().replace(/ /g, '');
-                return attribute;
-              });
+              if (this.product.attributes) {
+                product.attributes = product.attributes.map((attribute: any) => {
+                  attribute.label = attribute.label.trim().replace(/ /g, '');
+                  return attribute;
+                });
+              }
               this.product = product;
             });
         }

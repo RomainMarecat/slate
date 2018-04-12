@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CarProduct } from '../../../shared/product/car-product';
 import { AreaService } from '../../../shared/map/shared/area.service';
 import { Area } from '../../../shared/map/shared/area';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'app-menincar-product-list',
@@ -82,13 +83,21 @@ export class ProductListComponent implements OnInit {
   }
 
   getProducts() {
-    this.productService.filters$.next(null);
+    console.log('get Products');
+    this.productService.orderBy$.next({
+      column: 'published_at',
+      direction: 'desc'
+    });
+    this.productService.limit$.next(10);
     this.productService.getProducts()
+      .take(1)
       .subscribe((products) => {
-        this.products = products.filter((product: CarProduct) => {
-          // return product.area === this.area.key
-          return 1;
-        });
+        // this.products = products.filter((product: CarProduct) => {
+        //   // return product.area === this.area.key
+        //   return 1;
+        // });
+        console.log(products);
+        this.products = products;
         this.isLoading = false;
         this.loaderService.hide();
       });

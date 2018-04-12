@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from '../../../shared/category/category.service';
 import { Category } from '../../../shared/category/category';
@@ -14,6 +14,8 @@ import { CarOffer, Offer } from '../../../shared/offer/offer';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { ProductService } from '../../../shared/product/product.service';
 import { Marker } from '../../../shared/map/shared/map';
+import { GeocodeService } from '../../../shared/map/shared/geocode.service';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-menincar-product-edit',
@@ -42,6 +44,8 @@ export class ProductEditComponent implements OnInit {
     markerDraggable: true
   };
   marker: Marker = null;
+  isSaving = false;
+  _address = 'Paris';
 
   static getForm(): FormGroup {
     return new FormGroup({
@@ -61,13 +65,13 @@ export class ProductEditComponent implements OnInit {
         new FormControl(null)
       ]),
       location: new FormGroup({
-        latitude: new FormControl(null, [Validators.required]),
-        longitude: new FormControl(null, [Validators.required]),
+        latitude: new FormControl(null, [ Validators.required ]),
+        longitude: new FormControl(null, [ Validators.required ]),
       }),
       user: new FormGroup({
-        username: new FormControl(''),
-        email: new FormControl(''),
-        phone: new FormControl('')
+        username: new FormControl('', [ Validators.required ]),
+        email: new FormControl('', [ Validators.required ]),
+        phone: new FormControl('', [ Validators.required ])
       })
     });
   }
@@ -78,7 +82,9 @@ export class ProductEditComponent implements OnInit {
               private offerService: OfferService,
               private productService: ProductService,
               private rangePipe: RangePipe,
-              private translate: TranslateService) {
+              private translate: TranslateService,
+              private geocodeService: GeocodeService,
+              private ref: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -144,7 +150,6 @@ export class ProductEditComponent implements OnInit {
       .subscribe((gearboxs) => {
         Object.entries(gearboxs).forEach(([ key, value ]) => {
           this.gearboxs.push(value);
-
         });
       });
   }
@@ -181,7 +186,7 @@ export class ProductEditComponent implements OnInit {
     this.getProducts(model.value);
   }
 
-  onMapClick(event: {coords: {lat: number, lng: number}}) {
+  onMapClick(event: { coords: { lat: number, lng: number } }) {
     this.marker = {
       lat: event.coords.lat,
       lng: event.coords.lng,
@@ -196,7 +201,25 @@ export class ProductEditComponent implements OnInit {
     this.form.patchValue({location: {latitude: marker.lat, longitude: marker.lng}});
   }
 
+  onAddressChange() {
+    this.geocodeService.geocodeAddress(this.address)
+      .subscribe(
+        (location) => {
+          this.mapConfig.lat = location.lat;
+          this.mapConfig.lng = location.lng;
+          this.marker = {
+            lat: location.lat,
+            lng: location.lng,
+            label: 'product-edit.label.meeting',
+            draggable: true
+          };
+          this.ref.detectChanges();
+        }
+      );
+  }
+
   onSubmit(event: any) {
+    this.isSaving = true;
     console.log('form value :', this.form.value, this.form.valid);
     Object.entries(this.form.controls).forEach(([ key, value ]) => {
       console.log(key, value.valid, value.errors);
@@ -206,10 +229,53 @@ export class ProductEditComponent implements OnInit {
     if (this.form.valid) {
       this.offerService.createOffer(offer)
         .then((doc) => {
-          this.alertService.toast('offer.saved' + doc.id);
+          this.translate.get('product-edit.message.offer.saved')
+            .subscribe((translated) => {
+              this.alertService.toast(translated);
+              this.reset();
+              this.isSaving = false;
+            });
         }, (err) => {
           this.alertService.toast(err);
+          this.isSaving = false;
         });
+    } else {
+      this.isSaving = false;
     }
+  }
+
+  reset() {
+    this.form.reset({
+      brand: '',
+      model: '',
+      product: '',
+      regDate: '',
+      mileage: '',
+      fuel: '',
+      gearbox: '',
+      reseller_type: '',
+      // 'offer_type':''),
+      description: '',
+      negotiable_price: false,
+      price: '',
+      images: [],
+      location: {
+        latitude: null,
+        longitude: null,
+      },
+      user: {
+        username: '',
+        email: '',
+        phone: ''
+      }
+    });
+  }
+
+  set address(address) {
+    this._address = address;
+  }
+
+  get address() {
+    return this._address;
   }
 }

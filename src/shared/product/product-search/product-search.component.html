@@ -47,7 +47,7 @@
            [matAutocomplete]="autoBrand"
            [formControl]="form.controls.brand">
   </mat-form-field>
-  <div class="brand-select-container" class="white">
+  <div class="brand-select-container">
     <mat-autocomplete #autoBrand="matAutocomplete">
       <mat-option *ngFor="let brand of filteredBrands | async"
                   [value]="brand?.name">
@@ -63,7 +63,7 @@
            [matAutocomplete]="autoModel"
            [formControl]="form.controls.model">
   </mat-form-field>
-  <div class="model-select-container" class="white">
+  <div class="model-select-container">
     <mat-autocomplete #autoModel="matAutocomplete">
       <mat-option *ngFor="let model of filteredModels | async"
                   [value]="model?.name">

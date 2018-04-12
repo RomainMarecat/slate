@@ -12,7 +12,8 @@
   },
   "cta": {
     "cancel": "Annuler",
-    "save": "Enregistrer"
+    "save": "Enregistrer",
+    "search": "Rechercher"
   },
   "home": {
     "main": {
@@ -38,6 +39,11 @@
   },
   "product-edit": {
     "title": "Déposer une annonce",
+    "message": {
+      "offer": {
+        "saved": "Votre annonce est sauvergardée"
+      }
+    },
     "placeholder": {
       "brand": "Choisir une marque",
       "model": "Choisir un modèle",
@@ -47,13 +53,16 @@
       "fuel": "Choisir un carburant",
       "mileage": "Choisir le kilométrage",
       "negotiable_price": "Prix négociable",
-      "description": "Choisir une description",
+      "description": "Saisir une description",
       "price": "Choisir un prix",
       "images": "Choisir une image",
-      "location": "Choisir votre région"
+      "location": "Choisir le lieu de rendez-vous",
+      "username": "Saisir un pseudo ou un nom",
+      "email": "Saisir un email",
+      "phone": "Saisir un numéro de téléphone"
     },
     "label": {
-      "meeting": "Votre lieu de rendez-vous"
+      "meeting": "Lieu de rendez-vous"
     }
   },
   "snackbar": {
@@ -70,6 +79,14 @@
         "empty": "Aucune version de véhicule n'est proposée pour ce type de modèle"
       }
     },
+    "invalid": {
+      "price": "Le prix contient des erreurs",
+      "description": "La description contient des erreurs",
+      "username": "Le pseudo contient des erreurs",
+      "email": "L'email contient des erreurs",
+      "phone": "Le numéro de téléphone contient des erreurs",
+      "location": "Le lieu de rendez-vous contient des erreurs"
+    },
     "required": {
       "brand": "La marque est requise",
       "model": "Le modèle est requis",
@@ -77,7 +94,10 @@
       "regDate": "L'année de mise en circulation est requise",
       "mileage": "Le nombre de kilomètre au compteur est requis",
       "price": "Le prix est requis",
-      "description": "La description est requise"
+      "description": "La description est requise",
+      "username": "Le pseudo est requis",
+      "email": "L'email est requis",
+      "phone": "Le numéro de téléphone est requis"
     }
   },
   "form": {
