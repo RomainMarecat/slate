@@ -1,6 +1,6 @@
 <div class="card-container">
-  <div class="wrapper product-layout" fxLayoutGap="10px 10px" fxLayoutAlign="space-around wrap"
-       fxLayoutAlign.xs="space-around wrap" fxLayout="row" fxLayout.xs="column">
+  <div class="wrapper product-layout" fxLayoutGap="10px 10px" fxLayoutAlign="space-around stretch"
+       fxLayoutAlign.xs="space-around stretch" fxLayout="row wrap" fxLayout.xs="column">
     <app-menincar-product-item *ngFor="let product of products" class="grid-tile-item" [product]="product">
     </app-menincar-product-item>
     <div *ngIf="products && products?.length <= 0 && !isLoading"

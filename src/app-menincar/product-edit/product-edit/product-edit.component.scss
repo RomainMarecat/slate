@@ -1,9 +1,63 @@
+@import '~@angular/material/theming';
+@import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import '../../../scss/base/hockey/theme.scss';
+
+.mat-form-field, .agm-map {
+  width: 500px;
+
+  @include media-breakpoint-up(xs) {
+    width: 250px;
+  }
+  @include media-breakpoint-up(sm) {
+    width: 300px;
+  }
+  @include media-breakpoint-up(md) {
+    width: 450px;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 500px;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 700px;
+  }
+}
+
+.button-wrapper {
+
+  button {
+    min-width: 200px;
+
+    @include media-breakpoint-up(xs) {
+      width: 75px;
+    }
+    @include media-breakpoint-up(sm) {
+      width: 100px;
+    }
+    @include media-breakpoint-up(md) {
+      width: 200px;
+    }
+    @include media-breakpoint-up(lg) {
+      width: 220px;
+    }
+    @include media-breakpoint-up(xl) {
+      width: 300px;
+    }
+  }
+}
+
 .mat-form-field {
-  width: 250px;
   font-size: large;
 }
 
 .agm-map {
   height: 300px;
-  width: 500px;
+}
+
+.search-wrapper {
+  .search-form-field {
+    width: 150px;
+    .search-input {
+
+    }
+  }
 }

@@ -18,6 +18,8 @@ import { MockOfferService } from '../../../shared/offer/mock-offer.service';
 import { MockProductService } from '../../../shared/product/mock-product.service';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../../../environments/environment.menincar';
+import { GeocodeService } from '../../../shared/map/shared/geocode.service';
+import { MockGeocodeService } from '../../../shared/map/shared/mock-geocode.service';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
@@ -44,6 +46,7 @@ describe('ProductEditComponent', () => {
         {provide: OfferService, useClass: MockOfferService},
         {provide: ProductService, useClass: MockProductService},
         {provide: AlertService, useClass: MockAlertService},
+        {provide: GeocodeService, useClass: MockGeocodeService},
         RangePipe
       ]
     })

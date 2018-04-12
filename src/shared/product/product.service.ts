@@ -35,6 +35,8 @@ export class ProductService extends VisitorService {
   constructor(afs: AngularFirestore,
     @Inject('TABLE_PRODUCT') table: string) {
     super(afs, table);
+    this.startAt$ = new BehaviorSubject(null);
+    this.startAfter$ = new BehaviorSubject(null);
     this.keyFilter$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(null);
     this.userFilter$ = new BehaviorSubject(null);

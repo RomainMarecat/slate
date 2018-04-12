@@ -10,6 +10,7 @@ import { AreaListComponent } from './area-list/area-list.component';
 import { AreaDrawComponent } from './area-draw/area-draw.component';
 import { MatListModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { GeocodeService } from './shared/geocode.service';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [
     MapService,
-    AreaService
+    AreaService,
+    GeocodeService
   ]
 })
 export class MapModule {
