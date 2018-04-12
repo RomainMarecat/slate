@@ -201,8 +201,8 @@ export class ProductEditComponent implements OnInit {
     this.form.patchValue({location: {latitude: marker.lat, longitude: marker.lng}});
   }
 
-  onAddressChange() {
-    this.geocodeService.geocodeAddress(this.address)
+  onAddressChange(address: string) {
+    this.geocodeService.geocodeAddress(address)
       .subscribe(
         (location) => {
           this.mapConfig.lat = location.lat;

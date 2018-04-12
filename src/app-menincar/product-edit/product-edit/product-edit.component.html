@@ -144,14 +144,14 @@
                title="username"
                type="text"
                [placeholder]="'product-edit.placeholder.username'|translate"
-               [formControl]="form.controls.user.controls.username">
+               [formControl]="form['controls'].user['controls'].username">
         <mat-icon matSuffix>account_circle</mat-icon>
         <mat-hint>{{ 'form.required'|translate }}</mat-hint>
-        <mat-error *ngIf="!form.controls.user.controls.username.hasError('required') &&
-          form.controls.user.controls.username.invalid">
+        <mat-error *ngIf="!form['controls'].user['controls'].username.hasError('required') &&
+          form['controls'].user['controls'].username.invalid">
           {{ 'error.invalid.username'|translate }}
         </mat-error>
-        <mat-error *ngIf="form.controls.user.controls.username.hasError('required')">
+        <mat-error *ngIf="form['controls'].user['controls'].username.hasError('required')">
           {{ 'error.required.username'|translate }}
         </mat-error>
       </mat-form-field>
@@ -162,14 +162,14 @@
                type="email"
                autocomplete="email"
                [placeholder]="'product-edit.placeholder.email'|translate"
-               [formControl]="form.controls.user.controls.email">
+               [formControl]="form['controls'].user['controls'].email">
         <mat-icon matSuffix>@</mat-icon>
         <mat-hint>{{ 'form.required'|translate }}</mat-hint>
-        <mat-error *ngIf="!form.controls.user.controls.email.hasError('required') &&
-        form.controls.user.controls.email.invalid && form.controls.user.controls.email.value <= 0">
+        <mat-error *ngIf="!form['controls'].user['controls'].email.hasError('required') &&
+        form['controls'].user['controls'].email.invalid && form['controls'].user['controls'].email.value <= 0">
           {{ 'error.invalid.email'|translate }}
         </mat-error>
-        <mat-error *ngIf="form.controls.user.controls.email.hasError('required')">
+        <mat-error *ngIf="form['controls'].user['controls'].email.hasError('required')">
           {{ 'error.required.email'|translate }}
         </mat-error>
       </mat-form-field>
@@ -181,15 +181,15 @@
                autocomplete="tel"
                autocomplete="tel-national"
                [placeholder]="'product-edit.placeholder.phone'|translate"
-               [formControl]="form.controls.user.controls.phone">
+               [formControl]="form['controls'].user['controls'].phone">
         <mat-icon matSuffix>phone</mat-icon>
         <mat-hint>{{ 'form.required'|translate }}</mat-hint>
-        <mat-error *ngIf="!form.controls.user.controls.phone.hasError('required') &&
-        form.controls.user.controls.phone.invalid &&
-        form.controls.user.controls.phone.value <= 0">
+        <mat-error *ngIf="!form['controls'].user['controls'].phone.hasError('required') &&
+        form['controls'].user['controls'].phone.invalid &&
+        form['controls'].user['controls'].phone.value <= 0">
           {{ 'error.invalid.phone'|translate }}
         </mat-error>
-        <mat-error *ngIf="form.controls.user.controls.phone.hasError('required')">
+        <mat-error *ngIf="form['controls'].user['controls'].phone.hasError('required')">
           {{ 'error.required.phone'|translate }}
         </mat-error>
       </mat-form-field>
@@ -244,18 +244,18 @@
         </agm-map>
         <mat-hint>{{ 'form.required'|translate }}</mat-hint>
         <mat-error
-          *ngIf="form.controls.location.controls.latitude.dirty &&
-          form.controls.location.controls.longitude.dirty &&
-          !form.controls.location.controls.latitude.hasError('required') &&
-          !form.controls.location.controls.longitude.hasError('required') && (
-        form.controls.location.controls.latitude.invalid || form.controls.location.controls.longitude.invalid)">
+          *ngIf="form['controls'].location['controls'].latitude.dirty &&
+          form['controls'].location['controls'].longitude.dirty &&
+          !form['controls'].location['controls'].latitude.hasError('required') &&
+          !form['controls'].location['controls'].longitude.hasError('required') && (
+        form['controls'].location['controls'].latitude.invalid || form['controls'].location['controls'].longitude.invalid)">
           {{ 'error.invalid.location'|translate }}
         </mat-error>
         <!--<mat-error-->
-        <!--*ngIf="(!form.controls.location.controls.longitude.pristine &&-->
-        <!--!form.controls.location.controls.longitude.pristine) &&-->
-        <!--form.controls.location.controls.latitude.hasError('required') ||-->
-        <!--form.controls.location.controls.longitude.hasError('required')">-->
+        <!--*ngIf="(!form['controls'].location['controls'].longitude.pristine &&-->
+        <!--!form['controls'].location['controls'].longitude.pristine) &&-->
+        <!--form['controls'].location['controls'].latitude.hasError('required') ||-->
+        <!--form['controls'].location['controls'].longitude.hasError('required')">-->
         <!--{{ 'error.required.location'|translate }}-->
         <!--</mat-error>-->
       </div>
