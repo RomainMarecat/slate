@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../shared/user/user.service';
 import { CommentService } from '../../../shared/comment/comment.service';
 import { CarProduct } from '../../../shared/product/car-product';
+import { Category } from '../../../shared/category/category';
+import { CategoryService } from '../../../shared/category/category.service';
 
 @Component({
   selector: 'app-menincar-product-detail',
@@ -17,6 +19,7 @@ import { CarProduct } from '../../../shared/product/car-product';
 export class ProductDetailComponent implements OnInit {
 
   product: CarProduct;
+  brand: Category;
 
   // User comments
   comments: Comment[] = [];
@@ -32,16 +35,16 @@ export class ProductDetailComponent implements OnInit {
    * @param {ActivatedRoute} activatedRoute
    * @param {ProductService} productService
    * @param {DeviceService} deviceService
-   * @param {CommentService} commentService
-   * @param {UserService} userService
    * @param {AlertService} alertService
+   * @param categoryService
    */
   constructor(private meta: Meta,
               private title: Title,
               private activatedRoute: ActivatedRoute,
               private productService: ProductService,
               private deviceService: DeviceService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private categoryService: CategoryService) {
     this.resizedImage = {height: 400};
   }
 
@@ -59,7 +62,11 @@ export class ProductDetailComponent implements OnInit {
             .subscribe((product: CarProduct) => {
               this.meta.addTag({name: 'description', content: product.description});
               this.title.setTitle(product.name);
-              if (this.product.attributes) {
+              if (product.brand) {
+                this.getBrand(product.brand);
+              }
+
+              if (product.attributes) {
                 product.attributes = product.attributes.map((attribute: any) => {
                   attribute.label = attribute.label.trim().replace(/ /g, '');
                   return attribute;
@@ -72,5 +79,10 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-
+  getBrand(key: string) {
+        this.categoryService.getCategory(key)
+        .subscribe((brand) => {
+          this.brand = brand;
+        });
+  }
 }

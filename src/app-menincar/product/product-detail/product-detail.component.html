@@ -15,19 +15,30 @@
          fxLayout.xs="column"
          fxLayoutAlign.xs="center center">
       <div class="title">
-        <span *ngIf="product?.creator">{{ product.creator }}</span>
-        <h2 class="main-title">
-          {{ product.name }}
+        <span *ngIf="product?.creator">
+          {{ product.creator }}
+        </span>
+        <h2 fxLayout="row"
+            fxLayoutAlign="end stretch">
+          {{ brand?.name }}
         </h2>
-        <h3 fxLayout="row" fxLayoutAlign="end stretch">{{ product?.brand }}</h3>
+        <h3 class="main-title">
+          {{ product.name }}
+        </h3>
         <!--<app-product-description [description]="product?.description"></app-product-description>-->
       </div>
       <div>
-        <div class="score-wrapper px-5" fxLayout="row" fxLayoutAlign="end center" fxLayoutAlign.xs="center center">
+        <div class="score-wrapper px-5"
+             fxLayout="row"
+             fxLayoutAlign="end center"
+             fxLayoutAlign.xs="center center">
           <!--<app-product-action class="app-product-action" [product]="product"-->
                               <!--(updateScore)="updateScoreProduct($event)"></app-product-action>-->
         </div>
-        <app-image class="app-image" mat-card-image [key]="product.images[0]" [resize]="resizedImage"
+        <app-image class="app-image"
+                   mat-card-image
+                   [key]="product.images[0]"
+                   [resize]="resizedImage"
                    *ngIf="product.images[0]"></app-image>
       </div>
     </div>
