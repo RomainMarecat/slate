@@ -193,12 +193,14 @@ export class ProductEditComponent implements OnInit {
       label: 'product-edit.label.meeting',
       draggable: true
     };
+    this.getAddress(this.marker.lat, this.marker.lng);
 
     this.form.patchValue({location: {latitude: this.marker.lat, longitude: this.marker.lng}});
   }
 
   markerDragEnd(marker: Marker) {
     this.form.patchValue({location: {latitude: marker.lat, longitude: marker.lng}});
+    this.getAddress(marker.lat, marker.lng);
   }
 
   onAddressChange(address: string) {
@@ -214,6 +216,7 @@ export class ProductEditComponent implements OnInit {
             draggable: true
           };
           this.ref.detectChanges();
+          this.getAddress(location.lat, location.lng);
         }
       );
   }
@@ -242,6 +245,14 @@ export class ProductEditComponent implements OnInit {
     } else {
       this.isSaving = false;
     }
+  }
+
+  getAddress(lat: number, lng: number) {
+    this.geocodeService.geocodeLatLng(lat, lng)
+      .subscribe((address) => {
+      console.log('address', address);
+    });
+
   }
 
   reset() {
