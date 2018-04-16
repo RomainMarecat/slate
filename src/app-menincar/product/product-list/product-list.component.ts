@@ -56,9 +56,9 @@ export class ProductListComponent implements OnInit {
 
     this.meta.addTags([
       {property: 'fb:app_id', content: environment.facebook_app_id},
-      {rel: 'canonical', href: 'https://hockey-f2b77.firebaseapp.com'},
-      {rel: 'alternate', hreflang: 'x-default', href: 'https://hockey-f2b77.firebaseapp.com'},
-      {rel: 'alternate', hreflang: 'en', href: 'https://hockey-f2b77.firebaseapp.com'}
+      {rel: 'canonical', href: 'https://menincar-384269.firebaseapp.com'},
+      {rel: 'alternate', hreflang: 'x-default', href: 'https://menincar-384269.firebaseapp.com'},
+      {rel: 'alternate', hreflang: 'en', href: 'https://menincar-384269.firebaseapp.com'}
     ]);
 
     this.loadProducts();
@@ -74,16 +74,20 @@ export class ProductListComponent implements OnInit {
         this.areaService.getArea(key)
           .subscribe((area: Area) => {
             this.area = area;
-            if (this.area) {
-              this.getProducts();
+            if (area) {
+              this.getProducts(area);
             }
           });
       }
     });
   }
 
-  getProducts() {
-    console.log('get Products');
+  getProducts(area: Area) {
+    this.productService.filters$.next([{
+      column: 'area',
+      operator: '==',
+      value: area.key
+    }]);
     this.productService.orderBy$.next({
       column: 'published_at',
       direction: 'desc'
@@ -92,10 +96,6 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts()
       .take(1)
       .subscribe((products) => {
-        // this.products = products.filter((product: CarProduct) => {
-        //   // return product.area === this.area.key
-        //   return 1;
-        // });
         console.log(products);
         this.products = products;
         this.isLoading = false;
