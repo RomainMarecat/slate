@@ -35,9 +35,9 @@ export class ProductEditComponent implements OnInit {
   gearboxs: any[] = [];
   products: CarProduct[] = [];
   mapConfig = {
-    lat: 48.8534100,
-    lng: 2.3488000,
-    zoom: 5,
+    lat: 45.97215152618962,
+    lng: 2.61474609375,
+    zoom: 6,
     disableDefaultUI: false,
     zoomControl: false,
     streetViewControl: false,
@@ -57,7 +57,6 @@ export class ProductEditComponent implements OnInit {
       fuel: new FormControl(''),
       gearbox: new FormControl(''),
       reseller_type: new FormControl(''),
-      // 'offer_type': new FormControl(''),
       description: new FormControl('', [ Validators.required, Validators.max(4000) ]),
       negotiable_price: new FormControl(false),
       price: new FormControl('', [ Validators.required ]),
@@ -67,6 +66,13 @@ export class ProductEditComponent implements OnInit {
       location: new FormGroup({
         latitude: new FormControl(null, [ Validators.required ]),
         longitude: new FormControl(null, [ Validators.required ]),
+        street_address: new FormControl(null, []),
+        postal_code: new FormControl(null, []),
+        route: new FormControl(null, []),
+        locality: new FormControl(null, []),
+        department: new FormControl(null, []),
+        region: new FormControl(null, []),
+        country: new FormControl(null, []),
       }),
       user: new FormGroup({
         username: new FormControl('', [ Validators.required ]),
@@ -157,7 +163,7 @@ export class ProductEditComponent implements OnInit {
   getProducts(model: Category) {
     this.productService.filters$.next([
       {
-        column: 'category',
+        column: 'model',
         operator: '==',
         value: model.key
       }
@@ -194,12 +200,9 @@ export class ProductEditComponent implements OnInit {
       draggable: true
     };
     this.getAddress(this.marker.lat, this.marker.lng);
-
-    this.form.patchValue({location: {latitude: this.marker.lat, longitude: this.marker.lng}});
   }
 
   markerDragEnd(marker: Marker) {
-    this.form.patchValue({location: {latitude: marker.lat, longitude: marker.lng}});
     this.getAddress(marker.lat, marker.lng);
   }
 
@@ -229,6 +232,10 @@ export class ProductEditComponent implements OnInit {
     });
 
     const offer: CarOffer = this.form.value as CarOffer;
+    offer.brand = this.form.value.brand.key;
+    offer.model = this.form.value.model.key;
+    offer.product = this.form.value.product.key;
+
     if (this.form.valid) {
       this.offerService.createOffer(offer)
         .then((doc) => {
@@ -249,10 +256,21 @@ export class ProductEditComponent implements OnInit {
 
   getAddress(lat: number, lng: number) {
     this.geocodeService.geocodeLatLng(lat, lng)
-      .subscribe((address) => {
-      console.log('address', address);
-    });
-
+      .subscribe((location) => {
+        console.log('location', location);
+        if (!location.error) {
+          this.form.patchValue({
+            location: {
+              ...location,
+              ...{
+                latitude: lat,
+                longitude: lng
+              }
+            }
+          });
+          console.log(this.form.getRawValue());
+        }
+      });
   }
 
   reset() {
@@ -265,7 +283,6 @@ export class ProductEditComponent implements OnInit {
       fuel: '',
       gearbox: '',
       reseller_type: '',
-      // 'offer_type':''),
       description: '',
       negotiable_price: false,
       price: '',
