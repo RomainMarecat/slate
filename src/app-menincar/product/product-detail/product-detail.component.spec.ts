@@ -12,6 +12,8 @@ import { MockProductService } from '../../../shared/product/mock-product.service
 import { DeviceService } from '../../../shared/device/device.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
+import { CategoryService } from '../../../shared/category/category.service';
+import { MockCategoryService } from '../../../shared/category/mock-category.service';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
@@ -33,6 +35,7 @@ describe('ProductDetailComponent', () => {
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: ProductService, useClass: MockProductService},
+        {provide: CategoryService, useClass: MockCategoryService},
         DeviceService
       ]
     })

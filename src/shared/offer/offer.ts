@@ -10,17 +10,18 @@ export class Offer {
 
 export interface CarOffer {
   key?: string;
-  product: string;
   regDate: Date;
   mileage: number;
   gearbox: string;
   fuel: string;
-
+  brand: string;
+  model: string;
+  product: string;
   partner?: string;
   negotiable_price: boolean;
   price: number;
   images: string[];
-  location: string;
+  location: any;
   user: {
     username: string;
     email: string;
