@@ -25,6 +25,7 @@ export class ProductSearchComponent implements OnInit {
   filteredBrands: Observable<Category[]>;
   filteredModels: Observable<Category[]>;
   brandSelected: Category;
+  modelSelected: Category;
   brands: Category[] = [];
   models: Category[] = [];
 
@@ -56,7 +57,7 @@ export class ProductSearchComponent implements OnInit {
       .subscribe(brands => this.brands = brands);
 
     this.filteredBrands.subscribe((brands: Category[]) => {
-      this.brandSelected = brands[0];
+      this.brandSelected = brands[ 0 ];
       if (brands && brands.length > 0) {
         this.categoryService.filters$.next([ {
           column: 'level',
@@ -65,29 +66,34 @@ export class ProductSearchComponent implements OnInit {
         }, {
           column: 'parent',
           operator: '==',
-          value: brands[0].key
+          value: brands[ 0 ].key
         } ]);
         this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
         this.categoryService.getCategories()
           .take(1)
           .subscribe(models => {
             this.models = models;
+            this.filteredModels
+              .subscribe((selectedModels: Category[]) => {
+                this.modelSelected = selectedModels[ 0 ];
+              });
           });
       }
-    });
-
-    this.filteredModels.subscribe((models: Category[]) => {
     });
   }
 
   filterBrands(name: string): Category[] {
     return this.brands.filter(brand => brand.name.toLowerCase().indexOf(name.toLowerCase()) >= 0 ||
-          brand.translations.fr.toLowerCase().indexOf(name.toLowerCase()) >= 0);
+      brand.translations.fr.toLowerCase().indexOf(name.toLowerCase()) >= 0);
   }
 
   filterModels(name: string): Category[] {
     return this.models.filter(model => model.name.toLowerCase().indexOf(name.toLowerCase()) >= 0 ||
-          model.translations.fr.toLowerCase().indexOf(name.toLowerCase()) >= 0 );
+      model.translations.fr.toLowerCase().indexOf(name.toLowerCase()) >= 0);
+  }
+
+  onModelChanged(event: any) {
+    console.log(event);
   }
 
   onActiveSearch(activate: boolean) {

@@ -12,6 +12,10 @@ import { CarProduct } from '../../../shared/product/car-product';
 import { AreaService } from '../../../shared/map/shared/area.service';
 import { Area } from '../../../shared/map/shared/area';
 import 'rxjs/add/operator/take';
+import { OfferService } from '../../../shared/offer/offer.service';
+import { Category } from '../../../shared/category/category';
+import { CarOffer, Offer } from '../../../shared/offer/offer';
+import { CategoryService } from '../../../shared/category/category.service';
 
 @Component({
   selector: 'app-menincar-product-list',
@@ -21,14 +25,18 @@ import 'rxjs/add/operator/take';
 export class ProductListComponent implements OnInit {
   // Products collection of Product interface
   products: Array<CarProduct> = [];
+  offers: Array<Offer> = [];
   rowHeight: number;
   headerHeight: number;
   pageLimit: number;
   isLoading: boolean;
   area: Area;
+  category: Category;
 
   constructor(private productService: ProductService,
               private areaService: AreaService,
+              private offerService: OfferService,
+              private categoryService: CategoryService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private title: Title,
@@ -61,33 +69,77 @@ export class ProductListComponent implements OnInit {
       {rel: 'alternate', hreflang: 'en', href: 'https://menincar-384269.firebaseapp.com'}
     ]);
 
-    this.loadProducts();
+    this.loadOffers();
   }
 
   /**
    * Load Products by area
    */
-  loadProducts() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
-      if (value.key) {
-        const key = value.key.substring(0, value.key.indexOf('-'));
+  loadOffers() {
+    this.activatedRoute.params.subscribe((value: { area: string, category: string }) => {
+      if (value.area) {
+        const key = value.area.substring(0, value.area.indexOf('-'));
         this.areaService.getArea(key)
+          .take(1)
           .subscribe((area: Area) => {
             this.area = area;
             if (area) {
-              this.getProducts(area);
+              this.getOffersByRegion(area);
+            }
+          });
+      }
+      if (value.category) {
+        const key = value.category.substring(0, value.category.indexOf('-'));
+        this.categoryService.getCategory(key)
+          .take(1)
+          .subscribe((category: Category) => {
+            this.category = category;
+            if (category) {
+              this.getOffersByModel(category);
             }
           });
       }
     });
   }
 
-  getProducts(area: Area) {
-    this.productService.filters$.next([{
+  getOffersByModel(model: Category) {
+    this.productService.filters$.next([ {
+      column: 'model',
+      operator: '==',
+      value: model.key
+    } ]);
+    this.productService.getProducts()
+      .take(1)
+      .subscribe((products) => {
+        this.products = products;
+        this.products.forEach((product) => {
+          this.getOffersByProduct(product);
+        });
+      });
+  }
+
+  getOffersByProduct(product: CarProduct) {
+    this.offerService.filters$.next([
+      {
+        column: 'product',
+        operator: '==',
+        value: product.key
+      }
+    ]);
+    this.offerService.limit$.next(10);
+    this.offerService.getOffers()
+      .take(1)
+      .subscribe((offers) => {
+        this.offers = offers;
+      });
+  }
+
+  getOffersByRegion(area: Area) {
+    this.productService.filters$.next([ {
       column: 'area',
       operator: '==',
       value: area.key
-    }]);
+    } ]);
     this.productService.orderBy$.next({
       column: 'published_at',
       direction: 'desc'

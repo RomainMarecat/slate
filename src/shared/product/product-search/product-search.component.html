@@ -66,10 +66,19 @@
   <div class="model-select-container">
     <mat-autocomplete #autoModel="matAutocomplete">
       <mat-option *ngFor="let model of filteredModels | async"
-                  [value]="model?.name">
+                  [value]="model?.name"
+                  (onSelectionChange)="onModelChanged($event)">
         <span>{{ model?.name }}</span>
       </mat-option>
     </mat-autocomplete>
   </div>
 
+  <button type="submit"
+          mat-raised-button
+          role="button"
+          aria-label="search"
+          color="primary"
+          [disabled]="!selectedModel">
+    {{ 'cta.search'|translate }}
+  </button>
 </form>
