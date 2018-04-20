@@ -79,6 +79,9 @@
         "empty": "Aucune version de véhicule n'est proposée pour ce type de modèle"
       }
     },
+    "offers": {
+      "empty": "Aucune offre n'est disponible pour ce modèle"
+    },
     "invalid": {
       "price": "Le prix contient des erreurs",
       "description": "La description contient des erreurs",

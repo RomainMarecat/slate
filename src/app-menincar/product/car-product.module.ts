@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { OfferItemComponent } from './offer-item/offer-item.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
   declarations: [
     ProductListComponent,
     ProductItemComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    OfferItemComponent
   ]
 })
 export class CarProductModule {

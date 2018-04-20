@@ -115,6 +115,8 @@ export class ProductListComponent implements OnInit {
         this.products.forEach((product) => {
           this.getOffersByProduct(product);
         });
+        this.isLoading = false;
+        this.loaderService.hide();
       });
   }
 

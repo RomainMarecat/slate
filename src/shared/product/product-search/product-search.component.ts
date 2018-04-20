@@ -7,6 +7,7 @@ import { Category } from '../../category/category';
 import { map, startWith } from 'rxjs/operators';
 import { CategoryService } from '../../category/category.service';
 import 'rxjs/add/operator/take';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-search',
@@ -17,32 +18,24 @@ export class ProductSearchComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     'search': new FormControl({value: '', disabled: true}),
-    'brand': new FormControl(''),
-    'model': new FormControl(''),
+    'brand': new FormControl('', [ Validators.required ]),
+    'model': new FormControl('', [ Validators.required ]),
   });
   showSearch = false;
   products: CarProduct[];
   filteredBrands: Observable<Category[]>;
-  filteredModels: Observable<Category[]>;
   brandSelected: Category;
-  modelSelected: Category;
   brands: Category[] = [];
   models: Category[] = [];
 
   constructor(private productService: ProductService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private router: Router) {
     this.filteredBrands = this.form.controls.brand.valueChanges
       .pipe(
         startWith(''),
         map((brand: string) => brand ? this.filterBrands(brand) : this.brands.slice())
       );
-
-    this.filteredModels = this.form.controls.model.valueChanges
-      .pipe(
-        startWith(''),
-        map((model: string) => model ? this.filterModels(model) : this.models.slice())
-      )
-    ;
   }
 
   ngOnInit() {
@@ -73,10 +66,6 @@ export class ProductSearchComponent implements OnInit {
           .take(1)
           .subscribe(models => {
             this.models = models;
-            this.filteredModels
-              .subscribe((selectedModels: Category[]) => {
-                this.modelSelected = selectedModels[ 0 ];
-              });
           });
       }
     });
@@ -87,28 +76,13 @@ export class ProductSearchComponent implements OnInit {
       brand.translations.fr.toLowerCase().indexOf(name.toLowerCase()) >= 0);
   }
 
-  filterModels(name: string): Category[] {
-    return this.models.filter(model => model.name.toLowerCase().indexOf(name.toLowerCase()) >= 0 ||
-      model.translations.fr.toLowerCase().indexOf(name.toLowerCase()) >= 0);
-  }
-
-  onModelChanged(event: any) {
-    console.log(event);
-  }
-
   onActiveSearch(activate: boolean) {
     this.showSearch = activate;
   }
 
   onSearch() {
-    this.productService.filters$.next(null);
     if (this.form.valid) {
-      this.productService.filters$.next([ {
-        operator: '==',
-        value: this.form.controls.search.value.toLowerCase(),
-        column: 'name'
-      } ]);
+      this.router.navigate([ '/selection/' + this.form.getRawValue().model + '/products']);
     }
   }
-
 }
