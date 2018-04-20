@@ -25,7 +25,7 @@ import { CategoryService } from '../../../shared/category/category.service';
 export class ProductListComponent implements OnInit {
   // Products collection of Product interface
   products: Array<CarProduct> = [];
-  offers: Array<Offer> = [];
+  offers: Array<CarOffer> = [];
   rowHeight: number;
   headerHeight: number;
   pageLimit: number;
@@ -103,21 +103,40 @@ export class ProductListComponent implements OnInit {
   }
 
   getOffersByModel(model: Category) {
-    this.productService.filters$.next([ {
-      column: 'model',
-      operator: '==',
-      value: model.key
-    } ]);
-    this.productService.getProducts()
-      .take(1)
-      .subscribe((products) => {
-        this.products = products;
-        this.products.forEach((product) => {
-          this.getOffersByProduct(product);
+    // this.productService.filters$.next([ {
+    //   column: 'model',
+    //   operator: '==',
+    //   value: model.key
+    // } ]);
+    // this.productService.getProducts()
+    //   .take(1)
+    //   .subscribe((products) => {
+    //     this.products = products;
+    //     this.products.forEach((product) => {
+    //       this.getOffersByProduct(product);
+    //     });
+    //     this.isLoading = false;
+    //     this.loaderService.hide();
+    //   });
+
+    // DEV MODE
+    // To Remove
+    if (true) {
+      this.offerService.filters$.next([
+        {
+          column: 'model',
+          operator: '==',
+          value: model.key
+        }
+      ]);
+      this.offerService.getOffers()
+        .take(1)
+        .subscribe((offers: CarOffer[]) => {
+          this.offers = offers;
+          this.isLoading = false;
+          this.loaderService.hide();
         });
-        this.isLoading = false;
-        this.loaderService.hide();
-      });
+    }
   }
 
   getOffersByProduct(product: CarProduct) {
@@ -131,7 +150,7 @@ export class ProductListComponent implements OnInit {
     this.offerService.limit$.next(10);
     this.offerService.getOffers()
       .take(1)
-      .subscribe((offers) => {
+      .subscribe((offers: CarOffer[]) => {
         this.offers = offers;
       });
   }
@@ -152,6 +171,9 @@ export class ProductListComponent implements OnInit {
       .subscribe((products) => {
         console.log(products);
         this.products = products;
+        this.products.forEach((product) => {
+          this.getOffersByProduct(product);
+        });
         this.isLoading = false;
         this.loaderService.hide();
       });

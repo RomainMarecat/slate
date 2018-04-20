@@ -35,7 +35,11 @@ import { MockAlertService } from '../../../shared/popup/mock-alert.service';
 import { MockLoaderService } from '../../../shared/loader/mock-loader.service';
 import { MockAreaService } from '../../../shared/map/shared/mock-area.service';
 import { AreaService } from '../../../shared/map/shared/area.service';
-import { ProductItemComponent } from '../product-item/product-item.component';
+import { OfferItemComponent } from '../offer-item/offer-item.component';
+import { MockOfferService } from '../../../shared/offer/mock-offer.service';
+import { OfferService } from '../../../shared/offer/offer.service';
+import { MockCategoryService } from '../../../shared/category/mock-category.service';
+import { CategoryService } from '../../../shared/category/category.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -68,11 +72,13 @@ describe('ProductListComponent', () => {
         }),
         SharedModule
       ],
-      declarations: [ ProductListComponent, ProductItemComponent ],
+      declarations: [ ProductListComponent, OfferItemComponent ],
       providers: [
         {provide: ProductService, useClass: MockProductService},
         {provide: SelectionService, useClass: MockSelectionService},
         {provide: AreaService, useClass: MockAreaService},
+        {provide: CategoryService, useClass: MockCategoryService},
+        {provide: OfferService, useClass: MockOfferService},
         {provide: UserService, useClass: MockUserService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: LoaderService, useClass: MockLoaderService},
