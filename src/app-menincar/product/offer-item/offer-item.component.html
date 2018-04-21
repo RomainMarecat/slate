@@ -2,10 +2,6 @@
           angulartics2On="mouseover"
           angularticsAction="hoveredOverOfferItem"
           [angularticsCategory]="'offer.item'"
-          fxFlex="100"
-          fxFlex.xs="100"
-          fxLayout="row"
-          fxLayoutAlign="center stretch"
           *ngIf="offer">
   <mat-card-header class="mat-card-header"
                    (click)="offerDetail($event)">
@@ -37,7 +33,7 @@
              (click)="offerDetail($event)"
              *ngIf="offer && offer.images && offer?.images[0]">
   </app-image>
-  <mat-card-actions>
+  <mat-card-actions fxLayout="row" fxLayoutAlign="center stretch">
     <button mat-raised-button color="primary" type="button">
       {{ 'cta.show'|translate }}
     </button>

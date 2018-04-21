@@ -16,8 +16,8 @@ export class GeocodeService {
     {type: 'route', label: 'route'},
     {type: 'locality', label: 'locality'},
     {type: 'postal_code', label: 'postal_code'},
-    {type: 'administrative_area_level_1', label: 'department'},
-    {type: 'administrative_area_level_2', label: 'region'},
+    {type: 'administrative_area_level_1', label: 'region'},
+    {type: 'administrative_area_level_2', label: 'department'},
     {type: 'country', label: 'country'},
   ];
   private geocoder: any;

@@ -30,7 +30,6 @@ export class AreaComponent implements OnInit {
     } ];
     this.areaService.filters$.next(filters);
     this.areaService.getAreas()
-      .take(1)
       .subscribe((areas: Area[]) => {
         this.areas = areas;
       });

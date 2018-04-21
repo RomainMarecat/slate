@@ -12,4 +12,5 @@ export class Area {
   department: any;
   region: any;
   country: any;
+  place_id: string;
 }

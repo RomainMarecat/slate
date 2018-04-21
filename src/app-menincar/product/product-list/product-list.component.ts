@@ -14,8 +14,9 @@ import { Area } from '../../../shared/map/shared/area';
 import 'rxjs/add/operator/take';
 import { OfferService } from '../../../shared/offer/offer.service';
 import { Category } from '../../../shared/category/category';
-import { CarOffer, Offer } from '../../../shared/offer/offer';
+import { CarOffer } from '../../../shared/offer/offer';
 import { CategoryService } from '../../../shared/category/category.service';
+import 'rxjs/add/operator/finally';
 
 @Component({
   selector: 'app-menincar-product-list',
@@ -77,6 +78,7 @@ export class ProductListComponent implements OnInit {
    */
   loadOffers() {
     this.activatedRoute.params.subscribe((value: { area: string, category: string }) => {
+      console.log(value);
       if (value.area) {
         const key = value.area.substring(0, value.area.indexOf('-'));
         this.areaService.getArea(key)
@@ -121,22 +123,21 @@ export class ProductListComponent implements OnInit {
 
     // DEV MODE
     // To Remove
-    if (true) {
-      this.offerService.filters$.next([
-        {
-          column: 'model',
-          operator: '==',
-          value: model.key
-        }
-      ]);
-      this.offerService.getOffers()
-        .take(1)
-        .subscribe((offers: CarOffer[]) => {
-          this.offers = offers;
-          this.isLoading = false;
-          this.loaderService.hide();
-        });
-    }
+    this.offerService.filters$.next([
+      {
+        column: 'model',
+        operator: '==',
+        value: model.key
+      }
+    ]);
+    this.offerService.getOffers()
+      .finally(() => {
+        this.isLoading = false;
+        this.loaderService.hide();
+      })
+      .subscribe((offers: CarOffer[]) => {
+        this.offers = offers;
+      });
   }
 
   getOffersByProduct(product: CarProduct) {
@@ -150,32 +151,43 @@ export class ProductListComponent implements OnInit {
     this.offerService.limit$.next(10);
     this.offerService.getOffers()
       .take(1)
+      .finally(() => {
+        this.isLoading = false;
+        this.loaderService.hide();
+      })
       .subscribe((offers: CarOffer[]) => {
         this.offers = offers;
       });
   }
 
   getOffersByRegion(area: Area) {
-    this.productService.filters$.next([ {
-      column: 'area',
-      operator: '==',
-      value: area.key
-    } ]);
-    this.productService.orderBy$.next({
-      column: 'published_at',
-      direction: 'desc'
-    });
-    this.productService.limit$.next(10);
-    this.productService.getProducts()
-      .take(1)
-      .subscribe((products) => {
-        console.log(products);
-        this.products = products;
-        this.products.forEach((product) => {
-          this.getOffersByProduct(product);
+    console.log(area);
+    if (area.place_id) {
+      this.offerService.filters$.next([ {
+        column: 'place_id',
+        operator: '==',
+        value: area.place_id
+      } ]);
+
+      // this.offerService.orderBy$.next({
+      //   column: 'published_at',
+      //   direction: 'desc'
+      // });
+      this.offerService.limit$.next(10);
+      this.offerService.getOffers()
+        .take(1)
+        .finally(() => {
+          this.isLoading = false;
+          this.loaderService.hide();
+        })
+        .subscribe((offers: CarOffer[]) => {
+          this.offers = offers;
+        }, (err) => {
+          console.error(err);
         });
-        this.isLoading = false;
-        this.loaderService.hide();
-      });
+    } else {
+      this.isLoading = false;
+      this.loaderService.hide();
+    }
   }
 }

@@ -13,7 +13,8 @@
   "cta": {
     "cancel": "Annuler",
     "save": "Enregistrer",
-    "search": "Rechercher"
+    "search": "Rechercher",
+    "show": "Voir"
   },
   "home": {
     "main": {
@@ -79,7 +80,7 @@
         "empty": "Aucune version de véhicule n'est proposée pour ce type de modèle"
       }
     },
-    "offers": {
+    "offer": {
       "empty": "Aucune offre n'est disponible pour ce modèle"
     },
     "invalid": {
