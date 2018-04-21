@@ -105,24 +105,6 @@ export class ProductListComponent implements OnInit {
   }
 
   getOffersByModel(model: Category) {
-    // this.productService.filters$.next([ {
-    //   column: 'model',
-    //   operator: '==',
-    //   value: model.key
-    // } ]);
-    // this.productService.getProducts()
-    //   .take(1)
-    //   .subscribe((products) => {
-    //     this.products = products;
-    //     this.products.forEach((product) => {
-    //       this.getOffersByProduct(product);
-    //     });
-    //     this.isLoading = false;
-    //     this.loaderService.hide();
-    //   });
-
-    // DEV MODE
-    // To Remove
     this.offerService.filters$.next([
       {
         column: 'model',
@@ -140,35 +122,15 @@ export class ProductListComponent implements OnInit {
       });
   }
 
-  getOffersByProduct(product: CarProduct) {
-    this.offerService.filters$.next([
-      {
-        column: 'product',
-        operator: '==',
-        value: product.key
-      }
-    ]);
-    this.offerService.limit$.next(10);
-    this.offerService.getOffers()
-      .take(1)
-      .finally(() => {
-        this.isLoading = false;
-        this.loaderService.hide();
-      })
-      .subscribe((offers: CarOffer[]) => {
-        this.offers = offers;
-      });
-  }
-
   getOffersByRegion(area: Area) {
     console.log(area);
     if (area.place_id) {
       this.offerService.filters$.next([ {
-        column: 'place_id',
+        column: 'location.region.place_id',
         operator: '==',
         value: area.place_id
       } ]);
-
+      // Problem with filters on subscribe
       // this.offerService.orderBy$.next({
       //   column: 'published_at',
       //   direction: 'desc'
