@@ -1,10 +1,14 @@
 <div class="card-container">
-  <div class="wrapper product-layout" fxLayoutGap="10px 10px" fxLayoutAlign="space-around stretch"
-       fxLayoutAlign.xs="space-around stretch" fxLayout="row wrap" fxLayout.xs="column">
-    <app-menincar-product-item *ngFor="let product of products" class="grid-tile-item" [product]="product">
-    </app-menincar-product-item>
-    <div *ngIf="products && products?.length <= 0 && !isLoading"
-         [innerHtml]="'Produits bientôt disponibles ...'|translate">
+  <div class="wrapper product-layout"
+       fxLayoutGap="10px 10px"
+       fxLayoutAlign="space-around stretch"
+       fxLayoutAlign.xs="space-around stretch"
+       fxLayout="row wrap"
+       fxLayout.xs="column">
+    <app-car-offer-item class="item-offer" *ngFor="let offer of offers" [offer]="offer">
+    </app-car-offer-item>
+    <div *ngIf="offers && offers?.length <= 0 && !isLoading">
+      <p>{{ 'error.offer.empty'|translate }}</p>
     </div>
   </div>
 </div>

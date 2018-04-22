@@ -84,7 +84,7 @@ export class AreaDrawComponent implements OnInit {
       const mouseY = e.offsetY;
       this.paths.forEach((path) => {
         if (context.isPointInPath(path.path2D, mouseX, mouseY)) {
-          this.router.navigate([ '/selection/' + path.area.key + '-' + (path.area.name).toLowerCase() + '/products' ]);
+          this.router.navigate([ '/area/' + path.area.key + '-' + (path.area.name).toLowerCase() + '/products' ]);
         }
       });
     });

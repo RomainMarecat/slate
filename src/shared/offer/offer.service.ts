@@ -16,7 +16,7 @@ export class OfferService extends VisitorService {
   }
 
   getOffers(): Observable < Offer[] > {
-    return super.getDocuments() as Observable < Offer[] > ;
+    return <Observable < Offer[] > > super.getDocuments();
   }
 
   getOffer(key: string): Observable < Offer > {

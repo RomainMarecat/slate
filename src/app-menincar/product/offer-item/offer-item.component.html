@@ -1,0 +1,41 @@
+<mat-card class="mat-card m-2"
+          angulartics2On="mouseover"
+          angularticsAction="hoveredOverOfferItem"
+          [angularticsCategory]="'offer.item'"
+          *ngIf="offer">
+  <mat-card-header class="mat-card-header"
+                   (click)="offerDetail($event)">
+    <mat-card-title class="mat-card-title"
+                    angulartics2On="click"
+                    angularticsAction="clickedOnTitleShowOffer"
+                    [angularticsCategory]="'offer.detail'"
+                    fxLayout="row"
+                    fxLayoutAlign="space-around center"
+                    fxLayoutGap="20px">
+      <h1 class="mat-card-name">
+        <span class="text-uppercase">{{ brand?.name }}</span> <span>{{ model?.name }}</span>
+      </h1>
+      <h2>
+        {{ offer?.fuel }}
+      </h2>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <h2>
+        <span>{{ offer?.mileage }} km</span>
+        {{ offer?.price }} €
+      </h2>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <app-image class="app-image"
+             mat-card-image
+             [key]="offer?.images[0]"
+             [resize]="{height: 200}"
+             (click)="offerDetail($event)"
+             *ngIf="offer && offer.images && offer?.images[0]">
+  </app-image>
+  <mat-card-actions fxLayout="row" fxLayoutAlign="center stretch">
+    <button mat-raised-button color="primary" type="button">
+      {{ 'cta.show'|translate }}
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -25,7 +25,7 @@ export class AreaListComponent implements OnInit {
   }
 
   getLink(area: Area) {
-    return '/selection/' + area.key + '-' + (area.name).toLowerCase() + '/products';
+    return '/area/' + area.key + '-' + (area.name).toLowerCase() + '/products';
   }
 
   onHoverArea(area: Area) {

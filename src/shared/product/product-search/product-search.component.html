@@ -17,21 +17,31 @@
       fxLayoutGap.xs="5px"
       *ngIf="showSearch">
 
-  <div class="search-wrapper">
+  <!--<div class="search-wrapper">-->
+    <!--<mat-form-field class="mat-form-field search">-->
+    <!--<input matInput-->
+    <!--type="search"-->
+    <!--[placeholder]="'home.search.placeholder'|translate"-->
+    <!--[(value)]="form.controls.search.value"-->
+    <!--[formControl]="form.controls.search">-->
+    <!--</mat-form-field>-->
+  <!--</div>-->
+
+  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="space-around center">
     <button mat-icon-button
             type="submit"
             color="primary">
       <mat-icon>search</mat-icon>
     </button>
-
-    <mat-form-field class="mat-form-field search">
-      <input matInput
-             type="search"
-             [placeholder]="'home.search.placeholder'|translate"
-             [(value)]="form.controls.search.value"
-             [formControl]="form.controls.search">
+    <mat-form-field class="mat-form-field">
+      <input name="brand"
+             #brandInput
+             matInput
+             [placeholder]="'home.brand.placeholder'|translate"
+             [matAutocomplete]="autoBrand"
+             [formControl]="form.controls.brand">
+      <mat-error *ngIf="form.controls.brand.hasError('required')">{{ 'error.required.brand'|translate }}</mat-error>
     </mat-form-field>
-
     <button mat-icon-button
             type="button"
             color="primary"
@@ -39,14 +49,6 @@
       <mat-icon>close</mat-icon>
     </button>
   </div>
-
-  <mat-form-field class="mat-form-field">
-    <input #brandInput
-           matInput
-           [placeholder]="'home.brand.placeholder'|translate"
-           [matAutocomplete]="autoBrand"
-           [formControl]="form.controls.brand">
-  </mat-form-field>
   <div class="brand-select-container">
     <mat-autocomplete #autoBrand="matAutocomplete">
       <mat-option *ngFor="let brand of filteredBrands | async"
@@ -57,19 +59,20 @@
   </div>
 
   <mat-form-field class="mat-form-field" *ngIf="brandSelected">
-    <input #modelInput
-           matInput
-           [placeholder]="'home.model.placeholder'|translate"
-           [matAutocomplete]="autoModel"
-           [formControl]="form.controls.model">
-  </mat-form-field>
-  <div class="model-select-container">
-    <mat-autocomplete #autoModel="matAutocomplete">
-      <mat-option *ngFor="let model of filteredModels | async"
-                  [value]="model?.name">
-        <span>{{ model?.name }}</span>
+    <mat-select [placeholder]="'home.model.placeholder'|translate" [formControl]="form.controls.model">
+      <mat-option *ngFor="let model of models" [value]="model.key + '-' + model.name">
+        {{model.name}}
       </mat-option>
-    </mat-autocomplete>
-  </div>
+    </mat-select>
+    <mat-error *ngIf="form.controls.model.hasError('required')">{{ 'error.required.model'|translate }}</mat-error>
+  </mat-form-field>
 
+  <button type="submit"
+          mat-raised-button
+          role="button"
+          aria-label="search"
+          color="primary"
+          [disabled]="form.controls.model.hasError('required')">
+    {{ 'cta.search'|translate }}
+  </button>
 </form>

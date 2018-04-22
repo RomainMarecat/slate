@@ -4,7 +4,7 @@ import { ProductSearchComponent } from './product-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatAutocompleteModule, MatButtonModule, MatFormFieldModule, MatIconModule,
-  MatInputModule
+  MatInputModule, MatSelectModule
 } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
@@ -12,6 +12,7 @@ import { MockProductService } from '../mock-product.service';
 import { ProductService } from '../product.service';
 import { MockCategoryService } from '../../category/mock-category.service';
 import { CategoryService } from '../../category/category.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProductSearchComponent', () => {
   let component: ProductSearchComponent;
@@ -26,7 +27,9 @@ describe('ProductSearchComponent', () => {
         MatButtonModule,
         MatIconModule,
         MatInputModule,
+        MatSelectModule,
         MatAutocompleteModule,
+        RouterTestingModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),

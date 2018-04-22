@@ -5,7 +5,12 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 
 const routes: Routes = [
   {
-    path: 'selection/:key/products',
+    path: 'area/:area/products',
+    pathMatch: 'full',
+    component: ProductListComponent
+  },
+  {
+    path: 'selection/:category/products',
     pathMatch: 'full',
     component: ProductListComponent
   },

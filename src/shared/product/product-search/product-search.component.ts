@@ -7,6 +7,7 @@ import { Category } from '../../category/category';
 import { map, startWith } from 'rxjs/operators';
 import { CategoryService } from '../../category/category.service';
 import 'rxjs/add/operator/take';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-search',
@@ -17,31 +18,24 @@ export class ProductSearchComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     'search': new FormControl({value: '', disabled: true}),
-    'brand': new FormControl(''),
-    'model': new FormControl(''),
+    'brand': new FormControl('', [ Validators.required ]),
+    'model': new FormControl('', [ Validators.required ]),
   });
   showSearch = false;
   products: CarProduct[];
   filteredBrands: Observable<Category[]>;
-  filteredModels: Observable<Category[]>;
   brandSelected: Category;
   brands: Category[] = [];
   models: Category[] = [];
 
   constructor(private productService: ProductService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private router: Router) {
     this.filteredBrands = this.form.controls.brand.valueChanges
       .pipe(
         startWith(''),
         map((brand: string) => brand ? this.filterBrands(brand) : this.brands.slice())
       );
-
-    this.filteredModels = this.form.controls.model.valueChanges
-      .pipe(
-        startWith(''),
-        map((model: string) => model ? this.filterModels(model) : this.models.slice())
-      )
-    ;
   }
 
   ngOnInit() {
@@ -56,7 +50,7 @@ export class ProductSearchComponent implements OnInit {
       .subscribe(brands => this.brands = brands);
 
     this.filteredBrands.subscribe((brands: Category[]) => {
-      this.brandSelected = brands[0];
+      this.brandSelected = brands[ 0 ];
       if (brands && brands.length > 0) {
         this.categoryService.filters$.next([ {
           column: 'level',
@@ -65,7 +59,7 @@ export class ProductSearchComponent implements OnInit {
         }, {
           column: 'parent',
           operator: '==',
-          value: brands[0].key
+          value: brands[ 0 ].key
         } ]);
         this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
         this.categoryService.getCategories()
@@ -75,19 +69,11 @@ export class ProductSearchComponent implements OnInit {
           });
       }
     });
-
-    this.filteredModels.subscribe((models: Category[]) => {
-    });
   }
 
   filterBrands(name: string): Category[] {
     return this.brands.filter(brand => brand.name.toLowerCase().indexOf(name.toLowerCase()) >= 0 ||
-          brand.translations.fr.toLowerCase().indexOf(name.toLowerCase()) >= 0);
-  }
-
-  filterModels(name: string): Category[] {
-    return this.models.filter(model => model.name.toLowerCase().indexOf(name.toLowerCase()) >= 0 ||
-          model.translations.fr.toLowerCase().indexOf(name.toLowerCase()) >= 0 );
+      brand.translations.fr.toLowerCase().indexOf(name.toLowerCase()) >= 0);
   }
 
   onActiveSearch(activate: boolean) {
@@ -95,14 +81,8 @@ export class ProductSearchComponent implements OnInit {
   }
 
   onSearch() {
-    this.productService.filters$.next(null);
     if (this.form.valid) {
-      this.productService.filters$.next([ {
-        operator: '==',
-        value: this.form.controls.search.value.toLowerCase(),
-        column: 'name'
-      } ]);
+      this.router.navigate([ '/selection/' + this.form.getRawValue().model + '/products']);
     }
   }
-
 }

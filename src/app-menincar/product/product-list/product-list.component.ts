@@ -12,6 +12,11 @@ import { CarProduct } from '../../../shared/product/car-product';
 import { AreaService } from '../../../shared/map/shared/area.service';
 import { Area } from '../../../shared/map/shared/area';
 import 'rxjs/add/operator/take';
+import { OfferService } from '../../../shared/offer/offer.service';
+import { Category } from '../../../shared/category/category';
+import { CarOffer } from '../../../shared/offer/offer';
+import { CategoryService } from '../../../shared/category/category.service';
+import 'rxjs/add/operator/finally';
 
 @Component({
   selector: 'app-menincar-product-list',
@@ -21,14 +26,18 @@ import 'rxjs/add/operator/take';
 export class ProductListComponent implements OnInit {
   // Products collection of Product interface
   products: Array<CarProduct> = [];
+  offers: Array<CarOffer> = [];
   rowHeight: number;
   headerHeight: number;
   pageLimit: number;
   isLoading: boolean;
   area: Area;
+  category: Category;
 
   constructor(private productService: ProductService,
               private areaService: AreaService,
+              private offerService: OfferService,
+              private categoryService: CategoryService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private title: Title,
@@ -61,45 +70,86 @@ export class ProductListComponent implements OnInit {
       {rel: 'alternate', hreflang: 'en', href: 'https://menincar-384269.firebaseapp.com'}
     ]);
 
-    this.loadProducts();
+    this.loadOffers();
   }
 
   /**
    * Load Products by area
    */
-  loadProducts() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
-      if (value.key) {
-        const key = value.key.substring(0, value.key.indexOf('-'));
+  loadOffers() {
+    this.activatedRoute.params.subscribe((value: { area: string, category: string }) => {
+      console.log(value);
+      if (value.area) {
+        const key = value.area.substring(0, value.area.indexOf('-'));
         this.areaService.getArea(key)
+          .take(1)
           .subscribe((area: Area) => {
             this.area = area;
             if (area) {
-              this.getProducts(area);
+              this.getOffersByRegion(area);
+            }
+          });
+      }
+      if (value.category) {
+        const key = value.category.substring(0, value.category.indexOf('-'));
+        this.categoryService.getCategory(key)
+          .take(1)
+          .subscribe((category: Category) => {
+            this.category = category;
+            if (category) {
+              this.getOffersByModel(category);
             }
           });
       }
     });
   }
 
-  getProducts(area: Area) {
-    this.productService.filters$.next([{
-      column: 'area',
-      operator: '==',
-      value: area.key
-    }]);
-    this.productService.orderBy$.next({
-      column: 'published_at',
-      direction: 'desc'
-    });
-    this.productService.limit$.next(10);
-    this.productService.getProducts()
-      .take(1)
-      .subscribe((products) => {
-        console.log(products);
-        this.products = products;
+  getOffersByModel(model: Category) {
+    this.offerService.filters$.next([
+      {
+        column: 'model',
+        operator: '==',
+        value: model.key
+      }
+    ]);
+    this.offerService.getOffers()
+      .finally(() => {
         this.isLoading = false;
         this.loaderService.hide();
+      })
+      .subscribe((offers: CarOffer[]) => {
+        this.offers = offers;
       });
+  }
+
+  getOffersByRegion(area: Area) {
+    console.log(area);
+    if (area.place_id) {
+      this.offerService.filters$.next([ {
+        column: 'location.region.place_id',
+        operator: '==',
+        value: area.place_id
+      } ]);
+      // Problem with filters on subscribe
+      // this.offerService.orderBy$.next({
+      //   column: 'published_at',
+      //   direction: 'desc'
+      // });
+      this.offerService.limit$.next(10);
+      this.offerService.getOffers()
+        .take(1)
+        .finally(() => {
+          this.isLoading = false;
+          this.loaderService.hide();
+        })
+        .subscribe((offers: CarOffer[]) => {
+          this.offers = offers;
+        }, (err) => {
+          console.error(err);
+        });
+    } else {
+      this.isLoading = false;
+      this.loaderService.hide();
+    }
   }
 }
