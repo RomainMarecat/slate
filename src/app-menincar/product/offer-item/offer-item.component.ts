@@ -33,7 +33,6 @@ export class OfferItemComponent implements OnInit {
   }
 
   @Input('offer') set offer(offer) {
-    console.log('offer', offer);
     this._offer = offer;
     this.getBrand(offer.brand);
     this.getModel(offer.model);

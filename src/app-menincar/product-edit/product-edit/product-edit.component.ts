@@ -226,7 +226,6 @@ export class ProductEditComponent implements OnInit {
 
   onSubmit(event: any) {
     this.isSaving = true;
-    console.log('form value :', this.form.value, this.form.valid);
     Object.entries(this.form.controls).forEach(([ key, value ]) => {
       console.log(key, value.valid, value.errors);
     });
@@ -257,7 +256,6 @@ export class ProductEditComponent implements OnInit {
   getAddress(lat: number, lng: number) {
     this.geocodeService.geocodeLatLng(lat, lng)
       .subscribe((location) => {
-        console.log('location', location);
         if (!location.error) {
           this.form.patchValue({
             location: {
@@ -268,7 +266,6 @@ export class ProductEditComponent implements OnInit {
               }
             }
           });
-          console.log(this.form.getRawValue());
         }
       });
   }

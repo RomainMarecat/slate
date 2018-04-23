@@ -49,6 +49,7 @@ import { CarProductModule } from '../product/car-product.module';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { CategoryService } from '../../shared/category/category.service';
 import { CarProductEditModule } from '../product-edit/car-product-edit.module';
+import { OfferDetailModule } from '../offer-detail/offer-detail.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -149,6 +150,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     HomeModule,
     CarProductModule,
     CarProductEditModule,
+    OfferDetailModule
   ],
   exports: [
     AdsenseModule,
@@ -173,7 +175,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_SCORE, useValue: 'scores'},
     {provide: AreaService, useClass: AreaService, deps: [ AngularFirestore, TABLE_AREA ]},
     {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
-    {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY]},
+    {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY ]},
     {provide: CommentService, useClass: CommentService, deps: [ AngularFirestore, TABLE_COMMENT ]},
     {provide: MediaService, useClass: MediaService, deps: [ AngularFirestore, TABLE_MEDIA ]},
     {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},

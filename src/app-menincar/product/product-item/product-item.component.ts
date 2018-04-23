@@ -22,5 +22,4 @@ export class ProductItemComponent implements OnInit {
       this.product.key + '-' + StringService.slugify(this.product.name)
     ]);
   }
-
 }

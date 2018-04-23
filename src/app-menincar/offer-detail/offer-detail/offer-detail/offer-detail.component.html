@@ -1,0 +1,39 @@
+<div class="wrapper offer-layout">
+  <div *ngIf="offer"
+       angulartics2On="click"
+       angularticsAction="hoveredOverOfferDetail"
+       [angularticsCategory]="'offer.detail'">
+    <mat-card class="m-2"
+              fxLayout="row"
+              fxLayoutAlign="space-around stretch"
+              fxLayout.xs="column"
+              fxLayoutAlign.xs="center center">
+      <mat-card-header class="title">
+        <mat-card-title *ngIf="offer?.user?.username">
+          {{ offer?.user?.username}}
+        </mat-card-title>
+        <mat-card-subtitle fxLayout="row"
+                           fxLayoutAlign="end stretch">
+          {{ brand?.name }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <span class="main-title">
+          {{ offer.description }}
+        </span>
+      </mat-card-content>
+      <div>
+        <div class="score-wrapper px-5"
+             fxLayout="row"
+             fxLayoutAlign="end center"
+             fxLayoutAlign.xs="center center">
+        </div>
+        <app-image class="app-image"
+                   mat-card-image
+                   [key]="offer.images[0]"
+                   [resize]="resizedImage"
+                   *ngIf="offer.images[0]"></app-image>
+      </div>
+    </mat-card>
+  </div>
+</div>
