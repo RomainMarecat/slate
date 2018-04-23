@@ -7,11 +7,12 @@ const routes: Routes = [ {
   path: '',
   redirectTo: '',
   pathMatch: 'full',
-  children: [ {
-    path: '',
-    pathMatch: 'full',
-    component: HomeComponent
-  } ]
+  children: [
+    {
+      path: '',
+      pathMatch: 'full',
+      component: HomeComponent
+    } ]
 },
   {
     path: 'admin',
@@ -20,8 +21,14 @@ const routes: Routes = [ {
     path: 'selection/:key/products',
     loadChildren: './product/car-product.module#CarProductModule'
   }, {
+    path: 'area/:key/products',
+    loadChildren: './product/car-product.module#CarProductModule'
+  }, {
     path: 'product/add/new',
     loadChildren: './product-edit/car-product-edit.module#CarProductEditModule'
+  }, {
+    path: 'offer/:key',
+    loadChildren: './offer-detail/offer-detail.module#OfferDetailModule'
   },
 ];
 

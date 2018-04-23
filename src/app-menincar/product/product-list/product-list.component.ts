@@ -78,7 +78,6 @@ export class ProductListComponent implements OnInit {
    */
   loadOffers() {
     this.activatedRoute.params.subscribe((value: { area: string, category: string }) => {
-      console.log(value);
       if (value.area) {
         const key = value.area.substring(0, value.area.indexOf('-'));
         this.areaService.getArea(key)
@@ -123,7 +122,6 @@ export class ProductListComponent implements OnInit {
   }
 
   getOffersByRegion(area: Area) {
-    console.log(area);
     if (area.place_id) {
       this.offerService.filters$.next([ {
         column: 'location.region.place_id',

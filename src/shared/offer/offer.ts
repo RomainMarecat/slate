@@ -18,6 +18,7 @@ export interface CarOffer {
   model: string;
   product: string;
   partner?: string;
+  description: string;
   negotiable_price: boolean;
   price: number;
   images: string[];
