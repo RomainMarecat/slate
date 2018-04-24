@@ -84,7 +84,24 @@ export class AreaDrawComponent implements OnInit {
       const mouseY = e.offsetY;
       this.paths.forEach((path) => {
         if (context.isPointInPath(path.path2D, mouseX, mouseY)) {
-          this.router.navigate([ '/area/' + path.area.key + '-' + (path.area.name).toLowerCase() + '/products' ]);
+          console.log('click', mouseX, mouseY, path.area);
+          // this.router.navigate([ '/area/' + path.area.key + '-' + (path.area.name).toLowerCase() + '/products' ]);
+        }
+      });
+    });
+
+    canvas.addEventListener('touchend', (e: TouchEvent) => {
+      const touches = e.changedTouches;
+
+      this.paths.forEach((path) => {
+        for (let i = 0; i < touches.length; i++) {
+          console.log(touches[ i ].clientY);
+          if (context.isPointInPath(path.path2D, touches[ i ].clientX, touches[ i ].clientY)) {
+            console.log('touchend', touches[i].clientX, touches[i].clientY, path.area);
+            this.drawHoveredPath(context, path.path2D);
+
+            // this.router.navigate([ '/area/' + path.area.key + '-' + (path.area.name).toLowerCase() + '/products' ]);
+          }
         }
       });
     });
