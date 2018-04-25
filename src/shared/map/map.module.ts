@@ -11,12 +11,14 @@ import { AreaDrawComponent } from './area-draw/area-draw.component';
 import { MatListModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { GeocodeService } from './shared/geocode.service';
+import { NgArrayPipesModule } from 'ngx-pipes';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
     MatListModule,
+    NgArrayPipesModule,
     TranslateModule,
     RouterModule,
   ],

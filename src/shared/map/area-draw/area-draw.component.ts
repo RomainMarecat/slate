@@ -30,7 +30,6 @@ export class AreaDrawComponent implements OnInit {
 
   ngOnInit() {
     this.media.asObservable()
-      .take(1)
       .subscribe((change: MediaChange) => {
         if (change.mqAlias === 'xs') {
           this.containerHeight = window.innerWidth * 0.91;
@@ -51,7 +50,6 @@ export class AreaDrawComponent implements OnInit {
    * Draw all lines with path2D
    */
   paintAreas() {
-    const canvas: any = document.getElementById('map');
     const context: CanvasRenderingContext2D = this.mapRef.nativeElement.getContext('2d');
     this.areas.forEach((area: Area, index: number) => {
       const path2D = new Path2D(area.path);
@@ -64,7 +62,7 @@ export class AreaDrawComponent implements OnInit {
      * The mousemove eventlooks after changing the pointer to the
      * hand and back.
      */
-    canvas.addEventListener('mousemove', (e: MouseEvent) => {
+    this.mapRef.nativeElement.addEventListener('mousemove', (e: MouseEvent) => {
       const mouseX = e.offsetX;
       const mouseY = e.offsetY;
 
@@ -79,15 +77,36 @@ export class AreaDrawComponent implements OnInit {
       });
     });
 
-    canvas.addEventListener('click', (e: MouseEvent) => {
+    this.mapRef.nativeElement.addEventListener('click', (e: MouseEvent) => {
       const mouseX = e.offsetX;
       const mouseY = e.offsetY;
       this.paths.forEach((path) => {
         if (context.isPointInPath(path.path2D, mouseX, mouseY)) {
+          console.log('click', mouseX, mouseY, path.area);
           this.router.navigate([ '/area/' + path.area.key + '-' + (path.area.name).toLowerCase() + '/products' ]);
         }
       });
     });
+
+    // this.mapRef.nativeElement.addEventListener('touchend', (e: TouchEvent) => {
+    //   const touches = e.changedTouches;
+    //   this.paths.forEach((path) => {
+    //     for (let i = 0; i < touches.length; i++) {
+    //       // console.log('touchend', touches[ i ].clientX, touches[ i ].clientY, path.area.name);
+    //
+    //       if (context.isPointInPath(path.path2D, touches[ i ].clientX, touches[ i ].clientY)) {
+    //         console.log('selected touchend', touches[ i ].clientX, touches[ i ].clientY, path.area.name);
+    //
+    //         this.drawHoveredPath(context, path.path2D);
+    //         this.router.navigate([ '/area/' + path.area.key + '-' + (path.area.name).toLowerCase() + '/products' ]);
+    //       }
+    //     }
+    //   });
+    // });
+  }
+
+  isVisibleOnMobile() {
+    return true;
   }
 
   drawHoveredArea(area: Area) {

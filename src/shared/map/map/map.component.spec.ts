@@ -15,6 +15,7 @@ import { AreaDrawComponent } from '../area-draw/area-draw.component';
 import { MatListModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgArrayPipesModule } from 'ngx-pipes';
 
 describe('MapComponent', () => {
   let component: MapComponent;
@@ -26,6 +27,7 @@ describe('MapComponent', () => {
         CommonModule,
         FlexLayoutModule,
         MatListModule,
+        NgArrayPipesModule,
         RouterTestingModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}

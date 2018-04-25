@@ -16,6 +16,9 @@ import { ProductService } from '../../../shared/product/product.service';
 import { Marker } from '../../../shared/map/shared/map';
 import { GeocodeService } from '../../../shared/map/shared/geocode.service';
 import { NgModel } from '@angular/forms';
+import { Media } from '../../../shared/media/media';
+import { UploadTaskSnapshot } from '@firebase/storage-types';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menincar-product-edit',
@@ -46,6 +49,8 @@ export class ProductEditComponent implements OnInit {
   marker: Marker = null;
   isSaving = false;
   _address = 'Paris';
+  imageStorageConfig: any;
+  downloadURL: string;
 
   static getForm(): FormGroup {
     return new FormGroup({
@@ -60,9 +65,7 @@ export class ProductEditComponent implements OnInit {
       description: new FormControl('', [ Validators.required, Validators.max(4000) ]),
       negotiable_price: new FormControl(false),
       price: new FormControl('', [ Validators.required ]),
-      images: new FormArray([
-        new FormControl(null)
-      ]),
+      images: new FormArray([]),
       location: new FormGroup({
         latitude: new FormControl(null, [ Validators.required ]),
         longitude: new FormControl(null, [ Validators.required ]),
@@ -90,7 +93,8 @@ export class ProductEditComponent implements OnInit {
               private rangePipe: RangePipe,
               private translate: TranslateService,
               private geocodeService: GeocodeService,
-              private ref: ChangeDetectorRef) {
+              private ref: ChangeDetectorRef,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -98,7 +102,15 @@ export class ProductEditComponent implements OnInit {
     this.getBrands();
     this.getFuels();
     this.getGearboxs();
+    this.createImageStorageConfig();
     this.mileages = mileages;
+  }
+
+  createImageStorageConfig() {
+    this.imageStorageConfig = {
+      model: '',
+      alt: '',
+    };
   }
 
   getCategories(): Observable<Category[]> {
@@ -227,15 +239,14 @@ export class ProductEditComponent implements OnInit {
   onSubmit(event: any) {
     this.isSaving = true;
     Object.entries(this.form.controls).forEach(([ key, value ]) => {
-      console.log(key, value.valid, value.errors);
+      console.log(key, 'valid: ', value.valid, 'value: ', value.value, 'errors: ', value.errors);
     });
 
-    const offer: CarOffer = this.form.value as CarOffer;
-    offer.brand = this.form.value.brand.key;
-    offer.model = this.form.value.model.key;
-    offer.product = this.form.value.product.key;
-
     if (this.form.valid) {
+      const offer: CarOffer = this.form.value as CarOffer;
+      offer.brand = this.form.value.brand.key;
+      offer.model = this.form.value.model.key;
+      offer.product = this.form.value.product.key;
       this.offerService.createOffer(offer)
         .then((doc) => {
           this.translate.get('product-edit.message.offer.saved')
@@ -243,6 +254,7 @@ export class ProductEditComponent implements OnInit {
               this.alertService.toast(translated);
               this.reset();
               this.isSaving = false;
+              this.router.navigate([ '/' ]);
             });
         }, (err) => {
           this.alertService.toast(err);
@@ -268,6 +280,34 @@ export class ProductEditComponent implements OnInit {
           });
         }
       });
+  }
+
+  /**
+   * image change function of emitter
+   * @param media
+   */
+  onImageChange(media: Media) {
+    const control = <FormArray>this.form.controls.images;
+    // add new formControl
+    control.push(this.createImage(media));
+    this.alertService.toast('media.saved');
+  }
+
+  /**
+   * Form Array pusher
+   * @param {Media} media
+   * @returns {FormControl}
+   */
+  createImage(media: Media): FormControl {
+    return new FormControl(media.key);
+  }
+
+  /**
+   * On change download url
+   * @param {UploadTaskSnapshot} task
+   */
+  onImageRefChanged(task: UploadTaskSnapshot) {
+    this.downloadURL = task.downloadURL;
   }
 
   reset() {

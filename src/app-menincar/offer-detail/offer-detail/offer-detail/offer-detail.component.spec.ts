@@ -16,6 +16,8 @@ import { MockCategoryService } from '../../../../shared/category/mock-category.s
 import { DeviceService } from '../../../../shared/device/device.service';
 import { OfferService } from '../../../../shared/offer/offer.service';
 import { MockOfferService } from '../../../../shared/offer/mock-offer.service';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 describe('OfferDetailComponent', () => {
   let component: OfferDetailComponent;
@@ -24,6 +26,8 @@ describe('OfferDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        AngularFirestoreModule,
+        AngularFireStorageModule,
         CommonModule,
         HttpClientTestingModule,
         RouterTestingModule,

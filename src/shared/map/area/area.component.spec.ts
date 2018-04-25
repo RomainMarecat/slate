@@ -9,6 +9,7 @@ import { AreaListComponent } from '../area-list/area-list.component';
 import { AreaDrawComponent } from '../area-draw/area-draw.component';
 import { MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgArrayPipesModule } from 'ngx-pipes';
 
 describe('AreaComponent', () => {
   let component: AreaComponent;
@@ -19,6 +20,7 @@ describe('AreaComponent', () => {
       imports: [
         CommonModule,
         MatListModule,
+        NgArrayPipesModule,
         FlexLayoutModule,
         RouterTestingModule,
       ],

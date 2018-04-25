@@ -64,7 +64,6 @@ export class ProductListComponent implements OnInit {
       });
 
     this.meta.addTags([
-      {property: 'fb:app_id', content: environment.facebook_app_id},
       {rel: 'canonical', href: 'https://menincar-384269.firebaseapp.com'},
       {rel: 'alternate', hreflang: 'x-default', href: 'https://menincar-384269.firebaseapp.com'},
       {rel: 'alternate', hreflang: 'en', href: 'https://menincar-384269.firebaseapp.com'}
@@ -117,7 +116,10 @@ export class ProductListComponent implements OnInit {
         this.loaderService.hide();
       })
       .subscribe((offers: CarOffer[]) => {
+        console.log('offers', offers);
         this.offers = offers;
+        this.isLoading = false;
+        this.loaderService.hide();
       });
   }
 
@@ -142,6 +144,8 @@ export class ProductListComponent implements OnInit {
         })
         .subscribe((offers: CarOffer[]) => {
           this.offers = offers;
+          this.isLoading = false;
+          this.loaderService.hide();
         }, (err) => {
           console.error(err);
         });
