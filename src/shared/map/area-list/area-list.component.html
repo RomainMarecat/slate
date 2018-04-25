@@ -5,7 +5,7 @@
                   fxLayoutAlign="center end"
                   fxLayoutAlign.xs="center start">
       <a mat-list-item
-         *ngFor="let area of areas"
+         *ngFor="let area of areas | orderBy: 'name'"
          [routerLink]="getLink(area)"
          (mouseover)="onHoverArea(area)">
         {{ area.name }}

@@ -37,3 +37,23 @@
     </mat-card>
   </div>
 </div>
+
+
+<ul>
+  <li>{{offer?.fuel}}</li>
+  <li>{{offer?.partner}}</li>
+  <li>{{offer?.price}} {{ 'euro'|translate }}</li>
+  <li>{{brand?.name}}</li>
+  <li>{{model?.name}}</li>
+  <li>{{offer?.description}}</li>
+  <li>{{offer?.gearbox}}</li>
+  <li>{{offer?.location?.locality?.address}}</li>
+  <li>{{offer?.location?.department?.address}}</li>
+  <li>{{offer?.location?.region?.address}}</li>
+  <li>{{offer?.mileage}} {{ 'mileages'|translate }}</li>
+  <li>{{offer?.regDate | date: 'medium'}}</li>
+  <li>{{offer?.user?.email }}</li>
+  <li>{{offer?.user?.phone }}</li>
+  <li>{{offer?.user?.username }}</li>
+  <li>prix négociable : {{offer?.negociable_price ? 'yes' : 'no' }}</li>
+</ul>

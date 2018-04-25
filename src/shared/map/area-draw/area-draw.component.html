@@ -1,4 +1,7 @@
-<div class="map-container" fxLayout="row" fxLayoutAlign="center stretch" [ngStyle]="{'height': getContainerHeight()}">
-  <canvas id="map" #map [attr.width]="width" [attr.height]="height" fxFlex.xs="100">
+<div class="map-container"
+     [ngStyle]="{'height': getContainerHeight(), 'width': '100%'}"
+     fxShow
+     [fxHide.xs]="isVisibleOnMobile()">
+  <canvas id="map" #map [attr.width]="width" [attr.height]="height" style="width: 100%;">
   </canvas>
 </div>

@@ -20,6 +20,9 @@ import { AgmCoreModule } from '@agm/core';
 import { environment } from '../../../environments/environment.menincar';
 import { GeocodeService } from '../../../shared/map/shared/geocode.service';
 import { MockGeocodeService } from '../../../shared/map/shared/mock-geocode.service';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireModule } from 'angularfire2';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
@@ -31,6 +34,9 @@ describe('ProductEditComponent', () => {
         AgmCoreModule.forRoot({
           apiKey: environment.googleMapApiKey
         }),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AngularFireStorageModule,
         CommonModule,
         HttpClientTestingModule,
         RouterTestingModule,

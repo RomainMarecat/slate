@@ -4,6 +4,7 @@ import { AreaListComponent } from './area-list.component';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgArrayPipesModule } from 'ngx-pipes';
 
 describe('AreaListComponent', () => {
   let component: AreaListComponent;
@@ -14,6 +15,7 @@ describe('AreaListComponent', () => {
       imports: [
         CommonModule,
         MatListModule,
+        NgArrayPipesModule,
         RouterTestingModule
       ],
       declarations: [ AreaListComponent ]

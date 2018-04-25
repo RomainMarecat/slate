@@ -14,6 +14,7 @@ export class StorageUploadComponent implements OnInit {
 
   @Input() folder: string;
   @Input() metadata: any;
+  @Input() displayDownloadUrl: boolean;
 
   @Output() imageRefChanged: EventEmitter<any> = new EventEmitter<any>();
   @Output() imageChanged: EventEmitter<Media> = new EventEmitter<Media>();
@@ -21,6 +22,7 @@ export class StorageUploadComponent implements OnInit {
   downloadURL: string;
 
   constructor(private storage: AngularFireStorage, private mediaService: MediaService) {
+    this.displayDownloadUrl = true;
   }
 
   ngOnInit() {

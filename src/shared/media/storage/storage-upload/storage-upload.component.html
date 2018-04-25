@@ -2,4 +2,4 @@
 <mat-progress-bar [mode]="'determinate'"
                   [value]="uploadPercent"
                   *ngIf="uploadPercent"></mat-progress-bar>
-<a [href]="downloadURL" *ngIf="downloadURL">{{ downloadURL }}</a>
+<a [href]="downloadURL" *ngIf="downloadURL && displayDownloadUrl">{{ downloadURL }}</a>
