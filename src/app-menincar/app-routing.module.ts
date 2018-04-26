@@ -25,7 +25,7 @@ const routes: Routes = [ {
     loadChildren: './product/car-product.module#CarProductModule'
   }, {
     path: 'product/add/new',
-    loadChildren: './product-edit/car-product-edit.module#CarProductEditModule'
+    loadChildren: './offer-edit/car-offer-edit.module#CarOfferEditModule'
   }, {
     path: 'offer/:key',
     loadChildren: './offer-detail/offer-detail.module#OfferDetailModule'

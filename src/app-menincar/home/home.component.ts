@@ -31,8 +31,4 @@ export class HomeComponent implements OnInit {
       });
     this.menuService.nextTitle('');
   }
-
-  addProduct() {
-    this.router.navigate(['/product/add/new']);
-  }
 }

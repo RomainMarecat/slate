@@ -18,14 +18,16 @@ import { GeocodeService } from '../../../shared/map/shared/geocode.service';
 import { NgModel } from '@angular/forms';
 import { Media } from '../../../shared/media/media';
 import { UploadTaskSnapshot } from '@firebase/storage-types';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
+import { DeviceService } from '../../../shared/device/device.service';
 
 @Component({
-  selector: 'app-menincar-product-edit',
-  templateUrl: './product-edit.component.html',
-  styleUrls: [ './product-edit.component.scss' ]
+  selector: 'app-menincar-offer-edit',
+  templateUrl: './offer-edit.component.html',
+  styleUrls: [ './offer-edit.component.scss' ]
 })
-export class ProductEditComponent implements OnInit {
+export class OfferEditComponent implements OnInit {
 
   form: FormGroup;
 
@@ -85,11 +87,15 @@ export class ProductEditComponent implements OnInit {
     });
   }
 
-  constructor(public location: Location,
-              private alertService: AlertService,
-              private categoryService: CategoryService,
-              private offerService: OfferService,
+  constructor(private meta: Meta,
+              private title: Title,
+              private activatedRoute: ActivatedRoute,
               private productService: ProductService,
+              private offerService: OfferService,
+              private deviceService: DeviceService,
+              private categoryService: CategoryService,
+              public location: Location,
+              private alertService: AlertService,
               private rangePipe: RangePipe,
               private translate: TranslateService,
               private geocodeService: GeocodeService,
@@ -98,12 +104,24 @@ export class ProductEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.form = ProductEditComponent.getForm();
+    this.form = OfferEditComponent.getForm();
     this.getBrands();
     this.getFuels();
     this.getGearboxs();
     this.createImageStorageConfig();
+    this.getOffer();
     this.mileages = mileages;
+  }
+
+  getOffer() {
+    this.activatedRoute.params.subscribe((value: { key: string }) => {
+      if (value.key) {
+        this.offerService.getOffer(value.key)
+          .subscribe((offer: CarOffer) => {
+            this.form.patchValue(offer);
+          });
+      }
+    });
   }
 
   createImageStorageConfig() {
@@ -208,7 +226,7 @@ export class ProductEditComponent implements OnInit {
     this.marker = {
       lat: event.coords.lat,
       lng: event.coords.lng,
-      label: 'product-edit.label.meeting',
+      label: 'offer-edit.label.meeting',
       draggable: true
     };
     this.getAddress(this.marker.lat, this.marker.lng);
@@ -227,7 +245,7 @@ export class ProductEditComponent implements OnInit {
           this.marker = {
             lat: location.lat,
             lng: location.lng,
-            label: 'product-edit.label.meeting',
+            label: 'offer-edit.label.meeting',
             draggable: true
           };
           this.ref.detectChanges();
@@ -249,12 +267,12 @@ export class ProductEditComponent implements OnInit {
       offer.product = this.form.value.product.key;
       this.offerService.createOffer(offer)
         .then((doc) => {
-          this.translate.get('product-edit.message.offer.saved')
+          this.translate.get('offer-edit.message.offer.saved')
             .subscribe((translated) => {
               this.alertService.toast(translated);
               this.reset();
               this.isSaving = false;
-              this.router.navigate([ '/' ]);
+              this.router.navigate([ `/offer/${doc.id}/confirmation` ]);
             });
         }, (err) => {
           this.alertService.toast(err);
@@ -290,7 +308,6 @@ export class ProductEditComponent implements OnInit {
     const control = <FormArray>this.form.controls.images;
     // add new formControl
     control.push(this.createImage(media));
-    this.alertService.toast('media.saved');
   }
 
   /**

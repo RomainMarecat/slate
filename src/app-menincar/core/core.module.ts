@@ -48,7 +48,7 @@ import { AreaService } from '../../shared/map/shared/area.service';
 import { CarProductModule } from '../product/car-product.module';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { CategoryService } from '../../shared/category/category.service';
-import { CarProductEditModule } from '../product-edit/car-product-edit.module';
+import { CarOfferEditModule } from '../offer-edit/car-offer-edit.module';
 import { OfferDetailModule } from '../offer-detail/offer-detail.module';
 
 export const production = new InjectionToken<string>('production');
@@ -149,7 +149,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     }),
     HomeModule,
     CarProductModule,
-    CarProductEditModule,
+    CarOfferEditModule,
     OfferDetailModule
   ],
   exports: [

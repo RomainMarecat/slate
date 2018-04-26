@@ -1,0 +1,32 @@
+.upload-wrapper {
+
+  position: relative;
+  float: left;
+  height: 152px;
+  width: 170px;
+  background: #f2f2f2;
+  border: 1px dashed #ccc;
+  padding: 0;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+
+  input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+  }
+
+  mat-icon {
+    font-size: 76px;
+    width: inherit;
+    height: inherit;
+    line-height: 152px;
+  }
+}

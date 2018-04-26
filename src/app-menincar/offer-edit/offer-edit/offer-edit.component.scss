@@ -2,7 +2,7 @@
 @import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
 @import '../../../scss/base/hockey/theme.scss';
 
-.mat-form-field, .agm-map {
+ .mat-card {
   width: 500px;
 
   @include media-breakpoint-up(xs) {
@@ -20,6 +20,10 @@
   @include media-breakpoint-up(xl) {
     width: 700px;
   }
+}
+
+.mat-form-field, .agm-map {
+  width: 100%;
 }
 
 .button-wrapper {

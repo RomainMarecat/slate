@@ -25,19 +25,14 @@
                fxLayout="row"
                fxLayoutAlign="start wrap"
                fxLayoutGap="20px">
-            <button
-              type="button"
+            <a [routerLink]="'/offer/add/new'"
               mat-raised-button
               color="primary"
-              class="button-add-product"
-              (click)="addProduct()">
+              class="button-add-product">
               <mat-icon>add</mat-icon>
               <span>{{ 'product.add.button.title'|translate }}</span>
-            </button>
-
-
+            </a>
           </div>
-
 
           <app-product-search></app-product-search>
         </div>

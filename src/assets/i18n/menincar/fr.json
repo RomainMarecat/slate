@@ -14,7 +14,12 @@
     "cancel": "Annuler",
     "save": "Enregistrer",
     "search": "Rechercher",
-    "show": "Voir"
+    "show": "Voir",
+    "home": "Accueil",
+    "update": "mettre à jour",
+    "edit": "éditer",
+    "back": "retour",
+    "show_my_offer": "Voir mon annonce"
   },
   "home": {
     "main": {
@@ -38,7 +43,16 @@
       }
     }
   },
-  "product-edit": {
+  "offer-edit": {
+    "offer": {
+      "title": "mon annonce"
+    },
+    "location": {
+      "title": "localisation"
+    },
+    "user": {
+      "title": "mes informations"
+    },
     "title": "Déposer une annonce",
     "message": {
       "offer": {
@@ -81,7 +95,7 @@
       }
     },
     "offer": {
-      "empty": "Aucune offre n'est disponible pour ce modèle"
+      "empty": "Aucune annonce n'est disponible pour ce modèle"
     },
     "invalid": {
       "price": "Le prix contient des erreurs",
@@ -197,9 +211,20 @@
       "description": "{{value}} - Men In Car"
     }
   },
+  "offer-confirmation": {
+    "saved": {
+      "success": "annonce sauvegardée"
+    }
+  },
   "euro": "€",
   "mileage": "kilomètre",
   "mileages": "kilomètres",
   "yes": "oui",
-  "no": "non"
+  "no": "non",
+  "media": {
+    "saved": "Photo téléchargée",
+    "upload": {
+      "title": "photos"
+    }
+  }
 }
