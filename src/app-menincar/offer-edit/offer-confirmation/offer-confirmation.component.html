@@ -1,6 +1,41 @@
-<h1>{{ 'offer.saved.success'|translate }}</h1>
+<div class="main-title-wrapper"
+     fxLayout="row"
+     fxLayoutAlign="center center"
+     fxLayoutGap="20px">
+  <h1 class="text-capitalize">
+    {{ 'offer-confirmation.saved.success'|translate }}
+    <mat-icon>check_circle</mat-icon>
+  </h1>
+</div>
+<div class="body-wrapper"
+     fxLayout="row"
+     fxLayoutAlign="center center"
+     fxLayoutGap="20px">
+  <a [routerLink]="'/offer/' + offer?.key"
+     mat-raised-button
+     color="primary"
+     class="text-capitalize">
+    <mat-icon>remove_red_eye</mat-icon>
+    {{ 'cta.show_my_offer'|translate }}
+  </a>
+</div>
 
-<button mat-raised-button
-        color="primary">
-  {{ 'cta.home'|translate }}
-</button>
+<div class="actions-wrapper"
+     fxLayout="row"
+     fxLayoutAlign="center center"
+     fxLayoutGap="20px">
+  <a [routerLink]="'/'"
+     mat-raised-button
+     color="primary"
+     class="text-capitalize">
+    <mat-icon>home</mat-icon>
+    {{ 'cta.home'|translate }}
+  </a>
+  <a [routerLink]="'/offer/' + offer?.key + '/edit'"
+     mat-raised-button
+     color="primary"
+     class="text-capitalize">
+    <mat-icon>mode_edit</mat-icon>
+    {{ 'cta.update'|translate }}
+  </a>
+</div>

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductEditComponent } from './offer-edit.component';
+import { OfferEditComponent } from './offer-edit.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,9 +24,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireModule } from 'angularfire2';
 
-describe('ProductEditComponent', () => {
-  let component: ProductEditComponent;
-  let fixture: ComponentFixture<ProductEditComponent>;
+describe('OfferEditComponent', () => {
+  let component: OfferEditComponent;
+  let fixture: ComponentFixture<OfferEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -46,7 +46,7 @@ describe('ProductEditComponent', () => {
         }),
         SharedModule
       ],
-      declarations: [ ProductEditComponent ],
+      declarations: [ OfferEditComponent ],
       providers: [
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: OfferService, useClass: MockOfferService},
@@ -60,7 +60,7 @@ describe('ProductEditComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductEditComponent);
+    fixture = TestBed.createComponent(OfferEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

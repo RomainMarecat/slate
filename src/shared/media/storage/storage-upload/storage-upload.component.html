@@ -1,4 +1,7 @@
-<input matInput type="file" (change)="uploadFile($event)"/>
+<div class="upload-wrapper">
+  <input type="file" (change)="uploadFile($event)"/>
+  <mat-icon>photo_camera</mat-icon>
+</div>
 <mat-progress-bar [mode]="'determinate'"
                   [value]="uploadPercent"
                   *ngIf="uploadPercent"></mat-progress-bar>

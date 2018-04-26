@@ -18,7 +18,9 @@ import { GeocodeService } from '../../../shared/map/shared/geocode.service';
 import { NgModel } from '@angular/forms';
 import { Media } from '../../../shared/media/media';
 import { UploadTaskSnapshot } from '@firebase/storage-types';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
+import { DeviceService } from '../../../shared/device/device.service';
 
 @Component({
   selector: 'app-menincar-offer-edit',
@@ -85,11 +87,15 @@ export class OfferEditComponent implements OnInit {
     });
   }
 
-  constructor(public location: Location,
-              private alertService: AlertService,
-              private categoryService: CategoryService,
-              private offerService: OfferService,
+  constructor(private meta: Meta,
+              private title: Title,
+              private activatedRoute: ActivatedRoute,
               private productService: ProductService,
+              private offerService: OfferService,
+              private deviceService: DeviceService,
+              private categoryService: CategoryService,
+              public location: Location,
+              private alertService: AlertService,
               private rangePipe: RangePipe,
               private translate: TranslateService,
               private geocodeService: GeocodeService,
@@ -103,7 +109,19 @@ export class OfferEditComponent implements OnInit {
     this.getFuels();
     this.getGearboxs();
     this.createImageStorageConfig();
+    this.getOffer();
     this.mileages = mileages;
+  }
+
+  getOffer() {
+    this.activatedRoute.params.subscribe((value: { key: string }) => {
+      if (value.key) {
+        this.offerService.getOffer(value.key)
+          .subscribe((offer: CarOffer) => {
+            this.form.patchValue(offer);
+          });
+      }
+    });
   }
 
   createImageStorageConfig() {
@@ -254,7 +272,7 @@ export class OfferEditComponent implements OnInit {
               this.alertService.toast(translated);
               this.reset();
               this.isSaving = false;
-              this.router.navigate([ '/' ]);
+              this.router.navigate([ `/offer/${doc.id}/confirmation` ]);
             });
         }, (err) => {
           this.alertService.toast(err);

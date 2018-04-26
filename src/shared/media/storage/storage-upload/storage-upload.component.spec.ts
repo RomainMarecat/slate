@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StorageUploadComponent } from './storage-upload.component';
-import { MatProgressBarModule } from '@angular/material';
+import { MatIconModule, MatInputModule, MatProgressBarModule } from '@angular/material';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { CommonModule } from '@angular/common';
 import { AngularFireModule } from 'angularfire2';
@@ -23,7 +23,9 @@ describe('StorageUploadComponent', () => {
         AngularFirestoreModule,
         AngularFireStorageModule,
         HttpClientTestingModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        MatInputModule,
+        MatIconModule,
       ],
       declarations: [ StorageUploadComponent ],
       providers: [
