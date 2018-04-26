@@ -75,6 +75,7 @@ export class StorageUploadComponent implements OnInit {
       .then((doc: DocumentReference) => {
         media.key = doc.id;
         this.imageChanged.emit(media);
+        this.uploadPercent = null;
       }, (err) => {
         console.error('onMediaChange:addMedia:err', err);
       });

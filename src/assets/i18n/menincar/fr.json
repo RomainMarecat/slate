@@ -222,6 +222,7 @@
   "yes": "oui",
   "no": "non",
   "media": {
+    "saved": "Photo téléchargée",
     "upload": {
       "title": "photos"
     }

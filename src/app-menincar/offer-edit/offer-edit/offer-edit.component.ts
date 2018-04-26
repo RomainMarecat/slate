@@ -308,7 +308,6 @@ export class OfferEditComponent implements OnInit {
     const control = <FormArray>this.form.controls.images;
     // add new formControl
     control.push(this.createImage(media));
-    this.alertService.toast('media.saved');
   }
 
   /**
