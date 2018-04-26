@@ -201,5 +201,10 @@
   "mileage": "kilomètre",
   "mileages": "kilomètres",
   "yes": "oui",
-  "no": "non"
+  "no": "non",
+  "media": {
+    "upload": {
+      "title": "photos"
+    }
+  }
 }

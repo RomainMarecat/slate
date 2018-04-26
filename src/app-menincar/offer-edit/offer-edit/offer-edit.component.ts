@@ -21,11 +21,11 @@ import { UploadTaskSnapshot } from '@firebase/storage-types';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-menincar-product-edit',
-  templateUrl: './product-edit.component.html',
-  styleUrls: [ './product-edit.component.scss' ]
+  selector: 'app-menincar-offer-edit',
+  templateUrl: './offer-edit.component.html',
+  styleUrls: [ './offer-edit.component.scss' ]
 })
-export class ProductEditComponent implements OnInit {
+export class OfferEditComponent implements OnInit {
 
   form: FormGroup;
 
@@ -98,7 +98,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.form = ProductEditComponent.getForm();
+    this.form = OfferEditComponent.getForm();
     this.getBrands();
     this.getFuels();
     this.getGearboxs();
@@ -208,7 +208,7 @@ export class ProductEditComponent implements OnInit {
     this.marker = {
       lat: event.coords.lat,
       lng: event.coords.lng,
-      label: 'product-edit.label.meeting',
+      label: 'offer-edit.label.meeting',
       draggable: true
     };
     this.getAddress(this.marker.lat, this.marker.lng);
@@ -227,7 +227,7 @@ export class ProductEditComponent implements OnInit {
           this.marker = {
             lat: location.lat,
             lng: location.lng,
-            label: 'product-edit.label.meeting',
+            label: 'offer-edit.label.meeting',
             draggable: true
           };
           this.ref.detectChanges();
@@ -249,7 +249,7 @@ export class ProductEditComponent implements OnInit {
       offer.product = this.form.value.product.key;
       this.offerService.createOffer(offer)
         .then((doc) => {
-          this.translate.get('product-edit.message.offer.saved')
+          this.translate.get('offer-edit.message.offer.saved')
             .subscribe((translated) => {
               this.alertService.toast(translated);
               this.reset();

@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ProductEditRoutingModule } from './product-edit-routing.module';
-import { ProductEditComponent } from './product-edit/product-edit.component';
+import { OfferEditRoutingModule } from './offer-edit-routing.module';
+import { OfferEditComponent } from './offer-edit/offer-edit.component';
 import { SharedModule } from '../../shared/shared.module';
 import { NgArrayPipesModule, RangePipe } from 'ngx-pipes';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../../environments/environment.menincar';
+import { OfferConfirmationComponent } from './offer-confirmation/offer-confirmation.component';
 
 @NgModule({
   imports: [
@@ -16,9 +17,9 @@ import { environment } from '../../environments/environment.menincar';
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapApiKey
     }),
-    ProductEditRoutingModule
+    OfferEditRoutingModule
   ],
-  declarations: [ProductEditComponent],
+  declarations: [OfferEditComponent, OfferConfirmationComponent],
   providers: [RangePipe]
 })
-export class CarProductEditModule { }
+export class CarOfferEditModule { }

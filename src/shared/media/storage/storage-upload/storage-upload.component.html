@@ -1,4 +1,4 @@
-<input type="file" (change)="uploadFile($event)"/>
+<input matInput type="file" (change)="uploadFile($event)"/>
 <mat-progress-bar [mode]="'determinate'"
                   [value]="uploadPercent"
                   *ngIf="uploadPercent"></mat-progress-bar>
