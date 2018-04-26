@@ -25,7 +25,7 @@ describe('StorageUploadComponent', () => {
         HttpClientTestingModule,
         MatProgressBarModule,
         MatInputModule,
-        MatIconModule,
+        MatIconModule
       ],
       declarations: [ StorageUploadComponent ],
       providers: [

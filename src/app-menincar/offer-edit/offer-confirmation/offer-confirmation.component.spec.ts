@@ -24,6 +24,7 @@ import { OfferService } from '../../../shared/offer/offer.service';
 import { GeocodeService } from '../../../shared/map/shared/geocode.service';
 import { MockCategoryService } from '../../../shared/category/mock-category.service';
 import { SharedModule } from '../../../shared/shared.module';
+import { DeviceService } from '../../../shared/device/device.service';
 
 describe('OfferConfirmationComponent', () => {
   let component: OfferConfirmationComponent;
@@ -49,6 +50,7 @@ describe('OfferConfirmationComponent', () => {
       ],
       declarations: [ OfferConfirmationComponent ],
       providers: [
+        DeviceService,
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: OfferService, useClass: MockOfferService},
         {provide: ProductService, useClass: MockProductService},
@@ -57,7 +59,7 @@ describe('OfferConfirmationComponent', () => {
         RangePipe
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

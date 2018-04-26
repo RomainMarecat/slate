@@ -23,6 +23,7 @@ import { MockGeocodeService } from '../../../shared/map/shared/mock-geocode.serv
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireModule } from 'angularfire2';
+import { DeviceService } from '../../../shared/device/device.service';
 
 describe('OfferEditComponent', () => {
   let component: OfferEditComponent;
@@ -48,6 +49,7 @@ describe('OfferEditComponent', () => {
       ],
       declarations: [ OfferEditComponent ],
       providers: [
+        DeviceService,
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: OfferService, useClass: MockOfferService},
         {provide: ProductService, useClass: MockProductService},
