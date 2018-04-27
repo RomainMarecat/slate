@@ -11,6 +11,8 @@ import { environment } from '../../../../environments/environment.menincar';
 import { MockMediaService } from '../../mock-media.service';
 import { MediaService } from '../../media.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { AlertService } from '../../../popup/alert.service';
+import { MockAlertService } from '../../../popup/mock-alert.service';
 
 describe('StorageUploadComponent', () => {
   let component: StorageUploadComponent;
@@ -32,7 +34,8 @@ describe('StorageUploadComponent', () => {
         }),
       ],
       providers: [
-        {provide: MediaService, useClass: MockMediaService}
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: AlertService, useClass: MockAlertService},
       ],
       declarations: [ StorageUploadComponent ]
     })
