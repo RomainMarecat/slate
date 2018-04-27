@@ -66,6 +66,11 @@ export class StorageUploadComponent implements OnInit {
     });
   }
 
+  deleteImage() {
+    this.downloadURL = null;
+    // + emit delete media on form
+  }
+
   /**
    * Propagate new media to parent
    * @param {Media} media

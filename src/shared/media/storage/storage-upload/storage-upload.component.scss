@@ -23,10 +23,27 @@
     cursor: pointer;
   }
 
-  mat-icon {
+  .close-button {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    mat-icon {
+      font-size: 24px;
+    }
+  }
+
+  .upload-icon {
     font-size: 76px;
     width: inherit;
     height: inherit;
     line-height: 152px;
+  }
+
+  img {
+    vertical-align: middle;
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    border: 0;
   }
 }

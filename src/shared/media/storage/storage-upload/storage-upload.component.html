@@ -1,8 +1,18 @@
 <div class="upload-wrapper">
-  <input type="file" (change)="uploadFile($event)"/>
-  <mat-icon>photo_camera</mat-icon>
+  <input type="file" (change)="uploadFile($event)" *ngIf="!downloadURL">
+  <mat-icon class="upload-icon" *ngIf="!downloadURL">photo_camera</mat-icon>
+  <mat-progress-bar [mode]="'determinate'"
+                    [value]="uploadPercent"
+                    *ngIf="uploadPercent"></mat-progress-bar>
+  <img [src]="downloadURL" *ngIf="downloadURL && (uploadPercent === 100 || uploadPercent === null)">
+  <button type="button"
+          class="close-button"
+          mat-mini-fab
+          [attr.aria-label]="'cta.delete'|translate"
+          (click)="deleteImage()"
+          *ngIf="downloadURL">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>
-<mat-progress-bar [mode]="'determinate'"
-                  [value]="uploadPercent"
-                  *ngIf="uploadPercent"></mat-progress-bar>
+
 <a [href]="downloadURL" *ngIf="downloadURL && displayDownloadUrl">{{ downloadURL }}</a>
