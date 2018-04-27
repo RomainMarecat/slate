@@ -4,34 +4,62 @@
           [angularticsCategory]="'offer.item'"
           (click)="offerDetail($event)"
           *ngIf="offer">
-  <mat-card-header class="mat-card-header"
-                   (click)="offerDetail($event)">
-    <mat-card-title class="mat-card-title"
-                    angulartics2On="click"
-                    angularticsAction="clickedOnTitleShowOffer"
-                    [angularticsCategory]="'offer.detail'"
-                    fxLayout="row"
-                    fxLayoutAlign="space-around center"
-                    fxLayoutGap="20px">
-      <h1 class="mat-card-name">
-        <span class="text-uppercase">{{ brand?.name }}</span> <span>{{ model?.name }}</span>
-      </h1>
-      <h2>
-        {{ offer?.fuel }}
-      </h2>
-    </mat-card-title>
-    <mat-card-subtitle>
-      <h2>
+
+  <div fxLayout="row"
+       fxLayoutAlign="start stretch"
+       fxLayoutGap="50px">
+
+    <div class="image-wrapper" fxFlex="20">
+      <app-image class="app-image"
+                 [classes]="'img-thumbnail'"
+                 [key]="offer?.images[0]"
+                 [resize]="{height: 200}"
+                 (click)="offerDetail($event)"
+                 *ngIf="offer && offer.images && offer?.images[0]">
+      </app-image>
+    </div>
+    <mat-card-header class="mat-card-header"
+                     (click)="offerDetail($event)"
+                     fxFlex="20">
+      <mat-card-title class="mat-card-title"
+                      angulartics2On="click"
+                      angularticsAction="clickedOnTitleShowOffer"
+                      [angularticsCategory]="'offer.detail'"
+                      fxLayout="column"
+                      fxLayoutAlign="center start">
+        <h1 class="mat-card-name">
+          <span class="text-uppercase">{{ brand?.name }}</span> <span>{{ model?.name }}</span>
+        </h1>
+        <span class="offer-location">{{offer?.location?.locality?.address}}</span>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <h2 class="offer-price">{{ offer?.price }} €</h2>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <div class="content-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="space-around stretch"
+         fxFlex="60">
+
+      <mat-card-content fxLayout="column"
+                        fxLayoutAlign="center start"
+                        fxLayoutGap="20px">
         <span>{{ offer?.mileage }} km</span>
-        {{ offer?.price }} €
-      </h2>
-    </mat-card-subtitle>
-  </mat-card-header>
-  <app-image class="app-image"
-             mat-card-image
-             [key]="offer?.images[0]"
-             [resize]="{height: 200}"
-             (click)="offerDetail($event)"
-             *ngIf="offer && offer.images && offer?.images[0]">
-  </app-image>
+        <span>{{ offer?.fuel }}</span>
+        <span>{{ offer?.regDate | date: 'y' }}</span>
+      </mat-card-content>
+      <mat-card-actions fxLayout="column"
+                        fxLayoutAlign="center center"
+                        fxLayoutGap="50px">
+        <button type="button"
+                class="button-like"
+                mat-icon-button
+                color="accent">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <span class="offer-published">{{ offer?.published_at |date:'medium' }}</span>
+      </mat-card-actions>
+    </div>
+  </div>
+
 </mat-card>

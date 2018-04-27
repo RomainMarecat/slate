@@ -148,16 +148,25 @@
 
           <div class="mat-form-field my-4">
             <h3 class="text-capitalize">{{ 'media.upload.title'|translate }} : </h3>
-
-            <app-storage-upload [folder]="'products'"
-                                [metadata]="imageStorageConfig"
-                                [displayDownloadUrl]="false"
-                                (imageChanged)="onImageChange($event)"
-                                (imageRefChanged)="onImageRefChanged($event)">
-            </app-storage-upload>
-            <app-storage-detail [downloadURL]="downloadURL"
-                                [height]="250"
-            ></app-storage-detail>
+            <div class="upload-wrapper"
+                 fxLayout="row"
+                 fxLayoutAlign="start wrap"
+                 fxLayoutGap="20px">
+              <app-storage-upload *ngFor="let image of form.controls.images.value"
+                                  [folder]="'products'"
+                                  [metadata]="imageStorageConfig"
+                                  [displayDownloadUrl]="false"
+                                  (imageChanged)="onImageChange($event)"
+                                  (imageRefChanged)="onImageRefChanged($event)">
+              </app-storage-upload>
+              <app-storage-upload
+                [folder]="'offers'"
+                [metadata]="imageStorageConfig"
+                [displayDownloadUrl]="false"
+                (imageChanged)="onImageChange($event)"
+                (imageRefChanged)="onImageRefChanged($event)">
+              </app-storage-upload>
+            </div>
           </div>
 
         </mat-card-content>
@@ -236,10 +245,10 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <mat-card>
+      <mat-card class="mb5">
         <mat-card-header>
           <mat-card-title>
-            <h2 class="text-capitalize">{{ 'offer-edit.title'|translate }}</h2>
+            <h2 class="text-capitalize">{{ 'offer-edit.user.title'|translate }}</h2>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -299,16 +308,17 @@
             </mat-error>
           </mat-form-field>
         </mat-card-content>
+        <mat-card-actions>
+          <div class="button-wrapper " fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="50px">
+            <button mat-raised-button color="warn" type="button" (click)="location.back()" role="link">
+              {{ 'cta.cancel'|translate }}
+            </button>
+            <button [disabled]="isSaving" mat-raised-button color="primary" type="submit" role="button">
+              {{ 'cta.save'|translate }}
+            </button>
+          </div>
+        </mat-card-actions>
       </mat-card>
-
-      <div class="button-wrapper mb5" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="50px">
-        <button mat-raised-button color="warn" type="button" (click)="location.back()" role="link">
-          {{ 'cta.cancel'|translate }}
-        </button>
-        <button [disabled]="isSaving" mat-raised-button color="primary" type="submit" role="button">
-          {{ 'cta.save'|translate }}
-        </button>
-      </div>
     </form>
   </div>
 </div>

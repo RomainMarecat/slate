@@ -11,6 +11,7 @@
     }
   },
   "cta": {
+    "delete": "Supprimer",
     "cancel": "Annuler",
     "save": "Enregistrer",
     "search": "Rechercher",
@@ -89,13 +90,19 @@
     }
   },
   "error": {
+    "upload": {
+      "retry": "Après plusieurs tentatives, le téléchargement de la photo a échoué"
+    },
     "model": {
       "product": {
         "empty": "Aucune version de véhicule n'est proposée pour ce type de modèle"
       }
     },
     "offer": {
-      "empty": "Aucune annonce n'est disponible pour ce modèle"
+      "empty": {
+        "model": "Aucune annonce n'est disponible pour ce modèle",
+        "area": "Aucune annonce n'est disponible dans cette région"
+      }
     },
     "invalid": {
       "price": "Le prix contient des erreurs",

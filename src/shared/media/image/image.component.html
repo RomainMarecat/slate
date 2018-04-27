@@ -10,6 +10,9 @@
          [attr.x]="media?.cropper?.x" [attr.y]="media?.cropper?.y" crop="fill" [attr.alt]="media?.alt"></div>
     <div appClTransformation [attr.height]="resize.height" [attr.width]="resize.width" crop="scale"></div>
   </app-cloudinary-image>
-  <app-storage-detail [path]="media?.public_id" *ngIf="media?.type === 'storage'" [height]="resize.height"
+  <app-storage-detail [classes]="classes"
+                      [path]="media?.public_id"
+                      *ngIf="media?.type === 'storage'"
+                      [height]="resize.height"
                       [width]="resize.width"></app-storage-detail>
 </div>

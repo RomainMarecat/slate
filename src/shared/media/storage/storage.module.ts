@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StorageUploadComponent } from './storage-upload/storage-upload.component';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { MatIcon, MatIconModule, MatInputModule, MatProgressBarModule } from '@angular/material';
+import { MatButtonModule, MatIcon, MatIconModule, MatInputModule, MatProgressBarModule } from '@angular/material';
 import { StorageDetailComponent } from './storage-detail/storage-detail.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -11,7 +12,9 @@ import { StorageDetailComponent } from './storage-detail/storage-detail.componen
     AngularFireStorageModule,
     MatInputModule,
     MatIconModule,
-    MatProgressBarModule
+    MatButtonModule,
+    MatProgressBarModule,
+    TranslateModule,
   ],
   declarations: [
     StorageUploadComponent,
