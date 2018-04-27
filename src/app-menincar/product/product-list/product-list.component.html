@@ -1,14 +1,18 @@
 <div class="card-container">
   <div class="wrapper product-layout"
-       fxLayoutGap="10px 10px"
+       fxLayoutGap="10px"
        fxLayoutAlign="space-around stretch"
        fxLayoutAlign.xs="space-around stretch"
        fxLayout="row wrap"
        fxLayout.xs="column">
     <app-car-offer-item class="item-offer" *ngFor="let offer of offers" [offer]="offer">
     </app-car-offer-item>
-    <div *ngIf="offers && offers?.length <= 0 && !isLoading">
-      <p>{{ 'error.offer.empty'|translate }}</p>
+    <div class="offer-empty"
+         fxLayout="column"
+         fxLayoutAlign="center center"
+         *ngIf="offers && offers?.length <= 0 && !isLoading">
+      <h1 *ngIf="area">{{ 'error.offer.empty.area'|translate }}</h1>
+      <h1 *ngIf="model">{{ 'error.offer.empty.model'|translate }}</h1>
     </div>
   </div>
 </div>

@@ -148,13 +148,25 @@
 
           <div class="mat-form-field my-4">
             <h3 class="text-capitalize">{{ 'media.upload.title'|translate }} : </h3>
-
-            <app-storage-upload [folder]="'products'"
-                                [metadata]="imageStorageConfig"
-                                [displayDownloadUrl]="false"
-                                (imageChanged)="onImageChange($event)"
-                                (imageRefChanged)="onImageRefChanged($event)">
-            </app-storage-upload>
+            <div class="upload-wrapper"
+                 fxLayout="row"
+                 fxLayoutAlign="start wrap"
+                 fxLayoutGap="20px">
+              <app-storage-upload *ngFor="let image of form.controls.images.value"
+                                  [folder]="'products'"
+                                  [metadata]="imageStorageConfig"
+                                  [displayDownloadUrl]="false"
+                                  (imageChanged)="onImageChange($event)"
+                                  (imageRefChanged)="onImageRefChanged($event)">
+              </app-storage-upload>
+              <app-storage-upload
+                [folder]="'offers'"
+                [metadata]="imageStorageConfig"
+                [displayDownloadUrl]="false"
+                (imageChanged)="onImageChange($event)"
+                (imageRefChanged)="onImageRefChanged($event)">
+              </app-storage-upload>
+            </div>
           </div>
 
         </mat-card-content>

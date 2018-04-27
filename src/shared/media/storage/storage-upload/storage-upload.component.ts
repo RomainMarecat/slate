@@ -4,6 +4,8 @@ import { UploadTaskSnapshot } from '@firebase/storage-types';
 import { Media } from '../../media';
 import { MediaService } from '../../media.service';
 import { DocumentReference } from '@firebase/firestore-types';
+import { TranslateService } from '@ngx-translate/core';
+import { AlertService } from '../../../popup/alert.service';
 
 @Component({
   selector: 'app-storage-upload',
@@ -21,7 +23,10 @@ export class StorageUploadComponent implements OnInit {
   uploadPercent: number;
   downloadURL: string;
 
-  constructor(private storage: AngularFireStorage, private mediaService: MediaService) {
+  constructor(private storage: AngularFireStorage,
+              private mediaService: MediaService,
+              private alertService: AlertService,
+              private translate: TranslateService) {
     this.displayDownloadUrl = true;
   }
 
@@ -39,6 +44,14 @@ export class StorageUploadComponent implements OnInit {
     } else {
       imageRef = this.storage.upload(filePath, file);
     }
+
+    imageRef
+      .catch((error) => {
+      this.translate.get('error.upload.retry')
+        .subscribe((translated) => {
+          this.alertService.toast(translated);
+        });
+    });
 
     // observe percentage changes
     imageRef.percentageChanges().subscribe(percent => this.uploadPercent = percent);

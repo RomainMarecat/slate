@@ -10,6 +10,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { environment } from '../../../../environments/environment.menincar';
 import { MockMediaService } from '../../mock-media.service';
 import { MediaService } from '../../media.service';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 describe('StorageUploadComponent', () => {
   let component: StorageUploadComponent;
@@ -25,12 +26,15 @@ describe('StorageUploadComponent', () => {
         HttpClientTestingModule,
         MatProgressBarModule,
         MatInputModule,
-        MatIconModule
+        MatIconModule,
+        TranslateModule.forRoot({
+          loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+        }),
       ],
-      declarations: [ StorageUploadComponent ],
       providers: [
         {provide: MediaService, useClass: MockMediaService}
-      ]
+      ],
+      declarations: [ StorageUploadComponent ]
     })
       .compileComponents();
   }));

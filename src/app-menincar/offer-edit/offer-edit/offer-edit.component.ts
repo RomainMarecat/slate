@@ -265,6 +265,8 @@ export class OfferEditComponent implements OnInit {
       offer.brand = this.form.value.brand.key;
       offer.model = this.form.value.model.key;
       offer.product = this.form.value.product.key;
+      offer.published = true;
+      offer.published_at = new Date();
       this.offerService.createOffer(offer)
         .then((doc) => {
           this.translate.get('offer-edit.message.offer.saved')

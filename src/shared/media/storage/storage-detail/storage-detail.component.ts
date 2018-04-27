@@ -8,6 +8,8 @@ import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/st
 })
 export class StorageDetailComponent implements OnInit {
 
+  @Input() classes: string;
+  
   @Input() height: string;
 
   @Input() width: string;

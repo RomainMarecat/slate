@@ -9,6 +9,7 @@ import { MediaService } from '../media.service';
   styleUrls: ['./image.component.scss']
 })
 export class ImageComponent {
+  @Input() classes: string;
   _publicId: string;
   _key: string;
   @Input() resize: any;
