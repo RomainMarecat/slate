@@ -9,6 +9,7 @@ import { AlertService } from '../../../../shared/popup/alert.service';
 import { CategoryService } from '../../../../shared/category/category.service';
 import { OfferService } from '../../../../shared/offer/offer.service';
 import { CarOffer } from '../../../../shared/offer/offer';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-car-offer-detail',
@@ -27,6 +28,7 @@ export class OfferDetailComponent implements OnInit {
   resizedImage: {
     height: number,
   };
+  items: any[];
 
   /**
    *
@@ -38,6 +40,7 @@ export class OfferDetailComponent implements OnInit {
    * @param {DeviceService} deviceService
    * @param {AlertService} alertService
    * @param categoryService
+   * @param translate
    */
   constructor(private meta: Meta,
               private title: Title,
@@ -46,7 +49,8 @@ export class OfferDetailComponent implements OnInit {
               private offerService: OfferService,
               private deviceService: DeviceService,
               private alertService: AlertService,
-              private categoryService: CategoryService) {
+              private categoryService: CategoryService,
+              private translate: TranslateService) {
     this.resizedImage = {height: 400};
   }
 
@@ -70,6 +74,16 @@ export class OfferDetailComponent implements OnInit {
             this.title.setTitle(this.title.getTitle() + ' ' + offer.mileage + ' km');
 
             this.offer = offer;
+            this.items = [
+              {label: 'fuel.label', value: offer.fuel},
+              {label: 'gearbox.label', value: offer.gearbox},
+              {label: 'mileage', value: offer.mileage},
+              {label: 'regDate', value: offer.regDate},
+              {
+                label: 'negotiable_price',
+                value: offer.negotiable_price === true ? this.translate.instant('yes') : this.translate.instant('no')
+              },
+            ];
           });
       }
     });
@@ -89,5 +103,17 @@ export class OfferDetailComponent implements OnInit {
         this.title.setTitle(this.title.getTitle() + ' ' + model.name);
         this.model = model;
       });
+  }
+
+  sendMessage() {
+
+  }
+
+  sendEmail() {
+
+  }
+
+  showPhone() {
+
   }
 }

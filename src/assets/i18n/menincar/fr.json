@@ -20,7 +20,10 @@
     "update": "mettre à jour",
     "edit": "éditer",
     "back": "retour",
-    "show_my_offer": "Voir mon annonce"
+    "show_my_offer": "Voir mon annonce",
+    "show_phone": "Voir le numéro",
+    "send_email": "Envoyer un email",
+    "send_message": "Envoyer un message"
   },
   "home": {
     "main": {
@@ -129,6 +132,7 @@
     "required": "Champs requis"
   },
   "fuel": {
+    "label": "carburant",
     "gasoline": "Essence",
     "gasoil": "Diesel",
     "electric": "Electrique",
@@ -136,6 +140,7 @@
     "Hybrid": "Hybride"
   },
   "gearbox": {
+    "label": "boîte de vitesse",
     "manual": "Manuel",
     "automatic": "Automatique"
   },
@@ -225,7 +230,9 @@
   },
   "euro": "€",
   "mileage": "kilomètre",
+  "regDate": "date de mise en circulation",
   "mileages": "kilomètres",
+  "negotiable_price": "prix négociable",
   "yes": "oui",
   "no": "non",
   "media": {
