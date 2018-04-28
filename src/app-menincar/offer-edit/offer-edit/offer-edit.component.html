@@ -149,8 +149,8 @@
           <div class="mat-form-field my-4">
             <h3 class="text-capitalize">{{ 'media.upload.title'|translate }} : </h3>
             <div class="upload-wrapper"
-                 fxLayout="row"
-                 fxLayoutAlign="start wrap"
+                 fxLayout="row wrap"
+                 fxLayoutAlign="start stretch"
                  fxLayoutGap="20px">
               <app-storage-upload *ngFor="let image of form.controls.images.value"
                                   [folder]="'products'"
