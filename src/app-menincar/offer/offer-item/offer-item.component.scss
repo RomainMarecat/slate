@@ -21,15 +21,33 @@ mat-card {
     width: 1200px;
   }
 
-  .image-wrapper {
-    width: 200px;
+  .gallery-wrapper {
+    position: relative;
+    height: 150px;
 
-    img {
-      max-height: 100%;
-      max-width: 100%;
-      height: auto;
+    .image-wrapper {
+      width: 200px;
+
+      img {
+        max-height: 100%;
+        max-width: 100%;
+        height: auto;
+      }
     }
 
+    .favorite-wrapper {
+      position: absolute;
+      bottom: 0;
+      left: 200px;
+      a {
+        background-color: mat-color($white);
+
+      }
+    }
+  }
+
+  .attributes-wrapper {
+    font-size: 16px;
   }
 }
 

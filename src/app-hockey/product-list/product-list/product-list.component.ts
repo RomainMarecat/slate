@@ -66,10 +66,10 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     this.menuService.nextTitle('');
     this.loaderService.show();
-    this.translateService.get(['meta.title.product-list', 'meta.description.product-list'])
+    this.translateService.get(['meta.title.offer-list', 'meta.description.offer-list'])
       .subscribe((translations: string[]) => {
-        this.meta.addTag({ name: 'description', content: translations['meta.description.product-list'] });
-        this.title.setTitle(translations['meta.title.product-list']);
+        this.meta.addTag({ name: 'description', content: translations['meta.description.offer-list'] });
+        this.title.setTitle(translations['meta.title.offer-list']);
       });
 
     this.meta.addTags([

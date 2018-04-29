@@ -1,0 +1,66 @@
+@import '~@angular/material/theming';
+@import '../../../scss/base/menincar/theme.scss';
+
+.mat-card-main {
+  .images-wrapper {
+    position: relative;
+
+    .like-wrapper {
+      position: absolute;
+      bottom: -20px;
+      right: 20px;
+      mat-icon {
+        font-size: 40px;
+        height: 40px;
+        width: 40px;
+      }
+    }
+  }
+
+  .offer-published {
+    font-size: 16px;
+  }
+}
+
+.mat-card-profile {
+  min-width: 300px;
+  max-width: 750px;
+
+  .user-avatar, .user-title {
+    font-size: 3rem;
+    height: 4rem;
+    width: 4rem;
+  }
+
+  .button-wrapper {
+    .phone-line {
+      font-size: 3rem;
+      color: mat-color($black);
+    }
+  }
+
+  .btn-link {
+    width: 100%;
+    line-height: 60px;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+
+  .icon-favorite-border {
+    height: 40px;
+    width: 40px;
+    font-size: 40px;
+  }
+}
+
+.mat-card-attributes {
+  span {
+    font-size: 18px;
+  }
+}
+
+.mat-card-description {
+  p {
+    font-size: 18px;
+  }
+}

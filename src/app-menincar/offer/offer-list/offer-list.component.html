@@ -12,7 +12,7 @@
          fxLayoutAlign="center center"
          *ngIf="offers && offers?.length <= 0 && !isLoading">
       <h1 *ngIf="area">{{ 'error.offer.empty.area'|translate }}</h1>
-      <h1 *ngIf="model">{{ 'error.offer.empty.model'|translate }}</h1>
+      <h1 *ngIf="category">{{ 'error.offer.empty.model'|translate }}</h1>
     </div>
   </div>
 </div>

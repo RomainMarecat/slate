@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductListComponent } from './product-list.component';
+import { OfferListComponent } from './offer-list.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatGridListModule, MatIconModule, MatInputModule,
@@ -41,9 +41,9 @@ import { OfferService } from '../../../shared/offer/offer.service';
 import { MockCategoryService } from '../../../shared/category/mock-category.service';
 import { CategoryService } from '../../../shared/category/category.service';
 
-describe('ProductListComponent', () => {
-  let component: ProductListComponent;
-  let fixture: ComponentFixture<ProductListComponent>;
+describe('OfferListComponent', () => {
+  let component: OfferListComponent;
+  let fixture: ComponentFixture<OfferListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -72,7 +72,7 @@ describe('ProductListComponent', () => {
         }),
         SharedModule
       ],
-      declarations: [ ProductListComponent, OfferItemComponent ],
+      declarations: [ OfferListComponent, OfferItemComponent ],
       providers: [
         {provide: ProductService, useClass: MockProductService},
         {provide: SelectionService, useClass: MockSelectionService},
@@ -93,7 +93,7 @@ describe('ProductListComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductListComponent);
+    fixture = TestBed.createComponent(OfferListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

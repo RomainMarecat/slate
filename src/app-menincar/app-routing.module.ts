@@ -19,16 +19,16 @@ const routes: Routes = [ {
     loadChildren: './../shared/admin/admin.module#AdminModule'
   }, {
     path: 'selection/:key/products',
-    loadChildren: './product/car-product.module#CarProductModule'
+    loadChildren: './offer/car-offer-list.module#CarOfferListModule'
   }, {
     path: 'area/:key/products',
-    loadChildren: './product/car-product.module#CarProductModule'
+    loadChildren: './offer/car-offer-list.module#CarOfferListModule'
   }, {
     path: 'product/add/new',
     loadChildren: './offer-edit/car-offer-edit.module#CarOfferEditModule'
   }, {
     path: 'offer/:key',
-    loadChildren: './offer-detail/offer-detail.module#OfferDetailModule'
+    loadChildren: './offer-detail/car-offer-detail.module#CarOfferDetailModule'
   },
 ];
 

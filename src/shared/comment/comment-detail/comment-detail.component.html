@@ -1,11 +1,14 @@
 <mat-card class="mat-card m-2">
-  <mat-card-header fxLayout="row" fxLayoutAlign="start center">
-    <div mat-card-avatar class="header-image"></div>
-    <mat-card-title fxFlex="45">{{ comment?.creator }}</mat-card-title>
-    <mat-card-subtitle fxFlex="45">{{ comment?.commentTime | date : 'short' }}</mat-card-subtitle>
+  <mat-card-header fxLayout="row" fxLayoutAlign="start stretch">
+    <!--<div mat-card-avatar class="header-image"></div>-->
+    <mat-card-title>
+      <span>{{ comment?.creator }}</span>
+      <span class="text-time">{{ comment?.commentTime | date : 'short' }}</span>
+    </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p fxLayout="row" fxLayoutAlign="center center">
+    <p class="text-comment" fxLayout="row"
+       fxLayoutAlign="center center">
       {{ comment?.commentText }}
     </p>
   </mat-card-content>

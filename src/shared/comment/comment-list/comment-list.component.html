@@ -1,6 +1,15 @@
-<div class="user-comments-list-wrapper" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="10px 10px">
-  <app-comment-detail [comment]="comment" *ngFor="let comment of comments" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="10px 10px"></app-comment-detail>
-  <div *ngIf="!comments || comments.length === 0" fxLayout="row" fxLayoutAlign="center center">
+<div class="user-comments-list-wrapper"
+     fxLayout="column"
+     fxLayoutAlign="center stretch"
+     fxLayoutGap="10px">
+  <app-comment-detail [comment]="comment"
+                      *ngFor="let comment of comments"
+                      fxLayout="column"
+                      fxLayoutAlign="center stretch"
+                      fxLayoutGap="10px"></app-comment-detail>
+  <div *ngIf="!comments || comments.length === 0"
+       fxLayout="row"
+       fxLayoutAlign="center center">
     <p>Aucun commentaire pour le moment</p>
   </div>
 </div>

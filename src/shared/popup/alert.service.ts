@@ -5,7 +5,16 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class AlertService {
-  constructor(public snackBar: MatSnackBar, private translateService: TranslateService) {}
+  constructor(public snackBar: MatSnackBar, private translateService: TranslateService) {
+  }
+
+  message(message: string, state: string = 'info') {
+    this.toast(message, state);
+  }
+
+  show(message: string, state: string = 'info') {
+    this.toast(message, state);
+  }
 
   toast(message: string, state: string = 'info') {
     // Subscribe on message translation
@@ -14,7 +23,7 @@ export class AlertService {
       const toastRef = this.snackBar.openFromComponent(AlertComponent, {
         data: translation,
         // Add extra classes to define custom css or background color
-        extraClasses: ['snackbar', state],
+        extraClasses: [ 'snackbar', state ],
         // Timeout duration in ms
         duration: 8000
       });

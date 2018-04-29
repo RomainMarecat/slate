@@ -15,7 +15,7 @@ const routes: Routes = [{
   },
   {
     path: 'selection/:key/products',
-    loadChildren: './product-list/product-list.module#ProductListModule'
+    loadChildren: './offer-list/offer-list.module#ProductListModule'
   },
   {
     path: 'product/:key',

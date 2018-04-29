@@ -25,4 +25,12 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
+
+  .text-time {
+    color: mat-color($product-primary);
+  }
+
+  .text-comment {
+    font-size: 16px;
+  }
 }
