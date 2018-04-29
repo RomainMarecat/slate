@@ -18,7 +18,10 @@ export class OfferItemComponent implements OnInit {
 
   model: Category;
 
-  constructor(private router: Router, private categoryService: CategoryService,
+  isFavorite = false;
+
+  constructor(private router: Router,
+              private categoryService: CategoryService,
               private alertService: AlertService) {
   }
 
@@ -54,5 +57,9 @@ export class OfferItemComponent implements OnInit {
       .take(1)
       .subscribe(category => this.model = category,
         err => this.alertService.toast(err));
+  }
+
+  toggleFavorite(event: MouseEvent) {
+    this.isFavorite = !this.isFavorite;
   }
 }

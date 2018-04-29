@@ -2,10 +2,9 @@
           angulartics2On="mouseover"
           angularticsAction="hoveredOverOfferItem"
           [angularticsCategory]="'offer.item'"
-          (click)="offerDetail($event)"
           *ngIf="offer">
 
-  <div fxLayout="row"
+  <div class="gallery-wrapper" fxLayout="row"
        fxLayoutAlign="start stretch"
        fxLayoutGap="50px">
 
@@ -17,6 +16,16 @@
                  (click)="offerDetail($event)"
                  *ngIf="offer && offer.images && offer?.images[0]">
       </app-image>
+
+
+    </div>
+    <div class="favorite-wrapper">
+      <a class="link-fav"
+         (click)="toggleFavorite($event)"
+         mat-mini-fab>
+        <mat-icon color="accent" class="icon-favorite-border" *ngIf="!isFavorite">favorite_border</mat-icon>
+        <mat-icon color="accent" class="icon-favorite-border" *ngIf="isFavorite">favorite</mat-icon>
+      </a>
     </div>
     <mat-card-header class="mat-card-header"
                      (click)="offerDetail($event)"
@@ -26,38 +35,35 @@
                       angularticsAction="clickedOnTitleShowOffer"
                       [angularticsCategory]="'offer.detail'"
                       fxLayout="column"
-                      fxLayoutAlign="center start">
+                      fxLayoutAlign="center start"
+                      (click)="offerDetail($event)">
         <h1 class="mat-card-name">
           <span class="text-uppercase">{{ brand?.name }}</span> <span>{{ model?.name }}</span>
         </h1>
         <span class="offer-location">{{offer?.location?.locality?.address}}</span>
       </mat-card-title>
-      <mat-card-subtitle>
+      <mat-card-subtitle (click)="offerDetail($event)">
         <h2 class="offer-price">{{ offer?.price }} €</h2>
       </mat-card-subtitle>
     </mat-card-header>
     <div class="content-wrapper"
          fxLayout="row"
          fxLayoutAlign="space-around stretch"
-         fxFlex="60">
-
-      <mat-card-content fxLayout="column"
+         fxFlex="60"
+         (click)="offerDetail($event)">
+      <mat-card-content class="attributes-wrapper"
+                        fxLayout="column"
                         fxLayoutAlign="center start"
                         fxLayoutGap="20px">
         <span>{{ offer?.mileage }} km</span>
         <span>{{ offer?.fuel }}</span>
-        <span>{{ offer?.regDate | date: 'y' }}</span>
+        <span>{{ offer?.regDate }}</span>
       </mat-card-content>
       <mat-card-actions fxLayout="column"
                         fxLayoutAlign="center center"
-                        fxLayoutGap="50px">
-        <button type="button"
-                class="button-like"
-                mat-icon-button
-                color="accent">
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <span class="offer-published">{{ offer?.published_at |date:'medium' }}</span>
+                        fxLayoutGap="50px"
+                        (click)="offerDetail($event)">
+        <span class="offer-published">{{ offer?.published_at | date:'medium' }}</span>
       </mat-card-actions>
     </div>
   </div>

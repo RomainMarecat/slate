@@ -2,11 +2,13 @@
   "meta": {
     "title": {
       "homepage": "Men In Car - Trouvez la bonne voiture",
-      "product-list": "Liste des voitures - Men In Car",
+      "offer-list": "Toutes les annonces de voitures - Men In Car",
+      "offer-detail": " - Men In Car",
       "selection": "Men In Car"
     },
     "description": {
-      "product-list": "Les produits de la sélection",
+      "offer-list": "Les annonces de voitures au meilleur prix - Men in Car",
+      "offer-detail": " - Men in Car",
       "selection": "Découvre toutes les voitures de Men In Car"
     }
   },
@@ -85,11 +87,8 @@
     }
   },
   "snackbar": {
-    "product-add": {
-      "submit": "Ton pull est en attente de validation :)"
-    },
     "guard": {
-      "unauthenticated": "Connectes-toi pour ajouter autant de pull moche que tu veux !"
+      "unauthenticated": "Connectez-vous pour ajouter des commentaires"
     }
   },
   "error": {
@@ -217,7 +216,7 @@
       "connect": "Il faut se connecter pour effectuer cette action"
     }
   },
-  "product-detail": {
+  "offer-detail": {
     "meta": {
       "og:site_name": "Men In Car",
       "description": "{{value}} - Men In Car"
@@ -227,6 +226,10 @@
     "saved": {
       "success": "annonce sauvegardée"
     }
+  },
+  "comments": {
+    "title": "Les avis des internautes",
+    "added": "Commentaire ajouté"
   },
   "euro": "€",
   "mileage": "kilomètre",

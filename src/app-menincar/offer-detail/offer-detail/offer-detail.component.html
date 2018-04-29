@@ -1,0 +1,152 @@
+<div class="wrapper offer-layout my-2">
+  <div *ngIf="offer"
+       angulartics2On="click"
+       angularticsAction="hoveredOverOfferDetail"
+       [angularticsCategory]="'offer.detail'"
+       fxLayout="row wrap"
+       fxLayoutAlign="space-around stretch">
+    <mat-card class="mat-card mat-card-main my-2"
+              fxFlex="60">
+      <div class="images-wrapper">
+        <app-image class="app-image"
+                   [key]="offer.images[0]"
+                   [resize]="resizedImage"
+                   *ngIf="offer.images[0]"></app-image>
+        <div class="like-wrapper">
+          <a class="link-fav"
+             (click)="toggleFavorite($event)">
+            <mat-icon class="icon-favorite-border" *ngIf="!isFavorite">favorite_border</mat-icon>
+            <mat-icon color="accent" class="icon-favorite-border" *ngIf="isFavorite">favorite</mat-icon>
+          </a>
+        </div>
+
+      </div>
+      <mat-card-header class="title">
+        <mat-card-title>
+          <h1>{{ brand?.name }} {{ model?.name }}</h1>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <h2>{{ offer?.price }} {{ 'euro'|translate }}</h2>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <span class="offer-published">{{ offer?.published_at |date:'medium' }}</span>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="mat-card mat-card-profile my-2" fxFlex="30">
+      <mat-card-header fxLayout="row"
+                       fxLayoutAlign="center center"
+                       fxLayoutGap="20px">
+        <mat-icon class="user-avatar" mat-card-avatar>account_circle</mat-icon>
+        <mat-card-title>
+          <h4 class="user-title">{{ offer?.user?.username }}</h4>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="mt-3">
+        <div fxLayout="column"
+             fxLayoutAlign="center stretch"
+             fxLayoutGap="30px">
+          <div class="button-wrapper">
+            <button type="button"
+                    class="btn-link"
+                    mat-raised-button
+                    color="primary"
+                    (click)="togglePhone($event)"
+                    *ngIf="!isActivatedPhone">
+              <mat-icon>phone</mat-icon>
+              {{ 'cta.show_phone'|translate }}
+            </button>
+            <div class="phone-link-wrapper"
+                 fxLayout="row"
+                 fxLayoutAlign="center center">
+              <a title="phone number"
+                 href="tel:{{offer?.user?.phone}}"
+                 class="phone-line text-center"
+                 fxFlex="80"
+                 *ngIf="offer?.user?.phone && isActivatedPhone">
+                {{ offer?.user?.phone }}
+              </a>
+              <a (click)="togglePhone($event)"
+                 class="close-button"
+                 fxFlex="20"
+                 *ngIf="isActivatedPhone">
+                <mat-icon>close</mat-icon>
+              </a>
+            </div>
+          </div>
+
+          <a mat-raised-button
+             color="warn"
+             class="btn-link"
+             href="mailto:{{offer?.user?.email}}"
+             *ngIf="offer?.user?.email">
+            <mat-icon>email</mat-icon>
+            {{ 'cta.send_email'|translate }}
+          </a>
+
+          <button class="btn-link"
+                  type="button"
+                  mat-raised-button
+                  color="accent"
+                  (click)="sendMessage()">
+            <mat-icon>question_answer</mat-icon>
+            {{ 'cta.send_message'|translate }}
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="mat-card mat-card-attributes my-2" fxFlex="95">
+      <mat-card-header>
+        <mat-card-title>
+          <strong class="text-uppercase">{{ 'criteria'|translate }}</strong>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="item-container"
+             fxLayout="row wrap"
+             fxLayoutAlign="space-around stretch"
+             fxLayoutGap="30px">
+          <div class="item"
+               *ngFor="let item of items"
+               fxLayout="column"
+               fxLayoutAlign="center center">
+            <strong class="text-uppercase">{{ item?.label | translate }}</strong>
+            <span>{{ item?.value }}</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="mat-card mat-card-description my-2" fxFlex="95">
+      <mat-card-content>
+        <strong class="text-uppercase">{{ 'description'|translate }}</strong>
+        <p class="main-title"
+           fxLayout="row wrap"
+           fxLayoutAlign="space-around stretch"
+           fxLayoutGap="30px">
+          {{ offer.description }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="mat-card mat-card-comments my-2" fxFlex="95">
+      <mat-card-content>
+        <div class="user-comment-wrapper"
+             fxLayout="column"
+             fxLayoutGap="20px"
+             fxLayoutAlign="center center">
+          <div class="title-wrapper"
+               fxLayout="row"
+               fxLayoutAlign="start stretch">
+            <h3>{{ 'comments.title'|translate }}</h3>
+          </div>
+          <app-comment-list [comments]="comments"></app-comment-list>
+          <div class="add-wrapper"
+               fxLayout="row"
+               fxLayoutAlign="center center"
+               fxLayoutGap="10px 10px">
+            <app-comment-add (commentCreated)="onCommentCreated($event)"></app-comment-add>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

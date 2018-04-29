@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment.menincar';
 import { TranslateService } from '@ngx-translate/core';
 import { ProductService } from '../../../shared/product/product.service';
 import { LoaderService } from '../../../shared/loader/loader.service';
@@ -17,13 +16,14 @@ import { Category } from '../../../shared/category/category';
 import { CarOffer } from '../../../shared/offer/offer';
 import { CategoryService } from '../../../shared/category/category.service';
 import 'rxjs/add/operator/finally';
+import { Comment } from '../../../shared/comment/comment';
 
 @Component({
-  selector: 'app-menincar-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: [ './product-list.component.scss' ]
+  selector: 'app-car-offer-list',
+  templateUrl: './offer-list.component.html',
+  styleUrls: [ './offer-list.component.scss' ]
 })
-export class ProductListComponent implements OnInit {
+export class OfferListComponent implements OnInit {
   // Products collection of Product interface
   products: Array<CarProduct> = [];
   offers: Array<CarOffer> = [];
@@ -57,10 +57,10 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     this.menuService.nextTitle('');
     this.loaderService.show();
-    this.translateService.get([ 'meta.title.product-list', 'meta.description.product-list' ])
+    this.translateService.get([ 'meta.title.offer-list', 'meta.description.offer-list' ])
       .subscribe((translations: string[]) => {
-        this.meta.addTag({name: 'description', content: translations[ 'meta.description.product-list' ]});
-        this.title.setTitle(translations[ 'meta.title.product-list' ]);
+        this.meta.addTag({name: 'description', content: translations[ 'meta.description.offer-list' ]});
+        this.title.setTitle(translations[ 'meta.title.offer-list' ]);
       });
 
     this.meta.addTags([
