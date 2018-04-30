@@ -28,8 +28,9 @@
     "send_message": "Envoyer un message"
   },
   "home": {
-    "main": {
-      "title": "Trouvez la bonne affaire parmi toutes nos petites annonces sur Men in car."
+    "title": {
+      "main": "Trouvez la bonne affaire parmi toutes nos petites annonces sur Men in car.",
+      "second": "Sur le site menincar.fr, passez des annonces gratuites et sans commission. Vous pouvez consulter des petites annonces de particuliers et de professionnels partout en France, que vous cherchiez des voitures neuves ou d'occasion."
     },
     "search": {
       "title": "Rechercher",

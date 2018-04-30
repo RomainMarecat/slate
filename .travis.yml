@@ -7,8 +7,8 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 before_deploy:
   - ./node_modules/@angular/cli/bin/ng build -aot --env=prod --app=car -prod
-  - cp src/app-menincar/sitemap.xml dist/sitemap.xml
-  - cp src/app-menincar/robots.txt dist/robots.txt
+  - cp src/app-car/sitemap.xml dist/sitemap.xml
+  - cp src/app-car/robots.txt dist/robots.txt
   - firebase use default
 deploy:
   # - skip_cleanup: true
