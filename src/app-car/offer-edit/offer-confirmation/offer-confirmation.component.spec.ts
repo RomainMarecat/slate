@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OfferConfirmationComponent } from './offer-confirmation.component';
 import { OfferEditComponent } from '../offer-edit/offer-edit.component';
-import { environment } from '../../../environments/environment.menincar';
+import { environment } from '../../../environments/environment.car';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MockGeocodeService } from '../../../shared/map/shared/mock-geocode.service';

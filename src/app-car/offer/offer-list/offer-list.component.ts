@@ -17,6 +17,7 @@ import { CarOffer } from '../../../shared/offer/offer';
 import { CategoryService } from '../../../shared/category/category.service';
 import 'rxjs/add/operator/finally';
 import { Comment } from '../../../shared/comment/comment';
+import { environment } from '../../../environments/environment.car';
 
 @Component({
   selector: 'app-car-offer-list',
@@ -64,9 +65,9 @@ export class OfferListComponent implements OnInit {
       });
 
     this.meta.addTags([
-      {rel: 'canonical', href: 'https://menincar-384269.firebaseapp.com'},
-      {rel: 'alternate', hreflang: 'x-default', href: 'https://menincar-384269.firebaseapp.com'},
-      {rel: 'alternate', hreflang: 'en', href: 'https://menincar-384269.firebaseapp.com'}
+      {rel: 'canonical', href: environment.site_name},
+      {rel: 'alternate', hreflang: 'x-default', href: environment.site_name},
+      {rel: 'alternate', hreflang: 'en', href: environment.site_name}
     ]);
 
     this.loadOffers();

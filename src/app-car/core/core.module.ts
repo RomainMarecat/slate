@@ -36,7 +36,7 @@ import { Environment } from '../../shared/util/environment';
 import { ProductService } from '../../shared/product/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { SharedModule } from '../../shared/shared.module';
-import { environment } from '../../environments/environment.menincar';
+import { environment } from '../../environments/environment.car';
 import { SlackModule } from '../../shared/slack/slack.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';

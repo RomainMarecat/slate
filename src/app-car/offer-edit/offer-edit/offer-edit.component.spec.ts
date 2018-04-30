@@ -17,7 +17,7 @@ import { ProductService } from '../../../shared/product/product.service';
 import { MockOfferService } from '../../../shared/offer/mock-offer.service';
 import { MockProductService } from '../../../shared/product/mock-product.service';
 import { AgmCoreModule } from '@agm/core';
-import { environment } from '../../../environments/environment.menincar';
+import { environment } from '../../../environments/environment.car';
 import { GeocodeService } from '../../../shared/map/shared/geocode.service';
 import { MockGeocodeService } from '../../../shared/map/shared/mock-geocode.service';
 import { AngularFirestoreModule } from 'angularfire2/firestore';

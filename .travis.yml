@@ -6,7 +6,7 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 before_deploy:
-  - ./node_modules/@angular/cli/bin/ng build -aot --env=prod --app=menincar -prod
+  - ./node_modules/@angular/cli/bin/ng build -aot --env=prod --app=car -prod
   - cp src/app-menincar/sitemap.xml dist/sitemap.xml
   - cp src/app-menincar/robots.txt dist/robots.txt
   - firebase use default

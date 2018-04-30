@@ -4,7 +4,7 @@ import { AreaService } from './area.service';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
-import { environment } from '../../../environments/environment.menincar';
+import { environment } from '../../../environments/environment.car';
 import { MockAreaService } from './mock-area.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
