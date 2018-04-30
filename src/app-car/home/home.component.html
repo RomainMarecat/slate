@@ -15,7 +15,7 @@
          fxLayoutGap.xs="10px">
       <div class="main-title-wrapper">
 
-        <h1 class="main-title">{{ 'home.main.title'|translate }}</h1>
+        <h1 class="main-title">{{ 'home.title.main'|translate }}</h1>
 
         <div fxLayout="column"
              fxLayoutAlign="start start"
@@ -26,9 +26,9 @@
                fxLayoutAlign="start stretch"
                fxLayoutGap="20px">
             <a [routerLink]="'/offer/add/new'"
-              mat-raised-button
-              color="primary"
-              class="button-add-product">
+               mat-raised-button
+               color="primary"
+               class="button-add-product">
               <mat-icon>add</mat-icon>
               <span>{{ 'product.add.button.title'|translate }}</span>
             </a>
@@ -40,8 +40,14 @@
       </div>
 
       <app-map></app-map>
+
     </div>
-
-
+    <div class="second-title-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="center stretch">
+      <h2 class="second-title my-4">
+        {{ 'home.title.second'|translate }}
+      </h2>
+    </div>
   </div>
 </div>
