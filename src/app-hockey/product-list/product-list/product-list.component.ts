@@ -1,17 +1,16 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProductService } from './../../../shared/product/product.service';
-import { Observable } from 'rxjs/Observable';
+import { ProductService } from '../../../shared/product/product.service';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { Selection } from '../../../shared/selection/selection';
 import { UserService } from '../../../shared/user/user.service';
 import { AlertService } from '../../../shared/popup/alert.service';
-import { LoaderService } from './../../../shared/loader/loader.service';
+import { LoaderService } from '../../../shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
-import { environment } from './../../../environments/environment.hockey';
+import { environment } from '../../../environments/environment.hockey';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
-import { MenuService } from './../../../shared/menu/menu.service';
+import { MenuService } from '../../../shared/menu/menu.service';
 
 @Component({
   selector: 'app-product-list',

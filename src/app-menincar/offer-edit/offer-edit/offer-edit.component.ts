@@ -23,7 +23,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { DeviceService } from '../../../shared/device/device.service';
 
 @Component({
-  selector: 'app-menincar-offer-edit',
+  selector: 'app-car-offer-edit',
   templateUrl: './offer-edit.component.html',
   styleUrls: [ './offer-edit.component.scss' ]
 })
