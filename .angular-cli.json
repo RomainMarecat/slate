@@ -5,19 +5,19 @@
   },
   "apps": [
     {
-      "name": "menincar",
+      "name": "car",
       "root": "src",
       "outDir": "dist",
       "assets": [
         "assets"
       ],
       "index": "index.html",
-      "main": "main-menincar.ts",
+      "main": "main-car.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app-menincar",
+      "prefix": "app-car",
       "serviceWorker": true,
       "styles": [
         "../node_modules/font-awesome/css/font-awesome.css",
@@ -27,16 +27,16 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/cookieconsent/build/cookieconsent.min.css",
         "../node_modules/dragula/dist/dragula.css",
-        "./scss/styles.menincar.scss"
+        "./scss/styles.car.scss"
       ],
       "scripts": [
         "../node_modules/crypto-js/crypto-js.js",
         "../node_modules/cookieconsent/build/cookieconsent.min.js"
       ],
-      "environmentSource": "environments/environment.menincar.ts",
+      "environmentSource": "environments/environment.car.ts",
       "environments": {
-        "dev": "environments/environment.menincar.ts",
-        "prod": "environments/environment.menincar.prod.ts"
+        "dev": "environments/environment.car.ts",
+        "prod": "environments/environment.car.prod.ts"
       }
     },
     {

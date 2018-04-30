@@ -7,7 +7,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { MatProgressBarModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
-import { environment } from '../../../../environments/environment.menincar';
+import { environment } from '../../../../environments/environment.car';
 
 describe('StorageDetailComponent', () => {
   let component: StorageDetailComponent;

@@ -13,7 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Category } from '../../../shared/category/category';
 
 @Component({
-  selector: 'app-menincar-offer-confirmation',
+  selector: 'app-car-offer-confirmation',
   templateUrl: './offer-confirmation.component.html',
   styleUrls: [ './offer-confirmation.component.scss' ]
 })

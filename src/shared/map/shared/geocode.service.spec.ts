@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { GeocodeService } from './geocode.service';
 import { AgmCoreModule } from '@agm/core';
-import { environment } from '../../../environments/environment.menincar';
+import { environment } from '../../../environments/environment.car';
 
 describe('GeocodeService', () => {
   beforeEach(() => {
