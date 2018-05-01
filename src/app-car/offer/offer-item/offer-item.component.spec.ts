@@ -11,6 +11,8 @@ import { CategoryService } from '../../../shared/category/category.service';
 import { MockCategoryService } from '../../../shared/category/mock-category.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 describe('OfferItemComponent', () => {
   let component: OfferItemComponent;
@@ -19,6 +21,12 @@ describe('OfferItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
         CommonModule,
         HttpClientTestingModule,
         RouterTestingModule,

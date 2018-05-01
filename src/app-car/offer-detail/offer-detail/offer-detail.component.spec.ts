@@ -22,6 +22,8 @@ import { MockCommentService } from '../../../shared/comment/mock-comment.service
 import { CommentService } from '../../../shared/comment/comment.service';
 import { MockUserService } from '../../../shared/user/mock-user.service';
 import { UserService } from '../../../shared/user/user.service';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 describe('OfferDetailComponent', () => {
   let component: OfferDetailComponent;
@@ -30,6 +32,12 @@ describe('OfferDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
         AngularFirestoreModule,
         AngularFireStorageModule,
         CommonModule,
