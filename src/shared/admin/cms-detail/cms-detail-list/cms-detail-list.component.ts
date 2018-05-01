@@ -1,31 +1,32 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CmsDetail } from './../../shared/cms-detail/cms-detail';
-import { Cms } from './../../shared/cms/cms';
-import { CmsDetailService } from './../../shared/cms-detail/cms-detail.service';
+import { CmsDetail } from '../../shared/cms-detail/cms-detail';
+import { CmsDetailService } from '../../shared/cms-detail/cms-detail.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-cms-detail-list',
   templateUrl: './cms-detail-list.component.html',
-  styleUrls: ['./cms-detail-list.component.scss']
+  styleUrls: [ './cms-detail-list.component.scss' ]
 })
 export class CmsDetailListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
   cmsKey: string;
-  cmsDetails$: Observable < CmsDetail[] > ;
-  selected: CmsDetail[];
+  cmsDetails$: Observable<CmsDetail[]>;
+  selected: CmsDetail[] = [];
   isLoading: boolean;
 
   /**
    * @param {ElementRef} table
-   * @param {CmsService} CmsService
+   * @param cmsDetailService
+   * @param activeRoute
    */
-  constructor(private table: ElementRef, private cmsDetailService: CmsDetailService,
-    private activeRoute: ActivatedRoute) {
-    this.columns = [{
+  constructor(private table: ElementRef,
+              private cmsDetailService: CmsDetailService,
+              private activeRoute: ActivatedRoute) {
+    this.columns = [ {
       prop: 'key',
       name: 'key',
       flexGrow: 1
@@ -37,8 +38,11 @@ export class CmsDetailListComponent implements OnInit {
       prop: 'content',
       name: 'content',
       flexGrow: 1
-    }];
-    this.selected = [];
+    }, {
+      prop: 'parent',
+      name: 'parent',
+      flexGrow: 1
+    } ];
     this.isLoading = true;
   }
 
@@ -77,17 +81,22 @@ export class CmsDetailListComponent implements OnInit {
 
   /**
    * On select add new list in selection array
-   * @param any selected
+   * @param selected
    */
-  onSelect(selected) {
+  onSelect({selected}) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
 
-  onActivate(event) {}
+  onActivate(event) {
+  }
 
-  onScroll(event: any) {}
+  onScroll(event: any) {
+  }
 
-  onCheckboxChangeFn(event) {}
-  selectFn(allRowsSelected) {}
+  onCheckboxChangeFn(event) {
+  }
+
+  selectFn(allRowsSelected) {
+  }
 }

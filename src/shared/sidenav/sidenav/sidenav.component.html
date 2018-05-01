@@ -43,7 +43,9 @@
   <!-- old div for swipe right functionalty -->
   <!-- <div #root="dir" dir="ltr" class="main-content" (swiperight)="sidenav.toggle()"> -->
   <div #root="dir" dir="ltr" class="main-content">
-    <router-outlet></router-outlet>
+    <div class="site">
+      <router-outlet></router-outlet>
+    </div>
     <app-footer></app-footer>
   </div>
 </mat-sidenav-container>

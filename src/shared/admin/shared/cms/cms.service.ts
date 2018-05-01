@@ -18,6 +18,7 @@ export class CmsService {
   cms$: Observable < DocumentChangeAction[] > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
+  siteNameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
@@ -36,19 +37,21 @@ export class CmsService {
     this.keyFilters$ = new BehaviorSubject(null);
     this.publishedFilter$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
+    this.siteNameFilters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.cmsCollectionRef = this.afs.collection('cms');
     this.cms$ = Observable.combineLatest(
         this.keyFilters$,
         this.publishedFilter$,
         this.nameFilters$,
+        this.siteNameFilters$,
         this.limit$
       )
       .catch(err => {
         console.error(err);
         return Observable.of([]);
       })
-      .switchMap(([key, published, name, limit]) =>
+      .switchMap(([key, published, name, siteName, limit]) =>
         this.afs.collection('cms', ref => {
           this.query = ref;
           if (published) {
@@ -56,6 +59,9 @@ export class CmsService {
           }
           if (name) {
             this.query = this.query.where('name', '==', name);
+          }
+          if (siteName) {
+            this.query = this.query.where('site_name', '==', siteName);
           }
           if (limit) {
             this.query = this.query.limit(limit);

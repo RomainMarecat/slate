@@ -1,5 +1,42 @@
-<footer angulartics2On="mouseover" angularticsAction="HoveredOverFooter" [angularticsCategory]="'footer.content'">
+<footer angulartics2On="mouseover"
+        angularticsAction="HoveredOverFooter"
+        [angularticsCategory]="'footer.content'">
   <mat-toolbar>
-    <a mat-button color="warning" href="#mpm-logo">Haut de page</a>
+    <mat-toolbar-row fxLayout="row"
+                     fxLayoutAlign="center stretch"
+                     fxLayoutGap="20px">
+      <div class="links-wrapper mt-5"
+           fxLayout="row"
+           fxLayoutAlign="center stretch"
+           fxLayoutGap="20px">
+          <!-- Improved nav list and children -->
+          <span fxLayout="column"
+                fxLayoutAlign="center center"
+                *ngFor="let link of links">
+             <a [href]="link.content" class="text-uppercase">{{ link.title |translate }}</a>
+             <span *ngFor="let sublink of link.children">
+              <a [href]="sublink.content">{{ sublink.title |translate }}</a>
+            </span>
+          </span>
+      </div>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row>
+      <div class="links-wrapper w-100"
+           fxLayout="row"
+           fxLayoutAlign="space-around stretch"
+           fxLayoutGap="20px">
+
+      </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <div class="up-wrapper w-100"
+           fxLayout="row"
+           fxLayoutAlign="end stretch">
+        <a mat-raised-button
+           color="warn"
+           href="#main-logo">Haut de page</a>
+      </div>
+    </mat-toolbar-row>
   </mat-toolbar>
 </footer>

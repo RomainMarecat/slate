@@ -1,7 +1,5 @@
 @import '~@angular/material/theming';
 @import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
-@import '../../../scss/base/hockey/theme.scss';
-
 
 .mat-card {
   width: 100vh;
@@ -24,10 +22,6 @@
   .header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
-  }
-
-  .text-time {
-    color: mat-color($product-primary);
   }
 
   .text-comment {

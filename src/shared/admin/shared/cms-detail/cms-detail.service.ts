@@ -14,17 +14,18 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class CmsDetailService {
-  cmsDetailCollectionRef: AngularFirestoreCollection < CmsDetail > ;
-  cmsDetails$: Observable < DocumentChangeAction[] > ;
-  cmsFilters$: BehaviorSubject < string | null > ;
-  nameFilters$: BehaviorSubject < string | null > ;
-  keyFilters$: BehaviorSubject < string | null > ;
-  limit$: BehaviorSubject < number | null > ;
-  startAt$: BehaviorSubject < string | null > ;
-  startAfter$: BehaviorSubject < string | null > ;
-  orderBy$: BehaviorSubject < string | 'published_at' > ;
-  endAt$: BehaviorSubject < string | null > ;
-  endBefore$: BehaviorSubject < string | null > ;
+  cmsDetailCollectionRef: AngularFirestoreCollection<CmsDetail>;
+  cmsDetails$: Observable<DocumentChangeAction[]>;
+  cmsFilters$: BehaviorSubject<string | null>;
+  nameFilters$: BehaviorSubject<string | null>;
+  parentFilters$: BehaviorSubject<string | null>;
+  keyFilters$: BehaviorSubject<string | null>;
+  limit$: BehaviorSubject<number | null>;
+  startAt$: BehaviorSubject<string | null>;
+  startAfter$: BehaviorSubject<string | null>;
+  orderBy$: BehaviorSubject<string | 'published_at'>;
+  endAt$: BehaviorSubject<string | null>;
+  endBefore$: BehaviorSubject<string | null>;
   query: CollectionReference | Query;
 
   /**
@@ -36,23 +37,28 @@ export class CmsDetailService {
     this.keyFilters$ = new BehaviorSubject(null);
     this.cmsFilters$ = new BehaviorSubject(null);
     this.nameFilters$ = new BehaviorSubject(null);
+    this.parentFilters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.cmsDetailCollectionRef = this.afs.collection('cms-detail');
     this.cmsDetails$ = Observable.combineLatest(
-        this.keyFilters$,
-        this.cmsFilters$,
-        this.nameFilters$,
-        this.limit$
-      )
+      this.keyFilters$,
+      this.cmsFilters$,
+      this.nameFilters$,
+      this.parentFilters$,
+      this.limit$
+    )
       .catch(err => {
         console.error(err);
         return Observable.of([]);
       })
-      .switchMap(([key, cms, name, limit]) =>
+      .switchMap(([ key, cms, name, parent, limit ]) =>
         this.afs.collection('cms-detail', ref => {
           this.query = ref;
           if (cms) {
             this.query = this.query.where('cms', '==', cms);
+          }
+          if (parent) {
+            this.query = this.query.where('parent', '==', parent);
           }
           if (name) {
             this.query = this.query.where('name', '==', name);
@@ -62,7 +68,7 @@ export class CmsDetailService {
           }
           return this.query;
         })
-        .snapshotChanges()
+          .snapshotChanges()
       );
   }
 
@@ -70,7 +76,7 @@ export class CmsDetailService {
    *
    * @returns Observable<CmsDetail[]>
    */
-  getCmsDetails(): Observable < CmsDetail[] > {
+  getCmsDetails(): Observable<CmsDetail[]> {
     return this.cmsDetails$.map((categories: DocumentChangeAction[]) =>
       categories.map((doc: DocumentChangeAction) => {
         const cmsDetail = doc.payload.doc.data() as CmsDetail;
@@ -80,41 +86,41 @@ export class CmsDetailService {
     );
   }
 
-  getCmsDetailByCms(cms: string): Observable < CmsDetail[] > {
+  getCmsDetailByCms(cms: string): Observable<CmsDetail[]> {
     this.cmsFilters$.next(cms);
     return this.getCmsDetails();
   }
 
   /**
    *
-   * @param string key
    * @returns Observable<cmsDetail[]>
+   * @param key
    */
-  getCmsDetail(key: null | string): Observable < CmsDetail[] > {
+  getCmsDetail(key: null | string): Observable<CmsDetail[]> {
     this.keyFilters$.next(key);
     return this.getCmsDetails().take(1);
   }
 
   /**
    *
-   * @param CmsDetail cmsDetail
+   * @param cmsDetail
    */
   updateCmsDetail(cmsDetail: CmsDetail) {
-    this.cmsDetailCollectionRef.doc(cmsDetail.key).update({ ...cmsDetail });
+    this.cmsDetailCollectionRef.doc(cmsDetail.key).update({...cmsDetail});
   }
 
   /**
    *
-   * @param CmsDetail cmsDetail
+   * @param cmsDetail
    */
   createCmsDetail(cmsDetail: CmsDetail) {
     delete cmsDetail.key;
-    this.cmsDetailCollectionRef.add({ ...cmsDetail });
+    this.cmsDetailCollectionRef.add({...cmsDetail});
   }
 
   /**
    *
-   * @param CmsDetail cmsDetail
+   * @param cmsDetail
    */
   deleteCmsDetail(cmsDetail: CmsDetail) {
     this.cmsDetailCollectionRef.doc(cmsDetail.key).delete();

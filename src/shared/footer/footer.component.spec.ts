@@ -21,6 +21,10 @@ import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { FooterComponent } from './footer.component';
+import { MockCmsService } from '../admin/shared/cms/mock-cms.service';
+import { CmsService } from '../admin/shared/cms/cms.service';
+import { CmsDetailService } from '../admin/shared/cms-detail/cms-detail.service';
+import { MockCmsDetailService } from '../admin/shared/cms-detail/mock-cms-detail.service';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -41,7 +45,11 @@ describe('FooterComponent', () => {
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           })
         ],
-        declarations: [FooterComponent]
+        declarations: [FooterComponent],
+        providers: [
+          {provide: CmsService, useClass: MockCmsService},
+          {provide: CmsDetailService, useClass: MockCmsDetailService},
+        ]
       })
       .compileComponents();
   }));

@@ -49,6 +49,10 @@ import { MockProductService } from '../../../shared/product/mock-product.service
 import { FacetModule } from './../../facet/facet.module';
 import { FilterModule } from './../../facet/filter/filter.module';
 import { SortModule } from './../../facet/sort/sort.module';
+import { MockCmsDetailService } from '../../admin/shared/cms-detail/mock-cms-detail.service';
+import { CmsService } from '../../admin/shared/cms/cms.service';
+import { MockCmsService } from '../../admin/shared/cms/mock-cms.service';
+import { CmsDetailService } from '../../admin/shared/cms-detail/cms-detail.service';
 
 describe('SidenavComponent', () => {
   let component: SidenavComponent;
@@ -110,6 +114,8 @@ describe('SidenavComponent', () => {
         I18nService,
         MenuService,
         SidenavService,
+        {provide: CmsService, useClass: MockCmsService},
+        {provide: CmsDetailService, useClass: MockCmsDetailService}
       ]
     })
       .compileComponents();

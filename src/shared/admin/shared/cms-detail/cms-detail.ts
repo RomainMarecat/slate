@@ -22,4 +22,14 @@ export class CmsDetail {
    * @type string
    */
   content: string;
+
+  /**
+   * Associated cmsDetail key to get all children of current parent
+   */
+  parent?: string;
+
+  /**
+   * Helper to associate all CmsDetails in this attributes
+   */
+  children?: CmsDetail[];
 }

@@ -70,7 +70,7 @@ export class GeocodeService {
                 lng: results[ 0 ].geometry.location.lng()
               });
             } else {
-              console.log('Error - ', results, ' & Status - ', status);
+              console.error('Error - ', results, ' & Status - ', status);
               observer.next({});
             }
             observer.complete();
@@ -87,10 +87,9 @@ export class GeocodeService {
         return new Observable(observer => {
           this.geocoder.geocode({'location': location}, (results, status) => {
             if (status === google.maps.GeocoderStatus.OK) {
-              console.log(results);
               observer.next(GeocodeService.parseGeocodeResponse(results));
             } else {
-              console.log('Error - ', results, ' & Status - ', status);
+              console.error('Error - ', results, ' & Status - ', status);
               observer.next({error: results, status: status});
             }
             observer.complete();
