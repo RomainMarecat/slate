@@ -117,7 +117,6 @@ export class OfferListComponent implements OnInit {
         this.loaderService.hide();
       })
       .subscribe((offers: CarOffer[]) => {
-        console.log('offers', offers);
         this.offers = offers;
         this.isLoading = false;
         this.loaderService.hide();

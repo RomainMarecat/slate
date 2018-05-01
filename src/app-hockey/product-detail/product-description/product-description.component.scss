@@ -1,11 +1,9 @@
 @import '~@angular/material/theming';
 @import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
-@import '../../../scss/base/hockey/theme.scss';
 
 .detail-description {
   .content {
     font-size: 20px;
-    color: $color1;
     @include media-breakpoint-up(xs) {
       font-size: 10px;
     }

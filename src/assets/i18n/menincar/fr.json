@@ -7,6 +7,7 @@
       "selection": "Men In Car"
     },
     "description": {
+      "homepage": "Trouver la bonne affaire parmi nos petites annonces - Men In Car",
       "offer-list": "Les annonces de voitures au meilleur prix - Men in Car",
       "offer-detail": " - Men in Car",
       "selection": "Découvre toutes les voitures de Men In Car"
@@ -231,6 +232,25 @@
   "comments": {
     "title": "Les avis des internautes",
     "added": "Commentaire ajouté"
+  },
+  "footer": {
+    "title": {
+      "about": "A propos de Men In Car",
+      "legal_information": "Informations légales",
+      "professional": "professionnels",
+      "questions": "Des questions ?"
+    },
+    "cgu": "Conditions générales d'utilisation",
+    "cgv": "Conditions générales de vente",
+    "rgpd": "Vie privée et cookies",
+    "privacy_policy": "politique de protection des données",
+    "who_are_us": "Qui nous sommes ?",
+    "join_us": "Nous rejoindre",
+    "advert": "publicité",
+    "hiring": "recrutements",
+    "solutions_pro": "Nos solutions pros",
+    "help": "Aide",
+    "contact": "Nous contacter"
   },
   "euro": "€",
   "mileage": "kilomètre",

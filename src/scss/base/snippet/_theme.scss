@@ -2,7 +2,6 @@
 @import '~@angular/material/theming';
 @import url('https://fonts.googleapis.com/css?family=Material+Icons|Fugaz+One|Gentium+Book+Basic');
 
-
 // Plus imports for other components in your app-monpullmoche.
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app-monpullmoche.
@@ -18,20 +17,20 @@ $color2: #ffffff; // Blanc
 $color3: #af300b; // Rouge
 $color5: #af8401;
 $product-primary: mat-palette($mat-indigo,
-900);
+  900);
 $product-accent: mat-palette($mat-red,
-800);
+  800);
 $product-warn: mat-palette($mat-orange,
-200);
+  200);
 $white: mat-palette($mat-grey,
-50);
+  50);
 $black: mat-palette($mat-grey,
-900);
+  900);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($product-primary,
-$product-accent,
-$product-warn);
+  $product-accent,
+  $product-warn);
 
 // Include theme styles for core and each component used in your app-monpullmoche.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -51,4 +50,77 @@ body {
   .main-menu {
     background-color: #131629 !important;
   }
+}
+
+.album {
+  background: mat-color(mat-palette($mat-purple, 800));
+  * {
+    color: mat-color($white);
+  }
+}
+
+.music {
+  background: mat-color(mat-palette($mat-teal, 900));
+  * {
+    color: mat-color($white);
+  }
+}
+
+.note {
+  width: 600px;
+
+  @include media-breakpoint-up(xs) {
+    width: 95%;
+  }
+  @include media-breakpoint-up(sm) {
+    width: 300px;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 600px;
+  }
+
+  .blue {
+    background: mat-color(mat-palette($mat-blue, 300));
+    * {
+      color: mat-color($white);
+    }
+  }
+
+  .grey {
+    background: mat-color(mat-palette($mat-grey, 700));
+    * {
+      color: mat-color($white);
+    }
+  }
+
+  .dark-grey {
+    background: mat-color(mat-palette($mat-grey, 800));
+    * {
+      color: mat-color($white);
+    }
+  }
+
+  .blue-grey {
+    background: mat-color(mat-palette($mat-blue-grey, 700));
+    * {
+      color: mat-color($white);
+    }
+  }
+
+  .orange {
+    .mat-card-image {
+      height: 200px;
+    }
+
+    background: mat-color(mat-palette($mat-orange, 700));
+    * {
+      color: mat-color($white);
+    }
+  }
+}
+
+mat-checkbox,
+mat-radio-button {
+  color: mat-color($white);
+
 }

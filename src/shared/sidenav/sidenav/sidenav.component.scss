@@ -1,7 +1,7 @@
 // Import theming functions
 @import '~@angular/material/theming';
 @import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
-@import '../../../scss/base/hockey/theme.scss';
+
 .leftSidenav {
   width: 250px;
 }
@@ -38,10 +38,8 @@
 .card-sidebar {
   position: relative;
   height: 64px;
-  background-color: mat-color($product-accent);
 
   .mat-card-header {
-    color: mat-color($white);
     position: absolute;
     top: 14px;
     left: 10px;
@@ -50,19 +48,12 @@
 
 .sidenav-link {
   text-decoration: none;
-  color: mat-color($black);
 
   &:hover,
    :active,
    :focus {
-    color: mat-color($black);
     text-decoration: none;
   }
-}
-
-.heading {
-  background-color: mat-color($product-primary) !important;
-  color: mat-color($white) !important;
 }
 
 ng-adsense {
@@ -73,4 +64,12 @@ ng-adsense {
 
 .main-content {
   overflow-y: auto;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  .site {
+    flex: 1;
+  }
+
 }

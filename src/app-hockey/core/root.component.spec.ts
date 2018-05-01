@@ -48,6 +48,12 @@ import { SharedModule } from '../../shared/shared.module';
 import { MenuService } from '../../shared/menu/menu.service';
 import { ProductService } from '../../shared/product/product.service';
 import { MockProductService } from '../../shared/product/mock-product.service';
+import { AlertService } from '../../shared/popup/alert.service';
+import { MockCmsDetailService } from '../../shared/admin/shared/cms-detail/mock-cms-detail.service';
+import { CmsService } from '../../shared/admin/shared/cms/cms.service';
+import { MockCmsService } from '../../shared/admin/shared/cms/mock-cms.service';
+import { MockAlertService } from '../../shared/popup/mock-alert.service';
+import { CmsDetailService } from '../../shared/admin/shared/cms-detail/cms-detail.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -134,6 +140,9 @@ describe('AppRootComponent', () => {
           { provide: NgcCookieConsentService, useClass: NgcCookieConsentService },
           { provide: WindowService, useClass: WindowService },
           { provide: ProductService, useClass: MockProductService },
+          {provide: AlertService, useClass: MockAlertService},
+          {provide: CmsDetailService, useClass: MockCmsDetailService},
+          {provide: CmsService, useClass: MockCmsService},
           I18nService,
           MenuService,
           SidenavService,

@@ -1,29 +1,31 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cms } from './../../shared/cms/cms';
-import { CmsService } from './../../shared/cms/cms.service';
+import { Cms } from '../../shared/cms/cms';
+import { CmsService } from '../../shared/cms/cms.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-cms-list',
   templateUrl: './cms-list.component.html',
-  styleUrls: ['./cms-list.component.scss']
+  styleUrls: [ './cms-list.component.scss' ]
 })
 export class CmsListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  cmsList$: Observable < Cms[] > ;
+  cmsList$: Observable<Cms[]>;
   selected: Cms[];
   isLoading: boolean;
 
   /**
    * @param {ElementRef} table
    * @param {cmsService} cmsService
+   * @param router
    */
-  constructor(private table: ElementRef, private cmsService: CmsService,
-    private router: Router) {
-    this.columns = [{
+  constructor(private table: ElementRef,
+              private cmsService: CmsService,
+              private router: Router) {
+    this.columns = [ {
       prop: 'name',
       name: 'name',
       flexGrow: 1
@@ -35,7 +37,7 @@ export class CmsListComponent implements OnInit {
       prop: 'key',
       name: 'key',
       flexGrow: 1
-    }];
+    } ];
     this.selected = [];
     this.isLoading = true;
   }
@@ -70,7 +72,7 @@ export class CmsListComponent implements OnInit {
    * On select add new list in selection array
    * @param {any} selected
    */
-  onSelect({ selected }) {
+  onSelect({selected}) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
@@ -83,11 +85,15 @@ export class CmsListComponent implements OnInit {
   }
 
   showCmsDetail(cms: Cms) {
-    this.router.navigate([`/admin/cms/${cms.key}/cms-details`]);
+    this.router.navigate([ `/admin/cms/${cms.key}/cms-details` ]);
   }
 
-  onScroll(event: any) {}
+  onScroll(event: any) {
+  }
 
-  onCheckboxChangeFn(event) {}
-  selectFn(allRowsSelected) {}
+  onCheckboxChangeFn(event) {
+  }
+
+  selectFn(allRowsSelected) {
+  }
 }

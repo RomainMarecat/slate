@@ -48,6 +48,12 @@ import { SharedModule } from '../../shared/shared.module';
 import { MenuService } from '../../shared/menu/menu.service';
 import { ProductService } from '../../shared/product/product.service';
 import { MockProductService } from '../../shared/product/mock-product.service';
+import { AlertService } from '../../shared/popup/alert.service';
+import { MockAlertService } from '../../shared/popup/mock-alert.service';
+import { MockCmsDetailService } from '../../shared/admin/shared/cms-detail/mock-cms-detail.service';
+import { CmsService } from '../../shared/admin/shared/cms/cms.service';
+import { MockCmsService } from '../../shared/admin/shared/cms/mock-cms.service';
+import { CmsDetailService } from '../../shared/admin/shared/cms-detail/cms-detail.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -79,67 +85,70 @@ export const cookieConfig: NgcCookieConsentConfig = {
 
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
-  let fixture: ComponentFixture < AppRootComponent > ;
+  let fixture: ComponentFixture<AppRootComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          RouterTestingModule,
-          BrowserModule,
-          HttpClientModule,
-          BrowserAnimationsModule,
-          AngularFireModule.initializeApp(environment.firebase),
-          AngularFirestoreModule,
-          AngularFireAuthModule,
-          AdsenseModule.forRoot({
-            adClient: environment.clientAdSense,
-            adSlot: environment.slotAdSense
-          }),
-          MatCardModule,
-          MatToolbarModule,
-          MatSidenavModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatFormFieldModule,
-          MatSelectModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          MatSnackBarModule,
-          MatProgressSpinnerModule,
-          MatLineModule,
-          MatMenuModule,
-          MatCommonModule,
-          MatTooltipModule,
-          NgcCookieConsentModule.forRoot(cookieConfig),
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-          SharedModule
-        ],
-        declarations: [
-          AppRootComponent,
-        ],
-        providers: [
-          { provide: UserService, useClass: MockUserService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: NgcCookieConsentService, useClass: NgcCookieConsentService },
-          { provide: WindowService, useClass: WindowService },
-          { provide: ProductService, useClass: MockProductService },
-          I18nService,
-          MenuService,
-          SidenavService,
-          Angulartics2GoogleAnalytics
-        ]
-      })
+      imports: [
+        CommonModule,
+        RouterTestingModule,
+        BrowserModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        AdsenseModule.forRoot({
+          adClient: environment.clientAdSense,
+          adSlot: environment.slotAdSense
+        }),
+        MatCardModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatListModule,
+        MatSnackBarModule,
+        MatProgressSpinnerModule,
+        MatLineModule,
+        MatMenuModule,
+        MatCommonModule,
+        MatTooltipModule,
+        NgcCookieConsentModule.forRoot(cookieConfig),
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+        SharedModule
+      ],
+      declarations: [
+        AppRootComponent,
+      ],
+      providers: [
+        {provide: UserService, useClass: MockUserService},
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: NgcCookieConsentService, useClass: NgcCookieConsentService},
+        {provide: WindowService, useClass: WindowService},
+        {provide: ProductService, useClass: MockProductService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: CmsDetailService, useClass: MockCmsDetailService},
+        {provide: CmsService, useClass: MockCmsService},
+        I18nService,
+        MenuService,
+        SidenavService,
+        Angulartics2GoogleAnalytics
+      ]
+    })
       .compileComponents();
   }));
 

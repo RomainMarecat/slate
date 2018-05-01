@@ -55,6 +55,7 @@ describe('CmsDetailAddComponent', () => {
           MatInputModule,
           MatCheckboxModule,
           MatListModule,
+          MatSelectModule,
           MatToolbarModule,
           NgxEditorModule,
           TranslateModule.forRoot({
@@ -65,7 +66,6 @@ describe('CmsDetailAddComponent', () => {
         providers: [
           { provide: CmsDetailService, useClass: MockCmsDetailService },
           { provide: AlertService, useClass: MockAlertService },
-
         ]
       })
       .compileComponents();

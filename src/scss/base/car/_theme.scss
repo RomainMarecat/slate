@@ -1,6 +1,5 @@
 @import '~@angular/material/theming';
-@import url('https://fonts.googleapis.com/css?family=Material+Icons|Fugaz+One|Gentium+Book+Basic');
-
+@import url('https://fonts.googleapis.com/css?family=Material+Icons|Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i|Roboto+Condensed:300,300i,400,400i,700,700i');
 
 // Plus imports for other components in your app-monpullmoche.
 // Include the common styles for Angular Material. We include this here so that you only
@@ -12,42 +11,60 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 //
-$color1: #131629; // Bleu
-$color2: #ffffff; // Blanc
-$color3: #af300b; // Rouge
-$color5: #af8401;
-$product-primary: mat-palette($mat-indigo,
-900);
+$color1: #fcfcfc;
+$color2: #e71d36;
+$color3: #9bffff;
+$color4: #3a435e;
+$color5: #393d3f;
+$product-primary: mat-palette($mat-blue-grey,
+  800);
 $product-accent: mat-palette($mat-red,
-800);
-$product-warn: mat-palette($mat-orange,
-200);
+  600);
+$product-warn: mat-palette($mat-blue,
+  200);
 $white: mat-palette($mat-grey,
-50);
+  50);
 $black: mat-palette($mat-grey,
-900);
+  900);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($product-primary,
-$product-accent,
-$product-warn);
+  $product-accent,
+  $product-warn);
 
-// Include theme styles for core and each component used in your app-monpullmoche.
+// Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($theme);
 
 body {
-  font-family: 'Gentium Book Basic',
-  serif;
+  font-family: 'Nunito', sans-serif;
   background-color: $color2;
 
   .title {
-    font-family: 'Fugaz One', cursive;
-    text-transform: uppercase;
+    font-family: 'Roboto Condensed', sans-serif;
   }
 
+  // Menu toolbar
   .main-menu {
-    background-color: #131629 !important;
+    a {
+      color: $color3 !important;
+    }
+    background-color: $color4 !important;
+  }
+
+  footer {
+    a {
+      color: $color1;
+
+      & :hover {
+        color: $color3 !important;
+        text-decoration: none !important;
+      }
+    }
+    .mat-toolbar {
+      background-color: $color4 !important;
+    }
+
   }
 }
