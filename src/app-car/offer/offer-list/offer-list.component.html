@@ -2,10 +2,13 @@
   <div class="wrapper product-layout"
        fxLayoutGap="10px"
        fxLayoutAlign="space-around stretch"
-       fxLayoutAlign.xs="space-around stretch"
        fxLayout="row wrap"
-       fxLayout.xs="column">
-    <app-car-offer-item class="item-offer" *ngFor="let offer of offers" [offer]="offer">
+       fxLayoutAlign.xs="space-around stretch"
+       fxLayoutGap.xs="0px"
+       fxLayout.xs="row wrap">
+    <app-car-offer-item class="item-offer"
+                        [offer]="offer"
+                        *ngFor="let offer of offers">
     </app-car-offer-item>
     <div class="offer-empty"
          fxLayout="column"

@@ -13,6 +13,7 @@ import { TweenMax, Circle, Cubic } from 'gsap';
   styleUrls: [ './home.component.scss' ]
 })
 export class HomeComponent implements OnInit {
+  mapConfig: any;
 
   constructor(private translateService: TranslateService,
               private menuService: MenuService,
@@ -24,6 +25,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.mapConfig = {
+      context: {
+        path: {
+          fillStyle: '#3a435e',
+          strokeStyle: '#393d3f'
+        },
+        hovered: {
+          fillStyle: '#e71d36',
+          strokeStyle: '#393d3f'
+        }
+      }
+    };
     this.translateService.get([ 'meta.title.homepage', 'meta.description.homepage' ])
       .subscribe((translations: string[]) => {
         this.meta.addTag({name: 'description', content: translations[ 'meta.description.homepage' ]});

@@ -1,18 +1,2 @@
 @import '../../../node_modules/bootstrap/scss/bootstrap-grid';
 @import '~@angular/material/theming';
-
-footer {
-   //height: 56px;
-  //position: absolute;
-  //bottom: 0;
-  //left: 0;
-  width: 100%;
-  z-index: 0;
-
-  @include media-breakpoint-up(xs) {
-    display: none;
-  }
-  @include media-breakpoint-up(sm) {
-    display: block;
-  }
-}

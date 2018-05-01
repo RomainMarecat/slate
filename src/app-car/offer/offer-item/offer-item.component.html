@@ -1,16 +1,22 @@
-<mat-card class="mat-card m-2"
+<mat-card class="mat-card my-1"
           angulartics2On="mouseover"
           angularticsAction="hoveredOverOfferItem"
-          [angularticsCategory]="'offer.item'"
-          *ngIf="offer">
+          [angularticsCategory]="'offer.item'">
 
-  <div class="gallery-wrapper" fxLayout="row"
+  <div class="gallery-wrapper"
+       fxLayout="row"
        fxLayoutAlign="start stretch"
-       fxLayoutGap="50px">
+       fxLayoutGap="50px"
+       fxLayoutGap.xs="0px">
 
-    <div class="image-wrapper" fxFlex="20">
+    <div class="image-wrapper"
+         fxFlex="20"
+         fxFlex.xs="30">
+      <div class="app-image-loading"
+           *ngIf="!offer || !offer?.images[0]">
+      </div>
       <app-image class="app-image"
-                 [classes]="'img-thumbnail'"
+                 [classes]="'img-fluid'"
                  [key]="offer?.images[0]"
                  [resize]="{height: 200}"
                  (click)="offerDetail($event)"
@@ -29,7 +35,8 @@
     </div>
     <mat-card-header class="mat-card-header"
                      (click)="offerDetail($event)"
-                     fxFlex="20">
+                     fxFlex="20"
+                     fxFlex.xs="40">
       <mat-card-title class="mat-card-title"
                       angulartics2On="click"
                       angularticsAction="clickedOnTitleShowOffer"
@@ -50,11 +57,13 @@
          fxLayout="row"
          fxLayoutAlign="space-around stretch"
          fxFlex="60"
+         fxFlex.xs="30"
          (click)="offerDetail($event)">
       <mat-card-content class="attributes-wrapper"
                         fxLayout="column"
                         fxLayoutAlign="center start"
-                        fxLayoutGap="20px">
+                        fxLayoutGap="20px"
+                        fxHide.xs="true">
         <span>{{ offer?.mileage }} km</span>
         <span>{{ offer?.fuel }}</span>
         <span>{{ offer?.regDate }}</span>
@@ -62,6 +71,7 @@
       <mat-card-actions fxLayout="column"
                         fxLayoutAlign="center center"
                         fxLayoutGap="50px"
+                        fxLayoutGap.xs="5px"
                         (click)="offerDetail($event)">
         <span class="offer-published">{{ offer?.published_at | date:'medium' }}</span>
       </mat-card-actions>

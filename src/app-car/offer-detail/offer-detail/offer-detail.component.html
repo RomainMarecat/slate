@@ -1,19 +1,23 @@
-<div class="wrapper offer-layout my-2">
-  <div *ngIf="offer"
-       angulartics2On="click"
+<div class="wrapper offer-layout">
+  <div angulartics2On="click"
        angularticsAction="hoveredOverOfferDetail"
        [angularticsCategory]="'offer.detail'"
        fxLayout="row wrap"
        fxLayoutAlign="space-around stretch">
-    <mat-card class="mat-card mat-card-main my-2"
-              fxFlex="60">
+    <mat-card class="mat-card mat-card-main"
+              fxFlex="60"
+              fxFlex.xs="100">
       <div class="images-wrapper">
+        <div class="app-image-loading"
+             *ngIf="!offer || !offer?.images[0]"></div>
         <app-image class="app-image"
-                   [key]="offer.images[0]"
+                   classes="img-fluid"
+                   [key]="offer?.images[0]"
                    [resize]="resizedImage"
-                   *ngIf="offer.images[0]"></app-image>
+                   *ngIf="offer?.images[0]"></app-image>
         <div class="like-wrapper">
-          <a class="link-fav"
+          <a class="link-favorite"
+             mat-mini-fab
              (click)="toggleFavorite($event)">
             <mat-icon class="icon-favorite-border" *ngIf="!isFavorite">favorite_border</mat-icon>
             <mat-icon color="accent" class="icon-favorite-border" *ngIf="isFavorite">favorite</mat-icon>
@@ -21,23 +25,33 @@
         </div>
 
       </div>
-      <mat-card-header class="title">
+      <mat-card-header class="title my-1">
         <mat-card-title>
-          <h1>{{ brand?.name }} {{ model?.name }}</h1>
+          <h1><span class="text-uppercase brand">{{ brand?.name }}</span> <span class="model">{{ model?.name }}</span>
+          </h1>
         </mat-card-title>
         <mat-card-subtitle>
-          <h2>{{ offer?.price }} {{ 'euro'|translate }}</h2>
+          <h2 class="price" *ngIf="!offer?.price">-- {{ 'euro'|translate }}</h2>
+          <h2 class="price" *ngIf="offer?.price">{{ offer?.price }} {{ 'euro'|translate }}</h2>
         </mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content fxLayout="row"
+                        fxLayoutAlign="end start"
+                        fxLayout.xs="row"
+                        fxLayoutAlign.xs="end start">
         <span class="offer-published">{{ offer?.published_at |date:'medium' }}</span>
       </mat-card-content>
     </mat-card>
-    <mat-card class="mat-card mat-card-profile my-2" fxFlex="30">
+    <mat-card class="mat-card mat-card-profile"
+              fxFlex="30"
+              fxFlex.xs="100">
       <mat-card-header fxLayout="row"
                        fxLayoutAlign="center center"
-                       fxLayoutGap="20px">
-        <mat-icon class="user-avatar" mat-card-avatar>account_circle</mat-icon>
+                       fxLayoutGap="20px"
+                       fxLayoutGap.xs="10px">
+        <mat-icon class="user-avatar"
+                  mat-card-avatar>account_circle
+        </mat-icon>
         <mat-card-title>
           <h4 class="user-title">{{ offer?.user?.username }}</h4>
         </mat-card-title>
@@ -95,7 +109,9 @@
         </div>
       </mat-card-content>
     </mat-card>
-    <mat-card class="mat-card mat-card-attributes my-2" fxFlex="95">
+    <mat-card class="mat-card mat-card-attributes"
+              fxFlex="95"
+              fxFlex.xs="100">
       <mat-card-header>
         <mat-card-title>
           <strong class="text-uppercase">{{ 'criteria'|translate }}</strong>
@@ -105,7 +121,8 @@
         <div class="item-container"
              fxLayout="row wrap"
              fxLayoutAlign="space-around stretch"
-             fxLayoutGap="30px">
+             fxLayoutGap="30px"
+             fxLayoutGap.xs="10px">
           <div class="item"
                *ngFor="let item of items"
                fxLayout="column"
@@ -116,18 +133,22 @@
         </div>
       </mat-card-content>
     </mat-card>
-    <mat-card class="mat-card mat-card-description my-2" fxFlex="95">
+    <mat-card class="mat-card mat-card-description"
+              fxFlex="95"
+              fxFlex.xs="100">
       <mat-card-content>
         <strong class="text-uppercase">{{ 'description'|translate }}</strong>
         <p class="main-title"
            fxLayout="row wrap"
            fxLayoutAlign="space-around stretch"
            fxLayoutGap="30px">
-          {{ offer.description }}
+          {{ offer?.description }}
         </p>
       </mat-card-content>
     </mat-card>
-    <mat-card class="mat-card mat-card-comments my-2" fxFlex="95">
+    <mat-card class="mat-card mat-card-comments"
+              fxFlex="95"
+              fxFlex.xs="100">
       <mat-card-content>
         <div class="user-comment-wrapper"
              fxLayout="column"

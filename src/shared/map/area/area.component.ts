@@ -15,6 +15,7 @@ export class AreaComponent implements OnInit {
   @ViewChild(AreaDrawComponent) areaDrawComponent: AreaDrawComponent;
   areas: Area[] = [];
   _map: Map;
+  @Input() mapConfig: any;
 
   constructor(private areaService: AreaService) {
   }

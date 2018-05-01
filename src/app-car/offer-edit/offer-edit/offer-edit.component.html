@@ -1,18 +1,23 @@
 <div class="offer-edit-wrapper"
      fxLayout="column"
      fxLayoutAlign="start center"
-     fxLayoutGap="20px">
+     fxLayout.xs="column"
+     fxLayoutAlign.xs="center center"
+     fxLayoutGap="20px"
+     fxLayoutGap.xs="10px">
   <div class="main-title"
        fxLayout="row"
        fxLayoutAlign="center stretch">
-
-    <h1>{{ 'offer-edit.title'|translate }}</h1>
+    <h1 class="text-center">{{ 'offer-edit.title'|translate }}</h1>
   </div>
   <div class="form-edit-wrapper"
        fxLayout="row"
        fxLayoutAlign="center stretch">
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit($event)" fxLayout="column" fxLayoutAlign="start center"
+    <form [formGroup]="form"
+          (ngSubmit)="onSubmit($event)"
+          fxLayout="column"
+          fxLayoutAlign="start center"
           fxLayoutGap="20px">
       <mat-card>
         <mat-card-header>
@@ -171,7 +176,7 @@
 
         </mat-card-content>
       </mat-card>
-      <mat-card>
+      <mat-card class="mat-card-map">
         <mat-card-header>
           <mat-card-title>
             <h2 class="text-capitalize">{{ 'offer-edit.location.title'|translate }}</h2>
@@ -245,7 +250,7 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <mat-card class="mb5">
+      <mat-card class="mat-card-user mb-xs-3 mb-md-5">
         <mat-card-header>
           <mat-card-title>
             <h2 class="text-capitalize">{{ 'offer-edit.user.title'|translate }}</h2>
@@ -309,7 +314,13 @@
           </mat-form-field>
         </mat-card-content>
         <mat-card-actions>
-          <div class="button-wrapper " fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="50px">
+          <div class="button-wrapper"
+               fxLayout="row"
+               fxLayoutAlign="center stretch"
+               fxLayoutGap="50px"
+               fxLayout.xs="row"
+               fxLayoutAlign.xs="space-around stretch"
+               fxLayoutGap.xs="10px">
             <button mat-raised-button color="warn" type="button" (click)="location.back()" role="link">
               {{ 'cta.cancel'|translate }}
             </button>

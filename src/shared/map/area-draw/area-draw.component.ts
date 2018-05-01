@@ -14,6 +14,7 @@ declare var Path2D: Path2DConstructor;
 })
 export class AreaDrawComponent implements OnInit {
   @ViewChild('map') mapRef: ElementRef;
+  @Input() mapConfig: any;
 
   _areas: Area[];
   width = 600;
@@ -121,8 +122,14 @@ export class AreaDrawComponent implements OnInit {
   }
 
   drawPath(context: CanvasRenderingContext2D, path2D: Path2D) {
-    context.fillStyle = '#3d6abe';
-    context.strokeStyle = '#1e357d';
+    if (this.mapConfig &&
+      this.mapConfig.context &&
+      this.mapConfig.context.path &&
+      this.mapConfig.context.path.strokeStyle &&
+      this.mapConfig.context.path.fillStyle) {
+      context.fillStyle = this.mapConfig.context.path.fillStyle;
+      context.strokeStyle = this.mapConfig.context.path.strokeStyle;
+    }
     context.lineCap = 'round';
     context.lineJoin = 'round';
     context.lineWidth = 3;
@@ -132,8 +139,14 @@ export class AreaDrawComponent implements OnInit {
   }
 
   drawHoveredPath(context: CanvasRenderingContext2D, path2D: Path2D) {
-    context.fillStyle = '#f56b2a';
-    context.strokeStyle = '#1e357d';
+    if (this.mapConfig &&
+      this.mapConfig.context &&
+      this.mapConfig.context.hovered &&
+      this.mapConfig.context.hovered.strokeStyle &&
+      this.mapConfig.context.hovered.fillStyle) {
+      context.fillStyle = this.mapConfig.context.hovered.fillStyle;
+      context.strokeStyle = this.mapConfig.context.hovered.strokeStyle;
+    }
     context.lineCap = 'round';
     context.lineJoin = 'round';
     context.lineWidth = 3;

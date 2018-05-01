@@ -1,24 +1,56 @@
 @import '~@angular/material/theming';
+@import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
 @import '../../../scss/base/car/theme.scss';
 
 .mat-card-main {
+  padding: 0 0 16px;
   .images-wrapper {
     position: relative;
+    .app-image-loading {
+      width: 100px;
+      height: 100px;
+    }
 
     .like-wrapper {
       position: absolute;
       bottom: -20px;
       right: 20px;
-      mat-icon {
-        font-size: 40px;
-        height: 40px;
-        width: 40px;
+      .link-favorite {
+        background-color: $color1;
+        mat-icon {
+          color: $color2;
+        }
       }
     }
   }
 
   .offer-published {
     font-size: 16px;
+  }
+
+  @include media-breakpoint-up(xs) {
+    margin: 0;
+    .offer-published {
+      margin-right: 16px;
+    }
+
+    .images-wrapper {
+      min-height: 200px;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    margin: 10px 0;
+
+    .title {
+      margin-left: 16px;
+    }
+    .offer-published {
+      margin-right: 16px;
+    }
+    .images-wrapper {
+      min-height: 300px;
+    }
   }
 }
 
@@ -51,16 +83,49 @@
     width: 40px;
     font-size: 40px;
   }
+
+  @include media-breakpoint-up(xs) {
+    margin: 0;
+    .user-avatar, .user-title {
+      font-size: 2rem;
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+  @include media-breakpoint-up(md) {
+    margin: 10px 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin: 10px 0;
+
+    .user-avatar, .user-title {
+      font-size: 3rem;
+      height: 4rem;
+      width: 4rem;
+    }
+  }
 }
 
 .mat-card-attributes {
+
+  margin: 10px 0;
+
   span {
     font-size: 18px;
   }
 }
 
 .mat-card-description {
+
+  margin: 10px 0;
+
   p {
     font-size: 18px;
   }
+}
+
+.mat-card-comments {
+  margin: 10px 0;
+
 }

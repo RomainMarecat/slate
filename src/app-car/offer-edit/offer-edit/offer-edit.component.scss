@@ -2,17 +2,16 @@
 @import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
 @import '../../../scss/base/car/theme.scss';
 
- .mat-card {
-  width: 500px;
+.form-edit-wrapper {
 
   @include media-breakpoint-up(xs) {
-    width: 250px;
+    width: 100%;
   }
   @include media-breakpoint-up(sm) {
-    width: 300px;
+    width: 100%;
   }
   @include media-breakpoint-up(md) {
-    width: 450px;
+    width: 100%;
   }
   @include media-breakpoint-up(lg) {
     width: 500px;
@@ -20,48 +19,50 @@
   @include media-breakpoint-up(xl) {
     width: 700px;
   }
-}
 
-.mat-form-field, .agm-map {
-  width: 100%;
-}
+  .mat-form-field,
+  .agm-map,
+  .mat-card-map,
+  .mat-card-user {
+    width: 100%;
+  }
 
-.button-wrapper {
+  .button-wrapper {
 
-  button {
-    min-width: 200px;
+    button {
 
-    @include media-breakpoint-up(xs) {
-      width: 75px;
-    }
-    @include media-breakpoint-up(sm) {
-      width: 100px;
-    }
-    @include media-breakpoint-up(md) {
-      width: 200px;
-    }
-    @include media-breakpoint-up(lg) {
-      width: 220px;
-    }
-    @include media-breakpoint-up(xl) {
-      width: 300px;
+      @include media-breakpoint-up(xs) {
+        width: 100%;
+      }
+      @include media-breakpoint-up(sm) {
+        width: 100%;
+      }
+      @include media-breakpoint-up(md) {
+        width: 100%;
+      }
+      @include media-breakpoint-up(lg) {
+        width: 220px;
+      }
+      @include media-breakpoint-up(xl) {
+        width: 300px;
+      }
     }
   }
-}
 
-.mat-form-field {
-  font-size: large;
-}
+  .mat-form-field {
+    font-size: large;
+  }
 
-.agm-map {
-  height: 500px;
-}
+  .agm-map {
+    height: 500px;
+  }
 
-.search-wrapper {
-  .search-form-field {
-    width: 150px;
-    .search-input {
+  .search-wrapper {
+    .search-form-field {
+      width: 150px;
+      .search-input {
 
+      }
     }
   }
 }

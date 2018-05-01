@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MapService } from '../shared/map.service';
 import { Map } from '../shared/map';
 import 'rxjs/add/operator/take';
@@ -12,6 +12,8 @@ import { AlertService } from '../../popup/alert.service';
 export class MapComponent implements OnInit {
 
   map: Map;
+
+  @Input() mapConfig: any;
 
   constructor(private mapService: MapService, private alertService: AlertService) {
   }
