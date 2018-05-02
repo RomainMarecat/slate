@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import { CmsDetail } from './cms-detail';
+import { Inject, Injectable } from '@angular/core';
 import { AlertService } from '../../../popup/alert.service';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -11,118 +10,33 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
+import { VisitorService } from '../../../firestore/visitor.service';
+import { CmsDetail } from './cms-detail';
 
 @Injectable()
-export class CmsDetailService {
-  cmsDetailCollectionRef: AngularFirestoreCollection<CmsDetail>;
-  cmsDetails$: Observable<DocumentChangeAction[]>;
-  cmsFilters$: BehaviorSubject<string | null>;
-  nameFilters$: BehaviorSubject<string | null>;
-  parentFilters$: BehaviorSubject<string | null>;
-  keyFilters$: BehaviorSubject<string | null>;
-  limit$: BehaviorSubject<number | null>;
-  startAt$: BehaviorSubject<string | null>;
-  startAfter$: BehaviorSubject<string | null>;
-  orderBy$: BehaviorSubject<string | 'published_at'>;
-  endAt$: BehaviorSubject<string | null>;
-  endBefore$: BehaviorSubject<string | null>;
-  query: CollectionReference | Query;
+export class CmsDetailService extends VisitorService {
 
-  /**
-   *
-   * @param {AngularFirestore} afs
-   * @param {AlertService} alertService
-   */
-  constructor(private afs: AngularFirestore, private alertService: AlertService) {
-    this.keyFilters$ = new BehaviorSubject(null);
-    this.cmsFilters$ = new BehaviorSubject(null);
-    this.nameFilters$ = new BehaviorSubject(null);
-    this.parentFilters$ = new BehaviorSubject(null);
-    this.limit$ = new BehaviorSubject(null);
-    this.cmsDetailCollectionRef = this.afs.collection('cms-detail');
-    this.cmsDetails$ = Observable.combineLatest(
-      this.keyFilters$,
-      this.cmsFilters$,
-      this.nameFilters$,
-      this.parentFilters$,
-      this.limit$
-    )
-      .catch(err => {
-        console.error(err);
-        return Observable.of([]);
-      })
-      .switchMap(([ key, cms, name, parent, limit ]) =>
-        this.afs.collection('cms-detail', ref => {
-          this.query = ref;
-          if (cms) {
-            this.query = this.query.where('cms', '==', cms);
-          }
-          if (parent) {
-            this.query = this.query.where('parent', '==', parent);
-          }
-          if (name) {
-            this.query = this.query.where('name', '==', name);
-          }
-          if (limit) {
-            this.query = this.query.limit(limit);
-          }
-          return this.query;
-        })
-          .snapshotChanges()
-      );
+  constructor(afs: AngularFirestore, @Inject('TABLE_CMS_DETAIL') table: string) {
+    super(afs, table);
   }
 
-  /**
-   *
-   * @returns Observable<CmsDetail[]>
-   */
-  getCmsDetails(): Observable<CmsDetail[]> {
-    return this.cmsDetails$.map((categories: DocumentChangeAction[]) =>
-      categories.map((doc: DocumentChangeAction) => {
-        const cmsDetail = doc.payload.doc.data() as CmsDetail;
-        cmsDetail.key = doc.payload.doc.id;
-        return cmsDetail as CmsDetail;
-      })
-    );
-  }
-
-  getCmsDetailByCms(cms: string): Observable<CmsDetail[]> {
-    this.cmsFilters$.next(cms);
-    return this.getCmsDetails();
-  }
-
-  /**
-   *
-   * @returns Observable<cmsDetail[]>
-   * @param key
-   */
-  getCmsDetail(key: null | string): Observable<CmsDetail[]> {
-    this.keyFilters$.next(key);
-    return this.getCmsDetails().take(1);
-  }
-
-  /**
-   *
-   * @param cmsDetail
-   */
-  updateCmsDetail(cmsDetail: CmsDetail) {
-    this.cmsDetailCollectionRef.doc(cmsDetail.key).update({...cmsDetail});
-  }
-
-  /**
-   *
-   * @param cmsDetail
-   */
-  createCmsDetail(cmsDetail: CmsDetail) {
-    delete cmsDetail.key;
-    this.cmsDetailCollectionRef.add({...cmsDetail});
-  }
-
-  /**
-   *
-   * @param cmsDetail
-   */
-  deleteCmsDetail(cmsDetail: CmsDetail) {
-    this.cmsDetailCollectionRef.doc(cmsDetail.key).delete();
-  }
+  getCmsDetails(): Observable < CmsDetail[] > {
+    return super.getDocuments() as Observable < CmsDetail[] > ;
 }
+
+  getCmsDetail(key: string): Observable < CmsDetail > {
+    return super.getDocument(key) as Observable < CmsDetail > ;
+}
+
+  createCmsDetail(cmsDetail: CmsDetail): Promise < any > {
+    return super.createDocument(cmsDetail);
+}
+
+  updateCmsDetail(cmsDetail: CmsDetail) {
+    return super.updateDocument(cmsDetail);
+  }
+
+
+  deleteCmsDetail(cmsDetail: CmsDetail) {
+    return super.deleteDocument(cmsDetail);
+  }

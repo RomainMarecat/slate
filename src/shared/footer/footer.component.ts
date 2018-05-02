@@ -3,6 +3,7 @@ import { CmsService } from '../admin/shared/cms/cms.service';
 import { CmsDetailService } from '../admin/shared/cms-detail/cms-detail.service';
 import { Cms } from '../admin/shared/cms/cms';
 import { CmsDetail } from '../admin/shared/cms-detail/cms-detail';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-footer',
@@ -50,5 +51,9 @@ export class FooterComponent implements OnInit {
         cmsDetail.children = children;
         this.links[index] = cmsDetail;
       });
+  }
+
+  getCmsDetail(key: string): Observable<CmsDetail> {
+    return this.cmsDetailService.getCmsDetail(key) as Observable<CmsDetail>;
   }
 }
