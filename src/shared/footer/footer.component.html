@@ -2,19 +2,20 @@
         angularticsAction="HoveredOverFooter"
         [angularticsCategory]="'footer.content'">
   <mat-toolbar>
-    <mat-toolbar-row fxLayout="row"
+    <mat-toolbar-row class="links-row"
+                     fxLayout="row"
                      fxLayoutAlign="center stretch"
                      fxLayoutGap="20px">
       <div class="links-wrapper mt-5"
            fxLayout="row"
            fxLayoutAlign="center stretch"
            fxLayoutGap="20px">
-          <!-- Improved nav list and children -->
-          <span fxLayout="column"
-                fxLayoutAlign="center center"
-                *ngFor="let link of links">
+        <!-- Improved nav list and children -->
+        <span fxLayout="column"
+              fxLayoutAlign="start start"
+              *ngFor="let link of links">
              <a [href]="link.content" class="text-uppercase">{{ link.title |translate }}</a>
-             <span *ngFor="let sublink of link.children">
+             <span *ngFor="let sublink of link?.children">
               <a [href]="sublink.content">{{ sublink.title |translate }}</a>
             </span>
           </span>

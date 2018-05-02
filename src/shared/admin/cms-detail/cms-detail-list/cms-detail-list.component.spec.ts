@@ -24,8 +24,8 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { CmsDetailService } from './../../shared/cms-detail/cms-detail.service';
-import { MockCmsDetailService } from './../../shared/cms-detail/mock-cms-detail.service';
+import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service';
+import { MockCmsDetailService } from '../../../cms-detail/shared/mock-cms-detail.service';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 

@@ -1,19 +1,20 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { CmsService } from './../../shared/cms/cms.service';
-import { Cms } from './../../shared/cms/cms';
+import { Component, OnInit } from '@angular/core';
+import { CmsService } from '../../../cms/shared/cms.service';
+import { Cms } from '../../../cms/shared/cms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
 
 @Component({
   selector: 'app-cms-add',
   templateUrl: './cms-add.component.html',
-  styleUrls: ['./cms-add.component.scss']
+  styleUrls: [ './cms-add.component.scss' ]
 })
 export class CmsAddComponent implements OnInit {
   form: FormGroup;
   cms: Cms;
 
-  constructor(private cmsService: CmsService, private alertService: AlertService) {}
+  constructor(private cmsService: CmsService, private alertService: AlertService) {
+  }
 
   ngOnInit() {
     this.createForm();
@@ -33,9 +34,15 @@ export class CmsAddComponent implements OnInit {
   saveCms() {
     if (this.form.valid === true) {
       this.cms = this.form.value;
-      this.cmsService.createCms(this.cms);
-      this.alertService.toast(`Le cms est ajoutée ${this.cms.name}`, 'info');
-      this.reset();
+      this.cmsService.createCms(this.cms)
+        .then((doc) => {
+          this.cms.key = doc.id;
+          this.cmsService.updateCms(this.cms)
+            .then(() => {
+              this.alertService.toast(`Le cms est ajoutée ${this.cms.name}`, 'info');
+              this.reset();
+            });
+        });
     }
   }
 

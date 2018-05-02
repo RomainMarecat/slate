@@ -49,11 +49,11 @@ import { MenuService } from '../../shared/menu/menu.service';
 import { ProductService } from '../../shared/product/product.service';
 import { MockProductService } from '../../shared/product/mock-product.service';
 import { AlertService } from '../../shared/popup/alert.service';
-import { MockCmsDetailService } from '../../shared/admin/shared/cms-detail/mock-cms-detail.service';
-import { CmsService } from '../../shared/admin/shared/cms/cms.service';
-import { MockCmsService } from '../../shared/admin/shared/cms/mock-cms.service';
+import { MockCmsDetailService } from '../../shared/cms-detail/shared/mock-cms-detail.service';
+import { CmsService } from '../../shared/cms/shared/cms.service';
+import { MockCmsService } from '../../shared/cms/shared/mock-cms.service';
 import { MockAlertService } from '../../shared/popup/mock-alert.service';
-import { CmsDetailService } from '../../shared/admin/shared/cms-detail/cms-detail.service';
+import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {

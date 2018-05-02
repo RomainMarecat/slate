@@ -8,17 +8,26 @@
       </div>
     </div>
     <div class="col-6">
-      <button role="button" aria-label="Publier une cmsDetail" mat-raised-button color="primary"
-              (click)="publishCmsDetail()" *ngIf="selected.length > 0">
+      <button role="button"
+              aria-label="Publier une cmsDetail"
+              mat-raised-button
+              color="primary"
+              (click)="publishCmsDetail()"
+              *ngIf="selected.length > 0">
         <mat-icon aria-label="Published">done</mat-icon>
         Publier
       </button>
-      <button role="button" aria-label="Supprimer une cmsDetail" mat-raised-button color="accent"
-              (click)="deleteCmsDetail()" *ngIf="selected.length > 0">
+      <button role="button"
+              aria-label="Supprimer une cmsDetail"
+              mat-raised-button color="accent"
+              (click)="deleteCmsDetail()"
+              *ngIf="selected.length > 0">
         <mat-icon aria-label="delete">delete</mat-icon>
         Supprimer
       </button>
-      <a [routerLink]="['/admin/cms/' + cmsKey + '/cms-details/add']" mat-raised-button color="primary">
+      <a [routerLink]="['/admin/cms/' + cmsKey + '/cms-details/add']"
+         mat-raised-button
+         color="primary">
         <mat-icon aria-label="add">add</mat-icon>
         Ajouter
       </a>
@@ -26,20 +35,39 @@
   </div>
   <div class="row">
     <div class="col-12 mt2">
-      <ngx-datatable class="material striped scrolling-cms-detail" [columnMode]="'force'" [rows]="cmsDetails$|async"
-                     [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight"
-                     [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)"
-                     [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)"
+      <ngx-datatable class="material striped scrolling-cms-detail"
+                     [columnMode]="'force'"
+                     [rows]="cmsDetails$|async"
+                     [columns]="columns"
+                     [headerHeight]="headerHeight"
+                     [rowHeight]="rowHeight"
+                     [loadingIndicator]="isLoading"
+                     [scrollbarV]="true"
+                     (scroll)="onScroll($event.offsetY)"
+                     [selected]="selected"
+                     [selectionType]="'checkbox'"
+                     (activate)="onActivate($event)"
                      (select)='onSelect($event)'>
-        <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+        <ngx-datatable-column [width]="50"
+                              [sortable]="false"
+                              [canAutoResize]="false"
+                              [draggable]="false"
                               [resizeable]="false">
-          <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+          <ng-template ngx-datatable-header-template
+                       let-value="value"
+                       let-allRowsSelected="allRowsSelected"
                        let-selectFn="selectFn">
-            <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
+            <input type="checkbox"
+                   [checked]="allRowsSelected"
+                   (change)="selectFn(!allRowsSelected)"/>
           </ng-template>
-          <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+          <ng-template ngx-datatable-cell-template
+                       let-value="value"
+                       let-isSelected="isSelected"
                        let-onCheckboxChangeFn="onCheckboxChangeFn">
-            <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
+            <input type="checkbox"
+                   [checked]="isSelected"
+                   (change)="onCheckboxChangeFn($event)"/>
           </ng-template>
         </ngx-datatable-column>
         <ngx-datatable-column name="key"></ngx-datatable-column>

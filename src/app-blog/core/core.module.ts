@@ -63,7 +63,7 @@ export const TABLE_SELECTION = new InjectionToken<string>('selection');
 export const TABLE_SCORE = new InjectionToken<string>('score');
 export const TABLE_COMMENT = new InjectionToken<string>('comment');
 export const TABLE_CMS = new InjectionToken<string>('cms');
-export const TABLE_CMS_DETAIL = new InjectionToken<string>('cms_detail');
+export const TABLE_CMS_DETAIL = new InjectionToken<string>('cms-detail');
 export const TABLE_MEDIA = new InjectionToken<string>('media');
 export const TABLE_POST = new InjectionToken<string>('post');
 export const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
@@ -148,7 +148,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_CATEGORY, useValue: 'category'},
     {provide: TABLE_COMMENT, useValue: 'comment'},
     {provide: TABLE_CMS, useValue: 'cms'},
-    {provide: TABLE_CMS_DETAIL, useValue: 'cms_detail'},
+    {provide: TABLE_CMS_DETAIL, useValue: 'cms-detail'},
     {provide: TABLE_MEDIA, useValue: 'media'},
     {provide: TABLE_OFFER, useValue: 'offer'},
     {provide: TABLE_POST, useValue: 'post'},

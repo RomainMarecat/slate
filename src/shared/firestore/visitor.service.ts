@@ -25,8 +25,6 @@ export class VisitorService {
   collectionRef: AngularFirestoreCollection < DocumentReference > ;
   documents$: Observable < DocumentChangeAction[] > ;
   document$: Observable < Document > ;
-  columnFilter$: BehaviorSubject < string | null > ;
-  valueFilter$: BehaviorSubject < string | null > ;
   filters$: BehaviorSubject < Filter[] | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;
@@ -44,20 +42,16 @@ export class VisitorService {
    */
   constructor(public afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
     this.table = table;
-    this.columnFilter$ = new BehaviorSubject(null);
-    this.valueFilter$ = new BehaviorSubject(null);
     this.filters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.orderBy$ = new BehaviorSubject(null);
     this.collectionRef = this.afs.collection(this.table);
     this.documents$ = Observable.combineLatest(
-        this.columnFilter$,
-        this.valueFilter$,
         this.filters$,
         this.limit$,
         this.orderBy$
       )
-      .switchMap(([column, value, filters, limit, orderBy]) => {
+      .switchMap(([filters, limit, orderBy]) => {
         return this.afs.collection(this.table, ref => {
             this.query = ref;
             if (limit) {
@@ -86,6 +80,12 @@ export class VisitorService {
       return documents.map((document: DocumentChangeAction) => {
         if (document.payload.doc.exists) {
           const doc = document.payload.doc.data() as Document;
+          // Useful if doc id is missing on forgot update after create function
+          // if (!doc.key) {
+          //   doc.key = document.payload.doc.id;
+          //   this.updateDocument(doc).then(() => {
+          //   });
+          // }
           doc.key = document.payload.doc.id;
           return doc;
         }

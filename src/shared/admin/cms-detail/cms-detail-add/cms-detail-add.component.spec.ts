@@ -27,8 +27,8 @@ import { NgxEditorModule } from 'ngx-editor';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { CmsDetailService } from './../../shared/cms-detail/cms-detail.service';
-import { MockCmsDetailService } from './../../shared/cms-detail/mock-cms-detail.service';
+import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service';
+import { MockCmsDetailService } from '../../../cms-detail/shared/mock-cms-detail.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { AlertService } from '../../../popup/alert.service';
 
