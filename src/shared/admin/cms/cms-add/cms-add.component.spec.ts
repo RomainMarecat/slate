@@ -26,8 +26,8 @@ import {
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { CmsService } from './../../shared/cms/cms.service';
-import { MockCmsService } from './../../shared/cms/mock-cms.service';
+import { CmsService } from '../../../cms/shared/cms.service';
+import { MockCmsService } from '../../../cms/shared/mock-cms.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { AlertService } from '../../../popup/alert.service';
 

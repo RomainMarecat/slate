@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cms } from '../../shared/cms/cms';
-import { CmsService } from '../../shared/cms/cms.service';
+import { Cms } from '../../../cms/shared/cms';
+import { CmsService } from '../../../cms/shared/cms.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({

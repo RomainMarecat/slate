@@ -1,8 +1,10 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CmsDetail } from '../../shared/cms-detail/cms-detail';
-import { CmsDetailService } from '../../shared/cms-detail/cms-detail.service';
+import { CmsDetail } from '../../../cms-detail/shared/cms-detail';
+import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service';
 import { Observable } from 'rxjs/Observable';
+import { Filter } from '../../../facet/filter/shared/filter';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'app-cms-detail-list',
@@ -72,11 +74,21 @@ export class CmsDetailListComponent implements OnInit {
     this.activeRoute.params.subscribe((value: { key: string }) => {
       this.cmsKey = value.key;
       if (value.key) {
-        this.cmsDetails$ = this.cmsDetailService.getCmsDetailByCms(value.key);
+        this.cmsDetailService.filters$.next([{column: 'cms', operator: '==', value: value.key}] as Filter[]);
+        this.cmsDetails$ = this.cmsDetailService.getCmsDetails();
       } else {
         this.cmsDetails$ = Observable.of([]);
       }
     });
+  }
+
+  /**
+   *
+   * @param {string} key
+   * @returns {Observable<CmsDetail>}
+   */
+  getCmsDetail(key: string): Observable<CmsDetail> {
+    return this.cmsDetailService.getCmsDetail(key);
   }
 
   /**

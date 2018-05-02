@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,7 +10,10 @@ import { SharedModule } from '../../shared.module';
 import { CmsDetailRoutingModule } from './cms-detail-routing.module';
 import { CmsDetailListComponent } from './cms-detail-list/cms-detail-list.component';
 import { CmsDetailAddComponent } from './cms-detail-add/cms-detail-add.component';
-import { CmsDetailService } from './../shared/cms-detail/cms-detail.service';
+import { CmsDetailService } from '../../cms-detail/shared/cms-detail.service';
+import { AngularFirestore } from 'angularfire2/firestore';
+
+const TABLE_CMS_DETAIL = new InjectionToken<string>('cms-detail');
 
 @NgModule({
   imports: [
@@ -24,9 +27,11 @@ import { CmsDetailService } from './../shared/cms-detail/cms-detail.service';
     SharedModule,
     CmsDetailRoutingModule
   ],
-  declarations: [CmsDetailListComponent, CmsDetailAddComponent],
+  declarations: [ CmsDetailListComponent, CmsDetailAddComponent ],
   providers: [
-    CmsDetailService
+    {provide: TABLE_CMS_DETAIL, useValue: 'cms-detail'},
+    {provide: CmsDetailService, useClass: CmsDetailService, deps: [ AngularFirestore, TABLE_CMS_DETAIL ]}
   ]
 })
-export class CmsDetailModule {}
+export class CmsDetailModule {
+}

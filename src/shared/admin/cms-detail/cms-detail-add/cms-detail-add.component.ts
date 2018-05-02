@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CmsDetailService } from '../../shared/cms-detail/cms-detail.service';
-import { CmsDetail } from '../../shared/cms-detail/cms-detail';
+import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service';
+import { CmsDetail } from '../../../cms-detail/shared/cms-detail';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
+import { Filter } from '../../../facet/filter/shared/filter';
 
 @Component({
   selector: 'app-cms-detail-add',
@@ -54,7 +55,7 @@ export class CmsDetailAddComponent implements OnInit {
   }
 
   getCmsDetails(cms: string) {
-    this.cmsDetailService.cmsFilters$.next(cms);
+    this.cmsDetailService.filters$.next([ {column: 'cms', operator: '==', value: cms} ] as Filter[]);
     this.cmsDetailService.getCmsDetails()
       .subscribe((cmsDetails: CmsDetail[]) => {
         this.cmsDetails = cmsDetails;
@@ -66,9 +67,15 @@ export class CmsDetailAddComponent implements OnInit {
     if (this.form.valid === true && this.cmsKey !== null) {
       this.cmsDetail = this.form.value;
       this.cmsDetail.cms = this.cmsKey;
-      this.cmsDetailService.createCmsDetail(this.cmsDetail);
-      this.alertService.toast(`Le contenu cms est ajoutée ${this.cmsDetail.title}`, 'info');
-      this.reset();
+      this.cmsDetailService.createCmsDetail(this.cmsDetail)
+        .then((doc) => {
+          this.cmsDetail.key = doc.id;
+          this.cmsDetailService.updateCmsDetail(this.cmsDetail)
+            .then(() => {
+              this.alertService.toast(`Le contenu cms est ajoutée ${this.cmsDetail.title}`, 'info');
+              this.reset();
+            });
+        });
     }
   }
 

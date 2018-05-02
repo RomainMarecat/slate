@@ -50,6 +50,8 @@ import { CategoryService } from '../../shared/category/category.service';
 import { CarOfferEditModule } from '../offer-edit/car-offer-edit.module';
 import { CarOfferDetailModule } from '../offer-detail/car-offer-detail.module';
 import { CarOfferListModule } from '../offer/car-offer-list.module';
+import { CmsService } from '../../shared/cms/shared/cms.service';
+import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -72,7 +74,7 @@ export const TABLE_SELECTION = new InjectionToken<string>('selection');
 export const TABLE_SCORE = new InjectionToken<string>('score');
 export const TABLE_COMMENT = new InjectionToken<string>('comment');
 export const TABLE_CMS = new InjectionToken<string>('cms');
-export const TABLE_CMS_DETAIL = new InjectionToken<string>('cms_detail');
+export const TABLE_CMS_DETAIL = new InjectionToken<string>('cms-detail');
 export const TABLE_MEDIA = new InjectionToken<string>('media');
 export const TABLE_POST = new InjectionToken<string>('post');
 export const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
@@ -164,7 +166,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_CATEGORY, useValue: 'category'},
     {provide: TABLE_COMMENT, useValue: 'comment'},
     {provide: TABLE_CMS, useValue: 'cms'},
-    {provide: TABLE_CMS_DETAIL, useValue: 'cms_detail'},
+    {provide: TABLE_CMS_DETAIL, useValue: 'cms-detail'},
     {provide: TABLE_MAP, useValue: 'map'},
     {provide: TABLE_MEDIA, useValue: 'media'},
     {provide: TABLE_OFFER, useValue: 'offer'},
@@ -176,6 +178,8 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: AreaService, useClass: AreaService, deps: [ AngularFirestore, TABLE_AREA ]},
     {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
     {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY ]},
+    {provide: CmsService, useClass: CmsService, deps: [ AngularFirestore, TABLE_CMS ]},
+    {provide: CmsDetailService, useClass: CmsDetailService, deps: [ AngularFirestore, TABLE_CMS_DETAIL ]},
     {provide: CommentService, useClass: CommentService, deps: [ AngularFirestore, TABLE_COMMENT ]},
     {provide: MediaService, useClass: MediaService, deps: [ AngularFirestore, TABLE_MEDIA ]},
     {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},

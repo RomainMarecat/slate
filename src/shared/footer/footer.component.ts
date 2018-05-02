@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CmsService } from '../admin/shared/cms/cms.service';
-import { CmsDetailService } from '../admin/shared/cms-detail/cms-detail.service';
-import { Cms } from '../admin/shared/cms/cms';
-import { CmsDetail } from '../admin/shared/cms-detail/cms-detail';
+import { CmsService } from '../cms/shared/cms.service';
+import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
+import { Cms } from '../cms/shared/cms';
+import { CmsDetail } from '../cms-detail/shared/cms-detail';
+import { Observable } from 'rxjs/Observable';
+import { Filter } from '../facet/filter/shared/filter';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'app-footer',
@@ -24,31 +27,30 @@ export class FooterComponent implements OnInit {
   }
 
   getLinks() {
-    this.cmsService.nameFilters$.next('footer.links');
+    this.cmsDetailService.filters$.next([ {column: 'name', operator: '==', value: 'footer.links'} ]);
     this.cmsService.getCmss()
       .subscribe((cmss: Cms[]) => {
         if (cmss && cmss.length > 0) {
           this.cms = cmss[ 0 ];
-          const cms: Cms = cmss[ 0 ];
-          this.cmsDetailService.parentFilters$.next(null);
-          this.cmsDetailService.cmsFilters$.next(cms.key);
+          this.cmsDetailService.filters$.next([ {column: 'cms', operator: '==', value: this.cms.key} ]);
           this.cmsDetailService.getCmsDetails()
             .subscribe((cmsDetails: CmsDetail[]) => {
-              this.links = cmsDetails.filter((cmsD) => cmsD.parent === null);
-              this.links.forEach((link: CmsDetail, index: number) => {
-                this.getSubLinks(link, index);
+              const links = cmsDetails.filter((cmsD) => cmsD.parent === null);
+              const sublinks = cmsDetails.filter((cmsD) => cmsD.parent !== null);
+              this.links = links.map((link: CmsDetail) => {
+                const children = [];
+                sublinks.forEach((sublink: CmsDetail) => {
+                  if (link.key === sublink.parent) {
+                    children.push(sublink);
+                  }
+                });
+                link.children = children;
+
+                return link;
+
               });
             });
         }
-      });
-  }
-
-  getSubLinks(cmsDetail: CmsDetail, index: number) {
-    this.cmsDetailService.parentFilters$.next(cmsDetail.key);
-    this.cmsDetailService.getCmsDetails()
-      .subscribe((children: CmsDetail[]) => {
-        cmsDetail.children = children;
-        this.links[index] = cmsDetail;
       });
   }
 }
