@@ -14,9 +14,9 @@
         <span fxLayout="column"
               fxLayoutAlign="start start"
               *ngFor="let link of links">
-             <a [href]="link.content" class="text-uppercase">{{ link.title |translate }}</a>
+             <span class=" text-white text-uppercase">{{ link.title |translate }}</span>
              <span *ngFor="let sublink of link?.children">
-              <a [href]="sublink.content">{{ sublink.title |translate }}</a>
+              <a class="text-capitalize" [routerLink]="'/content/' + sublink.key + '-' + sublink.content">{{ sublink.title |translate }}</a>
             </span>
           </span>
       </div>

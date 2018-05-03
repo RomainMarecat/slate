@@ -29,7 +29,7 @@
           <mat-select [formControl]="form.controls.parent">
             <mat-option value="">--</mat-option>
             <mat-option *ngFor="let cmsDetail of cmsDetails" [value]="cmsDetail.key">
-              {{cmsDetail?.title}}
+              {{cmsDetail?.title | translate }}
             </mat-option>
           </mat-select>
         </mat-form-field>

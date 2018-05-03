@@ -71,7 +71,11 @@
           </ng-template>
         </ngx-datatable-column>
         <ngx-datatable-column name="key"></ngx-datatable-column>
-        <ngx-datatable-column name="title"></ngx-datatable-column>
+        <ngx-datatable-column name="title">
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            {{ value | translate }}
+          </ng-template>
+        </ngx-datatable-column>
         <ngx-datatable-column name="content"></ngx-datatable-column>
         <ngx-datatable-column name="parent"></ngx-datatable-column>
       </ngx-datatable>
