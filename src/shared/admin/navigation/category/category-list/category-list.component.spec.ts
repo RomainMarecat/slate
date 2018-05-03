@@ -12,6 +12,7 @@ import { MockCategoryService } from '../../../../category/mock-category.service'
 import { MockAlertService } from '../../../../popup/mock-alert.service';
 import { AlertService } from '../../../../popup/alert.service';
 import {SharedModule} from '../../../../shared.module';
+import { MenuService } from '../../../../menu/menu.service';
 
 describe('CategoryListComponent', () => {
   let component: CategoryListComponent;
@@ -32,6 +33,7 @@ describe('CategoryListComponent', () => {
         providers: [
           { provide: CategoryService, useClass: MockCategoryService },
           { provide: AlertService, useClass: MockAlertService },
+          { provide: MenuService, useClass: MenuService },
         ]
       })
       .compileComponents();

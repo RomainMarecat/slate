@@ -1,7 +1,9 @@
 <footer angulartics2On="mouseover"
         angularticsAction="HoveredOverFooter"
         [angularticsCategory]="'footer.content'">
-  <mat-toolbar>
+  <mat-toolbar class="mat-toolbar"
+               fxShow.gt-sm="true"
+               fxHide.xs="true">
     <mat-toolbar-row class="links-row"
                      fxLayout="row"
                      fxLayoutAlign="center stretch"
@@ -16,7 +18,8 @@
               *ngFor="let link of links">
              <span class=" text-white text-uppercase">{{ link.title |translate }}</span>
              <span *ngFor="let sublink of link?.children">
-              <a class="text-capitalize" [routerLink]="'/content/' + sublink.key + '-' + sublink.content">{{ sublink.title |translate }}</a>
+              <a class="text-capitalize"
+                 [routerLink]="'/content/' + sublink.key + '-' + sublink.content">{{ sublink.title |translate }}</a>
             </span>
           </span>
       </div>
@@ -30,7 +33,7 @@
 
       </div>
     </mat-toolbar-row>
-    <mat-toolbar-row>
+    <mat-toolbar-row fxShow.gt-sm="true" fxHide.xs="true">
       <div class="up-wrapper w-100"
            fxLayout="row"
            fxLayoutAlign="end stretch">
@@ -40,4 +43,27 @@
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
+
+  <div class="mat-toolbar"
+       fxLayout.xs="column"
+       fxLayoutAlign.xs="start center"
+       fxLayoutGap.xs="20px"
+       fxShow.xs="true"
+       fxHide.gt-sm="true">
+    <div class="links-wrapper mt-5"
+         fxLayout="column"
+         fxLayoutAlign="start start"
+         fxLayoutGap="20px">
+      <!-- Improved nav list and children -->
+      <span fxLayout="column"
+            fxLayoutAlign="start start"
+            *ngFor="let link of links">
+             <span class=" text-white text-uppercase">{{ link.title |translate }}</span>
+             <span *ngFor="let sublink of link?.children">
+              <a class="text-capitalize text-sublink"
+                 [routerLink]="'/content/' + sublink.key + '-' + sublink.content">{{ sublink.title |translate }}</a>
+            </span>
+          </span>
+    </div>
+  </div>
 </footer>
