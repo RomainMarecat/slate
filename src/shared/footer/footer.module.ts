@@ -7,6 +7,7 @@ import { CmsService } from '../cms/shared/cms.service';
 import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    TranslateModule
+    TranslateModule,
+    RouterModule,
   ],
   declarations: [ FooterComponent ],
   exports: [ FooterComponent ],

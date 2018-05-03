@@ -30,6 +30,14 @@ const routes: Routes = [ {
     path: 'offer/:key',
     loadChildren: './offer-detail/car-offer-detail.module#CarOfferDetailModule'
   },
+  {
+    path: 'content/:title',
+    loadChildren: './../shared/cms-detail/cms-detail.module#CmsDetailModule'
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({

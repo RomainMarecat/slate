@@ -30,35 +30,41 @@ import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 
 import { CmsDetailListComponent } from './cms-detail-list.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 describe('CmsDetailListComponent', () => {
   let component: CmsDetailListComponent;
-  let fixture: ComponentFixture < CmsDetailListComponent > ;
+  let fixture: ComponentFixture<CmsDetailListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          BrowserModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          NgxDatatableModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          MatToolbarModule,
-        ],
-        declarations: [CmsDetailListComponent],
-        providers: [
-          { provide: CmsDetailService, useClass: MockCmsDetailService },
-          { provide: AlertService, useClass: MockAlertService },
-        ]
-      })
+      imports: [
+        CommonModule,
+        BrowserModule,
+        FlexLayoutModule,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        NgxDatatableModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatListModule,
+        MatToolbarModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        })
+      ],
+      declarations: [ CmsDetailListComponent ],
+      providers: [
+        {provide: CmsDetailService, useClass: MockCmsDetailService},
+        {provide: AlertService, useClass: MockAlertService},
+      ]
+    })
       .compileComponents();
   }));
 

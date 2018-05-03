@@ -42,7 +42,11 @@
             <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="name"></ngx-datatable-column>
+        <ngx-datatable-column name="name">
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            {{ value | translate }}
+          </ng-template>
+        </ngx-datatable-column>
         <ngx-datatable-column name="site_name"></ngx-datatable-column>
         <ngx-datatable-column name="key"></ngx-datatable-column>
       </ngx-datatable>

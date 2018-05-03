@@ -29,35 +29,41 @@ import { CmsService } from '../../../cms/shared/cms.service';
 import { MockCmsService } from '../../../cms/shared/mock-cms.service';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 describe('CmsListComponent', () => {
   let component: CmsListComponent;
-  let fixture: ComponentFixture < CmsListComponent > ;
+  let fixture: ComponentFixture<CmsListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          BrowserModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          NgxDatatableModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          MatToolbarModule,
-        ],
-        declarations: [CmsListComponent],
-        providers: [
-          { provide: CmsService, useClass: MockCmsService },
-          { provide: AlertService, useClass: MockAlertService },
-        ]
-      })
+      imports: [
+        CommonModule,
+        BrowserModule,
+        FlexLayoutModule,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        NgxDatatableModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatListModule,
+        MatToolbarModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        })
+      ],
+      declarations: [ CmsListComponent ],
+      providers: [
+        {provide: CmsService, useClass: MockCmsService},
+        {provide: AlertService, useClass: MockAlertService},
+      ]
+    })
       .compileComponents();
   }));
 

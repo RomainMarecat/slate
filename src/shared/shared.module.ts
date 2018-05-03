@@ -51,6 +51,7 @@ import { OfferModule } from './offer/offer.module';
 import { CommentModule } from './comment/comment.module';
 import { MapModule } from './map/map.module';
 import { ProductModule } from './product/product.module';
+import { CmsDetailModule } from './cms-detail/cms-detail.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -72,6 +73,7 @@ export class ConfigService {
     FlexLayoutModule,
     FooterModule,
     FormsModule,
+    CmsDetailModule,
     CommentModule,
     CommonModule,
     DragulaModule,
@@ -119,6 +121,7 @@ export class ConfigService {
   ],
   exports: [
     Angulartics2Module,
+    CmsDetailModule,
     CommentModule,
     DragulaModule,
     FacetModule,

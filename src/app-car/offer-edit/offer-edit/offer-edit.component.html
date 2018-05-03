@@ -157,20 +157,23 @@
                  fxLayout="row wrap"
                  fxLayoutAlign="start stretch"
                  fxLayoutGap="20px">
-              <app-storage-upload *ngFor="let image of form.controls.images.value"
-                                  [folder]="'products'"
-                                  [metadata]="imageStorageConfig"
-                                  [displayDownloadUrl]="false"
-                                  (imageChanged)="onImageChange($event)"
-                                  (imageRefChanged)="onImageRefChanged($event)">
-              </app-storage-upload>
               <app-storage-upload
+                class="m-2"
                 [folder]="'offers'"
                 [metadata]="imageStorageConfig"
                 [displayDownloadUrl]="false"
                 (imageChanged)="onImageChange($event)"
                 (imageRefChanged)="onImageRefChanged($event)">
               </app-storage-upload>
+              <app-storage-upload class="m-2"
+                                  *ngFor="let image of form.controls.images.value"
+                                  [folder]="'offers'"
+                                  [metadata]="imageStorageConfig"
+                                  [displayDownloadUrl]="false"
+                                  (imageChanged)="onImageChange($event)"
+                                  (imageRefChanged)="onImageRefChanged($event)">
+              </app-storage-upload>
+
             </div>
           </div>
 

@@ -55,7 +55,16 @@ export class CmsDetailAddComponent implements OnInit {
   }
 
   getCmsDetails(cms: string) {
-    this.cmsDetailService.filters$.next([ {column: 'cms', operator: '==', value: cms} ] as Filter[]);
+    this.cmsDetailService.filters$.next([
+      {
+        column: 'cms',
+        operator: '==',
+        value: cms
+      }, {
+        column: 'parent',
+        operator: '==',
+        value: null
+      } ] as Filter[]);
     this.cmsDetailService.getCmsDetails()
       .subscribe((cmsDetails: CmsDetail[]) => {
         this.cmsDetails = cmsDetails;

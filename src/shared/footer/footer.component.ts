@@ -6,6 +6,7 @@ import { CmsDetail } from '../cms-detail/shared/cms-detail';
 import { Observable } from 'rxjs/Observable';
 import { Filter } from '../facet/filter/shared/filter';
 import 'rxjs/add/operator/take';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -19,7 +20,8 @@ export class FooterComponent implements OnInit {
   links: CmsDetail[] = [];
 
   constructor(private cmsService: CmsService,
-              private cmsDetailService: CmsDetailService) {
+              private cmsDetailService: CmsDetailService,
+              private router: Router) {
   }
 
   ngOnInit() {
