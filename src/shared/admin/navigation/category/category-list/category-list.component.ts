@@ -1,11 +1,12 @@
 import { Component, OnInit, ElementRef, TemplateRef, ViewChild } from '@angular/core';
 import { CategoryService } from '../../../../category/category.service';
 import { Category } from '../../../../category/category';
+import { MenuService } from '../../../../menu/menu.service';
 
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
-  styleUrls: ['./category-list.component.scss']
+  styleUrls: [ './category-list.component.scss' ]
 })
 export class CategoryListComponent implements OnInit {
   readonly headerHeight = 50;
@@ -14,14 +15,17 @@ export class CategoryListComponent implements OnInit {
   categories: Category[] = [];
   selected: Category[] = [];
   isLoading: boolean;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
 
   /**
    * @param {ElementRef} table
-   * @param {CategoryService} CategoryService
+   * @param categoryService
+   * @param menuService
    */
-  constructor(private table: ElementRef, private categoryService: CategoryService) {
+  constructor(private table: ElementRef,
+              private categoryService: CategoryService,
+              private menuService: MenuService) {
     this.isLoading = true;
   }
 
@@ -54,21 +58,22 @@ export class CategoryListComponent implements OnInit {
    * Init list of Category
    */
   ngOnInit() {
+    this.menuService.nextTitle('Categories');
     this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
     this.categoryService.getCategories()
       .subscribe((categories: Category[]) => {
         this.categories = categories;
         this.isLoading = false;
       });
-    this.columns = [{
-        width: 50,
-        sortable: false,
-        canAutoResize: false,
-        draggable: false,
-        resizeable: false,
-        cellTemplate: this.checkboxCell,
-        headerTemplate: this.checkboxHeader,
-      },
+    this.columns = [ {
+      width: 50,
+      sortable: false,
+      canAutoResize: false,
+      draggable: false,
+      resizeable: false,
+      cellTemplate: this.checkboxCell,
+      headerTemplate: this.checkboxHeader,
+    },
       {
         prop: 'name',
         name: 'name',
@@ -99,6 +104,11 @@ export class CategoryListComponent implements OnInit {
         name: 'published',
         flexGrow: 1
       },
+      {
+        prop: 'published_at',
+        name: 'published_at',
+        flexGrow: 1
+      },
     ];
   }
 
@@ -106,12 +116,14 @@ export class CategoryListComponent implements OnInit {
    * On select add new list in selection array
    * @param {any} selected
    */
-  onSelect({ selected }) {
+  onSelect({selected}) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
 
-  onActivate(event) {}
+  onActivate(event) {
+  }
 
-  onScroll(event: any) {}
+  onScroll(event: any) {
+  }
 }
