@@ -1,12 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
-import { StringService } from '../../../../shared/util/string.service';
+import { StringService } from '../../../util/string.service';
 import { DocumentReference } from '@firebase/firestore-types';
 import { AttributeService } from '../../../attribute/attribute.service';
-import { Attribute } from './../../../attribute/attribute';
-import { AttributeFormType } from './../../shared/attribute/form-attribute';
+import { Attribute } from '../../../attribute/attribute';
+import { AttributeFormType } from '../../shared/attribute/form-attribute';
 
 @Component({
   selector: 'app-attribute-edit',

@@ -52,6 +52,8 @@ import { CommentModule } from './comment/comment.module';
 import { MapModule } from './map/map.module';
 import { ProductModule } from './product/product.module';
 import { CmsDetailModule } from './cms-detail/cms-detail.module';
+import { FaviconModule } from './favicon/favicon.module';
+import { ArticleModule } from './article/article.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -68,6 +70,8 @@ export class ConfigService {
   imports: [
     AngularFireAuthModule,
     Angulartics2Module,
+    ArticleModule,
+    FaviconModule,
     FacetModule,
     FileUploadModule,
     FlexLayoutModule,
@@ -120,10 +124,12 @@ export class ConfigService {
     TranslateModule
   ],
   exports: [
+    ArticleModule,
     Angulartics2Module,
     CmsDetailModule,
     CommentModule,
     DragulaModule,
+    FaviconModule,
     FacetModule,
     FileUploadModule,
     FlexLayoutModule,

@@ -1,16 +1,15 @@
 import { Component, OnInit, ElementRef, ViewChild, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Attribute } from '../../../attribute/attribute';
-import { AttributeService } from './../../../attribute/attribute.service';
-import { MenuService } from './../../../menu/menu.service';
-import { take } from 'rxjs/operators';
-import { DialogComponent } from './../../../popup/dialog/dialog.component';
+import { AttributeService } from '../../../attribute/attribute.service';
+import { MenuService } from '../../../menu/menu.service';
+import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-attribute-list',
   templateUrl: './attribute-list.component.html',
-  styleUrls: ['./attribute-list.component.scss']
+  styleUrls: [ './attribute-list.component.scss' ]
 })
 export class AttributeListComponent implements OnInit {
   readonly headerHeight = 50;
@@ -18,24 +17,22 @@ export class AttributeListComponent implements OnInit {
   columns: any;
   attributes: Attribute[];
   isLoading = false;
-  selected: Attribute[];
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
-  @ViewChild('actionsCell') actionsCell: TemplateRef < any > ;
+  selected: Attribute[] = [];
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
+  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
 
   /**
-   *
-   * @param MatDialog      public  dialog
-   * @param Router         private router
-   * @param ElementRef     private table
-   * @param MenuService    private menuService
-   * @param AttributeService private attributeService
+   * @param dialog
+   * @param router
+   * @param table
+   * @param menuService
+   * @param attributeService
    */
   constructor(public dialog: MatDialog,
-    private router: Router,
-    private table: ElementRef,
-    private menuService: MenuService,
-    private attributeService: AttributeService) {
-    this.selected = [];
+              private router: Router,
+              private table: ElementRef,
+              private menuService: MenuService,
+              private attributeService: AttributeService) {
   }
 
   /**
@@ -72,7 +69,7 @@ export class AttributeListComponent implements OnInit {
    */
   ngOnInit() {
     this.menuService.nextTitle('Attributs');
-    this.columns = [{
+    this.columns = [ {
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -116,18 +113,20 @@ export class AttributeListComponent implements OnInit {
    * On select add new list in selection array
    * @param {any} selected
    */
-  onSelect({ selected }) {
+  onSelect({selected}) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate(['/admin/attribute/edit/', event.row.key]);
+      this.router.navigate([ '/admin/attribute/edit/', event.row.key ]);
     }
   }
 
-  onScroll(event: any) {}
+  onScroll(event: any) {
+  }
 
-  onCheckboxChangeFn(event) {}
+  onCheckboxChangeFn(event) {
+  }
 }

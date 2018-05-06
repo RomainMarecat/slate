@@ -7,6 +7,7 @@ import { UserService } from '../../shared/user/user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { environment } from '../../environments/environment.booking';
+import { Favicon } from '../../shared/favicon/favicon.service';
 
 @Component({
   selector: 'app-root',
@@ -31,10 +32,11 @@ export class AppRootComponent implements OnInit, OnDestroy {
     private i18nService: I18nService,
     private ccService: NgcCookieConsentService,
     private meta: Meta,
-    private title: Title) {
-    this.title.setTitle('booking');
+    private title: Title,
+              private favicon: Favicon) {
+    this.title.setTitle('Booking');
+    this.favicon.addLink('image/x-icon', `/assets/images/${environment.app_name}/icons/favicon.ico`);
     this.meta.addTags([
-      { rel: 'icon', type: 'image/x-icon', href: `/assets/images/${environment.app_name}/icons/favicon.ico` },
       { rel: 'apple-touch-icon', sizes: '57x57', href: `/assets/images/${environment.app_name}/icons/apple-icon-57x57.png` },
       { rel: 'apple-touch-icon', sizes: '60x60', href: `/assets/images/${environment.app_name}/icons/apple-icon-60x60.png` },
       { rel: 'apple-touch-icon', sizes: '72x72', href: `/assets/images/${environment.app_name}/icons/apple-icon-72x72.png` },

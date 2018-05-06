@@ -57,7 +57,7 @@ export class UserService {
       .then((result) => {
         const user = result.user;
         if (user) {
-          localStorage.setItem('user', user);
+          localStorage.setItem('user', JSON.stringify(user));
         }
       }, (err) => {
         console.error(err);
@@ -69,7 +69,7 @@ export class UserService {
       .then((result) => {
         const user = result.user;
         if (user) {
-          localStorage.setItem('user', user);
+          localStorage.setItem('user', JSON.stringify(user));
         }
       }, (err) => {
         console.error(err);
