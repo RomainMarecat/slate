@@ -1,7 +1,5 @@
-@import "~@angular/material/prebuilt-themes/purple-green.css";
 @import '~@angular/material/theming';
-@import url('https://fonts.googleapis.com/css?family=Material+Icons|Fugaz+One|Gentium+Book+Basic');
-
+@import url('https://fonts.googleapis.com/css?family=Material+Icons|Open+Sans|Helvetica+Neue');
 
 // Plus imports for other components in your app-monpullmoche.
 // Include the common styles for Angular Material. We include this here so that you only
@@ -13,25 +11,27 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
 //
-$color1: #131629; // Bleu
+$color1: #6d6d6d; // Black
 $color2: #ffffff; // Blanc
-$color3: #af300b; // Rouge
-$color5: #af8401;
-$product-primary: mat-palette($mat-indigo,
-900);
-$product-accent: mat-palette($mat-red,
-800);
-$product-warn: mat-palette($mat-orange,
-200);
+$color3: #6EE3E7; // Turquoise
+$color4: #6EE3E7; // Turquoise
+$color5: #6EE3E7; // Turquoise
+
+$product-primary: mat-palette($mat-teal,
+  A200);
+$product-accent: mat-palette($mat-grey,
+  700);
+$product-warn: mat-palette($mat-grey,
+  50);
 $white: mat-palette($mat-grey,
-50);
+  50);
 $black: mat-palette($mat-grey,
-900);
+  900);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($product-primary,
-$product-accent,
-$product-warn);
+  $product-accent,
+  $product-warn);
 
 // Include theme styles for core and each component used in your app-monpullmoche.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -39,16 +39,116 @@ $product-warn);
 @include angular-material-theme($theme);
 
 body {
-  font-family: 'Gentium Book Basic',
-  serif;
-  background-color: $color2;
+  background: mat-color($product-warn);
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: $color1;
+  overflow-x: hidden;
+}
 
-  .title {
-    font-family: 'Fugaz One', cursive;
-    text-transform: uppercase;
+.main-menu {
+  a {
+    color: mat-color($product-primary) !important;
   }
+  background-color: mat-color($product-warn) !important;
+}
 
-  .main-menu {
-    background-color: #131629 !important;
-  }
+a {
+  color: $color3;
+  text-decoration: none
+}
+
+a:hover, a:focus {
+  color: $color3;
+  text-decoration: underline
+}
+
+a:focus,
+.btn:focus {
+  outline: none;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 300;
+}
+
+.big-text {
+  font-size: 58px;
+  font-weight: 300;
+  line-height: 62px;
+  letter-spacing: 0.01em;
+  word-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin-top: -20px;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+/*-----------------------
+----- Color Styles ------
+-------------------------*/
+
+.bg-color1 {
+  color: $color2;
+  background: #25A7B0;
+}
+
+.bg-color2 {
+  color: $color2;
+  background: $color1;
+}
+
+.bg-color3 {
+  color: $color2;
+  background: #334959;
+}
+
+.border-bottom-color2 {
+  border-bottom: 7px solid $color1;
+}
+
+.border-top-color2 {
+  border-top: 7px solid $color1;
+}
+
+/*------------------
+----- Buttons ------
+--------------------*/
+
+.btn-color1,
+.btn-color2 {
+  padding: 10px 30px;
+  color: $color2;
+  font-size: 21px;
+  font-weight: 300;
+  background: $color3;
+  outline: none !important;
+  border-radius: 0;
+  transition: opacity .2s ease-out;
+}
+
+.btn-color1 {
+  background: #25A7B0;
+}
+
+.btn-color1:hover,
+.btn-color2:hover {
+  color: $color2;
+  opacity: 0.9;
+}
+
+.btn-color1:focus,
+.btn-color1:active,
+.btn-color2:focus,
+.btn-color2:active {
+  color: $color2;
+}
+
+.btn-color1 .fa,
+.btn-color2 .fa {
+  margin-right: 15px;
 }

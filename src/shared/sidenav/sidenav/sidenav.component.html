@@ -10,7 +10,8 @@
       </mat-card>
       <mat-list class="pt-0">
         <mat-list-item *ngIf="cmsDetail?.add === true">
-          <a class="sidenav-link" mat-raised [routerLink]="['/add']" [innerHtml]="'sidenav.card.list-item.add.title'|translate"></a>
+          <a class="sidenav-link" mat-raised [routerLink]="['/add']"
+             [innerHtml]="'sidenav.card.list-item.add.title'|translate"></a>
         </mat-list-item>
       </mat-list>
       <mat-nav-list *ngIf="isAuthorized" class="pt-0">
@@ -55,10 +56,12 @@
       <h2 [innerHtml]="'sidenav.card.list-item.login.title'|translate"></h2>
     </mat-list-item>
     <mat-list-item>
-      <button mat-raised-button color="primary" type="button" (click)="userService.loginGoogle()" [innerHtml]="'sidenav.card.list-item.google.title'|translate"></button>
+      <button mat-raised-button color="primary" type="button" (click)="userService.loginGoogle()"
+              [innerHtml]="'sidenav.card.list-item.google.title'|translate"></button>
     </mat-list-item>
     <mat-list-item>
-      <button mat-raised-button color="primary" type="button" (click)="userService.loginFacebook()" [innerHtml]="'sidenav.card.list-item.facebook.title'|translate">
+      <button mat-raised-button color="primary" type="button" (click)="userService.loginFacebook()"
+              [innerHtml]="'sidenav.card.list-item.facebook.title'|translate">
       </button>
     </mat-list-item>
   </mat-list>
