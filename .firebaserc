@@ -1,8 +1,9 @@
 {
   "projects": {
     "default": "menincar-384269",
+    "blog": "blog-384269",
     "hockey": "hockey-f2b77",
-    "menincar": "menincar-384269",
+    "car": "menincar-384269",
     "monpullmoche": "mon-pull-moche"
   }
 }

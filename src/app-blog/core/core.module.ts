@@ -48,6 +48,7 @@ import { CategoryService } from '../../shared/category/category.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { MapService } from '../../shared/map/shared/map.service';
 import { HomeModule } from '../home/home.module';
+import { ArticleService } from '../../shared/article/shared/article.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -63,6 +64,7 @@ export function createTranslateLoader(http: HttpClient, name: string) {
 }
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
+export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_AREA = new InjectionToken<string>('area');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
@@ -153,6 +155,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
   ],
   providers: [
     {provide: ConfigService, useClass: ConfigService, deps: [ CONFIG_TOKEN ]},
+    {provide: TABLE_ARTICLE, useValue: 'article'},
     {provide: TABLE_AREA, useValue: 'area'},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
     {provide: TABLE_CATEGORY, useValue: 'category'},
@@ -167,6 +170,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_PRODUCT, useValue: 'product'},
     {provide: TABLE_SELECTION, useValue: 'selection'},
     {provide: TABLE_SCORE, useValue: 'scores'},
+    {provide: ArticleService, useClass: ArticleService, deps: [ AngularFirestore, TABLE_ARTICLE ]},
     {provide: AreaService, useClass: AreaService, deps: [ AngularFirestore, TABLE_AREA ]},
     {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
     {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY ]},
@@ -179,7 +183,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
     {provide: ProductService, useClass: ProductService, deps: [ AngularFirestore, TABLE_PRODUCT ]},
     {provide: SelectionService, useClass: SelectionService, deps: [ AngularFirestore, TABLE_SELECTION ]},
-      AlertService,
+    AlertService,
     DateService,
     DeviceService,
     I18nService,

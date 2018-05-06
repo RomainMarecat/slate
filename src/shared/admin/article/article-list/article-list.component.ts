@@ -1,23 +1,24 @@
-import { Component, OnInit, ElementRef, ViewChild, TemplateRef } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Attribute } from '../../../attribute/attribute';
-import { AttributeService } from '../../../attribute/attribute.service';
-import { MenuService } from '../../../menu/menu.service';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
+import { MenuService } from '../../../menu/menu.service';
 import { MatDialog } from '@angular/material';
+import { Article } from '../../../article/shared/article';
+import { ArticleService } from '../../../article/shared/article.service';
 
 @Component({
-  selector: 'app-attribute-list',
-  templateUrl: './attribute-list.component.html',
-  styleUrls: [ './attribute-list.component.scss' ]
+  selector: 'app-admin-article-list',
+  templateUrl: './article-list.component.html',
+  styleUrls: [ './article-list.component.scss' ]
 })
-export class AttributeListComponent implements OnInit {
+export class ArticleListComponent implements OnInit {
+
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  attributes: Attribute[];
+  articles: Article[];
   isLoading = false;
-  selected: Attribute[] = [];
+  selected: Article[] = [];
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
   @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
 
@@ -26,49 +27,49 @@ export class AttributeListComponent implements OnInit {
    * @param router
    * @param table
    * @param menuService
-   * @param attributeService
+   * @param articleService
    */
   constructor(public dialog: MatDialog,
               private router: Router,
               private table: ElementRef,
               private menuService: MenuService,
-              private attributeService: AttributeService) {
+              private articleService: ArticleService) {
   }
 
   /**
-   * Delete a Attribute from list
+   * Delete a Article from list
    */
-  deleteAttributes() {
-    this.selected.forEach((attribute: Attribute) => {
-      this.attributeService.deleteAttribute(attribute);
+  deleteArticles() {
+    this.selected.forEach((article: Article) => {
+      this.articleService.deleteArticle(article);
     });
   }
 
-  deleteAttribute(attribute: Attribute) {
-    this.attributeService.deleteAttribute(attribute);
+  deleteArticle(article: Article) {
+    this.articleService.deleteArticle(article);
   }
 
-  confirmDelete(attribute: Attribute) {
+  confirmDelete(article: Article) {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '500px',
       data: {
-        title: 'Confirmation de suppression du produit',
-        content: 'Voulez-vous continuer de supprimer le produit ?'
+        title: 'Confirmation de suppression de l\'article',
+        content: 'Voulez-vous continuer de supprimer l\'article ?'
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        this.deleteAttribute(attribute);
+        this.deleteArticle(article);
       }
     });
   }
 
   /**
-   * Init list of Attribute
+   * Init list of Article
    */
   ngOnInit() {
-    this.menuService.nextTitle('Attributs');
+    this.menuService.nextTitle('Articles');
     this.columns = [ {
       width: 50,
       sortable: false,
@@ -81,20 +82,16 @@ export class AttributeListComponent implements OnInit {
       name: 'name',
       flexGrow: 1
     }, {
-      prop: 'translations.fr',
-      name: 'name (fr)',
+      prop: 'description',
+      name: 'description',
       flexGrow: 1
     }, {
-      prop: 'type',
-      name: 'type',
+      prop: 'published_at',
+      name: 'published_at',
       flexGrow: 1
     }, {
-      prop: 'order_by',
-      name: 'order_by',
-      flexGrow: 1
-    }, {
-      prop: 'terms',
-      name: 'terms',
+      prop: 'published',
+      name: 'published',
       flexGrow: 1
     }, {
       prop: 'key',
@@ -102,10 +99,9 @@ export class AttributeListComponent implements OnInit {
       flexGrow: 1,
       cellTemplate: this.actionsCell
     }, ];
-    this.attributeService.getAttributes()
-      .take(1)
-      .subscribe((attributes: Attribute[]) => {
-        this.attributes = attributes;
+    this.articleService.getArticles()
+      .subscribe((articles: Article[]) => {
+        this.articles = articles;
       });
   }
 
@@ -120,7 +116,7 @@ export class AttributeListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate([ '/admin/attribute/edit/', event.row.key ]);
+      this.router.navigate([ '/admin/article/edit/', event.row.key ]);
     }
   }
 

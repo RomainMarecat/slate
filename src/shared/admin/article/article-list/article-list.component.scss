@@ -1,0 +1,13 @@
+.scrolling-articles {
+  height: 70vh;
+}
+
+.absolute-fab.mat-mini-fab {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  font-size: 40px;
+}

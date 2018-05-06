@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6">
       <div class="d-block">
-        <app-attribute-edit>
-        </app-attribute-edit>
+        <app-admin-article-edit>
+        </app-admin-article-edit>
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6">
@@ -17,7 +17,7 @@
         </div>
         <div class="col-6">
           <button role="button" aria-label="Supprimer l'attribut" mat-raised-button color="accent"
-                  (click)="deleteAttributes()" *ngIf="selected && selected.length > 0">
+                  (click)="deleteArticles()" *ngIf="selected && selected.length > 0">
             <mat-icon aria-label="delete">delete</mat-icon>
             Supprimer
           </button>
@@ -25,7 +25,7 @@
       </div>
       <div class="row px-2">
         <div class="col-12">
-          <ngx-datatable class="material striped scrolling-attributes" [columnMode]="'force'" [rows]="attributes"
+          <ngx-datatable class="material striped scrolling-articles" [columnMode]="'force'" [rows]="articles"
                          [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight"
                          [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)"
                          [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)"
@@ -48,7 +48,7 @@
       </ng-template>
     </div>
   </div>
-  <button color="primary" type="button" aria-label="Ajouter un attribut" [routerLink]="['/admin/attribute/add']"
+  <button color="primary" type="button" aria-label="Ajouter un attribut" [routerLink]="['/admin/article/add']"
           mat-mini-fab class="absolute-fab pulse">
     <mat-icon>add</mat-icon>
   </button>

@@ -21,8 +21,8 @@ $product-primary: mat-palette($mat-teal,
   A200);
 $product-accent: mat-palette($mat-grey,
   700);
-$product-warn: mat-palette($mat-grey,
-  50);
+$product-warn: mat-palette($mat-red,
+  800);
 $white: mat-palette($mat-grey,
   50);
 $black: mat-palette($mat-grey,
@@ -39,7 +39,7 @@ $theme: mat-light-theme($product-primary,
 @include angular-material-theme($theme);
 
 body {
-  background: mat-color($product-warn);
+  background: mat-color($white);
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: 300;
@@ -51,7 +51,7 @@ body {
   a {
     color: mat-color($product-primary) !important;
   }
-  background-color: mat-color($product-warn) !important;
+  background-color: mat-color($white) !important;
 }
 
 a {

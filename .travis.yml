@@ -9,7 +9,7 @@ before_deploy:
   - ./node_modules/@angular/cli/bin/ng build -aot --env=prod --app=car -prod
   - cp src/app-car/sitemap.xml dist/sitemap.xml
   - cp src/app-car/robots.txt dist/robots.txt
-  - firebase use default
+  - firebase use car
 deploy:
   # - skip_cleanup: true
   #   provider: firebase
