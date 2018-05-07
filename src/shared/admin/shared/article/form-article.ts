@@ -16,12 +16,12 @@ export class ArticleFormType {
       slug: new FormControl(article && article.slug, [
         Validators.required
       ]),
-      translations: new FormGroup({
-        fr: new FormControl(article && article.translations && article.translations.fr ?
-          article.translations.fr : '', [
-          Validators.required
-        ])
-      }),
+      // translations: new FormGroup({
+      //   fr: new FormControl(article && article.translations && article.translations.fr ?
+      //     article.translations.fr : '', [
+      //     Validators.required
+      //   ])
+      // }),
       description: new FormControl(article && article.description ? article.description : '',
         [ Validators.required ]),
       published: new FormControl(article && article.published ? article.published : true)

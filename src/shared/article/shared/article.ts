@@ -3,7 +3,7 @@ export class Article {
   name: string;
   slug: string;
   translations?: {
-    fr: string
+    fr?: string
   };
   description: string;
   images?: string[];

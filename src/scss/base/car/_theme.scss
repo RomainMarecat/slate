@@ -40,7 +40,7 @@ $theme: mat-light-theme($product-primary,
 
 body {
   font-family: 'Nunito', sans-serif;
-  background-color: $color2;
+  background-color: mat-color($white);
 
   .title {
     font-family: 'Roboto Condensed', sans-serif;

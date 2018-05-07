@@ -113,19 +113,20 @@ export class ArticleEditComponent implements OnInit {
       if (this.article.key) {
         this.articleService.updateArticle(this.article)
           .then((doc) => {
-            this.alertService.toast(`article updated ${this.article.translations.fr}`);
+            this.alertService.show(`article updated ${this.article.name}`);
             this.reset();
+            this.router.navigate([ '/admin/article' ]);
           }, (err) => {
-            this.alertService.toast(`article error ${err}`);
+            this.alertService.show(`article error ${err}`);
           });
-        this.router.navigate([ '/admin/article' ]);
       } else {
         this.articleService.createArticle(this.article)
           .then((doc: DocumentReference) => {
-            this.alertService.toast(`article added ${doc.id}`);
+            this.alertService.show(`article added ${doc.id}`);
             this.reset();
+            this.router.navigate([ '/admin/article' ]);
           }, (err) => {
-            this.alertService.toast(`article error ${err}`);
+            this.alertService.show(`article error ${err}`);
           });
       }
     }
