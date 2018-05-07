@@ -7,6 +7,7 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 import { ArticleService } from './shared/article.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material';
+import { PipeModule } from '../pipe/pipe.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { MatCardModule } from '@angular/material';
     CommonModule,
     FlexLayoutModule,
     MatCardModule,
+    PipeModule,
   ],
   declarations: [
     ArticleListComponent,

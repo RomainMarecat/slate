@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArticleDetailComponent } from './article-detail.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material';
+import { PipeModule } from '../../pipe/pipe.module';
 
 describe('ArticleDetailComponent', () => {
   let component: ArticleDetailComponent;
@@ -13,6 +14,7 @@ describe('ArticleDetailComponent', () => {
       imports: [
         FlexLayoutModule,
         MatCardModule,
+        PipeModule
       ],
       declarations: [ ArticleDetailComponent ]
     })

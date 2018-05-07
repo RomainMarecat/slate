@@ -54,6 +54,12 @@ body {
   background-color: mat-color($white) !important;
 }
 
+footer {
+  .link-anchor {
+    background-color: mat-color($black);
+  }
+}
+
 a {
   color: $color3;
   text-decoration: none

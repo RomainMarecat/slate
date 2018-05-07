@@ -18,6 +18,9 @@ import { CategoryService } from '../../shared/category/category.service';
 import { ArticleService } from '../../shared/article/shared/article.service';
 import { MockArticleService } from '../../shared/article/shared/mock-article.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from '../../environments/environment.blog';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -26,8 +29,14 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        AgmCoreModule.forRoot({
+          apiKey: environment.googleMapApiKey
+        }),
         RouterTestingModule,
-        SharedModule
+        SharedModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
       ],
       declarations: [ HomeComponent ],
       providers: [
