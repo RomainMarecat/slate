@@ -12,9 +12,12 @@ import { MatListModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { GeocodeService } from './shared/geocode.service';
 import { NgArrayPipesModule } from 'ngx-pipes';
+import { LocationCurrentComponent } from './location-current/location-current.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
+    AgmCoreModule,
     CommonModule,
     FlexLayoutModule,
     MatListModule,
@@ -26,13 +29,15 @@ import { NgArrayPipesModule } from 'ngx-pipes';
     AreaComponent,
     MapComponent,
     AreaListComponent,
-    AreaDrawComponent
+    AreaDrawComponent,
+    LocationCurrentComponent
   ],
   exports: [
     AreaComponent,
     MapComponent,
     AreaListComponent,
-    AreaDrawComponent
+    AreaDrawComponent,
+    LocationCurrentComponent
   ],
   providers: [
     MapService,

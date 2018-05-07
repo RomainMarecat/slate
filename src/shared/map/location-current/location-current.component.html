@@ -1,0 +1,22 @@
+<div class="agm-wrapper">
+  <agm-map
+    class="agm-map"
+    [latitude]="mapConfig.lat"
+    [longitude]="mapConfig.lng"
+    [streetViewControl]="mapConfig.streetViewControl"
+    [zoom]="mapConfig.zoom"
+    [zoomControl]="mapConfig.zoomControl">
+    <agm-marker
+      [latitude]="marker.lat"
+      [longitude]="marker.lng"
+      [label]="marker.label|translate"
+      [markerDraggable]="marker.draggable"
+      *ngIf="marker">
+
+      <agm-info-window>
+        <strong>{{ marker.label|translate }}</strong>
+      </agm-info-window>
+
+    </agm-marker>
+  </agm-map>
+</div>

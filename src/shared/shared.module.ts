@@ -54,6 +54,7 @@ import { ProductModule } from './product/product.module';
 import { CmsDetailModule } from './cms-detail/cms-detail.module';
 import { FaviconModule } from './favicon/favicon.module';
 import { ArticleModule } from './article/article.module';
+import { PipeModule } from './pipe/pipe.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -117,6 +118,7 @@ export class ConfigService {
     OfferModule,
     PartnerModule,
     PopupModule,
+    PipeModule,
     ProductModule,
     ReactiveFormsModule,
     RouterModule,
@@ -170,6 +172,7 @@ export class ConfigService {
     NgPipesModule,
     OfferModule,
     PartnerModule,
+    PipeModule,
     PopupModule,
     ProductModule,
     ReactiveFormsModule,

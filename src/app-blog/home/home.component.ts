@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  mapConfig = {
+    lat: 45.0755137,
+    lng: 5.7712538,
+    zoom: 15,
+    disableDefaultUI: false,
+    zoomControl: false,
+    streetViewControl: true,
+    markerDraggable: false
+  };
+
   constructor() { }
 
   ngOnInit() {

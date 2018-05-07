@@ -13,6 +13,7 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { CommonModule } from '@angular/common';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { MatCardModule } from '@angular/material';
+import { PipeModule } from '../../pipe/pipe.module';
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;
@@ -29,6 +30,7 @@ describe('ArticleListComponent', () => {
           MatCardModule,
           RouterTestingModule,
           BrowserAnimationsModule,
+          PipeModule,
           TranslateModule.forRoot({
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),

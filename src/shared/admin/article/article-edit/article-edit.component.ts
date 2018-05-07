@@ -47,7 +47,7 @@ export class ArticleEditComponent implements OnInit {
     this.editorConfig = {
       'editable': true,
       'spellcheck': false,
-      'height': '5rem',
+      'height': '10rem',
       'minHeight': '2rem',
       'placeholder': 'Enter text content',
       'translate': 'no',

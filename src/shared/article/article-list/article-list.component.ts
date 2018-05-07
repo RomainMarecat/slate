@@ -20,15 +20,14 @@ export class ArticleListComponent implements OnInit {
   }
 
   getArticles() {
-    this.articleService.orderBy$.next({
-      column: 'published_at',
-      direction: 'desc'
-    } as Sort);
-    this.articleService.filters$.next([ {
-      column: 'published',
-      operator: '==',
-      value: true
-    } ] as Filter[]);
+    this.articleService.query$.next({
+      limit: 10,
+      filters: [ {
+        column: 'published',
+        operator: '==',
+        value: true
+      } ]
+    });
     this.articleService.getArticles()
       .subscribe((articles: Article[]) => {
         this.articles = articles;
