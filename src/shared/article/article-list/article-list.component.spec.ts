@@ -12,30 +12,32 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { MatCardModule } from '@angular/material';
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;
-  let fixture: ComponentFixture<ArticleListComponent>;
+  let fixture: ComponentFixture < ArticleListComponent > ;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        AngularFirestoreModule,
-        AngularFireStorageModule,
-        CommonModule,
-        FlexLayoutModule,
-        HttpClientTestingModule,
-        RouterTestingModule,
-        BrowserAnimationsModule,
-        TranslateModule.forRoot({
-          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
-        }),
-      ],
-      declarations: [ ArticleListComponent, ArticleDetailComponent ],
-      providers: [
-        {provide: ArticleService, useClass: MockArticleService}
-      ]
-    })
+        imports: [
+          AngularFirestoreModule,
+          AngularFireStorageModule,
+          CommonModule,
+          FlexLayoutModule,
+          HttpClientTestingModule,
+          MatCardModule,
+          RouterTestingModule,
+          BrowserAnimationsModule,
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          }),
+        ],
+        declarations: [ArticleListComponent, ArticleDetailComponent],
+        providers: [
+          { provide: ArticleService, useClass: MockArticleService }
+        ]
+      })
       .compileComponents();
   }));
 

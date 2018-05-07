@@ -1,12 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <div class="d-block">
-        <app-admin-article-edit>
-        </app-admin-article-edit>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
+    <div class="col-12">
       <div class="row">
         <div class="col-6">
           <div class='selected-column'>
@@ -45,6 +39,17 @@
         <a (click)="confirmDelete(row)">
           <mat-icon>delete</mat-icon>
         </a>
+      </ng-template>
+      <ng-template #publicationCell let-value="value" let-row="row" ngx-datatable-cell-template>
+        <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group mobile-hidden"
+                         [value]="value" (change)="updateArticlePublication(row, $event)">
+          <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
+            <span class="text-success">Publié</span>
+          </mat-radio-button>
+          <mat-radio-button #unpublished class="publication-radio-button" [value]="false" color="accent">
+            <span class="text-danger">Non publié</span>
+          </mat-radio-button>
+        </mat-radio-group>
       </ng-template>
     </div>
   </div>

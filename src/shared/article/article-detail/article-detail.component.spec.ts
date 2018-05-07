@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticleDetailComponent } from './article-detail.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material';
 
 describe('ArticleDetailComponent', () => {
   let component: ArticleDetailComponent;
@@ -8,6 +10,10 @@ describe('ArticleDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        FlexLayoutModule,
+        MatCardModule,
+      ],
       declarations: [ ArticleDetailComponent ]
     })
     .compileComponents();

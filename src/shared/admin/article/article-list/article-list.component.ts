@@ -5,6 +5,7 @@ import { MenuService } from '../../../menu/menu.service';
 import { MatDialog } from '@angular/material';
 import { Article } from '../../../article/shared/article';
 import { ArticleService } from '../../../article/shared/article.service';
+import { AlertService } from '../../../popup/alert.service';
 
 @Component({
   selector: 'app-admin-article-list',
@@ -21,6 +22,7 @@ export class ArticleListComponent implements OnInit {
   selected: Article[] = [];
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
   @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
+  @ViewChild('publicationCell') publicationCell: TemplateRef<any>;
 
   /**
    * @param dialog
@@ -28,12 +30,14 @@ export class ArticleListComponent implements OnInit {
    * @param table
    * @param menuService
    * @param articleService
+   * @param alertService
    */
   constructor(public dialog: MatDialog,
               private router: Router,
               private table: ElementRef,
               private menuService: MenuService,
-              private articleService: ArticleService) {
+              private articleService: ArticleService,
+              private alertService: AlertService) {
   }
 
   /**
@@ -92,7 +96,8 @@ export class ArticleListComponent implements OnInit {
     }, {
       prop: 'published',
       name: 'published',
-      flexGrow: 1
+      flexGrow: 1,
+      cellTemplate: this.publicationCell
     }, {
       prop: 'key',
       name: 'Actions',
@@ -104,6 +109,36 @@ export class ArticleListComponent implements OnInit {
         this.articles = articles;
       });
   }
+
+  /**
+   * Update a publication
+   * @param article
+   */
+  private updatePublication(article: Article) {
+    if (article.published === true) {
+      if (!article.published_at) {
+        article.published_at = new Date();
+      }
+    } else {
+      article.published_at = null;
+    }
+
+    this.articleService.updateArticle(article)
+      .then(() => {
+        this.alertService.show(article.name + ' mis à jour');
+      });
+  }
+
+  /**
+   * set published value
+   * @param article
+   * @param event
+   */
+  updateArticlePublication(article: Article, event: { source: any, value: boolean }) {
+    article.published = event.value;
+    this.updatePublication(article);
+  }
+
 
   /**
    * On select add new list in selection array
