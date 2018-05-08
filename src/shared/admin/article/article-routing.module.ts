@@ -25,7 +25,6 @@ const routes: Routes = [ {
     canActivate: [ AdminGuard ],
     component: ArticleEditComponent
   },
-
 ];
 
 @NgModule({

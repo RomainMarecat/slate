@@ -16,6 +16,11 @@ const routes: Routes = [
   },
   {
     canActivate: [ AdminGuard ],
+    path: 'contact',
+    loadChildren: './contact/contact.module#ContactModule'
+  },
+  {
+    canActivate: [ AdminGuard ],
     path: 'attribute',
     loadChildren: './attribute/attribute.module#AttributeModule'
   },

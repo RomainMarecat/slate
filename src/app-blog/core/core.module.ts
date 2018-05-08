@@ -49,6 +49,7 @@ import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.serv
 import { MapService } from '../../shared/map/shared/map.service';
 import { HomeModule } from '../home/home.module';
 import { ArticleService } from '../../shared/article/shared/article.service';
+import { ContactService } from '../../shared/contact/shared/contact.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -67,6 +68,7 @@ export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config')
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_AREA = new InjectionToken<string>('area');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
+export const TABLE_CONTACT = new InjectionToken<string>('contact');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
 export const TABLE_SELECTION = new InjectionToken<string>('selection');
 export const TABLE_SCORE = new InjectionToken<string>('score');
@@ -158,6 +160,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_ARTICLE, useValue: 'article'},
     {provide: TABLE_AREA, useValue: 'area'},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
+    {provide: TABLE_CONTACT, useValue: 'contact'},
     {provide: TABLE_CATEGORY, useValue: 'category'},
     {provide: TABLE_COMMENT, useValue: 'comment'},
     {provide: TABLE_CMS, useValue: 'cms'},
@@ -173,6 +176,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: ArticleService, useClass: ArticleService, deps: [ AngularFirestore, TABLE_ARTICLE ]},
     {provide: AreaService, useClass: AreaService, deps: [ AngularFirestore, TABLE_AREA ]},
     {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
+    {provide: ContactService, useClass: ContactService, deps: [ AngularFirestore, TABLE_CONTACT ]},
     {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY ]},
     {provide: CmsService, useClass: CmsService, deps: [ AngularFirestore, TABLE_CMS ]},
     {provide: CmsDetailService, useClass: CmsDetailService, deps: [ AngularFirestore, TABLE_CMS_DETAIL ]},
