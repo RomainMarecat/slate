@@ -7,6 +7,7 @@ import { DocumentReference } from '@firebase/firestore-types';
 import { Article } from '../../../article/shared/article';
 import { ArticleService } from '../../../article/shared/article.service';
 import { ArticleFormType } from '../../shared/article/form-article';
+import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'app-admin-article-edit',
@@ -26,6 +27,7 @@ export class ArticleEditComponent implements OnInit {
   isLoading: boolean;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
+  _facebook: string;
 
   /**
    *
@@ -37,7 +39,9 @@ export class ArticleEditComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private alertService: AlertService,
-              private articleService: ArticleService) {
+              private articleService: ArticleService,
+              public matIconRegistry: MatIconRegistry) {
+    matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
   }
 
   ngOnInit() {
@@ -107,6 +111,7 @@ export class ArticleEditComponent implements OnInit {
     if (this.form.valid) {
 
       this.article = {...this.article, ...this.form.value};
+
       if (this.article.published === true) {
         this.article.published_at = new Date();
       }
@@ -148,11 +153,12 @@ export class ArticleEditComponent implements OnInit {
     this.form.patchValue({slug: slug});
   }
 
-  get fr() {
-    return this.form.get('translations').get('fr');
+  get facebook() {
+    return this._facebook;
   }
 
-  set fr(fr) {
-    this.form.get('translations').patchValue({fr: fr});
+  set facebook(facebook: string) {
+    this.form.patchValue({description: facebook});
+    this._facebook = facebook;
   }
 }

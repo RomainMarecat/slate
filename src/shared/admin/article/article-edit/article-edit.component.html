@@ -37,22 +37,19 @@
                                [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
                   </mat-form-field>
                 </div>
-                <!--<div class="d-block">-->
-                <!--<mat-form-field class="mat-form-field" formGroupName="translations">-->
-                <!--<input matInput maxlength="100" [placeholder]="'Nom en français'|translate" formControlName="fr">-->
-                <!--<mat-hint align="start"><strong [innerHtml]="'Nom français'|translate"></strong></mat-hint>-->
-                <!--<mat-hint align="end">{{ fr.value.length }} {{ '/100'|translate }}</mat-hint>-->
-                <!--<mat-error *ngIf="fr.invalid && fr.value.length === 0"-->
-                <!--[innerHtml]="'Le nom français ne peut pas être vide'|translate"></mat-error>-->
-                <!--<mat-error *ngIf="fr.invalid && fr.value.length > 0"-->
-                <!--[innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>-->
-                <!--</mat-form-field>-->
-                <!--</div>-->
                 <div class="mat-form-field editor mt1">
                   <label class="mat-hint"><strong>Contenu de l'article :</strong></label>
                   <app-ngx-editor [config]="editorConfig"
                                   [formControl]="form?.controls?.description">
                   </app-ngx-editor>
+                  <mat-form-field appearance="fill">
+                    <mat-label>{{ 'publication facebook'|translate }}</mat-label>
+                    <input matInput
+                           [placeholder]="'copier/coller ici le lien vers le post facebook'|translate"
+                           [(ngModel)]="facebook"
+                           [ngModelOptions]="{standalone: true}">
+                    <mat-icon matSuffix fontSet="fontawesome" fontIcon="fa-facebook-square"></mat-icon>
+                  </mat-form-field>
                 </div>
               </div>
             </div>
