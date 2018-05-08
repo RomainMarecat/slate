@@ -8,8 +8,10 @@
     }
   },
   "cta": {
-    "cancel": "Annuler",
-    "save": "Enregistrer"
+    "back": "retour",
+    "cancel": "annuler",
+    "save": "enregistrer",
+    "send": "envoyer"
   },
   "home": {
 

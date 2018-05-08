@@ -16,6 +16,10 @@ const routes: Routes = [{
   {
     path: 'admin',
     loadChildren: './../shared/admin/admin.module#AdminModule'
+  },
+  {
+    path: 'contact',
+    loadChildren: './../shared/contact/contact.module#ContactModule'
   }
 ];
 

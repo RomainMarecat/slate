@@ -21,6 +21,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../../environments/environment.blog';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MenuService } from '../../shared/menu/menu.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -47,7 +48,8 @@ describe('HomeComponent', () => {
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: CommentService, useClass: MockCommentService},
         {provide: UserService, useClass: MockUserService},
-        DeviceService
+        DeviceService,
+        MenuService
       ]
     })
       .compileComponents();
