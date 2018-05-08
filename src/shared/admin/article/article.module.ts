@@ -9,6 +9,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { NgxEditorModule } from 'ngx-editor';
 import { SharedModule } from '../../shared.module';
 import { ArticleService } from '../../article/shared/article.service';
+import { MatIconRegistry } from '@angular/material';
 
 const TABLE_ARTICLE = new InjectionToken<string>('article');
 
@@ -25,6 +26,7 @@ const TABLE_ARTICLE = new InjectionToken<string>('article');
     ArticleEditComponent,
   ],
   providers: [
+    MatIconRegistry,
     {provide: TABLE_ARTICLE, useValue: 'article'},
     {
       provide: ArticleService,
