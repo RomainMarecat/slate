@@ -22,6 +22,10 @@ import { AgmCoreModule } from '@agm/core';
 import { environment } from '../../environments/environment.blog';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MenuService } from '../../shared/menu/menu.service';
+import { ContactModule } from '../../shared/contact/contact.module';
+import { MockContactService } from '../../shared/contact/shared/mock-contact.service';
+import { ContactService } from '../../shared/contact/shared/contact.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -33,6 +37,8 @@ describe('HomeComponent', () => {
         AgmCoreModule.forRoot({
           apiKey: environment.googleMapApiKey
         }),
+        BrowserAnimationsModule,
+        ContactModule,
         RouterTestingModule,
         SharedModule,
         TranslateModule.forRoot({
@@ -46,6 +52,7 @@ describe('HomeComponent', () => {
         {provide: OfferService, useClass: MockOfferService},
         {provide: ArticleService, useClass: MockArticleService},
         {provide: CategoryService, useClass: MockCategoryService},
+        {provide: ContactService, useClass: MockContactService},
         {provide: CommentService, useClass: MockCommentService},
         {provide: UserService, useClass: MockUserService},
         DeviceService,

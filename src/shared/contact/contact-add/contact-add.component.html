@@ -1,57 +1,76 @@
-<form [formGroup]="form"
-      (ngSubmit)="onSubmit()"
-      fxLayout="row wrap"
-      fxLayoutAlign="center stretch">
-  <mat-form-field class="mat-form-field">
-    <input matInput
-           [placeholder]="'name'|translate"
-           [formControl]="form.controls.name">
-    <mat-hint align="start"><strong [innerHtml]="'name'|translate"></strong></mat-hint>
-    <mat-error *ngIf="form.controls.name.invalid && form.controls.name.value.length === 0"
-               [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
-    <mat-error *ngIf="form.controls.name.invalid && form.controls.name.value.length > 0"
-               [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
-  </mat-form-field>
-  <mat-form-field class="mat-form-field">
-    <input matInput
-           type="email"
-           [placeholder]="'email'|translate"
-           [formControl]="form.controls.email">
-    <mat-hint align="start"><strong [innerHtml]="'email'|translate"></strong></mat-hint>
-    <mat-error *ngIf="form.controls.email.invalid && form.controls.email.value.length === 0"
-               [innerHtml]="'L\'email ne peut pas être vide'|translate"></mat-error>
-    <mat-error *ngIf="form.controls.email.invalid && form.controls.email.value.length > 0"
-               [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
-  </mat-form-field>
+<div class="contact-wrapper"
+     fxLayout="row wrap"
+     fxLayoutAlign="center stretch">
+  <div class="contact-header"
+       fxFlex="100"
+       fxLayout="column"
+       fxLayoutAlign="center center">
+    <div class="contact-title-wrapper">
+      {{ 'contact.title'|translate }}
+    </div>
+    <div class="contact-subtitle-wrapper">
+      {{ 'contact.subtitle'|translate }}
+    </div>
+  </div>
+  <div class="contact-content-wrapper"
+       fxFlex="100">
+    <form [formGroup]="form"
 
-  <mat-form-field class="mat-form-field">
+          (ngSubmit)="onSubmit()"
+          fxLayout="row wrap"
+          fxLayoutAlign="center stretch">
+      <mat-form-field class="mat-form-field">
+        <input matInput
+               [placeholder]="'name'|translate"
+               [formControl]="form.controls.name">
+        <mat-hint align="start"><strong [innerHtml]="'name'|translate"></strong></mat-hint>
+        <mat-error *ngIf="form.controls.name.invalid && form.controls.name.value.length === 0"
+                   [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
+        <mat-error *ngIf="form.controls.name.invalid && form.controls.name.value.length > 0"
+                   [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+      </mat-form-field>
+      <mat-form-field class="mat-form-field">
+        <input matInput
+               type="email"
+               [placeholder]="'email'|translate"
+               [formControl]="form.controls.email">
+        <mat-hint align="start"><strong [innerHtml]="'email'|translate"></strong></mat-hint>
+        <mat-error *ngIf="form.controls.email.invalid && form.controls.email.value.length === 0"
+                   [innerHtml]="'L\'email ne peut pas être vide'|translate"></mat-error>
+        <mat-error *ngIf="form.controls.email.invalid && form.controls.email.value.length > 0"
+                   [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="mat-form-field">
     <textarea matInput
               maxlength="500"
               [placeholder]="'message'|translate"
               [formControl]="form.controls.message">
     </textarea>
-    <mat-hint align="start"><strong [innerHtml]="'message'|translate"></strong></mat-hint>
-    <mat-hint align="end">{{ form.controls.message.value.length }} {{ '/500'|translate }}</mat-hint>
-    <mat-error *ngIf="form.controls.message.invalid && form.controls.message.value.length === 0"
-               [innerHtml]="'Le message ne peut pas être vide'|translate"></mat-error>
-    <mat-error *ngIf="form.controls.message.invalid && form.controls.message.value.length > 0"
-               [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
-  </mat-form-field>
+        <mat-hint align="start"><strong [innerHtml]="'message'|translate"></strong></mat-hint>
+        <mat-hint align="end">{{ form.controls.message.value.length }} {{ '/500'|translate }}</mat-hint>
+        <mat-error *ngIf="form.controls.message.invalid && form.controls.message.value.length === 0"
+                   [innerHtml]="'Le message ne peut pas être vide'|translate"></mat-error>
+        <mat-error *ngIf="form.controls.message.invalid && form.controls.message.value.length > 0"
+                   [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+      </mat-form-field>
 
-  <div class="send-wrapper"
-       fxLayout="row wrap"
-       fxLayourAlign="space-around stretch"
-       fxLayoutGap="50px">
-    <button type="button"
-            mat-raised-button
-            class="button-cancel">
-      {{ 'cta.cancel'|translate }}
-    </button>
-    <button type="submit"
-            color="primary"
-            mat-raised-button
-            class="button-submit">
-      {{ 'cta.send'|translate }}
-    </button>
+      <div class="send-wrapper"
+           fxLayout="row wrap"
+           fxLayourAlign="space-around stretch"
+           fxLayoutGap="50px">
+        <button type="button"
+                mat-raised-button
+                class="button-cancel">
+          {{ 'cta.cancel'|translate }}
+        </button>
+        <button type="submit"
+                color="primary"
+                mat-raised-button
+                class="button-submit">
+          {{ 'cta.send'|translate }}
+        </button>
+      </div>
+    </form>
   </div>
-</form>
+</div>

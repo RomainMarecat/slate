@@ -16,6 +16,10 @@
   "home": {
 
   },
+  "contact": {
+    "title": "contacter-nous",
+    "subtitle": "E-mail : thomas.difruscia@cycloclubvizille.com"
+  },
   "menu": {
     "connection": {
       "title": "Se connecter"

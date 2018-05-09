@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { environment } from '../../environments/environment.blog';
 import { AgmCoreModule } from '@agm/core';
 import { MenuService } from '../../shared/menu/menu.service';
+import { ContactModule } from '../../shared/contact/contact.module';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { MenuService } from '../../shared/menu/menu.service';
       apiKey: environment.googleMapApiKey
     }),
     CommonModule,
+    ContactModule,
     SharedModule,
   ],
   declarations: [HomeComponent],
