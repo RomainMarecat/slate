@@ -1,0 +1,69 @@
+<div class="zee-bc card">
+  <div class="row blue zee-bc-nav-header nm">
+    <div class="col s4 m4 l3 np">
+      <button class="left-align btn-flat pl05 pr05" (click)="previousDay()" type="button">
+        <i class="material-icons">keyboard_arrow_left</i>
+      </button>
+      <button class="right-align btn-flat pl05 pr05" (click)="nextDay()" type="button">
+        <i class="material-icons">keyboard_arrow_right</i>
+      </button>
+      <button class="btn-flat pl05 pr05" [class.active]="isToday()" (click)="goToToday()">
+        <i class="material-icons prefix left nm">today</i>
+      </button>
+    </div>
+    <button class="col s4 m4 l5 center-align btn-flat zee-bc-nav-title"
+            [class.hide-on-small-only]="endDatePretty !== startDatePretty">
+      {{startDatePretty}}
+      <span *ngIf="endDatePretty !== startDatePretty">
+        - {{endDatePretty}}
+      </span>
+    </button>
+    <div class="btn-group col s4 m4 l4 right-align zee-bc-buttons-controls"
+         [class.offset-s4]="endDatePretty !== startDatePretty">
+      <button class="right col hide-on-small-and-down btn-flat" [class.active]="viewMode==='week'"
+              (click)="switchView('week')">
+        <i class="material-icons prefix left nm">view_week</i>
+        <span i18n="scheduler button week view" class="hide-on-med-and-down">Week</span>
+      </button>
+      <button class="right col btn-flat" [class.active]="viewMode==='3days'" (click)="switchView('3days')">
+        <i class="material-icons prefix left nm">view_column</i>
+        <span i18n="scheduler button 3 days view" class="hide-on-med-and-down">3 Days</span>
+      </button>
+      <button class="right col btn-flat" [class.active]="viewMode==='day'" (click)="switchView('day')">
+        <i class="material-icons prefix left nm">view_day</i>
+        <span i18n="scheduler button day view" class="hide-on-med-and-down">Day</span>
+      </button>
+    </div>
+  </div>
+  <div class="row zee-bc-calendar">
+    <table class="bordered">
+      <thead class="zee-bc-head">
+      <tr class="zee-bc-day-row" *ngIf="viewMode !== 'day'">
+        <th class="zee-bc-day-header center-align" *ngFor="let day of prettyDays">
+          <span class="truncate">{{day}}</span>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="zee-bc-day-header center-align" *ngFor="let day of days" #dayList id="{{day}}">
+          <div class="time-slot" *ngFor="let time of getAvailabilities(day)" [class.busy]="isSlotBusy(day+time)"
+               [class.early]="isSlotEarly(day+time)" [class.session]="isSlotInSession(day+time)"
+               [class.session-start]="isSlotSessionStart(day+time)" [class.session-end]="isSlotSessionEnd(day+time)">
+            <a (click)="timeSlotClicked(day+time)">
+              <span *ngIf="!isSlotSessionStart(day+time); else sessionTitle">{{time}}</span>
+              <ng-template #sessionTitle>
+                <span matTooltip="{{slotSessionTooltip(day+time)}}" [matTooltipPosition]="'above'">
+                  {{slotSessionTitle(day+time)}}</span>
+              </ng-template>
+            </a>
+          </div>
+          <div *ngIf="getAvailabilities(day).length <= 0 || isDayBusy(day)">
+            <span i18n="no availability">No availability this day</span>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

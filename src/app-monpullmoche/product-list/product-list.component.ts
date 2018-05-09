@@ -63,8 +63,8 @@ export class ProductListComponent implements OnInit {
 
     this.meta.addTags([
       { property: 'fb:app_id', content: environment.facebook_app_id },
-      { rel: 'canonical', href: 'https://monpullmoche.com' },
-      { rel: 'alternate', hreflang: 'x-default', href: 'https://monpullmoche.com' },
+      { rel: 'canonical', href: 'https://clothe.com' },
+      { rel: 'alternate', hreflang: 'x-default', href: 'https://clothe.com' },
       { rel: 'alternate', hreflang: 'en', href: 'https://myuglysweat.com' }
     ]);
 

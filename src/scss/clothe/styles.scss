@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "theme";
+@import "base/helper";
+@import "base/size";
+@import "component/loader";
+@import "component/button";
+@import "layout/body";
+
+h1.logo {
+  a {
+    fill: #fff;
+
+    .cls-1 {
+      font-size: 41.09px;
+      font-family: Sacramento-Regular, Sacramento;
+    }
+
+    .cls-2 {
+      font-size: 32.44px;
+      font-family: Lato-Regular, Lato;
+    }
+  }
+}

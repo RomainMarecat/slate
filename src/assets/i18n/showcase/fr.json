@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": {
+      "homepage": "showcase"
+    },
+    "description": {
+      "homepage": ""
+    }
+  },
+  "cta": {
+    "back": "retour",
+    "cancel": "annuler",
+    "save": "enregistrer",
+    "send": "envoyer"
+  },
+  "menu": {
+    "connection": {
+      "title": "Se connecter"
+    },
+    "title1": "",
+    "title2": "showcase",
+    "sort": "Trier",
+    "filter": "Filtrer"
+  },
+  "sidenav": {
+    "card": {
+      "list-item": {
+        "admin": {
+          "title": "Back Office"
+        },
+        "facebook": {
+          "title": "Se connecter avec Facebook"
+        },
+        "google": {
+          "title": "Se connecter avec Google"
+        },
+        "login": {
+          "title": "Connexion"
+        },
+        "logout": {
+          "title": "Déconnexion",
+          "aria-label": "Déconnexion"
+        }
+      },
+      "image": {
+        "alt": "Image de fond du menu"
+      }
+    }
+  },
+  "user": {
+    "access_denied": {
+      "connect": "Il faut se connecter pour effectuer cette action"
+    }
+  }
+}

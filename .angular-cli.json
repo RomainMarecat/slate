@@ -5,6 +5,42 @@
   },
   "apps": [
     {
+      "name": "showcase",
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets"
+      ],
+      "index": "index.html",
+      "main": "main-showcase.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app-showcase",
+      "serviceWorker": true,
+      "styles": [
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/@swimlane/ngx-datatable/release/index.css",
+        "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+        "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../node_modules/cookieconsent/build/cookieconsent.min.css",
+        "../node_modules/dragula/dist/dragula.css",
+        "./scss/showcase/styles.scss"
+      ],
+      "scripts": [
+        "../node_modules/moment/min/moment.min.js",
+        "../node_modules/crypto-js/crypto-js.js",
+        "../node_modules/cookieconsent/build/cookieconsent.min.js"
+      ],
+      "environmentSource": "environments/environment.showcase.ts",
+      "environments": {
+        "dev": "environments/environment.showcase.ts",
+        "prod": "environments/environment.showcase.prod.ts"
+      }
+    },
+    {
       "name": "blog",
       "root": "src",
       "outDir": "dist",
@@ -27,7 +63,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/cookieconsent/build/cookieconsent.min.css",
         "../node_modules/dragula/dist/dragula.css",
-        "./scss/styles.blog.scss"
+        "./scss/blog/styles.scss"
       ],
       "scripts": [
         "../node_modules/crypto-js/crypto-js.js",
@@ -62,7 +98,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/cookieconsent/build/cookieconsent.min.css",
         "../node_modules/dragula/dist/dragula.css",
-        "./scss/styles.car.scss"
+        "./scss/car/styles.scss"
       ],
       "scripts": [
         "../node_modules/crypto-js/crypto-js.js",
@@ -97,7 +133,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/cookieconsent/build/cookieconsent.min.css",
         "../node_modules/dragula/dist/dragula.css",
-        "./scss/styles.recipe.scss"
+        "./scss/recipe/styles.scss"
       ],
       "scripts": [
         "../node_modules/crypto-js/crypto-js.js",
@@ -132,7 +168,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/cookieconsent/build/cookieconsent.min.css",
         "../node_modules/dragula/dist/dragula.css",
-        "./scss/styles.booking.scss"
+        "./scss/booking/styles.scss"
       ],
       "scripts": [
         "../node_modules/crypto-js/crypto-js.js",
@@ -167,7 +203,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/cookieconsent/build/cookieconsent.min.css",
         "../node_modules/dragula/dist/dragula.css",
-        "./scss/styles.hockey.scss"
+        "./scss/hockey/styles.scss"
       ],
       "scripts": [
         "../node_modules/crypto-js/crypto-js.js",
@@ -201,7 +237,7 @@
         "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/cookieconsent/build/cookieconsent.min.css",
-        "./scss/styles.monpullmoche.scss"
+        "./scss/clothe/styles.scss"
       ],
       "scripts": [
         "../node_modules/crypto-js/crypto-js.js",
@@ -236,7 +272,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/cookieconsent/build/cookieconsent.min.css",
         "../node_modules/dragula/dist/dragula.css",
-        "./scss/styles.snippet.scss"
+        "./scss/snippet/styles.scss"
       ],
       "scripts": [
         "../node_modules/crypto-js/crypto-js.js",
