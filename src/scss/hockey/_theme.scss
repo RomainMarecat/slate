@@ -40,32 +40,36 @@ body {
   font-family: 'Gentium Book Basic',
   serif;
   background-color: $color2;
+}
 
-  .title {
-    font-family: 'Fugaz One', cursive;
-    text-transform: uppercase;
-  }
+.title {
+  font-family: 'Fugaz One', cursive;
+  text-transform: uppercase;
+}
 
-  .main-menu {
-    background-color: #131629 !important;
-  }
+.main-menu {
+  background-color: #131629 !important;
+}
 
-  .offer-detail {
-    .mat-card-content {
-      a {
-        color: mat-color($mat-grey, 700);
-      }
-    }
+mat-icon {
+  font-family: 'Material Icons' !important;
+}
 
-    .mat-card-actions {
-      a {
-        color: mat-color($white);
-      }
-    }
-
-    .mat-card-subtitle {
+.offer-detail {
+  .mat-card-content {
+    a {
       color: mat-color($mat-grey, 700);
     }
+  }
+
+  .mat-card-actions {
+    a {
+      color: mat-color($white);
+    }
+  }
+
+  .mat-card-subtitle {
+    color: mat-color($mat-grey, 700);
   }
 }
 

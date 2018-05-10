@@ -9,6 +9,9 @@ import { MatButtonModule, MatCardModule, MatIconModule, MatTableModule, MatToolt
 import { EventService } from './shared/event.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CalendarHeaderComponent } from './calendar-week/calendar-header/calendar-header.component';
+import { CalendarBodyComponent } from './calendar-week/calendar-body/calendar-body.component';
+import { AlertService } from '../popup/alert.service';
 
 @NgModule({
   imports: [
@@ -25,15 +28,20 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     AgendaComponent,
     CalendarComponent,
+    CalendarHeaderComponent,
+    CalendarBodyComponent,
     CalendarWeekComponent
   ],
   exports: [
     AgendaComponent,
     CalendarComponent,
+    CalendarHeaderComponent,
+    CalendarBodyComponent,
     CalendarWeekComponent
   ],
   providers: [
-    EventService
+    EventService,
+    AlertService
   ]
 })
 export class AgendaModule {

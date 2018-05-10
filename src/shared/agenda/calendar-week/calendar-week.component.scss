@@ -1,58 +1,7 @@
 .week-calendar-wrapper {
-
   .week-calendar-header {
     .week-calendar-title {
-      width: 100%;
-    }
-  }
-
-  .week-calendar-content {
-    .time-slot {
-      a {
-        cursor: pointer;
-        display: block;
-      }
-      &:hover {
-        background-color: #2196f3;
-        a {
-          color: white;
-        }
-      }
-      &.busy {
-        display: none;
-        a {
-          color: red !important;
-          cursor: not-allowed;
-        }
-      }
-      &.early {
-        a {
-          cursor: not-allowed;
-          color: #bdbdbd;
-        }
-      }
-      &.session {
-        a {
-          color: #ff9800;
-          cursor: inherit;
-        }
-        background-color: #ff9800;
-        box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.14),
-        0 1px 0px 0 rgba(0, 0, 0, 0.12),
-        0 3px 1px -2px rgba(0, 0, 0, 0.2);
-      }
-      &.session-start {
-        a {
-          color: white !important;
-          cursor: pointer;
-        }
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-      }
-      &.session-end {
-        border-bottom-left-radius: 3px;
-        border-bottom-right-radius: 3px;
-      }
+      width: 90vw;
     }
   }
 

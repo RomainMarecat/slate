@@ -50,6 +50,9 @@ body {
     background-color: #131629 !important;
   }
 }
+mat-icon{
+  font-family: 'Material Icons' !important;
+}
 
 .album {
   background: mat-color(mat-palette($mat-purple, 800));

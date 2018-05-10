@@ -22,6 +22,14 @@
     "sort": "Trier",
     "filter": "Filtrer"
   },
+  "calendar": {
+    "availability": {
+      "empty": "Aucune disponibilité"
+    },
+    "session": {
+      "info": "Créneau vérrouillé"
+    }
+  },
   "sidenav": {
     "card": {
       "list-item": {

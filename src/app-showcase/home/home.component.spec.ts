@@ -27,6 +27,22 @@ import { MockContactService } from '../../shared/contact/shared/mock-contact.ser
 import { ContactService } from '../../shared/contact/shared/contact.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgendaModule } from '../../shared/agenda/agenda.module';
+import { I18nService } from '../../shared/i18n/i18n.service';
+import { MockPartnerService } from '../../shared/partner/mock-partner.service';
+import { PartnerService } from '../../shared/partner/partner.service';
+import { MockMediaService } from '../../shared/media/mock-media.service';
+import { MediaService } from '../../shared/media/media.service';
+import { MockAreaService } from '../../shared/map/shared/mock-area.service';
+import { AreaService } from '../../shared/map/shared/area.service';
+import { MockMapService } from '../../shared/map/shared/mock-map.service';
+import { MapService } from '../../shared/map/shared/map.service';
+import { MockCmsService } from '../../shared/cms/shared/mock-cms.service';
+import { CmsService } from '../../shared/cms/shared/cms.service';
+import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
+import { MockCmsDetailService } from '../../shared/cms-detail/shared/mock-cms-detail.service';
+import { MockEventService } from '../../shared/agenda/shared/mock-event.service';
+import { EventService } from '../../shared/agenda/shared/event.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -41,6 +57,7 @@ describe('HomeComponent', () => {
         AgendaModule,
         BrowserAnimationsModule,
         ContactModule,
+        HttpClientTestingModule,
         RouterTestingModule,
         SharedModule,
         TranslateModule.forRoot({
@@ -49,8 +66,15 @@ describe('HomeComponent', () => {
       ],
       declarations: [ HomeComponent ],
       providers: [
+        {provide: AreaService, useClass: MockAreaService},
         {provide: AlertService, useClass: MockAlertService},
+        {provide: CmsService, useClass: MockCmsService},
+        {provide: CmsDetailService, useClass: MockCmsDetailService},
+        {provide: EventService, useClass: MockEventService},
         {provide: ProductService, useClass: MockProductService},
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: MapService, useClass: MockMapService},
+        {provide: PartnerService, useClass: MockPartnerService},
         {provide: OfferService, useClass: MockOfferService},
         {provide: ArticleService, useClass: MockArticleService},
         {provide: CategoryService, useClass: MockCategoryService},
@@ -58,7 +82,8 @@ describe('HomeComponent', () => {
         {provide: CommentService, useClass: MockCommentService},
         {provide: UserService, useClass: MockUserService},
         DeviceService,
-        MenuService
+        MenuService,
+        I18nService
       ]
     })
       .compileComponents();

@@ -5,10 +5,12 @@
       <h2>{{ 'calendar.title'|translate }}</h2>
     </div>
     <div class="calendar-subtitle-wrapper">
-      <h2>{{ 'calendar.subtitle'|translate }}</h2>
+      <h3>{{ 'calendar.subtitle'|translate }}</h3>
     </div>
   </div>
-  <div class="calendar-content">
-    <app-calendar-week></app-calendar-week>
+  <div class="calendar-content" *ngIf="viewMode === 'week'">
+    <app-calendar-week (viewModeChanged)="onViewModeChanged($event)"
+                       (sessionRemoved)="onSessionRemoved($event)"
+                       (sessionCreated)="onSessionAdded($event)"></app-calendar-week>
   </div>
 </div>

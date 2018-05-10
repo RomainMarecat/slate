@@ -1,0 +1,45 @@
+<div class="week-calendar-content">
+  <table mat-table class="table table-bordered">
+    <thead class="week-calendar-table-head">
+    <tr class="week-calendar-day-row"
+        *ngIf="viewMode !== 'day'">
+      <th class="week-calendar-day-header center-align"
+          *ngFor="let day of days">
+        <span class="truncate">{{ day.title }}</span>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="week-calendar-day-header text-center"
+          #dayList
+          [attr.id]="day.key"
+          *ngFor="let day of days">
+        <div class="time-slot"
+             *ngFor="let time of getAvailabilities(day.key)"
+             [class.busy]="isSlotBusy(day, time)"
+             [class.early]="isSlotEarly(day, time)"
+             [class.session]="isSlotInSession(day, time)"
+             [class.session-start]="isSlotSessionStart(day, time)"
+             [class.session-end]="isSlotSessionEnd(day, time)">
+          <a (click)="onTimeSlotClicked(day, time)">
+            <span *ngIf="!isSlotSessionStart(day, time); else sessionTitle">
+              {{ time }}
+            </span>
+            <ng-template #sessionTitle>
+                <span
+                  [matTooltipPosition]="'above'"
+                  [matTooltip]="getSessionTooltip(day, time)">
+                {{ getSessionTitle(day, time)}}</span>
+              <mat-icon class="icon-close">close</mat-icon>
+            </ng-template>
+          </a>
+        </div>
+        <div *ngIf="getAvailabilities(day.key).length <= 0 || isDayBusy(day, time)">
+          <span>{{ 'calendar.availability.empty'|translate }}</span>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -12,11 +12,14 @@ import {
 } from '@angular/core';
 import { OnlineSession } from '../shared/online-session';
 import { Session } from '../shared/session';
-import { Event, EventType } from '../shared/event';
+import { Event } from '../shared/event';
 import * as moment from 'moment';
+import { Twix, TwixIter } from 'twix';
+import 'twix';
 import { Moment } from 'moment';
-import * as twix from 'twix';
 import { EventService } from '../shared/event.service';
+import { Day } from '../shared/day';
+import { Filter } from '../../facet/filter/shared/filter';
 
 @Component({
   selector: 'app-calendar-week',
@@ -24,52 +27,26 @@ import { EventService } from '../shared/event.service';
   styleUrls: [ './calendar-week.component.scss' ]
 })
 export class CalendarWeekComponent implements OnInit, OnChanges {
-  @Input() onlineSessions: OnlineSession[];
-  @Input() onlineSession: OnlineSession = {
-    key: 'test1',
-    session_type: {
-      name: 'test1',
-      max_persons: 1,
-      booking_delay: 0,
-      duration: 60,
-      pause: 0,
-    },
-    city_teached: 'dont',
-    prices: [ 10, 20 ],
-    date_range: {
-      start: '2018-05-10',
-      end: '2018-05-10',
-    },
-    time_range: {
-      start: '10:00',
-      end: '10:00',
-    }
-  };
+  // Default View Mode of Week Component
+  viewMode: String = 'week';
 
-  @Input() startDate: string = moment().format('YYYY-MM-DD');
-  endDate: string;
+  @Input() onlineSession: OnlineSession;
 
-  @Input() viewMode;
+  @Input() start: Moment = moment();
+  @Input() end: Moment = moment();
+  calendarStart: Moment;
+  calendarEnd: Moment;
 
-  @Output() onDateChanged: EventEmitter<string> = new EventEmitter<string>();
-  @Output() onSessionCreated: EventEmitter<Session> = new EventEmitter<Session>();
+  @Output() viewModeChanged: EventEmitter<String> = new EventEmitter<String>();
+  @Output() sessionCreated: EventEmitter<Session> = new EventEmitter<Session>();
+  @Output() sessionRemoved: EventEmitter<Session> = new EventEmitter<Session>();
 
   @ViewChildren('dayList') el: ElementRef;
 
-  DATE_REGEXP: RegExp = /\d{4}-\d{2}-\d{2}/g;
-  TIME_REGEXP = /\d{2}:\d{2}/g;
-
-  startDatePretty: string;
-  endDatePretty: string;
-  prettyDays: Array<string>;
-  days: Array<string>;
+  days: Array<Day> = [];
   trueDuration: number;
 
-  mmtStartDate: Moment;
-  mmtEndDate: Moment;
-
   daysAvailability: Map<string, string[]>;
-
   daysBusySlotNumber: Map<string, number>;
   daysAvailabilitySlotNumber: Map<string, number>;
 
@@ -80,11 +57,7 @@ export class CalendarWeekComponent implements OnInit, OnChanges {
   sessionsSlots: Set<string>;
   sessionsEndSlots: Set<string>;
   sessions: Map<string, Session>;
-
   slotDuration = 15;
-  error: any;
-
-  locale: string;
 
   constructor(private eventService: EventService,
               private cd: ChangeDetectorRef,
@@ -92,25 +65,41 @@ export class CalendarWeekComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.defaultViewMode();
-    this.initVars();
+    this.setCalendarWeek();
+    this.setViewMode();
+    this.setDateRange();
   }
 
-  defaultViewMode() {
-    this.viewMode = 'week';
-    // if (this.deviceService.isMaterializeMediumOnly()) {
-    //   this.viewMode = '3days';
-    // } else if (this.deviceService.isMaterializeSmallAndDown()) {
-    //   this.viewMode = 'day';
-    // }
-  }
-
+  /**
+   * Inspect all changes
+   */
   ngOnChanges() {
-    this.buildDateRange();
+    this.setDateRange();
   }
 
-
-  initVars() {
+  /**
+   * Set Default variables
+   */
+  setCalendarWeek() {
+    this.onlineSession = {
+      key: 'test1',
+      session_type: {
+        name: 'test1',
+        max_persons: 1,
+        booking_delay: 1,
+        duration: 60,
+        pause: 0,
+      },
+      prices: [ 10, 20 ],
+      date_range: {
+        start: '2018-01-01',
+        end: '2019-12-31',
+      },
+      time_range: {
+        start: '08:00',
+        end: '19:00',
+      }
+    };
     this.sessionsSlots = new Set();
     this.sessionsEndSlots = new Set();
     this.earlySlots = new Set();
@@ -118,43 +107,221 @@ export class CalendarWeekComponent implements OnInit, OnChanges {
     this.sessions = new Map();
   }
 
-  /************************************************
-   *************** Navigation functions ************
-   *************************************************/
-
-  switchView(view: string) {
-    this.viewMode = view;
-    this.buildDateRange();
-  }
-
-  goToToday() {
-    this.startDate = moment().format('YYYY-MM-DD');
-    this.onDateChanged.emit(this.startDate);
-    this.buildDateRange();
-  }
-
-  isToday() {
-    return moment().format('YYYY-MM-DD') === this.startDate;
-  }
-
-  previousDay() {
-    let daysNb = 1;
-    if (this.viewMode === 'week') {
-      daysNb = 7;
+  /**
+   * Set View Mode with week, day, 3 days
+   * Init start, end,
+   *
+   */
+  setViewMode() {
+    // Init first day week number
+    const firstDay = 0;
+    // If empty start date then start to today
+    if (!this.start) {
+      this.start = moment();
     }
-    this.startDate = moment(this.startDate, 'YYYY-MM-DD').subtract(daysNb, 'day').format('YYYY-MM-DD');
-    this.onDateChanged.emit(this.startDate);
-    this.buildDateRange();
+    this.start = moment(this.start).day(firstDay);
+    this.end = moment(this.start).add(6, 'days');
+
+    this.calendarStart = moment(this.start).startOf('day');
+    this.calendarEnd = moment(this.end).endOf('day');
   }
 
-  nextDay() {
-    let daysNb = 1;
-    if (this.viewMode === 'week') {
-      daysNb = 7;
+  /**
+   * On start/viewMode changed, do a recalculate of init start, end
+   * days, daysAvailability and viewMode
+   */
+  setDateRange() {
+    this.setCalendarWeek();
+    this.setViewMode();
+    // this.buildTrueDuration();
+    this.loadEvents(this.start, this.end);
+    this.daysAvailability = new Map();
+    const dateRange: TwixIter = this.start
+      .twix(this.end)
+      .iterate(1, 'days');
+    this.days = [];
+    // Loading all days
+    while (dateRange.hasNext()) {
+      const date: Twix = dateRange.next();
+      this.days.push({
+        title: date.format('DD/MM/YYYY'),
+        key: date.format('YYYY-MM-DD'),
+        value: moment(date.toDate())
+      });
+      this.daysAvailability.set(date.format('YYYY-MM-DD'), []);
     }
-    this.startDate = moment(this.startDate, 'YYYY-MM-DD').add(daysNb, 'day').format('YYYY-MM-DD');
-    this.onDateChanged.emit(this.startDate);
-    this.buildDateRange();
+    this.loadAvailabilities();
+  }
+
+  onSwithedView(viewMode: String) {
+    this.viewModeChanged.emit(viewMode);
+    this.setDateRange();
+  }
+
+  onStartChanged(start: Moment) {
+    this.start = start;
+    this.setDateRange();
+  }
+
+  onSessionAdded(session: Session) {
+    this.sessions.set(moment(session.start).format('YYYY-MM-DDHH:mm'), session);
+    this.addSession(session);
+    this.sessionCreated.emit(session);
+  }
+
+  onSessionRemoved(source: { key: string, session: Session }) {
+    this.sessions.delete(source.key);
+    this.removeSession(source.session);
+    this.sessionRemoved.emit(source.session);
+    // this.setDateRange();
+  }
+
+  loadAvailabilities() {
+    if (!this.daysAvailability || !this.onlineSession) {
+      return;
+    }
+
+    console.log('loadAvailabilities:debug');
+    const duration = this.onlineSession.session_type.duration;
+    const onlineSessionStart: Moment = moment(this.onlineSession.date_range.start, 'YYYY-MM-DD').startOf('day');
+    const onlineSessionEnd: Moment = moment(this.onlineSession.date_range.end, 'YYYY-MM-DD').endOf('day');
+    this.daysAvailabilitySlotNumber = new Map();
+    this.daysAvailability.forEach((avbs, day) => {
+      let slotsNumber = 0;
+      const mmtDay = moment(day, 'YYYY-MM-DD').hour(8);
+      const mmtDayStartTime = moment(day + this.onlineSession.time_range.start, 'YYYY-MMDDHH:mm');
+      /* days before this morning */
+      console.log(
+        'day before today morning 00:00',
+        mmtDayStartTime.format('YYYY-MM-DDHH:mm'),
+        moment().startOf('day').format('YYYY-MM-DDHH:mm'),
+        mmtDayStartTime.isBefore(moment().startOf('day'))
+      );
+      if (mmtDayStartTime.isBefore(moment().startOf('day'))) {
+        return;
+      }
+      /* booking delay */
+      const minMmtStartTime = moment().add(this.onlineSession.session_type.booking_delay, 'hours');
+      const mmtDayEndTime = moment(day + this.onlineSession.time_range.end, 'YYYY-MM-DDHH:mm');
+      mmtDayEndTime.subtract(duration, 'minutes');
+
+      const timeRange: TwixIter = mmtDayStartTime.twix(mmtDayEndTime).iterate(this.slotDuration, 'minutes');
+
+      console.log(
+        'mmtDayStartTime', mmtDayStartTime.format('HH:mm'),
+        'mmtDayEndTime', mmtDayEndTime.format('HH:mm'),
+        'calendarStart', this.calendarStart.toDate(),
+        'calendarEnd', this.calendarEnd.toDate(),
+        'mmtDay.isBetween(onlineSessionStart, onlineSessionEnd)',
+        mmtDay.isBetween(onlineSessionStart, onlineSessionEnd)
+      );
+      if (this.calendarStart && this.calendarEnd && mmtDay.isBetween(onlineSessionStart, onlineSessionEnd)) {
+        while (timeRange.hasNext()) {
+          const time: Twix = timeRange.next();
+          const timeMmt: Moment = moment(time.toDate());
+          if (!timeMmt.isBefore(minMmtStartTime)) {
+            avbs.push(time.format('HH:mm'));
+            slotsNumber++;
+          }
+        }
+      }
+      this.daysAvailabilitySlotNumber.set(day, slotsNumber);
+    });
+  }
+
+  /**
+   * @param session
+   */
+  addSession(session: Session) {
+    const mmtStart = moment(session.start);
+    const mmtEnd = moment(session.end);
+    const timeInnerRange: TwixIter = mmtStart.twix(mmtEnd).iterateInner(this.slotDuration, 'minutes');
+    while (timeInnerRange.hasNext()) {
+      const time: Twix = timeInnerRange.next();
+      this.sessionsSlots.add(time.format('YYYY-MM-DDHH:mm'));
+      if (!timeInnerRange.hasNext()) {
+        this.sessionsEndSlots.add(time.format('YYYY-MM-DDHH:mm'));
+      }
+    }
+    /* building earliest slot before event */
+    const mmtEarlyStart = mmtStart.clone().subtract(this.trueDuration, 'minutes');
+    mmtEarlyStart.minutes(mmtEarlyStart.minutes() - (mmtEarlyStart.minutes() % this.slotDuration) + this.slotDuration);
+    const timeEarlierRange: TwixIter = mmtEarlyStart.twix(mmtStart).iterate(this.slotDuration, 'minutes');
+    while (timeEarlierRange.hasNext()) {
+      const time: Twix = timeEarlierRange.next();
+      const mmtTime: Moment = moment(time.toDate());
+      if (mmtTime.minutes() % this.slotDuration !== 0) {
+        mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
+      }
+      if (mmtTime.isSameOrAfter(mmtEarlyStart) && mmtTime.isBefore(mmtStart)) {
+        this.earlySlots.add(mmtTime.format('YYYY-MM-DDHH:mm'));
+      }
+    }
+    /* building pause slots after event */
+    const mmtEarlyEnd = mmtEnd.clone();
+    mmtEarlyEnd.subtract(mmtEarlyEnd.minutes() % this.slotDuration);
+    const mmtPauseEnd = mmtEarlyEnd.clone().add(this.onlineSession.session_type.pause, 'minutes');
+    const timePauseRange: TwixIter = mmtEarlyEnd.twix(mmtPauseEnd).iterate(this.slotDuration, 'minutes');
+    while (timePauseRange.hasNext()) {
+      const time: Twix = timePauseRange.next();
+      const mmtTime: Moment = moment(time.toDate());
+
+      if (mmtTime.minutes() % this.slotDuration !== 0) {
+        mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
+      }
+      if (mmtTime.isSameOrAfter(mmtEarlyEnd) && mmtTime.isBefore(mmtPauseEnd)) {
+        this.pauseSlots.add(mmtTime.format('YYYY-MM-DDHH:mm'));
+      }
+    }
+  }
+
+  /**
+   * @param session
+   */
+  removeSession(session: Session) {
+    const mmtStart = moment(session.start);
+    const mmtEnd = moment(session.end);
+    const timeInnerRange: TwixIter = mmtStart.twix(mmtEnd).iterate(this.slotDuration, 'minutes');
+    while (timeInnerRange.hasNext()) {
+      const time: Twix = timeInnerRange.next();
+      this.sessionsSlots.delete(time.format('YYYY-MM-DDHH:mm'));
+      if (!timeInnerRange.hasNext()) {
+        this.sessionsEndSlots.delete(time.format('YYYY-MM-DDHH:mm'));
+      }
+    }
+    /* removing early slots */
+    const mmtEarlyStart = mmtStart.clone().subtract(this.trueDuration, 'minutes');
+    mmtEarlyStart.minutes(mmtEarlyStart.minutes() - (mmtEarlyStart.minutes() % this.slotDuration) + this.slotDuration);
+    const timeEarlyRange: TwixIter = mmtEarlyStart.twix(mmtStart).iterate(this.slotDuration, 'minutes');
+    while (timeEarlyRange.hasNext()) {
+      const time: Twix = timeEarlyRange.next();
+      const mmtTime: Moment = moment(time.toDate());
+
+      if (mmtTime.minutes() % this.slotDuration !== 0) {
+        mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
+      }
+      if (mmtTime.isSameOrAfter(mmtEarlyStart) && mmtTime.isBefore(mmtStart)) {
+        this.earlySlots.delete(mmtTime.format('YYYY-MM-DDHH:mm'));
+      }
+    }
+    /* removing pause slots */
+    if (session.pause) {
+      const mmtEarlyEnd = mmtEnd.clone();
+      mmtEarlyEnd.subtract(mmtEarlyEnd.minutes() % this.slotDuration);
+      const mmtPauseEnd = mmtEarlyEnd.clone().add(session.pause, 'minutes');
+      const timePauseRange: TwixIter = mmtEarlyEnd.twix(mmtPauseEnd).iterate(this.slotDuration, 'minutes');
+      while (timePauseRange.hasNext()) {
+        const time: Twix = timePauseRange.next();
+        const mmtTime: Moment = moment(time.toDate());
+
+        if (mmtTime.minutes() % this.slotDuration !== 0) {
+          mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
+        }
+        if (mmtTime.isSameOrAfter(mmtEarlyEnd) && mmtTime.isBefore(mmtPauseEnd)) {
+          this.pauseSlots.delete(mmtTime.format('YYYY-MM-DDHH:mm'));
+        }
+      }
+    }
   }
 
   /************************************************
@@ -171,334 +338,76 @@ export class CalendarWeekComponent implements OnInit, OnChanges {
   //   }
   // }
 
-  loadMonoEvents(start: string, end: string) {
-    // this.eventService.getAllUserEventsDateRange(this.mono.auth0_id, start, end)
-    //   .then((events) => {
-    //     this.events = events;
-    //     this.busySlots = new Set();
-    //     this.daysBusySlotNumber = new Map();
-    //     for (const i in events) {
-    //       const mmtEventStart = moment(events[ i ].start_date + events[ i ].start_time, 'YYYY-MM-DDHH:mm');
-    //       const mmtEventEnd = moment(events[ i ].end_date + events[ i ].end_time, 'YYYY-MM-DDHH:mm');
-    //       if (!mmtEventStart || !mmtEventStart.isValid()
-    //         || !mmtEventEnd || !mmtEventEnd.isValid()
-    //         || !mmtEventStart.isBefore(mmtEventEnd)) {
-    //         console.error('invalid dates');
-    //         continue;
-    //       }
-    //       /* building busy slots by events*/
-    //       let timeRange = mmtEventStart.twix(mmtEventEnd).iterate(this.slotDuration, 'minutes');
-    //       while (timeRange.hasNext()) {
-    //         const time = timeRange.next();
-    //         if (time.minutes() % this.slotDuration !== 0) {
-    //           time.minutes(time.minutes() - (time.minutes() % this.slotDuration));
-    //         }
-    //         /* IF the busy slot is in availability and not already in busySloits we count it */
-    //         if (this.daysAvailability && this.daysAvailability.has(time.format('YYYY-MM-DD'))
-    //           && !this.busySlots.has(time.format('YYYY-MM-DDHH:mm'))
-    //           && this.daysAvailability.get(time.format('YYYY-MM-DD')).indexOf(time.format('HH:mm')) >= 0) {
-    //           let dayBusyNumber = this.daysBusySlotNumber.has(time.format('YYYY-MM-DD')) ?
-    //             this.daysBusySlotNumber.get(time.format('YYYY-MM-DD')) : 0;
-    //           dayBusyNumber++;
-    //           this.daysBusySlotNumber.set(time.format('YYYY-MM-DD'), dayBusyNumber);
-    //         }
-    //         this.busySlots.add(time.format('YYYY-MM-DDHH:mm'));
-    //       }
-    //       /* building earliest slot before event */
-    //       const mmtEarlyStart = mmtEventStart.clone().subtract(this.trueDuration, 'minutes');
-    //       mmtEarlyStart.minutes(mmtEarlyStart.minutes() -
-    //         (mmtEarlyStart.minutes() % this.slotDuration) + this.slotDuration);
-    //       timeRange = mmtEarlyStart.twix(mmtEventStart).iterate(this.slotDuration, 'minutes');
-    //       while (timeRange.hasNext()) {
-    //         const time = timeRange.next();
-    //         if (time.minutes() % this.slotDuration !== 0) {
-    //           time.minutes(time.minutes() - (time.minutes() % this.slotDuration));
-    //         }
-    //         /* IF the busy slot is in availability and not already in busySloits we count it */
-    //         if (this.daysAvailability && this.daysAvailability.has(time.format('YYYY-MM-DD'))
-    //           && !this.busySlots.has(time.format('YYYY-MM-DDHH:mm'))
-    //           && this.daysAvailability.get(time.format('YYYY-MM-DD')).indexOf(time.format('HH:mm')) >= 0) {
-    //           let dayBusyNumber = this.daysBusySlotNumber.has(time.format('YYYY-MM-DD')) ?
-    //             this.daysBusySlotNumber.get(time.format('YYYY-MM-DD')) : 0;
-    //           dayBusyNumber++;
-    //           this.daysBusySlotNumber.set(time.format('YYYY-MM-DD'), dayBusyNumber);
-    //         }
-    //         this.busySlots.add(time.format('YYYY-MM-DDHH:mm'));
-    //       }
-    //     }
-    //     this.cd.markForCheck();
-    //     this.restoreCartEvents();
-    //   })
-    //   .catch(error => this.error = error);
-  }
-
-  buildViewMode() {
-    /* First we build the current date*/
-    if (!this.startDate || !this.startDate.match(this.DATE_REGEXP)) {
-      this.startDate = moment().format('YYYY-MM-DD');
-    }
-    /* Building view mode*/
-    if (this.viewMode === 'day') {
-      this.endDate = this.startDate;
-    } else if (this.viewMode === 'week') {
-      const firstDay = 0;
-      this.startDate = moment(this.startDate, 'YYYY-MM-DD').day(firstDay).format('YYYY-MM-DD');
-      this.endDate = moment(this.startDate, 'YYYY-MM-DD').add(6, 'days').format('YYYY-MM-DD');
-    } else if (this.viewMode === '3days') {
-      this.endDate = moment(this.startDate, 'YYYY-MM-DD').add(2, 'days').format('YYYY-MM-DD');
-    } else {
-      this.endDate = this.startDate;
-    }
-    this.startDatePretty = moment(this.startDate, 'YYYY-MM-DD').format('LL');
-    this.endDatePretty = moment(this.endDate, 'YYYY-MM-DD').format('LL');
-    this.mmtStartDate = moment(this.startDate, 'YYYY-MM-DD').startOf('day');
-    this.mmtEndDate = moment(this.endDate, 'YYYY-MM-DD').endOf('day');
-  }
-
-  buildDateRange() {
-    this.initVars();
-    this.buildViewMode();
-    // this.buildTrueDuration();
-    // this.loadMonoEvents(this.startDate, this.endDate);
-    this.daysAvailability = new Map();
-    const dateRange = moment(this.startDate, 'YYYY-MM-DD')
-      .twix(moment(this.endDate, 'YYYY-MM-DD')).iterate(1, 'days');
-    this.prettyDays = [];
-    this.days = [];
-    while (dateRange.hasNext()) {
-      const date = dateRange.next();
-      this.prettyDays.push(date.format('ddd DD MMM'));
-      this.days.push(date.format('YYYY-MM-DD'));
-      this.daysAvailability.set(date.format('YYYY-MM-DD'), []);
-    }
-    this.loadAvailabilities();
-  }
-
-  loadAvailabilities() {
-    if (!this.daysAvailability || !this.onlineSession) {
-      return;
-    }
-
-    const duration = this.onlineSession.session_type.duration;
-    const onlineSessionStart: Moment = moment(this.onlineSession.date_range.start, 'YYYY-MM-DD').startOf('day');
-    const onlineSessionEnd: Moment = moment(this.onlineSession.date_range.end, 'YYYY-MM-DD').endOf('day');
-    this.daysAvailabilitySlotNumber = new Map();
-    this.daysAvailability.forEach((avbs, day) => {
-      const slotsNumber = 0;
-      const mmtDay = moment(day, 'YYYY-MM-DD').hour(8);
-      const mmtDayStartTime = moment(day + this.onlineSession.time_range.start, 'YYYY-MM-DDHH:mm');
-      /* days before this morning */
-      if (mmtDayStartTime.isBefore(moment().startOf('day'))) {
-        return;
+  loadEvents(start: Moment, end: Moment) {
+    this.eventService.filters$.next([
+      {
+        column: 'start',
+        operator: '>=',
+        value: moment(start).toDate().toDateString()
       }
-      /* booking delay */
-      const minMmtStartTime = moment().add(this.onlineSession.session_type.booking_delay, 'hours');
-      const mmtDayEndTime = moment(day + this.onlineSession.time_range.end, 'YYYY-MM-DDHH:mm');
-      mmtDayEndTime.subtract(duration, 'minutes');
-      const timeRange = mmtDayStartTime.twix(mmtDayEndTime).iterate(this.slotDuration, 'minutes');
-      if (this.mmtStartDate && this.mmtEndDate && mmtDay.isBetween(onlineSessionStart, onlineSessionEnd)) {
-        while (timeRange.hasNext()) {
-          const time = timeRange.next();
-          // if (!time.isBefore(minMmtStartTime)) {
-          //   avbs.push(time.format('HH:mm'));
-          //   slotsNumber++;
-          // }
-        }
-      }
-      this.daysAvailabilitySlotNumber.set(day, slotsNumber);
-    });
+    ] as Filter[]);
+    this.eventService.getEvents()
+      .subscribe((events: Event[]) => {
+        this.events = [ ...events.filter((event) => event && event.end <= end.toDate()) ];
+        this.busySlots = new Set();
+        this.daysBusySlotNumber = new Map();
+
+        this.events.forEach((event: Event) => {
+          const mmtEventStart = moment(event.start, 'YYYY-MM-DDHH:mm');
+          const mmtEventEnd = moment(event.end, 'YYYY-MM-DDHH:mm');
+          if (!mmtEventStart || !mmtEventStart.isValid()
+            || !mmtEventEnd || !mmtEventEnd.isValid()
+            || !mmtEventStart.isBefore(mmtEventEnd)) {
+            console.error('invalid dates');
+            return -1;
+          }
+          /* building busy slots by events*/
+          const eventsTimeRange: TwixIter = mmtEventStart.twix(mmtEventEnd).iterate(this.slotDuration, 'minutes');
+          while (eventsTimeRange.hasNext()) {
+            const time: Twix = eventsTimeRange.next();
+            const mmtTime: Moment = moment(time.toDate());
+            if (mmtTime.minutes() % this.slotDuration !== 0) {
+              mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
+            }
+            /* IF the busy slot is in availability and not already in busySloits we count it */
+            if (this.daysAvailability && this.daysAvailability.has(time.format('YYYY-MM-DD'))
+              && !this.busySlots.has(time.format('YYYY-MM-DDHH:mm'))
+              && this.daysAvailability.get(time.format('YYYY-MM-DD')).indexOf(time.format('HH:mm')) >= 0) {
+              let dayBusyNumber = this.daysBusySlotNumber.has(time.format('YYYY-MM-DD')) ?
+                this.daysBusySlotNumber.get(time.format('YYYY-MM-DD')) : 0;
+              dayBusyNumber++;
+              this.daysBusySlotNumber.set(time.format('YYYY-MM-DD'), dayBusyNumber);
+            }
+            this.busySlots.add(time.format('YYYY-MM-DDHH:mm'));
+          }
+          /* building earliest slot before event */
+          const mmtEarlyStart = mmtEventStart.clone().subtract(this.trueDuration, 'minutes');
+          mmtEarlyStart.minutes(mmtEarlyStart.minutes() -
+            (mmtEarlyStart.minutes() % this.slotDuration) + this.slotDuration);
+          const earliestTimeRange: TwixIter = mmtEarlyStart.twix(mmtEventStart).iterate(this.slotDuration, 'minutes');
+          while (earliestTimeRange.hasNext()) {
+            const time: Twix = earliestTimeRange.next();
+            const mmtTime: Moment = moment(time.toDate());
+
+            if (mmtTime.minutes() % this.slotDuration !== 0) {
+              mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
+            }
+            /* IF the busy slot is in availability and not already in busySloits we count it */
+            if (this.daysAvailability && this.daysAvailability.has(time.format('YYYY-MM-DD'))
+              && !this.busySlots.has(time.format('YYYY-MM-DDHH:mm'))
+              && this.daysAvailability.get(time.format('YYYY-MM-DD')).indexOf(time.format('HH:mm')) >= 0) {
+              let dayBusyNumber = this.daysBusySlotNumber.has(time.format('YYYY-MM-DD')) ?
+                this.daysBusySlotNumber.get(time.format('YYYY-MM-DD')) : 0;
+              dayBusyNumber++;
+              this.daysBusySlotNumber.set(time.format('YYYY-MM-DD'), dayBusyNumber);
+            }
+            this.busySlots.add(time.format('YYYY-MM-DDHH:mm'));
+
+          }
+        });
+
+        this.cd.markForCheck();
+        // this.restoreCartEvents();
+      });
   }
-
-  getAvailabilities(day: string) {
-    return this.daysAvailability.get(day);
-  }
-
-  restoreCartEvents() {
-    /* we restore events from cart */
-    // if (!this.monoCart || !this.monoCart.cart_items || this.monoCart.cart_items.length <= 0) {
-    //   return;
-    // }
-    // this.sessions = new Map();
-    // for (const i in this.monoCart.cart_items) {
-    //   if (this.monoCart.cart_items[ i ]) {
-    //     const session = this.monoCart.cart_items[ i ].session;
-    //     if (!session) {
-    //       continue;
-    //     }
-    //     const mmtStart = moment(session.start_date + session.start_time, 'YYYY-MM-DDHH:mm');
-    //     this.sessions.set(mmtStart.format('YYYY-MM-DDHH:mm'), session);
-    //     this.addSession(session);
-    //   }
-    // }
-  }
-
-  /************************************************
-   ***************** Display functions *************
-   *************************************************/
-  // isSlotBusy(dateTime: string) {
-  //   return this.busySlots && this.busySlots.has(dateTime);
-  // }
-  //
-  // isSlotEarly(dateTime: string) {
-  //   return (this.earlySlots && this.earlySlots.has(dateTime))
-  //     || (this.pauseSlots && this.pauseSlots.has(dateTime));
-  // }
-  //
-  // isSlotInSession(dateTime: string) {
-  //   return this.sessionsSlots && this.sessionsSlots.has(dateTime);
-  // }
-  //
-  // isSlotSessionStart(dateTime: string) {
-  //   return this.sessions && this.sessions.has(dateTime);
-  // }
-  //
-  // isSlotSessionEnd(dateTime: string) {
-  //   return this.sessionsEndSlots && this.sessionsEndSlots.has(dateTime);
-  // }
-
-  slotSessionTitle(dateTime: string) {
-    if (this.sessions && this.sessions.has(dateTime)) {
-      const session: Session = this.sessions.get(dateTime);
-      return session.start_time + ' - ' + session.end_time;
-    }
-    return undefined;
-  }
-
-  slotSessionTooltip(dateTime: string) {
-    if (this.sessions && this.sessions.has(dateTime)) {
-      const session = this.sessions.get(dateTime);
-      if (session.details.info) {
-        return session.details.info;
-      }
-    }
-    return '';
-  }
-  //
-  // isDayBusy(day: string): boolean {
-  //   return this.daysBusySlotNumber && this.daysAvailabilitySlotNumber
-  //     && this.daysBusySlotNumber.has(day) && this.daysAvailabilitySlotNumber.has(day)
-  //     && this.daysBusySlotNumber.get(day) >= this.daysAvailabilitySlotNumber.get(day);
-  // }
-
-  /************************************************
-   ***************** Events functions **************
-   *************************************************/
-
-  // addSession(session: Session) {
-  //   const mmtStart = moment(session.start_date + session.start_time, 'YYYY-MM-DDHH:mm');
-  //   const mmtEnd = moment(session.end_date + session.end_time, 'YYYY-MM-DDHH:mm');
-  //   let timeRange = mmtStart.twix(mmtEnd).iterateInner(this.slotDuration, 'minutes');
-  //   while (timeRange.hasNext()) {
-  //     const time = timeRange.next();
-  //     this.sessionsSlots.add(time.format('YYYY-MM-DDHH:mm'));
-  //     if (!timeRange.hasNext()) {
-  //       this.sessionsEndSlots.add(time.format('YYYY-MM-DDHH:mm'));
-  //     }
-  //   }
-  //   /* building earliest slot before event */
-  //   const mmtEarlyStart = mmtStart.clone().subtract(this.trueDuration, 'minutes');
-  //   mmtEarlyStart.minutes(mmtEarlyStart.minutes() - (mmtEarlyStart.minutes() % this.slotDuration) + this.slotDuration);
-  //   timeRange = mmtEarlyStart.twix(mmtStart).iterate(this.slotDuration, 'minutes');
-  //   while (timeRange.hasNext()) {
-  //     const time = timeRange.next();
-  //     if (time.minutes() % this.slotDuration !== 0) {
-  //       time.minutes(time.minutes() - (time.minutes() % this.slotDuration));
-  //     }
-  //     if (time.isSameOrAfter(mmtEarlyStart) && time.isBefore(mmtStart)) {
-  //       this.earlySlots.add(time.format('YYYY-MM-DDHH:mm'));
-  //     }
-  //   }
-  //   /* building pause slots after event */
-  //   const mmtEarlyEnd = mmtEnd.clone();
-  //   mmtEarlyEnd.subtract(mmtEarlyEnd.minutes() % this.slotDuration);
-  //   const mmtPauseEnd = mmtEarlyEnd.clone().add(this.onlineSession.session_type.pause, 'minutes');
-  //   timeRange = mmtEarlyEnd.twix(mmtPauseEnd).iterate(this.slotDuration, 'minutes');
-  //   while (timeRange.hasNext()) {
-  //     const time = timeRange.next();
-  //     if (time.minutes() % this.slotDuration !== 0) {
-  //       time.minutes(time.minutes() - (time.minutes() % this.slotDuration));
-  //     }
-  //     if (time.isSameOrAfter(mmtEarlyEnd) && time.isBefore(mmtPauseEnd)) {
-  //       this.pauseSlots.add(time.format('YYYY-MM-DDHH:mm'));
-  //     }
-  //   }
-  // }
-  //
-  // removeSession(session: Session) {
-  //   const mmtStart = moment(session.start_date + session.start_time, 'YYYY-MM-DDHH:mm');
-  //   const mmtEnd = moment(session.end_date + session.end_time, 'YYYY-MM-DDHH:mm');
-  //   let timeRange = mmtStart.twix(mmtEnd).iterate(this.slotDuration, 'minutes');
-  //   while (timeRange.hasNext()) {
-  //     const time = timeRange.next();
-  //     this.sessionsSlots.delete(time.format('YYYY-MM-DDHH:mm'));
-  //     if (!timeRange.hasNext()) {
-  //       this.sessionsEndSlots.delete(time.format('YYYY-MM-DDHH:mm'));
-  //     }
-  //   }
-  //   /* removing early slots */
-  //   const mmtEarlyStart = mmtStart.clone().subtract(this.trueDuration, 'minutes');
-  //   mmtEarlyStart.minutes(mmtEarlyStart.minutes() - (mmtEarlyStart.minutes() % this.slotDuration) + this.slotDuration);
-  //   timeRange = mmtEarlyStart.twix(mmtStart).iterate(this.slotDuration, 'minutes');
-  //   while (timeRange.hasNext()) {
-  //     const time = timeRange.next();
-  //     if (time.minutes() % this.slotDuration !== 0) {
-  //       time.minutes(time.minutes() - (time.minutes() % this.slotDuration));
-  //     }
-  //     if (time.isSameOrAfter(mmtEarlyStart) && time.isBefore(mmtStart)) {
-  //       this.earlySlots.delete(time.format('YYYY-MM-DDHH:mm'));
-  //     }
-  //   }
-  //   /* removing pause slots */
-  //   if (session.pause) {
-  //     const mmtEarlyEnd = mmtEnd.clone();
-  //     mmtEarlyEnd.subtract(mmtEarlyEnd.minutes() % this.slotDuration);
-  //     const mmtPauseEnd = mmtEarlyEnd.clone().add(session.pause, 'minutes');
-  //     timeRange = mmtEarlyEnd.twix(mmtPauseEnd).iterate(this.slotDuration, 'minutes');
-  //     while (timeRange.hasNext()) {
-  //       const time = timeRange.next();
-  //       if (time.minutes() % this.slotDuration !== 0) {
-  //         time.minutes(time.minutes() - (time.minutes() % this.slotDuration));
-  //       }
-  //       if (time.isSameOrAfter(mmtEarlyEnd) && time.isBefore(mmtPauseEnd)) {
-  //         this.pauseSlots.delete(time.format('YYYY-MM-DDHH:mm'));
-  //       }
-  //     }
-  //   }
-  // }
-  //
-  // timeSlotClicked(dateTime: string) {
-  //   if (this.isSlotBusy(dateTime) || this.isSlotEarly(dateTime)) {
-  //     console.error('cheater');
-  //     return;
-  //   }
-  //   if (!this.isSlotSessionStart(dateTime) && !this.isSlotInSession(dateTime)) {
-  //     const mmtStart = moment(dateTime, 'YYYY-MM-DDHH:mm');
-  //     const mmtEnd = mmtStart.clone().add(this.onlineSession.session_type.duration, 'minutes');
-  //     const session = {
-  //       start_date: mmtStart.format('YYYY-MM-DD'),
-  //       end_date: mmtEnd.format('YYYY-MM-DD'),
-  //       start_time: mmtStart.format('HH:mm'),
-  //       end_time: mmtEnd.format('HH:mm'),
-  //       pause: this.onlineSession.session_type.pause,
-  //       details: {
-  //         event_type: EventType.session,
-  //         nb_persons: 1,
-  //         age: null,
-  //         sport: this.sportTeached && this.sportTeached[ 'sport' ] ? this.sportTeached[ 'sport' ] : null,
-  //         city: this.cityTeached && this.cityTeached[ 'city' ] ? this.cityTeached[ 'city' ] : null,
-  //         level: null,
-  //         meeting_point: null
-  //       }
-  //     };
-  //     this.sessions.set(mmtStart.format('YYYY-MM-DDHH:mm'), session);
-  //     // this.cartService.emitAddSession({mono: this.mono, item: session} as CartMonoItem);
-  //     this.addSession(session);
-  //     this.onSessionCreated.emit(session);
-  //   } else if (this.sessions.has(dateTime)) {
-  //     const session = this.sessions.get(dateTime);
-  //     this.sessions.delete(dateTime);
-  //     this.cartService.emitDeleteSession({mono: this.mono, item: session} as CartMonoItem);
-  //     this.removeSession(session);
-  //   }
-  // }
 }

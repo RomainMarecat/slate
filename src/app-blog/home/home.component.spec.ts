@@ -26,6 +26,7 @@ import { ContactModule } from '../../shared/contact/contact.module';
 import { MockContactService } from '../../shared/contact/shared/mock-contact.service';
 import { ContactService } from '../../shared/contact/shared/contact.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -38,6 +39,7 @@ describe('HomeComponent', () => {
           apiKey: environment.googleMapApiKey
         }),
         BrowserAnimationsModule,
+        HttpClientTestingModule,
         ContactModule,
         RouterTestingModule,
         SharedModule,

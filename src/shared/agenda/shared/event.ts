@@ -1,9 +1,7 @@
 export class Event {
   key?: string;
-  start_date: string;
-  end_date: string;
-  start_time: string;
-  end_time: string;
+  start: Date;
+  end: Date;
   details: any;
   comment?: string;
   custom_title?: string;

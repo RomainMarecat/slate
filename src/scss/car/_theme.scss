@@ -40,33 +40,37 @@ $theme: mat-light-theme($product-primary,
 body {
   font-family: 'Nunito', sans-serif;
   background-color: mat-color($white);
+}
 
-  .title {
-    font-family: 'Roboto Condensed', sans-serif;
+.title {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+// Menu toolbar
+.main-menu {
+  a {
+    color: $color3 !important;
   }
+  background-color: $color4 !important;
+}
 
-  // Menu toolbar
-  .main-menu {
-    a {
+mat-icon {
+  font-family: 'Material Icons' !important;
+}
+
+footer {
+  background-color: $color4 !important;
+
+  a {
+    color: $color1;
+
+    & :hover {
       color: $color3 !important;
+      text-decoration: none !important;
     }
+  }
+  .mat-toolbar {
     background-color: $color4 !important;
   }
 
-  footer {
-    background-color: $color4 !important;
-
-    a {
-      color: $color1;
-
-      & :hover {
-        color: $color3 !important;
-        text-decoration: none !important;
-      }
-    }
-    .mat-toolbar {
-      background-color: $color4 !important;
-    }
-
-  }
 }

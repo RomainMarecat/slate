@@ -47,6 +47,10 @@ body {
   overflow-x: hidden;
 }
 
+mat-icon {
+  font-family: 'Material Icons' !important;
+}
+
 .main-menu {
   a {
     color: mat-color($product-primary) !important;

@@ -1,0 +1,62 @@
+<div fxLayout="row wrap"
+     fxLayoutAlign="space-between stretch">
+
+  <div class="left-actions">
+    <button class="button-actions"
+            mat-raised-button
+            color="primary"
+            (click)="previousDay()"
+            type="button">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <button class="button-actions"
+            mat-raised-button
+            (click)="nextDay()"
+            color="primary"
+            type="button">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+    <button class="button-actions"
+            mat-raised-button
+            color="primary"
+            [class.active]="isToday()"
+            (click)="goToToday()">
+      <mat-icon>today</mat-icon>
+    </button>
+  </div>
+  <div class="right-actions">
+    <button class="button-actions"
+            mat-raised-button
+            color="primary"
+            [class.hide-on-small-only]="end !== start">
+      {{ start?.format('LL') }}
+      <span *ngIf="end !== start">
+                - {{ end?.format('LL') }}
+          </span>
+    </button>
+    <button class="button-actions"
+            mat-raised-button
+            color="primary"
+            [class.active]="viewMode === 'week'"
+            (click)="switchView('week')">
+      <mat-icon>view_week</mat-icon>
+      <span class="hide-on-med-and-down">Week</span>
+    </button>
+    <button class="button-actions"
+            mat-raised-button
+            color="primary"
+            [class.active]="viewMode === '3days'"
+            (click)="switchView('3days')">
+      <mat-icon>view_column</mat-icon>
+      <span class="hide-on-med-and-down">3 Days</span>
+    </button>
+    <button class="button-actions"
+            mat-raised-button
+            color="primary"
+            [class.active]="viewMode === 'day'"
+            (click)="switchView('day')">
+      <mat-icon>view_day</mat-icon>
+      <span class="hide-on-med-and-down">Day</span>
+    </button>
+  </div>
+</div>

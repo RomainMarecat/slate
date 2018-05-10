@@ -1,111 +1,36 @@
 <mat-card class="week-calendar-wrapper">
   <mat-card-header class="week-calendar-header">
-    <mat-card-title class="week-calendar-title" fxLayout="row wrap"
-                    fxLayoutAlign="space-between stretch">
-      <div class="left-actions">
-        <button class=""
-                mat-raised-button
-                color="primary"
-                (click)="previousDay()"
-                type="button">
-          <mat-icon>keyboard_arrow_left</mat-icon>
-        </button>
-        <button class=""
-                mat-raised-button
-                (click)="nextDay()"
-                color="primary"
-                type="button">
-          <mat-icon>keyboard_arrow_right</mat-icon>
-        </button>
-        <button class=""
-                mat-raised-button
-                color="primary"
-                [class.active]="isToday()"
-                (click)="goToToday()">
-          <i class="material-icons prefix left nm">today</i>
-        </button>
-      </div>
-      <div class="right-actions">
-        <button class=""
-                mat-raised-button
-                color="primary"
-                [class.hide-on-small-only]="endDatePretty !== startDatePretty">
-          {{startDatePretty}}
-          <span *ngIf="endDatePretty !== startDatePretty">
-            - {{endDatePretty}}
-          </span>
-        </button>
-        <button class=""
-                mat-raised-button
-                color="primary"
-                [class.active]="viewMode==='week'"
-                (click)="switchView('week')">
-          <mat-icon>view_week</mat-icon>
-          <span class="hide-on-med-and-down">Week</span>
-        </button>
-        <button class=""
-                mat-raised-button
-                color="primary"
-                [class.active]="viewMode==='3days'"
-                (click)="switchView('3days')">
-          <mat-icon>view_column</mat-icon>
-          <span class="hide-on-med-and-down">3 Days</span>
-        </button>
-        <button class=""
-                mat-raised-button
-                color="primary"
-                [class.active]="viewMode==='day'"
-                (click)="switchView('day')">
-          <mat-icon>view_day</mat-icon>
-          <span class="hide-on-med-and-down">Day</span>
-        </button>
-      </div>
-    </mat-card-title>
-  </mat-card-header>
-  <div class="row week-calendar-content">
-    <table mat-table class="table table-bordered">
-      <thead class="week-calendar-table-head">
-      <tr class="week-calendar-day-row"
-          *ngIf="viewMode !== 'day'">
-        <th class="week-calendar-day-header center-align"
-            *ngFor="let day of prettyDays">
-          <span class="truncate">{{day}}</span>
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td class="week-calendar-day-header center-align"
-            #dayList
-            [attr.id]="day"
-            *ngFor="let day of days">
-          {{ 'day' }}
-          <div class="time-slot"
-               *ngFor="let time of getAvailabilities(day)">
-            <!--[class.busy]="isSlotBusy(day+time)"-->
-            <!--[class.early]="isSlotEarly(day+time)"-->
-            <!--[class.session]="isSlotInSession(day+time)"-->
-            <!--[class.session-start]="isSlotSessionStart(day+time)"-->
-            <!--[class.session-end]="isSlotSessionEnd(day+time)"-->
 
-            <a>
-              <!--(click)="timeSlotClicked(day+time)"-->
-              <span *ngIf="!isSlotSessionStart(day+time); else sessionTitle">{{time}}</span>
-              <ng-template #sessionTitle>
-                <span
-                  class=""
-                  [matTooltipPosition]="'above'"
-                  [matTooltip]="slotSessionTooltip(day+time)">
-                {{slotSessionTitle(day+time)}}</span>
-              </ng-template>
-            </a>
-          </div>
-          <div *ngIf="getAvailabilities(day).length <= 0 || isDayBusy(day)">
-            <span>No availability this day</span>
-          </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+
+    <mat-card-title class="week-calendar-title">
+
+
+      <app-calendar-header [viewMode]="viewMode"
+                           (switchedView)="onSwithedView($event)"
+                           (startChanged)="onStartChanged($event)"></app-calendar-header>
+
+    </mat-card-title>
+
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+
+    <app-calendar-body [onlineSession]="onlineSession"
+                       [days]="days"
+                       [viewMode]="viewMode"
+                       [daysAvailability]="daysAvailability"
+                       [daysBusySlotNumber]="daysBusySlotNumber"
+                       [daysAvailabilitySlotNumber]="daysAvailabilitySlotNumber"
+                       [busySlots]="busySlots"
+                       [earlySlots]="earlySlots"
+                       [pauseSlots]="pauseSlots"
+                       [sessionsSlots]="sessionsSlots"
+                       [sessionsEndSlots]="sessionsEndSlots"
+                       [sessions]="sessions"
+                       (sessionAdded)="onSessionAdded($event)"
+                       (sessionRemoved)="onSessionRemoved($event)"></app-calendar-body>
+
+  </mat-card-content>
 </mat-card>

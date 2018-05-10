@@ -7,6 +7,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MockEventService } from '../shared/mock-event.service';
 import { EventService } from '../shared/event.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CalendarHeaderComponent } from '../calendar-week/calendar-header/calendar-header.component';
+import { CalendarBodyComponent } from '../calendar-week/calendar-body/calendar-body.component';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { AlertService } from '../../popup/alert.service';
+import { MockAlertService } from '../../popup/mock-alert.service';
 
 describe('CalendarComponent', () => {
   let component: CalendarComponent;
@@ -18,13 +23,22 @@ describe('CalendarComponent', () => {
         HttpClientTestingModule,
         RouterTestingModule,
         SharedModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
       ],
-      declarations: [ CalendarComponent, CalendarWeekComponent ],
+      declarations: [
+        CalendarComponent,
+        CalendarWeekComponent,
+        CalendarHeaderComponent,
+        CalendarBodyComponent
+      ],
       providers: [
-        {provide: EventService, useClass: MockEventService}
+        {provide: EventService, useClass: MockEventService},
+        {provide: AlertService, useClass: MockAlertService},
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

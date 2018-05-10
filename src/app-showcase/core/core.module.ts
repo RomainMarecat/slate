@@ -50,6 +50,7 @@ import { MapService } from '../../shared/map/shared/map.service';
 import { HomeModule } from '../home/home.module';
 import { ArticleService } from '../../shared/article/shared/article.service';
 import { ContactService } from '../../shared/contact/shared/contact.service';
+import { EventService } from '../../shared/agenda/shared/event.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -65,6 +66,7 @@ export function createTranslateLoader(http: HttpClient, name: string) {
 }
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
+export const TABLE_EVENT = new InjectionToken<string>('event');
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_AREA = new InjectionToken<string>('area');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
@@ -165,6 +167,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_COMMENT, useValue: 'comment'},
     {provide: TABLE_CMS, useValue: 'cms'},
     {provide: TABLE_CMS_DETAIL, useValue: 'cms-detail'},
+    {provide: TABLE_EVENT, useValue: 'event'},
     {provide: TABLE_MAP, useValue: 'map'},
     {provide: TABLE_MEDIA, useValue: 'media'},
     {provide: TABLE_OFFER, useValue: 'offer'},
@@ -181,6 +184,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: CmsService, useClass: CmsService, deps: [ AngularFirestore, TABLE_CMS ]},
     {provide: CmsDetailService, useClass: CmsDetailService, deps: [ AngularFirestore, TABLE_CMS_DETAIL ]},
     {provide: CommentService, useClass: CommentService, deps: [ AngularFirestore, TABLE_COMMENT ]},
+    {provide: EventService, useClass: EventService, deps: [ AngularFirestore, TABLE_EVENT ]},
     {provide: MediaService, useClass: MediaService, deps: [ AngularFirestore, TABLE_MEDIA ]},
     {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},
     {provide: MapService, useClass: MapService, deps: [ AngularFirestore, TABLE_MAP ]},
