@@ -1,6 +1,5 @@
-export class OnlineSession {
-  _id?: any;
-  auth0_id: string;
+export interface OnlineSession {
+  key?: string;
   session_type: {
     name: string;
     max_persons: number;
@@ -8,8 +7,8 @@ export class OnlineSession {
     duration: number;
     pause: number;
   };
-  sport_teached: string;
-  city_teached: string;
+  sport_teached?: string;
+  city_teached?: string;
   prices: number[];
   date_range: {
     start: string;

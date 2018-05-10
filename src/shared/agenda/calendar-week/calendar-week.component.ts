@@ -25,7 +25,26 @@ import { EventService } from '../shared/event.service';
 })
 export class CalendarWeekComponent implements OnInit, OnChanges {
   @Input() onlineSessions: OnlineSession[];
-  @Input() onlineSession: OnlineSession;
+  @Input() onlineSession: OnlineSession = {
+    key: 'test1',
+    session_type: {
+      name: 'test1',
+      max_persons: 1,
+      booking_delay: 0,
+      duration: 60,
+      pause: 0,
+    },
+    city_teached: 'dont',
+    prices: [ 10, 20 ],
+    date_range: {
+      start: '2018-05-10',
+      end: '2018-05-10',
+    },
+    time_range: {
+      start: '10:00',
+      end: '10:00',
+    }
+  };
 
   @Input() startDate: string = moment().format('YYYY-MM-DD');
   endDate: string;
@@ -90,6 +109,7 @@ export class CalendarWeekComponent implements OnInit, OnChanges {
     this.buildDateRange();
   }
 
+
   initVars() {
     this.sessionsSlots = new Set();
     this.sessionsEndSlots = new Set();
@@ -141,15 +161,15 @@ export class CalendarWeekComponent implements OnInit, OnChanges {
    ******************* Date functions **************
    *************************************************/
 
-  buildTrueDuration() {
-    if (this.onlineSession && this.onlineSession.session_type
-      && this.onlineSession.session_type.duration !== undefined
-      && this.onlineSession.session_type.pause !== undefined) {
-      this.trueDuration = this.onlineSession.session_type.duration + this.onlineSession.session_type.pause;
-    } else {
-      this.trueDuration = 0;
-    }
-  }
+  // buildTrueDuration() {
+  //   if (this.onlineSession && this.onlineSession.session_type
+  //     && this.onlineSession.session_type.duration !== undefined
+  //     && this.onlineSession.session_type.pause !== undefined) {
+  //     this.trueDuration = this.onlineSession.session_type.duration + this.onlineSession.session_type.pause;
+  //   } else {
+  //     this.trueDuration = 0;
+  //   }
+  // }
 
   loadMonoEvents(start: string, end: string) {
     // this.eventService.getAllUserEventsDateRange(this.mono.auth0_id, start, end)
@@ -238,17 +258,18 @@ export class CalendarWeekComponent implements OnInit, OnChanges {
   buildDateRange() {
     this.initVars();
     this.buildViewMode();
-    this.buildTrueDuration();
-    this.loadMonoEvents(this.startDate, this.endDate);
+    // this.buildTrueDuration();
+    // this.loadMonoEvents(this.startDate, this.endDate);
     this.daysAvailability = new Map();
-    const dateRange = moment(this.startDate, 'YYYY-MM-DD').twix(moment(this.endDate, 'YYYY-MM-DD')).iterate(1, 'days');
-    this.prettyDays = new Array();
-    this.days = new Array();
+    const dateRange = moment(this.startDate, 'YYYY-MM-DD')
+      .twix(moment(this.endDate, 'YYYY-MM-DD')).iterate(1, 'days');
+    this.prettyDays = [];
+    this.days = [];
     while (dateRange.hasNext()) {
       const date = dateRange.next();
       this.prettyDays.push(date.format('ddd DD MMM'));
       this.days.push(date.format('YYYY-MM-DD'));
-      this.daysAvailability.set(date.format('YYYY-MM-DD'), new Array());
+      this.daysAvailability.set(date.format('YYYY-MM-DD'), []);
     }
     this.loadAvailabilities();
   }
@@ -257,6 +278,7 @@ export class CalendarWeekComponent implements OnInit, OnChanges {
     if (!this.daysAvailability || !this.onlineSession) {
       return;
     }
+
     const duration = this.onlineSession.session_type.duration;
     const onlineSessionStart: Moment = moment(this.onlineSession.date_range.start, 'YYYY-MM-DD').startOf('day');
     const onlineSessionEnd: Moment = moment(this.onlineSession.date_range.end, 'YYYY-MM-DD').endOf('day');
@@ -333,24 +355,24 @@ export class CalendarWeekComponent implements OnInit, OnChanges {
   // isSlotSessionEnd(dateTime: string) {
   //   return this.sessionsEndSlots && this.sessionsEndSlots.has(dateTime);
   // }
-  //
-  // slotSessionTitle(dateTime: string) {
-  //   if (this.sessions && this.sessions.has(dateTime)) {
-  //     const session = this.sessions.get(dateTime);
-  //     return session.start_time + ' - ' + session.end_time;
-  //   }
-  //   return undefined;
-  // }
-  //
-  // slotSessionTooltip(dateTime: string) {
-  //   if (this.sessions && this.sessions.has(dateTime)) {
-  //     const session = this.sessions.get(dateTime);
-  //     if (session.details.sport && session.details.city) {
-  //       return session.details.sport[ 'trans' ][ this.locale ] + '-' + session.details.city.name;
-  //     }
-  //   }
-  //   return '';
-  // }
+
+  slotSessionTitle(dateTime: string) {
+    if (this.sessions && this.sessions.has(dateTime)) {
+      const session: Session = this.sessions.get(dateTime);
+      return session.start_time + ' - ' + session.end_time;
+    }
+    return undefined;
+  }
+
+  slotSessionTooltip(dateTime: string) {
+    if (this.sessions && this.sessions.has(dateTime)) {
+      const session = this.sessions.get(dateTime);
+      if (session.details.info) {
+        return session.details.info;
+      }
+    }
+    return '';
+  }
   //
   // isDayBusy(day: string): boolean {
   //   return this.daysBusySlotNumber && this.daysAvailabilitySlotNumber

@@ -17,12 +17,12 @@ $color3: #6EE3E7; // Turquoise
 $color4: #6EE3E7; // Turquoise
 $color5: #6EE3E7; // Turquoise
 
-$product-primary: mat-palette($mat-teal,
-  A200);
-$product-accent: mat-palette($mat-grey,
-  700);
-$product-warn: mat-palette($mat-red,
-  800);
+$product-primary: mat-palette($mat-green,
+  300);
+$product-accent: mat-palette($mat-deep-orange,
+  A700);
+$product-warn: mat-palette($mat-yellow,
+  A700);
 $white: mat-palette($mat-grey,
   50);
 $black: mat-palette($mat-grey,

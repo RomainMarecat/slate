@@ -21,6 +21,7 @@
           fxLayoutAlign="center stretch">
       <mat-form-field class="mat-form-field">
         <input matInput
+               autocomplete="name"
                [placeholder]="'name'|translate"
                [formControl]="form.controls.name">
         <mat-hint align="start"><strong [innerHtml]="'name'|translate"></strong></mat-hint>
@@ -31,6 +32,7 @@
       </mat-form-field>
       <mat-form-field class="mat-form-field">
         <input matInput
+               autocomplete="email"
                type="email"
                [placeholder]="'email'|translate"
                [formControl]="form.controls.email">

@@ -1,6 +1,5 @@
-export interface Event {
-  _id?: any;
-  auth0_id?: string;
+export class Event {
+  key?: string;
   start_date: string;
   end_date: string;
   start_time: string;

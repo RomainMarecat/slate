@@ -31,6 +31,8 @@
       ],
       "scripts": [
         "../node_modules/moment/min/moment.min.js",
+        "../node_modules/moment/locale/fr.js",
+        "../node_modules/twix/dist/twix.min.js",
         "../node_modules/crypto-js/crypto-js.js",
         "../node_modules/cookieconsent/build/cookieconsent.min.js"
       ],
