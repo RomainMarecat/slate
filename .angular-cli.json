@@ -20,6 +20,7 @@
       "prefix": "app-showcase",
       "serviceWorker": true,
       "styles": [
+        "../node_modules/material-design-icons/iconfont/material-icons.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
         "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
@@ -58,6 +59,7 @@
       "prefix": "app-blog",
       "serviceWorker": true,
       "styles": [
+        "../node_modules/material-design-icons/iconfont/material-icons.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
         "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
@@ -93,6 +95,7 @@
       "prefix": "app-car",
       "serviceWorker": true,
       "styles": [
+        "../node_modules/material-design-icons/iconfont/material-icons.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
         "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
@@ -128,6 +131,7 @@
       "prefix": "app-recipe",
       "serviceWorker": true,
       "styles": [
+        "../node_modules/material-design-icons/iconfont/material-icons.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
         "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
@@ -163,6 +167,7 @@
       "prefix": "app-booking",
       "serviceWorker": true,
       "styles": [
+        "../node_modules/material-design-icons/iconfont/material-icons.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
         "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
@@ -198,6 +203,7 @@
       "prefix": "app-hockey",
       "serviceWorker": true,
       "styles": [
+        "../node_modules/material-design-icons/iconfont/material-icons.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
         "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
@@ -233,6 +239,7 @@
       "prefix": "app",
       "serviceWorker": true,
       "styles": [
+        "../node_modules/material-design-icons/iconfont/material-icons.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
         "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
@@ -267,6 +274,7 @@
       "prefix": "app-snippet",
       "serviceWorker": true,
       "styles": [
+        "../node_modules/material-design-icons/iconfont/material-icons.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/@swimlane/ngx-datatable/release/index.css",
         "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
