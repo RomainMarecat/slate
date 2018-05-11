@@ -28,11 +28,11 @@
     <button class="button-actions"
             mat-raised-button
             color="primary"
-            [class.hide-on-small-only]="end !== start">
+            [class.hide-on-small-only]="end?.format('YYYY-MM-DD') !== start?.format('YYYY-MM-DD')">
       {{ start?.format('LL') }}
-      <span *ngIf="end !== start">
-                - {{ end?.format('LL') }}
-          </span>
+      <span *ngIf="end?.format('YYYY-MM-DD') !== start?.format('YYYY-MM-DD')">
+            - {{ end?.format('LL') }}
+      </span>
     </button>
     <button class="button-actions"
             mat-raised-button
@@ -40,7 +40,7 @@
             [class.active]="viewMode === 'week'"
             (click)="switchView('week')">
       <mat-icon>view_week</mat-icon>
-      <span class="hide-on-med-and-down">Week</span>
+      <span fxHide.lt-md="true">{{ 'calendar.week'|translate }}</span>
     </button>
     <button class="button-actions"
             mat-raised-button
@@ -48,7 +48,7 @@
             [class.active]="viewMode === '3days'"
             (click)="switchView('3days')">
       <mat-icon>view_column</mat-icon>
-      <span class="hide-on-med-and-down">3 Days</span>
+      <span fxHide.lt-md="true">{{ 'calendar.3days'|translate }}</span>
     </button>
     <button class="button-actions"
             mat-raised-button
@@ -56,7 +56,7 @@
             [class.active]="viewMode === 'day'"
             (click)="switchView('day')">
       <mat-icon>view_day</mat-icon>
-      <span class="hide-on-med-and-down">Day</span>
+      <span fxHide.lt-md="true">{{ 'calendar.day'|translate }}</span>
     </button>
   </div>
 </div>

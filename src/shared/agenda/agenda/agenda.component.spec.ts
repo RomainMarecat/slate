@@ -5,13 +5,12 @@ import { SharedModule } from '../../shared.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CalendarComponent } from '../calendar/calendar.component';
-import { CalendarWeekComponent } from '../calendar-week/calendar-week.component';
 import { MockEventService } from '../shared/mock-event.service';
 import { EventService } from '../shared/event.service';
 import { I18nService } from '../../i18n/i18n.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { CalendarHeaderComponent } from '../calendar-week/calendar-header/calendar-header.component';
-import { CalendarBodyComponent } from '../calendar-week/calendar-body/calendar-body.component';
+import { CalendarHeaderComponent } from '../calendar/calendar-header/calendar-header.component';
+import { CalendarBodyComponent } from '../calendar/calendar-body/calendar-body.component';
 import { MockAlertService } from '../../popup/mock-alert.service';
 import { AlertService } from '../../popup/alert.service';
 
@@ -33,7 +32,6 @@ describe('AgendaComponent', () => {
         AgendaComponent,
         CalendarComponent,
         CalendarHeaderComponent,
-        CalendarWeekComponent,
         CalendarBodyComponent
       ],
       providers: [

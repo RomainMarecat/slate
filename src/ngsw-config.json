@@ -30,9 +30,7 @@
         ],
         "urls": [
           "https://fonts.googleapis.com/**",
-          "https://fonts.gstatic.com/**",
-          "https://maps.googleapis.com/maps-api-v3/**",
-          "https://www.google-analytics.com/**"
+          "https://fonts.gstatic.com/**"
         ]
       }
     }

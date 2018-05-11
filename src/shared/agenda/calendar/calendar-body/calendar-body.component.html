@@ -1,0 +1,57 @@
+<div class="calendar-body-wrapper">
+  <table mat-table class=" =calendar-body-table-wrapper table table-bordered">
+    <thead class="calendar-body-table-head">
+    <tr class="calendar-body-head-day-row"
+        *ngIf="viewMode !== 'day'">
+      <th class="calendar-body-day-header text-center"
+          *ngFor="let day of days">
+        <span class="truncate">{{ day.title }}</span>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="calendar-body-row">
+      <td class="calendar-body-column-content text-center"
+          #dayList
+          [attr.id]="day.key"
+          *ngFor="let day of days">
+        <div class="time-slot"
+             [class.busy]="isSlotBusy(day, time)"
+             [class.early]="isSlotEarly(day, time)"
+             [class.session]="isSlotInSession(day, time)"
+             [class.session-start]="isSlotSessionStart(day, time)"
+             [class.session-end]="isSlotSessionEnd(day, time)"
+             *ngFor="let time of getAvailabilities(day.key)">
+          <div class="time-content">
+            <button type="button"
+                    class="slot-available"
+                    color="primary"
+                    mat-raised-button
+                    (click)="onTimeSlotClicked(day, time)"
+                    *ngIf="!isSlotSessionStart(day, time); else sessionTitle">
+              <span class="default-time">{{ time }}</span>
+            </button>
+            <ng-template #sessionTitle>
+                <button type="button"
+                        mat-raised-button
+                        class="slot-session"
+                      [matTooltipPosition]="'above'"
+                      [matTooltip]="getSessionTooltip(day, time)">
+                {{ getSessionTitle(day, time)}}</button>
+            </ng-template>
+            <a class="link-close" (click)="onTimeSlotClicked(day, time)">
+              <mat-icon class="icon-close"
+                        *ngIf="isSlotSessionStart(day, time)">close
+              </mat-icon>
+            </a>
+          </div>
+        </div>
+        <div class="slot-busy"
+             *ngIf="getAvailabilities(day.key).length <= 0 || isDayBusy(day, time)">
+          <span>{{ 'calendar.availability.empty'|translate }}</span>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,17 +1,38 @@
-<div class="calendar-wrapper">
+<mat-card class="week-calendar-wrapper">
+  <mat-card-header class="week-calendar-header">
 
-  <div class="calendar-header">
-    <div class="calendar-title-wrapper">
-      <h2>{{ 'calendar.title'|translate }}</h2>
-    </div>
-    <div class="calendar-subtitle-wrapper">
-      <h3>{{ 'calendar.subtitle'|translate }}</h3>
-    </div>
-  </div>
-  <div class="calendar-content" *ngIf="viewMode === 'week'">
-    <app-calendar-week [slotDuration]="slotDuration"
-                       (viewModeChanged)="onViewModeChanged($event)"
-                       (sessionRemoved)="onSessionRemoved($event)"
-                       (sessionCreated)="onSessionAdded($event)"></app-calendar-week>
-  </div>
-</div>
+
+    <mat-card-title class="week-calendar-title">
+
+
+      <app-calendar-header [start]="start"
+                           [end]="end"
+                           [viewMode]="viewMode"
+                           (switchedView)="onSwithedView($event)"
+                           (startChanged)="onStartChanged($event)"></app-calendar-header>
+
+    </mat-card-title>
+
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+
+    <app-calendar-body [onlineSession]="onlineSession"
+                       [days]="days"
+                       [viewMode]="viewMode"
+                       [daysAvailability]="daysAvailability"
+                       [daysBusySlotNumber]="daysBusySlotNumber"
+                       [daysAvailabilitySlotNumber]="daysAvailabilitySlotNumber"
+                       [busySlots]="busySlots"
+                       [earlySlots]="earlySlots"
+                       [pauseSlots]="pauseSlots"
+                       [sessionsSlots]="sessionsSlots"
+                       [sessionsEndSlots]="sessionsEndSlots"
+                       [sessions]="sessions"
+                       (sessionAdded)="onSessionAdded($event)"
+                       (sessionRemoved)="onSessionRemoved($event)"></app-calendar-body>
+
+  </mat-card-content>
+</mat-card>

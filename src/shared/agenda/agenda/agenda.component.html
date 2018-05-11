@@ -1,3 +1,21 @@
 <div class="agenda-wrapper">
-  <app-calendar></app-calendar>
+  <div class="calendar-wrapper">
+
+    <div class="calendar-header">
+      <div class="calendar-title-wrapper">
+        <h2 class="text-capitalize">{{ 'calendar.title'|translate }}</h2>
+      </div>
+      <div class="calendar-subtitle-wrapper">
+        <h3 class="text-capitalize">{{ 'calendar.subtitle'|translate }}</h3>
+      </div>
+    </div>
+    <div class="calendar-content">
+      <app-calendar [viewMode]="viewMode"
+                    [slotDuration]="slotDuration"
+                    (viewModeChanged)="onViewModeChanged($event)"
+                    (sessionRemoved)="onSessionRemoved($event)"
+                    (sessionCreated)="onSessionAdded($event)"></app-calendar>
+    </div>
+  </div>
+
 </div>

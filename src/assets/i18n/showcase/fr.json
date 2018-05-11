@@ -23,11 +23,21 @@
     "filter": "Filtrer"
   },
   "calendar": {
+    "day": "jour",
+    "3days": "3 jours",
+    "week": "semaine",
+    "title": "réserver votre créneau",
+    "subtitle": "toutes les disponibilités",
     "availability": {
       "empty": "Aucune disponibilité"
     },
     "session": {
       "info": "Créneau vérrouillé"
+    }
+  },
+  "location-current": {
+    "label": {
+      "meeting": "Siège social"
     }
   },
   "sidenav": {

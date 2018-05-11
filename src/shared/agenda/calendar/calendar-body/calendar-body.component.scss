@@ -1,0 +1,73 @@
+@import '../../../../../node_modules/@angular/material/theming';
+@import '../../../../../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../../../../scss/showcase/theme';
+
+.calendar-body-wrapper {
+  .calendar-body-column-content {
+    max-width: 240px;
+
+    .time-slot {
+      padding: 5px;
+      button.slot-available {
+        cursor: pointer;
+        width: 120px;
+      }
+      &:hover {
+        button.slot-available {
+          background-color: mat-color(mat-palette($mat-green,
+            200));
+          color: mat-color($white);
+        }
+      }
+      &.busy {
+        display: none;
+        button.slot-available {
+          color: mat-color($product-accent) !important;
+          cursor: not-allowed;
+        }
+      }
+      &.early {
+        button.slot-available {
+          cursor: not-allowed;
+          color: mat-color($product-warn);
+        }
+      }
+      &.session {
+        .time-content {
+          position: relative;
+          padding: 5px 5px 5px 0;
+
+          .slot-session {
+            width: 120px;
+            background-color: mat-color(mat-palette($mat-orange, 500));
+          }
+
+          .link-close {
+            .icon-close {
+              position: absolute;
+              right: 5px;
+              top: 5px;
+              font-size: 14px;
+            }
+
+            &:hover, & {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      &.session-start {
+        .slot-session {
+          color: mat-color($black);
+          cursor: text;
+        }
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+      }
+      &.session-end {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+    }
+  }
+}

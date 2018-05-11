@@ -4,7 +4,7 @@ import { MenuService } from '../../shared/menu/menu.service';
 @Component({
   selector: 'app-blog-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: [ './home.component.scss' ]
 })
 export class HomeComponent implements OnInit {
 
@@ -18,7 +18,8 @@ export class HomeComponent implements OnInit {
     markerDraggable: false
   };
 
-    constructor(private menuService: MenuService) { }
+  constructor(private menuService: MenuService) {
+  }
 
   ngOnInit() {
     this.menuService.nextTitle('');
