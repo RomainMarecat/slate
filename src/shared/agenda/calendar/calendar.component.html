@@ -9,7 +9,8 @@
     </div>
   </div>
   <div class="calendar-content" *ngIf="viewMode === 'week'">
-    <app-calendar-week (viewModeChanged)="onViewModeChanged($event)"
+    <app-calendar-week [slotDuration]="slotDuration"
+                       (viewModeChanged)="onViewModeChanged($event)"
                        (sessionRemoved)="onSessionRemoved($event)"
                        (sessionCreated)="onSessionAdded($event)"></app-calendar-week>
   </div>

@@ -90,7 +90,6 @@ export class CalendarBodyComponent implements OnInit {
     const datetime: string = day.value.format('YYYY-MM-DD') + time;
 
     if (this.isSlotBusy(day, time) || this.isSlotEarly(day, time)) {
-      console.error('cheater');
       this.alertService.show('error.slot.locked');
       return;
     }

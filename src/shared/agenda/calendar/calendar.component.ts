@@ -8,12 +8,14 @@ import { Session } from '../shared/session';
 })
 export class CalendarComponent implements OnInit {
   viewMode: String;
+  slotDuration: number;
 
   constructor() {
   }
 
   ngOnInit() {
     this.setDefaultViewMode();
+    this.setDefaultSlotDuration();
   }
 
   setDefaultViewMode() {
@@ -23,6 +25,10 @@ export class CalendarComponent implements OnInit {
     // } else if (this.deviceService.isMaterializeSmallAndDown()) {
     //   this.viewMode = 'day';
     // }
+  }
+
+  setDefaultSlotDuration() {
+    this.slotDuration = 60;
   }
 
   onViewModeChanged(viewMode: String) {

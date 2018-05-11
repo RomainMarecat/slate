@@ -31,25 +31,25 @@ export class CalendarWeekComponent implements OnInit, OnChanges {
   viewMode: String = 'week';
 
   @Input() onlineSession: OnlineSession;
-
   @Input() start: Moment = moment();
   @Input() end: Moment = moment();
+  @Input() slotDuration = 15;
+
   calendarStart: Moment;
   calendarEnd: Moment;
-
   @Output() viewModeChanged: EventEmitter<String> = new EventEmitter<String>();
   @Output() sessionCreated: EventEmitter<Session> = new EventEmitter<Session>();
+
   @Output() sessionRemoved: EventEmitter<Session> = new EventEmitter<Session>();
 
   @ViewChildren('dayList') el: ElementRef;
-
   days: Array<Day> = [];
-  trueDuration: number;
 
+  trueDuration: number;
   daysAvailability: Map<string, string[]>;
   daysBusySlotNumber: Map<string, number>;
-  daysAvailabilitySlotNumber: Map<string, number>;
 
+  daysAvailabilitySlotNumber: Map<string, number>;
   events: Event[];
   busySlots: Set<string>;
   earlySlots: Set<string>;
@@ -57,7 +57,6 @@ export class CalendarWeekComponent implements OnInit, OnChanges {
   sessionsSlots: Set<string>;
   sessionsEndSlots: Set<string>;
   sessions: Map<string, Session>;
-  slotDuration = 15;
 
   constructor(private eventService: EventService,
               private cd: ChangeDetectorRef,
