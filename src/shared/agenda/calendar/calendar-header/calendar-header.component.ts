@@ -9,8 +9,8 @@ import * as moment from 'moment';
 })
 export class CalendarHeaderComponent implements OnInit {
   private _viewMode: String;
-  start: Moment;
-  end: Moment;
+  @Input() start: Moment;
+  @Input() end: Moment;
   @Output() switchedView: EventEmitter<String> = new EventEmitter<String>();
   @Output() startChanged: EventEmitter<Moment> = new EventEmitter<Moment>();
 

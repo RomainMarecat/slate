@@ -51,6 +51,7 @@ import { HomeModule } from '../home/home.module';
 import { ArticleService } from '../../shared/article/shared/article.service';
 import { ContactService } from '../../shared/contact/shared/contact.service';
 import { EventService } from '../../shared/agenda/shared/event.service';
+import { BookingService } from '../../shared/booking/shared/booking.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -69,6 +70,7 @@ export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config')
 export const TABLE_EVENT = new InjectionToken<string>('event');
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_AREA = new InjectionToken<string>('area');
+export const TABLE_BOOKING = new InjectionToken<string>('booking');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_CONTACT = new InjectionToken<string>('contact');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
@@ -162,6 +164,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_ARTICLE, useValue: 'article'},
     {provide: TABLE_AREA, useValue: 'area'},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
+    {provide: TABLE_BOOKING, useValue: 'booking'},
     {provide: TABLE_CONTACT, useValue: 'contact'},
     {provide: TABLE_CATEGORY, useValue: 'category'},
     {provide: TABLE_COMMENT, useValue: 'comment'},
@@ -179,6 +182,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: ArticleService, useClass: ArticleService, deps: [ AngularFirestore, TABLE_ARTICLE ]},
     {provide: AreaService, useClass: AreaService, deps: [ AngularFirestore, TABLE_AREA ]},
     {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
+    {provide: BookingService, useClass: BookingService, deps: [ AngularFirestore, TABLE_BOOKING ]},
     {provide: ContactService, useClass: ContactService, deps: [ AngularFirestore, TABLE_CONTACT ]},
     {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY ]},
     {provide: CmsService, useClass: CmsService, deps: [ AngularFirestore, TABLE_CMS ]},
