@@ -72,7 +72,7 @@ export class ProductDetailComponent implements OnInit {
 
             // Twiter Card
             this.meta.addTag({ name: 'twitter:card', content: 'summary' });
-            this.meta.addTag({ name: 'twitter:site', content: '@monpullmoche' });
+            this.meta.addTag({ name: 'twitter:site', content: '@clothe' });
             this.meta.addTag({ name: 'twitter:title', content: product.name });
             this.meta.addTag({ name: 'twitter:description', content: product.description });
             this.meta.addTag({ name: 'twitter:creator', content: product.creator });

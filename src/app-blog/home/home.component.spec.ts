@@ -18,7 +18,7 @@ import { CategoryService } from '../../shared/category/category.service';
 import { ArticleService } from '../../shared/article/shared/article.service';
 import { MockArticleService } from '../../shared/article/shared/mock-article.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { environment } from '../../environments/environment.blog';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MenuService } from '../../shared/menu/menu.service';
@@ -26,6 +26,8 @@ import { ContactModule } from '../../shared/contact/contact.module';
 import { MockContactService } from '../../shared/contact/shared/mock-contact.service';
 import { ContactService } from '../../shared/contact/shared/contact.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MockMapsAPILoader } from '../../shared/map/shared/mock-maps-api-loader';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -38,6 +40,7 @@ describe('HomeComponent', () => {
           apiKey: environment.googleMapApiKey
         }),
         BrowserAnimationsModule,
+        HttpClientTestingModule,
         ContactModule,
         RouterTestingModule,
         SharedModule,
@@ -55,6 +58,7 @@ describe('HomeComponent', () => {
         {provide: ContactService, useClass: MockContactService},
         {provide: CommentService, useClass: MockCommentService},
         {provide: UserService, useClass: MockUserService},
+        {provide: MapsAPILoader, useClass: MockMapsAPILoader},
         DeviceService,
         MenuService
       ]

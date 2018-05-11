@@ -1,0 +1,17 @@
+<div class="calendar-wrapper">
+
+  <div class="calendar-header">
+    <div class="calendar-title-wrapper">
+      <h2>{{ 'calendar.title'|translate }}</h2>
+    </div>
+    <div class="calendar-subtitle-wrapper">
+      <h3>{{ 'calendar.subtitle'|translate }}</h3>
+    </div>
+  </div>
+  <div class="calendar-content" *ngIf="viewMode === 'week'">
+    <app-calendar-week [slotDuration]="slotDuration"
+                       (viewModeChanged)="onViewModeChanged($event)"
+                       (sessionRemoved)="onSessionRemoved($event)"
+                       (sessionCreated)="onSessionAdded($event)"></app-calendar-week>
+  </div>
+</div>

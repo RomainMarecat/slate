@@ -8,7 +8,7 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { MockGeocodeService } from '../../../shared/map/shared/mock-geocode.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AngularFireModule } from 'angularfire2';
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { MockProductService } from '../../../shared/product/mock-product.service';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
@@ -25,6 +25,7 @@ import { GeocodeService } from '../../../shared/map/shared/geocode.service';
 import { MockCategoryService } from '../../../shared/category/mock-category.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { DeviceService } from '../../../shared/device/device.service';
+import { MockMapsAPILoader } from '../../../shared/map/shared/mock-maps-api-loader';
 
 describe('OfferConfirmationComponent', () => {
   let component: OfferConfirmationComponent;
@@ -56,6 +57,7 @@ describe('OfferConfirmationComponent', () => {
         {provide: ProductService, useClass: MockProductService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: GeocodeService, useClass: MockGeocodeService},
+        {provide: MapsAPILoader, useClass: MockMapsAPILoader},
         RangePipe
       ]
     })
