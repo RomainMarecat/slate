@@ -27,7 +27,6 @@ export class EventService extends VisitorService {
     return super.updateDocument(event);
   }
 
-
   deleteEvent(event: Event) {
     return super.deleteDocument(event);
   }

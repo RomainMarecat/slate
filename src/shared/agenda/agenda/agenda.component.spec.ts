@@ -13,6 +13,8 @@ import { CalendarHeaderComponent } from '../calendar/calendar-header/calendar-he
 import { CalendarBodyComponent } from '../calendar/calendar-body/calendar-body.component';
 import { MockAlertService } from '../../popup/mock-alert.service';
 import { AlertService } from '../../popup/alert.service';
+import { SessionService } from '../../session/shared/session.service';
+import { MockSessionService } from '../../session/shared/mock-session.service';
 
 describe('AgendaComponent', () => {
   let component: AgendaComponent;
@@ -37,6 +39,7 @@ describe('AgendaComponent', () => {
       providers: [
         {provide: EventService, useClass: MockEventService},
         {provide: AlertService, useClass: MockAlertService},
+        {provide: SessionService, useClass: MockSessionService},
         I18nService
       ]
     })

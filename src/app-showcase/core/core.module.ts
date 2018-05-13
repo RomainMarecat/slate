@@ -52,6 +52,7 @@ import { ArticleService } from '../../shared/article/shared/article.service';
 import { ContactService } from '../../shared/contact/shared/contact.service';
 import { EventService } from '../../shared/agenda/shared/event.service';
 import { BookingService } from '../../shared/booking/shared/booking.service';
+import { SessionService } from '../../shared/session/shared/session.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -75,6 +76,7 @@ export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_CONTACT = new InjectionToken<string>('contact');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
 export const TABLE_SELECTION = new InjectionToken<string>('selection');
+export const TABLE_SESSION = new InjectionToken<string>('session');
 export const TABLE_SCORE = new InjectionToken<string>('score');
 export const TABLE_COMMENT = new InjectionToken<string>('comment');
 export const TABLE_CMS = new InjectionToken<string>('cms');
@@ -178,6 +180,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_PARTNER, useValue: 'partner'},
     {provide: TABLE_PRODUCT, useValue: 'product'},
     {provide: TABLE_SELECTION, useValue: 'selection'},
+    {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_SCORE, useValue: 'scores'},
     {provide: ArticleService, useClass: ArticleService, deps: [ AngularFirestore, TABLE_ARTICLE ]},
     {provide: AreaService, useClass: AreaService, deps: [ AngularFirestore, TABLE_AREA ]},
@@ -195,6 +198,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
     {provide: ProductService, useClass: ProductService, deps: [ AngularFirestore, TABLE_PRODUCT ]},
     {provide: SelectionService, useClass: SelectionService, deps: [ AngularFirestore, TABLE_SELECTION ]},
+    {provide: SessionService, useClass: SessionService, deps: [ AngularFirestore, TABLE_SESSION ]},
     AlertService,
     DateService,
     DeviceService,

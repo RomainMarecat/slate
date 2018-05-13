@@ -1,11 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { I18nService } from '../../i18n/i18n.service';
 import * as moment from 'moment';
-import { Session } from '../shared/session';
+import { Session } from '../../session/shared/session';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 import 'moment/locale/en-gb';
 import 'moment/locale/fr';
+import { SessionService } from '../../session/shared/session.service';
+import { AlertService } from '../../popup/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agenda',
@@ -17,8 +20,11 @@ export class AgendaComponent implements OnInit, OnDestroy {
   slotDuration: number;
   watcher: Subscription;
 
-  constructor(private i18nService: I18nService,
-              private media: ObservableMedia) {
+  constructor(private router: Router,
+              private i18nService: I18nService,
+              private media: ObservableMedia,
+              private sessionService: SessionService,
+              private alertService: AlertService) {
   }
 
   ngOnInit() {
@@ -62,6 +68,14 @@ export class AgendaComponent implements OnInit, OnDestroy {
   }
 
   onSessionAdded(session: Session) {
-
+    this.sessionService.createSession(session)
+      .then((doc) => {
+        if (doc.id) {
+          this.router.navigate([ '/booking' ]);
+        }
+      }, (err) => {
+        console.error(err);
+        this.alertService.show(err, 'error');
+      });
   }
 }

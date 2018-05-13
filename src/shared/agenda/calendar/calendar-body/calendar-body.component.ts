@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Day } from '../../shared/day';
-import { Session } from '../../shared/session';
+import { Session } from '../../../session/shared/session';
 import { EventType } from '../../shared/event';
 import * as moment from 'moment';
 import { OnlineSession } from '../../shared/online-session';

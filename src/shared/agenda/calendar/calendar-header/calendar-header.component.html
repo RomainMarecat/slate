@@ -1,7 +1,13 @@
 <div fxLayout="row wrap"
-     fxLayoutAlign="space-between stretch">
+     fxLayoutAlign="space-between stretch"
+     fxLayout.xs="column"
+     fxLayoutAlign.xs="start center"
+     fxLayoutGap.xs="10px">
 
-  <div class="left-actions">
+  <div class="left-actions"
+       fxLayout.xs="row"
+       fxLayoutAlign.xs="center stretch"
+       fxLayoutGap.xs="10px">
     <button class="button-actions"
             mat-raised-button
             color="primary"
@@ -24,7 +30,10 @@
       <mat-icon>today</mat-icon>
     </button>
   </div>
-  <div class="right-actions">
+  <div class="right-actions"
+       fxLayout.xs="row wrap"
+       fxLayoutAlign.xs="center stretch"
+       fxLayoutGap.xs="10px">
     <button class="button-actions"
             mat-raised-button
             color="primary"
@@ -38,7 +47,8 @@
             mat-raised-button
             color="primary"
             [class.active]="viewMode === 'week'"
-            (click)="switchView('week')">
+            (click)="switchView('week')"
+            fxHide.lt-md="true">
       <mat-icon>view_week</mat-icon>
       <span fxHide.lt-md="true">{{ 'calendar.week'|translate }}</span>
     </button>
@@ -46,7 +56,8 @@
             mat-raised-button
             color="primary"
             [class.active]="viewMode === '3days'"
-            (click)="switchView('3days')">
+            (click)="switchView('3days')"
+            fxHide.lt-md="true">
       <mat-icon>view_column</mat-icon>
       <span fxHide.lt-md="true">{{ 'calendar.3days'|translate }}</span>
     </button>
@@ -54,7 +65,8 @@
             mat-raised-button
             color="primary"
             [class.active]="viewMode === 'day'"
-            (click)="switchView('day')">
+            (click)="switchView('day')"
+            fxHide.lt-md="true">
       <mat-icon>view_day</mat-icon>
       <span fxHide.lt-md="true">{{ 'calendar.day'|translate }}</span>
     </button>
