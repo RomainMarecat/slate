@@ -4,13 +4,8 @@
     {
       "name": "app",
       "installMode": "prefetch",
-      "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/assets/images/snippet/icons/favicon.ico",
-          "/assets/images/hockey/icons/favicon.ico",
-          "/assets/images/car/icons/favicon.ico",
-          "/assets/images/monpullmoche/icons/favicon.ico",
           "/index.html"
         ],
         "versionedFiles": [
@@ -26,7 +21,11 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/assets/**"
+          "/assets/**",
+          "/*.woff",
+          "/*.woff2",
+          "/*.ttf",
+          "/*.eot"
         ],
         "urls": [
           "https://fonts.googleapis.com/**",
