@@ -11,7 +11,8 @@
     "back": "retour",
     "cancel": "annuler",
     "save": "enregistrer",
-    "send": "envoyer"
+    "send": "envoyer",
+    "take_meeting": "prendre rendez-vous"
   },
   "menu": {
     "connection": {
@@ -21,6 +22,10 @@
     "title2": "showcase",
     "sort": "Trier",
     "filter": "Filtrer"
+  },
+  "booking-add": {
+    "title": "réservation",
+    "subtitle": ""
   },
   "calendar": {
     "day": "jour",
@@ -39,6 +44,16 @@
     "label": {
       "meeting": "Siège social"
     }
+  },
+  "placeholder": {
+    "reason": "Choisir le motif"
+  },
+  "reason": {
+    "creation": "la création",
+    "prunning": "l'élagage",
+    "maintenance": "l'entretien",
+    "spray": "l'arrosage",
+    "planning": "l'aménagement"
   },
   "sidenav": {
     "card": {

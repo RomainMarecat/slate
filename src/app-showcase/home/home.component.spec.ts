@@ -44,6 +44,10 @@ import { MockEventService } from '../../shared/agenda/shared/mock-event.service'
 import { EventService } from '../../shared/agenda/shared/event.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockMapsAPILoader } from '../../shared/map/shared/mock-maps-api-loader';
+import { MockBookingService } from '../../shared/booking/shared/mock-booking.service';
+import { BookingService } from '../../shared/booking/shared/booking.service';
+import { SessionService } from '../../shared/session/shared/session.service';
+import { MockSessionService } from '../../shared/session/shared/mock-session.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -69,6 +73,7 @@ describe('HomeComponent', () => {
       providers: [
         {provide: AreaService, useClass: MockAreaService},
         {provide: AlertService, useClass: MockAlertService},
+        {provide: BookingService, useClass: MockBookingService},
         {provide: CmsService, useClass: MockCmsService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},
         {provide: EventService, useClass: MockEventService},
@@ -81,6 +86,7 @@ describe('HomeComponent', () => {
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: ContactService, useClass: MockContactService},
         {provide: CommentService, useClass: MockCommentService},
+        {provide: SessionService, useClass: MockSessionService},
         {provide: UserService, useClass: MockUserService},
         {provide: MapsAPILoader, useClass: MockMapsAPILoader},
         DeviceService,

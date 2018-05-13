@@ -11,7 +11,7 @@ import {
   OnChanges
 } from '@angular/core';
 import { OnlineSession } from '../shared/online-session';
-import { Session } from '../shared/session';
+import { Session } from '../../session/shared/session';
 import { Event } from '../shared/event';
 import * as moment from 'moment';
 import { Twix, TwixIter } from 'twix';
@@ -122,9 +122,13 @@ export class CalendarComponent implements OnInit, OnChanges {
   setViewMode() {
     if (this.viewMode === 'day') {
       this.end = this.start;
+      this.calendarStart = moment(this.start).startOf('day');
+      this.calendarEnd = moment(this.end).endOf('day');
       return;
     } else if (this.viewMode === '3days') {
       this.end = moment(this.start).add(2, 'days');
+      this.calendarStart = moment(this.start).startOf('day');
+      this.calendarEnd = moment(this.end).endOf('day');
       return;
     }
     // Init first day week number
@@ -189,42 +193,46 @@ export class CalendarComponent implements OnInit, OnChanges {
     this.sessionRemoved.emit(source.session);
   }
 
+  /**
+   * Load all time for each days
+   */
   loadAvailabilities() {
+    // no online session no calendar
     if (!this.daysAvailability || !this.onlineSession) {
       return;
     }
-
-    console.log('loadAvailabilities:debug');
+    // session duration
     const duration = this.onlineSession.session_type.duration;
+    // session day start 00:00 - end 23:59
     const onlineSessionStart: Moment = moment(this.onlineSession.date_range.start, 'YYYY-MM-DD').startOf('day');
     const onlineSessionEnd: Moment = moment(this.onlineSession.date_range.end, 'YYYY-MM-DD').endOf('day');
     this.daysAvailabilitySlotNumber = new Map();
     this.daysAvailability.forEach((avbs, day) => {
       let slotsNumber = 0;
+      // each day of days availability with start time 08:00
       const mmtDay = moment(day, 'YYYY-MM-DD').hour(8);
       const mmtDayStartTime = moment(day + this.onlineSession.time_range.start, 'YYYY-MMDDHH:mm');
       /* days before this morning */
-      console.log(
-        'day before today morning 00:00',
-        mmtDayStartTime.format('YYYY-MM-DDHH:mm'),
-        moment().startOf('day').format('YYYY-MM-DDHH:mm'),
-        mmtDayStartTime.isBefore(moment().startOf('day'))
-      );
+      // console.log('Le début des premières sessions possibles:', mmtDayStartTime.format('YYYY-MM-DDHH:mm'));
+      // console.log('le début du jour:', moment().startOf('day').format('YYYY-MM-DDHH:mm'));
+      // console.log('On charge des dispos ?', !mmtDayStartTime.isBefore(moment().startOf('day')));
+
+      // If session start time like 08:00 is before start today 00:00
       if (mmtDayStartTime.isBefore(moment().startOf('day'))) {
         return;
       }
-      /* booking delay */
+      // booking delay
       const minMmtStartTime = moment().add(this.onlineSession.session_type.booking_delay, 'hours');
+      // session time end
       const mmtDayEndTime = moment(day + this.onlineSession.time_range.end, 'YYYY-MM-DDHH:mm');
       mmtDayEndTime.subtract(duration, 'minutes');
-
+      // slots iterator
       const timeRange: TwixIter = mmtDayStartTime.twix(mmtDayEndTime).iterate(this.slotDuration, 'minutes');
 
-      console.log(
-        'mmtDayStartTime', mmtDayStartTime.format('HH:mm'),
-        'mmtDayEndTime', mmtDayEndTime.format('HH:mm'),
-        mmtDay.isBetween(onlineSessionStart, onlineSessionEnd)
-      );
+      // console.log('session début des plages horaires', mmtDayStartTime.format('HH:mm'));
+      // console.log('session fin des plages horaires', mmtDayEndTime.format('HH:mm'));
+      // console.log('l\'heure à 08:00 est elle entre le début et fin de session', mmtDay.isBetween(onlineSessionStart, onlineSessionEnd));
+      // console.log('début et fin du calendrier', this.calendarStart, this.calendarEnd);
       if (this.calendarStart && this.calendarEnd && mmtDay.isBetween(onlineSessionStart, onlineSessionEnd)) {
         while (timeRange.hasNext()) {
           const time: Twix = timeRange.next();

@@ -11,18 +11,22 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CalendarHeaderComponent } from './calendar/calendar-header/calendar-header.component';
 import { CalendarBodyComponent } from './calendar/calendar-body/calendar-body.component';
 import { AlertService } from '../popup/alert.service';
+import { SessionModule } from '../session/session.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
+    AgendaRoutingModule,
     CommonModule,
+    FlexLayoutModule,
     MatTooltipModule,
     MatButtonModule,
     MatCardModule,
     MatTableModule,
     MatIconModule,
-    FlexLayoutModule,
-    TranslateModule,
-    AgendaRoutingModule
+    RouterModule,
+    SessionModule,
+    TranslateModule
   ],
   declarations: [
     AgendaComponent,

@@ -1,4 +1,4 @@
-import { EventType, Event } from './event';
+import { EventType, Event } from '../../agenda/shared/event';
 
 export class Session extends Event {
   details: {
