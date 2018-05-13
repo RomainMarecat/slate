@@ -6,14 +6,14 @@
   "apps": [
     {
       "name": "showcase",
-      "root": "src",
+      "root": "src/app-showcase",
       "outDir": "dist",
       "assets": [
         "assets/showcase",
         "manifest.json"
       ],
       "index": "index.html",
-      "main": "main-showcase.ts",
+      "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
@@ -21,27 +21,27 @@
       "prefix": "app-showcase",
       "serviceWorker": true,
       "styles": [
-        "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/@swimlane/ngx-datatable/release/index.css",
-        "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-        "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/cookieconsent/build/cookieconsent.min.css",
-        "../node_modules/dragula/dist/dragula.css",
-        "./scss/showcase/styles.scss"
+        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+        "../../node_modules/font-awesome/css/font-awesome.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+        "../../node_modules/dragula/dist/dragula.css",
+        "styles.scss"
       ],
       "scripts": [
-        "../node_modules/moment/min/moment.min.js",
-        "../node_modules/moment/locale/fr.js",
-        "../node_modules/twix/dist/twix.min.js",
-        "../node_modules/crypto-js/crypto-js.js",
-        "../node_modules/cookieconsent/build/cookieconsent.min.js"
+        "../../node_modules/moment/min/moment.min.js",
+        "../../node_modules/moment/locale/fr.js",
+        "../../node_modules/twix/dist/twix.min.js",
+        "../../node_modules/crypto-js/crypto-js.js",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
       ],
-      "environmentSource": "environments/environment.showcase.ts",
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.showcase.ts",
-        "prod": "environments/environment.showcase.prod.ts"
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
       }
     },
     {

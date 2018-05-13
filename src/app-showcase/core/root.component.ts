@@ -6,7 +6,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { UserService } from '../../shared/user/user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
-import { environment } from '../../environments/environment.showcase';
+import { environment } from '../environments/environment';
 import { Favicon } from '../../shared/favicon/favicon.service';
 
 @Component({
