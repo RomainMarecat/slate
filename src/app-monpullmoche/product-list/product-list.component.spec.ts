@@ -35,52 +35,52 @@ import { ScoreService } from '../../shared/score/score.service';
 import { DateService } from '../../shared/util/date.service';
 import { MockScoreService } from '../../shared/score/mock-score.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
-import { environment } from '../../environments/environment.monpullmoche';
 import { MediaModule } from '../../shared/media/media.module';
+import { environment } from '../environments/environment';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
-  let fixture: ComponentFixture < ProductListComponent > ;
+  let fixture: ComponentFixture<ProductListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          BrowserModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          NgPipesModule,
-          MatListModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-          MediaModule
-        ],
-        declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent],
-        providers: [
-          { provide: ProductService, useClass: MockProductService },
-          { provide: UserService, useClass: MockUserService },
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: ScoreService, useClass: MockScoreService },
-          { provide: DateService, useClass: DateService },
-          I18nService
-        ]
-      })
+      imports: [
+        CommonModule,
+        BrowserModule,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatInputModule,
+        MatCheckboxModule,
+        NgPipesModule,
+        MatListModule,
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+        MediaModule
+      ],
+      declarations: [ ProductListComponent, ProductItemComponent, ProductActionComponent ],
+      providers: [
+        {provide: ProductService, useClass: MockProductService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: ScoreService, useClass: MockScoreService},
+        {provide: DateService, useClass: DateService},
+        I18nService
+      ]
+    })
       .compileComponents();
   }));
 

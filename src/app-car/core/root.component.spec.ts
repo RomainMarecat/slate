@@ -24,25 +24,20 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { NgcCookieConsentModule, NgcCookieConsentService, WindowService, NgcCookieConsentConfig } from 'ngx-cookieconsent';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavService } from '../../shared/sidenav/sidenav.service';
-import { FooterComponent } from '../../shared/footer/footer.component';
-import { MenuComponent } from '../../shared/menu/menu.component';
 import { AdsenseModule } from 'ng2-adsense';
-import { LoaderComponent } from '../../shared/loader/loader.component';
 import { UserService } from '../../shared/user/user.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { MockUserService } from '../../shared/user/mock-user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MockLoaderService } from '../../shared/loader/mock-loader.service';
-import { environment } from './../../environments/environment.hockey';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { SidenavComponent } from '../../shared/sidenav/sidenav/sidenav.component';
 import { AppRootComponent } from './root.component';
 import { SharedModule } from '../../shared/shared.module';
 import { MenuService } from '../../shared/menu/menu.service';
@@ -54,6 +49,7 @@ import { MockCmsDetailService } from '../../shared/cms-detail/shared/mock-cms-de
 import { CmsService } from '../../shared/cms/shared/cms.service';
 import { MockCmsService } from '../../shared/cms/shared/mock-cms.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
+import { environment } from '../../app-hockey/environments/environment';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {

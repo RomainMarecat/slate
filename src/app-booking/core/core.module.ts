@@ -32,16 +32,15 @@ import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { DeviceService } from '../../shared/device/device.service';
 import { FirebaseAppConfig, AngularFireModule } from 'angularfire2';
-import { Environment } from '../../shared/util/environment';
 import { ProductService } from '../../shared/product/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { SharedModule } from '../../shared/shared.module';
-import { environment } from '../../environments/environment.booking';
 import { SlackModule } from '../../shared/slack/slack.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { OfferService } from '../../shared/offer/offer.service';
 import { CommentService } from '../../shared/comment/comment.service';
+import { environment } from '../environments/environment';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -53,10 +52,10 @@ export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export function createTranslateLoader(http: HttpClient, name: string) {
-  return new TranslateHttpLoader(http, `./assets/i18n/${name}/`, '.json');
+  return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
 }
 
-export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
+export const CONFIG_TOKEN = new InjectionToken<any>('Registered config');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
 export const TABLE_SELECTION = new InjectionToken<string>('selection');
@@ -72,7 +71,7 @@ export const TABLE_PARTNER = new InjectionToken<string>('partner');
 
 @Injectable()
 export class ConfigService {
-  configToken: Environment;
+  configToken: any;
 
   constructor(@Inject(CONFIG_TOKEN) configToken) {
     this.configToken = configToken;
@@ -178,14 +177,14 @@ export const cookieConfig: NgcCookieConsentConfig = {
 })
 export class CoreModule {
 
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule /*, @Inject('CONFIG') config: Environment*/) {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     if (parentModule) {
       throw new Error(
         'CoreModule is already loaded. Import it in the AppModule only');
     }
   }
 
-  static forRoot(config: Environment): ModuleWithProviders {
+  static forRoot(config: any): ModuleWithProviders {
     return {
       ngModule: CoreModule,
       providers: [

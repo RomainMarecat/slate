@@ -13,7 +13,6 @@ import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../shared.module';
-import { environment } from '../../../../environments/environment.hockey';
 import { ObjectService } from '../../../util/object.service';
 import { MediaService } from '../../../media/media.service';
 import { MockMediaService } from '../../../media/mock-media.service';
@@ -42,56 +41,57 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ProductImageOrderComponent } from '../product-image-order/product-image-order.component';
 import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
 import { Cloudinary } from 'cloudinary-core';
+import { environment } from '../../../../app-hockey/environments/environment';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
-  let fixture: ComponentFixture < ProductEditComponent > ;
+  let fixture: ComponentFixture<ProductEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          BrowserModule,
-          BrowserAnimationsModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-          CommonModule,
-          AngularFireModule.initializeApp(environment.firebase),
-          AngularFireStorageModule,
-          NgxDatatableModule,
-          NgxEditorModule,
-          HttpClientTestingModule,
-          RouterTestingModule,
-          SharedModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-        ],
-        declarations: [
-          ProductEditComponent,
-          ProductImageOrderComponent,
-        ],
-        providers: [
-          { provide: AttributeService, useClass: MockAttributeService },
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: CategoryService, useClass: MockCategoryService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: MediaService, useClass: MockMediaService },
-          { provide: NotificationService, useClass: MockNotificationService },
-          { provide: PartnerService, useClass: MockPartnerService },
-          { provide: OfferService, useClass: MockOfferService },
-          { provide: ProductService, useClass: MockProductService },
-          { provide: UserService, useClass: MockUserService },
-          DateService,
-          ObjectService,
-          I18nService,
-          DeviceService,
-        ]
-      })
+      imports: [
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        BrowserModule,
+        BrowserAnimationsModule,
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        CommonModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireStorageModule,
+        NgxDatatableModule,
+        NgxEditorModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        SharedModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+      ],
+      declarations: [
+        ProductEditComponent,
+        ProductImageOrderComponent,
+      ],
+      providers: [
+        {provide: AttributeService, useClass: MockAttributeService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: CategoryService, useClass: MockCategoryService},
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: NotificationService, useClass: MockNotificationService},
+        {provide: PartnerService, useClass: MockPartnerService},
+        {provide: OfferService, useClass: MockOfferService},
+        {provide: ProductService, useClass: MockProductService},
+        {provide: UserService, useClass: MockUserService},
+        DateService,
+        ObjectService,
+        I18nService,
+        DeviceService,
+      ]
+    })
       .compileComponents();
   }));
 

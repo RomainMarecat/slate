@@ -9,8 +9,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ProductFilterComponent } from './product-filter.component';
 import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
 import { MockCloudinaryService } from '../../../media/cloudinary/mock-cloudinary.service';
-import { environment } from '../../../../environments/environment.hockey';
 import { SharedModule } from '../../../shared.module';
+import { environment } from '../../../../app-hockey/environments/environment';
 
 describe('ProductFilterComponent', () => {
   let component: ProductFilterComponent;

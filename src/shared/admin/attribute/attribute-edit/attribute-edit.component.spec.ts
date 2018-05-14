@@ -15,7 +15,6 @@ import { MockAlertService } from '../../../popup/mock-alert.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../shared.module';
 import { Cloudinary } from 'cloudinary-core';
-import { environment } from '../../../../environments/environment.hockey';
 import { ObjectService } from '../../../util/object.service';
 import { MediaService } from '../../../media/media.service';
 import { MockMediaService } from '../../../media/mock-media.service';
@@ -37,6 +36,7 @@ import { MockAttributeService } from '../../../attribute/mock-attribute.service'
 import { AttributeEditComponent } from './attribute-edit.component';
 import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
 import { MockUserService } from '../../../user/mock-user.service';
+import { environment } from '../../../../app-hockey/environments/environment';
 
 describe('AttributeEditComponent', () => {
   let component: AttributeEditComponent;

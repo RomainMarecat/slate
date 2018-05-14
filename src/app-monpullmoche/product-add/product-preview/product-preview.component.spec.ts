@@ -16,55 +16,55 @@ import {
   MatCheckboxModule,
   MatListModule
 } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { NgPipesModule } from 'ngx-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
 import { ProductPreviewComponent } from './product-preview.component';
 import { DateService } from '../../../shared/util/date.service';
 import { I18nService } from '../../../shared/i18n/i18n.service';
-import { environment } from '../../../environments/environment.monpullmoche';
 import { MediaModule } from '../../../shared/media/media.module';
+import { environment } from '../../environments/environment';
 
 describe('ProductPreviewComponent', () => {
   let component: ProductPreviewComponent;
-  let fixture: ComponentFixture < ProductPreviewComponent > ;
+  let fixture: ComponentFixture<ProductPreviewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          RouterTestingModule,
-          BrowserModule,
-          HttpClientModule,
-          RouterTestingModule,
-          NgPipesModule,
-          BrowserAnimationsModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-          MediaModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
-        ],
-        declarations: [ProductPreviewComponent],
-        providers: [
-          { provide: DateService, useClass: DateService },
-          I18nService
-        ]
-      })
+      imports: [
+        CommonModule,
+        RouterTestingModule,
+        BrowserModule,
+        HttpClientModule,
+        RouterTestingModule,
+        NgPipesModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatListModule,
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        MediaModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        })
+      ],
+      declarations: [ ProductPreviewComponent ],
+      providers: [
+        {provide: DateService, useClass: DateService},
+        I18nService
+      ]
+    })
       .compileComponents();
   }));
 

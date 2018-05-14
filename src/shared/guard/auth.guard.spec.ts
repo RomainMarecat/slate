@@ -1,12 +1,11 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
 
 import { AuthGuard } from './auth.guard';
-import { environment } from '../../environments/environment.hockey';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../../app-hockey/environments/environment';
 
 describe('AuthGuard', () => {
   beforeEach(() => {

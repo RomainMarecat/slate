@@ -9,22 +9,12 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import {
   MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
   MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule,
   MatExpansionModule,
   MatStepperModule,
 } from '@angular/material';
@@ -37,7 +27,6 @@ import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.modul
 import { MockProductService } from '../../shared/product/mock-product.service';
 import { ProductService } from '../../shared/product/product.service';
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
-import { ImageProductComponent } from '../../shared/media/cloudinary/image-product/image-product.component';
 import { ProductAddComponent } from './product-add.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { MockAlertService } from '../../shared/popup/mock-alert.service';
@@ -53,70 +42,70 @@ import { DateService } from '../../shared/util/date.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { NotificationService } from '../../shared/slack/notification.service';
 import { DeviceService } from '../../shared/device/device.service';
-import { environment } from '../../environments/environment.monpullmoche';
 import { MockNotificationService } from '../../shared/slack/mock-notification.service';
 import { NgPipesModule } from 'ngx-pipes';
 import { MediaModule } from '../../shared/media/media.module';
+import { environment } from '../environments/environment';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
-  let fixture: ComponentFixture < ProductAddComponent > ;
+  let fixture: ComponentFixture<ProductAddComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          RouterTestingModule,
-          BrowserModule,
-          FormsModule,
-          ReactiveFormsModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatStepperModule,
-          MatExpansionModule,
-          MatListModule,
-          NgPipesModule,
-          FileUploadModule,
-          ImageCropperModule,
-          MediaModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
-        ],
-        declarations: [
-          ProductAddComponent,
-          ProductPreviewComponent,
-          ProductFormComponent
-        ],
-        providers: [
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: UserService, useClass: MockUserService },
-          { provide: MediaService, useClass: MockMediaService },
-          { provide: ProductService, useClass: MockProductService },
-          DateService,
-          ObjectService,
-          I18nService,
-          DeviceService,
-          {
-            provide: NotificationService,
-            useClass: MockNotificationService
-          }
-        ]
-      })
+      imports: [
+        CommonModule,
+        RouterTestingModule,
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatStepperModule,
+        MatExpansionModule,
+        MatListModule,
+        NgPipesModule,
+        FileUploadModule,
+        ImageCropperModule,
+        MediaModule,
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        })
+      ],
+      declarations: [
+        ProductAddComponent,
+        ProductPreviewComponent,
+        ProductFormComponent
+      ],
+      providers: [
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: ProductService, useClass: MockProductService},
+        DateService,
+        ObjectService,
+        I18nService,
+        DeviceService,
+        {
+          provide: NotificationService,
+          useClass: MockNotificationService
+        }
+      ]
+    })
       .compileComponents();
   }));
 

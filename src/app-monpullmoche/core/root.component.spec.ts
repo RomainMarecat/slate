@@ -34,7 +34,6 @@ import { I18nService } from '../../shared/i18n/i18n.service';
 import { MockUserService } from '../../shared/user/mock-user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MockLoaderService } from '../../shared/loader/mock-loader.service';
-import { environment } from '../../environments/environment.monpullmoche';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -49,6 +48,7 @@ import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.serv
 import { MockCmsDetailService } from '../../shared/cms-detail/shared/mock-cms-detail.service';
 import { CmsService } from '../../shared/cms/shared/cms.service';
 import { MockCmsService } from '../../shared/cms/shared/mock-cms.service';
+import { environment } from '../environments/environment';
 
 describe('ProductComponent', () => {
   let component: AppRootComponent;

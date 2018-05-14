@@ -11,8 +11,8 @@ import { DragulaModule } from 'ng2-dragula';
 import { ProductImageOrderComponent } from './product-image-order.component';
 import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
 import { MockCloudinaryService } from '../../../media/cloudinary/mock-cloudinary.service';
-import { environment } from '../../../../environments/environment.hockey';
 import { SharedModule } from '../../../shared.module';
+import { environment } from '../../../../app-hockey/environments/environment';
 
 describe('ProductImageOrderComponent', () => {
   let component: ProductImageOrderComponent;

@@ -38,61 +38,61 @@ import { ObjectService } from '../../../shared/util/object.service';
 import { MediaService } from '../../../shared/media/media.service';
 import { MockMediaService } from '../../../shared/media/mock-media.service';
 import { DeviceService } from '../../../shared/device/device.service';
-import { environment } from '../../../environments/environment.monpullmoche';
 import { MediaModule } from '../../../shared/media/media.module';
+import { environment } from '../../environments/environment';
 
 describe('ProductFormComponent', () => {
   let component: ProductFormComponent;
-  let fixture: ComponentFixture < ProductFormComponent > ;
+  let fixture: ComponentFixture<ProductFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          HttpClientModule,
-          FormsModule,
-          RouterTestingModule,
-          ReactiveFormsModule,
-          BrowserAnimationsModule,
-          BrowserModule,
-          FileUploadModule,
-          ImageCropperModule,
-          MatCardModule,
-          MatToolbarModule,
-          MatSidenavModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatFormFieldModule,
-          MatInputModule,
-          MatSelectModule,
-          MatTooltipModule,
-          MatStepperModule,
-          MatExpansionModule,
-          MatCheckboxModule,
-          MediaModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
-        ],
-        declarations: [
-          ProductFormComponent,
-        ],
-        providers: [
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: UserService, useClass: MockUserService },
-          { provide: MediaService, useClass: MockMediaService },
-          ObjectService,
-          DeviceService
-        ]
-      })
+      imports: [
+        CommonModule,
+        HttpClientModule,
+        FormsModule,
+        RouterTestingModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        FileUploadModule,
+        ImageCropperModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatTooltipModule,
+        MatStepperModule,
+        MatExpansionModule,
+        MatCheckboxModule,
+        MediaModule,
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        })
+      ],
+      declarations: [
+        ProductFormComponent,
+      ],
+      providers: [
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: MediaService, useClass: MockMediaService},
+        ObjectService,
+        DeviceService
+      ]
+    })
       .compileComponents();
   }));
 

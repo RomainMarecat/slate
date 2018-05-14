@@ -36,7 +36,6 @@ import { Environment } from '../../shared/util/environment';
 import { ProductService } from '../../shared/product/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { SharedModule } from '../../shared/shared.module';
-import { environment } from '../../environments/environment.car';
 import { SlackModule } from '../../shared/slack/slack.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
@@ -52,6 +51,7 @@ import { CarOfferDetailModule } from '../offer-detail/car-offer-detail.module';
 import { CarOfferListModule } from '../offer/car-offer-list.module';
 import { CmsService } from '../../shared/cms/shared/cms.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
+import { environment } from '../environments/environment';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -63,7 +63,7 @@ export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export function createTranslateLoader(http: HttpClient, name: string) {
-  return new TranslateHttpLoader(http, `./assets/i18n/${name}/`, '.json');
+  return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
 }
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');

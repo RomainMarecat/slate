@@ -7,12 +7,12 @@ import { CommonModule } from '@angular/common';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { environment } from '../../../../environments/environment.car';
 import { MockMediaService } from '../../mock-media.service';
 import { MediaService } from '../../media.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
+import { environment } from '../../../../app-car/environments/environment';
 
 describe('StorageUploadComponent', () => {
   let component: StorageUploadComponent;

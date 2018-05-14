@@ -2,9 +2,9 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { GeocodeService } from './geocode.service';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-import { environment } from '../../../environments/environment.car';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockMapsAPILoader } from './mock-maps-api-loader';
+import { environment } from '../../../app-car/environments/environment';
 
 describe('GeocodeService', () => {
   beforeEach(() => {

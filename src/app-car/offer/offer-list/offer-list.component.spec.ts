@@ -11,7 +11,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
 import { CommonModule } from '@angular/common';
 import { NgPipesModule } from 'ngx-pipes';
-import { environment } from '../../../environments/environment.hockey';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
@@ -40,6 +39,7 @@ import { MockOfferService } from '../../../shared/offer/mock-offer.service';
 import { OfferService } from '../../../shared/offer/offer.service';
 import { MockCategoryService } from '../../../shared/category/mock-category.service';
 import { CategoryService } from '../../../shared/category/category.service';
+import { environment } from '../../../app-hockey/environments/environment';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;

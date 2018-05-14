@@ -4,7 +4,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { PartnerService } from './partner.service';
 import { MockPartnerService } from './mock-partner.service';
-import { environment } from './../../../../environments/environment.hockey';
+import { environment } from '../../../../app-hockey/environments/environment';
 
 describe('PartnerService', () => {
   beforeEach(() => {
@@ -14,11 +14,11 @@ describe('PartnerService', () => {
         AngularFirestoreModule,
         AngularFireAuthModule
       ],
-      providers: [{ provide: PartnerService, useClass: MockPartnerService }],
+      providers: [ {provide: PartnerService, useClass: MockPartnerService} ],
     });
   });
 
-  it('should be created', inject([PartnerService], (service: PartnerService) => {
+  it('should be created', inject([ PartnerService ], (service: PartnerService) => {
     expect(service).toBeTruthy();
   }));
 });
