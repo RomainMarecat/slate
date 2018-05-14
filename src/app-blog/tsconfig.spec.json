@@ -1,9 +1,9 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../tsconfig.spec.json",
   "compilerOptions": {
     "paths": {
       "shared/*": [
-        "shared/*"
+        "../shared/*"
       ]
     },
     "outDir": "../out-tsc/spec",
@@ -20,6 +20,8 @@
   ],
   "include": [
     "**/*.spec.ts",
-    "**/*.d.ts"
+    "**/*.d.ts",
+    "../shared/*.spec.ts",
+    "../shared/**/*.spec.ts"
   ]
 }

@@ -1,8 +1,8 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app-car/app.module';
-import { environment } from './environments/environment.car';
+import { AppModule } from './app.module';
+import { environment } from '../environments/environment.hockey';
 import 'hammerjs';
 
 if (environment.production) {

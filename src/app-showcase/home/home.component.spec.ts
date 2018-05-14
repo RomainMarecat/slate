@@ -19,7 +19,7 @@ import { ArticleService } from '../../shared/article/shared/article.service';
 import { MockArticleService } from '../../shared/article/shared/mock-article.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-import { environment } from '../../environments/environment.blog';
+import { environment } from '../environments/environment';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MenuService } from '../../shared/menu/menu.service';
 import { ContactModule } from '../../shared/contact/contact.module';

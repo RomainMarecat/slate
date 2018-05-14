@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LocationCurrentComponent } from './location-current.component';
-import { environment } from '../../../environments/environment.blog';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -12,6 +11,7 @@ import { AngularFireModule } from 'angularfire2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { MockMapsAPILoader } from '../shared/mock-maps-api-loader';
+import { environment } from '../../../app-blog/environments/environment';
 
 describe('LocationCurrentComponent', () => {
   let component: LocationCurrentComponent;

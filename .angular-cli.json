@@ -49,13 +49,17 @@
     },
     {
       "name": "blog",
-      "root": "src",
+      "root": "src/app-blog",
       "outDir": "dist",
       "assets": [
-        "assets"
+        "assets",
+        "robots.txt",
+        "sitemap.xml",
+        "favicon.ico",
+        "manifest.json"
       ],
       "index": "index.html",
-      "main": "main-blog.ts",
+      "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
@@ -63,35 +67,39 @@
       "prefix": "app-blog",
       "serviceWorker": true,
       "styles": [
-        "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/@swimlane/ngx-datatable/release/index.css",
-        "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-        "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/cookieconsent/build/cookieconsent.min.css",
-        "../node_modules/dragula/dist/dragula.css",
-        "./scss/blog/styles.scss"
+        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+        "../../node_modules/font-awesome/css/font-awesome.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+        "../../node_modules/dragula/dist/dragula.css",
+        "styles.scss"
       ],
       "scripts": [
-        "../node_modules/crypto-js/crypto-js.js",
-        "../node_modules/cookieconsent/build/cookieconsent.min.js"
+        "../../node_modules/crypto-js/crypto-js.js",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
       ],
-      "environmentSource": "environments/environment.blog.ts",
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.blog.ts",
-        "prod": "environments/environment.blog.prod.ts"
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
       }
     },
     {
       "name": "car",
-      "root": "src",
+      "root": "src/app-car",
       "outDir": "dist",
       "assets": [
-        "assets"
+        "assets",
+        "robots.txt",
+        "sitemap.xml",
+        "favicon.ico",
+        "manifest.json"
       ],
       "index": "index.html",
-      "main": "main-car.ts",
+      "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
@@ -99,35 +107,39 @@
       "prefix": "app-car",
       "serviceWorker": true,
       "styles": [
-        "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/@swimlane/ngx-datatable/release/index.css",
-        "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-        "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/cookieconsent/build/cookieconsent.min.css",
-        "../node_modules/dragula/dist/dragula.css",
-        "./scss/car/styles.scss"
+        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+        "../../node_modules/font-awesome/css/font-awesome.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+        "../../node_modules/dragula/dist/dragula.css",
+        "styles.scss"
       ],
       "scripts": [
-        "../node_modules/crypto-js/crypto-js.js",
-        "../node_modules/cookieconsent/build/cookieconsent.min.js"
+        "../../node_modules/crypto-js/crypto-js.js",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
       ],
-      "environmentSource": "environments/environment.car.ts",
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.car.ts",
-        "prod": "environments/environment.car.prod.ts"
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
       }
     },
     {
       "name": "recipe",
-      "root": "src",
+      "root": "src/app-recipe",
       "outDir": "dist",
       "assets": [
-        "assets"
+        "assets",
+        "robots.txt",
+        "sitemap.xml",
+        "favicon.ico",
+        "manifest.json"
       ],
       "index": "index.html",
-      "main": "main-recipe.ts",
+      "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
@@ -135,35 +147,39 @@
       "prefix": "app-recipe",
       "serviceWorker": true,
       "styles": [
-        "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/@swimlane/ngx-datatable/release/index.css",
-        "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-        "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/cookieconsent/build/cookieconsent.min.css",
-        "../node_modules/dragula/dist/dragula.css",
-        "./scss/recipe/styles.scss"
+        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+        "../../node_modules/font-awesome/css/font-awesome.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+        "../../node_modules/dragula/dist/dragula.css",
+        "styles.scss"
       ],
       "scripts": [
-        "../node_modules/crypto-js/crypto-js.js",
-        "../node_modules/cookieconsent/build/cookieconsent.min.js"
+        "../../node_modules/crypto-js/crypto-js.js",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
       ],
-      "environmentSource": "environments/environment.recipe.ts",
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.recipe.ts",
-        "prod": "environments/environment.recipe.prod.ts"
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
       }
     },
     {
       "name": "booking",
-      "root": "src",
+      "root": "src/app-booking",
       "outDir": "dist",
       "assets": [
-        "assets"
+        "assets",
+        "robots.txt",
+        "sitemap.xml",
+        "favicon.ico",
+        "manifest.json"
       ],
       "index": "index.html",
-      "main": "main-booking.ts",
+      "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
@@ -171,35 +187,39 @@
       "prefix": "app-booking",
       "serviceWorker": true,
       "styles": [
-        "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/@swimlane/ngx-datatable/release/index.css",
-        "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-        "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/cookieconsent/build/cookieconsent.min.css",
-        "../node_modules/dragula/dist/dragula.css",
-        "./scss/booking/styles.scss"
+        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+        "../../node_modules/font-awesome/css/font-awesome.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+        "../../node_modules/dragula/dist/dragula.css",
+        "styles.scss"
       ],
       "scripts": [
-        "../node_modules/crypto-js/crypto-js.js",
-        "../node_modules/cookieconsent/build/cookieconsent.min.js"
+        "../../node_modules/crypto-js/crypto-js.js",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
       ],
-      "environmentSource": "environments/environment.booking.ts",
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.booking.ts",
-        "prod": "environments/environment.booking.prod.ts"
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
       }
     },
     {
       "name": "hockey",
-      "root": "src",
+      "root": "src/app-hockey",
       "outDir": "dist",
       "assets": [
-        "assets"
+        "assets",
+        "robots.txt",
+        "sitemap.xml",
+        "favicon.ico",
+        "manifest.json"
       ],
       "index": "index.html",
-      "main": "main-hockey.ts",
+      "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
@@ -207,70 +227,78 @@
       "prefix": "app-hockey",
       "serviceWorker": true,
       "styles": [
-        "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/@swimlane/ngx-datatable/release/index.css",
-        "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-        "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/cookieconsent/build/cookieconsent.min.css",
-        "../node_modules/dragula/dist/dragula.css",
-        "./scss/hockey/styles.scss"
+        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+        "../../node_modules/font-awesome/css/font-awesome.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+        "../../node_modules/dragula/dist/dragula.css",
+        "styles.scss"
       ],
       "scripts": [
-        "../node_modules/crypto-js/crypto-js.js",
-        "../node_modules/cookieconsent/build/cookieconsent.min.js"
+        "../../node_modules/crypto-js/crypto-js.js",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
       ],
-      "environmentSource": "environments/environment.hockey.ts",
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.hockey.ts",
-        "prod": "environments/environment.hockey.prod.ts"
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
       }
     },
     {
       "name": "monpullmoche",
-      "root": "src",
+      "root": "src/app-monpullmoche",
       "outDir": "dist",
       "assets": [
-        "assets"
+        "assets",
+        "robots.txt",
+        "sitemap.xml",
+        "favicon.ico",
+        "manifest.json"
       ],
       "index": "index.html",
-      "main": "main-monpullmoche.ts",
+      "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "app-monpullmoche",
       "serviceWorker": true,
       "styles": [
-        "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/@swimlane/ngx-datatable/release/index.css",
-        "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-        "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/cookieconsent/build/cookieconsent.min.css",
-        "./scss/clothe/styles.scss"
+        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+        "../../node_modules/font-awesome/css/font-awesome.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+        "styles.scss"
       ],
       "scripts": [
-        "../node_modules/crypto-js/crypto-js.js",
-        "../node_modules/cookieconsent/build/cookieconsent.min.js"
+        "../../node_modules/crypto-js/crypto-js.js",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
       ],
-      "environmentSource": "environments/environment.monpullmoche.ts",
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.monpullmoche.ts",
-        "prod": "environments/environment.monpullmoche.prod.ts"
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
       }
     },
     {
       "name": "snippet",
-      "root": "src",
+      "root": "src/app-snippet",
       "outDir": "dist",
       "assets": [
-        "assets"
+        "assets",
+        "robots.txt",
+        "sitemap.xml",
+        "favicon.ico",
+        "manifest.json"
       ],
       "index": "index.html",
-      "main": "main-snippet.ts",
+      "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
@@ -278,24 +306,24 @@
       "prefix": "app-snippet",
       "serviceWorker": true,
       "styles": [
-        "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/@swimlane/ngx-datatable/release/index.css",
-        "../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-        "../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "../node_modules/cookieconsent/build/cookieconsent.min.css",
-        "../node_modules/dragula/dist/dragula.css",
-        "./scss/snippet/styles.scss"
+        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+        "../../node_modules/font-awesome/css/font-awesome.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+        "../../node_modules/dragula/dist/dragula.css",
+        "styles.scss"
       ],
       "scripts": [
-        "../node_modules/crypto-js/crypto-js.js",
-        "../node_modules/cookieconsent/build/cookieconsent.min.js"
+        "../../node_modules/crypto-js/crypto-js.js",
+        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
       ],
-      "environmentSource": "environments/environment.snippet.ts",
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "dev": "environments/environment.snippet.ts",
-        "prod": "environments/environment.snippet.prod.ts"
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
       }
     }
   ],
