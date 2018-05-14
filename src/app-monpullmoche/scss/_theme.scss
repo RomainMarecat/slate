@@ -1,6 +1,5 @@
-@import "../../../node_modules/@angular/material/prebuilt-themes/purple-green.css";
 @import '../../../node_modules/@angular/material/theming';
-@import url('https://fonts.googleapis.com/css?family=Sacramento|Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
 // Plus imports for other components in your app-clothe.
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app-clothe.
@@ -17,23 +16,40 @@ $color3: #7fb069; // Vert
 $color4: #223a00; //Noir
 $color5: #ca3c25; //Rouge
 $product-primary: mat-palette($mat-green,
-800);
+  800);
 $product-accent: mat-palette($mat-red,
-800);
+  800);
 $product-warn: mat-palette($mat-orange,
-200);
+  200);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($product-primary,
-$product-accent,
-$product-warn);
-
+  $product-accent,
+  $product-warn);
 
 // Include theme styles for core and each component used in your app-clothe.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($theme);
 
-mat-icon{
+mat-icon {
   font-family: 'Material Icons' !important;
 }
+
+h1.logo {
+  a {
+    color: $color1;
+    fill: #fff;
+
+    .cls-1 {
+      font-size: 41.09px;
+      font-family: Sacramento-Regular, Sacramento;
+    }
+
+    .cls-2 {
+      font-size: 32.44px;
+      font-family: Lato-Regular, Lato;
+    }
+  }
+}
+
