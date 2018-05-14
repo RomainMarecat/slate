@@ -4,7 +4,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { OfferService } from './offer.service';
 import { MockOfferService } from './mock-offer.service';
-import { environment } from './../../../../environments/environment.hockey';
+import { environment } from '../../../../app-hockey/environments/environment';
 
 describe('OfferService', () => {
   beforeEach(() => {

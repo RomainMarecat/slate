@@ -8,9 +8,9 @@ import { UserService } from '../../../shared/user/user.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
-import { environment } from '../../../environments/environment.hockey';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
 import { MenuService } from '../../../shared/menu/menu.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-product-list',

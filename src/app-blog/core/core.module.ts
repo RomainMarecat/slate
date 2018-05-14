@@ -36,7 +36,7 @@ import { Environment } from '../../shared/util/environment';
 import { ProductService } from '../../shared/product/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { SharedModule } from '../../shared/shared.module';
-import { environment } from '../../environments/environment.blog';
+import { environment } from '../environments/environment';
 import { SlackModule } from '../../shared/slack/slack.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
@@ -61,7 +61,7 @@ export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export function createTranslateLoader(http: HttpClient, name: string) {
-  return new TranslateHttpLoader(http, `./assets/i18n/${name}/`, '.json');
+  return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
 }
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');

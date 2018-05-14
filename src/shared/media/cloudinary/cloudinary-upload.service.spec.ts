@@ -12,7 +12,7 @@ import { ProductService } from '../../product/product.service';
 import { MockProductService } from '../../product/mock-product.service';
 import { MediaService } from '../media.service';
 import { MockMediaService } from '../mock-media.service';
-import { environment } from '../../../environments/environment.hockey';
+import { environment } from '../../../app-hockey/environments/environment';
 
 describe('CloudinaryUploadService', () => {
   beforeEach(() => {
@@ -25,14 +25,14 @@ describe('CloudinaryUploadService', () => {
       ],
       providers: [
         CloudinaryUploadService,
-        { provide: Cloudinary, useValue: MockCloudinaryService },
-        { provide: ProductService, useClass: MockProductService },
-        { provide: MediaService, useClass: MockMediaService },
+        {provide: Cloudinary, useValue: MockCloudinaryService},
+        {provide: ProductService, useClass: MockProductService},
+        {provide: MediaService, useClass: MockMediaService},
       ]
     });
   });
 
-  it('should be created', inject([CloudinaryUploadService], (service: CloudinaryUploadService) => {
+  it('should be created', inject([ CloudinaryUploadService ], (service: CloudinaryUploadService) => {
     expect(service).toBeTruthy();
   }));
 });

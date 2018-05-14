@@ -4,7 +4,7 @@ import { AppRootComponent } from './core/root.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
-import { environment } from '../environments/environment.blog';
+import { environment } from './environments/environment';
 
 @NgModule({
   imports: [

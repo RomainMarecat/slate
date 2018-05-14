@@ -1,16 +1,16 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { InjectionToken } from '@angular/core';
-import { environment } from './../../environments/environment.hockey';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { VisitorService } from './visitor.service';
+import { environment } from '../../app-hockey/environments/environment';
 
 export function createFakeVisitor(afs: AngularFirestore, name: string) {
   return new VisitorService(afs, name);
 }
 
-export const TABLE_NAME = new InjectionToken < string > ('test');
+export const TABLE_NAME = new InjectionToken<string>('test');
 
 describe('VisitorService', () => {
   beforeEach(() => {
@@ -21,17 +21,17 @@ describe('VisitorService', () => {
         AngularFireAuthModule
       ],
       providers: [
-        { provide: TABLE_NAME, useValue: 'test' },
+        {provide: TABLE_NAME, useValue: 'test'},
         {
           provide: VisitorService,
           useFactory: (createFakeVisitor),
-          deps: [AngularFirestore, TABLE_NAME]
+          deps: [ AngularFirestore, TABLE_NAME ]
         },
       ]
     });
   });
 
-  it('should be created', inject([VisitorService], (service: VisitorService) => {
+  it('should be created', inject([ VisitorService ], (service: VisitorService) => {
     expect(service).toBeTruthy();
   }));
 });

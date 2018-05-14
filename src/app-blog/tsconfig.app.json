@@ -1,0 +1,26 @@
+{
+  "extends": "../tsconfig.app.json",
+  "compilerOptions": {
+    "paths": {
+      "shared/*": [
+        "../shared/*"
+      ]
+    },
+    "outDir": "../../out-tsc/app",
+    "baseUrl": "./",
+    "module": "es2015",
+    "types": []
+  },
+  "include": [
+    "main.ts",
+    "polyfills.ts",
+    "../shared/*",
+    "../shared/**/*.ts"
+  ],
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts",
+    "../shared/*.spec.ts",
+    "../shared/**/*.spec.ts"
+  ]
+}

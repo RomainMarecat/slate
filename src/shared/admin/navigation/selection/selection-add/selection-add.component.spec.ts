@@ -9,7 +9,6 @@ import { SelectionService } from '../../../shared/navigation/selection/selection
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AlertService } from '../../../../popup/alert.service';
 import { MockAlertService } from '../../../../popup/mock-alert.service';
-import { environment } from '../../../../../environments/environment.hockey';
 import { LoaderService } from '../../../../loader/loader.service';
 import { MediaService } from '../../../../media/media.service';
 import { MockNotificationService } from '../../../../slack/mock-notification.service';
@@ -30,45 +29,46 @@ import { Angulartics2Module } from 'angulartics2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CloudinaryModule } from '../../../../media/cloudinary/cloudinary.module';
 import { Cloudinary } from 'cloudinary-core';
+import { environment } from '../../../../../app-hockey/environments/environment';
 
 describe('SelectionAddComponent', () => {
   let component: SelectionAddComponent;
-  let fixture: ComponentFixture < SelectionAddComponent > ;
+  let fixture: ComponentFixture<SelectionAddComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          BrowserAnimationsModule,
-          RouterTestingModule,
-          SharedModule,
-          NgxDatatableModule,
-          NgxEditorModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-        ],
-        declarations: [SelectionAddComponent],
-        providers: [
-          { provide: SelectionService, useClass: MockSelectionService },
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: UserService, useClass: MockUserService },
-          { provide: MediaService, useClass: MockMediaService },
-          { provide: ProductService, useClass: MockProductService },
-          { provide: NotificationService, useClass: MockNotificationService },
-          DateService,
-          ObjectService,
-          I18nService,
-          DeviceService,
-        ]
-      })
+      imports: [
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        BrowserAnimationsModule,
+        RouterTestingModule,
+        SharedModule,
+        NgxDatatableModule,
+        NgxEditorModule,
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+      ],
+      declarations: [ SelectionAddComponent ],
+      providers: [
+        {provide: SelectionService, useClass: MockSelectionService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: ProductService, useClass: MockProductService},
+        {provide: NotificationService, useClass: MockNotificationService},
+        DateService,
+        ObjectService,
+        I18nService,
+        DeviceService,
+      ]
+    })
       .compileComponents();
   }));
 

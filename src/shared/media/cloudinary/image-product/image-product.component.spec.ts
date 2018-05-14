@@ -18,9 +18,6 @@ import {
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../cloudinary.module';
-import { environment } from '../../../../environments/environment.hockey';
 import { ObjectService } from '../../../util/object.service';
 import { MediaService } from '../../media.service';
 import { MockMediaService } from '../../mock-media.service';
@@ -28,41 +25,41 @@ import { DeviceService } from '../../../device/device.service';
 
 describe('ImageProductComponent', () => {
   let component: ImageProductComponent;
-  let fixture: ComponentFixture < ImageProductComponent > ;
+  let fixture: ComponentFixture<ImageProductComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          RouterTestingModule,
-          BrowserModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          ImageCropperModule,
-          FileUploadModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatFormFieldModule,
-          MatTooltipModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
-        ],
-        declarations: [ImageProductComponent],
-        providers: [
-          ObjectService,
-          { provide: MediaService, useClass: MockMediaService },
-          DeviceService
-        ]
-      })
+      imports: [
+        CommonModule,
+        RouterTestingModule,
+        BrowserModule,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        ImageCropperModule,
+        FileUploadModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatFormFieldModule,
+        MatTooltipModule,
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        })
+      ],
+      declarations: [ ImageProductComponent ],
+      providers: [
+        ObjectService,
+        {provide: MediaService, useClass: MockMediaService},
+        DeviceService
+      ]
+    })
       .compileComponents();
   }));
 

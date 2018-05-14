@@ -9,21 +9,19 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from './../../../shared/media/cloudinary/cloudinary.module';
-import { ProductService } from './../../../shared/product/product.service';
-import { MockProductService } from './../../../shared/product/mock-product.service';
+import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
+import { ProductService } from '../../../shared/product/product.service';
+import { MockProductService } from '../../../shared/product/mock-product.service';
 import { MockUserService } from '../../../shared/user/mock-user.service';
 import { UserService } from '../../../shared/user/user.service';
 import { DeviceService } from '../../../shared/device/device.service';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
 import { AlertService } from '../../../shared/popup/alert.service';
-import { LoaderService } from './../../../shared/loader/loader.service';
-import { MockLoaderService } from './../../../shared/loader/mock-loader.service';
+import { LoaderService } from '../../../shared/loader/loader.service';
+import { MockLoaderService } from '../../../shared/loader/mock-loader.service';
 import { ScoreService } from '../../../shared/score/score.service';
 import { DateService } from '../../../shared/util/date.service';
 import { MockScoreService } from '../../../shared/score/mock-score.service';
-import { I18nService } from './../../../shared/i18n/i18n.service';
-import { environment } from './../../../environments/environment.hockey';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { MockSelectionService } from '../../../shared/selection/mock-selection.service';
 import { SharedModule } from '../../../shared/shared.module';
@@ -31,51 +29,52 @@ import { CommentService } from '../../../shared/comment/comment.service';
 import { MockCommentService } from '../../../shared/comment/mock-comment.service';
 
 import { ProductDetailComponent } from './product-detail.component';
-import { ProductActionComponent } from './../product-action/product-action.component';
-import { ProductAttributeComponent } from './../product-attribute/product-attribute.component';
-import { ProductDescriptionComponent } from './../product-description/product-description.component';
+import { ProductActionComponent } from '../product-action/product-action.component';
+import { ProductAttributeComponent } from '../product-attribute/product-attribute.component';
+import { ProductDescriptionComponent } from '../product-description/product-description.component';
+import { environment } from '../../environments/environment';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
-  let fixture: ComponentFixture < ProductDetailComponent > ;
+  let fixture: ComponentFixture<ProductDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          HttpClientTestingModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-          SharedModule
-        ],
-        declarations: [
-          ProductDetailComponent,
-          ProductActionComponent,
-          ProductAttributeComponent,
-          ProductDescriptionComponent
-        ],
-        providers: [
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: CommentService, useClass: MockCommentService },
-          { provide: DateService, useClass: DateService },
-          { provide: DeviceService, useClass: DeviceService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: ProductService, useClass: MockProductService },
-          { provide: ScoreService, useClass: MockScoreService },
-          { provide: SelectionService, useClass: MockSelectionService },
-          { provide: UserService, useClass: MockUserService },
-        ]
-      })
+      imports: [
+        CommonModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+        SharedModule
+      ],
+      declarations: [
+        ProductDetailComponent,
+        ProductActionComponent,
+        ProductAttributeComponent,
+        ProductDescriptionComponent
+      ],
+      providers: [
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: CommentService, useClass: MockCommentService},
+        {provide: DateService, useClass: DateService},
+        {provide: DeviceService, useClass: DeviceService},
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: ProductService, useClass: MockProductService},
+        {provide: ScoreService, useClass: MockScoreService},
+        {provide: SelectionService, useClass: MockSelectionService},
+        {provide: UserService, useClass: MockUserService},
+      ]
+    })
       .compileComponents();
   }));
 

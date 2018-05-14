@@ -8,7 +8,6 @@ import { SelectionService } from '../../../shared/navigation/selection/selection
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AlertService } from '../../../../popup/alert.service';
 import { MockAlertService } from '../../../../popup/mock-alert.service';
-import { environment } from '../../../../../environments/environment.hockey';
 import { LoaderService } from '../../../../loader/loader.service';
 import { MediaService } from '../../../../media/media.service';
 import { MockNotificationService } from '../../../../slack/mock-notification.service';
@@ -31,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SelectionEditComponent } from './selection-edit.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../../../media/cloudinary/cloudinary.module';
+import { environment } from '../../../../../app-hockey/environments/environment';
 
 describe('SelectionEditComponent', () => {
   let component: SelectionEditComponent;

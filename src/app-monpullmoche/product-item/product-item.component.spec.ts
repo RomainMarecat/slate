@@ -20,44 +20,44 @@ import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
 import { DateService } from '../../shared/util/date.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
-import { environment } from '../../environments/environment.monpullmoche';
 import { MediaModule } from '../../shared/media/media.module';
+import { environment } from '../environments/environment';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
-  let fixture: ComponentFixture < ProductItemComponent > ;
+  let fixture: ComponentFixture<ProductItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          RouterTestingModule,
-          BrowserModule,
-          HttpClientModule,
-          MatIconModule,
-          MatCardModule,
-          NgPipesModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          MatCardModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-          MediaModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
-        ],
-        declarations: [ProductItemComponent, ProductActionComponent],
-        providers: [
-          { provide: DateService, useClass: DateService },
-          I18nService
-        ]
-      })
+      imports: [
+        CommonModule,
+        RouterTestingModule,
+        BrowserModule,
+        HttpClientModule,
+        MatIconModule,
+        MatCardModule,
+        NgPipesModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        MediaModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        })
+      ],
+      declarations: [ ProductItemComponent, ProductActionComponent ],
+      providers: [
+        {provide: DateService, useClass: DateService},
+        I18nService
+      ]
+    })
       .compileComponents();
   }));
 

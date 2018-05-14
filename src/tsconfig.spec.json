@@ -1,6 +1,11 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "paths": {
+      "shared/*": [
+        "shared/*"
+      ]
+    },
     "outDir": "../out-tsc/spec",
     "baseUrl": "./",
     "module": "commonjs",

@@ -10,14 +10,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CarProduct } from '../../../shared/product/car-product';
 import { AreaService } from '../../../shared/map/shared/area.service';
 import { Area } from '../../../shared/map/shared/area';
-import 'rxjs/add/operator/take';
 import { OfferService } from '../../../shared/offer/offer.service';
 import { Category } from '../../../shared/category/category';
 import { CarOffer } from '../../../shared/offer/offer';
 import { CategoryService } from '../../../shared/category/category.service';
 import 'rxjs/add/operator/finally';
-import { Comment } from '../../../shared/comment/comment';
-import { environment } from '../../../environments/environment.car';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'app-car-offer-list',
@@ -63,12 +61,6 @@ export class OfferListComponent implements OnInit {
         this.meta.addTag({name: 'description', content: translations[ 'meta.description.offer-list' ]});
         this.title.setTitle(translations[ 'meta.title.offer-list' ]);
       });
-
-    this.meta.addTags([
-      {rel: 'canonical', href: environment.site_name},
-      {rel: 'alternate', hreflang: 'x-default', href: environment.site_name},
-      {rel: 'alternate', hreflang: 'en', href: environment.site_name}
-    ]);
 
     this.loadOffers();
   }

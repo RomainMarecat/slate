@@ -10,7 +10,6 @@ import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { environment } from '../../../../environments/environment.hockey';
 import { NgxEditorModule } from 'ngx-editor';
 import { SharedModule } from '../../../shared.module';
 import { HttpClientModule } from '@angular/common/http';
