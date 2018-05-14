@@ -9,7 +9,8 @@
       "root": "src/app-showcase",
       "outDir": "dist",
       "assets": [
-        "assets/showcase",
+        "assets",
+        "favicon.ico",
         "manifest.json"
       ],
       "index": "index.html",

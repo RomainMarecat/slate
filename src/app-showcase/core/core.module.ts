@@ -64,7 +64,7 @@ export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export function createTranslateLoader(http: HttpClient, name: string) {
-  return new TranslateHttpLoader(http, `./assets/${name}/i18n/`, '.json');
+  return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
 }
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');

@@ -35,29 +35,29 @@ export class AppRootComponent implements OnInit, OnDestroy {
               private title: Title,
               private favicon: Favicon) {
     this.title.setTitle('Showcase');
-    this.favicon.addLink('image/x-icon', `/assets/${environment.app_name}/images/icons/favicon.ico`);
-    this.meta.addTags([
-      {rel: 'apple-touch-icon', sizes: '57x57', href: `/assets/${environment.app_name}/images/icons/apple-icon-57x57.png`},
-      {rel: 'apple-touch-icon', sizes: '60x60', href: `/assets/${environment.app_name}/images/icons/apple-icon-60x60.png`},
-      {rel: 'apple-touch-icon', sizes: '72x72', href: `/assets/${environment.app_name}/images/icons/apple-icon-72x72.png`},
-      {rel: 'apple-touch-icon', sizes: '76x76', href: `/assets/${environment.app_name}/images/icons/apple-icon-76x76.png`},
-      {rel: 'apple-touch-icon', sizes: '114x114', href: `/assets/${environment.app_name}/images/icons/apple-icon-114x114.png`},
-      {rel: 'apple-touch-icon', sizes: '120x120', href: `/assets/${environment.app_name}/images/icons/apple-icon-120x120.png`},
-      {rel: 'apple-touch-icon', sizes: '144x144', href: `/assets/${environment.app_name}/images/icons/apple-icon-144x144.png`},
-      {rel: 'apple-touch-icon', sizes: '152x152', href: `/assets/${environment.app_name}/images/icons/apple-icon-152x152.png`},
-      {rel: 'apple-touch-icon', sizes: '180x180', href: `/assets/${environment.app_name}/images/icons/apple-icon-180x180.png`},
-      {rel: 'icon', type: 'image/png', sizes: '192x192', href: `/assets/${environment.app_name}/images/icons/android-icon-192x192.png`},
-      {rel: 'icon', type: 'image/png', sizes: '32x32', href: `/assets/${environment.app_name}/images/icons/favicon-32x32.png`},
-      {rel: 'icon', type: 'image/png', sizes: '96x96', href: `/assets/${environment.app_name}/images/icons/favicon-96x96.png`},
-      {rel: 'icon', type: 'image/png', sizes: '16x16', href: `/assets/${environment.app_name}/images/icons/favicon-16x16.png`},
-      {rel: 'manifest', href: `/assets/${environment.app_name}/images/icons/manifest.json`},
-      {name: 'msapplication-TileColor', content: '#ffffff'},
-      {
-        name: 'msapplication-TileImage',
-        content: `/assets/${environment.app_name}/images/icons/ms-icon-144x144.png`
-      },
-      {name: 'theme-color', content: '#ffffff'},
-    ]);
+    // this.favicon.addLink('image/x-icon', `/assets/${environment.app_name}/images/icons/favicon.ico`);
+    // this.meta.addTags([
+    //   {rel: 'apple-touch-icon', sizes: '57x57', href: `/assets/${environment.app_name}/images/icons/apple-icon-57x57.png`},
+    //   {rel: 'apple-touch-icon', sizes: '60x60', href: `/assets/${environment.app_name}/images/icons/apple-icon-60x60.png`},
+    //   {rel: 'apple-touch-icon', sizes: '72x72', href: `/assets/${environment.app_name}/images/icons/apple-icon-72x72.png`},
+    //   {rel: 'apple-touch-icon', sizes: '76x76', href: `/assets/${environment.app_name}/images/icons/apple-icon-76x76.png`},
+    //   {rel: 'apple-touch-icon', sizes: '114x114', href: `/assets/${environment.app_name}/images/icons/apple-icon-114x114.png`},
+    //   {rel: 'apple-touch-icon', sizes: '120x120', href: `/assets/${environment.app_name}/images/icons/apple-icon-120x120.png`},
+    //   {rel: 'apple-touch-icon', sizes: '144x144', href: `/assets/${environment.app_name}/images/icons/apple-icon-144x144.png`},
+    //   {rel: 'apple-touch-icon', sizes: '152x152', href: `/assets/${environment.app_name}/images/icons/apple-icon-152x152.png`},
+    //   {rel: 'apple-touch-icon', sizes: '180x180', href: `/assets/${environment.app_name}/images/icons/apple-icon-180x180.png`},
+    //   {rel: 'icon', type: 'image/png', sizes: '192x192', href: `/assets/${environment.app_name}/images/icons/android-icon-192x192.png`},
+    //   {rel: 'icon', type: 'image/png', sizes: '32x32', href: `/assets/${environment.app_name}/images/icons/favicon-32x32.png`},
+    //   {rel: 'icon', type: 'image/png', sizes: '96x96', href: `/assets/${environment.app_name}/images/icons/favicon-96x96.png`},
+    //   {rel: 'icon', type: 'image/png', sizes: '16x16', href: `/assets/${environment.app_name}/images/icons/favicon-16x16.png`},
+    //   {rel: 'manifest', href: `/assets/${environment.app_name}/images/icons/manifest.json`},
+    //   {name: 'msapplication-TileColor', content: '#ffffff'},
+    //   {
+    //     name: 'msapplication-TileImage',
+    //     content: `/assets/${environment.app_name}/images/icons/ms-icon-144x144.png`
+    //   },
+    //   {name: 'theme-color', content: '#ffffff'},
+    // ]);
   }
 
   ngOnInit() {

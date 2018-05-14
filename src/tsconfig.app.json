@@ -2,7 +2,9 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "shared/*": ["shared/*"]
+      "shared/*": [
+        "shared/*"
+      ]
     },
     "outDir": "../out-tsc/app",
     "baseUrl": "./",
@@ -10,8 +12,7 @@
     "types": []
   },
   "include": [
-    "shared/*",
-    "app-showcase/"
+    "shared/*"
   ],
   "exclude": [
     "test.ts",
