@@ -20,6 +20,8 @@
   ],
   "include": [
     "**/*.spec.ts",
-    "**/*.d.ts"
+    "**/*.d.ts",
+    "../shared/*.spec.ts",
+    "../shared/**/*.spec.ts"
   ]
 }
