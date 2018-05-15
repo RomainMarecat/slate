@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from '../shared/booking.service';
 import { AlertService } from '../../popup/alert.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-booking-add',
@@ -20,7 +22,9 @@ export class BookingAddComponent implements OnInit {
   }
 
   constructor(private bookingService: BookingService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private translate: TranslateService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -41,7 +45,9 @@ export class BookingAddComponent implements OnInit {
           booking.key = doc.id;
           this.bookingService.updateBooking(booking)
             .then(() => {
-              this.alertService.show('booking.saved');
+              this.alertService.show(this.translate.instant('booking-add.saved'));
+              this.router.navigate([ `/cart/${booking.key}/payment` ]);
+
             }, (err) => this.alertService.show(err));
         }, (err) => this.alertService.show(err));
     }

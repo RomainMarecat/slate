@@ -25,7 +25,8 @@
   },
   "booking-add": {
     "title": "réservation",
-    "subtitle": ""
+    "subtitle": "",
+    "saved": "La réservation est sauvegardée"
   },
   "calendar": {
     "day": "jour",
@@ -39,6 +40,10 @@
     "session": {
       "info": "Créneau vérrouillé"
     }
+  },
+  "contact": {
+    "title": "Nous contacter",
+    "subtitle": "Envoyer un message"
   },
   "location-current": {
     "label": {

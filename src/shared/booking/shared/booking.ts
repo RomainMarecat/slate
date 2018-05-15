@@ -3,4 +3,5 @@ export interface Booking {
   created_at: Date;
   total: number;
   user: string;
+  status: string;
 }
