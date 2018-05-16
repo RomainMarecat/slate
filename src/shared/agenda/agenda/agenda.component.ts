@@ -9,6 +9,7 @@ import 'moment/locale/fr';
 import { SessionService } from '../../session/shared/session.service';
 import { AlertService } from '../../popup/alert.service';
 import { Router } from '@angular/router';
+import { RoutingState } from '../../util/routing-state';
 
 @Component({
   selector: 'app-agenda',
@@ -24,10 +25,12 @@ export class AgendaComponent implements OnInit, OnDestroy {
               private i18nService: I18nService,
               private media: ObservableMedia,
               private sessionService: SessionService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private routingState: RoutingState) {
   }
 
   ngOnInit() {
+    this.routingState.loadRouting();
     let locale: string = this.i18nService.locale;
 
     if (locale === 'en') {
@@ -71,11 +74,22 @@ export class AgendaComponent implements OnInit, OnDestroy {
     this.sessionService.createSession(session)
       .then((doc) => {
         if (doc.id) {
-          this.router.navigate([ '/booking' ]);
+          session.key = doc.id;
+          this.sessionService.updateSession(session)
+            .then(() => doc.id,
+              (err) => {
+                console.error(err);
+                this.alertService.show(err, 'error');
+              });
         }
+        this.router.navigate([ '/cart' ]);
       }, (err) => {
         console.error(err);
         this.alertService.show(err, 'error');
+      })
+      .catch((err) => {
+        this.alertService.show(err, 'error');
+        this.router.navigate([ '/cart' ]);
       });
   }
 }

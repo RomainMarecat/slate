@@ -10,6 +10,7 @@
   "cta": {
     "back": "retour",
     "cancel": "annuler",
+    "pay": "payer",
     "save": "enregistrer",
     "send": "envoyer",
     "take_meeting": "prendre rendez-vous"
@@ -23,10 +24,21 @@
     "sort": "Trier",
     "filter": "Filtrer"
   },
-  "booking-add": {
+  "cart": {
+    "title": {
+      "cart": "validation",
+      "login": "se connecter",
+      "payment": "paiement",
+      "confirmation": "confirmation"
+    }
+  },
+  "cart-add": {
     "title": "réservation",
     "subtitle": "",
     "saved": "La réservation est sauvegardée"
+  },
+  "order-confirmation": {
+    "title": "Votre commande est confirmée"
   },
   "calendar": {
     "day": "jour",
@@ -48,6 +60,25 @@
   "location-current": {
     "label": {
       "meeting": "Siège social"
+    }
+  },
+  "payment": {
+    "number": "numéro de carte de crédit.",
+    "month": "mois d'expiration de carte de crédit",
+    "year": "l'année d'expiration de carte de crédit",
+    "cvv": "code de vérification de votre carte de crédit.",
+    "help": {
+      "cvv": {
+        "title": "code de vérification de votre carte de crédit.",
+        "description": "Pour votre sécurité, le code de vérification (CVV - card verification code) vous est demandé lors de chaque validation de commande. Pour les cartes VISA et MasterCard, vous trouverez le code CVV à 3 chiffres au verso de votre carte sur la zone de signature.",
+        "alt": "code de vérification de votre carte de crédit"
+      }
+    },
+    "label": {
+      "number": "carte",
+      "month": "mois",
+      "year": "année",
+      "cvv": "cvv"
     }
   },
   "placeholder": {
@@ -88,6 +119,11 @@
   "user": {
     "access_denied": {
       "connect": "Il faut se connecter pour effectuer cette action"
+    }
+  },
+  "snackbar": {
+    "guard": {
+      "unauthenticated": "Connectez-vous avant d'accéder à cette page"
     }
   }
 }

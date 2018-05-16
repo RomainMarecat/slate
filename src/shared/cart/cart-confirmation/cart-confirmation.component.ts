@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Payment } from 'shared/cart/shared/payment';
 
 @Component({
-  selector: 'app-showcase-cart-confirmation',
+  selector: 'app-cart-confirmation',
   templateUrl: './cart-confirmation.component.html',
-  styleUrls: ['./cart-confirmation.component.scss']
+  styleUrls: [ './cart-confirmation.component.scss' ]
 })
 export class CartConfirmationComponent implements OnInit {
 
-  constructor() { }
+  payment: Payment;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  setPayment(payment: Payment) {
+    this.payment = payment;
+  }
 }

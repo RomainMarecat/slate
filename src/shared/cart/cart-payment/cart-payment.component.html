@@ -1,6 +1,27 @@
-<p>
-  cart-payment works!
-</p>
-<form>
+<div class="cart-payment-wrapper">
+  <form #checkout="ngForm"
+        (ngSubmit)="onSubmit(checkout)"
+        class="payment-form"
+        fxLayout="column"
+        fxLayoutAlign="start stretch">
+    <div class="payment-content"    >
+      <div id="card-info" #cardInfo></div>
+      <mat-error id="card-errors" role="alert" *ngIf="error && error?.message">
+        {{ error.message }}
+      </mat-error>
+    </div>
+    <div class="actions-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="end stretch">
+      <button type="submit"
+              class="text-uppercase"
+              role="button"
+              title="pay"
+              color="primary"
+              mat-raised-button>
+        {{ 'cta.pay'|translate }}
+      </button>
+    </div>
+  </form>
+</div>
 
-</form>

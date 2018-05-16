@@ -32,7 +32,6 @@ import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { DeviceService } from '../../shared/device/device.service';
 import { FirebaseAppConfig, AngularFireModule } from 'angularfire2';
-import { Environment } from '../../shared/util/environment';
 import { ProductService } from '../../shared/product/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { SharedModule } from '../../shared/shared.module';
@@ -51,8 +50,11 @@ import { HomeModule } from '../home/home.module';
 import { ArticleService } from '../../shared/article/shared/article.service';
 import { ContactService } from '../../shared/contact/shared/contact.service';
 import { EventService } from '../../shared/agenda/shared/event.service';
-import { BookingService } from '../../shared/booking/shared/booking.service';
+import { CartService } from '../../shared/cart/shared/cart.service';
 import { SessionService } from '../../shared/session/shared/session.service';
+import { PaymentService } from '../../shared/cart/shared/payment.service';
+import { RoutingState } from '../../shared/util/routing-state';
+import { OrderService } from 'shared/order/shared/order.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -67,11 +69,11 @@ export function createTranslateLoader(http: HttpClient, name: string) {
   return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
 }
 
-export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
+export const CONFIG_TOKEN = new InjectionToken<any>('Registered config');
 export const TABLE_EVENT = new InjectionToken<string>('event');
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_AREA = new InjectionToken<string>('area');
-export const TABLE_BOOKING = new InjectionToken<string>('booking');
+export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_CONTACT = new InjectionToken<string>('contact');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
@@ -86,11 +88,14 @@ export const TABLE_POST = new InjectionToken<string>('post');
 export const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
 export const TABLE_MAP = new InjectionToken<string>('map');
 export const TABLE_OFFER = new InjectionToken<string>('offer');
+export const TABLE_ORDER = new InjectionToken<string>('order');
 export const TABLE_PARTNER = new InjectionToken<string>('partner');
+export const TABLE_PAYMENT = new InjectionToken<string>('payment');
+export const STRIPE_KEY = new InjectionToken<string>('');
 
 @Injectable()
 export class ConfigService {
-  configToken: Environment;
+  configToken: any;
 
   constructor(@Inject(CONFIG_TOKEN) configToken) {
     this.configToken = configToken;
@@ -166,7 +171,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_ARTICLE, useValue: 'article'},
     {provide: TABLE_AREA, useValue: 'area'},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
-    {provide: TABLE_BOOKING, useValue: 'booking'},
+    {provide: TABLE_CART, useValue: 'cart'},
     {provide: TABLE_CONTACT, useValue: 'contact'},
     {provide: TABLE_CATEGORY, useValue: 'category'},
     {provide: TABLE_COMMENT, useValue: 'comment'},
@@ -176,16 +181,19 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_MAP, useValue: 'map'},
     {provide: TABLE_MEDIA, useValue: 'media'},
     {provide: TABLE_OFFER, useValue: 'offer'},
+    {provide: TABLE_ORDER, useValue: 'order'},
     {provide: TABLE_POST, useValue: 'post'},
     {provide: TABLE_PARTNER, useValue: 'partner'},
+    {provide: TABLE_PAYMENT, useValue: 'payment'},
     {provide: TABLE_PRODUCT, useValue: 'product'},
     {provide: TABLE_SELECTION, useValue: 'selection'},
     {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_SCORE, useValue: 'scores'},
+    {provide: STRIPE_KEY, useValue: environment.stripeKey},
     {provide: ArticleService, useClass: ArticleService, deps: [ AngularFirestore, TABLE_ARTICLE ]},
     {provide: AreaService, useClass: AreaService, deps: [ AngularFirestore, TABLE_AREA ]},
     {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
-    {provide: BookingService, useClass: BookingService, deps: [ AngularFirestore, TABLE_BOOKING ]},
+    {provide: CartService, useClass: CartService, deps: [ AngularFirestore, TABLE_CART ]},
     {provide: ContactService, useClass: ContactService, deps: [ AngularFirestore, TABLE_CONTACT ]},
     {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY ]},
     {provide: CmsService, useClass: CmsService, deps: [ AngularFirestore, TABLE_CMS ]},
@@ -194,8 +202,10 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: EventService, useClass: EventService, deps: [ AngularFirestore, TABLE_EVENT ]},
     {provide: MediaService, useClass: MediaService, deps: [ AngularFirestore, TABLE_MEDIA ]},
     {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},
+    {provide: OrderService, useClass: OrderService, deps: [ AngularFirestore, TABLE_ORDER ]},
     {provide: MapService, useClass: MapService, deps: [ AngularFirestore, TABLE_MAP ]},
     {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
+    {provide: PaymentService, useClass: PaymentService, deps: [ AngularFirestore, TABLE_PAYMENT, STRIPE_KEY ]},
     {provide: ProductService, useClass: ProductService, deps: [ AngularFirestore, TABLE_PRODUCT ]},
     {provide: SelectionService, useClass: SelectionService, deps: [ AngularFirestore, TABLE_SELECTION ]},
     {provide: SessionService, useClass: SessionService, deps: [ AngularFirestore, TABLE_SESSION ]},
@@ -210,18 +220,19 @@ export const cookieConfig: NgcCookieConsentConfig = {
     SidenavService,
     UserGuard,
     UserService,
+    RoutingState
   ]
 })
 export class CoreModule {
 
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule /*, @Inject('CONFIG') config: Environment*/) {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     if (parentModule) {
       throw new Error(
         'CoreModule is already loaded. Import it in the AppModule only');
     }
   }
 
-  static forRoot(config: Environment): ModuleWithProviders {
+  static forRoot(config: any): ModuleWithProviders {
     return {
       ngModule: CoreModule,
       providers: [

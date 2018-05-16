@@ -10,11 +10,25 @@ import { CartService } from './shared/cart.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
+import {
+  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatStepperModule,
+  MatTooltipModule
+} from '@angular/material';
+import { PaymentService } from './shared/payment.service';
+import { CartEditComponent } from './cart-edit/cart-edit.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   imports: [
     CommonModule,
     CartRoutingModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatTooltipModule,
+    MatStepperModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
@@ -24,16 +38,21 @@ import { TranslateModule } from '@ngx-translate/core';
     CartListComponent,
     CartItemComponent,
     CartPaymentComponent,
-    CartConfirmationComponent
+    CartConfirmationComponent,
+    CartEditComponent,
+    CartComponent,
   ],
   exports: [
     CartListComponent,
     CartItemComponent,
     CartPaymentComponent,
-    CartConfirmationComponent
+    CartConfirmationComponent,
+    CartEditComponent,
+    CartComponent,
   ],
   providers: [
-    CartService
+    CartService,
+    PaymentService
   ]
 })
 export class CartModule {

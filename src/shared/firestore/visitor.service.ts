@@ -111,8 +111,8 @@ export class VisitorService {
   }
 
   /**
-   * @param  string  path
    * @return Observable
+   * @param path
    */
   private getDocPayload(path: string): Observable<any> {
     return this.document$ = this.collectionRef
@@ -130,8 +130,8 @@ export class VisitorService {
 
   /**
    * get a single document
-   * @param string key
    * @returns Observable<Document>
+   * @param key
    */
   getDocument(key: null | string): Observable<Document> {
     if (key) {
@@ -142,7 +142,7 @@ export class VisitorService {
 
   /**
    * Update a document
-   * @param Document document
+   * @param document
    */
   updateDocument(document: Document): Promise<void> {
     return this.collectionRef.doc(document.key).update({...document});
@@ -150,7 +150,7 @@ export class VisitorService {
 
   /**
    * create a Document
-   * @param Document document
+   * @param document
    */
   createDocument(document: any): Promise<DocumentReference> {
     return this.collectionRef.add({...document});
@@ -158,7 +158,7 @@ export class VisitorService {
 
   /**
    * Delete a document
-   * @param Document Document
+   * @param document
    */
   deleteDocument(document: Document) {
     this.collectionRef.doc(document.key).delete();
