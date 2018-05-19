@@ -14,7 +14,7 @@
       <td class="calendar-body-column-content text-center"
           #dayList
           [attr.id]="day.key"
-          *ngFor="let day of days">
+          *ngFor="let day of days; let keyDay = index">
         <div class="time-slot"
              [class.busy]="isSlotBusy(day, time)"
              [class.early]="isSlotEarly(day, time)"
@@ -32,12 +32,13 @@
               <span class="default-time">{{ time }}</span>
             </button>
             <ng-template #sessionTitle>
-                <button type="button"
-                        mat-raised-button
-                        class="slot-session"
+              <button type="button"
+                      mat-raised-button
+                      class="slot-session"
                       [matTooltipPosition]="'above'"
                       [matTooltip]="getSessionTooltip(day, time)">
-                {{ getSessionTitle(day, time)}}</button>
+                {{ getSessionTitle(day, time)}}
+              </button>
             </ng-template>
             <a class="link-close" (click)="onTimeSlotClicked(day, time)">
               <mat-icon class="icon-close"
@@ -49,6 +50,17 @@
         <div class="slot-busy"
              *ngIf="getAvailabilities(day.key).length <= 0 || isDayBusy(day, time)">
           <span>{{ 'calendar.availability.empty'|translate }}</span>
+        </div>
+        <div class="next-slot"
+             *ngIf="isAllSlotNotAvailable() && keyDay === days.length-1">
+          <button type="button"
+                  role="button"
+                  mat-raised-button
+                  color="primary"
+                  (click)="onNextDay()">
+            <span>{{ 'cta.next-available-slot'|translate }}</span>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </button>
         </div>
       </td>
     </tr>
