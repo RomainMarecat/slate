@@ -26,8 +26,8 @@ const routes: Routes = [{
     loadChildren: './../shared/agenda/agenda.module#AgendaModule'
   },
   {
-    path: 'booking',
-    loadChildren: './../shared/booking/booking.module#BookingModule'
+    path: 'cart',
+    loadChildren: './../shared/cart/cart.module#CartModule'
   }
 ];
 

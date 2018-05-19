@@ -1,0 +1,37 @@
+<form class="form"
+      [formGroup]="form"
+      (ngSubmit)="save()"
+      fxLayout="column"
+      fxLayoutAlign="start center">
+    <mat-card-header fxLayout="row"
+                     fxLayoutAlign="center stretch">
+      <mat-card-title class="text-capitalize">
+        <h1>{{ 'cart-add.title'|translate }}</h1>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ 'cart-add.subtitle'|translate }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content fxLayout="row"
+                      fxLayoutAlign="center stretch">
+
+      <mat-form-field>
+        <mat-select [placeholder]="'placeholder.reason'|translate"
+                    [formControl]="form.controls.reason">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let reason of reasons" [value]="reason">
+            {{ reason.name|translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit"
+              mat-raised-button
+              color="primary"
+              class="cart-actions text-uppercase">
+        {{ 'cta.take_meeting'|translate }}
+      </button>
+    </mat-card-actions>
+</form>

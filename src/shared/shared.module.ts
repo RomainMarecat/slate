@@ -55,8 +55,8 @@ import { CmsDetailModule } from './cms-detail/cms-detail.module';
 import { FaviconModule } from './favicon/favicon.module';
 import { ArticleModule } from './article/article.module';
 import { PipeModule } from './pipe/pipe.module';
-import { BookingModule } from './booking/booking.module';
 import { SessionModule } from './session/session.module';
+import { CartModule } from './cart/cart.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -74,13 +74,13 @@ export class ConfigService {
     AngularFireAuthModule,
     Angulartics2Module,
     ArticleModule,
-    BookingModule,
     FaviconModule,
     FacetModule,
     FileUploadModule,
     FlexLayoutModule,
     FooterModule,
     FormsModule,
+    CartModule,
     CmsDetailModule,
     CommentModule,
     CommonModule,
@@ -131,8 +131,8 @@ export class ConfigService {
   ],
   exports: [
     ArticleModule,
-    BookingModule,
     Angulartics2Module,
+    CartModule,
     CmsDetailModule,
     CommentModule,
     DragulaModule,

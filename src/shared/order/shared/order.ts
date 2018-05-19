@@ -1,6 +1,6 @@
-export interface Booking {
+export interface Order {
   key?: string;
-  created_at: Date;
   total: number;
   user: string;
+  delivery?: string;
 }

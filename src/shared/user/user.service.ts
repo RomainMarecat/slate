@@ -3,8 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { User } from './user';
 import { Observable } from 'rxjs/Observable';
-import { AlertService } from '../../shared/popup/alert.service';
-import { map } from 'rxjs/operators';
+import { AlertService } from '../popup/alert.service';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
 
@@ -52,8 +51,12 @@ export class UserService {
     return this.afAuth.auth.currentUser as User;
   }
 
+  getLoginGoogle(): Promise<any> {
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
+
   loginGoogle() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    this.getLoginGoogle()
       .then((result) => {
         const user = result.user;
         if (user) {

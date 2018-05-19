@@ -1,0 +1,41 @@
+<div class="cart-payment-wrapper">
+  <form #checkout="ngForm"
+        (ngSubmit)="onSubmit(checkout)"
+        class="payment-form"
+        fxLayout="column"
+        fxLayoutAlign="start stretch">
+    <div class="payment-content">
+      <ngx-stripe-card (on)="onChange($event)" [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+
+      <mat-error id="card-errors"
+                 class="card-errors"
+                 role="alert"
+                 *ngIf="error && error?.message">
+        {{ error.message }}
+      </mat-error>
+    </div>
+    <div class="actions-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="space-around stretch">
+      <button type="button"
+              class="text-uppercase"
+              role="button"
+              mat-raised-button
+              title="cancel"
+              [disabled]="disablePayButton">
+        {{ 'cta.cancel'|translate }}
+      </button>
+      <button type="submit"
+              class="text-uppercase"
+              role="button"
+              title="pay"
+              color="primary"
+              mat-button
+              mat-raised-button
+              [disabled]="!onLine || disablePayButton">
+        {{ 'cta.pay'|translate }}
+      </button>
+    </div>
+  </form>
+</div>
+
