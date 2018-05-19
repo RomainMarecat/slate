@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Payment } from 'shared/cart/shared/payment';
+import { Payment } from 'shared/payment/shared/payment';
+import { Order } from '../../order/shared/order';
+import { OrderService } from '../../order/shared/order.service';
+import { AlertService } from '../../popup/alert.service';
 
 @Component({
   selector: 'app-cart-confirmation',
@@ -9,8 +12,10 @@ import { Payment } from 'shared/cart/shared/payment';
 export class CartConfirmationComponent implements OnInit {
 
   payment: Payment;
+  order: Order;
 
-  constructor() {
+  constructor(private orderService: OrderService,
+              private alertService: AlertService) {
   }
 
   ngOnInit() {
@@ -18,5 +23,11 @@ export class CartConfirmationComponent implements OnInit {
 
   setPayment(payment: Payment) {
     this.payment = payment;
+    this.orderService.getOrder(payment.order)
+      .subscribe((order: Order) => this.order = order,
+        (err) => {
+          console.error(err);
+          this.alertService.show(err);
+        });
   }
 }

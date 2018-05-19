@@ -1,30 +1,47 @@
-<div class="cart-wrapper"
-     fxLayout="row wrap"
+<div class="w-100"
+     fxLayout="row"
      fxLayoutAlign="center stretch">
-  <mat-horizontal-stepper [linear]="true"
-                          #stepper="matHorizontalStepper">
-    <mat-step>
-      <ng-template matStepLabel>{{ 'cart.title.cart'|translate }}</ng-template>
-      <app-cart-edit (submitted)="onSaveCart($event)"></app-cart-edit>
-    </mat-step>
-    <mat-step *ngIf="!(userService.getAuthState() | async)">
-      <ng-template matStepLabel>{{ 'cart.title.login'|translate }}</ng-template>
-      <div class="login-wrapper" *ngIf="!(userService.getAuthState() | async)">
-        <button mat-raised-button
-                color="accent"
-                type="button"
-                (click)="onLogin()"
-                [innerHtml]="'menu.connection.title'|translate">
-        </button>
-      </div>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>{{ 'cart.title.payment'|translate }}</ng-template>
-      <app-cart-payment [cart]="cart" (paid)="onPaid($event)"></app-cart-payment>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>{{ 'cart.title.confirmation'|translate }}</ng-template>
-      <app-cart-confirmation></app-cart-confirmation>
-    </mat-step>
-  </mat-horizontal-stepper>
+  <div class="cart-wrapper">
+    <mat-card class="cart-card">
+      <mat-card-content>
+        <mat-horizontal-stepper linear
+                                #stepper>
+
+          <!-- Step booking -->
+          <mat-step [completed]="isCartCompleted">
+            <ng-template matStepLabel>{{ 'cart.title.cart'|translate }}</ng-template>
+            <app-cart-edit (submitted)="onSaveCart($event)"></app-cart-edit>
+          </mat-step>
+
+
+          <!-- Step user -->
+          <mat-step *ngIf="!isUserAlreadyLogged" [completed]="isUserCompleted">
+            <ng-template matStepLabel>{{ 'cart.title.login'|translate }}</ng-template>
+            <div class="login-wrapper"
+                 fxLayout="row"
+                 fxLayoutAlign="center stretch">
+              <button mat-raised-button
+                      color="accent"
+                      type="button"
+                      (click)="onLogin()"
+                      [innerHtml]="'menu.connection.title'|translate">
+              </button>
+            </div>
+          </mat-step>
+
+          <!-- Step payment -->
+          <mat-step [completed]="isPaymentCompleted">
+            <ng-template matStepLabel>{{ 'cart.title.payment'|translate }}</ng-template>
+            <app-cart-payment [cart]="cart" (paid)="onPaid($event)"></app-cart-payment>
+          </mat-step>
+
+          <!-- Step confirmation -->
+          <mat-step [completed]="isPaymentConfirmed">
+            <ng-template matStepLabel>{{ 'cart.title.confirmation'|translate }}</ng-template>
+            <app-cart-confirmation></app-cart-confirmation>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

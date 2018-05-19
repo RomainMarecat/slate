@@ -6,6 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartService } from '../shared/cart.service';
 import { Cart } from '../shared/cart';
 import { RoutingState } from '../../util/routing-state';
+import { User } from '../../user/user';
 
 @Component({
   selector: 'app-cart-edit',
@@ -17,6 +18,8 @@ export class CartEditComponent implements OnInit {
   reasons: { name: string }[] = [];
   form: FormGroup = CartEditComponent.getForm();
   @Output() submitted: EventEmitter<Cart> = new EventEmitter<Cart>();
+
+  user: User;
 
   static getForm(): FormGroup {
     return new FormGroup({
@@ -42,12 +45,17 @@ export class CartEditComponent implements OnInit {
     ];
   }
 
+  setUser(user: User) {
+    this.user = user;
+  }
+
   save() {
     if (this.form.valid) {
       const cart: Cart = {
         ...this.form.value,
         ...{
           total: 100,
+          user: this.user ? this.user.uid : null,
           created_at: new Date(),
           updated_at: new Date()
         }

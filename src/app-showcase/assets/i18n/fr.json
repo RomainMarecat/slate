@@ -8,6 +8,8 @@
     }
   },
   "cta": {
+    "back_to_home": "retour à la l'accueil",
+    "home": "accueil",
     "back": "retour",
     "cancel": "annuler",
     "pay": "payer",
@@ -35,10 +37,21 @@
   "cart-add": {
     "title": "réservation",
     "subtitle": "",
-    "saved": "La réservation est sauvegardée"
+    "saved": "la réservation est sauvegardée"
+  },
+  "cart-payment": {
+    "errors": {
+      "cart": "Une erreur est survenue. Le montant du panier est incohérent."
+    }
   },
   "order-confirmation": {
-    "title": "Votre commande est confirmée"
+    "title": "La commande est confirmée",
+    "content": {
+      "waiting": "La commande est maintenant en cours de traitement.",
+      "key": "numéro de commande",
+      "summary": "récapitulatif",
+      "total": "montant total"
+    }
   },
   "calendar": {
     "day": "jour",
@@ -125,5 +138,6 @@
     "guard": {
       "unauthenticated": "Connectez-vous avant d'accéder à cette page"
     }
-  }
+  },
+  "euro": "€"
 }

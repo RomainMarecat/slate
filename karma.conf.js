@@ -9,7 +9,7 @@ module.exports = function(config) {
       pattern: './src/test.ts',
       watched: false
     }, {
-      pattern: './src/scss/styles.spec.css'
+      pattern: './src/styles.spec.css'
     }, {
       pattern: './node_modules/hammerjs/hammer.js'
     }, {

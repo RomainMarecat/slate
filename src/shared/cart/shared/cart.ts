@@ -7,12 +7,6 @@ export interface Cart {
   updated_at: Date;
 }
 
-export interface CartError {
-  code: string;
-  message: string;
-  type: string;
-}
-
 export class CreditCardList {
   static getCreditCardList() {
     return {

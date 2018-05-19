@@ -15,6 +15,7 @@ import { MockAlertService } from '../../popup/mock-alert.service';
 import { AlertService } from '../../popup/alert.service';
 import { SessionService } from '../../session/shared/session.service';
 import { MockSessionService } from '../../session/shared/mock-session.service';
+import { RoutingState } from '../../util/routing-state';
 
 describe('AgendaComponent', () => {
   let component: AgendaComponent;
@@ -37,6 +38,7 @@ describe('AgendaComponent', () => {
         CalendarBodyComponent
       ],
       providers: [
+        RoutingState,
         {provide: EventService, useClass: MockEventService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: SessionService, useClass: MockSessionService},

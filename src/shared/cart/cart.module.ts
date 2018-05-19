@@ -11,12 +11,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import {
-  MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatStepperModule,
+  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatStepperModule,
   MatTooltipModule
 } from '@angular/material';
-import { PaymentService } from './shared/payment.service';
+import { PaymentService } from '../payment/shared/payment.service';
 import { CartEditComponent } from './cart-edit/cart-edit.component';
 import { CartComponent } from './cart/cart.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { CartComponent } from './cart/cart.component';
     CartRoutingModule,
     MatCardModule,
     MatFormFieldModule,
+    MatIconModule,
     MatTooltipModule,
     MatStepperModule,
     MatInputModule,
@@ -32,6 +34,7 @@ import { CartComponent } from './cart/cart.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    NgxStripeModule.forRoot('pk_test_ZMBhVWlsAzGDErk8PFH28TWX'),
     TranslateModule,
   ],
   declarations: [

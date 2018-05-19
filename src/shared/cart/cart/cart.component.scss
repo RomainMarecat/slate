@@ -1,0 +1,28 @@
+@import './../../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+
+.cart-wrapper {
+  margin: 20px;
+  max-width: 768px;
+
+  min-width: 576px;
+
+  @include media-breakpoint-up(xs) {
+    min-width: 200px;
+  }
+  @include media-breakpoint-up(sm) {
+    min-width: 576px;
+  }
+  @include media-breakpoint-up(md) {
+    min-width: 768px;
+  }
+  @include media-breakpoint-up(lg) {
+    min-width: 768px;
+  }
+  @include media-breakpoint-up(xl) {
+    min-width: 768px;
+  }
+
+  .cart-card {
+    max-width: 768px;
+  }
+}

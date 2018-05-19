@@ -1,11 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { CartService } from './cart.service';
+import { MockCartService } from './mock-cart.service';
 
 describe('CartService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CartService]
+      providers: [
+        {provide: CartService, useClass: MockCartService}
+      ]
     });
   });
 

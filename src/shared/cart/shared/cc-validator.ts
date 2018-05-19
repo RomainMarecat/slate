@@ -24,9 +24,11 @@ export class CCValidator {
     const theCard: string = this.__preprocess(cardNumber);
 
     for (const key in this._types) {
-      cardProps = this._types[ key ];
-      if (theCard.match(cardProps[ 'pattern' ])) {
-        return key;
+      if (this._types[key]) {
+        cardProps = this._types[ key ];
+        if (theCard.match(cardProps[ 'pattern' ])) {
+          return key;
+        }
       }
     }
 

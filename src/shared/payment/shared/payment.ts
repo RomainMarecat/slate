@@ -1,9 +1,10 @@
-import { ExpValidator } from './exp-validator';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CreditCardValidator } from './credit-card-validator';
+import { ExpValidator } from '../../cart/shared/exp-validator';
+import { CreditCardValidator } from '../../cart/shared/credit-card-validator';
+
 export interface Payment {
   key?: string;
-  token: string;
+  token: any;
   order?: string;
   created_at: Date;
   updated_at: Date;

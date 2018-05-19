@@ -52,7 +52,7 @@ import { ContactService } from '../../shared/contact/shared/contact.service';
 import { EventService } from '../../shared/agenda/shared/event.service';
 import { CartService } from '../../shared/cart/shared/cart.service';
 import { SessionService } from '../../shared/session/shared/session.service';
-import { PaymentService } from '../../shared/cart/shared/payment.service';
+import { PaymentService } from '../../shared/payment/shared/payment.service';
 import { RoutingState } from '../../shared/util/routing-state';
 import { OrderService } from 'shared/order/shared/order.service';
 

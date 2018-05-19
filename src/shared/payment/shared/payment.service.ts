@@ -8,6 +8,7 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
+import { DocumentRef, WindowRef } from '@agm/core/utils/browser-globals';
 
 @Injectable()
 export class PaymentService extends VisitorService {

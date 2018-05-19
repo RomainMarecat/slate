@@ -3,8 +3,11 @@ import { UserService } from '../../user/user.service';
 import { Cart } from 'shared/cart/shared/cart';
 import { MatStepper } from '@angular/material';
 import { CartPaymentComponent } from 'shared/cart/cart-payment/cart-payment.component';
-import { Payment } from 'shared/cart/shared/payment';
+import { Payment } from 'shared/payment/shared/payment';
 import { CartConfirmationComponent } from 'shared/cart/cart-confirmation/cart-confirmation.component';
+import { CartEditComponent } from '../cart-edit/cart-edit.component';
+import { User } from '../../user/user';
+import { CartService } from '../shared/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,17 +16,46 @@ import { CartConfirmationComponent } from 'shared/cart/cart-confirmation/cart-co
 })
 export class CartComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;
+  @ViewChild(CartEditComponent) cartEditComponent: CartEditComponent;
   @ViewChild(CartPaymentComponent) cartPaymentComponent: CartPaymentComponent;
   @ViewChild(CartConfirmationComponent) cartConfirmationComponent: CartConfirmationComponent;
-  constructor(public userService: UserService) {
+  isCartCompleted = false;
+  isUserCompleted = false;
+  isPaymentCompleted = false;
+  isPaymentConfirmed = false;
+  isUserAlreadyLogged = false;
+  user: User;
+  cart: Cart;
+
+  constructor(private userService: UserService,
+              private cartService: CartService) {
   }
 
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser() {
+    this.userService.getAuthState()
+      .subscribe((user) => {
+        if (user) {
+          this.isUserAlreadyLogged = true;
+          this.isUserCompleted = true;
+          this.user = user;
+          this.cartEditComponent.setUser(user);
+        }
+      });
   }
 
   onSaveCart(cart: Cart) {
+    this.cart = cart;
     this.cartPaymentComponent.setCart(cart);
-    this.stepper.next();
+    this.isCartCompleted = true;
+
+    // Content loading issue
+    setTimeout(() => {
+      this.stepper.next();
+    }, 200);
   }
 
   onLogin() {
@@ -31,8 +63,20 @@ export class CartComponent implements OnInit {
       .then((result) => {
         const user = result.user;
         if (user) {
+          this.user = user;
           localStorage.setItem('user', JSON.stringify(user));
-          this.stepper.next();
+          this.isUserCompleted = true;
+          this.cartEditComponent.setUser(user);
+          this.cart.user = this.user.uid;
+          this.cartService.updateCart(this.cart)
+            .then(() => {
+              this.cartPaymentComponent.setCart(this.cart);
+              setTimeout(() => {
+                this.stepper.next();
+              }, 200);
+            }, (err) => {
+              console.error(err);
+            });
         }
       }, (err) => {
         console.error(err);
@@ -41,6 +85,11 @@ export class CartComponent implements OnInit {
 
   onPaid(payment: Payment) {
     this.cartConfirmationComponent.setPayment(payment);
-    this.stepper.next();
+    this.isPaymentCompleted = true;
+    this.isPaymentConfirmed = true;
+
+    setTimeout(() => {
+      this.stepper.next();
+    }, 200);
   }
 }
