@@ -22,6 +22,8 @@
     <app-calendar-body [onlineSession]="onlineSession"
                        [days]="days"
                        [viewMode]="viewMode"
+                       [start]="start"
+                       [end]="end"
                        [daysAvailability]="daysAvailability"
                        [daysBusySlotNumber]="daysBusySlotNumber"
                        [daysAvailabilitySlotNumber]="daysAvailabilitySlotNumber"
@@ -31,6 +33,7 @@
                        [sessionsSlots]="sessionsSlots"
                        [sessionsEndSlots]="sessionsEndSlots"
                        [sessions]="sessions"
+                       (startChanged)="onStartChanged($event)"
                        (sessionAdded)="onSessionAdded($event)"
                        (sessionRemoved)="onSessionRemoved($event)"></app-calendar-body>
 

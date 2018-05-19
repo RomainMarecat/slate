@@ -16,6 +16,8 @@ import { AlertService } from '../../../popup/alert.service';
 export class CalendarBodyComponent implements OnInit {
   @Input() onlineSession: OnlineSession;
   @Input() viewMode: String;
+  @Input() start: Moment;
+  @Input() end: Moment;
   @Input() days: Array<Day>;
 
   @Input() daysAvailability: Map<string, string[]>;
@@ -31,12 +33,33 @@ export class CalendarBodyComponent implements OnInit {
   @Output() sessionAdded: EventEmitter<Session> = new EventEmitter<Session>();
   @Output() sessionRemoved: EventEmitter<{ key: string, session: Session }>
     = new EventEmitter<{ key: string, session: Session }>();
+  @Output() startChanged: EventEmitter<Moment> = new EventEmitter<Moment>();
+  @Output() endChanged: EventEmitter<Moment> = new EventEmitter<Moment>();
 
   constructor(private translate: TranslateService,
               private alertService: AlertService) {
   }
 
   ngOnInit() {
+  }
+
+  onNextDay() {
+    let daysNb = 1;
+    if (this.viewMode === 'week') {
+      daysNb = 7;
+    }
+    this.start = moment(this.start).add(daysNb, 'day');
+    this.startChanged.emit(this.start);
+  }
+
+  /**
+   * If all slot is not avalaibles all all days
+   * @returns {boolean}
+   */
+  isAllSlotNotAvailable(): boolean {
+    if (this.days && this.days.length > 0) {
+      return this.days.filter((day) => this.daysAvailability.get(day.key).length > 0).length === 0;
+    }
   }
 
   /**
