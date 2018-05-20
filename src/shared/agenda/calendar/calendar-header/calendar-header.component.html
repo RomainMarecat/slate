@@ -26,9 +26,10 @@
       <mat-icon>keyboard_arrow_right</mat-icon>
     </button>
     <button class="button-actions"
+            [title]="'calendar.back-today'|translate"
             mat-raised-button
             color="primary"
-            [class.active]="isToday()"
+            [disabled]="isToday()"
             (click)="goToToday()">
       <mat-icon>today</mat-icon>
     </button>
@@ -43,6 +44,7 @@
     <button class="button-actions"
             mat-raised-button
             color="primary"
+            [disabled]="true"
             [class.hide-on-small-only]="end?.format('YYYY-MM-DD') !== start?.format('YYYY-MM-DD')">
       {{ start?.format('LL') }}
       <span *ngIf="end?.format('YYYY-MM-DD') !== start?.format('YYYY-MM-DD')">

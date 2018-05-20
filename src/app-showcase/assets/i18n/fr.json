@@ -8,6 +8,8 @@
     }
   },
   "cta": {
+    "learn-more": "en savoir plus",
+    "buy": "acheter",
     "next-available-slot": "prochaines disponibilités",
     "back_to_home": "retour à la l'accueil",
     "home": "accueil",
@@ -55,6 +57,7 @@
     }
   },
   "calendar": {
+    "back-today": "revenir à la date d'aujourd'hui",
     "day": "jour",
     "3days": "3 jours",
     "week": "semaine",
@@ -70,6 +73,20 @@
   "contact": {
     "title": "Nous contacter",
     "subtitle": "Envoyer un message"
+  },
+  "feature": {
+    "title1": "Entretien des sols et des plantes",
+    "title2": "Traitements",
+    "title3": "Gardiennage",
+    "title4": "Petit Bricolage",
+    "description1": "Tonte, Taille ( haies, arbuste...), Arrosage, Rempotage, Récoltes",
+    "description2": "Enlèvement des déchets végétaux, Refleurissement, déneigement, Désherbage",
+    "description3": "Rangement du bois de chauffe, Débroussaillage, Petit Bricolage",
+    "description4": "Gardiennage, Nettoyage intérieur et extérieur"
+  },
+  "header-style1": {
+    "title": "Slate garden",
+    "subtitle": "Elagage, création parc et jardin, service à la personne"
   },
   "location-current": {
     "label": {

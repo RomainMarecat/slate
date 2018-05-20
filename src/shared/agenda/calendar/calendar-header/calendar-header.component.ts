@@ -67,7 +67,7 @@ export class CalendarHeaderComponent implements OnInit {
    * @returns {boolean}
    */
   isToday() {
-    return moment() === this.start;
+    return moment() === moment(this.start);
   }
 
   /**

@@ -1,0 +1,48 @@
+@import '../../../../app-showcase/scss/theme';
+
+.header {
+  display: block;
+  position: relative;
+  background: linear-gradient(rgba(18, 31, 42, 0.75), rgba(18, 31, 42, 0.7)),
+  url('/assets/images/header-style1.jpg'),
+  no-repeat center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .header-wrapper {
+    min-height: 100vh;
+
+    h1 {
+      color: mat-color($white);
+      text-transform: uppercase;
+      font-size: 48px;
+      letter-spacing: 3px;
+      margin: 0 0 30px;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h2 {
+      color: mat-color($white);
+      font-size: 18px;
+      line-height: 20px;
+      letter-spacing: 1px;
+      margin: 0;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .header-actions {
+      margin-top: 45px;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
+}
+
