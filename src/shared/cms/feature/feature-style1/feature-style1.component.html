@@ -1,0 +1,23 @@
+<section id="features"
+         class="feature-wrapper">
+  <div class="feature-header"
+       fxLayout="column"
+       fxLayoutAlign="center center">
+    <h2>{{ 'header-style1.title'|translate }}</h2>
+    <h3>{{ 'header-style1.subtitle'|translate }}</h3>
+  </div>
+  <div class="feature-content container"
+       fxLayout="row"
+       fxLayout.xs="row wrap"
+       fxLayoutAlign="space-around stretch"
+       fxLayoutGap="20px">
+    <div class="feature-item"
+         fxLayout="column"
+         fxLayoutAlign="center center"
+         *ngFor="let feature of features">
+      <mat-icon>{{ feature.icon }}</mat-icon>
+      <h4>{{ feature.title | translate }}</h4>
+      <p class="item-description">{{ feature.description | translate }}</p>
+    </div>
+  </div>
+</section>

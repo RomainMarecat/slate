@@ -57,6 +57,7 @@ import { ArticleModule } from './article/article.module';
 import { PipeModule } from './pipe/pipe.module';
 import { SessionModule } from './session/session.module';
 import { CartModule } from './cart/cart.module';
+import { CmsModule } from './cms/cms.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -74,16 +75,17 @@ export class ConfigService {
     AngularFireAuthModule,
     Angulartics2Module,
     ArticleModule,
+    CartModule,
+    CmsDetailModule,
+    CmsModule,
+    CommentModule,
+    CommonModule,
     FaviconModule,
     FacetModule,
     FileUploadModule,
     FlexLayoutModule,
     FooterModule,
     FormsModule,
-    CartModule,
-    CmsDetailModule,
-    CommentModule,
-    CommonModule,
     DragulaModule,
     HammerModule,
     HttpClientModule,
@@ -133,6 +135,7 @@ export class ConfigService {
     ArticleModule,
     Angulartics2Module,
     CartModule,
+    CmsModule,
     CmsDetailModule,
     CommentModule,
     DragulaModule,

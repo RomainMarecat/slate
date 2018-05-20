@@ -1,0 +1,31 @@
+@import '../../../../app-showcase/scss/theme';
+
+.feature-wrapper {
+  padding: 100px 0px;
+
+  .feature-header {
+    margin-top: 40px;
+
+    h2 {
+      color: mat-color($black);
+      font-size: 30px;
+      line-height: 32px;
+      letter-spacing: 1px;
+      margin: 0 0 30px;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h3 {
+      color: mat-color($black);
+      font-size: 28px;
+      line-height: 30px;
+      letter-spacing: 1px;
+      margin: 0 0 30px;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+}

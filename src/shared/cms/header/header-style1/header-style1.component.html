@@ -1,0 +1,29 @@
+<header class="header"
+        fxLayout="row"
+        fxLayoutAlign="center stretch">
+  <div class="header-wrapper"
+       fxLayout="column"
+       fxLayoutAlign="center center">
+    <h1>{{ 'header-style1.title'|translate }}</h1>
+    <h2>{{ 'header-style1.subtitle'|translate }}</h2>
+    <div class="header-actions"
+         fxLayout="row"
+         fxLayoutAlign="center stretch"
+         fxLayoutGap="50px">
+      <div class="header-link">
+        <a href="#features"
+           mat-raised-button
+           color="accent">
+          {{ 'cta.learn-more'|translate }}
+        </a>
+      </div>
+      <div class="header-link">
+        <a routerLink="/"
+           mat-raised-button
+           color="primary">
+          {{ 'cta.buy'|translate }}
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
