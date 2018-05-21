@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { HeaderStyle1Component } from './header-style1.component';
 
@@ -15,6 +16,7 @@ describe('HeaderStyle1Component', () => {
         FlexLayoutModule,
         MatButtonModule,
         MatIconModule,
+        RouterTestingModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
@@ -32,5 +34,6 @@ describe('HeaderStyle1Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    console.log('testHeaderStyle1Component');
   });
 });
