@@ -32,5 +32,6 @@ describe('PricingStyle1Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    console.log('testPricingStyle1Component');
   });
 });

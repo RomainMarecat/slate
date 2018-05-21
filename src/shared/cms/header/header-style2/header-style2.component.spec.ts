@@ -32,5 +32,6 @@ describe('HeaderStyle2Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    console.log('testHeaderStyle2Component');
   });
 });

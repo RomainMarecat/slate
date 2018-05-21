@@ -29,6 +29,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { RoutingState } from '../../util/routing-state';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxStripeModule, StripeService } from 'ngx-stripe';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CartComponent', () => {
   let component: CartComponent;
@@ -39,6 +40,7 @@ describe('CartComponent', () => {
       imports: [
         NoopAnimationsModule,
         CommonModule,
+        HttpClientTestingModule,
         MatCardModule,
         MatFormFieldModule,
         MatIconModule,
@@ -85,5 +87,6 @@ describe('CartComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    console.log('testCart');
   });
 });

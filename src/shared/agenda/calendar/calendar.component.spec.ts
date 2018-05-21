@@ -47,5 +47,6 @@ describe('CalendarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    console.log('testCalendarPayment');
   });
 });
