@@ -90,6 +90,14 @@
     "title": "Slate garden",
     "subtitle": "Elagage, création parc et jardin, service à la personne"
   },
+  "header-style2": {
+    "title": "Slate garden",
+    "subtitle": "pour un ouvrage soigné jusqu'au bout des branches",
+    "description": "Elagage, création parc et jardin, service à la personne"
+  },
+  "image": {
+    "bg-line-green": "image de fond ligne verte"
+  },
   "location-current": {
     "label": {
       "meeting": "Siège social"
