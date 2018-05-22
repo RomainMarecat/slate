@@ -5,7 +5,9 @@
         fxLayout="column"
         fxLayoutAlign="start stretch">
     <div class="payment-content">
-      <ngx-stripe-card (on)="onChange($event)" [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+      <ngx-stripe-card (on)="onChange($event)"
+                       [options]="cardOptions"
+                       [elementsOptions]="elementsOptions"></ngx-stripe-card>
 
       <mat-error id="card-errors"
                  class="card-errors"

@@ -1,7 +1,11 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
+
 .week-calendar-wrapper {
   .week-calendar-header {
     .week-calendar-title {
-      width: 90vw;
+      @include media-breakpoint-up(sm) {
+        width: 90vw;
+      }
     }
   }
 }

@@ -8,8 +8,10 @@
     }
   },
   "cta": {
+    "add-to-cart": "ajouter au panier",
     "learn-more": "en savoir plus",
     "buy": "acheter",
+    "booking": "réserver",
     "next-available-slot": "prochaines disponibilités",
     "back_to_home": "retour à la l'accueil",
     "home": "accueil",
