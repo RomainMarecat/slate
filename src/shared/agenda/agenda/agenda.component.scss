@@ -1,3 +1,4 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
 @import '../../../app-showcase/scss/theme';
 
 .agenda-wrapper {
@@ -7,6 +8,9 @@
     margin: 0 20px 0 20px;
     .calendar-header {
       margin-top: 40px;
+      @include media-breakpoint-down(sm) {
+        text-align: center;
+      }
 
       h2 {
         color: mat-color($black);

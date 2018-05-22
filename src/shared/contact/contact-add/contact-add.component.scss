@@ -1,3 +1,4 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
 @import '../../../app-showcase/scss/theme';
 
 .contact-wrapper {
@@ -29,7 +30,22 @@
   }
   form {
     display: block;
-    width: 30vw;
+
+    @include media-breakpoint-up(xs) {
+      width: 80vw;
+    }
+    @include media-breakpoint-up(sm) {
+      width: 70vw;
+    }
+    @include media-breakpoint-up(md) {
+      width: 50vw;
+    }
+    @include media-breakpoint-up(lg) {
+      width: 40vw;
+    }
+    @include media-breakpoint-up(xl) {
+      width: 30vw;
+    }
     margin: 0 auto 30px auto;
     .mat-form-field {
       width: 100%;

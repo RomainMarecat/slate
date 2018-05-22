@@ -5,12 +5,13 @@ import { MatButtonModule, MatIconModule, MatToolbarModule } from '@angular/mater
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { Angulartics2Module } from 'angulartics2';
-import { MenuService } from './menu.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     Angulartics2Module,
     CommonModule,
+    FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
