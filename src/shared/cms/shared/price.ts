@@ -1,3 +1,7 @@
-/**
- * Created by romainmarecat on 23/05/18.
- */
+export class Price {
+    name: string;
+    description: string;
+    price: number;
+    options: string[];
+    selected?: boolean;
+}

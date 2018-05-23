@@ -1,238 +1,58 @@
-<section class="home-section" id="pricings-section">
+<section class="pricing-section">
   <div class="container">
     <div class="section-header">
-      <h2>Choose a Plan</h2>
-      <mat-slide-toggle class="mb-1 mat-slide-toggle mat-primary ng-untouched ng-pristine ng-valid"
-                        color="primary" id="mat-slide-toggle-1">
+      <h2 class="text-capitalize">
+        {{ 'pricing.title'|translate }}
+      </h2>
+      <mat-slide-toggle class="mb-1"
+                        color="primary"
+                        (change)="togglePlan($event)">
         <label class="mat-slide-toggle-label">
-
-          <span class="mat-slide-toggle-content">Get upto 10% discount annually</span>
-        </label></mat-slide-toggle>
+          <span class="mat-slide-toggle-content">
+            {{ 'pricing.description'|translate }}
+          </span>
+        </label>
+      </mat-slide-toggle>
     </div>
 
     <div fxLayout="row wrap">
-      <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50">
+      <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" *ngFor="let pricing of pricings">
         <mat-card class="plan-pricing text-center p-0 mat-card">
-          <mat-card-title class="light-gray mat-card-title">
+          <mat-card-title class="light-gray mat-card-title"
+                          [class.mat-bg-primary]="pricing.selected">
             <div class="card-title-text">
-              <div class="">Developer</div>
-              <div class="text-sm text-muted">For New Developers</div>
+              <div class="cart-title-heading">{{ pricing?.name }}</div>
+              <div class="text-sm text-muted">{{ pricing?.description }}</div>
             </div>
-            <mat-divider aria-orientation="horizontal" class="mat-divider"
-                         role="separator"></mat-divider>
-          </mat-card-title>
-          <mat-card-content class="mat-card-content">
-            <h1><strong>FREE</strong></h1>
-            <mat-list class="mb-1 mat-list" dense="">
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  10GB of Bandwidth
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  Max 50 connection
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  512MB RAM
-                </div>
-              </mat-list-item>
-              <mat-list-item class="text-muted mat-list-item">
-                <div class="mat-list-item-content">
-                  Unlimited access
-                </div>
-              </mat-list-item>
-              <mat-list-item class="text-muted mat-list-item">
-                <div class="mat-list-item-content">
-                  Unlimited User
-                </div>
-              </mat-list-item>
-              <mat-list-item class="text-muted mat-list-item">
-                <div class="mat-list-item-content">
-                  Data analytics
-                </div>
-              </mat-list-item>
-            </mat-list>
-            <button class="mat-accent mat-raised-button" mat-raised-button=""><span
-              class="mat-button-wrapper">Choose</span>
-              <div class="mat-button-ripple mat-ripple" matripple=""></div>
-              <div class="mat-button-focus-overlay"></div>
-            </button>
-          </mat-card-content>
-        </mat-card>
-      </div>
-
-      <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50">
-        <mat-card class="plan-pricing text-center p-0 mat-card">
-          <mat-card-title class="mat-bg-primary mat-card-title">
-            <div class="card-title-text">
-              <div class="">Starter</div>
-              <div class="text-sm text-muted-white">For Professional Developers</div>
-            </div>
-            <mat-divider aria-orientation="horizontal" class="mat-divider"
+            <mat-divider aria-orientation="horizontal"
+                         class="mat-divider"
                          role="separator"></mat-divider>
           </mat-card-title>
           <mat-card-content class="mat-card-content">
             <h1>
-              <strong>$
-                <!----><span class="ng-star-inserted">30 /Mo</span>
-                <!---->
-              </strong>
+              <strong *ngIf="pricing.price === 0; else price">FREE</strong>
+              <ng-template #price>
+                <strong>
+                  <span class="ng-star-inserted">{{ pricing.price }} € /Mo</span>
+                </strong>
+              </ng-template>
             </h1>
-            <mat-list class="mb-1 mat-list" dense="">
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  100GB of Bandwidth
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  Max 500 connection
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  1GB RAM
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  Unlimited access
-                </div>
-              </mat-list-item>
-              <mat-list-item class="text-muted mat-list-item">
-                <div class="mat-list-item-content">
-                  Unlimited User
-                </div>
-              </mat-list-item>
-              <mat-list-item class="text-muted mat-list-item">
-                <div class="mat-list-item-content">
-                  Data analytics
+            <mat-list class="mb-1 mat-list"
+                      dense
+                      *ngFor="let option of pricing.options">
+              <mat-list-item class="mat-list-item d-inline-flex text-center">
+                <div class="mat-list-item-content ">
+                  {{ option }}
                 </div>
               </mat-list-item>
             </mat-list>
-            <button class="mat-accent mat-raised-button" mat-raised-button=""><span
-              class="mat-button-wrapper">Choose</span>
-              <div class="mat-button-ripple mat-ripple" matripple=""></div>
-              <div class="mat-button-focus-overlay"></div>
-            </button>
-          </mat-card-content>
-        </mat-card>
-      </div>
-
-      <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50">
-        <mat-card class="plan-pricing text-center p-0 mat-card">
-          <mat-card-title class="light-gray mat-card-title">
-            <div class="card-title-text">
-              <div class="">Business</div>
-              <div class="text-sm text-muted">For Small Businesses</div>
-            </div>
-            <mat-divider aria-orientation="horizontal" class="mat-divider"
-                         role="separator"></mat-divider>
-          </mat-card-title>
-          <mat-card-content class="mat-card-content">
-            <h1>
-              <strong>$
-                <!----><span class="ng-star-inserted">60 /Mo</span>
-                <!---->
-              </strong>
-            </h1>
-            <mat-list class="mb-1 mat-list" dense="">
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  100GB of Bandwidth
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  Max 1500 connection
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  2GB RAM
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  Unlimited access
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  Unlimited User
-                </div>
-              </mat-list-item>
-              <mat-list-item class="text-muted mat-list-item">
-                <div class="mat-list-item-content">
-                  Data analytics
-                </div>
-              </mat-list-item>
-            </mat-list>
-            <button class="mat-accent mat-raised-button" mat-raised-button=""><span
-              class="mat-button-wrapper">Choose</span>
-              <div class="mat-button-ripple mat-ripple" matripple=""></div>
-              <div class="mat-button-focus-overlay"></div>
-            </button>
-          </mat-card-content>
-        </mat-card>
-      </div>
-
-      <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50">
-        <mat-card class="plan-pricing text-center p-0 mat-card">
-          <mat-card-title class="light-gray mat-card-title">
-            <div class="card-title-text">
-              <div class="">Enterprise</div>
-              <div class="text-sm text-muted">For Large companies</div>
-            </div>
-            <mat-divider aria-orientation="horizontal" class="mat-divider"
-                         role="separator"></mat-divider>
-          </mat-card-title>
-          <mat-card-content class="mat-card-content">
-            <h1>
-              <strong>$
-                <!----><span class="ng-star-inserted">160 /Mo</span>
-                <!---->
-              </strong>
-            </h1>
-            <mat-list class="mb-1 mat-list" dense="">
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  1000GB of Bandwidth
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  Max 5000 connection
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  8GB RAM
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  Unlimited access
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  Unlimited User
-                </div>
-              </mat-list-item>
-              <mat-list-item class="mat-list-item">
-                <div class="mat-list-item-content">
-                  Data analytics
-                </div>
-              </mat-list-item>
-            </mat-list>
-            <button class="mat-accent mat-raised-button" mat-raised-button=""><span
-              class="mat-button-wrapper">Choose</span>
-              <div class="mat-button-ripple mat-ripple" matripple=""></div>
-              <div class="mat-button-focus-overlay"></div>
+            <button class="text-uppercase"
+                    type="button"
+                    color="accent"
+                    mat-raised-button>
+              <span class="mat-button-wrapper">
+                {{ 'cta.choose'|translate }}
+              </span>
             </button>
           </mat-card-content>
         </mat-card>
