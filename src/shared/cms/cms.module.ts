@@ -10,13 +10,16 @@ import { TeamStyle1Component } from './team/team-style1/team-style1.component';
 import { StatisticStyle1Component } from './statistic/statistic-style1/statistic-style1.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatSlideToggleModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     CmsRoutingModule,
     FlexLayoutModule,
+    MatCardModule,
+    MatSlideToggleModule,
+    MatListModule,
     MatButtonModule,
     MatIconModule,
     TranslateModule,

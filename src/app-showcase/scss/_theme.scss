@@ -45,7 +45,10 @@ body {
   font-weight: 300;
   color: $color1;
   overflow-x: hidden;
+}
 
+.mat-bg-primary {
+  background-color: mat-color($product-primary);
 }
 
 mat-icon {

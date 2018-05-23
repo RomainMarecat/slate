@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatSlideToggleModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { PricingStyle1Component } from './pricing-style1.component';
@@ -13,6 +13,9 @@ describe('PricingStyle1Component', () => {
     TestBed.configureTestingModule({
       imports: [
         FlexLayoutModule,
+        MatCardModule,
+        MatSlideToggleModule,
+        MatListModule,
         MatButtonModule,
         MatIconModule,
         TranslateModule.forRoot({

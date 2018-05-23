@@ -12,6 +12,7 @@
     "learn-more": "en savoir plus",
     "buy": "acheter",
     "booking": "réserver",
+    "choose": "choisir",
     "next-available-slot": "prochaines disponibilités",
     "back_to_home": "retour à la l'accueil",
     "home": "accueil",
@@ -90,6 +91,14 @@
     "title": "Slate garden",
     "subtitle": "Elagage, création parc et jardin, service à la personne"
   },
+  "header-style2": {
+    "title": "Slate garden",
+    "subtitle": "pour un ouvrage soigné jusqu'au bout des branches",
+    "description": "Elagage, création parc et jardin, service à la personne"
+  },
+  "image": {
+    "bg-line-green": "image de fond ligne verte"
+  },
   "location-current": {
     "label": {
       "meeting": "Siège social"
@@ -116,6 +125,10 @@
   },
   "placeholder": {
     "reason": "Choisir le motif"
+  },
+  "pricing": {
+    "title": "choisir un abonnement",
+    "description": "économiser jusqu'à 10% en souscrivant à un abonnement annuel"
   },
   "reason": {
     "creation": "la création",
