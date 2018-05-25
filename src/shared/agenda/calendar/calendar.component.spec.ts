@@ -11,6 +11,8 @@ import { CalendarBodyComponent } from './calendar-body/calendar-body.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AlertService } from '../../popup/alert.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
+import { SessionService } from 'shared/session/shared/session.service';
+import { MockSessionService } from 'shared/session/shared/mock-session.service';
 
 describe('CalendarComponent', () => {
   let component: CalendarComponent;
@@ -33,6 +35,7 @@ describe('CalendarComponent', () => {
       ],
       providers: [
         {provide: EventService, useClass: MockEventService},
+        {provide: SessionService, useClass: MockSessionService},
         {provide: AlertService, useClass: MockAlertService},
       ]
     })
@@ -47,6 +50,5 @@ describe('CalendarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    console.log('testCalendarPayment');
   });
 });

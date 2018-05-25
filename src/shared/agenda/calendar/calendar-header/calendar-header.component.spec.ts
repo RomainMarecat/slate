@@ -43,6 +43,5 @@ describe('CalendarHeaderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    console.log('testCalendarHeader');
   });
 });

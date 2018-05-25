@@ -34,6 +34,5 @@ describe('HeaderStyle1Component', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    console.log('testHeaderStyle1Component');
   });
 });

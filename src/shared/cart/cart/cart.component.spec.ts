@@ -87,6 +87,5 @@ describe('CartComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    console.log('testCart');
   });
 });

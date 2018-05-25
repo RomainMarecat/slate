@@ -31,7 +31,6 @@ describe('StatisticStyle1Component', () => {
   });
 
   it('should create', () => {
-    // expect(component).toBeTruthy();
-    console.log('testStatisticStyle1Component');
+    expect(component).toBeTruthy();
   });
 });
