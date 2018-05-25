@@ -204,7 +204,6 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
               });
           } else if (result.error) {
             // Error creating the token
-            console.log(result.error.message);
             this.handleError(result.error);
             this.togglePayButton();
           }

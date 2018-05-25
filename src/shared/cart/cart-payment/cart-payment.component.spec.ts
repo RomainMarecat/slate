@@ -76,6 +76,5 @@ describe('CartPaymentComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    console.log('testCartPayment');
   });
 });
