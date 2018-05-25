@@ -8,6 +8,7 @@ import { CartConfirmationComponent } from 'shared/cart/cart-confirmation/cart-co
 import { CartEditComponent } from '../cart-edit/cart-edit.component';
 import { User } from '../../user/user';
 import { CartService } from '../shared/cart.service';
+import { Filter } from 'shared/facet/filter/shared/filter';
 
 @Component({
   selector: 'app-cart',
@@ -35,6 +36,22 @@ export class CartComponent implements OnInit {
     this.getUser();
   }
 
+  getCart() {
+    this.cartService.filters$.next([
+      {
+        column: 'user',
+        operator: '==',
+        value: this.user.uid
+      }
+    ] as Filter[]);
+    this.cartService.getCarts()
+      .subscribe((carts) => {
+        this.cart = carts.filter((cart) => cart.status !== 'finished')[0];
+      }, (err) => {
+        console.error(err);
+      });
+  }
+
   getUser() {
     this.userService.getAuthState()
       .subscribe((user) => {
@@ -43,6 +60,7 @@ export class CartComponent implements OnInit {
           this.isUserCompleted = true;
           this.user = user;
           this.cartEditComponent.setUser(user);
+          this.getCart();
         }
       });
   }

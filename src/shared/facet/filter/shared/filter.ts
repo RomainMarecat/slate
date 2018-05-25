@@ -1,5 +1,5 @@
 export class Filter {
   column: string;
   operator: string;
-  value: string | boolean | number;
+  value: string | boolean | number | Date;
 }

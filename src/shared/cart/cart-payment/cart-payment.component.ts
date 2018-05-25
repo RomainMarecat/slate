@@ -180,6 +180,10 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
                         this.paymentService.updatePayment(this.payment)
                           .then(() => {
                             console.log('payment', this.payment);
+                            this.cart.status = 'finished';
+                            this.cartService.updateCart(this.cart).then(() => {
+                              console.log('cart updated');
+                            });
                             this.paid.emit(this.payment);
                             this.togglePayButton();
                           }, (err) => {
