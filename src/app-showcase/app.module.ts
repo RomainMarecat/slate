@@ -20,4 +20,5 @@ import { environment } from './environments/environment';
     AppRootComponent
   ]
 })
-export class AppModule {}
+export class AppModule {
+}
