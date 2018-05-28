@@ -4,6 +4,7 @@ import { FaqComponent } from './faq.component';
 import { FaqRoutingModule } from './faq-routing.module';
 import { MatCardModule, MatExpansionModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCardModule,
     MatIconModule,
     MatExpansionModule,
-    FaqRoutingModule
+    FaqRoutingModule,
+    TranslateModule,
   ],
   declarations: [
     FaqComponent

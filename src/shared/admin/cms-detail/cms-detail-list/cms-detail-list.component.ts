@@ -5,6 +5,7 @@ import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service'
 import { Observable } from 'rxjs/Observable';
 import { Filter } from '../../../facet/filter/shared/filter';
 import 'rxjs/add/operator/take';
+import { AlertService } from '../../../popup/alert.service';
 
 @Component({
   selector: 'app-cms-detail-list',
@@ -19,6 +20,7 @@ export class CmsDetailListComponent implements OnInit {
   cmsDetails$: Observable<CmsDetail[]>;
   selected: CmsDetail[] = [];
   isLoading: boolean;
+  activatedRows = {};
 
   /**
    * @param {ElementRef} table
@@ -27,7 +29,8 @@ export class CmsDetailListComponent implements OnInit {
    */
   constructor(private table: ElementRef,
               private cmsDetailService: CmsDetailService,
-              private activeRoute: ActivatedRoute) {
+              private activeRoute: ActivatedRoute,
+              private alertService: AlertService) {
     this.columns = [ {
       prop: 'key',
       name: 'key',
@@ -74,7 +77,7 @@ export class CmsDetailListComponent implements OnInit {
     this.activeRoute.params.subscribe((value: { key: string }) => {
       this.cmsKey = value.key;
       if (value.key) {
-        this.cmsDetailService.filters$.next([{column: 'cms', operator: '==', value: value.key}] as Filter[]);
+        this.cmsDetailService.filters$.next([ {column: 'cms', operator: '==', value: value.key} ] as Filter[]);
         this.cmsDetails$ = this.cmsDetailService.getCmsDetails();
       } else {
         this.cmsDetails$ = Observable.of([]);
@@ -89,6 +92,22 @@ export class CmsDetailListComponent implements OnInit {
    */
   getCmsDetail(key: string): Observable<CmsDetail> {
     return this.cmsDetailService.getCmsDetail(key);
+  }
+
+  onActivateEdit(index: number) {
+    this.activatedRows = {};
+    this.activatedRows[ index ] = true;
+  }
+
+  onEdit(row: CmsDetail, value: string, index: number) {
+    this.activatedRows = {};
+    row.title = value;
+    this.cmsDetailService.updateCmsDetail(row)
+      .then(() => {
+        this.alertService.show(`updated ${row.title}`);
+      }, (err) => {
+        this.alertService.show(err);
+      });
   }
 
   /**

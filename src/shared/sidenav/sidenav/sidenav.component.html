@@ -29,6 +29,11 @@
         <a mat-list-item class="sidenav-link" [routerLink]="['/admin/offer']">Offers</a>
         <a mat-list-item class="sidenav-link" [routerLink]="['/admin/partner']">Partners</a>
         <a mat-list-item class="sidenav-link" [routerLink]="['/admin/material']">Material</a>
+      </mat-nav-list>
+      <mat-nav-list>
+        <a mat-list-item class="sidenav-link" [routerLink]="['/faq']">FAQ</a>
+      </mat-nav-list>
+      <mat-nav-list>
         <mat-divider></mat-divider>
         <a mat-list-item class="heading" (click)="userService.logout()">
           {{ 'sidenav.card.list-item.logout.title'|translate }}
