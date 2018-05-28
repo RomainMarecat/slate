@@ -23,6 +23,13 @@
     "send": "envoyer",
     "take_meeting": "prendre rendez-vous"
   },
+  "faq": {
+    "shipping": "livraison",
+    "general-question": "questions générales",
+    "about-service": "a propos du service",
+    "privacyandpolicy": "politique de confidencialité",
+    "buyandsell": "acheter et vendre"
+  },
   "menu": {
     "connection": {
       "title": "Se connecter"
@@ -124,7 +131,14 @@
     }
   },
   "placeholder": {
-    "reason": "Choisir le motif"
+    "reason": "Choisir le motif",
+    "cmsDetail": {
+      "title": "titre du détail cms"
+    }
+  },
+  "pricing": {
+    "title": "choisir un abonnement",
+    "description": "économiser jusqu'à 10% en souscrivant à un abonnement annuel"
   },
   "pricing": {
     "title": "choisir un abonnement",

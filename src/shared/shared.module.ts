@@ -58,6 +58,7 @@ import { PipeModule } from './pipe/pipe.module';
 import { SessionModule } from './session/session.module';
 import { CartModule } from './cart/cart.module';
 import { CmsModule } from './cms/cms.module';
+import { FaqModule } from 'shared/faq/faq.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -82,6 +83,7 @@ export class ConfigService {
     CommonModule,
     FaviconModule,
     FacetModule,
+    FaqModule,
     FileUploadModule,
     FlexLayoutModule,
     FooterModule,
@@ -141,6 +143,7 @@ export class ConfigService {
     DragulaModule,
     FaviconModule,
     FacetModule,
+    FaqModule,
     FileUploadModule,
     FlexLayoutModule,
     FooterModule,

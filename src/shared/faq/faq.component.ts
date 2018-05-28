@@ -1,45 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { CmsService } from '../cms/shared/cms.service';
-import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
 import { Cms } from '../cms/shared/cms';
 import { CmsDetail } from '../cms-detail/shared/cms-detail';
-import { Router } from '@angular/router';
+import { CmsService } from '../cms/shared/cms.service';
+import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: [ './footer.component.scss' ]
+  selector: 'app-showcase-faq',
+  templateUrl: './faq.component.html',
+  styleUrls: [ './faq.component.scss' ]
 })
-export class FooterComponent implements OnInit {
+export class FaqComponent implements OnInit {
 
   cms: Cms;
-
-  links: CmsDetail[] = [];
+  navigations: CmsDetail[] = [];
 
   constructor(private cmsService: CmsService,
               private cmsDetailService: CmsDetailService,
+              private route: ActivatedRoute,
               private router: Router) {
   }
 
   ngOnInit() {
-    this.getLinks();
+    this.getNavigations();
   }
 
-  getLinks() {
-    this.cmsService.filters$.next([ {column: 'name', operator: '==', value: 'footer.links'} ]);
+  getNavigations() {
+    this.cmsService.filters$.next([ {column: 'name', operator: '==', value: 'faq.links'} ]);
     this.cmsService.getCmss()
       .subscribe((cmss: Cms[]) => {
-        cmss = cmss.filter((v) => v.name === 'footer.links');
         if (cmss && cmss.length > 0) {
           this.cms = cmss[ 0 ];
           this.cmsDetailService.filters$.next([ {column: 'cms', operator: '==', value: this.cms.key} ]);
           this.cmsDetailService.getCmsDetails()
             .subscribe((cmsDetails: CmsDetail[]) => {
-              console.log(cmsDetails);
               const links = cmsDetails.filter((cmsD) => cmsD.parent === null);
               const sublinks = cmsDetails.filter((cmsD) => cmsD.parent !== null);
-              this.links = links.map((link: CmsDetail) => {
-                const children = [];
+              this.navigations = links.map((link: CmsDetail) => {
+                const children: CmsDetail[] = [];
                 sublinks.forEach((sublink: CmsDetail) => {
                   if (link.key === sublink.parent) {
                     children.push(sublink);
@@ -54,4 +52,14 @@ export class FooterComponent implements OnInit {
         }
       });
   }
+
+  onAnchorClick() {
+    this.route.fragment.subscribe(f => {
+      const element = document.querySelector('#' + f);
+      if (element) {
+        // element.scrollIntoView(element);
+      }
+    });
+  }
+
 }
