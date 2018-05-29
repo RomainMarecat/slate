@@ -20,12 +20,13 @@ export class CmsDetailListComponent implements OnInit {
   cmsDetails$: Observable<CmsDetail[]>;
   selected: CmsDetail[] = [];
   isLoading: boolean;
-  activatedRows = {};
+  activatedRows = {icon: {}, title: {}};
 
   /**
    * @param {ElementRef} table
    * @param cmsDetailService
    * @param activeRoute
+   * @param alertService
    */
   constructor(private table: ElementRef,
               private cmsDetailService: CmsDetailService,
@@ -42,6 +43,10 @@ export class CmsDetailListComponent implements OnInit {
     }, {
       prop: 'content',
       name: 'content',
+      flexGrow: 1
+    }, {
+      prop: 'icon',
+      name: 'icon',
       flexGrow: 1
     }, {
       prop: 'parent',
@@ -95,13 +100,13 @@ export class CmsDetailListComponent implements OnInit {
   }
 
   onActivateEdit(index: number) {
-    this.activatedRows = {};
+    this.activatedRows = {icon: {}, title: {}};
     this.activatedRows[ index ] = true;
   }
 
-  onEdit(row: CmsDetail, value: string, index: number) {
-    this.activatedRows = {};
-    row.title = value;
+  onEdit(column: string, row: CmsDetail, value: string, index: number) {
+    this.activatedRows = {icon: {}, title: {}};
+    row[column] = value;
     this.cmsDetailService.updateCmsDetail(row)
       .then(() => {
         this.alertService.show(`updated ${row.title}`);
