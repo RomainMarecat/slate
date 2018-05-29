@@ -24,15 +24,21 @@
                             [formControl]="form.controls.content">
             </app-ngx-editor>
           </div>
+          <mat-form-field class="mat-form-field">
+            <input matInput maxlength="50" [placeholder]="'placeholder.icon'|translate" [formControl]="form.get('icon')">
+            <mat-hint align="start"><strong [innerHtml]="'hint.icon'|translate"></strong></mat-hint>
+            <mat-error *ngIf="form.get('icon').invalid && form.get('icon').value.length > 0"
+                       [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select [formControl]="form.controls.parent">
+              <mat-option value="">--</mat-option>
+              <mat-option *ngFor="let cmsDetail of cmsDetails" [value]="cmsDetail.key">
+                {{cmsDetail?.title | translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </mat-card-content>
-        <mat-form-field>
-          <mat-select [formControl]="form.controls.parent">
-            <mat-option value="">--</mat-option>
-            <mat-option *ngFor="let cmsDetail of cmsDetails" [value]="cmsDetail.key">
-              {{cmsDetail?.title | translate }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
 
         <mat-card-actions>
           <div class="d-flex justify-content-around">

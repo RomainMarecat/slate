@@ -8,7 +8,7 @@
          *ngFor="let navigation of navigations">
       <mat-card class="nav-faq-card">
         <mat-card-header>
-          <mat-icon mat-card-avatar>help</mat-icon>
+          <mat-icon mat-card-avatar *ngIf="navigation?.icon">{{ navigation?.icon }}</mat-icon>
           <mat-card-title>
             <a [routerLink]="['/faq']"
                [fragment]="navigation?.title"
@@ -34,6 +34,7 @@
     <mat-card [attr.id]="navigation?.title"
               *ngFor="let navigation of navigations">
       <mat-card-header>
+        <mat-icon mat-card-avatar *ngIf="navigation?.icon">{{ navigation?.icon }}</mat-icon>
         <mat-card-title class="text-capitalize" [innerHTML]="navigation?.title | translate">
         </mat-card-title>
         <mat-card-subtitle [innerHTML]="navigation?.content">

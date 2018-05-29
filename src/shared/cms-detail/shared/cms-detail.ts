@@ -29,6 +29,11 @@ export class CmsDetail {
   parent?: string;
 
   /**
+   * Possibly a mat icon text additional
+   */
+  icon?: string;
+
+  /**
    * Helper to associate all CmsDetails in this attributes
    */
   children?: CmsDetail[];
