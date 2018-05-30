@@ -20,52 +20,69 @@
           <div class="col-xs-12 col-sm-12">
             <div class="d-block">
               <mat-form-field class="mat-form-field">
-                <input matInput maxlength="100" [placeholder]="'Nom'|translate" formControlName="name">
-                <mat-hint align="start"><strong [innerHtml]="'Nom de l attribut'|translate"></strong></mat-hint>
-                <mat-hint align="end">{{ name.value.length }} {{ '/100'|translate }}</mat-hint>
-                <mat-error *ngIf="name.invalid && name.value.length === 0"
-                           [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
-                <mat-error *ngIf="name.invalid && name.value.length > 0"
-                           [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+                <input matInput
+                       maxlength="100"
+                       [placeholder]="'admin.placeholder.attribute.name'|translate"
+                       [formControl]="form.get('name')">
+                <mat-hint align="start">
+                  <strong [innerHtml]="'admin.hint.attribute.name'|translate"></strong>
+                </mat-hint>
+                <mat-hint align="end">{{ form.get('name').value.length }} {{ '/100'|translate }}</mat-hint>
+                <mat-error *ngIf="form.get('name').invalid && form.get('name').value.length === 0"
+                           [innerHtml]="'admin.error.required.attribute.name'|translate"></mat-error>
+                <mat-error *ngIf="form.get('name').invalid && form.get('name').value.length > 0"
+                           [innerHtml]="'admin.error.invalid.attribute.name'|translate"></mat-error>
               </mat-form-field>
             </div>
             <div class="d-block">
-              <mat-form-field class="mat-form-field" formGroupName="translations">
-                <input matInput maxlength="100" [placeholder]="'Nom en français'|translate" formControlName="fr">
-                <mat-hint align="start"><strong [innerHtml]="'Nom français'|translate"></strong></mat-hint>
-                <mat-hint align="end">{{ fr.value.length }} {{ '/100'|translate }}</mat-hint>
-                <mat-error *ngIf="fr.invalid && fr.value.length === 0"
-                           [innerHtml]="'Le nom français ne peut pas être vide'|translate"></mat-error>
-                <mat-error *ngIf="fr.invalid && fr.value.length > 0"
-                           [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+              <mat-form-field class="mat-form-field"
+                              [formGroup]="form.get('translations')">
+                <input matInput
+                       maxlength="100"
+                       [placeholder]="'admin.placeholder.attribute.fr'|translate"
+                       [formControl]="form.get('translations').get('fr')">
+                <mat-hint align="start">
+                  <strong [innerHtml]="'admin.hint.attribute.fr'|translate"></strong>
+                </mat-hint>
+                <mat-hint align="end">{{ form.get('translations').get('fr').value.length }} {{ '/100'|translate }}
+                </mat-hint>
+                <mat-error
+                  *ngIf="form.get('translations').get('fr').invalid && form.get('translations').get('fr').value.length === 0"
+                  [innerHtml]="'admin.error.required.attribute.fr'|translate"></mat-error>
+                <mat-error
+                  *ngIf="form.get('translations').get('fr').invalid && form.get('translations').get('fr').value.length > 0"
+                  [innerHtml]="'admin.error.invalid.attribute.fr'|translate"></mat-error>
               </mat-form-field>
             </div>
             <div class="d-block mt-1">
-              <label>Détermine avec quel composant choisir l'attribut</label>
+              <label>{{ 'admin.label.attribute.type'|translate }}</label>
               <div class="mat-form-field">
-                <mat-radio-group [(ngModel)]="typeModel" formControlName="type">
+                <mat-radio-group [(ngModel)]="typeModel"
+                                 [formControl]="form.get('type')">
                   <mat-radio-button [value]="'select'">
-                    {{'Menu déroulant'|translate }}
+                    {{'admin.label.attribute.select'|translate}}
                   </mat-radio-button>
                   <mat-radio-button [value]="'radio'">
-                    {{'Bouton radio'|translate }}
+                    {{'admin.label.attribute.radio'|translate}}
                   </mat-radio-button>
                   <mat-radio-button [value]="'checkbox'">
-                    {{'Checkbox'|translate }}
+                    {{'admin.label.attribute.checkbox'|translate}}
                   </mat-radio-button>
                   <mat-radio-button [value]="'text'">
-                    {{'Texte'|translate }}
+                    {{'admin.label.attribute.text'|translate}}
                   </mat-radio-button>
                 </mat-radio-group>
               </div>
             </div>
             <div class="d-block mt-1">
-              <label>Détermine comment sont triés les valeurs de cet attribut en front sur la page du
-                produit</label>
+              <label>{{ 'admin.label.attribute.order_by'|translate }}</label>
               <div class="mat-form-field">
-                <mat-radio-group [(ngModel)]="orderByModel" formControlName="order_by">
-                  <mat-radio-button [aria-label]="'Nom'|translate" checked [value]="'name'">
-                    {{'Nom'|translate}}
+                <mat-radio-group [(ngModel)]="orderByModel"
+                                 [formControl]="form.get('order_by')">
+                  <mat-radio-button [aria-label]="'name'|translate"
+                                    checked
+                                    [value]="'name'">
+                    {{'admin.label.attribute.name'|translate}}
                   </mat-radio-button>
                 </mat-radio-group>
               </div>
@@ -73,21 +90,33 @@
             <div class="row">
               <div class="col-12">
                 <mat-form-field class="mat-form-field">
-                  <mat-select multiple="true" placeholder="Variantes" formControlName="terms">
-                    <mat-option *ngFor="let termModel of termsModel" [value]="termModel">{{ termModel }}
+                  <mat-select multiple="true"
+                              [placeholder]="'admin.placeholder.attribute.variantes'|translate"
+                              [formControl]="form.get('terms')">
+                    <mat-option *ngFor="let termModel of termsModel"
+                                [value]="termModel">
+                      {{ termModel }}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
               <div class="col-6">
                 <mat-form-field>
-                  <input matInput placeholder="Ajouter une variante" name="term" [(ngModel)]="term"
-                         formControlName="term" (keypress.enter)="addTerm($event)"/>
+                  <input matInput
+                         [placeholder]="'admin.placeholder.attribute.term'|translate"
+                         name="term"
+                         [(ngModel)]="term"
+                         [formControl]="form.get('term')"
+                         (keypress.enter)="addTerm($event)"/>
                 </mat-form-field>
               </div>
               <div class="col-6">
-                <button role="button" color="primary" type="button" mat-raised-button (click)="addTerm($event)"
-                        [innerHtml]="'Ajouter'|translate">
+                <button role="button"
+                        color="primary"
+                        type="button"
+                        mat-raised-button
+                        (click)="addTerm($event)"
+                        [innerHtml]="'cta.add'|translate">
                 </button>
               </div>
             </div>
@@ -96,11 +125,20 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="d-flex justify-content-around">
-          <button type="button" class="back" mat-raised-button color="accent" [innerHtml]="'Annuler'|translate"
+          <button type="button"
+                  class="back"
+                  mat-raised-button
+                  color="accent"
+                  [innerHtml]="'cta.cancel'|translate"
                   [routerLink]="['/admin/attribute']"></button>
-          <button type="submit" class="validate" mat-raised-button role="button"
-                  [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary"
-                  [disabled]="form.invalid || form.pristine" [innerHtml]="'Enregistrer'|translate"></button>
+          <button type="submit"
+                  class="validate"
+                  role="button"
+                  [attr.aria-label]="'cta.save'|translate"
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="form.invalid || form.pristine"
+                  [innerHtml]="'cta.save'|translate"></button>
         </div>
       </mat-card-actions>
     </mat-card>

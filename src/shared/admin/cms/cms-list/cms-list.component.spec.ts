@@ -31,6 +31,7 @@ import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MenuService } from '../../../menu/menu.service';
 
 describe('CmsListComponent', () => {
   let component: CmsListComponent;
@@ -62,6 +63,7 @@ describe('CmsListComponent', () => {
       providers: [
         {provide: CmsService, useClass: MockCmsService},
         {provide: AlertService, useClass: MockAlertService},
+        MenuService,
       ]
     })
       .compileComponents();
