@@ -1,11 +1,7 @@
-.scrolling-articles {
-  height: 70vh;
-}
 
 .mat-card {
   min-width: 30vw;
 }
-
 
 
 .absolute-fab.mat-mini-fab {
@@ -18,7 +14,11 @@
   font-size: 40px;
 }
 
-.article-content {
-  max-width: 90vw;
+.card-content {
+  width: 100%;
   min-width: 90vw;
+  .datatable {
+    height: 70vh;
+    min-width: 90vw;
+  }
 }

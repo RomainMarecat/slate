@@ -1,118 +1,141 @@
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-      <div class='selected-column'>
-        <h4>Selections
-          <small>({{selected?.length}})</small>
-        </h4>
-      </div>
+<div class="main-wrapper">
+  <div class="card-header"
+       fxLayout="row"
+       fxLayoutAlign="space-around stretch"
+       fxLayoutGap="30px">
+    <div class="card-wrapper p-2">
+
+      <mat-card class="mat-card">
+        <mat-card-header>
+          <mat-card-title>
+            <h4>
+              {{ 'admin.title.cms.title'|translate }}
+            </h4>
+          </mat-card-title>
+        </mat-card-header>
+      </mat-card>
     </div>
-    <div class="col-6">
-      <button role="button"
-              aria-label="Publier une cmsDetail"
-              mat-raised-button
-              color="primary"
-              (click)="publishCmsDetail()"
-              *ngIf="selected.length > 0">
-        <mat-icon aria-label="Published">done</mat-icon>
-        Publier
-      </button>
-      <button role="button"
-              aria-label="Supprimer une cmsDetail"
-              mat-raised-button color="accent"
-              (click)="deleteCmsDetail()"
-              *ngIf="selected.length > 0">
-        <mat-icon aria-label="delete">delete</mat-icon>
-        Supprimer
-      </button>
-      <a [routerLink]="['/admin/cms/' + cmsKey + '/cms-details/add']"
-         mat-raised-button
-         color="primary">
-        <mat-icon aria-label="add">add</mat-icon>
-        Ajouter
-      </a>
+
+    <div class="card-header-wrapper p-2">
+      <mat-card class="mat-card">
+        <mat-card-content>
+          <div class='selected-column'>
+            <h4>
+              {{ 'admin.title.cms.selection'|translate }}
+              <small>({{selected?.length}})</small>
+            </h4>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="cms-actions">
+            <button role="button"
+                    aria-label="Publier une cmsDetail"
+                    mat-raised-button
+                    color="primary"
+                    (click)="publishCmsDetail()"
+                    *ngIf="selected.length > 0">
+              <mat-icon aria-label="Published">done</mat-icon>
+              Publier
+            </button>
+            <button role="button"
+                    aria-label="Supprimer une cmsDetail"
+                    mat-raised-button color="accent"
+                    (click)="deleteCmsDetail()"
+                    *ngIf="selected.length > 0">
+              <mat-icon aria-label="delete">delete</mat-icon>
+              Supprimer
+            </button>
+            <a [routerLink]="['/admin/cms/' + cmsKey + '/cms-details/add']"
+               mat-raised-button
+               color="primary">
+              <mat-icon aria-label="add">add</mat-icon>
+              Ajouter
+            </a>
+          </div>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 mt-2">
-      <ngx-datatable class="material striped scrolling-cms-detail"
-                     [columnMode]="'force'"
-                     [rows]="cmsDetails$|async"
-                     [columns]="columns"
-                     [headerHeight]="headerHeight"
-                     [rowHeight]="rowHeight"
-                     [loadingIndicator]="isLoading"
-                     [scrollbarV]="true"
-                     (scroll)="onScroll($event.offsetY)"
-                     [selected]="selected"
-                     [selectionType]="'checkbox'"
-                     (activate)="onActivate($event)"
-                     (select)='onSelect($event)'>
-        <ngx-datatable-column [width]="50"
-                              [sortable]="false"
-                              [canAutoResize]="false"
-                              [draggable]="false"
-                              [resizeable]="false">
-          <ng-template ngx-datatable-header-template
-                       let-value="value"
-                       let-allRowsSelected="allRowsSelected"
-                       let-selectFn="selectFn">
-            <input type="checkbox"
-                   [checked]="allRowsSelected"
-                   (change)="selectFn(!allRowsSelected)"/>
-          </ng-template>
-          <ng-template ngx-datatable-cell-template
-                       let-value="value"
-                       let-isSelected="isSelected"
-                       let-onCheckboxChangeFn="onCheckboxChangeFn">
-            <input type="checkbox"
-                   [checked]="isSelected"
-                   (change)="onCheckboxChangeFn($event)"/>
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="key"></ngx-datatable-column>
-        <ngx-datatable-column name="title">
-          <ng-template let-rowIndex="rowIndex"
-                       let-value="value"
-                       let-row="row"
-                       ngx-datatable-cell-template>
+  <div class="card-content"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+    <ngx-datatable class="material striped datatable"
+                   [columnMode]="'force'"
+                   [rows]="cmsDetails$|async"
+                   [columns]="columns"
+                   [headerHeight]="headerHeight"
+                   [rowHeight]="rowHeight"
+                   [loadingIndicator]="isLoading"
+                   [scrollbarV]="true"
+                   (scroll)="onScroll($event.offsetY)"
+                   [selected]="selected"
+                   [selectionType]="'checkbox'"
+                   (activate)="onActivate($event)"
+                   (select)='onSelect($event)'>
+      <ngx-datatable-column [width]="50"
+                            [sortable]="false"
+                            [canAutoResize]="false"
+                            [draggable]="false"
+                            [resizeable]="false">
+        <ng-template ngx-datatable-header-template
+                     let-value="value"
+                     let-allRowsSelected="allRowsSelected"
+                     let-selectFn="selectFn">
+          <input type="checkbox"
+                 [checked]="allRowsSelected"
+                 (change)="selectFn(!allRowsSelected)"/>
+        </ng-template>
+        <ng-template ngx-datatable-cell-template
+                     let-value="value"
+                     let-isSelected="isSelected"
+                     let-onCheckboxChangeFn="onCheckboxChangeFn">
+          <input type="checkbox"
+                 [checked]="isSelected"
+                 (change)="onCheckboxChangeFn($event)"/>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="key"></ngx-datatable-column>
+      <ngx-datatable-column name="title">
+        <ng-template let-rowIndex="rowIndex"
+                     let-value="value"
+                     let-row="row"
+                     ngx-datatable-cell-template>
             <span (dblclick)="onActivateEdit(rowIndex)"
                   style="display: block; min-height: 20px; min-width: 50px;"
                   *ngIf="activatedRows[rowIndex] !== true">
               {{ value | translate }}
             </span>
-            <mat-form-field *ngIf="activatedRows && activatedRows[rowIndex] === true">
-              <input matInput
-                     [placeholder]="'placeholder.cmsDetail.title'|translate"
-                     [value]="row?.title"
-                     (blur)="onEdit('title', row, $event.target.value, rowIndex)"
-                     (keypress.enter)="onEdit('title', row, $event.target.value, rowIndex)">
-            </mat-form-field>
-          </ng-template>
-        </ngx-datatable-column>
+          <mat-form-field *ngIf="activatedRows && activatedRows[rowIndex] === true">
+            <input matInput
+                   [placeholder]="'placeholder.cmsDetail.title'|translate"
+                   [value]="row?.title"
+                   (blur)="onEdit('title', row, $event.target.value, rowIndex)"
+                   (keypress.enter)="onEdit('title', row, $event.target.value, rowIndex)">
+          </mat-form-field>
+        </ng-template>
+      </ngx-datatable-column>
 
-        <ngx-datatable-column name="icon">
-          <ng-template let-rowIndex="rowIndex"
-                       let-value="value"
-                       let-row="row"
-                       ngx-datatable-cell-template>
+      <ngx-datatable-column name="icon">
+        <ng-template let-rowIndex="rowIndex"
+                     let-value="value"
+                     let-row="row"
+                     ngx-datatable-cell-template>
             <span (dblclick)="onActivateEdit(rowIndex)"
                   style="display: block; min-height: 20px; min-width: 50px;"
                   *ngIf="activatedRows[rowIndex] !== true">
               {{ value | translate }}
             </span>
-            <mat-form-field *ngIf="activatedRows && activatedRows[rowIndex] === true">
-              <input matInput
-                     [placeholder]="'placeholder.cmsDetail.icon'|translate"
-                     [value]="row?.icon"
-                     (blur)="onEdit('icon', row, $event.target.value, rowIndex)"
-                     (keypress.enter)="onEdit('icon', row, $event.target.value, rowIndex)">
-            </mat-form-field>
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="content"></ngx-datatable-column>
-        <ngx-datatable-column name="parent"></ngx-datatable-column>
-      </ngx-datatable>
-    </div>
+          <mat-form-field *ngIf="activatedRows && activatedRows[rowIndex] === true">
+            <input matInput
+                   [placeholder]="'placeholder.cmsDetail.icon'|translate"
+                   [value]="row?.icon"
+                   (blur)="onEdit('icon', row, $event.target.value, rowIndex)"
+                   (keypress.enter)="onEdit('icon', row, $event.target.value, rowIndex)">
+          </mat-form-field>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="content"></ngx-datatable-column>
+      <ngx-datatable-column name="parent"></ngx-datatable-column>
+    </ngx-datatable>
   </div>
 </div>

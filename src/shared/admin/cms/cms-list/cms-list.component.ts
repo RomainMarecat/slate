@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Cms } from '../../../cms/shared/cms';
 import { CmsService } from '../../../cms/shared/cms.service';
 import { Observable } from 'rxjs/Observable';
+import { MenuService } from 'shared/menu/menu.service';
 
 @Component({
   selector: 'app-cms-list',
@@ -21,10 +22,13 @@ export class CmsListComponent implements OnInit {
    * @param {ElementRef} table
    * @param {cmsService} cmsService
    * @param router
+   * @param menuService
    */
   constructor(private table: ElementRef,
               private cmsService: CmsService,
-              private router: Router) {
+              private router: Router,
+              private menuService: MenuService,
+  ) {
     this.columns = [ {
       prop: 'name',
       name: 'name',
@@ -66,6 +70,7 @@ export class CmsListComponent implements OnInit {
   ngOnInit() {
     this.cmsList$ = this.cmsService.getCmss();
     this.isLoading = false;
+    this.menuService.nextTitle('cms');
   }
 
   /**

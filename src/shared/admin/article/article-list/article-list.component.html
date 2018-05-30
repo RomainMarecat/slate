@@ -1,5 +1,5 @@
-<div class="articles-wrapper">
-  <div class="article-header"
+<div class="card-wrapper">
+  <div class="card-header"
        fxLayout="row"
        fxLayoutAlign="space-around stretch"
        fxLayoutGap="30px">
@@ -16,7 +16,7 @@
       </mat-card>
     </div>
 
-    <div class="card-wrapper p-2">
+    <div class="card-header-wrapper p-2">
       <mat-card class="mat-card">
         <mat-card-content>
           <div class='selected-column'>
@@ -42,10 +42,10 @@
       </mat-card>
     </div>
   </div>
-  <div class="article-content"
+  <div class="card-content"
        fxLayout="row"
        fxLayoutAlign="center stretch">
-    <ngx-datatable class="material striped scrolling-articles"
+    <ngx-datatable class="material striped datatable"
                    [columnMode]="'force'"
                    [rows]="articles"
                    [columns]="columns"
@@ -63,8 +63,12 @@
   </div>
 </div>
 
-<button color="primary" type="button" aria-label="Ajouter un attribut" [routerLink]="['/admin/article/add']"
-        mat-mini-fab class="absolute-fab pulse">
+<button color="primary"
+        type="button"
+        [attr.aria-label]="'cta.add'|translate"
+        [routerLink]="['/admin/article/add']"
+        mat-mini-fab
+        class="absolute-fab pulse">
   <mat-icon>add</mat-icon>
 </button>
 
@@ -85,10 +89,10 @@
   <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group mobile-hidden"
                    [value]="value" (change)="updateArticlePublication(row, $event)">
     <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
-      <span class="text-success">Publié</span>
+      <span class="text-success">{{ 'admin.label.artilcle.published'|translate }}</span>
     </mat-radio-button>
     <mat-radio-button #unpublished class="publication-radio-button" [value]="false" color="accent">
-      <span class="text-danger">Non publié</span>
+      <span class="text-danger">{{ 'admin.label.artilcle.unpublished'|translate }}</span>
     </mat-radio-button>
   </mat-radio-group>
 </ng-template>

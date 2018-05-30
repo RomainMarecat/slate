@@ -4,11 +4,22 @@
       "article": {
         "title": "les articles",
         "selection": "sélectionné(s)"
+      },
+      "contact": {
+        "title": "tous les messages",
+        "selection": "sélectionné(s)"
+      },
+      "cms": {
+        "title": "tous les templates",
+        "selection": "sélectionné(s)"
       }
     },
     "cta": {
       "add": {
-        "article": "ajouter un article"
+        "attribute": "ajouter un attribut",
+        "contact": "ajouter un message",
+        "article": "ajouter un article",
+        "cms": "ajouter un cms"
       }
     },
     "label": {
@@ -17,7 +28,19 @@
         "description": "contenu de l'article",
         "facebook": "publication facebook",
         "unpublish": "brouillon",
-        "publish": "publier"
+        "publish": "publier",
+        "unpublished": "dépublié",
+        "published": "publié"
+      },
+      "contact": {
+        "name": "nom",
+        "email": "email",
+        "message": "message"
+      },
+      "cms": {
+        "name": "nom",
+        "site_name": "nom valeur correspondante / clé",
+        "key": "clé"
       }
     },
     "placeholder": {

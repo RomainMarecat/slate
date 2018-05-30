@@ -8,12 +8,14 @@ import { SharedModule } from '../../shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ContactService } from '../../contact/shared/contact.service';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const TABLE_CONTACT = new InjectionToken<string>('contact');
 
 @NgModule({
   imports: [
     CommonModule,
+    FlexLayoutModule,
     NgxDatatableModule,
     SharedModule,
     ContactRoutingModule
