@@ -137,22 +137,6 @@ export class ArticleEditComponent implements OnInit {
     }
   }
 
-  get name() {
-    return this.form.get('name');
-  }
-
-  set name(name) {
-    this.form.patchValue({name: name});
-  }
-
-  get slug() {
-    return this.form.get('slug');
-  }
-
-  set slug(slug) {
-    this.form.patchValue({slug: slug});
-  }
-
   get facebook() {
     return this._facebook;
   }

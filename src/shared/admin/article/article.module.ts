@@ -10,12 +10,14 @@ import { NgxEditorModule } from 'ngx-editor';
 import { SharedModule } from '../../shared.module';
 import { ArticleService } from '../../article/shared/article.service';
 import { MatIconRegistry } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const TABLE_ARTICLE = new InjectionToken<string>('article');
 
 @NgModule({
   imports: [
     CommonModule,
+    FlexLayoutModule,
     NgxDatatableModule,
     SharedModule,
     NgxEditorModule,

@@ -1,4 +1,49 @@
 {
+  "admin": {
+    "title":{
+      "article": {
+        "title": "les articles",
+        "selection": "sélectionné(s)"
+      }
+    },
+    "cta": {
+      "add": {
+        "article": "ajouter un article"
+      }
+    },
+    "label": {
+      "article": {
+        "name": "nom",
+        "description": "contenu de l'article",
+        "facebook": "publication facebook",
+        "unpublish": "brouillon",
+        "publish": "publier"
+      }
+    },
+    "placeholder": {
+      "article": {
+        "name": "nom",
+        "description": "copier/coller ici le lien vers le post facebook"
+      }
+    },
+    "hint": {
+      "article": {
+        "name": "titre de l'article"
+      }
+    },
+    "error": {
+      "required": {
+        "article": {
+          "name": "le titre est obligatoire"
+        }
+      },
+      "invalid": {
+        "article": {
+          "name": "le titre est invalide"
+        }
+      }
+    }
+  },
   "meta": {
     "title": {
       "homepage": "showcase"
