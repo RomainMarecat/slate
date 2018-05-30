@@ -20,6 +20,7 @@ import { Moment } from 'moment';
 import { EventService } from '../shared/event.service';
 import { Day } from '../shared/day';
 import { Filter } from '../../facet/filter/shared/filter';
+import { SessionService } from 'shared/session/shared/session.service';
 
 @Component({
   selector: 'app-calendar',
@@ -59,6 +60,7 @@ export class CalendarComponent implements OnInit, OnChanges {
   sessions: Map<string, Session>;
 
   constructor(private eventService: EventService,
+              private sessionService: SessionService,
               private cd: ChangeDetectorRef,
               private rd: Renderer2) {
   }
@@ -171,22 +173,38 @@ export class CalendarComponent implements OnInit, OnChanges {
     this.loadAvailabilities();
   }
 
+  /**
+   * On switch date range
+   * @param {String} viewMode
+   */
   onSwithedView(viewMode: String) {
     this.viewModeChanged.emit(viewMode);
     this.setDateRange();
   }
 
+  /**
+   * On start change event
+   * @param {moment.Moment} start
+   */
   onStartChanged(start: Moment) {
     this.start = start;
     this.setDateRange();
   }
 
+  /**
+   * On session added on click event
+   * @param {Session} session
+   */
   onSessionAdded(session: Session) {
     this.sessions.set(moment(session.start).format('YYYY-MM-DDHH:mm'), session);
     this.addSession(session);
     this.sessionCreated.emit(session);
   }
 
+  /**
+   * On removed event
+   * @param source
+   */
   onSessionRemoved(source: { key: string, session: Session }) {
     this.sessions.delete(source.key);
     this.removeSession(source.session);
@@ -248,6 +266,7 @@ export class CalendarComponent implements OnInit, OnChanges {
   }
 
   /**
+   * Add session event in calendar
    * @param session
    */
   addSession(session: Session) {
@@ -294,6 +313,7 @@ export class CalendarComponent implements OnInit, OnChanges {
   }
 
   /**
+   * Remove session event in Calendar
    * @param session
    */
   removeSession(session: Session) {
@@ -346,26 +366,16 @@ export class CalendarComponent implements OnInit, OnChanges {
    ******************* Date functions **************
    *************************************************/
 
-  // buildTrueDuration() {
-  //   if (this.onlineSession && this.onlineSession.session_type
-  //     && this.onlineSession.session_type.duration !== undefined
-  //     && this.onlineSession.session_type.pause !== undefined) {
-  //     this.trueDuration = this.onlineSession.session_type.duration + this.onlineSession.session_type.pause;
-  //   } else {
-  //     this.trueDuration = 0;
-  //   }
-  // }
-
   loadEvents(start: Moment, end: Moment) {
-    this.eventService.filters$.next([
+    this.sessionService.filters$.next([
       {
         column: 'start',
         operator: '>=',
-        value: moment(start).toDate().toDateString()
+        value: moment(start).toDate()
       }
     ] as Filter[]);
-    this.eventService.getEvents()
-      .subscribe((events: Event[]) => {
+    this.sessionService.getSessions()
+      .subscribe((events: Session[]) => {
         this.events = [ ...events.filter((event) => event && event.end <= end.toDate()) ];
         this.busySlots = new Set();
         this.daysBusySlotNumber = new Map();
@@ -425,7 +435,6 @@ export class CalendarComponent implements OnInit, OnChanges {
         });
 
         this.cd.markForCheck();
-        // this.restoreCartEvents();
       });
   }
 }

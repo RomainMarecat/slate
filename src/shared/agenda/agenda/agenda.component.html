@@ -1,14 +1,20 @@
-<div class="agenda-wrapper">
+<div class="agenda-wrapper" id="booking">
   <div class="calendar-wrapper">
 
-    <div class="calendar-header">
-      <div class="calendar-title-wrapper">
-        <h2 class="text-capitalize">{{ 'calendar.title'|translate }}</h2>
+    <div class="calendar-header"
+         fxLayout="row"
+         fxLayoutAlign="center stretch">
+      <div class="calendar-title">
+        <div class="calendar-title-wrapper">
+          <h2 class="text-capitalize">{{ 'calendar.title'|translate }}</h2>
+        </div>
+        <div class="calendar-subtitle-wrapper">
+          <h3 class="text-capitalize">{{ 'calendar.subtitle'|translate }}</h3>
+        </div>
       </div>
-      <div class="calendar-subtitle-wrapper">
-        <h3 class="text-capitalize">{{ 'calendar.subtitle'|translate }}</h3>
-      </div>
+
     </div>
+
     <div class="calendar-content">
       <app-calendar [viewMode]="viewMode"
                     [slotDuration]="slotDuration"

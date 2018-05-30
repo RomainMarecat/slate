@@ -26,12 +26,23 @@
   </div>
   <div class="row">
     <div class="col-12 mt-2">
-      <ngx-datatable class="material striped scrolling-cms" [columnMode]="'force'" [rows]="cmsList$|async"
-                     [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight"
-                     [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)"
-                     [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)"
+      <ngx-datatable class="material striped scrolling-cms"
+                     [columnMode]="'force'"
+                     [rows]="cmsList$|async"
+                     [columns]="columns"
+                     [headerHeight]="headerHeight"
+                     [rowHeight]="rowHeight"
+                     [loadingIndicator]="isLoading"
+                     [scrollbarV]="true"
+                     (scroll)="onScroll($event.offsetY)"
+                     [selected]="selected"
+                     [selectionType]="'checkbox'"
+                     (activate)="onActivate($event)"
                      (select)='onSelect($event)'>
-        <ngx-datatable-column [width]="50" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+        <ngx-datatable-column [width]="50"
+                              [sortable]="false"
+                              [canAutoResize]="false"
+                              [draggable]="false"
                               [resizeable]="false">
           <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
                        let-selectFn="selectFn">
@@ -44,7 +55,7 @@
         </ngx-datatable-column>
         <ngx-datatable-column name="name">
           <ng-template let-value="value" ngx-datatable-cell-template>
-            {{ value | translate }}
+            <span class="link">{{ value | translate }}</span>
           </ng-template>
         </ngx-datatable-column>
         <ngx-datatable-column name="site_name"></ngx-datatable-column>

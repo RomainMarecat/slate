@@ -1,7 +1,7 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular/cli'],
@@ -9,7 +9,7 @@ module.exports = function(config) {
       pattern: './src/test.ts',
       watched: false
     }, {
-      pattern: './src/scss/styles.spec.css'
+      pattern: './src/styles.spec.css'
     }, {
       pattern: './node_modules/hammerjs/hammer.js'
     }, {
@@ -54,7 +54,7 @@ module.exports = function(config) {
       },
       HeadlessChromeTravisCi: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox', '--disable-translate', '--disable-extensions', '--remote-debugging-port=9223']
+        flags: ['--no-sandbox', '--disable-translate', '--headless', '--disable-extensions', '--remote-debugging-port=9223']
       },
       HeadlessChrome: {
         base: 'ChromeHeadless',

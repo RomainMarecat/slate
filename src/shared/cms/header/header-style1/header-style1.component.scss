@@ -1,0 +1,58 @@
+@import '../../../../../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../../../../app-showcase/scss/theme';
+
+.header {
+  display: block;
+  position: relative;
+  background: linear-gradient(rgba(18, 31, 42, 0.75), rgba(18, 31, 42, 0.7)),
+  url('/assets/images/header-style1.jpg'),
+  no-repeat center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  height: 100vh;
+
+  .header-wrapper {
+    min-height: 100vh;
+    text-align: center;
+
+    h1 {
+      color: mat-color($white);
+      text-transform: uppercase;
+      font-size: 50px;
+      letter-spacing: 3px;
+      margin: 0 0 30px;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h2 {
+      color: mat-color($white);
+      font-size: 20px;
+      line-height: 22px;
+      letter-spacing: 1px;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .header-actions {
+      margin-top: 45px;
+      a {
+
+        @include media-breakpoint-up(sm) {
+          width: 200px;
+          line-height: 64px;
+          height: 64px;
+          font-size: 18px;
+        }
+        text-decoration: none;
+      }
+    }
+  }
+
+}
+

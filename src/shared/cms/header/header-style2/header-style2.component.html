@@ -1,0 +1,32 @@
+<header class="home-intro-section text-center"
+        id="intro-section">
+  <div class="container"
+       fxLayout="column"
+       fxLayoutAlign="center center">
+    <div class="home-intro-subtitle">
+      {{ 'header-style2.subtitle'|translate }}
+    </div>
+    <h1 class="home-intro-title">
+      {{ 'header-style2.title'|translate }}
+    </h1>
+    <p class="home-intro-text">
+      {{ 'header-style2.description'|translate }}
+    </p>
+    <button type="button"
+            role="button"
+            class="intro-cta"
+            color="accent"
+            mat-raised-button>
+      <span class="mat-button-wrapper">
+        <mat-icon role="img" aria-hidden="true">
+          add_shopping_cart
+        </mat-icon>
+      {{ 'cta.booking'|translate }}
+      </span>
+    </button>
+    <div class="intro-product">
+      <img [alt]="'image.bg-line-green'|translate"
+           src="assets/images/first-macbook.png">
+    </div>
+  </div>
+</header>

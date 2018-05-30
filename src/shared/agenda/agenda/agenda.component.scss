@@ -1,3 +1,38 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../../../app-showcase/scss/theme';
+
 .agenda-wrapper {
   min-height: 500px;
+
+  .calendar-wrapper {
+    margin: 0 20px 0 20px;
+    .calendar-header {
+      margin-top: 40px;
+      @include media-breakpoint-down(sm) {
+        text-align: center;
+      }
+
+      h2 {
+        color: mat-color($black);
+        font-size: 30px;
+        line-height: 32px;
+        letter-spacing: 1px;
+        margin: 0 0 30px;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      h3 {
+        color: mat-color($black);
+        font-size: 28px;
+        line-height: 30px;
+        letter-spacing: 1px;
+        margin: 0 0 30px;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+    }
+  }
 }

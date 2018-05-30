@@ -2,10 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Material+Icons|Open+Sans|Helvetica+Neue');
 
 // Plus imports for other components in your app-clothe.
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app-clothe.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
+// Include the common styles.
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker

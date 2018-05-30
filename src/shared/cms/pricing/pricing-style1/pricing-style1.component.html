@@ -1,0 +1,63 @@
+<section class="pricing-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="text-capitalize">
+        {{ 'pricing.title'|translate }}
+      </h2>
+      <mat-slide-toggle class="mb-1"
+                        color="primary"
+                        (change)="togglePlan($event)">
+        <label class="mat-slide-toggle-label">
+          <span class="mat-slide-toggle-content">
+            {{ 'pricing.description'|translate }}
+          </span>
+        </label>
+      </mat-slide-toggle>
+    </div>
+
+    <div fxLayout="row wrap">
+      <div fxFlex="100" fxFlex.gt-sm="25" fxFlex.sm="50" *ngFor="let pricing of pricings">
+        <mat-card class="plan-pricing text-center p-0 mat-card">
+          <mat-card-title class="light-gray mat-card-title"
+                          [class.mat-bg-primary]="pricing.selected">
+            <div class="card-title-text">
+              <div class="cart-title-heading">{{ pricing?.name }}</div>
+              <div class="text-sm text-muted">{{ pricing?.description }}</div>
+            </div>
+            <mat-divider aria-orientation="horizontal"
+                         class="mat-divider"
+                         role="separator"></mat-divider>
+          </mat-card-title>
+          <mat-card-content class="mat-card-content">
+            <h1>
+              <strong *ngIf="pricing.price === 0; else price">FREE</strong>
+              <ng-template #price>
+                <strong>
+                  <span class="ng-star-inserted">{{ pricing.price }} € /Mo</span>
+                </strong>
+              </ng-template>
+            </h1>
+            <mat-list class="mb-1 mat-list"
+                      dense
+                      *ngFor="let option of pricing.options">
+              <mat-list-item class="mat-list-item d-inline-flex text-center">
+                <div class="mat-list-item-content ">
+                  {{ option }}
+                </div>
+              </mat-list-item>
+            </mat-list>
+            <button class="text-uppercase"
+                    type="button"
+                    color="accent"
+                    mat-raised-button>
+              <span class="mat-button-wrapper">
+                {{ 'cta.choose'|translate }}
+              </span>
+            </button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+    </div>
+  </div>
+</section>

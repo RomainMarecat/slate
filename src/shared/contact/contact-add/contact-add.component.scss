@@ -1,8 +1,61 @@
-form {
-  display: block;
-  width: 30vw;
-  margin: 0 auto;
-  .mat-form-field {
-    width: 100%;
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../../../app-showcase/scss/theme';
+
+.contact-wrapper {
+  margin: 0 20px 30px 20px;
+  .contact-header {
+    margin-top: 40px;
+
+    h2 {
+      color: mat-color($black);
+      font-size: 30px;
+      line-height: 32px;
+      letter-spacing: 1px;
+      margin: 0 0 30px;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h3 {
+      color: mat-color($black);
+      font-size: 28px;
+      line-height: 30px;
+      letter-spacing: 1px;
+      margin: 0 0 30px;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+  form {
+    display: block;
+
+    @include media-breakpoint-up(xs) {
+      width: 80vw;
+    }
+    @include media-breakpoint-up(sm) {
+      width: 70vw;
+    }
+    @include media-breakpoint-up(md) {
+      width: 50vw;
+    }
+    @include media-breakpoint-up(lg) {
+      width: 40vw;
+    }
+    @include media-breakpoint-up(xl) {
+      width: 30vw;
+    }
+    margin: 0 auto 30px auto;
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .send-wrapper {
+    margin: 30px 0;
   }
 }
+
+
+

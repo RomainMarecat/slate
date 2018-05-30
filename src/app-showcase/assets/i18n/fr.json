@@ -8,11 +8,27 @@
     }
   },
   "cta": {
+    "add-to-cart": "ajouter au panier",
+    "learn-more": "en savoir plus",
+    "buy": "acheter",
+    "booking": "réserver",
+    "choose": "choisir",
+    "next-available-slot": "prochaines disponibilités",
+    "back_to_home": "retour à la l'accueil",
+    "home": "accueil",
     "back": "retour",
     "cancel": "annuler",
+    "pay": "payer",
     "save": "enregistrer",
     "send": "envoyer",
     "take_meeting": "prendre rendez-vous"
+  },
+  "faq": {
+    "shipping": "livraison",
+    "general-question": "questions générales",
+    "about-service": "a propos du service",
+    "privacyandpolicy": "politique de confidencialité",
+    "buyandsell": "acheter et vendre"
   },
   "menu": {
     "connection": {
@@ -23,11 +39,35 @@
     "sort": "Trier",
     "filter": "Filtrer"
   },
-  "booking-add": {
+  "cart": {
+    "title": {
+      "cart": "validation",
+      "login": "se connecter",
+      "payment": "paiement",
+      "confirmation": "confirmation"
+    }
+  },
+  "cart-add": {
     "title": "réservation",
-    "subtitle": ""
+    "subtitle": "",
+    "saved": "la réservation est sauvegardée"
+  },
+  "cart-payment": {
+    "errors": {
+      "cart": "Une erreur est survenue. Le montant du panier est incohérent."
+    }
+  },
+  "order-confirmation": {
+    "title": "La commande est confirmée",
+    "content": {
+      "waiting": "La commande est maintenant en cours de traitement.",
+      "key": "numéro de commande",
+      "summary": "récapitulatif",
+      "total": "montant total"
+    }
   },
   "calendar": {
+    "back-today": "revenir à la date d'aujourd'hui",
     "day": "jour",
     "3days": "3 jours",
     "week": "semaine",
@@ -40,13 +80,65 @@
       "info": "Créneau vérrouillé"
     }
   },
+  "contact": {
+    "title": "Nous contacter",
+    "subtitle": "Envoyer un message"
+  },
+  "feature": {
+    "title1": "Entretien des sols et des plantes",
+    "title2": "Traitements",
+    "title3": "Gardiennage",
+    "title4": "Petit Bricolage",
+    "description1": "Tonte, Taille ( haies, arbuste...), Arrosage, Rempotage, Récoltes",
+    "description2": "Enlèvement des déchets végétaux, Refleurissement, déneigement, Désherbage",
+    "description3": "Rangement du bois de chauffe, Débroussaillage, Petit Bricolage",
+    "description4": "Gardiennage, Nettoyage intérieur et extérieur"
+  },
+  "header-style1": {
+    "title": "Slate garden",
+    "subtitle": "Elagage, création parc et jardin, service à la personne"
+  },
+  "header-style2": {
+    "title": "Slate garden",
+    "subtitle": "pour un ouvrage soigné jusqu'au bout des branches",
+    "description": "Elagage, création parc et jardin, service à la personne"
+  },
+  "image": {
+    "bg-line-green": "image de fond ligne verte"
+  },
   "location-current": {
     "label": {
       "meeting": "Siège social"
     }
   },
+  "payment": {
+    "number": "numéro de carte de crédit.",
+    "month": "mois d'expiration de carte de crédit",
+    "year": "l'année d'expiration de carte de crédit",
+    "cvv": "code de vérification de votre carte de crédit.",
+    "help": {
+      "cvv": {
+        "title": "code de vérification de votre carte de crédit.",
+        "description": "Pour votre sécurité, le code de vérification (CVV - card verification code) vous est demandé lors de chaque validation de commande. Pour les cartes VISA et MasterCard, vous trouverez le code CVV à 3 chiffres au verso de votre carte sur la zone de signature.",
+        "alt": "code de vérification de votre carte de crédit"
+      }
+    },
+    "label": {
+      "number": "carte",
+      "month": "mois",
+      "year": "année",
+      "cvv": "cvv"
+    }
+  },
   "placeholder": {
-    "reason": "Choisir le motif"
+    "reason": "Choisir le motif",
+    "cmsDetail": {
+      "title": "titre du détail cms"
+    }
+  },
+  "pricing": {
+    "title": "choisir un abonnement",
+    "description": "économiser jusqu'à 10% en souscrivant à un abonnement annuel"
   },
   "reason": {
     "creation": "la création",
@@ -84,5 +176,11 @@
     "access_denied": {
       "connect": "Il faut se connecter pour effectuer cette action"
     }
-  }
+  },
+  "snackbar": {
+    "guard": {
+      "unauthenticated": "Connectez-vous avant d'accéder à cette page"
+    }
+  },
+  "euro": "€"
 }

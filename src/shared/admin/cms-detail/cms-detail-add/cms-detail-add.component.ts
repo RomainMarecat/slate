@@ -24,6 +24,7 @@ export class CmsDetailAddComponent implements OnInit {
       title: new FormControl('', [
         Validators.required,
       ]),
+      icon: new FormControl(null),
       content: new FormControl('', [
         Validators.required,
       ]),
