@@ -7,9 +7,6 @@
                  (activate)="onActivate($event)" (select)='onSelect($event)'></ngx-datatable>
   <app-admin-map-edit fxFlex="50" [showBackButton]="false" [hideAreas]="true"></app-admin-map-edit>
 </div>
-<!-- <button color="primary" type="button" aria-label="Ajouter un partenaire" [routerLink]="['/admin/map/add']" mat-mini-fab class="absolute-fab pulse">
-  <mat-icon aria-hidden="true">add</mat-icon>
-</button> -->
 <!-- Header Template -->
 <ng-template #desktopHeader let-column="column" let-sort="sortFn" ngx-datatable-header-template>
   <span class="mobile-hidden">{{column.name}}</span>

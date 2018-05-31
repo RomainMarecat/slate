@@ -1,7 +1,25 @@
-.scrolling-cms {
-  height: 60vh;
-}
-
 .link {
   cursor: pointer;
+}
+
+.card-header-wrapper {
+
+  .mat-card {
+    min-width: 30vw;
+  }
+
+  .card-actions {
+    button, a {
+      margin: 5px;
+    }
+  }
+}
+
+.card-content {
+  width: 100%;
+  min-width: 90vw;
+  .datatable {
+    height: 60vh;
+    min-width: 90vw;
+  }
 }

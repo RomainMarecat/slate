@@ -17,7 +17,7 @@ export class ArticleListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  articles: Article[];
+  articles: Article[] = [];
   isLoading = false;
   selected: Article[] = [];
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;

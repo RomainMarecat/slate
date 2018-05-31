@@ -1,66 +1,107 @@
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-      <div class='selected-column'>
-        <h4>Selections
-          <small>({{selected?.length}})</small>
-        </h4>
-      </div>
+<div class="main-wrapper">
+  <div class="card-header"
+       fxLayout="row"
+       fxLayoutAlign="space-around stretch"
+       fxLayoutGap="30px">
+    <div class="card-wrapper p-2">
+
+      <mat-card class="mat-card">
+        <mat-card-header>
+          <mat-card-title>
+            <h4 class="text-uppercase">
+              {{ 'admin.title.cms.title'|translate }}
+            </h4>
+          </mat-card-title>
+        </mat-card-header>
+      </mat-card>
     </div>
-    <div class="col-6">
-      <button role="button" aria-label="Publier une cms" mat-raised-button color="primary" (click)="publishCms()"
-              *ngIf="selected.length > 0">
-        <mat-icon aria-label="Published">done</mat-icon>
-        Publier
-      </button>
-      <button role="button" aria-label="Supprimer une cms" mat-raised-button color="accent" (click)="deleteCms()"
-              *ngIf="selected.length > 0">
-        <mat-icon aria-label="delete">delete</mat-icon>
-        Supprimer
-      </button>
-      <a [routerLink]="['/admin/cms/add']" mat-raised-button color="primary">
-        <mat-icon aria-label="add">add</mat-icon>
-        Ajouter
-      </a>
+
+    <div class="card-header-wrapper p-2">
+      <mat-card class="mat-card">
+        <mat-card-content>
+          <div class='selected-column'>
+            <h4>
+              {{ 'admin.title.cms.selection'|translate }}
+              <small>({{selected?.length}})</small>
+            </h4>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="card-actions"
+               fxLayout="row wrap"
+               fxLayoutAlign="center stretch">
+            <button role="button"
+                    [attr.aria-label]="'admin.label.cms.publish'|translate"
+                    mat-raised-button
+                    color="primary"
+                    class="text-uppercase"
+                    (click)="publishCms()"
+                    *ngIf="selected.length > 0">
+              <mat-icon [attr.aria-label]="'admin.label.cms.publish'|translate">
+                done
+              </mat-icon>
+              {{ 'cta.publish'|translate }}
+            </button>
+            <button role="button"
+                    [attr.aria-label]="'admin.label.cms.delete'|translate"
+                    mat-raised-button
+                    color="accent"
+                    class="text-uppercase"
+                    (click)="deleteCms()"
+                    *ngIf="selected.length > 0">
+              <mat-icon aria-label="delete">delete</mat-icon>
+              {{ 'cta.delete'|translate }}
+            </button>
+            <a [routerLink]="['/admin/cms/add']"
+               mat-raised-button
+               class="text-uppercase"
+               color="primary">
+              <mat-icon aria-label="add">add</mat-icon>
+              {{ 'cta.add'|translate }}
+            </a>
+          </div>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
-  <div class="row">
-    <div class="col-12 mt-2">
-      <ngx-datatable class="material striped scrolling-cms"
-                     [columnMode]="'force'"
-                     [rows]="cmsList$|async"
-                     [columns]="columns"
-                     [headerHeight]="headerHeight"
-                     [rowHeight]="rowHeight"
-                     [loadingIndicator]="isLoading"
-                     [scrollbarV]="true"
-                     (scroll)="onScroll($event.offsetY)"
-                     [selected]="selected"
-                     [selectionType]="'checkbox'"
-                     (activate)="onActivate($event)"
-                     (select)='onSelect($event)'>
-        <ngx-datatable-column [width]="50"
-                              [sortable]="false"
-                              [canAutoResize]="false"
-                              [draggable]="false"
-                              [resizeable]="false">
-          <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
-                       let-selectFn="selectFn">
-            <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
-          </ng-template>
-          <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
-                       let-onCheckboxChangeFn="onCheckboxChangeFn">
-            <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="name">
-          <ng-template let-value="value" ngx-datatable-cell-template>
-            <span class="link">{{ value | translate }}</span>
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="site_name"></ngx-datatable-column>
-        <ngx-datatable-column name="key"></ngx-datatable-column>
-      </ngx-datatable>
-    </div>
+  <div class="card-content px-2"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+
+    <ngx-datatable class="material striped datatable"
+                   [columnMode]="'force'"
+                   [rows]="cmsList$|async"
+                   [columns]="columns"
+                   [headerHeight]="headerHeight"
+                   [rowHeight]="rowHeight"
+                   [loadingIndicator]="isLoading"
+                   [scrollbarV]="true"
+                   (scroll)="onScroll($event.offsetY)"
+                   [selected]="selected"
+                   [selectionType]="'checkbox'"
+                   (activate)="onActivate($event)"
+                   (select)='onSelect($event)'>
+      <ngx-datatable-column [width]="50"
+                            [sortable]="false"
+                            [canAutoResize]="false"
+                            [draggable]="false"
+                            [resizeable]="false">
+        <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                     let-selectFn="selectFn">
+          <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
+        </ng-template>
+        <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                     let-onCheckboxChangeFn="onCheckboxChangeFn">
+          <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="name">
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          <span class="link">{{ value | translate }}</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="site_name"></ngx-datatable-column>
+      <ngx-datatable-column name="key"></ngx-datatable-column>
+    </ngx-datatable>
   </div>
 </div>

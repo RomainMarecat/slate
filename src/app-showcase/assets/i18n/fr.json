@@ -1,4 +1,117 @@
 {
+  "admin": {
+    "title": {
+      "article": {
+        "title": "les articles",
+        "selection": "sélectionné(s)"
+      },
+      "contact": {
+        "title": "tous les messages",
+        "selection": "sélectionné(s)"
+      },
+      "cms": {
+        "title": "tous les cms",
+        "add": "ajouter un cms",
+        "selection": "sélectionné(s)"
+      }
+    },
+    "cta": {
+      "add": {
+        "attribute": "ajouter un attribut",
+        "contact": "ajouter un message",
+        "article": "ajouter un article",
+        "cms": "ajouter un cms"
+      }
+    },
+    "label": {
+      "attribute": {
+        "name": "nom",
+        "fr": "traduction française",
+        "radio": "bouton radio",
+        "checkbox": "checkbox",
+        "text": "texte",
+        "select": "menu déroulant",
+        "type": "Détermine avec quel composant choisir l'attribut",
+        "order_by": "Détermine comment sont triés les valeurs de cet attribut en front sur la page du produit"
+      },
+      "article": {
+        "name": "nom",
+        "description": "contenu de l'article",
+        "facebook": "publication facebook",
+        "unpublish": "brouillon",
+        "publish": "publier",
+        "unpublished": "dépublié",
+        "published": "publié"
+      },
+      "contact": {
+        "name": "nom",
+        "email": "email",
+        "message": "message"
+      },
+      "cms": {
+        "name": "nom",
+        "site_name": "nom valeur correspondante / clé",
+        "key": "clé"
+      }
+    },
+    "placeholder": {
+      "article": {
+        "name": "nom",
+        "description": "copier/coller ici le lien vers le post facebook"
+      },
+      "attribute": {
+        "name": "nom",
+        "fr": "traduction française",
+        "variantes": "variantes",
+        "term": "terme"
+      },
+      "cms": {
+        "name": "nom",
+        "site_name": "clé"
+      }
+    },
+    "hint": {
+      "article": {
+        "name": "titre de l'article"
+      },
+      "attribute": {
+        "name": "nom de l'attribut",
+        "fr": "traduction française de l'attribut"
+      },
+      "cms": {
+        "name": "nom du cms",
+        "site_name": "clé du cms"
+      }
+    },
+    "error": {
+      "required": {
+        "article": {
+          "name": "le titre est obligatoire"
+        },
+        "attribute": {
+          "name": "le nom est obligatoire",
+          "fr": "la traduction française est obligatoire"
+        },
+        "cms": {
+          "name": "le nom est obligatoire",
+          "site_name": "la clé est obligatoire"
+        }
+      },
+      "invalid": {
+        "article": {
+          "name": "le titre est invalide"
+        },
+        "attribute": {
+          "name": "le nom est invalide",
+          "fr": "la traduction française est invalide"
+        },
+        "cms": {
+          "name": "le nom est invalide",
+          "site_name": "la clé est invalide"
+        }
+      }
+    }
+  },
   "meta": {
     "title": {
       "homepage": "showcase"
@@ -8,20 +121,25 @@
     }
   },
   "cta": {
+    "add": "ajouter",
     "add-to-cart": "ajouter au panier",
     "learn-more": "en savoir plus",
+    "back_to_home": "retour à la l'accueil",
     "buy": "acheter",
     "booking": "réserver",
     "choose": "choisir",
+    "delete": "supprimer",
     "next-available-slot": "prochaines disponibilités",
-    "back_to_home": "retour à la l'accueil",
     "home": "accueil",
     "back": "retour",
     "cancel": "annuler",
     "pay": "payer",
+    "publish": "publier",
+    "remove": "supprimer",
     "save": "enregistrer",
     "send": "envoyer",
-    "take_meeting": "prendre rendez-vous"
+    "take_meeting": "prendre rendez-vous",
+    "unpublish": "dépublier"
   },
   "faq": {
     "shipping": "livraison",
