@@ -1,17 +1,11 @@
 .mat-card {
-  display: flex;
-  flex-direction: column;
+  width: 90vw;
 }
 
 form .mat-form-field {
   width: 100%;
 }
 
-.scrolling-selections {
-  height: 50vh;
-}
-
-
-.scrolling-products-selections {
+.datatable {
   height: 50vh;
 }

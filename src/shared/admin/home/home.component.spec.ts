@@ -22,7 +22,8 @@ import { ProductService } from '../../../shared/admin/shared/product/product.ser
 import { MockProductService } from '../../../shared/admin/shared/product/mock-product.service';
 import { HomeComponent } from './home.component';
 import { SharedModule } from '../../shared.module';
-import { ProductFilterComponent } from './../product/product-filter/product-filter.component';
+import { ProductFilterComponent } from '../product/product-filter/product-filter.component';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -46,7 +47,10 @@ describe('HomeComponent', () => {
           MatCheckboxModule,
           MatListModule,
           MatToolbarModule,
-          SharedModule
+          SharedModule,
+          TranslateModule.forRoot({
+            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          }),
         ],
         declarations: [HomeComponent, ProductComponent, ProductListComponent, ProductFilterComponent],
         providers: [

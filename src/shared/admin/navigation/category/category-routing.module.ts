@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../../guard/admin.guard';
-import { CategoryComponent } from './category.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryAddComponent } from './category-add/category-add.component';
 
@@ -9,7 +8,6 @@ const routes: Routes = [{
     path: '',
     redirectTo: 'list',
     canActivate: [AdminGuard],
-    component: CategoryComponent
   },
   {
     path: 'list',

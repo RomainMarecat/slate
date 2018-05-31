@@ -1,22 +1,21 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectionService } from '../../../shared/navigation/selection/selection.service';
 import { Selection } from '../../../../selection/selection';
 import { SelectionFormType } from '../../../shared/navigation/selection/form-selection';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { AlertService } from '../../../../popup/alert.service';
 import { HockeyProduct } from '../../../../product/hockey-product';
 import { Media } from '../../../../media/media';
 import { StringService } from '../../../../util/string.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
 import { ProductService } from '../../../shared/product/product.service';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'app-selection-add',
   templateUrl: './selection-add.component.html',
-  styleUrls: ['./selection-add.component.scss']
+  styleUrls: [ './selection-add.component.scss' ]
 })
 export class SelectionAddComponent implements OnInit {
   readonly headerHeight = 50;
@@ -27,8 +26,8 @@ export class SelectionAddComponent implements OnInit {
   columnsParent: any;
   parents: Selection[];
 
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
 
   selectedProducts: HockeyProduct[] = [];
   selectedParent: Selection[] = [];
@@ -40,12 +39,13 @@ export class SelectionAddComponent implements OnInit {
   _publication = true;
 
   constructor(private selectionService: SelectionService,
-    private productService: ProductService,
-    private alertService: AlertService,
-    private router: Router) {}
+              private productService: ProductService,
+              private alertService: AlertService,
+              private router: Router) {
+  }
 
   ngOnInit() {
-    this.columnsProduct = [{
+    this.columnsProduct = [ {
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -65,8 +65,8 @@ export class SelectionAddComponent implements OnInit {
       prop: 'category',
       name: 'category',
       flexGrow: 1
-    }];
-    this.columnsParent = [{
+    } ];
+    this.columnsParent = [ {
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -90,7 +90,7 @@ export class SelectionAddComponent implements OnInit {
       prop: 'level',
       name: 'level',
       flexGrow: 1
-    }];
+    } ];
     this.createForm();
     this.isLoadingProducts = true;
     this.isLoadingParents = true;
@@ -120,13 +120,13 @@ export class SelectionAddComponent implements OnInit {
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
-          this.form.patchValue({ name: value.name, slug: slug, alias: value.name });
+          this.form.patchValue({name: value.name, slug: slug, alias: value.name});
         }
       });
   }
 
   saveSelection() {
-    this.form.patchValue({ published: this._publication });
+    this.form.patchValue({published: this._publication});
     if (this.form.valid === true) {
       this.selection = this.form.value;
       if (this.selection.published === true) {
@@ -135,7 +135,7 @@ export class SelectionAddComponent implements OnInit {
       this.selectionService.createSelection(this.selection);
       this.alertService.toast(`La selection est ajoutée ${this.selection.name}`, 'info');
       this.reset();
-      this.router.navigate(['/admin/navigation/selection']);
+      this.router.navigate([ '/admin/navigation/selection' ]);
     }
   }
 
@@ -147,7 +147,7 @@ export class SelectionAddComponent implements OnInit {
 
   onImageChange(media: Media) {
     this.medias.push(media);
-    this.form.patchValue({ images: this.medias.map((image: Media) => image.key) });
+    this.form.patchValue({images: this.medias.map((image: Media) => image.key)});
   }
 
   get name() {
@@ -155,7 +155,7 @@ export class SelectionAddComponent implements OnInit {
   }
 
   set name(name) {
-    this.form.patchValue({ name: name });
+    this.form.patchValue({name: name});
   }
 
   get fr() {
@@ -163,7 +163,7 @@ export class SelectionAddComponent implements OnInit {
   }
 
   set fr(fr) {
-    this.form.get('translations').patchValue({ fr: fr });
+    this.form.get('translations').patchValue({fr: fr});
   }
 
   get description() {
@@ -171,7 +171,7 @@ export class SelectionAddComponent implements OnInit {
   }
 
   set description(description) {
-    this.form.patchValue({ description: description });
+    this.form.patchValue({description: description});
   }
 
   get keywords() {
@@ -179,7 +179,7 @@ export class SelectionAddComponent implements OnInit {
   }
 
   set keywords(keywords) {
-    this.form.patchValue({ keywords: keywords });
+    this.form.patchValue({keywords: keywords});
   }
 
   get level() {
@@ -187,7 +187,7 @@ export class SelectionAddComponent implements OnInit {
   }
 
   set level(level) {
-    this.form.patchValue({ level: level });
+    this.form.patchValue({level: level});
   }
 
   get published_at() {
@@ -195,7 +195,7 @@ export class SelectionAddComponent implements OnInit {
   }
 
   set published_at(published_at) {
-    this.form.patchValue({ published_at: published_at });
+    this.form.patchValue({published_at: published_at});
   }
 
   get root() {
@@ -203,7 +203,7 @@ export class SelectionAddComponent implements OnInit {
   }
 
   set root(root) {
-    this.form.patchValue({ root: root });
+    this.form.patchValue({root: root});
   }
 
   get products() {
@@ -211,7 +211,7 @@ export class SelectionAddComponent implements OnInit {
   }
 
   set products(products) {
-    this.form.patchValue({ products: products });
+    this.form.patchValue({products: products});
   }
 
   get images() {
@@ -219,7 +219,7 @@ export class SelectionAddComponent implements OnInit {
   }
 
   set images(images) {
-    this.form.patchValue({ images: images });
+    this.form.patchValue({images: images});
   }
 
   get publication() {
@@ -235,7 +235,7 @@ export class SelectionAddComponent implements OnInit {
   }
 
   set published(published) {
-    this.form.patchValue({ published: published });
+    this.form.patchValue({published: published});
   }
 
   get parent() {
@@ -243,18 +243,18 @@ export class SelectionAddComponent implements OnInit {
   }
 
   set parent(parent) {
-    this.form.patchValue({ parent: parent });
+    this.form.patchValue({parent: parent});
   }
 
   /**
    * On select add new list in selection array
    * @param {any} selected
    */
-  onSelectParent({ selected }) {
+  onSelectParent({selected}) {
     this.selectedParent = [];
-    this.selectedParent.push(selected[0]);
+    this.selectedParent.push(selected[ 0 ]);
     this.selectedParent.forEach((selection: Selection) => {
-      this.form.patchValue({ parent: selection.key, level: selection.level + 1 });
+      this.form.patchValue({parent: selection.key, level: selection.level + 1});
     });
   }
 
@@ -263,7 +263,7 @@ export class SelectionAddComponent implements OnInit {
    * On select add new list in selection array
    * @param {any} selected
    */
-  onSelectProduct({ selected }) {
+  onSelectProduct({selected}) {
     this.selectedProducts.splice(0, this.selectedProducts.length);
     this.selectedProducts.push(...selected.map((item: HockeyProduct) => item.key));
   }
@@ -274,7 +274,7 @@ export class SelectionAddComponent implements OnInit {
   addProducts() {
     this.selectedProducts.forEach((product: HockeyProduct) => {
       if (product.published === true) {
-        this.form.patchValue({ products: this.form.get('products').value.push(product.key) });
+        this.form.patchValue({products: this.form.get('products').value.push(product.key)});
       }
     });
   }

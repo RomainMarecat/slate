@@ -2,7 +2,6 @@
   cursor: pointer;
 }
 
-
 .mat-card {
   min-width: 30vw;
 }
@@ -14,4 +13,10 @@
     height: 60vh;
     min-width: 90vw;
   }
+}
+
+.row-activate {
+  display: block;
+  min-height: 20px;
+  min-width: 50px;
 }

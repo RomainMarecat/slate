@@ -34,43 +34,43 @@ import { environment } from '../../../../../app-hockey/environments/environment'
 
 describe('SelectionEditComponent', () => {
   let component: SelectionEditComponent;
-  let fixture: ComponentFixture < SelectionEditComponent > ;
+  let fixture: ComponentFixture<SelectionEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          BrowserAnimationsModule,
-          RouterTestingModule,
-          SharedModule,
-          NgxDatatableModule,
-          NgxEditorModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-          RouterTestingModule
-        ],
-        declarations: [SelectionEditComponent],
-        providers: [
-          { provide: SelectionService, useClass: MockSelectionService },
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: UserService, useClass: MockUserService },
-          { provide: MediaService, useClass: MockMediaService },
-          { provide: ProductService, useClass: MockProductService },
-          { provide: NotificationService, useClass: MockNotificationService },
-          DateService,
-          ObjectService,
-          I18nService,
-          DeviceService,
-        ]
-      })
+      imports: [
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        BrowserAnimationsModule,
+        RouterTestingModule,
+        SharedModule,
+        NgxDatatableModule,
+        NgxEditorModule,
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+        RouterTestingModule
+      ],
+      declarations: [ SelectionEditComponent ],
+      providers: [
+        {provide: SelectionService, useClass: MockSelectionService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: ProductService, useClass: MockProductService},
+        {provide: NotificationService, useClass: MockNotificationService},
+        DateService,
+        ObjectService,
+        I18nService,
+        DeviceService,
+      ]
+    })
       .compileComponents();
   }));
 

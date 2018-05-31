@@ -1,9 +1,12 @@
-<mat-toolbar color="warn" fxLayout="row" fxLayout.xs="column">
-  <a mat-button color="primary" [routerLink]="['/admin/product']">Products</a>
-  <a mat-button color="primary" [routerLink]="['/admin/navigation/category']">Categories</a>
-  <a mat-button color="primary" [routerLink]="['/admin/navigation/selection']">Selections</a>
-  <a mat-button color="primary" [routerLink]="['/admin/post']">Articles</a>
-  <a mat-button color="primary" [routerLink]="['/admin/cms']">Cms</a>
-  <a mat-button color="primary" [routerLink]="['/admin/partner']">Partners</a>
-  <a mat-button color="primary" [routerLink]="['/admin/offer']">Offers</a>
+<mat-toolbar color="warn"
+             fxLayout="row"
+             fxLayout.xs="column">
+  <a mat-button color="primary" [routerLink]="['/admin/product']">{{ 'admin.cta.product'|translate }}</a>
+  <a mat-button color="primary" [routerLink]="['/admin/navigation/category']">{{ 'admin.cta.category'|translate }}</a>
+  <a mat-button color="primary" [routerLink]="['/admin/navigation/selection']">{{ 'admin.cta.selection'|translate }}</a>
+  <a mat-button color="primary" [routerLink]="['/admin/map']">{{ 'admin.cta.map'|translate }}</a>
+  <a mat-button color="primary" [routerLink]="['/admin/article']">{{ 'admin.cta.article'|translate }}</a>
+  <a mat-button color="primary" [routerLink]="['/admin/cms']">{{ 'admin.cta.cms'|translate }}</a>
+  <a mat-button color="primary" [routerLink]="['/admin/partner']">{{ 'admin.cta.partner'|translate }}</a>
+  <a mat-button color="primary" [routerLink]="['/admin/offer']">{{ 'admin.cta.offer'|translate }}</a>
 </mat-toolbar>

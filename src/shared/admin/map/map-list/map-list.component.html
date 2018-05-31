@@ -1,11 +1,23 @@
 <div class="map-list-wrapper py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px"
      fxLayout.xs="column" fxLayoutAlign.xs="center stretch" fxLayoutGap.xs="10px">
-  <ngx-datatable fxFlex="50" #dataTableComponentTable class="material striped scrolling-maps expandable"
-                 [columnMode]="'force'" [rows]="maps" [columns]="columns" [headerHeight]="headerHeight"
-                 [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true"
-                 (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'"
-                 (activate)="onActivate($event)" (select)='onSelect($event)'></ngx-datatable>
-  <app-admin-map-edit fxFlex="50" [showBackButton]="false" [hideAreas]="true"></app-admin-map-edit>
+  <ngx-datatable fxFlex="50"
+                 #dataTableComponentTable
+                 class="material striped scrolling-maps expandable"
+                 [columnMode]="'force'"
+                 [rows]="maps"
+                 [columns]="columns"
+                 [headerHeight]="headerHeight"
+                 [rowHeight]="rowHeight"
+                 [loadingIndicator]="isLoading"
+                 [scrollbarV]="true"
+                 (scroll)="onScroll($event.offsetY)"
+                 [selected]="selected"
+                 [selectionType]="'checkbox'"
+                 (activate)="onActivate($event)"
+                 (select)='onSelect($event)'></ngx-datatable>
+  <app-admin-map-edit fxFlex="50"
+                      [showBackButton]="false"
+                      [hideAreas]="true"></app-admin-map-edit>
 </div>
 <!-- Header Template -->
 <ng-template #desktopHeader let-column="column" let-sort="sortFn" ngx-datatable-header-template>
@@ -17,18 +29,34 @@
   <span>({{selected?.length}})</span>
 </ng-template>
 <!-- Cell Template -->
-<ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
-             let-onCheckboxChangeFn="onCheckboxChangeFn" let-row="row" let-expanded="expanded">
-  <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
+<ng-template #checkboxCell
+             ngx-datatable-cell-template
+             let-value="value"
+             let-isSelected="isSelected"
+             let-onCheckboxChangeFn="onCheckboxChangeFn"
+             let-row="row"
+             let-expanded="expanded">
+  <input type="checkbox"
+         [checked]="isSelected"
+         (change)="onCheckboxChangeFn($event)"/>
 </ng-template>
-<ng-template #imageCell ngx-datatable-cell-template let-value="value" let-row="row">
+<ng-template #imageCell
+             ngx-datatable-cell-template
+             let-value="value"
+             let-row="row">
   <a (click)="editMap(row)">
-    <app-media-viewer class="py-0" [key]="item" [resize]="{height: headerHeight}"
+    <app-media-viewer class="py-0"
+                      [key]="item"
+                      [resize]="{height: headerHeight}"
                       *ngFor="let item of value"></app-media-viewer>
   </a>
 </ng-template>
-<ng-template #actionsCell let-row="row" ngx-datatable-cell-template>
-  <div class="map-actions" fxLayout="row" fxLayoutAlign="space-around stretch">
+<ng-template #actionsCell
+             let-row="row"
+             ngx-datatable-cell-template>
+  <div class="map-actions"
+       fxLayout="row"
+       fxLayoutAlign="space-around stretch">
     <a (click)="editMap(row)" aria-label="Edit">
       <mat-icon aria-hidden="true">mode_edit</mat-icon>
     </a>
@@ -37,26 +65,43 @@
     </a>
   </div>
 </ng-template>
-<ng-template #desktopCell let-value="value" ngx-datatable-cell-template>
+<ng-template #desktopCell
+             let-value="value"
+             ngx-datatable-cell-template>
   <span class="mobile-hidden">{{value}}</span>
 </ng-template>
-<ng-template #publicationCell let-value="value" let-row="row" ngx-datatable-cell-template>
+<ng-template #publicationCell
+             let-value="value"
+             let-row="row"
+             ngx-datatable-cell-template>
   <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group mobile-hidden"
                    [value]="value" (change)="updateMapPublication(row, $event)">
-    <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
-      <span class="text-success">Publié</span>
+    <mat-radio-button #published
+                      class="publication-radio-button"
+                      [value]="true"
+                      color="primary">
+      <span class="text-success">{{ 'cta.published'|translate }}</span>
     </mat-radio-button>
-    <mat-radio-button #unpublished class="publication-radio-button" [value]="false" color="accent">
-      <span class="text-danger">Non publié</span>
+    <mat-radio-button #unpublished
+                      class="publication-radio-button"
+                      [value]="false"
+                      color="accent">
+      <span class="text-danger">{{ 'cta.unpublished'|translate }}</span>
     </mat-radio-button>
   </mat-radio-group>
 </ng-template>
-<ng-template #translationsFrCell let-value="value" let-row="row" ngx-datatable-cell-template>
+<ng-template #translationsFrCell
+             let-value="value"
+             let-row="row"
+             ngx-datatable-cell-template>
   <span class="mobile-hidden">{{value}}</span>
   <p class="desktop-hidden">{{value}}</p>
-  <div class="desktop-hidden" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
-    <span *ngIf="row.published" class="text-success">publié</span>
-    <span *ngIf="!row.published" class="text-danger">non publié</span>
+  <div class="desktop-hidden"
+       fxLayout="row"
+       fxLayoutAlign="start center"
+       fxLayoutGap="5px">
+    <span *ngIf="row.published" class="text-success">{{ 'cta.published'|translate }}</span>
+    <span *ngIf="!row.published" class="text-danger">{{ 'cta.unpublished'|translate }}</span>
     <span>|</span>
     <a (click)="editmap(row)">
       <mat-icon>mode_edit</mat-icon>
