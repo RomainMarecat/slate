@@ -4,6 +4,7 @@ import { Cms } from '../../../cms/shared/cms';
 import { CmsService } from '../../../cms/shared/cms.service';
 import { Observable } from 'rxjs/Observable';
 import { MenuService } from 'shared/menu/menu.service';
+import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-cms-list',
@@ -23,11 +24,13 @@ export class CmsListComponent implements OnInit {
    * @param {cmsService} cmsService
    * @param router
    * @param menuService
+   * @param media
    */
   constructor(private table: ElementRef,
               private cmsService: CmsService,
               private router: Router,
               private menuService: MenuService,
+              private media: ObservableMedia
   ) {
     this.columns = [ {
       prop: 'name',
@@ -83,10 +86,22 @@ export class CmsListComponent implements OnInit {
   }
 
   onActivate(event: any) {
-    if (event.type === 'dblclick' && event.row) {
-      const cms = event.row as Cms;
-      this.showCmsDetail(cms);
-    }
+    // add media query xs to replace 1
+    this.media.asObservable()
+      .subscribe((change: MediaChange) => {
+        if (change.mqAlias === 'xs') {
+          if (event.type === 'click' && event.row) {
+            const cms = event.row as Cms;
+            this.showCmsDetail(cms);
+          }
+        } else {
+          if (event.type === 'dblclick' && event.row) {
+            const cms = event.row as Cms;
+            this.showCmsDetail(cms);
+          }
+        }
+      });
+
   }
 
   showCmsDetail(cms: Cms) {

@@ -8,7 +8,7 @@
       <mat-card class="mat-card">
         <mat-card-header>
           <mat-card-title>
-            <h4>
+            <h4 class="text-uppercase">
               {{ 'admin.title.cms.title'|translate }}
             </h4>
           </mat-card-title>
@@ -27,29 +27,44 @@
           </div>
         </mat-card-content>
         <mat-card-actions>
-          <div class="cms-actions">
-            <button role="button" aria-label="Publier une cms" mat-raised-button color="primary"
+          <div class="card-actions"
+               fxLayout="row wrap"
+               fxLayoutAlign="center stretch">
+            <button role="button"
+                    [attr.aria-label]="'admin.label.cms.publish'|translate"
+                    mat-raised-button
+                    color="primary"
+                    class="text-uppercase"
                     (click)="publishCms()"
                     *ngIf="selected.length > 0">
-              <mat-icon aria-label="Published">done</mat-icon>
-              Publier
+              <mat-icon [attr.aria-label]="'admin.label.cms.publish'|translate">
+                done
+              </mat-icon>
+              {{ 'cta.publish'|translate }}
             </button>
-            <button role="button" aria-label="Supprimer une cms" mat-raised-button color="accent"
+            <button role="button"
+                    [attr.aria-label]="'admin.label.cms.delete'|translate"
+                    mat-raised-button
+                    color="accent"
+                    class="text-uppercase"
                     (click)="deleteCms()"
                     *ngIf="selected.length > 0">
               <mat-icon aria-label="delete">delete</mat-icon>
-              Supprimer
+              {{ 'cta.delete'|translate }}
             </button>
-            <a [routerLink]="['/admin/cms/add']" mat-raised-button color="primary">
+            <a [routerLink]="['/admin/cms/add']"
+               mat-raised-button
+               class="text-uppercase"
+               color="primary">
               <mat-icon aria-label="add">add</mat-icon>
-              Ajouter
+              {{ 'cta.add'|translate }}
             </a>
           </div>
         </mat-card-actions>
       </mat-card>
     </div>
   </div>
-  <div class="card-content"
+  <div class="card-content px-2"
        fxLayout="row"
        fxLayoutAlign="center stretch">
 

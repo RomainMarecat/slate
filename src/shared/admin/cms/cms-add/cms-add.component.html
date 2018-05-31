@@ -1,32 +1,63 @@
-<mat-grid-list cols="1" rowHeight="500px">
+<mat-grid-list cols="1"
+               rowHeight="500px">
   <mat-grid-tile>
-    <form [formGroup]="form" (ngSubmit)="saveCms()" class="form">
+    <form [formGroup]="form"
+          (ngSubmit)="saveCms()"
+          class="form">
       <mat-card class="mat-card">
         <mat-card-header>
-          <mat-card-title>
-            Ajouter une cms
+          <mat-card-title class="text-uppercase">
+            {{ 'admin.title.cms.add'|translate }}
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="mat-card-content">
           <mat-form-field class="mat-form-field">
-            <input matInput maxlength="50" [placeholder]="'Nom'|translate" formControlName="name">
-            <mat-hint align="start"><strong [innerHtml]="'Nom de la cms'|translate"></strong></mat-hint>
-            <mat-hint align="end">{{ name.value.length }} {{ '/50'|translate }}</mat-hint>
-            <mat-error *ngIf="name.invalid && name.value.length === 0" [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
-            <mat-error *ngIf="name.invalid && name.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+            <input matInput
+                   maxlength="50"
+                   [placeholder]="'admin.placeholder.cms.name'|translate"
+                   [formControl]="form.get('name')">
+            <mat-hint align="start">
+              <strong
+                [innerHtml]="'admin.hint.cms.name'|translate">
+              </strong>
+            </mat-hint>
+            <mat-hint align="end">{{ form.get('name').value.length }} {{ '/50'|translate }}</mat-hint>
+            <mat-error *ngIf="form.get('name').invalid && form.get('name').value.length === 0"
+                       [innerHtml]="'admin.error.required.cms.name'|translate"></mat-error>
+            <mat-error *ngIf="form.get('name').invalid && form.get('name').value.length > 0"
+                       [innerHtml]="'admin.error.invalid.cms.name'|translate"></mat-error>
           </mat-form-field>
           <mat-form-field class="mat-form-field">
-            <input matInput maxlength="50" [placeholder]="'site_name'|translate" formControlName="site_name">
-            <mat-hint align="start"><strong [innerHtml]="'site_name de la cms'|translate"></strong></mat-hint>
-            <mat-hint align="end">{{ site_name.value.length }} {{ '/50'|translate }}</mat-hint>
-            <mat-error *ngIf="site_name.invalid && site_name.value.length === 0" [innerHtml]="'La site_name ne peut pas être vide'|translate"></mat-error>
-            <mat-error *ngIf="site_name.invalid && site_name.value.length > 0" [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+            <input matInput
+                   maxlength="50"
+                   [placeholder]="'admin.placeholder.cms.site_name'|translate"
+                   [formControl]="form.get('site_name')">
+            <mat-hint align="start">
+              <strong [innerHtml]="'admin.hint.cms.site_name'|translate"></strong>
+            </mat-hint>
+            <mat-hint align="end">{{ form.get('site_name').value.length }} {{ '/50'|translate }}</mat-hint>
+            <mat-error *ngIf="form.get('site_name').invalid && form.get('site_name').value.length === 0"
+                       [innerHtml]="'admin.error.required.cms.site_name'|translate"></mat-error>
+            <mat-error *ngIf="form.get('site_name').invalid && form.get('site_name').value.length > 0"
+                       [innerHtml]="'admin.error.invalid.cms.site_name'|translate"></mat-error>
           </mat-form-field>
         </mat-card-content>
         <mat-card-actions>
           <div class="d-flex justify-content-around">
-            <button type="button" class="back" mat-raised-button color="accent" mat-raised-button [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/cms']"></button>
-            <button type="submit" class="validate" mat-raised-button role="button" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button color="primary" [disabled]="form.invalid || form.pristine" [innerHtml]="'Enregistrer'|translate"></button>
+            <button type="button"
+                    class="back text-uppercase"
+                    mat-raised-button
+                    color="accent"
+                    [innerHtml]="'cta.cancel'|translate"
+                    [routerLink]="['/admin/cms']"></button>
+            <button type="submit"
+                    class="validate text-uppercase"
+                    mat-raised-button
+                    role="button"
+                    [attr.aria-label]="'cta.save'|translate"
+                    color="primary"
+                    [disabled]="form.invalid || form.pristine"
+                    [innerHtml]="'cta.save'|translate"></button>
           </div>
         </mat-card-actions>
       </mat-card>
