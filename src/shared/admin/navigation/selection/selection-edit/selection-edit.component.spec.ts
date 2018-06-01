@@ -3,8 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SharedModule } from '../../../../shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxEditorModule } from 'ngx-editor';
-import { MockSelectionService } from '../../../shared/navigation/selection/mock-selection.service';
-import { SelectionService } from '../../../shared/navigation/selection/selection.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AlertService } from '../../../../popup/alert.service';
 import { MockAlertService } from '../../../../popup/mock-alert.service';
@@ -31,6 +29,8 @@ import { SelectionEditComponent } from './selection-edit.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../../../media/cloudinary/cloudinary.module';
 import { environment } from '../../../../../app-hockey/environments/environment';
+import { SelectionService } from '../../../../selection/selection.service';
+import { MockSelectionService } from '../../../../selection/mock-selection.service';
 
 describe('SelectionEditComponent', () => {
   let component: SelectionEditComponent;

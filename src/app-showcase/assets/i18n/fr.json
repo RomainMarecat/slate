@@ -172,6 +172,13 @@
         "map": {
           "name": "la région est obligatoire",
           "path": "les points sont obligatoires"
+        },
+        "selection": {
+          "name": "le nom est obligatoire",
+          "fr": "la traduction est obligatoire",
+          "description": "la description est obligatoire",
+          "keywords": "les mots clés sont obligatoires",
+          "level": "le niveau est obligatoire"
         }
       },
       "invalid": {
@@ -194,6 +201,13 @@
         "map": {
           "name": "la région est invalide",
           "path": "les points sont invalides"
+        },
+        "selection": {
+          "name": "le nom est invalide",
+          "fr": "la traduction est invalide",
+          "description": "la description est invalide",
+          "keywords": "les mots clés sont invalides",
+          "level": "le niveau est invalide"
         }
       }
     }

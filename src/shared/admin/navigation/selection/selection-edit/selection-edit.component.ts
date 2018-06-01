@@ -1,20 +1,21 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SelectionService } from '../../../shared/navigation/selection/selection.service';
 import { Selection } from '../../../../selection/selection';
 import { SelectionFormType } from '../../../shared/navigation/selection/form-selection';
 import { FormGroup } from '@angular/forms';
 import { AlertService } from '../../../../popup/alert.service';
-import { HockeyProduct } from '../../../../product/hockey-product';
 import { Product } from '../../../../product/product';
 import { Media } from '../../../../media/media';
 import { StringService } from '../../../../util/string.service';
 import { ProductService } from '../../../shared/product/product.service';
+import { SelectionService } from '../../../../selection/selection.service';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'app-selection-edit',
   templateUrl: './selection-edit.component.html',
-  styleUrls: [ './selection-edit.component.scss' ]
+  styleUrls: ['./selection-edit.component.scss']
 })
 export class SelectionEditComponent implements OnInit {
   readonly headerHeight = 50;
@@ -25,7 +26,7 @@ export class SelectionEditComponent implements OnInit {
   @ViewChild('publicationCell') publicationCell: TemplateRef<any>;
 
   columnsProduct: any;
-  associatedProducts: HockeyProduct[];
+  associatedProducts: Product[];
 
   columnsParent: any;
   parents: Selection[];
@@ -38,7 +39,6 @@ export class SelectionEditComponent implements OnInit {
   form: FormGroup;
   selection: Selection;
   medias: Media[] = [];
-  _publication = true;
 
   constructor(private activatedRoute: ActivatedRoute,
               private selectionService: SelectionService,
@@ -48,7 +48,7 @@ export class SelectionEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.columnsProduct = [ {
+    this.columnsProduct = [{
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -69,8 +69,8 @@ export class SelectionEditComponent implements OnInit {
       prop: 'category',
       name: 'category',
       flexGrow: 1
-    } ];
-    this.columnsParent = [ {
+    }];
+    this.columnsParent = [{
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -95,7 +95,7 @@ export class SelectionEditComponent implements OnInit {
       prop: 'level',
       name: 'level',
       flexGrow: 1
-    } ];
+    }];
     this.createForm();
     this.getSelection();
     this.isLoadingProducts = true;
@@ -162,15 +162,29 @@ export class SelectionEditComponent implements OnInit {
   }
 
   saveSelection() {
-    this.form.patchValue({published: this._publication});
     if (this.form.valid === true) {
-      this.selection = {...this.selection, ...this.form.value};
-      if (this.selection.published === true) {
-        this.selection.published_at = new Date();
+      if (this.selection) {
+        if (this.selection.published === true) {
+          this.selection.published_at = new Date();
+        }
+        this.selection = {...this.selection, ...this.form.value};
+        this.selectionService.updateSelection(this.selection)
+          .then(() => {
+            this.alertService.show(`La selection ${this.selection.name} est mise à jour`, 'info');
+          }, (err) => {
+            this.alertService.show(err);
+          });
+      } else {
+        this.selection = this.form.value;
+        this.selectionService.createSelection(this.selection)
+          .then(() => {
+            this.alertService.show(`La selection ${this.selection.name} est crée`, 'info');
+          }, (err) => {
+            this.alertService.show(err);
+          });
       }
-      this.selectionService.updateSelection(this.selection);
-      this.alertService.toast(`La selection ${this.selection.name} est mise à jour`, 'info');
-      this.router.navigate([ '/admin/navigation/selection' ]);
+
+      this.router.navigate(['/admin/navigation/selection']);
     }
   }
 
@@ -187,21 +201,13 @@ export class SelectionEditComponent implements OnInit {
     this.form.patchValue({products: products});
   }
 
-  get publication() {
-    return this._publication;
-  }
-
-  set publication(publication) {
-    this._publication = publication;
-  }
-  
   /**
    * On select add new list in selection array
    * @param {any} selected
    */
   onSelectParent({selected}) {
     this.selectedParent = [];
-    this.selectedParent.push(selected[ 0 ]);
+    this.selectedParent.push(selected[0]);
     this.selectedParent.forEach((selection: Selection) => {
       this.form.patchValue({parent: selection.key, level: selection.level + 1});
     });
@@ -226,7 +232,7 @@ export class SelectionEditComponent implements OnInit {
    * set at published at now et activate published to true
    */
   addProducts() {
-    this.selectedProducts.forEach((product: HockeyProduct) => {
+    this.selectedProducts.forEach((product: Product) => {
       if (product.published === true) {
         this.form.patchValue({products: this.form.get('products').value.push(product.key)});
       }

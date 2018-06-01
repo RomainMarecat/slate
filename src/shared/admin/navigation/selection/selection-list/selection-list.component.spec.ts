@@ -4,8 +4,6 @@ import { SelectionListComponent } from './selection-list.component';
 import { SharedModule } from '../../../../shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { MockSelectionService } from '../../../shared/navigation/selection/mock-selection.service';
-import { SelectionService } from '../../../shared/navigation/selection/selection.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LoaderService } from '../../../../loader/loader.service';
 import { MediaService } from '../../../../media/media.service';
@@ -27,6 +25,8 @@ import { NotificationService } from '../../../../slack/notification.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2Module } from 'angulartics2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SelectionService } from '../../../../selection/selection.service';
+import { MockSelectionService } from '../../../../selection/mock-selection.service';
 
 describe('SelectionListComponent', () => {
   let component: SelectionListComponent;

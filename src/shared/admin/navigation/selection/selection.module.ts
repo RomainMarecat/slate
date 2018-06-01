@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxEditorModule } from 'ngx-editor';
 
@@ -7,9 +7,12 @@ import { SelectionListComponent } from './selection-list/selection-list.componen
 import { SharedModule } from '../../../shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { SelectionService } from '../../shared/navigation/selection/selection.service';
 import { SelectionEditComponent } from './selection-edit/selection-edit.component';
 import { ProductService } from '../../shared/product/product.service';
+import { SelectionService } from '../../../selection/selection.service';
+import { AngularFirestore } from 'angularfire2/firestore';
+
+const TABLE_SELECTION = new InjectionToken<string>('selection');
 
 @NgModule({
   imports: [
@@ -25,8 +28,15 @@ import { ProductService } from '../../shared/product/product.service';
     SelectionEditComponent,
   ],
   providers: [
-    SelectionService,
+    ,
+    {provide: TABLE_SELECTION, useValue: 'selection'},
+    {
+      provide: SelectionService,
+      useClass: SelectionService,
+      deps: [AngularFirestore, TABLE_SELECTION]
+    },
     ProductService
   ]
 })
-export class SelectionModule {}
+export class SelectionModule {
+}

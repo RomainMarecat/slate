@@ -26,7 +26,6 @@ import { DateService } from '../../shared/util/date.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MenuService } from '../../shared/menu/menu.service';
 import { ScoreService } from '../../shared/score/score.service';
-import { SelectionService } from '../../shared/selection/selection.service';
 import { SidenavService } from '../../shared/sidenav/sidenav.service';
 import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
@@ -55,6 +54,7 @@ import { SessionService } from '../../shared/session/shared/session.service';
 import { PaymentService } from '../../shared/payment/shared/payment.service';
 import { RoutingState } from '../../shared/util/routing-state';
 import { OrderService } from 'shared/order/shared/order.service';
+import { SelectionService } from '../../shared/selection/selection.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
