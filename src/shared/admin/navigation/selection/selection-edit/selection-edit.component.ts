@@ -179,76 +179,12 @@ export class SelectionEditComponent implements OnInit {
     this.form.patchValue({images: this.medias.map((image: Media) => image.key)});
   }
 
-  get name() {
-    return this.form.get('name');
-  }
-
-  set name(name) {
-    this.form.patchValue({name: name});
-  }
-
-  get fr() {
-    return this.form.get('translations').get('fr');
-  }
-
-  set fr(fr) {
-    this.form.get('translations').patchValue({fr: fr});
-  }
-
-  get description() {
-    return this.form.get('description');
-  }
-
-  set description(description) {
-    this.form.patchValue({description: description});
-  }
-
-  get keywords() {
-    return this.form.get('keywords');
-  }
-
-  set keywords(keywords) {
-    this.form.patchValue({keywords: keywords});
-  }
-
-  get level() {
-    return this.form.get('level');
-  }
-
-  set level(level) {
-    this.form.patchValue({level: level});
-  }
-
-  get published_at() {
-    return this.form.get('published_at');
-  }
-
-  set published_at(published_at) {
-    this.form.patchValue({published_at: published_at});
-  }
-
-  get root() {
-    return this.form.get('root');
-  }
-
-  set root(root) {
-    this.form.patchValue({root: root});
-  }
-
   get products() {
     return this.form.get('products');
   }
 
   set products(products) {
     this.form.patchValue({products: products});
-  }
-
-  get images() {
-    return this.form.get('images');
-  }
-
-  set images(images) {
-    this.form.patchValue({images: images});
   }
 
   get publication() {
@@ -258,23 +194,7 @@ export class SelectionEditComponent implements OnInit {
   set publication(publication) {
     this._publication = publication;
   }
-
-  get published() {
-    return this.form.get('published');
-  }
-
-  set published(published) {
-    this.form.patchValue({published: published});
-  }
-
-  get parent() {
-    return this.form.get('parent');
-  }
-
-  set parent(parent) {
-    this.form.patchValue({parent: parent});
-  }
-
+  
   /**
    * On select add new list in selection array
    * @param {any} selected
@@ -299,6 +219,17 @@ export class SelectionEditComponent implements OnInit {
     this.selectedProducts.forEach((product: Product) => {
       productsKey.push(product.key);
       this.form.patchValue({products: productsKey});
+    });
+  }
+
+  /**
+   * set at published at now et activate published to true
+   */
+  addProducts() {
+    this.selectedProducts.forEach((product: HockeyProduct) => {
+      if (product.published === true) {
+        this.form.patchValue({products: this.form.get('products').value.push(product.key)});
+      }
     });
   }
 }

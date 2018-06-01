@@ -21,6 +21,12 @@
       "map": {
         "title": "les cartes",
         "selection": "sélectionné(s)"
+      },
+      "selection": {
+        "title": "les sélections",
+        "selection": "sélectionné(s)",
+        "products": "produits associés",
+        "parent": "associer une sélection parente"
       }
     },
     "cta": {
@@ -77,6 +83,9 @@
         "content": "contenu",
         "icon": "l'icône",
         "parent": "le contenu parent"
+      },
+      "selection": {
+
       }
     },
     "placeholder": {
@@ -102,6 +111,14 @@
       "map": {
         "name": "région",
         "path": "points 2D"
+      },
+      "selection": {
+        "name": "nom de la sélection",
+        "description": "description",
+        "fr": "traduction française",
+        "keywords": "mots clés",
+        "level": "niveau",
+        "root": "racine"
       }
     },
     "hint": {
@@ -124,6 +141,14 @@
       "map": {
         "name": "région de la carte",
         "path": "points de la région"
+      },
+      "selection": {
+        "name": "nom de la sélection",
+        "description": "description",
+        "fr": "traduction française",
+        "keywords": "mots clés",
+        "level": "niveau",
+        "root": "racine"
       }
     },
     "error": {
