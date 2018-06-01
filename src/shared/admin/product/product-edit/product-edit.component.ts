@@ -12,7 +12,6 @@ import { DocumentReference } from '@firebase/firestore-types';
 import { ImageProductComponent } from '../../../media/cloudinary/image-product/image-product.component';
 import { ProductFormType } from '../../shared/product/form-product';
 import { AttributeService } from '../../../attribute/attribute.service';
-import { PartnerService } from '../../shared/partner/partner.service';
 import { Partner } from '../../../partner/partner';
 import { Category } from '../../../category/category';
 import { Offer } from '../../../offer/offer';
@@ -22,6 +21,7 @@ import { OfferService } from '../../shared/offer/offer.service';
 import { UploadTaskSnapshot } from '@firebase/storage-types';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/debounceTime';
+import { PartnerService } from 'shared/partner/partner.service';
 
 @Component({
   selector: 'app-product-edit',

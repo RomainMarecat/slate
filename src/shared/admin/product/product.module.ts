@@ -12,17 +12,17 @@ import { ProductService } from '../shared/product/product.service';
 import { CategoryService } from '../../category/category.service';
 import { SharedModule } from '../../shared.module';
 import { AttributeService } from '../../attribute/attribute.service';
-import { PartnerService } from '../shared/partner/partner.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { DragulaModule } from 'ng2-dragula';
 import { ProductImageOrderComponent } from './product-image-order/product-image-order.component';
 import { OfferService } from '../shared/offer/offer.service';
 import { ProductOffersComponent } from './product-offers/product-offers.component';
+import { PartnerService } from '../../partner/partner.service';
 
-const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
-const TABLE_OFFER = new InjectionToken < string > ('offer');
-const TABLE_CATEGORY = new InjectionToken < string > ('category');
-const TABLE_PARTNER = new InjectionToken < string > ('partner');
+const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
+const TABLE_OFFER = new InjectionToken<string>('offer');
+const TABLE_CATEGORY = new InjectionToken<string>('category');
+const TABLE_PARTNER = new InjectionToken<string>('partner');
 
 @NgModule({
   imports: [
@@ -45,15 +45,16 @@ const TABLE_PARTNER = new InjectionToken < string > ('partner');
   providers: [
     CategoryService,
     ProductService,
-    { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
-    { provide: TABLE_OFFER, useValue: 'offer' },
-    { provide: TABLE_CATEGORY, useValue: 'category' },
-    { provide: TABLE_PARTNER, useValue: 'partner' },
-    { provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE] },
-    { provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER] },
-    { provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER] },
-    { provide: CategoryService, useClass: CategoryService, deps: [AngularFirestore, TABLE_CATEGORY] },
+    {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
+    {provide: TABLE_OFFER, useValue: 'offer'},
+    {provide: TABLE_CATEGORY, useValue: 'category'},
+    {provide: TABLE_PARTNER, useValue: 'partner'},
+    {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
+    {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
+    {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},
+    {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY ]},
 
   ]
 })
-export class ProductModule {}
+export class ProductModule {
+}

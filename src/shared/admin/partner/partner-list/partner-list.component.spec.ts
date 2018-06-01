@@ -10,40 +10,38 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { PartnerEditComponent } from './../partner-edit/partner-edit.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../shared.module';
-import { MediaService } from '../../../media/media.service';
-import { MockMediaService } from '../../../media/mock-media.service';
 import { MenuService } from '../../../menu/menu.service';
-import { PartnerService } from '../../shared/partner/partner.service';
-import { MockPartnerService } from '../../shared/partner/mock-partner.service';
 import { PartnerListComponent } from './partner-list.component';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
+import { PartnerService } from 'shared/partner/partner.service';
+import { MockPartnerService } from 'shared/partner/mock-partner.service';
 
 describe('PartnerListComponent', () => {
   let component: PartnerListComponent;
-  let fixture: ComponentFixture < PartnerListComponent > ;
+  let fixture: ComponentFixture<PartnerListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          BrowserModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          NgxDatatableModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-          SharedModule,
-        ],
-        declarations: [PartnerListComponent, PartnerEditComponent],
-        providers: [
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: MenuService, useClass: MenuService },
-          { provide: PartnerService, useClass: MockPartnerService }
-        ]
-      })
+      imports: [
+        CommonModule,
+        BrowserModule,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        NgxDatatableModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+        SharedModule,
+      ],
+      declarations: [ PartnerListComponent, PartnerEditComponent ],
+      providers: [
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: MenuService, useClass: MenuService},
+        {provide: PartnerService, useClass: MockPartnerService}
+      ]
+    })
       .compileComponents();
   }));
 
