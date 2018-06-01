@@ -11,28 +11,28 @@ import 'rxjs/add/operator/first';
 
 @Injectable()
 export class ScoreService {
-  scoreCollectionRef: AngularFirestoreCollection < Score > ;
-  scores$: Observable < DocumentChangeAction[] > ;
-  userFilter$: BehaviorSubject < string | null > ;
-  productFilter$: BehaviorSubject < string | null > ;
-  scoreFilter$: BehaviorSubject < string | null > ;
+  scoreCollectionRef: AngularFirestoreCollection<Score>;
+  scores$: Observable<DocumentChangeAction<Score[]>>;
+  userFilter$: BehaviorSubject<string | null>;
+  productFilter$: BehaviorSubject<string | null>;
+  scoreFilter$: BehaviorSubject<string | null>;
 
   /**
    *
    * @param {AngularFirestore} afs
    */
   constructor(private afs: AngularFirestore) {
-    this.scoreCollectionRef = this.afs.collection < Score > ('scores');
+    this.scoreCollectionRef = this.afs.collection <Score>('scores');
     this.userFilter$ = new BehaviorSubject(null);
     this.productFilter$ = new BehaviorSubject(null);
     this.scoreFilter$ = new BehaviorSubject(null);
     this.scores$ = Observable.combineLatest(
-        this.userFilter$,
-        this.productFilter$,
-        this.scoreFilter$
-      )
+      this.userFilter$,
+      this.productFilter$,
+      this.scoreFilter$
+    )
       .first()
-      .switchMap(([user, product, score]) =>
+      .switchMap(([ user, product, score ]) =>
         this.afs.collection('scores', ref => {
           let query: CollectionReference | Query = ref;
           if (user) {
@@ -54,7 +54,7 @@ export class ScoreService {
    * @param {string} user
    * @returns {Observable<Score[]>}
    */
-  filterByUser(user: string | null): Observable < Score[] > {
+  filterByUser(user: string | null): Observable<Score[]> {
     this.userFilter$.next(user);
     return this.getUsers();
   }
@@ -64,7 +64,7 @@ export class ScoreService {
    * @param {string} product
    * @returns {Observable<Score[]>}
    */
-  filterByProduct(product: string | null): Observable < Score[] > {
+  filterByProduct(product: string | null): Observable<Score[]> {
     this.productFilter$.next(product);
     return this.getUsers();
   }
@@ -73,9 +73,9 @@ export class ScoreService {
    *
    * @returns {Observable<Score[]>}
    */
-  getUsers(): Observable < Score[] > {
-    return this.scores$.map((scores: DocumentChangeAction[]) =>
-      scores.map((doc: DocumentChangeAction) => {
+  getUsers(): Observable<Score[]> {
+    return this.scores$.map((scores: DocumentChangeAction<Score>[]) =>
+      scores.map((doc: DocumentChangeAction<Score>) => {
         const score = doc.payload.doc.data() as Score;
         score.key = doc.payload.doc.id;
         return score;
@@ -87,7 +87,7 @@ export class ScoreService {
    *
    * @returns {Observable<boolean>}
    */
-  isAuthorized(): Observable < boolean > {
+  isAuthorized(): Observable<boolean> {
     return this.getUsers().take(1).map((items: Score[]) => {
       return items.length === 0;
     });
@@ -98,6 +98,6 @@ export class ScoreService {
    * @param {Score} score
    */
   createScore(score: Score) {
-    this.scoreCollectionRef.add({ ...score });
+    this.scoreCollectionRef.add({...score});
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import { auth } from 'firebase/app';
 import { User } from './user';
 import { Observable } from 'rxjs/Observable';
 import { AlertService } from '../popup/alert.service';
@@ -52,7 +52,7 @@ export class UserService {
   }
 
   getLoginGoogle(): Promise<any> {
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
   loginGoogle() {
@@ -68,7 +68,7 @@ export class UserService {
   }
 
   loginFacebook() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    this.afAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
       .then((result) => {
         const user = result.user;
         if (user) {

@@ -2,9 +2,8 @@ import { mockSelection } from './mock-selection';
 import { Selection } from './selection';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot } from '@firebase/firestore-types';
+import { AngularFirestoreCollection } from 'angularfire2/firestore';
+import { CollectionReference, Query } from '@firebase/firestore-types';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
@@ -12,14 +11,13 @@ import 'rxjs/add/operator/catch';
 
 export class MockSelectionService {
   selectionCollectionRef: AngularFirestoreCollection < Selection > ;
-  selections$: Observable < DocumentChangeAction[] > ;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   parentFilter$: BehaviorSubject < string | null > ;
   levelFilter$: BehaviorSubject < number | null > ;
   nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
   userFilter$: BehaviorSubject < string | null > ;
-  limit$: BehaviorSubject < number | null > ;
+  limit$: BehaviorSubject < number | null > ;ex
   startAt$: BehaviorSubject < string | null > ;
   startAfter$: BehaviorSubject < string | null > ;
   orderBy$: BehaviorSubject < string | 'published_at' > ;

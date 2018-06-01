@@ -13,8 +13,7 @@ import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/
 @Injectable()
 export class ProductService {
   productCollectionRef: AngularFirestoreCollection < Product > ;
-  products$: Observable < DocumentChangeAction[] > ;
-  product$: Observable < Product > ;
+  products$: Observable < DocumentChangeAction<Product[]>[]>;
   publishedFilter$: BehaviorSubject < boolean | true > ;
   nameFilters$: BehaviorSubject < string | null > ;
   keyFilters$: BehaviorSubject < string | null > ;
@@ -76,12 +75,12 @@ export class ProductService {
    * @returns {Observable<Product[]>}
    */
   getProducts(): Observable < Product[] > {
-    return this.products$.map((products: DocumentChangeAction[]) =>
+    return this.products$.map((products: DocumentChangeAction<Product>[]) =>
       products
-      .filter((doc: DocumentChangeAction) => {
+      .filter((doc: DocumentChangeAction<Product>) => {
         return doc.payload.doc.exists === true;
       })
-      .map((doc: DocumentChangeAction) => {
+      .map((doc: DocumentChangeAction<Product>) => {
         const product = doc.payload.doc.data() as Product;
         product.key = doc.payload.doc.id;
         return product as Product;
