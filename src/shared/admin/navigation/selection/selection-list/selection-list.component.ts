@@ -1,13 +1,12 @@
-import { Component, OnInit, ElementRef, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Selection } from '../../../../selection/selection';
-import { SelectionService } from '../../../shared/navigation/selection/selection.service';
-import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
-import { MenuService } from './../../../../menu/menu.service';
-import { Product } from './../../../../product/product';
-import { ProductService } from './../../../shared/product/product.service';
-import { DialogComponent } from './../../../../popup/dialog/dialog.component';
+import { MenuService } from '../../../../menu/menu.service';
+import { Product } from '../../../../product/product';
+import { DialogComponent } from '../../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
+import { SelectionService } from '../../../../selection/selection.service';
+import { ProductService } from '../../../../product/product.service';
 
 @Component({
   selector: 'app-selection-list',
@@ -21,25 +20,26 @@ export class SelectionListComponent implements OnInit {
   selections: Selection[] = [];
   selected: Selection[] = [];
   isLoading: boolean;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
-  @ViewChild('productsCell') productsCell: TemplateRef < any > ;
-  @ViewChild('publishedCell') publishedCell: TemplateRef < any > ;
-  @ViewChild('actionsCell') actionsCell: TemplateRef < any > ;
-  @ViewChild('desktopCell') desktopCell: TemplateRef < any > ;
-  @ViewChild('desktopHeader') desktopHeader: TemplateRef < any > ;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
+  @ViewChild('productsCell') productsCell: TemplateRef<any>;
+  @ViewChild('publishedCell') publishedCell: TemplateRef<any>;
+  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
+  @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
+  @ViewChild('desktopHeader') desktopHeader: TemplateRef<any>;
 
   /**
-   * @param {ElementRef} table
-   * @param {SelectionService} SelectionService
+   * @param selectionService
+   * @param productService
+   * @param router
+   * @param menuService
+   * @param dialog
    */
-  constructor(private table: ElementRef,
-    private selectionService: SelectionService,
-    private productService: ProductService,
-    private router: Router,
-    private menuService: MenuService,
-    public dialog: MatDialog
-  ) {
+  constructor(private selectionService: SelectionService,
+              private productService: ProductService,
+              private router: Router,
+              private menuService: MenuService,
+              public dialog: MatDialog) {
 
     this.selected = [];
     this.isLoading = true;
@@ -106,7 +106,8 @@ export class SelectionListComponent implements OnInit {
           }
         });
 
-        dialogRef.afterClosed().subscribe(result => {});
+        dialogRef.afterClosed().subscribe(result => {
+        });
       });
   }
 
@@ -203,7 +204,7 @@ export class SelectionListComponent implements OnInit {
    * On select add new list in selection array
    * @param {any} selected
    */
-  onSelect({ selected }) {
+  onSelect({selected}) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
@@ -214,5 +215,6 @@ export class SelectionListComponent implements OnInit {
     }
   }
 
-  onScroll(event: any) {}
+  onScroll(event: any) {
+  }
 }

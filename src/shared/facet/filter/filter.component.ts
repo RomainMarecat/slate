@@ -90,7 +90,7 @@ export class FilterComponent implements OnInit {
   }
 
   validate() {
-    this.productService.publishedFilter$.next(null);
+    this.productService.filters$.next(null);
     this.productService.filters$.next(this.filters);
     this.filtered.emit(this.filters);
 

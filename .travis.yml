@@ -3,9 +3,6 @@ sudo: false
 language: node_js
 node_js:
   - lts/*
-cache:
-  directories:
-    - "node_modules"
 addons:
   apt:
     packages:
@@ -16,7 +13,7 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 before_deploy:
-  - ./node_modules/@angular/cli/bin/ng build -aot --env=prod --app=showcase -prod
+  - ./node_modules/@angular/cli/bin/ng build --aot --project=showcase --prod
   - firebase use showcase
 deploy:
   - skip_cleanup: true

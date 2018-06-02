@@ -16,10 +16,10 @@ import { MockCloudinaryService } from '../../../media/cloudinary/mock-cloudinary
 import { CloudinaryUploadService } from '../../../media/cloudinary/cloudinary-upload.service';
 import { MockCloudinaryUploadService } from '../../../media/cloudinary/mock-cloudinary-upload.service';
 import { ProductFilterComponent } from '../product-filter/product-filter.component';
-import { ProductService } from '../../shared/product/product.service';
-import { MockProductService } from '../../shared/product/mock-product.service';
 import { MediaModule } from '../../../media/media.module';
 import { environment } from '../../../../app-hockey/environments/environment';
+import { MockProductService } from '../../../product/mock-product.service';
+import { ProductService } from '../../../product/product.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;

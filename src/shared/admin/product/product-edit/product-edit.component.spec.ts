@@ -7,8 +7,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgxEditorModule } from 'ngx-editor';
-import { MockProductService } from '../../shared/product/mock-product.service';
-import { ProductService } from '../../shared/product/product.service';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -31,8 +29,6 @@ import { CategoryService } from '../../../category/category.service';
 import { MockCategoryService } from '../../../category/mock-category.service';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { MockAttributeService } from '../../../attribute/mock-attribute.service';
-import { PartnerService } from '../../shared/partner/partner.service';
-import { MockPartnerService } from '../../shared/partner/mock-partner.service';
 import { OfferService } from '../../shared/offer/offer.service';
 import { MockOfferService } from '../../shared/offer/mock-offer.service';
 import { AngularFireModule } from 'angularfire2';
@@ -42,6 +38,10 @@ import { ProductImageOrderComponent } from '../product-image-order/product-image
 import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
 import { Cloudinary } from 'cloudinary-core';
 import { environment } from '../../../../app-hockey/environments/environment';
+import { MockPartnerService } from 'shared/partner/mock-partner.service';
+import { PartnerService } from 'shared/partner/partner.service';
+import { MockProductService } from '../../../product/mock-product.service';
+import { ProductService } from '../../../product/product.service';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;

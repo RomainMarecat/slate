@@ -14,14 +14,12 @@ import { I18nService } from '../../../i18n/i18n.service';
 import { MockMediaService } from '../../../media/mock-media.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { NotificationService } from '../../../slack/notification.service';
-import { MockProductService } from '../../shared/product/mock-product.service';
 import { MediaService } from '../../../media/media.service';
 import { AlertService } from '../../../popup/alert.service';
 import { ObjectService } from '../../../util/object.service';
 import { MockLoaderService } from '../../../loader/mock-loader.service';
 import { MockNotificationService } from '../../../slack/mock-notification.service';
 import { DeviceService } from '../../../device/device.service';
-import { ProductService } from '../../shared/product/product.service';
 import { UserService } from '../../../user/user.service';
 import { MockCategoryService } from '../../../category/mock-category.service';
 import { MockUserService } from '../../../user/mock-user.service';
@@ -31,6 +29,8 @@ import { MockAttributeService } from '../../../attribute/mock-attribute.service'
 import { MenuService } from '../../../menu/menu.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductService } from '../../../product/product.service';
+import { MockProductService } from '../../../product/mock-product.service';
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;

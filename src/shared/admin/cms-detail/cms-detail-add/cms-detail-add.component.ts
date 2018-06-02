@@ -5,6 +5,7 @@ import { CmsDetail } from '../../../cms-detail/shared/cms-detail';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
 import { Filter } from '../../../facet/filter/shared/filter';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cms-detail-add',
@@ -32,7 +33,8 @@ export class CmsDetailAddComponent implements OnInit {
     });
   }
 
-  constructor(private cmsDetailService: CmsDetailService,
+  constructor(private translate: TranslateService,
+              private cmsDetailService: CmsDetailService,
               private alertService: AlertService,
               private activeRoute: ActivatedRoute) {
     this.cmsKey = null;
@@ -49,7 +51,7 @@ export class CmsDetailAddComponent implements OnInit {
       'spellcheck': false,
       'height': '5rem',
       'minHeight': '2rem',
-      'placeholder': 'Enter text content',
+      'placeholder': this.translate.instant('admin.placeholder.cms-detail.content'),
       'translate': 'no',
       'toolbar': []
     };

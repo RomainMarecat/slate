@@ -59,7 +59,7 @@ export class CloudinaryUploadService {
    * @param {Media} media
    */
   onMediaChange(media: Media): Promise < any > {
-    return this.mediaService.addMedia(media);
+    return this.mediaService.createMedia(media);
   }
 
   getSignature(url: string) {

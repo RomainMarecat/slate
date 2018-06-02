@@ -2,15 +2,19 @@
   <div class="" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px">
     <div class="">
       <div class='selected-column' *ngIf="selected && selected.length > 0">
-        <h4>Selections <small>({{selected?.length}})</small></h4>
+        <h4>Selections
+          <small>({{selected?.length}})</small>
+        </h4>
       </div>
     </div>
     <div class="">
-      <button role="button" aria-label="Publier une categorie" mat-raised-button color="primary" (click)="publishCategory()" *ngIf="selected && selected?.length > 0">
+      <button role="button" aria-label="Publier une categorie" mat-raised-button color="primary"
+              (click)="publishCategory()" *ngIf="selected && selected?.length > 0">
         <mat-icon aria-label="Published">done</mat-icon>
         Publier
       </button>
-      <button role="button" aria-label="Supprimer une categorie" mat-raised-button color="accent" (click)="deleteCategory()" *ngIf="selected && selected?.length > 0">
+      <button role="button" aria-label="Supprimer une categorie" mat-raised-button color="accent"
+              (click)="deleteCategory()" *ngIf="selected && selected?.length > 0">
         <mat-icon aria-label="delete">delete</mat-icon>
         Supprimer
       </button>
@@ -22,13 +26,19 @@
   </div>
   <div class="">
     <div class="mt-2 p-2">
-      <ngx-datatable class="material striped scrolling-categories" [columnMode]="'force'" [rows]="categories" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'>
+      <ngx-datatable class="material striped scrolling-categories" [columnMode]="'force'" [rows]="categories"
+                     [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight"
+                     [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)"
+                     [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)"
+                     (select)='onSelect($event)'>
       </ngx-datatable>
-      <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
-        <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+      <ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                   let-selectFn="selectFn">
+        <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
       </ng-template>
-      <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn">
-        <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+      <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                   let-onCheckboxChangeFn="onCheckboxChangeFn">
+        <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
       </ng-template>
     </div>
   </div>

@@ -4,10 +4,9 @@ import { of } from 'rxjs/observable/of';
 import { mockCart } from './mock-cart';
 import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
 import { Filter } from 'shared/facet/filter/shared/filter';
-import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { CollectionReference, Query } from '@firebase/firestore-types';
+import { AngularFirestoreCollection } from 'angularfire2/firestore';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
@@ -17,7 +16,7 @@ import 'rxjs/add/operator/catch';
 export class MockCartService {
 
   sessionCollectionRef: AngularFirestoreCollection<Cart>;
-  sessions$: Observable<DocumentChangeAction[]>;
+  sessions$: Observable<DocumentChangeAction<Cart[]>[]>;
   session$: Observable<Cart>;
   filters$: BehaviorSubject<Filter[]>;
   limit$: BehaviorSubject<number | null>;

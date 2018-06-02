@@ -41,11 +41,6 @@ const routes: Routes = [
   },
   {
     canActivate: [ AdminGuard ],
-    path: 'post',
-    loadChildren: './post/post.module#PostModule'
-  },
-  {
-    canActivate: [ AdminGuard ],
     path: 'map',
     loadChildren: './map/map.module#MapModule'
   },

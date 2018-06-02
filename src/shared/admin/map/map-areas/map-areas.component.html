@@ -1,32 +1,67 @@
-<ngx-datatable fxFlex="70" #dataTableComponentTable class="material striped scrolling-areas expandable"
-               [columnMode]="'force'" [rows]="areas" [columns]="columns" [headerHeight]="headerHeight"
-               [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true"
-               (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'"
-               (activate)="onActivate($event)" (select)='onSelect($event)'></ngx-datatable>
-<ng-template #desktopHeader let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+<ngx-datatable fxFlex="70"
+               #dataTableComponentTable
+               class="material striped scrolling-areas expandable"
+               [columnMode]="'force'"
+               [rows]="areas"
+               [columns]="columns"
+               [headerHeight]="headerHeight"
+               [rowHeight]="rowHeight"
+               [loadingIndicator]="isLoading"
+               [scrollbarV]="true"
+               (scroll)="onScroll($event.offsetY)"
+               [selected]="selected"
+               [selectionType]="'checkbox'"
+               (activate)="onActivate($event)"
+               (select)='onSelect($event)'></ngx-datatable>
+<ng-template #desktopHeader
+             let-column="column"
+             let-sort="sortFn"
+             ngx-datatable-header-template>
   <span class="mobile-hidden">{{column.name}}</span>
 </ng-template>
-<ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+<ng-template #checkboxHeader
+             ngx-datatable-header-template
+             let-value="value"
+             let-allRowsSelected="allRowsSelected"
              let-selectFn="selectFn">
-  <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
+  <input type="checkbox"
+         [checked]="allRowsSelected"
+         (change)="selectFn(!allRowsSelected)"/>
   <span>({{selected?.length}})</span>
 </ng-template>
 <!-- Cell Template -->
-<ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
-             let-onCheckboxChangeFn="onCheckboxChangeFn" let-row="row" let-expanded="expanded">
-  <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
+<ng-template #checkboxCell
+             ngx-datatable-cell-template
+             let-value="value"
+             let-isSelected="isSelected"
+             let-onCheckboxChangeFn="onCheckboxChangeFn"
+             let-row="row"
+             let-expanded="expanded">
+  <input type="checkbox"
+         [checked]="isSelected"
+         (change)="onCheckboxChangeFn($event)"/>
 </ng-template>
-<ng-template #actionsCell let-row="row" ngx-datatable-cell-template>
-  <div class="area-actions" fxLayout="row" fxLayoutAlign="space-around stretch">
-    <a (click)="confirmDelete(row)" aria-label="Del">
+<ng-template #actionsCell
+             let-row="row"
+             ngx-datatable-cell-template>
+  <div class="area-actions"
+       fxLayout="row"
+       fxLayoutAlign="space-around stretch">
+    <a (click)="confirmDelete(row)"
+       aria-label="Del">
       <mat-icon aria-hidden="true">delete</mat-icon>
     </a>
   </div>
 </ng-template>
-<ng-template #desktopCell let-value="value" ngx-datatable-cell-template>
+<ng-template #desktopCell
+             let-value="value"
+             ngx-datatable-cell-template>
   <span class="mobile-hidden">{{value}}</span>
 </ng-template>
-<ng-template #publicationCell let-value="value" let-row="row" ngx-datatable-cell-template>
+<ng-template #publicationCell
+             let-value="value"
+             let-row="row"
+             ngx-datatable-cell-template>
   <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group mobile-hidden"
                    [value]="value" (change)="updateAreaPublication(row, $event)">
     <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
@@ -52,7 +87,11 @@
     </a>
   </div>
 </ng-template>
-<ng-template #nameCell ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+<ng-template #nameCell
+             ngx-datatable-cell-template
+             let-rowIndex="rowIndex"
+             let-value="value"
+             let-row="row">
   <span
     title="Double click to edit"
     (dblclick)="editing[rowIndex + '-name'] = true"
@@ -69,7 +108,11 @@
     [value]="value"
   />
 </ng-template>
-<ng-template #pathCell ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+<ng-template #pathCell
+             ngx-datatable-cell-template
+             let-rowIndex="rowIndex"
+             let-value="value"
+             let-row="row">
   <span
     title="Double click to edit"
     (dblclick)="editing[rowIndex + '-path'] = true"
@@ -83,6 +126,5 @@
     (blur)="updateValue($event, 'path', row, rowIndex)"
     *ngIf="editing[rowIndex+ '-path']"
     type="text"
-    [value]="value"
-  />
+    [value]="value"/>
 </ng-template>

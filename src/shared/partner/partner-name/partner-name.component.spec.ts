@@ -1,8 +1,8 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {PartnerNameComponent} from './partner-name.component';
-import {PartnerService} from '../partner.service';
-import {MockPartnerService} from '../mock-partner.service';
+import { PartnerNameComponent } from './partner-name.component';
+import { PartnerService } from '../partner.service';
+import { MockPartnerService } from '../mock-partner.service';
 
 describe('PartnerNameComponent', () => {
   let component: PartnerNameComponent;

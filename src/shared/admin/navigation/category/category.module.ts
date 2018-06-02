@@ -29,14 +29,13 @@ import { NgxEditorModule } from 'ngx-editor';
 import { SharedModule } from '../../../shared.module';
 import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryListComponent } from './category-list/category-list.component';
-import { CategoryComponent } from './category.component';
 import { CategoryService } from '../../../category/category.service';
 import { CategoryAddComponent } from './category-add/category-add.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFirestore } from 'angularfire2/firestore';
 
-const TABLE_CATEGORY = new InjectionToken < string > ('attribute');
+const TABLE_CATEGORY = new InjectionToken<string>('attribute');
 
 @NgModule({
   imports: [
@@ -70,14 +69,18 @@ const TABLE_CATEGORY = new InjectionToken < string > ('attribute');
     TranslateModule,
     CategoryRoutingModule
   ],
-  declarations: [CategoryListComponent, CategoryComponent, CategoryAddComponent],
+  declarations: [
+    CategoryListComponent,
+    CategoryAddComponent
+  ],
   providers: [
-    { provide: TABLE_CATEGORY, useValue: 'category' },
+    {provide: TABLE_CATEGORY, useValue: 'category'},
     {
       provide: CategoryService,
       useClass: CategoryService,
-      deps: [AngularFirestore, TABLE_CATEGORY]
+      deps: [ AngularFirestore, TABLE_CATEGORY ]
     },
   ]
 })
-export class CategoryModule {}
+export class CategoryModule {
+}

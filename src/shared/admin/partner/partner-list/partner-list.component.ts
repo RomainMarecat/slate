@@ -1,20 +1,15 @@
 import { Component, OnInit, ElementRef, ViewChild, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuService } from './../../../menu/menu.service';
-import { take } from 'rxjs/operators';
 import { DialogComponent } from './../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
-import { debounceTime } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
-import { StringService } from './../../../util/string.service';
-import { Filter } from './../../../facet/filter/shared/filter';
-import { PartnerService } from './../../shared/partner/partner.service';
-import { Partner } from './../../../partner/partner';
+import { Partner } from 'shared/partner/partner';
+import { PartnerService } from 'shared/partner/partner.service';
+import { MenuService } from 'shared/menu/menu.service';
 
 @Component({
   selector: 'app-partner-list',
   templateUrl: './partner-list.component.html',
-  styleUrls: ['./partner-list.component.scss']
+  styleUrls: [ './partner-list.component.scss' ]
 })
 export class PartnerListComponent implements OnInit {
   readonly headerHeight = 50;
@@ -26,21 +21,22 @@ export class PartnerListComponent implements OnInit {
   selected: Partner[] = [];
   expanded: any = {};
   @ViewChild('dataTableComponentTable') dataTableComponentTable: any;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
-  @ViewChild('actionsCell') actionsCell: TemplateRef < any > ;
-  @ViewChild('imageCell') imageCell: TemplateRef < any > ;
-  @ViewChild('priceCell') priceCell: TemplateRef < any > ;
-  @ViewChild('desktopCell') desktopCell: TemplateRef < any > ;
-  @ViewChild('desktopHeader') desktopHeader: TemplateRef < any > ;
-  @ViewChild('translationsFrCell') translationsFrCell: TemplateRef < any > ;
-  @ViewChild('publicationCell') publicationCell: TemplateRef < any > ;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
+  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
+  @ViewChild('imageCell') imageCell: TemplateRef<any>;
+  @ViewChild('priceCell') priceCell: TemplateRef<any>;
+  @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
+  @ViewChild('desktopHeader') desktopHeader: TemplateRef<any>;
+  @ViewChild('translationsFrCell') translationsFrCell: TemplateRef<any>;
+  @ViewChild('publicationCell') publicationCell: TemplateRef<any>;
 
   constructor(public dialog: MatDialog,
-    private router: Router,
-    private table: ElementRef,
-    private menuService: MenuService,
-    private partnerService: PartnerService) {}
+              private router: Router,
+              private table: ElementRef,
+              private menuService: MenuService,
+              private partnerService: PartnerService) {
+  }
 
   ngOnInit() {
     this.columns = this.getColumns();
@@ -54,8 +50,8 @@ export class PartnerListComponent implements OnInit {
       });
   }
 
-  getColumns(): Array < any > {
-    return [{
+  getColumns(): Array<any> {
+    return [ {
       width: 75,
       sortable: false,
       canAutoResize: false,
@@ -81,7 +77,7 @@ export class PartnerListComponent implements OnInit {
       name: 'Actions',
       flexGrow: 1,
       cellTemplate: this.actionsCell,
-    }];
+    } ];
   }
 
   private updatePublication(partner: Partner) {
@@ -123,7 +119,7 @@ export class PartnerListComponent implements OnInit {
   }
 
   editPartner(partner: Partner) {
-    this.router.navigate(['/admin/partner/edit/', partner.key]);
+    this.router.navigate([ '/admin/partner/edit/', partner.key ]);
   }
 
   /**
@@ -160,14 +156,14 @@ export class PartnerListComponent implements OnInit {
    * On select add new list in selection array
    * @param {any} selected
    */
-  onSelect({ selected }) {
+  onSelect({selected}) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate(['/admin/partner/edit/', event.row.key]);
+      this.router.navigate([ '/admin/partner/edit/', event.row.key ]);
     }
   }
 
@@ -175,9 +171,12 @@ export class PartnerListComponent implements OnInit {
     this.dataTableComponentTable.rowDetail.toggleExpandRow(row);
   }
 
-  onDetailToggle(event) {}
+  onDetailToggle(event) {
+  }
 
-  onScroll(event: any) {}
+  onScroll(event: any) {
+  }
 
-  onCheckboxChangeFn(event) {}
+  onCheckboxChangeFn(event) {
+  }
 }

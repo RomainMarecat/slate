@@ -3,14 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
 import { DocumentReference } from '@firebase/firestore-types';
-import { PartnerService } from './../../shared/partner/partner.service';
-import { Partner } from '../../../../shared/partner/partner';
 import { PartnerFormType } from '../../shared/partner/form-partner';
+import { PartnerService } from 'shared/partner/partner.service';
+import { Partner } from 'shared/partner/partner';
 
 @Component({
   selector: 'app-partner-edit',
   templateUrl: './partner-edit.component.html',
-  styleUrls: ['./partner-edit.component.scss']
+  styleUrls: [ './partner-edit.component.scss' ]
 })
 export class PartnerEditComponent implements OnInit {
   @Input() showBackButton = true;
@@ -20,9 +20,10 @@ export class PartnerEditComponent implements OnInit {
   _publication = true;
 
   constructor(private partnerService: PartnerService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private alertService: AlertService) {}
+              private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private alertService: AlertService) {
+  }
 
   ngOnInit() {
     this.createForm();
@@ -55,7 +56,7 @@ export class PartnerEditComponent implements OnInit {
       published: this._publication
     });
     if (this.form.valid) {
-      this.partner = { ...this.partner, ...this.form.value };
+      this.partner = {...this.partner, ...this.form.value};
       if (this.partner.key) {
         if (this.partner.published === true) {
           this.partner.published_at = new Date();
@@ -67,7 +68,7 @@ export class PartnerEditComponent implements OnInit {
           }, (err) => {
             this.alertService.toast(`partner error ${err}`);
           });
-        this.router.navigate(['/admin/partner']);
+        this.router.navigate([ '/admin/partner' ]);
       } else {
         this.partnerService.createPartner(this.partner)
           .then((doc: DocumentReference) => {
@@ -90,7 +91,7 @@ export class PartnerEditComponent implements OnInit {
   }
 
   set name(name) {
-    this.form.patchValue({ name: name });
+    this.form.patchValue({name: name});
   }
 
   get website() {
@@ -98,7 +99,7 @@ export class PartnerEditComponent implements OnInit {
   }
 
   set website(website) {
-    this.form.patchValue({ website: website });
+    this.form.patchValue({website: website});
   }
 
   get published() {
@@ -106,7 +107,7 @@ export class PartnerEditComponent implements OnInit {
   }
 
   set published(published) {
-    this.form.patchValue({ published: published });
+    this.form.patchValue({published: published});
   }
 
   get publication() {

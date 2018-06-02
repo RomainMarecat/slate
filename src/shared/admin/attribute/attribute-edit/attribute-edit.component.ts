@@ -7,6 +7,7 @@ import { DocumentReference } from '@firebase/firestore-types';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { Attribute } from '../../../attribute/attribute';
 import { AttributeFormType } from '../../shared/attribute/form-attribute';
+import 'rxjs-compat/add/operator/debounceTime';
 
 @Component({
   selector: 'app-attribute-edit',

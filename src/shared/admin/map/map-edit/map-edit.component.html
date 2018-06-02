@@ -1,16 +1,24 @@
-<div fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px">
+<mat-toolbar color="primary" *ngIf="showBackButton === true">
+  <a [routerLink]="['/admin/map']">
+    <mat-icon color="warn">navigate_before</mat-icon>
+  </a>
+</mat-toolbar>
+<div fxLayout="row"
+     fxLayoutAlign="space-around stretch"
+     fxLayoutGap="20px">
 
-  <div class="form-wrapper" fxFlex="30" fxLayout="column" fxLayoutAlign="center start">
+  <div class="form-wrapper"
+       fxFlex="30"
+       fxLayout="column"
+       fxLayoutAlign="center start">
 
-    <form [formGroup]="form" (ngSubmit)="saveMap()" class="form mt-1">
+    <form [formGroup]="form"
+          (ngSubmit)="saveMap()"
+          class="form mt-1">
 
       <mat-card class="mat-card">
-        <mat-card-header fxLayout="row" fxLayoutAlign="center stretch">
-          <mat-card-subtitle *ngIf="showBackButton === true">
-            <button type="button" color="warn" mat-mini-fab class="absolute-fab" [routerLink]="['/admin/map']">
-              <mat-icon aria-label="back">arrow_left</mat-icon>
-            </button>
-          </mat-card-subtitle>
+        <mat-card-header fxLayout="row"
+                         fxLayoutAlign="center stretch">
           <mat-card-title>
             <h3 *ngIf="!map?.key">
               Ajouter une carte
@@ -21,24 +29,33 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="mat-card-content">
-          <div class="mt-1" fxLayout="column" fxLayoutAlign="center stretch">
+          <div class="mt-1"
+               fxLayout="column"
+               fxLayoutAlign="center stretch">
             <mat-form-field class="mat-form-field">
-              <input matInput maxlength="100" [placeholder]="'nom'|translate" formControlName="name">
-              <mat-hint align="start"><strong [innerHtml]="'Nom de la carte'|translate"></strong></mat-hint>
-              <mat-hint align="end">{{ name.value.length }} {{ '/100'|translate }}</mat-hint>
-              <mat-error *ngIf="name.invalid && name.value.length === 0"
-                         [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
-              <mat-error *ngIf="name.invalid && name.value.length > 0"
-                         [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+              <input matInput
+                     maxlength="100"
+                     [placeholder]="'admin.placeholder.map.name'|translate"
+                     [formControl]="form.get('name')">
+              <mat-hint align="start"><strong [innerHtml]="'admin.hint.map.name'|translate"></strong></mat-hint>
+              <mat-hint align="end">{{ form.get('name').value.length }} {{ '/100'|translate }}</mat-hint>
+              <mat-error *ngIf="form.get('name').invalid && form.get('name').value.length === 0"
+                         [innerHtml]="'admin.error.required.map.name'|translate"></mat-error>
+              <mat-error *ngIf="form.get('name').invalid && form.get('name').value.length > 0"
+                         [innerHtml]="'admin.error.invalid.map.name'|translate"></mat-error>
             </mat-form-field>
             <div class="d-block mt-1">
               <div class="mat-form-field">
-                <mat-radio-group class="example-radio-group" [(ngModel)]="publication" formControlName="published">
-                  <mat-radio-button class="example-radio-button" [value]="true">
-                    {{'Publié'}}
+                <mat-radio-group class="example-radio-group"
+                                 [(ngModel)]="publication"
+                                 [formControl]="form.get('published')">
+                  <mat-radio-button class="example-radio-button"
+                                    [value]="true">
+                    {{ 'cta.publish'|translate }}
                   </mat-radio-button>
-                  <mat-radio-button class="example-radio-button" [value]="false">
-                    {{'Non publié'}}
+                  <mat-radio-button class="example-radio-button"
+                                    [value]="false">
+                    {{ 'cta.unpublish'|translate }}
                   </mat-radio-button>
                 </mat-radio-group>
               </div>
@@ -46,59 +63,92 @@
           </div>
         </mat-card-content>
         <mat-card-actions>
-          <div class="d-flex justify-content-around">
-            <button type="button" class="back" role="button" color="accent" mat-raised-button
-                    [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/map']"></button>
-            <button type="submit" class="validate" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button
-                    color="primary" [disabled]="form.invalid" [innerHtml]="'Enregistrer'|translate"></button>
+          <div fxLayout="row"
+               fxLayoutAlign="space-around stretch">
+            <button type="button"
+                    class="back text-uppercase"
+                    role="button"
+                    color="accent"
+                    mat-raised-button
+                    [innerHtml]="'cta.cancel'|translate"
+                    [routerLink]="['/admin/map']"></button>
+            <button type="submit"
+                    class="validate text-uppercase"
+                    [attr.aria-label]="'cta.save'|translate"
+                    mat-raised-button
+                    color="primary"
+                    [disabled]="form.invalid"
+                    [innerHtml]="'cta.save'|translate"></button>
           </div>
         </mat-card-actions>
       </mat-card>
     </form>
 
 
-    <form [formGroup]="formArea" (ngSubmit)="saveArea()" class="form mt-1" *ngIf="map">
+    <form [formGroup]="formArea"
+          (ngSubmit)="saveArea()"
+          class="form mt-1"
+          *ngIf="map">
       <mat-card class="mat-card">
-        <mat-card-header fxLayout="row" fxLayoutAlign="center stretch">
+        <mat-card-header fxLayout="row"
+                         fxLayoutAlign="center stretch">
           <mat-card-subtitle *ngIf="showBackButton === true">
-            <button type="button" color="warn" mat-mini-fab class="absolute-fab" [routerLink]="['/admin/map']">
+            <button type="button"
+                    color="warn"
+                    mat-mini-fab
+                    class="absolute-fab"
+                    [routerLink]="['/admin/map']">
               <mat-icon aria-label="back">arrow_left</mat-icon>
             </button>
           </mat-card-subtitle>
           <mat-card-title>
             <h3 *ngIf="map?.key">
-              Ajouter une zone
+             {{ 'admin.title.map.add'|translate }}
             </h3>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="mat-card-content">
-          <div class="mt-1" fxLayout="column" fxLayoutAlign="center stretch">
+          <div class="mt-1"
+               fxLayout="column"
+               fxLayoutAlign="center stretch">
             <mat-form-field class="mat-form-field">
-              <input matInput maxlength="100" [placeholder]="'région'|translate" [formControl]="formArea.controls.name">
-              <mat-hint align="start"><strong [innerHtml]="'Nom de la région'|translate"></strong></mat-hint>
+              <input matInput
+                     maxlength="100"
+                     [placeholder]="'admin.placeholder.map.name'|translate"
+                     [formControl]="formArea.controls.name">
+              <mat-hint align="start">
+                <strong [innerHtml]="'admin.hint.map.name'|translate"></strong>
+              </mat-hint>
               <mat-hint align="end">{{ formArea.controls.name.value.length }} {{ '/100'|translate }}</mat-hint>
               <mat-error *ngIf="formArea.controls.name.invalid && formArea.controls.name.value.length === 0"
-                         [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
+                         [innerHtml]="'admin.error.required.map.name'|translate"></mat-error>
               <mat-error *ngIf="formArea.controls.name.invalid && formArea.controls.name.value.length > 0"
-                         [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+                         [innerHtml]="'admin.error.invalid.map.name'|translate"></mat-error>
             </mat-form-field>
             <mat-form-field class="mat-form-field">
-              <input matInput maxlength="9000" [placeholder]="'path2D'|translate" [formControl]="formArea.controls.path">
-              <mat-hint align="start"><strong [innerHtml]="'path'|translate"></strong></mat-hint>
+              <input matInput
+                     maxlength="9000"
+                     [placeholder]="'admin.placeholder.map.path'|translate"
+                     [formControl]="formArea.controls.path">
+              <mat-hint align="start"><strong [innerHtml]="'admin.hint.map.path'|translate"></strong></mat-hint>
               <mat-hint align="end">{{ formArea.controls.path.value.length }} {{ '/9000'|translate }}</mat-hint>
               <mat-error *ngIf="formArea.controls.path.invalid && formArea.controls.path.value.length === 0"
-                         [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
+                         [innerHtml]="'admin.error.required.map.path'|translate"></mat-error>
               <mat-error *ngIf="formArea.controls.path.invalid && formArea.controls.path.value.length > 0"
-                         [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+                         [innerHtml]="'admin.error.invalid.map.path'|translate"></mat-error>
             </mat-form-field>
             <div class="d-block mt-1">
               <div class="mat-form-field">
-                <mat-radio-group class="example-radio-group" [(ngModel)]="publicationArea" [formControl]="formArea.controls.published">
-                  <mat-radio-button class="example-radio-button" [value]="true">
-                    {{'Publié'}}
+                <mat-radio-group class="example-radio-group"
+                                 [(ngModel)]="publicationArea"
+                                 [formControl]="formArea.controls.published">
+                  <mat-radio-button class="example-radio-button"
+                                    [value]="true">
+                    {{ 'cta.publish'|translate }}
                   </mat-radio-button>
-                  <mat-radio-button class="example-radio-button" [value]="false">
-                    {{'Non publié'}}
+                  <mat-radio-button class="example-radio-button"
+                                    [value]="false">
+                    {{ 'cta.unpublish'|translate }}
                   </mat-radio-button>
                 </mat-radio-group>
               </div>
@@ -106,15 +156,25 @@
           </div>
         </mat-card-content>
         <mat-card-actions>
-          <div class="d-flex justify-content-around">
-            <button type="button" class="back" role="button" color="accent" mat-raised-button
-                    [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/map']"></button>
-            <button type="submit" class="validate" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button
-                    color="primary" [disabled]="form.invalid" [innerHtml]="'Enregistrer'|translate"></button>
+          <div fxLayout="row"
+               fxLayoutAlign="space-around stretch">
+            <button type="button"
+                    class="back text-uppercase"
+                    role="button"
+                    color="accent"
+                    mat-raised-button
+                    [innerHtml]="'cta.cancel'|translate"
+                    [routerLink]="['/admin/map']"></button>
+            <button type="submit"
+                    class="validate text-uppercase"
+                    [attr.aria-label]="'cta.save'|translate"
+                    mat-raised-button
+                    color="primary"
+                    [disabled]="form.invalid"
+                    [innerHtml]="'cta.save'|translate"></button>
           </div>
         </mat-card-actions>
       </mat-card>
-
     </form>
   </div>
   <div fxFlex="80">

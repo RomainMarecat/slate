@@ -16,7 +16,7 @@ import { Sort } from '../../facet/sort/shared/sort';
 export class MockContactService {
 
   contactCollectionRef: AngularFirestoreCollection<Contact>;
-  contacts$: Observable<DocumentChangeAction[]>;
+  contacts$: Observable<DocumentChangeAction<Contact[]>[]>;
   contact$: Observable<Contact>;
   query$: BehaviorSubject<any>;
   filters$: BehaviorSubject<Filter[]>;

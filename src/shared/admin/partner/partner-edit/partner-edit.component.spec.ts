@@ -9,40 +9,36 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../shared.module';
-import { MediaService } from '../../../media/media.service';
-import { MockMediaService } from '../../../media/mock-media.service';
-import { MenuService } from '../../../menu/menu.service';
-import { PartnerService } from '../../shared/partner/partner.service';
-import { MockPartnerService } from '../../shared/partner/mock-partner.service';
 import { PartnerEditComponent } from './partner-edit.component';
-import { PartnerListComponent } from './../partner-list/partner-list.component';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
+import { PartnerService } from 'shared/partner/partner.service';
+import { MockPartnerService } from 'shared/partner/mock-partner.service';
 
 describe('PartnerEditComponent', () => {
   let component: PartnerEditComponent;
-  let fixture: ComponentFixture < PartnerEditComponent > ;
+  let fixture: ComponentFixture<PartnerEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          BrowserModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          NgxDatatableModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-          SharedModule,
-        ],
-        declarations: [PartnerEditComponent],
-        providers: [
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: PartnerService, useClass: MockPartnerService }
-        ]
-      })
+      imports: [
+        CommonModule,
+        BrowserModule,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        NgxDatatableModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+        SharedModule,
+      ],
+      declarations: [ PartnerEditComponent ],
+      providers: [
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: PartnerService, useClass: MockPartnerService}
+      ]
+    })
       .compileComponents();
   }));
 

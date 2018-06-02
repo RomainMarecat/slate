@@ -1,7 +1,7 @@
 #!/bin/bash
 for site in showcase
 do
-	./node_modules/@angular/cli/bin/ng build -aot --env=prod --app=$site -prod
+	./node_modules/@angular/cli/bin/ng build --aot --project=$site --prod
 	firebase use $site
 	firebase deploy
 done

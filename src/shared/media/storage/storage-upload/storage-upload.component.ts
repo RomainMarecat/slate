@@ -6,6 +6,7 @@ import { MediaService } from '../../media.service';
 import { DocumentReference } from '@firebase/firestore-types';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from '../../../popup/alert.service';
+import { UploadTask } from 'angularfire2/storage/interfaces';
 
 @Component({
   selector: 'app-storage-upload',
@@ -47,35 +48,39 @@ export class StorageUploadComponent implements OnInit {
 
     imageRef
       .catch((error) => {
-      this.translate.get('error.upload.retry')
-        .subscribe((translated) => {
-          this.alertService.toast(translated);
-        });
-    });
+        this.translate.get('error.upload.retry')
+          .subscribe((translated) => {
+            this.alertService.toast(translated);
+          });
+      });
 
     // observe percentage changes
     imageRef.percentageChanges().subscribe(percent => this.uploadPercent = percent);
+
     // get notified when the download URL is available
-    imageRef.downloadURL().subscribe(downloadURL => this.downloadURL = downloadURL);
-
-    imageRef.then((taskSnapshot: UploadTaskSnapshot) => {
+    imageRef.then((taskSnapshot) => {
       this.imageRefChanged.emit(taskSnapshot);
-      const media: Media = {
-        public_id: taskSnapshot.metadata.fullPath,
-        bucket: taskSnapshot.metadata.bucket,
-        content_type: taskSnapshot.metadata.contentType,
-        created_at: taskSnapshot.metadata.timeCreated,
-        updated_at: taskSnapshot.metadata.updated,
-        url: taskSnapshot.downloadURL,
-        type: 'storage',
-        alt: taskSnapshot.metadata.customMetadata.alt,
-        extension: taskSnapshot.metadata.fullPath.substring(
-          taskSnapshot.metadata.fullPath.lastIndexOf('.') + 1, taskSnapshot.metadata.fullPath.length
-        ),
-        public: true,
-      };
+      taskSnapshot.ref.getDownloadURL()
+        .then(((downloadURL) => {
+          this.downloadURL = downloadURL;
 
-      this.onMediaChange(media);
+          const media: Media = {
+            public_id: taskSnapshot.metadata.fullPath,
+            bucket: taskSnapshot.metadata.bucket,
+            content_type: taskSnapshot.metadata.contentType,
+            created_at: taskSnapshot.metadata.timeCreated,
+            updated_at: taskSnapshot.metadata.updated,
+            url: downloadURL,
+            type: 'storage',
+            alt: taskSnapshot.metadata.customMetadata.alt,
+            extension: taskSnapshot.metadata.fullPath.substring(
+              taskSnapshot.metadata.fullPath.lastIndexOf('.') + 1, taskSnapshot.metadata.fullPath.length
+            ),
+            public: true,
+          };
+          this.onMediaChange(media);
+
+        }));
     });
   }
 
@@ -89,7 +94,7 @@ export class StorageUploadComponent implements OnInit {
    * @param {Media} media
    */
   onMediaChange(media: Media) {
-    this.mediaService.addMedia(media)
+    this.mediaService.createMedia(media)
       .then((doc: DocumentReference) => {
         media.key = doc.id;
         this.imageChanged.emit(media);

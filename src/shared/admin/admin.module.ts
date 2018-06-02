@@ -11,6 +11,7 @@ import {
   MatButtonModule,
   MatGridListModule,
 } from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    TranslateModule,
   ],
   declarations: [HomeComponent],
   providers: [

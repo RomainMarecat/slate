@@ -249,7 +249,7 @@ export class ImageProductComponent implements OnInit {
    * @param {Media} media
    */
   onMediaChange(media: Media) {
-    this.mediaService.addMedia(media).then((doc: DocumentReference) => {
+    this.mediaService.createMedia(media).then((doc: DocumentReference) => {
       media.key = doc.id;
       this.imageChanged.emit(media);
     }, (err) => {

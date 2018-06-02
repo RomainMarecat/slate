@@ -29,27 +29,28 @@
         <mat-card-actions>
           <div class="cms-actions">
             <button role="button"
-                    aria-label="Publier une cmsDetail"
+                    [attr.aria-label]="'cta.publish'|translate"
                     mat-raised-button
                     color="primary"
                     (click)="publishCmsDetail()"
                     *ngIf="selected.length > 0">
               <mat-icon aria-label="Published">done</mat-icon>
-              Publier
+              {{ 'cta.publish'|translate }}
             </button>
             <button role="button"
-                    aria-label="Supprimer une cmsDetail"
-                    mat-raised-button color="accent"
+                    [attr.aria-label]="'cta.delete'|translate"
+                    mat-raised-button
+                    color="accent"
                     (click)="deleteCmsDetail()"
                     *ngIf="selected.length > 0">
               <mat-icon aria-label="delete">delete</mat-icon>
-              Supprimer
+              {{ 'cta.delete'|translate }}
             </button>
             <a [routerLink]="['/admin/cms/' + cmsKey + '/cms-details/add']"
                mat-raised-button
                color="primary">
-              <mat-icon aria-label="add">add</mat-icon>
-              Ajouter
+              <mat-icon [attr.aria-label]="'cta.add'|translate">add</mat-icon>
+              {{ 'cta.add'|translate }}
             </a>
           </div>
         </mat-card-actions>
@@ -101,13 +102,13 @@
                      let-row="row"
                      ngx-datatable-cell-template>
             <span (dblclick)="onActivateEdit(rowIndex)"
-                  style="display: block; min-height: 20px; min-width: 50px;"
+                  class="row-activate"
                   *ngIf="activatedRows[rowIndex] !== true">
               {{ value | translate }}
             </span>
           <mat-form-field *ngIf="activatedRows && activatedRows[rowIndex] === true">
             <input matInput
-                   [placeholder]="'placeholder.cmsDetail.title'|translate"
+                   [placeholder]="'admin.placeholder.cms-detail.title'|translate"
                    [value]="row?.title"
                    (blur)="onEdit('title', row, $event.target.value, rowIndex)"
                    (keypress.enter)="onEdit('title', row, $event.target.value, rowIndex)">
@@ -121,13 +122,13 @@
                      let-row="row"
                      ngx-datatable-cell-template>
             <span (dblclick)="onActivateEdit(rowIndex)"
-                  style="display: block; min-height: 20px; min-width: 50px;"
+                  class="row-activate"
                   *ngIf="activatedRows[rowIndex] !== true">
               {{ value | translate }}
             </span>
           <mat-form-field *ngIf="activatedRows && activatedRows[rowIndex] === true">
             <input matInput
-                   [placeholder]="'placeholder.cmsDetail.icon'|translate"
+                   [placeholder]="'admin.placeholder.cms-detail.icon'|translate"
                    [value]="row?.icon"
                    (blur)="onEdit('icon', row, $event.target.value, rowIndex)"
                    (keypress.enter)="onEdit('icon', row, $event.target.value, rowIndex)">
