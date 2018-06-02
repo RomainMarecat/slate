@@ -20,6 +20,5 @@ let context = require.context('./../shared', true, /\.spec\.ts$/);
 context.keys().map(context);
 
 context = require.context('./../app-car', true, /\.spec\.ts$/);
-
 // And load the modules.
 context.keys().map(context);
