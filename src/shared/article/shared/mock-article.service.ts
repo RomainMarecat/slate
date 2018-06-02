@@ -2,9 +2,9 @@ import { mockArticle } from './mock-article';
 import { Article } from './article';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
+import { CollectionReference, Query } from '@firebase/firestore-types';
+import { AngularFirestoreCollection } from 'angularfire2/firestore';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
@@ -16,7 +16,7 @@ import { Sort } from '../../facet/sort/shared/sort';
 export class MockArticleService {
 
   articleCollectionRef: AngularFirestoreCollection<Article>;
-  articles$: Observable<DocumentChangeAction[]>;
+  articles$: Observable<DocumentChangeAction<Article[]>[]>;
   article$: Observable<Article>;
   query$: BehaviorSubject<any>;
   filters$: BehaviorSubject<Filter[]>;

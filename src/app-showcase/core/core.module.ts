@@ -204,6 +204,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},
     {provide: OrderService, useClass: OrderService, deps: [ AngularFirestore, TABLE_ORDER ]},
     {provide: MapService, useClass: MapService, deps: [ AngularFirestore, TABLE_MAP ]},
+    {provide: ScoreService, useClass: ScoreService, deps: [ AngularFirestore, TABLE_SCORE ]},
     {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
     {provide: PaymentService, useClass: PaymentService, deps: [ AngularFirestore, TABLE_PAYMENT, STRIPE_KEY ]},
     {provide: ProductService, useClass: ProductService, deps: [ AngularFirestore, TABLE_PRODUCT ]},

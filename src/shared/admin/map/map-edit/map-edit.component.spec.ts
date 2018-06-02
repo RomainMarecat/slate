@@ -1,4 +1,3 @@
-///<reference path="../../../../../node_modules/@ngx-translate/core/src/translate.loader.d.ts"/>
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MapEditComponent } from './map-edit.component';

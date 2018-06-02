@@ -8,7 +8,7 @@ import { Filter } from '../../facet/filter/shared/filter';
 
 export class MockAreaService {
   areaCollectionRef: AngularFirestoreCollection < Area > ;
-  areas$: Observable < DocumentChangeAction[] > ;
+  areas$: Observable < DocumentChangeAction<Area[]>[] > ;
   area$: Observable < Area > ;
   filters$: BehaviorSubject < Filter[] > ;
   userFilter$: BehaviorSubject < string | null > ;

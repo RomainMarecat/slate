@@ -19,11 +19,12 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
+import { map } from 'rxjs/internal/operators';
 
 @Injectable()
 export class VisitorService {
   collectionRef: AngularFirestoreCollection<DocumentReference>;
-  documents$: Observable<DocumentChangeAction[]>;
+  documents$: Observable<DocumentChangeAction<any>[]>;
   document$: Observable<Document>;
   query$: BehaviorSubject<any | null>;
   filters$: BehaviorSubject<Filter[] | null>;
@@ -93,8 +94,8 @@ export class VisitorService {
    * @return Observable
    */
   getDocuments(): Observable<any[]> {
-    return this.documents$.map((documents: DocumentChangeAction[]) => {
-      return documents.map((document: DocumentChangeAction) => {
+    return this.documents$.pipe(map((documents) => {
+      return documents.map((document: DocumentChangeAction<any>) => {
         if (document.payload.doc.exists) {
           const doc = document.payload.doc.data() as Document;
           // Useful if doc id is missing on forgot update after create function
@@ -107,7 +108,7 @@ export class VisitorService {
           return doc;
         }
       });
-    });
+    }));
   }
 
   /**
@@ -118,14 +119,15 @@ export class VisitorService {
     return this.document$ = this.collectionRef
       .doc(path)
       .snapshotChanges()
-      .map((action: Action<DocumentSnapshot>) => {
-        if (action.payload.exists) {
-          const product = action.payload.data() as Document;
-          product.key = action.payload.id;
-          return product;
-        }
-        return null;
-      });
+      .pipe(
+        map((action: Action<DocumentSnapshot>) => {
+          if (action.payload.exists) {
+            const product = action.payload.data() as Document;
+            product.key = action.payload.id;
+            return product;
+          }
+          return null;
+        }));
   }
 
   /**

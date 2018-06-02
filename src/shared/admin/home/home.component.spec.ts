@@ -18,8 +18,6 @@ import {
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ProductComponent } from '../../../shared/admin/product/product.component';
 import { ProductListComponent } from '../../../shared/admin/product/product-list/product-list.component';
-import { ProductService } from '../../../shared/admin/shared/product/product.service';
-import { MockProductService } from '../../../shared/admin/shared/product/mock-product.service';
 import { HomeComponent } from './home.component';
 import { SharedModule } from '../../shared.module';
 import { ProductFilterComponent } from '../product/product-filter/product-filter.component';
@@ -52,10 +50,7 @@ describe('HomeComponent', () => {
             loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
           }),
         ],
-        declarations: [HomeComponent, ProductComponent, ProductListComponent, ProductFilterComponent],
-        providers: [
-          { provide: ProductService, useClass: MockProductService },
-        ]
+        declarations: [HomeComponent],
       })
       .compileComponents();
   }));

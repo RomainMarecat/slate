@@ -27,7 +27,7 @@ export class SortItemComponent implements OnInit {
       }
       return facet;
     });
-    this.productService.publishedFilter$.next(null);
+    this.productService.filters$.next(null);
     this.productService.orderBy$.next(sort);
   }
 

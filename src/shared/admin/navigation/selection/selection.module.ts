@@ -8,11 +8,12 @@ import { SharedModule } from '../../../shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SelectionEditComponent } from './selection-edit/selection-edit.component';
-import { ProductService } from '../../shared/product/product.service';
 import { SelectionService } from '../../../selection/selection.service';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { ProductService } from '../../../product/product.service';
 
 const TABLE_SELECTION = new InjectionToken<string>('selection');
+const TABLE_PRODUCT = new InjectionToken<string>('product');
 
 @NgModule({
   imports: [
@@ -28,14 +29,18 @@ const TABLE_SELECTION = new InjectionToken<string>('selection');
     SelectionEditComponent,
   ],
   providers: [
-    ,
     {provide: TABLE_SELECTION, useValue: 'selection'},
+    {provide: TABLE_PRODUCT, useValue: 'product'},
     {
       provide: SelectionService,
       useClass: SelectionService,
       deps: [AngularFirestore, TABLE_SELECTION]
     },
-    ProductService
+    {
+      provide: ProductService,
+      useClass: ProductService,
+      deps: [AngularFirestore, TABLE_PRODUCT]
+    },
   ]
 })
 export class SelectionModule {

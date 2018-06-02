@@ -3,10 +3,10 @@ import { Selection } from '../../../../selection/selection';
 import { Router } from '@angular/router';
 import { MenuService } from '../../../../menu/menu.service';
 import { Product } from '../../../../product/product';
-import { ProductService } from '../../../shared/product/product.service';
 import { DialogComponent } from '../../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 import { SelectionService } from '../../../../selection/selection.service';
+import { ProductService } from '../../../../product/product.service';
 
 @Component({
   selector: 'app-selection-list',

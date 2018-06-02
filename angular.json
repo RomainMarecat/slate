@@ -1,0 +1,492 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "slate",
+  "defaultProject": "showcase",
+  "projects": {
+    "showcase": {
+      "root": "src",
+      "sourceRoot": "src/app-showcase",
+      "prefix": "app-showcase",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/app-showcase/index.html",
+            "main": "src/app-showcase/main.ts",
+            "polyfills": "src/app-showcase/polyfills.ts",
+            "tsConfig": "src/app-showcase/tsconfig.app.json",
+            "assets": [
+              "src/app-showcase/assets",
+              "src/app-showcase/robots.txt",
+              "src/app-showcase/sitemap.xml",
+              "src/app-showcase/favicon.ico",
+              "src/app-showcase/manifest.json"
+            ],
+            "styles": [
+              "./node_modules/material-design-icons/iconfont/material-icons.css",
+              "./node_modules/font-awesome/css/font-awesome.css",
+              "./node_modules/@swimlane/ngx-datatable/release/index.css",
+              "./node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "./node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/cookieconsent/build/cookieconsent.min.css",
+              "./node_modules/dragula/dist/dragula.css",
+              "src/app-showcase/styles.scss"
+            ],
+            "scripts": [
+              "./node_modules/moment/min/moment.min.js",
+              "./node_modules/moment/locale/fr.js",
+              "./node_modules/twix/dist/twix.min.js",
+              "./node_modules/crypto-js/crypto-js.js",
+              "./node_modules/cookieconsent/build/cookieconsent.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app-showcase/environments/environment.ts",
+                  "with": "src/app-showcase/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "showcase:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "showcase:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "showcase:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/app-showcase/test.ts",
+            "polyfills": "src/app-showcase/polyfills.ts",
+            "tsConfig": "src/app-showcase/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "src/styles.spec.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "src/app-showcase/favicon.ico",
+              "src/app-showcase/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/app-showcase/tsconfig.app.json",
+              "src/app-showcase/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "showcase-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "showcase:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+//  "apps": [
+//    {
+//      "name": "showcase",
+//      "root": "src/app-showcase",
+//      "outDir": "dist",
+//      "assets": [
+//        "assets",
+//        "robots.txt",
+//        "sitemap.xml",
+//        "favicon.ico",
+//        "manifest.json"
+//      ],
+//      "index": "index.html",
+//      "main": "main.ts",
+//      "polyfills": "polyfills.ts",
+//      "test": "test.ts",
+//      "tsconfig": "tsconfig.app.json",
+//      "testTsconfig": "tsconfig.spec.json",
+//      "prefix": "app-showcase",
+//      "serviceWorker": true,
+//      "styles": [
+//        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+//        "../../node_modules/font-awesome/css/font-awesome.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+//        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+//        "../../node_modules/dragula/dist/dragula.css",
+//        "styles.scss"
+//      ],
+//      "scripts": [
+//        "../../node_modules/moment/min/moment.min.js",
+//        "../../node_modules/moment/locale/fr.js",
+//        "../../node_modules/twix/dist/twix.min.js",
+//        "../../node_modules/crypto-js/crypto-js.js",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
+//      ],
+//      "environmentSource": "environments/environment.ts",
+//      "environments": {
+//        "dev": "environments/environment.ts",
+//        "prod": "environments/environment.prod.ts"
+//      }
+//    },
+//    {
+//      "name": "blog",
+//      "root": "src/app-blog",
+//      "outDir": "dist",
+//      "assets": [
+//        "assets",
+//        "robots.txt",
+//        "sitemap.xml",
+//        "favicon.ico",
+//        "manifest.json"
+//      ],
+//      "index": "index.html",
+//      "main": "main.ts",
+//      "polyfills": "polyfills.ts",
+//      "test": "test.ts",
+//      "tsconfig": "tsconfig.app.json",
+//      "testTsconfig": "tsconfig.spec.json",
+//      "prefix": "app-blog",
+//      "serviceWorker": true,
+//      "styles": [
+//        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+//        "../../node_modules/font-awesome/css/font-awesome.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+//        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+//        "../../node_modules/dragula/dist/dragula.css",
+//        "styles.scss"
+//      ],
+//      "scripts": [
+//        "../../node_modules/crypto-js/crypto-js.js",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
+//      ],
+//      "environmentSource": "environments/environment.ts",
+//      "environments": {
+//        "dev": "environments/environment.ts",
+//        "prod": "environments/environment.prod.ts"
+//      }
+//    },
+//    {
+//      "name": "car",
+//      "root": "src/app-car",
+//      "outDir": "dist",
+//      "assets": [
+//        "assets",
+//        "robots.txt",
+//        "sitemap.xml",
+//        "favicon.ico",
+//        "manifest.json"
+//      ],
+//      "index": "index.html",
+//      "main": "main.ts",
+//      "polyfills": "polyfills.ts",
+//      "test": "test.ts",
+//      "tsconfig": "tsconfig.app.json",
+//      "testTsconfig": "tsconfig.spec.json",
+//      "prefix": "app-car",
+//      "serviceWorker": true,
+//      "styles": [
+//        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+//        "../../node_modules/font-awesome/css/font-awesome.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+//        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+//        "../../node_modules/dragula/dist/dragula.css",
+//        "styles.scss"
+//      ],
+//      "scripts": [
+//        "../../node_modules/crypto-js/crypto-js.js",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
+//      ],
+//      "environmentSource": "environments/environment.ts",
+//      "environments": {
+//        "dev": "environments/environment.ts",
+//        "prod": "environments/environment.prod.ts"
+//      }
+//    },
+//    {
+//      "name": "recipe",
+//      "root": "src/app-recipe",
+//      "outDir": "dist",
+//      "assets": [
+//        "assets",
+//        "robots.txt",
+//        "sitemap.xml",
+//        "favicon.ico",
+//        "manifest.json"
+//      ],
+//      "index": "index.html",
+//      "main": "main.ts",
+//      "polyfills": "polyfills.ts",
+//      "test": "test.ts",
+//      "tsconfig": "tsconfig.app.json",
+//      "testTsconfig": "tsconfig.spec.json",
+//      "prefix": "app-recipe",
+//      "serviceWorker": true,
+//      "styles": [
+//        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+//        "../../node_modules/font-awesome/css/font-awesome.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+//        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+//        "../../node_modules/dragula/dist/dragula.css",
+//        "styles.scss"
+//      ],
+//      "scripts": [
+//        "../../node_modules/crypto-js/crypto-js.js",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
+//      ],
+//      "environmentSource": "environments/environment.ts",
+//      "environments": {
+//        "dev": "environments/environment.ts",
+//        "prod": "environments/environment.prod.ts"
+//      }
+//    },
+//    {
+//      "name": "booking",
+//      "root": "src/app-booking",
+//      "outDir": "dist",
+//      "assets": [
+//        "assets",
+//        "robots.txt",
+//        "sitemap.xml",
+//        "favicon.ico",
+//        "manifest.json"
+//      ],
+//      "index": "index.html",
+//      "main": "main.ts",
+//      "polyfills": "polyfills.ts",
+//      "test": "test.ts",
+//      "tsconfig": "tsconfig.app.json",
+//      "testTsconfig": "tsconfig.spec.json",
+//      "prefix": "app-booking",
+//      "serviceWorker": true,
+//      "styles": [
+//        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+//        "../../node_modules/font-awesome/css/font-awesome.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+//        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+//        "../../node_modules/dragula/dist/dragula.css",
+//        "styles.scss"
+//      ],
+//      "scripts": [
+//        "../../node_modules/crypto-js/crypto-js.js",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
+//      ],
+//      "environmentSource": "environments/environment.ts",
+//      "environments": {
+//        "dev": "environments/environment.ts",
+//        "prod": "environments/environment.prod.ts"
+//      }
+//    },
+//    {
+//      "name": "hockey",
+//      "root": "src/app-hockey",
+//      "outDir": "dist",
+//      "assets": [
+//        "assets",
+//        "robots.txt",
+//        "sitemap.xml",
+//        "favicon.ico",
+//        "manifest.json"
+//      ],
+//      "index": "index.html",
+//      "main": "main.ts",
+//      "polyfills": "polyfills.ts",
+//      "test": "test.ts",
+//      "tsconfig": "tsconfig.app.json",
+//      "testTsconfig": "tsconfig.spec.json",
+//      "prefix": "app-hockey",
+//      "serviceWorker": true,
+//      "styles": [
+//        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+//        "../../node_modules/font-awesome/css/font-awesome.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+//        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+//        "../../node_modules/dragula/dist/dragula.css",
+//        "styles.scss"
+//      ],
+//      "scripts": [
+//        "../../node_modules/crypto-js/crypto-js.js",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
+//      ],
+//      "environmentSource": "environments/environment.ts",
+//      "environments": {
+//        "dev": "environments/environment.ts",
+//        "prod": "environments/environment.prod.ts"
+//      }
+//    },
+//    {
+//      "name": "monpullmoche",
+//      "root": "src/app-monpullmoche",
+//      "outDir": "dist",
+//      "assets": [
+//        "assets",
+//        "robots.txt",
+//        "sitemap.xml",
+//        "favicon.ico",
+//        "manifest.json"
+//      ],
+//      "index": "index.html",
+//      "main": "main.ts",
+//      "polyfills": "polyfills.ts",
+//      "test": "test.ts",
+//      "tsconfig": "tsconfig.app.json",
+//      "testTsconfig": "tsconfig.spec.json",
+//      "prefix": "app-monpullmoche",
+//      "serviceWorker": true,
+//      "styles": [
+//        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+//        "../../node_modules/font-awesome/css/font-awesome.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+//        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+//        "styles.scss"
+//      ],
+//      "scripts": [
+//        "../../node_modules/crypto-js/crypto-js.js",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
+//      ],
+//      "environmentSource": "environments/environment.ts",
+//      "environments": {
+//        "dev": "environments/environment.ts",
+//        "prod": "environments/environment.prod.ts"
+//      }
+//    },
+//    {
+//      "name": "snippet",
+//      "root": "src/app-snippet",
+//      "outDir": "dist",
+//      "assets": [
+//        "assets",
+//        "robots.txt",
+//        "sitemap.xml",
+//        "favicon.ico",
+//        "manifest.json"
+//      ],
+//      "index": "index.html",
+//      "main": "main.ts",
+//      "polyfills": "polyfills.ts",
+//      "test": "test.ts",
+//      "tsconfig": "tsconfig.app.json",
+//      "testTsconfig": "tsconfig.spec.json",
+//      "prefix": "app-snippet",
+//      "serviceWorker": true,
+//      "styles": [
+//        "../../node_modules/material-design-icons/iconfont/material-icons.css",
+//        "../../node_modules/font-awesome/css/font-awesome.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+//        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+//        "../../node_modules/bootstrap/dist/css/bootstrap.css",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
+//        "../../node_modules/dragula/dist/dragula.css",
+//        "styles.scss"
+//      ],
+//      "scripts": [
+//        "../../node_modules/crypto-js/crypto-js.js",
+//        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
+//      ],
+//      "environmentSource": "environments/environment.ts",
+//      "environments": {
+//        "dev": "environments/environment.ts",
+//        "prod": "environments/environment.prod.ts"
+//      }
+//    }
+//  ],
+//  "e2e": {
+//    "protractor": {
+//      "config": "./protractor.conf.js"
+//    }
+//  },
+//  "lint": [
+//    {
+//      "project": "src/tsconfig.app.json",
+//      "exclude": "**/node_modules/**"
+//    },
+//    {
+//      "project": "src/tsconfig.spec.json",
+//      "exclude": "**/node_modules/**"
+//    },
+//    {
+//      "project": "e2e/tsconfig.e2e.json",
+//      "exclude": "**/node_modules/**"
+//    }
+//  ],
+//  "test": {
+//    "karma": {
+//      "config": "./karma.conf.js"
+//    }
+//  },
+//  "defaults": {
+//    "styleExt": "scss",
+//    "component": {}
+//  }
+}

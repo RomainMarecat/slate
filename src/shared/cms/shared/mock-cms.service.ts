@@ -12,7 +12,7 @@ import { CollectionReference, Query } from '@firebase/firestore-types';
 
 export class MockCmsService {
   cmsCollectionRef: AngularFirestoreCollection<CmsDetail>;
-  cmms$: Observable<DocumentChangeAction[]>;
+  cmms$: Observable<DocumentChangeAction<CmsDetail>[]>;
   filters$: BehaviorSubject < Filter[] | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;

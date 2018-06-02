@@ -11,7 +11,7 @@ import { Inject } from '@angular/core';
 
 export class MockCmsDetailService {
   cmsDetailCollectionRef: AngularFirestoreCollection<CmsDetail>;
-  cmsDetails$: Observable<DocumentChangeAction[]>;
+  cmsDetails$: Observable<DocumentChangeAction<CmsDetail[]>[]>;
   filters$: BehaviorSubject < Filter[] | null > ;
   limit$: BehaviorSubject < number | null > ;
   startAt$: BehaviorSubject < string | null > ;

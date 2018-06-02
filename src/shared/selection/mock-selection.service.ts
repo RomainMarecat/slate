@@ -10,19 +10,19 @@ import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
 
 export class MockSelectionService {
-  selectionCollectionRef: AngularFirestoreCollection < Selection > ;
-  publishedFilter$: BehaviorSubject < boolean | true > ;
-  parentFilter$: BehaviorSubject < string | null > ;
-  levelFilter$: BehaviorSubject < number | null > ;
-  nameFilters$: BehaviorSubject < string | null > ;
-  keyFilters$: BehaviorSubject < string | null > ;
-  userFilter$: BehaviorSubject < string | null > ;
-  limit$: BehaviorSubject < number | null > ;ex
-  startAt$: BehaviorSubject < string | null > ;
-  startAfter$: BehaviorSubject < string | null > ;
-  orderBy$: BehaviorSubject < string | 'published_at' > ;
-  endAt$: BehaviorSubject < string | null > ;
-  endBefore$: BehaviorSubject < string | null > ;
+  selectionCollectionRef: AngularFirestoreCollection<Selection>;
+  publishedFilter$: BehaviorSubject<boolean | true>;
+  parentFilter$: BehaviorSubject<string | null>;
+  levelFilter$: BehaviorSubject<number | null>;
+  nameFilters$: BehaviorSubject<string | null>;
+  keyFilters$: BehaviorSubject<string | null>;
+  userFilter$: BehaviorSubject<string | null>;
+  limit$: BehaviorSubject<number | null>;
+  startAt$: BehaviorSubject<string | null>;
+  startAfter$: BehaviorSubject<string | null>;
+  orderBy$: BehaviorSubject<string | 'published_at'>;
+  endAt$: BehaviorSubject<string | null>;
+  endBefore$: BehaviorSubject<string | null>;
   query: CollectionReference | Query;
 
   constructor() {
@@ -36,7 +36,7 @@ export class MockSelectionService {
     this.orderBy$ = new BehaviorSubject('published_at');
   }
 
-  getSelections(): Observable < Array < Selection >> {
-    return Observable.of([mockSelection]);
+  getSelections(): Observable<Array<Selection>> {
+    return Observable.of([ mockSelection ]);
   }
 }

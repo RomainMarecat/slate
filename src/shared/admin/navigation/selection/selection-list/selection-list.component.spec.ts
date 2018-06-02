@@ -12,13 +12,11 @@ import { AlertService } from '../../../../popup/alert.service';
 import { UserService } from '../../../../user/user.service';
 import { I18nService } from '../../../../i18n/i18n.service';
 import { MockAlertService } from '../../../../popup/mock-alert.service';
-import { MockProductService } from '../../../shared/product/mock-product.service';
 import { DateService } from '../../../../util/date.service';
 import { ObjectService } from '../../../../util/object.service';
 import { MockUserService } from '../../../../user/mock-user.service';
 import { MockMediaService } from '../../../../media/mock-media.service';
 import { MockLoaderService } from '../../../../loader/mock-loader.service';
-import { ProductService } from '../../../shared/product/product.service';
 import { DeviceService } from '../../../../device/device.service';
 import { MenuService } from '../../../../menu/menu.service';
 import { NotificationService } from '../../../../slack/notification.service';
@@ -27,44 +25,46 @@ import { Angulartics2Module } from 'angulartics2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SelectionService } from '../../../../selection/selection.service';
 import { MockSelectionService } from '../../../../selection/mock-selection.service';
+import { ProductService } from '../../../../product/product.service';
+import { MockProductService } from '../../../../product/mock-product.service';
 
 describe('SelectionListComponent', () => {
   let component: SelectionListComponent;
-  let fixture: ComponentFixture < SelectionListComponent > ;
+  let fixture: ComponentFixture<SelectionListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          BrowserAnimationsModule,
-          RouterTestingModule,
-          SharedModule,
-          NgxDatatableModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-        ],
-        declarations: [SelectionListComponent],
-        providers: [
-          { provide: SelectionService, useClass: MockSelectionService },
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: UserService, useClass: MockUserService },
-          { provide: MediaService, useClass: MockMediaService },
-          { provide: ProductService, useClass: MockProductService },
-          { provide: NotificationService, useClass: MockNotificationService },
-          DateService,
-          ObjectService,
-          I18nService,
-          MenuService,
-          DeviceService,
-        ]
-      })
+      imports: [
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        BrowserAnimationsModule,
+        RouterTestingModule,
+        SharedModule,
+        NgxDatatableModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+      ],
+      declarations: [ SelectionListComponent ],
+      providers: [
+        {provide: SelectionService, useClass: MockSelectionService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: ProductService, useClass: MockProductService},
+        {provide: NotificationService, useClass: MockNotificationService},
+        DateService,
+        ObjectService,
+        I18nService,
+        MenuService,
+        DeviceService,
+      ]
+    })
       .compileComponents();
   }));
 

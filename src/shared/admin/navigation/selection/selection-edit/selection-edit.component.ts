@@ -7,8 +7,8 @@ import { AlertService } from '../../../../popup/alert.service';
 import { Product } from '../../../../product/product';
 import { Media } from '../../../../media/media';
 import { StringService } from '../../../../util/string.service';
-import { ProductService } from '../../../shared/product/product.service';
 import { SelectionService } from '../../../../selection/selection.service';
+import { ProductService } from '../../../../product/product.service';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/debounceTime';
 

@@ -8,8 +8,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgxEditorModule } from 'ngx-editor';
-import { MockProductService } from '../../shared/product/mock-product.service';
-import { ProductService } from '../../shared/product/product.service';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -37,52 +35,54 @@ import { AttributeEditComponent } from './attribute-edit.component';
 import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
 import { MockUserService } from '../../../user/mock-user.service';
 import { environment } from '../../../../app-hockey/environments/environment';
+import { ProductService } from '../../../product/product.service';
+import { MockProductService } from '../../../product/mock-product.service';
 
 describe('AttributeEditComponent', () => {
   let component: AttributeEditComponent;
-  let fixture: ComponentFixture < AttributeEditComponent > ;
+  let fixture: ComponentFixture<AttributeEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          BrowserModule,
-          HttpClientModule,
-          FormsModule,
-          RouterTestingModule,
-          ReactiveFormsModule,
-          BrowserAnimationsModule,
-          CloudinaryModule.forRoot({ Cloudinary: Cloudinary }, environment.cloudinary),
-          SharedModule,
-          NgxEditorModule,
-          NgxDatatableModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
+      imports: [
+        CommonModule,
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        RouterTestingModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        SharedModule,
+        NgxEditorModule,
+        NgxDatatableModule,
+        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
 
-        ],
-        declarations: [AttributeEditComponent],
-        providers: [
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: UserService, useClass: MockUserService },
-          { provide: MediaService, useClass: MockMediaService },
-          { provide: CategoryService, useClass: MockCategoryService },
-          { provide: ProductService, useClass: MockProductService },
-          { provide: NotificationService, useClass: MockNotificationService },
-          { provide: AttributeService, useClass: MockAttributeService },
-          DateService,
-          ObjectService,
-          I18nService,
-          DeviceService,
-        ]
-      })
+      ],
+      declarations: [ AttributeEditComponent ],
+      providers: [
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: CategoryService, useClass: MockCategoryService},
+        {provide: ProductService, useClass: MockProductService},
+        {provide: NotificationService, useClass: MockNotificationService},
+        {provide: AttributeService, useClass: MockAttributeService},
+        DateService,
+        ObjectService,
+        I18nService,
+        DeviceService,
+      ]
+    })
       .compileComponents();
   }));
 

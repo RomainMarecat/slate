@@ -6,7 +6,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../../app-hockey/environments/environment';
-
+import { MockScoreService } from './mock-score.service';
 
 describe('ScoreService', () => {
   beforeEach(() => {
@@ -17,7 +17,9 @@ describe('ScoreService', () => {
         AngularFirestoreModule,
         AngularFireAuthModule
       ],
-      providers: [ScoreService]
+      providers: [
+        {provide: ScoreService, useClass: MockScoreService}
+      ]
     });
   });
 

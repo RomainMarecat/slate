@@ -15,7 +15,7 @@ import 'rxjs/add/operator/catch';
 export class MockCategoryService {
 
   categoryCollectionRef: AngularFirestoreCollection<Category>;
-  categories$: Observable<DocumentChangeAction[]>;
+  categories$: Observable<DocumentChangeAction<Category[]>[]>;
   category$: Observable<Category>;
   filters$: BehaviorSubject<Filter[]>;
   userFilter$: BehaviorSubject<string | null>;
