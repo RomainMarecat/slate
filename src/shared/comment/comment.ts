@@ -1,7 +1,7 @@
 export class Comment {
   key ?: string;
   commentText: string;
-  commentTime: Date;
+  commentTime: Date | string;
   creator: string;
   // Entity key storage
   entity_key: string;

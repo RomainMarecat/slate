@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CarOffer, Offer } from '../../../shared/offer/offer';
-import { StringService } from '../../../shared/util/string.service';
+import { CarOffer } from '../../../shared/offer/offer';
 import { Router } from '@angular/router';
 import { Category } from '../../../shared/category/category';
 import { CategoryService } from '../../../shared/category/category.service';
 import { AlertService } from '../../../shared/popup/alert.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-car-offer-item',
@@ -37,6 +37,7 @@ export class OfferItemComponent implements OnInit {
 
   @Input('offer') set offer(offer) {
     this._offer = offer;
+    this._offer.published_at = moment(this._offer.published_at, 'x').format('DD/MM/YYYY HH:mm');
     this.getBrand(offer.brand);
     this.getModel(offer.model);
   }

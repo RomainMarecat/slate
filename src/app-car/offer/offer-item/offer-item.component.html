@@ -45,7 +45,7 @@
                       fxLayoutAlign="center start"
                       (click)="offerDetail($event)">
         <h1 class="mat-card-name">
-          <span class="text-uppercase">{{ brand?.name }}</span> <span>{{ model?.name }}</span>
+          <span class="text-uppercase">{{ brand?.name }}</span> <span class="ml-1">{{ model?.name }}</span>
         </h1>
         <span class="offer-location">{{offer?.location?.locality?.address}}</span>
       </mat-card-title>
@@ -73,7 +73,7 @@
                         fxLayoutGap="50px"
                         fxLayoutGap.xs="5px"
                         (click)="offerDetail($event)">
-        <span class="offer-published">{{ offer?.published_at | date:'medium' }}</span>
+        <span class="offer-published">{{ offer?.published_at }}</span>
       </mat-card-actions>
     </div>
   </div>

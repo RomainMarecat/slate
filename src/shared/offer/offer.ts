@@ -5,7 +5,7 @@ export class Offer {
   price: number;
   external_url?: string;
   published: boolean;
-  published_at: Date;
+  published_at: Date | string;
 }
 
 export interface CarOffer {
@@ -29,5 +29,5 @@ export interface CarOffer {
     phone: string;
   };
   published: boolean;
-  published_at: Date;
+  published_at: Date | string;
 }

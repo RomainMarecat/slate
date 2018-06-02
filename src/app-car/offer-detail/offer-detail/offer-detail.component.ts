@@ -13,6 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Comment } from '../../../shared/comment/comment';
 import { UserService } from '../../../shared/user/user.service';
 import { CommentService } from '../../../shared/comment/comment.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-car-offer-detail',
@@ -75,7 +76,9 @@ export class OfferDetailComponent implements OnInit {
         this.offerService.getOffer(value.key)
           .subscribe((offer: CarOffer) => {
             this.meta.addTag({name: 'description', content: offer.description});
+            offer.published_at = moment(offer.published_at, 'x').format('DD/MM/YYYY HH:mm');
             this.offer = offer;
+
             if (offer.brand) {
               this.getBrand(offer.brand);
             }
@@ -114,7 +117,9 @@ export class OfferDetailComponent implements OnInit {
         this.translate.get([ 'meta.title.offer-detail', 'meta.description.offer-detail' ])
           .subscribe((translations: string[]) => {
             this.meta.addTag({name: 'description', content: translations[ 'meta.description.offer-detail' ]});
-            this.title.setTitle(this.brand.name + ' ' + this.model.name + ' ' + translations[ 'meta.title.offer-detail' ]);
+            this.title.setTitle((this.brand && this.brand.name ? this.brand.name + ' ' : '') +
+              (this.model && this.model.name ? this.model.name + ' ' : '') +
+              translations[ 'meta.title.offer-detail' ]);
           });
       });
   }
