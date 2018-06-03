@@ -1,5 +1,5 @@
 #!/bin/bash
-for site in hockey
+for site in showcase
 do
 	./node_modules/@angular/cli/bin/ng build --aot --project=$site --prod
 	firebase use $site

@@ -34,7 +34,6 @@ export class ImageComponent {
       this.mediaService.getMedias()
         .take(1)
         .subscribe((medias: Media[]) => {
-          console.log(medias);
           this.media = medias[0];
         }, (err) => {
           console.error(err);

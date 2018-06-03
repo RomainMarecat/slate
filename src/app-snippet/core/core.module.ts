@@ -43,6 +43,17 @@ import { OfferService } from '../../shared/offer/offer.service';
 import { CommentService } from '../../shared/comment/comment.service';
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { environment } from '../environments/environment';
+import { ArticleService } from '../../shared/article/shared/article.service';
+import { OrderService } from '../../shared/order/shared/order.service';
+import { SessionService } from '../../shared/session/shared/session.service';
+import { MapService } from '../../shared/map/shared/map.service';
+import { CartService } from '../../shared/cart/shared/cart.service';
+import { CmsService } from '../../shared/cms/shared/cms.service';
+import { EventService } from '../../shared/agenda/shared/event.service';
+import { AreaService } from '../../shared/map/shared/area.service';
+import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
+import { CategoryService } from '../../shared/category/category.service';
+import { ContactService } from '../../shared/contact/shared/contact.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -57,10 +68,16 @@ export function createTranslateLoader(http: HttpClient, name: string) {
   return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
 }
 
-export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
+export const CONFIG_TOKEN = new InjectionToken<any>('Registered config');
+export const TABLE_EVENT = new InjectionToken<string>('event');
+export const TABLE_ARTICLE = new InjectionToken<string>('article');
+export const TABLE_AREA = new InjectionToken<string>('area');
+export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
+export const TABLE_CONTACT = new InjectionToken<string>('contact');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
 export const TABLE_SELECTION = new InjectionToken<string>('selection');
+export const TABLE_SESSION = new InjectionToken<string>('session');
 export const TABLE_SCORE = new InjectionToken<string>('score');
 export const TABLE_COMMENT = new InjectionToken<string>('comment');
 export const TABLE_CMS = new InjectionToken<string>('cms');
@@ -68,8 +85,11 @@ export const TABLE_CMS_DETAIL = new InjectionToken<string>('cms-detail');
 export const TABLE_MEDIA = new InjectionToken<string>('media');
 export const TABLE_POST = new InjectionToken<string>('post');
 export const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
+export const TABLE_MAP = new InjectionToken<string>('map');
 export const TABLE_OFFER = new InjectionToken<string>('offer');
+export const TABLE_ORDER = new InjectionToken<string>('order');
 export const TABLE_PARTNER = new InjectionToken<string>('partner');
+export const TABLE_PAYMENT = new InjectionToken<string>('payment');
 
 @Injectable()
 export class ConfigService {
@@ -115,7 +135,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     /*    AngularFirestoreModule,
      */
     AngularFirestoreModule.enablePersistence(),
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
       developerMode: true,
       pageTracking: {
         clearIds: true,
@@ -134,7 +154,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [ HttpClient, app_name ]
+        deps: [HttpClient, app_name]
       }
     }),
     DashboardModule
@@ -145,26 +165,47 @@ export const cookieConfig: NgcCookieConsentConfig = {
     SharedModule
   ],
   providers: [
-    {provide: ConfigService, useClass: ConfigService, deps: [ CONFIG_TOKEN ]},
+    {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},
+    {provide: TABLE_ARTICLE, useValue: 'article'},
+    {provide: TABLE_AREA, useValue: 'area'},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
+    {provide: TABLE_CART, useValue: 'cart'},
+    {provide: TABLE_CONTACT, useValue: 'contact'},
     {provide: TABLE_CATEGORY, useValue: 'category'},
     {provide: TABLE_COMMENT, useValue: 'comment'},
     {provide: TABLE_CMS, useValue: 'cms'},
     {provide: TABLE_CMS_DETAIL, useValue: 'cms-detail'},
+    {provide: TABLE_EVENT, useValue: 'event'},
+    {provide: TABLE_MAP, useValue: 'map'},
     {provide: TABLE_MEDIA, useValue: 'media'},
     {provide: TABLE_OFFER, useValue: 'offer'},
+    {provide: TABLE_ORDER, useValue: 'order'},
     {provide: TABLE_POST, useValue: 'post'},
     {provide: TABLE_PARTNER, useValue: 'partner'},
+    {provide: TABLE_PAYMENT, useValue: 'payment'},
     {provide: TABLE_PRODUCT, useValue: 'product'},
     {provide: TABLE_SELECTION, useValue: 'selection'},
+    {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_SCORE, useValue: 'scores'},
-    {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
-    {provide: CommentService, useClass: CommentService, deps: [ AngularFirestore, TABLE_COMMENT ]},
-    {provide: MediaService, useClass: MediaService, deps: [ AngularFirestore, TABLE_MEDIA ]},
-    {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},
-    {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
-    {provide: ProductService, useClass: ProductService, deps: [ AngularFirestore, TABLE_PRODUCT ]},
-    {provide: SelectionService, useClass: SelectionService, deps: [ AngularFirestore, TABLE_SELECTION ]},
+    {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
+    {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
+    {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
+    {provide: CartService, useClass: CartService, deps: [AngularFirestore, TABLE_CART]},
+    {provide: ContactService, useClass: ContactService, deps: [AngularFirestore, TABLE_CONTACT]},
+    {provide: CategoryService, useClass: CategoryService, deps: [AngularFirestore, TABLE_CATEGORY]},
+    {provide: CmsService, useClass: CmsService, deps: [AngularFirestore, TABLE_CMS]},
+    {provide: CmsDetailService, useClass: CmsDetailService, deps: [AngularFirestore, TABLE_CMS_DETAIL]},
+    {provide: CommentService, useClass: CommentService, deps: [AngularFirestore, TABLE_COMMENT]},
+    {provide: EventService, useClass: EventService, deps: [AngularFirestore, TABLE_EVENT]},
+    {provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA]},
+    {provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER]},
+    {provide: OrderService, useClass: OrderService, deps: [AngularFirestore, TABLE_ORDER]},
+    {provide: MapService, useClass: MapService, deps: [AngularFirestore, TABLE_MAP]},
+    {provide: ScoreService, useClass: ScoreService, deps: [AngularFirestore, TABLE_SCORE]},
+    {provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER]},
+    {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
+    {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
+    {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
     AlertService,
     DateService,
     DeviceService,
