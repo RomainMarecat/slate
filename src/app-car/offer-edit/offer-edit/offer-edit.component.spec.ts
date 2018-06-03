@@ -25,6 +25,8 @@ import { AngularFireModule } from 'angularfire2';
 import { DeviceService } from '../../../shared/device/device.service';
 import { MockMapsAPILoader } from '../../../shared/map/shared/mock-maps-api-loader';
 import { environment } from '../../environments/environment';
+import { MockMediaService } from '../../../shared/media/mock-media.service';
+import { MediaService } from '../../../shared/media/media.service';
 
 describe('OfferEditComponent', () => {
   let component: OfferEditComponent;
@@ -54,6 +56,7 @@ describe('OfferEditComponent', () => {
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: OfferService, useClass: MockOfferService},
         {provide: ProductService, useClass: MockProductService},
+        {provide: MediaService, useClass: MockMediaService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: GeocodeService, useClass: MockGeocodeService},
         {provide: MapsAPILoader, useClass: MockMapsAPILoader},

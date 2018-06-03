@@ -1,4 +1,239 @@
 {
+  "admin": {
+    "title": {
+      "article": {
+        "title": "les articles",
+        "selection": "sélectionné(s)"
+      },
+      "contact": {
+        "title": "tous les messages",
+        "selection": "sélectionné(s)"
+      },
+      "cms": {
+        "title": "tous les cms",
+        "add": "ajouter un cms",
+        "selection": "sélectionné(s)"
+      },
+      "cms-detail": {
+        "title": "tous les templates",
+        "selection": "sélectionné(s)"
+      },
+      "map": {
+        "title": "les cartes",
+        "selection": "sélectionné(s)"
+      },
+      "selection": {
+        "title": "les sélections",
+        "selection": "sélectionné(s)",
+        "products": "produits associés",
+        "parent": "associer une sélection parente"
+      }
+    },
+    "cta": {
+      "add": {
+        "attribute": "ajouter un attribut",
+        "contact": "ajouter un message",
+        "article": "ajouter un article",
+        "cms": "ajouter un cms"
+      },
+      "product": "produits",
+      "cms": "cms",
+      "attribute": "attributs",
+      "category": "categories",
+      "contact": "contacts",
+      "offer": "offres",
+      "partner": "partenaires",
+      "selection": "sélections",
+      "map": "cartes",
+      "material": "material",
+      "article": "articles"
+    },
+    "label": {
+      "attribute": {
+        "name": "nom",
+        "fr": "traduction française",
+        "radio": "bouton radio",
+        "checkbox": "checkbox",
+        "text": "texte",
+        "select": "menu déroulant",
+        "type": "Détermine avec quel composant choisir l'attribut",
+        "order_by": "Détermine comment sont triés les valeurs de cet attribut en front sur la page du produit"
+      },
+      "article": {
+        "name": "nom",
+        "description": "contenu de l'article",
+        "facebook": "publication facebook",
+        "unpublish": "brouillon",
+        "publish": "publier",
+        "unpublished": "dépublié",
+        "published": "publié"
+      },
+      "contact": {
+        "name": "nom",
+        "email": "email",
+        "message": "message"
+      },
+      "cms": {
+        "name": "nom",
+        "site_name": "nom valeur correspondante / clé",
+        "key": "clé"
+      },
+      "cms-detail": {
+        "title": "titre",
+        "content": "contenu",
+        "icon": "l'icône",
+        "parent": "le contenu parent"
+      },
+      "selection": {
+      }
+    },
+    "placeholder": {
+      "article": {
+        "name": "nom",
+        "description": "copier/coller ici le lien vers le post facebook"
+      },
+      "attribute": {
+        "name": "nom",
+        "fr": "traduction française",
+        "variantes": "variantes",
+        "term": "terme"
+      },
+      "cms": {
+        "name": "nom",
+        "site_name": "clé"
+      },
+      "cms-detail": {
+        "title": "titre",
+        "content": "entrer du contenu",
+        "icon": "l'icône"
+      },
+      "map": {
+        "name": "région",
+        "path": "points 2D"
+      },
+      "selection": {
+        "name": "nom de la sélection",
+        "description": "description",
+        "fr": "traduction française",
+        "keywords": "mots clés",
+        "level": "niveau",
+        "root": "racine"
+      }
+    },
+    "hint": {
+      "article": {
+        "name": "titre de l'article"
+      },
+      "attribute": {
+        "name": "nom de l'attribut",
+        "fr": "traduction française de l'attribut"
+      },
+      "cms": {
+        "name": "nom du cms",
+        "site_name": "clé du cms"
+      },
+      "cms-detail": {
+        "title": "titre",
+        "content": "contenu",
+        "icon": "icône"
+      },
+      "map": {
+        "name": "région de la carte",
+        "path": "points de la région"
+      },
+      "selection": {
+        "name": "nom de la sélection",
+        "description": "description",
+        "fr": "traduction française",
+        "keywords": "mots clés",
+        "level": "niveau",
+        "root": "racine"
+      }
+    },
+    "error": {
+      "required": {
+        "article": {
+          "name": "le titre est obligatoire"
+        },
+        "attribute": {
+          "name": "le nom est obligatoire",
+          "fr": "la traduction française est obligatoire"
+        },
+        "cms": {
+          "name": "le nom est obligatoire",
+          "site_name": "la clé est obligatoire"
+        },
+        "cms-detail": {
+          "title": "le titre est obligatoire",
+          "content": "le contenu est obligatoire",
+          "icon": "l'icône est obligatoire"
+        },
+        "map": {
+          "name": "la région est obligatoire",
+          "path": "les points sont obligatoires"
+        },
+        "selection": {
+          "name": "le nom est obligatoire",
+          "fr": "la traduction est obligatoire",
+          "description": "la description est obligatoire",
+          "keywords": "les mots clés sont obligatoires",
+          "level": "le niveau est obligatoire"
+        }
+      },
+      "invalid": {
+        "article": {
+          "name": "le titre est invalide"
+        },
+        "attribute": {
+          "name": "le nom est invalide",
+          "fr": "la traduction française est invalide"
+        },
+        "cms": {
+          "name": "le nom est invalide",
+          "site_name": "la clé est invalide"
+        },
+        "cms-detail": {
+          "title": "le titre est invalide",
+          "content": "le contenu est invalide",
+          "icon": "l'icône est invalide"
+        },
+        "map": {
+          "name": "la région est invalide",
+          "path": "les points sont invalides"
+        },
+        "selection": {
+          "name": "le nom est invalide",
+          "fr": "la traduction est invalide",
+          "description": "la description est invalide",
+          "keywords": "les mots clés sont invalides",
+          "level": "le niveau est invalide"
+        }
+      }
+    }
+  },
+  "cta": {
+    "add": "ajouter",
+    "add-to-cart": "ajouter au panier",
+    "learn-more": "en savoir plus",
+    "back_to_home": "retour à la l'accueil",
+    "buy": "acheter",
+    "booking": "réserver",
+    "choose": "choisir",
+    "delete": "supprimer",
+    "next-available-slot": "prochaines disponibilités",
+    "home": "accueil",
+    "back": "retour",
+    "cancel": "annuler",
+    "pay": "payer",
+    "publish": "publier",
+    "published": "publié",
+    "remove": "supprimer",
+    "save": "enregistrer",
+    "send": "envoyer",
+    "take_meeting": "prendre rendez-vous",
+    "unpublish": "dépublier",
+    "unpublished": "dépublié"
+  },
   "meta": {
     "title": {
       "product-list": "Liste des produits - Slate Hockey",

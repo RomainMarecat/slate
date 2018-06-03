@@ -2,7 +2,6 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from '../../../shared/category/category.service';
 import { Category } from '../../../shared/category/category';
-import 'rxjs/add/operator/take';
 import { Observable } from 'rxjs/Observable';
 import { RangePipe } from 'ngx-pipes';
 import { TranslateService } from '@ngx-translate/core';
@@ -21,6 +20,7 @@ import { UploadTaskSnapshot } from '@firebase/storage-types';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { DeviceService } from '../../../shared/device/device.service';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'app-car-offer-edit',
@@ -326,7 +326,12 @@ export class OfferEditComponent implements OnInit {
    * @param {UploadTaskSnapshot} task
    */
   onImageRefChanged(task: UploadTaskSnapshot) {
-    this.downloadURL = task.downloadURL;
+    task.ref.getDownloadURL().then((downloadURL => {
+        this.downloadURL = downloadURL;
+      }),
+      (err) => {
+        this.alertService.show(err);
+      });
   }
 
   reset() {

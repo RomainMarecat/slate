@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <mat-card class="item-card mt2" *ngIf="product" angulartics2On="click" angularticsAction="hoveredOverProductDetail" [angularticsCategory]="'product.detail'">
+      <mat-card class="item-card mt2" *ngIf="product" angulartics2On="click"
+                angularticsAction="hoveredOverProductDetail" [angularticsCategory]="'product.detail'">
         <mat-card-header class="mat-card-header d-flex justify-content-center">
-          <img class="mat-card-avatar d-flex align-items-start" mat-card-avatar [src]="product.thumbnail" *ngIf="product.thumbnail" [alt]="product?.thumbnail">
+          <img class="mat-card-avatar d-flex align-items-start" mat-card-avatar [src]="product.thumbnail"
+               *ngIf="product.thumbnail" [alt]="product?.thumbnail">
           <span mat-card-avatar class="mat-card-avatar text-left" *ngIf="!product || !product.thumbnail">
             <mat-icon>account_circle</mat-icon>
           </span>

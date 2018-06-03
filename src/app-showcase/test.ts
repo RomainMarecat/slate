@@ -15,6 +15,10 @@ getTestBed().initTestEnvironment(
   platformBrowserDynamicTesting()
 );
 // Then we find all the tests.
-const context = require.context('./../shared', true, /\.spec\.ts$/);
+let context = require.context('./../shared', true, /\.spec\.ts$/);
+// And load the modules.
+context.keys().map(context);
+
+context = require.context('./../app-showcase', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);

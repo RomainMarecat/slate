@@ -35,7 +35,6 @@ export class FooterComponent implements OnInit {
           this.cmsDetailService.filters$.next([ {column: 'cms', operator: '==', value: this.cms.key} ]);
           this.cmsDetailService.getCmsDetails()
             .subscribe((cmsDetails: CmsDetail[]) => {
-              console.log(cmsDetails);
               const links = cmsDetails.filter((cmsD) => cmsD.parent === null);
               const sublinks = cmsDetails.filter((cmsD) => cmsD.parent !== null);
               this.links = links.map((link: CmsDetail) => {

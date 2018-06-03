@@ -40,13 +40,12 @@ export class MediaService extends VisitorService {
    * @param {string} publicId
    * @returns {Observable<Media[]>}
    */
-  filterByPublicId(publicId: string | null): Observable<Media[]> {
+  filterByPublicId(publicId: string | null) {
     this.filters$.next([ {
       value: publicId,
       column: 'public_id',
       operator: '=='
     } ]);
-    return this.getMedias();
   }
 
   /**

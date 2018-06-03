@@ -7,7 +7,6 @@ import { UserService } from '../../shared/user/user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { Favicon } from '../../shared/favicon/favicon.service';
-import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
