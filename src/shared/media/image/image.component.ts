@@ -15,7 +15,8 @@ export class ImageComponent {
   @Input() resize: any;
   media: Media;
 
-  constructor(private mediaService: MediaService) {}
+  constructor(private mediaService: MediaService) {
+  }
 
   get publicId(): string {
     return this._publicId;
@@ -29,9 +30,11 @@ export class ImageComponent {
   set publicId(publicId: string) {
     this._publicId = publicId;
     if (publicId && publicId.includes('http') === false) {
-      this.mediaService.filterByPublicId(publicId)
+      this.mediaService.filterByPublicId(publicId);
+      this.mediaService.getMedias()
         .take(1)
         .subscribe((medias: Media[]) => {
+          console.log(medias);
           this.media = medias[0];
         }, (err) => {
           console.error(err);
