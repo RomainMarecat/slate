@@ -174,22 +174,22 @@
               "src/app-car/manifest.json"
             ],
             "styles": [
-              "./node_modules/material-design-icons/iconfont/material-icons.css",
-              "./node_modules/font-awesome/css/font-awesome.css",
-              "./node_modules/@swimlane/ngx-datatable/release/index.css",
-              "./node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "./node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.css",
-              "./node_modules/cookieconsent/build/cookieconsent.min.css",
-              "./node_modules/dragula/dist/dragula.css",
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
               "src/app-car/styles.scss"
             ],
             "scripts": [
-              "./node_modules/moment/min/moment.min.js",
-              "./node_modules/moment/locale/fr.js",
-              "./node_modules/twix/dist/twix.min.js",
-              "./node_modules/crypto-js/crypto-js.js",
-              "./node_modules/cookieconsent/build/cookieconsent.min.js"
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
             ]
           },
           "configurations": {
@@ -297,49 +297,891 @@
           }
         }
       }
+    },
+    "blog": {
+      "root": "src",
+      "sourceRoot": "src/app-blog",
+      "prefix": "app-blog",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/app-blog/index.html",
+            "main": "src/app-blog/main.ts",
+            "polyfills": "src/app-blog/polyfills.ts",
+            "tsConfig": "src/app-blog/tsconfig.app.json",
+            "assets": [
+              "src/app-blog/assets",
+              "src/app-blog/robots.txt",
+              "src/app-blog/sitemap.xml",
+              "src/app-blog/favicon.ico",
+              "src/app-blog/manifest.json"
+            ],
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-blog/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app-blog/environments/environment.ts",
+                  "with": "src/app-blog/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": true,
+              "ngswConfigPath": "src/app-blog/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "blog:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "blog:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "blog:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/app-blog/test.ts",
+            "polyfills": "src/app-blog/polyfills.ts",
+            "tsConfig": "src/app-blog/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-blog/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ],
+            "assets": [
+              "src/app-blog/favicon.ico",
+              "src/app-blog/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/app-blog/tsconfig.app.json",
+              "src/app-blog/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "blog-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "blog:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "booking": {
+      "root": "src",
+      "sourceRoot": "src/app-booking",
+      "prefix": "app-booking",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/app-booking/index.html",
+            "main": "src/app-booking/main.ts",
+            "polyfills": "src/app-booking/polyfills.ts",
+            "tsConfig": "src/app-booking/tsconfig.app.json",
+            "assets": [
+              "src/app-booking/assets",
+              "src/app-booking/robots.txt",
+              "src/app-booking/sitemap.xml",
+              "src/app-booking/favicon.ico",
+              "src/app-booking/manifest.json"
+            ],
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-booking/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app-booking/environments/environment.ts",
+                  "with": "src/app-booking/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": true,
+              "ngswConfigPath": "src/app-booking/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "booking:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "booking:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "booking:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/app-booking/test.ts",
+            "polyfills": "src/app-booking/polyfills.ts",
+            "tsConfig": "src/app-booking/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-booking/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ],
+            "assets": [
+              "src/app-booking/favicon.ico",
+              "src/app-booking/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/app-booking/tsconfig.app.json",
+              "src/app-booking/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "booking-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "booking:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "hockey": {
+      "root": "src",
+      "sourceRoot": "src/app-hockey",
+      "prefix": "app-hockey",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/app-hockey/index.html",
+            "main": "src/app-hockey/main.ts",
+            "polyfills": "src/app-hockey/polyfills.ts",
+            "tsConfig": "src/app-hockey/tsconfig.app.json",
+            "assets": [
+              "src/app-hockey/assets",
+              "src/app-hockey/robots.txt",
+              "src/app-hockey/sitemap.xml",
+              "src/app-hockey/favicon.ico",
+              "src/app-hockey/manifest.json"
+            ],
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-hockey/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app-hockey/environments/environment.ts",
+                  "with": "src/app-hockey/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": true,
+              "ngswConfigPath": "src/app-hockey/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "hockey:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "hockey:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "hockey:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/app-hockey/test.ts",
+            "polyfills": "src/app-hockey/polyfills.ts",
+            "tsConfig": "src/app-hockey/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-hockey/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ],
+            "assets": [
+              "src/app-hockey/favicon.ico",
+              "src/app-hockey/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/app-hockey/tsconfig.app.json",
+              "src/app-hockey/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "hockey-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "hockey:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "monpullmoche": {
+      "root": "src",
+      "sourceRoot": "src/app-monpullmoche",
+      "prefix": "app-monpullmoche",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/app-monpullmoche/index.html",
+            "main": "src/app-monpullmoche/main.ts",
+            "polyfills": "src/app-monpullmoche/polyfills.ts",
+            "tsConfig": "src/app-monpullmoche/tsconfig.app.json",
+            "assets": [
+              "src/app-monpullmoche/assets",
+              "src/app-monpullmoche/robots.txt",
+              "src/app-monpullmoche/sitemap.xml",
+              "src/app-monpullmoche/favicon.ico",
+              "src/app-monpullmoche/manifest.json"
+            ],
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-monpullmoche/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app-monpullmoche/environments/environment.ts",
+                  "with": "src/app-monpullmoche/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": true,
+              "ngswConfigPath": "src/app-monpullmoche/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "monpullmoche:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "monpullmoche:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "monpullmoche:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/app-monpullmoche/test.ts",
+            "polyfills": "src/app-monpullmoche/polyfills.ts",
+            "tsConfig": "src/app-monpullmoche/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-monpullmoche/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ],
+            "assets": [
+              "src/app-monpullmoche/favicon.ico",
+              "src/app-monpullmoche/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/app-monpullmoche/tsconfig.app.json",
+              "src/app-monpullmoche/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "monpullmoche-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "monpullmoche:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "recipe": {
+      "root": "src",
+      "sourceRoot": "src/app-recipe",
+      "prefix": "app-recipe",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/app-recipe/index.html",
+            "main": "src/app-recipe/main.ts",
+            "polyfills": "src/app-recipe/polyfills.ts",
+            "tsConfig": "src/app-recipe/tsconfig.app.json",
+            "assets": [
+              "src/app-recipe/assets",
+              "src/app-recipe/robots.txt",
+              "src/app-recipe/sitemap.xml",
+              "src/app-recipe/favicon.ico",
+              "src/app-recipe/manifest.json"
+            ],
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-recipe/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app-recipe/environments/environment.ts",
+                  "with": "src/app-recipe/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": true,
+              "ngswConfigPath": "src/app-recipe/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "recipe:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "recipe:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "recipe:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/app-recipe/test.ts",
+            "polyfills": "src/app-recipe/polyfills.ts",
+            "tsConfig": "src/app-recipe/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-recipe/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ],
+            "assets": [
+              "src/app-recipe/favicon.ico",
+              "src/app-recipe/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/app-recipe/tsconfig.app.json",
+              "src/app-recipe/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "recipe-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "recipe:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "snippet": {
+      "root": "src",
+      "sourceRoot": "src/app-snippet",
+      "prefix": "app-snippet",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/app-snippet/index.html",
+            "main": "src/app-snippet/main.ts",
+            "polyfills": "src/app-snippet/polyfills.ts",
+            "tsConfig": "src/app-snippet/tsconfig.app.json",
+            "assets": [
+              "src/app-snippet/assets",
+              "src/app-snippet/robots.txt",
+              "src/app-snippet/sitemap.xml",
+              "src/app-snippet/favicon.ico",
+              "src/app-snippet/manifest.json"
+            ],
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-snippet/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app-snippet/environments/environment.ts",
+                  "with": "src/app-snippet/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "serviceWorker": true,
+              "ngswConfigPath": "src/app-snippet/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "snippet:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "snippet:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "snippet:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/app-snippet/test.ts",
+            "polyfills": "src/app-snippet/polyfills.ts",
+            "tsConfig": "src/app-snippet/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [
+              "node_modules/material-design-icons/iconfont/material-icons.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/@swimlane/ngx-datatable/release/index.css",
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/dragula/dist/dragula.css",
+              "src/app-snippet/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/moment/locale/fr.js",
+              "node_modules/twix/dist/twix.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/cookieconsent/build/cookieconsent.min.js"
+            ],
+            "assets": [
+              "src/app-snippet/favicon.ico",
+              "src/app-snippet/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/app-snippet/tsconfig.app.json",
+              "src/app-snippet/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "snippet-e2e": {
+      "root": "e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "snippet:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   }
   //  "apps": [
-  //    {
-  //      "name": "car",
-  //      "root": "src/app-car",
-  //      "outDir": "dist",
-  //      "assets": [
-  //        "assets",
-  //        "robots.txt",
-  //        "sitemap.xml",
-  //        "favicon.ico",
-  //        "manifest.json"
-  //      ],
-  //      "index": "index.html",
-  //      "main": "main.ts",
-  //      "polyfills": "polyfills.ts",
-  //      "test": "test.ts",
-  //      "tsconfig": "tsconfig.app.json",
-  //      "testTsconfig": "tsconfig.spec.json",
-  //      "prefix": "app-car",
-  //      "serviceWorker": true,
-  //      "styles": [
-  //        "../../node_modules/material-design-icons/iconfont/material-icons.css",
-  //        "../../node_modules/font-awesome/css/font-awesome.css",
-  //        "../../node_modules/@swimlane/ngx-datatable/release/index.css",
-  //        "../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-  //        "../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-  //        "../../node_modules/bootstrap/dist/css/bootstrap.css",
-  //        "../../node_modules/cookieconsent/build/cookieconsent.min.css",
-  //        "../../node_modules/dragula/dist/dragula.css",
-  //        "styles.scss"
-  //      ],
-  //      "scripts": [
-  //        "../../node_modules/crypto-js/crypto-js.js",
-  //        "../../node_modules/cookieconsent/build/cookieconsent.min.js"
-  //      ],
-  //      "environmentSource": "environments/environment.ts",
-  //      "environments": {
-  //        "dev": "environments/environment.ts",
-  //        "prod": "environments/environment.prod.ts"
-  //      }
-  //    },
   //    {
   //      "name": "recipe",
   //      "root": "src/app-recipe",

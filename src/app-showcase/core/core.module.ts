@@ -53,7 +53,7 @@ import { CartService } from '../../shared/cart/shared/cart.service';
 import { SessionService } from '../../shared/session/shared/session.service';
 import { PaymentService } from '../../shared/payment/shared/payment.service';
 import { RoutingState } from '../../shared/util/routing-state';
-import { OrderService } from 'shared/order/shared/order.service';
+import { OrderService } from '../../shared/order/shared/order.service';
 import { SelectionService } from '../../shared/selection/selection.service';
 
 export const production = new InjectionToken<string>('production');

@@ -26,26 +26,33 @@ export class SelectionListComponent implements OnInit {
   pageLimit: number;
   currentSelectedSelection: Selection;
   innerHeight: string = (document.documentElement.clientHeight - 65).toString() + 'px';
-  active = { 'hockey-player': '', 'hockey-goalie': '' };
+  active = {'hockey-player': '', 'hockey-goalie': ''};
 
   /**
    *
-   * @param SelectionService private selectionService
-   * @param LoaderService    private loaderService
-   * @param Router           private router
+   * @param translateService
+   * @param menuService
+   * @param selectionService
+   * @param loaderService
+   * @param router
+   * @param meta
+   * @param title
    */
   constructor(private translateService: TranslateService,
-    private menuService: MenuService,
-    private selectionService: SelectionService,
-    private loaderService: LoaderService,
-    private router: Router,
-    private meta: Meta,
-    private title: Title) {
+              private menuService: MenuService,
+              private selectionService: SelectionService,
+              private loaderService: LoaderService,
+              private router: Router,
+              private meta: Meta,
+              private title: Title) {
     const $resizeEvent = Observable.fromEvent(window, 'resize')
-      .map(() =>
-        (document.documentElement.clientHeight - 65).toString() + 'px'
-      )
-      .debounceTime(500);
+      .pipe(
+        map(() =>
+          (document.documentElement.clientHeight - 65).toString() + 'px'
+        ),
+        debounceTime(500)
+      );
+
 
     $resizeEvent.subscribe(height => this.innerHeight = height);
   }
@@ -56,7 +63,7 @@ export class SelectionListComponent implements OnInit {
   ngOnInit() {
     this.translateService.get(['meta.title.selection', 'meta.description.selection'])
       .subscribe((translations: string[]) => {
-        this.meta.addTag({ name: 'description', content: translations['meta.description.selection'] });
+        this.meta.addTag({name: 'description', content: translations['meta.description.selection']});
         this.title.setTitle(translations['meta.title.selection']);
       });
     this.menuService.nextTitle('');
@@ -68,15 +75,25 @@ export class SelectionListComponent implements OnInit {
    * Load all selections
    */
   loadSelections() {
-    this.selectionService.publishedFilter$.next(true);
-    this.selectionService.parentFilter$.next(null);
+    this.selectionService.filters$.next([
+      {
+        column: 'published',
+        operator: '==',
+        value: true
+      }, {
+        column: 'parent',
+        operator: '==',
+        value: null
+      },
+    ]);
     // We need to subscribe all time because,
     // we can back to the view
     this.selectionService.getSelections()
       .subscribe((rows: Selection[]) => {
         this.selections = rows;
         if (rows.length > 0) {
-          if (this.selectionService.parentFilter$.getValue() === null) {
+          // parent value
+          if (this.selectionService.filters$.getValue()[1].value === null) {
             this.rootSelections = this.getNestedChildren(rows);
           }
         }
@@ -107,8 +124,8 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * find Root in tree
-   * @param  Selection object
    * @return Selection
+   * @param object
    */
   findRoot(object: Selection): Selection {
     let root = this.findParent(object);
@@ -134,9 +151,9 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * findOneBy predicate in tree
-   * @param Selection object
-   * @param string column
-   * @param string    value
+   * @param object
+   * @param column
+   * @param value
    */
   findOneBy(object: Selection, column: string = 'id', value: string) {
     if (object[column] === value) {
@@ -156,9 +173,9 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * get tree children
-   * @param  Selection[] selections
-   * @param  string  parent
    * @return Selection[]
+   * @param selections
+   * @param parent
    */
   getNestedChildren(
     selections: Selection[],
@@ -179,7 +196,7 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * On active player or goalie selection
-   * @param Selection selection
+   * @param selection
    */
   onActive(selection: Selection) {
     // Player

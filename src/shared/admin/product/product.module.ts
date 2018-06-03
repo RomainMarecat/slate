@@ -18,12 +18,14 @@ import { OfferService } from '../shared/offer/offer.service';
 import { ProductOffersComponent } from './product-offers/product-offers.component';
 import { PartnerService } from '../../partner/partner.service';
 import { ProductService } from '../../product/product.service';
+import { MediaService } from '../../media/media.service';
 
 const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
 const TABLE_OFFER = new InjectionToken<string>('offer');
 const TABLE_CATEGORY = new InjectionToken<string>('category');
 const TABLE_PARTNER = new InjectionToken<string>('partner');
 const TABLE_PRODUCT = new InjectionToken<string>('product');
+const TABLE_MEDIA = new InjectionToken<string>('media');
 
 @NgModule({
   imports: [
@@ -49,11 +51,13 @@ const TABLE_PRODUCT = new InjectionToken<string>('product');
     {provide: TABLE_CATEGORY, useValue: 'category'},
     {provide: TABLE_PARTNER, useValue: 'partner'},
     {provide: TABLE_PRODUCT, useValue: 'product'},
-    {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
-    {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
-    {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},
-    {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY ]},
-    {provide: ProductService, useClass: ProductService, deps: [ AngularFirestore, TABLE_PRODUCT ]},
+    {provide: TABLE_MEDIA, useValue: 'media'},
+    {provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA]},
+    {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
+    {provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER]},
+    {provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER]},
+    {provide: CategoryService, useClass: CategoryService, deps: [AngularFirestore, TABLE_CATEGORY]},
+    {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
 
   ]
 })
