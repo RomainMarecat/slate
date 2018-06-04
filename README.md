@@ -1,27 +1,67 @@
 # Slate [![Build Status](https://travis-ci.com/RomainStudent/slate.svg?token=ft2MNN7yrCxWmByy17ND&branch=master)](https://travis-ci.com/RomainStudent/slate)
 
-Slate was generated with [Angular CLI](https://github.com/angular/angular-cli).
+ALR Slate
 
-## Prerequisites:
+## Features
+
+- A calendar / meeting project
+- Blog site
+- Recipe site
+- Car site
+- Hockey sit
+- Clothes site
+
+### Coming soon
+- Booking site
+- Dashboard manager
+- Layout builder with theme color
+
+
+### Best integration with tools :
+- Angular cli
+- Webpack
+- Progressive web app
+- Sass
+- Firebase
+
+### Easy to plug to enterprise
+- Simple configuration from firebase 
+- All connection to firebase
+- Travis CI Integration
+- Fast deployment with firebase 
+- Jasmine Tests
+
+### Material
+- Most projects components were designed with Material component 
+- Bootstrap was used too to had nice media queries and classes shortcut
+
+### Comments
+- Project was included a lot of comments for each tricky functions
+- Designed form developpers
+
+### 3rd third library 
+- All library was included typings to compile native code
+
+## Prerequistes:
+`node -v` :  v8.9.1
+`npm -v` : 6.1.0
+
+### Right on npm global installation folder
 `sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}`
-
+  
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`..
+By default, app-showcase is launch without any option
+
+With --project=app_name you could launch the demo 
 
 ### Commits
     Skip build travis `[ci skip]`
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-A module with routing : 
-`ng g module --routing`
-
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 
@@ -33,16 +73,7 @@ Run `ng lint -fix`
 
 ## Deploy 
 
-`ng build -aot --env=prod -prod --app=hockey`
-
-`npm run precache`
-
-## Features
-
-https://github.com/RomainStudent/slate/
-- A calendar / meeting project
-- CCV project Blog
-- Recipe
+`ng build --aot --prod --app=showcase`
 
 ## Firebase 
 Adding a new environment
