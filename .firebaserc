@@ -2,6 +2,7 @@
   "projects": {
     "default": "menincar-384269",
     "blog": "blog-384269",
+    "alr": "alr-384269",
     "showcase": "showcase-384269",
     "hockey": "hockey-f2b77",
     "car": "menincar-384269",
