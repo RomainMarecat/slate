@@ -8,13 +8,39 @@ ALR Slate
 - Blog site
 - Recipe site
 - Car site
-- Hockey site
+- Hockey sit
 - Clothes site
 
-## Coming soon
+### Coming soon
 - Booking site
 - Dashboard manager
 - Layout builder with theme color
+
+
+### Best integration with tools :
+- Angular cli
+- Webpack
+- Progressive web app
+- Sass
+- Firebase
+
+### Easy to plug to enterprise
+- Simple configuration from firebase 
+- All connection to firebase
+- Travis CI Integration
+- Fast deployment with firebase 
+- Jasmine Tests
+
+### Material
+- Most projects components were designed with Material component 
+- Bootstrap was used too to had nice media queries and classes shortcut
+
+### Comments
+- Project was included a lot of comments for each tricky functions
+- Designed form developpers
+
+### 3rd third library 
+- All library was included typings to compile native code
 
 ## Prerequistes:
 `node -v` :  v8.9.1
@@ -22,7 +48,7 @@ ALR Slate
 
 ### Right on npm global installation folder
 `sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}`
-
+  
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`..
