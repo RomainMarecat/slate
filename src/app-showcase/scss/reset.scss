@@ -1,0 +1,16 @@
+a {
+  color: $color3;
+  text-decoration: none
+}
+
+a:hover, a:focus {
+  color: $color3;
+  text-decoration: none;
+}
+
+a:focus,
+.btn:focus {
+  outline: none;
+}
+
+

@@ -51,7 +51,7 @@ body {
 }
 
 mat-icon {
-  font-family: 'Material Icons' !important;
+  font-family: 'Material Icons';
 }
 
 .main-menu {
@@ -67,17 +67,9 @@ footer {
   }
 }
 
-a {
-  color: $color3;
-  text-decoration: none
-}
-
-a:hover, a:focus {
-  color: $color3;
-  text-decoration: underline
-}
-
-a:focus,
-.btn:focus {
-  outline: none;
+.admin-home-toolbar {
+  a {
+    color: mat-color($white);
+  }
+  background-color: mat-color($product-primary);
 }
