@@ -30,27 +30,23 @@
       }
     },
     "cta": {
-      "add": "ajouter",
-      "add-to-cart": "ajouter au panier",
-      "learn-more": "en savoir plus",
-      "back_to_home": "retour à la l'accueil",
-      "buy": "acheter",
-      "booking": "réserver",
-      "choose": "choisir",
-      "delete": "supprimer",
-      "next-available-slot": "prochaines disponibilités",
-      "home": "accueil",
-      "back": "retour",
-      "cancel": "annuler",
-      "pay": "payer",
-      "publish": "publier",
-      "published": "publié",
-      "remove": "supprimer",
-      "save": "enregistrer",
-      "send": "envoyer",
-      "take_meeting": "prendre rendez-vous",
-      "unpublish": "dépublier",
-      "unpublished": "dépublié"
+      "add": {
+        "attribute": "ajouter un attribut",
+        "contact": "ajouter un message",
+        "article": "ajouter un article",
+        "cms": "ajouter un cms"
+      },
+      "product": "produits",
+      "cms": "cms",
+      "attribute": "attributs",
+      "category": "categories",
+      "contact": "contacts",
+      "offer": "offres",
+      "partner": "partenaires",
+      "selection": "sélections",
+      "map": "cartes",
+      "material": "material",
+      "article": "articles"
     },
     "label": {
       "attribute": {
@@ -227,8 +223,8 @@
     "connection": {
       "title": "Se connecter"
     },
-    "title1": "Snippet",
-    "title2": ""
+    "title1": "ALR",
+    "title2": " Dashboard"
   },
   "date": {
     "now": "maintenant",

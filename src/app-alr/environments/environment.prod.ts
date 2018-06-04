@@ -6,12 +6,12 @@ export const environment = {
     domain: 'snippet-384269.firebaseapp.com'
   },
   firebase: {
-    apiKey: 'AIzaSyAN6P0GKiJcYdGKZ-svTKlXjNFGVuTvtFY',
-    authDomain: 'snippet-384269.firebaseapp.com',
-    databaseURL: 'https://snippet-384269.firebaseio.com',
-    projectId: 'snippet-384269',
-    storageBucket: 'snippet-384269.appspot.com',
-    messagingSenderId: '25862177025'
+    apiKey: 'AIzaSyDLm8rji2qEHlb65ae471RnAwkyGDuEDiY',
+    authDomain: 'alr-384269.firebaseapp.com',
+    databaseURL: 'https://alr-384269.firebaseio.com',
+    projectId: 'alr-384269',
+    storageBucket: 'alr-384269.appspot.com',
+    messagingSenderId: '943418695856'
   },
   clientAdSense: 'ca-pub-4195199088767183',
   slotAdSense: 123456,

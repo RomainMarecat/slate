@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow:
+
+Sitemap: https://alr-384269.firebaseapp.com/sitemap.xml
