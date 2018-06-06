@@ -1,0 +1,127 @@
+.board-wrapper {
+    margin: 0;
+    background-color: #0079BF;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  input[text], button {
+    color: #333;
+  }
+  a {
+    cursor: pointer;
+    cursor: hand;
+  }
+
+  /* everywhere else */
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+  .btn {
+    line-height: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 3px;
+    display: block;
+    padding: 8px;
+  }
+
+
+  li.card-placeholder {
+    list-style: none;
+    width: calc(100% - 5px);
+    height: 30px;
+    background-color: #ddd;
+    border: dashed 4px #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+  .ui-sortable-helper {
+    /*transition-property: all;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in;*/
+    transform: rotate(5deg);
+    opacity: 0.9;
+  }
+
+  .column-placeholder {
+    width: 280px;
+    height: 280px;
+    background-color: #0067A3;
+    border-radius: 3px;
+    width: 270px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+
+  #main > div {
+    float: left;
+  }
+
+  #main {
+    min-width: 100%;
+    /*height: calc(100% - 90px);*/
+    overflow: hidden;
+  }
+}
+
+
+.board-title {
+  margin-left: 18px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.board-title span {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.board-title input {
+  margin: -3px -2px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.add-column {
+  width: 280px;
+  height: 40px;
+  background-color: #0067A3;
+  border-radius: 3px;
+  width: 270px;
+  margin-left: 10px;
+  padding: 2px;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.add-column span {
+  color: rgba(255,255,255,.7);
+  line-height: 40px;
+  vertical-align: middle;
+  padding: 7px;
+  font-size: 14px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.add-column input {
+  width: 100%;
+  height: 100%;
+  font-weight: 700;
+  border: none;
+  line-height: 18px;
+  padding: 3px 5px 4px 5px;
+}

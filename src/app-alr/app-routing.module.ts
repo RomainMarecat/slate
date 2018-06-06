@@ -14,6 +14,10 @@ const routes: Routes = [{
     }]
   },
   {
+    path: 'table',
+    loadChildren: './board/board.module#BoardModule'
+  },
+  {
     path: 'admin',
     loadChildren: './../shared/admin/admin.module#AdminModule'
   }

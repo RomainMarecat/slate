@@ -54,6 +54,10 @@ import { AreaService } from '../../shared/map/shared/area.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { CategoryService } from '../../shared/category/category.service';
 import { ContactService } from '../../shared/contact/shared/contact.service';
+import { BoardModule } from '../board/board.module';
+import { BoardService } from '../board/shared/board.service';
+import { ColumnService } from '../board/shared/column.service';
+import { CardService } from '../board/shared/card.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -89,6 +93,9 @@ export const TABLE_MAP = new InjectionToken<string>('map');
 export const TABLE_OFFER = new InjectionToken<string>('offer');
 export const TABLE_ORDER = new InjectionToken<string>('order');
 export const TABLE_PARTNER = new InjectionToken<string>('partner');
+export const TABLE_BOARD = new InjectionToken<string>('board');
+export const TABLE_COLUMN = new InjectionToken<string>('column');
+export const TABLE_CARD = new InjectionToken<string>('card');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
 
 @Injectable()
@@ -157,7 +164,8 @@ export const cookieConfig: NgcCookieConsentConfig = {
         deps: [HttpClient, app_name]
       }
     }),
-    DashboardModule
+    DashboardModule,
+    BoardModule,
   ],
   exports: [
     AdsenseModule,
@@ -187,6 +195,9 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_SELECTION, useValue: 'selection'},
     {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_SCORE, useValue: 'scores'},
+    {provide: TABLE_BOARD, useValue: 'board'},
+    {provide: TABLE_COLUMN, useValue: 'column'},
+    {provide: TABLE_CARD, useValue: 'card'},
     {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
     {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
     {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
@@ -206,6 +217,9 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
     {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
+    {provide: BoardService, useClass: BoardService, deps: [AngularFirestore, TABLE_BOARD]},
+    {provide: ColumnService, useClass: ColumnService, deps: [AngularFirestore, TABLE_COLUMN]},
+    {provide: CardService, useClass: CardService, deps: [AngularFirestore, TABLE_CARD]},
     AlertService,
     DateService,
     DeviceService,
