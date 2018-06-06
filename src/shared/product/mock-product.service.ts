@@ -11,6 +11,7 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
+import { of } from 'rxjs/internal/observable/of';
 
 export class MockProductService {
   productCollectionRef: AngularFirestoreCollection<Product>;
@@ -27,13 +28,13 @@ export class MockProductService {
   query: CollectionReference | Query;
 
   constructor() {
-    this.filters$ = new BehaviorSubject([ {column: 'published', operator: '==', value: true} ]);
+    this.filters$ = new BehaviorSubject([{column: 'published', operator: '==', value: true}]);
     this.userFilter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(20);
     this.orderBy$ = new BehaviorSubject('published_at');
   }
 
   getProducts(): Observable<Array<Product>> {
-    return Observable.of([ mockProduct ]);
+    return of([mockProduct]);
   }
 }

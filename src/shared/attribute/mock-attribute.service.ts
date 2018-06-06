@@ -1,12 +1,14 @@
 import { mockAttribute } from './mock-attribute';
 import { Attribute } from './attribute';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/internal/observable/of';
 
 export class MockAttributeService {
 
-  constructor() {}
+  constructor() {
+  }
 
-  getAttributes(): Observable < Array < Attribute >> {
-    return Observable.of([mockAttribute]);
+  getAttributes(): Observable<Array<Attribute>> {
+    return of([mockAttribute]);
   }
 }

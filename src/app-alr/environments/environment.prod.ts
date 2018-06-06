@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
-  site_name: 'snippet.com',
-  app_name: 'snippet',
+  site_name: 'alr.com',
+  app_name: 'alr',
   cookie: {
-    domain: 'snippet-384269.firebaseapp.com'
+    domain: 'alr-384269.firebaseapp.com'
   },
   firebase: {
     apiKey: 'AIzaSyDLm8rji2qEHlb65ae471RnAwkyGDuEDiY',

@@ -8,6 +8,7 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
+import { of } from 'rxjs/internal/observable/of';
 
 export class MockSelectionService {
   selectionCollectionRef: AngularFirestoreCollection<Selection>;
@@ -37,6 +38,6 @@ export class MockSelectionService {
   }
 
   getSelections(): Observable<Array<Selection>> {
-    return Observable.of([ mockSelection ]);
+    return of([mockSelection]);
   }
 }

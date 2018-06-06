@@ -14,6 +14,7 @@ import {
 import { Cloudinary } from '../cloudinary.service';
 import { CloudinaryTransformationDirective } from '../cloudinary-transformation.directive';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/internal/observable/of';
 
 @Component({
   selector: 'app-cloudinary-image',
@@ -26,13 +27,13 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
   @Input('publicId') publicId: string;
 
   @ContentChildren(CloudinaryTransformationDirective)
-  transformations: QueryList < CloudinaryTransformationDirective > ;
+  transformations: QueryList<CloudinaryTransformationDirective>;
 
   observer: MutationObserver;
   // Default loading image offset in ms
   offset: number;
   defaultImageSplashScreen: string;
-  imageSource$: Observable < string > ;
+  imageSource$: Observable<string>;
 
   constructor(private el: ElementRef, @Optional() private cloudinary: Cloudinary) {
     this.offset = 3000;
@@ -46,7 +47,7 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
 
     });
     // Observe changes to attributes or child transformations to re-render the image
-    const config = { attributes: true, childList: true };
+    const config = {attributes: true, childList: true};
 
     // pass in the target node, as well as the observer options
     this.observer.observe(this.el.nativeElement, config);
@@ -91,7 +92,7 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
 
   setElementAttributes(element: HTMLElement, attributesLiteral: string[], lazyLoad: boolean) {
     if (lazyLoad) {
-      this.imageSource$ = Observable.of(attributesLiteral['src']);
+      this.imageSource$ = of(attributesLiteral['src']);
       Object.keys(attributesLiteral).forEach(attrName => {
         if (attrName !== 'src') {
           element.setAttribute(attrName, attributesLiteral[attrName]);

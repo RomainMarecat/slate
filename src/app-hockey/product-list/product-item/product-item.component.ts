@@ -6,6 +6,7 @@ import { UserService } from '../../../shared/user/user.service';
 import { CloudinaryUploadService } from './../../../shared/media/cloudinary/cloudinary-upload.service';
 import { StringService } from '../../../shared/util/string.service';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/internal/observable/of';
 
 @Component({
   selector: 'app-product-item',
@@ -15,12 +16,13 @@ import { Observable } from 'rxjs/Observable';
 export class ProductItemComponent implements OnInit {
   @Input('product') product: HockeyProduct;
   image: string;
-  editable: Observable < boolean > = Observable.of(false);
+  editable: Observable<boolean> = of(false);
 
   constructor(private router: Router,
-    private productService: ProductService,
-    private cloudinaryUploadService: CloudinaryUploadService,
-    private userService: UserService) {}
+              private productService: ProductService,
+              private cloudinaryUploadService: CloudinaryUploadService,
+              private userService: UserService) {
+  }
 
   ngOnInit() {
     if (this.product) {

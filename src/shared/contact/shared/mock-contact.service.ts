@@ -12,6 +12,7 @@ import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Sort } from '../../facet/sort/shared/sort';
+import { of } from 'rxjs/internal/observable/of';
 
 export class MockContactService {
 
@@ -29,13 +30,13 @@ export class MockContactService {
   query: CollectionReference | Query;
 
   constructor() {
-    this.query$ = new BehaviorSubject({filters: [ {column: 'published', operator: '==', value: true} ] as Filter[]});
-    this.filters$ = new BehaviorSubject([ {column: 'published', operator: '==', value: true} ] as Filter[]);
+    this.query$ = new BehaviorSubject({filters: [{column: 'published', operator: '==', value: true}] as Filter[]});
+    this.filters$ = new BehaviorSubject([{column: 'published', operator: '==', value: true}] as Filter[]);
     this.limit$ = new BehaviorSubject(100);
     this.orderBy$ = new BehaviorSubject({column: 'published_at', direction: 'desc'});
   }
 
   getContacts(): Observable<Array<Contact>> {
-    return Observable.of([ mockContact ]);
+    return of([mockContact]);
   }
 }

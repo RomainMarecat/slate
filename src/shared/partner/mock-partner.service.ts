@@ -1,9 +1,10 @@
 import { Partner } from './partner';
 import { mockPartner } from './mock-partner';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/internal/observable/of';
 
 export class MockPartnerService {
   getPartners(): Observable<Array<Partner>> {
-    return Observable.of([ mockPartner, mockPartner ]);
+    return of([mockPartner, mockPartner]);
   }
 }
