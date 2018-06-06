@@ -14,7 +14,11 @@ const routes: Routes = [{
     }]
   },
   {
-    path: 'table',
+    path: 'boards',
+    loadChildren: './board/board.module#BoardModule'
+  },
+  {
+    path: 'board/:key',
     loadChildren: './board/board.module#BoardModule'
   },
   {

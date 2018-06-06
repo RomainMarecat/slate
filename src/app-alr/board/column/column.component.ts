@@ -23,8 +23,8 @@ export class ColumnComponent implements OnInit {
   constructor(private el: ElementRef,
               private columnService: ColumnService,
               private cardService: CardService) {
-    this.onAddCard = new EventEmitter();
-    this.cardUpdate = new EventEmitter();
+    this.onAddCard = new EventEmitter<Card>();
+    this.cardUpdate = new EventEmitter<Card>();
   }
 
   ngOnInit() {

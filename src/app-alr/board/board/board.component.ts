@@ -8,6 +8,8 @@ import { ColumnService } from '../shared/column.service';
 import { BoardService } from '../shared/board.service';
 import { Column } from '../shared/column';
 import { Card } from '../shared/card';
+import { CardService } from '../shared/card.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-board',
@@ -27,44 +29,60 @@ export class BoardComponent implements OnInit {
   curXPos = 0;
   curDown = false;
 
-  families: Array<{ name: string, categories: Category[] }> = [];
+  // families: Array<{ name: string, categories: Category[] }> = [];
 
   constructor(private dragulaService: DragulaService,
               public el: ElementRef,
               private boardService: BoardService,
               private columnService: ColumnService,
+              private cardService: CardService,
               private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private title: Title) {
   }
 
   ngOnInit() {
 
     this.getBoard();
-    this.families = mockGroupFamily;
+    // this.families = mockGroupFamily;
     this.subscribeDragAndDrop();
   }
 
   getBoard() {
-    this.board = {
-      key: 'sdq3fd5gsdb3ds',
-      title: 'board test 1',
-      columns: [],
-      cards: []
-    };
+    this.route.params.subscribe((value => {
+      if (value.key) {
+        this.boardService.getBoard(value.key)
+          .subscribe(board => {
+            console.log(`joining board ${value.key}`);
+            this.board = board;
+            this.columnService.filters$.next([
+              {
+                column: 'boardId',
+                operator: '==',
+                value: board.key
+              }
+            ]);
+            this.columnService.getColumns().subscribe((columns) => {
+              this.board.columns = columns;
+            });
+            this.cardService.filters$.next([
+              {
+                column: 'boardId',
+                operator: '==',
+                value: board.key
+              }
+            ]);
+            this.cardService.getCards().subscribe((cards) => {
+              this.board.cards = cards;
+            });
 
-    const boardId = this.route.snapshot.params[ 'id' ];
 
-    // this.boardService.getBoard(boardId)
-    //   .subscribe(data => {
-    //     console.log(`joining board ${boardId}`);
-    //     this._ws.join(boardId);
-    //
-    //     this.board = data[0];
-    //     this.board.columns = data[1];
-    //     this.board.cards = data[2];
-    //     document.title = this.board.title + " | Generic Task Manager";
-    //     this.setupView();
-    //   });
+            this.title.setTitle(this.board.title + ' | Generic Task Manager');
+          });
+      }
+    }));
+
+
   }
 
   /**
@@ -88,7 +106,7 @@ export class BoardComponent implements OnInit {
   }
 
   bindPane() {
-    const el = document.getElementById('content-wrapper');
+    const el = document.getElementById('board-wrapper');
     el.addEventListener('mousemove', (e) => {
       e.preventDefault();
       if (this.curDown === true) {
@@ -98,7 +116,7 @@ export class BoardComponent implements OnInit {
     });
 
     el.addEventListener('mousedown', (e) => {
-      if (e.srcElement.id === 'main' || e.srcElement.id === 'content-wrapper') {
+      if (e.srcElement.id === 'main' || e.srcElement.id === 'board-wrapper') {
         this.curDown = true;
       }
       this.curYPos = e.pageY;
@@ -120,7 +138,7 @@ export class BoardComponent implements OnInit {
     }
 
     if (this.columnsAdded > 0) {
-      const wrapper = document.getElementById('content-wrapper');
+      const wrapper = document.getElementById('board-wrapper');
       wrapper.scrollLeft = wrapper.scrollWidth;
     }
 

@@ -7,6 +7,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { CardComponent } from './card/card.component';
 import { ColumnComponent } from './column/column.component';
 import { BoardComponent } from './board/board.component';
+import { BoardListComponent } from './board-list/board-list.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { BoardComponent } from './board/board.component';
   declarations: [
     CardComponent,
     ColumnComponent,
-    BoardComponent
+    BoardComponent,
+    BoardListComponent
   ]
 })
 export class BoardModule {
