@@ -3,35 +3,53 @@ import { Card } from '../shared/card';
 import { Column } from '../shared/column';
 import { ColumnService } from '../shared/column.service';
 import { CardService } from '../shared/card.service';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-board-column',
   templateUrl: './column.component.html',
-  styleUrls: [ './column.component.scss' ]
+  styleUrls: ['./column.component.scss']
 })
 export class ColumnComponent implements OnInit {
   @Input() column: Column;
   @Input() cards: Card[];
-  @Output() onAddCard: EventEmitter<Card>;
-  @Output() cardUpdate: EventEmitter<Card>;
+  @Output() cardAdded: EventEmitter<Card> = new EventEmitter<Card>();
+  @Output() cardUpdate: EventEmitter<Card> = new EventEmitter<Card>();
 
   editingColumn = false;
   addingCard = false;
   addCardText: string;
   currentTitle: string;
+  options: any;
 
   constructor(private el: ElementRef,
               private columnService: ColumnService,
-              private cardService: CardService) {
-    this.onAddCard = new EventEmitter<Card>();
-    this.cardUpdate = new EventEmitter<Card>();
+              private cardService: CardService,
+              private dragulaService: DragulaService) {
   }
 
   ngOnInit() {
-    this.setupView();
+    this.subscribeDragAndDrop();
   }
 
-  setupView() {
+  /**
+   * Drag an drop system for attributes
+   */
+  subscribeDragAndDrop() {
+    this.dragulaService.dropModel.subscribe((value) => {
+      this.onDropModel(value.slice(1));
+    });
+    this.dragulaService.removeModel.subscribe((value) => {
+      this.onRemoveModel(value.slice(1));
+    });
+  }
+
+  private onDropModel(args: any): void {
+    const [el, target, source] = args;
+  }
+
+  private onRemoveModel(args: any): void {
+    const [el, source] = args;
   }
 
   updateCardsOrder(event) {
@@ -61,7 +79,7 @@ export class ColumnComponent implements OnInit {
     //   newOrder = 1000;
     // }
 
-    const card = this.cards.filter(x => x.key === event.cardId)[ 0 ];
+    const card = this.cards.filter(x => x.key === event.cardId)[0];
     const oldColumnId = card.columnId;
     // card.order = newOrder;
     card.columnId = event.columnId;
@@ -87,15 +105,23 @@ export class ColumnComponent implements OnInit {
 
   addCard() {
     this.cards = this.cards || [];
-    const newCard = <Card>{
+    const card = <Card>{
       title: this.addCardText,
       order: (this.cards.length + 1) * 1000,
       columnId: this.column.key,
       boardId: this.column.boardId
     };
-    this.cardService.createCard(newCard)
-      .then(card => {
-        this.onAddCard.emit(card);
+    this.cardService.createCard(card)
+      .then((doc) => {
+        card.key = doc.id;
+        this.cardService.updateCard(card)
+          .then(() => {
+            this.cardAdded.emit(card);
+          }, (err) => {
+            console.error(err);
+          });
+      }, (err) => {
+        console.error(err);
       });
   }
 
@@ -133,8 +159,8 @@ export class ColumnComponent implements OnInit {
     this.currentTitle = this.column.title;
     this.editingColumn = true;
     const input = this.el.nativeElement
-      .getElementsByClassName('column-header')[ 0 ]
-      .getElementsByTagName('input')[ 0 ];
+      .getElementsByClassName('column-header')[0]
+      .getElementsByTagName('input')[0];
 
     setTimeout(function () {
       input.focus();
@@ -144,8 +170,8 @@ export class ColumnComponent implements OnInit {
   enableAddCard() {
     this.addingCard = true;
     const input = this.el.nativeElement
-      .getElementsByClassName('add-card')[ 0 ]
-      .getElementsByTagName('input')[ 0 ];
+      .getElementsByClassName('add-card')[0]
+      .getElementsByTagName('input')[0];
 
     setTimeout(function () {
       input.focus();

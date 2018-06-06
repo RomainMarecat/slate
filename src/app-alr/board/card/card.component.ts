@@ -1,15 +1,16 @@
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, NgZone, OnInit, Output } from '@angular/core';
 import { Card } from '../shared/card';
 import { CardService } from '../shared/card.service';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-board-card',
   templateUrl: './card.component.html',
-  styleUrls: [ './card.component.scss' ]
+  styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
   @Input() card: Card;
-  @Output() cardUpdate: EventEmitter<Card>;
+  @Output() cardUpdate: EventEmitter<Card> = new EventEmitter<Card>();
   editingCard = false;
   currentTitle: string;
   zone: NgZone;
@@ -18,7 +19,6 @@ export class CardComponent implements OnInit {
               private ref: ChangeDetectorRef,
               private cardService: CardService) {
     this.zone = new NgZone({enableLongStackTrace: false});
-    this.cardUpdate = new EventEmitter();
   }
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class CardComponent implements OnInit {
     this.editingCard = true;
     this.currentTitle = this.card.title;
 
-    const textArea = this.el.nativeElement.getElementsByTagName('textarea')[ 0 ];
+    const textArea = this.el.nativeElement.getElementsByTagName('textarea')[0];
 
     setTimeout(function () {
       textArea.focus();

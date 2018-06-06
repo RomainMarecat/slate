@@ -11,16 +11,21 @@
       (keyup)="addColumnOnEnter($event)"
       [(ngModel)]="column.title"/>
   </div>
-  <ul class="card-list" [attr.column-id]="column.key">
-    <li *ngFor="let card of cards">
+  <ul class="card-list"
+      [attr.column-id]="column.key"
+      [dragula]="'column-bag'"
+      [dragulaModel]="cards"
+      [dragulaOptions]="options">
+    <li class="card-item"
+        *ngFor="let card of cards | filterBy: ['columnId']: column.key | orderBy : 'order'">
       <app-board-card [card]="card"></app-board-card>
     </li>
   </ul>
   <div class="add-card"
        (click)="enableAddCard()">
-            <span [style.display]="addingCard ? 'none' : ''">
-                Add a card...
-            </span>
+    <span [style.display]="addingCard ? 'none' : ''">
+      Add a card...
+    </span>
 
     <input
       [style.display]="addingCard ? '' : 'none' "

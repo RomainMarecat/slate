@@ -25,7 +25,10 @@ export class BoardListComponent implements OnInit {
     }, 100);
   }
 
-  public addBoard() {
+  /**
+   * Add new board
+   */
+  addBoard(): void {
     const board: Board = {
       title: 'New Board',
       columns: [],

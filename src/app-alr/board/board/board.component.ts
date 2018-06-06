@@ -14,7 +14,7 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: [ './board.component.scss' ]
+  styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
 
@@ -28,6 +28,7 @@ export class BoardComponent implements OnInit {
   curYPos = 0;
   curXPos = 0;
   curDown = false;
+  options: any;
 
   // families: Array<{ name: string, categories: Category[] }> = [];
 
@@ -39,6 +40,15 @@ export class BoardComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private title: Title) {
+    this.options = {
+      direction: 'horizontal',
+      accepts: function (elem, target, source, sibling) {
+        console.log(elem, target);
+        return elem.classList.contains('sortable-column') && target.classList.contains('columns-wrapper') ||
+          elem.classList.contains('card-item') && target.classList.contains('card-list');
+        // elements can be dropped in any of the `containers` by default
+      },
+    };
   }
 
   ngOnInit() {
@@ -81,12 +91,10 @@ export class BoardComponent implements OnInit {
           });
       }
     }));
-
-
   }
 
   /**
-   * Dra an drop system for attributes
+   * Drag an drop system for attributes
    */
   subscribeDragAndDrop() {
     this.dragulaService.dropModel.subscribe((value) => {
@@ -98,11 +106,11 @@ export class BoardComponent implements OnInit {
   }
 
   private onDropModel(args: any): void {
-    const [ el, target, source ] = args;
+    const [el, target, source] = args;
   }
 
   private onRemoveModel(args: any): void {
-    const [ el, source ] = args;
+    const [el, source] = args;
   }
 
   bindPane() {
@@ -110,8 +118,8 @@ export class BoardComponent implements OnInit {
     el.addEventListener('mousemove', (e) => {
       e.preventDefault();
       if (this.curDown === true) {
-        el.scrollLeft += (this.curXPos - e.pageX) * .25;// x > 0 ? x : 0;
-        el.scrollTop += (this.curYPos - e.pageY) * .25;// y > 0 ? y : 0;
+        el.scrollLeft += (this.curXPos - e.pageX) * .25;
+        el.scrollTop += (this.curYPos - e.pageY) * .25;
       }
     });
 
@@ -163,8 +171,8 @@ export class BoardComponent implements OnInit {
     this.editingTilte = true;
 
     const input = this.el.nativeElement
-      .getElementsByClassName('board-title')[ 0 ]
-      .getElementsByTagName('input')[ 0 ];
+      .getElementsByClassName('board-title')[0]
+      .getElementsByTagName('input')[0];
 
     setTimeout(function () {
       input.focus();
@@ -237,17 +245,23 @@ export class BoardComponent implements OnInit {
   }
 
   addColumn() {
-    let newColumn = <Column>{
+    const column = <Column>{
       title: this.addColumnText,
       order: (this.board.columns.length + 1) * 1000,
       boardId: this.board.key
     };
-    this.columnService.createColumn(newColumn)
-      .then(column => {
-        this.board.columns.push(column);
-        console.log('column added');
-        this.updateBoardWidth();
-        this.addColumnText = '';
+    this.columnService.createColumn(column)
+      .then((doc) => {
+        column.key = doc.id;
+        this.columnService.updateColumn(column)
+          .then(() => {
+            this.board.columns.push(column);
+            console.log('column added');
+            this.updateBoardWidth();
+            this.addColumnText = '';
+          }, (err) => {
+            console.error(err);
+          });
       });
   }
 
@@ -258,8 +272,7 @@ export class BoardComponent implements OnInit {
       } else {
         this.clearAddColumn();
       }
-    }
-    else if (event.keyCode === 27) {
+    } else if (event.keyCode === 27) {
       this.clearAddColumn();
     }
   }
