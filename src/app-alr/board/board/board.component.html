@@ -1,0 +1,61 @@
+<div *ngIf="board" class="board-title">
+  <span [style.display]="editingTilte ? 'none' : ''" (click)="editTitle()">{{ board?.title }}</span>
+
+  <input
+    [style.display]="editingTilte ? '' : 'none' "
+    (keyup)="blurOnEnter($event)"
+    (blur)="updateBoard()"
+    [(ngModel)]="board.title" />
+</div>
+
+<section *ngIf="board" id="main" >
+  <div *ngFor="let column of board.columns | orderBy : 'order'" class="sortable-column">
+    <app-board-column [column]="column"
+                (onAddCard)="addCard($event)"
+                [cards]="board.cards">
+    </app-board-column>
+  </div>
+  <div class="add-column"
+       (click)="enableAddColumn()" >
+    <span [style.display]="addingColumn ? 'none' : ''" >Add a list...</span>
+
+    <input
+      [style.display]="addingColumn ? '' : 'none' "
+      (keyup)="addColumnOnEnter($event)"
+      (blur)="addColumnOnBlur()"
+      [(ngModel)]="addColumnText" />
+  </div>
+</section>
+
+
+<!--<mat-card class="mat-card drag-wrapper">-->
+  <!--<mat-card-content>-->
+    <!--<table>-->
+      <!--<thead>-->
+      <!--<tr>-->
+        <!--<th *ngFor="let family of families"-->
+            <!--class="text-center">-->
+          <!--{{ family.name }}-->
+        <!--</th>-->
+      <!--</tr>-->
+      <!--</thead>-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td *ngFor="let family of families">-->
+          <!--<div class="wrapper">-->
+            <!--<mat-card class="container bag card"-->
+                      <!--[dragula]="'drag-bag'"-->
+                      <!--[dragulaModel]="family.categories">-->
+              <!--<div *ngIf="family.categories.length === 0">-->
+                <!--No content-->
+              <!--</div>-->
+              <!--<div *ngFor="let category of family.categories"-->
+                   <!--[innerHtml]="category.name"></div>-->
+            <!--</mat-card>-->
+          <!--</div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</mat-card-content>-->
+<!--</mat-card>-->

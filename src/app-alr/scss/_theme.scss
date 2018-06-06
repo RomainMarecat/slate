@@ -49,7 +49,10 @@ body {
   }
 
   .main-menu {
-    background-color: #131629 !important;
+    background-color: $color1 !important;
+    a {
+      color: mat-color($white) !important;
+    }
   }
 }
 
