@@ -1,4 +1,8 @@
-<div class="board-wrapper">
+<div class="board-wrapper"
+     fxLayout="column"
+     fxLayoutAlign="start stretch"
+     fxLayout.xs="column"
+     fxLayoutAlign.xs="center center">
 
   <div *ngIf="board" class="board-title">
     <span [style.display]="editingTilte ? 'none' : ''"
@@ -12,12 +16,25 @@
            [(ngModel)]="board.title"/>
   </div>
 
-  <section *ngIf="board"
-           id="main">
+  <section class="board-columns-wrapper"
+           id="main"
+           fxLayout="row"
+           fxLayoutAlign="start stretch"
+           fxLayoutGap="10px"
+           fxLayout.xs="column"
+           fxLayoutAlign.xs="start stretch"
+           fxLayoutGap.xs="20px"
+           *ngIf="board">
     <div class="columns-wrapper"
          [dragula]="'column-bag'"
          [dragulaModel]="board.columns"
-         [dragulaOptions]="options">
+         [dragulaOptions]="options"
+         fxLayout="row"
+         fxLayoutAlign="start stretch"
+         fxLayoutGap="10px"
+         fxLayout.xs="column"
+         fxLayoutAlign.xs="start stretch"
+         fxLayoutGap.xs="10px">
 
       <div *ngFor="let column of board.columns | orderBy : 'order'"
            class="sortable-column">
@@ -28,16 +45,22 @@
       </div>
     </div>
     <div class="add-column"
+         [class.addingColumn]="addingColumn"
          (click)="enableAddColumn()">
       <span [style.display]="addingColumn ? 'none' : ''">
         Add a list...
       </span>
 
-      <input
-        [style.display]="addingColumn ? '' : 'none' "
-        (keyup)="addColumnOnEnter($event)"
-        (blur)="addColumnOnBlur()"
-        [(ngModel)]="addColumnText"/>
+      <mat-form-field class="mat-form-field"
+                      apparence="outline"
+                      [style.display]="addingColumn ? '' : 'none'">
+        <input
+          matInput
+          [placeholder]="'Add a list...'"
+          (keyup)="addColumnOnEnter($event)"
+          (blur)="addColumnOnBlur()"
+          [(ngModel)]="addColumnText"/>
+      </mat-form-field>
     </div>
   </section>
 </div>

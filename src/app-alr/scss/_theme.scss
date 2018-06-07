@@ -39,12 +39,11 @@ $theme: mat-light-theme($product-primary,
 @include angular-material-theme($theme);
 
 body {
-  font-family: 'Gentium Book Basic',
-  serif;
+  font-family: 'Nunito', sans-serif;
   background-color: $color2;
 
   .title {
-    font-family: 'Fugaz One', cursive;
+    font-family: 'Roboto Condensed', sans-serif;
     text-transform: uppercase;
   }
 
@@ -56,7 +55,7 @@ body {
   }
 }
 
-mat-icon{
+mat-icon {
   font-family: 'Material Icons' !important;
 }
 
