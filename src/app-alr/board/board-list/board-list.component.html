@@ -1,4 +1,9 @@
-<div id="boards-wrapper" class="boards-wrapper" [class]="{'boards-wrapper' : boards?.length > 0}">
+<div id="boards-wrapper"
+     class="board-list-wrapper"
+     [class.boards-wrapper]="boards?.length > 0"
+     fxLayout="column"
+     fxLayoutAlign="start start"
+     fxLayoutGap="20px">
   <h2>Boards</h2>
   <div id="boards">
     <a class="board" *ngFor="let board of boards" [routerLink]="['/board', board.key]">

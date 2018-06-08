@@ -1,9 +1,8 @@
 
-.boards-wrapper {
-  padding: 2em;
-  background-color: white;
+.board-list-wrapper {
+  padding: 5em;
   min-height: calc(100% - 4em);
-  display: inline-block;
+  height: 100vh;
 }
 
 h2 {
@@ -25,12 +24,12 @@ h2 {
   padding: 9pt 8px;
   border-radius: 3px;
   text-decoration: none;
-}
 
-.board .title {
-  font-weight: 700;
-  line-height: 20px;
-  font-size: 12pt;
+  .title {
+    font-weight: 700;
+    line-height: 20px;
+    font-size: 12pt;
+  }
 }
 
 .add-board {

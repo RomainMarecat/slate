@@ -1,7 +1,7 @@
 .board-wrapper {
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  position: absolute;
+  display: block;
   background-color: #0079BF;
 
   input[text], button {
@@ -51,8 +51,11 @@
   }
 
   .board-columns-wrapper {
+    height: 100%;
     min-width: 100%;
     overflow: hidden;
+    overflow-x: scroll;
+
   }
 }
 
