@@ -2,7 +2,7 @@
      fxLayout="column"
      fxLayoutAlign="start stretch"
      fxLayout.xs="column"
-     fxLayoutAlign.xs="center center">
+     fxLayoutAlign.xs="start center">
 
   <div *ngIf="board" class="board-title">
     <span [style.display]="editingTilte ? 'none' : ''"
@@ -21,9 +21,6 @@
            fxLayout="row"
            fxLayoutAlign="start stretch"
            fxLayoutGap="10px"
-           fxLayout.xs="column"
-           fxLayoutAlign.xs="start stretch"
-           fxLayoutGap.xs="20px"
            *ngIf="board">
     <div class="columns-wrapper"
          [dragula]="'column-bag'"
@@ -31,10 +28,7 @@
          [dragulaOptions]="options"
          fxLayout="row"
          fxLayoutAlign="start stretch"
-         fxLayoutGap="10px"
-         fxLayout.xs="column"
-         fxLayoutAlign.xs="start stretch"
-         fxLayoutGap.xs="10px">
+         fxLayoutGap="10px">
 
       <div *ngFor="let column of board.columns | orderBy : 'order'"
            class="sortable-column">
