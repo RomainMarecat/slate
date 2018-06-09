@@ -1,8 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Session } from './session';
-import { of } from 'rxjs/observable/of';
 import { mockSession, mockSessions } from './mock-session';
-import { Filter } from 'shared/facet/filter/shared/filter';
 import { CollectionReference, Query } from '@firebase/firestore-types';
 import { AngularFirestoreCollection } from 'angularfire2/firestore';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -11,6 +9,8 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
+import { Filter } from '../../facet/filter/shared/filter';
+import { of } from 'rxjs/internal/observable/of';
 
 export class MockSessionService {
 
@@ -26,7 +26,7 @@ export class MockSessionService {
   query: CollectionReference | Query;
 
   constructor() {
-    this.filters$ = new BehaviorSubject([ {column: 'published', operator: '==', value: true} ]);
+    this.filters$ = new BehaviorSubject([{column: 'published', operator: '==', value: true}]);
     this.limit$ = new BehaviorSubject(20);
     this.orderBy$ = new BehaviorSubject('published_at');
   }

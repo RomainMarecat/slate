@@ -3,5 +3,6 @@ export const adminsID = [
   'oIAtyPwagRfIKxSwX6O3ncGocyD3',
   '3OD9Xpcu2YaShXpQb3xLl3pwkQj2',
   'IWVmjeT0MUWTWqdPQF5laRCmVPo2', // Blog ID,
-  'dGfjXhTByjNqtSXXISxvc7IY7SD3' // showcase
+  'dGfjXhTByjNqtSXXISxvc7IY7SD3', // showcase,
+  'yjIt03P8vSVQL59MnmrH5BLDZ0k1' // ALR Dashboard
 ];

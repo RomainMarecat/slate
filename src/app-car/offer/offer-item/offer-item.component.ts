@@ -5,11 +5,12 @@ import { Category } from '../../../shared/category/category';
 import { CategoryService } from '../../../shared/category/category.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import * as moment from 'moment';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-car-offer-item',
   templateUrl: './offer-item.component.html',
-  styleUrls: [ './offer-item.component.scss' ]
+  styleUrls: ['./offer-item.component.scss']
 })
 export class OfferItemComponent implements OnInit {
   private _offer: CarOffer;
@@ -48,14 +49,18 @@ export class OfferItemComponent implements OnInit {
 
   getBrand(key: string) {
     this.categoryService.getCategory(key)
-      .take(1)
+      .pipe(
+        take(1)
+      )
       .subscribe(category => this.brand = category,
         err => this.alertService.toast(err));
   }
 
   getModel(key: string) {
     this.categoryService.getCategory(key)
-      .take(1)
+      .pipe(
+        take(1)
+      )
       .subscribe(category => this.model = category,
         err => this.alertService.toast(err));
   }

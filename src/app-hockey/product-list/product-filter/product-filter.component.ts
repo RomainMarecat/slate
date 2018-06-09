@@ -8,9 +8,11 @@ import { SidenavService } from '../../../shared/sidenav/sidenav.service';
 })
 export class ProductFilterComponent implements OnInit {
 
-  constructor(private sidenavService: SidenavService) {}
+  constructor(private sidenavService: SidenavService) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   toggleSidenavFilter(event: string) {
     this.sidenavService.open('right', event);

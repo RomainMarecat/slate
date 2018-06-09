@@ -1,4 +1,0 @@
-User-Agent: *
-Disallow:
-
-Sitemap: https://snippet-384269.firebaseapp.com/sitemap.xml

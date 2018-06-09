@@ -14,13 +14,13 @@ import { OfferService } from '../../../shared/offer/offer.service';
 import { Category } from '../../../shared/category/category';
 import { CarOffer } from '../../../shared/offer/offer';
 import { CategoryService } from '../../../shared/category/category.service';
-import 'rxjs/add/operator/finally';
-import 'rxjs/add/operator/take';
+import { take } from 'rxjs/operators';
+import 'rxjs-compat/add/operator/finally';
 
 @Component({
   selector: 'app-car-offer-list',
   templateUrl: './offer-list.component.html',
-  styleUrls: [ './offer-list.component.scss' ]
+  styleUrls: ['./offer-list.component.scss']
 })
 export class OfferListComponent implements OnInit {
   // Products collection of Product interface
@@ -56,10 +56,10 @@ export class OfferListComponent implements OnInit {
   ngOnInit() {
     this.menuService.nextTitle('');
     this.loaderService.show();
-    this.translateService.get([ 'meta.title.offer-list', 'meta.description.offer-list' ])
+    this.translateService.get(['meta.title.offer-list', 'meta.description.offer-list'])
       .subscribe((translations: string[]) => {
-        this.meta.addTag({name: 'description', content: translations[ 'meta.description.offer-list' ]});
-        this.title.setTitle(translations[ 'meta.title.offer-list' ]);
+        this.meta.addTag({name: 'description', content: translations['meta.description.offer-list']});
+        this.title.setTitle(translations['meta.title.offer-list']);
       });
 
     this.loadOffers();
@@ -73,7 +73,9 @@ export class OfferListComponent implements OnInit {
       if (value.area) {
         const key = value.area.substring(0, value.area.indexOf('-'));
         this.areaService.getArea(key)
-          .take(1)
+          .pipe(
+            take(1)
+          )
           .subscribe((area: Area) => {
             this.area = area;
             if (area) {
@@ -84,7 +86,9 @@ export class OfferListComponent implements OnInit {
       if (value.category) {
         const key = value.category.substring(0, value.category.indexOf('-'));
         this.categoryService.getCategory(key)
-          .take(1)
+          .pipe(
+            take(1)
+          )
           .subscribe((category: Category) => {
             this.category = category;
             if (category) {
@@ -117,11 +121,11 @@ export class OfferListComponent implements OnInit {
 
   getOffersByRegion(area: Area) {
     if (area.place_id) {
-      this.offerService.filters$.next([ {
+      this.offerService.filters$.next([{
         column: 'location.region.place_id',
         operator: '==',
         value: area.place_id
-      } ]);
+      }]);
       // Problem with filters on subscribe
       // this.offerService.orderBy$.next({
       //   column: 'published_at',
@@ -129,7 +133,9 @@ export class OfferListComponent implements OnInit {
       // });
       this.offerService.limit$.next(10);
       this.offerService.getOffers()
-        .take(1)
+        .pipe(
+          take(1)
+        )
         .finally(() => {
           this.isLoading = false;
           this.loaderService.hide();

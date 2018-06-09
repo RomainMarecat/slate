@@ -1,9 +1,10 @@
-import { Observable } from 'rxjs/Rx';
 import { Order } from './order';
 import { mockOrder } from './mock-order';
+import { of } from 'rxjs/internal/observable/of';
+import { Observable } from 'rxjs/Observable';
 
 export class MockOrderService {
   getOrders(): Observable < Array < Order >> {
-    return Observable.of([mockOrder, mockOrder]);
+    return of([mockOrder, mockOrder]);
   }
 }

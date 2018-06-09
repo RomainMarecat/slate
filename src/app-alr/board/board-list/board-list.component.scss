@@ -1,0 +1,38 @@
+
+.board-list-wrapper {
+  padding: 5em;
+  min-height: calc(100% - 4em);
+  height: 100vh;
+}
+
+h2 {
+  color: #333;
+  font-weight: 700;
+  line-height: 20px;
+  font-size: 12pt;
+}
+
+.board {
+  background-color: #0079BF;
+  height: 72px;
+  width: 280px;
+  color: white;
+  float: left;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  text-align: left;
+  padding: 9pt 8px;
+  border-radius: 3px;
+  text-decoration: none;
+
+  .title {
+    font-weight: 700;
+    line-height: 20px;
+    font-size: 12pt;
+  }
+}
+
+.add-board {
+  background-color: #e2e4e6;
+  color: #8c8c8c;
+}

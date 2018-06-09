@@ -21,6 +21,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { DeviceService } from '../../../shared/device/device.service';
 import 'rxjs/add/operator/take';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-car-offer-edit',
@@ -54,6 +55,9 @@ export class OfferEditComponent implements OnInit {
   imageStorageConfig: any;
   downloadURL: string;
 
+  /**
+   * @returns {FormGroup}
+   */
   static getForm(): FormGroup {
     return new FormGroup({
       brand: new FormControl('', [ Validators.required ]),
@@ -87,6 +91,23 @@ export class OfferEditComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   * @param {Meta} meta
+   * @param {Title} title
+   * @param {ActivatedRoute} activatedRoute
+   * @param {ProductService} productService
+   * @param {OfferService} offerService
+   * @param {DeviceService} deviceService
+   * @param {CategoryService} categoryService
+   * @param {Location} location
+   * @param {AlertService} alertService
+   * @param {RangePipe} rangePipe
+   * @param {TranslateService} translate
+   * @param {GeocodeService} geocodeService
+   * @param {ChangeDetectorRef} ref
+   * @param {Router} router
+   */
   constructor(private meta: Meta,
               private title: Title,
               private activatedRoute: ActivatedRoute,
@@ -131,6 +152,9 @@ export class OfferEditComponent implements OnInit {
     };
   }
 
+  /**
+   * @returns {Observable<Category[]>}
+   */
   getCategories(): Observable<Category[]> {
     return this.categoryService.getCategories();
   }
@@ -143,9 +167,14 @@ export class OfferEditComponent implements OnInit {
     } ]);
     this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
     this.getCategories()
-      .take(1)
+      .pipe(
+        take(1)
+      )
       .subscribe((brands) => {
         this.brands = brands;
+      }, (err) => {
+        this.alertService.show(err);
+        this.brands = [];
       });
   }
 
@@ -162,7 +191,9 @@ export class OfferEditComponent implements OnInit {
         operator: '=='
       } ]);
     this.getCategories()
-      .take(1)
+      .pipe(
+        take(1)
+      )
       .subscribe((models) => {
         this.models = models;
         if (models.length === 0) {
@@ -190,6 +221,9 @@ export class OfferEditComponent implements OnInit {
       });
   }
 
+  /**
+   * @param {Category} model
+   */
   getProducts(model: Category) {
     this.productService.filters$.next([
       {
@@ -200,7 +234,9 @@ export class OfferEditComponent implements OnInit {
     ]);
     this.productService
       .getProducts()
-      .take(1)
+      .pipe(
+        take(1)
+      )
       .subscribe((products: CarProduct[]) => {
         this.products = [ ...products ];
         if (products.length > 0) {
@@ -212,16 +248,28 @@ export class OfferEditComponent implements OnInit {
       });
   }
 
+  /**
+   *
+   * @param {MatSelectChange} brand
+   */
   onBrandChange(brand: MatSelectChange) {
     this.form.controls.model.enable();
     this.getModels(brand.value);
   }
 
+  /**
+   *
+   * @param {MatSelectChange} model
+   */
   onModelChange(model: MatSelectChange) {
     this.form.controls.product.enable();
     this.getProducts(model.value);
   }
 
+  /**
+   *
+   * @param {{coords: {lat: number; lng: number}}} event
+   */
   onMapClick(event: { coords: { lat: number, lng: number } }) {
     this.marker = {
       lat: event.coords.lat,
@@ -232,10 +280,18 @@ export class OfferEditComponent implements OnInit {
     this.getAddress(this.marker.lat, this.marker.lng);
   }
 
+  /**
+   *
+   * @param {Marker} marker
+   */
   markerDragEnd(marker: Marker) {
     this.getAddress(marker.lat, marker.lng);
   }
 
+  /**
+   *
+   * @param {string} address
+   */
   onAddressChange(address: string) {
     this.geocodeService.geocodeAddress(address)
       .subscribe(
@@ -254,10 +310,14 @@ export class OfferEditComponent implements OnInit {
       );
   }
 
+  /**
+   *
+   * @param event
+   */
   onSubmit(event: any) {
     this.isSaving = true;
     Object.entries(this.form.controls).forEach(([ key, value ]) => {
-      console.log(key, 'valid: ', value.valid, 'value: ', value.value, 'errors: ', value.errors);
+      // console.log(key, 'valid: ', value.valid, 'value: ', value.value, 'errors: ', value.errors);
     });
 
     if (this.form.valid) {
@@ -285,6 +345,11 @@ export class OfferEditComponent implements OnInit {
     }
   }
 
+  /**
+   *
+   * @param {number} lat
+   * @param {number} lng
+   */
   getAddress(lat: number, lng: number) {
     this.geocodeService.geocodeLatLng(lat, lng)
       .subscribe((location) => {
@@ -334,6 +399,9 @@ export class OfferEditComponent implements OnInit {
       });
   }
 
+  /**
+   * reset the form control
+   */
   reset() {
     this.form.reset({
       brand: '',
@@ -358,13 +426,5 @@ export class OfferEditComponent implements OnInit {
         phone: ''
       }
     });
-  }
-
-  set address(address) {
-    this._address = address;
-  }
-
-  get address() {
-    return this._address;
   }
 }

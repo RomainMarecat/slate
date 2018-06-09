@@ -8,11 +8,12 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { Category } from '../../../../category/category';
 import { DocumentReference } from '@firebase/firestore-types';
+import { of } from 'rxjs/internal/observable/of';
 
 @Component({
   selector: 'app-category-add',
   templateUrl: './category-add.component.html',
-  styleUrls: [ './category-add.component.scss' ]
+  styleUrls: ['./category-add.component.scss']
 })
 export class CategoryAddComponent implements OnInit {
   form: FormGroup;
@@ -22,7 +23,7 @@ export class CategoryAddComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: any;
-  categories$: Observable<Category[]> = Observable.of([]);
+  categories$: Observable<Category[]> = of([]);
   selected: Category[] = [];
   isLoading: boolean;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
@@ -38,7 +39,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.columns = [ {
+    this.columns = [{
       width: 50,
       sortable: false,
       canAutoResize: false,

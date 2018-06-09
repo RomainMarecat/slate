@@ -3,7 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
@@ -19,6 +18,7 @@ import { MockAttributeService } from '../../../attribute/mock-attribute.service'
 
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AttributeListComponent', () => {
   let component: AttributeListComponent;
@@ -29,7 +29,7 @@ describe('AttributeListComponent', () => {
         imports: [
           CommonModule,
           BrowserModule,
-          HttpClientModule,
+          HttpClientTestingModule,
           RouterTestingModule,
           BrowserAnimationsModule,
           NgxDatatableModule,

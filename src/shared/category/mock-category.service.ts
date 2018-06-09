@@ -11,6 +11,7 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
+import { of } from 'rxjs/internal/observable/of';
 
 export class MockCategoryService {
 
@@ -28,17 +29,17 @@ export class MockCategoryService {
   query: CollectionReference | Query;
 
   constructor() {
-    this.filters$ = new BehaviorSubject([ {column: 'published', operator: '==', value: true} ]);
+    this.filters$ = new BehaviorSubject([{column: 'published', operator: '==', value: true}]);
     this.userFilter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(20);
     this.orderBy$ = new BehaviorSubject('published_at');
   }
 
   getCategories(): Observable<Array<Category>> {
-    return Observable.of([ mockCategory ]);
+    return of([mockCategory]);
   }
 
   getCategory(): Observable<Category> {
-    return Observable.of(mockCategory);
+    return of(mockCategory);
   }
 }

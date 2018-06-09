@@ -18,10 +18,9 @@ import { Attribute } from '../../../attribute/attribute';
 import { DragulaService } from 'ng2-dragula';
 import { OfferService } from '../../shared/offer/offer.service';
 import { UploadTaskSnapshot } from '@firebase/storage-types';
-import { PartnerService } from 'shared/partner/partner.service';
-import 'rxjs/add/operator/take';
-import 'rxjs/add/operator/debounceTime';
 import { ProductService } from '../../../product/product.service';
+import { debounceTime, take } from 'rxjs/operators';
+import { PartnerService } from '../../../partner/partner.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -135,7 +134,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    */
   observeUpdate() {
     this.form.valueChanges
-      .debounceTime(800)
+      .pipe(
+        debounceTime(800)
+      )
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
@@ -344,7 +345,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    */
   getAttributes() {
     this.attributeService.getAttributes()
-      .take(1)
+      .pipe(
+        take(1)
+      )
       .subscribe((attributes: Attribute[]) => {
         this._attributesModel = attributes.map((attribute: Attribute) => {
           return {label: attribute.translations.fr, options: attribute.terms};

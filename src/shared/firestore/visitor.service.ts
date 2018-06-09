@@ -20,6 +20,7 @@ import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/internal/operators';
+import { of } from 'rxjs/internal/observable/of';
 
 @Injectable()
 export class VisitorService {
@@ -139,7 +140,7 @@ export class VisitorService {
     if (key) {
       return this.getDocPayload(key);
     }
-    return Observable.of(null);
+    return of(null);
   }
 
   /**

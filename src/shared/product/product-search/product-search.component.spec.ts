@@ -13,6 +13,7 @@ import { ProductService } from '../product.service';
 import { MockCategoryService } from '../../category/mock-category.service';
 import { CategoryService } from '../../category/category.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ProductSearchComponent', () => {
   let component: ProductSearchComponent;
@@ -29,6 +30,7 @@ describe('ProductSearchComponent', () => {
         MatInputModule,
         MatSelectModule,
         MatAutocompleteModule,
+        HttpClientTestingModule,
         RouterTestingModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}

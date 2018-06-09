@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Filter } from '../../../facet/filter/shared/filter';
 import 'rxjs/add/operator/take';
 import { AlertService } from '../../../popup/alert.service';
+import { of } from 'rxjs/internal/observable/of';
 
 @Component({
   selector: 'app-cms-detail-list',
@@ -85,7 +86,7 @@ export class CmsDetailListComponent implements OnInit {
         this.cmsDetailService.filters$.next([ {column: 'cms', operator: '==', value: value.key} ] as Filter[]);
         this.cmsDetails$ = this.cmsDetailService.getCmsDetails();
       } else {
-        this.cmsDetails$ = Observable.of([]);
+        this.cmsDetails$ = of([]);
       }
     });
   }
