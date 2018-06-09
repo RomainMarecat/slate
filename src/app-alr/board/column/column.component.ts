@@ -22,6 +22,13 @@ export class ColumnComponent implements OnInit {
   currentTitle: string;
   options: any;
 
+  /**
+   *
+   * @param {ElementRef} el
+   * @param {ColumnService} columnService
+   * @param {CardService} cardService
+   * @param {DragulaService} dragulaService
+   */
   constructor(private el: ElementRef,
               private columnService: ColumnService,
               private cardService: CardService,

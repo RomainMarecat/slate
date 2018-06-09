@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import 'rxjs/add/operator/take';
+import { Component, Input } from '@angular/core';
 import { Media } from '../media';
 import { MediaService } from '../media.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-image',
@@ -32,7 +32,9 @@ export class ImageComponent {
     if (publicId && publicId.includes('http') === false) {
       this.mediaService.filterByPublicId(publicId);
       this.mediaService.getMedias()
-        .take(1)
+        .pipe(
+          take(1)
+        )
         .subscribe((medias: Media[]) => {
           this.media = medias[0];
         }, (err) => {
@@ -46,7 +48,9 @@ export class ImageComponent {
     this._key = key;
     if (key && key.includes('http') === false) {
       this.mediaService.getMedia(key)
-        .take(1)
+        .pipe(
+          take(1)
+        )
         .subscribe((media: Media) => {
           this.media = media;
         }, (err) => {

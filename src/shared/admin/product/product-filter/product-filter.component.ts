@@ -18,6 +18,10 @@ export class ProductFilterComponent implements OnInit {
     this.columns = this.getColumns();
   }
 
+  /**
+   *
+   * @returns {({prop: string; name: string; selected: boolean} | {prop: string; name: string})[]}
+   */
   getColumns() {
     return [{
       prop: 'translations.fr',

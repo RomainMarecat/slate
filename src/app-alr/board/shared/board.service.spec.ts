@@ -1,11 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { BoardService } from './board.service';
+import { MockBoardService } from './mock-board.service';
 
 describe('BoardService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BoardService]
+      providers: [
+        {provide: BoardService, useClass: MockBoardService}
+      ]
     });
   });
 

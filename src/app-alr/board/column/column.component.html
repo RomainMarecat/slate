@@ -1,6 +1,7 @@
 <div class="column"
      [attr.column-id]="column.key"
-     [attr.column-order]="column.order">
+     [attr.column-order]="column.order"
+     *ngIf="column">
   <div class="column-header">
     <h4 [innerHtml]="column.title"
         [style.display]="editingColumn ?'none' : '' "

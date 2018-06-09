@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/storage';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-storage-detail',
@@ -53,14 +54,18 @@ export class StorageDetailComponent implements OnInit {
   getDownloadURL(path: string) {
     this.storageRef = this.storage.ref(path);
     this.storageRef.getDownloadURL()
-      .take(1)
+      .pipe(
+        take(1)
+      )
       .subscribe(downloadURL => this._downloadURL = downloadURL);
   }
 
   getMetadata(path: string) {
     this.storageRef = this.storage.ref(path);
     this.storageRef.getMetadata()
-      .take(1)
+      .pipe(
+        take(1)
+      )
       .subscribe(metadata => this._metadata = metadata);
   }
 }

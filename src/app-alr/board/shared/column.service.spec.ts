@@ -1,11 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { ColumnService } from './column.service';
+import { MockColumnService } from './mock-column.service';
 
 describe('ColumnService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ColumnService]
+      providers: [
+        {provide: ColumnService, useClass: MockColumnService}
+      ]
     });
   });
 

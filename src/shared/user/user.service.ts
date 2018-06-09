@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { AlertService } from '../popup/alert.service';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
+import { map, take } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -23,12 +24,14 @@ export class UserService {
     });
   }
 
-  isAdmin(): Observable < boolean > {
+  isAdmin(): Observable<boolean> {
     return this.afAuth.authState
-      .take(1)
-      .map(authState => {
-        return authState && this.authorized.includes(authState.uid);
-      })
+      .pipe(
+        take(1),
+        map(authState => {
+          return authState && this.authorized.includes(authState.uid);
+        })
+      )
       .do(authenticated => {
         if (!authenticated) {
           return false;
@@ -36,10 +39,12 @@ export class UserService {
       });
   }
 
-  isAuthenticated(): Observable < boolean > {
+  isAuthenticated(): Observable<boolean> {
     return this.afAuth.authState
-      .take(1)
-      .map(authState => !!authState)
+      .pipe(
+        take(1),
+        map(authState => !!authState)
+      )
       .do(authenticated => {
         if (!authenticated) {
           this.alertService.toast('user.access_denied.connect');
@@ -80,10 +85,10 @@ export class UserService {
   }
 
   logout() {
-    this.afAuth.auth.signOut().then(function() {
+    this.afAuth.auth.signOut().then(function () {
       this.clear();
       // Sign-out successful.
-    }).catch(function(error) {
+    }).catch(function (error) {
       // An error happened.
     });
   }
@@ -93,7 +98,7 @@ export class UserService {
     localStorage.removeItem('token');
   }
 
-  getAuthState(): Observable < User > {
+  getAuthState(): Observable<User> {
     return this.afAuth.authState;
   }
 }

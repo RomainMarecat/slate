@@ -5,6 +5,8 @@ import { AttributeService } from '../../../attribute/attribute.service';
 import { MenuService } from '../../../menu/menu.service';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
+import { take } from 'rxjs/operators';
+import { AlertService } from '../../../popup/alert.service';
 
 @Component({
   selector: 'app-attribute-list',
@@ -29,39 +31,11 @@ export class AttributeListComponent implements OnInit {
    * @param attributeService
    */
   constructor(public dialog: MatDialog,
+              private alertService: AlertService,
               private router: Router,
               private table: ElementRef,
               private menuService: MenuService,
               private attributeService: AttributeService) {
-  }
-
-  /**
-   * Delete a Attribute from list
-   */
-  deleteAttributes() {
-    this.selected.forEach((attribute: Attribute) => {
-      this.attributeService.deleteAttribute(attribute);
-    });
-  }
-
-  deleteAttribute(attribute: Attribute) {
-    this.attributeService.deleteAttribute(attribute);
-  }
-
-  confirmDelete(attribute: Attribute) {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '500px',
-      data: {
-        title: 'Confirmation de suppression du produit',
-        content: 'Voulez-vous continuer de supprimer le produit ?'
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
-        this.deleteAttribute(attribute);
-      }
-    });
   }
 
   /**
@@ -103,10 +77,42 @@ export class AttributeListComponent implements OnInit {
       cellTemplate: this.actionsCell
     }, ];
     this.attributeService.getAttributes()
-      .take(1)
+      .pipe(take(1))
       .subscribe((attributes: Attribute[]) => {
         this.attributes = attributes;
+      }, (err) => {
+        this.alertService.show(err);
+        this.attributes = [];
       });
+  }
+
+  /**
+   * Delete a Attribute from list
+   */
+  deleteAttributes() {
+    this.selected.forEach((attribute: Attribute) => {
+      this.attributeService.deleteAttribute(attribute);
+    });
+  }
+
+  deleteAttribute(attribute: Attribute) {
+    this.attributeService.deleteAttribute(attribute);
+  }
+
+  confirmDelete(attribute: Attribute) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '500px',
+      data: {
+        title: 'Confirmation de suppression du produit',
+        content: 'Voulez-vous continuer de supprimer le produit ?'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.deleteAttribute(attribute);
+      }
+    });
   }
 
   /**

@@ -2,7 +2,8 @@
     [class.editing]="editingCard"
     [attr.card-id]="card.key"
     [attr.card-order]="card.order"
-    (click)="editCard()">
+    (click)="editCard()"
+    *ngIf="card">
     <span [innerHtml]="card.title"
           [style.display]="editingCard ? 'none' : ''">
     </span>

@@ -4,22 +4,21 @@ import { ProductService } from '../product.service';
 import { CarProduct } from '../car-product';
 import { Observable } from 'rxjs/Observable';
 import { Category } from '../../category/category';
-import { map, startWith } from 'rxjs/operators';
+import { map, startWith, take } from 'rxjs/operators';
 import { CategoryService } from '../../category/category.service';
-import 'rxjs/add/operator/take';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-search',
   templateUrl: './product-search.component.html',
-  styleUrls: [ './product-search.component.scss' ]
+  styleUrls: ['./product-search.component.scss']
 })
 export class ProductSearchComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     'search': new FormControl({value: '', disabled: true}),
-    'brand': new FormControl('', [ Validators.required ]),
-    'model': new FormControl('', [ Validators.required ]),
+    'brand': new FormControl('', [Validators.required]),
+    'model': new FormControl('', [Validators.required]),
   });
   showSearch = false;
   products: CarProduct[];
@@ -39,31 +38,35 @@ export class ProductSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categoryService.filters$.next([ {
+    this.categoryService.filters$.next([{
       column: 'level',
       operator: '==',
       value: 1
-    } ]);
+    }]);
     this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
     this.categoryService.getCategories()
-      .take(1)
+      .pipe(
+        take(1)
+      )
       .subscribe(brands => this.brands = brands);
 
     this.filteredBrands.subscribe((brands: Category[]) => {
-      this.brandSelected = brands[ 0 ];
+      this.brandSelected = brands[0];
       if (brands && brands.length > 0) {
-        this.categoryService.filters$.next([ {
+        this.categoryService.filters$.next([{
           column: 'level',
           operator: '==',
           value: 2
         }, {
           column: 'parent',
           operator: '==',
-          value: brands[ 0 ].key
-        } ]);
+          value: brands[0].key
+        }]);
         this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
         this.categoryService.getCategories()
-          .take(1)
+          .pipe(
+            take(1)
+          )
           .subscribe(models => {
             this.models = models;
           });
@@ -82,7 +85,7 @@ export class ProductSearchComponent implements OnInit {
 
   onSearch() {
     if (this.form.valid) {
-      this.router.navigate([ '/selection/' + this.form.getRawValue().model + '/products']);
+      this.router.navigate(['/selection/' + this.form.getRawValue().model + '/products']);
     }
   }
 }
