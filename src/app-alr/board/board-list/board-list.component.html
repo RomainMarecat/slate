@@ -3,9 +3,18 @@
      [class.boards-wrapper]="boards?.length > 0"
      fxLayout="column"
      fxLayoutAlign="start start"
-     fxLayoutGap="20px">
-  <h2>Boards</h2>
-  <div id="boards">
+     fxLayoutGap="20px"
+     fxLayoutGap.xs="10px">
+  <div class="boards-heading"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+    <h2>
+      Boards
+    </h2>
+  </div>
+  <div id="boards"
+       fxLayout="row wrap"
+       fxLayoutAlign="center stretch">
     <a class="board" *ngFor="let board of boards" [routerLink]="['/board', board.key]">
       <span class="title">{{board?.title}}</span>
     </a>
