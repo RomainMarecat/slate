@@ -12,7 +12,7 @@ before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-before_deployr
+before_deploy:
   - ./node_modules/@angular/cli/bin/ng build --aot --project=alr --prod
   - firebase use alr
 deploy:
