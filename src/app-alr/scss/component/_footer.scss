@@ -1,0 +1,19 @@
+@import '../theme';
+
+footer {
+
+  background-color: $color1 !important;
+
+  a {
+    color: $color2;
+
+    & :hover {
+      color: $color3 !important;
+      text-decoration: none !important;
+    }
+  }
+  .mat-toolbar {
+    background-color: $color1 !important;
+  }
+
+}
