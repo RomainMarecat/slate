@@ -21,7 +21,7 @@ export class BoardComponent implements OnInit {
   board: Board;
   addingColumn = false;
   addColumnText: string;
-  editingTilte = false;
+  editingTitle = false;
   currentTitle: string;
   boardWidth: number;
   columnsAdded = 0;
@@ -172,13 +172,13 @@ export class BoardComponent implements OnInit {
     } else {
       this.board.title = this.currentTitle;
     }
-    this.editingTilte = false;
+    this.editingTitle = false;
     document.title = this.board.title + ' | Generic Task Manager';
   }
 
   editTitle() {
     this.currentTitle = this.board.title;
-    this.editingTilte = true;
+    this.editingTitle = true;
 
     const input = this.el.nativeElement
       .getElementsByClassName('board-title')[0]

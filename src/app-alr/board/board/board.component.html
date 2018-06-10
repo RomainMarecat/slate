@@ -1,16 +1,11 @@
-<div class="board-wrapper"
-     fxLayout="column"
-     fxLayoutAlign="start stretch"
-     fxLayout.xs="column"
-     fxLayoutAlign.xs="start center">
-
+<div class="board-wrapper">
   <div *ngIf="board" class="board-title">
-    <span [style.display]="editingTilte ? 'none' : ''"
+    <span [style.display]="editingTitle ? 'none' : ''"
           (click)="editTitle()">
       {{ board?.title }}
     </span>
 
-    <input [style.display]="editingTilte ? '' : 'none' "
+    <input [style.display]="editingTitle ? '' : 'none' "
            (keyup)="blurOnEnter($event)"
            (blur)="updateBoard()"
            [(ngModel)]="board.title"/>
@@ -18,9 +13,6 @@
 
   <section class="board-columns-wrapper"
            id="main"
-           fxLayout="row"
-           fxLayoutAlign="start stretch"
-           fxLayoutGap="10px"
            *ngIf="board">
     <div class="columns-wrapper"
          [dragula]="'column-bag'"
@@ -37,25 +29,26 @@
                           [cards]="board.cards">
         </app-board-column>
       </div>
-    </div>
-    <div class="add-column"
-         [class.addingColumn]="addingColumn"
-         (click)="enableAddColumn()">
+      <div class="add-column"
+           [class.addingColumn]="addingColumn"
+           (click)="enableAddColumn()">
       <span [style.display]="addingColumn ? 'none' : ''">
         Add a list...
       </span>
 
-      <mat-form-field class="mat-form-field"
-                      apparence="outline"
-                      [style.display]="addingColumn ? '' : 'none'">
-        <input
-          matInput
-          [placeholder]="'Add a list...'"
-          (keyup)="addColumnOnEnter($event)"
-          (blur)="addColumnOnBlur()"
-          [(ngModel)]="addColumnText"/>
-      </mat-form-field>
+        <mat-form-field class="mat-form-field"
+                        apparence="outline"
+                        [style.display]="addingColumn ? '' : 'none'">
+          <input
+            matInput
+            [placeholder]="'Add a list...'"
+            (keyup)="addColumnOnEnter($event)"
+            (blur)="addColumnOnBlur()"
+            [(ngModel)]="addColumnText"/>
+        </mat-form-field>
+      </div>
     </div>
+
   </section>
 </div>
 

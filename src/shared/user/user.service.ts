@@ -68,7 +68,7 @@ export class UserService {
           localStorage.setItem('user', JSON.stringify(user));
         }
       }, (err) => {
-        console.error(err);
+        this.alertService.show(err);
       });
   }
 
@@ -80,7 +80,7 @@ export class UserService {
           localStorage.setItem('user', JSON.stringify(user));
         }
       }, (err) => {
-        console.error(err);
+        this.alertService.show(err);
       });
   }
 
