@@ -15,6 +15,8 @@ import { ColumnService } from '../shared/column.service';
 import { MockCardService } from '../shared/mock-card.service';
 import { MockBoardService } from '../shared/mock-board.service';
 import { MockColumnService } from '../shared/mock-column.service';
+import { MockAlertService } from 'shared/popup/mock-alert.service';
+import { AlertService } from 'shared/popup/alert.service';
 
 describe('ColumnComponent', () => {
   let component: ColumnComponent;
@@ -38,7 +40,8 @@ describe('ColumnComponent', () => {
       providers: [
         {provide: BoardService, useClass: MockBoardService},
         {provide: ColumnService, useClass: MockColumnService},
-        {provide: CardService, useClass: MockCardService}
+        {provide: CardService, useClass: MockCardService},
+        {provide: AlertService, useClass: MockAlertService}
       ]
     })
     .compileComponents();

@@ -18,6 +18,8 @@
       [dragulaModel]="cards"
       [dragulaOptions]="options">
     <li class="card-item"
+        [attr.card-id]="card.key"
+        [attr.column-id]="card.columnId"
         *ngFor="let card of cards | filterBy: ['columnId']: column.key | orderBy : 'order'">
       <app-board-card [card]="card"></app-board-card>
     </li>
