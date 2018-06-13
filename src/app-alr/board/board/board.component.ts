@@ -10,11 +10,13 @@ import { Column } from '../shared/column';
 import { Card } from '../shared/card';
 import { CardService } from '../shared/card.service';
 import { Title } from '@angular/platform-browser';
+import { ObjectService } from 'shared/util/object.service';
+import { AlertService } from 'shared/popup/alert.service';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  styleUrls: [ './board.component.scss' ]
 })
 export class BoardComponent implements OnInit {
 
@@ -30,8 +32,6 @@ export class BoardComponent implements OnInit {
   curDown = false;
   options: any;
 
-  // families: Array<{ name: string, categories: Category[] }> = [];
-
   /**
    *
    * @param {DragulaService} dragulaService
@@ -39,6 +39,8 @@ export class BoardComponent implements OnInit {
    * @param {BoardService} boardService
    * @param {ColumnService} columnService
    * @param {CardService} cardService
+   * @param objectService
+   * @param alertService
    * @param {Router} router
    * @param {ActivatedRoute} route
    * @param {Title} title
@@ -48,24 +50,15 @@ export class BoardComponent implements OnInit {
               private boardService: BoardService,
               private columnService: ColumnService,
               private cardService: CardService,
+              private objectService: ObjectService,
+              private alertService: AlertService,
               private router: Router,
               private route: ActivatedRoute,
               private title: Title) {
-    this.options = {
-      direction: 'horizontal',
-      accepts: function (elem, target, source, sibling) {
-        console.log(elem, target);
-        return elem.classList.contains('sortable-column') && target.classList.contains('columns-wrapper') ||
-          elem.classList.contains('card-item') && target.classList.contains('card-list');
-        // elements can be dropped in any of the `containers` by default
-      },
-    };
   }
 
   ngOnInit() {
     this.getBoard();
-    // this.families = mockGroupFamily;
-    this.subscribeDragAndDrop();
   }
 
   getBoard() {
@@ -82,9 +75,6 @@ export class BoardComponent implements OnInit {
                 value: board.key
               }
             ]);
-            this.columnService.getColumns().subscribe((columns) => {
-              this.board.columns = columns;
-            });
             this.cardService.filters$.next([
               {
                 column: 'boardId',
@@ -92,35 +82,29 @@ export class BoardComponent implements OnInit {
                 value: board.key
               }
             ]);
-            this.cardService.getCards().subscribe((cards) => {
-              this.board.cards = cards;
-            });
-
+            this.columnService.getColumns()
+              .subscribe((columns) => {
+                this.board.columns = this.objectService.bubbleSort(columns, 'order');
+                this.cardService.getCards()
+                  .subscribe((cards) => {
+                    this.board.cards = this.objectService.bubbleSort(cards, 'order');
+                    this.board.columns = this.board.columns.map(col => {
+                      col.cards = this.board.cards.filter((c) => {
+                        return c.columnId === col.key;
+                      });
+                      return col;
+                    });
+                  }, (err) => {
+                    this.alertService.show(err);
+                  });
+              }, (err) => {
+                this.alertService.show(err);
+              });
 
             this.title.setTitle(this.board.title + ' | Generic Task Manager');
           });
       }
     }));
-  }
-
-  /**
-   * Drag an drop system for attributes
-   */
-  subscribeDragAndDrop() {
-    this.dragulaService.dropModel.subscribe((value) => {
-      this.onDropModel(value.slice(1));
-    });
-    this.dragulaService.removeModel.subscribe((value) => {
-      this.onRemoveModel(value.slice(1));
-    });
-  }
-
-  private onDropModel(args: any): void {
-    const [el, target, source] = args;
-  }
-
-  private onRemoveModel(args: any): void {
-    const [el, source] = args;
   }
 
   bindPane() {
@@ -181,8 +165,8 @@ export class BoardComponent implements OnInit {
     this.editingTitle = true;
 
     const input = this.el.nativeElement
-      .getElementsByClassName('board-title')[0]
-      .getElementsByTagName('input')[0];
+      .getElementsByClassName('board-title')[ 0 ]
+      .getElementsByTagName('input')[ 0 ];
 
     setTimeout(function () {
       input.focus();
@@ -201,7 +185,19 @@ export class BoardComponent implements OnInit {
     // columnEl.remove().insertBefore(columnArr[ i ]);
   }
 
-  updateColumnOrder(event) {
+  updateColumnOrder() {
+    this.board.columns.forEach((column, order) => {
+      if (column.order !== (order + 1) * 1000) {
+        column.order = (order + 1) * 1000;
+        this.columnService.updateColumn(column)
+          .then(() => {
+            this.alertService.show(`column updated ${column.title}`);
+          }, (err) => {
+            this.alertService.show(err);
+          });
+      }
+    });
+
     // let i: number = 0,
     //   elBefore: number = -1,
     //   elAfter: number = -1,

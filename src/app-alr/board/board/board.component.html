@@ -15,19 +15,22 @@
            id="main"
            *ngIf="board">
     <div class="columns-wrapper"
-         [dragula]="'column-bag'"
-         [dragulaModel]="board.columns"
-         [dragulaOptions]="options"
          fxLayout="row"
          fxLayoutAlign="start stretch"
          fxLayoutGap="10px">
-
-      <div *ngFor="let column of board.columns | orderBy : 'order'"
+      <!--[dragula]="'board-bag'"-->
+      <!--[dragulaModel]="board.columns"-->
+      <!--[dragulaOptions]="options"-->
+      <div *ngFor="let column of board.columns"
            class="sortable-column">
+
+
         <app-board-column [column]="column"
                           (cardAdded)="addCard($event)"
                           [cards]="board.cards">
         </app-board-column>
+
+
       </div>
       <div class="add-column"
            [class.addingColumn]="addingColumn"
