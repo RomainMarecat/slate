@@ -211,6 +211,29 @@
       }
     }
   },
+  "cta": {
+    "add": "ajouter",
+    "add-to-cart": "ajouter au panier",
+    "learn-more": "en savoir plus",
+    "back_to_home": "retour à la l'accueil",
+    "buy": "acheter",
+    "booking": "réserver",
+    "choose": "choisir",
+    "delete": "supprimer",
+    "next-available-slot": "prochaines disponibilités",
+    "home": "accueil",
+    "back": "retour",
+    "cancel": "annuler",
+    "pay": "payer",
+    "publish": "publier",
+    "published": "publié",
+    "remove": "supprimer",
+    "save": "enregistrer",
+    "send": "envoyer",
+    "take_meeting": "prendre rendez-vous",
+    "unpublish": "dépublier",
+    "unpublished": "dépublié"
+  },
   "snackbar": {
     "product-add": {
       "submit": "Ton pull est en attente de validation :)"
