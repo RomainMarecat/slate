@@ -58,6 +58,7 @@ import { BoardModule } from '../board/board.module';
 import { BoardService } from '../board/shared/board.service';
 import { ColumnService } from '../board/shared/column.service';
 import { CardService } from '../board/shared/card.service';
+import { ChartModule } from '../chart/chart.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -164,8 +165,9 @@ export const cookieConfig: NgcCookieConsentConfig = {
         deps: [HttpClient, app_name]
       }
     }),
-    DashboardModule,
     BoardModule,
+    DashboardModule,
+    ChartModule,
   ],
   exports: [
     AdsenseModule,

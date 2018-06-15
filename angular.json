@@ -38,6 +38,7 @@
               "src/app-alr/styles.scss"
             ],
             "scripts": [
+              "node_modules/chart.js/src/chart.js",
               "node_modules/moment/min/moment.min.js",
               "node_modules/moment/locale/fr.js",
               "node_modules/twix/dist/twix.min.js",

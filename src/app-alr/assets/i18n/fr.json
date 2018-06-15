@@ -234,6 +234,15 @@
     "unpublish": "dépublier",
     "unpublished": "dépublié"
   },
+  "dashboard": {
+    "features": {
+      "name": {
+        "material": "Composant Material",
+        "board": "Tableau de bord",
+        "chart": "Dashboard"
+      }
+    }
+  },
   "snackbar": {
     "product-add": {
       "submit": "Ton pull est en attente de validation :)"
