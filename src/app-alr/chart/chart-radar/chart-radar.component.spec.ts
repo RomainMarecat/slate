@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChartRadarComponent } from './chart-radar.component';
+import { ChartsModule } from 'ng2-charts';
+import { SharedModule } from 'shared/shared.module';
 
 describe('ChartRadarComponent', () => {
   let component: ChartRadarComponent;
@@ -8,6 +10,10 @@ describe('ChartRadarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        ChartsModule,
+        SharedModule,
+      ],
       declarations: [ ChartRadarComponent ]
     })
     .compileComponents();

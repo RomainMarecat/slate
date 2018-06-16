@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChartPolarAreaComponent } from './chart-polar-area.component';
+import { ChartsModule } from 'ng2-charts';
+import { SharedModule } from 'shared/shared.module';
 
 describe('ChartPolarAreaComponent', () => {
   let component: ChartPolarAreaComponent;
@@ -8,6 +10,10 @@ describe('ChartPolarAreaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        ChartsModule,
+        SharedModule,
+      ],
       declarations: [ ChartPolarAreaComponent ]
     })
     .compileComponents();
