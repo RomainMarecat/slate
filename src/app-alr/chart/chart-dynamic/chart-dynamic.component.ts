@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chart-dynamic.component.scss']
 })
 export class ChartDynamicComponent implements OnInit {
+  public lineChartOptions: any = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
   // lineChart
   lineChartData: Array<any> = [
     [65, 59, 80, 81, 56, 55, 40],
