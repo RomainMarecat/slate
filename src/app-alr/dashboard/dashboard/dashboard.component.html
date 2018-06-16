@@ -1,22 +1,20 @@
-<mat-card fxLayout="row"
-          fxLayoutAlign="center stretch">
-  <mat-card-title>
-    <a mat-button
-       color="primary"
-       [routerLink]="['/admin/material']">
-      Material Elements
-    </a>
-  </mat-card-title>
-</mat-card>
-
-
-<mat-card fxLayout="row"
-          fxLayoutAlign="center stretch">
-  <mat-card-title>
-    <a mat-button
-       color="primary"
-       [routerLink]="['/boards']">
-      Boards
-    </a>
-  </mat-card-title>
-</mat-card>
+<div class="dashboard-content-wrapper"
+     fxLayout="row"
+     fxLayoutAlign="center stretch"
+     fxLayoutGap="30px">
+  <mat-card class="mat-card" *ngFor="let feature of features">
+    <img mat-card-image
+         class="dashboard-image"
+         [src]="feature.img">
+    <mat-card-header fxLayout="row"
+                     fxLayoutAlign="center stretch">
+      <mat-card-title>
+        <a mat-raised-button
+           color="primary"
+           [routerLink]="[feature.url]">
+          {{ feature.name | translate }}
+        </a>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</div>

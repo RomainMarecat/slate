@@ -1,0 +1,33 @@
+<div class="my-3"
+     fxLayout="row"
+     fxLayoutAlign="center stretch"
+     fxLayoutGap="20px">
+
+  <div class="chart-canvas-wrapper">
+    <canvas baseChart
+            [data]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+    <div class="text-center mt-2">
+      <button type="button"
+              role="button"
+              mat-raised-button
+              color="primary"
+              (click)="randomizeType()">
+        {{ 'cta.toggle'|translate }}
+      </button>
+    </div>
+  </div>
+
+  <div class="chart-canvas-wrapper">
+    <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+</div>

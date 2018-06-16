@@ -15,11 +15,11 @@ $color2: #e71d36;
 $color3: #9bffff;
 $color4: #3a435e;
 $color5: #393d3f;
-$product-primary: mat-palette($mat-blue-grey,
+$primary: mat-palette($mat-blue-grey,
   800);
-$product-accent: mat-palette($mat-red,
+$accent: mat-palette($mat-red,
   600);
-$product-warn: mat-palette($mat-blue,
+$warn: mat-palette($mat-blue,
   200);
 $white: mat-palette($mat-grey,
   50);
@@ -27,9 +27,9 @@ $black: mat-palette($mat-grey,
   900);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$theme: mat-light-theme($product-primary,
-  $product-accent,
-  $product-warn);
+$theme: mat-light-theme($primary,
+  $accent,
+  $warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component

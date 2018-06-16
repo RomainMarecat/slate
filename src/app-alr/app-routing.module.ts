@@ -16,6 +16,9 @@ const routes: Routes = [{
   {
     path: 'boards',
     loadChildren: './board/board.module#BoardModule'
+  }, {
+    path: 'charts',
+    loadChildren: './chart/chart.module#ChartModule'
   },
   {
     path: 'board/:key',

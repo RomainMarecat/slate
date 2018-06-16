@@ -5,25 +5,25 @@
 
 module.exports = function (config) {
   config.set({
-    basePath: '/',
+    basePath: './',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     files: [{
-      pattern: './src/test.ts',
+      pattern: 'test.ts',
       watched: false
     }, {
-      pattern: './src/styles.spec.css'
+      pattern: 'styles.spec.css'
     }, {
-      pattern: './node_modules/hammerjs/hammer.js'
+      pattern: '../node_modules/hammerjs/hammer.js'
     }, {
-      pattern: './node_modules/font-awesome/css/font-awesome.css'
+      pattern: '../node_modules/font-awesome/css/font-awesome.css'
     }, {
-      pattern: './node_modules/@swimlane/ngx-datatable/release/index.css'
+      pattern: '../node_modules/@swimlane/ngx-datatable/release/index.css'
     }, {
-      pattern: './node_modules/@swimlane/ngx-datatable/release/themes/material.css'
+      pattern: '../node_modules/@swimlane/ngx-datatable/release/themes/material.css'
     }, {
-      pattern: './node_modules/bootstrap/dist/css/bootstrap.css'
+      pattern: '../node_modules/bootstrap/dist/css/bootstrap.css'
     }, {
-      pattern: './node_modules/@swimlane/ngx-datatable/release/assets/icons.css'
+      pattern: '../node_modules/@swimlane/ngx-datatable/release/assets/icons.css'
     }],
     plugins: [
       require('karma-jasmine'),
