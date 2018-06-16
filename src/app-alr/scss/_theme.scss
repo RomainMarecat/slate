@@ -1,42 +1,75 @@
 @import '../../../node_modules/@angular/material/theming';
 @import '../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
 
-// 7A8A606D
-
-// Plus imports for other components in your app-clothe.
+// Plus imports for other components in your app.
 // Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app-clothe.
+// have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-//
+
 $color1: #131629; // Bleu
 $color2: #ffffff; // Blanc
 $color3: #af300b; // Rouge
 $color5: #af8401;
-$product-primary: mat-palette($mat-indigo,
-  900);
-$product-accent: mat-palette($mat-red,
-  800);
-$product-warn: mat-palette($mat-orange,
-  200);
-$white: mat-palette($mat-grey,
-  50);
-$black: mat-palette($mat-grey,
-  900);
+$primary: mat-palette($mat-blue-gray, 500, 100, 900);
+$accent: mat-palette($mat-red, 800);
+$warn: mat-palette($mat-orange, 200);
+$light-grey: mat-palette($mat-grey, 100);
+$white: mat-palette($mat-grey, 50);
+$black: mat-palette($mat-grey, 900);
+
+@mixin mat-button-theme($theme) {
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .mat-raised-button,
+  .mat-button {
+    &.mat-primary {
+      background-color: mat-color($primary, darker);
+      color: mat-color($white);
+    }
+  }
+}
+
+@mixin mat-toolbar-theme($theme) {
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  mat-toolbar.mat-primary {
+    background-color: mat-color($primary, darker);
+    color: mat-color($white);
+    &:hover {
+      color: mat-color($white, 200);
+    }
+
+    a {
+      color: mat-color($white);
+    }
+  }
+}
 
 // Create the theme object (a Sass map containing all of the palettes).
-$theme: mat-light-theme($product-primary,
-  $product-accent,
-  $product-warn);
+$theme: mat-light-theme($primary, $accent, $warn);
 
-// Include theme styles for core and each component used in your app-clothe.
+@mixin custom-theme($theme) {
+  @include mat-core-theme($theme);
+  @include mat-button-theme($theme);
+  @include mat-toolbar-theme($theme);
+}
+
+// Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($theme);
+@include custom-theme($theme);
 
 body {
   font-family: 'Nunito', sans-serif;
@@ -44,19 +77,9 @@ body {
 
   .title {
     font-family: 'Roboto Condensed', sans-serif;
-    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
   }
-
-  .main-menu {
-    background-color: $color1 !important;
-    a {
-      color: mat-color($white) !important;
-    }
-  }
-}
-
-mat-icon {
-  font-family: 'Material Icons' !important;
 }
 
 .album {
@@ -129,5 +152,4 @@ mat-icon {
 mat-checkbox,
 mat-radio-button {
   color: mat-color($white);
-
 }

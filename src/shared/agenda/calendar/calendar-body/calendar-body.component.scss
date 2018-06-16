@@ -22,14 +22,14 @@
       &.busy {
         display: none;
         button.slot-available {
-          color: mat-color($product-accent) !important;
+          color: mat-color($accent) !important;
           cursor: not-allowed;
         }
       }
       &.early {
         button.slot-available {
           cursor: not-allowed;
-          color: mat-color($product-warn);
+          color: mat-color($warn);
         }
       }
       &.session {

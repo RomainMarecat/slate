@@ -1,3 +1,9 @@
-.chart-canvas-wrapper {
-  max-width: 20vw;
+@import '../../../app-alr/scss/theme';
+
+.content-wrapper {
+  background-color: mat-color($light-grey);
+
+  .mat-card {
+    margin: 20px;
+  }
 }

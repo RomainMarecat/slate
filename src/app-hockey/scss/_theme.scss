@@ -14,11 +14,11 @@ $color1: #131629; // Bleu
 $color2: #ffffff; // Blanc
 $color3: #af300b; // Rouge
 $color5: #af8401;
-$product-primary: mat-palette($mat-indigo,
+$primary: mat-palette($mat-indigo,
   900);
-$product-accent: mat-palette($mat-red,
+$accent: mat-palette($mat-red,
   800);
-$product-warn: mat-palette($mat-orange,
+$warn: mat-palette($mat-orange,
   200);
 $white: mat-palette($mat-grey,
   50);
@@ -26,9 +26,9 @@ $black: mat-palette($mat-grey,
   900);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$theme: mat-light-theme($product-primary,
-  $product-accent,
-  $product-warn);
+$theme: mat-light-theme($primary,
+  $accent,
+  $warn);
 
 // Include theme styles for core and each component used in your app-clothe.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -86,7 +86,7 @@ mat-icon {
   }
 
   .heading {
-    background-color: mat-color($product-primary) !important;
+    background-color: mat-color($primary) !important;
     color: mat-color($white) !important;
   }
 }
@@ -106,11 +106,11 @@ mat-icon {
 }
 
 .text-time {
-  color: mat-color($product-primary);
+  color: mat-color($primary);
 }
 
 .card-sidebar {
-  background-color: mat-color($product-accent);
+  background-color: mat-color($accent);
 
   .mat-card-header {
     color: mat-color($white);

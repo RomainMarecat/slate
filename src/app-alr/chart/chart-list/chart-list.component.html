@@ -1,11 +1,61 @@
 <div class="chart content-wrapper"
      fxLayout="row wrap"
-     fxLayoutAlign="space-around stretch">
-  <app-chart-line></app-chart-line>
-  <app-chart-bar></app-chart-bar>
-  <app-chart-doughnut></app-chart-doughnut>
-  <app-chart-radar></app-chart-radar>
-  <app-chart-pie></app-chart-pie>
-  <app-chart-polar-area></app-chart-polar-area>
-  <app-chart-dynamic></app-chart-dynamic>
+     fxLayoutAlign="space-around stretch"
+     fxLayoutGap="20px">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3 class="title">{{ 'chart.title.line'|translate }}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <app-chart-line></app-chart-line>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3 class="title">{{ 'chart.title.bar'|translate }}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <app-chart-bar></app-chart-bar>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3 class="title">{{ 'chart.title.doughnut'|translate }}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <app-chart-doughnut></app-chart-doughnut>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3 class="title">{{ 'chart.title.radar'|translate }}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <app-chart-radar></app-chart-radar>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3 class="title">{{ 'chart.title.pie'|translate }}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <app-chart-pie></app-chart-pie>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3 class="title">{{ 'chart.title.polar-area'|translate }}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <app-chart-polar-area></app-chart-polar-area>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3 class="title">{{ 'chart.title.dynamic'|translate }}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <app-chart-dynamic></app-chart-dynamic>
+  </mat-card>
 </div>

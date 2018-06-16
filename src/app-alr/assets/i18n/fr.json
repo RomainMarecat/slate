@@ -211,6 +211,17 @@
       }
     }
   },
+  "chart": {
+    "title": {
+      "line": "courbe",
+      "bar": "bar",
+      "doughnut": "croissant",
+      "dynamic": "valeurs dynamiques",
+      "pie": "circulaire",
+      "polar-area": "région",
+      "radar": "radar"
+    }
+  },
   "cta": {
     "add": "ajouter",
     "add-to-cart": "ajouter au panier",
@@ -227,10 +238,12 @@
     "pay": "payer",
     "publish": "publier",
     "published": "publié",
+    "refresh": "rafraîchir",
     "remove": "supprimer",
     "save": "enregistrer",
     "send": "envoyer",
     "take_meeting": "prendre rendez-vous",
+    "toggle": "changer",
     "unpublish": "dépublier",
     "unpublished": "dépublié"
   },

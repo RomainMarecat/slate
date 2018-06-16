@@ -16,11 +16,11 @@ $color3: #6EE3E7; // Turquoise
 $color4: #6EE3E7; // Turquoise
 $color5: #6EE3E7; // Turquoise
 
-$product-primary: mat-palette($mat-green,
+$primary: mat-palette($mat-green,
   300);
-$product-accent: mat-palette($mat-deep-orange,
+$accent: mat-palette($mat-deep-orange,
   A700);
-$product-warn: mat-palette($mat-yellow,
+$warn: mat-palette($mat-yellow,
   A700);
 $white: mat-palette($mat-grey,
   50);
@@ -28,9 +28,9 @@ $black: mat-palette($mat-grey,
   900);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$theme: mat-light-theme($product-primary,
-  $product-accent,
-  $product-warn);
+$theme: mat-light-theme($primary,
+  $accent,
+  $warn);
 
 // Include theme styles for core and each component used in your app-clothe.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -47,7 +47,7 @@ body {
 }
 
 .mat-bg-primary {
-  background-color: mat-color($product-primary);
+  background-color: mat-color($primary);
 }
 
 mat-icon {
@@ -56,7 +56,7 @@ mat-icon {
 
 .main-menu {
   a {
-    color: mat-color($product-primary) !important;
+    color: mat-color($primary) !important;
   }
   background-color: mat-color($white) !important;
 }
@@ -71,5 +71,5 @@ footer {
   a {
     color: mat-color($white);
   }
-  background-color: mat-color($product-primary);
+  background-color: mat-color($primary);
 }
