@@ -11,11 +11,13 @@ import { ChartRadarComponent } from './chart-radar/chart-radar.component';
 import { ChartPieComponent } from './chart-pie/chart-pie.component';
 import { ChartPolarAreaComponent } from './chart-polar-area/chart-polar-area.component';
 import { ChartDynamicComponent } from './chart-dynamic/chart-dynamic.component';
+import { SharedModule } from 'shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ChartsModule,
+    SharedModule,
     ChartRoutingModule
   ],
   declarations: [

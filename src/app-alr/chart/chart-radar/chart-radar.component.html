@@ -1,3 +1,8 @@
-<p>
-  chart-radar works!
-</p>
+<div class="chart-canvas-wrapper">
+  <canvas baseChart
+          [datasets]="radarChartData"
+          [labels]="radarChartLabels"
+          [chartType]="radarChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>

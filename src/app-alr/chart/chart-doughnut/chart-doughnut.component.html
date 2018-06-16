@@ -1,3 +1,8 @@
-<p>
-  chart-doughnut works!
-</p>
+<div class="chart-canvas-wrapper">
+  <canvas baseChart
+          [data]="doughnutChartData"
+          [labels]="doughnutChartLabels"
+          [chartType]="doughnutChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+</div>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-recipe-chart-list',
+  selector: 'app-chart-list',
   templateUrl: './chart-list.component.html',
-  styleUrls: ['./chart-list.component.css']
+  styleUrls: ['./chart-list.component.scss']
 })
 export class ChartListComponent implements OnInit {
 
