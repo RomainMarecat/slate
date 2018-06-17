@@ -9,7 +9,7 @@ export class ChartPieComponent implements OnInit {
 // Pie
   public pieChartLabels: string[] = [ 'Download Sales', 'In-Store Sales', 'Mail Sales' ];
   public pieChartData: number[] = [ 300, 500, 100 ];
-  public pieChartType: string = 'pie';
+  public pieChartType = 'pie';
 
   // events
   public chartClicked(e: any): void {

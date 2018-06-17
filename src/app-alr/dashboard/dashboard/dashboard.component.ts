@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from 'shared/menu/menu.service';
+import { MenuService } from '../../../shared/menu/menu.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
       {name: 'dashboard.features.name.material', img: '/assets/images/material.jpg', url: '/admin/material'},
       {name: 'dashboard.features.name.board', img: '/assets/images/board.jpg', url: '/boards'},
       {name: 'dashboard.features.name.chart', img: '/assets/images/chart.jpg', url: '/charts'},
+      {name: 'dashboard.features.name.gprd', img: '/assets/images/gprd.jpg', url: '/gprd'},
     ];
   }
 

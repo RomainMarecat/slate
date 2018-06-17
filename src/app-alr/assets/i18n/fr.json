@@ -252,7 +252,8 @@
       "name": {
         "material": "Composant Material",
         "board": "Tableau de bord",
-        "chart": "Dashboard"
+        "chart": "Dashboard",
+        "gprd": "RGPD"
       }
     }
   },

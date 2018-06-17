@@ -59,6 +59,7 @@ import { BoardService } from '../board/shared/board.service';
 import { ColumnService } from '../board/shared/column.service';
 import { CardService } from '../board/shared/card.service';
 import { ChartModule } from '../chart/chart.module';
+import { GprdModule } from '../gprd/gprd.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -168,6 +169,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     BoardModule,
     DashboardModule,
     ChartModule,
+    GprdModule
   ],
   exports: [
     AdsenseModule,
