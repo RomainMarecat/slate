@@ -9,9 +9,9 @@ export class ChartPolarAreaComponent implements OnInit {
   // PolarArea
   public polarAreaChartLabels: string[] = [ 'Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales' ];
   public polarAreaChartData: number[] = [ 300, 500, 100, 40, 120 ];
-  public polarAreaLegend: boolean = true;
+  public polarAreaLegend = true;
 
-  public polarAreaChartType: string = 'polarArea';
+  public polarAreaChartType = 'polarArea';
 
   // events
   public chartClicked(e: any): void {

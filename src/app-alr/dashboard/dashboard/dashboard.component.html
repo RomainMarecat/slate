@@ -1,8 +1,12 @@
 <div class="dashboard-content-wrapper"
      fxLayout="row"
      fxLayoutAlign="center stretch"
-     fxLayoutGap="30px">
-  <mat-card class="mat-card" *ngFor="let feature of features">
+     fxLayoutGap="30px"
+     fxLayout.xs="row wrap"
+     fxLayoutAlign.xs="center stretch"
+     fxLayoutGap.xs="0px">
+  <mat-card class="mat-card"
+            *ngFor="let feature of features">
     <img mat-card-image
          class="dashboard-image"
          [src]="feature.img">

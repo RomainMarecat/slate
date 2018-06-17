@@ -29,10 +29,23 @@ $black: mat-palette($mat-grey, 900);
   $foreground: map-get($theme, foreground);
 
   .mat-raised-button,
-  .mat-button {
+  .mat-button,
+  .mat-icon-button,
+  .mat-mini-fab
+  {
     &.mat-primary {
       background-color: mat-color($primary, darker);
       color: mat-color($white);
+    }
+
+    &.mat-accent {
+      background-color: mat-color($accent);
+      color: mat-color($white);
+    }
+
+    &.mat-warn {
+      background-color: mat-color($warn);
+      color: mat-color($black);
     }
   }
 }
@@ -147,9 +160,4 @@ body {
       color: mat-color($white);
     }
   }
-}
-
-mat-checkbox,
-mat-radio-button {
-  color: mat-color($white);
 }

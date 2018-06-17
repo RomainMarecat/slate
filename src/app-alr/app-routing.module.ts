@@ -19,6 +19,9 @@ const routes: Routes = [{
   }, {
     path: 'charts',
     loadChildren: './chart/chart.module#ChartModule'
+  }, {
+    path: 'gprd',
+    loadChildren: './gprd/gprd.module#GprdModule'
   },
   {
     path: 'board/:key',

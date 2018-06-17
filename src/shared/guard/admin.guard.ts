@@ -19,7 +19,6 @@ export class AdminGuard implements CanActivate {
       .pipe(
         take(1),
         map(authState => {
-          console.log(authState.uid);
           return authState && this.authorized.includes(authState.uid);
         })
       ).do(authenticated => {
