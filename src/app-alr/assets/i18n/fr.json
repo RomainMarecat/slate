@@ -242,6 +242,7 @@
     "remove": "supprimer",
     "save": "enregistrer",
     "send": "envoyer",
+    "subscribe": "souscrire",
     "take_meeting": "prendre rendez-vous",
     "toggle": "changer",
     "unpublish": "dépublier",
@@ -257,12 +258,46 @@
       }
     }
   },
-  "snackbar": {
-    "product-add": {
-      "submit": "Ton pull est en attente de validation :)"
-    },
-    "guard": {
-      "unauthenticated": "Connectes-toi pour ajouter autant de pull moche que tu veux !"
+  "gprd": {
+    "title": "RGPD",
+    "optin": {
+      "title": {
+        "email": "nous rejoindre",
+        "manager": "confidentialité"
+      },
+      "save": {
+        "success": "souscription avec succès"
+      },
+      "subtitle": {
+        "email": "bienvenue dans notre monde",
+        "manager": "gérer mes préférences"
+      },
+      "button": {
+        "email": "souscrire"
+      },
+      "toggle": {
+        "email": "souscrire à la newsletter",
+        "manager": "recevoir la newsletter partenaires",
+        "member_follow": "autoriser d'autres membres à me suivre",
+        "member_send_message": "autoriser d'autres membres à m'envoyer des messages privés",
+        "statistics": "autoriser le site à collecter des statistiques d'utilisation du site",
+        "member_comments": "m'abonner automatiquement aux nouveaux commentaires lorsque je commente",
+        "offline": "afficher mon status en ligne / hors ligne"
+      },
+      "label": {
+        "email": "adresse email"
+      },
+      "placeholder": {
+        "email": "entrer l'adresse email"
+      },
+      "hint": {
+        "email": "l'email sera uniquement utilisé à l'envoi de newsletters provenant de nos partenaires (NewsChimp & MailForest)"
+      },
+      "error": {
+        "required": {
+          "email": "le champs email est requis"
+        }
+      }
     }
   },
   "menu": {
@@ -278,6 +313,14 @@
     "short_hour": "h",
     "and": " et ",
     "short_minutes": "min"
+  },
+  "snackbar": {
+    "product-add": {
+      "submit": "Ton pull est en attente de validation :)"
+    },
+    "guard": {
+      "unauthenticated": "Connectes-toi pour ajouter autant de pull moche que tu veux !"
+    }
   },
   "sidenav": {
     "card": {

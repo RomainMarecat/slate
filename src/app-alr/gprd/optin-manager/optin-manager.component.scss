@@ -1,0 +1,16 @@
+@import '../../scss/theme';
+
+.form-wrapper {
+
+  .content-wrapper {
+    padding-top: 20px;
+
+    .mat-card {
+      min-width: 250px;
+      max-width: 400px;
+
+      .mat-slide-toggle {
+      }
+    }
+  }
+}

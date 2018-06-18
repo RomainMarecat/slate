@@ -1,0 +1,57 @@
+<form class="form-wrapper"
+      [formGroup]="form"
+      (ngSubmit)="onSave()">
+
+  <div class="content-wrapper">
+
+    <mat-card class="mat-card">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>{{ 'gprd.optin.title.manager'|translate }}</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <h3>{{ 'gprd.optin.subtitle.manager'|translate }}</h3>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-slide-toggle [formControl]="form.get('optinEmail')"
+                          class="mt-3 mat-slide-toggle">
+          {{ 'gprd.optin.toggle.manager'|translate }}
+        </mat-slide-toggle>
+        <mat-slide-toggle [formControl]="form.get('optinOffline')"
+                          class="mt-3 mat-slide-toggle">
+          {{ 'gprd.optin.toggle.offline'|translate }}
+        </mat-slide-toggle>
+        <mat-slide-toggle [formControl]="form.get('optinFollow')"
+                          class="mt-3 mat-slide-toggle">
+          {{ 'gprd.optin.toggle.member_follow'|translate }}
+        </mat-slide-toggle>
+        <mat-slide-toggle [formControl]="form.get('optinMessage')"
+                          class="mt-3 mat-slide-toggle">
+          {{ 'gprd.optin.toggle.member_send_message'|translate }}
+        </mat-slide-toggle>
+        <mat-slide-toggle [formControl]="form.get('optinStats')"
+                          class="mt-3 mat-slide-toggle">
+          {{ 'gprd.optin.toggle.statistics'|translate }}
+        </mat-slide-toggle>
+        <mat-slide-toggle [formControl]="form.get('optinComment')"
+                          class="mt-3 mat-slide-toggle">
+          {{ 'gprd.optin.toggle.member_comments'|translate }}
+        </mat-slide-toggle>
+      </mat-card-content>
+
+      <mat-card-actions fxLayout="row"
+                        fxLayoutAlign="center stretch">
+        <button mat-raised-button
+                color="accent"
+                type="button"
+                role="button"
+                class="text-uppercase">
+          {{ 'cta.save'|translate }}
+        </button>
+      </mat-card-actions>
+
+    </mat-card>
+
+  </div>
+</form>

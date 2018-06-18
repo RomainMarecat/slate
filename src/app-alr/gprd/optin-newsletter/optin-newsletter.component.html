@@ -1,0 +1,52 @@
+<form class="form-wrapper"
+      [formGroup]="form"
+      (ngSubmit)="onSave()">
+
+  <div class="content-wrapper">
+
+    <mat-card class="mat-card">
+      <mat-card-header>
+        <mat-card-title>
+          <h3 class="text-uppercase">{{ 'gprd.optin.title.email'|translate}}</h3>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <h4 class="text-justify">
+            {{ 'gprd.optin.subtitle.email'|translate }}
+          </h4>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'gprd.optin.label.email'|translate }}</mat-label>
+          <input matInput
+                 [formControl]="form.get('email')"
+                 name="email"
+                 [placeholder]="'gprd.optin.placeholder.email'|translate"
+                 type="email"
+                 autocomplete="email">
+          <mat-icon matSuffix>local_post_office</mat-icon>
+          <mat-hint>{{ 'gprd.optin.hint.email'|translate }}</mat-hint>
+          <mat-error *ngIf="form.get('email').invalid && form.get('email').value.length === 0"
+                     [innerHtml]="'gprd.optin.error.required.email'|translate"></mat-error>
+          <mat-error *ngIf="form.get('email').invalid && form.get('email').value.length > 0"
+                     [innerHtml]="'gprd.optin.error.invalid.email'|translate"></mat-error>
+        </mat-form-field>
+        <mat-slide-toggle [formControl]="form.get('optinEmail')"
+                          class="mt-5 mat-slide-toggle">
+          {{ 'gprd.optin.toggle.email'|translate }}
+        </mat-slide-toggle>
+      </mat-card-content>
+
+      <mat-card-actions fxLayout="row"
+                        fxLayoutAlign="center stretch">
+        <button mat-raised-button
+                color="accent"
+                type="button"
+                role="button"
+                class="text-uppercase">
+          {{ 'cta.subscribe'|translate }}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</form>
