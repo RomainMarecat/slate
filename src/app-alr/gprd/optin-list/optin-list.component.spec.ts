@@ -1,12 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GprdComponent } from './gprd.component';
+import { OptinListComponent } from './optin-list.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatCardModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { OptinListComponent } from '../optin-list/optin-list.component';
 import { OptinManagerComponent } from '../optin-manager/optin-manager.component';
 import { OptinNewsletterComponent } from '../optin-newsletter/optin-newsletter.component';
 import { SharedModule } from 'shared/shared.module';
@@ -14,9 +13,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MockAlertService } from 'shared/popup/mock-alert.service';
 import { AlertService } from 'shared/popup/alert.service';
 
-describe('GprdComponent', () => {
-  let component: GprdComponent;
-  let fixture: ComponentFixture<GprdComponent>;
+describe('OptinListComponent', () => {
+  let component: OptinListComponent;
+  let fixture: ComponentFixture<OptinListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,7 +32,6 @@ describe('GprdComponent', () => {
         })
       ],
       declarations: [
-        GprdComponent,
         OptinListComponent,
         OptinManagerComponent,
         OptinNewsletterComponent
@@ -46,7 +44,7 @@ describe('GprdComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GprdComponent);
+    fixture = TestBed.createComponent(OptinListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
