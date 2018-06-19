@@ -1,6 +1,15 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
 @import '../../scss/theme';
 
 .gprd-wrapper {
   background: mat-color($light-grey);
   height: 100vh;
+
+  @include media-breakpoint-up(xs) {
+    height: 100%;
+    margin: 20px 0;
+  }
+  @include media-breakpoint-up(sm) {
+    height: 100vh;
+  }
 }

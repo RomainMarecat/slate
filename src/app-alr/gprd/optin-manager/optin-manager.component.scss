@@ -1,3 +1,4 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
 @import '../../scss/theme';
 
 .form-wrapper {
@@ -7,10 +8,18 @@
 
     .mat-card {
       min-width: 250px;
-      max-width: 400px;
-
-      .mat-slide-toggle {
+      @include media-breakpoint-up(xs) {
+        max-width: 300px;
       }
+      @include media-breakpoint-up(sm) {
+        max-width: 300px;
+      }
+      @include media-breakpoint-up(md) {
+        max-width: 600px;
+      }
+    }
+    mat-slide-toggle {
+      display: block;
     }
   }
 }

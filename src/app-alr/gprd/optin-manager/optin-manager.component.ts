@@ -28,7 +28,7 @@ export class OptinManagerComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSave() {
+  save() {
     if (this.form.valid) {
       this.alertService.show('gprd.optin.save.success');
     }
