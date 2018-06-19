@@ -5,6 +5,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../../app-hockey/environments/environment';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { AlertService } from '../popup/alert.service';
+import { MockAlertService } from '../popup/mock-alert.service';
 
 describe('AdminGuard', () => {
   beforeEach(() => {
@@ -13,9 +16,15 @@ describe('AdminGuard', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         AngularFireAuthModule,
-        RouterTestingModule
+        RouterTestingModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
       ],
-      providers: [AdminGuard]
+      providers: [
+        AdminGuard,
+        {provide: AlertService, useClass: MockAlertService},
+      ]
     });
   });
 
