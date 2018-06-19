@@ -4,12 +4,17 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { adminsID } from './admin';
 import { map, take } from 'rxjs/internal/operators';
+import { TranslateService } from '@ngx-translate/core';
+import { AlertService } from 'shared/popup/alert.service';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
   authorized: string[] = [];
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) {
+  constructor(private afAuth: AngularFireAuth,
+              private router: Router,
+              private translate: TranslateService,
+              private alertService: AlertService) {
     this.authorized = adminsID;
   }
 
@@ -23,7 +28,8 @@ export class AdminGuard implements CanActivate {
         })
       ).do(authenticated => {
         if (!authenticated) {
-          this.router.navigate(['/']);
+          this.alertService.show('admin.authentication.needed');
+          this.router.navigate([ '/' ]);
         }
       });
   }

@@ -1,5 +1,8 @@
 {
   "admin": {
+    "authentication": {
+      "needed": "authentification requise pour accéder à ce contenu"
+    },
     "title": {
       "article": {
         "title": "les articles",

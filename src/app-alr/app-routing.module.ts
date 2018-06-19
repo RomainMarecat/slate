@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { AdminGuard } from 'shared/guard/admin.guard';
 
 const routes: Routes = [{
     // On root we go to root. On other route we start with this route and go on children route
@@ -30,7 +31,11 @@ const routes: Routes = [{
   {
     path: 'admin',
     loadChildren: './../shared/admin/admin.module#AdminModule'
-  }
+  },
+  {
+    path: 'material',
+    loadChildren: './../shared/material/material.module#MaterialModule'
+  },
 ];
 
 @NgModule({

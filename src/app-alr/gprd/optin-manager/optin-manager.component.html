@@ -1,6 +1,6 @@
 <form class="form-wrapper"
       [formGroup]="form"
-      (ngSubmit)="onSave()">
+      (ngSubmit)="save()">
 
   <div class="content-wrapper">
 
@@ -44,7 +44,7 @@
                         fxLayoutAlign="center stretch">
         <button mat-raised-button
                 color="accent"
-                type="button"
+                type="submit"
                 role="button"
                 class="text-uppercase">
           {{ 'cta.save'|translate }}

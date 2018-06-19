@@ -31,13 +31,10 @@
           <mat-error *ngIf="form.get('email').invalid && form.get('email').value.length > 0"
                      [innerHtml]="'gprd.optin.error.invalid.email'|translate"></mat-error>
         </mat-form-field>
-        <mat-slide-toggle [formControl]="form.get('optinEmail')"
-                          class="mt-5 mat-slide-toggle">
-          {{ 'gprd.optin.toggle.email'|translate }}
-        </mat-slide-toggle>
       </mat-card-content>
 
-      <mat-card-actions fxLayout="row"
+      <mat-card-actions class="mt-5"
+                        fxLayout="row"
                         fxLayoutAlign="center stretch">
         <button mat-raised-button
                 color="accent"
