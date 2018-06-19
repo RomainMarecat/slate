@@ -28,42 +28,42 @@ export class SummaryComponent implements OnInit {
         title: 'Form Controls',
         groups: [{
             title: 'Autocomplete',
-            link: '/admin/material/form/component/autocomplete',
+            link: '/material/form/component/autocomplete',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Checkbox',
-            link: '/admin/material/form/component/checkbox',
+            link: '/material/form/component/checkbox',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Datepicker',
-            link: '/admin/material/form/component/datepicker',
+            link: '/material/form/component/datepicker',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Input',
-            link: '/admin/material/form/component/input',
+            link: '/material/form/component/input',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Radio Button',
-            link: '/admin/material/form/component/radio-button',
+            link: '/material/form/component/radio-button',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Select',
-            link: '/admin/material/form/component/select',
+            link: '/material/form/component/select',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Slider',
-            link: '/admin/material/form/component/slider',
+            link: '/material/form/component/slider',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Slide toggle',
-            link: '/admin/material/form/component/slide-toggle',
+            link: '/material/form/component/slide-toggle',
             image: '/assets/images/icons/apple-icon.png'
           },
         ]
@@ -72,17 +72,17 @@ export class SummaryComponent implements OnInit {
         title: 'Navigation',
         groups: [{
             title: 'Menu',
-            link: '/admin/material/navigation/component/menu',
+            link: '/material/navigation/component/menu',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Sidenav',
-            link: '/admin/material/navigation/component/sidenav',
+            link: '/material/navigation/component/sidenav',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Toolbar',
-            link: '/admin/material/navigation/component/toolbar',
+            link: '/material/navigation/component/toolbar',
             image: '/assets/images/icons/apple-icon.png'
           },
         ]
@@ -91,37 +91,37 @@ export class SummaryComponent implements OnInit {
         title: 'Layout',
         groups: [{
             title: 'Card',
-            link: '/admin/material/layout/component/card',
+            link: '/material/layout/component/card',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Divider',
-            link: '/admin/material/layout/component/divider',
+            link: '/material/layout/component/divider',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Expansion Panel',
-            link: '/admin/material/layout/component/expansion-panel',
+            link: '/material/layout/component/expansion-panel',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Grid list',
-            link: '/admin/material/layout/component/grid-list',
+            link: '/material/layout/component/grid-list',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'List',
-            link: '/admin/material/layout/component/list',
+            link: '/material/layout/component/list',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Stepper',
-            link: '/admin/material/layout/component/stepper',
+            link: '/material/layout/component/stepper',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Tabs',
-            link: '/admin/material/layout/component/tabs',
+            link: '/material/layout/component/tabs',
             image: '/assets/images/icons/apple-icon.png'
           }
         ]
@@ -130,32 +130,32 @@ export class SummaryComponent implements OnInit {
         title: 'Buttons & Indicators',
         groups: [{
             title: 'Button',
-            link: '/admin/material/button-indicators/component/button',
+            link: '/material/button-indicators/component/button',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Button Toggle',
-            link: '/admin/material/button-indicators/component/button-toggle',
+            link: '/material/button-indicators/component/button-toggle',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Chips',
-            link: '/admin/material/button-indicators/component/chips',
+            link: '/material/button-indicators/component/chips',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Icon',
-            link: '/admin/material/button-indicators/component/icon',
+            link: '/material/button-indicators/component/icon',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Progress spinner',
-            link: '/admin/material/button-indicators/component/progress-spinner',
+            link: '/material/button-indicators/component/progress-spinner',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Progress bar',
-            link: '/admin/material/button-indicators/component/progress-bar',
+            link: '/material/button-indicators/component/progress-bar',
             image: '/assets/images/icons/apple-icon.png'
           }
         ]
@@ -164,17 +164,17 @@ export class SummaryComponent implements OnInit {
         title: 'Popups & Modals',
         groups: [{
             title: 'Dialog',
-            link: '/admin/material/popup/component/dialog',
+            link: '/material/popup/component/dialog',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Snackbar',
-            link: '/admin/material/popup/component/snackbar',
+            link: '/material/popup/component/snackbar',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Tooltip',
-            link: '/admin/material/popup/component/tooltip',
+            link: '/material/popup/component/tooltip',
             image: '/assets/images/icons/apple-icon.png'
           }
         ]
@@ -183,17 +183,17 @@ export class SummaryComponent implements OnInit {
         title: 'Datatable',
         groups: [{
             title: 'Paginator',
-            link: '/admin/material/datatable/component/paginator',
+            link: '/material/datatable/component/paginator',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Sort header',
-            link: '/admin/material/datatable/component/sort-header',
+            link: '/material/datatable/component/sort-header',
             image: '/assets/images/icons/apple-icon.png'
           },
           {
             title: 'Table',
-            link: '/admin/material/datatable/component/table',
+            link: '/material/datatable/component/table',
             image: '/assets/images/icons/apple-icon.png'
           }
         ]
