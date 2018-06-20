@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import { AlertService } from '../../../popup/alert.service';
 import { DocumentReference } from '@firebase/firestore-types';
 import { PartnerFormType } from '../../shared/partner/form-partner';
 import { PartnerService } from 'shared/partner/partner.service';
 import { Partner } from 'shared/partner/partner';
+import { AlertService } from 'shared/popup/alert.service';
 
 @Component({
   selector: 'app-partner-edit',
@@ -16,17 +16,17 @@ export class PartnerEditComponent implements OnInit {
   @Input() showBackButton = true;
 
   form: FormGroup;
+
   partner: Partner;
-  _publication = true;
 
   constructor(private partnerService: PartnerService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private alertService: AlertService) {
+    this.createForm();
   }
 
   ngOnInit() {
-    this.createForm();
     this.getPartner();
   }
 
@@ -52,9 +52,6 @@ export class PartnerEditComponent implements OnInit {
   }
 
   savePartner() {
-    this.form.patchValue({
-      published: this._publication
-    });
     if (this.form.valid) {
       this.partner = {...this.partner, ...this.form.value};
       if (this.partner.key) {
@@ -84,37 +81,5 @@ export class PartnerEditComponent implements OnInit {
   createForm() {
     const formType = new PartnerFormType(this.partner);
     this.form = formType.getForm();
-  }
-
-  get name() {
-    return this.form.get('name');
-  }
-
-  set name(name) {
-    this.form.patchValue({name: name});
-  }
-
-  get website() {
-    return this.form.get('website');
-  }
-
-  set website(website) {
-    this.form.patchValue({website: website});
-  }
-
-  get published() {
-    return this.form.get('published');
-  }
-
-  set published(published) {
-    this.form.patchValue({published: published});
-  }
-
-  get publication() {
-    return this._publication;
-  }
-
-  set publication(publication) {
-    this._publication = publication;
   }
 }

@@ -18,7 +18,6 @@ export class CmsDetailAddComponent implements OnInit {
   cmsDetail: CmsDetail;
   cmsKey: string;
   editorConfig: any;
-  content: string;
 
   private static createForm(): FormGroup {
     return new FormGroup({
@@ -75,7 +74,6 @@ export class CmsDetailAddComponent implements OnInit {
   }
 
   saveCmsDetail() {
-    this.form.patchValue({'content': this.content});
     if (this.form.valid === true && this.cmsKey !== null) {
       this.cmsDetail = this.form.value;
       this.cmsDetail.cms = this.cmsKey;

@@ -266,14 +266,16 @@
     "optin": {
       "title": {
         "email": "nous rejoindre",
-        "manager": "confidentialité"
+        "manager": "confidentialité",
+        "chirstmas": "soldes de noël"
       },
       "save": {
         "success": "souscription avec succès"
       },
       "subtitle": {
         "email": "bienvenue dans notre monde",
-        "manager": "gérer mes préférences"
+        "manager": "gérer mes préférences",
+        "chirstmas": "souscrire aux prochains"
       },
       "button": {
         "email": "souscrire"

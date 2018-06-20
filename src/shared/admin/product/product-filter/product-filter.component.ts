@@ -11,6 +11,7 @@ export class ProductFilterComponent implements OnInit {
   columnSelected = 'translations.fr';
   columns: any;
   filterText = '';
+  selected = false;
 
   constructor() {}
 

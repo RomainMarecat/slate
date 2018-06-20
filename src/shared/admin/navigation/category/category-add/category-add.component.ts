@@ -29,13 +29,8 @@ export class CategoryAddComponent implements OnInit {
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
 
-  // ngModel attributes
-  _publication: boolean;
-  _rootModel: string;
-
   constructor(private categoryService: CategoryService, private alertService: AlertService) {
-    this._publication = true;
-    this._rootModel = '';
+    this.createForm();
   }
 
   ngOnInit() {
@@ -64,7 +59,6 @@ export class CategoryAddComponent implements OnInit {
     ];
     this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
     this.categories$ = this.categoryService.getCategories();
-    this.createForm();
 
     this.form.valueChanges
       .debounceTime(1000)
@@ -119,7 +113,6 @@ export class CategoryAddComponent implements OnInit {
 
   saveCategory() {
     this.isLoading = true;
-    this.form.patchValue({published: this._publication, root: this._rootModel});
     if (this.form.valid === true) {
       this.category = this.form.value;
       if (this.category.published === true) {
@@ -276,28 +269,12 @@ export class CategoryAddComponent implements OnInit {
     this.form.patchValue({root: root});
   }
 
-  get rootModel() {
-    return this._rootModel;
-  }
-
-  set rootModel(rootModel) {
-    this._rootModel = rootModel;
-  }
-
   get parent() {
     return this.form.get('parent');
   }
 
   set parent(parent) {
     this.form.patchValue({parent: parent});
-  }
-
-  get publication() {
-    return this._publication;
-  }
-
-  set publication(publication) {
-    this._publication = publication;
   }
 
   get published() {

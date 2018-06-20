@@ -57,9 +57,8 @@
             <div class="d-block mt-1">
               <label>{{ 'admin.label.attribute.type'|translate }}</label>
               <div class="mat-form-field">
-                <mat-radio-group [(ngModel)]="typeModel"
-                                 [formControl]="form.get('type')">
-                  <mat-radio-button [value]="'select'">
+                <mat-radio-group [formControl]="form.get('type')">
+                <mat-radio-button [value]="'select'">
                     {{'admin.label.attribute.select'|translate}}
                   </mat-radio-button>
                   <mat-radio-button [value]="'radio'">
@@ -77,8 +76,7 @@
             <div class="d-block mt-1">
               <label>{{ 'admin.label.attribute.order_by'|translate }}</label>
               <div class="mat-form-field">
-                <mat-radio-group [(ngModel)]="orderByModel"
-                                 [formControl]="form.get('order_by')">
+                <mat-radio-group [formControl]="form.get('order_by')">
                   <mat-radio-button [aria-label]="'name'|translate"
                                     checked
                                     [value]="'name'">
@@ -105,7 +103,6 @@
                   <input matInput
                          [placeholder]="'admin.placeholder.attribute.term'|translate"
                          name="term"
-                         [(ngModel)]="term"
                          [formControl]="form.get('term')"
                          (keypress.enter)="addTerm($event)"/>
                 </mat-form-field>

@@ -13,7 +13,7 @@ export class OptinNewsletterComponent implements OnInit {
 
   static getForm(): FormGroup {
     return new FormGroup({
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [ Validators.required ]),
       optinEmail: new FormControl(false),
     });
   }
@@ -24,7 +24,7 @@ export class OptinNewsletterComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSave() {
+  save() {
     if (this.form.valid) {
       this.alertService.show('gprd.optin.save.success');
     }

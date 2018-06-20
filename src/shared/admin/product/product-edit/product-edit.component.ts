@@ -46,8 +46,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   @ViewChild(ImageProductComponent) ImageProductComponent: ImageProductComponent;
   imageStorageConfig: any;
   downloadURL: string;
-  _publication = true;
-  _descriptionModel = '';
   _attributesModel: any[] = [];
   isSaving = false;
 
@@ -113,7 +111,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
         this.productService.getProduct(key)
           .subscribe((product: Product) => {
             this.product = product;
-            this.descriptionModel = product.description;
             this.createForm();
             this.createImageStorageConfig();
             this.product.offers.forEach((offerKey: string) => {
@@ -224,7 +221,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    */
   reset() {
     this.medias = [];
-    this._descriptionModel = '';
     this.selected = [];
     this.ImageProductComponent.clearUpload();
     this.form.reset({
@@ -244,10 +240,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    */
   saveProduct() {
     this.isSaving = true;
-    this.form.patchValue({
-      description: this._descriptionModel,
-      published: this._publication
-    });
     if (this.form.valid) {
       const offers = (this.form.value).offers;
       this.product = {
@@ -448,14 +440,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.form.patchValue({name: name});
   }
 
-  get descriptionModel() {
-    return this._descriptionModel;
-  }
-
-  set descriptionModel(description) {
-    this._descriptionModel = description;
-  }
-
   get description() {
     return this.form.get('description');
   }
@@ -478,14 +462,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   set fr(fr) {
     this.form.get('translations').patchValue({fr: fr});
-  }
-
-  get publication() {
-    return this._publication;
-  }
-
-  set publication(publication) {
-    this._publication = publication;
   }
 
   get published() {

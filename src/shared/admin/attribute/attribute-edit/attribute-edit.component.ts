@@ -25,13 +25,10 @@ export class AttributeEditComponent implements OnInit {
   columns: any;
   selected: string[] = [];
   isLoading: boolean;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
 
-  _typeModel = 'select';
   _termsModel: string[] = [];
-  _term = '';
-  _orderByModel = 'name';
 
   /**
    *
@@ -41,12 +38,13 @@ export class AttributeEditComponent implements OnInit {
    * @param attributeService
    */
   constructor(private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private alertService: AlertService,
-    private attributeService: AttributeService) {}
+              private router: Router,
+              private alertService: AlertService,
+              private attributeService: AttributeService) {
+    this.createForm();
+  }
 
   ngOnInit() {
-    this.createForm();
     this.getAttribute();
     this.observeUpdate();
   }
@@ -79,7 +77,7 @@ export class AttributeEditComponent implements OnInit {
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
-          this.form.patchValue({ name: value.name, slug: slug });
+          this.form.patchValue({name: value.name, slug: slug});
         }
       });
   }
@@ -93,8 +91,8 @@ export class AttributeEditComponent implements OnInit {
       translations: {
         fr: ''
       },
-      type: '',
-      order_by: '',
+      type: 'select',
+      order_by: 'name',
       terms: [],
     });
   }
@@ -106,12 +104,10 @@ export class AttributeEditComponent implements OnInit {
     }
 
     this.form.patchValue({
-      type: this._typeModel,
-      order_by: this._orderByModel,
       terms: this._termsModel
     });
     if (this.form.valid) {
-      this.attribute = { ...this.attribute, ...this.form.value };
+      this.attribute = {...this.attribute, ...this.form.value};
       if (this.attribute.key) {
         this.attributeService.updateAttribute(this.attribute)
           .then((doc) => {
@@ -138,9 +134,8 @@ export class AttributeEditComponent implements OnInit {
    * @param event
    */
   addTerm(event: any) {
-    this._termsModel.push(this._term);
-    this.form.patchValue({ terms: this._termsModel });
-    this._term = '';
+    this._termsModel.push(this.form.value.term);
+    this.form.patchValue({terms: this._termsModel, term: ''});
   }
 
   get name() {
@@ -148,7 +143,7 @@ export class AttributeEditComponent implements OnInit {
   }
 
   set name(name) {
-    this.form.patchValue({ name: name });
+    this.form.patchValue({name: name});
   }
 
   get slug() {
@@ -156,7 +151,7 @@ export class AttributeEditComponent implements OnInit {
   }
 
   set slug(slug) {
-    this.form.patchValue({ slug: slug });
+    this.form.patchValue({slug: slug});
   }
 
   get terms() {
@@ -164,15 +159,7 @@ export class AttributeEditComponent implements OnInit {
   }
 
   set terms(terms) {
-    this.form.patchValue({ terms: terms });
-  }
-
-  get type() {
-    return this.form.get('type');
-  }
-
-  set type(type) {
-    this.form.patchValue({ type: type });
+    this.form.patchValue({terms: terms});
   }
 
   get fr() {
@@ -180,15 +167,7 @@ export class AttributeEditComponent implements OnInit {
   }
 
   set fr(fr) {
-    this.form.get('translations').patchValue({ fr: fr });
-  }
-
-  get typeModel() {
-    return this._typeModel;
-  }
-
-  set typeModel(type) {
-    this._typeModel = type;
+    this.form.get('translations').patchValue({fr: fr});
   }
 
   get order_by() {
@@ -196,15 +175,7 @@ export class AttributeEditComponent implements OnInit {
   }
 
   set order_by(orderBy) {
-    this.form.patchValue({ order_by: orderBy });
-  }
-
-  get orderByModel() {
-    return this._orderByModel;
-  }
-
-  set orderByModel(orderByModel) {
-    this._orderByModel = orderByModel;
+    this.form.patchValue({order_by: orderBy});
   }
 
   set termsModel(model) {
@@ -213,13 +184,5 @@ export class AttributeEditComponent implements OnInit {
 
   get termsModel() {
     return this._termsModel;
-  }
-
-  set term(term) {
-    this._term = term;
-  }
-
-  get term() {
-    return this._term;
   }
 }
