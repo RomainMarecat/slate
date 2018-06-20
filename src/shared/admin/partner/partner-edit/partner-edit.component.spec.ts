@@ -33,7 +33,7 @@ describe('PartnerEditComponent', () => {
         }),
         SharedModule,
       ],
-      declarations: [ PartnerEditComponent ],
+      declarations: [PartnerEditComponent],
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: PartnerService, useClass: MockPartnerService}

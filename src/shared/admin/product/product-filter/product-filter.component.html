@@ -2,15 +2,20 @@
   <mat-card-content>
     <form fxLayout="row" fxLayoutAlign="space-around stretch" fxLayout.xs="column" fxLayoutAlign.xs="center center">
       <mat-form-field class="mat-form-field">
-        <mat-select placeholder="Filtrer sur une colonne" [(ngModel)]="columnSelected" name="column">
+        <mat-select placeholder="Filtrer sur une colonne"
+                    [(ngModel)]="columnSelected"
+                    name="column">
           <mat-option [value]="column?.prop" *ngFor="let column of columns">
             {{ column.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="mat-form-field" *ngIf="columnSelected !== 'published'">
-        <input matInput type="text" [(ngModel)]="filterText" placeholder="Entrer des mots clés"
-               (keyup)="updateFilter($event.target.value)" [ngModelOptions]="{standalone: true}">
+        <input matInput type="text"
+               [(ngModel)]="filterText"
+               placeholder="Entrer des mots clés"
+               (keyup)="updateFilter($event.target.value)"
+               [ngModelOptions]="{standalone: true}">
       </mat-form-field>
       <div>
         <button type="submit" mat-raised-button color="primary" (click)="updateFilter(filterText)">
@@ -18,12 +23,17 @@
         </button>
       </div>
       <div class="form-radio" *ngIf="columnSelected === 'published'">
-        <mat-radio-group name="published" [selected]="value ? published : unpublished" class="publication-radio-group"
-                         [value]="value" (change)="updateFilter($event.value)">
-          <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
+        <mat-radio-group name="published"
+                         class="publication-radio-group"
+                         [value]="selected"
+                         (change)="updateFilter($event.value)">
+          <mat-radio-button class="publication-radio-button"
+                            [value]="true" color="primary">
             <span class="text-success">Publié</span>
           </mat-radio-button>
-          <mat-radio-button #unpublished class="publication-radio-button" [value]="false" color="accent">
+          <mat-radio-button class="publication-radio-button"
+                            [value]="false"
+                            color="accent">
             <span class="text-danger">Non publié</span>
           </mat-radio-button>
         </mat-radio-group>

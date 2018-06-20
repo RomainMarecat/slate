@@ -12,6 +12,7 @@ import { SharedModule } from 'shared/shared.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MockAlertService } from 'shared/popup/mock-alert.service';
 import { AlertService } from 'shared/popup/alert.service';
+import { OptinNewsletter2Component } from '../optin-newsletter2/optin-newsletter2.component';
 
 describe('OptinListComponent', () => {
   let component: OptinListComponent;
@@ -34,7 +35,8 @@ describe('OptinListComponent', () => {
       declarations: [
         OptinListComponent,
         OptinManagerComponent,
-        OptinNewsletterComponent
+        OptinNewsletterComponent,
+        OptinNewsletter2Component
       ],
       providers: [
         {provide: AlertService, useClass: MockAlertService}

@@ -22,7 +22,7 @@ export class AttributeFormType {
             Validators.required
           ])
       }),
-      'type': new FormControl(attribute && attribute.type ? attribute.type : true, [
+      'type': new FormControl(attribute && attribute.type ? attribute.type : 'select', [
         Validators.required
       ]),
       'order_by': new FormControl(attribute && attribute.order_by ? attribute.order_by : 'name', [

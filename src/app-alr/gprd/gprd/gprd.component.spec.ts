@@ -13,6 +13,7 @@ import { SharedModule } from 'shared/shared.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MockAlertService } from 'shared/popup/mock-alert.service';
 import { AlertService } from 'shared/popup/alert.service';
+import { OptinModule } from '../optin/optin.module';
 
 describe('GprdComponent', () => {
   let component: GprdComponent;
@@ -26,6 +27,7 @@ describe('GprdComponent', () => {
         MatButtonModule,
         MatCardModule,
         NoopAnimationsModule,
+        OptinModule,
         RouterTestingModule,
         SharedModule,
         TranslateModule.forRoot({
@@ -33,10 +35,7 @@ describe('GprdComponent', () => {
         })
       ],
       declarations: [
-        GprdComponent,
-        OptinListComponent,
-        OptinManagerComponent,
-        OptinNewsletterComponent
+        GprdComponent
       ],
       providers: [
         {provide: AlertService, useClass: MockAlertService}

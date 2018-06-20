@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
@@ -22,19 +22,17 @@ export class MapEditComponent implements OnInit {
   formArea: FormGroup;
   map: Map;
   area: Area;
-  _publication = true;
-  _publicationArea = true;
 
   constructor(private mapService: MapService,
               private areaService: AreaService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private alertService: AlertService) {
+    this.createForm();
+    this.createAreaForm();
   }
 
   ngOnInit() {
-    this.createForm();
-    this.createAreaForm();
     this.getMap();
   }
 
@@ -68,9 +66,6 @@ export class MapEditComponent implements OnInit {
   }
 
   saveArea() {
-    this.formArea.patchValue({
-      published: this._publicationArea
-    });
     if (this.formArea.valid) {
       this.area = {...this.area, ...this.formArea.value};
       if (this.area.key) {
@@ -97,9 +92,6 @@ export class MapEditComponent implements OnInit {
   }
 
   saveMap() {
-    this.form.patchValue({
-      published: this._publication
-    });
     if (this.form.valid) {
       this.map = {...this.map, ...this.form.value};
       if (this.map.key) {
@@ -134,37 +126,5 @@ export class MapEditComponent implements OnInit {
   createAreaForm() {
     const formType = new AreaFormType(this.map);
     this.formArea = formType.getForm();
-  }
-
-  get name() {
-    return this.form.get('name');
-  }
-
-  set name(name) {
-    this.form.patchValue({name: name});
-  }
-
-  get published() {
-    return this.form.get('published');
-  }
-
-  set published(published) {
-    this.form.patchValue({published: published});
-  }
-
-  get publication() {
-    return this._publication;
-  }
-
-  set publication(publication) {
-    this._publication = publication;
-  }
-
-  get publicationArea() {
-    return this._publicationArea;
-  }
-
-  set publicationArea(publicationArea) {
-    this._publicationArea = publicationArea;
   }
 }

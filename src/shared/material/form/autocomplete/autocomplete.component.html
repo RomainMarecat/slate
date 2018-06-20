@@ -36,7 +36,6 @@
                i18n-placeholder="instructor selector placeholder"
                [matAutocomplete]="autoInstructor"
                [formControl]="instructorCtrl"
-               [ngModel]="instructorSelected"
                (ngModelChange)="onInstructorSelected($event)">
       </mat-form-field>
       <div class="instructor-select-container" class="white">

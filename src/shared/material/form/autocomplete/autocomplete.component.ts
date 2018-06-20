@@ -26,7 +26,6 @@ export class AutocompleteComponent implements OnInit {
 
   filteredStates: Observable<any[]>;
   filteredInstructors: any;
-  instructorSelected: any;
   instructors: Instructor[];
   states: State[];
 
