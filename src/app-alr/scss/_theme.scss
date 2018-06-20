@@ -31,8 +31,7 @@ $black: mat-palette($mat-grey, 900);
   .mat-raised-button,
   .mat-button,
   .mat-icon-button,
-  .mat-mini-fab
-  {
+  .mat-mini-fab {
     &.mat-primary {
       background-color: mat-color($primary, darker);
       color: mat-color($white);
@@ -47,6 +46,36 @@ $black: mat-palette($mat-grey, 900);
       background-color: mat-color($warn);
       color: mat-color($black);
     }
+  }
+}
+
+@mixin mat-form-field-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $foreground: map-get($theme, foreground);
+  $is-dark-theme: map-get($theme, is-dark);
+
+  .mat-form-field.mat-focused {
+    .mat-form-field-ripple {
+      background-color: white;
+
+      &.mat-accent {
+        background-color: white;
+      }
+
+      &.mat-warn {
+        background-color: white;
+      }
+    }
+  }
+
+
+  .black-white {
+    $primary: mat-color($white);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $foreground: mat-color($white);
   }
 }
 
@@ -75,6 +104,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @mixin custom-theme($theme) {
   @include mat-core-theme($theme);
   @include mat-button-theme($theme);
+  @include mat-form-field-theme($theme);
   @include mat-toolbar-theme($theme);
 }
 
