@@ -9,12 +9,14 @@ import { OptinNewsletterComponent } from './optin/optin-newsletter/optin-newslet
 import { OptinManagerComponent } from './optin/optin-manager/optin-manager.component';
 import { OptinNewsletter2Component } from './optin/optin-newsletter2/optin-newsletter2.component';
 import { OptinModule } from './optin/optin.module';
+import { HelpModule } from './help/help.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     OptinModule,
+    HelpModule,
     GprdRoutingModule
   ],
   declarations: [

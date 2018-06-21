@@ -4,6 +4,7 @@ import { AlertComponent } from './snackbar/alert.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { Angulartics2Module } from 'angulartics2';
 import { MatIconModule, MatDialogModule, MatButtonModule } from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { MatIconModule, MatDialogModule, MatButtonModule } from '@angular/materi
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    TranslateModule,
   ],
   entryComponents: [
     AlertComponent,
@@ -26,4 +28,5 @@ import { MatIconModule, MatDialogModule, MatButtonModule } from '@angular/materi
     DialogComponent,
   ]
 })
-export class PopupModule {}
+export class PopupModule {
+}

@@ -241,6 +241,7 @@
     "pay": "payer",
     "publish": "publier",
     "published": "publié",
+    "ok": "ok",
     "refresh": "rafraîchir",
     "remove": "supprimer",
     "save": "enregistrer",
@@ -263,6 +264,12 @@
   },
   "gprd": {
     "title": "RGPD",
+    "help": {
+      "block": {
+        "title": "RGPD",
+        "content": "l'email est destiné à des fins commercials. Vous serez contacté pour recevoir nos dernières promotions"
+      }
+    },
     "optin": {
       "title": {
         "email": "nous rejoindre",
