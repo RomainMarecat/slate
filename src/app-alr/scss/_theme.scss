@@ -55,28 +55,6 @@ $black: mat-palette($mat-grey, 900);
   $warn: map-get($theme, warn);
   $foreground: map-get($theme, foreground);
   $is-dark-theme: map-get($theme, is-dark);
-
-  .mat-form-field.mat-focused {
-    .mat-form-field-ripple {
-      background-color: white;
-
-      &.mat-accent {
-        background-color: white;
-      }
-
-      &.mat-warn {
-        background-color: white;
-      }
-    }
-  }
-
-
-  .black-white {
-    $primary: mat-color($white);
-    $accent: map-get($theme, accent);
-    $warn: map-get($theme, warn);
-    $foreground: mat-color($white);
-  }
 }
 
 @mixin mat-toolbar-theme($theme) {
