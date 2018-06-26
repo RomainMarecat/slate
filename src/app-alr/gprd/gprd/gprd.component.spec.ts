@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { GprdComponent } from './gprd.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OptinListComponent } from '../optin/optin-list/optin-list.component';
@@ -14,6 +14,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MockAlertService } from 'shared/popup/mock-alert.service';
 import { AlertService } from 'shared/popup/alert.service';
 import { OptinModule } from '../optin/optin.module';
+import { HelpModule } from '../help/help.module';
 
 describe('GprdComponent', () => {
   let component: GprdComponent;
@@ -28,8 +29,10 @@ describe('GprdComponent', () => {
         MatCardModule,
         NoopAnimationsModule,
         OptinModule,
+        HelpModule,
         RouterTestingModule,
         SharedModule,
+        MatIconModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
