@@ -7,15 +7,12 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 
 const routes: Routes = [ {
   path: 'component/menu',
-  canActivate: [ AdminGuard ],
   component: MenuComponent
 }, {
   path: 'component/sidenav',
-  canActivate: [ AdminGuard ],
   component: SidenavComponent
 }, {
   path: 'component/toolbar',
-  canActivate: [ AdminGuard ],
   component: ToolbarComponent
 }, ];
 

@@ -1,15 +1,22 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>
-      {{ 'gprd.help.block.title'|translate }}
-    </mat-card-title>
-  </mat-card-header>
+<div class="main-wrapper">
+  <mat-card class="mat-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h3>
+          {{ 'gprd.help.block.title'|translate }}
+        </h3>
+      </mat-card-title>
+    </mat-card-header>
 
-  <mat-card-content>
-    <div class="content-wrapper">
-      <a (click)="openDialog($event)">
-        <mat-icon>help</mat-icon>
-      </a>
-    </div>
-  </mat-card-content>
-</mat-card>
+    <mat-card-content>
+      <div class="content-wrapper"
+           fxLayout="column"
+           fxLayoutAlign="center center">
+        <a (click)="openDialog($event)">
+          <mat-icon>help</mat-icon>
+        </a>
+        <span class="text-light-info">{{ 'gprd.help.content.link'|translate }}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

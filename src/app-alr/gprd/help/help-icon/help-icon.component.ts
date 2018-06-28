@@ -19,9 +19,9 @@ export class HelpIconComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '500px',
       data: {
-        title: 'gprd.help.block.content',
-        content: 'gprd.help.block.title',
-        cta: 'cta.ok'
+        title: 'gprd.help.dialog.title',
+        content: 'gprd.help.dialog.content',
+        cta: 'cta.understand'
       }
     });
 

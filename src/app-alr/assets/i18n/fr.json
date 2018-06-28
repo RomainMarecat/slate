@@ -249,6 +249,7 @@
     "subscribe": "souscrire",
     "take_meeting": "prendre rendez-vous",
     "toggle": "changer",
+    "understand": "j'ai compris",
     "unpublish": "dépublier",
     "unpublished": "dépublié"
   },
@@ -266,8 +267,15 @@
     "title": "RGPD",
     "help": {
       "block": {
-        "title": "RGPD",
+        "title": "bulle d'information",
         "content": "l'email est destiné à des fins commercials. Vous serez contacté pour recevoir nos dernières promotions"
+      },
+      "dialog": {
+        "title": "utilisation de l'email",
+        "content": "l'email est destiné à des fins commercials. Vous serez contacté pour recevoir nos dernières promotions"
+      },
+      "content": {
+        "link": "cliquer sur la bulle d'info pour ouvrir les conditions"
       }
     },
     "optin": {

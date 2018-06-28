@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { SummaryComponent } from './summary/summary.component';
 
 const routes: Routes = [{
-    path: '',
-    component: SummaryComponent
-  },
+  path: '',
+  component: SummaryComponent
+},
   {
     path: 'button-indicators',
     loadChildren: './button/button.module#ButtonModule'
@@ -36,4 +36,5 @@ const routes: Routes = [{
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MaterialRoutingModule {}
+export class MaterialRoutingModule {
+}

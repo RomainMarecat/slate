@@ -17,7 +17,7 @@ export class Instructor {
 @Component({
   selector: 'app-autocomplete',
   templateUrl: './autocomplete.component.html',
-  styleUrls: [ './autocomplete.component.scss' ]
+  styleUrls: ['./autocomplete.component.scss']
 })
 export class AutocompleteComponent implements OnInit {
 
@@ -45,7 +45,7 @@ export class AutocompleteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.states = [ {
+    this.states = [{
       name: 'Arkansas',
       population: '2.978M',
       flag: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Arkansas.svg'
@@ -67,7 +67,7 @@ export class AutocompleteComponent implements OnInit {
       }
     ];
 
-    this.instructors = [ {
+    this.instructors = [{
       firstname: 'Kara',
       lastname: 'Evans',
       picture: 'http://placehold.it/32x32'
@@ -97,7 +97,7 @@ export class AutocompleteComponent implements OnInit {
 
   filterStates(name: string): State[] {
     return this.states.filter(state =>
-    state.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
+      state.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 
   filterInstructors(val: string): Instructor[] {

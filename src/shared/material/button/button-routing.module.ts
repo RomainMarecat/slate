@@ -10,32 +10,26 @@ import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.co
 
 const routes: Routes = [ {
   path: 'component/button',
-  canActivate: [ AdminGuard ],
   component: ButtonComponent
 },
   {
     path: 'component/button-toggle',
-    canActivate: [ AdminGuard ],
     component: ButtonToggleComponent
   },
   {
     path: 'component/chips',
-    canActivate: [ AdminGuard ],
     component: ChipsComponent
   },
   {
     path: 'component/icon',
-    canActivate: [ AdminGuard ],
     component: IconComponent
   },
   {
     path: 'component/progress-bar',
-    canActivate: [ AdminGuard ],
     component: ProgressBarComponent
   },
   {
     path: 'component/progress-spinner',
-    canActivate: [ AdminGuard ],
     component: ProgressSpinnerComponent
   },
 ];
