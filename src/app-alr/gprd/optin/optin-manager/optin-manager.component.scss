@@ -8,14 +8,8 @@
 
     .mat-card {
       min-width: 250px;
-      @include media-breakpoint-up(xs) {
-        max-width: 300px;
-      }
-      @include media-breakpoint-up(sm) {
-        max-width: 300px;
-      }
-      @include media-breakpoint-up(md) {
-        max-width: 600px;
+      height: 430px;
+      .mat-card-content {
       }
     }
     mat-slide-toggle {

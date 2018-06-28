@@ -5,7 +5,9 @@
   <div class="content-wrapper">
 
     <mat-card class="mat-card">
-      <mat-card-header class="mat-card-header">
+      <mat-card-header class="mat-card-header"
+                       fxLayout="column"
+                       fxLayoutAlign="start center">
         <mat-card-title>
           <h3 class="text-uppercase">{{ 'gprd.optin.title.email'|translate}}</h3>
         </mat-card-title>
@@ -15,7 +17,9 @@
           </h4>
         </mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content class="mat-card-content"
+                        fxLayout="column"
+                        fxLayoutAlign="start center">
         <mat-form-field appearance="outline">
           <mat-label>{{ 'gprd.optin.label.email'|translate }}</mat-label>
           <input matInput

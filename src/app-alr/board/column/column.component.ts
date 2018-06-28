@@ -79,7 +79,6 @@ export class ColumnComponent implements OnInit {
 
   updateCardsOrder(element: HTMLElement, target: HTMLElement) {
     this.cards.forEach((c: Card, index: number) => {
-      // console.log(c);
       if (c && c.order !== (index + 1) * 1000) {
         if (target.attributes.getNamedItem('column-id').value !== element.attributes.getNamedItem('column-id').value) {
           c.columnId = target.attributes.getNamedItem('column-id').value;

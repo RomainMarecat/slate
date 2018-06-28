@@ -6,12 +6,13 @@
     padding-top: 20px;
 
     .mat-card {
+      min-width: 250px;
+      height: 430px;
       .mat-card-header {
         padding: 20px 0;
       }
-      min-width: 250px;
-      max-width: 400px;
-
+      .mat-card-content {
+      }
     }
   }
 }
