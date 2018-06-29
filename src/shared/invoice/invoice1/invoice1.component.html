@@ -1,0 +1,170 @@
+<div class="main-wrapper">
+
+  <div class="heading-wrapper p-5"
+       fxLayout="row"
+       fxLayoutAlign="start center"
+       fxLayout.xs="column"
+       fxLayoutAlign.xs="start center">
+
+    <h2>{{ 'invoices.invoice1.title'|translate }}</h2>
+    <a routerLink="/invoices" class="m-2">
+      <mat-icon color="primary"
+                [matTooltip]="'cta.back_to_invoice_list'|translate">home
+      </mat-icon>
+    </a>
+  </div>
+
+  <div class="content-wrapper p-5">
+    <mat-card>
+      <div class="header-container"
+           fxLayout="row"
+           fxLayoutAlign="space-around stretch"
+           fxLayout.xs="column"
+           fxLayoutAlign.xs="start center">
+        <mat-card-header>
+          <mat-card-title>
+            <h3 class="text-uppercase">
+              {{ 'invoices.invoice1.content.title'|translate }}
+            </h3>
+          </mat-card-title>
+
+        </mat-card-header>
+        <mat-card-header>
+          <mat-card-title>
+            <h4 class="text-capitalize">
+              {{ 'invoices.invoice1.content.company.name'|translate }}
+            </h4>
+          </mat-card-title>
+          <mat-card-subtitle [innerHTML]="'invoices.invoice1.content.company.address'|translate">
+          </mat-card-subtitle>
+        </mat-card-header>
+      </div>
+      <div class="spacer">
+        <hr>
+      </div>
+      <mat-card-content>
+        <div class="content-heading-wrapper"
+             fxLayout="row"
+             fxLayoutAlign="space-around stretch"
+             fxLayout.xs="row wrap"
+             fxLayoutAlign="space-around stretch">
+          <mat-list>
+            <mat-list-item>
+              <span>{{ 'invoices.invoice1.content.invoice_id.label'|translate }} :</span>
+              <strong>&nbsp;{{ 'invoices.invoice1.content.invoice_id.data'|translate }}</strong>
+            </mat-list-item>
+            <mat-list-item>
+              <span>{{ 'invoices.invoice1.content.date.label'|translate }} :</span>
+              <strong>&nbsp;{{ 'invoices.invoice1.content.date.data'|translate }}</strong>
+            </mat-list-item>
+            <mat-list-item>
+              <span>{{ 'invoices.invoice1.content.created_at.label'|translate }} :</span>
+              <strong>&nbsp;{{ 'invoices.invoice1.content.created_at.data'|translate }}</strong>
+            </mat-list-item>
+          </mat-list>
+          <mat-list class="mat-list address">
+            <mat-list-item>
+              <strong>{{ 'invoices.invoice1.content.invoice.name'|translate }}</strong>
+            </mat-list-item>
+            <mat-list-item>
+              <span>{{ 'invoices.invoice1.content.invoice.address'|translate }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span>{{ 'invoices.invoice1.content.invoice.zipcode'|translate }}&nbsp;{{ 'invoices.invoice1.content.invoice.city'|translate }},&nbsp;{{ 'invoices.invoice1.content.invoice.country'|translate }}</span>
+            </mat-list-item>
+          </mat-list>
+          <mat-list class="mat-list address">
+            <mat-list-item>
+              <strong>{{ 'invoices.invoice1.content.delivery.name'|translate }}</strong>
+            </mat-list-item>
+            <mat-list-item>
+              <span>{{ 'invoices.invoice1.content.delivery.address'|translate }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span>{{ 'invoices.invoice1.content.delivery.zipcode'|translate }}&nbsp;{{ 'invoices.invoice1.content.delivery.city'|translate }},&nbsp;{{ 'invoices.invoice1.content.delivery.country'|translate }}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div class="spacer">
+          <hr>
+        </div>
+        <div class="table-wrapper">
+          <table mat-table
+                 class="products w-100"
+                 [dataSource]="dataSource">
+
+            <!-- key Column -->
+            <ng-container matColumnDef="key">
+              <th mat-header-cell *matHeaderCellDef> {{ 'invoices.invoice1.content.id'|translate }}</th>
+              <td mat-cell *matCellDef="let element"> {{element.key}}</td>
+            </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> {{ 'invoices.invoice1.content.name'|translate }}</th>
+              <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef> {{ 'invoices.invoice1.content.quantity'|translate }}</th>
+              <td mat-cell *matCellDef="let element"> x {{ element.quantity }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="unit_price">
+              <th mat-header-cell *matHeaderCellDef> {{ 'invoices.invoice1.content.unit_price'|translate }}</th>
+              <td mat-cell *matCellDef="let element">
+                {{element.price}} {{'invoices.invoice1.content.euro'|translate}}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+              <th mat-header-cell *matHeaderCellDef> {{ 'invoices.invoice1.content.amount'|translate }}</th>
+              <td mat-cell *matCellDef="let element">
+                <strong>
+                  {{element.price * element.quantity }}
+                  {{'invoices.invoice1.content.euro'|translate}}</strong>
+              </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+
+        <div class="total-wrapper"
+             fxLayout="row"
+             fxLayoutAlign="end stretch">
+          <div class="total-items-wrapper"
+               fxLayout="row"
+               fxLayoutAlign="space-between stretch">
+            <mat-list>
+              <mat-list-item>
+                <strong>{{ 'invoices.invoice1.content.subtotal'|translate }}</strong>
+              </mat-list-item>
+              <mat-list-item>
+                <strong>{{ 'invoices.invoice1.content.fees'|translate }}</strong>
+              </mat-list-item>
+              <mat-list-item>
+                <strong class="total">{{ 'invoices.invoice1.content.total'|translate }}</strong>
+              </mat-list-item>
+            </mat-list>
+            <mat-list>
+              <mat-list-item>
+                <span>{{ subtotal }}&nbsp;{{'invoices.invoice1.content.euro'|translate}}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span>{{ fees }}&nbsp;{{'invoices.invoice1.content.euro'|translate}}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <h5><strong>{{ total }}&nbsp;{{'invoices.invoice1.content.euro'|translate}}</strong></h5>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+</div>

@@ -36,7 +36,7 @@ const routes: Routes = [{
   {
     path: 'component/tabs',
     component: TabsComponent
-  },];
+  }, ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

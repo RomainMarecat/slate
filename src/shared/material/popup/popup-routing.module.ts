@@ -14,7 +14,7 @@ const routes: Routes = [{
 }, {
   path: 'component/tooltip',
   component: TooltipComponent
-},];
+}, ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

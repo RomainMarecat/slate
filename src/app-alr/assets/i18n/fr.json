@@ -230,6 +230,7 @@
     "add-to-cart": "ajouter au panier",
     "learn-more": "en savoir plus",
     "back_to_home": "retour à la l'accueil",
+    "back_to_invoice_list": "retour à la liste des facturations",
     "buy": "acheter",
     "booking": "réserver",
     "choose": "choisir",
@@ -245,6 +246,7 @@
     "refresh": "rafraîchir",
     "remove": "supprimer",
     "save": "enregistrer",
+    "show": "voir",
     "send": "envoyer",
     "subscribe": "souscrire",
     "take_meeting": "prendre rendez-vous",
@@ -259,7 +261,8 @@
         "material": "Composant Material",
         "board": "Tableau de bord",
         "chart": "Dashboard",
-        "gprd": "RGPD"
+        "gprd": "RGPD",
+        "invoice": "Facturation"
       }
     }
   },
@@ -318,6 +321,61 @@
           "email": "le champs email est requis"
         }
       }
+    }
+  },
+  "invoices": {
+    "invoice1": {
+      "title": "facture v1",
+      "content": {
+        "id": "code barre",
+        "name": "description",
+        "unit_price": "prix",
+        "amount": "montant",
+        "quantity": "quantité",
+        "subtotal": "sous-total",
+        "fees": "frais de livraison",
+        "total": "total",
+        "euro": "€",
+        "invoice": {
+          "name": "Teddy Bear",
+          "address": "10 rue de la paix",
+          "zipcode": "42800",
+          "city": "Rive de Gier",
+          "country": "France"
+        },
+        "delivery": {
+          "name": "Teddy Bear",
+          "address": "10 rue de la paix",
+          "zipcode": "42800",
+          "city": "Rive de Gier",
+          "country": "France"
+        },
+        "invoice_id": {
+          "data": "16582699",
+          "label": "numéro de facture"
+        },
+        "date": {
+          "data": "12/01/2018",
+          "label": "date de la vente"
+        },
+        "created_at": {
+          "data": "12/01/2018",
+          "label": "date de facturation"
+        },
+        "title": "facture",
+        "company": {
+          "name": "magic mouse",
+          "address": "36 avenue de la république, <br> 42800 Rive de Gier, France"
+        }
+      }
+    },
+    "title": {
+      "invoice1": "facturation v1",
+      "invoice2": "facturation v2"
+    },
+    "action": {
+      "invoice1": "facturation v1",
+      "invoice2": "facturation v2"
     }
   },
   "menu": {

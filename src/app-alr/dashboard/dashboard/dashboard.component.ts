@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
       {name: 'dashboard.features.name.board', img: '/assets/images/board.jpg', url: '/boards'},
       {name: 'dashboard.features.name.chart', img: '/assets/images/chart.jpg', url: '/charts'},
       {name: 'dashboard.features.name.gprd', img: '/assets/images/gprd.jpg', url: '/gprd'},
+      {name: 'dashboard.features.name.invoice', img: '/assets/images/invoice.jpg', url: '/invoices'},
     ];
   }
 

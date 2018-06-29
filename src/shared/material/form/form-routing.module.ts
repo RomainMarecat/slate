@@ -38,7 +38,7 @@ const routes: Routes = [{
   }, {
     path: 'component/slide-toggle',
     component: SlideToggleComponent
-  },];
+  }, ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

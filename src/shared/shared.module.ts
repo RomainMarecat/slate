@@ -27,7 +27,7 @@ import {
   MatStepperModule,
   MatRadioModule,
   MatDialogModule,
-  MatChipsModule, MatProgressBarModule, MatSlideToggleModule
+  MatChipsModule, MatProgressBarModule, MatSlideToggleModule, MatTableModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { SlackModule } from './slack/slack.module';
@@ -58,7 +58,8 @@ import { PipeModule } from './pipe/pipe.module';
 import { SessionModule } from './session/session.module';
 import { CartModule } from './cart/cart.module';
 import { CmsModule } from './cms/cms.module';
-import { FaqModule } from 'shared/faq/faq.module';
+import { FaqModule } from './faq/faq.module';
+import { InvoiceModule } from './invoice/invoice.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -92,6 +93,7 @@ export class ConfigService {
     HammerModule,
     HttpClientModule,
     ImageCropperModule,
+    InvoiceModule,
     LoaderModule,
     MapModule,
     MatAutocompleteModule,
@@ -116,6 +118,7 @@ export class ConfigService {
     MatExpansionModule,
     MatMenuModule,
     MatCommonModule,
+    MatTableModule,
     MatTooltipModule,
     MatRadioModule,
     MatStepperModule,
@@ -151,6 +154,7 @@ export class ConfigService {
     HammerModule,
     HttpClientModule,
     ImageCropperModule,
+    InvoiceModule,
     LoaderModule,
     MapModule,
     MatAutocompleteModule,
@@ -176,6 +180,7 @@ export class ConfigService {
     MatMenuModule,
     MatCommonModule,
     MatTooltipModule,
+    MatTableModule,
     MatRadioModule,
     MatStepperModule,
     MediaModule,
