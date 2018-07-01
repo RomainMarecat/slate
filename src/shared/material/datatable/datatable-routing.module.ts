@@ -15,7 +15,7 @@ const routes: Routes = [{
   {
     path: 'component/table',
     component: TableComponent
-  },];
+  }, ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

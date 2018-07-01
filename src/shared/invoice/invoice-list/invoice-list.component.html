@@ -1,0 +1,25 @@
+<div class="content-wrapper"
+     fxLayout="row wrap"
+     fxLayoutAlign="center stretch"
+     fxLayoutGap="20px">
+  <mat-card *ngFor="let card of cards">
+    <mat-card-header>
+      <mat-card-title class="p-5">
+        <h3 class="text-uppercase">{{ card.title|translate }}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="row"
+                      fxLayoutAlign="center stretch">
+      <mat-icon>{{ card.content }}</mat-icon>
+    </mat-card-content>
+    <mat-card-actions class="p-5"
+                      fxLayout="row"
+                      fxLayoutAlign="center stretch">
+      <a mat-raised-button
+         [routerLink]="'/invoices/' + card.link"
+         color="primary">
+        {{ card.action|translate }}
+      </a>
+    </mat-card-actions>
+  </mat-card>
+</div>
