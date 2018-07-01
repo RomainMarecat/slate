@@ -369,6 +369,52 @@
         }
       }
     },
+    "invoice2": {
+      "title": "facture v2",
+      "content": {
+        "thanks": "merci pour votre commande",
+        "id": "code barre",
+        "name": "description",
+        "unit_price": "prix",
+        "amount": "montant",
+        "quantity": "quantité",
+        "subtotal": "sous-total",
+        "fees": "frais de livraison",
+        "total": "total",
+        "euro": "€",
+        "invoice": {
+          "name": "Teddy Bear",
+          "address": "10 rue de la paix",
+          "zipcode": "42800",
+          "city": "Rive de Gier",
+          "country": "France"
+        },
+        "delivery": {
+          "name": "Teddy Bear",
+          "address": "10 rue de la paix",
+          "zipcode": "42800",
+          "city": "Rive de Gier",
+          "country": "France"
+        },
+        "invoice_id": {
+          "data": "16582699",
+          "label": "numéro de facture"
+        },
+        "date": {
+          "data": "12/01/2018",
+          "label": "date de la vente"
+        },
+        "created_at": {
+          "data": "12/01/2018",
+          "label": "date de facturation"
+        },
+        "title": "facture",
+        "company": {
+          "name": "magic mouse",
+          "address": "36 avenue de la république, <br> 42800 Rive de Gier, France"
+        }
+      }
+    },
     "title": {
       "invoice1": "facturation v1",
       "invoice2": "facturation v2"

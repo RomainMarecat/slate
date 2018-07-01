@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'shared/product/product';
+import { mockInvoiceProducts } from 'shared/product/mock-product';
 
 @Component({
   selector: 'app-invoice2',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Invoice2Component implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['key', 'name', 'unit_price', 'quantity', 'amount'];
+
+  dataSource: Array<Product> = Invoice2Component.getProducts();
+
+  total: number;
+  fees = 5.40;
+  subtotal: number;
+
+  static getProducts(): Product[] {
+    return mockInvoiceProducts;
+  }
+
+  constructor() {
+    this.getSubTotal();
+    this.getTotal();
+  }
 
   ngOnInit() {
   }
+
+  getTotal() {
+    this.total = this.dataSource.reduce((acc, next) => acc + (next.quantity * next.price), 0) + this.fees;
+  }
+
+  getSubTotal() {
+    this.subtotal = this.dataSource.reduce((acc, next) => acc + (next.quantity * next.price), 0);
+  }
+
 
 }

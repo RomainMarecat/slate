@@ -1,20 +1,18 @@
 <div class="main-wrapper">
 
-  <div class="heading-wrapper p-5"
+  <div class="heading-wrapper"
        fxLayout="row"
-       fxLayoutAlign="start center"
-       fxLayout.xs="column"
-       fxLayoutAlign.xs="start center">
-
-    <h2>{{ 'invoices.invoice1.title'|translate }}</h2>
+       fxLayoutAlign="start center">
     <a routerLink="/invoices" class="m-2">
       <mat-icon color="primary"
                 [matTooltip]="'cta.back_to_invoice_list'|translate">home
       </mat-icon>
     </a>
+    <h2>{{ 'invoices.invoice1.title'|translate }}</h2>
+
   </div>
 
-  <div class="content-wrapper p-5">
+  <div class="content-wrapper">
     <mat-card>
       <div class="header-container"
            fxLayout="row"
@@ -161,10 +159,7 @@
             </mat-list>
           </div>
         </div>
-
       </mat-card-content>
     </mat-card>
   </div>
-
-
 </div>
