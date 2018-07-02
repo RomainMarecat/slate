@@ -161,26 +161,53 @@
       </mat-card-content>
       <mat-card-actions fxLayout="column">
         <div class="term-wrapper">
-          <h4>Terms & conditions</h4>
-          <p>Lorem Ipsum doksp odqpsl qpdk.</p>
+          <h4 class="font-weight-bold text-capitalize">{{'invoices.invoice2.content.terms.label'|translate}}</h4>
+          <p class="terms-data">{{'invoices.invoice2.content.terms.data'|translate}}</p>
         </div>
         <div class="payment-wrapper">
-          <h4>Payment Info</h4>
-          <mat-list>
-            <mat-list-item>
-              <span>{{'invoices.invoice2.content.account'|translate}}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <span>{{'invoices.invoice2.content.card_number'|translate}}</span>
-            </mat-list-item>
-            <mat-list-item>
-              <strong>{{'invoices.invoice2.content.bank_detail'|translate}}</strong>
-            </mat-list-item>
-          </mat-list>
+          <h4 class="font-weight-bold text-capitalize">{{'invoices.invoice2.content.payment.label'|translate}}</h4>
+          <div class="transaction-wrapper"
+               fxLayout="row"
+               fxLayoutAlign="start stretch">
+            <mat-list>
+              <mat-list-item>
+                <strong>{{'invoices.invoice2.content.account.label'|translate}}&nbsp;:</strong>
+              </mat-list-item>
+              <mat-list-item>
+                <strong>{{'invoices.invoice2.content.card_number.label'|translate}}&nbsp;:</strong>
+              </mat-list-item>
+              <mat-list-item>
+                <strong>{{'invoices.invoice2.content.bank_detail.label'|translate}}&nbsp;:</strong>
+              </mat-list-item>
+            </mat-list>
+            <mat-list>
+              <mat-list-item>
+                <span>{{'invoices.invoice2.content.account.data'|translate}}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span>{{'invoices.invoice2.content.card_number.data'|translate}}</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span>{{'invoices.invoice2.content.bank_detail.data'|translate}}</span>
+              </mat-list-item>
+            </mat-list>
+          </div>
         </div>
       </mat-card-actions>
-      <mat-card-footer class="footer-wrapper">
-        <span>phone</span> | <span>address</span> | <span>website</span>
+      <div class="spacer">
+        <hr class="w-100">
+      </div>
+      <mat-card-footer class="footer-wrapper"
+                       fxLayout="row"
+                       fxLayoutAlign="end stretch">
+        <div>
+        <span class="item" [matTooltip]="'invoices.invoice2.content.phone.data'|translate">
+          {{ 'invoices.invoice2.content.phone.label'|translate }}</span>|
+          <span class="item" [matTooltip]="'invoices.invoice2.content.address.data'|translate">
+          {{ 'invoices.invoice2.content.address.label'|translate }}</span>|
+          <span class="item" [matTooltip]="'invoices.invoice2.content.website.data'|translate">
+          {{ 'invoices.invoice2.content.website.label'|translate }}</span>
+        </div>
       </mat-card-footer>
     </mat-card>
   </div>

@@ -75,6 +75,13 @@
         }
       }
 
+      .term-wrapper {
+        p.terms-data {
+          font-size: 10px;
+          max-width: 400px;
+        }
+      }
+
       .mat-list {
         &.address {
           mat-list-item {
@@ -89,6 +96,15 @@
           .total {
             font-size: x-large;
           }
+        }
+      }
+
+      .footer-wrapper {
+        .item {
+          font-size: 20px;
+          padding: 40px;
+          font-weight: bold;
+          text-transform: capitalize;
         }
       }
     }
