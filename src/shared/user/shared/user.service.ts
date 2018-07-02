@@ -3,10 +3,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
 import { User } from './user';
 import { Observable } from 'rxjs/Observable';
-import { AlertService } from '../popup/alert.service';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
 import { map, take } from 'rxjs/operators';
+import { AlertService } from 'shared/popup/alert.service';
 
 @Injectable()
 export class UserService {

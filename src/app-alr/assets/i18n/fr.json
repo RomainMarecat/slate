@@ -231,12 +231,16 @@
     "learn-more": "en savoir plus",
     "back_to_home": "retour à la l'accueil",
     "back_to_invoice_list": "retour à la liste des facturations",
+    "back_to_login_list": "retour à la liste des pages de connexion",
     "buy": "acheter",
     "booking": "réserver",
     "choose": "choisir",
     "delete": "supprimer",
     "next-available-slot": "prochaines disponibilités",
     "home": "accueil",
+    "login": "se connecter",
+    "remember_me": "se souvenir de moi",
+    "forgot_password": "mot de passe oublié",
     "back": "retour",
     "cancel": "annuler",
     "pay": "payer",
@@ -262,7 +266,8 @@
         "board": "Tableau de bord",
         "chart": "Dashboard",
         "gprd": "RGPD",
-        "invoice": "Facturation"
+        "invoice": "Facturation",
+        "user": "Utilisateur"
       }
     }
   },
@@ -325,7 +330,7 @@
   },
   "invoices": {
     "invoice1": {
-      "title": "facture v1",
+      "title": "facture style 1",
       "content": {
         "id": "code barre",
         "name": "description",
@@ -370,7 +375,7 @@
       }
     },
     "invoice2": {
-      "title": "facture v2",
+      "title": "facture style 2",
       "content": {
         "account": {
           "label": "titulaire de la carte",
@@ -447,12 +452,12 @@
       }
     },
     "title": {
-      "invoice1": "facturation v1",
-      "invoice2": "facturation v2"
+      "invoice1": "facturation style 1",
+      "invoice2": "facturation style 2"
     },
     "action": {
-      "invoice1": "facturation v1",
-      "invoice2": "facturation v2"
+      "invoice1": "facturation style 1",
+      "invoice2": "facturation style 2"
     }
   },
   "menu": {
@@ -503,6 +508,29 @@
     }
   },
   "user": {
+    "logins": {
+      "login1": {
+        "title": "connexion style 1",
+        "name": "connexion"
+      },
+      "login2": {
+        "name": "connexion style 2"
+      }
+    },
+    "list": {
+      "logins": {
+        "name": "pages de login",
+        "login1": {
+          "name": "login style 1"
+        },
+        "login2": {
+          "name": "login style 2"
+        }
+      },
+      "register": {
+        "name": "pages d'inscription"
+      }
+    },
     "access_denied": {
       "connect": "Il faut se connecter pour effectuer cette action"
     }

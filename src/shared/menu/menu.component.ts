@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SidenavService } from '../sidenav/sidenav.service';
-import { UserService } from '../user/user.service';
+import { UserService } from '../user/shared/user.service';
 import { MenuService } from './menu.service';
 import { Subscription } from 'rxjs/Subscription';
 

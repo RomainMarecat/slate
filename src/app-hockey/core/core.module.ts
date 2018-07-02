@@ -20,7 +20,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
-import { UserService } from '../../shared/user/user.service';
+import { UserService } from '../../shared/user/shared/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
 import { ObjectService } from '../../shared/util/object.service';
 import { DateService } from '../../shared/util/date.service';

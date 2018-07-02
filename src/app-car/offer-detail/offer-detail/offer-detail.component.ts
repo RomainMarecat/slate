@@ -11,7 +11,7 @@ import { OfferService } from '../../../shared/offer/offer.service';
 import { CarOffer } from '../../../shared/offer/offer';
 import { TranslateService } from '@ngx-translate/core';
 import { Comment } from '../../../shared/comment/comment';
-import { UserService } from '../../../shared/user/user.service';
+import { UserService } from '../../../shared/user/shared/user.service';
 import { CommentService } from '../../../shared/comment/comment.service';
 import * as moment from 'moment';
 

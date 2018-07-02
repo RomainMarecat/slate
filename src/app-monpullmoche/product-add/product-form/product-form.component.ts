@@ -3,7 +3,7 @@ import { Product } from '../../../shared/product/product';
 import { ClothingProduct } from '../../../shared/product/clothing-product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Media } from '../../../shared/media/media';
-import { UserService } from '../../../shared/user/user.service';
+import { UserService } from '../../../shared/user/shared/user.service';
 import { ImageProductComponent } from '../../../shared/media/cloudinary/image-product/image-product.component';
 
 @Component({

@@ -1,0 +1,19 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
+
+.content-wrapper {
+
+  margin: 20px 0;
+
+  .mat-card {
+    @include media-breakpoint-up(xs) {
+      margin: 10px 0;
+    }
+    @include media-breakpoint-up(sm) {
+      margin: 10px 0;
+    }
+    @include media-breakpoint-up(md) {
+      margin: 0;
+    }
+    max-width: 500px;
+  }
+}

@@ -60,6 +60,7 @@ import { CartModule } from './cart/cart.module';
 import { CmsModule } from './cms/cms.module';
 import { FaqModule } from './faq/faq.module';
 import { InvoiceModule } from './invoice/invoice.module';
+import { UserModule } from 'shared/user/user.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -134,7 +135,8 @@ export class ConfigService {
     RouterModule,
     SessionModule,
     SidenavModule,
-    TranslateModule
+    TranslateModule,
+    UserModule,
   ],
   exports: [
     ArticleModule,
@@ -196,7 +198,8 @@ export class ConfigService {
     SessionModule,
     SlackModule,
     SidenavModule,
-    TranslateModule
+    TranslateModule,
+    UserModule
   ],
   providers: [
     // Should not have providers for reason explained here

@@ -6,7 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartService } from '../shared/cart.service';
 import { Cart } from '../shared/cart';
 import { RoutingState } from '../../util/routing-state';
-import { User } from '../../user/user';
+import { User } from '../../user/shared/user';
 
 @Component({
   selector: 'app-cart-edit',

@@ -2,7 +2,7 @@ import { Component, TemplateRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClothingProduct } from '../../shared/product/clothing-product';
 import { ProductService } from '../../shared/product/product.service';
-import { UserService } from '../../shared/user/user.service';
+import { UserService } from '../../shared/user/shared/user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { AlertService } from '../../shared/popup/alert.service';
 import { NotificationService } from '../../shared/slack/notification.service';
