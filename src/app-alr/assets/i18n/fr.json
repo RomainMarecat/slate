@@ -372,6 +372,37 @@
     "invoice2": {
       "title": "facture v2",
       "content": {
+        "account": {
+          "label": "titulaire de la carte",
+          "data": "Kante"
+        },
+        "card_number": {
+          "label": "numéro de carte",
+          "data": "************6561"
+        },
+        "bank_detail": {
+          "data": "paiement accepté",
+          "label": "statut de transaction"
+        },
+        "terms": {
+          "label": "terms & conditions",
+          "data": "The content of the pages of this website is for your general information and use only. It is subject to change without notice. Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
+        },
+        "phone": {
+          "label": "téléphone",
+          "data": "0783465950"
+        },
+        "website": {
+          "label": "site web",
+          "data": "https://alr-384269.firebaseapp.com"
+        },
+        "address": {
+          "label": "adresse",
+          "data": "25 rue michelet 42800 Rive de Gier"
+        },
+        "payment": {
+          "label": "information de paiement"
+        },
         "thanks": "merci pour votre commande",
         "id": "code barre",
         "name": "description",
