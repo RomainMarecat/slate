@@ -22,7 +22,7 @@
         <div fxLayout="row"
              fxLayoutAlign="center stretch">
           <div class="avatar-wrapper">
-            <mat-icon mat-card-image>person</mat-icon>
+            <mat-icon>person</mat-icon>
           </div>
         </div>
 
@@ -40,53 +40,46 @@
 
           <mat-form-field appearance="outline"
                           class="mat-form-field">
-            <mat-label>email</mat-label>
+            <mat-label>{{ 'user.logins.login1.email.label'|translate }}</mat-label>
             <input matInput
+                   #inputEmail
                    type="email"
                    placeholder="Enter an email"
                    formControlName="email"
+                   autofocus
                    autocomplete="email">
             <mat-icon matPrefix>person</mat-icon>
             <mat-hint align="start">
-              <strong [innerHtml]="'Enter an email'|translate"></strong>
+              <strong>{{ 'user.logins.login1.email.hint'|translate }}</strong>
             </mat-hint>
-            <mat-error *ngIf="form.get('email').invalid && form.get('email').value.length === 0">
-              {{ 'Email can not be empty'|translate }}
+            <mat-error color="accent" *ngIf="form.get('email').hasError('required')">
+              <strong>{{ 'user.logins.login1.email.error.required'|translate }}</strong>
             </mat-error>
-            <mat-error *ngIf="form.get('email').invalid && form.get('email').value === null">
-              {{ 'Email can not be null'|translate }}
+            <mat-error color="accent" *ngIf="form.get('email').hasError('pattern')">
+              <strong>{{ 'user.logins.login1.email.error.pattern'|translate }}</strong>
             </mat-error>
-            <mat-error *ngIf="form.get('email').hasError('required')">
-              This field is required
+            <mat-error color="accent" *ngIf="form.get('email').hasError('minLength')">
+              <strong>{{ 'user.logins.login1.email.error.min'|translate }}</strong>
             </mat-error>
-            <mat-error *ngIf="form.get('email').hasError('pattern')">
-              Please enter a valid form.get('email') address
-            </mat-error>
-            <mat-error *ngIf="form.get('email').hasError('minLength')">
-              Please enter a greater email address than 3 caracters
-            </mat-error>
-            <mat-error *ngIf="form.get('email').hasError('maxLength')">
-              Please enter a smaller email address than 100 caracters
+            <mat-error color="accent" *ngIf="form.get('email').hasError('maxLength')">
+              <strong>{{ 'user.logins.login1.email.error.max'|translate }}</strong>
             </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline"
                           class="mat-form-field mt-3">
-            <mat-label>password</mat-label>
+            <mat-label>{{ 'user.logins.login1.password.label'|translate }}</mat-label>
             <input matInput
                    type="password"
-                   placeholder="Enter a password"
+                   [placeholder]="'user.logins.login1.password.placeholder'|translate"
                    formControlName="password"
                    autocomplete="current-password">
             <mat-icon matPrefix>lock</mat-icon>
             <mat-hint align="start">
-              <strong> {{ 'Enter a password'|translate }}</strong>
+              <strong>{{ 'user.logins.login1.password.hint'|translate }}</strong>
             </mat-hint>
-            <mat-error *ngIf="form.get('password').invalid && form.get('password').value.length === 0">
-              {{ 'Password can not be null'|translate }}
-            </mat-error>
-            <mat-error *ngIf="form.get('password').invalid && form.get('password').value.length > 0">
-              {{ 'Password is invalid'|translate }}
+            <mat-error color="accent" *ngIf="form.get('password').hasError('required')">
+              <strong>{{ 'user.logins.login1.password.error.required'|translate }}</strong>
             </mat-error>
           </mat-form-field>
 
