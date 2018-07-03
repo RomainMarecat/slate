@@ -3,7 +3,7 @@ import { NgcCookieConsentService, NgcStatusChangeEvent, NgcInitializeEvent } fro
 import { Subscription } from 'rxjs/Subscription';
 import { Meta, Title } from '@angular/platform-browser';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { UserService } from '../../shared/user/user.service';
+import { UserService } from '../../shared/user/shared/user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { Favicon } from '../../shared/favicon/favicon.service';

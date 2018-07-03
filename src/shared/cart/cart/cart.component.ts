@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../../user/user.service';
+import { UserService } from '../../user/shared/user.service';
 import { Cart } from 'shared/cart/shared/cart';
 import { MatStepper } from '@angular/material';
 import { CartPaymentComponent } from 'shared/cart/cart-payment/cart-payment.component';
 import { Payment } from 'shared/payment/shared/payment';
 import { CartConfirmationComponent } from 'shared/cart/cart-confirmation/cart-confirmation.component';
 import { CartEditComponent } from '../cart-edit/cart-edit.component';
-import { User } from '../../user/user';
+import { User } from '../../user/shared/user';
 import { CartService } from '../shared/cart.service';
 import { Filter } from 'shared/facet/filter/shared/filter';
 

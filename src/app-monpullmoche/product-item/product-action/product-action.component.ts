@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Product } from '../../../shared/product/product';
 import { ClothingProduct } from '../../../shared/product/clothing-product';
-import { UserService } from '../../../shared/user/user.service';
+import { UserService } from '../../../shared/user/shared/user.service';
 import { ScoreService } from '../../../shared/score/score.service';
 import { Score } from '../../../shared/score/score';
 import { AlertService } from '../../../shared/popup/alert.service';

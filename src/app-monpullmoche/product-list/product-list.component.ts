@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ProductService } from '../../shared/product/product.service';
 import { ClothingProduct } from '../../shared/product/clothing-product';
 import { Observable } from 'rxjs/Observable';
-import { UserService } from '../../shared/user/user.service';
+import { UserService } from '../../shared/user/shared/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';

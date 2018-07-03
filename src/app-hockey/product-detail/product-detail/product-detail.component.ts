@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../shared/product/product.service';
 import { CommentService } from '../../../shared/comment/comment.service';
 import { DeviceService } from '../../../shared/device/device.service';
-import { UserService } from '../../../shared/user/user.service';
+import { UserService } from '../../../shared/user/shared/user.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { HockeyProduct } from '../../../shared/product/hockey-product';
 import { Comment } from '../../../shared/comment/comment';

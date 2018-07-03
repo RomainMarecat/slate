@@ -18,8 +18,8 @@ import { ProductService } from '../../../shared/product/product.service';
 import { MockProductService } from '../../../shared/product/mock-product.service';
 import { MockMediaService } from '../../../shared/media/mock-media.service';
 import { MediaService } from '../../../shared/media/media.service';
-import { MockUserService } from '../../../shared/user/mock-user.service';
-import { UserService } from '../../../shared/user/user.service';
+import { MockUserService } from '../../../shared/user/shared/mock-user.service';
+import { UserService } from '../../../shared/user/shared/user.service';
 import { MediaModule } from '../../../shared/media/media.module';
 import { environment } from '../../environments/environment';
 

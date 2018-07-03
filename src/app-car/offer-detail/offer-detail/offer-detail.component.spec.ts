@@ -20,8 +20,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { MockCommentService } from '../../../shared/comment/mock-comment.service';
 import { CommentService } from '../../../shared/comment/comment.service';
-import { MockUserService } from '../../../shared/user/mock-user.service';
-import { UserService } from '../../../shared/user/user.service';
+import { MockUserService } from '../../../shared/user/shared/mock-user.service';
+import { UserService } from '../../../shared/user/shared/user.service';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 

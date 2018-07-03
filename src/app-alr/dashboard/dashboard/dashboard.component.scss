@@ -14,10 +14,10 @@
     @include media-breakpoint-up(md) {
       margin: 0;
     }
-    max-width: 500px;
+    width: 500px;
     .dashboard-image {
-      height: 200px;
+      height: 300px;
+      overflow-x: hidden;
     }
-
   }
 }

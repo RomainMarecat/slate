@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { AdminGuard } from 'shared/guard/admin.guard';
 
-const routes: Routes = [{
+const routes: Routes = [
+  {
     // On root we go to root. On other route we start with this route and go on children route
     path: '',
     redirectTo: '',
@@ -17,10 +17,16 @@ const routes: Routes = [{
   {
     path: 'boards',
     loadChildren: './board/board.module#BoardModule'
-  }, {
+  },
+  {
     path: 'charts',
     loadChildren: './chart/chart.module#ChartModule'
-  }, {
+  },
+  {
+    path: 'user',
+    loadChildren: './../shared/user/user.module#UserModule'
+  },
+  {
     path: 'gprd',
     loadChildren: './gprd/gprd.module#GprdModule'
   },
@@ -42,4 +48,5 @@ const routes: Routes = [{
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

@@ -11,9 +11,9 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { LoaderService } from '../../../loader/loader.service';
-import { UserService } from '../../../user/user.service';
+import { UserService } from '../../../user/shared/user.service';
 import { MockLoaderService } from '../../../loader/mock-loader.service';
-import { MockUserService } from '../../../user/mock-user.service';
+import { MockUserService } from '../../../user/shared/mock-user.service';
 import { MediaService } from '../../../media/media.service';
 import { MockMediaService } from '../../../media/mock-media.service';
 import { CategoryService } from '../../../category/category.service';

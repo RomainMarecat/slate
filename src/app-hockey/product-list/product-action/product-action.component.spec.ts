@@ -30,8 +30,8 @@ import {
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ProductActionComponent } from './product-action.component';
 import { MockProductService } from '../../../shared/product/mock-product.service';
-import { MockUserService } from '../../../shared/user/mock-user.service';
-import { UserService } from '../../../shared/user/user.service';
+import { MockUserService } from '../../../shared/user/shared/mock-user.service';
+import { UserService } from '../../../shared/user/shared/user.service';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { ScoreService } from '../../../shared/score/score.service';

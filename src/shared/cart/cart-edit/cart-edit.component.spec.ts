@@ -16,8 +16,8 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { CartService } from '../shared/cart.service';
 import { OrderService } from '../../order/shared/order.service';
 import { MockPaymentService } from '../../payment/shared/mock-payment.service';
-import { MockUserService } from '../../user/mock-user.service';
-import { UserService } from '../../user/user.service';
+import { MockUserService } from '../../user/shared/mock-user.service';
+import { UserService } from '../../user/shared/user.service';
 import { CartEditComponent } from './cart-edit.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RoutingState } from '../../util/routing-state';

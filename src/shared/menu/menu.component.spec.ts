@@ -5,8 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu.component';
-import { UserService } from '../user/user.service';
-import { MockUserService } from '../user/mock-user.service';
+import { UserService } from '../user/shared/user.service';
+import { MockUserService } from '../user/shared/mock-user.service';
 import {
   MatCardModule,
   MatToolbarModule,

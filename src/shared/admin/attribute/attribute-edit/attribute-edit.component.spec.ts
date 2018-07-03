@@ -18,7 +18,7 @@ import { MediaService } from '../../../media/media.service';
 import { MockMediaService } from '../../../media/mock-media.service';
 import { LoaderService } from '../../../loader/loader.service';
 import { MockNotificationService } from '../../../slack/mock-notification.service';
-import { UserService } from '../../../user/user.service';
+import { UserService } from '../../../user/shared/user.service';
 import { I18nService } from '../../../i18n/i18n.service';
 import { DateService } from '../../../util/date.service';
 import { MockLoaderService } from '../../../loader/mock-loader.service';
@@ -33,7 +33,7 @@ import { MockAttributeService } from '../../../attribute/mock-attribute.service'
 
 import { AttributeEditComponent } from './attribute-edit.component';
 import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
-import { MockUserService } from '../../../user/mock-user.service';
+import { MockUserService } from '../../../user/shared/mock-user.service';
 import { environment } from '../../../../app-hockey/environments/environment';
 import { ProductService } from '../../../product/product.service';
 import { MockProductService } from '../../../product/mock-product.service';

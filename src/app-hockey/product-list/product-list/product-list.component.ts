@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../shared/product/product.service';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { Selection } from '../../../shared/selection/selection';
-import { UserService } from '../../../shared/user/user.service';
+import { UserService } from '../../../shared/user/shared/user.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';

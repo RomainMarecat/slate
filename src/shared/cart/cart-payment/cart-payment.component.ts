@@ -13,7 +13,7 @@ import { PaymentService } from '../../payment/shared/payment.service';
 import { Payment } from '../../payment/shared/payment';
 import { Order } from '../../order/shared/order';
 import { Cart } from '../shared/cart';
-import { UserService } from '../../user/user.service';
+import { UserService } from '../../user/shared/user.service';
 import { AlertService } from '../../popup/alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../shared/cart.service';
