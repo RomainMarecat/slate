@@ -31,6 +31,7 @@ import { I18nService } from '../../../i18n/i18n.service';
 import { DeviceService } from '../../../device/device.service';
 import { ContactService } from '../../../contact/shared/contact.service';
 import { MockContactService } from '../../../contact/shared/mock-contact.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ContactListComponent', () => {
   let component: ContactListComponent;
@@ -43,12 +44,16 @@ describe('ContactListComponent', () => {
         NgxDatatableModule,
         SharedModule,
         NgxEditorModule,
+        HttpClientTestingModule,
         RouterTestingModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ ContactListComponent, ContactDetailComponent ],
+      declarations: [
+        ContactListComponent,
+        ContactDetailComponent
+      ],
       providers: [
         {provide: ContactService, useClass: MockContactService},
         {provide: AlertService, useClass: MockAlertService},
