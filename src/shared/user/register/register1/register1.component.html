@@ -1,0 +1,166 @@
+<div class="main-wrapper">
+  <div class="heading-wrapper"
+       fxLayout="row"
+       fxLayoutAlign="start center">
+    <a routerLink="/users/registers" class="m-2">
+      <mat-icon color="primary"
+                [matTooltip]="'cta.back_to_register_list'|translate">
+        arrow_back_ios
+      </mat-icon>
+    </a>
+    <h2>{{ 'user.registers.register1.title'|translate }}</h2>
+
+  </div>
+
+  <div class="content-wrapper"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+    <form [formGroup]="form"
+          autocomplete="off">
+
+      <mat-card class="mat-card transparent">
+
+        <mat-card-header fxLayout="row"
+                         fxLayoutAlign="center stretch">
+          <mat-card-title>
+            <h3 class="header-title ucfirst">
+              {{ 'user.registers.register1.name' |translate }}
+            </h3>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content fxLayout="column"
+                          fxLayoutAlign="start center">
+
+          <mat-form-field appearance="outline"
+                          class="mat-form-field">
+            <input matInput
+                   type="text"
+                   [placeholder]="'user.registers.register1.firstname.placeholder'|translate"
+                   formControlName="firstname">
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-hint align="start">
+              <strong>{{ 'user.registers.register1.firstname.hint'|translate }}</strong>
+            </mat-hint>
+            <mat-error color="accent" *ngIf="form.get('firstname').hasError('required')">
+              <strong>{{ 'user.registers.register1.firstname.error.required'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('firstname').hasError('pattern')">
+              <strong>{{ 'user.registers.register1.firstname.error.pattern'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('firstname').hasError('minLength')">
+              <strong>{{ 'user.registers.register1.firstname.error.min'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('firstname').hasError('maxLength')">
+              <strong>{{ 'user.registers.register1.firstname.error.max'|translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline"
+                          class="mat-form-field">
+            <input matInput
+                   type="text"
+                   [placeholder]="'user.registers.register1.lastname.placeholder'|translate"
+                   formControlName="lastname">
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-hint align="start">
+              <strong>{{ 'user.registers.register1.lastname.hint'|translate }}</strong>
+            </mat-hint>
+            <mat-error color="accent" *ngIf="form.get('lastname').hasError('required')">
+              <strong>{{ 'user.registers.register1.lastname.error.required'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('lastname').hasError('pattern')">
+              <strong>{{ 'user.registers.register1.lastname.error.pattern'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('lastname').hasError('minLength')">
+              <strong>{{ 'user.registers.register1.lastname.error.min'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('lastname').hasError('maxLength')">
+              <strong>{{ 'user.registers.register1.lastname.error.max'|translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline"
+                          class="mat-form-field">
+            <input matInput
+                   #inputEmail
+                   type="email"
+                   [placeholder]="'user.registers.register1.email.placeholder'|translate"
+                   formControlName="email"
+                   autocomplete="off">
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-hint align="start">
+              <strong>{{ 'user.registers.register1.email.hint'|translate }}</strong>
+            </mat-hint>
+            <mat-error color="accent" *ngIf="form.get('email').hasError('required')">
+              <strong>{{ 'user.registers.register1.email.error.required'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('email').hasError('pattern')">
+              <strong>{{ 'user.registers.register1.email.error.pattern'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('email').hasError('minLength')">
+              <strong>{{ 'user.registers.register1.email.error.min'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('email').hasError('maxLength')">
+              <strong>{{ 'user.registers.register1.email.error.max'|translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline"
+                          class="mat-form-field">
+            <input matInput
+                   type="email"
+                   [placeholder]="'user.registers.register1.email_confirmation.placeholder'|translate"
+                   formControlName="email_confirmation"
+                   autocomplete="off">
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-hint align="start">
+              <strong>{{ 'user.registers.register1.email_confirmation.hint'|translate }}</strong>
+            </mat-hint>
+            <mat-error color="accent" *ngIf="form.get('email_confirmation').hasError('required')">
+              <strong>{{ 'user.registers.register1.email_confirmation.error.required'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('email_confirmation').hasError('pattern')">
+              <strong>{{ 'user.registers.register1.email_confirmation.error.pattern'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('email_confirmation').hasError('minLength')">
+              <strong>{{ 'user.registers.register1.email_confirmation.error.min'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('email_confirmation').hasError('maxLength')">
+              <strong>{{ 'user.registers.register1.email_confirmation.error.max'|translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline"
+                          class="mat-form-field mt-3">
+            <input matInput
+                   type="password"
+                   [placeholder]="'user.registers.register1.password.placeholder'|translate"
+                   formControlName="password"
+                   autocomplete="off">
+            <mat-icon matPrefix>lock</mat-icon>
+            <mat-hint align="start">
+              <strong>{{ 'user.registers.register1.password.hint'|translate }}</strong>
+            </mat-hint>
+            <mat-error color="accent" *ngIf="form.get('password').hasError('required')">
+              <strong>{{ 'user.registers.register1.password.error.required'|translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+
+        </mat-card-content>
+
+
+        <mat-card-actions fxLayout="row"
+                          fxLayoutAlign="center stretch">
+          <button color="primary"
+                  mat-raised-button
+                  type="submit">
+            {{ 'cta.register' | translate}}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+
+  </div>
+
+</div>

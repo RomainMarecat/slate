@@ -56,10 +56,20 @@ $black: mat-palette($mat-grey, 900);
   $foreground: map-get($theme, foreground);
   $is-dark-theme: map-get($theme, is-dark);
 
-  &:not(.mat-form-field--no-underline) {
+  .mat-form-field-underline {
+    transform: perspective(1px);
+    background-color: mat-color($primary);
+  }
+
+  &.mat-form-field--no-underline {
     .mat-form-field-underline {
-      transform: perspective(1px);
-      background-color: mat-color($primary);
+      background-color: transparent;
+    }
+  }
+
+  .mat-form-field--no-underline {
+    .mat-form-field-underline {
+      background-color: transparent;
     }
   }
 }

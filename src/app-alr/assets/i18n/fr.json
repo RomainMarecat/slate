@@ -230,8 +230,10 @@
     "add-to-cart": "ajouter au panier",
     "learn-more": "en savoir plus",
     "back_to_home": "retour à la l'accueil",
+    "back_to_users": "retour aux fonctionnalités utilisateurs",
     "back_to_invoice_list": "retour à la liste des facturations",
     "back_to_login_list": "retour à la liste des pages de connexion",
+    "back_to_register_list": "retour à la liste des pages d'inscription",
     "buy": "acheter",
     "booking": "réserver",
     "choose": "choisir",
@@ -248,6 +250,7 @@
     "published": "publié",
     "ok": "ok",
     "refresh": "rafraîchir",
+    "register": "s'enregistrer",
     "remove": "supprimer",
     "save": "enregistrer",
     "show": "voir",
@@ -555,8 +558,14 @@
       }
     },
     "list": {
+      "header": {
+        "title": "fonctionnalités utilisateurs"
+      },
       "logins": {
-        "name": "pages de login",
+        "header": {
+          "title": "page de connexion"
+        },
+        "name": "page de connexion",
         "login1": {
           "name": "connexion style 1"
         },
@@ -564,8 +573,65 @@
           "name": "connexion style 2"
         }
       },
-      "register": {
-        "name": "pages d'inscription"
+      "registers": {
+        "header": {
+          "title": "page d'inscription"
+        },
+        "name": "page d'inscription",
+        "register1": {
+          "name": "inscription style 1"
+        }
+      }
+    },
+    "registers": {
+      "register1": {
+        "title": "inscription style 1",
+        "name": "créer un compte",
+        "email": {
+          "label": "email",
+          "hint": "adresse email",
+          "placeholder": "entrer un email",
+          "error": {
+            "required": "l'email est obligatoire",
+            "pattern": "l'email est invalide"
+          }
+        },
+        "email_confirmation": {
+          "label": "email de confirmation",
+          "hint": "adresse email",
+          "placeholder": "confirmer l'adresse email",
+          "error": {
+            "required": "l'email est obligatoire",
+            "pattern": "l'email est invalide"
+          }
+        },
+        "password": {
+          "label": "mot de passe",
+          "hint": "mot de passe",
+          "placeholder": "entrer un mot de passe",
+          "error": {
+            "required": "le mot de passe est obligatoire",
+            "pattern": "le mot de passe est invalide"
+          }
+        },
+        "firstname": {
+          "label": "prénom",
+          "hint": "prénom",
+          "placeholder": "entrer un prénom",
+          "error": {
+            "required": "le prénom est obligatoire",
+            "pattern": "le prénom est invalide"
+          }
+        },
+        "lastname": {
+          "label": "nom",
+          "hint": "nom",
+          "placeholder": "entrer un nom",
+          "error": {
+            "required": "le nom est obligatoire",
+            "pattern": "le nom est invalide"
+          }
+        }
       }
     },
     "access_denied": {

@@ -1,4 +1,5 @@
 @import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../../../app-alr/scss/theme';
 
 .content-wrapper {
 
@@ -7,13 +8,26 @@
   .mat-card {
     @include media-breakpoint-up(xs) {
       margin: 10px 0;
+      width: 200px;
     }
     @include media-breakpoint-up(sm) {
       margin: 10px 0;
     }
     @include media-breakpoint-up(md) {
       margin: 0;
+      max-width: 500px;
+      min-width: 40vw;
     }
-    max-width: 500px;
+
+
+
+    .mat-card-header {
+      .mat-card-title {
+        a.link {
+          font-size: 20px;
+          color: mat-color($black);
+        }
+      }
+    }
   }
 }

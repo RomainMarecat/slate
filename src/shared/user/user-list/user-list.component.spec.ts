@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserListComponent } from './user-list.component';
 import { CommonModule } from '@angular/common';
-import { MatCardModule, MatListModule } from '@angular/material';
+import { MatCardModule, MatIconModule, MatListModule, MatTooltipModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LoginModule } from 'shared/user/login/login.module';
@@ -20,6 +20,8 @@ describe('UserListComponent', () => {
         CommonModule,
         FlexLayoutModule,
         MatListModule,
+        MatIconModule,
+        MatTooltipModule,
         MatCardModule,
         LoginModule,
         RouterTestingModule,
