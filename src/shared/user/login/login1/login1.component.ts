@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 @Component({
-  selector: 'app-recipe-login1',
+  selector: 'app-login1',
   templateUrl: './login1.component.html',
   styleUrls: ['./login1.component.scss']
 })

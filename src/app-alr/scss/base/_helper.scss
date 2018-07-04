@@ -13,3 +13,11 @@
 .cursor-help {
   cursor: help;
 }
+
+.ucfirst {
+  text-transform: lowercase;
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}

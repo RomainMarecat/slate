@@ -3,7 +3,7 @@
 
 .main-wrapper {
   height: 100%;
-  background-image: url('/assets/images/bg-login2.jpg');
+  background: url('/assets/images/bg-register1.jpg') no-repeat;
 
   .heading-wrapper {
     @include media-breakpoint-up(xs) {
@@ -38,51 +38,34 @@
       border-radius: 20px;
       width: 500px;
 
-      .avatar-wrapper {
-        border: 2px solid mat-color($black);
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
+      .mat-card-header {
+        .header-title {
 
-        mat-icon {
-          width: 100%;
-          text-align: center;
-          font-size: 72px;
-          line-height: 72px;
         }
       }
 
       .mat-form-field {
-
-        &:not(.mat-form-field--no-underline) {
-          ::ng-deep.mat-form-field-underline {
-            transform: perspective(1px);
-            background-color: mat-color($black);
-          }
-        }
-
         input {
           width: 300px;
         }
         .checkbox-wrapper {
           width: 300px;
-          cursor: pointer;
-          mat-checkbox {
-            font-size: 12px;
-          }
         }
-      }
-
-      .link-password {
-        color: #000;
-        line-height: 24px;
-        font-size: 12px;
       }
 
       .mat-form-field--no-underline {
         .mat-form-field-underline {
           background-color: transparent;
         }
+      }
+
+      mat-checkbox {
+        font-size: 12px;
+      }
+
+      .link-password {
+        color: #000;
+        font-size: 12px;
       }
 
       .mat-card-actions {

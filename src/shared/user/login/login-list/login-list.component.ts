@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-recipe-login-list',
+  selector: 'app-login-list',
   templateUrl: './login-list.component.html',
   styleUrls: ['./login-list.component.scss']
 })

@@ -3,26 +3,25 @@
   <div class="heading-wrapper"
        fxLayout="row"
        fxLayoutAlign="start center">
-    <a routerLink="/" class="m-2">
+    <a routerLink="/users" class="m-2">
       <mat-icon color="primary"
-                [matTooltip]="'cta.back_to_home'|translate">
-        home
+                [matTooltip]="'cta.back_to_users'|translate">
+        arrow_back_ios
       </mat-icon>
     </a>
-    <h2>{{ 'user.list.header.title'|translate }}</h2>
+    <h2>{{ 'user.list.registers.header.title'|translate }}</h2>
 
   </div>
-
   <div class="content-wrapper"
-       fxLayout="row wrap"
+       fxLayout="row"
        fxLayoutAlign="center stretch"
        fxLayoutGap="30px"
-       fxLayout.xs="column"
-       fxLayoutAlign.xs="center center"
+       fxLayout.xs="row wrap"
+       fxLayoutAlign.xs="center stretch"
        fxLayoutGap.xs="0px">
-    <mat-card class="mat-card"
-              fxFlex.xs="100"
-              *ngFor="let feature of features">
+    <mat-card class="mat-card m-4"
+              *ngFor="let feature of features"
+              (click)="navigateTo(feature.link)">
       <mat-card-header fxLayout="row"
                        fxLayoutAlign="center stretch">
         <mat-card-title>
@@ -32,6 +31,8 @@
           </a>
         </mat-card-title>
       </mat-card-header>
+      <img mat-card-image
+           [src]="'/assets/images/' + feature.link + '.jpg'">
     </mat-card>
   </div>
 </div>

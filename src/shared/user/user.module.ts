@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { LoginModule } from 'shared/user/login/login.module';
 import { UserListComponent } from './user-list/user-list.component';
-import { MatCardModule, MatListModule } from '@angular/material';
+import { MatCardModule, MatIconModule, MatListModule, MatTooltipModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RegisterModule } from 'shared/user/register/register.module';
 
 @NgModule({
   imports: [
@@ -14,14 +15,18 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     MatListModule,
     MatCardModule,
+    MatIconModule,
+    MatTooltipModule,
     LoginModule,
+    RegisterModule,
     UserRoutingModule,
     TranslateModule,
   ],
   declarations: [UserListComponent],
   exports: [
     UserListComponent,
-    LoginModule
+    LoginModule,
+    RegisterModule,
   ],
 })
 export class UserModule {
