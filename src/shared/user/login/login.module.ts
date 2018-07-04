@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoginListComponent } from './login-list/login-list.component';
+import { Login2Component } from './login2/login2.component';
 
 @NgModule({
   imports: [
@@ -35,8 +36,8 @@ import { LoginListComponent } from './login-list/login-list.component';
     ReactiveFormsModule,
     TranslateModule,
   ],
-  declarations: [Login1Component, LoginListComponent],
-  exports: [Login1Component, LoginListComponent],
+  declarations: [Login1Component, LoginListComponent, Login2Component],
+  exports: [Login1Component, Login2Component, LoginListComponent],
 })
 export class LoginModule {
 }

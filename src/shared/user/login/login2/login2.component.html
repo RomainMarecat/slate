@@ -1,0 +1,125 @@
+<div class="main-wrapper">
+  <div class="heading-wrapper"
+       fxLayout="row"
+       fxLayoutAlign="start center">
+    <a routerLink="/users/logins" class="m-2">
+      <mat-icon color="primary"
+                [matTooltip]="'cta.back_to_login_list'|translate">
+        home
+      </mat-icon>
+    </a>
+    <h2>{{ 'user.logins.login2.title'|translate }}</h2>
+
+  </div>
+
+  <div class="content-wrapper"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+    <form [formGroup]="form">
+
+      <mat-card class="mat-card transparent">
+
+        <div fxLayout="row"
+             fxLayoutAlign="center stretch">
+          <div class="avatar-wrapper">
+            <mat-icon>person</mat-icon>
+          </div>
+        </div>
+
+        <mat-card-header fxLayout="row"
+                         fxLayoutAlign="center stretch">
+          <mat-card-title>
+            <h3 class="text-capitalize">
+              {{ 'user.logins.login2.name' |translate }}
+            </h3>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content fxLayout="column"
+                          fxLayoutAlign="start center">
+
+          <mat-form-field color="primary"
+                          appearance="standard"
+                          class="mat-form-field">
+            <mat-label>{{ 'user.logins.login2.email.label'|translate }}</mat-label>
+            <input matInput
+                   #inputEmail
+                   type="email"
+                   placeholder="Enter an email"
+                   formControlName="email"
+                   autofocus
+                   autocomplete="email">
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-hint align="start">
+              <strong>{{ 'user.logins.login2.email.hint'|translate }}</strong>
+            </mat-hint>
+            <mat-error color="accent" *ngIf="form.get('email').hasError('required')">
+              <strong>{{ 'user.logins.login2.email.error.required'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('email').hasError('pattern')">
+              <strong>{{ 'user.logins.login2.email.error.pattern'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('email').hasError('minLength')">
+              <strong>{{ 'user.logins.login2.email.error.min'|translate }}</strong>
+            </mat-error>
+            <mat-error color="accent" *ngIf="form.get('email').hasError('maxLength')">
+              <strong>{{ 'user.logins.login2.email.error.max'|translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field color="primary"
+                          appearance="standard"
+                          class="mat-form-field mt-3">
+            <mat-label>{{ 'user.logins.login2.password.label'|translate }}</mat-label>
+            <input matInput
+                   type="password"
+                   [placeholder]="'user.logins.login2.password.placeholder'|translate"
+                   formControlName="password"
+                   autocomplete="current-password">
+            <mat-icon matPrefix>lock</mat-icon>
+            <mat-hint align="start">
+              <strong>{{ 'user.logins.login2.password.hint'|translate }}</strong>
+            </mat-hint>
+            <mat-error color="accent" *ngIf="form.get('password').hasError('required')">
+              <strong>{{ 'user.logins.login2.password.error.required'|translate }}</strong>
+            </mat-error>
+          </mat-form-field>
+
+        </mat-card-content>
+
+
+        <mat-card-actions fxLayout="row"
+                          fxLayoutAlign="center stretch">
+          <button color="primary"
+                  mat-raised-button
+                  type="submit">
+            {{ 'cta.login' | translate}}
+          </button>
+        </mat-card-actions>
+
+        <mat-card-footer fxLayout="row"
+                         fxLayoutAlign="center center">
+          <mat-form-field class="mat-form-field mat-form-field--no-underline"
+                          fxLayout="row"
+                          fxLayoutAlign="center stretch">
+            <div class="checkbox-wrapper">
+              <input matInput style="display: none; width: 0;">
+              <div class="checkbox-group"
+                   fxLayout="row"
+                   fxLayoutAlign="space-between center"
+                   fxLayoutGap="10px">
+                <mat-checkbox color="primary"
+                              formControlName="remember_me">
+                  {{ 'cta.remember_me'|translate }}
+                </mat-checkbox>
+              </div>
+            </div>
+          </mat-form-field>
+          <a class="link-password">{{ 'cta.forgot_password'|translate}}</a>
+        </mat-card-footer>
+      </mat-card>
+    </form>
+
+  </div>
+
+</div>
