@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -11,6 +11,7 @@ export const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:
 export class Login1Component implements OnInit {
 
   form: FormGroup = Login1Component.getForm();
+   @ViewChild('inputEmail') inputEmail: ElementRef;
 
   static getForm(): FormGroup {
     return new FormGroup({
@@ -33,5 +34,8 @@ export class Login1Component implements OnInit {
   }
 
   ngOnInit() {
+    requestAnimationFrame(() => {
+      this.inputEmail.nativeElement.focus();
+    });
   }
 }
