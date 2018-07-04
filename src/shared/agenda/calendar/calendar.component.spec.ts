@@ -13,6 +13,8 @@ import { AlertService } from '../../popup/alert.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
 import { SessionService } from 'shared/session/shared/session.service';
 import { MockSessionService } from 'shared/session/shared/mock-session.service';
+import { mockEnd, mockStart } from 'shared/agenda/shared/mock-day';
+import { mockOnlineSession } from 'shared/agenda/shared/mock-online-session';
 
 describe('CalendarComponent', () => {
   let component: CalendarComponent;
@@ -49,6 +51,17 @@ describe('CalendarComponent', () => {
   });
 
   it('should create', () => {
+    component.viewMode = 'week';
+    expect(component).toBeTruthy();
+  });
+
+  it('should create with param', () => {
+
+    component.viewMode = 'week';
+    component.start = mockStart;
+    component.end = mockEnd;
+    component.onlineSession = mockOnlineSession;
+
     expect(component).toBeTruthy();
   });
 });

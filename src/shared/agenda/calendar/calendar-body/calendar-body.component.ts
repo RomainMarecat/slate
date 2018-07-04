@@ -11,7 +11,7 @@ import { AlertService } from '../../../popup/alert.service';
 @Component({
   selector: 'app-calendar-body',
   templateUrl: './calendar-body.component.html',
-  styleUrls: [ './calendar-body.component.scss' ]
+  styleUrls: ['./calendar-body.component.scss']
 })
 export class CalendarBodyComponent implements OnInit {
   @Input() onlineSession: OnlineSession;
@@ -31,11 +31,16 @@ export class CalendarBodyComponent implements OnInit {
   @Input() sessions: Map<string, Session>;
 
   @Output() sessionAdded: EventEmitter<Session> = new EventEmitter<Session>();
-  @Output() sessionRemoved: EventEmitter<{ key: string, session: Session }>
-    = new EventEmitter<{ key: string, session: Session }>();
+  @Output() sessionRemoved: EventEmitter<{key: string, session: Session}>
+    = new EventEmitter<{key: string, session: Session}>();
   @Output() startChanged: EventEmitter<Moment> = new EventEmitter<Moment>();
   @Output() endChanged: EventEmitter<Moment> = new EventEmitter<Moment>();
 
+  /**
+   *
+   * @param {TranslateService} translate
+   * @param {AlertService} alertService
+   */
   constructor(private translate: TranslateService,
               private alertService: AlertService) {
   }
@@ -43,6 +48,9 @@ export class CalendarBodyComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * On click next day button, trigger switch start
+   */
   onNextDay() {
     let daysNb = 1;
     if (this.viewMode === 'week') {
@@ -149,7 +157,7 @@ export class CalendarBodyComponent implements OnInit {
   /**
    * @param source
    */
-  removeSession(source: { key: string, session: Session }) {
+  removeSession(source: {key: string, session: Session}) {
     this.sessionRemoved.emit(source);
   }
 
