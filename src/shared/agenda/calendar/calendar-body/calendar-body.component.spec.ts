@@ -10,6 +10,9 @@ import { EventService } from '../../shared/event.service';
 import { MockEventService } from '../../shared/mock-event.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { AlertService } from '../../../popup/alert.service';
+import { mockAvailabilities, mockDays, mockEnd, mockStart } from 'shared/agenda/shared/mock-day';
+import * as moment from 'moment';
+import { mockOnlineSession } from 'shared/agenda/shared/mock-online-session';
 
 describe('CalendarBodyComponent', () => {
   let component: CalendarBodyComponent;
@@ -30,13 +33,13 @@ describe('CalendarBodyComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ CalendarBodyComponent ],
+      declarations: [CalendarBodyComponent],
       providers: [
         {provide: EventService, useClass: MockEventService},
         {provide: AlertService, useClass: MockAlertService},
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -48,4 +51,15 @@ describe('CalendarBodyComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create', () => {
+    component.viewMode = 'week';
+    component.days = mockDays;
+    component.daysAvailability = mockAvailabilities;
+    component.end = mockEnd;
+    component.start = mockStart;
+    component.onlineSession = mockOnlineSession;
+    expect(component).toBeTruthy();
+  });
+
 });

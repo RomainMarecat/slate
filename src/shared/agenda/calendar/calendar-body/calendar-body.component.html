@@ -46,10 +46,10 @@
               </mat-icon>
             </a>
           </div>
-        </div>
-        <div class="slot-busy"
-             *ngIf="getAvailabilities(day.key).length <= 0 || isDayBusy(day, time)">
-          <span>{{ 'calendar.availability.empty'|translate }}</span>
+          <div class="slot-busy"
+               *ngIf="getAvailabilities(day.key).length <= 0 || isDayBusy(day, time)">
+            <span>{{ 'calendar.availability.empty'|translate }}</span>
+          </div>
         </div>
         <div class="next-slot"
              *ngIf="isAllSlotNotAvailable() && keyDay === days.length-1">

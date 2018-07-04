@@ -35,7 +35,8 @@
                        [sessions]="sessions"
                        (startChanged)="onStartChanged($event)"
                        (sessionAdded)="onSessionAdded($event)"
-                       (sessionRemoved)="onSessionRemoved($event)"></app-calendar-body>
+                       (sessionRemoved)="onSessionRemoved($event)"
+                       *ngIf="start && end && days && viewMode"></app-calendar-body>
 
   </mat-card-content>
 </mat-card>
