@@ -532,17 +532,36 @@
         }
       },
       "login2": {
-        "name": "connexion style 2"
+        "title": "connexion style 2",
+        "name": "connexion",
+        "email": {
+          "label": "email",
+          "hint": "adresse email",
+          "placeholder": "entrer un email",
+          "error": {
+            "required": "l'email est obligatoire",
+            "pattern": "l'email est invalide"
+          }
+        },
+        "password": {
+          "label": "mot de passe",
+          "hint": "mot de passe",
+          "placeholder": "entrer un mot de passe",
+          "error": {
+            "required": "le mot de passe est obligatoire",
+            "pattern": "le mot de passe est invalide"
+          }
+        }
       }
     },
     "list": {
       "logins": {
         "name": "pages de login",
         "login1": {
-          "name": "login style 1"
+          "name": "connexion style 1"
         },
         "login2": {
-          "name": "login style 2"
+          "name": "connexion style 2"
         }
       },
       "register": {

@@ -6,6 +6,7 @@
      fxLayoutAlign.xs="center stretch"
      fxLayoutGap.xs="0px">
   <mat-card class="mat-card m-4"
+            (click)="navigateTo(feature.url)"
             *ngFor="let feature of features">
     <img mat-card-image
          class="dashboard-image"
@@ -13,9 +14,7 @@
     <mat-card-header fxLayout="row"
                      fxLayoutAlign="center stretch">
       <mat-card-title>
-        <a mat-raised-button
-           color="primary"
-           [routerLink]="[feature.url]">
+        <a class="link" [routerLink]="[feature.url]">
           {{ feature.name | translate }}
         </a>
       </mat-card-title>

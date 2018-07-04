@@ -1,21 +1,23 @@
 <div class="content-wrapper"
-     fxLayout="row wrap"
+     fxLayout="row"
      fxLayoutAlign="center stretch"
      fxLayoutGap="30px"
      fxLayout.xs="row wrap"
      fxLayoutAlign.xs="center stretch"
      fxLayoutGap.xs="0px">
   <mat-card class="mat-card m-4"
-            *ngFor="let feature of features">
+            *ngFor="let feature of features"
+            (click)="navigateTo(feature.link)">
     <mat-card-header fxLayout="row"
                      fxLayoutAlign="center stretch">
       <mat-card-title>
-        <a mat-raised-button
-           color="primary"
+        <a color="primary"
            [routerLink]="[feature.link]">
           {{ feature.name | translate }}
         </a>
       </mat-card-title>
     </mat-card-header>
+    <img mat-card-image
+         [src]="'/assets/images/' + feature.link + '.jpg'">
   </mat-card>
 </div>

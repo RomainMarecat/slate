@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-login-list',
@@ -11,9 +12,13 @@ export class LoginListComponent implements OnInit {
     {link: 'login2', name: 'user.list.logins.login2.name'},
   ];
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
+  navigateTo(link: string) {
+    this.router.navigate(['users/logins/' + link]);
+  }
 }
