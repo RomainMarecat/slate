@@ -1,4 +1,5 @@
 @import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../../../app-alr/scss/theme';
 
 .dashboard-content-wrapper {
 
@@ -15,6 +16,14 @@
       margin: 0;
     }
     width: 500px;
+    cursor: pointer;
+
+    .link {
+      font-size: 20px;
+      font-weight: 800;
+      color: mat-color($black);
+    }
+
     .dashboard-image {
       height: 300px;
       overflow-x: hidden;

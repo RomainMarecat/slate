@@ -1,0 +1,20 @@
+@import '../../../../app-alr/scss/theme';
+
+.mat-card {
+  padding: 24px 24px 0 24px;
+  cursor: pointer;
+
+  .mat-card-header {
+    .mat-card-title {
+      a {
+        font-size: 20px;
+        color: mat-color($black);
+      }
+    }
+
+    img {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

@@ -558,10 +558,10 @@
       "logins": {
         "name": "pages de login",
         "login1": {
-          "name": "login style 1"
+          "name": "connexion style 1"
         },
         "login2": {
-          "name": "login style 2"
+          "name": "connexion style 2"
         }
       },
       "register": {
