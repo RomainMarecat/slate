@@ -16,6 +16,7 @@ import {
   MatIconModule,
   MatInputModule
 } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('FaqComponent', () => {
   let component: FaqComponent;
@@ -24,13 +25,14 @@ describe('FaqComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        BrowserAnimationsModule,
         RouterTestingModule,
         MatCardModule,
         MatInputModule,
         MatIconModule,
         MatExpansionModule,
         MatFormFieldModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -40,7 +42,7 @@ describe('FaqComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ FaqComponent ],
+      declarations: [FaqComponent],
       providers: [
         {provide: CmsService, useClass: MockCmsService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},

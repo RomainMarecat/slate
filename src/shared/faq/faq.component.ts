@@ -34,7 +34,7 @@ export class FaqComponent implements OnInit {
           this.cmsDetailService.filters$.next([ {column: 'cms', operator: '==', value: this.cms.key} ]);
           this.cmsDetailService.getCmsDetails()
             .subscribe((cmsDetails: CmsDetail[]) => {
-              const links = cmsDetails.filter((cmsD) => cmsD.parent === null);
+              const links = cmsDetails.filter((cmsD) => cmsD.parent === null || typeof cmsD.parent === 'undefined');
               const sublinks = cmsDetails.filter((cmsD) => cmsD.parent !== null);
               this.navigations = links.map((link: CmsDetail) => {
                 const children: CmsDetail[] = [];

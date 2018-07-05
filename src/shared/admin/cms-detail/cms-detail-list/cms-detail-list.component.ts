@@ -7,6 +7,8 @@ import { Filter } from '../../../facet/filter/shared/filter';
 import 'rxjs/add/operator/take';
 import { AlertService } from '../../../popup/alert.service';
 import { of } from 'rxjs/internal/observable/of';
+import { CmsService } from 'shared/cms/shared/cms.service';
+import { Cms } from 'shared/cms/shared/cms';
 
 @Component({
   selector: 'app-cms-detail-list',
@@ -18,6 +20,7 @@ export class CmsDetailListComponent implements OnInit {
   readonly rowHeight = 50;
   columns: any;
   cmsKey: string;
+  cms: Cms;
   cmsDetails$: Observable<CmsDetail[]>;
   selected: CmsDetail[] = [];
   isLoading: boolean;
@@ -26,11 +29,13 @@ export class CmsDetailListComponent implements OnInit {
   /**
    * @param {ElementRef} table
    * @param cmsDetailService
+   * @param cmsService
    * @param activeRoute
    * @param alertService
    */
   constructor(private table: ElementRef,
               private cmsDetailService: CmsDetailService,
+              private cmsService: CmsService,
               private activeRoute: ActivatedRoute,
               private alertService: AlertService) {
     this.columns = [ {
@@ -83,6 +88,13 @@ export class CmsDetailListComponent implements OnInit {
     this.activeRoute.params.subscribe((value: { key: string }) => {
       this.cmsKey = value.key;
       if (value.key) {
+        this.cmsService.getCms(value.key)
+          .subscribe((cms: Cms) => {
+            this.cms = cms;
+          }, (err) => {
+            console.error(err);
+            this.alertService.show(err);
+          });
         this.cmsDetailService.filters$.next([ {column: 'cms', operator: '==', value: value.key} ] as Filter[]);
         this.cmsDetails$ = this.cmsDetailService.getCmsDetails();
       } else {

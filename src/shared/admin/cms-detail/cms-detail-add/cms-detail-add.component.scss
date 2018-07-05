@@ -1,6 +1,10 @@
 .mat-card {
   display: flex;
   flex-direction: column;
+
+  .link {
+    cursor: pointer;
+  }
 }
 
 form .mat-form-field {

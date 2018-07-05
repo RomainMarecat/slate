@@ -32,6 +32,8 @@ import { MockAlertService } from '../../../popup/mock-alert.service';
 import { CmsDetailListComponent } from './cms-detail-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { CmsService } from 'shared/cms/shared/cms.service';
+import { MockCmsService } from 'shared/cms/shared/mock-cms.service';
 
 describe('CmsDetailListComponent', () => {
   let component: CmsDetailListComponent;
@@ -59,9 +61,10 @@ describe('CmsDetailListComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ CmsDetailListComponent ],
+      declarations: [CmsDetailListComponent],
       providers: [
         {provide: CmsDetailService, useClass: MockCmsDetailService},
+        {provide: CmsService, useClass: MockCmsService},
         {provide: AlertService, useClass: MockAlertService},
       ]
     })
