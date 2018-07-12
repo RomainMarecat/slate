@@ -9,9 +9,12 @@
         <mat-card-header>
           <mat-card-title>
             <h4>
-              {{ 'admin.title.cms.title'|translate }}
+              {{ 'admin.title.cms-detail.title'|translate }}
             </h4>
           </mat-card-title>
+          <mat-card-subtitle>
+            {{ 'admin.title.cms-detail.subtitle'|translate }} {{ cms?.site_name }}
+          </mat-card-subtitle>
         </mat-card-header>
       </mat-card>
     </div>

@@ -1,4 +1,4 @@
-export class CmsDetail {
+export interface CmsDetail {
   /**
    * Primary
    * Identifier of CmsDetail

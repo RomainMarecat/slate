@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-cms-detail-add',
   templateUrl: './cms-detail-add.component.html',
-  styleUrls: [ './cms-detail-add.component.scss' ]
+  styleUrls: ['./cms-detail-add.component.scss']
 })
 export class CmsDetailAddComponent implements OnInit {
   form: FormGroup = CmsDetailAddComponent.createForm();
@@ -18,7 +18,27 @@ export class CmsDetailAddComponent implements OnInit {
   cmsDetail: CmsDetail;
   cmsKey: string;
   editorConfig: any;
+  cmsDetailList: Array<CmsDetail> = CmsDetailAddComponent.getCmsDetailList();
 
+  /**
+   * Get best used cms details
+   * @returns {Array<CmsDetail>}
+   */
+  static getCmsDetailList(): Array<CmsDetail> {
+    return [
+      {
+        title: 'faq.general-question',
+        content: `<div>New Comer? Start with the basic</div>`,
+        cms: '',
+        icon: 'help',
+      }
+    ];
+  }
+
+  /**
+   * return form of Cms Detail
+   * @returns {FormGroup}
+   */
   private static createForm(): FormGroup {
     return new FormGroup({
       title: new FormControl('', [
@@ -32,6 +52,13 @@ export class CmsDetailAddComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   * @param {TranslateService} translate
+   * @param {CmsDetailService} cmsDetailService
+   * @param {AlertService} alertService
+   * @param {ActivatedRoute} activeRoute
+   */
   constructor(private translate: TranslateService,
               private cmsDetailService: CmsDetailService,
               private alertService: AlertService,
@@ -40,7 +67,7 @@ export class CmsDetailAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activeRoute.params.subscribe((value: { key: string }) => {
+    this.activeRoute.params.subscribe((value: {key: string}) => {
       this.cmsKey = value.key;
       this.getCmsDetails(this.cmsKey);
     });
@@ -56,6 +83,10 @@ export class CmsDetailAddComponent implements OnInit {
     };
   }
 
+  /**
+   * Get cms details array by cms key
+   * @param {string} cms
+   */
   getCmsDetails(cms: string) {
     this.cmsDetailService.filters$.next([
       {
@@ -66,29 +97,58 @@ export class CmsDetailAddComponent implements OnInit {
         column: 'parent',
         operator: '==',
         value: null
-      } ] as Filter[]);
+      }] as Filter[]);
     this.cmsDetailService.getCmsDetails()
       .subscribe((cmsDetails: CmsDetail[]) => {
         this.cmsDetails = cmsDetails;
       });
   }
 
+  /**
+   * Add an existing cms detail key
+   * @param cmsDetail
+   */
+  addCmsDetail(cmsDetail: CmsDetail) {
+    this.translate.get(cmsDetail.title)
+      .subscribe((title) => {
+        this.cmsDetail = {
+          title: title,
+          content: cmsDetail.content,
+          cms: this.cmsKey
+        };
+        this.createCmsDetail();
+      });
+  }
+
+  /**
+   * Save by Form Group
+   */
   saveCmsDetail() {
     if (this.form.valid === true && this.cmsKey !== null) {
       this.cmsDetail = this.form.value;
       this.cmsDetail.cms = this.cmsKey;
-      this.cmsDetailService.createCmsDetail(this.cmsDetail)
-        .then((doc) => {
-          this.cmsDetail.key = doc.id;
-          this.cmsDetailService.updateCmsDetail(this.cmsDetail)
-            .then(() => {
-              this.alertService.toast(`Le contenu cms est ajoutée ${this.cmsDetail.title}`, 'info');
-              this.reset();
-            });
-        });
+      this.createCmsDetail();
     }
   }
 
+  /**
+   * Api Call to save a new cmd Detail
+   */
+  createCmsDetail() {
+    this.cmsDetailService.createCmsDetail(this.cmsDetail)
+      .then((doc) => {
+        this.cmsDetail.key = doc.id;
+        this.cmsDetailService.updateCmsDetail(this.cmsDetail)
+          .then(() => {
+            this.alertService.toast(`Le contenu cms est ajoutée ${this.cmsDetail.title}`, 'info');
+            this.reset();
+          });
+      });
+  }
+
+  /**
+   * Reset form
+   */
   reset() {
     this.form.reset({
       title: '',
@@ -96,9 +156,5 @@ export class CmsDetailAddComponent implements OnInit {
       parent: null
     });
     this.cmsDetail = null;
-  }
-
-  get title() {
-    return this.form.get('title');
   }
 }

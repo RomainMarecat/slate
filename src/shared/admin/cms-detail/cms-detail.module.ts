@@ -12,12 +12,16 @@ import { CmsDetailListComponent } from './cms-detail-list/cms-detail-list.compon
 import { CmsDetailAddComponent } from './cms-detail-add/cms-detail-add.component';
 import { CmsDetailService } from '../../cms-detail/shared/cms-detail.service';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CmsService } from 'shared/cms/shared/cms.service';
 
 const TABLE_CMS_DETAIL = new InjectionToken<string>('cms-detail');
+const TABLE_CMS = new InjectionToken<string>('cms');
 
 @NgModule({
   imports: [
     CommonModule,
+    FlexLayoutModule,
     FormsModule,
     HttpClientModule,
     NgxEditorModule,
@@ -27,10 +31,12 @@ const TABLE_CMS_DETAIL = new InjectionToken<string>('cms-detail');
     SharedModule,
     CmsDetailRoutingModule
   ],
-  declarations: [ CmsDetailListComponent, CmsDetailAddComponent ],
+  declarations: [CmsDetailListComponent, CmsDetailAddComponent],
   providers: [
     {provide: TABLE_CMS_DETAIL, useValue: 'cms-detail'},
-    {provide: CmsDetailService, useClass: CmsDetailService, deps: [ AngularFirestore, TABLE_CMS_DETAIL ]}
+    {provide: TABLE_CMS, useValue: 'cms'},
+    {provide: CmsDetailService, useClass: CmsDetailService, deps: [AngularFirestore, TABLE_CMS_DETAIL]},
+    {provide: CmsService, useClass: CmsService, deps: [AngularFirestore, TABLE_CMS]}
   ]
 })
 export class CmsDetailModule {
