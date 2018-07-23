@@ -110,7 +110,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @include custom-theme($theme);
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito', 'Open Sans', sans-serif;
   background-color: $color2;
 
   .title {

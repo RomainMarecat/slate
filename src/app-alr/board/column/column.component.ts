@@ -9,7 +9,7 @@ import { AlertService } from 'shared/popup/alert.service';
 @Component({
   selector: 'app-board-column',
   templateUrl: './column.component.html',
-  styleUrls: [ './column.component.scss' ]
+  styleUrls: ['./column.component.scss']
 })
 export class ColumnComponent implements OnInit {
   @Input() column: Column;
@@ -24,11 +24,10 @@ export class ColumnComponent implements OnInit {
   options: any;
 
   /**
-   *
    * @param {ElementRef} el
    * @param {ColumnService} columnService
    * @param {CardService} cardService
-   * @param alertService
+   * @param {AlertService} alertService
    * @param {DragulaService} dragulaService
    */
   constructor(private el: ElementRef,
@@ -40,7 +39,6 @@ export class ColumnComponent implements OnInit {
       direction: 'horizontal',
       revertOnSpill: false,
       accepts: (elem, target, source, sibling) => {
-        // console.log(elem, target);
         return true;
         // return !source.classList.contains('card-item');
         // elem.classList.contains('sortable-column') && target.classList.contains('columns-wrapper') ||
@@ -58,43 +56,51 @@ export class ColumnComponent implements OnInit {
    * Drag an drop system for attributes
    */
   subscribeDragAndDrop() {
-    this.dragulaService.dropModel.subscribe((value) => {
-      const [el, target] = this.onDropModel(value.slice(1));
-      this.updateCardsOrder(el, target);
+    this.dragulaService.drag.subscribe((value) => {
+      this.onDrag(value.slice(1));
     });
-    this.dragulaService.removeModel.subscribe((value) => {
-      this.onRemoveModel(value.slice(1));
+    this.dragulaService.drop.subscribe((value) => {
+      this.onDrop(value.slice(1));
     });
   }
 
-  private onDropModel(args: any) {
-    const [ el, target, source ] = args;
+  /**
+   * On drop item in column
+   * @param {any[]} args
+   */
+  onDrop(args: any[]) {
+    const [row, destination, source] = args;
+    const rowColumnId: string = row.attributes.getNamedItem('card-id').value;
+    const rowCardId: string = row.attributes.getNamedItem('card-id').value;
+    const sourceColumnId: string = source.attributes.getNamedItem('column-id').value;
+    const destinationColumnId: string = destination.attributes.getNamedItem('column-id').value;
 
-    return [el, target];
-  }
+    if (sourceColumnId === destinationColumnId ||
+      !this.cards ||
+      this.cards.length === 0) {
+      return;
+    }
 
-  private onRemoveModel(args: any) {
-    const [ el, source ] = args;
-  }
 
-  updateCardsOrder(element: HTMLElement, target: HTMLElement) {
-    this.cards.forEach((c: Card, index: number) => {
-      if (c && c.order !== (index + 1) * 1000) {
-        if (target.attributes.getNamedItem('column-id').value !== element.attributes.getNamedItem('column-id').value) {
-          c.columnId = target.attributes.getNamedItem('column-id').value;
-        }
-        c.order = (index + 1) * 1000;
+    this.cards.forEach((c: Card) => {
+      if (c.boardId === this.column.boardId &&
+        destinationColumnId !== sourceColumnId &&
+        rowCardId === c.key) {
+        c.columnId = destinationColumnId;
         this.cardService.updateCard(c)
           .then(() => {
-            if (element.attributes.getNamedItem('card-id').value === c.key) {
-              this.alertService.show(`card updated ${c.title}`);
-            }
+            this.alertService.show(`card updated ${c.title}`);
           }, (err) => {
             this.alertService.show(err);
           });
       }
     });
   }
+
+  onDrag(args: any) {
+    const [el, target, source] = args;
+  }
+
 
   blurOnEnter(event) {
     if (event.keyCode === 13) {
@@ -148,9 +154,7 @@ export class ColumnComponent implements OnInit {
   updateColumn() {
     if (this.column.title && this.column.title.trim() !== '') {
       this.columnService.updateColumn(this.column)
-        .then(res => {
-          console.log(res);
-        });
+        .then(() => this.alertService.show(`updated column ${this.column.title}`));
       this.editingColumn = false;
     } else {
       this.cleadAddColumn();
@@ -166,8 +170,8 @@ export class ColumnComponent implements OnInit {
     this.currentTitle = this.column.title;
     this.editingColumn = true;
     const input = this.el.nativeElement
-      .getElementsByClassName('column-header')[ 0 ]
-      .getElementsByTagName('input')[ 0 ];
+      .getElementsByClassName('column-header')[0]
+      .getElementsByTagName('input')[0];
 
     setTimeout(function () {
       input.focus();
@@ -177,8 +181,8 @@ export class ColumnComponent implements OnInit {
   enableAddCard() {
     this.addingCard = true;
     const input = this.el.nativeElement
-      .getElementsByClassName('add-card')[ 0 ]
-      .getElementsByTagName('input')[ 0 ];
+      .getElementsByClassName('add-card')[0]
+      .getElementsByTagName('input')[0];
 
     setTimeout(function () {
       input.focus();

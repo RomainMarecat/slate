@@ -16,7 +16,7 @@ import { AlertService } from 'shared/popup/alert.service';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: [ './board.component.scss' ]
+  styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
 
@@ -66,7 +66,6 @@ export class BoardComponent implements OnInit {
       if (value.key) {
         this.boardService.getBoard(value.key)
           .subscribe(board => {
-            console.log(`joining board ${value.key}`);
             this.board = board;
             this.columnService.filters$.next([
               {
@@ -94,6 +93,7 @@ export class BoardComponent implements OnInit {
                       });
                       return col;
                     });
+
                   }, (err) => {
                     this.alertService.show(err);
                   });
@@ -130,7 +130,6 @@ export class BoardComponent implements OnInit {
   }
 
   updateBoardWidth() {
-    // this.boardWidth = ((this.board.columns.length + (this.columnsAdded > 0 ? 1 : 2)) * 280) + 10;
     this.boardWidth = ((this.board.columns.length + 1) * 280) + 10;
 
     if (this.boardWidth > document.body.scrollWidth) {
@@ -151,7 +150,7 @@ export class BoardComponent implements OnInit {
     if (this.board.title && this.board.title.trim() !== '') {
       this.boardService.updateBoard(this.board)
         .then(res => {
-          console.log(res);
+          this.alertService.show('updated board ' + this.board.title);
         });
     } else {
       this.board.title = this.currentTitle;
@@ -165,24 +164,12 @@ export class BoardComponent implements OnInit {
     this.editingTitle = true;
 
     const input = this.el.nativeElement
-      .getElementsByClassName('board-title')[ 0 ]
-      .getElementsByTagName('input')[ 0 ];
+      .getElementsByClassName('board-title')[0]
+      .getElementsByTagName('input')[0];
 
     setTimeout(function () {
       input.focus();
     }, 0);
-  }
-
-  updateColumnElements(column: Column) {
-    // let columnArr = jQuery('#main .column');
-    // let columnEl = jQuery('#main .column[columnid=' + column._id + ']');
-    // let i = 0;
-    // for (; i < columnArr.length - 1; i++) {
-    //   column.order < +columnArr[ i ].getAttibute('column-order');
-    //   break;
-    // }
-
-    // columnEl.remove().insertBefore(columnArr[ i ]);
   }
 
   updateColumnOrder() {
@@ -197,40 +184,6 @@ export class BoardComponent implements OnInit {
           });
       }
     });
-
-    // let i: number = 0,
-    //   elBefore: number = -1,
-    //   elAfter: number = -1,
-    //   newOrder: number = 0,
-    //   columnEl = jQuery('#main'),
-    //   columnArr = columnEl.find('.column');
-    //
-    // for (i = 0; i < columnArr.length - 1; i++) {
-    //   if (columnEl.find('.column')[ i ].getAttribute('column-id') == event.columnId) {
-    //     break;
-    //   }
-    // }
-    //
-    // if (i > 0 && i < columnArr.length - 1) {
-    //   elBefore = +columnArr[ i - 1 ].getAttribute('column-order');
-    //   elAfter = +columnArr[ i + 1 ].getAttribute('column-order');
-    //
-    //   newOrder = elBefore + ((elAfter - elBefore) / 2);
-    // } else if (i === columnArr.length - 1) {
-    //   elBefore = +columnArr[ i - 1 ].getAttribute('column-order');
-    //   newOrder = elBefore + 1000;
-    // } else if (i === 0) {
-    //   elAfter = +columnArr[ i + 1 ].getAttribute('column-order');
-    //
-    //   newOrder = elAfter / 2;
-    // }
-    //
-    // const column = this.board.columns.filter(x => x.key === event.columnId)[ 0 ];
-    // column.order = newOrder;
-    // this.columnService.updateColumn(column)
-    //   .then(res => {
-    //     console.log(res);
-    //   });
   }
 
 
@@ -266,7 +219,6 @@ export class BoardComponent implements OnInit {
         this.columnService.updateColumn(column)
           .then(() => {
             this.board.columns.push(column);
-            console.log('column added');
             this.updateBoardWidth();
             this.addColumnText = '';
           }, (err) => {
