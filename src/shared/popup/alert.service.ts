@@ -17,16 +17,27 @@ export class AlertService {
   }
 
   toast(message: string, state: string = 'info') {
-    // Subscribe on message translation
-    this.translateService.get(message).subscribe((translation: string) => {
-      // Open Alert Component with a message
-      const toastRef = this.snackBar.openFromComponent(AlertComponent, {
-        data: translation,
-        // Add extra classes to define custom css or background color
-        panelClass: [ 'snackbar', state ],
-        // Timeout duration in ms
-        duration: 8000
-      });
+    if (typeof message === 'string') {
+      // Subscribe on message translation
+      this.translateService.get(message)
+        .subscribe((translation: string) => {
+          this.openAlertMessage(translation, state);
+        }, (err) => {
+          this.openAlertMessage(message, state);
+        });
+      return;
+    }
+    this.openAlertMessage(message, state);
+  }
+
+  openAlertMessage(message: string, state: string) {
+    // Open Alert Component with a message
+    const toastRef = this.snackBar.openFromComponent(AlertComponent, {
+      data: message,
+      // Add extra classes to define custom css or background color
+      panelClass: ['snackbar', state],
+      // Timeout duration in ms
+      duration: 8000
     });
   }
 }
