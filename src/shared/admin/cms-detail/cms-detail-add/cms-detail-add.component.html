@@ -1,26 +1,32 @@
-<div class="content-wrapper py-5">
+<div class="content-wrapper py-5"
+     fxLayout="row"
+     fxLayoutAlign="center stretch"
+     fxLayoutGap="30px">
+
+  <mat-card class="mat-card">
+    <mat-card-header>
+      <mat-card-title class="text-uppercase">
+        {{ 'admin.title.cms.used.key'|translate }}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let cmsDetailUsed of cmsDetailList | filterBy: ['cms']: cms?.name">
+          <a class="link text-ucfirst"
+             [routerLink]=""
+             [class.hyperlink]="cmsUsedDisabled"
+             (click)="addCmsDetail(cmsDetailUsed)">
+            {{ cmsDetailUsed.title |translate }}
+          </a>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+
+
   <form [formGroup]="form"
         (ngSubmit)="saveCmsDetail()"
-        class="form"
-        fxLayout="row"
-        fxLayoutAlign="center stretch"
-        fxLayoutGap="30px">
-
-    <mat-card class="mat-card">
-      <mat-card-header>
-        <mat-card-title class="text-uppercase">
-          {{ 'admin.title.cms.used.key'|translate }}
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item *ngFor="let cmsDetailUsed of cmsDetailList">
-            <a class="link"
-               (click)="addCmsDetail(cmsDetailUsed)">{{ cmsDetailUsed.title |translate }}</a>
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
+        class="form">
 
     <mat-card class="mat-card">
       <mat-card-header>

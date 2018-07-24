@@ -9,36 +9,39 @@ import { AlertService } from '../../../popup/alert.service';
 import { of } from 'rxjs/internal/observable/of';
 import { CmsService } from 'shared/cms/shared/cms.service';
 import { Cms } from 'shared/cms/shared/cms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cms-detail-list',
   templateUrl: './cms-detail-list.component.html',
-  styleUrls: [ './cms-detail-list.component.scss' ]
+  styleUrls: ['./cms-detail-list.component.scss']
 })
 export class CmsDetailListComponent implements OnInit {
   readonly headerHeight = 50;
-  readonly rowHeight = 50;
+  readonly rowHeight = 75;
   columns: any;
   cmsKey: string;
   cms: Cms;
   cmsDetails$: Observable<CmsDetail[]>;
   selected: CmsDetail[] = [];
   isLoading: boolean;
-  activatedRows = {icon: {}, title: {}};
+  activatedRows = {icon: {}, title: {}, parent: {}};
 
   /**
    * @param {ElementRef} table
-   * @param cmsDetailService
-   * @param cmsService
-   * @param activeRoute
-   * @param alertService
+   * @param {CmsDetailService} cmsDetailService
+   * @param {CmsService} cmsService
+   * @param {ActivatedRoute} activeRoute
+   * @param {AlertService} alertService
+   * @param {TranslateService} translate
    */
   constructor(private table: ElementRef,
               private cmsDetailService: CmsDetailService,
               private cmsService: CmsService,
               private activeRoute: ActivatedRoute,
-              private alertService: AlertService) {
-    this.columns = [ {
+              private alertService: AlertService,
+              private translate: TranslateService) {
+    this.columns = [{
       prop: 'key',
       name: 'key',
       flexGrow: 1
@@ -58,7 +61,7 @@ export class CmsDetailListComponent implements OnInit {
       prop: 'parent',
       name: 'parent',
       flexGrow: 1
-    } ];
+    }];
     this.isLoading = true;
   }
 
@@ -85,17 +88,16 @@ export class CmsDetailListComponent implements OnInit {
    */
   ngOnInit() {
     this.isLoading = false;
-    this.activeRoute.params.subscribe((value: { key: string }) => {
+    this.activeRoute.params.subscribe((value: {key: string}) => {
       this.cmsKey = value.key;
       if (value.key) {
         this.cmsService.getCms(value.key)
           .subscribe((cms: Cms) => {
             this.cms = cms;
           }, (err) => {
-            console.error(err);
             this.alertService.show(err);
           });
-        this.cmsDetailService.filters$.next([ {column: 'cms', operator: '==', value: value.key} ] as Filter[]);
+        this.cmsDetailService.filters$.next([{column: 'cms', operator: '==', value: value.key}] as Filter[]);
         this.cmsDetails$ = this.cmsDetailService.getCmsDetails();
       } else {
         this.cmsDetails$ = of([]);
@@ -112,17 +114,29 @@ export class CmsDetailListComponent implements OnInit {
     return this.cmsDetailService.getCmsDetail(key);
   }
 
+  /**
+   * @param {number} index
+   */
   onActivateEdit(index: number) {
-    this.activatedRows = {icon: {}, title: {}};
-    this.activatedRows[ index ] = true;
+    this.activatedRows = {icon: {}, title: {}, parent: {}};
+    this.activatedRows[index] = true;
   }
 
+  /**
+   *
+   * @param {string} column
+   * @param {CmsDetail} row
+   * @param {string} value
+   * @param {number} index
+   */
   onEdit(column: string, row: CmsDetail, value: string, index: number) {
-    this.activatedRows = {icon: {}, title: {}};
+    this.activatedRows = {icon: {}, title: {}, parent: {}};
     row[column] = value;
     this.cmsDetailService.updateCmsDetail(row)
       .then(() => {
-        this.alertService.show(`updated ${row.title}`);
+        this.alertService.show(
+          `${this.translate.instant(row.title)} ${this.translate.instant('admin.cms-detail.alert.updated')}`
+        );
       }, (err) => {
         this.alertService.show(err);
       });

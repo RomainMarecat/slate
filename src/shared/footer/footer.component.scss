@@ -3,6 +3,8 @@
 }
 
 .links-wrapper {
+  overflow-x: hidden;
+  overflow-y: visible;
   .text-link {
     font-size: 16px;
   }

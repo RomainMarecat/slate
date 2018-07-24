@@ -22,3 +22,8 @@ form .mat-form-field {
     }
   }
 }
+
+.hyperlink {
+  pointer-events: none;
+  cursor: not-allowed;
+}

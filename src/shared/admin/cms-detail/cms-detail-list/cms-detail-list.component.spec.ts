@@ -7,21 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatCardModule,
   MatToolbarModule,
-  MatSidenavModule,
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
-  MatFormFieldModule,
   MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule
+  MatListModule, MatFormFieldModule,
 } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service';
@@ -54,8 +46,10 @@ describe('CmsDetailListComponent', () => {
         MatButtonModule,
         MatGridListModule,
         MatInputModule,
+        MatFormFieldModule,
         MatCheckboxModule,
         MatListModule,
+        MatSelectModule,
         MatToolbarModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}

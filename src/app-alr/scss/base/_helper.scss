@@ -14,7 +14,8 @@
   cursor: help;
 }
 
-.ucfirst {
+.ucfirst,
+.text-ucfirst {
   text-transform: lowercase;
 
   &:first-letter {
