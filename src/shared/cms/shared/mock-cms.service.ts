@@ -28,6 +28,9 @@ export class MockCmsService {
     this.orderBy$ = new BehaviorSubject(null);
   }
 
+  getCms(): Observable<Cms> {
+    return of(mockCms);
+  }
 
   getCmss(): Observable<Array<Cms>> {
     return of([mockCms]);

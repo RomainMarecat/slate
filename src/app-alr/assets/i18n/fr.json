@@ -9,6 +9,11 @@
         "faq": "La FAQ"
       }
     },
+    "cms-detail": {
+      "alert": {
+        "updated": "mis à jour"
+      }
+    },
     "title": {
       "article": {
         "title": "les articles",
@@ -29,7 +34,8 @@
       "cms-detail": {
         "title": "tous les templates",
         "subtitle": "appartenant au cms ",
-        "selection": "sélectionné(s)"
+        "selection": "sélectionné(s)",
+        "already-exist": "Le template est déjà utilisé"
       },
       "map": {
         "title": "les cartes",
@@ -116,6 +122,9 @@
         "site_name": "clé"
       },
       "cms-detail": {
+        "parent": {
+          "no-data": "Aucune valeur"
+        },
         "title": "titre",
         "content": "entrer du contenu",
         "icon": "l'icône"
@@ -285,6 +294,7 @@
     }
   },
   "faq": {
+    "links": "La FAQ",
     "shipping": "livraison",
     "general-question": "questions générales",
     "about-service": "a propos du service",
@@ -292,7 +302,35 @@
     "buyandsell": "acheter et vendre"
   },
   "footer": {
-    "links": "les liens du footer"
+    "links": "Le Footer",
+    "title": {
+      "about": "A propos de ALR",
+      "legal-information": "Informations légales",
+      "professional": "professionnels",
+      "questions": "Des questions ?",
+      "cgu": "Conditions générales d'utilisation",
+      "cgv": "Conditions générales de vente",
+      "gprd": "Vie privée et cookies",
+      "privacy-policy": "politique de protection des données",
+      "who-are-us": "Qui nous sommes ?",
+      "join-us": "Nous rejoindre",
+      "advert": "publicité",
+      "hiring": "recrutements",
+      "solutions-pro": "Nos solutions pros",
+      "help": "Aide",
+      "contact": "Nous contacter"
+    },
+    "cgu": "Conditions générales d'utilisation",
+    "cgv": "Conditions générales de vente",
+    "gprd": "Vie privée et cookies",
+    "privacy-policy": "politique de protection des données",
+    "who-are-us": "Qui nous sommes ?",
+    "join-us": "Nous rejoindre",
+    "advert": "publicité",
+    "hiring": "recrutements",
+    "solutions-pro": "Nos solutions pros",
+    "help": "Aide",
+    "contact": "Nous contacter"
   },
   "gprd": {
     "title": "RGPD",

@@ -33,41 +33,46 @@ import { MockAlertService } from '../../../popup/mock-alert.service';
 import { AlertService } from '../../../popup/alert.service';
 
 import { CmsDetailAddComponent } from './cms-detail-add.component';
+import { NgPipesModule } from 'ngx-pipes';
+import { MockCmsService } from 'shared/cms/shared/mock-cms.service';
+import { CmsService } from 'shared/cms/shared/cms.service';
 
 describe('CmsDetailAddComponent', () => {
   let component: CmsDetailAddComponent;
-  let fixture: ComponentFixture < CmsDetailAddComponent > ;
+  let fixture: ComponentFixture<CmsDetailAddComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          BrowserModule,
-          HttpClientModule,
-          FormsModule,
-          RouterTestingModule,
-          ReactiveFormsModule,
-          BrowserAnimationsModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          MatSelectModule,
-          MatToolbarModule,
-          NgxEditorModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-        ],
-        declarations: [CmsDetailAddComponent],
-        providers: [
-          { provide: CmsDetailService, useClass: MockCmsDetailService },
-          { provide: AlertService, useClass: MockAlertService },
-        ]
-      })
+      imports: [
+        CommonModule,
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        RouterTestingModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatListModule,
+        MatSelectModule,
+        MatToolbarModule,
+        NgxEditorModule,
+        NgPipesModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+      ],
+      declarations: [CmsDetailAddComponent],
+      providers: [
+        {provide: CmsDetailService, useClass: MockCmsDetailService},
+        {provide: CmsService, useClass: MockCmsService},
+        {provide: AlertService, useClass: MockAlertService},
+      ]
+    })
       .compileComponents();
   }));
 

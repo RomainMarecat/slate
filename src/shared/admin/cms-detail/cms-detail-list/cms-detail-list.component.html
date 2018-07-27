@@ -109,7 +109,8 @@
                   *ngIf="activatedRows[rowIndex] !== true">
               {{ value | translate }}
             </span>
-          <mat-form-field *ngIf="activatedRows && activatedRows[rowIndex] === true">
+          <mat-form-field apparence="standard"
+                          *ngIf="activatedRows && activatedRows[rowIndex] === true">
             <input matInput
                    [placeholder]="'admin.placeholder.cms-detail.title'|translate"
                    [value]="row?.title"
@@ -129,7 +130,8 @@
                   *ngIf="activatedRows[rowIndex] !== true">
               {{ value | translate }}
             </span>
-          <mat-form-field *ngIf="activatedRows && activatedRows[rowIndex] === true">
+          <mat-form-field apparence="standard"
+                          *ngIf="activatedRows && activatedRows[rowIndex] === true">
             <input matInput
                    [placeholder]="'admin.placeholder.cms-detail.icon'|translate"
                    [value]="row?.icon"
@@ -139,7 +141,28 @@
         </ng-template>
       </ngx-datatable-column>
       <ngx-datatable-column name="content"></ngx-datatable-column>
-      <ngx-datatable-column name="parent"></ngx-datatable-column>
+      <ngx-datatable-column name="parent">
+        <ng-template
+          let-rowIndex="rowIndex"
+          let-value="value"
+          let-row="row"
+          ngx-datatable-cell-template>
+          <span (dblclick)="onActivateEdit(rowIndex)"
+                class="row-activate"
+                *ngIf="activatedRows[rowIndex] !== true">
+              {{ value | translate }}
+            </span>
+          <mat-form-field apparence="standard"
+                          *ngIf="activatedRows && activatedRows[rowIndex] === true">
+            <mat-select (selectionChange)="onEdit('parent', row, $event.value, rowIndex)">
+              <mat-option [value]="null">{{ 'admin.placeholder.cms-detail.parent.no-data'|translate }}</mat-option>
+              <mat-option [value]="cmsD.key" *ngFor="let cmsD of cmsDetails$|async">
+                {{ cmsD.title |translate }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </ng-template>
+      </ngx-datatable-column>
     </ngx-datatable>
   </div>
 </div>

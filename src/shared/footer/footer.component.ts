@@ -32,10 +32,12 @@ export class FooterComponent implements OnInit {
         cmss = cmss.filter((v) => v.name === 'footer.links');
         if (cmss && cmss.length > 0) {
           this.cms = cmss[ 0 ];
+          console.log(cmss);
           this.cmsDetailService.filters$.next([ {column: 'cms', operator: '==', value: this.cms.key} ]);
           this.cmsDetailService.getCmsDetails()
             .subscribe((cmsDetails: CmsDetail[]) => {
-              const links = cmsDetails.filter((cmsD) => cmsD.parent === null);
+              console.log(cmsDetails);
+              const links = cmsDetails.filter((cmsD) => cmsD.parent === null || typeof cmsD.parent === 'undefined');
               const sublinks = cmsDetails.filter((cmsD) => cmsD.parent !== null);
               this.links = links.map((link: CmsDetail) => {
                 const children = [];
