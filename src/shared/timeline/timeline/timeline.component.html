@@ -1,0 +1,66 @@
+<div class="main-timeline-wrapper p-5">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <div class="timeline-head">
+          <h2 class="text-ucfirst">{{ 'timeline.title'|translate }}</h2>
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <hr>
+      <div class="timeline-body">
+        <div class="timeline-1 timeline-1--fixed">
+          <div class="timeline-1-items">
+            <div class="timeline-1-marker"></div>
+            <div class="timeline-1-item"
+                 *ngFor="let item of items; let i = index;"
+                 [class.timeline-1-item--left]="i%2 === 0"
+                 [class.timeline-1-item--right]="i%2 !== 0"
+                 [class.timeline-1-item--first]="i === 0">
+              <div class="timeline-1-item-circle"
+                   fxLayout="row"
+                   fxLayoutAlign="center center">
+                <div class="bg-danger"></div>
+              </div>
+              <div class="timeline-1-item-arrow">
+              </div>
+              <span class="timeline-1-item-time">11:35<span>AM</span></span>
+              <div class="timeline-1-item-content">
+                <div class="timeline-1-item-title">
+                  {{ item.title }}
+                </div>
+                <div class="timeline-1-item-body">
+                  <div class="m-list-badge mt-2"
+                       fxLayout="row"
+                       fxLayoutAlign="start center"
+                       fxLayoutGap="10px"
+                       *ngIf="item.type === 'calendar'">
+                    <div class="m-list-badge-label">12:00</div>
+                    <mat-chip-list class="m-list-badge-items">
+                      <mat-chip [color]="badge.color" selected *ngFor="let badge of item.content">{{ badge.name }}</mat-chip>
+                    </mat-chip-list>
+                  </div>
+                  <div class="m-list-pics" *ngIf="item.type === 'avatar'">
+                    <a href="#"><img mat-card-avatar src="https://picsum.photos/32/32?q=1" title=""></a>
+                    <a href="#"><img mat-card-avatar src="https://picsum.photos/32/32?q=2" title=""></a>
+                    <a href="#"><img mat-card-avatar src="https://picsum.photos/32/32?q=3" title=""></a>
+                    <a href="#"><img mat-card-avatar src="https://picsum.photos/32/32?q=4" title=""></a>
+                  </div>
+                  <div class="mt-2" *ngIf="item.type === 'article'">
+                    {{ item.content }}
+                  </div>
+                  <div class="timeline-1-item-actions mt-3" *ngIf="item.type === 'news'">
+                    <a href="#" mat-stroked-button color="primary">
+                      Read more
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

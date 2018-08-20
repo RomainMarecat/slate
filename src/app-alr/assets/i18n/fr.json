@@ -289,7 +289,8 @@
         "chart": "Dashboard",
         "gprd": "RGPD",
         "invoice": "Facturation",
-        "user": "Utilisateur"
+        "user": "Utilisateur",
+        "timeline": "Timeline"
       }
     }
   },
@@ -567,6 +568,9 @@
         "alt": "Image de fond du menu"
       }
     }
+  },
+  "timeline": {
+    "title": "timeline style 1"
   },
   "user": {
     "logins": {
