@@ -289,8 +289,9 @@
         "chart": "Dashboard",
         "gprd": "RGPD",
         "invoice": "Facturation",
-        "user": "Utilisateur",
-        "timeline": "Timeline"
+        "layout-builder": "Configurateur de layout",
+        "timeline": "Timeline",
+        "user": "Utilisateur"
       }
     }
   },
@@ -520,6 +521,14 @@
     "action": {
       "invoice1": "facturation style 1",
       "invoice2": "facturation style 2"
+    }
+  },
+  "layout-builder": {
+    "edit": {
+      "title": "Configurateur de layout",
+      "content": {
+        "title": "Configuration"
+      }
     }
   },
   "menu": {

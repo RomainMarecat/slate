@@ -32,19 +32,34 @@ $black: mat-palette($mat-grey, 900);
   .mat-button,
   .mat-icon-button,
   .mat-mini-fab {
-    &.mat-primary {
-      background-color: mat-color($primary, darker);
-      color: mat-color($white);
+    @if length(&) {
+      &.mat-primary {
+        background-color: mat-color($primary, darker);
+        color: mat-color($white);
+      }
     }
 
-    &.mat-accent {
-      background-color: mat-color($accent);
-      color: mat-color($white);
+    @if length(&) {
+      &.mat-accent {
+        background-color: mat-color($accent);
+        color: mat-color($white);
+      }
     }
 
-    &.mat-warn {
-      background-color: mat-color($warn);
-      color: mat-color($black);
+    @if length(&) {
+      &.mat-warn {
+        background-color: mat-color($warn);
+        color: mat-color($black);
+      }
+    }
+  }
+}
+
+
+@mixin no-underline {
+  #{if(&, "&", "*")}.mat-form-field--no-underline {
+    .mat-form-field-underline {
+      background-color: transparent;
     }
   }
 }
@@ -61,16 +76,18 @@ $black: mat-palette($mat-grey, 900);
     background-color: mat-color($primary);
   }
 
-  &.mat-form-field--no-underline {
-    .mat-form-field-underline {
-      background-color: transparent;
-    }
-  }
+  @include no-underline;
 
   .mat-form-field--no-underline {
     .mat-form-field-underline {
       background-color: transparent;
     }
+  }
+}
+
+@mixin color-hovered {
+  #{if(&, "&", "*")}:hover {
+    color: mat-color($white, 200);
   }
 }
 
@@ -83,9 +100,8 @@ $black: mat-palette($mat-grey, 900);
   mat-toolbar.mat-primary {
     background-color: mat-color($primary, darker);
     color: mat-color($white);
-    &:hover {
-      color: mat-color($white, 200);
-    }
+
+    @include color-hovered;
 
     a {
       color: mat-color($white);
