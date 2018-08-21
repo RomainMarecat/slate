@@ -60,7 +60,8 @@ import { CartModule } from './cart/cart.module';
 import { CmsModule } from './cms/cms.module';
 import { FaqModule } from './faq/faq.module';
 import { InvoiceModule } from './invoice/invoice.module';
-import { UserModule } from 'shared/user/user.module';
+import { UserModule } from './user/user.module';
+import { TimelineModule } from './timeline/timeline.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -136,6 +137,7 @@ export class ConfigService {
     SessionModule,
     SidenavModule,
     TranslateModule,
+    TimelineModule,
     UserModule,
   ],
   exports: [
@@ -198,6 +200,7 @@ export class ConfigService {
     SessionModule,
     SlackModule,
     SidenavModule,
+    TimelineModule,
     TranslateModule,
     UserModule
   ],

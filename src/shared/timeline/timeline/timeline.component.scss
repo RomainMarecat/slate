@@ -1,0 +1,175 @@
+.main-timeline-wrapper {
+  background-color: #f2f3f8;
+
+  .timeline-body {
+
+    .timeline-1 {
+      position: relative;
+      margin: 0 auto;
+      width: 80%;
+
+      &:after {
+        background-color: #E6EAF5;
+        content: '';
+        position: absolute;
+        width: 0.4rem;
+        top: 0;
+        bottom: 3rem;
+        left: 50%;
+        margin-left: -0.142rem;
+      }
+
+      .timeline-1-marker {
+        background-color: #E6EAF5;
+        width: 1.43rem;
+        height: 0.37rem;
+        border-radius: 0.36rem;
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translate(-46%, 0);
+        transform: translate(-46%, 0);
+      }
+
+      .timeline-1-item-time {
+        right: 3.8rem;
+        position: absolute;
+        display: inline-block;
+        margin-top: -2.14rem;
+        font-weight: 600;
+        color: #0067A3;
+      }
+
+      .timeline-1-item-circle {
+        right: 0;
+        -webkit-transform: translate(54%, 0);
+        transform: translate(54%, 0);
+        top: 1.57rem;
+        background: white;
+        width: 1.43rem;
+        height: 1.43rem;
+        border-radius: 50%;
+        z-index: 1;
+        position: absolute;
+        color: #af300b;
+
+        div {
+          border-radius: 50%;
+          width: 0.4rem;
+          height: 0.4rem;
+        }
+      }
+
+      .timeline-1-item-arrow {
+        line-height: 0;
+        display: inline-block;
+        width: 10px;
+        height: 40px;
+        left: auto;
+        margin-left: auto;
+        margin-right: -9px;
+        right: 2.85rem;
+        top: 0.86rem;
+        position: absolute;
+        color: #F7F8FC;
+
+        &:before {
+          content: "";
+          top: 0;
+          margin-top: 10px;
+          font-size: 40px;
+          border-style: solid;
+          border-width: 10px 0 10px 15px;
+          border-color: transparent  transparent transparent #F7F8FC;
+          position: absolute;
+        }
+      }
+
+      .timeline-1-item--first {
+        top: 3.5rem;
+      }
+
+      .timeline-1-item--left {
+        left: 0;
+        padding-right: 2.85rem;
+      }
+
+      .timeline-1-item--right {
+        top: -1rem;
+        left: 50%;
+        padding-left: 2.86rem;
+
+        .timeline-1-item-circle {
+          top: 1.55rem;
+          left: 0;
+          -webkit-transform: translate(-46%, 0);
+          transform: translate(-46%, 0);
+        }
+
+        .timeline-1-item-time {
+          left: 3.57rem;
+        }
+
+        .timeline-1-item-arrow {
+          font-size: 40px;
+          margin-left: -16px;
+          -webkit-transform: translate(10%, 0);
+          transform: translate(10%, 0);
+          left: 2.86rem;
+
+          &:before {
+            content: "";
+            top: 0;
+            margin-top: 10px;
+            font-size: 40px;
+            border-style: solid;
+            border-width: 10px 15px 10px 0;
+            border-color: transparent #F7F8FC transparent transparent;
+            position: absolute;
+          }
+        }
+      }
+
+      .timeline-1-items {
+        padding-bottom: 6rem;
+        position: relative;
+
+        .timeline-1-item {
+          position: relative;
+          margin-left: 0;
+          width: 50%;
+          min-height: 3rem;
+
+          .timeline-1-item-content {
+            background-color: #F7F8FC;
+            position: relative;
+            border-radius: 1.07rem;
+            padding: 2.14rem;
+
+            .timeline-1-item-title {
+              font-size: 1.1rem;
+              font-weight: 500;
+              color: #575962;
+            }
+
+            .timeline-1-item-body {
+              margin-top: 1.5rem;
+              font-family: 'Roboto Condensed', sans-serif;
+              font-size: 13px;
+              font-weight: 300;
+
+              .m-list-pics > a {
+                margin-right: 0.25rem;
+              }
+              a {
+                color: #5867dd;
+                text-decoration: none;
+                background-color: transparent;
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
