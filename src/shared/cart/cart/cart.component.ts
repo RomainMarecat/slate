@@ -59,7 +59,9 @@ export class CartComponent implements OnInit {
           this.isUserAlreadyLogged = true;
           this.isUserCompleted = true;
           this.user = user;
-          this.cartEditComponent.setUser(user);
+          if (this.cartEditComponent) {
+            this.cartEditComponent.setUser(user);
+          }
           this.getCart();
         }
       });
