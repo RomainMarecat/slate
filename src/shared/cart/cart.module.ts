@@ -18,6 +18,7 @@ import { PaymentService } from '../payment/shared/payment.service';
 import { CartEditComponent } from './cart-edit/cart-edit.component';
 import { CartComponent } from './cart/cart.component';
 import { NgxStripeModule } from 'ngx-stripe';
+import { RoutingState } from '../util/routing-state';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { NgxStripeModule } from 'ngx-stripe';
   ],
   providers: [
     CartService,
-    PaymentService
+    PaymentService,
+    RoutingState
   ]
 })
 export class CartModule {

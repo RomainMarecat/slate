@@ -13,7 +13,7 @@ import { CmsDetailAddComponent } from './cms-detail-add/cms-detail-add.component
 import { CmsDetailService } from '../../cms-detail/shared/cms-detail.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { CmsService } from 'shared/cms/shared/cms.service';
+import { CmsService } from '../../cms/shared/cms.service';
 
 const TABLE_CMS_DETAIL = new InjectionToken<string>('cms-detail');
 const TABLE_CMS = new InjectionToken<string>('cms');
