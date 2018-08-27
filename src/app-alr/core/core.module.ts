@@ -60,7 +60,7 @@ import { ColumnService } from '../board/shared/column.service';
 import { CardService } from '../board/shared/card.service';
 import { ChartModule } from '../chart/chart.module';
 import { GprdModule } from '../gprd/gprd.module';
-import { PaymentService } from 'shared/payment/shared/payment.service';
+import { PaymentService } from '../../shared/payment/shared/payment.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
