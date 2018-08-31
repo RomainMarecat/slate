@@ -14,6 +14,11 @@
         "updated": "mis à jour"
       }
     },
+    "partner": {
+      "import": {
+        "title": "importer un fichier de partenaires"
+      }
+    },
     "title": {
       "article": {
         "title": "les articles",
@@ -259,6 +264,7 @@
     "delete": "supprimer",
     "next-available-slot": "prochaines disponibilités",
     "home": "accueil",
+    "import": "importer",
     "login": "se connecter",
     "remember_me": "se souvenir de moi",
     "forgot_password": "mot de passe oublié",

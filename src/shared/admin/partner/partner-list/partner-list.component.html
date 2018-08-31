@@ -1,6 +1,19 @@
-<div class="partner-list-wrapper py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px" fxLayout.xs="column" fxLayoutAlign.xs="center stretch" fxLayoutGap.xs="10px">
-  <ngx-datatable fxFlex="70" #dataTableComponentTable class="material striped scrolling-partners expandable" [columnMode]="'force'" [rows]="partners" [columns]="columns" [headerHeight]="headerHeight" [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true" (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'" (activate)="onActivate($event)" (select)='onSelect($event)'></ngx-datatable>
-  <app-partner-edit fxFlex="30" [showBackButton]="false"></app-partner-edit>
+<div class="partner-list-wrapper py-5" fxLayout="row" fxLayoutAlign="space-around stretch" fxLayoutGap="20px"
+     fxLayout.xs="column" fxLayoutAlign.xs="center stretch" fxLayoutGap.xs="10px">
+  <ngx-datatable fxFlex="70" #dataTableComponentTable class="material striped scrolling-partners expandable"
+
+                 [columnMode]="'force'" [rows]="partners" [columns]="columns" [headerHeight]="headerHeight"
+                 [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true"
+                 (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'"
+                 (activate)="onActivate($event)" (select)='onSelect($event)'></ngx-datatable>
+  <div class="edit-wrapper"
+       fxFlex="30"
+       fxLayout="column"
+       fxLayoutAlign="start center"
+       fxLayoutGap="30px">
+    <app-admin-partner-import></app-admin-partner-import>
+    <app-partner-edit [showBackButton]="false"></app-partner-edit>
+  </div>
 </div>
 <!-- <button color="primary" type="button" aria-label="Ajouter un partenaire" [routerLink]="['/admin/partner/add']" mat-mini-fab class="absolute-fab pulse">
   <mat-icon aria-hidden="true">add</mat-icon>
@@ -9,17 +22,20 @@
 <ng-template #desktopHeader let-column="column" let-sort="sortFn" ngx-datatable-header-template>
   <span class="mobile-hidden">{{column.name}}</span>
 </ng-template>
-<ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
-  <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+<ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+             let-selectFn="selectFn">
+  <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
   <span>({{selected?.length}})</span>
 </ng-template>
 <!-- Cell Template -->
-<ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected" let-onCheckboxChangeFn="onCheckboxChangeFn" let-row="row" let-expanded="expanded">
-  <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+<ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+             let-onCheckboxChangeFn="onCheckboxChangeFn" let-row="row" let-expanded="expanded">
+  <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
 </ng-template>
 <ng-template #imageCell ngx-datatable-cell-template let-value="value" let-row="row">
   <a (click)="editPartner(row)">
-    <app-media-viewer class="py-0" [key]="item" [resize]="{height: headerHeight}" *ngFor="let item of value"></app-media-viewer>
+    <app-media-viewer class="py-0" [key]="item" [resize]="{height: headerHeight}"
+                      *ngFor="let item of value"></app-media-viewer>
   </a>
 </ng-template>
 <ng-template #actionsCell let-row="row" ngx-datatable-cell-template>
@@ -36,7 +52,8 @@
   <span class="mobile-hidden">{{value}}</span>
 </ng-template>
 <ng-template #publicationCell let-value="value" let-row="row" ngx-datatable-cell-template>
-  <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group mobile-hidden" [value]="value" (change)="updatePartnerPublication(row, $event)">
+  <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group mobile-hidden"
+                   [value]="value" (change)="updatePartnerPublication(row, $event)">
     <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
       <span class="text-success">Publié</span>
     </mat-radio-button>

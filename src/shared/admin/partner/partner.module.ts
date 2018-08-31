@@ -9,6 +9,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { PartnerOffersComponent } from './partner-offers/partner-offers.component';
 import { PartnerService } from '../../partner/partner.service';
+import { PartnerImportComponent } from './partner-import/partner-import.component';
+import { PartnerImportPreviewComponent } from './partner-import-preview/partner-import-preview.component';
 
 const TABLE_PARTNER = new InjectionToken<string>('partner');
 
@@ -19,10 +21,19 @@ const TABLE_PARTNER = new InjectionToken<string>('partner');
     PartnerRoutingModule,
     SharedModule
   ],
-  declarations: [ PartnerListComponent, PartnerEditComponent, PartnerOffersComponent ],
+  entryComponents: [
+    PartnerImportPreviewComponent
+  ],
+  declarations: [
+    PartnerListComponent,
+    PartnerEditComponent,
+    PartnerOffersComponent,
+    PartnerImportComponent,
+    PartnerImportPreviewComponent
+  ],
   providers: [
     {provide: TABLE_PARTNER, useValue: 'partner'},
-    {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
+    {provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER]},
   ]
 })
 export class PartnerModule {
