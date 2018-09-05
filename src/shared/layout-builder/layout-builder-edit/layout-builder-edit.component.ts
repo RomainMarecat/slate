@@ -56,7 +56,7 @@ export class LayoutBuilderEditComponent implements OnInit {
     if (theme.isDefault) {
       this.styleService.removeStyle('theme');
     } else {
-      this.styleService.setStyle('theme', `assets/custom-themes/${theme.href}`);
+      this.styleService.setStyle('theme', `assets/${theme.href}`);
     }
 
     if (this.currentTheme) {

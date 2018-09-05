@@ -42,3 +42,6 @@ testem.log
 Thumbs.db
 
 design/gt500.psd
+
+
+src/app-alr/assets/*.css
