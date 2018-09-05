@@ -60,6 +60,7 @@ import { ColumnService } from '../board/shared/column.service';
 import { CardService } from '../board/shared/card.service';
 import { ChartModule } from '../chart/chart.module';
 import { GprdModule } from '../gprd/gprd.module';
+import { PaymentService } from '../../shared/payment/shared/payment.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -99,6 +100,7 @@ export const TABLE_BOARD = new InjectionToken<string>('board');
 export const TABLE_COLUMN = new InjectionToken<string>('column');
 export const TABLE_CARD = new InjectionToken<string>('card');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
+export const STRIPE_KEY = new InjectionToken<string>('');
 
 @Injectable()
 export class ConfigService {
@@ -202,6 +204,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_BOARD, useValue: 'board'},
     {provide: TABLE_COLUMN, useValue: 'column'},
     {provide: TABLE_CARD, useValue: 'card'},
+    {provide: STRIPE_KEY, useValue: environment.stripeKey},
     {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
     {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
     {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
@@ -217,6 +220,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: OrderService, useClass: OrderService, deps: [AngularFirestore, TABLE_ORDER]},
     {provide: MapService, useClass: MapService, deps: [AngularFirestore, TABLE_MAP]},
     {provide: ScoreService, useClass: ScoreService, deps: [AngularFirestore, TABLE_SCORE]},
+    {provide: PaymentService, useClass: PaymentService, deps: [ AngularFirestore, TABLE_PAYMENT, STRIPE_KEY ]},
     {provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER]},
     {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
     {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
