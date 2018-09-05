@@ -1,26 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 
+import { PartnerImportComponent } from './partner-import.component';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-
-import { PartnerEditComponent } from './../partner-edit/partner-edit.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { SharedModule } from '../../../shared.module';
-import { MenuService } from '../../../menu/menu.service';
-import { PartnerListComponent } from './partner-list.component';
-import { AlertService } from '../../../popup/alert.service';
-import { MockAlertService } from '../../../popup/mock-alert.service';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'shared/shared.module';
+import { AlertService } from 'shared/popup/alert.service';
+import { MockAlertService } from 'shared/popup/mock-alert.service';
 import { PartnerService } from 'shared/partner/partner.service';
 import { MockPartnerService } from 'shared/partner/mock-partner.service';
-import { PartnerImportComponent } from '../partner-import/partner-import.component';
 
-describe('PartnerListComponent', () => {
-  let component: PartnerListComponent;
-  let fixture: ComponentFixture<PartnerListComponent>;
+describe('PartnerImportComponent', () => {
+  let component: PartnerImportComponent;
+  let fixture: ComponentFixture<PartnerImportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -36,22 +32,18 @@ describe('PartnerListComponent', () => {
         }),
         SharedModule,
       ],
-      declarations: [
-        PartnerListComponent,
-        PartnerEditComponent,
-        PartnerImportComponent
-      ],
+      declarations: [PartnerImportComponent],
       providers: [
         {provide: AlertService, useClass: MockAlertService},
-        {provide: MenuService, useClass: MenuService},
         {provide: PartnerService, useClass: MockPartnerService}
       ]
+
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PartnerListComponent);
+    fixture = TestBed.createComponent(PartnerImportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

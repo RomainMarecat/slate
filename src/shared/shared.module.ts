@@ -63,6 +63,7 @@ import { InvoiceModule } from './invoice/invoice.module';
 import { UserModule } from './user/user.module';
 import { TimelineModule } from './timeline/timeline.module';
 import { LayoutBuilderModule } from 'shared/layout-builder/layout-builder.module';
+import { CsvModule } from 'shared/csv/csv.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
 
@@ -85,6 +86,7 @@ export class ConfigService {
     CmsModule,
     CommentModule,
     CommonModule,
+    CsvModule,
     FaviconModule,
     FacetModule,
     FaqModule,
@@ -149,6 +151,7 @@ export class ConfigService {
     CmsModule,
     CmsDetailModule,
     CommentModule,
+    CsvModule,
     DragulaModule,
     FaviconModule,
     FacetModule,

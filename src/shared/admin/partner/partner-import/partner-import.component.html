@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-title class="text-ucfirst">
+    {{ 'admin.partner.import.title'|translate }}
+  </mat-card-title>
+
+  <mat-card-content>
+    <div class="upload-wrapper">
+      <input type="file" (change)="uploadFile($event)">
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions fxLayout="row"
+                    fxLayoutAlign="center stretch">
+    <button type="button"
+            class="text-uppercase"
+            color="primary"
+            mat-raised-button
+            (click)="onImportFile()">{{ 'cta.import'|translate }}
+    </button>
+  </mat-card-actions>
+</mat-card>
