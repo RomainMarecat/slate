@@ -2,6 +2,7 @@ import { Address } from '../address/shared/address';
 
 export class Partner {
   key: string;
+  id?: string;
   name: string;
   slug?: string;
   lang_default?: string;

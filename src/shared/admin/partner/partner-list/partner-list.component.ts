@@ -9,7 +9,7 @@ import { MenuService } from 'shared/menu/menu.service';
 @Component({
   selector: 'app-partner-list',
   templateUrl: './partner-list.component.html',
-  styleUrls: [ './partner-list.component.scss' ]
+  styleUrls: ['./partner-list.component.scss']
 })
 export class PartnerListComponent implements OnInit {
   readonly headerHeight = 50;
@@ -51,7 +51,7 @@ export class PartnerListComponent implements OnInit {
   }
 
   getColumns(): Array<any> {
-    return [ {
+    return [{
       width: 75,
       sortable: false,
       canAutoResize: false,
@@ -77,7 +77,7 @@ export class PartnerListComponent implements OnInit {
       name: 'Actions',
       flexGrow: 1,
       cellTemplate: this.actionsCell,
-    } ];
+    }];
   }
 
   private updatePublication(partner: Partner) {
@@ -92,7 +92,7 @@ export class PartnerListComponent implements OnInit {
     this.partnerService.updatePartner(partner);
   }
 
-  updatePartnerPublication(partner: Partner, event: { source: any, value: boolean }) {
+  updatePartnerPublication(partner: Partner, event: {source: any, value: boolean}) {
     partner.published = event.value;
     this.updatePublication(partner);
   }
@@ -119,7 +119,7 @@ export class PartnerListComponent implements OnInit {
   }
 
   editPartner(partner: Partner) {
-    this.router.navigate([ '/admin/partner/edit/', partner.key ]);
+    this.router.navigate(['/admin/partner/edit/', partner.key]);
   }
 
   /**
@@ -163,7 +163,7 @@ export class PartnerListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate([ '/admin/partner/edit/', event.row.key ]);
+      this.router.navigate(['/admin/partner/edit/', event.row.key]);
     }
   }
 

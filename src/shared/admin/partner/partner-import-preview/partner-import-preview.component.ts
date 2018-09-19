@@ -3,6 +3,13 @@ import { MAT_DIALOG_DATA, MatChipSelectionChange, MatDialogRef } from '@angular/
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { Partner } from 'shared/partner/partner';
 
+export interface SimpleTableColumn {
+  prop: string;
+  flexGrow: number;
+  active: boolean;
+  name: string;
+}
+
 @Component({
   selector: 'app-alr-partner-import-preview',
   templateUrl: './partner-import-preview.component.html',
@@ -10,7 +17,7 @@ import { Partner } from 'shared/partner/partner';
 })
 export class PartnerImportPreviewComponent implements OnInit {
 
-  columns: {prop: string, name: string, flexGrow: number, active: boolean}[] = [];
+  columns: SimpleTableColumn[] = [];
   displayedColumns: TableColumn[] = [];
 
   /**
@@ -22,19 +29,45 @@ export class PartnerImportPreviewComponent implements OnInit {
     //  Charger les colonnes et pouvoir les ajouter/suprimer des colonnes comme on le souhaite
     if (this.data && this.data.partners) {
       this.columns = this.getColumns(this.data.partners.slice(0, 1));
-      this.displayedColumns = this.columns.map((column) => {
-        return {prop: column.prop, name: column.name, flexGrow: column.flexGrow};
-      });
+      this.displayedColumns = this.columns.map(this.getDisplayedValues);
     }
   }
 
   ngOnInit() {
   }
 
-  onToggleChip(chip: MatChipSelectionChange) {
-    this.displayedColumns = this.columns.filter((c) => c.active).map((column) => {
-      return {prop: column.prop, name: column.name, flexGrow: column.flexGrow};
-    });
+  onKeepSavedColumns() {
+    this.columns = JSON.parse(localStorage.getItem('columns_partners'));
+    this.onToggleChip();
+  }
+
+  /**
+   * @param {SimpleTableColumn} column
+   * @returns {TableColumn}
+   */
+  getDisplayedValues(column: SimpleTableColumn): TableColumn {
+    return {prop: column.prop, name: column.name, flexGrow: column.flexGrow};
+  }
+
+  /**
+   * @param {MatChipSelectionChange} chip
+   */
+  onToggleChip(chip?: MatChipSelectionChange) {
+    this.displayedColumns = this.columns
+      .filter((c) => c.active)
+      .map(this.getDisplayedValues);
+  }
+
+  /**
+   * @param {SimpleTableColumn} column
+   */
+  onRemoveColumn(column: SimpleTableColumn) {
+    this.columns = this.columns
+      .filter((c) => c.active && column.name !== c.name);
+
+    localStorage.setItem('columns_partners', JSON.stringify(this.columns));
+
+    this.displayedColumns = this.columns.map(this.getDisplayedValues);
   }
 
   /**
@@ -53,7 +86,12 @@ export class PartnerImportPreviewComponent implements OnInit {
     });
   }
 
-  close(): void {
-    this.dialogRef.close();
+  /**
+   * Ferme la modal avec un résultat
+   *
+   * @param result
+   */
+  close(result: any): void {
+    this.dialogRef.close(result);
   }
 }

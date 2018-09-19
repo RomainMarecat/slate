@@ -77,7 +77,7 @@ export class CsvExtratorService {
 
   private replaceAll(value, search, replacement) {
     return value.replace(new RegExp(search, 'g'), replacement);
-  };
+  }
 
 
   /**
