@@ -10,10 +10,13 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { AlertService } from '../../../../shared/popup/alert.service';
 import { MockAlertService } from '../../../../shared/popup/mock-alert.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('OptinNewsletterComponent', () => {
   let component: OptinNewsletterComponent;
   let fixture: ComponentFixture<OptinNewsletterComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

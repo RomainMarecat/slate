@@ -15,10 +15,13 @@ import { SessionService } from 'shared/session/shared/session.service';
 import { MockSessionService } from 'shared/session/shared/mock-session.service';
 import { mockEnd, mockStart } from 'shared/agenda/shared/mock-day';
 import { mockOnlineSession } from 'shared/agenda/shared/mock-online-session';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('CalendarComponent', () => {
   let component: CalendarComponent;
-  let fixture: ComponentFixture<CalendarComponent>;
+  let fixture: ComponentFixture<CalendarComponent>
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

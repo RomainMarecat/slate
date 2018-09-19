@@ -16,10 +16,13 @@ import { MockBoardService } from '../shared/mock-board.service';
 import { MockColumnService } from '../shared/mock-column.service';
 import { MockCardService } from '../shared/mock-card.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('BoardListComponent', () => {
   let component: BoardListComponent;
   let fixture: ComponentFixture<BoardListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

@@ -13,10 +13,13 @@ import { ChartRadarComponent } from '../chart-radar/chart-radar.component';
 import { ChartDoughnutComponent } from '../chart-doughnut/chart-doughnut.component';
 import { ChartDynamicComponent } from '../chart-dynamic/chart-dynamic.component';
 import { ChartPieComponent } from '../chart-pie/chart-pie.component';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ChartListComponent', () => {
   let component: ChartListComponent;
   let fixture: ComponentFixture<ChartListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

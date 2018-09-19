@@ -10,10 +10,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'shared/shared.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('OptinNewsletter2Component', () => {
   let component: OptinNewsletter2Component;
   let fixture: ComponentFixture<OptinNewsletter2Component>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

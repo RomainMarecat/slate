@@ -13,10 +13,13 @@ import { AlertService } from '../../../popup/alert.service';
 import { mockAvailabilities, mockDays, mockEnd, mockStart } from 'shared/agenda/shared/mock-day';
 import * as moment from 'moment';
 import { mockOnlineSession } from 'shared/agenda/shared/mock-online-session';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('CalendarBodyComponent', () => {
   let component: CalendarBodyComponent;
   let fixture: ComponentFixture<CalendarBodyComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

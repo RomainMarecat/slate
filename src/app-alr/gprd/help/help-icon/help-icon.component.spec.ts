@@ -5,10 +5,13 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatCardModule, MatDialogModule, MatIconModule } from '@angular/material';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('HelpIconComponent', () => {
   let component: HelpIconComponent;
   let fixture: ComponentFixture<HelpIconComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
