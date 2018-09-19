@@ -1,19 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PartnerImportPreviewComponent } from './partner-import-preview.component';
-import { CommonModule } from '@angular/common';
+import {PartnerImportPreviewComponent} from './partner-import-preview.component';
+import {CommonModule} from '@angular/common';
 import {
   MAT_DIALOG_DATA,
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatChipsModule,
   MatDialogModule,
   MatDialogRef,
   MatIconModule
 } from '@angular/material';
-import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {TranslateFakeLoader, TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 
 describe('PartnerImportPreviewComponent', () => {
   let component: PartnerImportPreviewComponent;
@@ -27,6 +27,7 @@ describe('PartnerImportPreviewComponent', () => {
         MatButtonModule,
         MatDialogModule,
         MatCardModule,
+        MatChipsModule,
         NgxDatatableModule,
         RouterTestingModule,
         HttpClientTestingModule,
