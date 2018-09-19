@@ -17,10 +17,13 @@ import { MockBoardService } from '../shared/mock-board.service';
 import { MockColumnService } from '../shared/mock-column.service';
 import { MockAlertService } from 'shared/popup/mock-alert.service';
 import { AlertService } from 'shared/popup/alert.service';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ColumnComponent', () => {
   let component: ColumnComponent;
   let fixture: ComponentFixture<ColumnComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

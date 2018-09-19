@@ -30,10 +30,13 @@ import { LoaderService } from '../../shared/loader/loader.service';
 import { MockLoaderService } from '../../shared/loader/mock-loader.service';
 import { MediaModule } from '../../shared/media/media.module';
 import { environment } from '../environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
   let fixture: ComponentFixture<ProductDetailComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

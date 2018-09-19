@@ -27,7 +27,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ImageProductComponent } from '../../../shared/media/cloudinary/image-product/image-product.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
@@ -40,10 +39,13 @@ import { MockMediaService } from '../../../shared/media/mock-media.service';
 import { DeviceService } from '../../../shared/device/device.service';
 import { MediaModule } from '../../../shared/media/media.module';
 import { environment } from '../../environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ProductFormComponent', () => {
   let component: ProductFormComponent;
   let fixture: ComponentFixture<ProductFormComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -72,7 +74,7 @@ describe('ProductFormComponent', () => {
         MatCheckboxModule,
         MediaModule,
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,

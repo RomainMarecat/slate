@@ -19,10 +19,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MockAlertService } from 'shared/popup/mock-alert.service';
 import { AlertService } from 'shared/popup/alert.service';
 import { ObjectService } from 'shared/util/object.service';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('BoardComponent', () => {
   let component: BoardComponent;
   let fixture: ComponentFixture<BoardComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -48,7 +51,7 @@ describe('BoardComponent', () => {
         ObjectService
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

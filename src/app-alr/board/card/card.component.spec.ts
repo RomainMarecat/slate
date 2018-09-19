@@ -15,10 +15,13 @@ import { ColumnService } from '../shared/column.service';
 import { MockBoardService } from '../shared/mock-board.service';
 import { MockColumnService } from '../shared/mock-column.service';
 import { MockCardService } from '../shared/mock-card.service';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('CardComponent', () => {
   let component: CardComponent;
   let fixture: ComponentFixture<CardComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

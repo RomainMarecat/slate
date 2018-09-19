@@ -22,10 +22,13 @@ import { DateService } from '../../shared/util/date.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { MediaModule } from '../../shared/media/media.module';
 import { environment } from '../environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
   let fixture: ComponentFixture<ProductItemComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

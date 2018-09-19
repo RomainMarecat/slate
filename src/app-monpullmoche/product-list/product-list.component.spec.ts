@@ -37,10 +37,13 @@ import { MockScoreService } from '../../shared/score/mock-score.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { MediaModule } from '../../shared/media/media.module';
 import { environment } from '../environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
   let fixture: ComponentFixture<ProductListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

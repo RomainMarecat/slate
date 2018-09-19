@@ -22,11 +22,14 @@ import { MockUserService } from '../../../shared/user/shared/mock-user.service';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { MediaModule } from '../../../shared/media/media.module';
 import { environment } from '../../environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
   let fixture: ComponentFixture<ProductItemComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -41,7 +44,7 @@ describe('ProductItemComponent', () => {
         RouterTestingModule,
         BrowserAnimationsModule,
         MatCardModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -53,7 +56,7 @@ describe('ProductItemComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ ProductItemComponent, ProductActionComponent ],
+      declarations: [ProductItemComponent, ProductActionComponent],
       providers: [
         {provide: ProductService, useClass: MockProductService},
         {provide: MediaService, useClass: MockMediaService},

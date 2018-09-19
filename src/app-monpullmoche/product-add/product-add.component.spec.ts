@@ -46,10 +46,14 @@ import { MockNotificationService } from '../../shared/slack/mock-notification.se
 import { NgPipesModule } from 'ngx-pipes';
 import { MediaModule } from '../../shared/media/media.module';
 import { environment } from '../environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
   let fixture: ComponentFixture<ProductAddComponent>;
+
+  configureTestSuite();
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -75,7 +79,7 @@ describe('ProductAddComponent', () => {
         ImageCropperModule,
         MediaModule,
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,

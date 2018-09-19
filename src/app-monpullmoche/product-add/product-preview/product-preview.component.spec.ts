@@ -25,10 +25,13 @@ import { DateService } from '../../../shared/util/date.service';
 import { I18nService } from '../../../shared/i18n/i18n.service';
 import { MediaModule } from '../../../shared/media/media.module';
 import { environment } from '../../environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ProductPreviewComponent', () => {
   let component: ProductPreviewComponent;
   let fixture: ComponentFixture<ProductPreviewComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -47,7 +50,7 @@ describe('ProductPreviewComponent', () => {
         MatInputModule,
         MatCheckboxModule,
         MatListModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -59,7 +62,7 @@ describe('ProductPreviewComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ ProductPreviewComponent ],
+      declarations: [ProductPreviewComponent],
       providers: [
         {provide: DateService, useClass: DateService},
         I18nService

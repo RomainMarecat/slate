@@ -13,10 +13,13 @@ import { SharedModule } from '../../../shared/shared.module';
 import { DeviceService } from '../../../shared/device/device.service';
 import { ProductAttributeComponent } from './product-attribute.component';
 import { environment } from '../../environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ProductAttributeComponent', () => {
   let component: ProductAttributeComponent;
   let fixture: ComponentFixture<ProductAttributeComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

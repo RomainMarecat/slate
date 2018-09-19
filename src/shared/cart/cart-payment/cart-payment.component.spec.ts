@@ -24,10 +24,13 @@ import { RoutingState } from '../../util/routing-state';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxStripeModule, StripeService } from 'ngx-stripe';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('CartPaymentComponent', () => {
   let component: CartPaymentComponent;
   let fixture: ComponentFixture<CartPaymentComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

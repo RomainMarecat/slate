@@ -23,10 +23,13 @@ import { CartConfirmationComponent } from './cart-confirmation.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RoutingState } from '../../util/routing-state';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('CartConfirmationComponent', () => {
   let component: CartConfirmationComponent;
   let fixture: ComponentFixture<CartConfirmationComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
