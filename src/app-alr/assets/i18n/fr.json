@@ -16,6 +16,9 @@
     },
     "partner": {
       "import": {
+        "dialog": {
+          "title": "prévisualisation des informations partenaires"
+        },
         "title": "importer un fichier de partenaires"
       }
     },
@@ -265,6 +268,8 @@
     "next-available-slot": "prochaines disponibilités",
     "home": "accueil",
     "import": "importer",
+    "import-last-file": "importer le précédent fichier",
+    "keep_colomn_in_memory": "config de colonnes précédentes",
     "login": "se connecter",
     "remember_me": "se souvenir de moi",
     "forgot_password": "mot de passe oublié",

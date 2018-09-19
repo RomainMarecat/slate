@@ -9,10 +9,20 @@
     <div class="upload-wrapper">
       <input type="file" (change)="uploadFile($event)">
     </div>
+
   </mat-card-content>
 
   <mat-card-actions fxLayout="row"
                     fxLayoutAlign="center stretch">
+    <div class="last-import" *ngIf="hadPreviousPartners">
+      <button type="button"
+              class="text-uppercase"
+              color="primary"
+              mat-raised-button
+              (click)="onImportLastFile()">{{ 'cta.import-last-file'|translate }}
+      </button>
+    </div>
+
     <button type="button"
             class="text-uppercase"
             color="primary"
