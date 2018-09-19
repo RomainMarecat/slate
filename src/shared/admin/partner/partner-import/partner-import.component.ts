@@ -141,18 +141,23 @@ export class PartnerImportComponent implements OnInit {
    * @param {Partner[]} partners
    */
   createPartners(partners: Partner[]) {
+    if (partners.length === 0) {
+      this.alertService.show('admin.partner.import.nothing_to_import');
+    }
+
     let incrementError = 0;
     partners.forEach((partner) => {
       if (incrementError <= 5) {
         this.partnerService.createPartner(partner)
           .then(() => {
-            this.alertService.show('partner.import.created');
+            this.alertService.show('admin.partner.import.created');
+
           }, (err) => {
             incrementError++;
             this.alertService.show(err);
 
             if (incrementError === 5) {
-              this.alertService.show('partner.import.stop');
+              this.alertService.show('admin.partner.import.stop');
             }
           });
       }

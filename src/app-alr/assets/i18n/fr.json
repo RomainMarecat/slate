@@ -16,6 +16,9 @@
     },
     "partner": {
       "import": {
+        "nothing_to_import": "Aucun partenaire à importer",
+        "created": "Le partenaire est sauvegardé",
+        "stop": "Plusieurs partenaires en erreur, l'import est stoppé",
         "dialog": {
           "title": "prévisualisation des informations partenaires"
         },
