@@ -8,12 +8,10 @@ import {
   Inject
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { AdsenseModule } from 'ng2-adsense';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
 
 import { FileUploadModule } from 'ng2-file-upload';
@@ -54,12 +52,9 @@ import { AreaService } from '../../shared/map/shared/area.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { CategoryService } from '../../shared/category/category.service';
 import { ContactService } from '../../shared/contact/shared/contact.service';
-import { BoardModule } from '../board/board.module';
-import { BoardService } from '../board/shared/board.service';
-import { ColumnService } from '../board/shared/column.service';
-import { CardService } from '../board/shared/card.service';
-import { ChartModule } from '../chart/chart.module';
-import { GprdModule } from '../gprd/gprd.module';
+import { BoardService } from '../../shared/board/shared/board.service';
+import { ColumnService } from '../../shared/board/shared/column.service';
+import { CardService } from '../../shared/board/shared/card.service';
 import { PaymentService } from '../../shared/payment/shared/payment.service';
 
 export const production = new InjectionToken<string>('production');
@@ -70,10 +65,6 @@ export const clientAdSense = new InjectionToken<string>('clientAdSense');
 export const slotAdSense = new InjectionToken<string>('slotAdSense');
 export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
-
-export function createTranslateLoader(http: HttpClient, name: string) {
-  return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
-}
 
 export const CONFIG_TOKEN = new InjectionToken<any>('Registered config');
 export const TABLE_EVENT = new InjectionToken<string>('event');
@@ -161,17 +152,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     FileUploadModule,
     SharedModule.forRoot(CONFIG_TOKEN),
     SlackModule.forRoot(slackToken),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient, app_name]
-      }
-    }),
-    BoardModule,
     DashboardModule,
-    ChartModule,
-    GprdModule
   ],
   exports: [
     AdsenseModule,

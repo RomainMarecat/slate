@@ -8,10 +8,13 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
   let fixture: ComponentFixture<MenuComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -29,9 +32,9 @@ describe('MenuComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ MenuComponent ]
+      declarations: [MenuComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

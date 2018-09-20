@@ -26,13 +26,13 @@ import {
   MatCommonModule,
   MatTooltipModule, MatProgressBarModule
 } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavService } from '../sidenav.service';
 import { SidenavComponent } from './sidenav.component';
 import { FooterComponent } from '../../../shared/footer/footer.component';
 import { MenuComponent } from '../../../shared/menu/menu.component';
-import { AdsenseModule, AdsenseConfig } from 'ng2-adsense';
+import { AdsenseModule } from 'ng2-adsense';
 import { LoaderComponent } from '../../../shared/loader/loader.component';
 import { UserService } from '../../user/shared/user.service';
 import { I18nService } from '../../../shared/i18n/i18n.service';
@@ -52,10 +52,16 @@ import { CmsService } from '../../cms/shared/cms.service';
 import { MockCmsService } from '../../cms/shared/mock-cms.service';
 import { CmsDetailService } from '../../cms-detail/shared/cms-detail.service';
 import { environment } from '../../../app-hockey/environments/environment';
+import { BreadcrumbModule } from 'shared/breadcrumb/breadcrumb.module';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('SidenavComponent', () => {
   let component: SidenavComponent;
   let fixture: ComponentFixture<SidenavComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     const options = {
@@ -68,6 +74,7 @@ describe('SidenavComponent', () => {
         CommonModule,
         RouterModule,
         BrowserModule,
+        BreadcrumbModule,
         HttpClientModule,
         RouterTestingModule,
         BrowserAnimationsModule,
@@ -76,6 +83,7 @@ describe('SidenavComponent', () => {
         AngularFireAuthModule,
         AdsenseModule.forRoot(options),
         FilterModule,
+        LocalizeRouterModule,
         MatCardModule,
         MatToolbarModule,
         MatSidenavModule,
@@ -94,7 +102,7 @@ describe('SidenavComponent', () => {
         MatMenuModule,
         MatCommonModule,
         MatTooltipModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -105,7 +113,7 @@ describe('SidenavComponent', () => {
         }),
         SortModule
       ],
-      declarations: [ SidenavComponent, LoaderComponent, FooterComponent, MenuComponent ],
+      declarations: [SidenavComponent, LoaderComponent, FooterComponent, MenuComponent],
       providers: [
         {provide: UserService, useClass: MockUserService},
         {provide: LoaderService, useClass: MockLoaderService},
@@ -114,7 +122,8 @@ describe('SidenavComponent', () => {
         MenuService,
         SidenavService,
         {provide: CmsService, useClass: MockCmsService},
-        {provide: CmsDetailService, useClass: MockCmsDetailService}
+        {provide: CmsDetailService, useClass: MockCmsDetailService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
       ]
     })
       .compileComponents();

@@ -42,16 +42,16 @@
                     </mat-chip-list>
                   </div>
                   <div class="m-list-pics" *ngIf="item.type === 'avatar'">
-                    <a href="#"><img mat-card-avatar src="https://picsum.photos/32/32?q=1" title=""></a>
-                    <a href="#"><img mat-card-avatar src="https://picsum.photos/32/32?q=2" title=""></a>
-                    <a href="#"><img mat-card-avatar src="https://picsum.photos/32/32?q=3" title=""></a>
-                    <a href="#"><img mat-card-avatar src="https://picsum.photos/32/32?q=4" title=""></a>
+                    <a [routerLink]="['/timeline'|localize]"><img mat-card-avatar src="https://picsum.photos/32/32?q=1" title=""></a>
+                    <a [routerLink]="['/timeline'|localize]"><img mat-card-avatar src="https://picsum.photos/32/32?q=2" title=""></a>
+                    <a [routerLink]="['/timeline'|localize]"><img mat-card-avatar src="https://picsum.photos/32/32?q=3" title=""></a>
+                    <a [routerLink]="['/timeline'|localize]"><img mat-card-avatar src="https://picsum.photos/32/32?q=4" title=""></a>
                   </div>
                   <div class="mt-2" *ngIf="item.type === 'article'">
                     {{ item.content }}
                   </div>
                   <div class="timeline-1-item-actions mt-3" *ngIf="item.type === 'news'">
-                    <a href="#" mat-stroked-button color="primary">
+                    <a [routerLink]="['/timeline'|localize]" mat-stroked-button color="primary">
                       Read more
                     </a>
                   </div>

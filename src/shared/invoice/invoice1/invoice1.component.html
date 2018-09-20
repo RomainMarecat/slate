@@ -3,7 +3,7 @@
   <div class="heading-wrapper"
        fxLayout="row"
        fxLayoutAlign="start center">
-    <a routerLink="/invoices" class="m-2">
+    <a [routerLink]="['/invoices'|localize]" class="m-2">
       <mat-icon color="primary"
                 [matTooltip]="'cta.back_to_invoice_list'|translate">home
       </mat-icon>

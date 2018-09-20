@@ -5,10 +5,13 @@ import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgArrayPipesModule } from 'ngx-pipes';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('AreaListComponent', () => {
   let component: AreaListComponent;
   let fixture: ComponentFixture<AreaListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

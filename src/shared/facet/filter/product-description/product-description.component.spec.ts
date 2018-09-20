@@ -4,13 +4,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatIconModule, MatInputModule, MatFormFieldModule, MatButtonModule } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { ProductDescriptionComponent } from './product-description.component';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ProductDescriptionComponent', () => {
   let component: ProductDescriptionComponent;
   let fixture: ComponentFixture < ProductDescriptionComponent > ;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

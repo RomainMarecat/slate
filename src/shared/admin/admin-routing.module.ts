@@ -2,63 +2,70 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AdminGuard } from '../guard/admin.guard';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [
   {
     path: '',
-    canActivate: [ AdminGuard ],
+    canActivate: [AdminGuard],
     component: HomeComponent
   },
   {
-    canActivate: [ AdminGuard ],
+    canActivate: [AdminGuard],
     path: 'article',
     loadChildren: './article/article.module#ArticleModule'
   },
   {
-    canActivate: [ AdminGuard ],
+    canActivate: [AdminGuard],
     path: 'contact',
     loadChildren: './contact/contact.module#ContactModule'
   },
   {
-    canActivate: [ AdminGuard ],
+    canActivate: [AdminGuard],
     path: 'attribute',
     loadChildren: './attribute/attribute.module#AttributeModule'
   },
   {
-    canActivate: [ AdminGuard ],
+    canActivate: [AdminGuard],
     path: 'navigation',
     loadChildren: './navigation/navigation.module#NavigationModule'
   },
   {
-    canActivate: [ AdminGuard ],
+    canActivate: [AdminGuard],
     path: 'cms',
     loadChildren: './cms/cms.module#CmsModule'
   },
   {
-    canActivate: [ AdminGuard ],
+    canActivate: [AdminGuard],
     path: 'offer',
     loadChildren: './offer/offer.module#OfferModule'
   },
   {
-    canActivate: [ AdminGuard ],
+    canActivate: [AdminGuard],
     path: 'map',
     loadChildren: './map/map.module#MapModule'
   },
   {
-    canActivate: [ AdminGuard ],
+    canActivate: [AdminGuard],
     path: 'partner',
     loadChildren: './partner/partner.module#PartnerModule'
   },
   {
-    canActivate: [ AdminGuard ],
+    canActivate: [AdminGuard],
     path: 'product',
     loadChildren: './product/product.module#ProductModule'
   }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ]
+  imports: [
+    RouterModule.forChild(routes),
+    LocalizeRouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule,
+    LocalizeRouterModule
+  ]
 })
 export class AdminRoutingModule {
 }

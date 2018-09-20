@@ -8,10 +8,13 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('InputComponent', () => {
   let component: InputComponent;
   let fixture: ComponentFixture<InputComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,7 +34,7 @@ describe('InputComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ InputComponent ]
+      declarations: [InputComponent]
     })
       .compileComponents();
   }));

@@ -4,13 +4,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatIconModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { ProductBrandComponent } from './product-brand.component';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ProductBrandComponent', () => {
   let component: ProductBrandComponent;
   let fixture: ComponentFixture < ProductBrandComponent > ;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

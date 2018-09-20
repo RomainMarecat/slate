@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { OfferEditComponent } from './offer-edit/offer-edit.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [{
   path: '',
@@ -28,7 +29,8 @@ const routes: Routes = [{
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes), LocalizeRouterModule.forChild(routes)],
+  exports: [RouterModule, LocalizeRouterModule]
 })
-export class OfferRoutingModule {}
+export class OfferRoutingModule {
+}

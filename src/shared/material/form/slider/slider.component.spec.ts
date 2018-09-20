@@ -8,10 +8,13 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('SliderComponent', () => {
   let component: SliderComponent;
   let fixture: ComponentFixture<SliderComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

@@ -8,6 +8,7 @@ import { SelectComponent } from './select/select.component';
 import { SliderComponent } from './slider/slider.component';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [{
   path: 'component/autocomplete',
@@ -41,8 +42,14 @@ const routes: Routes = [{
   }, ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forChild(routes),
+    LocalizeRouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule,
+    LocalizeRouterModule
+  ]
 })
 export class FormRoutingModule {
 }

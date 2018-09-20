@@ -8,11 +8,12 @@ import { Article } from '../../../article/shared/article';
 import { ArticleService } from '../../../article/shared/article.service';
 import { ArticleFormType } from '../../shared/article/form-article';
 import { MatIconRegistry } from '@angular/material';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin-article-edit',
   templateUrl: './article-edit.component.html',
-  styleUrls: [ './article-edit.component.scss' ]
+  styleUrls: ['./article-edit.component.scss']
 })
 export class ArticleEditComponent implements OnInit {
 
@@ -65,7 +66,7 @@ export class ArticleEditComponent implements OnInit {
   }
 
   getArticle() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
+    this.activatedRoute.params.subscribe((value: {key: string}) => {
       if (value.key) {
         const key = value.key;
         this.articleService.getArticle(key)
@@ -82,7 +83,9 @@ export class ArticleEditComponent implements OnInit {
 
   observeUpdate() {
     this.form.valueChanges
-      .debounceTime(800)
+      .pipe(
+        debounceTime(800)
+      )
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
@@ -120,7 +123,7 @@ export class ArticleEditComponent implements OnInit {
           .then((doc) => {
             this.alertService.show(`article updated ${this.article.name}`);
             this.reset();
-            this.router.navigate([ '/admin/article' ]);
+            this.router.navigate(['/admin/article']);
           }, (err) => {
             this.alertService.show(`article error ${err}`);
           });
@@ -129,7 +132,7 @@ export class ArticleEditComponent implements OnInit {
           .then((doc: DocumentReference) => {
             this.alertService.show(`article added ${doc.id}`);
             this.reset();
-            this.router.navigate([ '/admin/article' ]);
+            this.router.navigate(['/admin/article']);
           }, (err) => {
             this.alertService.show(`article error ${err}`);
           });

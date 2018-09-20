@@ -56,6 +56,8 @@ import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { environment } from '../environments/environment';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -106,6 +108,7 @@ describe('AppRootComponent', () => {
           adClient: environment.clientAdSense,
           adSlot: environment.slotAdSense
         }),
+        LocalizeRouterModule,
         MatCardModule,
         MatToolbarModule,
         MatSidenavModule,
@@ -124,7 +127,7 @@ describe('AppRootComponent', () => {
         MatCommonModule,
         MatTooltipModule,
         NgcCookieConsentModule.forRoot(cookieConfig),
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -147,6 +150,7 @@ describe('AppRootComponent', () => {
         {provide: AlertService, useClass: MockAlertService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},
         {provide: CmsService, useClass: MockCmsService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         I18nService,
         MenuService,
         SidenavService,

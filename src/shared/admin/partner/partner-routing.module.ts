@@ -3,13 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
 import { PartnerListComponent } from './partner-list/partner-list.component';
 import { PartnerEditComponent } from './partner-edit/partner-edit.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [{
-    path: '',
-    redirectTo: 'list',
-    canActivate: [AdminGuard],
-    component: PartnerListComponent
-  },
+  path: '',
+  redirectTo: 'list',
+  canActivate: [AdminGuard],
+  component: PartnerListComponent
+},
   {
     path: 'list',
     canActivate: [AdminGuard],
@@ -28,7 +29,8 @@ const routes: Routes = [{
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes), LocalizeRouterModule.forChild(routes)],
+  exports: [RouterModule, LocalizeRouterModule]
 })
-export class PartnerRoutingModule {}
+export class PartnerRoutingModule {
+}

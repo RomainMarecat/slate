@@ -9,17 +9,20 @@ import { MockMediaService } from '../mock-media.service';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { StorageModule } from '../storage/storage.module';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ImageComponent', () => {
   let component: ImageComponent;
   let fixture: ComponentFixture<ImageComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         NgPipesModule,
         AngularFireStorageModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -31,7 +34,7 @@ describe('ImageComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ ImageComponent ],
+      declarations: [ImageComponent],
       providers: [
         {provide: MediaService, useClass: MockMediaService},
 

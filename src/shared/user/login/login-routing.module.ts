@@ -3,10 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginListComponent } from 'shared/user/login/login-list/login-list.component';
 import { Login1Component } from 'shared/user/login/login1/login1.component';
 import { Login2Component } from 'shared/user/login/login2/login2.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [
   {
-    path: 'users/logins',
+    path: 'logins',
     children: [
       {
         path: '',
@@ -25,8 +26,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forChild(routes),
+    LocalizeRouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule,
+    LocalizeRouterModule
+  ]
 })
 export class LoginRoutingModule {
 }

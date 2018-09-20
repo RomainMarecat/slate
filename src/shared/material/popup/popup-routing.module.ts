@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminGuard } from '../../guard/admin.guard';
 import { DialogComponent } from './dialog/dialog.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [{
   path: 'component/dialog',
@@ -17,8 +17,13 @@ const routes: Routes = [{
 }, ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forChild(routes),
+    LocalizeRouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule, LocalizeRouterModule
+  ]
 })
 export class PopupRoutingModule {
 }

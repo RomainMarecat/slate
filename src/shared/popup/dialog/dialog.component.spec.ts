@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommonModule } from '@angular/common';
-import { AlertComponent } from './../snackbar/alert.component';
 import { DialogComponent } from './dialog.component';
 import { Angulartics2Module } from 'angulartics2';
 import { MatIconModule, MatDialogModule, MatButtonModule } from '@angular/material';
@@ -10,10 +9,13 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('DialogComponent', () => {
   let component: DialogComponent;
   let fixture: ComponentFixture<DialogComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

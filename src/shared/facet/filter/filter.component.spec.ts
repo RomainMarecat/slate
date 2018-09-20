@@ -25,54 +25,56 @@ import {
   MatSlideToggleModule,
   MatCommonModule
 } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductService } from '../../../shared/product/product.service';
 import { MockProductService } from '../../../shared/product/mock-product.service';
 import { SortModule } from '../sort/sort.module';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('FilterComponent', () => {
   let component: FilterComponent;
-  let fixture: ComponentFixture < FilterComponent > ;
+  let fixture: ComponentFixture<FilterComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          BrowserAnimationsModule,
-          CommonModule,
-          FormsModule,
-          ReactiveFormsModule,
-          MatFormFieldModule,
-          MatListModule,
-          MatExpansionModule,
-          MatIconModule,
-          MatInputModule,
-          MatButtonModule,
-          MatSlideToggleModule,
-          MatSelectModule,
-          MatCommonModule,
-          SortModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-        ],
-        declarations: [
-          FilterComponent,
-          CategoryComponent,
-          AttributeComponent,
-          PriceComponent,
-          DeliveryComponent,
-          CountryComponent,
-          LocationComponent,
-          ProductBrandComponent,
-          ProductDescriptionComponent,
-          ProductBestSellerComponent,
-          ProductBestScoreComponent
-        ],
-        providers: [
-          { provide: ProductService, useClass: MockProductService },
-        ]
-      })
+      imports: [
+        BrowserAnimationsModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatListModule,
+        MatExpansionModule,
+        MatIconModule,
+        MatInputModule,
+        MatButtonModule,
+        MatSlideToggleModule,
+        MatSelectModule,
+        MatCommonModule,
+        SortModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+      ],
+      declarations: [
+        FilterComponent,
+        CategoryComponent,
+        AttributeComponent,
+        PriceComponent,
+        DeliveryComponent,
+        CountryComponent,
+        LocationComponent,
+        ProductBrandComponent,
+        ProductDescriptionComponent,
+        ProductBestSellerComponent,
+        ProductBestScoreComponent
+      ],
+      providers: [
+        {provide: ProductService, useClass: MockProductService},
+      ]
+    })
       .compileComponents();
   }));
 

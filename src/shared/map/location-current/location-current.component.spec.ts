@@ -12,10 +12,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { MockMapsAPILoader } from '../shared/mock-maps-api-loader';
 import { environment } from '../../../app-blog/environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('LocationCurrentComponent', () => {
   let component: LocationCurrentComponent;
   let fixture: ComponentFixture<LocationCurrentComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

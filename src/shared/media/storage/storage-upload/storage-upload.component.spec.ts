@@ -13,10 +13,13 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { environment } from '../../../../app-car/environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('StorageUploadComponent', () => {
   let component: StorageUploadComponent;
   let fixture: ComponentFixture<StorageUploadComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -30,14 +33,14 @@ describe('StorageUploadComponent', () => {
         MatInputModule,
         MatIconModule,
         TranslateModule.forRoot({
-          loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
       providers: [
         {provide: MediaService, useClass: MockMediaService},
         {provide: AlertService, useClass: MockAlertService},
       ],
-      declarations: [ StorageUploadComponent ]
+      declarations: [StorageUploadComponent]
     })
       .compileComponents();
   }));

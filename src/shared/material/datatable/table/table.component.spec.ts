@@ -1,16 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableComponent } from './table.component';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('TableComponent', () => {
   let component: TableComponent;
   let fixture: ComponentFixture<TableComponent>;
 
+  configureTestSuite();
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TableComponent ]
+      declarations: [TableComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -13,8 +13,9 @@
          [src]="feature.img">
     <mat-card-header fxLayout="row"
                      fxLayoutAlign="center stretch">
-      <mat-card-title>
-        <a class="link" [routerLink]="[feature.url]">
+      <mat-card-title class="text-ucfirst">
+        <a class="link"
+           [routerLink]="[feature.url | localize]">
           {{ feature.name | translate }}
         </a>
       </mat-card-title>

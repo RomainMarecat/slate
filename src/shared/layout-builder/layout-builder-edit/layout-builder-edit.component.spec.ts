@@ -7,10 +7,13 @@ import { MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatToolti
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { StyleService } from 'shared/layout-builder/shared/style.service';
 import { ThemeStorageService } from 'shared/layout-builder/shared/theme-storage.service';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('LayoutBuilderEditComponent', () => {
   let component: LayoutBuilderEditComponent;
   let fixture: ComponentFixture<LayoutBuilderEditComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

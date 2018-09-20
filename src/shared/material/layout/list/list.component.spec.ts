@@ -2,18 +2,29 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListComponent } from './list.component';
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDividerModule, MatExpansionModule, MatFormFieldModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatListModule, MatRadioModule, MatToolbarModule
+  MatInputModule,
+  MatListModule,
+  MatRadioModule,
+  MatToolbarModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LayoutRoutingModule } from '../layout-routing.module';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ListComponent', () => {
   let component: ListComponent;
   let fixture: ComponentFixture<ListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -35,9 +46,9 @@ describe('ListComponent', () => {
         MatFormFieldModule,
         MatInputModule,
       ],
-      declarations: [ ListComponent ]
+      declarations: [ListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

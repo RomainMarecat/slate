@@ -7,10 +7,13 @@ import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule, MatListModule, MatRadioModule,
   MatToolbarModule
 } from '@angular/material';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('CardComponent', () => {
   let component: CardComponent;
   let fixture: ComponentFixture<CardComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,9 +28,9 @@ describe('CardComponent', () => {
         MatListModule,
         MatIconModule,
       ],
-      declarations: [ CardComponent ]
+      declarations: [CardComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

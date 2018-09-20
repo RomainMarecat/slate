@@ -8,10 +8,13 @@ import {
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('CheckboxComponent', () => {
   let component: CheckboxComponent;
   let fixture: ComponentFixture<CheckboxComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,9 +30,9 @@ describe('CheckboxComponent', () => {
         FormsModule,
         ReactiveFormsModule
       ],
-      declarations: [ CheckboxComponent ]
+      declarations: [CheckboxComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

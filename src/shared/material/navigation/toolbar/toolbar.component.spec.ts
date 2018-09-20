@@ -8,10 +8,13 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
   let fixture: ComponentFixture<ToolbarComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -29,9 +32,9 @@ describe('ToolbarComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ ToolbarComponent ]
+      declarations: [ToolbarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

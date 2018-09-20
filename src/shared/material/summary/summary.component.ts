@@ -3,7 +3,7 @@ import { NgxCarousel } from 'ngx-carousel';
 
 export class MaterialModule {
   title: string;
-  groups: Array < MaterialComponent > ;
+  groups: Array<MaterialComponent>;
 }
 
 export class MaterialComponent {
@@ -19,62 +19,63 @@ export class MaterialComponent {
 })
 export class SummaryComponent implements OnInit {
   carouselMaterialComponents: NgxCarousel;
-  materialsModules: Array < MaterialModule > = [];
+  materialsModules: Array<MaterialModule> = [];
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
     this.materialsModules = [{
-        title: 'Form Controls',
-        groups: [{
-            title: 'Autocomplete',
-            link: '/material/form/component/autocomplete',
-            image: '/assets/images/icons/apple-icon.png'
-          },
-          {
-            title: 'Checkbox',
-            link: '/material/form/component/checkbox',
-            image: '/assets/images/icons/apple-icon.png'
-          },
-          {
-            title: 'Datepicker',
-            link: '/material/form/component/datepicker',
-            image: '/assets/images/icons/apple-icon.png'
-          },
-          {
-            title: 'Input',
-            link: '/material/form/component/input',
-            image: '/assets/images/icons/apple-icon.png'
-          },
-          {
-            title: 'Radio Button',
-            link: '/material/form/component/radio-button',
-            image: '/assets/images/icons/apple-icon.png'
-          },
-          {
-            title: 'Select',
-            link: '/material/form/component/select',
-            image: '/assets/images/icons/apple-icon.png'
-          },
-          {
-            title: 'Slider',
-            link: '/material/form/component/slider',
-            image: '/assets/images/icons/apple-icon.png'
-          },
-          {
-            title: 'Slide toggle',
-            link: '/material/form/component/slide-toggle',
-            image: '/assets/images/icons/apple-icon.png'
-          },
-        ]
+      title: 'Form Controls',
+      groups: [{
+        title: 'Autocomplete',
+        link: '/material/form/component/autocomplete',
+        image: '/assets/images/icons/apple-icon.png'
       },
+        {
+          title: 'Checkbox',
+          link: '/material/form/component/checkbox',
+          image: '/assets/images/icons/apple-icon.png'
+        },
+        {
+          title: 'Datepicker',
+          link: '/material/form/component/datepicker',
+          image: '/assets/images/icons/apple-icon.png'
+        },
+        {
+          title: 'Input',
+          link: '/material/form/component/input',
+          image: '/assets/images/icons/apple-icon.png'
+        },
+        {
+          title: 'Radio Button',
+          link: '/material/form/component/radio-button',
+          image: '/assets/images/icons/apple-icon.png'
+        },
+        {
+          title: 'Select',
+          link: '/material/form/component/select',
+          image: '/assets/images/icons/apple-icon.png'
+        },
+        {
+          title: 'Slider',
+          link: '/material/form/component/slider',
+          image: '/assets/images/icons/apple-icon.png'
+        },
+        {
+          title: 'Slide toggle',
+          link: '/material/form/component/slide-toggle',
+          image: '/assets/images/icons/apple-icon.png'
+        },
+      ]
+    },
       {
         title: 'Navigation',
         groups: [{
-            title: 'Menu',
-            link: '/material/navigation/component/menu',
-            image: '/assets/images/icons/apple-icon.png'
-          },
+          title: 'Menu',
+          link: '/material/navigation/component/menu',
+          image: '/assets/images/icons/apple-icon.png'
+        },
           {
             title: 'Sidenav',
             link: '/material/navigation/component/sidenav',
@@ -90,10 +91,10 @@ export class SummaryComponent implements OnInit {
       {
         title: 'Layout',
         groups: [{
-            title: 'Card',
-            link: '/material/layout/component/card',
-            image: '/assets/images/icons/apple-icon.png'
-          },
+          title: 'Card',
+          link: '/material/layout/component/card',
+          image: '/assets/images/icons/apple-icon.png'
+        },
           {
             title: 'Divider',
             link: '/material/layout/component/divider',
@@ -129,10 +130,10 @@ export class SummaryComponent implements OnInit {
       {
         title: 'Buttons & Indicators',
         groups: [{
-            title: 'Button',
-            link: '/material/button-indicators/component/button',
-            image: '/assets/images/icons/apple-icon.png'
-          },
+          title: 'Button',
+          link: '/material/button-indicators/component/button',
+          image: '/assets/images/icons/apple-icon.png'
+        },
           {
             title: 'Button Toggle',
             link: '/material/button-indicators/component/button-toggle',
@@ -163,10 +164,10 @@ export class SummaryComponent implements OnInit {
       {
         title: 'Popups & Modals',
         groups: [{
-            title: 'Dialog',
-            link: '/material/popup/component/dialog',
-            image: '/assets/images/icons/apple-icon.png'
-          },
+          title: 'Dialog',
+          link: '/material/popup/component/dialog',
+          image: '/assets/images/icons/apple-icon.png'
+        },
           {
             title: 'Snackbar',
             link: '/material/popup/component/snackbar',
@@ -182,10 +183,10 @@ export class SummaryComponent implements OnInit {
       {
         title: 'Datatable',
         groups: [{
-            title: 'Paginator',
-            link: '/material/datatable/component/paginator',
-            image: '/assets/images/icons/apple-icon.png'
-          },
+          title: 'Paginator',
+          link: '/material/datatable/component/paginator',
+          image: '/assets/images/icons/apple-icon.png'
+        },
           {
             title: 'Sort header',
             link: '/material/datatable/component/sort-header',
@@ -201,7 +202,7 @@ export class SummaryComponent implements OnInit {
     ];
 
     this.carouselMaterialComponents = {
-      grid: { xs: 1, sm: 3, md: 4, lg: 6, all: 230 },
+      grid: {xs: 1, sm: 3, md: 4, lg: 6, all: 230},
       speed: 600,
       interval: 3000,
       point: {

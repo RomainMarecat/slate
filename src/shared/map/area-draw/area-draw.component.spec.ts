@@ -4,10 +4,13 @@ import { AreaDrawComponent } from './area-draw.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('AreaDrawComponent', () => {
   let component: AreaDrawComponent;
   let fixture: ComponentFixture<AreaDrawComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

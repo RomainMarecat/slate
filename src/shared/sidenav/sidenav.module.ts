@@ -8,10 +8,12 @@ import { FooterModule } from '../footer/footer.module';
 import { RouterModule } from '@angular/router';
 import { LoaderModule } from '../loader/loader.module';
 import { FacetModule } from '../facet/facet.module';
+import { BreadcrumbModule } from 'shared/breadcrumb/breadcrumb.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    BreadcrumbModule,
     FooterModule,
     LoaderModule,
     MatIconModule,
@@ -31,4 +33,5 @@ import { FacetModule } from '../facet/facet.module';
     SidenavComponent,
   ]
 })
-export class SidenavModule {}
+export class SidenavModule {
+}

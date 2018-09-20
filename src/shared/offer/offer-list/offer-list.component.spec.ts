@@ -13,10 +13,13 @@ import { PartnerModule } from '../../partner/partner.module';
 import { PartnerService } from '../../partner/partner.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MockPartnerService } from 'shared/partner/mock-partner.service';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;
   let fixture: ComponentFixture<OfferListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,7 +34,7 @@ describe('OfferListComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ OfferListComponent, OfferDetailComponent ],
+      declarations: [OfferListComponent, OfferDetailComponent],
       providers: [
         {provide: OfferService, useClass: MockOfferService},
         {provide: AlertService, useClass: MockAlertService},

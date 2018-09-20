@@ -2,18 +2,31 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ExpansionPanelComponent } from './expansion-panel.component';
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDividerModule, MatExpansionModule, MatFormFieldModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatListModule, MatNativeDateModule,
-  MatRadioModule, MatToolbarModule, NativeDateModule
+  MatInputModule,
+  MatListModule,
+  MatNativeDateModule,
+  MatRadioModule,
+  MatToolbarModule,
+  NativeDateModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ExpansionPanelComponent', () => {
   let component: ExpansionPanelComponent;
   let fixture: ComponentFixture<ExpansionPanelComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -37,7 +50,7 @@ describe('ExpansionPanelComponent', () => {
         MatFormFieldModule,
         MatInputModule,
       ],
-      declarations: [ ExpansionPanelComponent ],
+      declarations: [ExpansionPanelComponent],
       providers: []
     })
       .compileComponents();

@@ -1,20 +1,29 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IconComponent } from './icon.component';
-import { ButtonRoutingModule } from '../button-routing.module';
 import {
-  MatButtonModule, MatButtonToggleModule, MatCardModule, MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatChipsModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
   MatProgressBarModule,
-  MatProgressSpinnerModule, MatTooltipModule
+  MatProgressSpinnerModule,
+  MatTooltipModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('IconComponent', () => {
   let component: IconComponent;
   let fixture: ComponentFixture<IconComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -35,9 +44,9 @@ describe('IconComponent', () => {
         MatProgressSpinnerModule,
         MatInputModule,
       ],
-      declarations: [ IconComponent ]
+      declarations: [IconComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -2,18 +2,28 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChipsComponent } from './chips.component';
 import {
-  MatButtonModule, MatButtonToggleModule, MatCardModule, MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatChipsModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
   MatProgressBarModule,
-  MatProgressSpinnerModule, MatTooltipModule
+  MatProgressSpinnerModule,
+  MatTooltipModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ChipsComponent', () => {
   let component: ChipsComponent;
   let fixture: ComponentFixture<ChipsComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -34,9 +44,9 @@ describe('ChipsComponent', () => {
         MatInputModule,
         MatTooltipModule,
       ],
-      declarations: [ ChipsComponent ]
+      declarations: [ChipsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

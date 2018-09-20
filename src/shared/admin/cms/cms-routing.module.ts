@@ -5,13 +5,14 @@ import { CmsComponent } from './cms.component';
 import { CmsListComponent } from './cms-list/cms-list.component';
 import { CmsDetailComponent } from './cms-detail/cms-detail.component';
 import { CmsAddComponent } from './cms-add/cms-add.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [{
-    path: '',
-    redirectTo: 'list',
-    canActivate: [AdminGuard],
-    component: CmsComponent
-  },
+  path: '',
+  redirectTo: 'list',
+  canActivate: [AdminGuard],
+  component: CmsComponent
+},
   {
     path: 'list',
     canActivate: [AdminGuard],
@@ -34,7 +35,8 @@ const routes: Routes = [{
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes), LocalizeRouterModule.forChild(routes)],
+  exports: [RouterModule, LocalizeRouterModule]
 })
-export class CmsRoutingModule {}
+export class CmsRoutingModule {
+}

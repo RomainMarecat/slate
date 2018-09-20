@@ -3,14 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatIconModule, MatInputModule, MatFormFieldModule, MatSlideToggleModule } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { MatIconModule, MatFormFieldModule, MatSlideToggleModule } from '@angular/material';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { ProductBestScoreComponent } from './product-best-score.component';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ProductBestScoreComponent', () => {
   let component: ProductBestScoreComponent;
   let fixture: ComponentFixture < ProductBestScoreComponent > ;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

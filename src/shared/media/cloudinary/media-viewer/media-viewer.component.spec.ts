@@ -10,17 +10,20 @@ import { MockMediaService } from '../../mock-media.service';
 import { CloudinaryModule } from '../cloudinary.module';
 import { Cloudinary } from '../cloudinary.service';
 import { environment } from '../../../../app-hockey/environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('MediaViewerComponent', () => {
   let component: MediaViewerComponent;
   let fixture: ComponentFixture<MediaViewerComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         NgPipesModule,
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,

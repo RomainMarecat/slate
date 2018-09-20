@@ -2,18 +2,28 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ButtonToggleComponent } from './button-toggle.component';
 import {
-  MatButtonModule, MatButtonToggleModule, MatCardModule, MatChipsModule, MatFormFieldModule, MatIconModule, MatInputModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatChipsModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
   MatProgressBarModule,
-  MatProgressSpinnerModule, MatTooltipModule
+  MatProgressSpinnerModule,
+  MatTooltipModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ButtonToggleComponent', () => {
   let component: ButtonToggleComponent;
   let fixture: ComponentFixture<ButtonToggleComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -34,9 +44,9 @@ describe('ButtonToggleComponent', () => {
         MatInputModule,
         MatTooltipModule,
       ],
-      declarations: [ ButtonToggleComponent ]
+      declarations: [ButtonToggleComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

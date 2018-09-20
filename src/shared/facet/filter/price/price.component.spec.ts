@@ -4,31 +4,34 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatIconModule, MatInputModule, MatFormFieldModule, MatButtonModule } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { PriceComponent } from './price.component';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('PriceComponent', () => {
   let component: PriceComponent;
-  let fixture: ComponentFixture < PriceComponent > ;
+  let fixture: ComponentFixture<PriceComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          BrowserAnimationsModule,
-          CommonModule,
-          FormsModule,
-          ReactiveFormsModule,
-          MatFormFieldModule,
-          MatIconModule,
-          MatInputModule,
-          MatButtonModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-        ],
-        declarations: [PriceComponent]
-      })
+      imports: [
+        BrowserAnimationsModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatButtonModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+      ],
+      declarations: [PriceComponent]
+    })
       .compileComponents();
   }));
 

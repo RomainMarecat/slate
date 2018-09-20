@@ -5,10 +5,13 @@ import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, Mat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('RadioButtonComponent', () => {
   let component: RadioButtonComponent;
   let fixture: ComponentFixture<RadioButtonComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -23,9 +26,9 @@ describe('RadioButtonComponent', () => {
         MatFormFieldModule,
         ReactiveFormsModule
       ],
-      declarations: [ RadioButtonComponent ]
+      declarations: [RadioButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

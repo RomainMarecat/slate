@@ -11,6 +11,8 @@ import { SharedModule } from '../../shared.module';
 import { ArticleService } from '../../article/shared/article.service';
 import { MatIconRegistry } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { StringService } from '../../util/string.service';
+import { AlertService } from '../../popup/alert.service';
 
 const TABLE_ARTICLE = new InjectionToken<string>('article');
 
@@ -29,11 +31,13 @@ const TABLE_ARTICLE = new InjectionToken<string>('article');
   ],
   providers: [
     MatIconRegistry,
+    StringService,
+    AlertService,
     {provide: TABLE_ARTICLE, useValue: 'article'},
     {
       provide: ArticleService,
       useClass: ArticleService,
-      deps: [ AngularFirestore, TABLE_ARTICLE ]
+      deps: [AngularFirestore, TABLE_ARTICLE]
     },
   ]
 })
