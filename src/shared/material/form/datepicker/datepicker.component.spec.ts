@@ -7,10 +7,13 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('DatepickerComponent', () => {
   let component: DatepickerComponent;
   let fixture: ComponentFixture<DatepickerComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -24,7 +27,7 @@ describe('DatepickerComponent', () => {
         MatDatepickerModule,
         MatNativeDateModule
       ],
-      declarations: [ DatepickerComponent ],
+      declarations: [DatepickerComponent],
       providers: [
         {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'}
       ]

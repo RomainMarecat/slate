@@ -6,23 +6,26 @@ import { NgxCarouselModule } from 'ngx-carousel';
 import { SummaryComponent } from './summary.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('SummaryComponent', () => {
   let component: SummaryComponent;
-  let fixture: ComponentFixture < SummaryComponent > ;
+  let fixture: ComponentFixture<SummaryComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          MatCardModule,
-          MatIconModule,
-          NgxCarouselModule,
-          NoopAnimationsModule,
-          RouterTestingModule
-        ],
-        declarations: [SummaryComponent]
-      })
+      imports: [
+        CommonModule,
+        MatCardModule,
+        MatIconModule,
+        NgxCarouselModule,
+        NoopAnimationsModule,
+        RouterTestingModule
+      ],
+      declarations: [SummaryComponent]
+    })
       .compileComponents();
   }));
 

@@ -1,16 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaginatorComponent } from './paginator.component';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('PaginatorComponent', () => {
   let component: PaginatorComponent;
   let fixture: ComponentFixture<PaginatorComponent>;
 
+  configureTestSuite();
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PaginatorComponent ]
+      declarations: [PaginatorComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -16,10 +16,13 @@ import { MatListModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgArrayPipesModule } from 'ngx-pipes';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('MapComponent', () => {
   let component: MapComponent;
   let fixture: ComponentFixture<MapComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

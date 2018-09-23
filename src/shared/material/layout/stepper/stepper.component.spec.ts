@@ -2,19 +2,31 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StepperComponent } from './stepper.component';
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDividerModule, MatExpansionModule, MatFormFieldModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatListModule, MatRadioModule, MatStepperModule, MatToolbarModule
+  MatInputModule,
+  MatListModule,
+  MatRadioModule,
+  MatStepperModule,
+  MatToolbarModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LayoutRoutingModule } from '../layout-routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('StepperComponent', () => {
   let component: StepperComponent;
   let fixture: ComponentFixture<StepperComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -39,9 +51,9 @@ describe('StepperComponent', () => {
         MatFormFieldModule,
         MatInputModule,
       ],
-      declarations: [ StepperComponent ]
+      declarations: [StepperComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

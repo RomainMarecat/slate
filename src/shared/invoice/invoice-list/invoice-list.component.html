@@ -17,7 +17,7 @@
                       fxLayout="row"
                       fxLayoutAlign="center stretch">
       <a mat-raised-button
-         [routerLink]="'/invoices/' + card.link"
+         [routerLink]="[card.link]|localize"
          color="primary">
         {{ card.action|translate }}
       </a>

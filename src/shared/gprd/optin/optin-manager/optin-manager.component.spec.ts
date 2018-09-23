@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OptinNewsletterComponent } from './optin-newsletter.component';
+import { OptinManagerComponent } from './optin-manager.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatCardModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SharedModule } from '../../../../shared/shared.module';
-import { AlertService } from '../../../../shared/popup/alert.service';
-import { MockAlertService } from '../../../../shared/popup/mock-alert.service';
+import { SharedModule } from '../../../shared.module';
+import { MockAlertService } from '../../../popup/mock-alert.service';
+import { AlertService } from '../../../popup/alert.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
-describe('OptinNewsletterComponent', () => {
-  let component: OptinNewsletterComponent;
-  let fixture: ComponentFixture<OptinNewsletterComponent>;
+describe('OptinManagerComponent', () => {
+  let component: OptinManagerComponent;
+  let fixture: ComponentFixture<OptinManagerComponent>;
 
   configureTestSuite();
 
@@ -32,7 +32,7 @@ describe('OptinNewsletterComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [OptinNewsletterComponent],
+      declarations: [OptinManagerComponent],
       providers: [
         {provide: AlertService, useClass: MockAlertService}
       ]
@@ -41,7 +41,7 @@ describe('OptinNewsletterComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OptinNewsletterComponent);
+    fixture = TestBed.createComponent(OptinManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

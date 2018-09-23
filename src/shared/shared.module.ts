@@ -59,10 +59,6 @@ import { SessionModule } from './session/session.module';
 import { CartModule } from './cart/cart.module';
 import { CmsModule } from './cms/cms.module';
 import { FaqModule } from './faq/faq.module';
-import { InvoiceModule } from './invoice/invoice.module';
-import { UserModule } from './user/user.module';
-import { TimelineModule } from './timeline/timeline.module';
-import { LayoutBuilderModule } from 'shared/layout-builder/layout-builder.module';
 import { CsvModule } from 'shared/csv/csv.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
@@ -98,9 +94,7 @@ export class ConfigService {
     HammerModule,
     HttpClientModule,
     ImageCropperModule,
-    InvoiceModule,
     LoaderModule,
-    LayoutBuilderModule,
     MapModule,
     MatAutocompleteModule,
     MatCardModule,
@@ -141,8 +135,6 @@ export class ConfigService {
     SessionModule,
     SidenavModule,
     TranslateModule,
-    TimelineModule,
-    UserModule,
   ],
   exports: [
     ArticleModule,
@@ -163,9 +155,7 @@ export class ConfigService {
     HammerModule,
     HttpClientModule,
     ImageCropperModule,
-    InvoiceModule,
     LoaderModule,
-    LayoutBuilderModule,
     MapModule,
     MatAutocompleteModule,
     MatCardModule,
@@ -206,9 +196,7 @@ export class ConfigService {
     SessionModule,
     SlackModule,
     SidenavModule,
-    TimelineModule,
     TranslateModule,
-    UserModule
   ],
   providers: [
     // Should not have providers for reason explained here

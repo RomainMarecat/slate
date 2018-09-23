@@ -22,7 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatIconModule,
     MatToolbarModule,
     AdminRoutingModule,
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
   declarations: [HomeComponent],
   providers: [

@@ -7,8 +7,9 @@ import { ChipsComponent } from './chips/chips.component';
 import { IconComponent } from './icon/icon.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
-const routes: Routes = [ {
+const routes: Routes = [{
   path: 'component/button',
   component: ButtonComponent
 },
@@ -35,8 +36,14 @@ const routes: Routes = [ {
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ]
+  imports: [
+    RouterModule.forChild(routes),
+    LocalizeRouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule,
+    LocalizeRouterModule
+  ]
 })
 export class ButtonRoutingModule {
 }

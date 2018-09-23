@@ -14,9 +14,11 @@ import { TranslateModule } from '@ngx-translate/core';
     FlexLayoutModule,
     MatButtonModule,
     DashboardRoutingModule,
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
-  declarations: [ DashboardComponent ]
+  declarations: [
+    DashboardComponent
+  ]
 })
 export class DashboardModule {
 }

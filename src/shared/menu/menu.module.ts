@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { Angulartics2Module } from 'angulartics2';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 @NgModule({
   imports: [
@@ -15,8 +16,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    TranslateModule,
-    RouterModule
+    TranslateModule.forChild(),
+    RouterModule,
+    LocalizeRouterModule
   ],
   declarations: [
     MenuComponent

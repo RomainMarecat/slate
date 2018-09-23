@@ -10,10 +10,13 @@ import { AreaDrawComponent } from '../area-draw/area-draw.component';
 import { MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgArrayPipesModule } from 'ngx-pipes';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('AreaComponent', () => {
   let component: AreaComponent;
   let fixture: ComponentFixture<AreaComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

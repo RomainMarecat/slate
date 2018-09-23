@@ -19,7 +19,7 @@ import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('CalendarComponent', () => {
   let component: CalendarComponent;
-  let fixture: ComponentFixture<CalendarComponent>
+  let fixture: ComponentFixture<CalendarComponent>;
 
   configureTestSuite();
 

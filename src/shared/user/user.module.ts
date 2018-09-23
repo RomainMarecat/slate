@@ -20,9 +20,11 @@ import { RegisterModule } from 'shared/user/register/register.module';
     LoginModule,
     RegisterModule,
     UserRoutingModule,
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
-  declarations: [UserListComponent],
+  declarations: [
+    UserListComponent
+  ],
   exports: [
     UserListComponent,
     LoginModule,

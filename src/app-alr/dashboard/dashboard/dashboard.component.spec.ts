@@ -8,6 +8,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
 import { MenuService } from 'shared/menu/menu.service';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -20,6 +22,7 @@ describe('DashboardComponent', () => {
       imports: [
         CommonModule,
         FlexLayoutModule,
+        LocalizeRouterModule,
         MatButtonModule,
         MatCardModule,
         RouterTestingModule,
@@ -29,7 +32,8 @@ describe('DashboardComponent', () => {
       ],
       declarations: [DashboardComponent],
       providers: [
-        {provide: MenuService, useClass: MenuService}
+        {provide: MenuService, useClass: MenuService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
       ]
     })
       .compileComponents();

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { OfferEditComponent } from './offer-edit/offer-edit.component';
 import { OfferConfirmationComponent } from './offer-confirmation/offer-confirmation.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
     pathMatch: 'full',
     component: OfferEditComponent
   },
-   {
+  {
     path: 'offer/:key/confirmation',
     pathMatch: 'full',
     component: OfferConfirmationComponent
@@ -23,8 +24,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ]
+  imports: [
+    RouterModule.forChild(routes),
+    LocalizeRouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule,
+    LocalizeRouterModule
+  ]
 })
 export class OfferEditRoutingModule {
 }

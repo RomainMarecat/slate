@@ -22,10 +22,13 @@ import { ObjectService } from '../../../util/object.service';
 import { MediaService } from '../../media.service';
 import { MockMediaService } from '../../mock-media.service';
 import { DeviceService } from '../../../device/device.service';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ImageProductComponent', () => {
   let component: ImageProductComponent;
   let fixture: ComponentFixture<ImageProductComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -43,7 +46,7 @@ describe('ImageProductComponent', () => {
         MatGridListModule,
         MatFormFieldModule,
         MatTooltipModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -53,7 +56,7 @@ describe('ImageProductComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ ImageProductComponent ],
+      declarations: [ImageProductComponent],
       providers: [
         ObjectService,
         {provide: MediaService, useClass: MockMediaService},

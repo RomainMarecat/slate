@@ -8,10 +8,13 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { MatProgressBarModule } from '@angular/material';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../../../../app-car/environments/environment';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('StorageDetailComponent', () => {
   let component: StorageDetailComponent;
   let fixture: ComponentFixture<StorageDetailComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -23,9 +26,9 @@ describe('StorageDetailComponent', () => {
         HttpClientTestingModule,
         MatProgressBarModule
       ],
-      declarations: [ StorageDetailComponent ]
+      declarations: [StorageDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

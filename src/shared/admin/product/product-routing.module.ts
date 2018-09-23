@@ -4,13 +4,14 @@ import { AdminGuard } from '../../guard/admin.guard';
 import { ProductComponent } from './product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [{
-    path: '',
-    redirectTo: 'list',
-    canActivate: [AdminGuard],
-    component: ProductComponent
-  },
+  path: '',
+  redirectTo: 'list',
+  canActivate: [AdminGuard],
+  component: ProductComponent
+},
   {
     path: 'list',
     canActivate: [AdminGuard],
@@ -29,7 +30,8 @@ const routes: Routes = [{
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes), LocalizeRouterModule.forChild(routes)],
+  exports: [RouterModule, LocalizeRouterModule]
 })
-export class ProductRoutingModule {}
+export class ProductRoutingModule {
+}

@@ -1,4 +1,5 @@
-@import '../../../scss/theme';
+@import '../../../../../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../../../../app-alr/scss/theme';
 
 .form-wrapper {
 
@@ -8,11 +9,11 @@
     .mat-card {
       min-width: 250px;
       height: 430px;
-      .mat-card-header {
-        padding: 20px 0;
-      }
       .mat-card-content {
       }
+    }
+    mat-slide-toggle {
+      display: block;
     }
   }
 }

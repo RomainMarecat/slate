@@ -1,4 +1,22 @@
 {
+  "routes": {
+    "boards": "tableau-de-bord",
+    "layout-builder": "configurateur-de-layout",
+    "material": "material-design",
+    "charts": "dashboard",
+    "gprd": "rgpd",
+    "faq": "foire-aux-questions",
+    "invoices": "facturation",
+    "invoices/invoice1": "style-1",
+    "invoices/invoice2": "style-2",
+    "user": "utilisateur",
+    "calendar": "agenda",
+    "admin": "administration",
+    "article": "article",
+    "map": "carte",
+    "cart": "panier",
+    "contact": "contacter-nous"
+  },
   "admin": {
     "authentication": {
       "needed": "authentification requise pour accéder à ce contenu"
@@ -27,7 +45,7 @@
     },
     "title": {
       "article": {
-        "title": "les articles",
+        "title": "liste des articles",
         "selection": "sélectionné(s)"
       },
       "contact": {
@@ -244,6 +262,14 @@
       }
     }
   },
+  "breadcrumb": {
+    "home": "accueil",
+    "article": {
+      "add": "ajouter un article",
+      "edit": "éditer un article",
+      "list": "liste des articles"
+    }
+  },
   "chart": {
     "title": {
       "line": "courbe",
@@ -298,14 +324,21 @@
   "dashboard": {
     "features": {
       "name": {
-        "material": "Composant Material",
-        "board": "Tableau de bord",
-        "chart": "Dashboard",
+        "material": "composant Material",
+        "board": "tableau de bord",
+        "chart": "dashboard",
         "gprd": "RGPD",
-        "invoice": "Facturation",
-        "layout-builder": "Configurateur de layout",
-        "timeline": "Timeline",
-        "user": "Utilisateur"
+        "invoice": "facturation",
+        "layout-builder": "configurateur de layout",
+        "timeline": "timeline",
+        "user": "utilisateur",
+        "calendar": "agenda",
+        "admin": "administration",
+        "article": "article",
+        "faq": "foire aux questions",
+        "map": "carte",
+        "cart": "panier",
+        "contact": "contacter nous"
       }
     }
   },

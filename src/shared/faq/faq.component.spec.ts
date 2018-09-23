@@ -17,10 +17,13 @@ import {
   MatInputModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('FaqComponent', () => {
   let component: FaqComponent;
   let fixture: ComponentFixture<FaqComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

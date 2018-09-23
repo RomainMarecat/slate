@@ -27,10 +27,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     MatTooltipModule,
     MatButtonModule,
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
-  declarations: [Invoice1Component, Invoice2Component, InvoiceListComponent],
-  exports: [Invoice1Component, Invoice2Component],
+  declarations: [
+    Invoice1Component,
+    Invoice2Component,
+    InvoiceListComponent],
+  exports: [
+    Invoice1Component,
+    Invoice2Component
+  ],
 })
 export class InvoiceModule {
 }

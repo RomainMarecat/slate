@@ -8,10 +8,13 @@ import {
   MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule,
   MatSlideToggleModule
 } from '@angular/material';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('SlideToggleComponent', () => {
   let component: SlideToggleComponent;
   let fixture: ComponentFixture<SlideToggleComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,9 +30,9 @@ describe('SlideToggleComponent', () => {
         MatFormFieldModule,
         ReactiveFormsModule
       ],
-      declarations: [ SlideToggleComponent ]
+      declarations: [SlideToggleComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [{
   path: 'product/:key',
@@ -9,7 +10,8 @@ const routes: Routes = [{
 }];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes), LocalizeRouterModule.forChild(routes)],
+  exports: [RouterModule, LocalizeRouterModule]
 })
-export class ProductDetailRoutingModule {}
+export class ProductDetailRoutingModule {
+}

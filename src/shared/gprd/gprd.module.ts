@@ -3,11 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { GprdRoutingModule } from './gprd-routing.module';
 import { GprdComponent } from './gprd/gprd.component';
-import { OptinListComponent } from './optin/optin-list/optin-list.component';
-import { SharedModule } from 'shared/shared.module';
-import { OptinNewsletterComponent } from './optin/optin-newsletter/optin-newsletter.component';
-import { OptinManagerComponent } from './optin/optin-manager/optin-manager.component';
-import { OptinNewsletter2Component } from './optin/optin-newsletter2/optin-newsletter2.component';
+import { SharedModule } from '../shared.module';
 import { OptinModule } from './optin/optin.module';
 import { HelpModule } from './help/help.module';
 

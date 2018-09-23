@@ -4,10 +4,16 @@ import { TimelineComponent } from './timeline.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatCardModule, MatChipsModule, MatIconModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('TimelineComponent', () => {
   let component: TimelineComponent;
   let fixture: ComponentFixture<TimelineComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,12 +22,17 @@ describe('TimelineComponent', () => {
         MatCardModule,
         MatChipsModule,
         MatButtonModule,
+        LocalizeRouterModule,
         MatIconModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
+        RouterTestingModule
       ],
-      declarations: [TimelineComponent]
+      declarations: [TimelineComponent],
+      providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
+      ]
     })
       .compileComponents();
   }));

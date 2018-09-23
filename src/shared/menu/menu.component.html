@@ -12,9 +12,9 @@
       angulartics2On="mouseover"
       angularticsAction="hoveredOverHomeLink"
       [angularticsCategory]="'home.title'">
-    <a [routerLink]="['/']">
+    <a [routerLink]="['/'|localize]">
       <span class="cls-1" *ngIf="'menu.title1'|translate">{{ 'menu.title1' | translate }}</span>
-      <span class="cls-2">{{ 'menu.title2' | translate }}</span>
+      <span class="cls-2" *ngIf="'menu.title2'|translate">{{ 'menu.title2' | translate }}</span>
     </a>
   </h1>
   <span class="pl-4" [innerHtml]="title" *ngIf="title"></span>

@@ -3,31 +3,34 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatIconModule, MatInputModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { MatIconModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { DeliveryComponent } from './delivery.component';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('DeliveryComponent', () => {
   let component: DeliveryComponent;
-  let fixture: ComponentFixture < DeliveryComponent > ;
+  let fixture: ComponentFixture<DeliveryComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          BrowserAnimationsModule,
-          FormsModule,
-          ReactiveFormsModule,
-          MatIconModule,
-          MatSelectModule,
-          MatFormFieldModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-        ],
-        declarations: [DeliveryComponent]
-      })
+      imports: [
+        CommonModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+      ],
+      declarations: [DeliveryComponent]
+    })
       .compileComponents();
   }));
 

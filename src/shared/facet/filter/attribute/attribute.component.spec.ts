@@ -3,14 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatIconModule, MatInputModule, MatFormFieldModule } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { MatIconModule, MatFormFieldModule } from '@angular/material';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { AttributeComponent } from './attribute.component';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('AttributeComponent', () => {
   let component: AttributeComponent;
   let fixture: ComponentFixture < AttributeComponent > ;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

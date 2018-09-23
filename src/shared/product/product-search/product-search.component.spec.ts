@@ -14,10 +14,13 @@ import { MockCategoryService } from '../../category/mock-category.service';
 import { CategoryService } from '../../category/category.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ProductSearchComponent', () => {
   let component: ProductSearchComponent;
   let fixture: ComponentFixture<ProductSearchComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -37,7 +40,7 @@ describe('ProductSearchComponent', () => {
         }),
         ReactiveFormsModule
       ],
-      declarations: [ ProductSearchComponent ],
+      declarations: [ProductSearchComponent],
       providers: [
         {provide: ProductService, useClass: MockProductService},
         {provide: CategoryService, useClass: MockCategoryService}

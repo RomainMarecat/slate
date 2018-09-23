@@ -8,25 +8,28 @@ import { MockProductService } from '../../../shared/product/mock-product.service
 import { SortComponent } from './sort.component';
 import { SortItemComponent } from './sort-item/sort-item.component';
 import { SortContainerComponent } from './sort-container/sort-container.component';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('SortComponent', () => {
   let component: SortComponent;
-  let fixture: ComponentFixture < SortComponent > ;
+  let fixture: ComponentFixture<SortComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          FlexLayoutModule,
-          MatButtonModule,
-          MatIconModule,
-          MatListModule,
-        ],
-        declarations: [SortComponent, SortContainerComponent, SortItemComponent],
-        providers: [
-          { provide: ProductService, useClass: MockProductService },
-        ]
-      })
+      imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatButtonModule,
+        MatIconModule,
+        MatListModule,
+      ],
+      declarations: [SortComponent, SortContainerComponent, SortItemComponent],
+      providers: [
+        {provide: ProductService, useClass: MockProductService},
+      ]
+    })
       .compileComponents();
   }));
 

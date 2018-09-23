@@ -6,10 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ButtonComponent', () => {
   let component: ButtonComponent;
   let fixture: ComponentFixture<ButtonComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,9 +30,9 @@ describe('ButtonComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ ButtonComponent ]
+      declarations: [ButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

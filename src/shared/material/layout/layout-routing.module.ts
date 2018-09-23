@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminGuard } from '../../guard/admin.guard';
 import { CardComponent } from './card/card.component';
 import { DividerComponent } from './divider/divider.component';
 import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
@@ -8,6 +7,7 @@ import { GridListComponent } from './grid-list/grid-list.component';
 import { ListComponent } from './list/list.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [{
   path: 'component/card',
@@ -39,8 +39,13 @@ const routes: Routes = [{
   }, ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forChild(routes),
+    LocalizeRouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule, LocalizeRouterModule
+  ]
 })
 export class LayoutRoutingModule {
 }

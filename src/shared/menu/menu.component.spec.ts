@@ -8,64 +8,56 @@ import { MenuComponent } from './menu.component';
 import { UserService } from '../user/shared/user.service';
 import { MockUserService } from '../user/shared/mock-user.service';
 import {
-  MatCardModule,
   MatToolbarModule,
-  MatSidenavModule,
   MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatFormFieldModule,
-  MatListModule,
-  MatSelectModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatSnackBarModule,
-  MatTooltipModule,
-  MatProgressSpinnerModule,
+  MatButtonModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { SidenavService } from '../sidenav/sidenav.service';
 import {
   TranslateModule,
-  TranslateService,
   TranslateLoader,
   TranslateFakeLoader
 } from '@ngx-translate/core';
 import { MenuService } from './menu.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
-  let fixture: ComponentFixture < MenuComponent > ;
+  let fixture: ComponentFixture<MenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          BrowserModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          CommonModule,
-          MatIconModule,
-          MatButtonModule,
-          MatToolbarModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
-        ],
-        declarations: [MenuComponent],
-        providers: [
-          MenuService,
-          SidenavService,
-          { provide: UserService, useClass: MockUserService },
-        ]
-      })
+      imports: [
+        BrowserModule,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        CommonModule,
+        LocalizeRouterModule,
+        MatIconModule,
+        MatButtonModule,
+        MatToolbarModule,
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        })
+      ],
+      declarations: [MenuComponent],
+      providers: [
+        MenuService,
+        SidenavService,
+        {provide: UserService, useClass: MockUserService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
+      ]
+    })
       .compileComponents();
   }));
 
