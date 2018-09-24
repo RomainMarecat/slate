@@ -21,6 +21,7 @@ import { AgmCoreModule } from '@agm/core';
     CommonModule,
     FlexLayoutModule,
     MatListModule,
+    MapRoutingModule,
     NgArrayPipesModule,
     TranslateModule,
     RouterModule,

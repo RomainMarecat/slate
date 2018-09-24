@@ -3,6 +3,8 @@
      fxLayoutAlign="center stretch"
      fxLayout.xs="column"
      fxLayoutAlign.xs="start center">
+  <!-- Map graphic with array of area -->
   <app-area-draw [mapConfig]="mapConfig" [areas]="areas"></app-area-draw>
+  <!-- List of area for mobile -->
   <app-area-list [areas]="areas" (areaHovered)="onHoveredArea($event)"></app-area-list>
 </div>

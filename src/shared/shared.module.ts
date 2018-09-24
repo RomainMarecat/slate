@@ -49,7 +49,6 @@ import { PopupModule } from './popup/popup.module';
 import { PartnerModule } from './partner/partner.module';
 import { OfferModule } from './offer/offer.module';
 import { CommentModule } from './comment/comment.module';
-import { MapModule } from './map/map.module';
 import { ProductModule } from './product/product.module';
 import { CmsDetailModule } from './cms-detail/cms-detail.module';
 import { FaviconModule } from './favicon/favicon.module';
@@ -95,7 +94,6 @@ export class ConfigService {
     HttpClientModule,
     ImageCropperModule,
     LoaderModule,
-    MapModule,
     MatAutocompleteModule,
     MatCardModule,
     MatChipsModule,
@@ -156,7 +154,6 @@ export class ConfigService {
     HttpClientModule,
     ImageCropperModule,
     LoaderModule,
-    MapModule,
     MatAutocompleteModule,
     MatCardModule,
     MatChipsModule,
