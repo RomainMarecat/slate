@@ -10,14 +10,20 @@ import {
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
+  MatCardModule,
 } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 @NgModule({
   imports: [
     CommonModule,
     NgxDatatableModule,
+    FlexLayoutModule,
+    LocalizeRouterModule,
     MatGridListModule,
+    MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
@@ -29,4 +35,5 @@ import { TranslateModule } from '@ngx-translate/core';
     AdminGuard
   ]
 })
-export class AdminModule {}
+export class AdminModule {
+}

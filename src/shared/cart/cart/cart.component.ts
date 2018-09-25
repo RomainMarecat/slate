@@ -9,11 +9,12 @@ import { CartEditComponent } from '../cart-edit/cart-edit.component';
 import { User } from '../../user/shared/user';
 import { CartService } from '../shared/cart.service';
 import { Filter } from 'shared/facet/filter/shared/filter';
+import { AlertService } from 'shared/popup/alert.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: [ './cart.component.scss' ]
+  styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;
@@ -29,7 +30,8 @@ export class CartComponent implements OnInit {
   cart: Cart;
 
   constructor(private userService: UserService,
-              private cartService: CartService) {
+              private cartService: CartService,
+              private alertService: AlertService) {
   }
 
   ngOnInit() {
@@ -46,7 +48,10 @@ export class CartComponent implements OnInit {
     ] as Filter[]);
     this.cartService.getCarts()
       .subscribe((carts) => {
-        this.cart = carts.filter((cart) => cart.status !== 'finished')[0];
+        this.cart = carts.filter((cart) => cart.status === 'current')[0];
+        if (!this.cart) {
+          this.createCart();
+        }
       }, (err) => {
         console.error(err);
       });
@@ -65,6 +70,24 @@ export class CartComponent implements OnInit {
           this.getCart();
         }
       });
+  }
+
+  createCart() {
+    const cart: Cart = {
+      user: this.user.uid,
+      items: [],
+      total: 0,
+      status: 'current',
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
+    this.cartService.createCart(cart)
+      .then(doc => {
+        cart.key = doc.id;
+        this.cartService.updateCart(cart)
+          .then(() => {
+          }, (err) => this.alertService.show(err));
+      }, (err) => this.alertService.show(err));
   }
 
   onSaveCart(cart: Cart) {

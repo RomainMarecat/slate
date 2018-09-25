@@ -5,6 +5,7 @@ import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 import { MapService } from '../../../map/shared/map.service';
 import { Map } from '../../../map/shared/map';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-admin-map-list',
@@ -21,21 +22,23 @@ export class MapListComponent implements OnInit {
   selected: Map[] = [];
   expanded: any = {};
   @ViewChild('dataTableComponentTable') dataTableComponentTable: any;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef < any > ;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef < any > ;
-  @ViewChild('actionsCell') actionsCell: TemplateRef < any > ;
-  @ViewChild('imageCell') imageCell: TemplateRef < any > ;
-  @ViewChild('priceCell') priceCell: TemplateRef < any > ;
-  @ViewChild('desktopCell') desktopCell: TemplateRef < any > ;
-  @ViewChild('desktopHeader') desktopHeader: TemplateRef < any > ;
-  @ViewChild('translationsFrCell') translationsFrCell: TemplateRef < any > ;
-  @ViewChild('publicationCell') publicationCell: TemplateRef < any > ;
+  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
+  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
+  @ViewChild('imageCell') imageCell: TemplateRef<any>;
+  @ViewChild('priceCell') priceCell: TemplateRef<any>;
+  @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
+  @ViewChild('desktopHeader') desktopHeader: TemplateRef<any>;
+  @ViewChild('translationsFrCell') translationsFrCell: TemplateRef<any>;
+  @ViewChild('publicationCell') publicationCell: TemplateRef<any>;
 
   constructor(public dialog: MatDialog,
               private router: Router,
               private table: ElementRef,
               private menuService: MenuService,
-              private mapService: MapService) {}
+              private mapService: MapService,
+              private localizeRouterService: LocalizeRouterService) {
+  }
 
   ngOnInit() {
     this.columns = this.getColumns();
@@ -49,7 +52,7 @@ export class MapListComponent implements OnInit {
       });
   }
 
-  getColumns(): Array < any > {
+  getColumns(): Array<any> {
     return [{
       width: 75,
       sortable: false,
@@ -87,7 +90,7 @@ export class MapListComponent implements OnInit {
     this.mapService.updateMap(map);
   }
 
-  updateMapPublication(map: Map, event: { source: any, value: boolean }) {
+  updateMapPublication(map: Map, event: {source: any, value: boolean}) {
     map.published = event.value;
     this.updatePublication(map);
   }
@@ -114,7 +117,10 @@ export class MapListComponent implements OnInit {
   }
 
   editMap(map: Map) {
-    this.router.navigate(['/admin/map/edit/', map.key]);
+    this.router.navigate([
+      this.localizeRouterService.translateRoute('/admin/maps/edit'),
+      map.key
+    ]);
   }
 
   /**
@@ -151,14 +157,17 @@ export class MapListComponent implements OnInit {
    * On select add new list in selection array
    * @param {any} selected
    */
-  onSelect({ selected }) {
+  onSelect({selected}) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate(['/admin/map/edit/', event.row.key]);
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('/admin/maps/edit'),
+        event.row.key
+      ]);
     }
   }
 
@@ -166,9 +175,12 @@ export class MapListComponent implements OnInit {
     this.dataTableComponentTable.rowDetail.toggleExpandRow(row);
   }
 
-  onDetailToggle(event) {}
+  onDetailToggle(event) {
+  }
 
-  onScroll(event: any) {}
+  onScroll(event: any) {
+  }
 
-  onCheckboxChangeFn(event) {}
+  onCheckboxChangeFn(event) {
+  }
 }

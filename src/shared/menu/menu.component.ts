@@ -15,10 +15,10 @@ export class MenuComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private menuService: MenuService,
-    private sidenavService: SidenavService,
-    public userService: UserService) {
+              private activatedRoute: ActivatedRoute,
+              private menuService: MenuService,
+              private sidenavService: SidenavService,
+              public userService: UserService) {
     this.title = null;
   }
 

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ArticleRoutingModule } from './article-routing.module';
@@ -8,6 +8,12 @@ import { ArticleService } from './shared/article.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material';
 import { PipeModule } from '../pipe/pipe.module';
+import { TranslateModule } from '@ngx-translate/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { NgArrayPipesModule } from 'ngx-pipes';
+import { MediaModule } from '../media/media.module';
+
+export const TABLE_ARTICLE = new InjectionToken<string>('article');
 
 @NgModule({
   imports: [
@@ -15,7 +21,10 @@ import { PipeModule } from '../pipe/pipe.module';
     CommonModule,
     FlexLayoutModule,
     MatCardModule,
+    MediaModule,
+    NgArrayPipesModule,
     PipeModule,
+    TranslateModule.forChild()
   ],
   declarations: [
     ArticleListComponent,
@@ -26,7 +35,8 @@ import { PipeModule } from '../pipe/pipe.module';
     ArticleDetailComponent
   ],
   providers: [
-    ArticleService
+    {provide: TABLE_ARTICLE, useValue: 'article'},
+    {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
   ]
 })
 export class ArticleModule {

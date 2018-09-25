@@ -28,6 +28,7 @@ import { ContactService } from '../../shared/contact/shared/contact.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockMapsAPILoader } from '../../shared/map/shared/mock-maps-api-loader';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -43,6 +44,7 @@ describe('HomeComponent', () => {
         HttpClientTestingModule,
         ContactModule,
         RouterTestingModule,
+        LocalizeRouterModule,
         SharedModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}

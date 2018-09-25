@@ -1,13 +1,72 @@
-<mat-toolbar
-  fxLayout="row"
+<div
+  fxLayout="row wrap"
   fxLayout.xs="column"
+  fxLayoutAlign="center stretch"
+  fxLayoutGap="20px"
   class="admin-home-toolbar">
-  <a mat-button class="link" [routerLink]="['/admin/product']">{{ 'admin.cta.product'|translate }}</a>
-  <a mat-button class="link" [routerLink]="['/admin/navigation/category']">{{ 'admin.cta.category'|translate }}</a>
-  <a mat-button class="link" [routerLink]="['/admin/navigation/selection']">{{ 'admin.cta.selection'|translate }}</a>
-  <a mat-button class="link" [routerLink]="['/admin/map']">{{ 'admin.cta.map'|translate }}</a>
-  <a mat-button class="link" [routerLink]="['/admin/article']">{{ 'admin.cta.article'|translate }}</a>
-  <a mat-button class="link" [routerLink]="['/admin/cms']">{{ 'admin.cta.cms'|translate }}</a>
-  <a mat-button class="link" [routerLink]="['/admin/partner']">{{ 'admin.cta.partner'|translate }}</a>
-  <a mat-button class="link" [routerLink]="['/admin/offer']">{{ 'admin.cta.offer'|translate }}</a>
-</mat-toolbar>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3><a class="link" [routerLink]="['/admin/product']|localize">{{ 'admin.cta.product'|translate }}</a></h3>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3><a class="link" [routerLink]="['/admin/navigation/category']|localize">{{ 'admin.cta.category'|translate }}</a></h3>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3><a class="link" [routerLink]="['/admin/navigation/selection']|localize">{{ 'admin.cta.selection'|translate }}</a>
+        </h3>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3><a class="link" [routerLink]="['/admin/maps']|localize">{{ 'admin.cta.map'|translate }}</a></h3>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3><a class="link" [routerLink]="['article']|localize">{{ 'admin.cta.article'|translate }}</a></h3>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3><a class="link" [routerLink]="['/admin/cms']|localize">{{ 'admin.cta.cms'|translate }}</a></h3>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3><a class="link" [routerLink]="['/admin/partner']|localize">{{ 'admin.cta.partner'|translate }}</a></h3>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h3><a class="link" [routerLink]="['/admin/offer']|localize">{{ 'admin.cta.offer'|translate }}</a></h3>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+
+</div>

@@ -27,12 +27,12 @@ export class DashboardComponent implements OnInit {
       {name: 'dashboard.features.name.user', img: '/assets/images/user.jpg', url: '/users'},
       {name: 'dashboard.features.name.timeline', img: '/assets/images/timeline.jpg', url: '/timeline'},
       {name: 'dashboard.features.name.admin', img: '/assets/images/admin.jpg', url: '/admin'},
-      {name: 'dashboard.features.name.calendar', img: '/assets/images/calendar.jpg', url: '/calendar'},
+      {name: 'dashboard.features.name.calendar', img: '/assets/images/agenda.jpg', url: '/calendar'},
       {name: 'dashboard.features.name.article', img: '/assets/images/article.jpg', url: '/article'},
       {name: 'dashboard.features.name.faq', img: '/assets/images/faq.jpg', url: '/faq'},
       {name: 'dashboard.features.name.map', img: '/assets/images/map.jpg', url: '/map'},
-      {name: 'dashboard.features.name.cart', img: '/assets/images/cart.jpg', url: '/cart'},
-      {name: 'dashboard.features.name.contact', img: '/assets/images/contact.jpg', url: '/contact'},
+      {name: 'dashboard.features.name.cart', img: '/assets/images/cart.jpg', url: '/cart/index'},
+      {name: 'dashboard.features.name.contact', img: '/assets/images/contact.jpg', url: '/contact-us'},
     ];
   }
 

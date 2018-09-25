@@ -1,10 +1,10 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { OfferService } from './offer.service';
 import { MockOfferService } from './mock-offer.service';
 import { environment } from '../../../../app-hockey/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 describe('OfferService', () => {
   beforeEach(() => {
@@ -14,7 +14,7 @@ describe('OfferService', () => {
         AngularFirestoreModule,
         AngularFireAuthModule
       ],
-      providers: [{ provide: OfferService, useClass: MockOfferService }],
+      providers: [{provide: OfferService, useClass: MockOfferService}],
     });
   });
 

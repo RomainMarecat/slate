@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { ContactRoutingModule } from './contact-routing.module';
 import { ContactAddComponent } from './contact-add/contact-add.component';
-import { SharedModule } from '../shared.module';
 import { ContactService } from './shared/contact.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

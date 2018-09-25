@@ -16,7 +16,7 @@ import { AreaService } from '../../../map/shared/area.service';
   styleUrls: [ './map-edit.component.scss' ]
 })
 export class MapEditComponent implements OnInit {
-  @Input() showBackButton = true;
+  @Input() showBackButton = false;
   @Input() hideAreas = false;
   form: FormGroup;
   formArea: FormGroup;
@@ -105,7 +105,7 @@ export class MapEditComponent implements OnInit {
           }, (err) => {
             this.alertService.toast(`map error ${err}`);
           });
-        this.router.navigate([ '/admin/map' ]);
+        this.router.navigate([ '/admin/maps' ]);
       } else {
         this.mapService.createMap(this.map)
           .then((doc: DocumentReference) => {

@@ -49,11 +49,9 @@ import { PopupModule } from './popup/popup.module';
 import { PartnerModule } from './partner/partner.module';
 import { OfferModule } from './offer/offer.module';
 import { CommentModule } from './comment/comment.module';
-import { MapModule } from './map/map.module';
 import { ProductModule } from './product/product.module';
 import { CmsDetailModule } from './cms-detail/cms-detail.module';
 import { FaviconModule } from './favicon/favicon.module';
-import { ArticleModule } from './article/article.module';
 import { PipeModule } from './pipe/pipe.module';
 import { SessionModule } from './session/session.module';
 import { CartModule } from './cart/cart.module';
@@ -76,7 +74,6 @@ export class ConfigService {
   imports: [
     AngularFireAuthModule,
     Angulartics2Module,
-    ArticleModule,
     CartModule,
     CmsDetailModule,
     CmsModule,
@@ -95,7 +92,6 @@ export class ConfigService {
     HttpClientModule,
     ImageCropperModule,
     LoaderModule,
-    MapModule,
     MatAutocompleteModule,
     MatCardModule,
     MatChipsModule,
@@ -123,7 +119,6 @@ export class ConfigService {
     MatRadioModule,
     MatStepperModule,
     MediaModule,
-    MenuModule,
     NgPipesModule,
     OfferModule,
     PartnerModule,
@@ -134,10 +129,9 @@ export class ConfigService {
     RouterModule,
     SessionModule,
     SidenavModule,
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
   exports: [
-    ArticleModule,
     Angulartics2Module,
     CartModule,
     CmsModule,
@@ -156,7 +150,6 @@ export class ConfigService {
     HttpClientModule,
     ImageCropperModule,
     LoaderModule,
-    MapModule,
     MatAutocompleteModule,
     MatCardModule,
     MatChipsModule,
@@ -184,7 +177,6 @@ export class ConfigService {
     MatRadioModule,
     MatStepperModule,
     MediaModule,
-    MenuModule,
     NgPipesModule,
     OfferModule,
     PartnerModule,

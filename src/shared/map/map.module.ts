@@ -14,6 +14,9 @@ import { GeocodeService } from './shared/geocode.service';
 import { NgArrayPipesModule } from 'ngx-pipes';
 import { LocationCurrentComponent } from './location-current/location-current.component';
 import { AgmCoreModule } from '@agm/core';
+import { MapRoutingModule } from './map-routing.module';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { TABLE_AREA, TABLE_MAP } from '../../app-alr/core/core.module';
 
 @NgModule({
   imports: [
@@ -21,8 +24,9 @@ import { AgmCoreModule } from '@agm/core';
     CommonModule,
     FlexLayoutModule,
     MatListModule,
+    MapRoutingModule,
     NgArrayPipesModule,
-    TranslateModule,
+    TranslateModule.forChild(),
     RouterModule,
   ],
   declarations: [
@@ -40,7 +44,10 @@ import { AgmCoreModule } from '@agm/core';
     LocationCurrentComponent
   ],
   providers: [
-    MapService,
+    {provide: TABLE_AREA, useValue: 'area'},
+    {provide: TABLE_MAP, useValue: 'map'},
+    {provide: MapService, useClass: MapService, deps: [AngularFirestore, TABLE_MAP]},
+    {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
     AreaService,
     GeocodeService
   ]

@@ -10,74 +10,74 @@
       </mat-card>
       <mat-list class="pt-0">
         <mat-list-item *ngIf="cmsDetail?.add === true">
-          <a class="sidenav-link text-capitalize" mat-raised [routerLink]="['/add']"
+          <a class="sidenav-link text-capitalize" mat-raised [routerLink]="['/add'|localize]"
              [innerHtml]="'sidenav.card.list-item.add.title'|translate"></a>
         </mat-list-item>
       </mat-list>
       <mat-nav-list *ngIf="isAuthorized" class="pt-0">
-        <a mat-list-item class="heading" [routerLink]="['/admin']">
+        <a mat-list-item class="heading" [routerLink]="['/admin'|localize]">
           {{ 'sidenav.card.list-item.admin.title'|translate }}
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/product']">
+           [routerLink]="['/admin/product'|localize]">
           {{ 'admin.cta.product'|translate }}
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/contact']">
+           [routerLink]="['/admin/contact'|localize]">
           {{ 'admin.cta.contact'|translate }}
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/article']">
+           [routerLink]="['/admin/article'|localize]">
           {{ 'admin.cta.article'|translate }}
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/attribute']">
+           [routerLink]="['/admin/attribute'|localize]">
           {{ 'admin.cta.attribute'|translate }}
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/navigation/selection']">
+           [routerLink]="['/admin/navigation/selection'|localize]">
           {{ 'admin.cta.selection'|translate }}
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/navigation/category']">
+           [routerLink]="['/admin/navigation/category'|localize]">
           {{ 'admin.cta.category'|translate }}
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/cms']">
+           [routerLink]="['/admin/cms'|localize]">
           {{ 'admin.cta.cms'|translate }}
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/map']">
+           [routerLink]="['/admin/maps'|localize]">
           {{ 'admin.cta.map'|translate }}
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/offer']">
+           [routerLink]="['/admin/offer'|localize]">
           {{ 'admin.cta.offer'|translate }}
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/partner']">
+           [routerLink]="['/admin/partner'|localize]">
           {{ 'admin.cta.partner'|translate }}
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/material']">
+           [routerLink]="['/material'|localize]">
           {{ 'admin.cta.material'|translate }}
         </a>
       </mat-nav-list>
       <mat-nav-list>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/faq']">FAQ</a>
+           [routerLink]="['/faq'|localize]">FAQ</a>
       </mat-nav-list>
       <mat-nav-list>
         <mat-divider></mat-divider>

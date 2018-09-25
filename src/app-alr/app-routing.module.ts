@@ -56,7 +56,7 @@ const routes: Routes = [
     loadChildren: './../shared/material/material.module#MaterialModule'
   },
   {
-    path: 'contact',
+    path: 'contact-us',
     loadChildren: './../shared/contact/contact.module#ContactModule'
   },
   {
@@ -64,7 +64,7 @@ const routes: Routes = [
     loadChildren: './../shared/map/map.module#MapModule'
   },
   {
-    path: 'calendar',
+    path: 'agenda',
     loadChildren: './../shared/agenda/agenda.module#AgendaModule'
   },
   {

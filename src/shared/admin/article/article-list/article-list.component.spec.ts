@@ -31,10 +31,17 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductService } from '../../../product/product.service';
 import { MockProductService } from '../../../product/mock-product.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { MediaModule } from '../../../media/media.module';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;
   let fixture: ComponentFixture<ArticleListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -44,11 +51,14 @@ describe('ArticleListComponent', () => {
         SharedModule,
         NgxEditorModule,
         RouterTestingModule,
+        LocalizeRouterModule,
+        AngularFireStorageModule,
+        MediaModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ ArticleListComponent, ArticleEditComponent ],
+      declarations: [ArticleListComponent, ArticleEditComponent],
       providers: [
         {provide: ArticleService, useClass: MockArticleService},
         {provide: AlertService, useClass: MockAlertService},
@@ -59,6 +69,7 @@ describe('ArticleListComponent', () => {
         {provide: ProductService, useClass: MockProductService},
         {provide: NotificationService, useClass: MockNotificationService},
         {provide: AttributeService, useClass: MockAttributeService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         DateService,
         MenuService,
         ObjectService,

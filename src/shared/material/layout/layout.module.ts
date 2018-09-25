@@ -17,6 +17,7 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatStepperModule,
     LayoutRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule.forChild()
   ],
   declarations: [
     CardComponent,

@@ -8,9 +8,11 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'list',
     canActivate: [AdminGuard],
     component: ArticleListComponent,
+    data: {
+      breadcrumb: 'breadcrumb.article.list'
+    }
   },
   {
     path: 'list',

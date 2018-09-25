@@ -12,8 +12,8 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('Invoice1Component', () => {

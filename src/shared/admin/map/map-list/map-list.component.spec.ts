@@ -18,10 +18,15 @@ import { MapAreasComponent } from '../map-areas/map-areas.component';
 import { MenuService } from '../../../menu/menu.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { AlertService } from '../../../popup/alert.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('MapListComponent', () => {
   let component: MapListComponent;
   let fixture: ComponentFixture<MapListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,17 +36,19 @@ describe('MapListComponent', () => {
         HttpClientTestingModule,
         RouterTestingModule,
         BrowserAnimationsModule,
+        LocalizeRouterModule,
         NgxDatatableModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
         SharedModule,
       ],
-      declarations: [ MapListComponent, MapEditComponent, MapAreasComponent ],
+      declarations: [MapListComponent, MapEditComponent, MapAreasComponent],
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: MenuService, useClass: MenuService},
         {provide: AreaService, useClass: MockAreaService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: MapService, useClass: MockMapService}
       ]
     })

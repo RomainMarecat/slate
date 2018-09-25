@@ -1,10 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Media } from './media';
 import { Observable } from 'rxjs/Observable';
-import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { AngularFirestore } from 'angularfire2/firestore';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/first';
 import { VisitorService } from '../firestore/visitor.service';

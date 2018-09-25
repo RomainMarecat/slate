@@ -1,3 +1,92 @@
-<p>
-  cart-item works!
-</p>
+<div class="col-12" *ngIf="item">
+  <div class="row flex-container">
+    <div class="col-lg-4 col-md-4 col-12 text-left d-flex">
+      <span class="cart-title text-uppercase align-self-center">
+        <a [routerLink]="'/products/' + item?.key | localize"
+           *ngIf="item?.key; else itemNoLink">{{item.name}}</a>
+        <ng-template #itemNoLink>
+          <span>{{item.name}}</span>
+        </ng-template>
+      </span>
+    </div>
+    <div class="d-none d-lg-block d-md-block col-lg-2 col-md-3 text-center align-self-center">
+      <span class="cart-price">{{ item.price|currency: 'EUR' }}</span>
+    </div>
+    <div class="col-lg-2 col-md-1 col-12 text-lg-center text-md-center text-left">
+      <div class="row">
+        <!-- Uniquement en mobile -->
+        <div class="d-lg-none d-md-none col-6 col-xs-6 col-sm-4 align-self-center">
+          <span>{{ 'cart.quantity'|translate }} :</span>
+        </div>
+        <!-- Uniquement desktop -->
+        <div class="d-none d-lg-block text-center col-lg-4">
+          <button class="btn btn-icon"
+                  (click)="updateCartItemQuantity(item, item.quantity-1)"
+                  *ngIf="editable">-
+          </button>
+        </div>
+        <!-- Mobile et Desktop -->
+        <div class="col-6 col-xs-6 col-sm-4 col-md-3 col-lg-4 align-self-center">
+          <input class="cart-quantity number-override text-center" type="number" name="input"
+                 [(ngModel)]="item.quantity"
+                 (blur)="updateCartItemQuantity(item, item.quantity)"
+                 min="0"
+                 [disabled]="!editable">
+        </div>
+        <!-- Uniquement desktop-->
+        <div class="d-none d-lg-block text-center col-lg-4">
+          <button class="btn btn-icon"
+                  (click)="updateCartItemQuantity(item, item.quantity+1)"
+                  *ngIf="editable">+
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-10 text-lg-center text-md-center text-left align-self-center">
+      <span class="cart-total-item text-right">{{item.price * item.quantity| currency: 'EUR'}}</span>
+    </div>
+
+    <!-- bloc SUPPRESSION -->
+    <div class="col-1 text-center text-lg-right align-self-center">
+      <span class="cart-delete pointer"
+            (click)="updateCartItemQuantity(item, 0)"
+            *ngIf="editable">
+        <i class="fa fa-times"></i>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+<div class="items-infos col-12" *ngIf="cart">
+  <div class="row infos-total-item" *ngIf="!editable && cart?.total">
+    <span class="col-lg-3 offset-lg-6 col-5 text-left align-self-center">
+      {{ 'cart.total.total_item'|translate }}</span>
+    <span class="col-lg-2 col-6 text-center">{{ cart.total | currency:'EUR' }}</span>
+  </div>
+
+  <div class="row infos-delivery" *ngIf="cart?.fees > 0">
+    <span class="col-lg-3 offset-lg-6 col-5 text-left">
+      {{ 'cart.total.delivery_fee'|translate }}
+    </span>
+    <span class="col-lg-2 col-6 text-center" *ngIf="cart.fees; else zeroPriceTemplate">
+      {{ cart?.fees| currency:'EUR' }}
+    </span>
+  </div>
+
+  <div class="row infos-total">
+    <div class="col-lg-12 col-12">
+      <div class="row">
+        <span class="col-lg-3 offset-lg-6 col-5 text-left">
+          {{ 'cart.total.total'|translate }}
+        </span>
+        <span class="col-lg-2 col-6 text-center">{{(cart.fees ? cart.total + cart.fees : cart.total) |
+          currency:'EUR' }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #zeroPriceTemplate>
+  <span class="col-2 text-center">{{ '0'| currency:'EUR' }}</span>
+</ng-template>

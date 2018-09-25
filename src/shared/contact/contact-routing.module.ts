@@ -5,7 +5,7 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [
   {
-    path: 'add',
+    path: '',
     component: ContactAddComponent
   },
 ];

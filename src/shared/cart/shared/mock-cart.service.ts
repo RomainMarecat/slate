@@ -2,16 +2,10 @@ import { Observable } from 'rxjs/Observable';
 import { Cart } from './cart';
 import { of } from 'rxjs/observable/of';
 import { mockCart } from './mock-cart';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
 import { Filter } from 'shared/facet/filter/shared/filter';
 import { CollectionReference, Query } from '@firebase/firestore-types';
-import { AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestoreCollection, DocumentChangeAction } from 'angularfire2/firestore';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
 
 export class MockCartService {
 
@@ -28,13 +22,13 @@ export class MockCartService {
   query: CollectionReference | Query;
 
   constructor() {
-    this.filters$ = new BehaviorSubject([ {column: 'published', operator: '==', value: true} ]);
+    this.filters$ = new BehaviorSubject([{column: 'published', operator: '==', value: true}]);
     this.limit$ = new BehaviorSubject(20);
     this.orderBy$ = new BehaviorSubject('published_at');
   }
 
   getCarts(): Observable<Cart[]> {
-    return of([ mockCart ]);
+    return of([mockCart]);
   }
 
   getCart(key: string): Observable<Cart> {

@@ -10,6 +10,7 @@ import { SessionService } from '../../session/shared/session.service';
 import { AlertService } from '../../popup/alert.service';
 import { Router } from '@angular/router';
 import { RoutingState } from '../../util/routing-state';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-agenda',
@@ -26,7 +27,8 @@ export class AgendaComponent implements OnInit, OnDestroy {
               private media: ObservableMedia,
               private sessionService: SessionService,
               private alertService: AlertService,
-              private routingState: RoutingState) {
+              private routingState: RoutingState,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   ngOnInit() {
@@ -82,14 +84,14 @@ export class AgendaComponent implements OnInit, OnDestroy {
                 this.alertService.show(err, 'error');
               });
         }
-        this.router.navigate([ '/cart' ]);
+        this.router.navigate([ this.localizeRouterService.translateRoute('/cart') ]);
       }, (err) => {
         console.error(err);
         this.alertService.show(err, 'error');
       })
       .catch((err) => {
         this.alertService.show(err, 'error');
-        this.router.navigate([ '/cart' ]);
+        this.router.navigate([ this.localizeRouterService.translateRoute('/cart') ]);
       });
   }
 }

@@ -1,10 +1,12 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { VisitorService } from '../../firestore/visitor.service';
 import { Article } from './article';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ArticleService extends VisitorService {
 
   constructor(afs: AngularFirestore, @Inject('TABLE_ARTICLE') table: string) {

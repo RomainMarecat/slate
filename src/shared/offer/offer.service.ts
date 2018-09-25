@@ -1,10 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { VisitorService } from './../firestore/visitor.service';
 import { Offer } from './offer';
 
@@ -15,15 +11,15 @@ export class OfferService extends VisitorService {
     super(afs, table);
   }
 
-  getOffers(): Observable < Offer[] > {
-    return <Observable < Offer[] > > super.getDocuments();
+  getOffers(): Observable<Offer[]> {
+    return <Observable<Offer[]> > super.getDocuments();
   }
 
-  getOffer(key: string): Observable < Offer > {
-    return super.getDocument(key) as Observable < Offer > ;
+  getOffer(key: string): Observable<Offer> {
+    return super.getDocument(key) as Observable<Offer>;
   }
 
-  createOffer(offer: Offer): Promise < any > {
+  createOffer(offer: Offer): Promise<any> {
     return super.createDocument(offer);
   }
 

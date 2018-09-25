@@ -7,18 +7,21 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [
   {
-    path: 'cart/:key/payment',
+    path: ':key/payment',
     canActivate: [UserGuard],
     component: CartPaymentComponent
   },
   {
-    path: 'cart',
+    path: 'index',
     component: CartComponent
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), LocalizeRouterModule.forChild(routes)],
+  imports: [
+    RouterModule.forChild(routes),
+    LocalizeRouterModule.forChild(routes)
+  ],
   exports: [RouterModule, LocalizeRouterModule]
 })
 export class CartRoutingModule {

@@ -1,14 +1,12 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { VisitorService } from '../../firestore/visitor.service';
 import { Map } from './map';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MapService extends VisitorService {
 
   constructor(afs: AngularFirestore, @Inject('TABLE_MAP') table: string) {

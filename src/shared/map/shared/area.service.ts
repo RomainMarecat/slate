@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { Area } from './area';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -6,7 +6,7 @@ import { VisitorService } from '../../firestore/visitor.service';
 
 @Injectable()
 export class AreaService extends VisitorService {
-  constructor(afs: AngularFirestore, @Inject('TABLE_AREA') table: string) {
+  constructor(afs: AngularFirestore, @Optional() @Inject('TABLE_AREA') table: string) {
     super(afs, table);
   }
 

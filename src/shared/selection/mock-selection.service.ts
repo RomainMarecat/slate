@@ -4,10 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AngularFirestoreCollection } from 'angularfire2/firestore';
 import { CollectionReference, Query } from '@firebase/firestore-types';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
 import { of } from 'rxjs/internal/observable/of';
 
 export class MockSelectionService {

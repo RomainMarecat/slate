@@ -1,10 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
-import { CollectionReference, Query, DocumentSnapshot } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { map, switchMap, combineLatest, retry, timeout, catchError } from 'rxjs/operators';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { VisitorService } from './../firestore/visitor.service';
 import { Partner } from './partner';
 
@@ -15,15 +11,15 @@ export class PartnerService extends VisitorService {
     super(afs, table);
   }
 
-  getPartners(): Observable < Partner[] > {
-    return super.getDocuments() as Observable < Partner[] > ;
+  getPartners(): Observable<Partner[]> {
+    return super.getDocuments() as Observable<Partner[]>;
   }
 
-  getPartner(key: string): Observable < Partner > {
-    return super.getDocument(key) as Observable < Partner > ;
+  getPartner(key: string): Observable<Partner> {
+    return super.getDocument(key) as Observable<Partner>;
   }
 
-  createPartner(partner: Partner): Promise < any > {
+  createPartner(partner: Partner): Promise<any> {
     return super.createDocument(partner);
   }
 

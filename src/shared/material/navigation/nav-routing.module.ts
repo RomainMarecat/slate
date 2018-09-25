@@ -5,16 +5,18 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
-const routes: Routes = [{
-  path: 'component/menu',
-  component: MenuComponent
-}, {
-  path: 'component/sidenav',
-  component: SidenavComponent
-}, {
-  path: 'component/toolbar',
-  component: ToolbarComponent
-}, ];
+const routes: Routes = [
+  {
+    path: 'component/menu',
+    component: MenuComponent
+  }, {
+    path: 'component/sidenav',
+    component: SidenavComponent
+  }, {
+    path: 'component/toolbar',
+    component: ToolbarComponent
+  }
+];
 
 @NgModule({
   imports: [

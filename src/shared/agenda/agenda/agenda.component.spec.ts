@@ -17,6 +17,8 @@ import { SessionService } from '../../session/shared/session.service';
 import { MockSessionService } from '../../session/shared/mock-session.service';
 import { RoutingState } from '../../util/routing-state';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('AgendaComponent', () => {
   let component: AgendaComponent;
@@ -45,6 +47,7 @@ describe('AgendaComponent', () => {
         {provide: EventService, useClass: MockEventService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: SessionService, useClass: MockSessionService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         I18nService
       ]
     })

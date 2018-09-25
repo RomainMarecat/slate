@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CartRoutingModule } from './cart-routing.module';
@@ -19,6 +19,12 @@ import { CartEditComponent } from './cart-edit/cart-edit.component';
 import { CartComponent } from './cart/cart.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { RoutingState } from '../util/routing-state';
+import { AngularFirestore } from 'angularfire2/firestore';
+
+export const TABLE_CART = new InjectionToken<string>('cart');
+export const TABLE_PAYMENT = new InjectionToken<string>('payment');
+export const STRIPE_KEY = new InjectionToken<string>('');
+
 
 @NgModule({
   imports: [
@@ -36,7 +42,7 @@ import { RoutingState } from '../util/routing-state';
     ReactiveFormsModule,
     FlexLayoutModule,
     NgxStripeModule.forRoot('pk_test_ZMBhVWlsAzGDErk8PFH28TWX'),
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
   declarations: [
     CartListComponent,
@@ -55,8 +61,11 @@ import { RoutingState } from '../util/routing-state';
     CartComponent,
   ],
   providers: [
-    CartService,
-    PaymentService,
+    {provide: TABLE_CART, useValue: 'cart'},
+    {provide: STRIPE_KEY, useValue: 'pk_test_ZMBhVWlsAzGDErk8PFH28TWX'},
+    {provide: TABLE_PAYMENT, useValue: 'payment'},
+    {provide: CartService, useClass: CartService, deps: [AngularFirestore, TABLE_CART]},
+    {provide: PaymentService, useClass: PaymentService, deps: [AngularFirestore, TABLE_PAYMENT, STRIPE_KEY]},
     RoutingState
   ]
 })

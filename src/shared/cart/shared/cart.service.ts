@@ -1,13 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore } from 'angularfire2/firestore';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
 import { VisitorService } from '../../firestore/visitor.service';
 import { Cart } from './cart';
+import { Product } from 'shared/product/product';
 
 @Injectable()
 export class CartService extends VisitorService {

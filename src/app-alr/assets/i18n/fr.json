@@ -1,8 +1,47 @@
 {
   "routes": {
+    "add": "ajouter",
     "boards": "tableau-de-bord",
+    "board": "tableau",
     "layout-builder": "configurateur-de-layout",
     "material": "material-design",
+    "button-indicators": "button-indicators",
+    "datatable": "datatable",
+    "form": "form",
+    "layout": "layout",
+    "navigation": "navigation",
+    "component": "component",
+    "button": "button",
+    "button-toggle": "button-toggle",
+    "icon": "icon",
+    "chips": "chips",
+    "progress-bar": "progress-bar",
+    "progress-spinner": "progress-spinner",
+    "paginator": "paginator",
+    "sort-header": "sort-header",
+    "table": "table",
+    "autocomplete": "autocomplete",
+    "checkbox": "checkbox",
+    "datepicker": "datepicker",
+    "input": "input",
+    "radio-button": "radio-button",
+    "select": "select",
+    "slider": "slider",
+    "slide-toggle": "slide-toggle",
+    "card": "card",
+    "divider": "divider",
+    "expansion-panel": "expansion-panel",
+    "grid-list": "grid-list",
+    "list": "list",
+    "stepper": "stepper",
+    "tabs": "tabs",
+    "sidenav": "sidenav",
+    "toolbar": "toolbar",
+    "dialog": "dialog",
+    "snackbar": "snackar",
+    "tooltip": "tooltip",
+    "menu": "menu",
+    "popup": "modal",
     "charts": "dashboard",
     "gprd": "rgpd",
     "faq": "foire-aux-questions",
@@ -14,10 +53,21 @@
     "admin": "administration",
     "article": "article",
     "map": "carte",
+    "admin/article": "article",
+    "admin/maps": "cartes",
+    "admin/maps/list": "liste",
+    "admin/maps/edit": "edition",
+    "admin/maps/add": "ajouter",
     "cart": "panier",
-    "contact": "contacter-nous"
+    "contact-us": "contacter-nous",
+    "product": "product"
   },
   "admin": {
+    "article": {
+      "images": {
+        "title": "les médias"
+      }
+    },
     "authentication": {
       "needed": "authentification requise pour accéder à ce contenu"
     },
@@ -44,6 +94,10 @@
       }
     },
     "title": {
+      "home": "Back office admin",
+      "area": {
+        "add": "ajouter une région"
+      },
       "article": {
         "title": "liste des articles",
         "selection": "sélectionné(s)"
@@ -159,6 +213,9 @@
         "icon": "l'icône"
       },
       "map": {
+        "name": "pays"
+      },
+      "area": {
         "name": "région",
         "path": "points 2D"
       },
@@ -189,6 +246,9 @@
         "icon": "icône"
       },
       "map": {
+        "name": "pays de la carte"
+      },
+      "area": {
         "name": "région de la carte",
         "path": "points de la région"
       },
@@ -220,6 +280,9 @@
           "icon": "l'icône est obligatoire"
         },
         "map": {
+          "name": "le pays est obligatoire"
+        },
+        "area": {
           "name": "la région est obligatoire",
           "path": "les points sont obligatoires"
         },
@@ -249,6 +312,9 @@
           "icon": "l'icône est invalide"
         },
         "map": {
+          "name": "le pays est invalide"
+        },
+        "area": {
           "name": "la région est invalide",
           "path": "les points sont invalides"
         },
@@ -270,6 +336,52 @@
       "list": "liste des articles"
     }
   },
+  "cart": {
+    "quantity": "quantité",
+    "total": {
+      "total": "total",
+      "delivery_fee": "frais de livraison",
+      "total_item": "total produits"
+    },
+    "title": {
+      "cart": "validation",
+      "login": "se connecter",
+      "payment": "paiement",
+      "confirmation": "confirmation"
+    }
+  },
+  "cart-add": {
+    "title": "réservation",
+    "saved": "la réservation est sauvegardée"
+  },
+  "cart-payment": {
+    "errors": {
+      "cart": "Une erreur est survenue. Le montant du panier est incohérent."
+    }
+  },
+  "order-confirmation": {
+    "title": "La commande est confirmée",
+    "content": {
+      "waiting": "La commande est maintenant en cours de traitement.",
+      "key": "numéro de commande",
+      "summary": "récapitulatif",
+      "total": "montant total"
+    }
+  },
+  "calendar": {
+    "back-today": "revenir à la date d'aujourd'hui",
+    "day": "jour",
+    "3days": "3 jours",
+    "week": "semaine",
+    "title": "réserver votre créneau",
+    "subtitle": "toutes les disponibilités",
+    "availability": {
+      "empty": "Aucune disponibilité"
+    },
+    "session": {
+      "info": "Créneau vérrouillé"
+    }
+  },
   "chart": {
     "title": {
       "line": "courbe",
@@ -280,6 +392,10 @@
       "polar-area": "région",
       "radar": "radar"
     }
+  },
+  "contact": {
+    "title": "Nous contacter",
+    "subtitle": "Envoyer un message"
   },
   "cta": {
     "add": "ajouter",
@@ -314,12 +430,14 @@
     "save": "enregistrer",
     "show": "voir",
     "send": "envoyer",
+    "next": "suivant",
     "subscribe": "souscrire",
     "take_meeting": "prendre rendez-vous",
     "toggle": "changer",
     "understand": "j'ai compris",
     "unpublish": "dépublier",
-    "unpublished": "dépublié"
+    "unpublished": "dépublié",
+    "validate": "valider"
   },
   "dashboard": {
     "features": {
@@ -585,6 +703,9 @@
     "title1": "ALR",
     "title2": " Dashboard"
   },
+  "placeholder": {
+    "reason": "Choisir le motif"
+  },
   "date": {
     "now": "maintenant",
     "prefix": "Il y a ",
@@ -604,7 +725,7 @@
     "card": {
       "list-item": {
         "admin": {
-          "title": "Back Office"
+          "title": "Back office admin"
         },
         "facebook": {
           "title": "Se connecter avec Facebook"

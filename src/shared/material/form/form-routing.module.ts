@@ -10,13 +10,14 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
-const routes: Routes = [{
-  path: 'component/autocomplete',
-  component: AutocompleteComponent
-}, {
-  path: 'component/checkbox',
-  component: CheckboxComponent
-},
+const routes: Routes = [
+  {
+    path: 'component/autocomplete',
+    component: AutocompleteComponent
+  }, {
+    path: 'component/checkbox',
+    component: CheckboxComponent
+  },
   {
     path: 'component/datepicker',
     component: DatepickerComponent
@@ -39,7 +40,8 @@ const routes: Routes = [{
   }, {
     path: 'component/slide-toggle',
     component: SlideToggleComponent
-  }, ];
+  }
+];
 
 @NgModule({
   imports: [

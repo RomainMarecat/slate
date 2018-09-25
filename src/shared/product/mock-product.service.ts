@@ -2,15 +2,9 @@ import { mockProduct } from './mock-product';
 import { Product } from './product';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
 import { CollectionReference, Query } from '@firebase/firestore-types';
-import { AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import { Filter } from '../facet/filter/shared/filter';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
 import { of } from 'rxjs/internal/observable/of';
 
 export class MockProductService {

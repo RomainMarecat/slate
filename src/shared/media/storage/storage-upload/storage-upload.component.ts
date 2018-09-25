@@ -1,12 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
-import { UploadTaskSnapshot } from '@firebase/storage-types';
 import { Media } from '../../media';
 import { MediaService } from '../../media.service';
 import { DocumentReference } from '@firebase/firestore-types';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from '../../../popup/alert.service';
-import { UploadTask } from 'angularfire2/storage/interfaces';
 
 @Component({
   selector: 'app-storage-upload',

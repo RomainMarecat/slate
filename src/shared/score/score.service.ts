@@ -2,7 +2,6 @@ import { Inject, Injectable } from '@angular/core';
 import { Score } from './score';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
 import { VisitorService } from '../firestore/visitor.service';
 import { map, take } from 'rxjs/operators';
 

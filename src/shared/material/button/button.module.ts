@@ -20,6 +20,7 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -39,8 +40,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatRadioModule,
     MatSliderModule,
     MatTooltipModule,
-    ButtonRoutingModule
+    ButtonRoutingModule,
+    TranslateModule.forChild()
   ],
-  declarations: [ButtonComponent, ButtonToggleComponent, ChipsComponent, IconComponent, ProgressSpinnerComponent, ProgressBarComponent]
+  declarations: [
+    ButtonComponent,
+    ButtonToggleComponent,
+    ChipsComponent,
+    IconComponent,
+    ProgressSpinnerComponent,
+    ProgressBarComponent
+  ]
 })
-export class ButtonModule {}
+export class ButtonModule {
+}
