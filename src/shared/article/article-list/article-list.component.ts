@@ -38,5 +38,4 @@ export class ArticleListComponent implements OnInit {
         this.articles = [];
       });
   }
-
 }

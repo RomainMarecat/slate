@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'shared/product/product';
-import { mockInvoiceProducts } from 'shared/product/mock-product';
+import { Product } from 'shared/product/shared/product';
+import { mockInvoiceProducts } from 'shared/product/shared/mock-product';
 
 @Component({
   selector: 'app-invoice1',

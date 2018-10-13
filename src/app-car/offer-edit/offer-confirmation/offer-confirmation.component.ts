@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { OfferService } from '../../../shared/offer/offer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarOffer } from '../../../shared/offer/offer';
-import { ProductService } from '../../../shared/product/product.service';
+import { ProductService } from '../../../shared/product/shared/product.service';
 import { Location } from '@angular/common';
 import { CategoryService } from '../../../shared/category/category.service';
 import { AlertService } from '../../../shared/popup/alert.service';

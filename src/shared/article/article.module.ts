@@ -12,8 +12,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NgArrayPipesModule } from 'ngx-pipes';
 import { MediaModule } from '../media/media.module';
+import { MediaService } from '../media/media.service';
 
-export const TABLE_ARTICLE = new InjectionToken<string>('article');
+const TABLE_ARTICLE = new InjectionToken<string>('article');
+const TABLE_MEDIA = new InjectionToken<string>('media');
 
 @NgModule({
   imports: [
@@ -35,6 +37,8 @@ export const TABLE_ARTICLE = new InjectionToken<string>('article');
     ArticleDetailComponent
   ],
   providers: [
+    {provide: TABLE_MEDIA, useValue: 'media'},
+    {provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA]},
     {provide: TABLE_ARTICLE, useValue: 'article'},
     {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
   ]

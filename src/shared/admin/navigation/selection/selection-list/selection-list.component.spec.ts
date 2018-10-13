@@ -25,8 +25,8 @@ import { Angulartics2Module } from 'angulartics2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SelectionService } from '../../../../selection/selection.service';
 import { MockSelectionService } from '../../../../selection/mock-selection.service';
-import { ProductService } from '../../../../product/product.service';
-import { MockProductService } from '../../../../product/mock-product.service';
+import { ProductService } from '../../../../product/shared/product.service';
+import { MockProductService } from '../../../../product/shared/mock-product.service';
 
 describe('SelectionListComponent', () => {
   let component: SelectionListComponent;

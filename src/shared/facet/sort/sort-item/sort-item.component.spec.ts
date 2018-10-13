@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatListModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ProductService } from '../../../../shared/product/product.service';
-import { MockProductService } from '../../../../shared/product/mock-product.service';
+import { ProductService } from '../../../product/shared/product.service';
+import { MockProductService } from '../../../product/shared/mock-product.service';
 
 import { SortItemComponent } from './sort-item.component';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';

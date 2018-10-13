@@ -105,7 +105,7 @@ export class ArticleListComponent implements OnInit {
       name: 'Actions',
       flexGrow: 1,
       cellTemplate: this.actionsCell
-    },];
+    }, ];
     this.articleService.getArticles()
       .subscribe((articles: Article[]) => {
         this.articles = articles;

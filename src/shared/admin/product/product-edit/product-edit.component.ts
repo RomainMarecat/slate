@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormArray } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
 import { StringService } from '../../../util/string.service';
-import { Product } from '../../../product/product';
+import { Product } from '../../../product/shared/product';
 import { Media } from '../../../media/media';
 import { CategoryService } from '../../../category/category.service';
 import { Observable } from 'rxjs/Observable';
@@ -18,7 +18,7 @@ import { Attribute } from '../../../attribute/attribute';
 import { DragulaService } from 'ng2-dragula';
 import { OfferService } from '../../shared/offer/offer.service';
 import { UploadTaskSnapshot } from '@firebase/storage-types';
-import { ProductService } from '../../../product/product.service';
+import { ProductService } from '../../../product/shared/product.service';
 import { debounceTime, take } from 'rxjs/operators';
 import { PartnerService } from '../../../partner/partner.service';
 

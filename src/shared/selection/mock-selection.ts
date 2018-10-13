@@ -1,10 +1,10 @@
 export const mockSelection = {
   name: 'ugly sweat',
-  alias: 'pull moche',
+  alias: 'produit',
   // Important sinon on invalide le cas sur les selection-list
   slug: 'hockey-player',
   translations: {
-    fr: 'pull moche'
+    fr: 'produit'
   },
   parent: null,
   published_at: new Date(),

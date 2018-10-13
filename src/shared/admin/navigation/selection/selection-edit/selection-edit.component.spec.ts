@@ -29,8 +29,8 @@ import { CloudinaryModule } from '../../../../media/cloudinary/cloudinary.module
 import { environment } from '../../../../../app-hockey/environments/environment';
 import { SelectionService } from '../../../../selection/selection.service';
 import { MockSelectionService } from '../../../../selection/mock-selection.service';
-import { MockProductService } from '../../../../product/mock-product.service';
-import { ProductService } from '../../../../product/product.service';
+import { MockProductService } from '../../../../product/shared/mock-product.service';
+import { ProductService } from '../../../../product/shared/product.service';
 
 describe('SelectionEditComponent', () => {
   let component: SelectionEditComponent;

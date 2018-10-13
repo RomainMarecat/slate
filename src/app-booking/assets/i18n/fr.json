@@ -288,7 +288,7 @@
       "submit": "Ton pull est en attente de validation :)"
     },
     "guard": {
-      "unauthenticated": "Connectes-toi pour ajouter autant de pull moche que tu veux !"
+      "unauthenticated": "Connectes-toi pour ajouter autant de produit que tu veux !"
     }
   },
   "error": {
@@ -428,15 +428,15 @@
       "aria-label": "Je poste en un clic !"
     },
     "fab-button": {
-      "title": "Ajouter un nouveau pull moche"
+      "title": "Ajouter un nouveau produit"
     }
   },
   "product-add": {
     "meta": {
-      "title": "Ajouter un nouveau pull moche sur mon pull moche",
-      "description": "Ajouter un nouveau pull moche sur mon pull moche. Prend une photo et obtient un bon score"
+      "title": "Ajouter un nouveau produit sur mon produit",
+      "description": "Ajouter un nouveau produit sur mon produit. Prend une photo et obtient un bon score"
     },
-    "title": "Poster un nouveau pull moche",
+    "title": "Poster un nouveau produit",
     "product-preview": {
       "title": "Aperçu",
       "name": {

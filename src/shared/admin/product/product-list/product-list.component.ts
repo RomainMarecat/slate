@@ -1,13 +1,13 @@
 import { Component, OnInit, ElementRef, ViewChild, TemplateRef, ViewEncapsulation, Optional } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../../../product/product';
+import { Product } from '../../../product/shared/product';
 import { MenuService } from '../../../menu/menu.service';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 import { CloudinaryUploadService } from '../../../media/cloudinary/cloudinary-upload.service';
 import { StringService } from '../../../util/string.service';
 import { Filter } from '../../../facet/filter/shared/filter';
-import { ProductService } from '../../../product/product.service';
+import { ProductService } from '../../../product/shared/product.service';
 
 @Component({
   selector: 'app-product-list',

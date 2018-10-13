@@ -25,8 +25,8 @@ import {
   MatSlideToggleModule,
   MatCommonModule
 } from '@angular/material';
-import { ProductService } from '../../../shared/product/product.service';
-import { MockProductService } from '../../../shared/product/mock-product.service';
+import { ProductService } from '../../product/shared/product.service';
+import { MockProductService } from '../../product/shared/mock-product.service';
 import { SortModule } from '../sort/sort.module';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';

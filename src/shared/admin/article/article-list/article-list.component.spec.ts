@@ -29,8 +29,8 @@ import { MockAttributeService } from '../../../attribute/mock-attribute.service'
 import { MenuService } from '../../../menu/menu.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductService } from '../../../product/product.service';
-import { MockProductService } from '../../../product/mock-product.service';
+import { ProductService } from '../../../product/shared/product.service';
+import { MockProductService } from '../../../product/shared/mock-product.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 import { MediaModule } from '../../../media/media.module';

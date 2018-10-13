@@ -35,8 +35,8 @@ import { AttributeEditComponent } from './attribute-edit.component';
 import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
 import { MockUserService } from '../../../user/shared/mock-user.service';
 import { environment } from '../../../../app-hockey/environments/environment';
-import { ProductService } from '../../../product/product.service';
-import { MockProductService } from '../../../product/mock-product.service';
+import { ProductService } from '../../../product/shared/product.service';
+import { MockProductService } from '../../../product/shared/mock-product.service';
 
 describe('AttributeEditComponent', () => {
   let component: AttributeEditComponent;

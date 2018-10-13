@@ -8,8 +8,8 @@ import {
 } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
-import { MockProductService } from '../mock-product.service';
-import { ProductService } from '../product.service';
+import { MockProductService } from '../shared/mock-product.service';
+import { ProductService } from '../shared/product.service';
 import { MockCategoryService } from '../../category/mock-category.service';
 import { CategoryService } from '../../category/category.service';
 import { RouterTestingModule } from '@angular/router/testing';

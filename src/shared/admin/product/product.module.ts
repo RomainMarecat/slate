@@ -17,7 +17,7 @@ import { ProductImageOrderComponent } from './product-image-order/product-image-
 import { OfferService } from '../shared/offer/offer.service';
 import { ProductOffersComponent } from './product-offers/product-offers.component';
 import { PartnerService } from '../../partner/partner.service';
-import { ProductService } from '../../product/product.service';
+import { ProductService } from '../../product/shared/product.service';
 import { MediaService } from '../../media/media.service';
 
 const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');

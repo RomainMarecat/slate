@@ -18,8 +18,8 @@ import { MockCloudinaryUploadService } from '../../../media/cloudinary/mock-clou
 import { ProductFilterComponent } from '../product-filter/product-filter.component';
 import { MediaModule } from '../../../media/media.module';
 import { environment } from '../../../../app-hockey/environments/environment';
-import { MockProductService } from '../../../product/mock-product.service';
-import { ProductService } from '../../../product/product.service';
+import { MockProductService } from '../../../product/shared/mock-product.service';
+import { ProductService } from '../../../product/shared/product.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;

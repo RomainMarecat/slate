@@ -5,13 +5,13 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { SharedModule } from '../../shared/shared.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockLoaderService } from '../../shared/loader/mock-loader.service';
-import { MockProductService } from '../../shared/product/mock-product.service';
+import { MockProductService } from '../../shared/product/shared/mock-product.service';
 import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { ObjectService } from '../../shared/util/object.service';
 import { DateService } from '../../shared/util/date.service';
 import { DeviceService } from '../../shared/device/device.service';
 import { AlertService } from '../../shared/popup/alert.service';
-import { ProductService } from '../../shared/product/product.service';
+import { ProductService } from '../../shared/product/shared/product.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MenuService } from '../../shared/menu/menu.service';
 import { SelectionService } from '../../shared/selection/selection.service';

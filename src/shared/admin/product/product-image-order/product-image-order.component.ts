@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, Input, OnDestroy, EventEmitter } from '@angular/core';
-import { Product } from './../../../../shared/product/product';
+import { Product } from '../../../product/shared/product';
 import { DragulaService } from 'ng2-dragula';
 
 @Component({
