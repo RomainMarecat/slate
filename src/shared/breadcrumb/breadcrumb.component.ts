@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { distinctUntilChanged, map, filter, take, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { ProductService } from '../product/product.service';
-import { Product } from '../product/product';
+import { ProductService } from '../product/shared/product.service';
+import { Product } from '../product/shared/product';
 
 interface UriElement {
   url: string;

@@ -30,7 +30,9 @@ import { RoutingState } from '../../util/routing-state';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxStripeModule, StripeService } from 'ngx-stripe';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
 describe('CartComponent', () => {
   let component: CartComponent;
@@ -57,6 +59,7 @@ describe('CartComponent', () => {
         ReactiveFormsModule,
         FlexLayoutModule,
         RouterTestingModule,
+        LocalizeRouterModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
@@ -70,6 +73,7 @@ describe('CartComponent', () => {
         CartComponent,
       ],
       providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         RoutingState,
         {provide: AlertService, useClass: MockAlertService},
         {provide: CartService, useClass: MockCartService},
@@ -79,7 +83,7 @@ describe('CartComponent', () => {
         {provide: StripeService, useClass: StripeService},
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -42,7 +42,7 @@ import { NgxEditorModule } from 'ngx-editor';
     ReactiveFormsModule,
     MatFormFieldModule,
     FormRoutingModule,
-    TranslateModule
+    TranslateModule.forChild()
   ],
   declarations: [
     AutocompleteComponent,

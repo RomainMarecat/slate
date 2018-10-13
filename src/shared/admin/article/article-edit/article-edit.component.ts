@@ -9,6 +9,9 @@ import { ArticleService } from '../../../article/shared/article.service';
 import { ArticleFormType } from '../../shared/article/form-article';
 import { MatIconRegistry } from '@angular/material';
 import { debounceTime } from 'rxjs/operators';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { Media } from '../../../media/media';
+import UploadTaskSnapshot = firebase.storage.UploadTaskSnapshot;
 
 @Component({
   selector: 'app-admin-article-edit',
@@ -29,19 +32,15 @@ export class ArticleEditComponent implements OnInit {
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
   _facebook: string;
+  imageStorageConfig: any;
+  downloadURL: string;
 
-  /**
-   *
-   * @param activatedRoute
-   * @param router
-   * @param alertService
-   * @param articleService
-   */
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private alertService: AlertService,
               private articleService: ArticleService,
-              public matIconRegistry: MatIconRegistry) {
+              public matIconRegistry: MatIconRegistry,
+              private localizeRouterService: LocalizeRouterService) {
     matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
   }
 
@@ -72,6 +71,7 @@ export class ArticleEditComponent implements OnInit {
         this.articleService.getArticle(key)
           .subscribe((article: Article) => {
             this.article = article;
+            this.createImageStorageConfig();
             this.createForm();
             setTimeout(() => {
               this.observeUpdate();
@@ -81,12 +81,42 @@ export class ArticleEditComponent implements OnInit {
     });
   }
 
+  createImageStorageConfig() {
+    this.imageStorageConfig = {
+      model: this.article.key,
+      alt: this.article.name,
+    };
+  }
+
+  /**
+   * image change function of emitter
+   * @param media
+   */
+  onImageChange(media: Media) {
+    this.form.patchValue({
+      images: [...this.form.get('images').value, ...[media.key]]
+    });
+    this.form.get('images').markAsTouched();
+    this.form.markAsTouched();
+    this.alertService.toast('media saved');
+  }
+
+  onImageRefChanged(task: UploadTaskSnapshot) {
+    task.ref.getDownloadURL().then((downloadURL => {
+        this.downloadURL = downloadURL;
+      }),
+      (err) => {
+        this.alertService.show(err);
+      });
+  }
+
   observeUpdate() {
     this.form.valueChanges
       .pipe(
         debounceTime(800)
       )
       .subscribe((value) => {
+        console.log(value);
         if (value.name) {
           const slug = StringService.slugify(value.name);
           this.form.patchValue({name: value.name, slug: slug});
@@ -123,7 +153,7 @@ export class ArticleEditComponent implements OnInit {
           .then((doc) => {
             this.alertService.show(`article updated ${this.article.name}`);
             this.reset();
-            this.router.navigate(['/admin/article']);
+            this.router.navigate([this.localizeRouterService.translateRoute('/admin/article')]);
           }, (err) => {
             this.alertService.show(`article error ${err}`);
           });
@@ -132,7 +162,7 @@ export class ArticleEditComponent implements OnInit {
           .then((doc: DocumentReference) => {
             this.alertService.show(`article added ${doc.id}`);
             this.reset();
-            this.router.navigate(['/admin/article']);
+            this.router.navigate([this.localizeRouterService.translateRoute('/admin/article')]);
           }, (err) => {
             this.alertService.show(`article error ${err}`);
           });

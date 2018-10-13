@@ -11,8 +11,8 @@ import { SharedModule } from '../../shared.module';
 import { MediaService } from '../../media/media.service';
 import { MenuService } from '../../menu/menu.service';
 import { MockMediaService } from '../../media/mock-media.service';
-import { ProductService } from '../../product/product.service';
-import { MockProductService } from '../../product/mock-product.service';
+import { ProductService } from '../../product/shared/product.service';
+import { MockProductService } from '../../product/shared/mock-product.service';
 
 describe('ProductComponent', () => {
   let component: ProductComponent;

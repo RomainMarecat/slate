@@ -3,14 +3,19 @@
     <mat-icon color="warn">navigate_before</mat-icon>
   </a>
 </mat-toolbar>
-<div fxLayout="row"
+<div class="mt-2"
+     fxLayout="row"
      fxLayoutAlign="space-around stretch"
-     fxLayoutGap="20px">
+     fxLayoutGap="20px"
+     fxLayout.xs="column"
+     fxLayoutAlign.xs="start center">
 
   <div class="form-wrapper"
        fxFlex="30"
+       fxFlex.xs="100"
        fxLayout="column"
-       fxLayoutAlign="center start">
+       fxLayoutAlign="start center"
+       fxLayoutGap="20px">
 
     <form [formGroup]="form"
           (ngSubmit)="saveMap()"
@@ -93,16 +98,16 @@
                          fxLayoutAlign="center stretch">
           <mat-card-subtitle *ngIf="showBackButton === true">
             <button type="button"
-                    color="warn"
+                    color="primary"
                     mat-mini-fab
                     class="absolute-fab"
-                    [routerLink]="['/admin/map']">
-              <mat-icon aria-label="back">arrow_left</mat-icon>
+                    [routerLink]="['/admin/maps']|localize">
+              <mat-icon aria-label="back">arrow_back</mat-icon>
             </button>
           </mat-card-subtitle>
           <mat-card-title>
-            <h3 *ngIf="map?.key">
-             {{ 'admin.title.map.add'|translate }}
+            <h3 class="text-ucfirst" *ngIf="map?.key">
+              {{ 'admin.title.area.add'|translate }}
             </h3>
           </mat-card-title>
         </mat-card-header>
@@ -113,28 +118,28 @@
             <mat-form-field class="mat-form-field">
               <input matInput
                      maxlength="100"
-                     [placeholder]="'admin.placeholder.map.name'|translate"
+                     [placeholder]="'admin.placeholder.area.name'|translate"
                      [formControl]="formArea.get('name')">
               <mat-hint align="start">
-                <strong [innerHtml]="'admin.hint.map.name'|translate"></strong>
+                <strong [innerHtml]="'admin.hint.area.name'|translate"></strong>
               </mat-hint>
               <mat-hint align="end">{{ formArea.get('name').value.length }} {{ '/100'|translate }}</mat-hint>
               <mat-error *ngIf="formArea.get('name').invalid && formArea.get('name').value.length === 0"
-                         [innerHtml]="'admin.error.required.map.name'|translate"></mat-error>
+                         [innerHtml]="'admin.error.required.area.name'|translate"></mat-error>
               <mat-error *ngIf="formArea.get('name').invalid && formArea.get('name').value.length > 0"
-                         [innerHtml]="'admin.error.invalid.map.name'|translate"></mat-error>
+                         [innerHtml]="'admin.error.invalid.area.name'|translate"></mat-error>
             </mat-form-field>
             <mat-form-field class="mat-form-field">
               <input matInput
                      maxlength="9000"
-                     [placeholder]="'admin.placeholder.map.path'|translate"
+                     [placeholder]="'admin.placeholder.area.path'|translate"
                      [formControl]="formArea.get('path')">
-              <mat-hint align="start"><strong [innerHtml]="'admin.hint.map.path'|translate"></strong></mat-hint>
+              <mat-hint align="start"><strong [innerHtml]="'admin.hint.area.path'|translate"></strong></mat-hint>
               <mat-hint align="end">{{ formArea.get('path').value.length }} {{ '/9000'|translate }}</mat-hint>
               <mat-error *ngIf="formArea.get('path').invalid && formArea.get('path').value.length === 0"
-                         [innerHtml]="'admin.error.required.map.path'|translate"></mat-error>
+                         [innerHtml]="'admin.error.required.area.path'|translate"></mat-error>
               <mat-error *ngIf="formArea.get('path').invalid && formArea.get('path').value.length > 0"
-                         [innerHtml]="'admin.error.invalid.map.path'|translate"></mat-error>
+                         [innerHtml]="'admin.error.invalid.area.path'|translate"></mat-error>
             </mat-form-field>
             <div class="d-block mt-1">
               <div class="mat-form-field">
@@ -175,7 +180,8 @@
       </mat-card>
     </form>
   </div>
-  <div fxFlex="80">
+  <div fxFlex="80"
+       fxFlex.xs="100">
     <app-admin-map-areas *ngIf="hideAreas === false"></app-admin-map-areas>
   </div>
 </div>

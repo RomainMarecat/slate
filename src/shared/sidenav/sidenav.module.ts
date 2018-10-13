@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { LoaderModule } from '../loader/loader.module';
 import { FacetModule } from '../facet/facet.module';
 import { BreadcrumbModule } from 'shared/breadcrumb/breadcrumb.module';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { BreadcrumbModule } from 'shared/breadcrumb/breadcrumb.module';
     BreadcrumbModule,
     FooterModule,
     LoaderModule,
+    LocalizeRouterModule,
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
@@ -23,7 +25,7 @@ import { BreadcrumbModule } from 'shared/breadcrumb/breadcrumb.module';
     MatListModule,
     MenuModule,
     RouterModule,
-    TranslateModule,
+    TranslateModule.forChild(),
     FacetModule,
   ],
   declarations: [

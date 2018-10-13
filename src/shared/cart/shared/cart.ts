@@ -1,3 +1,13 @@
+export interface CartItem {
+  key?: string;
+  name: string;
+  code: string;
+  quantity: number;
+  price: number;
+  created_at: Date;
+  updated_at: Date;
+}
+
 export interface Cart {
   key?: string;
   total: number;
@@ -5,6 +15,8 @@ export interface Cart {
   status?: string;
   created_at: Date;
   updated_at: Date;
+  items?: CartItem[];
+  fees?: any;
 }
 
 export class CreditCardList {

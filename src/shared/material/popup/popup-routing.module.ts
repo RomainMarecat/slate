@@ -5,16 +5,18 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
-const routes: Routes = [{
-  path: 'component/dialog',
-  component: DialogComponent
-}, {
-  path: 'component/snackbar',
-  component: SnackbarComponent
-}, {
-  path: 'component/tooltip',
-  component: TooltipComponent
-}, ];
+const routes: Routes = [
+  {
+    path: 'component/dialog',
+    component: DialogComponent
+  }, {
+    path: 'component/snackbar',
+    component: SnackbarComponent
+  }, {
+    path: 'component/tooltip',
+    component: TooltipComponent
+  }
+];
 
 @NgModule({
   imports: [
@@ -22,7 +24,8 @@ const routes: Routes = [{
     LocalizeRouterModule.forChild(routes)
   ],
   exports: [
-    RouterModule, LocalizeRouterModule
+    RouterModule,
+    LocalizeRouterModule
   ]
 })
 export class PopupRoutingModule {

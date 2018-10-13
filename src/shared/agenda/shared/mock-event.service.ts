@@ -2,17 +2,11 @@ import { mockEvent } from './mock-event';
 import { Event } from './event';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { DocumentChangeAction } from 'angularfire2/firestore/interfaces';
 import { CollectionReference, Query } from '@firebase/firestore-types';
-import { AngularFirestoreCollection } from 'angularfire2/firestore';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Sort } from '../../facet/sort/shared/sort';
 import { of } from 'rxjs/internal/observable/of';
+import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 
 export class MockEventService {
   eventCollectionRef: AngularFirestoreCollection<Event>;

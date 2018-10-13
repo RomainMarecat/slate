@@ -40,8 +40,8 @@ import { Cloudinary } from 'cloudinary-core';
 import { environment } from '../../../../app-hockey/environments/environment';
 import { MockPartnerService } from 'shared/partner/mock-partner.service';
 import { PartnerService } from 'shared/partner/partner.service';
-import { MockProductService } from '../../../product/mock-product.service';
-import { ProductService } from '../../../product/product.service';
+import { MockProductService } from '../../../product/shared/mock-product.service';
+import { ProductService } from '../../../product/shared/product.service';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;

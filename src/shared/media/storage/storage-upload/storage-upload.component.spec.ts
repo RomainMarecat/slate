@@ -2,10 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StorageUploadComponent } from './storage-upload.component';
 import { MatIconModule, MatInputModule, MatProgressBarModule } from '@angular/material';
-import { AngularFireStorageModule } from 'angularfire2/storage';
 import { CommonModule } from '@angular/common';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockMediaService } from '../../mock-media.service';
 import { MediaService } from '../../media.service';
@@ -14,6 +11,8 @@ import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { environment } from '../../../../app-car/environments/environment';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
 
 describe('StorageUploadComponent', () => {
   let component: StorageUploadComponent;
@@ -26,7 +25,6 @@ describe('StorageUploadComponent', () => {
       imports: [
         CommonModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule,
         AngularFireStorageModule,
         HttpClientTestingModule,
         MatProgressBarModule,

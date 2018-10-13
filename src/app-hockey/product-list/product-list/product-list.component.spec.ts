@@ -23,8 +23,8 @@ import { ProductActionComponent } from '../product-action/product-action.compone
 import { ProductFilterComponent } from '../product-filter/product-filter.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
-import { ProductService } from '../../../shared/product/product.service';
-import { MockProductService } from '../../../shared/product/mock-product.service';
+import { ProductService } from '../../../shared/product/shared/product.service';
+import { MockProductService } from '../../../shared/product/shared/mock-product.service';
 import { MockUserService } from '../../../shared/user/shared/mock-user.service';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';

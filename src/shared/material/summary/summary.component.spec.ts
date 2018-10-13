@@ -7,6 +7,8 @@ import { SummaryComponent } from './summary.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('SummaryComponent', () => {
   let component: SummaryComponent;
@@ -22,9 +24,13 @@ describe('SummaryComponent', () => {
         MatIconModule,
         NgxCarouselModule,
         NoopAnimationsModule,
-        RouterTestingModule
+        RouterTestingModule,
+        LocalizeRouterModule
       ],
-      declarations: [SummaryComponent]
+      declarations: [SummaryComponent],
+      providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
+      ]
     })
       .compileComponents();
   }));

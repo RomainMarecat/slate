@@ -3,12 +3,6 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { VisitorService } from '../../firestore/visitor.service';
 import { Payment } from './payment';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
-import { DocumentRef, WindowRef } from '@agm/core/utils/browser-globals';
 
 @Injectable()
 export class PaymentService extends VisitorService {

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../../product/product';
+import { Product } from '../../product/shared/product';
 import { OfferService } from '../offer.service';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Offer } from '../offer';

@@ -10,7 +10,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SelectionEditComponent } from './selection-edit/selection-edit.component';
 import { SelectionService } from '../../../selection/selection.service';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { ProductService } from '../../../product/product.service';
+import { ProductService } from '../../../product/shared/product.service';
 
 const TABLE_SELECTION = new InjectionToken<string>('selection');
 const TABLE_PRODUCT = new InjectionToken<string>('product');

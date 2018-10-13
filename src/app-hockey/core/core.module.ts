@@ -34,7 +34,7 @@ import { I18nService } from '../../shared/i18n/i18n.service';
 import { DeviceService } from '../../shared/device/device.service';
 import CloudinaryConfiguration from '../../shared/media/cloudinary/cloudinary-configuration.class';
 import { FirebaseAppConfig, AngularFireModule } from 'angularfire2';
-import { ProductService } from '../../shared/product/product.service';
+import { ProductService } from '../../shared/product/shared/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
 import { SharedModule } from '../../shared/shared.module';

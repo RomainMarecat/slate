@@ -42,7 +42,7 @@ const routes: Routes = [
   },
   {
     canActivate: [AdminGuard],
-    path: 'map',
+    path: 'maps',
     loadChildren: './map/map.module#MapModule'
   },
   {

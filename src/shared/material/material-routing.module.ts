@@ -3,10 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { SummaryComponent } from './summary/summary.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
-const routes: Routes = [{
-  path: '',
-  component: SummaryComponent
-},
+const routes: Routes = [
+  {
+    path: '',
+    component: SummaryComponent
+  },
   {
     path: 'button-indicators',
     loadChildren: './button/button.module#ButtonModule'

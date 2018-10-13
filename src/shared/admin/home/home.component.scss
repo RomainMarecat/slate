@@ -1,0 +1,20 @@
+
+.admin-home-toolbar {
+  padding-top: 50px;
+  .mat-card {
+    margin: 20px;
+    width: 300px;
+    .mat-card-header {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      .mat-card-title {
+        h3 {
+          .link {
+            color: #000000;
+          }
+        }
+      }
+    }
+  }
+}

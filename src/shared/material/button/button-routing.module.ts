@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminGuard } from '../../guard/admin.guard';
 import { ButtonComponent } from './button/button.component';
 import { ButtonToggleComponent } from './button-toggle/button-toggle.component';
 import { ChipsComponent } from './chips/chips.component';
@@ -9,10 +8,11 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
-const routes: Routes = [{
-  path: 'component/button',
-  component: ButtonComponent
-},
+const routes: Routes = [
+  {
+    path: 'component/button',
+    component: ButtonComponent
+  },
   {
     path: 'component/button-toggle',
     component: ButtonToggleComponent

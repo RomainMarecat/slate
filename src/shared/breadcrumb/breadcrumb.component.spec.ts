@@ -6,8 +6,8 @@ import { MatIconModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { MockProductService } from '../product/mock-product.service';
-import { ProductService } from '../product/product.service';
+import { MockProductService } from '../product/shared/mock-product.service';
+import { ProductService } from '../product/shared/product.service';
 import { CommonModule } from '@angular/common';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 

@@ -32,8 +32,14 @@ import { MockUserService } from '../../../user/shared/mock-user.service';
 import { CategoryService } from '../../../category/category.service';
 import { DateService } from '../../../util/date.service';
 import { MockAttributeService } from '../../../attribute/mock-attribute.service';
-import { MockProductService } from '../../../product/mock-product.service';
-import { ProductService } from '../../../product/product.service';
+import { MockProductService } from '../../../product/shared/mock-product.service';
+import { ProductService } from '../../../product/shared/product.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../../../../app-car/environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 describe('ArticleEditComponent', () => {
   let component: ArticleEditComponent;
@@ -42,6 +48,9 @@ describe('ArticleEditComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireStorageModule,
+        AngularFireAuthModule,
         BrowserModule,
         HttpClientModule,
         FormsModule,
@@ -51,7 +60,8 @@ describe('ArticleEditComponent', () => {
         SharedModule,
         NgxEditorModule,
         NgxDatatableModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        LocalizeRouterModule,
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -61,7 +71,7 @@ describe('ArticleEditComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ ArticleEditComponent ],
+      declarations: [ArticleEditComponent],
       providers: [
         {provide: ArticleService, useClass: MockArticleService},
         {provide: AlertService, useClass: MockAlertService},
@@ -72,6 +82,7 @@ describe('ArticleEditComponent', () => {
         {provide: ProductService, useClass: MockProductService},
         {provide: NotificationService, useClass: MockNotificationService},
         {provide: AttributeService, useClass: MockAttributeService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         DateService,
         ObjectService,
         I18nService,

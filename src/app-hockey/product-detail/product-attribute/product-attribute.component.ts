@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HockeyProduct } from './../../../shared/product/hockey-product';
+import { HockeyProduct } from '../../../shared/product/shared/hockey-product';
 import { DeviceService } from '../../../shared/device/device.service';
 
 @Component({

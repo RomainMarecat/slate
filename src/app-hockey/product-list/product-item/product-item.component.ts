@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HockeyProduct } from '../../../shared/product/hockey-product';
-import { ProductService } from '../../../shared/product/product.service';
+import { HockeyProduct } from '../../../shared/product/shared/hockey-product';
+import { ProductService } from '../../../shared/product/shared/product.service';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { CloudinaryUploadService } from './../../../shared/media/cloudinary/cloudinary-upload.service';
 import { StringService } from '../../../shared/util/string.service';

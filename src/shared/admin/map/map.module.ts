@@ -9,6 +9,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { MapService } from '../../map/shared/map.service';
 import { MapAreasComponent } from './map-areas/map-areas.component';
 import { AreaService } from '../../map/shared/area.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 const TABLE_MAP = new InjectionToken < string > ('map');
 const TABLE_AREA = new InjectionToken < string > ('area');
@@ -18,7 +19,8 @@ const TABLE_AREA = new InjectionToken < string > ('area');
     CommonModule,
     NgxDatatableModule,
     MapRoutingModule,
-    SharedModule
+    SharedModule,
+    TranslateModule.forChild()
   ],
   declarations: [MapListComponent, MapEditComponent, MapAreasComponent],
   providers: [

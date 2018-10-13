@@ -6,11 +6,12 @@ import { MatDialog } from '@angular/material';
 import { Article } from '../../../article/shared/article';
 import { ArticleService } from '../../../article/shared/article.service';
 import { AlertService } from '../../../popup/alert.service';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-admin-article-list',
   templateUrl: './article-list.component.html',
-  styleUrls: [ './article-list.component.scss' ]
+  styleUrls: ['./article-list.component.scss']
 })
 export class ArticleListComponent implements OnInit {
 
@@ -37,7 +38,8 @@ export class ArticleListComponent implements OnInit {
               private table: ElementRef,
               private menuService: MenuService,
               private articleService: ArticleService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   /**
@@ -74,7 +76,7 @@ export class ArticleListComponent implements OnInit {
    */
   ngOnInit() {
     this.menuService.nextTitle('Articles');
-    this.columns = [ {
+    this.columns = [{
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -134,7 +136,7 @@ export class ArticleListComponent implements OnInit {
    * @param article
    * @param event
    */
-  updateArticlePublication(article: Article, event: { source: any, value: boolean }) {
+  updateArticlePublication(article: Article, event: {source: any, value: boolean}) {
     article.published = event.value;
     this.updatePublication(article);
   }
@@ -151,7 +153,7 @@ export class ArticleListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate([ '/admin/article/edit/', event.row.key ]);
+      this.router.navigate([this.localizeRouterService.translateRoute('/admin/article/edit'), event.row.key]);
     }
   }
 

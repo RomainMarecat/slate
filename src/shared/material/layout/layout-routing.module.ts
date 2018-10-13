@@ -9,10 +9,11 @@ import { StepperComponent } from './stepper/stepper.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
-const routes: Routes = [{
-  path: 'component/card',
-  component: CardComponent
-},
+const routes: Routes = [
+  {
+    path: 'component/card',
+    component: CardComponent
+  },
   {
     path: 'component/divider',
     component: DividerComponent
@@ -36,7 +37,8 @@ const routes: Routes = [{
   {
     path: 'component/tabs',
     component: TabsComponent
-  }, ];
+  }
+];
 
 @NgModule({
   imports: [

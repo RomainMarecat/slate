@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProductService } from '../product.service';
-import { CarProduct } from '../car-product';
+import { ProductService } from '../shared/product.service';
+import { CarProduct } from '../shared/car-product';
 import { Observable } from 'rxjs/Observable';
 import { Category } from '../../category/category';
 import { map, startWith, take } from 'rxjs/operators';

@@ -1,5 +1,5 @@
 import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
-import { Product } from './../../../product/product';
+import { Product } from '../../../product/shared/product';
 import { Partner } from './../../../partner/partner';
 import { Offer } from './../../../offer/offer';
 

@@ -2,11 +2,11 @@ import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Selection } from '../../../../selection/selection';
 import { Router } from '@angular/router';
 import { MenuService } from '../../../../menu/menu.service';
-import { Product } from '../../../../product/product';
+import { Product } from '../../../../product/shared/product';
 import { DialogComponent } from '../../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 import { SelectionService } from '../../../../selection/selection.service';
-import { ProductService } from '../../../../product/product.service';
+import { ProductService } from '../../../../product/shared/product.service';
 
 @Component({
   selector: 'app-selection-list',

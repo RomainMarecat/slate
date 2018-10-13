@@ -4,11 +4,6 @@ import { mockSession, mockSessions } from './mock-session';
 import { CollectionReference, Query } from '@firebase/firestore-types';
 import { AngularFirestoreCollection } from 'angularfire2/firestore';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
 import { Filter } from '../../facet/filter/shared/filter';
 import { of } from 'rxjs/internal/observable/of';
 

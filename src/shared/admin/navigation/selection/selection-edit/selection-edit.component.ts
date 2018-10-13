@@ -4,11 +4,11 @@ import { Selection } from '../../../../selection/selection';
 import { SelectionFormType } from '../../../shared/navigation/selection/form-selection';
 import { FormGroup } from '@angular/forms';
 import { AlertService } from '../../../../popup/alert.service';
-import { Product } from '../../../../product/product';
+import { Product } from '../../../../product/shared/product';
 import { Media } from '../../../../media/media';
 import { StringService } from '../../../../util/string.service';
 import { SelectionService } from '../../../../selection/selection.service';
-import { ProductService } from '../../../../product/product.service';
+import { ProductService } from '../../../../product/shared/product.service';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/debounceTime';
 

@@ -10,7 +10,7 @@ export class Article {
   author?: string;
   category?: string;
   tags?: string[];
-  published_at: Date;
+  published_at: Date | {seconds: number};
   published: boolean;
 
 }

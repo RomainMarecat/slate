@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SortFacet } from './../shared/sort-facet';
 import { Sort } from './../shared/sort';
-import { ProductService } from './../../../product/product.service';
+import { ProductService } from '../../../product/shared/product.service';
 
 @Component({
   selector: 'app-facet-sort-item',

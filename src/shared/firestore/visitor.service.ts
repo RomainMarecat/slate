@@ -1,8 +1,7 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Document } from './document';
-import { DocumentChangeAction, Action } from 'angularfire2/firestore/interfaces';
 import {
   CollectionReference,
   Query,
@@ -11,16 +10,12 @@ import {
   WhereFilterOp,
   OrderByDirection
 } from '@firebase/firestore-types';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestoreCollection, DocumentChangeAction, Action , AngularFirestore } from '@angular/fire/firestore';
 import { Filter } from './../facet/filter/shared/filter';
 import { Sort } from './../facet/sort/shared/sort';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/retry';
-import 'rxjs/add/operator/timeout';
-import 'rxjs/add/operator/catch';
-import { map } from 'rxjs/internal/operators';
+import { map, switchMap } from 'rxjs/internal/operators';
 import { of } from 'rxjs/internal/observable/of';
+import { combineLatest } from 'rxjs';
 
 @Injectable()
 export class VisitorService {
@@ -43,23 +38,23 @@ export class VisitorService {
    * @param {AngularFirestore} afs
    * @param {string} table
    */
-  constructor(public afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
+  constructor(public afs: AngularFirestore, @Optional() @Inject('TABLE_NAME') table: string) {
     this.table = table;
     this.query$ = new BehaviorSubject(null);
     this.filters$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(null);
     this.orderBy$ = new BehaviorSubject(null);
     this.collectionRef = this.afs.collection(this.table);
-    this.documents$ = Observable.combineLatest(
+    this.documents$ = combineLatest(
       this.filters$,
       this.limit$,
       this.orderBy$,
       this.query$
-    )
-      .switchMap(([ filters, limit, orderBy, query ]) => {
-        return this.afs.collection(this.table, ref => {
+    ).pipe(
+      switchMap(([filters, limit, orderBy, query]) => {
+        return this.afs.collection(this.table, (ref) => {
           this.query = ref;
-          if (query) {
+            if (query && this.query) {
             if (query.limit) {
               this.query = this.query.limit(query.limit);
             }
@@ -87,7 +82,8 @@ export class VisitorService {
           return this.query;
         })
           .snapshotChanges();
-      });
+      })
+    );
   }
 
   /**

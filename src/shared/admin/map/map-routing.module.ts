@@ -5,12 +5,12 @@ import { MapListComponent } from './map-list/map-list.component';
 import { MapEditComponent } from './map-edit/map-edit.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
-const routes: Routes = [{
-  path: '',
-  redirectTo: 'list',
-  canActivate: [AdminGuard],
-  component: MapListComponent
-},
+const routes: Routes = [
+  {
+    path: '',
+    canActivate: [AdminGuard],
+    component: MapListComponent
+  },
   {
     path: 'list',
     canActivate: [AdminGuard],

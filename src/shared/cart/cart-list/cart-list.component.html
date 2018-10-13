@@ -1,3 +1,41 @@
-<p>
-  cart-list works!
-</p>
+<div class="main-wrapper cart-list-component">
+  <div class="container" *ngIf="cart">
+
+    <!-- Quand le panier est editable -->
+    <div class="heading-wrapper" *ngIf="editable">
+      <div class="row">
+        <div class="col-lg-3 offset-lg-0 col-md-6 offset-md-0 col-10 offset-1">
+          <div class="cart-total text-center">
+            <span class="text">{{ 'cta.total'|translate }}</span> &nbsp;
+            <span class="quantity">{{ totalQuantity }} {{ articleWord|translate }}</span>
+          </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-4 offset-lg-5" *ngIf="cart.items.length > 0">
+          <button class="btn btn-shadow" type="button" (click)="onNextStep()">
+            {{ 'cta.validate_cart'|translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body du tableau des produits -->
+    <div class="content-wrapper">
+      <div class="products-container" *ngIf="cart.items.length === 0">
+        <div class="row py-3">
+          <span class="col-12 text-center no-cart">
+            {{ 'cart.empty' |translate }}
+          </span>
+        </div>
+      </div>
+
+      <div class="products-container" *ngIf="cart.items.length > 0">
+        <div class="row content-cart" *ngFor="let item of cart.items">
+          <app-cart-item [cart]="cart" [item]="item"></app-cart-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #zeroPriceTemplate>
+  <span class="col-2 text-center">{{ '0'| currency:'EUR' }}</span>
+</ng-template>

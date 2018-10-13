@@ -23,7 +23,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
   declarations: [MenuComponent, SidenavComponent, ToolbarComponent]
 })

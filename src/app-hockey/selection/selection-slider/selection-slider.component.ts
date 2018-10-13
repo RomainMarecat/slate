@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Selection } from '../../../shared/selection/selection';
 import { SelectionService } from '../../../shared/selection/selection.service';
-import { ProductService } from '../../../shared/product/product.service';
-import { Product } from '../../../shared/product/product';
+import { ProductService } from '../../../shared/product/shared/product.service';
+import { Product } from '../../../shared/product/shared/product';
 
 @Component({
   selector: 'app-hockey-selection-slider',

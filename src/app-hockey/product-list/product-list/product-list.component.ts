@@ -1,14 +1,14 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../../shared/product/product.service';
+import { ProductService } from '../../../shared/product/shared/product.service';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { Selection } from '../../../shared/selection/selection';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
-import { HockeyProduct } from '../../../shared/product/hockey-product';
+import { HockeyProduct } from '../../../shared/product/shared/hockey-product';
 import { MenuService } from '../../../shared/menu/menu.service';
 import { environment } from '../../environments/environment';
 

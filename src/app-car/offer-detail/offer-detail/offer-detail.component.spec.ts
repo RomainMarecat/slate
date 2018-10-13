@@ -9,8 +9,8 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
-import { ProductService } from '../../../shared/product/product.service';
-import { MockProductService } from '../../../shared/product/mock-product.service';
+import { ProductService } from '../../../shared/product/shared/product.service';
+import { MockProductService } from '../../../shared/product/shared/mock-product.service';
 import { CategoryService } from '../../../shared/category/category.service';
 import { MockCategoryService } from '../../../shared/category/mock-category.service';
 import { DeviceService } from '../../../shared/device/device.service';

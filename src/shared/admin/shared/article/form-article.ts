@@ -17,8 +17,9 @@ export class ArticleFormType {
         Validators.required
       ]),
       description: new FormControl(article && article.description ?
-          article.description : '',
-        [ Validators.required ]),
+        article.description : '',
+        [Validators.required]),
+      images: new FormControl([]),
       published: new FormControl(article && article.published ? article.published : true)
     });
   }

@@ -13,8 +13,11 @@ import { MatIconRegistry } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StringService } from '../../util/string.service';
 import { AlertService } from '../../popup/alert.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { MediaService } from '../../media/media.service';
 
 const TABLE_ARTICLE = new InjectionToken<string>('article');
+const TABLE_MEDIA = new InjectionToken<string>('media');
 
 @NgModule({
   imports: [
@@ -23,7 +26,8 @@ const TABLE_ARTICLE = new InjectionToken<string>('article');
     NgxDatatableModule,
     SharedModule,
     NgxEditorModule,
-    ArticleRoutingModule
+    ArticleRoutingModule,
+    TranslateModule.forChild()
   ],
   declarations: [
     ArticleListComponent,
@@ -34,11 +38,9 @@ const TABLE_ARTICLE = new InjectionToken<string>('article');
     StringService,
     AlertService,
     {provide: TABLE_ARTICLE, useValue: 'article'},
-    {
-      provide: ArticleService,
-      useClass: ArticleService,
-      deps: [AngularFirestore, TABLE_ARTICLE]
-    },
+    {provide: TABLE_MEDIA, useValue: 'media'},
+    {provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA]},
+    {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
   ]
 })
 export class ArticleModule {

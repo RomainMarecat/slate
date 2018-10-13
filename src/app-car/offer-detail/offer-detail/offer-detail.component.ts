@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { CarProduct } from '../../../shared/product/car-product';
+import { CarProduct } from '../../../shared/product/shared/car-product';
 import { Category } from '../../../shared/category/category';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../../shared/product/product.service';
+import { ProductService } from '../../../shared/product/shared/product.service';
 import { DeviceService } from '../../../shared/device/device.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { CategoryService } from '../../../shared/category/category.service';

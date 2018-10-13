@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ProductService } from './../../product/product.service';
+import { ProductService } from '../../product/shared/product.service';
 import { Filter } from './shared/filter';
 import { FilterFacet } from './shared/filter-facet';
 

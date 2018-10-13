@@ -31,7 +31,7 @@ import { I18nService } from '../../shared/i18n/i18n.service';
 import { DeviceService } from '../../shared/device/device.service';
 import { FirebaseAppConfig, AngularFireModule } from 'angularfire2';
 import { Environment } from '../../shared/util/environment';
-import { ProductService } from '../../shared/product/product.service';
+import { ProductService } from '../../shared/product/shared/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { SharedModule } from '../../shared/shared.module';
 import { SlackModule } from '../../shared/slack/slack.module';
@@ -67,8 +67,8 @@ export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export const CONFIG_TOKEN = new InjectionToken<any>('Registered config');
-export const TABLE_EVENT = new InjectionToken<string>('event');
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
+export const TABLE_EVENT = new InjectionToken<string>('event');
 export const TABLE_AREA = new InjectionToken<string>('area');
 export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
@@ -205,10 +205,10 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER]},
     {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
     {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
-    {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
     {provide: BoardService, useClass: BoardService, deps: [AngularFirestore, TABLE_BOARD]},
     {provide: ColumnService, useClass: ColumnService, deps: [AngularFirestore, TABLE_COLUMN]},
     {provide: CardService, useClass: CardService, deps: [AngularFirestore, TABLE_CARD]},
+    {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
     AlertService,
     DateService,
     DeviceService,

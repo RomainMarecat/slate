@@ -5,8 +5,8 @@ import { SHA1 } from 'crypto-js';
 import { DocumentReference } from '@firebase/firestore-types';
 import { MediaService } from '../media.service';
 import { Media } from '../media';
-import { ProductService } from '../../product/product.service';
-import { Product } from '../../product/product';
+import { ProductService } from '../../product/shared/product.service';
+import { Product } from '../../product/shared/product';
 
 @Injectable()
 export class CloudinaryUploadService {

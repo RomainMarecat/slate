@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AgendaRoutingModule } from './agenda-routing.module';
@@ -13,6 +13,11 @@ import { CalendarBodyComponent } from './calendar/calendar-body/calendar-body.co
 import { AlertService } from '../popup/alert.service';
 import { SessionModule } from '../session/session.module';
 import { RouterModule } from '@angular/router';
+import { SessionService } from '../session/shared/session.service';
+import { AngularFirestore } from 'angularfire2/firestore';
+
+export const TABLE_SESSION = new InjectionToken<string>('session');
+export const TABLE_EVENT = new InjectionToken<string>('event');
 
 @NgModule({
   imports: [
@@ -41,8 +46,12 @@ import { RouterModule } from '@angular/router';
     CalendarBodyComponent,
   ],
   providers: [
-    EventService,
-    AlertService
+    {provide: TABLE_SESSION, useValue: 'session'},
+    {provide: TABLE_EVENT, useValue: 'event'},
+    {provide: EventService, useClass: EventService, deps: [AngularFirestore, TABLE_EVENT]},
+    AlertService,
+    {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
+
   ]
 })
 export class AgendaModule {

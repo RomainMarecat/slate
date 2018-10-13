@@ -5,6 +5,7 @@ import { MaterialRoutingModule } from './material-routing.module';
 import { NgxCarouselModule } from 'ngx-carousel';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule, MatIconModule } from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { MatCardModule, MatIconModule } from '@angular/material';
     MatIconModule,
     FlexLayoutModule,
     MaterialRoutingModule,
-    NgxCarouselModule
+    NgxCarouselModule,
+    TranslateModule.forChild()
   ],
   declarations: [SummaryComponent],
   exports: [

@@ -22,7 +22,9 @@ import { CartItemComponent } from './cart-item.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RoutingState } from '../../util/routing-state';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('CartItemComponent', () => {
   let component: CartItemComponent;
@@ -47,6 +49,7 @@ describe('CartItemComponent', () => {
         ReactiveFormsModule,
         FlexLayoutModule,
         RouterTestingModule,
+        LocalizeRouterModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
@@ -56,6 +59,7 @@ describe('CartItemComponent', () => {
       ],
       providers: [
         RoutingState,
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: CartService, useClass: MockCartService},
         {provide: OrderService, useClass: MockOrderService},

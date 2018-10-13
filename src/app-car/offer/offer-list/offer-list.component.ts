@@ -1,13 +1,13 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ProductService } from '../../../shared/product/product.service';
+import { ProductService } from '../../../shared/product/shared/product.service';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { MenuService } from '../../../shared/menu/menu.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CarProduct } from '../../../shared/product/car-product';
+import { CarProduct } from '../../../shared/product/shared/car-product';
 import { AreaService } from '../../../shared/map/shared/area.service';
 import { Area } from '../../../shared/map/shared/area';
 import { OfferService } from '../../../shared/offer/offer.service';

@@ -30,7 +30,7 @@
   <span>
     <a mat-icon-button
        color="primary"
-       routerLink="/cart"
+       [routerLink]="['/cart']|localize"
        [title]="'cta.add-to-cart'|translate">
       <mat-icon>shopping_cart</mat-icon>
     </a>

@@ -2,12 +2,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { SharedModule } from '../../shared/shared.module';
-import { ProductService } from '../../shared/product/product.service';
+import { ProductService } from '../../shared/product/shared/product.service';
 import { MockCommentService } from '../../shared/comment/mock-comment.service';
 import { MockOfferService } from '../../shared/offer/mock-offer.service';
 import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { AlertService } from '../../shared/popup/alert.service';
-import { MockProductService } from '../../shared/product/mock-product.service';
+import { MockProductService } from '../../shared/product/shared/mock-product.service';
 import { OfferService } from '../../shared/offer/offer.service';
 import { DeviceService } from '../../shared/device/device.service';
 import { CommentService } from '../../shared/comment/comment.service';
@@ -28,6 +28,7 @@ import { ContactService } from '../../shared/contact/shared/contact.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockMapsAPILoader } from '../../shared/map/shared/mock-maps-api-loader';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -43,6 +44,7 @@ describe('HomeComponent', () => {
         HttpClientTestingModule,
         ContactModule,
         RouterTestingModule,
+        LocalizeRouterModule,
         SharedModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
