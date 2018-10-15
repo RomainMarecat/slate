@@ -21,11 +21,12 @@ import { UploadTaskSnapshot } from '@firebase/storage-types';
 import { ProductService } from '../../../product/shared/product.service';
 import { debounceTime, take } from 'rxjs/operators';
 import { PartnerService } from '../../../partner/partner.service';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-product-edit',
   templateUrl: './product-edit.component.html',
-  styleUrls: [ './product-edit.component.scss' ]
+  styleUrls: ['./product-edit.component.scss']
 })
 export class ProductEditComponent implements OnInit, OnDestroy {
   form: FormGroup;
@@ -36,7 +37,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   productOffers: Offer[] = [];
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   categories: Category[] = [];
   selected: Category[] = [];
   filteredAttributes: Observable<any[]>;
@@ -86,6 +87,9 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.getPartners();
   }
 
+  /**
+   * Create image configuration
+   */
   createImageStorageConfig() {
     this.imageStorageConfig = {
       model: this.product.key,
@@ -105,7 +109,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    * get product from route key
    */
   getProduct() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
+    this.activatedRoute.params.subscribe((value: {key: string}) => {
       if (value.key) {
         const key = value.key;
         this.productService.getProduct(key)
@@ -146,7 +150,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    * create all category columns
    */
   createColumns() {
-    this.columns = [ {
+    this.columns = [{
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -166,7 +170,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       prop: 'published',
       name: 'published',
       flexGrow: 1
-    }, ];
+    }];
   }
 
   /**
@@ -261,6 +265,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
             this.addError(err);
           });
       } else {
+
         this.productService.createProduct(this.product)
           .then((doc: DocumentReference) => {
             this.isSaving = false;
@@ -278,7 +283,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    * @param offers
    * @param doc
    */
-  saveOffer(offers: Offer[], doc: { id: string }) {
+  saveOffer(offers: Offer[], doc: {id: string}) {
     offers.forEach((offer: Offer) => {
       // Set product value id
       offer.product = doc.id;
@@ -329,7 +334,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   addFinally() {
     this.alertService.toast(`product saved ${this.product.translations.fr}`);
     this.reset();
-    this.router.navigate([ '/admin/product' ]);
+    this.router.navigate(['/admin/product']);
   }
 
   /**
@@ -399,11 +404,11 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   private onDropModel(args: any): void {
-    const [ el, target, source ] = args;
+    const [el, target, source] = args;
   }
 
   private onRemoveModel(args: any): void {
-    const [ el, source ] = args;
+    const [el, source] = args;
   }
 
   /**

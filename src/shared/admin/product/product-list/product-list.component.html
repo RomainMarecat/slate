@@ -129,7 +129,9 @@
     </ng-template>
   </div>
 </div>
-<button color="primary" type="button" aria-label="Ajouter un produit" [routerLink]="['/admin/product/add']" mat-mini-fab
+<button color="primary" type="button" aria-label="Ajouter un produit"
+        [routerLink]="['/admin'|localize, 'product', 'add']"
+        mat-mini-fab
         class="absolute-fab pulse">
   <mat-icon aria-hidden="true">add</mat-icon>
 </button>

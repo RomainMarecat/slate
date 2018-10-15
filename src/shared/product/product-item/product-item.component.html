@@ -16,13 +16,21 @@
           *ngIf="humanPublishedAt">
     </span>
   </mat-card-header>
-  <app-image [publicId]="product.image1"
+  <app-loader></app-loader>
+
+  <!-- If Cloudinary needed then add public Id to input, not key -->
+  <app-image [key]="product.images[0]"
              [resize]="resizedImage"
              (click)="productDetail()"
-             *ngIf="product.image1"
+             *ngIf="product.images[0]"
+             (mediaLoaded)="onMediaLoaded($event)"
+             (mediaErrored)="onMediaLoaded(!$event)"
              angulartics2On="click"
              angularticsAction="clickedOnImageShowProduct"
              [angularticsCategory]="'product.detail'"></app-image>
+
+
   <app-product-action [product]="product"
-                      (updateScore)="updateScoreProduct($event)"></app-product-action>
+                      (updateScore)="updateScoreProduct($event)"
+                      *ngIf="showScore"></app-product-action>
 </mat-card>

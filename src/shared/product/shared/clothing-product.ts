@@ -1,9 +1,11 @@
+import { firestore, Timestamp } from 'firebase/firestore';
+
 export interface ClothingProduct {
   name: string;
   score: number;
 
   created_at: Date;
-  published_at: Date;
+  published_at: Date | Timestamp;
 
   url: string;
 

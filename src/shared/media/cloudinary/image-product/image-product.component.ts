@@ -13,7 +13,7 @@ import { Cloudinary } from '../cloudinary.service';
 @Component({
   selector: 'app-image-product',
   templateUrl: './image-product.component.html',
-  styleUrls: [ './image-product.component.scss' ]
+  styleUrls: ['./image-product.component.scss']
 })
 export class ImageProductComponent implements OnInit {
   @Output() imageChanged: EventEmitter<Media> = new EventEmitter<Media>();
@@ -82,10 +82,10 @@ export class ImageProductComponent implements OnInit {
         autoUpload: true,
         isHTML5: true,
         removeAfterUpload: true,
-        headers: [ {
+        headers: [{
           name: 'X-Requested-With',
           value: 'XMLHttpRequest'
-        } ]
+        }]
       };
       this.uploader = new FileUploader(uploaderOptions);
       this.initCanvas();
@@ -158,6 +158,8 @@ export class ImageProductComponent implements OnInit {
         console.error(response);
         return {item, response, status, headers};
       };
+
+      return;
     }
   }
 

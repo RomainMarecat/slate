@@ -21,8 +21,11 @@ import { ProductRoutingModule } from 'shared/product/product-routing.module';
 import { Angulartics2Module } from 'angulartics2';
 import { MediaModule } from 'shared/media/media.module';
 import { NgStringPipesModule } from 'ngx-pipes';
+import { ScoreService } from 'shared/score/score.service';
+import { LoaderModule } from 'shared/loader/loader.module';
 
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
+export const TABLE_SCORE = new InjectionToken<string>('score');
 
 @NgModule({
   imports: [
@@ -30,6 +33,7 @@ export const TABLE_PRODUCT = new InjectionToken<string>('product');
     CommonModule,
     FormsModule,
     FlexLayoutModule,
+    LoaderModule,
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
@@ -41,7 +45,7 @@ export const TABLE_PRODUCT = new InjectionToken<string>('product');
     MatExpansionModule,
     MediaModule,
     NgStringPipesModule,
-    TranslateModule,
+    TranslateModule.forChild(),
     ReactiveFormsModule,
     ProductRoutingModule
   ],
@@ -66,6 +70,8 @@ export const TABLE_PRODUCT = new InjectionToken<string>('product');
     ProductActionComponent,
   ],
   providers: [
+    {provide: TABLE_SCORE, useValue: 'score'},
+    {provide: ScoreService, useClass: ScoreService, deps: [AngularFirestore, TABLE_SCORE]},
     {provide: TABLE_PRODUCT, useValue: 'product'},
     {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
   ]

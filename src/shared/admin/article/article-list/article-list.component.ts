@@ -7,6 +7,7 @@ import { Article } from '../../../article/shared/article';
 import { ArticleService } from '../../../article/shared/article.service';
 import { AlertService } from '../../../popup/alert.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-admin-article-list',
@@ -17,7 +18,7 @@ export class ArticleListComponent implements OnInit {
 
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   articles: Article[] = [];
   isLoading = false;
   selected: Article[] = [];
@@ -105,7 +106,7 @@ export class ArticleListComponent implements OnInit {
       name: 'Actions',
       flexGrow: 1,
       cellTemplate: this.actionsCell
-    }, ];
+    },];
     this.articleService.getArticles()
       .subscribe((articles: Article[]) => {
         this.articles = articles;

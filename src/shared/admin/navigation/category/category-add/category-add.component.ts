@@ -9,6 +9,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { Category } from '../../../../category/category';
 import { DocumentReference } from '@firebase/firestore-types';
 import { of } from 'rxjs/internal/observable/of';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-category-add',
@@ -22,7 +23,7 @@ export class CategoryAddComponent implements OnInit {
   // Datatable parent categories
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   categories$: Observable<Category[]> = of([]);
   selected: Category[] = [];
   isLoading: boolean;

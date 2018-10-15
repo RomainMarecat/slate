@@ -8,17 +8,19 @@ import { CloudinaryUploadService } from '../../../media/cloudinary/cloudinary-up
 import { StringService } from '../../../util/string.service';
 import { Filter } from '../../../facet/filter/shared/filter';
 import { ProductService } from '../../../product/shared/product.service';
+import { TableColumn } from '@swimlane/ngx-datatable';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: [ './product-list.component.scss' ],
+  styleUrls: ['./product-list.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class ProductListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   products: Product[];
   cache: Product[];
   isLoading = false;
@@ -39,22 +41,24 @@ export class ProductListComponent implements OnInit {
 
   /**
    *
-   * @param dialog
-   * @param router
-   * @param table
-   * @param menuService
-   * @param productService
-   * @param cloudinaryUploadService
+   * @param {MatDialog} dialog
+   * @param {Router} router
+   * @param {ElementRef} table
+   * @param {MenuService} menuService
+   * @param {ProductService} productService
+   * @param {LocalizeRouterService} localizeRouterService
+   * @param {CloudinaryUploadService} cloudinaryUploadService
    */
   constructor(public dialog: MatDialog,
               private router: Router,
               private table: ElementRef,
               private menuService: MenuService,
               private productService: ProductService,
+              private localizeRouterService: LocalizeRouterService,
               @Optional() private cloudinaryUploadService: CloudinaryUploadService) {
     this.cloudinary = !!cloudinaryUploadService;
     this.selected = [];
-    this.publications = [ {
+    this.publications = [{
       name: 'Publié',
       value: 'published',
       color: 'primary',
@@ -90,7 +94,7 @@ export class ProductListComponent implements OnInit {
    * @param product
    * @param event
    */
-  updateProductPublication(product: Product, event: { source: any, value: boolean }) {
+  updateProductPublication(product: Product, event: {source: any, value: boolean}) {
     product.published = event.value;
     this.updatePublication(product);
   }
@@ -189,7 +193,7 @@ export class ProductListComponent implements OnInit {
    * @param product
    */
   editProduct(product: Product) {
-    this.router.navigate([ '/admin/product/edit/', product.key ]);
+    this.router.navigate([this.localizeRouterService.translateRoute('/admin'), 'product', 'edit', product.key]);
   }
 
   /**
@@ -197,7 +201,7 @@ export class ProductListComponent implements OnInit {
    */
   ngOnInit() {
     this.menuService.nextTitle('Products');
-    this.columns = [ {
+    this.columns = [{
       width: 75,
       sortable: false,
       canAutoResize: false,
@@ -241,7 +245,7 @@ export class ProductListComponent implements OnInit {
       flexGrow: 1,
       headerTemplate: this.desktopHeader,
       cellTemplate: this.actionsCell,
-    } ];
+    }];
     this.isLoading = true;
     this.productService.getProducts()
       .subscribe((products: Product[]) => {
@@ -266,7 +270,7 @@ export class ProductListComponent implements OnInit {
    */
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate([ '/admin/product/edit/', event.row.key ]);
+      this.router.navigate(['/admin/product/edit/', event.row.key]);
     }
   }
 
@@ -308,7 +312,7 @@ export class ProductListComponent implements OnInit {
           } else if (column === 'published') {
             return product.published === (needle.toString() === 'true') || !needle;
           }
-          return product[ column ].toLowerCase().indexOf(needle) !== -1 || !needle;
+          return product[column].toLowerCase().indexOf(needle) !== -1 || !needle;
         });
 
         // update the rows

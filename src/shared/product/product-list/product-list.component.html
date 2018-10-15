@@ -1,4 +1,4 @@
-<div class="card-welcome">
+<div class="card-welcome" *ngIf="addProductPublicActivated === true">
   <mat-card>
     <mat-card-content>
       <mat-icon>photo_camera</mat-icon>
@@ -16,22 +16,41 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions>
-      <button type="button" [routerLink]="['/add']" color="accent" mat-raised-button type="button" role="button"
-              [attr.aria-label]="'product-list.card-actions.aria-label'|translate" angulartics2On="click"
-              angularticsAction="clickedOnButtonAddProduct" [angularticsCategory]="'product.add'"
+      <button type="button"
+              [routerLink]="['add-product']"
+              color="accent"
+              mat-raised-button
+              role="button"
+              [attr.aria-label]="'product-list.card-actions.aria-label'|translate"
+              angulartics2On="click"
+              angularticsAction="clickedOnButtonAddProduct"
+              [angularticsCategory]="'product.add'"
               [innerHtml]="'product-list.card-actions.title' | translate">
       </button>
     </mat-card-actions>
   </mat-card>
 </div>
 <div class="card-container">
-  <app-product-item *ngFor="let product of products$ | async" class="grid-tile-item" [product]="product"
+  <app-product-item *ngFor="let product of products"
+                    class="grid-tile-item"
+                    [product]="product"
+                    [showScore]="showScore"
+                    [showAdd]="showAdd"
                     (updatedProduct)="updateProduct($event)"></app-product-item>
 </div>
-<div class="text-right">
-  <button role="button" [attr.aria-label]="'product-list.fab-button.title' | translate" mat-mini-fab
-          class="absolute-fab pulse" (click)="addProduct()" angulartics2On="click"
-          angularticsAction="clickedOnFabAddProduct" [angularticsCategory]="'product.add'">
+<div class="card-container"
+     *ngIf="products.length === 0 && loading === false">
+  <p>{{ 'product-list.empty-list'|translate }}</p>
+</div>
+
+<div class="text-right" *ngIf="showAdd">
+  <a [routerLink]="['add-product']"
+          [attr.aria-label]="'product-list.fab-button.title' | translate"
+          mat-mini-fab
+          class="absolute-fab pulse"
+          angulartics2On="click"
+          angularticsAction="clickedOnFabAddProduct"
+          [angularticsCategory]="'product.add'">
     <mat-icon>add</mat-icon>
-  </button>
+  </a>
 </div>

@@ -20,6 +20,8 @@ import { MediaModule } from '../../../media/media.module';
 import { environment } from '../../../../app-hockey/environments/environment';
 import { MockProductService } from '../../../product/shared/mock-product.service';
 import { ProductService } from '../../../product/shared/product.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -30,6 +32,7 @@ describe('ProductListComponent', () => {
         CommonModule,
         BrowserModule,
         HttpClientModule,
+        LocalizeRouterModule,
         RouterTestingModule,
         BrowserAnimationsModule,
         NgxDatatableModule,
@@ -37,9 +40,10 @@ describe('ProductListComponent', () => {
         MediaModule,
         SharedModule,
       ],
-      declarations: [ ProductListComponent, ProductFilterComponent ],
+      declarations: [ProductListComponent, ProductFilterComponent],
       providers: [
         MenuService,
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: ProductService, useClass: MockProductService},
         {provide: MediaService, useClass: MockMediaService},
         {provide: CloudinaryUploadService, useClass: MockCloudinaryUploadService},

@@ -23,6 +23,11 @@ import { I18nService } from '../../i18n/i18n.service';
 import { MediaModule } from '../../media/media.module';
 import { environment } from '../../../app-ecommerce/environments/environment';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LoaderModule } from '../../loader/loader.module';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { MockLoaderService } from 'shared/loader/mock-loader.service';
+import { LoaderService } from 'shared/loader/loader.service';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -40,10 +45,12 @@ describe('ProductItemComponent', () => {
         MatIconModule,
         MatCardModule,
         NgPipesModule,
+        LoaderModule,
+        LocalizeRouterModule,
         RouterTestingModule,
         BrowserAnimationsModule,
         MatCardModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -55,8 +62,10 @@ describe('ProductItemComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ ProductItemComponent, ProductActionComponent ],
+      declarations: [ProductItemComponent, ProductActionComponent],
       providers: [
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: DateService, useClass: DateService},
         I18nService
       ]

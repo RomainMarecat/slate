@@ -38,6 +38,9 @@ import { I18nService } from '../../i18n/i18n.service';
 import { MediaModule } from '../../media/media.module';
 import { environment } from '../../../app-ecommerce/environments/environment';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LoaderModule } from 'shared/loader/loader.module';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -53,6 +56,8 @@ describe('ProductListComponent', () => {
         HttpClientModule,
         RouterTestingModule,
         BrowserAnimationsModule,
+        LoaderModule,
+        LocalizeRouterModule,
         MatCardModule,
         MatIconModule,
         MatButtonModule,
@@ -61,7 +66,7 @@ describe('ProductListComponent', () => {
         MatCheckboxModule,
         NgPipesModule,
         MatListModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -73,8 +78,9 @@ describe('ProductListComponent', () => {
         }),
         MediaModule
       ],
-      declarations: [ ProductListComponent, ProductItemComponent, ProductActionComponent ],
+      declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent],
       providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: ProductService, useClass: MockProductService},
         {provide: UserService, useClass: MockUserService},
         {provide: AlertService, useClass: MockAlertService},

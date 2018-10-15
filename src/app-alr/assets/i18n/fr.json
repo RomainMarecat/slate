@@ -1,6 +1,7 @@
 {
   "routes": {
     "add": "ajouter",
+    "add-product": "ajouter-un-produit",
     "boards": "tableau-de-bord",
     "board": "tableau",
     "layout-builder": "configurateur-de-layout",
@@ -60,7 +61,8 @@
     "admin/maps/add": "ajouter",
     "cart": "panier",
     "contact-us": "contacter-nous",
-    "product": "product"
+    "product": "product",
+    "products": "produits"
   },
   "admin": {
     "article": {
@@ -219,6 +221,9 @@
         "name": "région",
         "path": "points 2D"
       },
+      "product": {
+        "price": "prix"
+      },
       "selection": {
         "name": "nom de la sélection",
         "description": "description",
@@ -251,6 +256,9 @@
       "area": {
         "name": "région de la carte",
         "path": "points de la région"
+      },
+      "product": {
+        "price": "prix"
       },
       "selection": {
         "name": "nom de la sélection",
@@ -334,6 +342,12 @@
       "add": "ajouter un article",
       "edit": "éditer un article",
       "list": "liste des articles"
+    },
+    "products": {
+      "add": "ajouter un produit",
+      "edit": "éditer un produit",
+      "list": "liste des produits",
+      "detail": "détail du produit"
     }
   },
   "cart": {
@@ -453,6 +467,7 @@
         "calendar": "agenda",
         "admin": "administration",
         "article": "article",
+        "product": "produits",
         "faq": "foire aux questions",
         "map": "carte",
         "cart": "panier",
@@ -713,12 +728,177 @@
     "and": " et ",
     "short_minutes": "min"
   },
+  "product-add": {
+    "meta": {
+      "title": "Ajouter un nouveau produit",
+      "description": "Ajouter un nouveau produit. Prend une photo de ton produit"
+    },
+    "title": "Poster un nouveau produit",
+    "product-preview": {
+      "title": "Aperçu",
+      "name": {
+        "title": "Donne un titre court et un descriptif au produit"
+      },
+      "description": {
+        "title": "Donne une description correspondant au produit"
+      },
+      "image": {
+        "title": "Image"
+      },
+      "mat-card-actions": {
+        "button": {
+          "minus": "Moins",
+          "plus": "Plus"
+        }
+      }
+    },
+    "product-form": {
+      "steps": {
+        "image": {
+          "section": "Télécharger une image",
+          "card-title": {
+            "title": "Importe la photo du produit"
+          },
+          "product-image": {
+            "image-cropper": {
+              "cropper": {
+                "title": "Valider",
+                "tooltip": {
+                  "title": "Ajuste en redimensionnant ou déplaçant le cadre ton image"
+                }
+              }
+            },
+            "image-button-wrapper": {
+              "button": {
+                "aria-label": {
+                  "title": "Valider l'image au dessus"
+                },
+                "tooltip": {
+                  "title": "Penser à valider l'image !"
+                }
+              }
+            }
+          }
+        },
+        "detail": {
+          "section": "Ajouter des informations",
+          "button": {
+            "back": {
+              "title": "Retour"
+            },
+            "next": {
+              "title": "Suivant"
+            }
+          },
+          "form": {
+            "name": {
+              "title": "Donne un titre court au produit",
+              "placeholder": "Titre",
+              "length": "/ 50",
+              "error": {
+                "length": "Le nom du produit est vide",
+                "invalid": "Le nom du produit contient des erreurs",
+                "required": "Le nom du produit est requis"
+              }
+            }
+          }
+        },
+        "additional": {
+          "button": {
+            "back": {
+              "title": "Retour"
+            }
+          },
+          "section": "Finaliser",
+          "title": "Il est possible d'apporter des précisions sur le produit",
+          "panel": {
+            "description": {
+              "title": "Donne un court descriptif au produit",
+              "description": ""
+            },
+            "external_url": {
+              "title": "Déja vu sur un site ? Donnez-nous des informations sur le site.",
+              "description": ""
+            }
+          },
+          "form": {
+            "description": {
+              "title": "Descriptif du produit",
+              "placeholder": "description",
+              "length": "/ 2000",
+              "error": {
+                "length": "La description du produit est vide",
+                "invalid": "La description du produit est invalide",
+                "required": "La description du produit est requise"
+              }
+            },
+            "delivery_fee": {
+              "placeholder": "Frais de livraison",
+              "error": {
+                "min": "Les frais de livraison ne peuvent pas être négatifs",
+                "max": "Les frais de livraison sont un peu trop chers !",
+                "length": "Les frais de livraison sont vides",
+                "invalid": "Les frais de livraison doivent être un nombre (sans €)",
+                "required": "Les frais de livraison sont requis"
+              }
+            },
+            "external_url": {
+              "placeholder": "Lien vers le produit",
+              "error": {
+                "length": "Le lien vers le produit est vide",
+                "invalid": "Le lien vers le produit est invalide",
+                "required": "Le lien vers le produit est requis"
+              }
+            },
+            "price": {
+              "placeholder": "Prix",
+              "error": {
+                "min": "Le prix ne peut pas être négatif",
+                "max": "Le prix est un peu trop cher !",
+                "length": "Le prix est vide",
+                "invalid": "Le prix doit être un nombre (sans €)",
+                "required": "Le prix est requise"
+              }
+            },
+            "validation": {
+              "button": {
+                "label": "Valider",
+                "title": "Valider"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "product-detail": {
+    "meta": {
+      "og:site_name": "E-commerce",
+      "description": "{{value}} - E-commerce"
+    }
+  },
+  "product-list": {
+    "empty-list": "Aucun produit pour le moment...",
+    "card-title": {
+      "title": "Tu as déjà un produit ?"
+    },
+    "card-subtitle": {
+      "title": "Envoie-nous ta photo et essaie d'obtenir le meilleur score !"
+    },
+    "card-actions": {
+      "title": "Je poste en un clic !",
+      "aria-label": "Je poste en un clic !"
+    },
+    "fab-button": {
+      "title": "Ajouter un nouveau produit"
+    }
+  },
   "snackbar": {
     "product-add": {
-      "submit": "Ton pull est en attente de validation :)"
+      "submit": "Ton produit est en attente de validation"
     },
     "guard": {
-      "unauthenticated": "Connectes-toi pour ajouter autant de produit que tu veux !"
+      "unauthenticated": "Se connecter pour ajouter autant de produit que possible"
     }
   },
   "sidenav": {

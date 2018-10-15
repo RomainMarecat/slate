@@ -1,3 +1,5 @@
+import { firestore, Timestamp } from 'firebase/firestore';
+
 export interface HockeyProduct {
   name: string;
   score: number;
@@ -5,7 +7,7 @@ export interface HockeyProduct {
   brand ?: string;
 
   created_at: Date;
-  published_at: Date;
+  published_at: Date | Timestamp;
 
   url: string;
   translations ?: {

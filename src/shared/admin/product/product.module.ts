@@ -34,7 +34,7 @@ const TABLE_MEDIA = new InjectionToken<string>('media');
     NgxDatatableModule,
     SharedModule,
     NgxEditorModule,
-    TranslateModule,
+    TranslateModule.forChild(),
     ProductRoutingModule
   ],
   declarations: [

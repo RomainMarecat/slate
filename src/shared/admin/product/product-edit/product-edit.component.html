@@ -4,7 +4,7 @@
       <mat-card-header fxLayout="row" fxLayoutAlign="center stretch">
         <mat-card-subtitle>
           <button type="button" role="button" mat-icon-button color="warn" mat-mini-fab class="absolute-fab"
-                  [routerLink]="['/admin/product']">
+                  [routerLink]="['/admin/product'|localize]">
             <mat-icon aria-label="back">arrow_back</mat-icon>
           </button>
         </mat-card-subtitle>
@@ -56,12 +56,24 @@
               </mat-form-field>
             </div>
             <div class="d-block">
-              <div class="mat-form-field editor mt1">
+              <div class="mat-form-field editor mt-1">
                 <label class="mat-hint"><strong>Description :</strong></label>
                 <app-ngx-editor [config]="editorConfig"
                                 [formControl]="form.get('description')">
                 </app-ngx-editor>
               </div>
+            </div>
+            <div class="d-block">
+              <mat-form-field class="mat-form-field mt-1">
+                <input matInput type="number" maxlength="5" [placeholder]="'admin.placeholder.product.price'|translate"
+                       formControlName="price">
+                <mat-error
+                  *ngIf="form.get('price').invalid && form.get('price').value && form.get('price').value.length === 0"
+                  [innerHtml]="'Le prix ne peut pas être vide'|translate"></mat-error>
+                <mat-error
+                  *ngIf="form.get('price').invalid && form.get('price').value && form.get('price').value.length > 0"
+                  [innerHtml]="'Il y a un ou des caractère(s) invalide(s)'|translate"></mat-error>
+              </mat-form-field>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6">
@@ -144,7 +156,7 @@
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field class="mat-form-field" fxFlex="10">
-                    <input matInput type="number" maxlength="5" [placeholder]="'Prix'|translate"
+                    <input matInput type="number" maxlength="5" [placeholder]="'terms.price'|translate"
                            formControlName="price">
                     <mat-error
                       *ngIf="offers.controls[i].controls.price.invalid && offers.controls[i].controls.price.value && offers.controls[i].controls.price.value.length === 0"
@@ -229,10 +241,23 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="d-flex justify-content-around">
-          <button type="button" class="back" role="button" color="accent" mat-raised-button
-                  [innerHtml]="'Annuler'|translate" [routerLink]="['/admin/product']"></button>
-          <button type="submit" class="validate" [attr.aria-label]="'Enregistrer'|translate" mat-raised-button
-                  color="primary" [disabled]="form.invalid || isSaving" [innerHtml]="'Enregistrer'|translate"></button>
+          <button type="button"
+                  class="back"
+                  role="button"
+                  color="accent"
+                  mat-raised-button
+                  [routerLink]="['/admin/product']">
+            {{ 'cta.cancel'|translate }}
+          </button>
+          <button type="submit"
+                  class="validate"
+                  [attr.aria-label]="'cta.save'|translate"
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="form.invalid || isSaving">
+            <mat-icon *ngIf="isSaving">refresh</mat-icon>
+            <span>{{ 'cta.save'|translate }}</span>
+          </button>
         </div>
       </mat-card-actions>
     </mat-card>

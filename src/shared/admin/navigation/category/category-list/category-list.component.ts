@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, TemplateRef, ViewChild } from '@angular/
 import { CategoryService } from '../../../../category/category.service';
 import { Category } from '../../../../category/category';
 import { MenuService } from '../../../../menu/menu.service';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-category-list',
@@ -11,7 +12,7 @@ import { MenuService } from '../../../../menu/menu.service';
 export class CategoryListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   categories: Category[] = [];
   selected: Category[] = [];
   isLoading: boolean;
