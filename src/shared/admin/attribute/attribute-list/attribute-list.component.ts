@@ -7,16 +7,17 @@ import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 import { take } from 'rxjs/operators';
 import { AlertService } from '../../../popup/alert.service';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-attribute-list',
   templateUrl: './attribute-list.component.html',
-  styleUrls: [ './attribute-list.component.scss' ]
+  styleUrls: ['./attribute-list.component.scss']
 })
 export class AttributeListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   attributes: Attribute[];
   isLoading = false;
   selected: Attribute[] = [];
@@ -43,7 +44,7 @@ export class AttributeListComponent implements OnInit {
    */
   ngOnInit() {
     this.menuService.nextTitle('Attributs');
-    this.columns = [ {
+    this.columns = [{
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -75,7 +76,7 @@ export class AttributeListComponent implements OnInit {
       name: 'Actions',
       flexGrow: 1,
       cellTemplate: this.actionsCell
-    }, ];
+    },];
     this.attributeService.getAttributes()
       .pipe(take(1))
       .subscribe((attributes: Attribute[]) => {
@@ -126,7 +127,7 @@ export class AttributeListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate([ '/admin/attribute/edit/', event.row.key ]);
+      this.router.navigate(['/admin/attribute/edit/', event.row.key]);
     }
   }
 

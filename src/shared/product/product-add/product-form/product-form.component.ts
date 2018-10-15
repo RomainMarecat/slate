@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Product } from '../../shared/product';
-import { ClothingProduct } from '../../shared/clothing-product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Media } from '../../../media/media';
 import { UserService } from '../../../user/shared/user.service';
@@ -17,14 +16,14 @@ export class ProductFormComponent implements OnInit {
   formDetail: FormGroup;
   formMedia: FormGroup;
   formAdditional: FormGroup;
-  @Output() productChange: EventEmitter < ClothingProduct > ;
-  product: ClothingProduct;
+  @Output() productChange: EventEmitter<Product> = new EventEmitter<Product>();
+  product: Product;
   @Input('_user') _user: any;
   disableDelivery: boolean;
   isLoading: boolean;
   isLinear: boolean;
   now: Date;
-  @Output('_submit') _submit: EventEmitter < ClothingProduct > ;
+  @Output('_submit') _submit: EventEmitter<Product> = new EventEmitter<Product>();
   image1: Media;
   image2: Media;
   image3: Media;
@@ -32,8 +31,6 @@ export class ProductFormComponent implements OnInit {
   constructor(private userService: UserService) {
     this.isLoading = false;
     this.isLinear = true;
-    this._submit = new EventEmitter < Product > ();
-    this.productChange = new EventEmitter < Product > ();
     this.now = new Date();
     this.disableDelivery = false;
     this.image1 = new Media();
@@ -58,7 +55,7 @@ export class ProductFormComponent implements OnInit {
       this.formDetail &&
       this.formMedia &&
       this.formAdditional) {
-      const product = { ...this.formMedia.value, ...this.formDetail.value, ...this.formAdditional.value } as ClothingProduct;
+      const product = {...this.formMedia.value, ...this.formDetail.value, ...this.formAdditional.value} as Product;
       product.published = false;
       product.thumbnail = this.userService.getUser().photoURL;
       product.user = this.userService.getUser().uid;
@@ -68,7 +65,7 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
-  submit(product: ClothingProduct) {
+  submit(product: Product) {
     this._submit.emit(product);
   }
 
@@ -130,15 +127,15 @@ export class ProductFormComponent implements OnInit {
 
   onImageChange(media: Media) {
     if (media.position === 1) {
-      this.formMedia.patchValue({ image1: media.public_id });
+      this.formMedia.patchValue({image1: media.public_id});
       this.product.image1 = media.public_id;
       this.productChange.emit(this.product);
     } else if (media.position === 2) {
-      this.formMedia.patchValue({ image2: media.public_id });
+      this.formMedia.patchValue({image2: media.public_id});
       this.product.image2 = media.public_id;
       this.productChange.emit(this.product);
     } else {
-      this.formMedia.patchValue({ image3: media.public_id });
+      this.formMedia.patchValue({image3: media.public_id});
       this.product.image3 = media.public_id;
       this.productChange.emit(this.product);
     }

@@ -12,6 +12,7 @@ import { debounceTime } from 'rxjs/operators';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Media } from '../../../media/media';
 import UploadTaskSnapshot = firebase.storage.UploadTaskSnapshot;
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-admin-article-edit',
@@ -26,7 +27,7 @@ export class ArticleEditComponent implements OnInit {
 
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   selected: string[] = [];
   isLoading: boolean;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
@@ -116,7 +117,6 @@ export class ArticleEditComponent implements OnInit {
         debounceTime(800)
       )
       .subscribe((value) => {
-        console.log(value);
         if (value.name) {
           const slug = StringService.slugify(value.name);
           this.form.patchValue({name: value.name, slug: slug});

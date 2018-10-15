@@ -27,6 +27,8 @@ import { SelectionService } from '../../../../selection/selection.service';
 import { MockSelectionService } from '../../../../selection/mock-selection.service';
 import { ProductService } from '../../../../product/shared/product.service';
 import { MockProductService } from '../../../../product/shared/mock-product.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('SelectionListComponent', () => {
   let component: SelectionListComponent;
@@ -35,13 +37,14 @@ describe('SelectionListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
           },
         }),
         BrowserAnimationsModule,
+        LocalizeRouterModule,
         RouterTestingModule,
         SharedModule,
         NgxDatatableModule,
@@ -49,8 +52,9 @@ describe('SelectionListComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ SelectionListComponent ],
+      declarations: [SelectionListComponent],
       providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: SelectionService, useClass: MockSelectionService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: LoaderService, useClass: MockLoaderService},

@@ -4,6 +4,7 @@ import { distinctUntilChanged, map, filter, take, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { ProductService } from '../product/shared/product.service';
 import { Product } from '../product/shared/product';
+import { TranslateService } from '@ngx-translate/core';
 
 interface UriElement {
   url: string;
@@ -32,11 +33,12 @@ export class BreadcrumbComponent {
    * @param {Router} router
    * @param {ActivatedRoute} route
    * @param {ProductService} productService
+   * @param {TranslateService} translateService
    */
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private productService: ProductService
-  ) {
+              private productService: ProductService,
+              private translateService: TranslateService) {
     this.uriElements = this.getUriElements();
   }
 

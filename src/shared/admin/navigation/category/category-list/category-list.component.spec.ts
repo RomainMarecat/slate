@@ -11,31 +11,35 @@ import { CategoryService } from '../../../../category/category.service';
 import { MockCategoryService } from '../../../../category/mock-category.service';
 import { MockAlertService } from '../../../../popup/mock-alert.service';
 import { AlertService } from '../../../../popup/alert.service';
-import {SharedModule} from '../../../../shared.module';
+import { SharedModule } from '../../../../shared.module';
 import { MenuService } from '../../../../menu/menu.service';
+import { MockLocalizeRouterService } from '../../../../router/mock-localize-router.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 describe('CategoryListComponent', () => {
   let component: CategoryListComponent;
-  let fixture: ComponentFixture < CategoryListComponent > ;
+  let fixture: ComponentFixture<CategoryListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          BrowserModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          NgxDatatableModule,
-          SharedModule
-        ],
-        declarations: [CategoryListComponent],
-        providers: [
-          { provide: CategoryService, useClass: MockCategoryService },
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: MenuService, useClass: MenuService },
-        ]
-      })
+      imports: [
+        CommonModule,
+        BrowserModule,
+        HttpClientModule,
+        LocalizeRouterModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        NgxDatatableModule,
+        SharedModule
+      ],
+      declarations: [CategoryListComponent],
+      providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
+        {provide: CategoryService, useClass: MockCategoryService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: MenuService, useClass: MenuService},
+      ]
+    })
       .compileComponents();
   }));
 

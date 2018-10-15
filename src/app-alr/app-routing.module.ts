@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: './../shared/chart/chart.module#ChartModule'
   },
   {
+    path: 'products',
+    loadChildren: './../shared/product/product.module#ProductModule'
+  },
+  {
     path: 'gprd',
     loadChildren: './../shared/gprd/gprd.module#GprdModule'
   },

@@ -42,6 +42,8 @@ import { MockPartnerService } from 'shared/partner/mock-partner.service';
 import { PartnerService } from 'shared/partner/partner.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
 import { ProductService } from '../../../product/shared/product.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
@@ -50,7 +52,7 @@ describe('ProductEditComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -67,6 +69,7 @@ describe('ProductEditComponent', () => {
         HttpClientTestingModule,
         RouterTestingModule,
         SharedModule,
+        LocalizeRouterModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
@@ -76,6 +79,7 @@ describe('ProductEditComponent', () => {
         ProductImageOrderComponent,
       ],
       providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: AttributeService, useClass: MockAttributeService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: CategoryService, useClass: MockCategoryService},

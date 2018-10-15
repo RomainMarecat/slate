@@ -8,6 +8,7 @@ import { AttributeService } from '../../../attribute/attribute.service';
 import { Attribute } from '../../../attribute/attribute';
 import { AttributeFormType } from '../../shared/attribute/form-attribute';
 import 'rxjs-compat/add/operator/debounceTime';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-attribute-edit',
@@ -22,7 +23,7 @@ export class AttributeEditComponent implements OnInit {
 
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   selected: string[] = [];
   isLoading: boolean;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
@@ -56,7 +57,7 @@ export class AttributeEditComponent implements OnInit {
 
 
   getAttribute() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
+    this.activatedRoute.params.subscribe((value: {key: string}) => {
       if (value.key) {
         const key = value.key;
         this.attributeService.getAttribute(key)

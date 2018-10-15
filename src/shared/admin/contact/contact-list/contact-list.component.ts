@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material';
 import { Contact } from '../../../contact/shared/contact';
 import { ContactService } from '../../../contact/shared/contact.service';
 import { AlertService } from '../../../popup/alert.service';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-admin-contact-list',
@@ -16,7 +17,7 @@ export class ContactListComponent implements OnInit {
 
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   contacts: Contact[];
   isLoading = false;
   selected: Contact[] = [];

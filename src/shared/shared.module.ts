@@ -39,7 +39,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HammerModule } from './hammer/hammer.module';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { FileUploadModule } from 'ng2-file-upload';
-import { MenuModule } from './menu/menu.module';
 import { MediaModule } from './media/media.module';
 import { FooterModule } from './footer/footer.module';
 import { SidenavModule } from './sidenav/sidenav.module';
@@ -49,7 +48,6 @@ import { PopupModule } from './popup/popup.module';
 import { PartnerModule } from './partner/partner.module';
 import { OfferModule } from './offer/offer.module';
 import { CommentModule } from './comment/comment.module';
-import { ProductModule } from './product/product.module';
 import { CmsDetailModule } from './cms-detail/cms-detail.module';
 import { FaviconModule } from './favicon/favicon.module';
 import { PipeModule } from './pipe/pipe.module';
@@ -124,7 +122,6 @@ export class ConfigService {
     PartnerModule,
     PopupModule,
     PipeModule,
-    ProductModule,
     ReactiveFormsModule,
     RouterModule,
     SessionModule,
@@ -182,7 +179,6 @@ export class ConfigService {
     PartnerModule,
     PipeModule,
     PopupModule,
-    ProductModule,
     ReactiveFormsModule,
     RouterModule,
     SessionModule,

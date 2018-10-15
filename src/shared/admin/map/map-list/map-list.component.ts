@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material';
 import { MapService } from '../../../map/shared/map.service';
 import { Map } from '../../../map/shared/map';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-admin-map-list',
@@ -15,7 +16,7 @@ import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 export class MapListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   maps: Map[] = [];
   cache: Map[] = [];
   isLoading = false;

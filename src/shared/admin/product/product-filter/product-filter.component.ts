@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Filter } from './../../../facet/filter/shared/filter';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-admin-product-filter',
@@ -7,13 +8,14 @@ import { Filter } from './../../../facet/filter/shared/filter';
   styleUrls: ['./product-filter.component.scss']
 })
 export class ProductFilterComponent implements OnInit {
-  @Output('filtered') filtered: EventEmitter < Filter > = new EventEmitter < Filter > ();
+  @Output('filtered') filtered: EventEmitter<Filter> = new EventEmitter<Filter>();
   columnSelected = 'translations.fr';
-  columns: any;
+  columns: TableColumn[];
   filterText = '';
   selected = false;
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
     this.columns = this.getColumns();
@@ -23,11 +25,10 @@ export class ProductFilterComponent implements OnInit {
    *
    * @returns {({prop: string; name: string; selected: boolean} | {prop: string; name: string})[]}
    */
-  getColumns() {
+  getColumns(): TableColumn[] {
     return [{
       prop: 'translations.fr',
       name: 'name (fr)',
-      selected: true
     }, {
       prop: 'images',
       name: 'images',

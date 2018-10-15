@@ -1,8 +1,7 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ProductService } from '../shared/product.service';
-import { ClothingProduct } from '../shared/clothing-product';
 import { Observable } from 'rxjs/Observable';
 import { UserService } from '../../user/shared/user.service';
 import { AlertService } from '../../popup/alert.service';
@@ -10,19 +9,25 @@ import { LoaderService } from '../../loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Filter } from '../../facet/filter/shared/filter';
 import { environment } from '../../../app-ecommerce/environments/environment';
+import { Product } from '../shared/product';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: [ './product-list.component.scss' ]
+  styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
   // Products collection of Product interface
-  products$: Observable<ClothingProduct[]>;
-  products: Array<ClothingProduct>;
+  products$: Observable<Product[]> = of();
+  products: Array<Product> = [];
   rowHeight: number;
   headerHeight: number;
   pageLimit: number;
+  loading: boolean;
+  @Input() addProductPublicActivated = false;
+  showScore: boolean;
+  showAdd: boolean;
 
   /**
    * constructor
@@ -46,6 +51,9 @@ export class ProductListComponent implements OnInit {
     this.headerHeight = 0;
     this.pageLimit = 100;
     this.rowHeight = 300;
+    this.loading = true;
+    this.showScore = false;
+    this.showAdd = false;
   }
 
   /**
@@ -65,9 +73,9 @@ export class ProductListComponent implements OnInit {
 
     this.meta.addTags([
       {property: 'fb:app_id', content: environment.facebook_app_id},
-      {rel: 'canonical', href: 'https://clothe.com'},
-      {rel: 'alternate', hreflang: 'x-default', href: 'https://clothe.com'},
-      {rel: 'alternate', hreflang: 'en', href: 'https://myuglysweat.com'}
+      {rel: 'canonical', href: ''},
+      {rel: 'alternate', hreflang: 'x-default', href: ''},
+      {rel: 'alternate', hreflang: 'en', href: ''}
     ]);
 
     this.loadProducts();
@@ -75,17 +83,10 @@ export class ProductListComponent implements OnInit {
 
   /**
    * Update on product
-   * @param {ClothingProduct} product
+   * @param {Product} product
    */
-  updateProduct(product: ClothingProduct) {
+  updateProduct(product: Product) {
     this.productService.updateProduct(product);
-  }
-
-  /**
-   * Go to form page Add product
-   */
-  addProduct() {
-    this.router.navigate([ '/add' ]);
   }
 
   /**
@@ -93,13 +94,21 @@ export class ProductListComponent implements OnInit {
    */
   loadProducts() {
     this.productService.filters$.next(null);
-    const filters: Filter[] = [ {
+    const filters: Filter[] = [{
       column: 'published',
       operator: '==',
       value: true
-    } ];
+    }];
     this.productService.filters$.next(filters);
     this.products$ = this.productService.getProducts();
-    this.loaderService.hide();
+
+    this.products$.subscribe((products) => {
+      this.products = products;
+      this.loaderService.hide();
+      this.loading = false;
+    }, (err) => {
+      this.alertService.show(err);
+      this.loading = false;
+    });
   }
 }

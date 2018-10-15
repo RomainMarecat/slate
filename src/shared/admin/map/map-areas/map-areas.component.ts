@@ -5,6 +5,7 @@ import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 import { AreaService } from '../../../map/shared/area.service';
 import { Area } from '../../../map/shared/area';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-admin-map-areas',
@@ -15,7 +16,7 @@ export class MapAreasComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   editing = {};
-  columns: any;
+  columns: TableColumn[];
   areas: Area[] = [];
   cache: Area[] = [];
   isLoading = false;

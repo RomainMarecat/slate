@@ -4,6 +4,7 @@ import { MenuService } from '../../../menu/menu.service';
 import { MatDialog } from '@angular/material';
 import { Offer } from '../../../offer/offer';
 import { OfferService } from '../../shared/offer/offer.service';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-offer-list',
@@ -14,7 +15,7 @@ export class OfferListComponent implements OnInit {
 
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   offers: Offer[] = [];
   cache: Offer[] = [];
   isLoading = false;

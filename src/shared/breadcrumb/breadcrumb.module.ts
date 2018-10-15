@@ -4,11 +4,14 @@ import { BreadcrumbComponent } from './breadcrumb.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { MatIconModule, MatTooltipModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    MatIconModule,
+    MatTooltipModule,
     TranslateModule.forChild(),
     LocalizeRouterModule
   ],

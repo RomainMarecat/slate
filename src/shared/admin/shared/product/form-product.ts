@@ -6,7 +6,7 @@ import { Offer } from './../../../offer/offer';
 export class ProductFormType {
   private form: FormGroup;
 
-  constructor(product ?: Product, offers ?: Array < Offer > ) {
+  constructor(product ?: Product, offers ?: Array<Offer>) {
     this.createForm(product, offers);
   }
 
@@ -26,7 +26,7 @@ export class ProductFormType {
     });
   }
 
-  static createOfferForm(product ?: Product, offers: Array < Offer > = []): FormArray {
+  static createOfferForm(product ?: Product, offers: Array<Offer> = []): FormArray {
     const offersForm: FormArray = new FormArray([new FormControl()]);
     if (product && product.offers && product.offers.length > 0) {
       product.offers.forEach((offer: string) => {
@@ -52,14 +52,11 @@ export class ProductFormType {
         }));
       }
     });
-    // if (product && offersForm.length === 0) {
-    //   offersForm.push(ProductFormType.newOffer());
-    // }
 
     return offersForm;
   }
 
-  createForm(product: Product, offers: Array < Offer > = []): FormGroup {
+  createForm(product: Product, offers: Array<Offer> = []): FormGroup {
     this.form = new FormGroup({
       'name': new FormControl(product && product.name ? product.name : '', [
         Validators.required,
@@ -69,8 +66,8 @@ export class ProductFormType {
       'translations': new FormGroup({
         'fr': new FormControl(product && product.translations && product.translations.fr ?
           product.translations.fr : '', [
-            Validators.required
-          ])
+          Validators.required
+        ])
       }),
       'description': new FormControl(
         product && product.description ? product.description : '', []

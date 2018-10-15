@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Media } from '../media';
 import { MediaService } from '../media.service';
 import { take } from 'rxjs/operators';
@@ -14,6 +14,8 @@ export class ImageComponent {
   _key: string;
   @Input() resize: any;
   media: Media;
+  @Output() mediaLoaded: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() mediaErrored: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private mediaService: MediaService) {
   }
@@ -37,8 +39,11 @@ export class ImageComponent {
         )
         .subscribe((medias: Media[]) => {
           this.media = medias[0];
-        }, (err) => {
-          console.error(err);
+          if (this.media) {
+            this.mediaLoaded.emit(true);
+          }
+        }, () => {
+          this.mediaErrored.emit(true);
         });
     }
   }
@@ -53,8 +58,11 @@ export class ImageComponent {
         )
         .subscribe((media: Media) => {
           this.media = media;
-        }, (err) => {
-          console.error(err);
+          if (media) {
+            this.mediaLoaded.emit(true);
+          }
+        }, () => {
+          this.mediaErrored.emit(true);
         });
     }
   }

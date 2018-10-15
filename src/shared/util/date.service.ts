@@ -5,7 +5,8 @@ import { I18nService } from '../../shared/i18n/i18n.service';
 @Injectable()
 export class DateService {
 
-  constructor(private translateService: TranslateService, private i18nService: I18nService) {}
+  constructor(private translateService: TranslateService, private i18nService: I18nService) {
+  }
 
   /**
    * Difference duration between 2 dates, it can be compared to UTC
@@ -31,6 +32,7 @@ export class DateService {
    * Return string date when >= 1 day
    * Compare to UTC format 1970-1-1
    * @param {Date} date
+   * @param comparePast
    */
   getHumanReadableDate(date: Date = new Date(), comparePast: Date = new Date()): string {
     const years = date.getUTCFullYear();
@@ -54,7 +56,7 @@ export class DateService {
       return this.translateService.instant('date.now');
     }
     // Format to string locale fr
-    return this.translateService.instant('date.prefix', { value: hour }) +
+    return this.translateService.instant('date.prefix', {value: hour}) +
       this.translateService.instant('date.short_hour') +
       minute +
       this.translateService.instant('date.and') +
@@ -63,9 +65,9 @@ export class DateService {
 
   /**
    * Compare 2 date and return string duration
-   * @param  Date           comparePast
-   * @param  Date           source
    * @return {string}
+   * @param comparePast
+   * @param source
    */
   compareDatetoHumanReadableString(comparePast: Date = new Date(), source: Date = new Date()): string {
     const diff = this.diff(source, comparePast);
@@ -73,7 +75,6 @@ export class DateService {
 
     return readableTime;
   }
-
 
 
 }

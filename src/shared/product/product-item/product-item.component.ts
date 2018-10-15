@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../shared/product';
-import { ClothingProduct } from '../shared/clothing-product';
 import { DateService } from '../../util/date.service';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LoaderService } from '../../loader/loader.service';
+import { firestore, Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-product-item',
@@ -11,20 +13,29 @@ import { DateService } from '../../util/date.service';
 })
 export class ProductItemComponent implements OnInit {
 
-  _product: ClothingProduct;
-  @Output() updatedProduct: EventEmitter < ClothingProduct > = new EventEmitter < ClothingProduct > ();
+  _product: Product;
+  @Output() updatedProduct: EventEmitter<Product> = new EventEmitter<Product>();
   cols: number;
   resizedImage: any;
   humanPublishedAt: string;
+  @Input() showScore: boolean;
+  @Input() showAdd: boolean;
+  loading: boolean;
 
-  constructor(private router: Router, public dateService: DateService) {
+  constructor(private router: Router,
+              public dateService: DateService,
+              private localizeRouterService: LocalizeRouterService,
+              private loaderService: LoaderService) {
     // Add columns number for each images max < 4
     this.cols = 0;
     // Display fixed images for item view
-    this.resizedImage = { height: '240', width: '240' };
+    this.resizedImage = {height: '240'};
+    this.loading = true;
+    this.loaderService.show();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   /**
    * Getter for product
@@ -35,31 +46,45 @@ export class ProductItemComponent implements OnInit {
 
   /**
    * Product binding and auto resize columns
-   * @param ClothingProduct Product
+   * @param product
    */
-  @Input() set product(product: ClothingProduct) {
-    this.humanPublishedAt = this.dateService.compareDatetoHumanReadableString(product.published_at);
+  @Input() set product(product: Product) {
+    if (product.published_at && product.published_at.seconds && product.published_at.nanoseconds) {
+      this.humanPublishedAt = this.dateService
+        .compareDatetoHumanReadableString(product.published_at.toDate());
+    }
     this._product = product;
     this.countCols();
   }
 
   /**
    * Update a new score from a new score event
-   * @param {ClothingProduct} product
+   * @param {Product} product
    */
-  updateScoreProduct(product: ClothingProduct) {
+  updateScoreProduct(product: Product) {
     this.updatedProduct.emit(product);
+  }
+
+  onMediaLoaded(loaded: boolean) {
+    this.loading = !loaded;
+    if (loaded) {
+      this.loaderService.hide();
+    }
   }
 
   /**
    * Go to product page detail
    */
   productDetail() {
-    this.router.navigate(['/product', this.product.key + '-' + this.product.name]);
+    this.router.navigate([
+      this.localizeRouterService.translateRoute('/products'),
+      'product',
+      this.product.key + '-' + this.product.name
+    ]);
   }
 
   /**
-   * Count columns for each image in ClothingProduct type
+   * Count columns for each image in Product type
    */
   countCols() {
     if (this._product.image1) {

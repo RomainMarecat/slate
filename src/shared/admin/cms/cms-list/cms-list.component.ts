@@ -5,16 +5,17 @@ import { CmsService } from '../../../cms/shared/cms.service';
 import { Observable } from 'rxjs/Observable';
 import { MenuService } from 'shared/menu/menu.service';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-cms-list',
   templateUrl: './cms-list.component.html',
-  styleUrls: [ './cms-list.component.scss' ]
+  styleUrls: ['./cms-list.component.scss']
 })
 export class CmsListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   cmsList$: Observable<Cms[]>;
   selected: Cms[];
   isLoading: boolean;
@@ -32,7 +33,7 @@ export class CmsListComponent implements OnInit {
               private menuService: MenuService,
               private media: ObservableMedia
   ) {
-    this.columns = [ {
+    this.columns = [{
       prop: 'name',
       name: 'name',
       flexGrow: 1
@@ -44,7 +45,7 @@ export class CmsListComponent implements OnInit {
       prop: 'key',
       name: 'key',
       flexGrow: 1
-    } ];
+    }];
     this.selected = [];
     this.isLoading = true;
   }
@@ -105,7 +106,7 @@ export class CmsListComponent implements OnInit {
   }
 
   showCmsDetail(cms: Cms) {
-    this.router.navigate([ `/admin/cms/${cms.key}/cms-details` ]);
+    this.router.navigate([`/admin/cms/${cms.key}/cms-details`]);
   }
 
   onScroll(event: any) {

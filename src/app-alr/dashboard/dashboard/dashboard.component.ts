@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
 
   static getFeatures(): {name: string, img: string, url: string}[] {
     return [
+      {name: 'dashboard.features.name.product', img: '/assets/images/product.jpg', url: '/products'},
       {
         name: 'dashboard.features.name.layout-builder',
         img: '/assets/images/layout-builder.jpg',

@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { Partner } from 'shared/partner/partner';
 import { PartnerService } from 'shared/partner/partner.service';
 import { MenuService } from 'shared/menu/menu.service';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-partner-list',
@@ -14,7 +15,7 @@ import { MenuService } from 'shared/menu/menu.service';
 export class PartnerListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
-  columns: any;
+  columns: TableColumn[];
   partners: Partner[] = [];
   cache: Partner[] = [];
   isLoading = false;

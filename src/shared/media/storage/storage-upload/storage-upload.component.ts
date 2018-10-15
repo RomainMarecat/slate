@@ -9,7 +9,7 @@ import { AlertService } from '../../../popup/alert.service';
 @Component({
   selector: 'app-storage-upload',
   templateUrl: './storage-upload.component.html',
-  styleUrls: [ './storage-upload.component.scss' ]
+  styleUrls: ['./storage-upload.component.scss']
 })
 export class StorageUploadComponent implements OnInit {
 
@@ -34,8 +34,8 @@ export class StorageUploadComponent implements OnInit {
 
   uploadFile(event: any) {
     this.uploadPercent = 0;
-    const file = event.target.files[ 0 ];
-    const filePath = (this.folder ? this.folder + '/' : '') + event.target.files[ 0 ].name;
+    const file = event.target.files[0];
+    const filePath = (this.folder ? this.folder + '/' : '') + event.target.files[0].name;
     let imageRef: AngularFireUploadTask = null;
     if (this.metadata) {
       const ref = this.storage.ref(filePath);
@@ -70,7 +70,8 @@ export class StorageUploadComponent implements OnInit {
             updated_at: taskSnapshot.metadata.updated,
             url: downloadURL,
             type: 'storage',
-            alt: taskSnapshot.metadata.customMetadata.alt,
+            alt: taskSnapshot.metadata.customMetadata && taskSnapshot.metadata.customMetadata.alt ?
+              taskSnapshot.metadata.customMetadata.alt : null,
             extension: taskSnapshot.metadata.fullPath.substring(
               taskSnapshot.metadata.fullPath.lastIndexOf('.') + 1, taskSnapshot.metadata.fullPath.length
             ),

@@ -10,6 +10,7 @@ import { of } from 'rxjs/internal/observable/of';
 import { CmsService } from 'shared/cms/shared/cms.service';
 import { Cms } from 'shared/cms/shared/cms';
 import { TranslateService } from '@ngx-translate/core';
+import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-cms-detail-list',
@@ -19,7 +20,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class CmsDetailListComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 75;
-  columns: any;
+  columns: TableColumn[];
   cmsKey: string;
   cms: Cms;
   cmsDetails$: Observable<CmsDetail[]>;

@@ -1,5 +1,6 @@
 import { ClothingProduct } from './clothing-product';
 import { HockeyProduct } from './hockey-product';
+import { firestore, Timestamp } from 'firebase/firestore';
 
 export class Product implements ClothingProduct, HockeyProduct {
   name: string;
@@ -11,9 +12,9 @@ export class Product implements ClothingProduct, HockeyProduct {
   score: number;
 
   created_at: Date;
-  published_at: Date;
+  published_at: Date | Timestamp;
   translations ?: {
-    fr ?: string;
+    fr?: string;
   };
 
   url: string;
@@ -33,14 +34,14 @@ export class Product implements ClothingProduct, HockeyProduct {
   price: number;
   old_price ?: number;
   quantity ?: number;
-  size ?: Array < string > ;
+  size ?: Array<string>;
   published: boolean;
   delivery_fee ?: number;
   delivery_free ?: boolean;
   reseller ?: string;
   offers ?: string[];
   category ?: string;
-  attributes ?: Array < any > ;
+  attributes ?: Array<any>;
   area?: string;
 
   constructor() {

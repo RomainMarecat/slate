@@ -1,11 +1,19 @@
 <div class="container" *ngIf="!isHome()">
   <div class="row">
-    <div class="col-lg-12 offset-lg-0 col-10 offset-1">
-      <a [routerLink]="[location.url|localize]" *ngFor="let location of uriElements | async; let i = index;">
+    <div class="col-lg-12 offset-lg-0 col-10 offset-1 d-flex align-items-center">
+      <a class="breadcrumb-link" [routerLink]="[location.url|localize]"
+         *ngFor="let location of uriElements | async; let i = index;">
         <span *ngIf="i > 0"> - <span>{{ location.label |translate }}</span></span>
-        <span *ngIf="i === 0"><span>{{ location.label |translate }}</span></span>
+        <span *ngIf="i === 0" class="">
+          <span class="">
+            <mat-icon color="primary"
+                      class=""
+                      [matTooltip]="'cta.back_to_home'|translate">home
+            </mat-icon>
+          </span>
+        </span>
       </a>
-      <span *ngIf="product && product?.name" class="primary"> - {{ product.name }}</span>
+      <span *ngIf="product && product?.name" class="primary d-inline-flex align-items-center"> - {{ product.name }}</span>
     </div>
   </div>
 </div>
