@@ -10,7 +10,7 @@ import {
   WhereFilterOp,
   OrderByDirection
 } from '@firebase/firestore-types';
-import { AngularFirestoreCollection, DocumentChangeAction, Action , AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreCollection, DocumentChangeAction, Action, AngularFirestore } from '@angular/fire/firestore';
 import { Filter } from './../facet/filter/shared/filter';
 import { Sort } from './../facet/sort/shared/sort';
 import { map, switchMap } from 'rxjs/internal/operators';
@@ -38,7 +38,7 @@ export class VisitorService {
    * @param {AngularFirestore} afs
    * @param {string} table
    */
-  constructor(public afs: AngularFirestore, @Optional() @Inject('TABLE_NAME') table: string) {
+  constructor(public afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
     this.table = table;
     this.query$ = new BehaviorSubject(null);
     this.filters$ = new BehaviorSubject(null);
@@ -54,7 +54,7 @@ export class VisitorService {
       switchMap(([filters, limit, orderBy, query]) => {
         return this.afs.collection(this.table, (ref) => {
           this.query = ref;
-            if (query && this.query) {
+          if (query && this.query) {
             if (query.limit) {
               this.query = this.query.limit(query.limit);
             }
@@ -71,7 +71,7 @@ export class VisitorService {
           if (limit) {
             this.query = this.query.limit(limit);
           }
-          if (filters) {
+          if (filters && this.query) {
             filters.forEach((filter: Filter) => {
               this.query = this.query.where(filter.column, filter.operator as WhereFilterOp, filter.value);
             });
@@ -79,6 +79,7 @@ export class VisitorService {
           if (orderBy) {
             this.query = this.query.orderBy(orderBy.column, orderBy.direction as OrderByDirection);
           }
+
           return this.query;
         })
           .snapshotChanges();

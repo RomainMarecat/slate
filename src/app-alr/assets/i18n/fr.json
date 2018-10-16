@@ -338,6 +338,7 @@
   },
   "breadcrumb": {
     "home": "accueil",
+    "layout-builder": "Configurateur de layout",
     "article": {
       "add": "ajouter un article",
       "edit": "éditer un article",
@@ -414,6 +415,7 @@
   "cta": {
     "add": "ajouter",
     "add-to-cart": "ajouter au panier",
+    "add-france": "ajouter toutes les régions de la france",
     "learn-more": "en savoir plus",
     "back_to_home": "retour à la l'accueil",
     "back_to_users": "retour aux fonctionnalités utilisateurs",

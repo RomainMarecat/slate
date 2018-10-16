@@ -4,7 +4,13 @@ import { LayoutBuilderEditComponent } from './layout-builder-edit/layout-builder
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [
-  {path: '', component: LayoutBuilderEditComponent},
+  {
+    path: '',
+    component: LayoutBuilderEditComponent,
+    data: {
+      breadcrumb: 'breadcrumb.layout-builder'
+    }
+  },
 ];
 
 @NgModule({

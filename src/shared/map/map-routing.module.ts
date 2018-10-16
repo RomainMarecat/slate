@@ -11,8 +11,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), LocalizeRouterModule.forChild(routes)],
-  exports: [RouterModule, LocalizeRouterModule]
+  imports: [
+    RouterModule.forChild(routes),
+    LocalizeRouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule,
+    LocalizeRouterModule
+  ]
 })
 export class MapRoutingModule {
 }

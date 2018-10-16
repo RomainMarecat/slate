@@ -10,7 +10,7 @@
      fxLayout.xs="column"
      fxLayoutAlign.xs="start center">
 
-  <div class="form-wrapper"
+  <div class="form-wrapper mb-5"
        fxFlex="30"
        fxFlex.xs="100"
        fxLayout="column"
@@ -179,6 +179,19 @@
         </mat-card-actions>
       </mat-card>
     </form>
+    <div class="france-wrapper">
+      <button (click)="addFrance()"
+              type="button"
+              class="text-uppercase"
+              [disabled]="loadingFrance"
+              role="button"
+              color="primary"
+              mat-raised-button>
+        <mat-icon *ngIf="loadingFrance">refresh</mat-icon>
+        {{ 'cta.add-france'|translate }}
+      </button>
+    </div>
+
   </div>
   <div fxFlex="80"
        fxFlex.xs="100">

@@ -60,8 +60,13 @@ export class UserService {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
+  getLoginRedirectGoogle(): Promise<any> {
+    this.afAuth.auth.signInWithRedirect(new auth.GoogleAuthProvider());
+    return this.afAuth.auth.getRedirectResult();
+  }
+
   loginGoogle() {
-    this.getLoginGoogle()
+    this.getLoginRedirectGoogle()
       .then((result) => {
         const user = result.user;
         if (user) {
@@ -85,7 +90,7 @@ export class UserService {
   }
 
   logout() {
-    this.afAuth.auth.signOut().then(function () {
+    this.afAuth.auth.signOut().then(() => {
       this.clear();
       // Sign-out successful.
     }).catch(function (error) {
