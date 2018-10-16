@@ -6,7 +6,7 @@ import { VisitorService } from '../../firestore/visitor.service';
 
 @Injectable()
 export class AreaService extends VisitorService {
-  constructor(afs: AngularFirestore, @Optional() @Inject('TABLE_AREA') table: string) {
+  constructor(afs: AngularFirestore, @Inject('TABLE_AREA') table: string) {
     super(afs, table);
   }
 

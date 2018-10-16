@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AreaComponent } from './area/area.component';
 import { MapComponent } from './map/map.component';
@@ -16,7 +16,9 @@ import { LocationCurrentComponent } from './location-current/location-current.co
 import { AgmCoreModule } from '@agm/core';
 import { MapRoutingModule } from './map-routing.module';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { TABLE_AREA, TABLE_MAP } from '../../app-alr/core/core.module';
+
+export const TABLE_AREA = new InjectionToken<string>('area');
+export const TABLE_MAP = new InjectionToken<string>('map');
 
 @NgModule({
   imports: [
@@ -48,7 +50,6 @@ import { TABLE_AREA, TABLE_MAP } from '../../app-alr/core/core.module';
     {provide: TABLE_MAP, useValue: 'map'},
     {provide: MapService, useClass: MapService, deps: [AngularFirestore, TABLE_MAP]},
     {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
-    AreaService,
     GeocodeService
   ]
 })

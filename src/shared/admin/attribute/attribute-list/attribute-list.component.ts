@@ -76,7 +76,7 @@ export class AttributeListComponent implements OnInit {
       name: 'Actions',
       flexGrow: 1,
       cellTemplate: this.actionsCell
-    },];
+    }, ];
     this.attributeService.getAttributes()
       .pipe(take(1))
       .subscribe((attributes: Attribute[]) => {

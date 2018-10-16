@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MapService } from '../shared/map.service';
 import { Map } from '../shared/map';
 import { AlertService } from '../../popup/alert.service';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-map',
@@ -16,7 +15,18 @@ export class MapComponent implements OnInit {
   /**
    * Input mapconfig
    */
-  @Input() mapConfig: any;
+  @Input() mapConfig = {
+    context: {
+      path: {
+        fillStyle: '#3a435e',
+        strokeStyle: '#393d3f'
+      },
+      hovered: {
+        fillStyle: '#e71d36',
+        strokeStyle: '#393d3f'
+      }
+    }
+  };
 
   /**
    *
@@ -29,11 +39,10 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.mapService.getMaps()
-      .pipe(take(1))
       .subscribe((maps) => {
         this.map = maps[0];
       }, (err) => {
-        console.error(err);
+        this.alertService.show(err);
       });
   }
 }

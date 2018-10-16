@@ -1,9 +1,8 @@
-import { Component, Input, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AreaService } from '../shared/area.service';
 import { Area } from '../shared/area';
 import { Map } from '../shared/map';
 import { Filter } from '../../facet/filter/shared/filter';
-import { take } from 'rxjs/operators';
 import { AreaDrawComponent } from '../area-draw/area-draw.component';
 
 @Component({

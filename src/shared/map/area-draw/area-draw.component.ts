@@ -10,7 +10,7 @@ declare var Path2D: Path2DConstructor;
 @Component({
   selector: 'app-area-draw',
   templateUrl: './area-draw.component.html',
-  styleUrls: [ './area-draw.component.scss' ]
+  styleUrls: ['./area-draw.component.scss']
 })
 export class AreaDrawComponent implements OnInit {
   @ViewChild('map') mapRef: ElementRef;
@@ -84,7 +84,7 @@ export class AreaDrawComponent implements OnInit {
       this.paths.forEach((path) => {
         if (context.isPointInPath(path.path2D, mouseX, mouseY)) {
           // console.log('click', mouseX, mouseY, path.area);
-          this.router.navigate([ '/area/' + path.area.key + '-' + (path.area.name).toLowerCase() + '/products' ]);
+          this.router.navigate(['/area/' + path.area.key + '-' + (path.area.name).toLowerCase() + '/products']);
         }
       });
     });
