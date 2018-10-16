@@ -116,7 +116,7 @@
         <span *ngIf="!row.published" class="text-danger">non publié</span>
         <span>|</span>
         <span *ngIf="row.price">{{ row.price }} €</span>
-        <a [routerLink]="showProduct(row)">
+        <a [routerLink]="showProduct(row)" *ngIf="row.key && row.name">
           <mat-icon>remove_red_eye</mat-icon>
         </a>
         <a (click)="editProduct(row)">

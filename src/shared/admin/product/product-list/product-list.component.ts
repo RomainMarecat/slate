@@ -177,15 +177,17 @@ export class ProductListComponent implements OnInit {
   /**
    * route to show product preview
    * @param product
-   * @returns {string}
    */
-  showProduct(product: Product) {
-    return ([
-      '/product/',
-      product.key,
-      '-',
-      StringService.slugify(product.name)
-    ]).join('');
+  showProduct(product: Product): Array<any> {
+    if (!product.name || !product.key) {
+      return ['/'];
+    }
+
+    return [
+      this.localizeRouterService.translateRoute('/products'),
+      'product',
+      `${product.key}-${StringService.slugify(product.name)}`
+    ];
   }
 
   /**
@@ -270,7 +272,12 @@ export class ProductListComponent implements OnInit {
    */
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate(['/admin/product/edit/', event.row.key]);
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('/admin'),
+        'product',
+        'edit',
+        event.row.key
+      ]);
     }
   }
 

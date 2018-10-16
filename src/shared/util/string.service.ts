@@ -17,7 +17,7 @@ export class StringService {
    * @param snakeCasedString
    */
   public static snakeToCamel(snakeCasedString: string): string {
-    return snakeCasedString.replace(/(_\w)/g, function(m) {
+    return snakeCasedString.replace(/(_\w)/g, function (m) {
       return m[1].toUpperCase();
     });
   }
@@ -28,7 +28,7 @@ export class StringService {
    * @param string
    * @returns {string}
    */
-  public static capitalize(string) {
+  public static capitalize(string: string): string {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
@@ -38,7 +38,10 @@ export class StringService {
    * @param text
    * @returns {string}
    */
-  public static slugify(text) {
+  public static slugify(text: string): string {
+    if (!text) {
+      return '';
+    }
     return text.toString().toLowerCase()
       .replace(/\s+/g, '-') // Replace spaces with -
       .replace(/[^\w\-]+/g, '') // Remove all non-word chars
