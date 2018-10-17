@@ -42,15 +42,15 @@
       </mat-card>
     </div>
   </div>
-  <div class="card-content"
+  <div class="card-content py-5"
        fxLayout="row"
        fxLayoutAlign="center stretch">
     <ngx-datatable class="material striped datatable"
                    [columnMode]="'force'"
                    [rows]="articles"
                    [columns]="columns"
-                   [headerHeight]="headerHeight"
-                   [rowHeight]="rowHeight"
+                   [headerHeight]="50"
+                   [rowHeight]="100"
                    [loadingIndicator]="isLoading"
                    [scrollbarV]="true"
                    (scroll)="onScroll($event.offsetY)"
@@ -85,8 +85,13 @@
   </a>
 </ng-template>
 <ng-template #publicationCell let-value="value" let-row="row" ngx-datatable-cell-template>
-  <mat-radio-group [selected]="value ? published : unpublished" class="publication-radio-group mobile-hidden"
-                   [value]="value" (change)="updateArticlePublication(row, $event)">
+  <mat-radio-group [selected]="value ? published : unpublished"
+                   class="publication-radio-group mobile-hidden"
+                   [value]="value"
+                   (change)="updateArticlePublication(row, $event)"
+                   fxLayout="row"
+                   fxLayoutAlign="space-around stretch"
+                   fxLayoutGap="30px">
     <mat-radio-button #published class="publication-radio-button" [value]="true" color="primary">
       <span class="text-success">{{ 'admin.label.article.published'|translate }}</span>
     </mat-radio-button>
@@ -94,4 +99,18 @@
       <span class="text-danger">{{ 'admin.label.article.unpublished'|translate }}</span>
     </mat-radio-button>
   </mat-radio-group>
+</ng-template>
+
+<ng-template #headerTemplate
+            let-column="column"
+            let-sort="sortFn"
+            ngx-datatable-header-template>
+  <span class="datatable-header-cell-wrapper"
+        fxLayout="row"
+        fxLayoutAlign="center stretch">
+    <span class="datatable-header-cell-label draggable"
+          (click)="sort()">
+      {{ column.name | translate }}
+    </span>
+  </span>
 </ng-template>

@@ -60,6 +60,17 @@
                       <app-storage-detail [downloadURL]="downloadURL"
                                           classes="img-fluid">
                       </app-storage-detail>
+                      <div *ngIf="article?.images && article.images.length > 0">
+                        <div class="drag-wrapper">
+                          <div class="badge badge-default"
+                               *ngFor="let image of article?.images; let i = index; "
+                               [attr.image]="image">
+                            <app-image [resize]="{height:40}"
+                                       [key]="image"></app-image>
+                            <span>{{ i }}. {{ image }}</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

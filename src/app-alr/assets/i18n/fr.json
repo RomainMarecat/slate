@@ -342,7 +342,8 @@
     "article": {
       "add": "ajouter un article",
       "edit": "éditer un article",
-      "list": "liste des articles"
+      "list": "liste des articles",
+      "detail": "détail de l'article"
     },
     "products": {
       "add": "ajouter un produit",
@@ -372,6 +373,15 @@
   "cart-payment": {
     "errors": {
       "cart": "Une erreur est survenue. Le montant du panier est incohérent."
+    }
+  },
+  "datatable": {
+    "column": {
+      "name": "nom",
+      "description": "description",
+      "published": "publication",
+      "published_at": "date de publication",
+      "actions": "actions"
     }
   },
   "order-confirmation": {

@@ -5,7 +5,8 @@
         <h2>{{ article.name }}</h2>
       </mat-card-title>
     </mat-card-header>
-    <app-image [key]="article.images[0]" *ngIf="article.images && article.images.length"></app-image>
+    <app-image [key]="article.images[0]" [resize]="{height: 200}"
+               *ngIf="article.images && article.images.length"></app-image>
     <mat-card-content>
       <p [innerHtml]="article.description|safeHtml"></p>
     </mat-card-content>

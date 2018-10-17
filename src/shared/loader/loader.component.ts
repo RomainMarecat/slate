@@ -19,9 +19,8 @@ export class LoaderComponent implements OnInit, OnDestroy {
    *
    * @param {LoaderService} loaderService
    */
-  constructor(
-    private loaderService: LoaderService
-  ) {}
+  constructor(private loaderService: LoaderService) {
+  }
 
   /**
    * Subsribe to show loader

@@ -21,6 +21,8 @@ import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.se
 import { MediaModule } from 'shared/media/media.module';
 import { MediaService } from 'shared/media/media.service';
 import { MockMediaService } from 'shared/media/mock-media.service';
+import { LoaderService } from 'shared/loader/loader.service';
+import { MockLoaderService } from 'shared/loader/mock-loader.service';
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;
@@ -49,6 +51,7 @@ describe('ArticleListComponent', () => {
         {provide: MediaService, useClass: MockMediaService},
         {provide: ArticleService, useClass: MockArticleService},
         {provide: AlertService, useClass: MockAlertService},
+        {provide: LoaderService, useClass: MockLoaderService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
 
       ]

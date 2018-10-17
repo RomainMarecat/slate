@@ -8,6 +8,7 @@ import { ArticleService } from '../../../article/shared/article.service';
 import { AlertService } from '../../../popup/alert.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-admin-article-list',
@@ -16,8 +17,6 @@ import { TableColumn } from '@swimlane/ngx-datatable';
 })
 export class ArticleListComponent implements OnInit {
 
-  readonly headerHeight = 50;
-  readonly rowHeight = 50;
   columns: TableColumn[];
   articles: Article[] = [];
   isLoading = false;
@@ -25,15 +24,8 @@ export class ArticleListComponent implements OnInit {
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
   @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
   @ViewChild('publicationCell') publicationCell: TemplateRef<any>;
+  @ViewChild('headerTemplate') headerTemplate: TemplateRef<any>;
 
-  /**
-   * @param dialog
-   * @param router
-   * @param table
-   * @param menuService
-   * @param articleService
-   * @param alertService
-   */
   constructor(public dialog: MatDialog,
               private router: Router,
               private table: ElementRef,
@@ -77,39 +69,57 @@ export class ArticleListComponent implements OnInit {
    */
   ngOnInit() {
     this.menuService.nextTitle('Articles');
-    this.columns = [{
-      width: 50,
-      sortable: false,
-      canAutoResize: false,
-      draggable: false,
-      resizeable: false,
-      cellTemplate: this.checkboxCell,
-    }, {
-      prop: 'name',
-      name: 'name',
-      flexGrow: 1
-    }, {
-      prop: 'description',
-      name: 'description',
-      flexGrow: 1
-    }, {
-      prop: 'published_at',
-      name: 'published_at',
-      flexGrow: 1
-    }, {
-      prop: 'published',
-      name: 'published',
-      flexGrow: 1,
-      cellTemplate: this.publicationCell
-    }, {
-      prop: 'key',
-      name: 'Actions',
-      flexGrow: 1,
-      cellTemplate: this.actionsCell
-    }, ];
+    this.columns = [
+      {
+        width: 50,
+        sortable: false,
+        canAutoResize: false,
+        draggable: false,
+        resizeable: false,
+        cellTemplate: this.checkboxCell,
+      }, {
+        prop: 'name',
+        name: 'datatable.column.name',
+        headerTemplate: this.headerTemplate,
+        flexGrow: 1
+      }, {
+        prop: 'description',
+        name: 'datatable.column.description',
+        headerTemplate: this.headerTemplate,
+        flexGrow: 1
+      }, {
+        prop: 'published_at',
+        name: 'datatable.column.published_at',
+        headerTemplate: this.headerTemplate,
+        flexGrow: 1
+      }, {
+        prop: 'published',
+        name: 'datatable.column.published',
+        headerTemplate: this.headerTemplate,
+        flexGrow: 1,
+        cellTemplate: this.publicationCell
+      }, {
+        prop: 'key',
+        name: 'datatable.column.actions',
+        headerTemplate: this.headerTemplate,
+        flexGrow: 1,
+        cellTemplate: this.actionsCell
+      }
+    ];
+    this.getArticles();
+  }
+
+  getArticles() {
     this.articleService.getArticles()
       .subscribe((articles: Article[]) => {
-        this.articles = articles;
+        this.articles = articles.map((article) => {
+          article.published_at = moment(article.published_at.seconds * 1000).toDate() as Date;
+
+          return article;
+        });
+      }, (err) => {
+        this.alertService.show(err);
+        this.articles = [];
       });
   }
 

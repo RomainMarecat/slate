@@ -1,4 +1,6 @@
-export class Article {
+import { firestore, Timestamp } from 'firebase/firestore';
+
+export interface Article {
   key?: string;
   name: string;
   slug: string;
@@ -10,7 +12,7 @@ export class Article {
   author?: string;
   category?: string;
   tags?: string[];
-  published_at: Date | {seconds: number};
+  published_at: Date | Timestamp;
   published: boolean;
 
 }
