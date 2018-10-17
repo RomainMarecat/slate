@@ -9,6 +9,7 @@ import { MapService } from '../../../map/shared/map.service';
 import { AreaFormType } from '../../shared/map/form-area';
 import { Area } from '../../../map/shared/area';
 import { AreaService } from '../../../map/shared/area.service';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-admin-map-edit',
@@ -28,7 +29,8 @@ export class MapEditComponent implements OnInit {
               private areaService: AreaService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private localizeRouterService: LocalizeRouterService) {
     this.loadingFrance = false;
     this.createForm();
     this.createAreaForm();
@@ -107,7 +109,9 @@ export class MapEditComponent implements OnInit {
           }, (err) => {
             this.alertService.toast(`map error ${err}`);
           });
-        this.router.navigate(['/admin/maps']);
+        this.router.navigate([
+          '/admin/maps'
+        ]);
       } else {
         this.mapService.createMap(this.map)
           .then((doc: DocumentReference) => {

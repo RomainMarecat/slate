@@ -1,16 +1,17 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Area } from '../shared/area';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-area-list',
   templateUrl: './area-list.component.html',
-  styleUrls: [ './area-list.component.scss' ]
+  styleUrls: ['./area-list.component.scss']
 })
 export class AreaListComponent implements OnInit {
   _areas: Area[];
   @Output() areaHovered: EventEmitter<Area> = new EventEmitter<Area>();
 
-  constructor() {
+  constructor(private localizeRouterService: LocalizeRouterService) {
   }
 
   ngOnInit() {
@@ -25,7 +26,13 @@ export class AreaListComponent implements OnInit {
   }
 
   getLink(area: Area) {
-    return '/area/' + area.key + '-' + (area.name).toLowerCase() + '/products';
+    return [
+      this.localizeRouterService.translateRoute('/products'),
+      'map',
+      'area',
+      area.key + '-' + (area.name).toLowerCase(),
+      'products'
+    ];
   }
 
   onHoverArea(area: Area) {

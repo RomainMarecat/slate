@@ -19,33 +19,38 @@ import { MockAttributeService } from '../../../attribute/mock-attribute.service'
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('AttributeListComponent', () => {
   let component: AttributeListComponent;
-  let fixture: ComponentFixture < AttributeListComponent > ;
+  let fixture: ComponentFixture<AttributeListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          BrowserModule,
-          HttpClientTestingModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          NgxDatatableModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-          SharedModule,
-        ],
-        declarations: [AttributeListComponent, AttributeEditComponent],
-        providers: [
-          MenuService,
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: AttributeService, useClass: MockAttributeService },
-          { provide: MediaService, useClass: MockMediaService },
-        ]
-      })
+      imports: [
+        CommonModule,
+        BrowserModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        NgxDatatableModule,
+        LocalizeRouterModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+        SharedModule,
+      ],
+      declarations: [AttributeListComponent, AttributeEditComponent],
+      providers: [
+        MenuService,
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: AttributeService, useClass: MockAttributeService},
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
+
+      ]
+    })
       .compileComponents();
   }));
 

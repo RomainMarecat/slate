@@ -7,6 +7,7 @@ import { DialogComponent } from '../../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 import { SelectionService } from '../../../../selection/selection.service';
 import { ProductService } from '../../../../product/shared/product.service';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-selection-list',
@@ -39,8 +40,8 @@ export class SelectionListComponent implements OnInit {
               private productService: ProductService,
               private router: Router,
               private menuService: MenuService,
-              public dialog: MatDialog) {
-
+              public dialog: MatDialog,
+              private localizeRouterService: LocalizeRouterService) {
     this.selected = [];
     this.isLoading = true;
   }
@@ -211,7 +212,13 @@ export class SelectionListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate(['/admin/navigation/selection/edit/', event.row.key]);
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('/admin'),
+        'navigation',
+        'selection',
+        'edit',
+        event.row.key
+      ]);
     }
   }
 

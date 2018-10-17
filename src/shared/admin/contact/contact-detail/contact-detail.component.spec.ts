@@ -15,12 +15,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MockContactService } from '../../../contact/shared/mock-contact.service';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
-import { LoaderService } from '../../../loader/loader.service';
 import { DateService } from '../../../util/date.service';
 import { MenuService } from '../../../menu/menu.service';
 import { ObjectService } from '../../../util/object.service';
 import { I18nService } from '../../../i18n/i18n.service';
 import { DeviceService } from '../../../device/device.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('ContactDetailComponent', () => {
   let component: ContactDetailComponent;
@@ -36,7 +37,8 @@ describe('ContactDetailComponent', () => {
         SharedModule,
         NgxEditorModule,
         NgxDatatableModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        LocalizeRouterModule,
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -46,10 +48,11 @@ describe('ContactDetailComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ ContactDetailComponent ],
+      declarations: [ContactDetailComponent],
       providers: [
         {provide: ContactService, useClass: MockContactService},
         {provide: AlertService, useClass: MockAlertService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         DateService,
         MenuService,
         ObjectService,
@@ -57,7 +60,7 @@ describe('ContactDetailComponent', () => {
         DeviceService,
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

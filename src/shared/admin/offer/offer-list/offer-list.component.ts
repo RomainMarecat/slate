@@ -5,11 +5,12 @@ import { MatDialog } from '@angular/material';
 import { Offer } from '../../../offer/offer';
 import { OfferService } from '../../shared/offer/offer.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-offer-list',
   templateUrl: './offer-list.component.html',
-  styleUrls: [ './offer-list.component.scss' ]
+  styleUrls: ['./offer-list.component.scss']
 })
 export class OfferListComponent implements OnInit {
 
@@ -36,7 +37,8 @@ export class OfferListComponent implements OnInit {
               private router: Router,
               private table: ElementRef,
               private menuService: MenuService,
-              private offerService: OfferService) {
+              private offerService: OfferService,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   ngOnInit() {
@@ -52,7 +54,7 @@ export class OfferListComponent implements OnInit {
   }
 
   getColumns(): Array<any> {
-    return [ {
+    return [{
       width: 75,
       sortable: false,
       canAutoResize: false,
@@ -76,7 +78,7 @@ export class OfferListComponent implements OnInit {
       prop: 'external_url',
       name: 'Lien',
       flexGrow: 1,
-    },  {
+    }, {
       prop: 'published',
       name: 'Publication',
       flexGrow: 1,
@@ -86,21 +88,26 @@ export class OfferListComponent implements OnInit {
       name: 'Actions',
       flexGrow: 1,
       cellTemplate: this.actionsCell,
-    } ];
+    }];
   }
 
   /**
    * On select add new list in selection array
    * @param {any} selected
    */
-  onSelect({ selected }) {
+  onSelect({selected}) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate(['/admin/offer/edit/', event.row.key]);
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('/admin'),
+        'offer',
+        'edit',
+        event.row.key
+      ]);
     }
   }
 
@@ -108,10 +115,13 @@ export class OfferListComponent implements OnInit {
     this.dataTableComponentTable.rowDetail.toggleExpandRow(row);
   }
 
-  onDetailToggle(event) {}
+  onDetailToggle(event) {
+  }
 
-  onScroll(event: any) {}
+  onScroll(event: any) {
+  }
 
-  onCheckboxChangeFn(event) {}
+  onCheckboxChangeFn(event) {
+  }
 
 }

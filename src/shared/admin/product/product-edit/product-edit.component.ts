@@ -22,6 +22,7 @@ import { ProductService } from '../../../product/shared/product.service';
 import { debounceTime, take } from 'rxjs/operators';
 import { PartnerService } from '../../../partner/partner.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-product-edit',
@@ -50,18 +51,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   _attributesModel: any[] = [];
   isSaving = false;
 
-  /**
-   *
-   * @param activatedRoute
-   * @param router
-   * @param productService
-   * @param alertService
-   * @param categoryService
-   * @param attributeService
-   * @param dragulaService
-   * @param partnerService
-   * @param offerService
-   */
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private productService: ProductService,
@@ -70,7 +59,8 @@ export class ProductEditComponent implements OnInit, OnDestroy {
               private attributeService: AttributeService,
               private dragulaService: DragulaService,
               private partnerService: PartnerService,
-              private offerService: OfferService) {
+              private offerService: OfferService,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   /**

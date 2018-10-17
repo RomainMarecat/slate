@@ -4,6 +4,7 @@ import { Path2DConstructor } from '../shared/path2d';
 import { Router } from '@angular/router';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import 'rxjs/add/operator/take';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 declare var Path2D: Path2DConstructor;
 
@@ -22,7 +23,9 @@ export class AreaDrawComponent implements OnInit {
   containerHeight = 550;
   paths: any[] = [];
 
-  constructor(private router: Router, private media: ObservableMedia) {
+  constructor(private router: Router,
+              private media: ObservableMedia,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   getContainerHeight(): string {
@@ -84,7 +87,13 @@ export class AreaDrawComponent implements OnInit {
       this.paths.forEach((path) => {
         if (context.isPointInPath(path.path2D, mouseX, mouseY)) {
           // console.log('click', mouseX, mouseY, path.area);
-          this.router.navigate(['/area/' + path.area.key + '-' + (path.area.name).toLowerCase() + '/products']);
+          this.router.navigate([
+            this.localizeRouterService.translateRoute('/products'),
+            'map',
+            'area',
+            path.area.key + '-' + (path.area.name).toLowerCase(),
+            'products'
+          ]);
         }
       });
     });

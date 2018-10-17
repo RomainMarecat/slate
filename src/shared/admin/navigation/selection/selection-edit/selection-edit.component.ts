@@ -11,6 +11,7 @@ import { SelectionService } from '../../../../selection/selection.service';
 import { ProductService } from '../../../../product/shared/product.service';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/debounceTime';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-selection-edit',
@@ -44,7 +45,8 @@ export class SelectionEditComponent implements OnInit {
               private selectionService: SelectionService,
               private alertService: AlertService,
               private router: Router,
-              private productService: ProductService) {
+              private productService: ProductService,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   ngOnInit() {
@@ -143,7 +145,7 @@ export class SelectionEditComponent implements OnInit {
   }
 
   getSelection() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
+    this.activatedRoute.params.subscribe((value: {key: string}) => {
       if (value.key) {
         const key = value.key;
         this.selectionService.getSelection(key)
@@ -184,7 +186,11 @@ export class SelectionEditComponent implements OnInit {
           });
       }
 
-      this.router.navigate(['/admin/navigation/selection']);
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('/admin'),
+        'navigation',
+        'selection'
+      ]);
     }
   }
 

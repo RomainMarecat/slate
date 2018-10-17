@@ -32,6 +32,8 @@ import { DeviceService } from '../../../device/device.service';
 import { ContactService } from '../../../contact/shared/contact.service';
 import { MockContactService } from '../../../contact/shared/mock-contact.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('ContactListComponent', () => {
   let component: ContactListComponent;
@@ -45,6 +47,7 @@ describe('ContactListComponent', () => {
         SharedModule,
         NgxEditorModule,
         HttpClientTestingModule,
+        LocalizeRouterModule,
         RouterTestingModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
@@ -64,6 +67,7 @@ describe('ContactListComponent', () => {
         {provide: ProductService, useClass: MockProductService},
         {provide: NotificationService, useClass: MockNotificationService},
         {provide: AttributeService, useClass: MockAttributeService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         DateService,
         MenuService,
         ObjectService,

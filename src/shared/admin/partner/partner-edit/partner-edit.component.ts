@@ -6,11 +6,12 @@ import { PartnerFormType } from '../../shared/partner/form-partner';
 import { PartnerService } from 'shared/partner/partner.service';
 import { Partner } from 'shared/partner/partner';
 import { AlertService } from 'shared/popup/alert.service';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-partner-edit',
   templateUrl: './partner-edit.component.html',
-  styleUrls: [ './partner-edit.component.scss' ]
+  styleUrls: ['./partner-edit.component.scss']
 })
 export class PartnerEditComponent implements OnInit {
   @Input() showBackButton = true;
@@ -22,7 +23,8 @@ export class PartnerEditComponent implements OnInit {
   constructor(private partnerService: PartnerService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private localizeRouterService: LocalizeRouterService) {
     this.createForm();
   }
 
@@ -31,7 +33,7 @@ export class PartnerEditComponent implements OnInit {
   }
 
   getPartner() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
+    this.activatedRoute.params.subscribe((value: {key: string}) => {
       if (value.key) {
         const key = value.key;
         this.partnerService.getPartner(key)
@@ -65,7 +67,10 @@ export class PartnerEditComponent implements OnInit {
           }, (err) => {
             this.alertService.toast(`partner error ${err}`);
           });
-        this.router.navigate([ '/admin/partner' ]);
+        this.router.navigate([
+          this.localizeRouterService.translateRoute('/admin'),
+          'partner'
+        ]);
       } else {
         this.partnerService.createPartner(this.partner)
           .then((doc: DocumentReference) => {

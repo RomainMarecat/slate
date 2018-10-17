@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { MenuService } from 'shared/menu/menu.service';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-cms-list',
@@ -20,19 +21,12 @@ export class CmsListComponent implements OnInit {
   selected: Cms[];
   isLoading: boolean;
 
-  /**
-   * @param {ElementRef} table
-   * @param {cmsService} cmsService
-   * @param router
-   * @param menuService
-   * @param media
-   */
   constructor(private table: ElementRef,
               private cmsService: CmsService,
               private router: Router,
               private menuService: MenuService,
-              private media: ObservableMedia
-  ) {
+              private media: ObservableMedia,
+              private localizeRouterService: LocalizeRouterService) {
     this.columns = [{
       prop: 'name',
       name: 'name',
@@ -106,7 +100,12 @@ export class CmsListComponent implements OnInit {
   }
 
   showCmsDetail(cms: Cms) {
-    this.router.navigate([`/admin/cms/${cms.key}/cms-details`]);
+    this.router.navigate([
+      this.localizeRouterService.translateRoute('/admin'),
+      'cms',
+      cms.key,
+      'cms-details'
+    ]);
   }
 
   onScroll(event: any) {

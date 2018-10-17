@@ -32,6 +32,8 @@ import { MockAlertService } from '../../../popup/mock-alert.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MenuService } from '../../../menu/menu.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('CmsListComponent', () => {
   let component: CmsListComponent;
@@ -47,6 +49,7 @@ describe('CmsListComponent', () => {
         RouterTestingModule,
         BrowserAnimationsModule,
         NgxDatatableModule,
+        LocalizeRouterModule,
         MatCardModule,
         MatIconModule,
         MatButtonModule,
@@ -59,10 +62,11 @@ describe('CmsListComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ CmsListComponent ],
+      declarations: [CmsListComponent],
       providers: [
         {provide: CmsService, useClass: MockCmsService},
         {provide: AlertService, useClass: MockAlertService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         MenuService,
       ]
     })

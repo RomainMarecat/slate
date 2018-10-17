@@ -37,6 +37,8 @@ import { MockUserService } from '../../../user/shared/mock-user.service';
 import { environment } from '../../../../app-hockey/environments/environment';
 import { ProductService } from '../../../product/shared/product.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('AttributeEditComponent', () => {
   let component: AttributeEditComponent;
@@ -55,8 +57,9 @@ describe('AttributeEditComponent', () => {
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
         SharedModule,
         NgxEditorModule,
+        LocalizeRouterModule,
         NgxDatatableModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -67,7 +70,7 @@ describe('AttributeEditComponent', () => {
         }),
 
       ],
-      declarations: [ AttributeEditComponent ],
+      declarations: [AttributeEditComponent],
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: LoaderService, useClass: MockLoaderService},
@@ -77,6 +80,7 @@ describe('AttributeEditComponent', () => {
         {provide: ProductService, useClass: MockProductService},
         {provide: NotificationService, useClass: MockNotificationService},
         {provide: AttributeService, useClass: MockAttributeService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         DateService,
         ObjectService,
         I18nService,

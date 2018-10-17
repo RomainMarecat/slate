@@ -7,11 +7,12 @@ import { Contact } from '../../../contact/shared/contact';
 import { ContactService } from '../../../contact/shared/contact.service';
 import { AlertService } from '../../../popup/alert.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-admin-contact-list',
   templateUrl: './contact-list.component.html',
-  styleUrls: [ './contact-list.component.scss' ]
+  styleUrls: ['./contact-list.component.scss']
 })
 export class ContactListComponent implements OnInit {
 
@@ -24,20 +25,13 @@ export class ContactListComponent implements OnInit {
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
   @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
 
-  /**
-   * @param dialog
-   * @param router
-   * @param table
-   * @param menuService
-   * @param contactService
-   * @param alertService
-   */
   constructor(public dialog: MatDialog,
               private router: Router,
               private table: ElementRef,
               private menuService: MenuService,
               private contactService: ContactService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   /**
@@ -74,7 +68,7 @@ export class ContactListComponent implements OnInit {
    */
   ngOnInit() {
     this.menuService.nextTitle('Contacts');
-    this.columns = [ {
+    this.columns = [{
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -116,7 +110,12 @@ export class ContactListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate([ '/admin/contact/detail/', event.row.key ]);
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('/admin'),
+        'contact',
+        'detail',
+        event.row.key
+      ]);
     }
   }
 

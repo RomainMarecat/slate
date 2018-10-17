@@ -7,6 +7,7 @@ import { Category } from '../../category/category';
 import { map, startWith, take } from 'rxjs/operators';
 import { CategoryService } from '../../category/category.service';
 import { Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-product-search',
@@ -29,7 +30,8 @@ export class ProductSearchComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private categoryService: CategoryService,
-              private router: Router) {
+              private router: Router,
+              private localizeRouterService: LocalizeRouterService) {
     this.filteredBrands = this.form.controls.brand.valueChanges
       .pipe(
         startWith(''),

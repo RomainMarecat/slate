@@ -14,6 +14,8 @@ import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { PartnerService } from 'shared/partner/partner.service';
 import { MockPartnerService } from 'shared/partner/mock-partner.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('PartnerEditComponent', () => {
   let component: PartnerEditComponent;
@@ -25,6 +27,7 @@ describe('PartnerEditComponent', () => {
         CommonModule,
         BrowserModule,
         HttpClientModule,
+        LocalizeRouterModule,
         RouterTestingModule,
         BrowserAnimationsModule,
         NgxDatatableModule,
@@ -36,7 +39,8 @@ describe('PartnerEditComponent', () => {
       declarations: [PartnerEditComponent],
       providers: [
         {provide: AlertService, useClass: MockAlertService},
-        {provide: PartnerService, useClass: MockPartnerService}
+        {provide: PartnerService, useClass: MockPartnerService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
       ]
     })
       .compileComponents();

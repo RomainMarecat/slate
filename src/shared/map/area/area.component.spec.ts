@@ -11,6 +11,8 @@ import { MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgArrayPipesModule } from 'ngx-pipes';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('AreaComponent', () => {
   let component: AreaComponent;
@@ -25,11 +27,17 @@ describe('AreaComponent', () => {
         MatListModule,
         NgArrayPipesModule,
         FlexLayoutModule,
+        LocalizeRouterModule,
         RouterTestingModule,
       ],
-      declarations: [ AreaComponent, AreaListComponent, AreaDrawComponent ],
+      declarations: [
+        AreaComponent,
+        AreaListComponent,
+        AreaDrawComponent
+      ],
       providers: [
-        {provide: AreaService, useClass: MockAreaService}
+        {provide: AreaService, useClass: MockAreaService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
       ]
     })
       .compileComponents();

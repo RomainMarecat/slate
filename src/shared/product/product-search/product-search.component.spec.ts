@@ -15,6 +15,8 @@ import { CategoryService } from '../../category/category.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('ProductSearchComponent', () => {
   let component: ProductSearchComponent;
@@ -43,7 +45,8 @@ describe('ProductSearchComponent', () => {
       declarations: [ProductSearchComponent],
       providers: [
         {provide: ProductService, useClass: MockProductService},
-        {provide: CategoryService, useClass: MockCategoryService}
+        {provide: CategoryService, useClass: MockCategoryService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
       ]
     })
       .compileComponents();

@@ -17,6 +17,8 @@ import { MockAlertService } from '../../../popup/mock-alert.service';
 import { PartnerService } from 'shared/partner/partner.service';
 import { MockPartnerService } from 'shared/partner/mock-partner.service';
 import { PartnerImportComponent } from '../partner-import/partner-import.component';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('PartnerListComponent', () => {
   let component: PartnerListComponent;
@@ -44,7 +46,8 @@ describe('PartnerListComponent', () => {
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: MenuService, useClass: MenuService},
-        {provide: PartnerService, useClass: MockPartnerService}
+        {provide: PartnerService, useClass: MockPartnerService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
       ]
     })
       .compileComponents();

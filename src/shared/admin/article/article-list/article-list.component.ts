@@ -166,7 +166,10 @@ export class ArticleListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate([this.localizeRouterService.translateRoute('/admin/article/edit'), event.row.key]);
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('/admin/article/edit'),
+        event.row.key
+      ]);
     }
   }
 

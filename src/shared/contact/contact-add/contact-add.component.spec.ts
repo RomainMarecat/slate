@@ -21,6 +21,8 @@ import { MenuService } from '../../menu/menu.service';
 import { ObjectService } from '../../util/object.service';
 import { I18nService } from '../../i18n/i18n.service';
 import { DeviceService } from '../../device/device.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('ContactAddComponent', () => {
   let component: ContactAddComponent;
@@ -36,9 +38,10 @@ describe('ContactAddComponent', () => {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         SharedModule,
+        LocalizeRouterModule,
         NgxEditorModule,
         NgxDatatableModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -48,10 +51,11 @@ describe('ContactAddComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ ContactAddComponent ],
+      declarations: [ContactAddComponent],
       providers: [
         {provide: ContactService, useClass: MockContactService},
         {provide: AlertService, useClass: MockAlertService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         DateService,
         MenuService,
         ObjectService,

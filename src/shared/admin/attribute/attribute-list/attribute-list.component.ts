@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material';
 import { take } from 'rxjs/operators';
 import { AlertService } from '../../../popup/alert.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-attribute-list',
@@ -24,19 +25,13 @@ export class AttributeListComponent implements OnInit {
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
   @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
 
-  /**
-   * @param dialog
-   * @param router
-   * @param table
-   * @param menuService
-   * @param attributeService
-   */
   constructor(public dialog: MatDialog,
               private alertService: AlertService,
               private router: Router,
               private table: ElementRef,
               private menuService: MenuService,
-              private attributeService: AttributeService) {
+              private attributeService: AttributeService,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   /**
@@ -127,7 +122,12 @@ export class AttributeListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate(['/admin/attribute/edit/', event.row.key]);
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('/admin'),
+        'attribute',
+        'edit',
+        event.row.key
+      ]);
     }
   }
 

@@ -31,6 +31,8 @@ import { SelectionService } from '../../../../selection/selection.service';
 import { MockSelectionService } from '../../../../selection/mock-selection.service';
 import { MockProductService } from '../../../../product/shared/mock-product.service';
 import { ProductService } from '../../../../product/shared/product.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('SelectionEditComponent', () => {
   let component: SelectionEditComponent;
@@ -39,7 +41,7 @@ describe('SelectionEditComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -49,6 +51,7 @@ describe('SelectionEditComponent', () => {
         RouterTestingModule,
         SharedModule,
         NgxDatatableModule,
+        LocalizeRouterModule,
         NgxEditorModule,
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
         TranslateModule.forRoot({
@@ -56,7 +59,7 @@ describe('SelectionEditComponent', () => {
         }),
         RouterTestingModule
       ],
-      declarations: [ SelectionEditComponent ],
+      declarations: [SelectionEditComponent],
       providers: [
         {provide: SelectionService, useClass: MockSelectionService},
         {provide: AlertService, useClass: MockAlertService},
@@ -65,6 +68,7 @@ describe('SelectionEditComponent', () => {
         {provide: MediaService, useClass: MockMediaService},
         {provide: ProductService, useClass: MockProductService},
         {provide: NotificationService, useClass: MockNotificationService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         DateService,
         ObjectService,
         I18nService,

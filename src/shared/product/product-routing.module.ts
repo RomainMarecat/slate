@@ -30,6 +30,13 @@ const routes: Routes = [
     }
   },
   {
+    path: 'map/area/:key/products',
+    component: ProductListComponent,
+    data: {
+      breadcrumb: 'breadcrumb.products.list'
+    }
+  },
+  {
     path: 'product/:key',
     component: ProductDetailComponent,
     data: {

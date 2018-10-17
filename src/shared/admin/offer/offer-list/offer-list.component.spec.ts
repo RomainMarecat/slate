@@ -14,6 +14,8 @@ import { MockAlertService } from '../../../popup/mock-alert.service';
 import { MenuService } from '../../../menu/menu.service';
 import { OfferService } from '../../shared/offer/offer.service';
 import { MockOfferService } from '../../shared/offer/mock-offer.service';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;
@@ -26,21 +28,23 @@ describe('OfferListComponent', () => {
         BrowserModule,
         HttpClientModule,
         RouterTestingModule,
+        LocalizeRouterModule,
         BrowserAnimationsModule,
         NgxDatatableModule,
         TranslateModule.forRoot({
-          loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
         SharedModule,
       ],
-      declarations: [ OfferListComponent ],
+      declarations: [OfferListComponent],
       providers: [
-        { provide: AlertService, useClass: MockAlertService },
-        { provide: MenuService, useClass: MenuService },
-        { provide: OfferService, useClass: MockOfferService }
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: MenuService, useClass: MenuService},
+        {provide: OfferService, useClass: MockOfferService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -6,11 +6,12 @@ import { AlertService } from '../../popup/alert.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DocumentReference } from '@firebase/firestore-types';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-contact-add',
   templateUrl: './contact-add.component.html',
-  styleUrls: [ './contact-add.component.scss' ]
+  styleUrls: ['./contact-add.component.scss']
 })
 export class ContactAddComponent implements OnInit {
   form: FormGroup = ContactAddComponent.getForm();
@@ -18,16 +19,17 @@ export class ContactAddComponent implements OnInit {
 
   static getForm(): FormGroup {
     return new FormGroup({
-      name: new FormControl('', [ Validators.required ]),
-      email: new FormControl('', [ Validators.required ]),
-      message: new FormControl('', [ Validators.required ]),
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      message: new FormControl('', [Validators.required]),
     });
   }
 
   constructor(private contactService: ContactService,
               private alertService: AlertService,
               private router: Router,
-              private translate: TranslateService) {
+              private translate: TranslateService,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   ngOnInit() {
@@ -35,11 +37,11 @@ export class ContactAddComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.contact = { ...this.form.value };
+      this.contact = {...this.form.value};
       this.contactService.createContact(this.contact)
         .then((doc: DocumentReference) => {
           this.alertService.show(this.translate.instant(`contact.message.added`));
-          this.router.navigate([ '/' ]);
+          this.router.navigate(['/']);
         }, (err) => {
           this.alertService.show(`contact.message.error`);
         });

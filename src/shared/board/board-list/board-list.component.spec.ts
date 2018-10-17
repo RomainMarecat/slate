@@ -17,6 +17,8 @@ import { MockColumnService } from '../shared/mock-column.service';
 import { MockCardService } from '../shared/mock-card.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('BoardListComponent', () => {
   let component: BoardListComponent;
@@ -31,7 +33,9 @@ describe('BoardListComponent', () => {
         DragulaModule,
         SharedModule,
         HttpClientTestingModule,
+        LocalizeRouterModule,
         RouterTestingModule,
+        LocalizeRouterModule,
         BoardRoutingModule
       ],
       declarations: [
@@ -44,6 +48,7 @@ describe('BoardListComponent', () => {
         {provide: BoardService, useClass: MockBoardService},
         {provide: ColumnService, useClass: MockColumnService},
         {provide: CardService, useClass: MockCardService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
       ]
     })
       .compileComponents();

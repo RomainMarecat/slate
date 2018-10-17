@@ -2,17 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Board } from '../shared/board';
 import { BoardService } from '../shared/board.service';
 import { Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-recipe-board-list',
   templateUrl: './board-list.component.html',
-  styleUrls: [ './board-list.component.scss' ]
+  styleUrls: ['./board-list.component.scss']
 })
 export class BoardListComponent implements OnInit {
   boards: Board[] = [];
 
   constructor(private boardService: BoardService,
-              private router: Router) {
+              private router: Router,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   ngOnInit() {
@@ -39,7 +41,10 @@ export class BoardListComponent implements OnInit {
       .then((doc) => {
         board.key = doc.id;
         this.boardService.updateBoard(board).then(() => {
-          this.router.navigate([ '/board', board.key ]);
+          this.router.navigate([
+            this.localizeRouterService.translateRoute('/board'),
+            board.key
+          ]);
           console.log('new board added');
         }, (err) => {
           console.error(err);

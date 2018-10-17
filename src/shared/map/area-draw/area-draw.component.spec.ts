@@ -5,6 +5,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { mockAreas } from 'shared/map/shared/mock-area';
 
 describe('AreaDrawComponent', () => {
   let component: AreaDrawComponent;
@@ -17,9 +20,13 @@ describe('AreaDrawComponent', () => {
       imports: [
         CommonModule,
         FlexLayoutModule,
+        LocalizeRouterModule,
         RouterTestingModule,
       ],
-      declarations: [ AreaDrawComponent ]
+      declarations: [AreaDrawComponent],
+      providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
+      ]
     })
       .compileComponents();
   }));
@@ -31,6 +38,13 @@ describe('AreaDrawComponent', () => {
   });
 
   it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+
+  it('should create draw areas', () => {
+    component.areas = mockAreas;
+
     expect(component).toBeTruthy();
   });
 });

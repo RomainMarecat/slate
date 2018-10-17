@@ -17,6 +17,8 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgArrayPipesModule } from 'ngx-pipes';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('MapComponent', () => {
   let component: MapComponent;
@@ -32,15 +34,22 @@ describe('MapComponent', () => {
         MatListModule,
         NgArrayPipesModule,
         RouterTestingModule,
+        LocalizeRouterModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ MapComponent, AreaComponent, AreaListComponent, AreaDrawComponent ],
+      declarations: [
+        MapComponent,
+        AreaComponent,
+        AreaListComponent,
+        AreaDrawComponent
+      ],
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: MapService, useClass: MockMapService},
         {provide: AreaService, useClass: MockAreaService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
       ]
     })
       .compileComponents();

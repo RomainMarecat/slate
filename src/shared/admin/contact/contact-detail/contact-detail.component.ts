@@ -3,6 +3,7 @@ import { ContactService } from '../../../contact/shared/contact.service';
 import { AlertService } from '../../../popup/alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '../../../contact/shared/contact';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-blog-contact-detail',
@@ -16,14 +17,16 @@ export class ContactDetailComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private alertService: AlertService,
-              private contactService: ContactService) { }
+              private contactService: ContactService,
+              private localizeRouterService: LocalizeRouterService) {
+  }
 
   ngOnInit() {
     this.getContact();
   }
 
   getContact() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
+    this.activatedRoute.params.subscribe((value: {key: string}) => {
       if (value.key) {
         const key = value.key;
         this.contactService.getContact(key)
@@ -35,6 +38,11 @@ export class ContactDetailComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/admin/contact/list']);
+    this.router.navigate(
+      [
+        this.localizeRouterService.translateRoute('/admin'),
+        'contact',
+        'list'
+      ]);
   }
 }

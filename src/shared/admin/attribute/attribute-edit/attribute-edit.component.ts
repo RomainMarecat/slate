@@ -9,6 +9,7 @@ import { Attribute } from '../../../attribute/attribute';
 import { AttributeFormType } from '../../shared/attribute/form-attribute';
 import 'rxjs-compat/add/operator/debounceTime';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-attribute-edit',
@@ -31,17 +32,11 @@ export class AttributeEditComponent implements OnInit {
 
   _termsModel: string[] = [];
 
-  /**
-   *
-   * @param activatedRoute
-   * @param router
-   * @param alertService
-   * @param attributeService
-   */
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private alertService: AlertService,
-              private attributeService: AttributeService) {
+              private attributeService: AttributeService,
+              private localizeRouterService: LocalizeRouterService) {
     this.createForm();
   }
 
@@ -117,7 +112,10 @@ export class AttributeEditComponent implements OnInit {
           }, (err) => {
             this.alertService.toast(`attribute error ${err}`);
           });
-        this.router.navigate(['/admin/attribute']);
+        this.router.navigate([
+          this.localizeRouterService.translateRoute('/admin'),
+          'attribute'
+        ]);
       } else {
         this.attributeService.createAttribute(this.attribute)
           .then((doc: DocumentReference) => {

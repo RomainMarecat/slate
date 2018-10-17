@@ -6,6 +6,7 @@ import { Partner } from 'shared/partner/partner';
 import { PartnerService } from 'shared/partner/partner.service';
 import { MenuService } from 'shared/menu/menu.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-partner-list',
@@ -36,7 +37,8 @@ export class PartnerListComponent implements OnInit {
               private router: Router,
               private table: ElementRef,
               private menuService: MenuService,
-              private partnerService: PartnerService) {
+              private partnerService: PartnerService,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   ngOnInit() {
