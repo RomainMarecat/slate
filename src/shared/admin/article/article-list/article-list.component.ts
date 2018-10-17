@@ -112,8 +112,10 @@ export class ArticleListComponent implements OnInit {
   getArticles() {
     this.articleService.getArticles()
       .subscribe((articles: Article[]) => {
-        this.articles = articles.map((article) => {
-          article.published_at = moment(article.published_at.seconds * 1000).toDate() as Date;
+        this.articles = articles.map((article: Article) => {
+          if (article.published_at && article.published_at.seconds) {
+            article.published_at = moment(article.published_at.seconds * 1000).toDate() as Date;
+          }
 
           return article;
         });
