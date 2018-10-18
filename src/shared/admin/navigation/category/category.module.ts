@@ -35,7 +35,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFirestore } from 'angularfire2/firestore';
 
-const TABLE_CATEGORY = new InjectionToken<string>('attribute');
+export const TABLE_CATEGORY = new InjectionToken<string>('category');
 
 @NgModule({
   imports: [
@@ -78,7 +78,7 @@ const TABLE_CATEGORY = new InjectionToken<string>('attribute');
     {
       provide: CategoryService,
       useClass: CategoryService,
-      deps: [ AngularFirestore, TABLE_CATEGORY ]
+      deps: [AngularFirestore, TABLE_CATEGORY]
     },
   ]
 })

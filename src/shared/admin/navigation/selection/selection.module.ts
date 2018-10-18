@@ -12,8 +12,8 @@ import { SelectionService } from '../../../selection/selection.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { ProductService } from '../../../product/shared/product.service';
 
-const TABLE_SELECTION = new InjectionToken<string>('selection');
-const TABLE_PRODUCT = new InjectionToken<string>('product');
+export const TABLE_SELECTION = new InjectionToken<string>('selection');
+export const TABLE_PRODUCT = new InjectionToken<string>('product');
 
 @NgModule({
   imports: [

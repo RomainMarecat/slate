@@ -20,12 +20,12 @@ import { PartnerService } from '../../partner/partner.service';
 import { ProductService } from '../../product/shared/product.service';
 import { MediaService } from '../../media/media.service';
 
-const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
-const TABLE_OFFER = new InjectionToken<string>('offer');
-const TABLE_CATEGORY = new InjectionToken<string>('category');
-const TABLE_PARTNER = new InjectionToken<string>('partner');
-const TABLE_PRODUCT = new InjectionToken<string>('product');
-const TABLE_MEDIA = new InjectionToken<string>('media');
+export const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
+export const TABLE_OFFER = new InjectionToken<string>('offer');
+export const TABLE_CATEGORY = new InjectionToken<string>('category');
+export const TABLE_PARTNER = new InjectionToken<string>('partner');
+export const TABLE_PRODUCT = new InjectionToken<string>('product');
+export const TABLE_MEDIA = new InjectionToken<string>('media');
 
 @NgModule({
   imports: [

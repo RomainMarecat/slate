@@ -16,8 +16,8 @@ import { AlertService } from '../../popup/alert.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { MediaService } from '../../media/media.service';
 
-const TABLE_ARTICLE = new InjectionToken<string>('article');
-const TABLE_MEDIA = new InjectionToken<string>('media');
+export const TABLE_ARTICLE = new InjectionToken<string>('article');
+export const TABLE_MEDIA = new InjectionToken<string>('media');
 
 @NgModule({
   imports: [
