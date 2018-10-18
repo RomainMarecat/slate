@@ -20,7 +20,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgPipesModule } from 'ngx-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../media/cloudinary/cloudinary.module';
-import { ProductActionComponent } from '../product-item/product-action/product-action.component';
+import { ProductActionComponent } from '../product-action/product-action.component';
 import { MockProductService } from '../shared/mock-product.service';
 import { ProductService } from '../shared/product.service';
 import { ProductDetailComponent } from './product-detail.component';

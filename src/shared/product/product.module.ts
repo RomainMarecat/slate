@@ -14,7 +14,7 @@ import { ProductItemComponent } from 'shared/product/product-item/product-item.c
 import { ProductAddComponent } from 'shared/product/product-add/product-add.component';
 import { ProductFormComponent } from 'shared/product/product-add/product-form/product-form.component';
 import { ProductPreviewComponent } from 'shared/product/product-add/product-preview/product-preview.component';
-import { ProductActionComponent } from 'shared/product/product-item/product-action/product-action.component';
+import { ProductActionComponent } from 'shared/product/product-action/product-action.component';
 import { ProductService } from 'shared/product/shared/product.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ProductRoutingModule } from 'shared/product/product-routing.module';

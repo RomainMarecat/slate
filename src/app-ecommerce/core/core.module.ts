@@ -38,7 +38,7 @@ import { ProductDetailComponent } from '../../shared/product/product-detail/prod
 import { ProductItemComponent } from '../../shared/product/product-item/product-item.component';
 import { ProductAddComponent } from '../../shared/product/product-add/product-add.component';
 import { ProductFormComponent } from '../../shared/product/product-add/product-form/product-form.component';
-import { ProductActionComponent } from '../../shared/product/product-item/product-action/product-action.component';
+import { ProductActionComponent } from '../../shared/product/product-action/product-action.component';
 import { ProductListComponent } from '../../shared/product/product-list/product-list.component';
 import { ProductPreviewComponent } from '../../shared/product/product-add/product-preview/product-preview.component';
 import { SharedModule } from '../../shared/shared.module';

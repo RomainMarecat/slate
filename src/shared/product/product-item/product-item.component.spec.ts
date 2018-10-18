@@ -15,7 +15,7 @@ import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-tran
 import { NgPipesModule } from 'ngx-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductItemComponent } from './product-item.component';
-import { ProductActionComponent } from './product-action/product-action.component';
+import { ProductActionComponent } from '../product-action/product-action.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../media/cloudinary/cloudinary.module';
 import { DateService } from '../../util/date.service';

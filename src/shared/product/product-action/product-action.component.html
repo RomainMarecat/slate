@@ -1,0 +1,80 @@
+<mat-card-actions align="center"
+                  *ngIf="product && isProductScorable"
+                  angulartics2On="mouseover"
+                  angularticsAction="hoveredOverScoreActions"
+                  [angularticsCategory]="'score.actions'">
+  <button role="button" [attr.aria-label]="'product-item.product-action.mat-card-actions.button.minus.title'|translate"
+          mat-raised-button color="accent" (click)="score(product, 'minus')" angulartics2On="click"
+          angularticsAction="clickedOnScoreMinus" [angularticsCategory]="'score.minus'">
+    <mat-icon [attr.aria-label]="'product-item.product-action.mat-card-actions.button.minus.icon'|translate">
+      thumb_down
+    </mat-icon>
+  </button>
+  <span class="ugly-score" *ngIf="product?.score; else showScoreNull">{{ product.score }}</span>
+  <button role="button" [attr.aria-label]="'product-item.product-action.mat-card-actions.button.plus.title'|translate"
+          mat-raised-button color="primary" (click)="score(product, 'plus')" angulartics2On="click"
+          angularticsAction="clickedOnScorePlus" [angularticsCategory]="'score.plus'">
+    <mat-icon [attr.aria-label]="'product-item.product-action.mat-card-actions.button.plus.icon'|translate">thumb_up
+    </mat-icon>
+  </button>
+
+</mat-card-actions>
+
+
+<mat-card-actions *ngIf="isProductSellable">
+  <div class="cart-quantity-actions"
+       fxLayout="row"
+       fxLayoutAlign="space-between stretch"
+       fxLayoutGap="30px">
+
+    <button role="button"
+            [attr.aria-label]="'product-item.product-action.mat-card-actions.button.cart.title'|translate"
+            mat-fab
+            color="primary"
+            (click)="updateQuantity(-1)"
+            angulartics2On="click"
+            angularticsAction="clickedOnAddToCart"
+            [angularticsCategory]="'product.add.to.cart'">
+      <mat-icon [attr.aria-label]="'product-item.product-action.mat-card-actions.cart.plus.icon'|translate">
+        minus
+      </mat-icon>
+    </button>
+
+    <input #inputQuantity type="number" min="1" title="quantity"
+           value="1">
+
+    <button role="button"
+            [attr.aria-label]="'product-item.product-action.mat-card-actions.button.cart.title'|translate"
+            mat-fab
+            color="primary"
+            (click)="updateQuantity(1)"
+            angulartics2On="click"
+            angularticsAction="clickedOnAddToCart"
+            [angularticsCategory]="'product.add.to.cart'">
+      <mat-icon [attr.aria-label]="'product-item.product-action.mat-card-actions.cart.plus.icon'|translate">
+        plus
+      </mat-icon>
+    </button>
+  </div>
+
+  <div class="cart-action-add"
+       fxLayout="row"
+       fxLayoutAlign="center stretch"
+       fxLayoutGap="20px">
+    <button role="button"
+            [attr.aria-label]="'product-item.product-action.mat-card-actions.button.cart.title'|translate"
+            mat-raised-button
+            color="primary"
+            (click)="addToCart(product, inputQuantity.value)"
+            angulartics2On="click"
+            angularticsAction="clickedOnAddToCart"
+            [angularticsCategory]="'product.add.to.cart'">
+      {{ 'cta.add-to-cart'|translate }}
+    </button>
+  </div>
+</mat-card-actions>
+
+
+<ng-template #showScoreNull>
+  <span class="ugly-score">0</span>
+</ng-template>

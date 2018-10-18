@@ -29,13 +29,13 @@ import {
 } from '@angular/material';
 import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ProductActionComponent } from './product-action.component';
-import { MockProductService } from '../../shared/mock-product.service';
-import { MockUserService } from '../../../user/shared/mock-user.service';
-import { UserService } from '../../../user/shared/user.service';
-import { MockAlertService } from '../../../popup/mock-alert.service';
-import { AlertService } from '../../../popup/alert.service';
-import { ScoreService } from '../../../score/score.service';
-import { MockScoreService } from '../../../score/mock-score.service';
+import { MockProductService } from '../shared/mock-product.service';
+import { MockUserService } from '../../user/shared/mock-user.service';
+import { UserService } from '../../user/shared/user.service';
+import { MockAlertService } from '../../popup/mock-alert.service';
+import { AlertService } from '../../popup/alert.service';
+import { ScoreService } from '../../score/score.service';
+import { MockScoreService } from '../../score/mock-score.service';
 
 describe('ProductActionComponent', () => {
   let component: ProductActionComponent;
