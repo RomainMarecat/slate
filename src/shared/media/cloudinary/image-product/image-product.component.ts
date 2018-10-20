@@ -34,15 +34,6 @@ export class ImageProductComponent implements OnInit {
   isUploaded: boolean;
   cloudinaryActive = false;
 
-  /**
-   * constructor
-   * @param cloudinary
-   * @param zone
-   * @param http
-   * @param objectService
-   * @param mediaService
-   * @param deviceService
-   */
   constructor(@Optional() private cloudinary: Cloudinary,
               private zone: NgZone,
               private http: HttpClient,
@@ -248,7 +239,6 @@ export class ImageProductComponent implements OnInit {
 
   /**
    * Propagate new media to parent
-   * @param {Media} media
    */
   onMediaChange(media: Media) {
     this.mediaService.createMedia(media).then((doc: DocumentReference) => {

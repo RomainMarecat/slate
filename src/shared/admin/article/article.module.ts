@@ -5,7 +5,7 @@ import { ArticleRoutingModule } from './article-routing.module';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { NgxEditorModule } from 'ngx-editor';
 import { SharedModule } from '../../shared.module';
 import { ArticleService } from '../../article/shared/article.service';

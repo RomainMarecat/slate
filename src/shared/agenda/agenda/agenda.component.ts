@@ -3,7 +3,7 @@ import { I18nService } from '../../i18n/i18n.service';
 import * as moment from 'moment';
 import { Session } from '../../session/shared/session';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import 'moment/locale/en-gb';
 import 'moment/locale/fr';
 import { SessionService } from '../../session/shared/session.service';

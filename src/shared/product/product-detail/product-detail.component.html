@@ -33,7 +33,9 @@
                      [resize]="resizedImage"
                      *ngFor="let image of product.images"></app-image>
         </mat-card-content>
-        <app-product-action [product]="product"
+        <app-product-action [isProductScorable]="false"
+                            [isProductSellable]="true"
+                            [product]="product"
                             (updateScore)="updateScoreProduct($event)"></app-product-action>
       </mat-card>
     </div>

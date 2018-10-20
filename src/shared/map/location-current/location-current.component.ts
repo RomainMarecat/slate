@@ -29,7 +29,6 @@ export class LocationCurrentComponent implements OnInit {
 
   /**
    * Position of current pointer
-   * @param event
    */
   onMapClick(event: { coords: { lat: number, lng: number } }) {
     this.marker = {

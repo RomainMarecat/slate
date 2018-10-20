@@ -64,6 +64,11 @@
     "product": "product",
     "products": "produits"
   },
+  "meta": {
+    "description": {
+      "dashboard": "Liste des features"
+    }
+  },
   "admin": {
     "article": {
       "images": {

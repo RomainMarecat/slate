@@ -4,7 +4,7 @@ import { SelectionService } from '../../../shared/selection/selection.service';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { Selection } from '../../../shared/selection/selection';
 import { MenuService } from '../../../shared/menu/menu.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { take, map, debounceTime } from 'rxjs/operators';
 import 'rxjs/add/observable/fromEvent';
 import { Meta, Title } from '@angular/platform-browser';
@@ -28,16 +28,6 @@ export class SelectionListComponent implements OnInit {
   innerHeight: string = (document.documentElement.clientHeight - 65).toString() + 'px';
   active = {'hockey-player': '', 'hockey-goalie': ''};
 
-  /**
-   *
-   * @param translateService
-   * @param menuService
-   * @param selectionService
-   * @param loaderService
-   * @param router
-   * @param meta
-   * @param title
-   */
   constructor(private translateService: TranslateService,
               private menuService: MenuService,
               private selectionService: SelectionService,
@@ -103,7 +93,6 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * On expand selection, show children in current root tree
-   * @param Selection selection
    */
   expandChildren(selection: Selection) {
     this.currentSelectedSelection = selection;
@@ -124,8 +113,6 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * find Root in tree
-   * @return Selection
-   * @param object
    */
   findRoot(object: Selection): Selection {
     let root = this.findParent(object);
@@ -139,8 +126,6 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * find parent in tree
-   * @param  Selection object
-   * @return Selection
    */
   findParent(object: Selection): Selection {
     const parent = object && object.parent !== null ? object.parent : object;
@@ -151,9 +136,6 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * findOneBy predicate in tree
-   * @param object
-   * @param column
-   * @param value
    */
   findOneBy(object: Selection, column: string = 'id', value: string) {
     if (object[column] === value) {
@@ -173,9 +155,6 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * get tree children
-   * @return Selection[]
-   * @param selections
-   * @param parent
    */
   getNestedChildren(
     selections: Selection[],
@@ -196,7 +175,6 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * On active player or goalie selection
-   * @param selection
    */
   onActive(selection: Selection) {
     // Player

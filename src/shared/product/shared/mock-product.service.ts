@@ -1,7 +1,7 @@
 import { mockProduct } from './mock-product';
 import { Product } from './product';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { CollectionReference, Query } from '@firebase/firestore-types';
 import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import { Filter } from '../../facet/filter/shared/filter';

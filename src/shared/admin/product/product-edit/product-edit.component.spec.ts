@@ -31,8 +31,8 @@ import { AttributeService } from '../../../attribute/attribute.service';
 import { MockAttributeService } from '../../../attribute/mock-attribute.service';
 import { OfferService } from '../../shared/offer/offer.service';
 import { MockOfferService } from '../../shared/offer/mock-offer.service';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ProductImageOrderComponent } from '../product-image-order/product-image-order.component';
 import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
@@ -52,7 +52,7 @@ describe('ProductEditComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+        Angulartics2Module.forRoot( {
           developerMode: true,
           pageTracking: {
             clearIds: true,

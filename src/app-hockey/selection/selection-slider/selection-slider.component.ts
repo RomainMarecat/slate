@@ -25,7 +25,6 @@ export class SelectionSliderComponent implements OnInit {
 
   /**
    * Fetch products by Selection Type
-   * @param Selection selection
    */
   getProductsBySelection(selection: Selection) {
     if (selection && selection.products && selection.products.length > 0) {

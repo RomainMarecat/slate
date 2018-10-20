@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./delivery.component.scss']
 })
 export class DeliveryComponent implements OnInit {
-  @Input('form') form: FormGroup;
+  @Input() form: FormGroup;
 
   options: Array < string > ;
 

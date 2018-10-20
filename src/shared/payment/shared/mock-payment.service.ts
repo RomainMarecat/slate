@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Payment } from './payment';
 import { mockPayment } from './mock-payment';
 import { of } from 'rxjs/internal/observable/of';

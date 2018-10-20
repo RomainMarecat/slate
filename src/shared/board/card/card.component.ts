@@ -15,12 +15,6 @@ export class CardComponent implements OnInit {
   currentTitle: string;
   zone: NgZone;
 
-  /**
-   *
-   * @param {ElementRef} el
-   * @param {ChangeDetectorRef} ref
-   * @param {CardService} cardService
-   */
   constructor(private el: ElementRef,
               private ref: ChangeDetectorRef,
               private cardService: CardService) {
@@ -30,14 +24,10 @@ export class CardComponent implements OnInit {
   ngOnInit() {
   }
 
-  /**
-   *
-   * @param event
-   */
   blurOnEnter(event) {
-    if (event.keyCode === 13) {
+    if (event.key === 13) {
       event.target.blur();
-    } else if (event.keyCode === 27) {
+    } else if (event.key === 27) {
       this.card.title = this.currentTitle;
       this.editingCard = false;
     }

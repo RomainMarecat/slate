@@ -13,8 +13,6 @@ export class CsvExtratorService {
 
   /**
    * Extract all row from a csv file
-   * @param csv
-   * @param separator
    */
   extractData(csv, separator: string = ';', enclosedBy: string = '"'): Array<any> {
     const allTextLines = csv.split(/\r\n|\n/);
@@ -53,7 +51,6 @@ export class CsvExtratorService {
 
   /**
    * Process values of object
-   * @param object
    */
   processData(object: Object, enclosedBy: string): Object {
     Object.keys(object).forEach((index: string) => {
@@ -82,7 +79,6 @@ export class CsvExtratorService {
 
   /**
    * Convert all pseudo string number values to number, ex: "123" => 123
-   * @param value
    */
   convertToNumber(value: any) {
     if (this.isNumber(value)) {
@@ -94,7 +90,6 @@ export class CsvExtratorService {
 
   /**
    * Regex test number
-   * @param n
    */
   isNumber(n) {
     return /^-?[\d.]+(?:e-?\d+)?$/.test(n);
@@ -103,9 +98,6 @@ export class CsvExtratorService {
 
   /**
    * Replace value with array of replacement
-   * @param currentObject
-   * @param oldValue
-   * @param newValue
    */
   replaceWith(value, oldValue, newValue) {
     const replaceIndex = oldValue.indexOf(value);

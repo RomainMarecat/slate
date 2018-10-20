@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { LoaderService } from './loader.service';
 import { LoaderState } from './loader';
 
@@ -15,10 +15,6 @@ export class LoaderComponent implements OnInit, OnDestroy {
   show = false;
   private subscription: Subscription;
 
-  /**
-   *
-   * @param {LoaderService} loaderService
-   */
   constructor(private loaderService: LoaderService) {
   }
 

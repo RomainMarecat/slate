@@ -1,9 +1,9 @@
 import { mockArticle } from './mock-article';
 import { Article } from './article';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { CollectionReference, Query } from '@firebase/firestore-types';
-import { AngularFirestoreCollection, DocumentChangeAction } from 'angularfire2/firestore';
+import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Sort } from '../../facet/sort/shared/sort';
 import { of } from 'rxjs/internal/observable/of';

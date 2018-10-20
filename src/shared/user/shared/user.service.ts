@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { User } from './user';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/take';
-import 'rxjs/add/operator/do';
-import { map, take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 import { AlertService } from 'shared/popup/alert.service';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserService {
@@ -19,7 +17,7 @@ export class UserService {
       if (!user) {
         this.clear();
       }
-    }, (err) => {
+    }, () => {
       this.clear();
     });
   }
@@ -30,26 +28,26 @@ export class UserService {
         take(1),
         map(authState => {
           return authState && this.authorized.includes(authState.uid);
+        }),
+        tap(authenticated => {
+          if (!authenticated) {
+            return false;
+          }
         })
-      )
-      .do(authenticated => {
-        if (!authenticated) {
-          return false;
-        }
-      });
+      );
   }
 
   isAuthenticated(): Observable<boolean> {
     return this.afAuth.authState
       .pipe(
         take(1),
-        map(authState => !!authState)
-      )
-      .do(authenticated => {
-        if (!authenticated) {
-          this.alertService.toast('user.access_denied.connect');
-        }
-      });
+        map(authState => !!authState),
+        tap(authenticated => {
+          if (!authenticated) {
+            this.alertService.toast('user.access_denied.connect');
+          }
+        })
+      );
   }
 
   getUser(): User {

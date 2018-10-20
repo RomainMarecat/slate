@@ -20,7 +20,7 @@ import { NgPipesModule } from 'ngx-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './product-list.component';
 import { ProductItemComponent } from '../product-item/product-item.component';
-import { ProductActionComponent } from '../product-item/product-action/product-action.component';
+import { ProductActionComponent } from '../product-action/product-action.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../media/cloudinary/cloudinary.module';
 import { ProductService } from '../shared/product.service';
@@ -66,7 +66,7 @@ describe('ProductListComponent', () => {
         MatCheckboxModule,
         NgPipesModule,
         MatListModule,
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,

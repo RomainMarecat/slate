@@ -1,6 +1,6 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Document } from './document';
 import {
   CollectionReference,
@@ -33,11 +33,6 @@ export class VisitorService {
   query: CollectionReference | Query;
   table: string;
 
-  /**
-   *
-   * @param {AngularFirestore} afs
-   * @param {string} table
-   */
   constructor(public afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
     this.table = table;
     this.query$ = new BehaviorSubject(null);
@@ -109,10 +104,6 @@ export class VisitorService {
     }));
   }
 
-  /**
-   * @return Observable
-   * @param path
-   */
   private getDocPayload(path: string): Observable<any> {
     return this.document$ = this.collectionRef
       .doc(path)
@@ -130,8 +121,6 @@ export class VisitorService {
 
   /**
    * get a single document
-   * @returns Observable<Document>
-   * @param key
    */
   getDocument(key: null | string): Observable<Document> {
     if (key) {
@@ -142,7 +131,6 @@ export class VisitorService {
 
   /**
    * Update a document
-   * @param document
    */
   updateDocument(document: Document): Promise<void> {
     return this.collectionRef.doc(document.key).update({...document});
@@ -150,7 +138,6 @@ export class VisitorService {
 
   /**
    * create a Document
-   * @param document
    */
   createDocument(document: any): Promise<DocumentReference> {
     return this.collectionRef.add({...document});
@@ -158,7 +145,6 @@ export class VisitorService {
 
   /**
    * Delete a document
-   * @param document
    */
   deleteDocument(document: Document) {
     this.collectionRef.doc(document.key).delete();

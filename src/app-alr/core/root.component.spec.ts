@@ -40,9 +40,9 @@ import { I18nService } from '../../shared/i18n/i18n.service';
 import { MockUserService } from '../../shared/user/shared/mock-user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MockLoaderService } from '../../shared/loader/mock-loader.service';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRootComponent } from './root.component';
 import { SharedModule } from '../../shared/shared.module';
 import { MenuService } from '../../shared/menu/menu.service';
@@ -127,7 +127,7 @@ describe('AppRootComponent', () => {
         MatCommonModule,
         MatTooltipModule,
         NgcCookieConsentModule.forRoot(cookieConfig),
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,

@@ -3,8 +3,9 @@
     <mat-card class="mat-card">
       <mat-card-title class="mat-card-title">{{ materialsModule.title}}</mat-card-title>
       <mat-card-content>
-        <ngx-carousel [inputs]="carouselMaterialComponents">
-          <ngx-tile NgxCarouselItem *ngFor="let materialComponent of materialsModule.groups" class="ngx-tile">
+        <ngu-carousel [inputs]="carouselMaterialComponents" [dataSource]="materialsModule.groups">
+          <ngu-tile NguCarouselItem *nguCarouselDef="let materialComponent"
+                    class="ngu-tile">
             <div class="wBg">
               <h4><a [routerLink]="materialComponent.link">{{ materialComponent?.title }}</a></h4>
               <p *ngIf="materialComponent?.description">{{ materialComponent.description }}</p>
@@ -13,10 +14,10 @@
                 </div>
               </a>
             </div>
-          </ngx-tile>
-          <button NgxCarouselPrev class="leftRs">&lt;</button>
-          <button NgxCarouselNext class="rightRs">&gt;</button>
-        </ngx-carousel>
+          </ngu-tile>
+          <button NguCarouselPrev class="leftRs">&lt;</button>
+          <button NguCarouselNext class="rightRs">&gt;</button>
+        </ngu-carousel>
       </mat-card-content>
     </mat-card>
   </div>

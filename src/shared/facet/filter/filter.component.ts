@@ -9,12 +9,13 @@ import { FilterFacet } from './shared/filter-facet';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
-  @Output('closeSidenav') closeSidenav: EventEmitter < boolean > = new EventEmitter < boolean > ();
-  @Output('filtered') filtered: EventEmitter < Array < Filter > > = new EventEmitter < Array < Filter > > ();
+  @Output() closeSidenav: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() filtered: EventEmitter<Array<Filter>> = new EventEmitter<Array<Filter>>();
   facets: FilterFacet[];
-  filters: Array < Filter > = [];
+  filters: Array<Filter> = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) {
+  }
 
   ngOnInit() {
     this.facets = [

@@ -25,8 +25,6 @@ export class ProductActionComponent implements OnInit {
    * Add +1 or -1 on current score
    * Test if User is authenticated, is Authorized (First time score this item)
    * If test is true, update HockeyProduct
-   * @param HockeyProduct product
-   * @param string        score    string plus or minus
    * @todo Update plus or minus string by new alogrithm
    */
   score(product: HockeyProduct, score: string) {
@@ -54,8 +52,6 @@ export class ProductActionComponent implements OnInit {
   /**
    * Create new score in the collection with user id
    * Update the Product
-   * @param HockeyProduct product
-   * @param string        score
    */
   updateProductScore(product: HockeyProduct, score: string) {
     if (!product.score) {

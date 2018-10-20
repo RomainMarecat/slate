@@ -32,7 +32,7 @@ import {
 import { Angulartics2Module } from 'angulartics2';
 import { SlackModule } from './slack/slack.module';
 import { RouterModule } from '@angular/router';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { Environment } from './util/environment';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

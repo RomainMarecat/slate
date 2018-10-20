@@ -4,7 +4,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxEditorModule } from 'ngx-editor';
 import { SharedModule } from '../../shared.module';
 import { AttributeService } from '../../attribute/attribute.service';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 import { AttributeRoutingModule } from './attribute-routing.module';
 import { AttributeListComponent } from './attribute-list/attribute-list.component';

@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SelectionEditComponent } from './selection-edit/selection-edit.component';
 import { SelectionService } from '../../../selection/selection.service';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { ProductService } from '../../../product/shared/product.service';
 
 export const TABLE_SELECTION = new InjectionToken<string>('selection');

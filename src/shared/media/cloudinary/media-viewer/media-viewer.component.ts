@@ -9,9 +9,9 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./media-viewer.component.scss'],
 })
 export class MediaViewerComponent implements OnInit {
-  @Input('key') key: string;
+  @Input() key: string;
   media: Media;
-  @Input('resize') resize: any;
+  @Input() resize: any;
 
   constructor(private mediaService: MediaService) {
   }

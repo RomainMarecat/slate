@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Cms } from './cms';
 import { mockCms } from './mock-cms';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { AngularFirestoreCollection, DocumentChangeAction } from 'angularfire2/firestore';
+import { BehaviorSubject } from 'rxjs';
+import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import { CmsDetail } from '../../cms-detail/shared/cms-detail';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Sort } from '../../facet/sort/shared/sort';

@@ -28,11 +28,6 @@ export class MapComponent implements OnInit {
     }
   };
 
-  /**
-   *
-   * @param {MapService} mapService
-   * @param {AlertService} alertService
-   */
   constructor(private mapService: MapService,
               private alertService: AlertService) {
   }

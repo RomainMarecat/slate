@@ -53,7 +53,6 @@ export class CmsAddComponent implements OnInit {
 
   /**
    * Add an existing cms key
-   * @param cms
    */
   addCms(cms: {key: string, name: string}) {
     this.translateService.get(cms.name)

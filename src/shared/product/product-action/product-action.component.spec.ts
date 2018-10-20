@@ -5,30 +5,30 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ImageProductComponent } from './image-product.component';
-import { FileUploadModule } from 'ng2-file-upload';
-import { ImageCropperModule } from 'ngx-img-cropper';
+import { Angulartics2Module } from 'angulartics2';
 import {
+  MatCardModule,
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
-  MatFormFieldModule,
-  MatTooltipModule
+  MatInputModule,
+  MatCheckboxModule,
+  MatListModule
 } from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
-import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { ObjectService } from '../../../util/object.service';
-import { MediaService } from '../../media.service';
-import { MockMediaService } from '../../mock-media.service';
-import { DeviceService } from '../../../device/device.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { ProductActionComponent } from './product-action.component';
+import { MockUserService } from '../../user/shared/mock-user.service';
+import { UserService } from '../../user/shared/user.service';
+import { MockAlertService } from '../../popup/mock-alert.service';
+import { AlertService } from '../../popup/alert.service';
+import { ScoreService } from '../../score/score.service';
+import { MockScoreService } from '../../score/mock-score.service';
+import { MockCartService } from '../../cart/shared/mock-cart.service';
+import { CartService } from '../../cart/shared/cart.service';
 
-describe('ImageProductComponent', () => {
-  let component: ImageProductComponent;
-  let fixture: ComponentFixture<ImageProductComponent>;
-
-  configureTestSuite();
+describe('ProductActionComponent', () => {
+  let component: ProductActionComponent;
+  let fixture: ComponentFixture<ProductActionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -39,14 +39,14 @@ describe('ImageProductComponent', () => {
         HttpClientModule,
         RouterTestingModule,
         BrowserAnimationsModule,
-        ImageCropperModule,
-        FileUploadModule,
+        MatCardModule,
         MatIconModule,
         MatButtonModule,
         MatGridListModule,
-        MatFormFieldModule,
-        MatTooltipModule,
-        Angulartics2Module.forRoot( {
+        MatInputModule,
+        MatCheckboxModule,
+        MatListModule,
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -56,18 +56,19 @@ describe('ImageProductComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ImageProductComponent],
+      declarations: [ProductActionComponent],
       providers: [
-        ObjectService,
-        {provide: MediaService, useClass: MockMediaService},
-        DeviceService
+        {provide: CartService, useClass: MockCartService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: ScoreService, useClass: MockScoreService},
       ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImageProductComponent);
+    fixture = TestBed.createComponent(ProductActionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

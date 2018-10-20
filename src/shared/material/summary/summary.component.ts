@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxCarousel } from 'ngx-carousel';
+import { NguCarouselConfig } from '@ngu/carousel';
 
 export class MaterialModule {
   title: string;
@@ -18,7 +18,17 @@ export class MaterialComponent {
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit {
-  carouselMaterialComponents: NgxCarousel;
+  carouselMaterialComponents: NguCarouselConfig = {
+    grid: {xs: 1, sm: 3, md: 4, lg: 6, all: 230},
+    speed: 600,
+    animation: 'lazy',
+    point: {
+      visible: false
+    },
+    load: 2,
+    touch: true
+  };
+
   materialsModules: Array<MaterialModule> = [];
 
   constructor() {
@@ -200,16 +210,5 @@ export class SummaryComponent implements OnInit {
         ]
       }
     ];
-
-    this.carouselMaterialComponents = {
-      grid: {xs: 1, sm: 3, md: 4, lg: 6, all: 230},
-      speed: 600,
-      interval: 3000,
-      point: {
-        visible: false
-      },
-      load: 2,
-      touch: true
-    };
   }
 }

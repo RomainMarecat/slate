@@ -1,11 +1,9 @@
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Cart } from './cart';
-import { of } from 'rxjs/observable/of';
 import { mockCart } from './mock-cart';
-import { Filter } from 'shared/facet/filter/shared/filter';
 import { CollectionReference, Query } from '@firebase/firestore-types';
-import { AngularFirestoreCollection, DocumentChangeAction } from 'angularfire2/firestore';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
+import { Filter } from '../../facet/filter/shared/filter';
 
 export class MockCartService {
 

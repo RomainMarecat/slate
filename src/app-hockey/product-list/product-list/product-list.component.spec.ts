@@ -64,7 +64,7 @@ describe('ProductListComponent', () => {
         MatCheckboxModule,
         MatListModule,
         NgPipesModule,
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+        Angulartics2Module.forRoot( {
           developerMode: true,
           pageTracking: {
             clearIds: true,

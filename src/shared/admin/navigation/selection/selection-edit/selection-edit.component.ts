@@ -9,9 +9,8 @@ import { Media } from '../../../../media/media';
 import { StringService } from '../../../../util/string.service';
 import { SelectionService } from '../../../../selection/selection.service';
 import { ProductService } from '../../../../product/shared/product.service';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/debounceTime';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-selection-edit',
@@ -134,8 +133,10 @@ export class SelectionEditComponent implements OnInit {
 
   observeUpdate() {
     this.form.valueChanges
-      .debounceTime(800)
-      .distinctUntilChanged()
+      .pipe(
+        debounceTime(700),
+        distinctUntilChanged()
+      )
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
@@ -209,7 +210,6 @@ export class SelectionEditComponent implements OnInit {
 
   /**
    * On select add new list in selection array
-   * @param {any} selected
    */
   onSelectParent({selected}) {
     this.selectedParent = [];
@@ -222,7 +222,6 @@ export class SelectionEditComponent implements OnInit {
   /**
    * On select add new list in selection array
    * set at published at now et activate published to true
-   * @param {any} selected
    */
   onSelectProduct({selected}) {
     const productsKey = [];

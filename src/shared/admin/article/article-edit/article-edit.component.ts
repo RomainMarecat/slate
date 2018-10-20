@@ -91,7 +91,6 @@ export class ArticleEditComponent implements OnInit {
 
   /**
    * image change function of emitter
-   * @param media
    */
   onImageChange(media: Media) {
     this.form.patchValue({

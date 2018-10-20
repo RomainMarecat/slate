@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 export class StringService {
   /**
    * Transforme une chaine de camelCase vers snakeCase
-   * @param camelCasedString
    */
   public static camelToSnake(camelCasedString: string): string {
     return camelCasedString.replace(/\W+/g, '_')
@@ -14,7 +13,6 @@ export class StringService {
 
   /**
    * Transforme une chaine de snake_case vers camelCase
-   * @param snakeCasedString
    */
   public static snakeToCamel(snakeCasedString: string): string {
     return snakeCasedString.replace(/(_\w)/g, function (m) {
@@ -24,9 +22,6 @@ export class StringService {
 
   /**
    * ucfirst php version JS
-   *
-   * @param string
-   * @returns {string}
    */
   public static capitalize(string: string): string {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -34,9 +29,6 @@ export class StringService {
 
   /**
    * Normalizer de chaine pour eviter des caracteres speciaux
-   *
-   * @param text
-   * @returns {string}
    */
   public static slugify(text: string): string {
     if (!text) {

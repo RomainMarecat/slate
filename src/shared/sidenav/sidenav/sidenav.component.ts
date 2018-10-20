@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
 import { UserService } from '../../user/shared/user.service';
 import { SidenavService } from './../sidenav.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { ToggleState } from './../toggle';
 import { MatDrawer } from '@angular/material';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { I18nService } from '../../../shared/i18n/i18n.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { reduce, map, debounceTime } from 'rxjs/operators';
 import { User } from '../../user/shared/user';
 import { adminsID } from '../../guard/admin';
@@ -31,11 +31,6 @@ export class SidenavComponent implements OnInit, OnDestroy {
   private subscriptionSidenav: Subscription;
   private subscriptionSidenavFilter: Subscription;
 
-  /**
-   *
-   * @param {UserService} userService
-   * @param {SidenavService} sidenavService
-   */
   constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
     public userService: UserService,
     private loaderService: LoaderService,

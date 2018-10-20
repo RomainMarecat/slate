@@ -26,17 +26,6 @@ export class ProductDetailComponent implements OnInit {
     height: number,
   };
 
-  /**
-   *
-   * @param {Meta} meta
-   * @param {Title} title
-   * @param {ActivatedRoute} activatedRoute
-   * @param {ProductService} productService
-   * @param {DeviceService} deviceService
-   * @param {CommentService} commentService
-   * @param {UserService} userService
-   * @param {AlertService} alertService
-   */
   constructor(private meta: Meta,
               private title: Title,
               private activatedRoute: ActivatedRoute,

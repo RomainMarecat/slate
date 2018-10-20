@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../../../shared/menu/menu.service';
 import { Router } from '@angular/router';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { Meta } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -37,14 +40,18 @@ export class DashboardComponent implements OnInit {
     ];
   }
 
-  /**
-   * @param {MenuService} menuService
-   * @param {Router} router
-   * @param {LocalizeRouterService} localizeService
-   */
   constructor(private menuService: MenuService,
               private router: Router,
-              private localizeService: LocalizeRouterService) {
+              private localizeService: LocalizeRouterService,
+              private meta: Meta,
+              private translate: TranslateService) {
+    this.translate.get('meta.description.dashboard')
+      .pipe(
+        take(1)
+      )
+      .subscribe((translated) => {
+        this.meta.updateTag({name: 'description', content: translated});
+      });
   }
 
   /**
@@ -56,7 +63,6 @@ export class DashboardComponent implements OnInit {
 
   /**
    * Naviguer à ...
-   * @param {string} url
    */
   navigateTo(url: string) {
     this.router.navigate([this.localizeService.translateRoute(url)]);

@@ -6,7 +6,7 @@ import { StringService } from '../../../util/string.service';
 import { Product } from '../../../product/shared/product';
 import { Media } from '../../../media/media';
 import { CategoryService } from '../../../category/category.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { DocumentReference } from '@firebase/firestore-types';
 import { ImageProductComponent } from '../../../media/cloudinary/image-product/image-product.component';
 import { ProductFormType } from '../../shared/product/form-product';
@@ -180,7 +180,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   /**
    * images array changes function of emitter
-   * @param images
    */
   onImagesChange(images: Array<string>) {
     this.form.patchValue({
@@ -191,7 +190,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   /**
    * image change function of emitter
-   * @param media
    */
   onImageChange(media: Media) {
     this.medias.push(media);
@@ -270,8 +268,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   /**
    * save an offer in db
-   * @param offers
-   * @param doc
    */
   saveOffer(offers: Offer[], doc: {id: string}) {
     offers.forEach((offer: Offer) => {
@@ -293,7 +289,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   /**
    * delete an offer
-   * @param index
    */
   deleteOffer(index: number) {
     this.offers.removeAt(index);
@@ -301,7 +296,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   /**
    * add a new offer in form Array control
-   * @param key
    */
   addProductOffer(key: string) {
     this.product.offers.push(key);
@@ -312,7 +306,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   /**
    * error function to toast error on all subcriber
-   * @param err
    */
   addError(err) {
     this.alertService.toast(`product error ${err}`);
@@ -354,7 +347,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   /**
    * On select add reinit and add category in selection array
-   * @param any selected
    */
   onSelect({selected}) {
     this.selected = [];
@@ -421,7 +413,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
 
   /**
    * get offers controls cast to FormArray
-   * @returns {FormArray}
    */
   get offers(): FormArray {
     return this.form.get('offers') as FormArray;

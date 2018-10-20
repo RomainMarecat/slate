@@ -1,9 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Media } from './media';
-import { Observable } from 'rxjs/Observable';
-import { AngularFirestore } from 'angularfire2/firestore';
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/first';
+import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { VisitorService } from '../firestore/visitor.service';
 
 @Injectable()
@@ -32,28 +30,19 @@ export class MediaService extends VisitorService {
     return super.deleteDocument(media);
   }
 
-  /**
-   *
-   * @param {string} publicId
-   * @returns {Observable<Media[]>}
-   */
   filterByPublicId(publicId: string | null) {
-    this.filters$.next([ {
+    this.filters$.next([{
       value: publicId,
       column: 'public_id',
       operator: '=='
-    } ]);
+    }]);
   }
 
-  /**
-   *
-   * @param url
-   */
   filterByUrl(url: string | null) {
-    this.filters$.next([ {
+    this.filters$.next([{
       value: url,
       column: 'url',
       operator: '=='
-    } ]);
+    }]);
   }
 }

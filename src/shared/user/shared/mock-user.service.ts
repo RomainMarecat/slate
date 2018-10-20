@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { mockUser } from './mock-user';
 import { User } from './user';
 import { of } from 'rxjs/internal/observable/of';

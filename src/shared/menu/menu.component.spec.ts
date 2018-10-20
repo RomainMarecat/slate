@@ -40,7 +40,7 @@ describe('MenuComponent', () => {
         MatIconModule,
         MatButtonModule,
         MatToolbarModule,
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+        Angulartics2Module.forRoot( {
           developerMode: true,
           pageTracking: {
             clearIds: true,

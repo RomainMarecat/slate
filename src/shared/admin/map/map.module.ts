@@ -5,7 +5,7 @@ import { MapListComponent } from './map-list/map-list.component';
 import { MapEditComponent } from './map-edit/map-edit.component';
 import { SharedModule } from '../../shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { MapService } from '../../map/shared/map.service';
 import { MapAreasComponent } from './map-areas/map-areas.component';
 import { AreaService } from '../../map/shared/area.service';

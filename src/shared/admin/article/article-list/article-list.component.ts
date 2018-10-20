@@ -127,7 +127,6 @@ export class ArticleListComponent implements OnInit {
 
   /**
    * Update a publication
-   * @param article
    */
   private updatePublication(article: Article) {
     if (article.published === true) {
@@ -146,8 +145,6 @@ export class ArticleListComponent implements OnInit {
 
   /**
    * set published value
-   * @param article
-   * @param event
    */
   updateArticlePublication(article: Article, event: {source: any, value: boolean}) {
     article.published = event.value;
@@ -157,7 +154,6 @@ export class ArticleListComponent implements OnInit {
 
   /**
    * On select add new list in selection array
-   * @param {any} selected
    */
   onSelect({selected}) {
     this.selected.splice(0, this.selected.length);

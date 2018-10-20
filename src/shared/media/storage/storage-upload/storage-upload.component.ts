@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { Media } from '../../media';
 import { MediaService } from '../../media.service';
 import { DocumentReference } from '@firebase/firestore-types';
@@ -90,7 +90,6 @@ export class StorageUploadComponent implements OnInit {
 
   /**
    * Propagate new media to parent
-   * @param {Media} media
    */
   onMediaChange(media: Media) {
     this.mediaService.createMedia(media)

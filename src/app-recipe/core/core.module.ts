@@ -18,7 +18,7 @@ import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsen
 
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
-import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
 import { UserService } from '../../shared/user/shared/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
 import { ObjectService } from '../../shared/util/object.service';
@@ -31,7 +31,7 @@ import { SidenavService } from '../../shared/sidenav/sidenav.service';
 import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { DeviceService } from '../../shared/device/device.service';
-import { FirebaseAppConfig, AngularFireModule } from 'angularfire2';
+import { FirebaseAppConfig, AngularFireModule } from '@angular/fire';
 import { ProductService } from '../../shared/product/shared/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { SharedModule } from '../../shared/shared.module';

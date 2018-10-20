@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/storage';
+import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
 import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-storage-detail',
   templateUrl: './storage-detail.component.html',
-  styleUrls: [ './storage-detail.component.scss' ]
+  styleUrls: ['./storage-detail.component.scss']
 })
 export class StorageDetailComponent implements OnInit {
 
@@ -29,13 +29,13 @@ export class StorageDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Input('path') set path(path) {
+  @Input() set path(path) {
     this._path = path;
     this.getDownloadURL(path);
     this.getMetadata(path);
   }
 
-  @Input('downloadURL') set downloadURL(downloadURL) {
+  @Input() set downloadURL(downloadURL) {
     this._downloadURL = downloadURL;
   }
 

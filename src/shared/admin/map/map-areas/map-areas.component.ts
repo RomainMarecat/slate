@@ -127,10 +127,6 @@ export class MapAreasComponent implements OnInit {
   /**
    *
    * Update a column value with inline editing
-   * @param event
-   * @param {string} cell
-   * @param {Area} row
-   * @param {number} rowIndex
    */
   updateValue(event: any, cell: string, row: Area, rowIndex: number) {
     this.editing[ rowIndex + '-' + cell ] = false;
@@ -176,7 +172,6 @@ export class MapAreasComponent implements OnInit {
 
   /**
    * On select add new list in selection array
-   * @param {any} selected
    */
   onSelect({selected}) {
     this.selected.splice(0, this.selected.length);

@@ -56,7 +56,6 @@ export class CloudinaryUploadService {
 
   /**
    * Propagate new media to parent
-   * @param {Media} media
    */
   onMediaChange(media: Media): Promise < any > {
     return this.mediaService.createMedia(media);

@@ -157,7 +157,6 @@ export class PartnerListComponent implements OnInit {
 
   /**
    * On select add new list in selection array
-   * @param {any} selected
    */
   onSelect({selected}) {
     this.selected.splice(0, this.selected.length);

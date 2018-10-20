@@ -5,7 +5,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-calendar-header',
   templateUrl: './calendar-header.component.html',
-  styleUrls: [ './calendar-header.component.scss' ]
+  styleUrls: ['./calendar-header.component.scss']
 })
 export class CalendarHeaderComponent implements OnInit {
   private _viewMode: String;
@@ -17,13 +17,12 @@ export class CalendarHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  @Input('viewMode') set viewMode(viewMode) {
+  @Input() set viewMode(viewMode) {
     this.switchView(viewMode);
   }
 
   /**
    * Switch current view to another
-   * @param viewMode
    */
   switchView(viewMode: String) {
     this._viewMode = viewMode;
@@ -32,7 +31,6 @@ export class CalendarHeaderComponent implements OnInit {
 
   /**
    * getter of private _viewMode
-   * @returns {String}
    */
   get viewMode(): String {
     return this._viewMode;
@@ -40,7 +38,6 @@ export class CalendarHeaderComponent implements OnInit {
 
   /**
    * Emitter of view
-   * @param viewMode
    */
   onSwitchedView(viewMode: String) {
     this.switchedView.emit(viewMode);
@@ -48,7 +45,6 @@ export class CalendarHeaderComponent implements OnInit {
 
   /**
    * Emitter of start date moment
-   * @param start
    */
   onStartChanged(start: Moment) {
     this.startChanged.emit(start);
@@ -64,7 +60,6 @@ export class CalendarHeaderComponent implements OnInit {
 
   /**
    * Check if start is equal to today
-   * @returns {boolean}
    */
   isToday() {
     return moment() === moment(this.start);

@@ -13,7 +13,7 @@ import { CmsDetailComponent } from './cms-detail/cms-detail.component';
 import { CmsAddComponent } from './cms-add/cms-add.component';
 import { CmsService } from '../../cms/shared/cms.service';
 import { TranslateModule } from '@ngx-translate/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 const TABLE_CMS = new InjectionToken<string>('cms');
 

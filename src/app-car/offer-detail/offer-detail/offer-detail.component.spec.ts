@@ -16,8 +16,8 @@ import { MockCategoryService } from '../../../shared/category/mock-category.serv
 import { DeviceService } from '../../../shared/device/device.service';
 import { OfferService } from '../../../shared/offer/offer.service';
 import { MockOfferService } from '../../../shared/offer/mock-offer.service';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { MockCommentService } from '../../../shared/comment/mock-comment.service';
 import { CommentService } from '../../../shared/comment/comment.service';
 import { MockUserService } from '../../../shared/user/shared/mock-user.service';

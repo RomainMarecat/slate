@@ -39,16 +39,6 @@ export class ProductListComponent implements OnInit {
   publications: Array<object>;
   cloudinary = false;
 
-  /**
-   *
-   * @param {MatDialog} dialog
-   * @param {Router} router
-   * @param {ElementRef} table
-   * @param {MenuService} menuService
-   * @param {ProductService} productService
-   * @param {LocalizeRouterService} localizeRouterService
-   * @param {CloudinaryUploadService} cloudinaryUploadService
-   */
   constructor(public dialog: MatDialog,
               private router: Router,
               private table: ElementRef,
@@ -75,7 +65,6 @@ export class ProductListComponent implements OnInit {
 
   /**
    * Update a publication
-   * @param product
    */
   private updatePublication(product: Product) {
     if (product.published === true) {
@@ -91,8 +80,6 @@ export class ProductListComponent implements OnInit {
 
   /**
    * set published value
-   * @param product
-   * @param event
    */
   updateProductPublication(product: Product, event: {source: any, value: boolean}) {
     product.published = event.value;
@@ -147,7 +134,6 @@ export class ProductListComponent implements OnInit {
 
   /**
    * delete a single product after confirmation
-   * @param product
    */
   deleteProduct(product: Product) {
     this.productService.deleteProduct(product);
@@ -155,7 +141,6 @@ export class ProductListComponent implements OnInit {
 
   /**
    * confirm to delete message product
-   * @param product
    */
   confirmDelete(product: Product) {
     const dialogRef = this.dialog.open(DialogComponent, {
@@ -176,7 +161,6 @@ export class ProductListComponent implements OnInit {
 
   /**
    * route to show product preview
-   * @param product
    */
   showProduct(product: Product): Array<any> {
     if (!product.name || !product.key) {
@@ -192,7 +176,6 @@ export class ProductListComponent implements OnInit {
 
   /**
    * route to edit product
-   * @param product
    */
   editProduct(product: Product) {
     this.router.navigate([this.localizeRouterService.translateRoute('/admin'), 'product', 'edit', product.key]);
@@ -259,7 +242,6 @@ export class ProductListComponent implements OnInit {
 
   /**
    * On select add new list in selection array
-   * @param {any} selected
    */
   onSelect({selected}) {
     this.selected.splice(0, this.selected.length);
@@ -268,7 +250,6 @@ export class ProductListComponent implements OnInit {
 
   /**
    * on product activation
-   * @param event
    */
   onActivate(event) {
     if (event.type === 'dblclick') {
@@ -283,7 +264,6 @@ export class ProductListComponent implements OnInit {
 
   /**
    * expand row
-   * @param row
    */
   toggleExpandRow(row) {
     this.dataTableComponentTable.rowDetail.toggleExpandRow(row);
@@ -300,7 +280,6 @@ export class ProductListComponent implements OnInit {
 
   /**
    * Filtre sur les colonnes du produit
-   * @param string event
    */
   updateFilter(filter: Filter) {
     if (filter.value && filter.column) {

@@ -7,19 +7,17 @@ import { CloudinaryTransformationDirective } from './cloudinary-transformation.d
  * "{asdas d}" will return true, "asdasd}" will return false.
  *
  * this function does not validate the correctness of the string content other than the first and last character
- * @param str
- * @returns boolean
  */
-const isJsonLikeString = function(str: any): boolean {
+const isJsonLikeString = function (str: any): boolean {
   // [\s\S] allows the string to contain new lines
   return str && typeof str === 'string' && (str.trim().match(/^{[\s\S]*?}$/) !== null);
 };
 
-const isNamedNodeMap = function(obj: any): boolean {
+const isNamedNodeMap = function (obj: any): boolean {
   return obj && (obj.constructor.name === 'NamedNodeMap' || obj instanceof NamedNodeMap);
 };
 
-const namedNodeMapToObject = function(source: NamedNodeMap): any {
+const namedNodeMapToObject = function (source: NamedNodeMap): any {
   const target = {};
   Object.keys(source).forEach(index => {
     const name = source[index].name;
@@ -29,7 +27,7 @@ const namedNodeMapToObject = function(source: NamedNodeMap): any {
   return target;
 };
 
-const transformKeyNamesFromKebabToSnakeCase = function(obj: any): any {
+const transformKeyNamesFromKebabToSnakeCase = function (obj: any): any {
   let _obj = obj;
   if (isJsonLikeString(obj)) {
     // Given attribute value is in the form of a JSON object -
@@ -96,13 +94,9 @@ export class Cloudinary {
 
   /**
    * Transforms a set of attributes and chained transformations to an options object that can be consumed by Cloudinary JS API
-   * @param attributes HTML element attributes
-   * @param childTransformations QueryList with the element's <cl-transformation> children for chained transformations
-   * @param cloudinary Cloudinary service
-   * @returns An options object that can be consumed by Cloudinary JS API
    */
   toCloudinaryAttributes(attributes: NamedNodeMap,
-    childTransformations ?: QueryList < CloudinaryTransformationDirective > ): any {
+                         childTransformations ?: QueryList<CloudinaryTransformationDirective>): any {
     const options = transformKeyNamesFromKebabToSnakeCase(attributes);
 
     // Add chained transformations
@@ -125,7 +119,7 @@ export class Cloudinary {
 
 /* Return a provider object that creates our configurable service */
 export function provideCloudinary(cloudinaryJsLib: any, configuration: CloudinaryConfiguration) {
-  return { provide: Cloudinary, useFactory: () => new Cloudinary(cloudinaryJsLib, configuration) };
+  return {provide: Cloudinary, useFactory: () => new Cloudinary(cloudinaryJsLib, configuration)};
 }
 
 // For unit tests

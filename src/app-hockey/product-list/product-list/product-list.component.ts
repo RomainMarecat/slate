@@ -26,20 +26,6 @@ export class ProductListComponent implements OnInit {
   isLoading: boolean;
   selection: Selection;
 
-  /**
-   * @param productService
-   * @param selectionService
-   * @param router
-   * @param activatedRoute
-   * @param title
-   * @param meta
-   * @param ProductComponent
-   * @param userService
-   * @param menuService
-   * @param alertService
-   * @param loaderService
-   * @param translateService
-   */
   constructor(private productService: ProductService,
     private selectionService: SelectionService,
     private router: Router,

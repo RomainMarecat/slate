@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgcCookieConsentService, NgcStatusChangeEvent, NgcInitializeEvent } from 'ngx-cookieconsent';
-import { Subscription } from 'rxjs/Subscription';
 import { Meta, Title } from '@angular/platform-browser';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { UserService } from '../../shared/user/shared/user.service';
@@ -9,6 +8,7 @@ import { I18nService } from '../../shared/i18n/i18n.service';
 import { Favicon } from '../../shared/favicon/favicon.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -36,6 +36,8 @@ export class AppRootComponent implements OnInit, OnDestroy {
               private title: Title,
               private favicon: Favicon,
               private router: Router) {
+    this.angulartics2GoogleAnalytics.startTracking();
+
     // previous url
     let previousRoute = router.routerState.snapshot.url;
 
@@ -94,9 +96,6 @@ export class AppRootComponent implements OnInit, OnDestroy {
 
 /**
  * If component is new component with a view
- * @param {string} oldUrl
- * @param {string} newUrl
- * @returns {boolean}
  */
 function isNavigationWithinComponentView(oldUrl: string, newUrl: string) {
   const componentViewExpression = /components\/(\w+)/;

@@ -46,7 +46,6 @@ export class ProductItemComponent implements OnInit {
 
   /**
    * Product binding and auto resize columns
-   * @param product
    */
   @Input() set product(product: Product) {
     if (product.published_at && product.published_at.seconds && product.published_at.nanoseconds) {
@@ -59,7 +58,6 @@ export class ProductItemComponent implements OnInit {
 
   /**
    * Update a new score from a new score event
-   * @param {Product} product
    */
   updateScoreProduct(product: Product) {
     this.updatedProduct.emit(product);

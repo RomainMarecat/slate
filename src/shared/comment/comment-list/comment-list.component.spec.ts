@@ -39,39 +39,39 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 describe('CommentListComponent', () => {
   let component: CommentListComponent;
-  let fixture: ComponentFixture < CommentListComponent > ;
+  let fixture: ComponentFixture<CommentListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          MatButtonModule,
-          MatIconModule,
-          MatCardModule,
-          HttpClientTestingModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          FlexLayoutModule,
-          FormsModule,
-          MatInputModule,
-          MatFormFieldModule,
-          ReactiveFormsModule,
-          TranslateModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-        ],
-        declarations: [CommentListComponent, CommentEditComponent, CommentAddComponent, CommentDetailComponent],
-        providers: [
-          { provide: CommentService, useClass: MockCommentService }
-        ]
-      })
+      imports: [
+        CommonModule,
+        MatButtonModule,
+        MatIconModule,
+        MatCardModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        FlexLayoutModule,
+        FormsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        TranslateModule,
+        Angulartics2Module.forRoot({
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+      ],
+      declarations: [CommentListComponent, CommentEditComponent, CommentAddComponent, CommentDetailComponent],
+      providers: [
+        {provide: CommentService, useClass: MockCommentService}
+      ]
+    })
       .compileComponents();
   }));
 

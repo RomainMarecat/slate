@@ -15,7 +15,7 @@ import { NgArrayPipesModule } from 'ngx-pipes';
 import { LocationCurrentComponent } from './location-current/location-current.component';
 import { AgmCoreModule } from '@agm/core';
 import { MapRoutingModule } from './map-routing.module';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 export const TABLE_AREA = new InjectionToken<string>('area');
 export const TABLE_MAP = new InjectionToken<string>('map');

@@ -8,12 +8,14 @@ import { Sort } from './../shared/sort';
 })
 export class SortContainerComponent implements OnInit {
 
-  @Output('sorted') sorted: EventEmitter < Sort > = new EventEmitter < Sort > ();
-  @Output('closed') closed: EventEmitter < boolean > = new EventEmitter < boolean > ();
+  @Output() sorted: EventEmitter<Sort> = new EventEmitter<Sort>();
+  @Output() closed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   onSort(sort: Sort) {
     this.sorted.emit(sort);

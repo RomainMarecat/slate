@@ -18,12 +18,12 @@ export class ProductFormComponent implements OnInit {
   formAdditional: FormGroup;
   @Output() productChange: EventEmitter<Product> = new EventEmitter<Product>();
   product: Product;
-  @Input('_user') _user: any;
+  @Input() _user: any;
   disableDelivery: boolean;
   isLoading: boolean;
   isLinear: boolean;
   now: Date;
-  @Output('_submit') _submit: EventEmitter<Product> = new EventEmitter<Product>();
+  @Output() _submit: EventEmitter<Product> = new EventEmitter<Product>();
   image1: Media;
   image2: Media;
   image3: Media;

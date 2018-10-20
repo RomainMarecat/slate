@@ -6,7 +6,7 @@ import { PartnerListComponent } from './partner-list/partner-list.component';
 import { PartnerEditComponent } from './partner-edit/partner-edit.component';
 import { SharedModule } from '../../shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { PartnerOffersComponent } from './partner-offers/partner-offers.component';
 import { PartnerService } from '../../partner/partner.service';
 import { PartnerImportComponent } from './partner-import/partner-import.component';

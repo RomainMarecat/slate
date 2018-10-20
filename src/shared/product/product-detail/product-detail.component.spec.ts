@@ -20,7 +20,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgPipesModule } from 'ngx-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../media/cloudinary/cloudinary.module';
-import { ProductActionComponent } from '../product-item/product-action/product-action.component';
+import { ProductActionComponent } from '../product-action/product-action.component';
 import { MockProductService } from '../shared/mock-product.service';
 import { ProductService } from '../shared/product.service';
 import { ProductDetailComponent } from './product-detail.component';
@@ -56,7 +56,7 @@ describe('ProductDetailComponent', () => {
         MatListModule,
         MediaModule,
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -66,7 +66,7 @@ describe('ProductDetailComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ ProductDetailComponent, ProductActionComponent ],
+      declarations: [ProductDetailComponent, ProductActionComponent],
       providers: [
         {provide: ProductService, useClass: MockProductService},
         {provide: MediaService, useClass: MockMediaService},

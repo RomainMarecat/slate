@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { I18nService } from '../../shared/i18n/i18n.service';
+import { I18nService } from '../i18n/i18n.service';
 
 @Injectable()
 export class DateService {
@@ -10,9 +10,6 @@ export class DateService {
 
   /**
    * Difference duration between 2 dates, it can be compared to UTC
-   * @param  {Date} comparePast
-   * @param  {Date} source
-   * @return {Date}
    */
   diff(comparePast: Date, source: Date): Date {
     return new Date(source.valueOf() - comparePast.valueOf());
@@ -20,8 +17,6 @@ export class DateService {
 
   /**
    * isDate Check if value is right date format
-   * @param  {any}   value
-   * @return {boolean}
    */
   isDate(value: any): value is Date {
     return value instanceof Date && !isNaN(value.valueOf());
@@ -31,8 +26,6 @@ export class DateService {
    * Return string time when < 1 day
    * Return string date when >= 1 day
    * Compare to UTC format 1970-1-1
-   * @param {Date} date
-   * @param comparePast
    */
   getHumanReadableDate(date: Date = new Date(), comparePast: Date = new Date()): string {
     const years = date.getUTCFullYear();
@@ -65,9 +58,6 @@ export class DateService {
 
   /**
    * Compare 2 date and return string duration
-   * @return {string}
-   * @param comparePast
-   * @param source
    */
   compareDatetoHumanReadableString(comparePast: Date = new Date(), source: Date = new Date()): string {
     const diff = this.diff(source, comparePast);

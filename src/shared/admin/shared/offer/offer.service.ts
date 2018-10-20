@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { VisitorService } from './../../../firestore/visitor.service';
 import { Offer } from './../../../offer/offer';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable()
 export class OfferService extends VisitorService {

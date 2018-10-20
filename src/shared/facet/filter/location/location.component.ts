@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LocationComponent implements OnInit {
 
-  @Input('form') form: FormGroup;
+  @Input() form: FormGroup;
   color = 'primary';
   checked = false;
   disabled = false;

@@ -9,8 +9,8 @@ import { MatSelectChange } from '@angular/material';
   styleUrls: ['./country.component.scss']
 })
 export class CountryComponent implements OnInit {
-  @Input('form') form: FormGroup;
-  @Output('filtered') filtered: EventEmitter < Filter > = new EventEmitter < Filter > ();
+  @Input() form: FormGroup;
+  @Output() filtered: EventEmitter < Filter > = new EventEmitter < Filter > ();
   options: Array < string > ;
 
   constructor(private formBuilder: FormBuilder) {}

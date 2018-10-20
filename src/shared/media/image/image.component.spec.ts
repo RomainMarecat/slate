@@ -7,7 +7,7 @@ import { ImageComponent } from './image.component';
 import { MediaService } from '../media.service';
 import { MockMediaService } from '../mock-media.service';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
-import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { StorageModule } from '../storage/storage.module';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
@@ -22,7 +22,7 @@ describe('ImageComponent', () => {
       imports: [
         NgPipesModule,
         AngularFireStorageModule,
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+        Angulartics2Module.forRoot( {
           developerMode: true,
           pageTracking: {
             clearIds: true,

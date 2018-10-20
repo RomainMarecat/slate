@@ -1,6 +1,6 @@
 import { mockMedia } from './mock-media';
 import { Media } from './media';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { of } from 'rxjs/internal/observable/of';
 
 export class MockMediaService {

@@ -2,15 +2,14 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CmsDetail } from '../../../cms-detail/shared/cms-detail';
 import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Filter } from '../../../facet/filter/shared/filter';
-import 'rxjs/add/operator/take';
 import { AlertService } from '../../../popup/alert.service';
 import { of } from 'rxjs/internal/observable/of';
-import { CmsService } from 'shared/cms/shared/cms.service';
-import { Cms } from 'shared/cms/shared/cms';
 import { TranslateService } from '@ngx-translate/core';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { Cms } from '../../../cms/shared/cms';
+import { CmsService } from '../../../cms/shared/cms.service';
 
 @Component({
   selector: 'app-cms-detail-list',
@@ -28,14 +27,6 @@ export class CmsDetailListComponent implements OnInit {
   isLoading: boolean;
   activatedRows = {icon: {}, title: {}, parent: {}};
 
-  /**
-   * @param {ElementRef} table
-   * @param {CmsDetailService} cmsDetailService
-   * @param {CmsService} cmsService
-   * @param {ActivatedRoute} activeRoute
-   * @param {AlertService} alertService
-   * @param {TranslateService} translate
-   */
   constructor(private table: ElementRef,
               private cmsDetailService: CmsDetailService,
               private cmsService: CmsService,
@@ -106,30 +97,15 @@ export class CmsDetailListComponent implements OnInit {
     });
   }
 
-  /**
-   *
-   * @param {string} key
-   * @returns {Observable<CmsDetail>}
-   */
   getCmsDetail(key: string): Observable<CmsDetail> {
     return this.cmsDetailService.getCmsDetail(key);
   }
 
-  /**
-   * @param {number} index
-   */
   onActivateEdit(index: number) {
     this.activatedRows = {icon: {}, title: {}, parent: {}};
     this.activatedRows[index] = true;
   }
 
-  /**
-   *
-   * @param {string} column
-   * @param {CmsDetail} row
-   * @param {string} value
-   * @param {number} index
-   */
   onEdit(column: string, row: CmsDetail, value: string, index: number) {
     this.activatedRows = {icon: {}, title: {}, parent: {}};
     row[column] = value;
@@ -145,7 +121,6 @@ export class CmsDetailListComponent implements OnInit {
 
   /**
    * On select add new list in selection array
-   * @param selected
    */
   onSelect({selected}) {
     this.selected.splice(0, this.selected.length);

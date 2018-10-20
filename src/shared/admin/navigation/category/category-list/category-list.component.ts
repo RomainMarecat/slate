@@ -7,7 +7,7 @@ import { TableColumn } from '@swimlane/ngx-datatable';
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
-  styleUrls: [ './category-list.component.scss' ]
+  styleUrls: ['./category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit {
   readonly headerHeight = 50;
@@ -19,11 +19,6 @@ export class CategoryListComponent implements OnInit {
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
 
-  /**
-   * @param {ElementRef} table
-   * @param categoryService
-   * @param menuService
-   */
   constructor(private table: ElementRef,
               private categoryService: CategoryService,
               private menuService: MenuService) {
@@ -66,7 +61,7 @@ export class CategoryListComponent implements OnInit {
         this.categories = categories;
         this.isLoading = false;
       });
-    this.columns = [ {
+    this.columns = [{
       width: 50,
       sortable: false,
       canAutoResize: false,
@@ -115,7 +110,6 @@ export class CategoryListComponent implements OnInit {
 
   /**
    * On select add new list in selection array
-   * @param {any} selected
    */
   onSelect({selected}) {
     this.selected.splice(0, this.selected.length);

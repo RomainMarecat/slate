@@ -5,7 +5,7 @@ import { ProductService } from '../../../shared/product/shared/product.service';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { CloudinaryUploadService } from './../../../shared/media/cloudinary/cloudinary-upload.service';
 import { StringService } from '../../../shared/util/string.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { of } from 'rxjs/internal/observable/of';
 
 @Component({
@@ -14,7 +14,7 @@ import { of } from 'rxjs/internal/observable/of';
   styleUrls: ['./product-item.component.scss']
 })
 export class ProductItemComponent implements OnInit {
-  @Input('product') product: HockeyProduct;
+  @Input() product: HockeyProduct;
   image: string;
   editable: Observable<boolean> = of(false);
 

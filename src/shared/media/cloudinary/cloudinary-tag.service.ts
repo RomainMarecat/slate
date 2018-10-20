@@ -8,9 +8,8 @@ export class CloudinaryTagService {
   }
 
   /**
-     * Get tags from public id of cloudinary
-     * @return {any}
-     */
+   * Get tags from public id of cloudinary
+   */
   getPictureTags(publicId) {
     const imageTag = this.cloudinary.imageTag(publicId);
     return this.getElementAttributes(imageTag.attributes());
@@ -22,7 +21,7 @@ export class CloudinaryTagService {
   }
 
   getElementAttributes(attributesLiteral: string[]) {
-    const attr = { src: '' };
+    const attr = {src: ''};
 
     Object.keys(attributesLiteral).forEach(attrName => {
       attr[attrName] = attributesLiteral[attrName];

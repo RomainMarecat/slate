@@ -128,7 +128,6 @@ export class ProductDetailComponent implements OnInit {
 
   /**
    * Update current score for the product
-   * @param {Product} product
    */
   updateScoreProduct(product: Product) {
     this.updatedproduct.emit(product);

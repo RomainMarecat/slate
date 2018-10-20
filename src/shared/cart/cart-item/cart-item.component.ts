@@ -18,7 +18,6 @@ export class CartItemComponent implements OnInit {
 
   /**
    * Aller à l'étape suivante
-   * @type {EventEmitter<boolean>}
    */
   @Output() nextStep: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -38,9 +37,6 @@ export class CartItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  /**
-   * @param item
-   */
   updateTotalQuantity(item: CartItem) {
     this.totalQuantity = item.quantity;
     this.articleWord = (this.totalQuantity > 1) ? 'word.articles' : 'word.article';
@@ -50,10 +46,6 @@ export class CartItemComponent implements OnInit {
     this.nextStep.emit(true);
   }
 
-  /**
-   * @param item
-   * @param quantity
-   */
   updateCartItemQuantity(item: CartItem, quantity: number) {
     this.productUpdate.emit({
       item: item,
