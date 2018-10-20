@@ -21,10 +21,13 @@
 </mat-card-actions>
 
 
-<mat-card-actions *ngIf="isProductSellable">
+<mat-card-actions *ngIf="isProductSellable"
+                  fxLayout="column"
+                  fxLayoutAlign="center center"
+                  fxLayoutGap="30px">
   <div class="cart-quantity-actions"
        fxLayout="row"
-       fxLayoutAlign="space-between stretch"
+       fxLayoutAlign="center stretch"
        fxLayoutGap="30px">
 
     <button role="button"
@@ -36,7 +39,7 @@
             angularticsAction="clickedOnAddToCart"
             [angularticsCategory]="'product.add.to.cart'">
       <mat-icon [attr.aria-label]="'product-item.product-action.mat-card-actions.cart.plus.icon'|translate">
-        minus
+        remove
       </mat-icon>
     </button>
 
@@ -52,7 +55,7 @@
             angularticsAction="clickedOnAddToCart"
             [angularticsCategory]="'product.add.to.cart'">
       <mat-icon [attr.aria-label]="'product-item.product-action.mat-card-actions.cart.plus.icon'|translate">
-        plus
+        add
       </mat-icon>
     </button>
   </div>

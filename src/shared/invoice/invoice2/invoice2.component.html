@@ -1,17 +1,4 @@
 <div class="main-wrapper">
-
-  <div class="heading-wrapper"
-       fxLayout="row"
-       fxLayoutAlign="start center">
-    <a [routerLink]="['/invoices'|localize]" class="m-2">
-      <mat-icon color="primary"
-                [matTooltip]="'cta.back_to_invoice_list'|translate">home
-      </mat-icon>
-    </a>
-    <h2>{{ 'invoices.invoice2.title'|translate }}</h2>
-
-  </div>
-
   <div class="content-wrapper">
     <mat-card>
       <div class="header-container"
@@ -54,7 +41,9 @@
               <span>{{ 'invoices.invoice2.content.invoice.address'|translate }}</span>
             </mat-list-item>
             <mat-list-item>
-              <span>{{ 'invoices.invoice2.content.invoice.zipcode'|translate }}&nbsp;{{ 'invoices.invoice2.content.invoice.city'|translate }},&nbsp;{{ 'invoices.invoice2.content.invoice.country'|translate }}</span>
+              <span>{{ 'invoices.invoice2.content.invoice.zipcode'|translate }}&nbsp;{{
+                'invoices.invoice2.content.invoice.city'|translate }},&nbsp;{{
+                'invoices.invoice2.content.invoice.country'|translate }}</span>
             </mat-list-item>
           </mat-list>
           <mat-list class="mat-list address">
@@ -65,7 +54,9 @@
               <span>{{ 'invoices.invoice2.content.delivery.address'|translate }}</span>
             </mat-list-item>
             <mat-list-item>
-              <span>{{ 'invoices.invoice2.content.delivery.zipcode'|translate }}&nbsp;{{ 'invoices.invoice2.content.delivery.city'|translate }},&nbsp;{{ 'invoices.invoice2.content.delivery.country'|translate }}</span>
+              <span>{{ 'invoices.invoice2.content.delivery.zipcode'|translate }}&nbsp;{{
+                'invoices.invoice2.content.delivery.city'|translate }},&nbsp;{{
+                'invoices.invoice2.content.delivery.country'|translate }}</span>
             </mat-list-item>
           </mat-list>
           <mat-list>
@@ -201,12 +192,12 @@
                        fxLayout="row"
                        fxLayoutAlign="end stretch">
         <div>
-        <span class="item" [matTooltip]="'invoices.invoice2.content.phone.data'|translate">
-          {{ 'invoices.invoice2.content.phone.label'|translate }}</span>|
+          <span class="item" [matTooltip]="'invoices.invoice2.content.phone.data'|translate">
+            {{ 'invoices.invoice2.content.phone.label'|translate }}</span>|
           <span class="item" [matTooltip]="'invoices.invoice2.content.address.data'|translate">
-          {{ 'invoices.invoice2.content.address.label'|translate }}</span>|
+            {{ 'invoices.invoice2.content.address.label'|translate }}</span>|
           <span class="item" [matTooltip]="'invoices.invoice2.content.website.data'|translate">
-          {{ 'invoices.invoice2.content.website.label'|translate }}</span>
+            {{ 'invoices.invoice2.content.website.label'|translate }}</span>
         </div>
       </mat-card-footer>
     </mat-card>

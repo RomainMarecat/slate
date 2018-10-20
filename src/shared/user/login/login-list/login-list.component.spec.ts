@@ -16,6 +16,8 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 
 describe('LoginListComponent', () => {
   let component: LoginListComponent;
@@ -28,6 +30,7 @@ describe('LoginListComponent', () => {
         CommonModule,
         FlexLayoutModule,
         FormsModule,
+        LocalizeRouterModule,
         MatCardModule,
         MatButtonModule,
         MatIconModule,
@@ -42,7 +45,10 @@ describe('LoginListComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [LoginListComponent]
+      declarations: [LoginListComponent],
+      providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
+      ]
     })
       .compileComponents();
   }));

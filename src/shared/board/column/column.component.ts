@@ -4,7 +4,7 @@ import { Column } from '../shared/column';
 import { ColumnService } from '../shared/column.service';
 import { CardService } from '../shared/card.service';
 import { DragulaService } from 'ng2-dragula';
-import { AlertService } from 'shared/popup/alert.service';
+import { AlertService } from '../../popup/alert.service';
 
 @Component({
   selector: 'app-board-column',

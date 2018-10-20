@@ -16,6 +16,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -32,9 +33,9 @@ import { TranslateModule } from '@ngx-translate/core';
     MatTooltipModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
-  declarations: [RegisterListComponent, Register1Component],
+  declarations: [RegisterListComponent, Register1Component, RegisterComponent],
   exports: [RegisterListComponent, Register1Component],
 })
 export class RegisterModule {

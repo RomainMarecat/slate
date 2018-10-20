@@ -4,7 +4,13 @@ import { GprdComponent } from './gprd/gprd.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [
-  {path: '', component: GprdComponent}
+  {
+    path: '',
+    component: GprdComponent,
+    data: {
+      breadcrumb: 'breadcrumb.gprd'
+    }
+  }
 ];
 
 @NgModule({

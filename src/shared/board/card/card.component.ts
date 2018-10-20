@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, NgZone, OnInit, Output } from '@angular/core';
 import { Card } from '../shared/card';
 import { CardService } from '../shared/card.service';
-import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-board-card',

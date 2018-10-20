@@ -1,16 +1,33 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BoardComponent } from './board/board.component';
 import { BoardListComponent } from './board-list/board-list.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { BoardComponent } from './board/board.component';
+import { BoardDetailComponent } from './board-detail/board-detail.component';
 
 const routes: Routes = [
   {
-    path: ':key',
-    component: BoardComponent
-  }, {
     path: '',
-    component: BoardListComponent
+    component: BoardComponent,
+    data: {
+      breadcrumb: 'breadcrumb.board.title'
+    },
+    children: [
+      {
+        path: '',
+        component: BoardListComponent,
+        data: {
+          breadcrumb: 'breadcrumb.board.list'
+        },
+      },
+      {
+        path: ':key',
+        component: BoardDetailComponent,
+        data: {
+          breadcrumb: 'breadcrumb.board.detail'
+        },
+      },
+    ]
   },
 ];
 

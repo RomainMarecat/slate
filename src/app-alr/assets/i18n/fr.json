@@ -7,6 +7,7 @@
     "layout-builder": "configurateur-de-layout",
     "material": "material-design",
     "button-indicators": "button-indicators",
+    "detail": "detail",
     "datatable": "datatable",
     "form": "form",
     "layout": "layout",
@@ -49,7 +50,12 @@
     "invoices": "facturation",
     "invoices/invoice1": "style-1",
     "invoices/invoice2": "style-2",
+    "login1": "login-style-1",
+    "login2": "login-style-2",
+    "logins": "connexion",
+    "registers": "enregistrement",
     "user": "utilisateur",
+    "users": "utilisateurs",
     "calendar": "agenda",
     "admin": "administration",
     "article": "article",
@@ -342,19 +348,68 @@
     }
   },
   "breadcrumb": {
-    "home": "accueil",
-    "layout-builder": "Configurateur de layout",
     "article": {
       "add": "ajouter un article",
       "edit": "éditer un article",
       "list": "liste des articles",
       "detail": "détail de l'article"
     },
+    "board": {
+      "title": "tableau de bord",
+      "list": "liste des tableaux de bord",
+      "detail": "détail du tableau de bord"
+    },
+    "chart": "chart",
+    "gprd": "rgpd",
+    "home": "accueil",
+    "invoices": {
+      "title": "facturation",
+      "invoice1": "facture style 1",
+      "invoice2": "facture style 2"
+    },
+    "layout-builder": "Configurateur de layout",
+    "material": {
+      "title": "material",
+      "summary": "sommaire",
+      "button": {
+        "title": "button"
+      },
+      "datatable": {
+        "title": "datatable"
+      },
+      "form": {
+        "title": "form"
+      },
+      "layout": {
+        "title": "layout"
+      },
+      "navigation": {
+        "title": "navigation"
+      },
+      "popup": {
+        "title": "popup"
+      }
+    },
+    "timeline": "timeline",
     "products": {
+      "title": "produits",
       "add": "ajouter un produit",
       "edit": "éditer un produit",
       "list": "liste des produits",
       "detail": "détail du produit"
+    },
+    "user": {
+      "title": "utilisateur",
+      "login": {
+        "title": "connexion",
+        "style-1": "style 1",
+        "style-2": "style 2"
+      },
+      "register": {
+        "title": "s'enregistrer",
+        "style-1": "style 1",
+        "style-2": "style 2"
+      }
     }
   },
   "cart": {

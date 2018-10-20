@@ -1,0 +1,57 @@
+<div class="board-wrapper">
+  <div *ngIf="board" class="board-title">
+    <span [style.display]="editingTitle ? 'none' : ''"
+          (click)="editTitle()">
+      {{ board?.title }}
+    </span>
+
+    <input [style.display]="editingTitle ? '' : 'none' "
+           (keyup)="blurOnEnter($event)"
+           (blur)="updateBoard()"
+           [(ngModel)]="board.title"/>
+  </div>
+
+  <section class="board-columns-wrapper"
+           id="main"
+           *ngIf="board">
+    <div class="columns-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="start stretch"
+         fxLayoutGap="10px">
+      <!--[dragula]="'board-bag'"-->
+      <!--[dragulaModel]="board.columns"-->
+      <!--[dragulaOptions]="options"-->
+      <div *ngFor="let column of board.columns"
+           class="sortable-column">
+
+
+        <app-board-column [column]="column"
+                          (cardAdded)="addCard($event)"
+                          [cards]="board.cards">
+        </app-board-column>
+
+
+      </div>
+      <div class="add-column"
+           [class.addingColumn]="addingColumn"
+           (click)="enableAddColumn()">
+      <span [style.display]="addingColumn ? 'none' : ''">
+        Add a list...
+      </span>
+
+        <mat-form-field class="mat-form-field"
+                        apparence="outline"
+                        [style.display]="addingColumn ? '' : 'none'">
+          <input
+            matInput
+            [placeholder]="'Add a list...'"
+            (keyup)="addColumnOnEnter($event)"
+            (blur)="addColumnOnBlur()"
+            [(ngModel)]="addColumnText"/>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </section>
+</div>
+

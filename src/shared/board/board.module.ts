@@ -5,9 +5,10 @@ import { BoardRoutingModule } from './board-routing.module';
 import { DragulaModule } from 'ng2-dragula';
 import { CardComponent } from './card/card.component';
 import { ColumnComponent } from './column/column.component';
-import { BoardComponent } from './board/board.component';
 import { BoardListComponent } from './board-list/board-list.component';
-import { SharedModule } from 'shared/shared.module';
+import { SharedModule } from '../shared.module';
+import { BoardDetailComponent } from './board-detail/board-detail.component';
+import { BoardComponent } from './board/board.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { SharedModule } from 'shared/shared.module';
     CardComponent,
     ColumnComponent,
     BoardComponent,
+    BoardDetailComponent,
     BoardListComponent
   ]
 })

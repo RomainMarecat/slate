@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-login-list',
@@ -12,13 +13,18 @@ export class LoginListComponent implements OnInit {
     {link: 'login2', name: 'user.list.logins.login2.name'},
   ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   ngOnInit() {
   }
 
   navigateTo(link: string) {
-    this.router.navigate(['users/logins/' + link]);
+    this.router.navigate([
+      this.localizeRouterService.translateRoute('/users'),
+      this.localizeRouterService.translateRoute('logins'),
+      this.localizeRouterService.translateRoute(link)
+    ]);
   }
 }

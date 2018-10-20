@@ -116,7 +116,7 @@ describe('AppRootComponent', () => {
         MatCommonModule,
         MatTooltipModule,
         NgcCookieConsentModule.forRoot(cookieConfig),
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,

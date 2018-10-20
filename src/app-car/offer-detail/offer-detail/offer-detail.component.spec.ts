@@ -23,7 +23,6 @@ import { CommentService } from '../../../shared/comment/comment.service';
 import { MockUserService } from '../../../shared/user/shared/mock-user.service';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 describe('OfferDetailComponent', () => {
   let component: OfferDetailComponent;
@@ -32,7 +31,7 @@ describe('OfferDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -49,7 +48,7 @@ describe('OfferDetailComponent', () => {
         }),
         SharedModule
       ],
-      declarations: [ OfferDetailComponent ],
+      declarations: [OfferDetailComponent],
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: ProductService, useClass: MockProductService},

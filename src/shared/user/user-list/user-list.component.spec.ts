@@ -5,9 +5,10 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule, MatIconModule, MatListModule, MatTooltipModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { LoginModule } from 'shared/user/login/login.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -23,13 +24,16 @@ describe('UserListComponent', () => {
         MatIconModule,
         MatTooltipModule,
         MatCardModule,
-        LoginModule,
+        LocalizeRouterModule,
         RouterTestingModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [UserListComponent]
+      declarations: [UserListComponent],
+      providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
+      ]
     })
       .compileComponents();
   }));

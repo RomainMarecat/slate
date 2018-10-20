@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
-  selector: 'app-recipe-board-list',
+  selector: 'app-board-list',
   templateUrl: './board-list.component.html',
   styleUrls: ['./board-list.component.scss']
 })

@@ -1,17 +1,5 @@
 <div class="main-wrapper">
 
-  <div class="heading-wrapper"
-       fxLayout="row"
-       fxLayoutAlign="start center">
-    <a [routerLink]="['/invoices'|localize]" class="m-2">
-      <mat-icon color="primary"
-                [matTooltip]="'cta.back_to_invoice_list'|translate">home
-      </mat-icon>
-    </a>
-    <h2>{{ 'invoices.invoice1.title'|translate }}</h2>
-
-  </div>
-
   <div class="content-wrapper">
     <mat-card>
       <div class="header-container"
@@ -68,7 +56,9 @@
               <span>{{ 'invoices.invoice1.content.invoice.address'|translate }}</span>
             </mat-list-item>
             <mat-list-item>
-              <span>{{ 'invoices.invoice1.content.invoice.zipcode'|translate }}&nbsp;{{ 'invoices.invoice1.content.invoice.city'|translate }},&nbsp;{{ 'invoices.invoice1.content.invoice.country'|translate }}</span>
+              <span>{{ 'invoices.invoice1.content.invoice.zipcode'|translate }}&nbsp;{{
+                'invoices.invoice1.content.invoice.city'|translate }},&nbsp;{{
+                'invoices.invoice1.content.invoice.country'|translate }}</span>
             </mat-list-item>
           </mat-list>
           <mat-list class="mat-list address">
@@ -79,7 +69,9 @@
               <span>{{ 'invoices.invoice1.content.delivery.address'|translate }}</span>
             </mat-list-item>
             <mat-list-item>
-              <span>{{ 'invoices.invoice1.content.delivery.zipcode'|translate }}&nbsp;{{ 'invoices.invoice1.content.delivery.city'|translate }},&nbsp;{{ 'invoices.invoice1.content.delivery.country'|translate }}</span>
+              <span>{{ 'invoices.invoice1.content.delivery.zipcode'|translate }}&nbsp;{{
+                'invoices.invoice1.content.delivery.city'|translate }},&nbsp;{{
+                'invoices.invoice1.content.delivery.country'|translate }}</span>
             </mat-list-item>
           </mat-list>
         </div>
