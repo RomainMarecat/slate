@@ -14,7 +14,7 @@ import { AlertService } from '../popup/alert.service';
 import { SessionModule } from '../session/session.module';
 import { RouterModule } from '@angular/router';
 import { SessionService } from '../session/shared/session.service';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 export const TABLE_SESSION = new InjectionToken<string>('session');
 export const TABLE_EVENT = new InjectionToken<string>('event');

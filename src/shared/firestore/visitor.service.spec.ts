@@ -1,8 +1,8 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { InjectionToken } from '@angular/core';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { VisitorService } from './visitor.service';
 import { environment } from '../../app-hockey/environments/environment';
 

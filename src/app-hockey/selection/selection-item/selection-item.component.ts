@@ -8,11 +8,14 @@ import { SelectionService } from '../../../shared/selection/selection.service';
   styleUrls: ['./selection-item.component.scss']
 })
 export class SelectionItemComponent implements OnInit {
-  @Input('selection') selection: Selection;
-  @Output('selected') selected: EventEmitter < Selection > = new EventEmitter < Selection > ();
-  constructor(private selectionService: SelectionService) {}
+  @Input() selection: Selection;
+  @Output() selected: EventEmitter<Selection> = new EventEmitter<Selection>();
 
-  ngOnInit() {}
+  constructor(private selectionService: SelectionService) {
+  }
+
+  ngOnInit() {
+  }
 
   onSelected(event: MouseEvent) {
     this.selected.emit(this.selection);

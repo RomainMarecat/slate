@@ -165,7 +165,6 @@ export class MapEditComponent implements OnInit {
 
   /**
    *
-   * @returns {Array<object>}
    */
   getFrance(): Array<object> {
     return [

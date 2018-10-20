@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from '../../../shared/category/category.service';
 import { Category } from '../../../shared/category/category';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { RangePipe } from 'ngx-pipes';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSelectChange } from '@angular/material';
@@ -26,7 +26,7 @@ import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-car-offer-edit',
   templateUrl: './offer-edit.component.html',
-  styleUrls: [ './offer-edit.component.scss' ]
+  styleUrls: ['./offer-edit.component.scss']
 })
 export class OfferEditComponent implements OnInit {
 
@@ -55,26 +55,23 @@ export class OfferEditComponent implements OnInit {
   imageStorageConfig: any;
   downloadURL: string;
 
-  /**
-   * @returns {FormGroup}
-   */
   static getForm(): FormGroup {
     return new FormGroup({
-      brand: new FormControl('', [ Validators.required ]),
-      model: new FormControl({value: '', disabled: true}, [ Validators.required ]),
-      product: new FormControl({value: '', disabled: true}, [ Validators.required ]),
-      regDate: new FormControl('', [ Validators.required ]),
-      mileage: new FormControl('', [ Validators.required ]),
+      brand: new FormControl('', [Validators.required]),
+      model: new FormControl({value: '', disabled: true}, [Validators.required]),
+      product: new FormControl({value: '', disabled: true}, [Validators.required]),
+      regDate: new FormControl('', [Validators.required]),
+      mileage: new FormControl('', [Validators.required]),
       fuel: new FormControl(''),
       gearbox: new FormControl(''),
       reseller_type: new FormControl(''),
-      description: new FormControl('', [ Validators.required, Validators.max(4000) ]),
+      description: new FormControl('', [Validators.required, Validators.max(4000)]),
       negotiable_price: new FormControl(false),
-      price: new FormControl('', [ Validators.required ]),
+      price: new FormControl('', [Validators.required]),
       images: new FormArray([]),
       location: new FormGroup({
-        latitude: new FormControl(null, [ Validators.required ]),
-        longitude: new FormControl(null, [ Validators.required ]),
+        latitude: new FormControl(null, [Validators.required]),
+        longitude: new FormControl(null, [Validators.required]),
         street_address: new FormControl(null, []),
         postal_code: new FormControl(null, []),
         route: new FormControl(null, []),
@@ -84,30 +81,13 @@ export class OfferEditComponent implements OnInit {
         country: new FormControl(null, []),
       }),
       user: new FormGroup({
-        username: new FormControl('', [ Validators.required ]),
-        email: new FormControl('', [ Validators.required ]),
-        phone: new FormControl('', [ Validators.required ])
+        username: new FormControl('', [Validators.required]),
+        email: new FormControl('', [Validators.required]),
+        phone: new FormControl('', [Validators.required])
       })
     });
   }
 
-  /**
-   *
-   * @param {Meta} meta
-   * @param {Title} title
-   * @param {ActivatedRoute} activatedRoute
-   * @param {ProductService} productService
-   * @param {OfferService} offerService
-   * @param {DeviceService} deviceService
-   * @param {CategoryService} categoryService
-   * @param {Location} location
-   * @param {AlertService} alertService
-   * @param {RangePipe} rangePipe
-   * @param {TranslateService} translate
-   * @param {GeocodeService} geocodeService
-   * @param {ChangeDetectorRef} ref
-   * @param {Router} router
-   */
   constructor(private meta: Meta,
               private title: Title,
               private activatedRoute: ActivatedRoute,
@@ -135,7 +115,7 @@ export class OfferEditComponent implements OnInit {
   }
 
   getOffer() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
+    this.activatedRoute.params.subscribe((value: {key: string}) => {
       if (value.key) {
         this.offerService.getOffer(value.key)
           .subscribe((offer: CarOffer) => {
@@ -152,19 +132,16 @@ export class OfferEditComponent implements OnInit {
     };
   }
 
-  /**
-   * @returns {Observable<Category[]>}
-   */
   getCategories(): Observable<Category[]> {
     return this.categoryService.getCategories();
   }
 
   getBrands() {
-    this.categoryService.filters$.next([ {
+    this.categoryService.filters$.next([{
       column: 'level',
       value: 1,
       operator: '=='
-    } ]);
+    }]);
     this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
     this.getCategories()
       .pipe(
@@ -189,7 +166,7 @@ export class OfferEditComponent implements OnInit {
         column: 'parent',
         value: brand.key,
         operator: '=='
-      } ]);
+      }]);
     this.getCategories()
       .pipe(
         take(1)
@@ -203,9 +180,9 @@ export class OfferEditComponent implements OnInit {
   }
 
   getFuels() {
-    this.translate.get([ 'fuel.gasoline', 'fuel.gasoil', 'fuel.electric', 'fuel.GPL', 'fuel.Hybrid' ])
+    this.translate.get(['fuel.gasoline', 'fuel.gasoil', 'fuel.electric', 'fuel.GPL', 'fuel.Hybrid'])
       .subscribe((fuels) => {
-        Object.entries(fuels).forEach(([ key, value ]) => {
+        Object.entries(fuels).forEach(([key, value]) => {
           this.fuels.push(value);
         });
       });
@@ -213,17 +190,14 @@ export class OfferEditComponent implements OnInit {
   }
 
   getGearboxs() {
-    this.translate.get([ 'gearbox.manual', 'gearbox.automatic' ])
+    this.translate.get(['gearbox.manual', 'gearbox.automatic'])
       .subscribe((gearboxs) => {
-        Object.entries(gearboxs).forEach(([ key, value ]) => {
+        Object.entries(gearboxs).forEach(([key, value]) => {
           this.gearboxs.push(value);
         });
       });
   }
 
-  /**
-   * @param {Category} model
-   */
   getProducts(model: Category) {
     this.productService.filters$.next([
       {
@@ -238,9 +212,9 @@ export class OfferEditComponent implements OnInit {
         take(1)
       )
       .subscribe((products: CarProduct[]) => {
-        this.products = [ ...products ];
+        this.products = [...products];
         if (products.length > 0) {
-          this.form.patchValue({product: products[ 0 ]});
+          this.form.patchValue({product: products[0]});
         } else {
           this.form.controls.product.disable();
           this.alertService.toast('error.model.product.empty');
@@ -248,29 +222,17 @@ export class OfferEditComponent implements OnInit {
       });
   }
 
-  /**
-   *
-   * @param {MatSelectChange} brand
-   */
   onBrandChange(brand: MatSelectChange) {
     this.form.controls.model.enable();
     this.getModels(brand.value);
   }
 
-  /**
-   *
-   * @param {MatSelectChange} model
-   */
   onModelChange(model: MatSelectChange) {
     this.form.controls.product.enable();
     this.getProducts(model.value);
   }
 
-  /**
-   *
-   * @param {{coords: {lat: number; lng: number}}} event
-   */
-  onMapClick(event: { coords: { lat: number, lng: number } }) {
+  onMapClick(event: {coords: {lat: number, lng: number}}) {
     this.marker = {
       lat: event.coords.lat,
       lng: event.coords.lng,
@@ -280,18 +242,10 @@ export class OfferEditComponent implements OnInit {
     this.getAddress(this.marker.lat, this.marker.lng);
   }
 
-  /**
-   *
-   * @param {Marker} marker
-   */
   markerDragEnd(marker: Marker) {
     this.getAddress(marker.lat, marker.lng);
   }
 
-  /**
-   *
-   * @param {string} address
-   */
   onAddressChange(address: string) {
     this.geocodeService.geocodeAddress(address)
       .subscribe(
@@ -310,13 +264,9 @@ export class OfferEditComponent implements OnInit {
       );
   }
 
-  /**
-   *
-   * @param event
-   */
   onSubmit(event: any) {
     this.isSaving = true;
-    Object.entries(this.form.controls).forEach(([ key, value ]) => {
+    Object.entries(this.form.controls).forEach(([key, value]) => {
       // console.log(key, 'valid: ', value.valid, 'value: ', value.value, 'errors: ', value.errors);
     });
 
@@ -334,7 +284,7 @@ export class OfferEditComponent implements OnInit {
               this.alertService.toast(translated);
               this.reset();
               this.isSaving = false;
-              this.router.navigate([ `/offer/${doc.id}/confirmation` ]);
+              this.router.navigate([`/offer/${doc.id}/confirmation`]);
             });
         }, (err) => {
           this.alertService.toast(err);
@@ -345,11 +295,6 @@ export class OfferEditComponent implements OnInit {
     }
   }
 
-  /**
-   *
-   * @param {number} lat
-   * @param {number} lng
-   */
   getAddress(lat: number, lng: number) {
     this.geocodeService.geocodeLatLng(lat, lng)
       .subscribe((location) => {
@@ -369,7 +314,6 @@ export class OfferEditComponent implements OnInit {
 
   /**
    * image change function of emitter
-   * @param media
    */
   onImageChange(media: Media) {
     const control = <FormArray>this.form.controls.images;
@@ -379,8 +323,6 @@ export class OfferEditComponent implements OnInit {
 
   /**
    * Form Array pusher
-   * @param {Media} media
-   * @returns {FormControl}
    */
   createImage(media: Media): FormControl {
     return new FormControl(media.key);
@@ -388,7 +330,6 @@ export class OfferEditComponent implements OnInit {
 
   /**
    * On change download url
-   * @param {UploadTaskSnapshot} task
    */
   onImageRefChanged(task: UploadTaskSnapshot) {
     task.ref.getDownloadURL().then((downloadURL => {

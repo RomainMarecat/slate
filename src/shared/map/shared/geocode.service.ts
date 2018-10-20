@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { MapsAPILoader, LatLng } from '@agm/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { of } from 'rxjs/observable/of';
+import { Observable, of, Subject } from 'rxjs';
 import { filter, catchError, tap, map, switchMap } from 'rxjs/operators';
-import { fromPromise } from 'rxjs/observable/fromPromise';
 import { LatLngLiteral } from '@agm/core/services/google-maps-types';
+import { fromPromise } from 'rxjs/internal-compatibility';
 
 declare var google: any;
 

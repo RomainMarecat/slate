@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { VisitorService } from 'shared/firestore/visitor.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Board } from './board';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'

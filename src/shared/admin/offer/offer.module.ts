@@ -7,7 +7,7 @@ import { OfferEditComponent } from './offer-edit/offer-edit.component';
 import { SharedModule } from '../../shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { OfferService } from '../shared/offer/offer.service';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 const TABLE_OFFER = new InjectionToken<string>('offer');
 

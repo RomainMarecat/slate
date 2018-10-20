@@ -175,7 +175,6 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   /**
    * On switch date range
-   * @param {String} viewMode
    */
   onSwithedView(viewMode: String) {
     this.viewModeChanged.emit(viewMode);
@@ -184,7 +183,6 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   /**
    * On start change event
-   * @param {moment.Moment} start
    */
   onStartChanged(start: Moment) {
     this.start = start;
@@ -193,7 +191,6 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   /**
    * On session added on click event
-   * @param {Session} session
    */
   onSessionAdded(session: Session) {
     this.sessions.set(moment(session.start).format('YYYY-MM-DDHH:mm'), session);
@@ -203,7 +200,6 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   /**
    * On removed event
-   * @param source
    */
   onSessionRemoved(source: { key: string, session: Session }) {
     this.sessions.delete(source.key);
@@ -267,7 +263,6 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   /**
    * Add session event in calendar
-   * @param session
    */
   addSession(session: Session) {
     const mmtStart = moment(session.start);
@@ -314,7 +309,6 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   /**
    * Remove session event in Calendar
-   * @param session
    */
   removeSession(session: Session) {
     const mmtStart = moment(session.start);

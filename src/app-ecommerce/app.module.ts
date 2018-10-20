@@ -5,11 +5,12 @@ import { AppRootComponent } from './core/root.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { environment } from './environments/environment';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import localeEn from '@angular/common/locales/en';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
 
 registerLocaleData(localeFr);
 registerLocaleData(localeEn);
@@ -23,7 +24,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule.forRoot(environment),
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+    Angulartics2Module.forRoot({
       developerMode: true,
       pageTracking: {
         clearIds: true,

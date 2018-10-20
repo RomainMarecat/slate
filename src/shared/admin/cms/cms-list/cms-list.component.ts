@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cms } from '../../../cms/shared/cms';
 import { CmsService } from '../../../cms/shared/cms.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { MenuService } from 'shared/menu/menu.service';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { TableColumn } from '@swimlane/ngx-datatable';
@@ -73,7 +73,6 @@ export class CmsListComponent implements OnInit {
 
   /**
    * On select add new list in selection array
-   * @param {any} selected
    */
   onSelect({selected}) {
     this.selected.splice(0, this.selected.length);

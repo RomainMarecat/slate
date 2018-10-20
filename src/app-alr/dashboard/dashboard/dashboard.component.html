@@ -10,6 +10,7 @@
             *ngFor="let feature of features">
     <img mat-card-image
          class="dashboard-image"
+         [alt]="feature.name"
          [src]="feature.img">
     <mat-card-header fxLayout="row"
                      fxLayoutAlign="center stretch">

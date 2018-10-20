@@ -1,8 +1,8 @@
 import { mockSelection } from './mock-selection';
 import { Selection } from './selection';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { AngularFirestoreCollection } from '@angular/fire/firestore';
 import { CollectionReference, Query } from '@firebase/firestore-types';
 import { of } from 'rxjs/internal/observable/of';
 

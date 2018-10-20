@@ -29,34 +29,34 @@ import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader
 
 describe('AlertComponent', () => {
   let component: AlertComponent;
-  let fixture: ComponentFixture < AlertComponent > ;
+  let fixture: ComponentFixture<AlertComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          RouterTestingModule,
-          BrowserModule,
-          CommonModule,
-          HttpClientModule,
-          BrowserAnimationsModule,
-          MatIconModule,
-          MatSnackBarModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
-        ],
-        declarations: [AlertComponent],
-        providers: [{
-          provide: MAT_SNACK_BAR_DATA,
-          useValue: {},
-        }]
-      })
+      imports: [
+        RouterTestingModule,
+        BrowserModule,
+        CommonModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatSnackBarModule,
+        Angulartics2Module.forRoot({
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        })
+      ],
+      declarations: [AlertComponent],
+      providers: [{
+        provide: MAT_SNACK_BAR_DATA,
+        useValue: {},
+      }]
+    })
       .compileComponents();
   }));
 

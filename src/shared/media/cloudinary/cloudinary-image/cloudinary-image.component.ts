@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import { Cloudinary } from '../cloudinary.service';
 import { CloudinaryTransformationDirective } from '../cloudinary-transformation.directive';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { of } from 'rxjs/internal/observable/of';
 
 @Component({
@@ -24,7 +24,7 @@ import { of } from 'rxjs/internal/observable/of';
 })
 export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestroy, OnChanges {
 
-  @Input('publicId') publicId: string;
+  @Input() publicId: string;
 
   @ContentChildren(CloudinaryTransformationDirective)
   transformations: QueryList<CloudinaryTransformationDirective>;

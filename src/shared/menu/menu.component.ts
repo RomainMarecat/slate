@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SidenavService } from '../sidenav/sidenav.service';
 import { UserService } from '../user/shared/user.service';
 import { MenuService } from './menu.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu',

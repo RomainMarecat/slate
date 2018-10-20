@@ -2,8 +2,8 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MockCommentService } from './mock-comment.service';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { CommentService } from './comment.service';
 import { environment } from '../../app-hockey/environments/environment';

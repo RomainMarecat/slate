@@ -56,7 +56,7 @@ describe('ProductDetailComponent', () => {
         MatListModule,
         MediaModule,
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -66,7 +66,7 @@ describe('ProductDetailComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ ProductDetailComponent, ProductActionComponent ],
+      declarations: [ProductDetailComponent, ProductActionComponent],
       providers: [
         {provide: ProductService, useClass: MockProductService},
         {provide: MediaService, useClass: MockMediaService},

@@ -26,7 +26,6 @@ export class CmsDetailAddComponent implements OnInit {
 
   /**
    * Get best used cms details
-   * @returns {Array<CmsDetail>}
    */
   static getCmsDetailList(): Array<CmsDetail> {
     return [
@@ -155,7 +154,6 @@ export class CmsDetailAddComponent implements OnInit {
 
   /**
    * return form of Cms Detail
-   * @returns {FormGroup}
    */
   private static createForm(): FormGroup {
     return new FormGroup({
@@ -170,14 +168,6 @@ export class CmsDetailAddComponent implements OnInit {
     });
   }
 
-
-  /**
-   * @param {TranslateService} translate
-   * @param {CmsDetailService} cmsDetailService
-   * @param {CmsService} cmsService
-   * @param {AlertService} alertService
-   * @param {ActivatedRoute} activeRoute
-   */
   constructor(private translate: TranslateService,
               private cmsDetailService: CmsDetailService,
               private cmsService: CmsService,
@@ -214,7 +204,6 @@ export class CmsDetailAddComponent implements OnInit {
 
   /**
    * Get cms details array by cms key
-   * @param {string} cms
    */
   getCmsDetails(cms: string) {
     this.cmsDetailService.filters$.next(
@@ -234,7 +223,6 @@ export class CmsDetailAddComponent implements OnInit {
 
   /**
    * Add an existing cms detail key
-   * @param cmsDetail
    */
   addCmsDetail(cmsDetail: CmsDetail) {
     let included = false;

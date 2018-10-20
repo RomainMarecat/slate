@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./product-brand.component.scss']
 })
 export class ProductBrandComponent implements OnInit {
-  @Input('form') form: FormGroup;
+  @Input() form: FormGroup;
 
   options: Array < string > ;
 

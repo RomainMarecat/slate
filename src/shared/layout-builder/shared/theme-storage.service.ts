@@ -23,7 +23,6 @@ export class ThemeStorageService {
 
   /**
    * set chosen theme in local storage
-   * @param theme
    */
   storeTheme(theme: Theme) {
     try {

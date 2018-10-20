@@ -2,9 +2,9 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ScoreService } from './score.service';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../../app-hockey/environments/environment';
 import { MockScoreService } from './mock-score.service';
 

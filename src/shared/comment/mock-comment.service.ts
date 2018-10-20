@@ -1,6 +1,6 @@
 import { mockComment } from './mock-comment';
 import { Comment } from './comment';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { of } from 'rxjs/internal/observable/of';
 
 export class MockCommentService {

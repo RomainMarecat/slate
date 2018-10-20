@@ -10,9 +10,10 @@ import { ProductService } from '../../../product/shared/product.service';
 })
 export class SortItemComponent implements OnInit {
   facets: SortFacet[];
-  @Output('sorted') sorted: EventEmitter < Sort > = new EventEmitter < Sort > ();
+  @Output() sorted: EventEmitter<Sort> = new EventEmitter<Sort>();
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) {
+  }
 
   ngOnInit() {
     this.facets = this.getFacets();

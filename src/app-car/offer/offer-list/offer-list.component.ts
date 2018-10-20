@@ -15,7 +15,6 @@ import { Category } from '../../../shared/category/category';
 import { CarOffer } from '../../../shared/offer/offer';
 import { CategoryService } from '../../../shared/category/category.service';
 import { take } from 'rxjs/operators';
-import 'rxjs-compat/add/operator/finally';
 
 @Component({
   selector: 'app-car-offer-list',
@@ -69,7 +68,7 @@ export class OfferListComponent implements OnInit {
    * Load Products by area
    */
   loadOffers() {
-    this.activatedRoute.params.subscribe((value: { area: string, category: string }) => {
+    this.activatedRoute.params.subscribe((value: {area: string, category: string}) => {
       if (value.area) {
         const key = value.area.substring(0, value.area.indexOf('-'));
         this.areaService.getArea(key)
@@ -108,12 +107,11 @@ export class OfferListComponent implements OnInit {
       }
     ]);
     this.offerService.getOffers()
-      .finally(() => {
-        this.isLoading = false;
-        this.loaderService.hide();
-      })
       .subscribe((offers: CarOffer[]) => {
         this.offers = offers;
+        this.isLoading = false;
+        this.loaderService.hide();
+      }, () => {
         this.isLoading = false;
         this.loaderService.hide();
       });

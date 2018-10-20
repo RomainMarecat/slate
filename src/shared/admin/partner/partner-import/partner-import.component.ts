@@ -36,7 +36,6 @@ export class PartnerImportComponent implements OnInit {
 
   /**
    * Upload file
-   * @param event
    */
   uploadFile(event: {target: {files: FileList}}) {
     const file: File = event.target.files[0];
@@ -81,7 +80,6 @@ export class PartnerImportComponent implements OnInit {
 
   /**
    * Ouvrir la fenêtre pour
-   * @param {Partner[]} partners pour choisir ses colonnes
    */
   openDialog(partners: Partner[]) {
     const dialogRef = this.matDialog.open(PartnerImportPreviewComponent, {
@@ -114,7 +112,6 @@ export class PartnerImportComponent implements OnInit {
 
   /**
    * Check all previous partners in db and add only new partners
-   * @param partners
    */
   importPartners(partners) {
     let previousPartners: Partner[] = [];
@@ -138,7 +135,6 @@ export class PartnerImportComponent implements OnInit {
 
   /**
    * Save in db all partners list
-   * @param {Partner[]} partners
    */
   createPartners(partners: Partner[]) {
     if (partners.length === 0) {

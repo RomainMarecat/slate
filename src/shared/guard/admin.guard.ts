@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { adminsID } from './admin';
-import { map, take } from 'rxjs/internal/operators';
+import { map, take, tap } from 'rxjs/internal/operators';
 import { TranslateService } from '@ngx-translate/core';
-import { AlertService } from 'shared/popup/alert.service';
+import { AlertService } from '../popup/alert.service';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
@@ -25,12 +25,13 @@ export class AdminGuard implements CanActivate {
         take(1),
         map(authState => {
           return authState && this.authorized.includes(authState.uid);
+        }),
+        tap(authenticated => {
+          if (!authenticated) {
+            this.alertService.show('admin.authentication.needed');
+            this.router.navigate(['/']);
+          }
         })
-      ).do(authenticated => {
-        if (!authenticated) {
-          this.alertService.show('admin.authentication.needed');
-          this.router.navigate([ '/' ]);
-        }
-      });
+      );
   }
 }

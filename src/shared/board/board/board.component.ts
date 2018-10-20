@@ -32,19 +32,6 @@ export class BoardComponent implements OnInit {
   curDown = false;
   options: any;
 
-  /**
-   *
-   * @param {DragulaService} dragulaService
-   * @param {ElementRef} el
-   * @param {BoardService} boardService
-   * @param {ColumnService} columnService
-   * @param {CardService} cardService
-   * @param objectService
-   * @param alertService
-   * @param {Router} router
-   * @param {ActivatedRoute} route
-   * @param {Title} title
-   */
   constructor(private dragulaService: DragulaService,
               public el: ElementRef,
               private boardService: BoardService,
@@ -187,12 +174,8 @@ export class BoardComponent implements OnInit {
   }
 
 
-  /**
-   *
-   * @param event
-   */
   blurOnEnter(event) {
-    if (event.keyCode === 13) {
+    if (event.key === 13) {
       event.target.blur();
     }
   }
@@ -227,18 +210,14 @@ export class BoardComponent implements OnInit {
       });
   }
 
-  /**
-   *
-   * @param {KeyboardEvent} event
-   */
   addColumnOnEnter(event: KeyboardEvent) {
-    if (event.keyCode === 13) {
+    if (event.key === '13') {
       if (this.addColumnText && this.addColumnText.trim() !== '') {
         this.addColumn();
       } else {
         this.clearAddColumn();
       }
-    } else if (event.keyCode === 27) {
+    } else if (event.key === '27') {
       this.clearAddColumn();
     }
   }
@@ -255,10 +234,6 @@ export class BoardComponent implements OnInit {
     this.addColumnText = '';
   }
 
-  /**
-   *
-   * @param {Card} card
-   */
   addCard(card: Card) {
     this.board.cards.push(card);
   }
@@ -268,10 +243,6 @@ export class BoardComponent implements OnInit {
     this.board.cards = JSON.parse(cards);
   }
 
-  /**
-   *
-   * @param {Card} card
-   */
   onCardUpdate(card: Card) {
     this.foreceUpdateCards();
   }

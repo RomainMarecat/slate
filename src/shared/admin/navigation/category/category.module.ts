@@ -33,7 +33,7 @@ import { CategoryService } from '../../../category/category.service';
 import { CategoryAddComponent } from './category-add/category-add.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
 

@@ -8,7 +8,7 @@ import { DeviceService } from '../../../shared/device/device.service';
   styleUrls: ['./product-attribute.component.scss']
 })
 export class ProductAttributeComponent implements OnInit {
-  @Input('product') product: HockeyProduct;
+  @Input() product: HockeyProduct;
   colors: string[];
   resizedImage: {
     height: number,

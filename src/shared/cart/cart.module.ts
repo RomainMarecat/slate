@@ -19,7 +19,7 @@ import { CartEditComponent } from './cart-edit/cart-edit.component';
 import { CartComponent } from './cart/cart.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { RoutingState } from '../util/routing-state';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');

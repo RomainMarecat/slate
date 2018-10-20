@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Filter } from 'shared/facet/filter/shared/filter';
 import { of } from 'rxjs/internal/observable/of';
-import { AngularFirestoreCollection, CollectionReference, DocumentChangeAction, Query } from 'angularfire2/firestore';
+import { AngularFirestoreCollection, CollectionReference, DocumentChangeAction, Query } from '@angular/fire/firestore';
 import { Sort } from 'shared/facet/sort/shared/sort';
 import { Board } from './board';
 import { mockBoard } from './mock-board';

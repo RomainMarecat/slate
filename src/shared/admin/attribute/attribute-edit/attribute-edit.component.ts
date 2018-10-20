@@ -7,9 +7,9 @@ import { DocumentReference } from '@firebase/firestore-types';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { Attribute } from '../../../attribute/attribute';
 import { AttributeFormType } from '../../shared/attribute/form-attribute';
-import 'rxjs-compat/add/operator/debounceTime';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-attribute-edit',
@@ -69,7 +69,9 @@ export class AttributeEditComponent implements OnInit {
 
   observeUpdate() {
     this.form.valueChanges
-      .debounceTime(800)
+      .pipe(
+        debounceTime(800)
+      )
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
@@ -128,10 +130,6 @@ export class AttributeEditComponent implements OnInit {
     }
   }
 
-  /**
-   *
-   * @param event
-   */
   addTerm(event: any) {
     this._termsModel.push(this.form.value.term);
     this.form.patchValue({terms: this._termsModel, term: ''});

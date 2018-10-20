@@ -19,9 +19,9 @@ import { MockProductService } from '../../../shared/product/shared/mock-product.
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { GeocodeService } from '../../../shared/map/shared/geocode.service';
 import { MockGeocodeService } from '../../../shared/map/shared/mock-geocode.service';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireStorageModule } from 'angularfire2/storage';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
 import { DeviceService } from '../../../shared/device/device.service';
 import { MockMapsAPILoader } from '../../../shared/map/shared/mock-maps-api-loader';
 import { environment } from '../../environments/environment';

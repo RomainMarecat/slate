@@ -5,7 +5,6 @@ import { AppRootComponent } from './core/root.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { environment } from './environments/environment';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
@@ -24,12 +23,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   imports: [
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-      developerMode: true,
-      pageTracking: {
-        clearIds: true,
-      },
-    }),
+    Angulartics2Module.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,

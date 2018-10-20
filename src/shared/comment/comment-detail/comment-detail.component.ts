@@ -14,7 +14,7 @@ export class CommentDetailComponent implements OnInit {
 
   ngOnInit() {}
 
-  @Input('comment') set comment(comment: Comment) {
+  @Input() set comment(comment: Comment) {
     comment.commentTime = moment(comment.commentTime, 'x').format('HH:mm');
     this._comment = comment;
   }

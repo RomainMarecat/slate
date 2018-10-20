@@ -6,8 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-
 import {
   MatCardModule,
   MatIconModule,
@@ -49,7 +47,7 @@ describe('ProductActionComponent', () => {
         MatInputModule,
         MatCheckboxModule,
         MatListModule,
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+        Angulartics2Module.forRoot( {
           developerMode: true,
           pageTracking: {
             clearIds: true,

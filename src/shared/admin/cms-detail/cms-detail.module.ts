@@ -11,7 +11,7 @@ import { CmsDetailRoutingModule } from './cms-detail-routing.module';
 import { CmsDetailListComponent } from './cms-detail-list/cms-detail-list.component';
 import { CmsDetailAddComponent } from './cms-detail-add/cms-detail-add.component';
 import { CmsDetailService } from '../../cms-detail/shared/cms-detail.service';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CmsService } from '../../cms/shared/cms.service';
 

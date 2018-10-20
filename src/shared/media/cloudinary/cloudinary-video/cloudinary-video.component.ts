@@ -19,7 +19,7 @@ import { CloudinaryTransformationDirective } from '../cloudinary-transformation.
   encapsulation: ViewEncapsulation.None
 })
 export class CloudinaryVideoComponent implements AfterViewInit, OnInit, OnDestroy {
-  @Input('publicId') publicId: string;
+  @Input() publicId: string;
 
   @ContentChildren(CloudinaryTransformationDirective)
   transformations: QueryList < CloudinaryTransformationDirective > ;

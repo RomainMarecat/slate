@@ -6,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import {
   MatCardModule,
@@ -26,6 +25,8 @@ import { AlertService } from '../../../shared/popup/alert.service';
 import { ScoreService } from '../../../shared/score/score.service';
 import { MockScoreService } from '../../../shared/score/mock-score.service';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { CartService } from 'shared/cart/shared/cart.service';
+import { MockCartService } from 'shared/cart/shared/mock-cart.service';
 
 describe('ProductActionComponent', () => {
   let component: ProductActionComponent;
@@ -49,7 +50,7 @@ describe('ProductActionComponent', () => {
         MatInputModule,
         MatCheckboxModule,
         MatListModule,
-        Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
+        Angulartics2Module.forRoot( {
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -61,6 +62,7 @@ describe('ProductActionComponent', () => {
       ],
       declarations: [ProductActionComponent],
       providers: [
+        {provide: CartService, useClass: MockCartService},
         {provide: UserService, useClass: MockUserService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: ScoreService, useClass: MockScoreService},

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Filter } from '../../facet/filter/shared/filter';
 import { CmsDetailService } from '../shared/cms-detail.service';
 import { CmsDetail } from '../shared/cms-detail';

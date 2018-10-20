@@ -7,9 +7,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./price.component.scss']
 })
 export class PriceComponent implements OnInit {
-  @Input('form') form: FormGroup;
+  @Input() form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.form = this.formBuilder.group({

@@ -21,38 +21,38 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('CommentAddComponent', () => {
   let component: CommentAddComponent;
-  let fixture: ComponentFixture < CommentAddComponent > ;
+  let fixture: ComponentFixture<CommentAddComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          FlexLayoutModule,
-          FormsModule,
-          ReactiveFormsModule,
-          CommonModule,
-          MatButtonModule,
-          MatIconModule,
-          MatCardModule,
-          MatFormFieldModule,
-          MatInputModule,
-          HttpClientTestingModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-        ],
-        declarations: [CommentAddComponent],
-        providers: [
-          CommentService
-        ]
-      })
+      imports: [
+        FlexLayoutModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonModule,
+        MatButtonModule,
+        MatIconModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        Angulartics2Module.forRoot({
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+      ],
+      declarations: [CommentAddComponent],
+      providers: [
+        CommentService
+      ]
+    })
       .compileComponents();
   }));
 

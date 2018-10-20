@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Map } from './map';
 import { mockMaps } from './mock-map';
 import { of } from 'rxjs/internal/observable/of';

@@ -36,7 +36,7 @@ export class OfferItemComponent implements OnInit {
     ]);
   }
 
-  @Input('offer') set offer(offer) {
+  @Input() set offer(offer) {
     this._offer = offer;
     this._offer.published_at = moment(this._offer.published_at, 'x').format('DD/MM/YYYY HH:mm');
     this.getBrand(offer.brand);

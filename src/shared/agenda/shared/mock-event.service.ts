@@ -1,7 +1,7 @@
 import { mockEvent } from './mock-event';
 import { Event } from './event';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { CollectionReference, Query } from '@firebase/firestore-types';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Sort } from '../../facet/sort/shared/sort';

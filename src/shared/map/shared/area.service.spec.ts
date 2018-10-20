@@ -1,9 +1,9 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { AreaService } from './area.service';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
 import { MockAreaService } from './mock-area.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { environment } from '../../../app-car/environments/environment';

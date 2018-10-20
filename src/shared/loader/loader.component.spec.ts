@@ -10,26 +10,26 @@ import { MockLoaderService } from './mock-loader.service';
 
 describe('LoaderComponent', () => {
   let component: LoaderComponent;
-  let fixture: ComponentFixture < LoaderComponent > ;
+  let fixture: ComponentFixture<LoaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          RouterTestingModule,
-          MatProgressBarModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-        ],
-        declarations: [LoaderComponent],
-        providers: [
-          { provide: LoaderService, useClass: MockLoaderService },
+      imports: [
+        RouterTestingModule,
+        MatProgressBarModule,
+        Angulartics2Module.forRoot({
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+      ],
+      declarations: [LoaderComponent],
+      providers: [
+        {provide: LoaderService, useClass: MockLoaderService},
 
-        ]
-      })
+      ]
+    })
       .compileComponents();
   }));
 

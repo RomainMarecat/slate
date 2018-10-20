@@ -18,9 +18,6 @@ interface UriElement {
 })
 export class BreadcrumbComponent {
 
-  /**
-   * @type {Observable<any[]>}
-   */
   uriElements: Observable<UriElement[]> = of([]);
 
   product: Product;
@@ -29,12 +26,6 @@ export class BreadcrumbComponent {
     'products/:slug'
   ];
 
-  /**
-   * @param {Router} router
-   * @param {ActivatedRoute} route
-   * @param {ProductService} productService
-   * @param {TranslateService} translateService
-   */
   constructor(private router: Router,
               private route: ActivatedRoute,
               private productService: ProductService,
@@ -44,8 +35,6 @@ export class BreadcrumbComponent {
 
   /**
    * Les Elements à afficher dans le breadcrumb sous forme d'observable
-   * @param {string} message
-   * @returns {Observable<UriElement[]>}
    */
   getUriElements(): Observable<UriElement[]> {
     return this.router.events
@@ -59,11 +48,6 @@ export class BreadcrumbComponent {
 
   /**
    * Repris et adapté de https://medium.com/@bo.vandersteene/angular-5-breadcrumb-c225fd9df5cf
-   * @param {ActivatedRoute} route
-   * @param {string} url
-   * @param {UriElement[]} breadcrumbs
-   * @param {number} routeIndex
-   * @returns {UriElement[]}
    */
   buildBreadCrumb(
     route: ActivatedRoute,
@@ -104,7 +88,6 @@ export class BreadcrumbComponent {
 
   /**
    * Ajoute un détail produit si on est sur la route du détail de produit
-   * @param {ActivatedRoute} route
    */
   addCustomProduct(route: ActivatedRoute) {
     if (route &&
@@ -121,7 +104,6 @@ export class BreadcrumbComponent {
 
   /**
    * On souscrit au produit en cherchant son id
-   * @param {string} id
    */
   getProduct(id: string) {
     this.productService.getProduct(id)
@@ -138,7 +120,6 @@ export class BreadcrumbComponent {
   /**
    * @issue
    * Doesnt work
-   * @returns {boolean}
    */
   isHome(): boolean {
     return this.router.routerState.snapshot.url === '/';

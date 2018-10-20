@@ -6,74 +6,64 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-
 import {
   MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule
+  MatListModule
 } from '@angular/material';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ProductActionComponent } from './product-action.component';
-import { MockProductService } from '../shared/mock-product.service';
 import { MockUserService } from '../../user/shared/mock-user.service';
 import { UserService } from '../../user/shared/user.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
 import { AlertService } from '../../popup/alert.service';
 import { ScoreService } from '../../score/score.service';
 import { MockScoreService } from '../../score/mock-score.service';
+import { MockCartService } from '../../cart/shared/mock-cart.service';
+import { CartService } from '../../cart/shared/cart.service';
 
 describe('ProductActionComponent', () => {
   let component: ProductActionComponent;
-  let fixture: ComponentFixture < ProductActionComponent > ;
+  let fixture: ComponentFixture<ProductActionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          RouterTestingModule,
-          BrowserModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          MatCardModule,
-          MatIconModule,
-          MatButtonModule,
-          MatGridListModule,
-          MatInputModule,
-          MatCheckboxModule,
-          MatListModule,
-          Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
-            developerMode: true,
-            pageTracking: {
-              clearIds: true,
-            },
-          }),
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          })
-        ],
-        declarations: [ProductActionComponent],
-        providers: [
-          { provide: UserService, useClass: MockUserService },
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: ScoreService, useClass: MockScoreService },
-        ]
-      })
+      imports: [
+        CommonModule,
+        RouterTestingModule,
+        BrowserModule,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatIconModule,
+        MatButtonModule,
+        MatGridListModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatListModule,
+        Angulartics2Module.forRoot({
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        })
+      ],
+      declarations: [ProductActionComponent],
+      providers: [
+        {provide: CartService, useClass: MockCartService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: ScoreService, useClass: MockScoreService},
+      ]
+    })
       .compileComponents();
   }));
 

@@ -1,9 +1,9 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Session } from './session';
 import { mockSession, mockSessions } from './mock-session';
 import { CollectionReference, Query } from '@firebase/firestore-types';
-import { AngularFirestoreCollection } from 'angularfire2/firestore';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { AngularFirestoreCollection } from '@angular/fire/firestore';
+import { BehaviorSubject } from 'rxjs';
 import { Filter } from '../../facet/filter/shared/filter';
 import { of } from 'rxjs/internal/observable/of';
 

@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./product-description.component.scss']
 })
 export class ProductDescriptionComponent implements OnInit {
-  @Input('form') form: FormGroup;
+  @Input() form: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 

@@ -3,8 +3,8 @@ import { TestBed, inject } from '@angular/core/testing';
 import { PartnerService } from './partner.service';
 import { MockPartnerService } from './mock-partner.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../../app-hockey/environments/environment';
 
 describe('PartnerService', () => {

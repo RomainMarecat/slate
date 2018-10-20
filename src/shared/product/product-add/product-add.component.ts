@@ -20,17 +20,10 @@ export class ProductAddComponent implements OnInit {
   ratio: string;
   user: any;
 
-  /**
-   * @param Router router
-   * @param ProductService ProductService
-   * @param AlertService alertService
-   * @param UserService userService
-   * @param LoaderService loaderService
-   */
   constructor(private router: Router, private productService: ProductService,
-    public alertService: AlertService, private userService: UserService,
-    private loaderService: LoaderService, private slackNotification: NotificationService,
-    private meta: Meta, private translateService: TranslateService) {
+              public alertService: AlertService, private userService: UserService,
+              private loaderService: LoaderService, private slackNotification: NotificationService,
+              private meta: Meta, private translateService: TranslateService) {
     this.user = this.userService.getUser();
     this.ratio = '3:5';
     this.loaderService.show();
@@ -44,18 +37,17 @@ export class ProductAddComponent implements OnInit {
     // Title + description
     this.translateService.get('product-add.meta.title')
       .subscribe((translation: string) => {
-        this.meta.addTag({ name: 'title', content: translation });
+        this.meta.addTag({name: 'title', content: translation});
       });
     this.translateService.get('product-add.meta.description')
       .subscribe((translation: string) => {
-        this.meta.addTag({ name: 'description', content: translation });
+        this.meta.addTag({name: 'description', content: translation});
       });
   }
 
   /**
    * When the form is submitted, we create new product
    * And show a toast to display info
-   * @param {ClothingProduct} product
    */
   onProductSubmit(product: ClothingProduct) {
     this.productService.createProduct(product);
@@ -77,9 +69,8 @@ export class ProductAddComponent implements OnInit {
 
   /**
    * Get the new product value
-   * @param {ClothingProduct} product
    */
   onProductChange(product: ClothingProduct) {
-    this.product = { ...this.product, ...product };
+    this.product = {...this.product, ...product};
   }
 }

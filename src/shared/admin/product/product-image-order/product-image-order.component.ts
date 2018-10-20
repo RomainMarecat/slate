@@ -5,12 +5,12 @@ import { DragulaService } from 'ng2-dragula';
 @Component({
   selector: 'app-admin-product-image-order',
   templateUrl: './product-image-order.component.html',
-  styleUrls: [ './product-image-order.component.scss' ]
+  styleUrls: ['./product-image-order.component.scss']
 })
 export class ProductImageOrderComponent implements OnInit, OnDestroy {
 
-  @Input('product') product: Product;
-  @Output('imagesChanged') imagesChanged: EventEmitter<Array<string>> = new EventEmitter<Array<string>>();
+  @Input() product: Product;
+  @Output() imagesChanged: EventEmitter<Array<string>> = new EventEmitter<Array<string>>();
 
   constructor(private dragulaService: DragulaService) {
   }
@@ -29,12 +29,12 @@ export class ProductImageOrderComponent implements OnInit, OnDestroy {
   }
 
   private onDropModel(args: any): void {
-    const [ el, target, source ] = args;
+    const [el, target, source] = args;
     this.imagesChanged.emit(this.product.images);
   }
 
   private onRemoveModel(args: any): void {
-    const [ el, source ] = args;
+    const [el, source] = args;
   }
 
   ngOnDestroy() {

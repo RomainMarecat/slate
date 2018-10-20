@@ -18,7 +18,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-car-offer-detail',
   templateUrl: './offer-detail.component.html',
-  styleUrls: [ './offer-detail.component.scss' ]
+  styleUrls: ['./offer-detail.component.scss']
 })
 export class OfferDetailComponent implements OnInit {
   offer: CarOffer;
@@ -36,20 +36,6 @@ export class OfferDetailComponent implements OnInit {
   isActivatedPhone = false;
   isFavorite = false;
 
-  /**
-   *
-   * @param {Meta} meta
-   * @param {Title} title
-   * @param {ActivatedRoute} activatedRoute
-   * @param {ProductService} productService
-   * @param userService
-   * @param commentService
-   * @param offerService
-   * @param {DeviceService} deviceService
-   * @param {AlertService} alertService
-   * @param categoryService
-   * @param translate
-   */
   constructor(private meta: Meta,
               private title: Title,
               private activatedRoute: ActivatedRoute,
@@ -71,7 +57,7 @@ export class OfferDetailComponent implements OnInit {
   }
 
   getOffer() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
+    this.activatedRoute.params.subscribe((value: {key: string}) => {
       if (value.key) {
         this.offerService.getOffer(value.key)
           .subscribe((offer: CarOffer) => {
@@ -114,12 +100,12 @@ export class OfferDetailComponent implements OnInit {
     this.categoryService.getCategory(key)
       .subscribe((model) => {
         this.model = model;
-        this.translate.get([ 'meta.title.offer-detail', 'meta.description.offer-detail' ])
+        this.translate.get(['meta.title.offer-detail', 'meta.description.offer-detail'])
           .subscribe((translations: string[]) => {
-            this.meta.addTag({name: 'description', content: translations[ 'meta.description.offer-detail' ]});
+            this.meta.addTag({name: 'description', content: translations['meta.description.offer-detail']});
             this.title.setTitle((this.brand && this.brand.name ? this.brand.name + ' ' : '') +
               (this.model && this.model.name ? this.model.name + ' ' : '') +
-              translations[ 'meta.title.offer-detail' ]);
+              translations['meta.title.offer-detail']);
           });
       });
   }

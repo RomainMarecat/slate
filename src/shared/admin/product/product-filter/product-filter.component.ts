@@ -8,7 +8,7 @@ import { TableColumn } from '@swimlane/ngx-datatable';
   styleUrls: ['./product-filter.component.scss']
 })
 export class ProductFilterComponent implements OnInit {
-  @Output('filtered') filtered: EventEmitter<Filter> = new EventEmitter<Filter>();
+  @Output() filtered: EventEmitter<Filter> = new EventEmitter<Filter>();
   columnSelected = 'translations.fr';
   columns: TableColumn[];
   filterText = '';
@@ -21,10 +21,6 @@ export class ProductFilterComponent implements OnInit {
     this.columns = this.getColumns();
   }
 
-  /**
-   *
-   * @returns {({prop: string; name: string; selected: boolean} | {prop: string; name: string})[]}
-   */
   getColumns(): TableColumn[] {
     return [{
       prop: 'translations.fr',
@@ -46,7 +42,6 @@ export class ProductFilterComponent implements OnInit {
 
   /**
    * Filtre sur les colonnes du produit
-   * @param {string } }} event [description]
    */
   updateFilter(event: any) {
     if (event === true) {

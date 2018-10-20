@@ -1,9 +1,9 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Area } from './area';
 import { mockAreas } from './mock-area';
-import { AngularFirestoreCollection, DocumentChangeAction } from 'angularfire2/firestore';
+import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 import { Filter } from '../../facet/filter/shared/filter';
 import { of } from 'rxjs/internal/observable/of';
 

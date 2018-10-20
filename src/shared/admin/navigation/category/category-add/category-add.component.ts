@@ -3,13 +3,11 @@ import { CategoryService } from '../../../../category/category.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../../popup/alert.service';
 import { StringService } from '../../../../util/string.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
+import { Observable, of } from 'rxjs';
 import { Category } from '../../../../category/category';
 import { DocumentReference } from '@firebase/firestore-types';
-import { of } from 'rxjs/internal/observable/of';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-category-add',
@@ -62,8 +60,10 @@ export class CategoryAddComponent implements OnInit {
     this.categories$ = this.categoryService.getCategories();
 
     this.form.valueChanges
-      .debounceTime(1000)
-      .distinctUntilChanged()
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged()
+      )
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
@@ -164,7 +164,6 @@ export class CategoryAddComponent implements OnInit {
 
   /**
    * On select add reinit and add category in selection array
-   * @param any selected
    */
   onSelect({selected}) {
     this.selected = [];

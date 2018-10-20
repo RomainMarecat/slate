@@ -29,13 +29,6 @@ export class SelectionListComponent implements OnInit {
   @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
   @ViewChild('desktopHeader') desktopHeader: TemplateRef<any>;
 
-  /**
-   * @param selectionService
-   * @param productService
-   * @param router
-   * @param menuService
-   * @param dialog
-   */
   constructor(private selectionService: SelectionService,
               private productService: ProductService,
               private router: Router,
@@ -203,7 +196,6 @@ export class SelectionListComponent implements OnInit {
 
   /**
    * On select add new list in selection array
-   * @param {any} selected
    */
   onSelect({selected}) {
     this.selected.splice(0, this.selected.length);

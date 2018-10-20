@@ -5,7 +5,7 @@ import { StorageModule } from './storage/storage.module';
 import { ImageComponent } from './image/image.component';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { ImageCropperModule } from 'ngx-img-cropper';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 const TABLE_MEDIA = new InjectionToken<string>('media');
 

@@ -23,13 +23,6 @@ export class ColumnComponent implements OnInit {
   currentTitle: string;
   options: any;
 
-  /**
-   * @param {ElementRef} el
-   * @param {ColumnService} columnService
-   * @param {CardService} cardService
-   * @param {AlertService} alertService
-   * @param {DragulaService} dragulaService
-   */
   constructor(private el: ElementRef,
               private columnService: ColumnService,
               private cardService: CardService,
@@ -66,7 +59,6 @@ export class ColumnComponent implements OnInit {
 
   /**
    * On drop item in column
-   * @param {any[]} args
    */
   onDrop(args: any[]) {
     const [row, destination, source] = args;
@@ -103,15 +95,15 @@ export class ColumnComponent implements OnInit {
 
 
   blurOnEnter(event) {
-    if (event.keyCode === 13) {
+    if (event.key === 13) {
       event.target.blur();
     }
   }
 
   addColumnOnEnter(event: KeyboardEvent) {
-    if (event.keyCode === 13) {
+    if (event.key === '13') {
       this.updateColumn();
-    } else if (event.keyCode === 27) {
+    } else if (event.key === '27') {
       this.cleadAddColumn();
     }
   }
@@ -139,14 +131,14 @@ export class ColumnComponent implements OnInit {
   }
 
   addCardOnEnter(event: KeyboardEvent) {
-    if (event.keyCode === 13) {
+    if (event.key === '13') {
       if (this.addCardText && this.addCardText.trim() !== '') {
         this.addCard();
         this.addCardText = '';
       } else {
         this.clearAddCard();
       }
-    } else if (event.keyCode === 27) {
+    } else if (event.key === '27') {
       this.clearAddCard();
     }
   }

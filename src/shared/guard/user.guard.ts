@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertService } from '../popup/alert.service';
-import { map, take } from 'rxjs/operators';
-import 'rxjs/add/operator/do';
+import { map, take, tap } from 'rxjs/operators';
 
 @Injectable()
 export class UserGuard implements CanActivate {
@@ -20,12 +19,12 @@ export class UserGuard implements CanActivate {
       .pipe(
         take(1),
         map(authState => !!authState),
-      )
-      .do(authenticated => {
-        if (!authenticated) {
-          this.alertService.toast('snackbar.guard.unauthenticated');
-          this.router.navigate(['/']);
-        }
-      });
+        tap(authenticated => {
+          if (!authenticated) {
+            this.alertService.toast('snackbar.guard.unauthenticated');
+            this.router.navigate(['/']);
+          }
+        })
+      );
   }
 }

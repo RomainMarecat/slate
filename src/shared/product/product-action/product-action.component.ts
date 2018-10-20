@@ -3,9 +3,9 @@ import { Product } from '../shared/product';
 import { UserService } from '../../user/shared/user.service';
 import { ScoreService } from '../../score/score.service';
 import { AlertService } from '../../popup/alert.service';
-import { CartService } from 'shared/cart/shared/cart.service';
-import { Cart, CartItem } from 'shared/cart/shared/cart';
-import { Filter } from 'shared/facet/filter/shared/filter';
+import { Cart, CartItem } from '../../cart/shared/cart';
+import { CartService } from '../../cart/shared/cart.service';
+import { Filter } from '../../facet/filter/shared/filter';
 
 @Component({
   selector: 'app-product-action',
@@ -27,13 +27,11 @@ export class ProductActionComponent implements OnInit {
 
   /**
    * When product score is updated
-   * @type {EventEmitter<Product>}
    */
   @Output() updateScore: EventEmitter<Product> = new EventEmitter<Product>();
 
   /**
    * When product is added to cart with positive or negative product
-   * @type {EventEmitter<Product>}
    */
   @Output() addedCart: EventEmitter<Product> = new EventEmitter<Product>();
 
@@ -52,8 +50,6 @@ export class ProductActionComponent implements OnInit {
    * Add +1 or -1 on current score
    * Test if User is authenticated, is Authorized (First time score this item)
    * If test is true, update Product
-   * @param {Product} product
-   * @param {string}    score    string plus or minus
    * @todo Update plus or minus string by new alogrithm
    */
   score(product: Product, score: string) {
@@ -81,8 +77,6 @@ export class ProductActionComponent implements OnInit {
   /**
    * Create new score in the collection with user id
    * Update the Product
-   * @param {Product} product
-   * @param {string}    score
    */
   updateProductScore(product: Product, score: string) {
     if (!product.score) {
@@ -104,7 +98,6 @@ export class ProductActionComponent implements OnInit {
 
   /**
    * Update quantity number in input value
-   * @param {number} quantity
    */
   updateQuantity(quantity: number) {
     this.inputQuantity.nativeElement.value = (parseInt(this.inputQuantity.nativeElement.value, 10) + quantity)
@@ -130,8 +123,6 @@ export class ProductActionComponent implements OnInit {
 
   /**
    * Add to cart a product
-   * @param {Product} product
-   * @param {number} quantity
    */
   addToCart(product: Product, quantity: number) {
     const cartItem: CartItem = {
@@ -166,9 +157,7 @@ export class ProductActionComponent implements OnInit {
             return item;
           });
           this.cartService.updateCart(cart)
-            .then((res) => {
-              this.alertService.show(res);
-
+            .then(() => {
             }, (err) => {
               this.alertService.show(err);
             });

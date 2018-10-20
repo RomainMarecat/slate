@@ -1,13 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OfferConfirmationComponent } from './offer-confirmation.component';
-import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MockGeocodeService } from '../../../shared/map/shared/mock-geocode.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule } from '@angular/fire';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MockProductService } from '../../../shared/product/shared/mock-product.service';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
 import { MockOfferService } from '../../../shared/offer/mock-offer.service';

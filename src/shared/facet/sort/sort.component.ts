@@ -8,8 +8,8 @@ import { Sort } from './shared/sort';
 })
 export class SortComponent implements OnInit {
 
-  @Output('closeSidenav') closeSidenav: EventEmitter < boolean > = new EventEmitter < boolean > ();
-  @Output('sorted') sorted: EventEmitter < Sort > = new EventEmitter < Sort > ();
+  @Output() closeSidenav: EventEmitter < boolean > = new EventEmitter < boolean > ();
+  @Output() sorted: EventEmitter < Sort > = new EventEmitter < Sort > ();
 
   constructor() {}
 

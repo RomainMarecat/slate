@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PartnerService } from '../partner.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Partner } from '../partner';
 
 @Component({

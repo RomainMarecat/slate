@@ -20,10 +20,6 @@ export class PartnerImportPreviewComponent implements OnInit {
   columns: SimpleTableColumn[] = [];
   displayedColumns: TableColumn[] = [];
 
-  /**
-   * @param {MatDialogRef<PartnerImportPreviewComponent>} dialogRef
-   * @param data
-   */
   constructor(public dialogRef: MatDialogRef<PartnerImportPreviewComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     //  Charger les colonnes et pouvoir les ajouter/suprimer des colonnes comme on le souhaite
@@ -41,26 +37,16 @@ export class PartnerImportPreviewComponent implements OnInit {
     this.onToggleChip();
   }
 
-  /**
-   * @param {SimpleTableColumn} column
-   * @returns {TableColumn}
-   */
   getDisplayedValues(column: SimpleTableColumn): TableColumn {
     return {prop: column.prop, name: column.name, flexGrow: column.flexGrow};
   }
 
-  /**
-   * @param {MatChipSelectionChange} chip
-   */
   onToggleChip(chip?: MatChipSelectionChange) {
     this.displayedColumns = this.columns
       .filter((c) => c.active)
       .map(this.getDisplayedValues);
   }
 
-  /**
-   * @param {SimpleTableColumn} column
-   */
   onRemoveColumn(column: SimpleTableColumn) {
     this.columns = this.columns
       .filter((c) => c.active && column.name !== c.name);
@@ -72,8 +58,6 @@ export class PartnerImportPreviewComponent implements OnInit {
 
   /**
    * liste les clés du partenaire et les exposent dans le tableau
-   * @param {Partner[]} partners
-   * @returns {TableColumn[]}
    */
   getColumns(partners: Partner[]): {prop: string, name: string, flexGrow: number, active: boolean}[] {
     return Object.keys(partners[0]).map((key: string) => {
@@ -88,8 +72,6 @@ export class PartnerImportPreviewComponent implements OnInit {
 
   /**
    * Ferme la modal avec un résultat
-   *
-   * @param result
    */
   close(result: any): void {
     this.dialogRef.close(result);

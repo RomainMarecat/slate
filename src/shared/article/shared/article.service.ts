@@ -1,6 +1,6 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { VisitorService } from '../../firestore/visitor.service';
 import { Article } from './article';
 

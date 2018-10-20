@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./product-best-seller.component.scss']
 })
 export class ProductBestSellerComponent implements OnInit {
-  @Input('form') form: FormGroup;
+  @Input() form: FormGroup;
   color = 'primary';
   checked = false;
   disabled = false;

@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, Input } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ProductService } from '../shared/product.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { UserService } from '../../user/shared/user.service';
 import { AlertService } from '../../popup/alert.service';
 import { LoaderService } from '../../loader/loader.service';
@@ -29,17 +29,6 @@ export class ProductListComponent implements OnInit {
   showScore: boolean;
   showAdd: boolean;
 
-  /**
-   * constructor
-   * @param productService
-   * @param router
-   * @param meta
-   * @param ProductComponent
-   * @param userService
-   * @param alertService
-   * @param loaderService
-   * @param translateService
-   */
   constructor(private productService: ProductService,
               private router: Router,
               private meta: Meta,
@@ -83,7 +72,6 @@ export class ProductListComponent implements OnInit {
 
   /**
    * Update on product
-   * @param {Product} product
    */
   updateProduct(product: Product) {
     this.productService.updateProduct(product);
