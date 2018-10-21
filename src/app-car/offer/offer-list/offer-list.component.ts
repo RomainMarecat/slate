@@ -134,16 +134,13 @@ export class OfferListComponent implements OnInit {
         .pipe(
           take(1)
         )
-        .finally(() => {
-          this.isLoading = false;
-          this.loaderService.hide();
-        })
         .subscribe((offers: CarOffer[]) => {
           this.offers = offers;
           this.isLoading = false;
           this.loaderService.hide();
-        }, (err) => {
-          console.error(err);
+        }, () => {
+          this.isLoading = false;
+          this.loaderService.hide();
         });
     } else {
       this.isLoading = false;

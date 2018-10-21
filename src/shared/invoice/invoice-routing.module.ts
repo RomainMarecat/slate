@@ -1,14 +1,39 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Invoice1Component } from './invoice1/invoice1.component';
-import { InvoiceListComponent } from 'shared/invoice/invoice-list/invoice-list.component';
-import { Invoice2Component } from 'shared/invoice/invoice2/invoice2.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { InvoiceListComponent } from './invoice-list/invoice-list.component';
+import { Invoice2Component } from './invoice2/invoice2.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 const routes: Routes = [
-  {path: '', component: InvoiceListComponent},
-  {path: 'invoice1', component: Invoice1Component},
-  {path: 'invoice2', component: Invoice2Component}
+  {
+    path: '',
+    component: InvoiceComponent,
+    data: {
+      breadcrumb: 'breadcrumb.invoices.title'
+    },
+    children: [
+      {
+        path: '',
+        component: InvoiceListComponent
+      },
+      {
+        path: 'invoice1',
+        component: Invoice1Component,
+        data: {
+          breadcrumb: 'breadcrumb.invoices.invoice1'
+        }
+      },
+      {
+        path: 'invoice2',
+        component: Invoice2Component,
+        data: {
+          breadcrumb: 'breadcrumb.invoices.invoice2'
+        }
+      },
+    ]
+  }
 ];
 
 @NgModule({

@@ -60,7 +60,7 @@ describe('OfferListComponent', () => {
         MatCheckboxModule,
         MatListModule,
         NgPipesModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -72,7 +72,7 @@ describe('OfferListComponent', () => {
         }),
         SharedModule
       ],
-      declarations: [ OfferListComponent, OfferItemComponent ],
+      declarations: [OfferListComponent, OfferItemComponent],
       providers: [
         {provide: ProductService, useClass: MockProductService},
         {provide: SelectionService, useClass: MockSelectionService},

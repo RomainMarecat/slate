@@ -9,18 +9,16 @@ import { MatSelectChange } from '@angular/material';
 import { CarProduct, mileages } from '../../../shared/product/shared/car-product';
 import { Location } from '@angular/common';
 import { OfferService } from '../../../shared/offer/offer.service';
-import { CarOffer, Offer } from '../../../shared/offer/offer';
+import { CarOffer } from '../../../shared/offer/offer';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { ProductService } from '../../../shared/product/shared/product.service';
 import { Marker } from '../../../shared/map/shared/map';
 import { GeocodeService } from '../../../shared/map/shared/geocode.service';
-import { NgModel } from '@angular/forms';
 import { Media } from '../../../shared/media/media';
 import { UploadTaskSnapshot } from '@firebase/storage-types';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { DeviceService } from '../../../shared/device/device.service';
-import 'rxjs/add/operator/take';
 import { take } from 'rxjs/operators';
 
 @Component({

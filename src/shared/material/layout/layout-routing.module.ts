@@ -46,7 +46,8 @@ const routes: Routes = [
     LocalizeRouterModule.forChild(routes)
   ],
   exports: [
-    RouterModule, LocalizeRouterModule
+    RouterModule,
+    LocalizeRouterModule
   ]
 })
 export class LayoutRoutingModule {

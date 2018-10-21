@@ -3,19 +3,20 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardComponent } from './card.component';
 import { BoardRoutingModule } from '../board-routing.module';
 import { DragulaModule } from 'ng2-dragula';
-import { SharedModule } from 'shared/shared.module';
 import { BoardService } from '../shared/board.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BoardListComponent } from '../board-list/board-list.component';
 import { CommonModule } from '@angular/common';
 import { ColumnComponent } from '../column/column.component';
-import { BoardComponent } from '../board/board.component';
 import { CardService } from '../shared/card.service';
 import { ColumnService } from '../shared/column.service';
 import { MockBoardService } from '../shared/mock-board.service';
 import { MockColumnService } from '../shared/mock-column.service';
 import { MockCardService } from '../shared/mock-card.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { SharedModule } from '../../shared.module';
+import { BoardDetailComponent } from '../board-detail/board-detail.component';
+import { BoardComponent } from '../board/board.component';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -35,6 +36,7 @@ describe('CardComponent', () => {
       declarations: [
         CardComponent,
         ColumnComponent,
+        BoardDetailComponent,
         BoardComponent,
         BoardListComponent
       ],
@@ -44,7 +46,7 @@ describe('CardComponent', () => {
         {provide: CardService, useClass: MockCardService}
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

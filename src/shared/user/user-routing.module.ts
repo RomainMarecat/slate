@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserListComponent } from 'shared/user/user-list/user-list.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: UserListComponent,
+    component: UserComponent,
+    data: {
+      breadcrumb: 'breadcrumb.user.title'
+    },
     children: [
+      {
+        path: '',
+        component: UserListComponent
+      },
       {
         path: 'logins',
         loadChildren: './login/login.module#LoginModule'
@@ -17,8 +25,7 @@ const routes: Routes = [
         loadChildren: './register/register.module#RegisterModule'
       },
     ]
-  },
-
+  }
 ];
 
 @NgModule({

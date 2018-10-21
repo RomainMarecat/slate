@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginListComponent } from 'shared/user/login/login-list/login-list.component';
-import { Login1Component } from 'shared/user/login/login1/login1.component';
-import { Login2Component } from 'shared/user/login/login2/login2.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LoginListComponent } from './login-list/login-list.component';
+import { Login1Component } from './login1/login1.component';
+import { Login2Component } from './login2/login2.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
-    path: 'logins',
+    path: '',
+    component: LoginComponent,
+    data: {
+      breadcrumb: 'breadcrumb.user.login.title'
+    },
     children: [
       {
         path: '',
@@ -15,11 +20,17 @@ const routes: Routes = [
       },
       {
         path: 'login1',
-        component: Login1Component
+        component: Login1Component,
+        data: {
+          breadcrumb: 'breadcrumb.user.login.style-1'
+        },
       },
       {
         path: 'login2',
-        component: Login2Component
+        component: Login2Component,
+        data: {
+          breadcrumb: 'breadcrumb.user.login.style-2'
+        },
       }
     ]
   }

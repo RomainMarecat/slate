@@ -6,7 +6,10 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 const routes: Routes = [
   {
     path: '',
-    component: ChartListComponent
+    component: ChartListComponent,
+    data: {
+      breadcrumb: 'breadcrumb.chart'
+    }
   }
 ];
 

@@ -12,7 +12,6 @@ import { MockCategoryService } from '../../../shared/category/mock-category.serv
 import { AlertService } from '../../../shared/popup/alert.service';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 describe('OfferItemComponent', () => {
   let component: OfferItemComponent;
@@ -21,7 +20,7 @@ describe('OfferItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -36,7 +35,7 @@ describe('OfferItemComponent', () => {
         }),
         SharedModule
       ],
-      declarations: [ OfferItemComponent ],
+      declarations: [OfferItemComponent],
       providers: [
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: AlertService, useClass: MockAlertService}

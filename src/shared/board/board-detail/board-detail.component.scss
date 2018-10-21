@@ -1,0 +1,119 @@
+.board-wrapper {
+  height: calc(100vh - 64px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: #0079BF;
+
+  .board-title {
+    margin-left: 18px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+    span {
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+    }
+
+    input {
+      margin: -3px -2px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+  .board-columns-wrapper {
+    .columns-wrapper {
+      height: calc(100vh - 116px);
+      overflow-x: auto;
+    }
+  }
+
+  input[text], button {
+    color: #333;
+  }
+  a {
+    cursor: pointer;
+  }
+
+  .btn {
+    line-height: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 3px;
+    display: block;
+    padding: 8px;
+  }
+
+  li.card-placeholder {
+    list-style: none;
+    width: calc(100% - 5px);
+    height: 30px;
+    background-color: #ddd;
+    border: dashed 4px #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+  .column-placeholder {
+    height: 280px;
+    background-color: #0067A3;
+    border-radius: 3px;
+    width: 270px;
+    margin-left: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+
+  .board-columns-wrapper {
+    height: 100%;
+    min-width: 100%;
+    overflow-x: scroll;
+  }
+
+  .add-column {
+    height: 40px;
+    background-color: #0067A3;
+    border-radius: 3px;
+    width: 270px;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background 85ms ease-in, opacity 40ms ease-in, border-color 85ms ease-in;
+    min-height: 30px;
+    padding: 4px;
+
+    span {
+      color: rgba(255, 255, 255, .7);
+      line-height: 40px;
+      vertical-align: middle;
+      padding: 7px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    &.addingColumn {
+      height: 100px;
+      background-color: #e2e4e6;
+    }
+
+    .mat-form-field {
+      height: auto;
+      input {
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+        font-weight: 700;
+        border: none;
+        line-height: 18px;
+        padding: 3px 5px 4px 5px;
+      }
+    }
+  }
+}

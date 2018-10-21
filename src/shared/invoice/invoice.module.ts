@@ -15,6 +15,7 @@ import {
 } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     Invoice1Component,
     Invoice2Component,
-    InvoiceListComponent],
+    InvoiceListComponent,
+    InvoiceComponent],
   exports: [
     Invoice1Component,
     Invoice2Component

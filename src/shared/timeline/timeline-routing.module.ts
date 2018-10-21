@@ -6,8 +6,10 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     component: TimelineComponent,
+    data: {
+      breadcrumb: 'breadcrumb.timeline'
+    }
   }
 ];
 

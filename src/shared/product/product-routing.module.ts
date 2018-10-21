@@ -1,25 +1,49 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductListComponent } from 'shared/product/product-list/product-list.component';
-import { ProductAddComponent } from 'shared/product/product-add/product-add.component';
-import { ProductDetailComponent } from 'shared/product/product-detail/product-detail.component';
-import { UserGuard } from 'shared/guard/user.guard';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductAddComponent } from './product-add/product-add.component';
+import { UserGuard } from '../guard/user.guard';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProductListComponent,
+    component: ProductComponent,
     data: {
-      breadcrumb: 'breadcrumb.products.list'
-    }
-  },
-  {
-    path: 'list',
-    component: ProductListComponent,
-    data: {
-      breadcrumb: 'breadcrumb.products.list'
-    }
+      breadcrumb: 'breadcrumb.products.title'
+    },
+    children: [
+      {
+        path: 'detail/:key',
+        component: ProductDetailComponent,
+        data: {
+          breadcrumb: 'breadcrumb.products.detail'
+        }
+      },
+      {
+        path: 'list',
+        component: ProductListComponent,
+        data: {
+          breadcrumb: 'breadcrumb.products.list'
+        }
+      },
+      {
+        path: '',
+        component: ProductListComponent,
+        data: {
+          breadcrumb: 'breadcrumb.products.list'
+        }
+      },
+      {
+        path: 'map/area/:key/products',
+        component: ProductListComponent,
+        data: {
+          breadcrumb: 'breadcrumb.products.list'
+        }
+      },
+    ]
   },
   {
     path: 'add-product',
@@ -28,21 +52,7 @@ const routes: Routes = [
     data: {
       breadcrumb: 'breadcrumb.products.add'
     }
-  },
-  {
-    path: 'map/area/:key/products',
-    component: ProductListComponent,
-    data: {
-      breadcrumb: 'breadcrumb.products.list'
-    }
-  },
-  {
-    path: 'product/:key',
-    component: ProductDetailComponent,
-    data: {
-      breadcrumb: 'breadcrumb.products.detail'
-    }
-  },
+  }
 ];
 
 @NgModule({

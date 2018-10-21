@@ -79,6 +79,10 @@ const routes: Routes = [
     path: 'cart',
     loadChildren: './../shared/cart/cart.module#CartModule'
   },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
@@ -92,6 +96,7 @@ const routes: Routes = [
       alwaysSetPrefix: false
     }),
     RouterModule.forRoot(routes, {
+      enableTracing: false,
       scrollPositionRestoration: 'enabled'
     })
   ],

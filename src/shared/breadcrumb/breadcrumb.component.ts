@@ -18,7 +18,7 @@ interface UriElement {
 })
 export class BreadcrumbComponent {
 
-  uriElements: Observable<UriElement[]> = of([]);
+  uriElements: UriElement[] = [];
 
   product: Product;
 
@@ -30,7 +30,10 @@ export class BreadcrumbComponent {
               private route: ActivatedRoute,
               private productService: ProductService,
               private translateService: TranslateService) {
-    this.uriElements = this.getUriElements();
+    this.getUriElements()
+      .subscribe((uriElements) => {
+        this.uriElements = uriElements;
+      });
   }
 
   /**

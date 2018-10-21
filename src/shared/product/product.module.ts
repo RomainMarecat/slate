@@ -8,21 +8,22 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ProductListComponent } from 'shared/product/product-list/product-list.component';
-import { ProductDetailComponent } from 'shared/product/product-detail/product-detail.component';
-import { ProductItemComponent } from 'shared/product/product-item/product-item.component';
-import { ProductAddComponent } from 'shared/product/product-add/product-add.component';
-import { ProductFormComponent } from 'shared/product/product-add/product-form/product-form.component';
-import { ProductPreviewComponent } from 'shared/product/product-add/product-preview/product-preview.component';
-import { ProductActionComponent } from 'shared/product/product-action/product-action.component';
-import { ProductService } from 'shared/product/shared/product.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ProductRoutingModule } from 'shared/product/product-routing.module';
 import { Angulartics2Module } from 'angulartics2';
-import { MediaModule } from 'shared/media/media.module';
 import { NgStringPipesModule } from 'ngx-pipes';
-import { ScoreService } from 'shared/score/score.service';
-import { LoaderModule } from 'shared/loader/loader.module';
+import { LoaderModule } from '../loader/loader.module';
+import { MediaModule } from '../media/media.module';
+import { ProductRoutingModule } from './product-routing.module';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductFormComponent } from './product-add/product-form/product-form.component';
+import { ProductItemComponent } from './product-item/product-item.component';
+import { ProductActionComponent } from './product-action/product-action.component';
+import { ProductPreviewComponent } from './product-add/product-preview/product-preview.component';
+import { ProductAddComponent } from './product-add/product-add.component';
+import { ScoreService } from '../score/score.service';
+import { ProductService } from './shared/product.service';
+import { ProductComponent } from './product/product.component';
 
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_SCORE = new InjectionToken<string>('score');
@@ -58,6 +59,7 @@ export const TABLE_SCORE = new InjectionToken<string>('score');
     ProductFormComponent,
     ProductPreviewComponent,
     ProductActionComponent,
+    ProductComponent,
   ],
   exports: [
     ProductSearchComponent,

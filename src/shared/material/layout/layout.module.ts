@@ -12,7 +12,7 @@ import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDividerModule, MatExpansionModule, MatFormFieldModule,
   MatGridListModule,
   MatIconModule, MatInputModule,
-  MatListModule, MatRadioModule, MatStepperModule, MatTabsModule,
+  MatListModule, MatNativeDateModule, MatRadioModule, MatStepperModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -34,6 +34,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatGridListModule,
     MatTabsModule,
     MatIconModule,
+    MatNativeDateModule,
     MatExpansionModule,
     MatDatepickerModule,
     MatFormFieldModule,
@@ -53,4 +54,5 @@ import { TranslateModule } from '@ngx-translate/core';
     TabsComponent
   ]
 })
-export class LayoutModule {}
+export class LayoutModule {
+}

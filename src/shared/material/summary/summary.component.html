@@ -7,7 +7,7 @@
           <ngu-tile NguCarouselItem *nguCarouselDef="let materialComponent"
                     class="ngu-tile">
             <div class="wBg">
-              <h4><a [routerLink]="materialComponent.link">{{ materialComponent?.title }}</a></h4>
+              <h4><a [routerLink]="materialComponent.link | localize">{{ materialComponent?.title }}</a></h4>
               <p *ngIf="materialComponent?.description">{{ materialComponent.description }}</p>
               <a [routerLink]="materialComponent.link | localize">
                 <div class="tile" [style.background]="'url(' + materialComponent?.image + ')'">

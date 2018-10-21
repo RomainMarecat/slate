@@ -18,6 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoginListComponent } from './login-list/login-list.component';
 import { Login2Component } from './login2/login2.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -34,9 +35,9 @@ import { Login2Component } from './login2/login2.component';
     MatTooltipModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
-  declarations: [Login1Component, LoginListComponent, Login2Component],
+  declarations: [Login1Component, LoginListComponent, Login2Component, LoginComponent],
   exports: [Login1Component, Login2Component, LoginListComponent],
 })
 export class LoginModule {

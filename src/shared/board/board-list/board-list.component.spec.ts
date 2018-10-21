@@ -3,12 +3,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BoardListComponent } from './board-list.component';
 import { BoardRoutingModule } from '../board-routing.module';
 import { DragulaModule } from 'ng2-dragula';
-import { SharedModule } from 'shared/shared.module';
 import { BoardService } from '../shared/board.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CommonModule } from '@angular/common';
 import { ColumnComponent } from '../column/column.component';
-import { BoardComponent } from '../board/board.component';
 import { CardService } from '../shared/card.service';
 import { CardComponent } from '../card/card.component';
 import { ColumnService } from '../shared/column.service';
@@ -16,9 +14,12 @@ import { MockBoardService } from '../shared/mock-board.service';
 import { MockColumnService } from '../shared/mock-column.service';
 import { MockCardService } from '../shared/mock-card.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { SharedModule } from '../../shared.module';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { BoardDetailComponent } from '../board-detail/board-detail.component';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { BoardComponent } from '../board/board.component';
 
 describe('BoardListComponent', () => {
   let component: BoardListComponent;
@@ -42,6 +43,7 @@ describe('BoardListComponent', () => {
         CardComponent,
         ColumnComponent,
         BoardComponent,
+        BoardDetailComponent,
         BoardListComponent
       ],
       providers: [

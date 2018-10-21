@@ -6,6 +6,7 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule, MatIconModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
+import { MaterialComponent } from './material/material.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
     NguCarouselModule,
     TranslateModule.forChild()
   ],
-  declarations: [SummaryComponent],
+  declarations: [SummaryComponent, MaterialComponent],
   exports: [
     SummaryComponent
   ]

@@ -1,18 +1,4 @@
 <div class="main-wrapper">
-
-  <div class="heading-wrapper"
-       fxLayout="row"
-       fxLayoutAlign="start center">
-    <a routerLink="/" class="m-2">
-      <mat-icon color="primary"
-                [matTooltip]="'cta.back_to_home'|translate">
-        home
-      </mat-icon>
-    </a>
-    <h2>{{ 'user.list.header.title'|translate }}</h2>
-
-  </div>
-
   <div class="content-wrapper"
        fxLayout="row wrap"
        fxLayoutAlign="center stretch"
@@ -27,7 +13,7 @@
                        fxLayoutAlign="center stretch">
         <mat-card-title>
           <a class="link"
-             [routerLink]="[feature.link]">
+             [routerLink]="[feature.link]|localize">
             {{ feature.name | translate }}
           </a>
         </mat-card-title>
