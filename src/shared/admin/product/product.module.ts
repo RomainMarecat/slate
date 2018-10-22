@@ -2,7 +2,7 @@ import { NgModule, InjectionToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ProductRoutingModule } from './product-routing.module';
-import { ProductComponent } from './product.component';
+import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';

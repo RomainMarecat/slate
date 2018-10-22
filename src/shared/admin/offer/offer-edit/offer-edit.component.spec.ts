@@ -1,16 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OfferEditComponent } from './offer-edit.component';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('OfferEditComponent', () => {
   let component: OfferEditComponent;
   let fixture: ComponentFixture<OfferEditComponent>;
 
+  configureTestSuite();
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OfferEditComponent ]
+      declarations: [OfferEditComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

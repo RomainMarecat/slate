@@ -29,13 +29,13 @@ describe('CalendarHeaderComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ CalendarHeaderComponent ],
+      declarations: [CalendarHeaderComponent],
       providers: [
         {provide: EventService, useClass: MockEventService},
         {provide: AlertService, useClass: MockAlertService},
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

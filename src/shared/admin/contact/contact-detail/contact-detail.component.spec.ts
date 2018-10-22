@@ -3,7 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContactDetailComponent } from './contact-detail.component';
 import { ContactService } from '../../../contact/shared/contact.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2Module } from 'angulartics2';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxEditorModule } from 'ngx-editor';
@@ -21,11 +20,14 @@ import { ObjectService } from '../../../util/object.service';
 import { I18nService } from '../../../i18n/i18n.service';
 import { DeviceService } from '../../../device/device.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ContactDetailComponent', () => {
   let component: ContactDetailComponent;
   let fixture: ComponentFixture<ContactDetailComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -38,7 +40,7 @@ describe('ContactDetailComponent', () => {
         NgxEditorModule,
         NgxDatatableModule,
         LocalizeRouterModule,
-        Angulartics2Module.forRoot( {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,

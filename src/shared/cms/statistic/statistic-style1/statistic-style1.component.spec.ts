@@ -4,10 +4,13 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { StatisticStyle1Component } from './statistic-style1.component';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('StatisticStyle1Component', () => {
   let component: StatisticStyle1Component;
   let fixture: ComponentFixture<StatisticStyle1Component>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

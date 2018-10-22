@@ -10,9 +10,11 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CommonModule } from '@angular/common';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import localeEn from '@angular/common/locales/en';
+import { CheckForUpdateService } from 'shared/pwa/shared/check-for-update.service';
 
 registerLocaleData(localeFr);
 registerLocaleData(localeEn);
@@ -36,6 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   declarations: [
     AppRootComponent
@@ -44,7 +47,8 @@ export function createTranslateLoader(http: HttpClient) {
     AppRootComponent
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'fr-FR'}
+    {provide: LOCALE_ID, useValue: 'fr-FR'},
+    CheckForUpdateService
   ]
 })
 export class AppModule {

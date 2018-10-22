@@ -47,8 +47,7 @@ describe('AttributeListComponent', () => {
         {provide: AlertService, useClass: MockAlertService},
         {provide: AttributeService, useClass: MockAttributeService},
         {provide: MediaService, useClass: MockMediaService},
-        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
-
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
       ]
     })
       .compileComponents();

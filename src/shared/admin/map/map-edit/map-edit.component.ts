@@ -110,7 +110,7 @@ export class MapEditComponent implements OnInit {
             this.alertService.toast(`map error ${err}`);
           });
         this.router.navigate([
-          '/admin/maps'
+          '/admin/map'
         ]);
       } else {
         this.mapService.createMap(this.map)

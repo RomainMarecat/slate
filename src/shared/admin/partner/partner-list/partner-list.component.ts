@@ -92,7 +92,8 @@ export class PartnerListComponent implements OnInit {
       partner.published_at = null;
     }
 
-    this.partnerService.updatePartner(partner);
+    this.partnerService.updatePartner(partner)
+      .then(() => {});
   }
 
   updatePartnerPublication(partner: Partner, event: {source: any, value: boolean}) {
@@ -122,7 +123,7 @@ export class PartnerListComponent implements OnInit {
   }
 
   editPartner(partner: Partner) {
-    this.router.navigate(['/admin/partner/edit/', partner.key]);
+    this.router.navigate([this.localizeRouterService.translateRoute(`/admin/partner/edit/${partner.key}`)]);
   }
 
   /**
@@ -165,7 +166,7 @@ export class PartnerListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate(['/admin/partner/edit/', event.row.key]);
+      this.editPartner(event.row);
     }
   }
 

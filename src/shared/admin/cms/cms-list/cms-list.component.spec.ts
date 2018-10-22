@@ -7,21 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatCardModule,
   MatToolbarModule,
-  MatSidenavModule,
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
   MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule
 } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CmsListComponent } from './cms-list.component';
@@ -33,11 +24,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MenuService } from '../../../menu/menu.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('CmsListComponent', () => {
   let component: CmsListComponent;
   let fixture: ComponentFixture<CmsListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

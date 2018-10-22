@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  site_name: 'alr.com',
+  site_name: 'alr-384269.firebaseapp.com',
   app_name: 'alr',
   cookie: {
     domain: 'alr-384269.firebaseapp.com'

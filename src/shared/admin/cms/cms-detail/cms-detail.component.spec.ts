@@ -1,16 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CmsDetailComponent } from './cms-detail.component';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('CmsDetailComponent', () => {
   let component: CmsDetailComponent;
   let fixture: ComponentFixture<CmsDetailComponent>;
 
+  configureTestSuite();
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CmsDetailComponent ]
+      declarations: [CmsDetailComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

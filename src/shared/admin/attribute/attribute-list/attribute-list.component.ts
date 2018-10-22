@@ -38,7 +38,6 @@ export class AttributeListComponent implements OnInit {
    * Init list of Attribute
    */
   ngOnInit() {
-    this.menuService.nextTitle('Attributs');
     this.columns = [{
       width: 50,
       sortable: false,

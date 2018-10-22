@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration=production --project=alr",
     "build-themes": "bash ./tools/build-themes.sh",
     "test": "./node_modules/@angular/cli/bin/ng test --watch=false --project=alr",
     "lint": "./node_modules/@angular/cli/bin/ng lint",
@@ -26,6 +26,7 @@
     "@angular/material": "^7.0.0",
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
+    "@angular/pwa": "^0.10.2",
     "@angular/router": "~7.0.0",
     "@angular/service-worker": "^7.0.0",
     "@firebase/app": "^0.3.4",

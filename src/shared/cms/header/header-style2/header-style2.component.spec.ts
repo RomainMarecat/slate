@@ -4,10 +4,13 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { HeaderStyle2Component } from './header-style2.component';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('HeaderStyle2Component', () => {
   let component: HeaderStyle2Component;
   let fixture: ComponentFixture<HeaderStyle2Component>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,7 +22,7 @@ describe('HeaderStyle2Component', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ HeaderStyle2Component ]
+      declarations: [HeaderStyle2Component]
     })
       .compileComponents();
   }));

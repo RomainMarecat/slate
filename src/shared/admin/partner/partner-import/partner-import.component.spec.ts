@@ -13,10 +13,13 @@ import { AlertService } from 'shared/popup/alert.service';
 import { MockAlertService } from 'shared/popup/mock-alert.service';
 import { PartnerService } from 'shared/partner/partner.service';
 import { MockPartnerService } from 'shared/partner/mock-partner.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('PartnerImportComponent', () => {
   let component: PartnerImportComponent;
   let fixture: ComponentFixture<PartnerImportComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

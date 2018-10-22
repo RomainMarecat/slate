@@ -40,10 +40,13 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../../../../app-car/environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ArticleEditComponent', () => {
   let component: ArticleEditComponent;
   let fixture: ComponentFixture<ArticleEditComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

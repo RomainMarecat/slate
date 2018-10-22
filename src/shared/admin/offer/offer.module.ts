@@ -8,6 +8,7 @@ import { SharedModule } from '../../shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { OfferService } from '../shared/offer/offer.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { OfferComponent } from './offer/offer.component';
 
 const TABLE_OFFER = new InjectionToken<string>('offer');
 
@@ -18,7 +19,7 @@ const TABLE_OFFER = new InjectionToken<string>('offer');
     SharedModule,
     OfferRoutingModule
   ],
-  declarations: [ OfferListComponent, OfferEditComponent ],
+  declarations: [ OfferListComponent, OfferEditComponent, OfferComponent ],
   providers: [
     {provide: TABLE_OFFER, useValue: 'offer'},
     {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},

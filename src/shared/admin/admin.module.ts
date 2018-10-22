@@ -15,6 +15,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
     AdminRoutingModule,
     TranslateModule.forChild(),
   ],
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, AdminComponent],
   providers: [
     AdminGuard
   ]

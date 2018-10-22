@@ -3,10 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { NgPipesModule } from 'ngx-pipes';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import {
   MatCardModule,
   MatIconModule,
@@ -18,10 +16,13 @@ import { CommentAddComponent } from './comment-add.component';
 import { CommentService } from './../comment.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('CommentAddComponent', () => {
   let component: CommentAddComponent;
   let fixture: ComponentFixture<CommentAddComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

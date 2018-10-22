@@ -23,10 +23,13 @@ import { MediaService } from 'shared/media/media.service';
 import { MockMediaService } from 'shared/media/mock-media.service';
 import { LoaderService } from 'shared/loader/loader.service';
 import { MockLoaderService } from 'shared/loader/mock-loader.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;
   let fixture: ComponentFixture<ArticleListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
