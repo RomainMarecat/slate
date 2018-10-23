@@ -119,7 +119,7 @@ export class MapListComponent implements OnInit {
 
   editMap(map: Map) {
     this.router.navigate([
-      this.localizeRouterService.translateRoute('/admin/maps/edit'),
+      this.localizeRouterService.translateRoute('/admin/map/edit'),
       map.key
     ]);
   }
@@ -164,10 +164,7 @@ export class MapListComponent implements OnInit {
 
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate([
-        this.localizeRouterService.translateRoute('/admin/maps/edit'),
-        event.row.key
-      ]);
+      this.editMap(event.row);
     }
   }
 

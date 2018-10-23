@@ -11,6 +11,7 @@ import { PartnerOffersComponent } from './partner-offers/partner-offers.componen
 import { PartnerService } from '../../partner/partner.service';
 import { PartnerImportComponent } from './partner-import/partner-import.component';
 import { PartnerImportPreviewComponent } from './partner-import-preview/partner-import-preview.component';
+import { PartnerComponent } from './partner/partner.component';
 
 const TABLE_PARTNER = new InjectionToken<string>('partner');
 
@@ -29,7 +30,8 @@ const TABLE_PARTNER = new InjectionToken<string>('partner');
     PartnerEditComponent,
     PartnerOffersComponent,
     PartnerImportComponent,
-    PartnerImportPreviewComponent
+    PartnerImportPreviewComponent,
+    PartnerComponent
   ],
   providers: [
     {provide: TABLE_PARTNER, useValue: 'partner'},

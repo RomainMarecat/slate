@@ -15,6 +15,7 @@ import { StringService } from '../../util/string.service';
 import { AlertService } from '../../popup/alert.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { MediaService } from '../../media/media.service';
+import { ArticleComponent } from './article/article.component';
 
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_MEDIA = new InjectionToken<string>('media');
@@ -32,6 +33,10 @@ export const TABLE_MEDIA = new InjectionToken<string>('media');
   declarations: [
     ArticleListComponent,
     ArticleEditComponent,
+    ArticleComponent,
+  ],
+  entryComponents: [
+    ArticleListComponent
   ],
   providers: [
     MatIconRegistry,

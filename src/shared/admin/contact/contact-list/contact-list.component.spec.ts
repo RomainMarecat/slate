@@ -33,11 +33,14 @@ import { ContactService } from '../../../contact/shared/contact.service';
 import { MockContactService } from '../../../contact/shared/mock-contact.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ContactListComponent', () => {
   let component: ContactListComponent;
   let fixture: ComponentFixture<ContactListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

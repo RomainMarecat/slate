@@ -19,10 +19,13 @@ import { MockPartnerService } from 'shared/partner/mock-partner.service';
 import { PartnerImportComponent } from '../partner-import/partner-import.component';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('PartnerListComponent', () => {
   let component: PartnerListComponent;
   let fixture: ComponentFixture<PartnerListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

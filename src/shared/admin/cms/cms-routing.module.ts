@@ -1,33 +1,48 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
-import { CmsComponent } from './cms.component';
 import { CmsListComponent } from './cms-list/cms-list.component';
 import { CmsDetailComponent } from './cms-detail/cms-detail.component';
 import { CmsAddComponent } from './cms-add/cms-add.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { CmsComponent } from './cms/cms.component';
 
-const routes: Routes = [{
-  path: '',
-  redirectTo: 'list',
-  canActivate: [AdminGuard],
-  component: CmsComponent
-},
+const routes: Routes = [
   {
-    path: 'list',
+    path: '',
     canActivate: [AdminGuard],
-    component: CmsListComponent
+    component: CmsComponent,
+    data: {
+      breadcrumb: 'breadcrumb.cms.title'
+    },
+    children: [
+      {
+        path: '',
+        canActivate: [AdminGuard],
+        component: CmsListComponent,
+        data: {
+          breadcrumb: 'breadcrumb.cms.list'
+        },
+      },
+      {
+        path: 'detail/:key',
+        canActivate: [AdminGuard],
+        component: CmsDetailComponent,
+        data: {
+          breadcrumb: 'breadcrumb.cms.detail'
+        },
+      },
+      {
+        path: 'add',
+        canActivate: [AdminGuard],
+        component: CmsAddComponent,
+        data: {
+          breadcrumb: 'breadcrumb.cms.add'
+        },
+      }
+    ]
   },
   {
-    path: 'detail/:key',
-    canActivate: [AdminGuard],
-    component: CmsDetailComponent
-  },
-  {
-    path: 'add',
-    canActivate: [AdminGuard],
-    component: CmsAddComponent
-  }, {
     path: ':key/cms-details',
     canActivate: [AdminGuard],
     loadChildren: './../cms-detail/cms-detail.module#CmsDetailModule'
@@ -35,8 +50,14 @@ const routes: Routes = [{
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), LocalizeRouterModule.forChild(routes)],
-  exports: [RouterModule, LocalizeRouterModule]
+  imports: [
+    RouterModule.forChild(routes),
+    LocalizeRouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule,
+    LocalizeRouterModule
+  ]
 })
 export class CmsRoutingModule {
 }

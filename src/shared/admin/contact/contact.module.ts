@@ -9,6 +9,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ContactService } from '../../contact/shared/contact.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ContactComponent } from './contact/contact.component';
 
 const TABLE_CONTACT = new InjectionToken<string>('contact');
 
@@ -22,7 +23,8 @@ const TABLE_CONTACT = new InjectionToken<string>('contact');
   ],
   declarations: [
     ContactListComponent,
-    ContactDetailComponent
+    ContactDetailComponent,
+    ContactComponent
   ],
   providers: [
     {provide: TABLE_CONTACT, useValue: 'contact'},

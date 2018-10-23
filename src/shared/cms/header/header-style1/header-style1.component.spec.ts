@@ -5,10 +5,13 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { HeaderStyle1Component } from './header-style1.component';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('HeaderStyle1Component', () => {
   let component: HeaderStyle1Component;
   let fixture: ComponentFixture<HeaderStyle1Component>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -21,7 +24,7 @@ describe('HeaderStyle1Component', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ HeaderStyle1Component ]
+      declarations: [HeaderStyle1Component]
     })
       .compileComponents();
   }));

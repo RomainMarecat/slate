@@ -24,12 +24,15 @@ import { MockAlertService } from '../../../popup/mock-alert.service';
 import { CmsDetailListComponent } from './cms-detail-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { CmsService } from 'shared/cms/shared/cms.service';
-import { MockCmsService } from 'shared/cms/shared/mock-cms.service';
+import { MockCmsService } from '../../../cms/shared/mock-cms.service';
+import { CmsService } from '../../../cms/shared/cms.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('CmsDetailListComponent', () => {
   let component: CmsDetailListComponent;
   let fixture: ComponentFixture<CmsDetailListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

@@ -2,12 +2,6 @@
   <form [formGroup]="form" (ngSubmit)="saveProduct()" class="form">
     <mat-card class="mat-card mt-3">
       <mat-card-header fxLayout="row" fxLayoutAlign="center stretch">
-        <mat-card-subtitle>
-          <button type="button" role="button" mat-icon-button color="warn" mat-mini-fab class="absolute-fab"
-                  [routerLink]="['/admin/product'|localize]">
-            <mat-icon aria-label="back">arrow_back</mat-icon>
-          </button>
-        </mat-card-subtitle>
         <mat-card-title>
           <span *ngIf="!product?.key">
             Ajouter un produit

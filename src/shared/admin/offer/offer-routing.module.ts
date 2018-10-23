@@ -4,28 +4,43 @@ import { AdminGuard } from '../../guard/admin.guard';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { OfferEditComponent } from './offer-edit/offer-edit.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { OfferComponent } from './offer/offer.component';
 
 const routes: Routes = [{
   path: '',
-  redirectTo: 'list',
   canActivate: [AdminGuard],
-  component: OfferListComponent
+  component: OfferComponent,
+  data: {
+    breadcrumb: 'breadcrumb.offer.title'
+  },
+  children: [
+    {
+      path: '',
+      canActivate: [AdminGuard],
+      component: OfferListComponent,
+      data: {
+        breadcrumb: 'breadcrumb.offer.list'
+      },
+    },
+    {
+      path: 'add',
+      canActivate: [AdminGuard],
+      component: OfferEditComponent,
+      data: {
+        breadcrumb: 'breadcrumb.offer.add'
+      },
+    },
+    {
+      path: 'edit/:key',
+      canActivate: [AdminGuard],
+      component: OfferEditComponent,
+      data: {
+        breadcrumb: 'breadcrumb.offer.edit'
+      },
+    },
+  ]
 },
-  {
-    path: 'list',
-    canActivate: [AdminGuard],
-    component: OfferListComponent
-  },
-  {
-    path: 'add',
-    canActivate: [AdminGuard],
-    component: OfferEditComponent
-  },
-  {
-    path: 'edit/:key',
-    canActivate: [AdminGuard],
-    component: OfferEditComponent
-  },
+
 ];
 
 @NgModule({

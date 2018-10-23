@@ -10,10 +10,13 @@ import { MockProductService } from '../product/shared/mock-product.service';
 import { ProductService } from '../product/shared/product.service';
 import { CommonModule } from '@angular/common';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { configureTestSuite } from '../unit-test/configure-test-suite';
 
 describe('BreadcrumbComponent', () => {
   let component: BreadcrumbComponent;
   let fixture: ComponentFixture<BreadcrumbComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

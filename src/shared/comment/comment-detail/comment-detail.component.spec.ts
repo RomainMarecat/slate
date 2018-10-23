@@ -3,10 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { NgPipesModule } from 'ngx-pipes';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import {
   MatCardModule,
   MatIconModule,
@@ -16,10 +14,13 @@ import {
 import { CommentDetailComponent } from './comment-detail.component';
 import { CommentService } from './../comment.service';
 import { MockCommentService } from './../mock-comment.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('CommentDetailComponent', () => {
   let component: CommentDetailComponent;
   let fixture: ComponentFixture<CommentDetailComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

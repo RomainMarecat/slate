@@ -48,7 +48,8 @@
       </ng-template>
     </div>
   </div>
-  <button color="primary" type="button" aria-label="Ajouter un attribut" [routerLink]="['/admin/attribute/add']"
+  <button color="primary" type="button" aria-label="Ajouter un attribut"
+          [routerLink]="['/admin/'|localize, 'attribute', 'add']"
           mat-mini-fab class="absolute-fab pulse">
     <mat-icon>add</mat-icon>
   </button>

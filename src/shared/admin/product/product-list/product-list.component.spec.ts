@@ -22,10 +22,14 @@ import { MockProductService } from '../../../product/shared/mock-product.service
 import { ProductService } from '../../../product/shared/product.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
   let fixture: ComponentFixture<ProductListComponent>;
+
+  configureTestSuite();
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [

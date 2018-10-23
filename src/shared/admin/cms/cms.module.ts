@@ -7,13 +7,13 @@ import { NgxEditorModule } from 'ngx-editor';
 
 import { SharedModule } from '../../shared.module';
 import { CmsRoutingModule } from './cms-routing.module';
-import { CmsComponent } from './cms.component';
 import { CmsListComponent } from './cms-list/cms-list.component';
 import { CmsDetailComponent } from './cms-detail/cms-detail.component';
 import { CmsAddComponent } from './cms-add/cms-add.component';
 import { CmsService } from '../../cms/shared/cms.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { CmsComponent } from './cms/cms.component';
 
 const TABLE_CMS = new InjectionToken<string>('cms');
 
@@ -24,15 +24,20 @@ const TABLE_CMS = new InjectionToken<string>('cms');
     HttpClientModule,
     NgxEditorModule,
     ReactiveFormsModule,
-    TranslateModule,
+    TranslateModule.forChild(),
     SharedModule,
     NgxDatatableModule,
     CmsRoutingModule
   ],
-  declarations: [ CmsComponent, CmsListComponent, CmsDetailComponent, CmsAddComponent ],
+  declarations: [
+    CmsComponent,
+    CmsListComponent,
+    CmsDetailComponent,
+    CmsAddComponent
+  ],
   providers: [
     {provide: TABLE_CMS, useValue: 'cms'},
-    {provide: CmsService, useClass: CmsService, deps: [ AngularFirestore, TABLE_CMS ]},
+    {provide: CmsService, useClass: CmsService, deps: [AngularFirestore, TABLE_CMS]},
 
   ]
 })

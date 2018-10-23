@@ -4,6 +4,12 @@
     "add-product": "ajouter-un-produit",
     "boards": "tableau-de-bord",
     "board": "tableau",
+    "category": "category",
+    "cms": "cms",
+    "cms-detail": "cms détail",
+    "categories": "categories",
+    "selections": "selections",
+    "selection": "selection",
     "layout-builder": "configurateur-de-layout",
     "material": "material-design",
     "button-indicators": "button-indicators",
@@ -48,8 +54,6 @@
     "gprd": "rgpd",
     "faq": "foire-aux-questions",
     "invoices": "facturation",
-    "invoices/invoice1": "style-1",
-    "invoices/invoice2": "style-2",
     "login1": "login-style-1",
     "login2": "login-style-2",
     "logins": "connexion",
@@ -59,12 +63,7 @@
     "calendar": "agenda",
     "admin": "administration",
     "article": "article",
-    "map": "carte",
-    "admin/article": "article",
-    "admin/maps": "cartes",
-    "admin/maps/list": "liste",
-    "admin/maps/edit": "edition",
-    "admin/maps/add": "ajouter",
+    "map": "map",
     "cart": "panier",
     "contact-us": "contacter-nous",
     "product": "product",
@@ -349,17 +348,53 @@
   },
   "breadcrumb": {
     "article": {
+      "title": "articles",
       "add": "ajouter un article",
       "edit": "éditer un article",
       "list": "liste des articles",
       "detail": "détail de l'article"
+    },
+    "attribute": {
+      "title": "attributs",
+      "add": "ajouter un attribut",
+      "edit": "éditer un attribut",
+      "list": "liste des attributs",
+      "detail": "détail de l'attribut"
     },
     "board": {
       "title": "tableau de bord",
       "list": "liste des tableaux de bord",
       "detail": "détail du tableau de bord"
     },
+    "category": {
+      "title": "catégories",
+      "add": "ajouter un catégorie",
+      "edit": "éditer un catégorie",
+      "list": "liste des catégories",
+      "detail": "détail de la catégorie"
+    },
+    "contacts": {
+      "title": "contacts",
+      "add": "ajouter un contact",
+      "edit": "éditer un contact",
+      "list": "liste des contacts",
+      "detail": "détail du contact"
+    },
     "chart": "chart",
+    "cms": {
+      "title": "cms",
+      "add": "ajouter un cms",
+      "edit": "éditer un cms",
+      "list": "liste des cms",
+      "detail": "détail du cms"
+    },
+    "cms-detail": {
+      "title": "template cms",
+      "add": "ajouter un template cms",
+      "edit": "éditer un template cms",
+      "list": "liste des template cms",
+      "detail": "détail du template cms"
+    },
     "gprd": "rgpd",
     "home": "accueil",
     "invoices": {
@@ -368,6 +403,13 @@
       "invoice2": "facture style 2"
     },
     "layout-builder": "Configurateur de layout",
+    "map": {
+      "title": "cartes",
+      "add": "ajouter une carte",
+      "edit": "éditer les régions",
+      "list": "liste des cartes",
+      "detail": "détail de la carte"
+    },
     "material": {
       "title": "material",
       "summary": "sommaire",
@@ -390,13 +432,41 @@
         "title": "popup"
       }
     },
+    "offer": {
+      "title": "offres",
+      "add": "ajouter une offre",
+      "edit": "éditer une offre",
+      "list": "liste des offres",
+      "detail": "détail de l'offre"
+    },
     "timeline": "timeline",
+    "partner": {
+      "title": "partenaires",
+      "add": "ajouter un partenaire",
+      "edit": "éditer un partenaire",
+      "list": "liste des partenaires",
+      "detail": "détail du partenaire"
+    },
+    "product": {
+      "title": "produits",
+      "add": "ajouter un produit",
+      "edit": "éditer un produit",
+      "list": "liste des produits",
+      "detail": "détail du produit"
+    },
     "products": {
       "title": "produits",
       "add": "ajouter un produit",
       "edit": "éditer un produit",
       "list": "liste des produits",
       "detail": "détail du produit"
+    },
+    "selection": {
+      "title": "sélections",
+      "add": "ajouter un sélection",
+      "edit": "éditer un sélection",
+      "list": "liste des sélections",
+      "detail": "détail de la sélection"
     },
     "user": {
       "title": "utilisateur",

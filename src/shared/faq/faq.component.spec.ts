@@ -3,7 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FaqComponent } from './faq.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MockCmsDetailService } from '../cms-detail/shared/mock-cms-detail.service';
 import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';

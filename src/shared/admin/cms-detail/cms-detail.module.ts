@@ -14,6 +14,7 @@ import { CmsDetailService } from '../../cms-detail/shared/cms-detail.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CmsService } from '../../cms/shared/cms.service';
+import { CmsDetailComponent } from './cms-detail/cms-detail.component';
 
 const TABLE_CMS_DETAIL = new InjectionToken<string>('cms-detail');
 const TABLE_CMS = new InjectionToken<string>('cms');
@@ -31,7 +32,7 @@ const TABLE_CMS = new InjectionToken<string>('cms');
     SharedModule,
     CmsDetailRoutingModule
   ],
-  declarations: [CmsDetailListComponent, CmsDetailAddComponent],
+  declarations: [CmsDetailListComponent, CmsDetailAddComponent, CmsDetailComponent],
   providers: [
     {provide: TABLE_CMS_DETAIL, useValue: 'cms-detail'},
     {provide: TABLE_CMS, useValue: 'cms'},

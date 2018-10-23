@@ -23,7 +23,6 @@ import { MockUserService } from '../../../user/shared/mock-user.service';
 import { MockLoaderService } from '../../../loader/mock-loader.service';
 import { DeviceService } from '../../../device/device.service';
 import { NotificationService } from '../../../slack/notification.service';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2Module } from 'angulartics2';
 import { CategoryService } from '../../../category/category.service';
 import { MockCategoryService } from '../../../category/mock-category.service';
@@ -44,10 +43,13 @@ import { MockProductService } from '../../../product/shared/mock-product.service
 import { ProductService } from '../../../product/shared/product.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
   let fixture: ComponentFixture<ProductEditComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

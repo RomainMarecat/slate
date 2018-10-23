@@ -4,10 +4,13 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { TeamStyle1Component } from './team-style1.component';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('TeamStyle1Component', () => {
   let component: TeamStyle1Component;
   let fixture: ComponentFixture<TeamStyle1Component>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,9 +22,9 @@ describe('TeamStyle1Component', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ TeamStyle1Component ]
+      declarations: [TeamStyle1Component]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

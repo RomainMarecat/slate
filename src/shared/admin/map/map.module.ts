@@ -10,6 +10,7 @@ import { MapService } from '../../map/shared/map.service';
 import { MapAreasComponent } from './map-areas/map-areas.component';
 import { AreaService } from '../../map/shared/area.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { MapComponent } from './map/map.component';
 
 const TABLE_MAP = new InjectionToken < string > ('map');
 const TABLE_AREA = new InjectionToken < string > ('area');
@@ -22,7 +23,7 @@ const TABLE_AREA = new InjectionToken < string > ('area');
     SharedModule,
     TranslateModule.forChild()
   ],
-  declarations: [MapListComponent, MapEditComponent, MapAreasComponent],
+  declarations: [MapListComponent, MapEditComponent, MapAreasComponent, MapComponent],
   providers: [
     { provide: TABLE_MAP, useValue: 'map' },
     { provide: TABLE_AREA, useValue: 'area' },

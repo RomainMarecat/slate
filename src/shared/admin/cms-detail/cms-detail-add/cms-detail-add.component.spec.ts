@@ -7,24 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatCardModule,
   MatToolbarModule,
-  MatSidenavModule,
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
-  MatFormFieldModule,
   MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
   MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule
 } from '@angular/material';
 import { NgxEditorModule } from 'ngx-editor';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service';
@@ -34,12 +26,15 @@ import { AlertService } from '../../../popup/alert.service';
 
 import { CmsDetailAddComponent } from './cms-detail-add.component';
 import { NgPipesModule } from 'ngx-pipes';
-import { MockCmsService } from 'shared/cms/shared/mock-cms.service';
-import { CmsService } from 'shared/cms/shared/cms.service';
+import { CmsService } from '../../../cms/shared/cms.service';
+import { MockCmsService } from '../../../cms/shared/mock-cms.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('CmsDetailAddComponent', () => {
   let component: CmsDetailAddComponent;
   let fixture: ComponentFixture<CmsDetailAddComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

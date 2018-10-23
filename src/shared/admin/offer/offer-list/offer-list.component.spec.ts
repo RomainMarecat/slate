@@ -16,11 +16,14 @@ import { OfferService } from '../../shared/offer/offer.service';
 import { MockOfferService } from '../../shared/offer/mock-offer.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;
   let fixture: ComponentFixture<OfferListComponent>;
 
+  configureTestSuite();
+  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [

@@ -4,10 +4,13 @@ import { MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatSlideT
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { PricingStyle1Component } from './pricing-style1.component';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('PricingStyle1Component', () => {
   let component: PricingStyle1Component;
   let fixture: ComponentFixture<PricingStyle1Component>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -22,7 +25,7 @@ describe('PricingStyle1Component', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ PricingStyle1Component ]
+      declarations: [PricingStyle1Component]
     })
       .compileComponents();
   }));

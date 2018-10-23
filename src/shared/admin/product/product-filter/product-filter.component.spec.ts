@@ -11,10 +11,13 @@ import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
 import { MockCloudinaryService } from '../../../media/cloudinary/mock-cloudinary.service';
 import { SharedModule } from '../../../shared.module';
 import { environment } from '../../../../app-hockey/environments/environment';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ProductFilterComponent', () => {
   let component: ProductFilterComponent;
   let fixture: ComponentFixture < ProductFilterComponent > ;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

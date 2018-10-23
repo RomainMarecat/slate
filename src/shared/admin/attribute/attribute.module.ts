@@ -9,8 +9,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AttributeRoutingModule } from './attribute-routing.module';
 import { AttributeListComponent } from './attribute-list/attribute-list.component';
 import { AttributeEditComponent } from './attribute-edit/attribute-edit.component';
+import { AttributeComponent } from './attribute/attribute.component';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
-const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
+const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
 
 @NgModule({
   imports: [
@@ -18,14 +20,16 @@ const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
     NgxDatatableModule,
     SharedModule,
     NgxEditorModule,
+    LocalizeRouterModule,
     AttributeRoutingModule
   ],
   declarations: [
     AttributeEditComponent,
-    AttributeListComponent
+    AttributeListComponent,
+    AttributeComponent
   ],
   providers: [
-    { provide: TABLE_ATTRIBUTE, useValue: 'attribute' },
+    {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
     {
       provide: AttributeService,
       useClass: AttributeService,
@@ -33,4 +37,5 @@ const TABLE_ATTRIBUTE = new InjectionToken < string > ('attribute');
     },
   ]
 })
-export class AttributeModule {}
+export class AttributeModule {
+}

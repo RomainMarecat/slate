@@ -12,10 +12,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('CmsDetailComponent', () => {
   let component: CmsDetailComponent;
   let fixture: ComponentFixture<CmsDetailComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
