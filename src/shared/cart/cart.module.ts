@@ -20,6 +20,7 @@ import { CartComponent } from './cart/cart.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { RoutingState } from '../util/routing-state';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { CartStartComponent } from './cart-start/cart-start.component';
 
 export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
@@ -51,6 +52,7 @@ export const STRIPE_KEY = new InjectionToken<string>('');
     CartConfirmationComponent,
     CartEditComponent,
     CartComponent,
+    CartStartComponent,
   ],
   exports: [
     CartListComponent,

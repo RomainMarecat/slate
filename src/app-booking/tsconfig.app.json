@@ -2,9 +2,6 @@
   "extends": "../tsconfig.app.json",
   "compilerOptions": {
     "paths": {
-      "dragula": [
-        "../../node_modules/dragula/dist/dragula.min.js"
-      ],
       "shared/*": [
         "../shared/*"
       ]

@@ -7,11 +7,13 @@ import { ProductActionComponent } from './product-action/product-action.componen
 import { ProductDetailRoutingModule } from './product-detail-routing.module';
 import { ProductAttributeComponent } from './product-attribute/product-attribute.component';
 import { ProductDescriptionComponent } from './product-description/product-description.component';
+import { CommentModule } from 'shared/comment/comment.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    CommentModule,
     ProductDetailRoutingModule
   ],
   declarations: [

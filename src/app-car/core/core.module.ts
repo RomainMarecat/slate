@@ -40,7 +40,7 @@ import { SlackModule } from '../../shared/slack/slack.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { OfferService } from '../../shared/offer/offer.service';
-import { CommentService } from '../../shared/comment/comment.service';
+import { CommentService } from '../../shared/comment/shared/comment.service';
 import { HomeModule } from '../home/home.module';
 import { MapService } from '../../shared/map/shared/map.service';
 import { AreaService } from '../../shared/map/shared/area.service';

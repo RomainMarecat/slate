@@ -1,16 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FaqComponent } from './faq.component';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: FaqComponent,
-    data: {
-      breadcrumb: 'breadcrumb.faq'
-    }
-  },
 ];
 
 @NgModule({
@@ -23,5 +15,5 @@ const routes: Routes = [
     LocalizeRouterModule
   ]
 })
-export class FaqRoutingModule {
+export class CommentRoutingModule {
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { Comment } from './../comment';
+import { Comment } from '../shared/comment';
 @Component({
   selector: 'app-comment-add',
   templateUrl: './comment-add.component.html',

@@ -3,7 +3,6 @@ import { Card } from '../shared/card';
 import { Column } from '../shared/column';
 import { ColumnService } from '../shared/column.service';
 import { CardService } from '../shared/card.service';
-import { DragulaService } from 'ng2-dragula';
 import { AlertService } from '../../popup/alert.service';
 
 @Component({
@@ -26,8 +25,7 @@ export class ColumnComponent implements OnInit {
   constructor(private el: ElementRef,
               private columnService: ColumnService,
               private cardService: CardService,
-              private alertService: AlertService,
-              private dragulaService: DragulaService) {
+              private alertService: AlertService) {
     this.options = {
       direction: 'horizontal',
       revertOnSpill: false,
@@ -49,12 +47,12 @@ export class ColumnComponent implements OnInit {
    * Drag an drop system for attributes
    */
   subscribeDragAndDrop() {
-    this.dragulaService.drag.subscribe((value) => {
-      this.onDrag(value.slice(1));
-    });
-    this.dragulaService.drop.subscribe((value) => {
-      this.onDrop(value.slice(1));
-    });
+    // this.dragulaService.drag.subscribe((value) => {
+    //   this.onDrag(value.slice(1));
+    // });
+    // this.dragulaService.drop.subscribe((value) => {
+    //   this.onDrop(value.slice(1));
+    // });
   }
 
   /**

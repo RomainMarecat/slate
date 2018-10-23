@@ -13,7 +13,7 @@ import {
   MatInputModule
 } from '@angular/material';
 import { CommentAddComponent } from './comment-add.component';
-import { CommentService } from './../comment.service';
+import { CommentService } from '../shared/comment.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';

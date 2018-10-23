@@ -12,8 +12,8 @@ import {
 } from '@angular/material';
 
 import { CommentDetailComponent } from './comment-detail.component';
-import { CommentService } from './../comment.service';
-import { MockCommentService } from './../mock-comment.service';
+import { CommentService } from '../shared/comment.service';
+import { MockCommentService } from '../shared/mock-comment.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('CommentDetailComponent', () => {

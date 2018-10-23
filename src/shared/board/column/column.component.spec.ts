@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ColumnComponent } from './column.component';
 import { BoardRoutingModule } from '../board-routing.module';
-import { DragulaModule } from 'ng2-dragula';
 import { BoardService } from '../shared/board.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BoardListComponent } from '../board-list/board-list.component';
@@ -30,7 +29,6 @@ describe('ColumnComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
-        DragulaModule,
         SharedModule,
         HttpClientTestingModule,
         BoardRoutingModule

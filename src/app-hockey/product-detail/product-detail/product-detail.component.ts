@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../shared/product/shared/product.service';
-import { CommentService } from '../../../shared/comment/comment.service';
+import { CommentService } from '../../../shared/comment/shared/comment.service';
 import { DeviceService } from '../../../shared/device/device.service';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { HockeyProduct } from '../../../shared/product/shared/hockey-product';
-import { Comment } from '../../../shared/comment/comment';
+import { Comment } from '../../../shared/comment/shared/comment';
 import { Filter } from '../../../shared/facet/filter/shared/filter';
 import { Meta, Title } from '@angular/platform-browser';
 

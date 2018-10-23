@@ -38,10 +38,12 @@
             <strong [innerHtml]="'admin.hint.selection.fr'|translate"></strong>
           </mat-hint>
           <mat-hint align="end">{{ form.get('translations').get('fr').value.length }} {{ '/50'|translate }}</mat-hint>
-          <mat-error *ngIf="form.get('translations').get('fr').invalid && form.get('translations').get('fr').value.length === 0"
-                     [innerHtml]="'admin.error.required.selection.fr'|translate"></mat-error>
-          <mat-error *ngIf="form.get('translations').get('fr').invalid && form.get('translations').get('fr').value.length > 0"
-                     [innerHtml]="'admin.error.invalid.selection.fr'|translate"></mat-error>
+          <mat-error
+            *ngIf="form.get('translations').get('fr').invalid && form.get('translations').get('fr').value.length === 0"
+            [innerHtml]="'admin.error.required.selection.fr'|translate"></mat-error>
+          <mat-error
+            *ngIf="form.get('translations').get('fr').invalid && form.get('translations').get('fr').value.length > 0"
+            [innerHtml]="'admin.error.invalid.selection.fr'|translate"></mat-error>
         </mat-form-field>
         <mat-form-field class="mat-form-field">
           <input matInput
@@ -181,9 +183,7 @@
                 {{ 'admin.title.selection.products'|translate }}
               </h5>
               <div class="drag-wrapper">
-                <div class="drag-container"
-                     [dragula]="'products-bag'"
-                     [dragulaModel]="selectedProducts">
+                <div class="drag-container">
                   <div class="badge badge-default"
                        *ngFor="let product of selectedProducts; let i = index; "
                        [attr.product]="product">

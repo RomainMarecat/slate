@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Comment } from '../comment';
+import { Comment } from '../shared/comment';
 import * as moment from 'moment';
 
 @Component({

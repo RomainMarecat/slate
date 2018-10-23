@@ -34,7 +34,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-alr/styles.scss"
             ],
             "scripts": [
@@ -107,7 +106,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-alr/styles.scss"
             ],
             "scripts": [
@@ -190,7 +188,6 @@
               "./node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/cookieconsent/build/cookieconsent.min.css",
-              "./node_modules/dragula/dist/dragula.css",
               "src/app-showcase/styles.scss"
             ],
             "scripts": [
@@ -255,7 +252,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-showcase/styles.scss"
             ],
             "scripts": [
@@ -337,7 +333,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-car/styles.scss"
             ],
             "scripts": [
@@ -402,7 +397,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-car/styles.scss"
             ],
             "scripts": [
@@ -484,7 +478,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-blog/styles.scss"
             ],
             "scripts": [
@@ -549,7 +542,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-blog/styles.scss"
             ],
             "scripts": [
@@ -631,7 +623,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-booking/styles.scss"
             ],
             "scripts": [
@@ -696,7 +687,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-booking/styles.scss"
             ],
             "scripts": [
@@ -778,7 +768,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-hockey/styles.scss"
             ],
             "scripts": [
@@ -843,7 +832,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-hockey/styles.scss"
             ],
             "scripts": [
@@ -925,7 +913,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-ecommerce/styles.scss"
             ],
             "scripts": [
@@ -990,7 +977,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-ecommerce/styles.scss"
             ],
             "scripts": [
@@ -1072,7 +1058,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-recipe/styles.scss"
             ],
             "scripts": [
@@ -1137,7 +1122,6 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/dragula/dist/dragula.css",
               "src/app-recipe/styles.scss"
             ],
             "scripts": [

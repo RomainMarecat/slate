@@ -1,5 +1,5 @@
 <div class="drag-wrapper">
-  <div class="drag-container" [dragula]="'images-bag'" [dragulaModel]="product?.images">
+  <div class="drag-container">
     <div class="badge badge-default" *ngFor="let image of product?.images; let i = index; " [attr.image]="image">
       <app-image [resize]="{height:40}" [key]="image"></app-image>
       <span>{{ i }}. {{ image }}</span>
