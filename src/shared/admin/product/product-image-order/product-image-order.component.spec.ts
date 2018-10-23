@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { DragulaModule } from 'ng2-dragula';
 import { ProductImageOrderComponent } from './product-image-order.component';
 import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
 import { MockCloudinaryService } from '../../../media/cloudinary/mock-cloudinary.service';
@@ -26,7 +25,6 @@ describe('ProductImageOrderComponent', () => {
         imports: [
           CommonModule,
           BrowserModule,
-          DragulaModule,
           HttpClientModule,
           RouterTestingModule,
           BrowserAnimationsModule,

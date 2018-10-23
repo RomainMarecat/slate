@@ -15,7 +15,6 @@ import { Partner } from '../../../partner/partner';
 import { Category } from '../../../category/category';
 import { Offer } from '../../../offer/offer';
 import { Attribute } from '../../../attribute/attribute';
-import { DragulaService } from 'ng2-dragula';
 import { OfferService } from '../../shared/offer/offer.service';
 import { UploadTaskSnapshot } from '@firebase/storage-types';
 import { ProductService } from '../../../product/shared/product.service';
@@ -57,7 +56,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
               private alertService: AlertService,
               private categoryService: CategoryService,
               private attributeService: AttributeService,
-              private dragulaService: DragulaService,
               private partnerService: PartnerService,
               private offerService: OfferService,
               private localizeRouterService: LocalizeRouterService) {
@@ -73,7 +71,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.createEditorConfig();
     this.getCategories();
     this.getAttributes();
-    this.subscribeDragAndDrop();
+    // this.subscribeDragAndDrop();
     this.getPartners();
   }
 
@@ -373,32 +371,32 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       });
   }
 
-  /**
-   * Dra an drop system for attributes
-   */
-  subscribeDragAndDrop() {
-    this.dragulaService.dropModel.subscribe((value) => {
-      this.onDropModel(value.slice(1));
-    });
-    this.dragulaService.removeModel.subscribe((value) => {
-      this.onRemoveModel(value.slice(1));
-    });
-  }
-
-  private onDropModel(args: any): void {
-    const [el, target, source] = args;
-  }
-
-  private onRemoveModel(args: any): void {
-    const [el, source] = args;
-  }
+  // /**
+  //  * Dra an drop system for attributes
+  //  */
+  // subscribeDragAndDrop() {
+  //   this.dragulaService.dropModel.subscribe((value) => {
+  //     this.onDropModel(value.slice(1));
+  //   });
+  //   this.dragulaService.removeModel.subscribe((value) => {
+  //     this.onRemoveModel(value.slice(1));
+  //   });
+  // }
+  //
+  // private onDropModel(args: any): void {
+  //   const [el, target, source] = args;
+  // }
+  //
+  // private onRemoveModel(args: any): void {
+  //   const [el, source] = args;
+  // }
 
   /**
    * destroy all subscriptions
    */
   ngOnDestroy() {
-    this.dragulaService.dropModel.unsubscribe();
-    this.dragulaService.removeModel.unsubscribe();
+    // this.dragulaService.dropModel.unsubscribe();
+    // this.dragulaService.removeModel.unsubscribe();
   }
 
   /**

@@ -14,11 +14,12 @@ import { TranslateModule } from '@ngx-translate/core';
     MatIconModule,
     MatExpansionModule,
     FaqRoutingModule,
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
   declarations: [
     FaqComponent
-  ], exports: [
+  ],
+  exports: [
     FaqComponent
   ]
 })

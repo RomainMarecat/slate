@@ -13,9 +13,7 @@
       [(ngModel)]="column.title"/>
   </div>
   <ul class="card-list"
-      [attr.column-id]="column.key"
-      [dragula]="'column-bag'"
-      [dragulaOptions]="options">
+      [attr.column-id]="column.key">
     <li class="card-item"
         [attr.card-id]="card.key"
         [attr.column-id]="card.columnId"

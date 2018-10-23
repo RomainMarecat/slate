@@ -47,7 +47,7 @@ import { environment } from '../environments/environment';
 import { CmsService } from '../../shared/cms/shared/cms.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { AttributeService } from '../../shared/attribute/attribute.service';
-import { CommentService } from '../../shared/comment/comment.service';
+import { CommentService } from '../../shared/comment/shared/comment.service';
 import { OfferService } from '../../shared/offer/offer.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { SelectionService } from '../../shared/selection/selection.service';

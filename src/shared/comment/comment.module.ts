@@ -1,4 +1,4 @@
-import { NgModule, InjectionToken } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -8,27 +8,14 @@ import { CommentEditComponent } from './comment-edit/comment-edit.component';
 import { CommentDetailComponent } from './comment-detail/comment-detail.component';
 import {
   MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
   MatIconModule,
   MatButtonModule,
-  MatGridListModule,
   MatFormFieldModule,
-  MatSelectModule,
   MatInputModule,
-  MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
-  MatCommonModule,
-  MatTooltipModule
 } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { CommentService } from './comment.service';
 
 @NgModule({
   imports: [
@@ -42,7 +29,7 @@ import { CommentService } from './comment.service';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule.forChild()
   ],
   declarations: [
     CommentAddComponent,

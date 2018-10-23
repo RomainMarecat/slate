@@ -41,7 +41,7 @@ import { SlackModule } from '../../shared/slack/slack.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { OfferService } from '../../shared/offer/offer.service';
-import { CommentService } from '../../shared/comment/comment.service';
+import { CommentService } from '../../shared/comment/shared/comment.service';
 import { CmsService } from '../../shared/cms/shared/cms.service';
 import { AreaService } from '../../shared/map/shared/area.service';
 import { CategoryService } from '../../shared/category/category.service';

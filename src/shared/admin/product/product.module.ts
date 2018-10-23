@@ -12,7 +12,6 @@ import { CategoryService } from '../../category/category.service';
 import { SharedModule } from '../../shared.module';
 import { AttributeService } from '../../attribute/attribute.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { DragulaModule } from 'ng2-dragula';
 import { ProductImageOrderComponent } from './product-image-order/product-image-order.component';
 import { OfferService } from '../shared/offer/offer.service';
 import { ProductOffersComponent } from './product-offers/product-offers.component';
@@ -30,7 +29,6 @@ export const TABLE_MEDIA = new InjectionToken<string>('media');
 @NgModule({
   imports: [
     CommonModule,
-    DragulaModule,
     NgxDatatableModule,
     SharedModule,
     NgxEditorModule,

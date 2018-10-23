@@ -45,10 +45,11 @@ import { SelectionModule } from '../selection/selection.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { OfferService } from '../../shared/offer/offer.service';
-import { CommentService } from '../../shared/comment/comment.service';
+import { CommentService } from '../../shared/comment/shared/comment.service';
 import { environment } from '../environments/environment';
 import { CmsService } from '../../shared/cms/shared/cms.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
+import { OfferModule } from 'shared/offer/offer.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -122,7 +123,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     /*    AngularFirestoreModule,
      */
     AngularFirestoreModule.enablePersistence(),
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
       developerMode: true,
       pageTracking: {
         clearIds: true,
@@ -144,11 +145,12 @@ export const cookieConfig: NgcCookieConsentConfig = {
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [ HttpClient, app_name ]
+        deps: [HttpClient, app_name]
       }
     }),
     ProductListModule,
     SelectionModule,
+    OfferModule,
     ProductDetailModule
   ],
   exports: [
@@ -157,7 +159,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     SharedModule
   ],
   providers: [
-    {provide: ConfigService, useClass: ConfigService, deps: [ CONFIG_TOKEN ]},
+    {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
     {provide: TABLE_CATEGORY, useValue: 'category'},
     {provide: TABLE_COMMENT, useValue: 'comment'},
@@ -170,15 +172,15 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_PRODUCT, useValue: 'product'},
     {provide: TABLE_SELECTION, useValue: 'selection'},
     {provide: TABLE_SCORE, useValue: 'scores'},
-    {provide: CmsService, useClass: CmsService, deps: [ AngularFirestore, TABLE_CMS ]},
-    {provide: CmsDetailService, useClass: CmsDetailService, deps: [ AngularFirestore, TABLE_CMS_DETAIL ]},
-    {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
-    {provide: CommentService, useClass: CommentService, deps: [ AngularFirestore, TABLE_COMMENT ]},
-    {provide: MediaService, useClass: MediaService, deps: [ AngularFirestore, TABLE_MEDIA ]},
-    {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},
-    {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
-    {provide: ProductService, useClass: ProductService, deps: [ AngularFirestore, TABLE_PRODUCT ]},
-    {provide: SelectionService, useClass: SelectionService, deps: [ AngularFirestore, TABLE_SELECTION ]},
+    {provide: CmsService, useClass: CmsService, deps: [AngularFirestore, TABLE_CMS]},
+    {provide: CmsDetailService, useClass: CmsDetailService, deps: [AngularFirestore, TABLE_CMS_DETAIL]},
+    {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
+    {provide: CommentService, useClass: CommentService, deps: [AngularFirestore, TABLE_COMMENT]},
+    {provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA]},
+    {provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER]},
+    {provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER]},
+    {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
+    {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
     AlertService,
     DateService,
     DeviceService,

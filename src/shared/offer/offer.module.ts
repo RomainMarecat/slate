@@ -5,8 +5,8 @@ import { OfferListComponent } from './offer-list/offer-list.component';
 import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {PartnerModule} from '../partner/partner.module';
-import {TranslateModule} from '@ngx-translate/core';
+import { PartnerModule } from '../partner/partner.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -30,4 +30,5 @@ import {TranslateModule} from '@ngx-translate/core';
     OfferService
   ]
 })
-export class OfferModule {}
+export class OfferModule {
+}

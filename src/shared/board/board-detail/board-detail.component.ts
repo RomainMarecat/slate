@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { DragulaService } from 'ng2-dragula';
 import { Board } from '../shared/board';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColumnService } from '../shared/column.service';
@@ -30,8 +29,7 @@ export class BoardDetailComponent implements OnInit {
   curDown = false;
   options: any;
 
-  constructor(private dragulaService: DragulaService,
-              public el: ElementRef,
+  constructor(public el: ElementRef,
               private boardService: BoardService,
               private columnService: ColumnService,
               private cardService: CardService,

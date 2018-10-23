@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BoardRoutingModule } from '../board-routing.module';
-import { DragulaModule } from 'ng2-dragula';
 import { BoardListComponent } from '../board-list/board-list.component';
 import { CommonModule } from '@angular/common';
 import { ColumnComponent } from '../column/column.component';
@@ -32,7 +31,6 @@ describe('BoardDetailComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
-        DragulaModule,
         SharedModule,
         HttpClientTestingModule,
         RouterTestingModule,

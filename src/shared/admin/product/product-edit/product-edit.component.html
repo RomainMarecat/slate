@@ -103,9 +103,7 @@
             <div class="d-block mt-1">
               <h4>Liste des attributs diponibles</h4>
               <div class="wrapper">
-                <div class="container bag"
-                     [dragula]="'product-attributes'"
-                     [dragulaModel]="attributesModel">
+                <div class="container bag">
                   <div *ngIf="attributesModel?.length === 0">
                     No content
                   </div>
@@ -118,9 +116,7 @@
             <div class="d-block mt-1">
               <h4>Attributs du produit</h4>
               <div class="wrapper">
-                <div class="container bag"
-                     [dragula]="'product-attributes'"
-                     [dragulaModel]="attributes?.value">
+                <div class="container bag">
                   <div *ngIf="attributes?.value?.length === 0">
                     No content
                   </div>

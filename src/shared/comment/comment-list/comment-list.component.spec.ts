@@ -9,8 +9,8 @@ import { CommentListComponent } from './comment-list.component';
 import { CommentEditComponent } from './../comment-edit/comment-edit.component';
 import { CommentDetailComponent } from './../comment-detail/comment-detail.component';
 import { CommentAddComponent } from './../comment-add/comment-add.component';
-import { CommentService } from './../comment.service';
-import { MockCommentService } from './../mock-comment.service';
+import { CommentService } from '../shared/comment.service';
+import { MockCommentService } from '../shared/mock-comment.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import {

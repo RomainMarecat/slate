@@ -2,7 +2,6 @@ import { InjectionToken, NgModule, ModuleWithProviders, Injectable, Inject } fro
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DragulaModule } from 'ng2-dragula';
 import { NgPipesModule } from 'ngx-pipes';
 import {
   MatAutocompleteModule,
@@ -45,16 +44,11 @@ import { SidenavModule } from './sidenav/sidenav.module';
 import { LoaderModule } from './loader/loader.module';
 import { FacetModule } from './facet/facet.module';
 import { PopupModule } from './popup/popup.module';
-import { PartnerModule } from './partner/partner.module';
-import { OfferModule } from './offer/offer.module';
-import { CommentModule } from './comment/comment.module';
 import { CmsDetailModule } from './cms-detail/cms-detail.module';
 import { FaviconModule } from './favicon/favicon.module';
 import { PipeModule } from './pipe/pipe.module';
 import { SessionModule } from './session/session.module';
-import { CartModule } from './cart/cart.module';
 import { CmsModule } from './cms/cms.module';
-import { FaqModule } from './faq/faq.module';
 import { CsvModule } from 'shared/csv/csv.module';
 
 export const CONFIG_TOKEN = new InjectionToken<Environment>('Registered config');
@@ -72,20 +66,16 @@ export class ConfigService {
   imports: [
     AngularFireAuthModule,
     Angulartics2Module,
-    CartModule,
     CmsDetailModule,
     CmsModule,
-    CommentModule,
     CommonModule,
     CsvModule,
     FaviconModule,
     FacetModule,
-    FaqModule,
     FileUploadModule,
     FlexLayoutModule,
     FooterModule,
     FormsModule,
-    DragulaModule,
     HammerModule,
     HttpClientModule,
     ImageCropperModule,
@@ -118,8 +108,6 @@ export class ConfigService {
     MatStepperModule,
     MediaModule,
     NgPipesModule,
-    OfferModule,
-    PartnerModule,
     PopupModule,
     PipeModule,
     ReactiveFormsModule,
@@ -130,15 +118,11 @@ export class ConfigService {
   ],
   exports: [
     Angulartics2Module,
-    CartModule,
     CmsModule,
     CmsDetailModule,
-    CommentModule,
     CsvModule,
-    DragulaModule,
     FaviconModule,
     FacetModule,
-    FaqModule,
     FileUploadModule,
     FlexLayoutModule,
     FooterModule,
@@ -175,8 +159,6 @@ export class ConfigService {
     MatStepperModule,
     MediaModule,
     NgPipesModule,
-    OfferModule,
-    PartnerModule,
     PipeModule,
     PopupModule,
     ReactiveFormsModule,

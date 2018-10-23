@@ -24,8 +24,8 @@ import { MockScoreService } from '../../../shared/score/mock-score.service';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { MockSelectionService } from '../../../shared/selection/mock-selection.service';
 import { SharedModule } from '../../../shared/shared.module';
-import { CommentService } from '../../../shared/comment/comment.service';
-import { MockCommentService } from '../../../shared/comment/mock-comment.service';
+import { CommentService } from '../../../shared/comment/shared/comment.service';
+import { MockCommentService } from '../../../shared/comment/shared/mock-comment.service';
 
 import { ProductDetailComponent } from './product-detail.component';
 import { ProductActionComponent } from '../product-action/product-action.component';

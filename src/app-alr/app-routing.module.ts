@@ -80,6 +80,10 @@ const routes: Routes = [
     loadChildren: './../shared/cart/cart.module#CartModule'
   },
   {
+    path: 'faq',
+    loadChildren: './../shared/faq/faq.module#FaqModule'
+  },
+  {
     path: '**',
     redirectTo: ''
   }

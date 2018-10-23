@@ -6,7 +6,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { CommentService } from './comment.service';
-import { environment } from '../../app-hockey/environments/environment';
+import { environment } from '../../../app-hockey/environments/environment';
 
 describe('CommentService', () => {
   beforeEach(() => {
