@@ -84,6 +84,10 @@ const routes: Routes = [
     loadChildren: './../shared/faq/faq.module#FaqModule'
   },
   {
+    path: 'content',
+    loadChildren: './../shared/cms-detail/cms-detail.module#CmsDetailModule'
+  },
+  {
     path: '**',
     redirectTo: ''
   }

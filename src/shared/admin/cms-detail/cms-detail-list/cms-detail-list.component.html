@@ -49,7 +49,7 @@
               <mat-icon aria-label="delete">delete</mat-icon>
               {{ 'cta.delete'|translate }}
             </button>
-            <a [routerLink]="['/admin/cms/' + cmsKey + '/cms-details/add']"
+            <a [routerLink]="['add'|localize]"
                mat-raised-button
                color="primary">
               <mat-icon [attr.aria-label]="'cta.add'|translate">add</mat-icon>
@@ -104,11 +104,11 @@
                      let-value="value"
                      let-row="row"
                      ngx-datatable-cell-template>
-            <span (dblclick)="onActivateEdit(rowIndex)"
-                  class="row-activate"
-                  *ngIf="activatedRows[rowIndex] !== true">
-              {{ value | translate }}
-            </span>
+          <span (dblclick)="onActivateEdit(rowIndex)"
+                class="row-activate"
+                *ngIf="activatedRows[rowIndex] !== true">
+            {{ value | translate }}
+          </span>
           <mat-form-field apparence="standard"
                           *ngIf="activatedRows && activatedRows[rowIndex] === true">
             <input matInput
@@ -125,11 +125,11 @@
                      let-value="value"
                      let-row="row"
                      ngx-datatable-cell-template>
-            <span (dblclick)="onActivateEdit(rowIndex)"
-                  class="row-activate"
-                  *ngIf="activatedRows[rowIndex] !== true">
-              {{ value | translate }}
-            </span>
+          <span (dblclick)="onActivateEdit(rowIndex)"
+                class="row-activate"
+                *ngIf="activatedRows[rowIndex] !== true">
+            {{ value | translate }}
+          </span>
           <mat-form-field apparence="standard"
                           *ngIf="activatedRows && activatedRows[rowIndex] === true">
             <input matInput
@@ -150,8 +150,8 @@
           <span (dblclick)="onActivateEdit(rowIndex)"
                 class="row-activate"
                 *ngIf="activatedRows[rowIndex] !== true">
-              {{ value | translate }}
-            </span>
+            {{ value | translate }}
+          </span>
           <mat-form-field apparence="standard"
                           *ngIf="activatedRows && activatedRows[rowIndex] === true">
             <mat-select (selectionChange)="onEdit('parent', row, $event.value, rowIndex)">

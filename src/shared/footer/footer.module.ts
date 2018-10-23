@@ -8,6 +8,7 @@ import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 @NgModule({
   imports: [
@@ -17,11 +18,12 @@ import { RouterModule } from '@angular/router';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    TranslateModule,
+    LocalizeRouterModule,
+    TranslateModule.forChild(),
     RouterModule,
   ],
-  declarations: [ FooterComponent ],
-  exports: [ FooterComponent ],
+  declarations: [FooterComponent],
+  exports: [FooterComponent],
   providers: [
     CmsService,
     CmsDetailService

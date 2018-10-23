@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { CmsDetailRoutingModule } from './cms-detail-routing.module';
 import { CmsDetailComponent } from './cms-detail/cms-detail.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     CmsDetailRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    TranslateModule.forChild()
   ],
   declarations: [
     CmsDetailComponent
@@ -18,4 +20,5 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CmsDetailComponent
   ]
 })
-export class CmsDetailModule { }
+export class CmsDetailModule {
+}

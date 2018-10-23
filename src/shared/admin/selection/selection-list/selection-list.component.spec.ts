@@ -35,7 +35,7 @@ describe('SelectionListComponent', () => {
   let fixture: ComponentFixture<SelectionListComponent>;
 
   configureTestSuite();
-  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [

@@ -16,10 +16,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 import { AdminComponent } from './admin/admin.component';
+import { CsvModule } from '../csv/csv.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    CsvModule,
     NgxDatatableModule,
     FlexLayoutModule,
     LocalizeRouterModule,

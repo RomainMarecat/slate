@@ -5,15 +5,21 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 const routes: Routes = [
   {
-    path: 'content/:title',
+    path: ':title',
     pathMatch: 'full',
     component: CmsDetailComponent
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), LocalizeRouterModule.forChild(routes)],
-  exports: [RouterModule, LocalizeRouterModule]
+  imports: [
+    RouterModule.forChild(routes),
+    LocalizeRouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule,
+    LocalizeRouterModule
+  ]
 })
 export class CmsDetailRoutingModule {
 }

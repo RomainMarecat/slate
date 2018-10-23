@@ -23,7 +23,7 @@ describe('OfferListComponent', () => {
   let fixture: ComponentFixture<OfferListComponent>;
 
   configureTestSuite();
-  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [

@@ -55,6 +55,7 @@ import { PaymentService } from '../../shared/payment/shared/payment.service';
 import { RoutingState } from '../../shared/util/routing-state';
 import { OrderService } from '../../shared/order/shared/order.service';
 import { SelectionService } from '../../shared/selection/selection.service';
+import { CmsModule } from 'shared/cms/cms.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -137,7 +138,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     /*    AngularFirestoreModule,
      */
     AngularFirestoreModule.enablePersistence(),
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics], {
       developerMode: true,
       pageTracking: {
         clearIds: true,
@@ -156,10 +157,11 @@ export const cookieConfig: NgcCookieConsentConfig = {
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [ HttpClient, app_name ]
+        deps: [HttpClient, app_name]
       }
     }),
     HomeModule,
+    CmsModule
   ],
   exports: [
     AdsenseModule,
@@ -167,7 +169,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     SharedModule
   ],
   providers: [
-    {provide: ConfigService, useClass: ConfigService, deps: [ CONFIG_TOKEN ]},
+    {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},
     {provide: TABLE_ARTICLE, useValue: 'article'},
     {provide: TABLE_AREA, useValue: 'area'},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
@@ -190,26 +192,26 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_SCORE, useValue: 'scores'},
     {provide: STRIPE_KEY, useValue: environment.stripeKey},
-    {provide: ArticleService, useClass: ArticleService, deps: [ AngularFirestore, TABLE_ARTICLE ]},
-    {provide: AreaService, useClass: AreaService, deps: [ AngularFirestore, TABLE_AREA ]},
-    {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
-    {provide: CartService, useClass: CartService, deps: [ AngularFirestore, TABLE_CART ]},
-    {provide: ContactService, useClass: ContactService, deps: [ AngularFirestore, TABLE_CONTACT ]},
-    {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY ]},
-    {provide: CmsService, useClass: CmsService, deps: [ AngularFirestore, TABLE_CMS ]},
-    {provide: CmsDetailService, useClass: CmsDetailService, deps: [ AngularFirestore, TABLE_CMS_DETAIL ]},
-    {provide: CommentService, useClass: CommentService, deps: [ AngularFirestore, TABLE_COMMENT ]},
-    {provide: EventService, useClass: EventService, deps: [ AngularFirestore, TABLE_EVENT ]},
-    {provide: MediaService, useClass: MediaService, deps: [ AngularFirestore, TABLE_MEDIA ]},
-    {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},
-    {provide: OrderService, useClass: OrderService, deps: [ AngularFirestore, TABLE_ORDER ]},
-    {provide: MapService, useClass: MapService, deps: [ AngularFirestore, TABLE_MAP ]},
-    {provide: ScoreService, useClass: ScoreService, deps: [ AngularFirestore, TABLE_SCORE ]},
-    {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
-    {provide: PaymentService, useClass: PaymentService, deps: [ AngularFirestore, TABLE_PAYMENT, STRIPE_KEY ]},
-    {provide: ProductService, useClass: ProductService, deps: [ AngularFirestore, TABLE_PRODUCT ]},
-    {provide: SelectionService, useClass: SelectionService, deps: [ AngularFirestore, TABLE_SELECTION ]},
-    {provide: SessionService, useClass: SessionService, deps: [ AngularFirestore, TABLE_SESSION ]},
+    {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
+    {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
+    {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
+    {provide: CartService, useClass: CartService, deps: [AngularFirestore, TABLE_CART]},
+    {provide: ContactService, useClass: ContactService, deps: [AngularFirestore, TABLE_CONTACT]},
+    {provide: CategoryService, useClass: CategoryService, deps: [AngularFirestore, TABLE_CATEGORY]},
+    {provide: CmsService, useClass: CmsService, deps: [AngularFirestore, TABLE_CMS]},
+    {provide: CmsDetailService, useClass: CmsDetailService, deps: [AngularFirestore, TABLE_CMS_DETAIL]},
+    {provide: CommentService, useClass: CommentService, deps: [AngularFirestore, TABLE_COMMENT]},
+    {provide: EventService, useClass: EventService, deps: [AngularFirestore, TABLE_EVENT]},
+    {provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA]},
+    {provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER]},
+    {provide: OrderService, useClass: OrderService, deps: [AngularFirestore, TABLE_ORDER]},
+    {provide: MapService, useClass: MapService, deps: [AngularFirestore, TABLE_MAP]},
+    {provide: ScoreService, useClass: ScoreService, deps: [AngularFirestore, TABLE_SCORE]},
+    {provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER]},
+    {provide: PaymentService, useClass: PaymentService, deps: [AngularFirestore, TABLE_PAYMENT, STRIPE_KEY]},
+    {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
+    {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
+    {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
     AlertService,
     DateService,
     DeviceService,
