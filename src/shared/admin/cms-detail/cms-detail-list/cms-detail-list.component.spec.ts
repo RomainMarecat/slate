@@ -27,6 +27,8 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { MockCmsService } from '../../../cms/shared/mock-cms.service';
 import { CmsService } from '../../../cms/shared/cms.service';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 
 describe('CmsDetailListComponent', () => {
   let component: CmsDetailListComponent;
@@ -43,6 +45,7 @@ describe('CmsDetailListComponent', () => {
         HttpClientModule,
         RouterTestingModule,
         BrowserAnimationsModule,
+        LocalizeRouterModule,
         NgxDatatableModule,
         MatCardModule,
         MatIconModule,
@@ -63,6 +66,7 @@ describe('CmsDetailListComponent', () => {
         {provide: CmsDetailService, useClass: MockCmsDetailService},
         {provide: CmsService, useClass: MockCmsService},
         {provide: AlertService, useClass: MockAlertService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
       ]
     })
       .compileComponents();

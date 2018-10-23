@@ -15,6 +15,7 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
   imports: [
     CommonModule,
     BreadcrumbModule,
+    FacetModule,
     FooterModule,
     LoaderModule,
     LocalizeRouterModule,
@@ -25,8 +26,7 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
     MatListModule,
     MenuModule,
     RouterModule,
-    TranslateModule.forChild(),
-    FacetModule,
+    TranslateModule,
   ],
   declarations: [
     SidenavComponent,

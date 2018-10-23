@@ -16,12 +16,14 @@
         <span fxLayout="column"
               fxLayoutAlign="start start"
               *ngFor="let link of links">
-             <span class=" text-white text-uppercase">{{ link.title |translate }}</span>
-             <span *ngFor="let sublink of link?.children">
-              <a class="text-capitalize"
-                 [routerLink]="'/content/' + sublink.key + '-' + sublink.content">{{ sublink.title |translate }}</a>
-            </span>
+          <span class=" text-white text-uppercase">{{ link.title |translate }}</span>
+          <span *ngFor="let sublink of link?.children">
+            <a class="text-capitalize"
+               [routerLink]="['/content',  sublink.key + '-' + sublink.content]|localize">
+              {{ sublink.title |translate }}
+            </a>
           </span>
+        </span>
       </div>
     </mat-toolbar-row>
 
@@ -60,12 +62,12 @@
       <span fxLayout="column"
             fxLayoutAlign="start start"
             *ngFor="let link of links">
-             <span class=" text-white text-uppercase">{{ link.title |translate }}</span>
-             <span *ngFor="let sublink of link?.children">
-              <a class="text-capitalize text-sublink"
-                 [routerLink]="'/content/' + sublink.key + '-' + sublink.content">{{ sublink.title |translate }}</a>
-            </span>
-          </span>
+        <span class=" text-white text-uppercase">{{ link.title |translate }}</span>
+        <span *ngFor="let sublink of link?.children">
+          <a class="text-capitalize text-sublink"
+             [routerLink]="'/content/' + sublink.key + '-' + sublink.content">{{ sublink.title |translate }}</a>
+        </span>
+      </span>
     </div>
   </div>
 </footer>

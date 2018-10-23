@@ -22,7 +22,7 @@ import { MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatSlideT
     MatListModule,
     MatButtonModule,
     MatIconModule,
-    TranslateModule,
+    TranslateModule.forChild(),
   ],
   declarations: [
     HeaderStyle1Component,

@@ -13,6 +13,8 @@ import { CmsService } from '../cms/shared/cms.service';
 import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
 import { MockCmsDetailService } from '../cms-detail/shared/mock-cms-detail.service';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from '../router/mock-localize-router.service';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -25,12 +27,13 @@ describe('FooterComponent', () => {
       imports: [
         RouterTestingModule,
         MatToolbarModule,
-        Angulartics2Module.forRoot( {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
           },
         }),
+        LocalizeRouterModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
@@ -39,6 +42,7 @@ describe('FooterComponent', () => {
       providers: [
         {provide: CmsService, useClass: MockCmsService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
       ]
     })
       .compileComponents();

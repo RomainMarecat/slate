@@ -12,9 +12,9 @@ import { CalendarHeaderComponent } from './calendar/calendar-header/calendar-hea
 import { CalendarBodyComponent } from './calendar/calendar-body/calendar-body.component';
 import { AlertService } from '../popup/alert.service';
 import { SessionModule } from '../session/session.module';
-import { RouterModule } from '@angular/router';
 import { SessionService } from '../session/shared/session.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { RoutingState } from '../util/routing-state';
 
 export const TABLE_SESSION = new InjectionToken<string>('session');
 export const TABLE_EVENT = new InjectionToken<string>('event');
@@ -29,7 +29,6 @@ export const TABLE_EVENT = new InjectionToken<string>('event');
     MatCardModule,
     MatTableModule,
     MatIconModule,
-    RouterModule,
     SessionModule,
     TranslateModule
   ],
@@ -46,10 +45,11 @@ export const TABLE_EVENT = new InjectionToken<string>('event');
     CalendarBodyComponent,
   ],
   providers: [
+    AlertService,
+    RoutingState,
     {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_EVENT, useValue: 'event'},
     {provide: EventService, useClass: EventService, deps: [AngularFirestore, TABLE_EVENT]},
-    AlertService,
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
 
   ]
