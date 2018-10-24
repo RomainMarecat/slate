@@ -13,7 +13,7 @@ import {
 import { AngularFirestoreCollection, DocumentChangeAction, Action, AngularFirestore } from '@angular/fire/firestore';
 import { Filter } from './../facet/filter/shared/filter';
 import { Sort } from './../facet/sort/shared/sort';
-import { map, switchMap } from 'rxjs/internal/operators';
+import { map, switchMap, timeout } from 'rxjs/internal/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { combineLatest } from 'rxjs';
 
@@ -87,21 +87,23 @@ export class VisitorService {
    * @return Observable
    */
   getDocuments(): Observable<any[]> {
-    return this.documents$.pipe(map((documents) => {
-      return documents.map((document: DocumentChangeAction<any>) => {
-        if (document.payload.doc.exists) {
-          const doc = document.payload.doc.data() as Document;
-          // Useful if doc id is missing on forgot update after create function
-          // if (!doc.key) {
-          //   doc.key = document.payload.doc.id;
-          //   this.updateDocument(doc).then(() => {
-          //   });
-          // }
-          doc.key = document.payload.doc.id;
-          return doc;
-        }
-      });
-    }));
+    return this.documents$.pipe(
+      timeout(10000),
+      map((documents) => {
+        return documents.map((document: DocumentChangeAction<any>) => {
+          if (document.payload.doc.exists) {
+            const doc = document.payload.doc.data() as Document;
+            // Useful if doc id is missing on forgot update after create function
+            // if (!doc.key) {
+            //   doc.key = document.payload.doc.id;
+            //   this.updateDocument(doc).then(() => {
+            //   });
+            // }
+            doc.key = document.payload.doc.id;
+            return doc;
+          }
+        });
+      }));
   }
 
   private getDocPayload(path: string): Observable<any> {
@@ -140,7 +142,7 @@ export class VisitorService {
    * create a Document
    */
   createDocument(document: any): Promise<DocumentReference> {
-    return this.collectionRef.add({...document});
+    return this.collectionRef.add(document);
   }
 
   /**

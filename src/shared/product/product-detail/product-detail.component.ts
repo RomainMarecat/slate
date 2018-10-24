@@ -114,7 +114,7 @@ export class ProductDetailComponent implements OnInit {
         } else {
           this.loaderService.hide();
         }
-      }, (err) => {
+      }, () => {
         this.loaderService.hide();
       });
   }

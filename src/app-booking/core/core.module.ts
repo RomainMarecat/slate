@@ -41,19 +41,19 @@ import { PartnerService } from '../../shared/partner/partner.service';
 import { OfferService } from '../../shared/offer/offer.service';
 import { CommentService } from '../../shared/comment/shared/comment.service';
 import { environment } from '../environments/environment';
-import {CmsService} from '../../shared/cms/shared/cms.service';
-import {SessionService} from '../../shared/session/shared/session.service';
-import {AreaService} from '../../shared/map/shared/area.service';
-import {EventService} from '../../shared/agenda/shared/event.service';
-import {MapService} from '../../shared/map/shared/map.service';
-import {PaymentService} from '../../shared/payment/shared/payment.service';
-import {STRIPE_KEY} from '../../app-showcase/core/core.module';
-import {ArticleService} from '../../shared/article/shared/article.service';
-import {CategoryService} from '../../shared/category/category.service';
-import {OrderService} from '../../shared/order/shared/order.service';
-import {CartService} from '../../shared/cart/shared/cart.service';
-import {ContactService} from '../../shared/contact/shared/contact.service';
-import {CmsDetailService} from '../../shared/cms-detail/shared/cms-detail.service';
+import { CmsService } from '../../shared/cms/shared/cms.service';
+import { SessionService } from '../../shared/session/shared/session.service';
+import { AreaService } from '../../shared/map/shared/area.service';
+import { EventService } from '../../shared/agenda/shared/event.service';
+import { MapService } from '../../shared/map/shared/map.service';
+import { PaymentService } from '../../shared/payment/shared/payment.service';
+import { STRIPE_KEY } from '../../app-showcase/core/core.module';
+import { ArticleService } from '../../shared/article/shared/article.service';
+import { CategoryService } from '../../shared/category/category.service';
+import { OrderService } from '../../shared/order/shared/order.service';
+import { CartService } from '../../shared/cart/shared/cart.service';
+import { ContactService } from '../../shared/contact/shared/contact.service';
+import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -135,7 +135,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     /*    AngularFirestoreModule,
      */
     AngularFirestoreModule.enablePersistence(),
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+    Angulartics2Module.forRoot({
       developerMode: true,
       pageTracking: {
         clearIds: true,
@@ -154,7 +154,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [ HttpClient, app_name ]
+        deps: [HttpClient, app_name]
       }
     })
   ],
@@ -164,7 +164,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     SharedModule
   ],
   providers: [
-    {provide: ConfigService, useClass: ConfigService, deps: [ CONFIG_TOKEN ]},
+    {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},
     {provide: TABLE_ARTICLE, useValue: 'article'},
     {provide: TABLE_AREA, useValue: 'area'},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
@@ -186,25 +186,25 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_SELECTION, useValue: 'selection'},
     {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_SCORE, useValue: 'scores'},
-    {provide: ArticleService, useClass: ArticleService, deps: [ AngularFirestore, TABLE_ARTICLE ]},
-    {provide: AreaService, useClass: AreaService, deps: [ AngularFirestore, TABLE_AREA ]},
-    {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
-    {provide: CartService, useClass: CartService, deps: [ AngularFirestore, TABLE_CART ]},
-    {provide: ContactService, useClass: ContactService, deps: [ AngularFirestore, TABLE_CONTACT ]},
-    {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY ]},
-    {provide: CmsService, useClass: CmsService, deps: [ AngularFirestore, TABLE_CMS ]},
-    {provide: CmsDetailService, useClass: CmsDetailService, deps: [ AngularFirestore, TABLE_CMS_DETAIL ]},
-    {provide: CommentService, useClass: CommentService, deps: [ AngularFirestore, TABLE_COMMENT ]},
-    {provide: EventService, useClass: EventService, deps: [ AngularFirestore, TABLE_EVENT ]},
-    {provide: MediaService, useClass: MediaService, deps: [ AngularFirestore, TABLE_MEDIA ]},
-    {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},
-    {provide: OrderService, useClass: OrderService, deps: [ AngularFirestore, TABLE_ORDER ]},
-    {provide: MapService, useClass: MapService, deps: [ AngularFirestore, TABLE_MAP ]},
-    {provide: ScoreService, useClass: ScoreService, deps: [ AngularFirestore, TABLE_SCORE ]},
-    {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
-    {provide: ProductService, useClass: ProductService, deps: [ AngularFirestore, TABLE_PRODUCT ]},
-    {provide: SelectionService, useClass: SelectionService, deps: [ AngularFirestore, TABLE_SELECTION ]},
-    {provide: SessionService, useClass: SessionService, deps: [ AngularFirestore, TABLE_SESSION ]},
+    {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
+    {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
+    {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
+    {provide: CartService, useClass: CartService, deps: [AngularFirestore, TABLE_CART]},
+    {provide: ContactService, useClass: ContactService, deps: [AngularFirestore, TABLE_CONTACT]},
+    {provide: CategoryService, useClass: CategoryService, deps: [AngularFirestore, TABLE_CATEGORY]},
+    {provide: CmsService, useClass: CmsService, deps: [AngularFirestore, TABLE_CMS]},
+    {provide: CmsDetailService, useClass: CmsDetailService, deps: [AngularFirestore, TABLE_CMS_DETAIL]},
+    {provide: CommentService, useClass: CommentService, deps: [AngularFirestore, TABLE_COMMENT]},
+    {provide: EventService, useClass: EventService, deps: [AngularFirestore, TABLE_EVENT]},
+    {provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA]},
+    {provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER]},
+    {provide: OrderService, useClass: OrderService, deps: [AngularFirestore, TABLE_ORDER]},
+    {provide: MapService, useClass: MapService, deps: [AngularFirestore, TABLE_MAP]},
+    {provide: ScoreService, useClass: ScoreService, deps: [AngularFirestore, TABLE_SCORE]},
+    {provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER]},
+    {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
+    {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
+    {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
     AlertService,
     DateService,
     DeviceService,

@@ -5,7 +5,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class AlertService {
-  constructor(public snackBar: MatSnackBar, private translateService: TranslateService) {
+  constructor(public snackBar: MatSnackBar,
+              private translateService: TranslateService) {
   }
 
   message(message: string, state: string = 'info') {

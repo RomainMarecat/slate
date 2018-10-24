@@ -28,7 +28,7 @@ describe('ProductAttributeComponent', () => {
         HttpClientTestingModule,
         RouterTestingModule,
         BrowserAnimationsModule,
-        Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
@@ -40,7 +40,7 @@ describe('ProductAttributeComponent', () => {
         }),
         SharedModule
       ],
-      declarations: [ ProductAttributeComponent ],
+      declarations: [ProductAttributeComponent],
       providers: [
         {provide: DeviceService, useClass: DeviceService},
       ]

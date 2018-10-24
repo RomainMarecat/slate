@@ -22,6 +22,7 @@ export class CartEditComponent implements OnInit {
   private _cart: Cart;
 
   user: User;
+
   static getForm(): FormGroup {
     return new FormGroup({
       total: new FormControl(0, [Validators.required])
@@ -39,8 +40,8 @@ export class CartEditComponent implements OnInit {
     this.routingState.loadRouting();
   }
 
-  setItems(cart: Cart) {
-    if (cart && (!cart.items || cart.items.length === 0)) {
+  setProduct() {
+    if (this.cart) {
       const item: CartItem = {
         name: faker.commerce.productName(),
         code: faker.random.uuid(),
@@ -49,10 +50,7 @@ export class CartEditComponent implements OnInit {
         created_at: faker.date.recent(),
         updated_at: faker.date.recent()
       };
-      cart.items = [
-        item
-      ];
-      this._cart = cart;
+      this.cart.items.push(item);
     }
   }
 
@@ -85,7 +83,6 @@ export class CartEditComponent implements OnInit {
 
   @Input() set cart(cart) {
     this._cart = cart;
-    this.setItems(cart);
   }
 
   get cart(): Cart {

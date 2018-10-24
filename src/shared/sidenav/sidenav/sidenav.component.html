@@ -20,6 +20,11 @@
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
+           [routerLink]="['/a2hs'|localize]">
+          {{ 'sidenav.card.list-item.pwa'|translate }}
+        </a>
+        <a mat-list-item
+           class="sidenav-link text-capitalize"
            [routerLink]="['/admin/product'|localize]">
           {{ 'admin.cta.product'|translate }}
         </a>

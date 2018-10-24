@@ -484,6 +484,10 @@
     }
   },
   "cart": {
+    "empty": "le panier est vide",
+    "product": {
+      "add": "ajouter un produit"
+    },
     "quantity": "quantité",
     "total": {
       "total": "total",
@@ -491,6 +495,7 @@
       "total_item": "total produits"
     },
     "title": {
+      "start": "mon panier",
       "cart": "validation",
       "login": "se connecter",
       "payment": "paiement",
@@ -1018,6 +1023,9 @@
     "meta": {
       "og:site_name": "E-commerce",
       "description": "{{value}} - E-commerce"
+    },
+    "cart": {
+      "added": "produit ajouté au panier"
     }
   },
   "product-list": {
@@ -1062,7 +1070,8 @@
         "logout": {
           "title": "Déconnexion",
           "aria-label": "Déconnexion"
-        }
+        },
+        "pwa": "Ajouter l'application en favoris"
       },
       "image": {
         "alt": "Image de fond du menu"

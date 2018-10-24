@@ -126,7 +126,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     /*    AngularFirestoreModule,
      */
     AngularFirestoreModule.enablePersistence(),
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ], {
+    Angulartics2Module.forRoot({
       developerMode: true,
       pageTracking: {
         clearIds: true,
@@ -145,7 +145,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [ HttpClient, app_name ]
+        deps: [HttpClient, app_name]
       }
     }),
     HomeModule,
@@ -156,7 +156,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     SharedModule
   ],
   providers: [
-    {provide: ConfigService, useClass: ConfigService, deps: [ CONFIG_TOKEN ]},
+    {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},
     {provide: TABLE_ARTICLE, useValue: 'article'},
     {provide: TABLE_AREA, useValue: 'area'},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
@@ -173,20 +173,20 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_PRODUCT, useValue: 'product'},
     {provide: TABLE_SELECTION, useValue: 'selection'},
     {provide: TABLE_SCORE, useValue: 'scores'},
-    {provide: ArticleService, useClass: ArticleService, deps: [ AngularFirestore, TABLE_ARTICLE ]},
-    {provide: AreaService, useClass: AreaService, deps: [ AngularFirestore, TABLE_AREA ]},
-    {provide: AttributeService, useClass: AttributeService, deps: [ AngularFirestore, TABLE_ATTRIBUTE ]},
-    {provide: ContactService, useClass: ContactService, deps: [ AngularFirestore, TABLE_CONTACT ]},
-    {provide: CategoryService, useClass: CategoryService, deps: [ AngularFirestore, TABLE_CATEGORY ]},
-    {provide: CmsService, useClass: CmsService, deps: [ AngularFirestore, TABLE_CMS ]},
-    {provide: CmsDetailService, useClass: CmsDetailService, deps: [ AngularFirestore, TABLE_CMS_DETAIL ]},
-    {provide: CommentService, useClass: CommentService, deps: [ AngularFirestore, TABLE_COMMENT ]},
-    {provide: MediaService, useClass: MediaService, deps: [ AngularFirestore, TABLE_MEDIA ]},
-    {provide: OfferService, useClass: OfferService, deps: [ AngularFirestore, TABLE_OFFER ]},
-    {provide: MapService, useClass: MapService, deps: [ AngularFirestore, TABLE_MAP ]},
-    {provide: PartnerService, useClass: PartnerService, deps: [ AngularFirestore, TABLE_PARTNER ]},
-    {provide: ProductService, useClass: ProductService, deps: [ AngularFirestore, TABLE_PRODUCT ]},
-    {provide: SelectionService, useClass: SelectionService, deps: [ AngularFirestore, TABLE_SELECTION ]},
+    {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
+    {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
+    {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
+    {provide: ContactService, useClass: ContactService, deps: [AngularFirestore, TABLE_CONTACT]},
+    {provide: CategoryService, useClass: CategoryService, deps: [AngularFirestore, TABLE_CATEGORY]},
+    {provide: CmsService, useClass: CmsService, deps: [AngularFirestore, TABLE_CMS]},
+    {provide: CmsDetailService, useClass: CmsDetailService, deps: [AngularFirestore, TABLE_CMS_DETAIL]},
+    {provide: CommentService, useClass: CommentService, deps: [AngularFirestore, TABLE_COMMENT]},
+    {provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA]},
+    {provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER]},
+    {provide: MapService, useClass: MapService, deps: [AngularFirestore, TABLE_MAP]},
+    {provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER]},
+    {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
+    {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
     AlertService,
     DateService,
     DeviceService,
