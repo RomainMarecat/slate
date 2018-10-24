@@ -28,7 +28,8 @@
   <div class="cart-quantity-actions"
        fxLayout="row"
        fxLayoutAlign="center stretch"
-       fxLayoutGap="30px">
+       fxLayoutGap="30px"
+       fxLayoutGap.xs="10px">
 
     <button role="button"
             [attr.aria-label]="'product-item.product-action.mat-card-actions.button.cart.title'|translate"
@@ -43,7 +44,11 @@
       </mat-icon>
     </button>
 
-    <input #inputQuantity type="number" min="1" title="quantity"
+    <input #inputQuantity
+           class="input-quantity text-center"
+           type="number"
+           min="1"
+           title="quantity"
            value="1">
 
     <button role="button"
@@ -65,6 +70,7 @@
        fxLayoutAlign="center stretch"
        fxLayoutGap="20px">
     <button role="button"
+            class="text-uppercase"
             [attr.aria-label]="'product-item.product-action.mat-card-actions.button.cart.title'|translate"
             mat-raised-button
             color="primary"

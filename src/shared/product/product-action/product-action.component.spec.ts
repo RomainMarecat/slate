@@ -25,6 +25,10 @@ import { ScoreService } from '../../score/score.service';
 import { MockScoreService } from '../../score/mock-score.service';
 import { MockCartService } from '../../cart/shared/mock-cart.service';
 import { CartService } from '../../cart/shared/cart.service';
+import { LoaderService } from '../../loader/loader.service';
+import { MockLoaderService } from '../../loader/mock-loader.service';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
 describe('ProductActionComponent', () => {
   let component: ProductActionComponent;
@@ -33,12 +37,16 @@ describe('ProductActionComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        Angulartics2Module.forRoot({
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
         CommonModule,
-        RouterTestingModule,
         BrowserModule,
-        HttpClientModule,
-        RouterTestingModule,
         BrowserAnimationsModule,
+        HttpClientModule,
         MatCardModule,
         MatIconModule,
         MatButtonModule,
@@ -46,18 +54,15 @@ describe('ProductActionComponent', () => {
         MatInputModule,
         MatCheckboxModule,
         MatListModule,
-        Angulartics2Module.forRoot({
-          developerMode: true,
-          pageTracking: {
-            clearIds: true,
-          },
-        }),
+        RouterTestingModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
       declarations: [ProductActionComponent],
       providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
+        {provide: LoaderService, useClass: MockLoaderService},
         {provide: CartService, useClass: MockCartService},
         {provide: UserService, useClass: MockUserService},
         {provide: AlertService, useClass: MockAlertService},

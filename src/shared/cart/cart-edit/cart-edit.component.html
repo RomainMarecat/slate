@@ -6,8 +6,19 @@
   <mat-card-header fxLayout="row"
                    fxLayoutAlign="center stretch">
     <mat-card-title class="text-capitalize">
+      {{ 'cart.title.start'|translate }}
     </mat-card-title>
   </mat-card-header>
+  <div class="produts">
+    <button type="button"
+            role="button"
+            color="primary"
+            mat-raised-button
+            (click)="setProduct()">
+      {{ 'cart.product.add'|translate }}
+    </button>
+  </div>
+
   <mat-card-content fxLayout="row"
                     fxLayoutAlign="center stretch">
 

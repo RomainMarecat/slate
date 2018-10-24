@@ -6,6 +6,9 @@ import { AlertService } from '../../popup/alert.service';
 import { Cart, CartItem } from '../../cart/shared/cart';
 import { CartService } from '../../cart/shared/cart.service';
 import { Filter } from '../../facet/filter/shared/filter';
+import { Router } from '@angular/router';
+import { LoaderService } from '../../loader/loader.service';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-product-action',
@@ -40,7 +43,10 @@ export class ProductActionComponent implements OnInit {
   constructor(private userService: UserService,
               private scoreService: ScoreService,
               private alertService: AlertService,
-              private cartService: CartService) {
+              private router: Router,
+              private loaderService: LoaderService,
+              private cartService: CartService,
+              private localizeRouterService: LocalizeRouterService) {
   }
 
   ngOnInit() {
@@ -63,13 +69,13 @@ export class ProductActionComponent implements OnInit {
           } else {
             this.alertService.show('Vous avez déjà voté', 'error');
           }
-        }, (err) => {
+        }, () => {
           this.alertService.show('Nous ne sommes pas en mesure de savoir si vous avez voté, veuillez recommencer.', 'error');
         });
       } else {
         this.alertService.show('Il faut se connecter pour pouvoir voter', 'error');
       }
-    }, (err) => {
+    }, () => {
       this.alertService.show('Vous n\'avons pas retrouvé votre utilisateur', 'error');
     });
   }
@@ -107,7 +113,7 @@ export class ProductActionComponent implements OnInit {
   getCart() {
     const filters: Filter[] = [{
       column: 'user',
-      operator: '=',
+      operator: '==',
       value: this.userService.getUser().uid
     }];
 
@@ -125,6 +131,7 @@ export class ProductActionComponent implements OnInit {
    * Add to cart a product
    */
   addToCart(product: Product, quantity: number) {
+    this.loaderService.show();
     const cartItem: CartItem = {
       name: product.name,
       code: product.key,
@@ -135,14 +142,14 @@ export class ProductActionComponent implements OnInit {
     };
     const filters: Filter[] = [{
       column: 'user',
-      operator: '=',
+      operator: '==',
       value: this.userService.getUser().uid
     }];
 
     this.cartService.filters$.next(filters);
     this.cartService.getCarts()
       .subscribe((carts: Cart[]) => {
-        console.log(carts);
+        this.loaderService.hide();
         if (carts && carts.length > 0 && carts[0]) {
           const cart: Cart = carts[0];
           cart.items = cart.items.map((item) => {
@@ -156,13 +163,18 @@ export class ProductActionComponent implements OnInit {
             }
             return item;
           });
+          this.loaderService.show();
           this.cartService.updateCart(cart)
             .then(() => {
+              this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
+              this.alertService.show('product.cart.added');
             }, (err) => {
+              this.loaderService.hide();
               this.alertService.show(err);
             });
         }
       }, (err) => {
+        this.loaderService.hide();
         this.alertService.show(err);
       });
   }

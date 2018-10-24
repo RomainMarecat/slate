@@ -24,7 +24,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
   // @todo add button with cms
   cmsDetail: any;
   viewFilter: boolean;
-
+  deferredPrompt;
+  showBtn = false;
   @ViewChild('sidenavFilter') sidenavFilter: MatDrawer;
   @ViewChild('sidenav') sidenav: MatDrawer;
 
@@ -32,10 +33,10 @@ export class SidenavComponent implements OnInit, OnDestroy {
   private subscriptionSidenavFilter: Subscription;
 
   constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
-    public userService: UserService,
-    private loaderService: LoaderService,
-    private i18nService: I18nService,
-    private sidenavService: SidenavService) {
+              public userService: UserService,
+              private loaderService: LoaderService,
+              private i18nService: I18nService,
+              private sidenavService: SidenavService) {
     this.viewFilter = true;
     this.authorized = adminsID;
   }
@@ -64,6 +65,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
       });
 
     this.getAuthorized();
+    this.ionViewWillEnter();
   }
 
   getAuthorized() {
@@ -77,4 +79,44 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.subscriptionSidenav.unsubscribe();
     this.subscriptionSidenavFilter.unsubscribe();
   }
+
+  ionViewWillEnter() {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later on the button event.
+      this.deferredPrompt = e;
+
+      // Update UI by showing a button to notify the user they can add to home screen
+      this.showBtn = true;
+    });
+
+    // button click event to show the promt
+
+    window.addEventListener('appinstalled', (event) => {
+      alert('installed');
+    });
+
+
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      alert('display-mode is standalone');
+    }
+  }
+
+  addToHome(e) {
+    // hide our user interface that shows our button
+    // Show the prompt
+    this.deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    this.deferredPrompt.userChoice
+      .then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          alert('User accepted the prompt');
+        } else {
+          alert('User dismissed the prompt');
+        }
+        this.deferredPrompt = null;
+      });
+  }
+
 }

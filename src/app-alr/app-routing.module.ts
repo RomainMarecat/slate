@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
   {
+    path: 'a2hs',
+    loadChildren: './../shared/a2hs/a2hs.module#A2hsModule'
+  },
+  {
     path: 'charts',
     loadChildren: './../shared/chart/chart.module#ChartModule'
   },

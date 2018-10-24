@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { User } from './user';
-import { map, take, tap } from 'rxjs/operators';
+import { map, take, tap, timeout } from 'rxjs/operators';
 import { AlertService } from 'shared/popup/alert.service';
 import { Observable } from 'rxjs';
 
@@ -25,6 +25,7 @@ export class UserService {
   isAdmin(): Observable<boolean> {
     return this.afAuth.authState
       .pipe(
+        timeout(5000),
         take(1),
         map(authState => {
           return authState && this.authorized.includes(authState.uid);
@@ -40,6 +41,7 @@ export class UserService {
   isAuthenticated(): Observable<boolean> {
     return this.afAuth.authState
       .pipe(
+        timeout(5000),
         take(1),
         map(authState => !!authState),
         tap(authenticated => {
