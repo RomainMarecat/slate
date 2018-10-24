@@ -11,7 +11,9 @@
             <!-- Step booking -->
             <mat-step [completed]="isCartCompleted">
               <ng-template matStepLabel>{{ 'cart.title.cart'|translate }}</ng-template>
-              <app-cart-edit [cart]="cart" (submitted)="onSaveCart($event)"></app-cart-edit>
+              <app-cart-edit [cart]="cart"
+                             (submitted)="onSaveCart($event)"
+                             (updateCart)="updateCart($event)"></app-cart-edit>
             </mat-step>
 
 

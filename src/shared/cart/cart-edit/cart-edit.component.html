@@ -1,6 +1,5 @@
 <form class="form"
       [formGroup]="form"
-      (ngSubmit)="save()"
       fxLayout="column"
       fxLayoutAlign="start center">
   <mat-card-header fxLayout="row"
@@ -22,13 +21,15 @@
   <mat-card-content fxLayout="row"
                     fxLayoutAlign="center stretch">
 
-    <app-cart-list [cart]="cart"></app-cart-list>
+    <app-cart-list [cart]="cart"
+                   (updateCart)="updateCart.emit($event)"></app-cart-list>
 
   </mat-card-content>
   <mat-card-actions class="mat-card-actions w-100">
     <div fxLayout="row"
          fxLayoutAlign="end stretch">
-      <button type="submit"
+      <button type="button"
+              (click)="save()"
               mat-raised-button
               color="primary"
               class="cart-actions text-uppercase">

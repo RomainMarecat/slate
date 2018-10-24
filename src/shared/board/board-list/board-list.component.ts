@@ -36,7 +36,6 @@ export class BoardListComponent implements OnInit {
       columns: [],
       cards: []
     };
-    console.log('Adding new board');
     this.boardService.createBoard(board)
       .then((doc) => {
         board.key = doc.id;
@@ -45,7 +44,6 @@ export class BoardListComponent implements OnInit {
             this.localizeRouterService.translateRoute('/board'),
             board.key
           ]);
-          console.log('new board added');
         }, (err) => {
           console.error(err);
         });

@@ -19,14 +19,12 @@ export class CartEditComponent implements OnInit {
   form: FormGroup = CartEditComponent.getForm();
   @Output() submitted: EventEmitter<Cart> = new EventEmitter<Cart>();
 
-  private _cart: Cart;
+  @Input() cart: Cart;
 
-  user: User;
+  @Output() updateCart: EventEmitter<Cart> = new EventEmitter<Cart>();
 
   static getForm(): FormGroup {
-    return new FormGroup({
-      total: new FormControl(0, [Validators.required])
-    });
+    return new FormGroup({});
   }
 
   constructor(private cartService: CartService,
@@ -51,41 +49,20 @@ export class CartEditComponent implements OnInit {
         updated_at: faker.date.recent()
       };
       this.cart.items.push(item);
-    }
-  }
 
-  setUser(user: User) {
-    this.user = user;
+      this.cart.total += item.price * item.quantity;
+    }
   }
 
   save() {
     if (this.form.valid) {
-      const cart: Cart = {
-        ...this.form.value,
-        ...{
-          total: 100,
-          user: this.user ? this.user.uid : null,
-          created_at: new Date(),
-          updated_at: new Date()
-        }
-      };
-      this.cartService.createCart(cart)
-        .then(doc => {
-          cart.key = doc.id;
-          this.cartService.updateCart(cart)
-            .then(() => {
-              this.alertService.show(this.translate.instant('cart-add.saved'));
-              this.submitted.emit(cart);
-            }, (err) => this.alertService.show(err));
+      this.cart.updated_at = new Date();
+
+      this.cartService.updateCart(this.cart)
+        .then(() => {
+          this.alertService.show(this.translate.instant('cart-add.saved'));
+          this.submitted.emit(this.cart);
         }, (err) => this.alertService.show(err));
     }
-  }
-
-  @Input() set cart(cart) {
-    this._cart = cart;
-  }
-
-  get cart(): Cart {
-    return this._cart;
   }
 }

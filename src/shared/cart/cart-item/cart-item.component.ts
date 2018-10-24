@@ -26,10 +26,10 @@ export class CartItemComponent implements OnInit {
    */
   articleWord = 'word.article';
 
-  @Output() productUpdate: EventEmitter<{
-    item: CartItem,
+  @Output() cartItemUpdate: EventEmitter<{
+    cartItem: CartItem,
     quantity: number
-  }> = new EventEmitter<{item: CartItem, quantity: number}>();
+  }> = new EventEmitter<{cartItem: CartItem, quantity: number}>();
 
   constructor() {
   }
@@ -47,8 +47,8 @@ export class CartItemComponent implements OnInit {
   }
 
   updateCartItemQuantity(item: CartItem, quantity: number) {
-    this.productUpdate.emit({
-      item: item,
+    this.cartItemUpdate.emit({
+      cartItem: item,
       quantity: quantity
     });
   }

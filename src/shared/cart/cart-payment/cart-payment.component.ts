@@ -27,7 +27,7 @@ import {
 @Component({
   selector: 'app-cart-payment',
   templateUrl: './cart-payment.component.html',
-  styleUrls: [ './cart-payment.component.scss' ]
+  styleUrls: ['./cart-payment.component.scss']
 })
 export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('cardInfo') cardInfo: ElementRef;
@@ -117,7 +117,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getCart() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
+    this.activatedRoute.params.subscribe((value: {key: string}) => {
       if (value.key) {
         this.cartService.getCart(value.key)
           .subscribe((cart: Cart) => {
@@ -130,7 +130,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   cancel() {
-    this.router.navigate([ this.previousRoute ]);
+    this.router.navigate([this.previousRoute]);
   }
 
   onChange(event: any) {
@@ -155,7 +155,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
           if (result.token) {
             // Use the token to create a charge or a customer
             // https://stripe.com/docs/charges
-            console.log(result.token);
+            // console.log(result.token);
             const order: Order = {
               total: this.cart.total,
               user: this.cart.user
@@ -179,10 +179,9 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
                         this.payment.key = createdPayment.id;
                         this.paymentService.updatePayment(this.payment)
                           .then(() => {
-                            console.log('payment', this.payment);
+                            // console.log('payment', this.payment);
                             this.cart.status = 'finished';
                             this.cartService.updateCart(this.cart).then(() => {
-                              console.log('cart updated');
                             });
                             this.paid.emit(this.payment);
                             this.togglePayButton();

@@ -88,7 +88,6 @@ export class VisitorService {
    */
   getDocuments(): Observable<any[]> {
     return this.documents$.pipe(
-      timeout(10000),
       map((documents) => {
         return documents.map((document: DocumentChangeAction<any>) => {
           if (document.payload.doc.exists) {

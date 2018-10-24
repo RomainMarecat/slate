@@ -53,10 +53,8 @@ export class ChartLineComponent implements OnInit {
 
   // events
   chartClicked(e: any): void {
-    console.log(e);
   }
 
   chartHovered(e: any): void {
-    console.log(e);
   }
 }
