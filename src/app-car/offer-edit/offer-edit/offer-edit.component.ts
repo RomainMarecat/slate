@@ -264,10 +264,6 @@ export class OfferEditComponent implements OnInit {
 
   onSubmit(event: any) {
     this.isSaving = true;
-    Object.entries(this.form.controls).forEach(([key, value]) => {
-      // console.log(key, 'valid: ', value.valid, 'value: ', value.value, 'errors: ', value.errors);
-    });
-
     if (this.form.valid) {
       const offer: CarOffer = this.form.value as CarOffer;
       offer.brand = this.form.value.brand.key;

@@ -96,7 +96,6 @@ export class A2hsService {
   trackInstalled() {
     // called from listener in app.component
     // this.gas.emitEvent('A2HS', 'Installed', '' , 0);
-    console.log('setting this.userInstalled true');
     this.userInstalled = true;
   }
 
@@ -105,7 +104,6 @@ export class A2hsService {
     this.customButtonClicked = true;
 
     if (!this.deferredPrompt) {
-      console.log('deferredPrompt null');
       return;
     }
 

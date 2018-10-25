@@ -30,7 +30,20 @@
 
       <div class="products-container" *ngIf="cart.items.length > 0">
         <div class="row content-cart" *ngFor="let item of cart.items">
-          <app-cart-item [cart]="cart" [item]="item"></app-cart-item>
+          <app-cart-item [cart]="cart" [item]="item" (cartItemUpdate)="onCartItemChange($event)"></app-cart-item>
+        </div>
+      </div>
+
+      <div class="row infos-total">
+        <div class="col-lg-12 col-12">
+          <div class="row">
+            <span class="col-lg-3 offset-lg-6 col-5 text-left">
+              {{ 'cart.total.total'|translate }}
+            </span>
+            <span class="col-lg-2 col-6 text-center">
+              {{(cart.fees ? cart.total + cart.fees : cart.total) | currency:'EUR' }}
+            </span>
+          </div>
         </div>
       </div>
     </div>

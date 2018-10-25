@@ -9,6 +9,7 @@ import { Filter } from '../../facet/filter/shared/filter';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../loader/loader.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-action',
@@ -120,7 +121,6 @@ export class ProductActionComponent implements OnInit {
     this.cartService.filters$.next(filters);
     this.cartService.getCarts()
       .subscribe((carts: Cart[]) => {
-        console.log(carts);
         if (carts && carts.length > 0 && carts[0]) {
           this.cart = carts[0];
         }
@@ -144,30 +144,45 @@ export class ProductActionComponent implements OnInit {
       column: 'user',
       operator: '==',
       value: this.userService.getUser().uid
+    }, {
+      column: 'status',
+      operator: '==',
+      value: 'current'
     }];
 
     this.cartService.filters$.next(filters);
     this.cartService.getCarts()
+      .pipe(take(1))
       .subscribe((carts: Cart[]) => {
         this.loaderService.hide();
         if (carts && carts.length > 0 && carts[0]) {
           const cart: Cart = carts[0];
-          cart.items = cart.items.map((item) => {
-            if (item.code === product.key) {
-              item = {
-                ...cartItem,
-                ...{
-                  quantity: item.quantity + cartItem.quantity
-                }
-              };
-            }
-            return item;
-          });
+
+          const filtered = cart.items.filter((item) => item.code === cartItem.key);
+          if (filtered.length === 0) {
+            cart.items.push(cartItem);
+            cart.total += cartItem.quantity * cartItem.price;
+          } else {
+            cart.items = cart.items.map((item: CartItem) => {
+              if (item.code === product.key) {
+                item = {
+                  ...cartItem,
+                  ...{
+                    quantity: item.quantity + cartItem.quantity
+                  }
+                };
+                cart.total += cartItem.quantity * cartItem.price;
+              }
+              return item;
+            });
+          }
+
           this.loaderService.show();
           this.cartService.updateCart(cart)
             .then(() => {
+              this.loaderService.hide();
               this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
-              this.alertService.show('product.cart.added');
+              this.alertService.show('product-detail.cart.added');
             }, (err) => {
               this.loaderService.hide();
               this.alertService.show(err);

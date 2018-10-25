@@ -8,7 +8,6 @@ import { CartPaymentComponent } from '../cart-payment/cart-payment.component';
 import { CartConfirmationComponent } from '../cart-confirmation/cart-confirmation.component';
 import { AlertService } from '../../popup/alert.service';
 import { Cart } from '../shared/cart';
-import { Filter } from '../../facet/filter/shared/filter';
 import { Payment } from '../../payment/shared/payment';
 
 @Component({
@@ -44,8 +43,13 @@ export class CartStartComponent implements OnInit {
         column: 'user',
         operator: '==',
         value: this.user.uid
+      },
+      {
+        column: 'status',
+        operator: '==',
+        value: 'current'
       }
-    ] as Filter[]);
+    ]);
     this.cartService.getCarts()
       .subscribe((carts) => {
         this.cart = carts.filter((cart) => cart.status === 'current')[0];
@@ -64,9 +68,6 @@ export class CartStartComponent implements OnInit {
           this.isUserAlreadyLogged = true;
           this.isUserCompleted = true;
           this.user = user;
-          if (this.cartEditComponent) {
-            this.cartEditComponent.setUser(user);
-          }
           this.getCart();
         }
       });
@@ -84,10 +85,18 @@ export class CartStartComponent implements OnInit {
     this.cartService.createCart(cart)
       .then(doc => {
         cart.key = doc.id;
-        this.cartService.updateCart(cart)
-          .then(() => {
-          }, (err) => this.alertService.show(err));
-      }, (err) => this.alertService.show(err));
+        this.updateCart(cart);
+      });
+
+  }
+
+  updateCart(cart: Cart) {
+    this.cartService.updateCart(cart)
+      .then(() => {
+        },
+        (err) => {
+          this.alertService.show(err);
+        });
   }
 
   onSaveCart(cart: Cart) {
@@ -109,7 +118,6 @@ export class CartStartComponent implements OnInit {
           this.user = user;
           localStorage.setItem('user', JSON.stringify(user));
           this.isUserCompleted = true;
-          this.cartEditComponent.setUser(user);
           this.cart.user = this.user.uid;
           this.cartService.updateCart(this.cart)
             .then(() => {

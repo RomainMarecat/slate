@@ -73,18 +73,6 @@
       {{ cart?.fees| currency:'EUR' }}
     </span>
   </div>
-
-  <div class="row infos-total">
-    <div class="col-lg-12 col-12">
-      <div class="row">
-        <span class="col-lg-3 offset-lg-6 col-5 text-left">
-          {{ 'cart.total.total'|translate }}
-        </span>
-        <span class="col-lg-2 col-6 text-center">{{(cart.fees ? cart.total + cart.fees : cart.total) |
-          currency:'EUR' }}</span>
-      </div>
-    </div>
-  </div>
 </div>
 
 <ng-template #zeroPriceTemplate>

@@ -25,7 +25,7 @@ import { SessionService } from 'shared/session/shared/session.service';
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: [ './calendar.component.scss' ]
+  styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit, OnChanges {
   // Default View Mode of Week Component
@@ -99,7 +99,7 @@ export class CalendarComponent implements OnInit, OnChanges {
         duration: 60,
         pause: 0,
       },
-      prices: [ 10, 20 ],
+      prices: [10, 20],
       date_range: {
         start: '2018-01-01',
         end: '2019-12-31',
@@ -201,7 +201,7 @@ export class CalendarComponent implements OnInit, OnChanges {
   /**
    * On removed event
    */
-  onSessionRemoved(source: { key: string, session: Session }) {
+  onSessionRemoved(source: {key: string, session: Session}) {
     this.sessions.delete(source.key);
     this.removeSession(source.session);
     this.sessionRemoved.emit(source.session);
@@ -226,10 +226,6 @@ export class CalendarComponent implements OnInit, OnChanges {
       // each day of days availability with start time 08:00
       const mmtDay = moment(day, 'YYYY-MM-DD').hour(8);
       const mmtDayStartTime = moment(day + this.onlineSession.time_range.start, 'YYYY-MMDDHH:mm');
-      /* days before this morning */
-      // console.log('Le début des premières sessions possibles:', mmtDayStartTime.format('YYYY-MM-DDHH:mm'));
-      // console.log('le début du jour:', moment().startOf('day').format('YYYY-MM-DDHH:mm'));
-      // console.log('On charge des dispos ?', !mmtDayStartTime.isBefore(moment().startOf('day')));
 
       // If session start time like 08:00 is before start today 00:00
       if (mmtDayStartTime.isBefore(moment().startOf('day'))) {
@@ -242,11 +238,6 @@ export class CalendarComponent implements OnInit, OnChanges {
       mmtDayEndTime.subtract(duration, 'minutes');
       // slots iterator
       const timeRange: TwixIter = mmtDayStartTime.twix(mmtDayEndTime).iterate(this.slotDuration, 'minutes');
-
-      // console.log('session début des plages horaires', mmtDayStartTime.format('HH:mm'));
-      // console.log('session fin des plages horaires', mmtDayEndTime.format('HH:mm'));
-      // console.log('l\'heure à 08:00 est elle entre le début et fin de session', mmtDay.isBetween(onlineSessionStart, onlineSessionEnd));
-      // console.log('début et fin du calendrier', this.calendarStart, this.calendarEnd);
       if (this.calendarStart && this.calendarEnd && mmtDay.isBetween(onlineSessionStart, onlineSessionEnd)) {
         while (timeRange.hasNext()) {
           const time: Twix = timeRange.next();
@@ -370,7 +361,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     ] as Filter[]);
     this.sessionService.getSessions()
       .subscribe((events: Session[]) => {
-        this.events = [ ...events.filter((event) => event && event.end <= end.toDate()) ];
+        this.events = [...events.filter((event) => event && event.end <= end.toDate())];
         this.busySlots = new Set();
         this.daysBusySlotNumber = new Map();
 

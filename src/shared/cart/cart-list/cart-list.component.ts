@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Cart } from 'shared/cart/shared/cart';
+import { CartItem } from '../shared/cart';
 
 @Component({
   selector: 'app-cart-list',
@@ -8,7 +9,7 @@ import { Cart } from 'shared/cart/shared/cart';
 })
 export class CartListComponent implements OnInit {
 
-  _cart: Cart;
+  @Input() cart: Cart;
 
   totalQuantity: number;
 
@@ -16,20 +17,30 @@ export class CartListComponent implements OnInit {
 
   editable: boolean;
 
-  constructor() { }
+  @Output() updateCart: EventEmitter<Cart> = new EventEmitter<Cart>();
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-  @Input() set cart(cart) {
-    this._cart = cart;
-  }
-
-  get cart(): Cart {
-    return this._cart;
-  }
-
   onNextStep() {
+  }
 
+  onCartItemChange(event: {cartItem: CartItem, quantity: number}) {
+    let total = 0;
+    this.cart.items = this.cart.items.map((item: CartItem) => {
+      if (item.code === event.cartItem.code) {
+        item.quantity = event.quantity;
+      }
+      total += item.quantity * item.price;
+
+      return item;
+    });
+    this.cart.items = this.cart.items.filter(item => item.quantity > 0);
+    this.cart.total = total;
+
+    this.updateCart.emit(this.cart);
   }
 }
