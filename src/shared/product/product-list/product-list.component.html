@@ -1,4 +1,7 @@
-<div class="card-welcome" *ngIf="addProductPublicActivated === true">
+<div class="card-welcome"
+     fxLayout="row"
+     fxLayoutAlign="center wrap"
+     *ngIf="addProductPublicActivated === true">
   <mat-card>
     <mat-card-content>
       <mat-icon>photo_camera</mat-icon>
@@ -30,8 +33,14 @@
     </mat-card-actions>
   </mat-card>
 </div>
-<div class="card-container">
+<div class="card-container"
+     fxLayout="row wrap"
+     fxLayoutAlign="center stretch"
+     fxLayout.xs="row wrap"
+     fxLayoutAlign.xs="center stretch">
   <app-product-item *ngFor="let product of products"
+                    fxFlex="30"
+                    fxFlex.xs="100"
                     class="grid-tile-item"
                     [product]="product"
                     [showScore]="showScore"
@@ -45,12 +54,12 @@
 
 <div class="text-right" *ngIf="showAdd">
   <a [routerLink]="['add-product']"
-          [attr.aria-label]="'product-list.fab-button.title' | translate"
-          mat-mini-fab
-          class="absolute-fab pulse"
-          angulartics2On="click"
-          angularticsAction="clickedOnFabAddProduct"
-          [angularticsCategory]="'product.add'">
+     [attr.aria-label]="'product-list.fab-button.title' | translate"
+     mat-mini-fab
+     class="absolute-fab pulse"
+     angulartics2On="click"
+     angularticsAction="clickedOnFabAddProduct"
+     [angularticsCategory]="'product.add'">
     <mat-icon>add</mat-icon>
   </a>
 </div>

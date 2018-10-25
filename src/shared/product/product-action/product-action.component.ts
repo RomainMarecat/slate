@@ -130,12 +130,12 @@ export class ProductActionComponent implements OnInit {
   /**
    * Add to cart a product
    */
-  addToCart(product: Product, quantity: number) {
+  addToCart(product: Product, quantity: string) {
     this.loaderService.show();
     const cartItem: CartItem = {
       name: product.name,
       code: product.key,
-      quantity: quantity,
+      quantity: parseInt(quantity, 10),
       price: product.price,
       created_at: new Date(),
       updated_at: new Date(),
@@ -158,19 +158,15 @@ export class ProductActionComponent implements OnInit {
         if (carts && carts.length > 0 && carts[0]) {
           const cart: Cart = carts[0];
 
-          const filtered = cart.items.filter((item) => item.code === cartItem.key);
+          const filtered = cart.items.filter((item) => item.code === cartItem.code);
           if (filtered.length === 0) {
             cart.items.push(cartItem);
             cart.total += cartItem.quantity * cartItem.price;
           } else {
             cart.items = cart.items.map((item: CartItem) => {
               if (item.code === product.key) {
-                item = {
-                  ...cartItem,
-                  ...{
-                    quantity: item.quantity + cartItem.quantity
-                  }
-                };
+                item = cartItem;
+                item.quantity = item.quantity + cartItem.quantity;
                 cart.total += cartItem.quantity * cartItem.price;
               }
               return item;

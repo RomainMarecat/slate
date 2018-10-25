@@ -38,6 +38,8 @@ import { MockPaymentService } from '../../payment/shared/mock-payment.service';
 import { UserService } from '../../user/shared/user.service';
 import { MockUserService } from '../../user/shared/mock-user.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MockLoaderService } from '../../loader/mock-loader.service';
+import { LoaderService } from '../../loader/loader.service';
 
 describe('CartStartComponent', () => {
   let component: CartStartComponent;
@@ -80,6 +82,7 @@ describe('CartStartComponent', () => {
       providers: [
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         RoutingState,
+        {provide: LoaderService, useClass: MockLoaderService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: CartService, useClass: MockCartService},
         {provide: OrderService, useClass: MockOrderService},

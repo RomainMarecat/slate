@@ -24,7 +24,9 @@ import { RoutingState } from '../../util/routing-state';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxStripeModule, StripeService } from 'ngx-stripe';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { LoaderService } from '../../loader/loader.service';
+import { MockLoaderService } from '../../loader/mock-loader.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('CartPaymentComponent', () => {
   let component: CartPaymentComponent;
@@ -61,6 +63,7 @@ describe('CartPaymentComponent', () => {
       providers: [
         RoutingState,
         {provide: AlertService, useClass: MockAlertService},
+        {provide: LoaderService, useClass: MockLoaderService},
         {provide: CartService, useClass: MockCartService},
         {provide: OrderService, useClass: MockOrderService},
         {provide: PaymentService, useClass: MockPaymentService},

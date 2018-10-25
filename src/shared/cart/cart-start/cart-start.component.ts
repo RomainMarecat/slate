@@ -9,6 +9,8 @@ import { CartConfirmationComponent } from '../cart-confirmation/cart-confirmatio
 import { AlertService } from '../../popup/alert.service';
 import { Cart } from '../shared/cart';
 import { Payment } from '../../payment/shared/payment';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-cart-start',
@@ -27,14 +29,19 @@ export class CartStartComponent implements OnInit {
   isUserAlreadyLogged = false;
   user: User;
   cart: Cart;
+  displayXs: boolean;
 
   constructor(private userService: UserService,
               private cartService: CartService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private observableMedia: ObservableMedia) {
   }
 
   ngOnInit() {
     this.getUser();
+    this.observableMedia.subscribe((change: MediaChange) => {
+      this.displayXs = change.mqAlias === 'xs';
+    });
   }
 
   getCart() {
@@ -56,8 +63,8 @@ export class CartStartComponent implements OnInit {
         if (!this.cart) {
           this.createCart();
         }
-      }, (err) => {
-        console.error(err);
+      }, (err: HttpErrorResponse) => {
+        this.alertService.show(err.error.message);
       });
   }
 
@@ -94,8 +101,8 @@ export class CartStartComponent implements OnInit {
     this.cartService.updateCart(cart)
       .then(() => {
         },
-        (err) => {
-          this.alertService.show(err);
+        (err: HttpErrorResponse) => {
+          this.alertService.show(err.error.message);
         });
   }
 
@@ -125,12 +132,12 @@ export class CartStartComponent implements OnInit {
               setTimeout(() => {
                 this.stepper.next();
               }, 200);
-            }, (err) => {
-              console.error(err);
+            }, (err: HttpErrorResponse) => {
+              this.alertService.show(err.error.message);
             });
         }
-      }, (err) => {
-        console.error(err);
+      }, (err: HttpErrorResponse) => {
+        this.alertService.show(err.error.message);
       });
   }
 

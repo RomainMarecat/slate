@@ -46,10 +46,10 @@ export class CartItemComponent implements OnInit {
     this.nextStep.emit(true);
   }
 
-  updateCartItemQuantity(item: CartItem, quantity: number) {
+  updateCartItemQuantity(item: CartItem, quantity: string) {
     this.cartItemUpdate.emit({
       cartItem: item,
-      quantity: quantity
+      quantity: parseInt(quantity, 10)
     });
   }
 

@@ -8,6 +8,8 @@ import { Cart, CartItem } from '../shared/cart';
 import { RoutingState } from '../../util/routing-state';
 import { User } from '../../user/shared/user';
 import * as faker from 'faker';
+import { HttpErrorResponse } from '@angular/common/http';
+import { LoaderService } from '../../loader/loader.service';
 
 @Component({
   selector: 'app-cart-edit',
@@ -19,9 +21,11 @@ export class CartEditComponent implements OnInit {
   form: FormGroup = CartEditComponent.getForm();
   @Output() submitted: EventEmitter<Cart> = new EventEmitter<Cart>();
 
+  @Output() updateCart: EventEmitter<Cart> = new EventEmitter<Cart>();
+
   @Input() cart: Cart;
 
-  @Output() updateCart: EventEmitter<Cart> = new EventEmitter<Cart>();
+  isSaving: boolean;
 
   static getForm(): FormGroup {
     return new FormGroup({});
@@ -31,7 +35,8 @@ export class CartEditComponent implements OnInit {
               private alertService: AlertService,
               private translate: TranslateService,
               private router: Router,
-              private routingState: RoutingState) {
+              private routingState: RoutingState,
+              private loaderService: LoaderService) {
   }
 
   ngOnInit() {
@@ -43,8 +48,8 @@ export class CartEditComponent implements OnInit {
       const item: CartItem = {
         name: faker.commerce.productName(),
         code: faker.random.uuid(),
-        quantity: faker.random.number(1000),
-        price: faker.random.number(5000),
+        quantity: faker.random.number(10),
+        price: faker.random.number(1000),
         created_at: faker.date.recent(),
         updated_at: faker.date.recent()
       };
@@ -57,12 +62,19 @@ export class CartEditComponent implements OnInit {
   save() {
     if (this.form.valid) {
       this.cart.updated_at = new Date();
-
+      this.isSaving = true;
+      this.loaderService.show();
       this.cartService.updateCart(this.cart)
         .then(() => {
           this.alertService.show(this.translate.instant('cart-add.saved'));
           this.submitted.emit(this.cart);
-        }, (err) => this.alertService.show(err));
+          this.loaderService.hide();
+          this.isSaving = false;
+        }, (err: HttpErrorResponse) => {
+          this.isSaving = false;
+          this.loaderService.hide();
+          this.alertService.show(err.error.message);
+        });
     }
   }
 }

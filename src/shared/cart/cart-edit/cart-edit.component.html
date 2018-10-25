@@ -1,7 +1,5 @@
 <form class="form"
-      [formGroup]="form"
-      fxLayout="column"
-      fxLayoutAlign="start center">
+      [formGroup]="form">
   <mat-card-header fxLayout="row"
                    fxLayoutAlign="center stretch">
     <mat-card-title class="text-capitalize">
@@ -18,8 +16,7 @@
     </button>
   </div>
 
-  <mat-card-content fxLayout="row"
-                    fxLayoutAlign="center stretch">
+  <mat-card-content>
 
     <app-cart-list [cart]="cart"
                    (updateCart)="updateCart.emit($event)"></app-cart-list>
@@ -30,9 +27,13 @@
          fxLayoutAlign="end stretch">
       <button type="button"
               (click)="save()"
+              [disabled]="isSaving || cart?.items?.length === 0"
               mat-raised-button
-              color="primary"
+              [color]="!isSaving && cart?.items?.length > 0 ? 'primary' : ''"
               class="cart-actions text-uppercase">
+        <mat-icon *ngIf="isSaving">
+          autorenew
+        </mat-icon>
         {{ 'cta.validate'|translate }}
       </button>
     </div>

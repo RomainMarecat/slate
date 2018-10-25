@@ -23,6 +23,8 @@ import {
   StripeService, Elements, Element as StripeElement, ElementsOptions, Error, ElementOptions,
   StripeCardComponent
 } from 'ngx-stripe';
+import { LoaderService } from '../../loader/loader.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-cart-payment',
@@ -77,7 +79,8 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
               private router: Router,
               private routingState: RoutingState,
               private cd: ChangeDetectorRef,
-              private stripeService: StripeService) {
+              private stripeService: StripeService,
+              private loaderService: LoaderService) {
   }
 
   ngOnInit() {
@@ -123,7 +126,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
           .subscribe((cart: Cart) => {
             this.cart = cart;
           }, (err) => {
-            this.alertService.show(err);
+            this.handleHttpErrorResponse(err);
           });
       }
     });
@@ -147,6 +150,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onSubmit(form: NgForm) {
+    this.loaderService.show();
     this.togglePayButton();
     if (this.userService.getUser().uid && this.cart && this.cart.total) {
       this.stripeService
@@ -181,24 +185,29 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
                           .then(() => {
                             // console.log('payment', this.payment);
                             this.cart.status = 'finished';
-                            this.cartService.updateCart(this.cart).then(() => {
-                            });
-                            this.paid.emit(this.payment);
+                            this.cartService.updateCart(this.cart)
+                              .then(() => {
+                                this.paid.emit(this.payment);
+                                this.loaderService.hide();
+                              }, (err: HttpErrorResponse) => {
+                                this.handleHttpErrorResponse(err);
+                                this.togglePayButton();
+                              });
                             this.togglePayButton();
-                          }, (err) => {
-                            this.alertService.show(err);
+                          }, (err: HttpErrorResponse) => {
+                            this.handleHttpErrorResponse(err);
                             this.togglePayButton();
                           });
-                      }, (err) => {
-                        this.alertService.show(err);
+                      }, (err: HttpErrorResponse) => {
+                        this.handleHttpErrorResponse(err);
                         this.togglePayButton();
                       });
-                  }, (err) => {
-                    this.alertService.show(err);
+                  }, (err: HttpErrorResponse) => {
+                    this.handleHttpErrorResponse(err);
                     this.togglePayButton();
                   });
-              }, (err) => {
-                this.alertService.show(err);
+              }, (err: HttpErrorResponse) => {
+                this.handleHttpErrorResponse(err);
                 this.togglePayButton();
               });
           } else if (result.error) {
@@ -211,6 +220,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
       // Undefined cart or undefined total
       this.alertService.show('cart-payment.errors.cart');
       this.togglePayButton();
+      this.loaderService.hide();
     }
   }
 
@@ -218,9 +228,14 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
     this.disablePayButton = !this.disablePayButton;
   }
 
+  handleHttpErrorResponse(err: HttpErrorResponse) {
+    this.alertService.show(err.error.message);
+    this.loaderService.hide();
+  }
+
   handleError(error: Error) {
     this.error = error;
-    console.error(error);
+    this.loaderService.hide();
     if (error && error.message) {
       this.alertService.show(error.message);
     }

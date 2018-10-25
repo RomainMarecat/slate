@@ -1,4 +1,7 @@
-<mat-card class="item-card" *ngIf="product" angulartics2On="mouseover" angularticsAction="hoveredOverProductItem"
+<mat-card class="item-card"
+          *ngIf="product"
+          angulartics2On="mouseover"
+          angularticsAction="hoveredOverProductItem"
           [angularticsCategory]="'product.item'">
   <mat-card-header class="item-card-header">
     <img mat-card-avatar class="item-card-avatar" [src]="product?.thumbnail" *ngIf="product.thumbnail">

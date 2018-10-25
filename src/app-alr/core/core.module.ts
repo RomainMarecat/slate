@@ -133,8 +133,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
   imports: [
     CommonModule,
     AngularFireModule.initializeApp(environment.firebase),
-    /*    AngularFirestoreModule,
-     */
     AngularFirestoreModule.enablePersistence(),
     Angulartics2Module.forRoot(),
     AdsenseModule.forRoot({
