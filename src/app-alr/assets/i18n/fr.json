@@ -1025,7 +1025,10 @@
       "description": "{{value}} - E-commerce"
     },
     "cart": {
-      "added": "produit ajouté au panier"
+      "added": "produit ajouté au panier",
+      "error": {
+        "user": "Il faut d'abord se connecter pour ajouter un produit au panier"
+      }
     }
   },
   "product-list": {
