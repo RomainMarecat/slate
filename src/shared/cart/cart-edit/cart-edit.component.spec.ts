@@ -27,6 +27,8 @@ import { CartListComponent } from '../../cart/cart-list/cart-list.component';
 import { CartItemComponent } from '../../cart/cart-item/cart-item.component';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { MockLocalizeRouterService } from '../..//router/mock-localize-router.service';
+import { LoaderService } from '../../loader/loader.service';
+import { MockLoaderService } from '../../loader/mock-loader.service';
 
 describe('CartEditComponent', () => {
   let component: CartEditComponent;
@@ -64,6 +66,7 @@ describe('CartEditComponent', () => {
       providers: [
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         RoutingState,
+        {provide: LoaderService, useClass: MockLoaderService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: CartService, useClass: MockCartService},
         {provide: OrderService, useClass: MockOrderService},

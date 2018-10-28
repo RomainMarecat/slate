@@ -32,7 +32,7 @@
               class="text-uppercase"
               role="button"
               title="pay"
-              color="primary"
+              [color]="onLine && !disablePayButton ? 'primary' : ''"
               mat-button
               mat-raised-button
               [disabled]="!onLine || disablePayButton">

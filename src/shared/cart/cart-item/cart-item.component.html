@@ -1,23 +1,27 @@
 <div class="col-12" *ngIf="item">
-  <div class="row flex-container">
-    <div class="col-lg-4 col-md-4 col-12 text-left d-flex">
-      <span class="cart-title text-uppercase align-self-center">
+  <div class="row d-flex">
+    <div class="col-lg-4 col-md-4 col-12 d-flex">
+      <span class="cart-title w-100 text-uppercase align-self-center">
         <a [routerLink]="'/products/' + item?.key | localize"
            *ngIf="item?.key; else itemNoLink">{{item.name}}</a>
         <ng-template #itemNoLink>
           <span>{{item.name}}</span>
         </ng-template>
       </span>
+      <!-- Uniquement mobile bloc SUPPRESSION -->
+      <div class="w-10 text-right d-block d-sm-none">
+        <span class="cart-delete pointer"
+              (click)="updateCartItemQuantity(item, 0)"
+              *ngIf="editable">
+          <i class="fa fa-times"></i>
+        </span>
+      </div>
     </div>
     <div class="d-none d-lg-block d-md-block col-lg-2 col-md-3 text-center align-self-center">
       <span class="cart-price">{{ item.price|currency: 'EUR' }}</span>
     </div>
-    <div class="col-lg-2 col-md-1 col-12 text-lg-center text-md-center text-left">
+    <div class="col-lg-2 col-md-1 col-4 text-lg-center text-md-center text-left">
       <div class="row">
-        <!-- Uniquement en mobile -->
-        <div class="d-lg-none d-md-none col-6 col-xs-6 col-sm-4 align-self-center">
-          <span>{{ 'cart.quantity'|translate }} :</span>
-        </div>
         <!-- Uniquement desktop -->
         <div class="d-none d-lg-block text-center col-lg-4">
           <button class="btn btn-icon"
@@ -26,7 +30,9 @@
           </button>
         </div>
         <!-- Mobile et Desktop -->
-        <div class="col-6 col-xs-6 col-sm-4 col-md-3 col-lg-4 align-self-center">
+        <div class="col-12 col-md-3 col-lg-4 align-self-center align-content-start">
+          <!-- Uniquement en mobile -->
+          <span class="d-lg-none d-md-none">x</span>
           <input class="cart-quantity number-override text-center" type="number" name="input"
                  [(ngModel)]="item.quantity"
                  (blur)="updateCartItemQuantity(item, item.quantity)"
@@ -42,12 +48,12 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-md-3 col-10 text-lg-center text-md-center text-left align-self-center">
+    <div class="col-lg-3 col-md-3 col-8 text-lg-center text-md-center text-right align-self-center">
       <span class="cart-total-item text-right">{{item.price * item.quantity| currency: 'EUR'}}</span>
     </div>
 
-    <!-- bloc SUPPRESSION -->
-    <div class="col-1 text-center text-lg-right align-self-center">
+    <!-- Uniquement desktop bloc SUPPRESSION -->
+    <div class="d-none d-sm-block col-1 text-center text-lg-right align-self-center align-items-center">
       <span class="cart-delete pointer"
             (click)="updateCartItemQuantity(item, 0)"
             *ngIf="editable">
