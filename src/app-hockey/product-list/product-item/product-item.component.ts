@@ -5,8 +5,7 @@ import { ProductService } from '../../../shared/product/shared/product.service';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { CloudinaryUploadService } from './../../../shared/media/cloudinary/cloudinary-upload.service';
 import { StringService } from '../../../shared/util/string.service';
-import { Observable } from 'rxjs';
-import { of } from 'rxjs/internal/observable/of';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-product-item',

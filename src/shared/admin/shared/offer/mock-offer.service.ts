@@ -1,7 +1,6 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Offer } from '../../../offer/offer';
 import { mockOffer } from './mock-offer';
-import { of } from 'rxjs/internal/observable/of';
 
 export class MockOfferService {
   getOffers(): Observable<Array<Offer>> {

@@ -13,8 +13,7 @@ import {
 } from '@angular/core';
 import { Cloudinary } from '../cloudinary.service';
 import { CloudinaryTransformationDirective } from '../cloudinary-transformation.directive';
-import { Observable } from 'rxjs';
-import { of } from 'rxjs/internal/observable/of';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-cloudinary-image',

@@ -1,11 +1,10 @@
 import { mockEvent } from './mock-event';
 import { Event } from './event';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { CollectionReference, Query } from '@firebase/firestore-types';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Sort } from '../../facet/sort/shared/sort';
-import { of } from 'rxjs/internal/observable/of';
 import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 
 export class MockEventService {

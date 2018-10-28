@@ -1,11 +1,10 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Area } from './area';
 import { mockAreas } from './mock-area';
 import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import { CollectionReference, Query, DocumentSnapshot, DocumentReference } from '@firebase/firestore-types';
 import { BehaviorSubject } from 'rxjs';
 import { Filter } from '../../facet/filter/shared/filter';
-import { of } from 'rxjs/internal/observable/of';
 
 export class MockAreaService {
   areaCollectionRef: AngularFirestoreCollection<Area>;

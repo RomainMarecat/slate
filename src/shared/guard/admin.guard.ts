@@ -3,9 +3,9 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { adminsID } from './admin';
-import { map, take, tap } from 'rxjs/internal/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from '../popup/alert.service';
+import { map, take, tap } from 'rxjs/operators';
 
 @Injectable()
 export class AdminGuard implements CanActivate {

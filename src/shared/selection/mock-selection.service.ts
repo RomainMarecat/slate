@@ -1,10 +1,9 @@
 import { mockSelection } from './mock-selection';
 import { Selection } from './selection';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { AngularFirestoreCollection } from '@angular/fire/firestore';
 import { CollectionReference, Query } from '@firebase/firestore-types';
-import { of } from 'rxjs/internal/observable/of';
 
 export class MockSelectionService {
   selectionCollectionRef: AngularFirestoreCollection<Selection>;

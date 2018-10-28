@@ -1,11 +1,10 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
-import { Filter } from 'shared/facet/filter/shared/filter';
-import { of } from 'rxjs/internal/observable/of';
 import { AngularFirestoreCollection, CollectionReference, DocumentChangeAction, Query } from '@angular/fire/firestore';
-import { Sort } from 'shared/facet/sort/shared/sort';
 import { Column } from './column';
 import { mockColumn } from './mock-column';
+import { Filter } from '../../facet/filter/shared/filter';
+import { Sort } from '../../facet/sort/shared/sort';
 
 export class MockColumnService {
   columnCollectionRef: AngularFirestoreCollection<Column>;

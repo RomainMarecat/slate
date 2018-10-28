@@ -1,7 +1,6 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { mockUser } from './mock-user';
 import { User } from './user';
-import { of } from 'rxjs/internal/observable/of';
 
 export class MockUserService {
   getUser() {

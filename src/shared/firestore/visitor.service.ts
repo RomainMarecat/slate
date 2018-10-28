@@ -1,5 +1,5 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable, of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Document } from './document';
 import {
@@ -13,9 +13,7 @@ import {
 import { AngularFirestoreCollection, DocumentChangeAction, Action, AngularFirestore } from '@angular/fire/firestore';
 import { Filter } from './../facet/filter/shared/filter';
 import { Sort } from './../facet/sort/shared/sort';
-import { map, switchMap, timeout } from 'rxjs/internal/operators';
-import { of } from 'rxjs/internal/observable/of';
-import { combineLatest } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class VisitorService {

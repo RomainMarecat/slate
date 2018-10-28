@@ -1,12 +1,11 @@
 import { mockArticle } from './mock-article';
 import { Article } from './article';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { CollectionReference, Query } from '@firebase/firestore-types';
 import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Sort } from '../../facet/sort/shared/sort';
-import { of } from 'rxjs/internal/observable/of';
 
 export class MockArticleService {
 

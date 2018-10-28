@@ -1,11 +1,10 @@
 import { mockProduct } from './mock-product';
 import { Product } from './product';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { CollectionReference, Query } from '@firebase/firestore-types';
 import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import { Filter } from '../../facet/filter/shared/filter';
-import { of } from 'rxjs/internal/observable/of';
 
 export class MockProductService {
   productCollectionRef: AngularFirestoreCollection<Product>;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { MapsAPILoader, LatLng } from '@agm/core';
-import { Observable, of, Subject } from 'rxjs';
-import { filter, catchError, tap, map, switchMap } from 'rxjs/operators';
+import { MapsAPILoader } from '@agm/core';
+import { Observable, of } from 'rxjs';
+import { tap, map, switchMap } from 'rxjs/operators';
 import { LatLngLiteral } from '@agm/core/services/google-maps-types';
 import { fromPromise } from 'rxjs/internal-compatibility';
 
@@ -64,8 +64,8 @@ export class GeocodeService {
           this.geocoder.geocode({'address': location}, (results, status) => {
             if (status === google.maps.GeocoderStatus.OK) {
               observer.next({
-                lat: results[ 0 ].geometry.location.lat(),
-                lng: results[ 0 ].geometry.location.lng()
+                lat: results[0].geometry.location.lat(),
+                lng: results[0].geometry.location.lng()
               });
             } else {
               console.error('Error - ', results, ' & Status - ', status);

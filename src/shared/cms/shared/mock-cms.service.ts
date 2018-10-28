@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Cms } from './cms';
 import { mockCms } from './mock-cms';
 import { BehaviorSubject } from 'rxjs';
@@ -7,7 +7,6 @@ import { CmsDetail } from '../../cms-detail/shared/cms-detail';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Sort } from '../../facet/sort/shared/sort';
 import { CollectionReference, Query } from '@firebase/firestore-types';
-import { of } from 'rxjs/internal/observable/of';
 
 export class MockCmsService {
   cmsCollectionRef: AngularFirestoreCollection<CmsDetail>;
