@@ -13,7 +13,7 @@
         <span class="cart-delete pointer"
               (click)="updateCartItemQuantity(item, 0)"
               *ngIf="editable">
-          <i class="fa fa-times"></i>
+          <mat-icon>close</mat-icon>
         </span>
       </div>
     </div>
@@ -57,7 +57,7 @@
       <span class="cart-delete pointer"
             (click)="updateCartItemQuantity(item, 0)"
             *ngIf="editable">
-        <i class="fa fa-times"></i>
+        <mat-icon>close</mat-icon>
       </span>
     </div>
 

@@ -1,69 +1,62 @@
-<div class="app-container mt-5"
-     fxLayout="row"
-     fxLayoutAlign="space-around stretch"
-     fxLayoutGap="30px">
-  <app-a2hs-browser-prompt [disable]="!a2hs.browserPromptBtn()"></app-a2hs-browser-prompt>
-  <app-a2hs-ios-safari-how [disable]="!a2hs.iOSSafariHow2()"></app-a2hs-ios-safari-how>
-</div>
+<div class="px-2">
 
 
-<div [class.d-none]="!a2hs.showHide(a2hs.isStandalone)"
-     fxLayout="row"
-     fxLayoutAlign="center stretch">
-  <strong>Standalone - Show User Nothing</strong>
-</div>
+  <div class="app-container mt-5"
+       fxLayout="row"
+       fxLayoutAlign="space-around stretch"
+       fxLayoutGap="30px"
+       fxLayout.xs="column"
+       fxLayoutAlign.xs="start stretch"
+       fxLayoutGap.xs="10px">
+    <app-a2hs-browser-prompt [disable]="!a2hs.browserPromptBtn()"></app-a2hs-browser-prompt>
+    <app-a2hs-ios-safari-how [disable]="!a2hs.iOSSafariHow2()"></app-a2hs-ios-safari-how>
+  </div>
 
-<div class="debug-section"
-     [class.d-none]="!a2hs.showHide(a2hs.promptSaved)"
-     fxLayout="column"
-     fxLayoutAlign="center center">
-  <h4>Mobile Chrome & Edge Only / Desktop Chrome</h4>
-  <ul class="list-unstyled">
-    <li>Prompt Intercepted: <span [style.color]="a2hs.trueOrFalse(a2hs.promptIntercepted)">
-      {{ a2hs.promptIntercepted }}</span></li>
-    <li>Deferred Prompt Saved: <span [style.color]="a2hs.trueOrFalse(a2hs.promptSaved)">
-      {{ a2hs.promptSaved }}</span>
-    </li>
-    <li>Custom Button Clicked: <span [style.color]="a2hs.trueOrFalse(a2hs.customButtonClicked)">
-      {{ a2hs.customButtonClicked }}</span></li>
-    <li>Deferred Prompt Shown: <span [style.color]="a2hs.trueOrFalse(a2hs.deferredPromptShown)">
-      {{ a2hs.deferredPromptShown }}</span></li>
-    <li>Deferred Prompt Rejected: <span [style.color]="a2hs.trueOrFalse(a2hs.deferredPromptRejected)">
-      {{ a2hs.deferredPromptRejected }}</span></li>
-    <li>App or Shortcut Added: <span [style.color]="a2hs.trueOrFalse(a2hs.userInstalled)">
-      {{ a2hs.userInstalled }}</span></li>
-  </ul>
-</div>
-<div fxLayout="column"
-     fxLayoutAlign="start center">
-  <h4>UserAgent</h4>
-  <h6>{{ a2hs.userAgent }}</h6>
-  <ul class="list-unstyled"
-      fxLayout="column"
-      fxLayoutAlign="start start">
-    <li>isStandalone: <span [style.color]="a2hs.trueOrFalse(a2hs.isStandalone)">
-      {{a2hs.isStandalone}}</span></li>
-    <li>isChrome: <span [style.color]="a2hs.trueOrFalse(a2hs.isChrome)">
-      {{a2hs.isChrome}}</span></li>
-    <li>isExplorer: <span [style.color]="a2hs.trueOrFalse(a2hs.isExplorer)">
-      {{a2hs.isExplorer}}</span></li>
-    <li>isExplorer_11: <span [style.color]="a2hs.trueOrFalse(a2hs.isExplorer_11)">
-      {{a2hs.isExplorer_11}}</span></li>
-    <li>isFirefox: <span [style.color]="a2hs.trueOrFalse(a2hs.isFirefox)">
-      {{a2hs.isFirefox}}</span></li>
-    <li>isSafari: <span [style.color]="a2hs.trueOrFalse(a2hs.isSafari)">
-      {{a2hs.isSafari}}</span></li>
-    <li>isOpera: <span [style.color]="a2hs.trueOrFalse(a2hs.isOpera)">
-      {{a2hs.isOpera}}</span></li>
-    <li>isEdgeDesktop: <span [style.color]="a2hs.trueOrFalse(a2hs.isEdgeDesktop)">
-      {{a2hs.isEdgeDesktop}}</span></li>
-    <li>isEdgeiOS: <span [style.color]="a2hs.trueOrFalse(a2hs.isEdgeiOS)">
-      {{a2hs.isEdgeiOS}}</span></li>
-    <li>isEdgeAndroid: <span [style.color]="a2hs.trueOrFalse(a2hs.isEdgeAndroid)">
-      {{a2hs.isEdgeAndroid}}</span></li>
-    <li>isIOS: <span [style.color]="a2hs.trueOrFalse(a2hs.isIOS)">
-      {{a2hs.isIOS}}</span></li>
-    <li>isMobile: <span [style.color]="a2hs.trueOrFalse(a2hs.isMobile)">
-      {{a2hs.isMobile}}</span></li>
-  </ul>
+
+  <div [class.d-none]="!a2hs.showHide(a2hs.isStandalone)"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+    <strong>Standalone - Show User Nothing</strong>
+  </div>
+
+  <div class="debug-section"
+       [class.d-none]="!a2hs.showHide(a2hs.promptSaved)"
+       fxLayout="column"
+       fxLayoutAlign="center center"
+       fxLayoutAlign.xs="start stretch">
+    <h4>Mobile Chrome & Edge Only / Desktop Chrome</h4>
+    <ul class="list-unstyled">
+      <li>Prompt Intercepted: <span [style.color]="a2hs.trueOrFalse(a2hs.promptIntercepted)">
+        {{ a2hs.promptIntercepted }}</span></li>
+      <li>Deferred Prompt Saved: <span [style.color]="a2hs.trueOrFalse(a2hs.promptSaved)">
+        {{ a2hs.promptSaved }}</span>
+      </li>
+      <li>Custom Button Clicked: <span [style.color]="a2hs.trueOrFalse(a2hs.customButtonClicked)">
+        {{ a2hs.customButtonClicked }}</span></li>
+      <li>Deferred Prompt Shown: <span [style.color]="a2hs.trueOrFalse(a2hs.deferredPromptShown)">
+        {{ a2hs.deferredPromptShown }}</span></li>
+      <li>Deferred Prompt Rejected: <span [style.color]="a2hs.trueOrFalse(a2hs.deferredPromptRejected)">
+        {{ a2hs.deferredPromptRejected }}</span></li>
+      <li>App or Shortcut Added: <span [style.color]="a2hs.trueOrFalse(a2hs.userInstalled)">
+        {{ a2hs.userInstalled }}</span></li>
+    </ul>
+  </div>
+  <div fxLayout="column"
+       fxLayoutAlign="start center"
+       fxLayoutAlign.xs="start stretch">
+    <h4>UserAgent</h4>
+    <h6>{{ a2hs.userAgent }}</h6>
+    <ul class="list-unstyled"
+        fxLayout="column"
+        fxLayoutAlign="start start">
+      <li *ngFor="let device of devices"
+          fxLayout="row"
+          fxLayoutAlign="space-around stretch"
+          fxLayoutGap="20px">
+        {{ device }}:
+        <mat-icon color="primary" *ngIf="a2hs[device]">check_circle</mat-icon>
+        <mat-icon color="accent" *ngIf="!a2hs[device]">highlight_off</mat-icon>
+      </li>
+    </ul>
+  </div>
 </div>

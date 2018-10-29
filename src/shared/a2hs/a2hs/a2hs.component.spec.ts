@@ -4,6 +4,8 @@ import { A2hsComponent } from './a2hs.component';
 import { A2hsBrowserPromptComponent } from '../a2hs-browser-prompt/a2hs-browser-prompt.component';
 import { A2hsIosSafariHowComponent } from '../a2hs-ios-safari-how/a2hs-ios-safari-how.component';
 import { A2hsService } from '../shared/a2hs.service';
+import { MatButtonModule, MatIconModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 describe('A2hsComponent', () => {
   let component: A2hsComponent;
@@ -11,6 +13,11 @@ describe('A2hsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        MatButtonModule,
+        FlexLayoutModule,
+        MatIconModule
+      ],
       declarations: [
         A2hsComponent,
         A2hsBrowserPromptComponent,

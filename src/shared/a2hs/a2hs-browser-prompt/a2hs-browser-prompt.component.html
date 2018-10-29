@@ -3,9 +3,9 @@
 <button class="btn-a2hs"
         type="button"
         mat-raised-button
-        color="primary"
+        [color]="!disable ? 'primary' : ''"
         [disabled]="disable"
-        [class.disabled]="disable"
+
         (click)="a2hs.addToHomeScreen()">
-  Add Shortcut To Home/Apps Screen
+  Add shortcut to home screen
 </button>

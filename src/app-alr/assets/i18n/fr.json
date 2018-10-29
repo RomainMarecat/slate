@@ -28,6 +28,7 @@
     "paginator": "paginator",
     "sort-header": "sort-header",
     "table": "table",
+    "order": "order",
     "autocomplete": "autocomplete",
     "checkbox": "checkbox",
     "datepicker": "datepicker",
@@ -151,6 +152,7 @@
         "cms": "ajouter un cms"
       },
       "product": "produits",
+      "order": "commandes",
       "cms": "cms",
       "attribute": "attributs",
       "category": "categories",
@@ -231,6 +233,10 @@
         "name": "région",
         "path": "points 2D"
       },
+      "order": {
+        "user": "utilisateur",
+        "total": "total"
+      },
       "product": {
         "price": "prix"
       },
@@ -262,6 +268,10 @@
       },
       "map": {
         "name": "pays de la carte"
+      },
+      "order": {
+        "user": "utilisateur",
+        "total": "total"
       },
       "area": {
         "name": "région de la carte",
@@ -303,6 +313,10 @@
         "area": {
           "name": "la région est obligatoire",
           "path": "les points sont obligatoires"
+        },
+        "order": {
+          "user": "l'utilisateur est obligatoire",
+          "total": "le total est obligatoire"
         },
         "selection": {
           "name": "le nom est obligatoire",
@@ -439,6 +453,13 @@
       "edit": "éditer une offre",
       "list": "liste des offres",
       "detail": "détail de l'offre"
+    },
+    "order": {
+      "title": "commandes",
+      "add": "ajouter une commande",
+      "edit": "éditer une commande",
+      "list": "liste des commandes",
+      "detail": "détail de la commande"
     },
     "timeline": "timeline",
     "partner": {
@@ -864,7 +885,10 @@
       "title": "Se connecter"
     },
     "title1": "ALR",
-    "title2": " Dashboard"
+    "title2": " Dashboard",
+    "title": {
+      "order": "Commandes"
+    }
   },
   "placeholder": {
     "reason": "Choisir le motif"

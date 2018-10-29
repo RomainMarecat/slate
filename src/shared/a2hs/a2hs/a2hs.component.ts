@@ -8,6 +8,21 @@ import { A2hsService } from '../shared/a2hs.service';
 })
 export class A2hsComponent implements OnInit {
 
+  devices: string[] = [
+    'isStandalone',
+    'isChrome',
+    'isExplorer',
+    'isExplorer_11',
+    'isFirefox',
+    'isSafari',
+    'isOpera',
+    'isEdgeDesktop',
+    'isEdgeiOs',
+    'isEdgeAndroid',
+    'isIOS',
+    'isMobile'
+  ];
+
   constructor(public a2hs: A2hsService) {
     // A2HS - START
     a2hs.checkUserAgent();

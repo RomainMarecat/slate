@@ -17,7 +17,7 @@
       <span class="cls-2" *ngIf="'menu.title2'|translate">{{ 'menu.title2' | translate }}</span>
     </a>
   </h1>
-  <span class="pl-4" [innerHtml]="title" *ngIf="title"></span>
+  <span class="pl-4" [innerHtml]="title|translate" *ngIf="title"></span>
   <span class="menu-spacer"></span>
   <span class="login-wrapper" *ngIf="!(userService.getAuthState() | async)">
     <button mat-raised-button

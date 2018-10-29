@@ -37,13 +37,13 @@ import { ProductImageOrderComponent } from '../product-image-order/product-image
 import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
 import { Cloudinary } from 'cloudinary-core';
 import { environment } from '../../../../app-hockey/environments/environment';
-import { MockPartnerService } from 'shared/partner/mock-partner.service';
-import { PartnerService } from 'shared/partner/partner.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
 import { ProductService } from '../../../product/shared/product.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
+import { PartnerService } from '../../../partner/partner.service';
+import { MockPartnerService } from '../../../partner/mock-partner.service';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
@@ -54,7 +54,7 @@ describe('ProductEditComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        Angulartics2Module.forRoot( {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
