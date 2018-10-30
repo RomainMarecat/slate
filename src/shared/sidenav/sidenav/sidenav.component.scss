@@ -28,6 +28,7 @@
 
 .mat-sidenav {
   button {
+    display: table-cell;
     display: flex;
     width: 100%;
     transition: all .3s;
@@ -64,6 +65,7 @@ ng-adsense {
 
 .main-content {
   overflow-y: auto;
+  display: table-cell;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
