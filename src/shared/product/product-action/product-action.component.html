@@ -73,7 +73,8 @@
             class="text-uppercase"
             [attr.aria-label]="'product-item.product-action.mat-card-actions.button.cart.title'|translate"
             mat-raised-button
-            color="primary"
+            [disabled]="isLoading"
+            [color]="isLoading ? '' : 'primary'"
             (click)="addToCart(product, inputQuantity.value)"
             angulartics2On="click"
             angularticsAction="clickedOnAddToCart"

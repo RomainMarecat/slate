@@ -109,7 +109,7 @@
     <!--<mat-icon aria-hidden="true">remove_red_eye</mat-icon>-->
     <!--</a>-->
     <a class="mobile-hidden"
-       [routerLink]="editDocument(row)"
+       (click)="editDocument(row)"
        [attr.aria-label]="'cta.edit'|translate">
       <mat-icon aria-hidden="true">mode_edit</mat-icon>
     </a>

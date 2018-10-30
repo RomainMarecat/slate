@@ -8,6 +8,7 @@ import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import {
+  MatButtonModule,
   MatCardModule,
   MatIconModule,
 } from '@angular/material';
@@ -22,12 +23,12 @@ import { DateService } from '../../util/date.service';
 import { I18nService } from '../../i18n/i18n.service';
 import { MediaModule } from '../../media/media.module';
 import { environment } from '../../../app-ecommerce/environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 import { LoaderModule } from '../../loader/loader.module';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
-import { MockLoaderService } from 'shared/loader/mock-loader.service';
-import { LoaderService } from 'shared/loader/loader.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { LoaderService } from '../../loader/loader.service';
+import { MockLoaderService } from '../../loader/mock-loader.service';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -43,6 +44,7 @@ describe('ProductItemComponent', () => {
         BrowserModule,
         HttpClientModule,
         MatIconModule,
+        MatButtonModule,
         MatCardModule,
         NgPipesModule,
         LoaderModule,

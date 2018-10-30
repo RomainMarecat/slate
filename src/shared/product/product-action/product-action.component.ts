@@ -18,6 +18,8 @@ import { take } from 'rxjs/operators';
 })
 export class ProductActionComponent implements OnInit {
 
+  isLoading: boolean;
+
   @ViewChild('inputQuantity') inputQuantity: ElementRef<HTMLInputElement>;
 
   @Input() isProductSellable: boolean;
@@ -131,69 +133,77 @@ export class ProductActionComponent implements OnInit {
    * Add to cart a product
    */
   addToCart(product: Product, quantity: string) {
-    this.userService.isAuthenticated().subscribe((authenticated) => {
-      if (authenticated) {
-        this.loaderService.show();
-        const cartItem: CartItem = {
-          name: product.name,
-          code: product.key,
-          quantity: parseInt(quantity, 10),
-          price: product.price,
-          created_at: new Date(),
-          updated_at: new Date(),
-        };
-        const filters: Filter[] = [{
-          column: 'user',
-          operator: '==',
-          value: this.userService.getUser().uid
-        }, {
-          column: 'status',
-          operator: '==',
-          value: 'current'
-        }];
+    this.isLoading = true;
+    this.loaderService.show();
+    this.userService.isAuthenticated()
+      .subscribe((authenticated) => {
+        if (authenticated) {
+          const cartItem: CartItem = {
+            name: product.name,
+            code: product.key,
+            quantity: parseInt(quantity, 10),
+            price: product.price,
+            created_at: new Date(),
+            updated_at: new Date(),
+          };
+          const filters: Filter[] = [{
+            column: 'user',
+            operator: '==',
+            value: this.userService.getUser().uid
+          }, {
+            column: 'status',
+            operator: '==',
+            value: 'current'
+          }];
 
-        this.cartService.filters$.next(filters);
-        this.cartService.getCarts()
-          .pipe(take(1))
-          .subscribe((carts: Cart[]) => {
-            this.loaderService.hide();
-            if (carts && carts.length > 0 && carts[0]) {
-              const cart: Cart = carts[0];
+          this.cartService.filters$.next(filters);
+          this.cartService.getCarts()
+            .pipe(take(1))
+            .subscribe((carts: Cart[]) => {
+              this.loaderService.hide();
+              this.isLoading = false;
+              if (carts && carts.length > 0 && carts[0]) {
+                const cart: Cart = carts[0];
 
-              const filtered = cart.items.filter((item) => item.code === cartItem.code);
-              if (filtered.length === 0) {
-                cart.items.push(cartItem);
-                cart.total += cartItem.quantity * cartItem.price;
-              } else {
-                cart.items = cart.items.map((item: CartItem) => {
-                  if (item.code === product.key) {
-                    item = cartItem;
-                    item.quantity = item.quantity + cartItem.quantity;
-                    cart.total += cartItem.quantity * cartItem.price;
-                  }
-                  return item;
-                });
+                const filtered = cart.items.filter((item) => item.code === cartItem.code);
+                if (filtered.length === 0) {
+                  cart.items.push(cartItem);
+                  cart.total += cartItem.quantity * cartItem.price;
+                } else {
+                  cart.items = cart.items.map((item: CartItem) => {
+                    if (item.code === product.key) {
+                      item = cartItem;
+                      item.quantity = item.quantity + cartItem.quantity;
+                      cart.total += cartItem.quantity * cartItem.price;
+                    }
+                    return item;
+                  });
+                }
+
+                this.cartService.updateCart(cart)
+                  .then(() => {
+                    this.isLoading = false;
+                    this.loaderService.hide();
+                    this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
+                    this.alertService.show('product-detail.cart.added');
+                  }, (err) => {
+                    this.loaderService.hide();
+                    this.isLoading = false;
+                    this.alertService.show(err);
+                  });
               }
+            }, (err) => {
+              this.isLoading = false;
+              this.loaderService.hide();
+              this.alertService.show(err);
+            });
+          return;
+        }
 
-              this.loaderService.show();
-              this.cartService.updateCart(cart)
-                .then(() => {
-                  this.loaderService.hide();
-                  this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
-                  this.alertService.show('product-detail.cart.added');
-                }, (err) => {
-                  this.loaderService.hide();
-                  this.alertService.show(err);
-                });
-            }
-          }, (err) => {
-            this.loaderService.hide();
-            this.alertService.show(err);
-          });
-        return;
-      }
-
-      this.alertService.show('product-detail.cart.error.user', 'error');
-    });
+        this.alertService.show('product-detail.cart.error.user', 'error');
+      }, () => {
+        this.isLoading = false;
+        this.loaderService.hide();
+      });
   }
 }

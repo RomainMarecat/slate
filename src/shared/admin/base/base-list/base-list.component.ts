@@ -205,26 +205,35 @@ export class BaseListComponent<T> implements OnInit {
   /**
    * route to show document preview
    */
-  showDocument(document: T): Array<any> {
+  showDocument(document: T) {
     if (!document['key']) {
-      return ['/'];
+      this.router.navigate(['/']);
     }
-
-    return [
-      `${document['key']}`
-    ];
+    this.router.navigate([
+      this.localizeRouterService.translateRoute('admin'),
+    ]).then(() => {
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('admin'),
+        'order',
+        document['key']
+      ]);
+    });
   }
 
   /**
    * route to edit document
    */
   editDocument(document: T) {
-    return [
+    this.router.navigate([
       this.localizeRouterService.translateRoute('admin'),
-      'order',
-      'edit',
-      document['key']
-    ];
+    ]).then(() => {
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('admin'),
+        'order',
+        'edit',
+        document['key']
+      ]);
+    });
   }
 
   /**
@@ -232,7 +241,7 @@ export class BaseListComponent<T> implements OnInit {
    */
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate(this.editDocument(event.row));
+      this.editDocument(event.row);
     }
   }
 
