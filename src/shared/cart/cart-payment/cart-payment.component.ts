@@ -162,7 +162,10 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
             // console.log(result.token);
             const order: Order = {
               total: this.cart.total,
-              user: this.cart.user
+              user: this.cart.user,
+              items: this.cart.items,
+              created_at: new Date(),
+              updated_at: new Date(),
             };
 
             this.payment = {

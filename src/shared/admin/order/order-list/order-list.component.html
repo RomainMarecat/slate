@@ -16,23 +16,31 @@
                  [selectionType]="'checkbox'"
                  (activate)="onActivate($event)"
                  (select)="onSelect($event)">
-    <ngx-datatable-row-detail [rowHeight]="rowHeight * 2"
+    <ngx-datatable-row-detail [rowHeight]="rowHeight * 3"
                               #detailRow
                               (toggle)="onDetailToggle($event)">
       <ng-template let-row="row"
                    let-expanded="expanded"
                    ngx-datatable-row-detail-template>
-        <table class="mat-table">
+        <table class="table table-bordered table-striped p-2">
           <tr>
-            <th *ngIf="row?.category">category</th>
-            <th *ngFor="let attribute of row?.attributes">{{ attribute.label }}</th>
+            <th>{{ 'admin.order.items.name'|translate }}</th>
+            <th>{{ 'admin.order.items.code'|translate }}</th>
+            <th>{{ 'admin.order.items.quantity'|translate }}</th>
+            <th>{{ 'admin.order.items.price'|translate }}</th>
           </tr>
-          <tr *ngIf="row?.category">
-            <td>{{row?.category}}</td>
-          </tr>
-          <tr>
-            <td *ngFor="let attribute of row?.attributes">
-              <span *ngFor="let option of attribute?.options">{{ option }}</span>
+          <tr *ngFor="let item of row?.items">
+            <td>
+              {{ item.name }}
+            </td>
+            <td>
+              {{ item.code }}
+            </td>
+            <td>
+              {{ item.quantity }}
+            </td>
+            <td>
+              {{ item.price | currency : 'EUR' }}
             </td>
           </tr>
         </table>
@@ -96,9 +104,9 @@
        fxLayout="row"
        fxLayoutAlign="space-around stretch">
     <!--<a class="mobile-hidden"-->
-       <!--[routerLink]="showDocument(row)"-->
-       <!--[attr.aria-label]="'cta.show'|translate">-->
-      <!--<mat-icon aria-hidden="true">remove_red_eye</mat-icon>-->
+    <!--[routerLink]="showDocument(row)"-->
+    <!--[attr.aria-label]="'cta.show'|translate">-->
+    <!--<mat-icon aria-hidden="true">remove_red_eye</mat-icon>-->
     <!--</a>-->
     <a class="mobile-hidden"
        [routerLink]="editDocument(row)"
