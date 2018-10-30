@@ -20,63 +20,9 @@
         </a>
         <a mat-list-item
            class="sidenav-link text-capitalize"
-           [routerLink]="['/a2hs'|localize]">
-          {{ 'sidenav.card.list-item.pwa'|translate }}
-        </a>
-        <a mat-list-item
-           class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/product'|localize]">
-          {{ 'admin.cta.product'|translate }}
-        </a>
-        <a mat-list-item
-           class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/contact'|localize]">
-          {{ 'admin.cta.contact'|translate }}
-        </a>
-        <a mat-list-item
-           class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/article'|localize]">
-          {{ 'admin.cta.article'|translate }}
-        </a>
-        <a mat-list-item
-           class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/attribute'|localize]">
-          {{ 'admin.cta.attribute'|translate }}
-        </a>
-        <a mat-list-item
-           class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/selection'|localize]">
-          {{ 'admin.cta.selection'|translate }}
-        </a>
-        <a mat-list-item
-           class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/category'|localize]">
-          {{ 'admin.cta.category'|translate }}
-        </a>
-        <a mat-list-item
-           class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/cms'|localize]">
-          {{ 'admin.cta.cms'|translate }}
-        </a>
-        <a mat-list-item
-           class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/map'|localize]">
-          {{ 'admin.cta.map'|translate }}
-        </a>
-        <a mat-list-item
-           class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/offer'|localize]">
-          {{ 'admin.cta.offer'|translate }}
-        </a>
-        <a mat-list-item
-           class="sidenav-link text-capitalize"
-           [routerLink]="['/admin/partner'|localize]">
-          {{ 'admin.cta.partner'|translate }}
-        </a>
-        <a mat-list-item
-           class="sidenav-link text-capitalize"
-           [routerLink]="['/material'|localize]">
-          {{ 'admin.cta.material'|translate }}
+           [routerLink]="[navLink.link|localize]"
+           *ngFor="let navLink of navLinks">
+          {{ navLink.label|translate }}
         </a>
       </mat-nav-list>
       <mat-nav-list>

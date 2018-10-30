@@ -1,14 +1,24 @@
 <div class="faq-wrapper"
      fxLayout="row"
      fxLayoutAlign="center stretch"
-     fxLayoutGap="30px">
+     fxLayoutGap="30px"
+     fxLayout.xs="column"
+     fxLayoutAlign.xs="start center"
+     fxLayoutGap.xs="10px">
 
-  <div class="nav-faq-wrapper">
+  <div class="nav-faq-wrapper"
+       fxFlex="20"
+       fxFlex.xs="100">
     <div class="nav-faq-card-wrapper"
-         *ngFor="let navigation of navigations">
+         *ngFor="let navigation of navigations"
+         fxLayout="column"
+         fxLayoutAlign="start stretch"
+         fxLayoutGap="10px">
       <mat-card class="nav-faq-card">
         <mat-card-header>
-          <mat-icon mat-card-avatar *ngIf="navigation?.icon">{{ navigation?.icon }}</mat-icon>
+          <mat-icon mat-card-avatar *ngIf="navigation?.icon">
+            {{ navigation?.icon }}
+          </mat-icon>
           <mat-card-title>
             <a [routerLink]="['/faq']"
                [fragment]="navigation?.title"
@@ -30,7 +40,13 @@
     </div>
   </div>
 
-  <div class="faq-content-wrapper">
+  <div class="faq-content-wrapper"
+       fxFlex="40"
+       fxFlex.xs="90"
+       fxLayout="column"
+       fxLayoutAlign="start stretch"
+       fxLayoutGap="30px"
+       fxLayoutGap.xs="10px">
     <mat-card [attr.id]="navigation?.title"
               *ngFor="let navigation of navigations">
       <mat-card-header>

@@ -11,15 +11,15 @@ export class OrderService extends VisitorService {
     super(afs, table);
   }
 
-  getOrders(): Observable < Order[] > {
-    return <Observable < Order[] > > super.getDocuments();
+  getOrders(): Observable<Order[]> {
+    return <Observable<Order[]>> super.getDocuments();
   }
 
-  getOrder(key: string): Observable < Order > {
-    return super.getDocument(key) as Observable < Order > ;
+  getOrder(key: string): Observable<Order> {
+    return super.getDocument(key) as Observable<Order>;
   }
 
-  createOrder(order: Order): Promise < any > {
+  createOrder(order: Order): Promise<any> {
     return super.createDocument(order);
   }
 

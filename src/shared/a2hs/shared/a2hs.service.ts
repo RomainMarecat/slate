@@ -35,6 +35,13 @@ export class A2hsService {
   // Detects if device is in standalone mode
   // isInStandaloneMode = () => ('standalone' in window.navigator);
 
+  /**
+   * Check if media is already in webkit favorite window
+   */
+  static checkStandalone(): boolean {
+    return (window.matchMedia('(display-mode: standalone)').matches);
+  }
+
   constructor() {
   }
 
@@ -77,25 +84,14 @@ export class A2hsService {
 
   }
 
-  // showUserAgent() {
-  //   this.userAgent = navigator.userAgent.toLowerCase();
-  // }
-
   trackStandalone() {
     // called once from app.component
-    if (this.checkStandalone()) {
+    if (A2hsService.checkStandalone()) {
       this.isStandalone = true;
-      // this.gas.emitEvent('A2HS', 'Standalone', '' , 0);
     }
   }
 
-  checkStandalone(): boolean {
-    return (window.matchMedia('(display-mode: standalone)').matches);
-  }
-
   trackInstalled() {
-    // called from listener in app.component
-    // this.gas.emitEvent('A2HS', 'Installed', '' , 0);
     this.userInstalled = true;
   }
 

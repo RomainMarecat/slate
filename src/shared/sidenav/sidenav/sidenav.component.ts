@@ -7,8 +7,6 @@ import { MatDrawer } from '@angular/material';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { I18nService } from '../../../shared/i18n/i18n.service';
-import { Observable } from 'rxjs';
-import { reduce, map, debounceTime } from 'rxjs/operators';
 import { User } from '../../user/shared/user';
 import { adminsID } from '../../guard/admin';
 
@@ -24,13 +22,28 @@ export class SidenavComponent implements OnInit, OnDestroy {
   // @todo add button with cms
   cmsDetail: any;
   viewFilter: boolean;
-  deferredPrompt;
-  showBtn = false;
   @ViewChild('sidenavFilter') sidenavFilter: MatDrawer;
   @ViewChild('sidenav') sidenav: MatDrawer;
 
+  navLinks: {label: string, link: string}[] = [
+    {link: '/admin/order', label: 'admin.cta.order'},
+    {link: '/a2hs', label: 'sidenav.card.list-item.pwa'},
+    {link: '/admin/product', label: 'admin.cta.product'},
+    {link: '/admin/contact', label: 'admin.cta.contact'},
+    {link: '/admin/article', label: 'admin.cta.article'},
+    {link: '/admin/attribute', label: 'admin.cta.attribute'},
+    {link: '/admin/selection', label: 'admin.cta.selection'},
+    {link: '/admin/category', label: 'admin.cta.category'},
+    {link: '/admin/cms', label: 'admin.cta.cms'},
+    {link: '/admin/map', label: 'admin.cta.map'},
+    {link: '/admin/offer', label: 'admin.cta.offer'},
+    {link: '/admin/partner', label: 'admin.cta.partner'},
+    {link: '/material', label: 'admin.cta.material'},
+  ];
+
   private subscriptionSidenav: Subscription;
   private subscriptionSidenavFilter: Subscription;
+  private subscriptionAuthState: Subscription;
 
   constructor(private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
               public userService: UserService,
@@ -65,11 +78,10 @@ export class SidenavComponent implements OnInit, OnDestroy {
       });
 
     this.getAuthorized();
-    this.ionViewWillEnter();
   }
 
   getAuthorized() {
-    this.userService.getAuthState()
+    this.subscriptionAuthState = this.userService.getAuthState()
       .subscribe((user: User) => {
         this.isAuthorized = (user && user.uid && this.authorized.includes(user.uid));
       });
@@ -78,45 +90,6 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptionSidenav.unsubscribe();
     this.subscriptionSidenavFilter.unsubscribe();
+    this.subscriptionAuthState.unsubscribe();
   }
-
-  ionViewWillEnter() {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
-      // Stash the event so it can be triggered later on the button event.
-      this.deferredPrompt = e;
-
-      // Update UI by showing a button to notify the user they can add to home screen
-      this.showBtn = true;
-    });
-
-    // button click event to show the promt
-
-    window.addEventListener('appinstalled', (event) => {
-      alert('installed');
-    });
-
-
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      alert('display-mode is standalone');
-    }
-  }
-
-  addToHome(e) {
-    // hide our user interface that shows our button
-    // Show the prompt
-    this.deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    this.deferredPrompt.userChoice
-      .then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          alert('User accepted the prompt');
-        } else {
-          alert('User dismissed the prompt');
-        }
-        this.deferredPrompt = null;
-      });
-  }
-
 }

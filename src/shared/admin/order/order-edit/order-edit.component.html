@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="form"
+            (ngSubmit)="saveDocument()"
+            class="form">
+        <mat-card class="mat-card mt-3">
+          <mat-card-content class="mat-card-content"
+                            fxLayout="row"
+                            fxLayoutAlign="space-around stretch"
+                            fxLayoutGap="30px">
+            <mat-form-field class="mat-form-field">
+              <input matInput
+                     maxlength="100"
+                     [placeholder]="'admin.placeholder.order.total'|translate"
+                     formControlName="total">
+              <mat-hint align="start"><strong [innerHtml]="'admin.hint.order.total'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">{{ form.get('total').value.length }} {{ '/100'|translate }}</mat-hint>
+              <mat-error *ngIf="form.get('total').invalid && form.get('total').value.length === 0"
+                         [innerHtml]="'admin.error.required.order.total'|translate"></mat-error>
+              <mat-error *ngIf="form.get('total').invalid && form.get('total').value.length > 0"
+                         [innerHtml]="'admin.error.invalid.order.total'|translate"></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="mat-form-field">
+              <input matInput
+                     maxlength="100"
+                     [placeholder]="'admin.placeholder.order.user'|translate"
+                     [formControl]="form.get('user')">
+              <mat-hint align="start"><strong [innerHtml]="'admin.hint.order.user'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">{{ form.get('user').value.length }} {{ '/100'|translate }}</mat-hint>
+              <mat-error *ngIf="form.get('user').invalid && form.get('user').value.length === 0"
+                         [innerHtml]="'admin.error.required.order.user'|translate"></mat-error>
+              <mat-error *ngIf="form.get('user').invalid && form.get('user').value.length > 0"
+                         [innerHtml]="'admin.error.invalid.order.user'|translate"></mat-error>
+            </mat-form-field>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <div class="d-flex justify-content-around">
+              <button type="button"
+                      class="back text-uppercase"
+                      mat-raised-button
+                      role="button"
+                      [attr.aria-label]="'cta.cancel'|translate"
+                      [innerHtml]="'cta.cancel'|translate"
+                      [routerLink]="['/admin/order']|localize"></button>
+
+              <button type="submit"
+                      class="validate text-uppercase"
+                      mat-raised-button
+                      role="button"
+                      [attr.aria-label]="'cta.save'|translate"
+                      color="primary">
+                {{ 'cta.save'|translate }}
+              </button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>
