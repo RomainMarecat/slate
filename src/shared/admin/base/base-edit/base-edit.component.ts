@@ -62,6 +62,17 @@ export class BaseEditComponent<T> implements OnInit {
     });
   }
 
+  cancel() {
+    this.router.navigate([
+      this.localizeRouterService.translateRoute('admin'),
+    ]).then(() => {
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('admin'),
+        'order'
+      ]);
+    });
+  }
+
   saveDocument() {
     if (this.form.valid) {
       this.document = this.form.getRawValue();
