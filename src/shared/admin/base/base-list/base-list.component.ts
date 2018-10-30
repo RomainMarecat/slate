@@ -220,6 +220,8 @@ export class BaseListComponent<T> implements OnInit {
    */
   editDocument(document: T) {
     return [
+      this.localizeRouterService.translateRoute('admin'),
+      'order',
       'edit',
       document['key']
     ];
@@ -230,10 +232,7 @@ export class BaseListComponent<T> implements OnInit {
    */
   onActivate(event) {
     if (event.type === 'dblclick') {
-      this.router.navigate([
-        'edit',
-        event.row.key
-      ]);
+      this.router.navigate(this.editDocument(event.row));
     }
   }
 

@@ -95,6 +95,14 @@
         "updated": "mis à jour"
       }
     },
+    "order": {
+      "items": {
+        "name": "nom",
+        "price": "prix",
+        "code": "code",
+        "quantity": "quantité"
+      }
+    },
     "partner": {
       "import": {
         "nothing_to_import": "Aucun partenaire à importer",

@@ -35,6 +35,13 @@ export class OrderListComponent extends BaseListComponent<Order> implements OnIn
     this.isLoading = true;
     this.menuService.nextTitle('menu.title.order');
     this.columns = this.getColumns();
+
+    this.orderService.query$.next({
+      orderBy: {
+        column: 'updated_at',
+        direction: 'desc'
+      }
+    });
     this.orderService.getOrders()
       .subscribe((orders: Order[]) => {
         this.documents = orders;
