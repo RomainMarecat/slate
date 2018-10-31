@@ -34,7 +34,7 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
   defaultImageSplashScreen: string;
   imageSource$: Observable<string>;
 
-  constructor(private el: ElementRef, @Optional() private cloudinary: Cloudinary) {
+  constructor(private el: ElementRef, @Optional() public cloudinary: Cloudinary) {
     this.offset = 3000;
     this.defaultImageSplashScreen = '/assets/images/icons/apple-icon.png';
   }
@@ -71,8 +71,8 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
   loadImage(lazyLoad: boolean) {
     if (!this.publicId) {
       throw new Error(
-        'You must set the public id of the image to load, e.g. <app-clothe-cloudinary-image' +
-        'publicId={{photo.public_id}}...></app-clothe-cloudinary-image>'
+        'You must set the public id of the image to load, e.g. <app-image' +
+        'publicId={{photo.public_id}}...></app-image>'
       );
     }
     if (this.cloudinary) {

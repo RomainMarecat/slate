@@ -38,22 +38,32 @@
                        *ngIf="item.type === 'calendar'">
                     <div class="m-list-badge-label">12:00</div>
                     <mat-chip-list class="m-list-badge-items">
-                      <mat-chip [color]="badge.color" selected *ngFor="let badge of item.content">{{ badge.name }}</mat-chip>
+                      <mat-chip [color]="badge.color"
+                                selected
+                                *ngFor="let badge of item.content">{{ badge.name }}
+                      </mat-chip>
                     </mat-chip-list>
                   </div>
                   <div class="m-list-pics" *ngIf="item.type === 'avatar'">
-                    <a [routerLink]="['/timeline'|localize]"><img mat-card-avatar src="https://picsum.photos/32/32?q=1" title=""></a>
-                    <a [routerLink]="['/timeline'|localize]"><img mat-card-avatar src="https://picsum.photos/32/32?q=2" title=""></a>
-                    <a [routerLink]="['/timeline'|localize]"><img mat-card-avatar src="https://picsum.photos/32/32?q=3" title=""></a>
-                    <a [routerLink]="['/timeline'|localize]"><img mat-card-avatar src="https://picsum.photos/32/32?q=4" title=""></a>
+                    <a [routerLink]="['/timeline'|localize]" *ngFor="let i of [1,2,3,4]">
+                      <img mat-card-avatar
+                           [src]="'https://picsum.photos/40/40?q='+i"
+                           [title]="'random photo ' + i"
+                           [alt]="'random photo ' + i">
+                    </a>
                   </div>
                   <div class="mt-2" *ngIf="item.type === 'article'">
                     {{ item.content }}
                   </div>
-                  <div class="timeline-1-item-actions mt-3" *ngIf="item.type === 'news'">
-                    <a [routerLink]="['/timeline'|localize]" mat-stroked-button color="primary">
+                  <div class="timeline-1-item-actions mt-3"
+                       *ngIf="item.type === 'news'">
+                    <button type="button"
+                            role="button"
+                            [routerLink]="['/timeline'|localize]"
+                            mat-raised-button
+                            color="primary">
                       Read more
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>

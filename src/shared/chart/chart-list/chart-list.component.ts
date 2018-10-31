@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from '../../seo/shared/seo.service';
 
 @Component({
   selector: 'app-chart-list',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private seoService: SeoService) {
+    this.seoService.setSeo('chart');
+  }
 
   ngOnInit() {
   }

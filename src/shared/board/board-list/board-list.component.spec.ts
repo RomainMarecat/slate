@@ -19,6 +19,8 @@ import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { BoardDetailComponent } from '../board-detail/board-detail.component';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { BoardComponent } from '../board/board.component';
+import { SeoModule } from '../../seo/seo.module';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 describe('BoardListComponent', () => {
   let component: BoardListComponent;
@@ -34,6 +36,10 @@ describe('BoardListComponent', () => {
         HttpClientTestingModule,
         LocalizeRouterModule,
         RouterTestingModule,
+        SeoModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
         LocalizeRouterModule,
         BoardRoutingModule
       ],

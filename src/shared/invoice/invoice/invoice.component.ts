@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from '../../seo/shared/seo.service';
 
 @Component({
   selector: 'app-alr-invoice',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvoiceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private seoService: SeoService) {
+    this.seoService.setSeo('invoice');
+  }
 
   ngOnInit() {
   }

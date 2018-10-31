@@ -6,9 +6,11 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { SummaryComponent } from './summary.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { SeoModule } from '../../seo/seo.module';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 describe('SummaryComponent', () => {
   let component: SummaryComponent;
@@ -25,7 +27,11 @@ describe('SummaryComponent', () => {
         NguCarouselModule,
         NoopAnimationsModule,
         RouterTestingModule,
-        LocalizeRouterModule
+        SeoModule,
+        LocalizeRouterModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        })
       ],
       declarations: [SummaryComponent],
       providers: [

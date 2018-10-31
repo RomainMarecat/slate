@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
-import { take } from 'rxjs/operators';
+import { SeoService } from 'shared/seo/shared/seo.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -44,14 +44,9 @@ export class DashboardComponent implements OnInit {
               private router: Router,
               private localizeService: LocalizeRouterService,
               private meta: Meta,
-              private translate: TranslateService) {
-    this.translate.get('meta.description.dashboard')
-      .pipe(
-        take(1)
-      )
-      .subscribe((translated) => {
-        this.meta.updateTag({name: 'description', content: translated});
-      });
+              private translate: TranslateService,
+              private seoService: SeoService) {
+    this.seoService.setSeo('dashboard');
   }
 
   /**

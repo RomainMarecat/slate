@@ -17,6 +17,7 @@ import {
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { SeoModule } from '../seo/seo.module';
 
 describe('FaqComponent', () => {
   let component: FaqComponent;
@@ -40,6 +41,7 @@ describe('FaqComponent', () => {
             clearIds: true,
           },
         }),
+        SeoModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })

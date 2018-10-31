@@ -5,9 +5,10 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatTooltipModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { StyleService } from 'shared/layout-builder/shared/style.service';
-import { ThemeStorageService } from 'shared/layout-builder/shared/theme-storage.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { SeoModule } from '../../seo/seo.module';
+import { StyleService } from '../shared/style.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { ThemeStorageService } from '../shared/theme-storage.service';
 
 describe('LayoutBuilderEditComponent', () => {
   let component: LayoutBuilderEditComponent;
@@ -25,6 +26,7 @@ describe('LayoutBuilderEditComponent', () => {
         MatIconModule,
         MatTooltipModule,
         MatButtonModule,
+        SeoModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })

@@ -8,6 +8,7 @@ import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-transl
 import { configureTestSuite } from '../..//unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { SeoModule } from '../../seo/seo.module';
 
 describe('TimelineComponent', () => {
   let component: TimelineComponent;
@@ -24,6 +25,7 @@ describe('TimelineComponent', () => {
         MatButtonModule,
         LocalizeRouterModule,
         MatIconModule,
+        SeoModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),

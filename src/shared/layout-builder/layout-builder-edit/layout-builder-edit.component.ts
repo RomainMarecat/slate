@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Theme, ThemeStorageService } from '..//shared/theme-storage.service';
-import { StyleService } from 'shared/layout-builder/shared/style.service';
+import { SeoService } from '../../seo/shared/seo.service';
+import { StyleService } from '../shared/style.service';
 
 @Component({
   selector: 'app-alr-layout-builder-edit',
@@ -43,7 +44,9 @@ export class LayoutBuilderEditComponent implements OnInit {
   ];
 
   constructor(private themeStorageService: ThemeStorageService,
-              private styleService: StyleService) {
+              private styleService: StyleService,
+              private seoService: SeoService) {
+    this.seoService.setSeo('layout-builder');
   }
 
   ngOnInit() {

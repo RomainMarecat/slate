@@ -16,7 +16,6 @@ import {
 } from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgPipesModule } from 'ngx-pipes';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../media/cloudinary/cloudinary.module';
@@ -30,7 +29,8 @@ import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
 import { MediaModule } from '../../media/media.module';
 import { environment } from '../../../app-ecommerce/environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { SeoModule } from '../../seo/seo.module';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
@@ -41,11 +41,17 @@ describe('ProductDetailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        Angulartics2Module.forRoot({
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
         CommonModule,
-        RouterTestingModule,
         BrowserModule,
-        HttpClientModule,
         BrowserAnimationsModule,
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        HttpClientModule,
         MatCardModule,
         MatIconModule,
         MatButtonModule,
@@ -55,13 +61,8 @@ describe('ProductDetailComponent', () => {
         NgPipesModule,
         MatListModule,
         MediaModule,
-        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
-        Angulartics2Module.forRoot({
-          developerMode: true,
-          pageTracking: {
-            clearIds: true,
-          },
-        }),
+        RouterTestingModule,
+        SeoModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })

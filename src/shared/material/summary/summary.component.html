@@ -9,7 +9,7 @@
             <div class="wBg">
               <h4><a [routerLink]="materialComponent.link | localize">{{ materialComponent?.title }}</a></h4>
               <p *ngIf="materialComponent?.description">{{ materialComponent.description }}</p>
-              <a [routerLink]="materialComponent.link | localize">
+              <a [routerLink]="materialComponent.link | localize" [attr.title]="materialComponent?.title">
                 <div class="tile" [style.background]="'url(' + materialComponent?.image + ')'">
                 </div>
               </a>

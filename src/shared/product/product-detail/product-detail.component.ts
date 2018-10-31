@@ -8,6 +8,7 @@ import { LoaderService } from '../../loader/loader.service';
 import { CloudinaryTagService } from '../../media/cloudinary/cloudinary-tag.service';
 import { environment } from '../../../app-ecommerce/environments/environment';
 import { Product } from '../shared/product';
+import { SeoService } from '../../seo/shared/seo.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -29,10 +30,12 @@ export class ProductDetailComponent implements OnInit {
               private translateService: TranslateService,
               private mediaService: MediaService,
               private loaderService: LoaderService,
+              private seoService: SeoService,
               @Optional() private cloudinaryTagService: CloudinaryTagService) {
     this.cols = 0;
     this.loaderService.show();
     this.cloudinary = !!this.cloudinaryTagService;
+    this.seoService.setSeo('product');
   }
 
   /**

@@ -6,6 +6,7 @@
        fxLayoutAlign="start stretch">
     <a class="breadcrumb-link"
        [attr.name]="location.label|translate"
+       [attr.title]="location.label|translate"
        [routerLink]="[location.url|localize]"
        *ngFor="let location of uriElements; let i = index;">
       <span *ngIf="i > 0"> - <span>{{ location.label |translate }}</span></span>

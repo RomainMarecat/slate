@@ -4,6 +4,7 @@ import { CmsDetail } from '../cms-detail/shared/cms-detail';
 import { CmsService } from '../cms/shared/cms.service';
 import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SeoService } from '../seo/shared/seo.service';
 
 @Component({
   selector: 'app-showcase-faq',
@@ -18,7 +19,9 @@ export class FaqComponent implements OnInit {
   constructor(private cmsService: CmsService,
               private cmsDetailService: CmsDetailService,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private seoService: SeoService) {
+    this.seoService.setSeo('faq');
   }
 
   ngOnInit() {

@@ -6,13 +6,14 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SharedModule } from 'shared/shared.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MockAlertService } from 'shared/popup/mock-alert.service';
-import { AlertService } from 'shared/popup/alert.service';
 import { OptinModule } from '../optin/optin.module';
 import { HelpModule } from '../help/help.module';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { SeoModule } from '../../seo/seo.module';
+import { SharedModule } from '../../shared.module';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { AlertService } from '../../popup/alert.service';
+import { MockAlertService } from '../../popup/mock-alert.service';
 
 describe('GprdComponent', () => {
   let component: GprdComponent;
@@ -33,6 +34,7 @@ describe('GprdComponent', () => {
         RouterTestingModule,
         SharedModule,
         MatIconModule,
+        SeoModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })

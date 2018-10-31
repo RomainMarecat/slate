@@ -3,6 +3,7 @@ import { Board } from '../shared/board';
 import { BoardService } from '../shared/board.service';
 import { Router } from '@angular/router';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { SeoService } from '../../seo/shared/seo.service';
 
 @Component({
   selector: 'app-board-list',
@@ -14,7 +15,9 @@ export class BoardListComponent implements OnInit {
 
   constructor(private boardService: BoardService,
               private router: Router,
-              private localizeRouterService: LocalizeRouterService) {
+              private localizeRouterService: LocalizeRouterService,
+              private seoService: SeoService) {
+    this.seoService.setSeo('boards');
   }
 
   ngOnInit() {

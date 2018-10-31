@@ -37,10 +37,11 @@ import { MockScoreService } from '../../score/mock-score.service';
 import { I18nService } from '../../i18n/i18n.service';
 import { MediaModule } from '../../media/media.module';
 import { environment } from '../../../app-ecommerce/environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
-import { LoaderModule } from 'shared/loader/loader.module';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { LoaderModule } from '../../loader/loader.module';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { SeoModule } from '../../seo/seo.module';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
@@ -56,6 +57,7 @@ describe('ProductListComponent', () => {
         HttpClientModule,
         RouterTestingModule,
         BrowserAnimationsModule,
+        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
         LoaderModule,
         LocalizeRouterModule,
         MatCardModule,
@@ -72,7 +74,7 @@ describe('ProductListComponent', () => {
             clearIds: true,
           },
         }),
-        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        SeoModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),

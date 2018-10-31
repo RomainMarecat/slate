@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from '../../seo/shared/seo.service';
 
 export interface Item {
   type: string;
@@ -7,7 +8,7 @@ export interface Item {
 }
 
 @Component({
-  selector: 'app-alr-timeline',
+  selector: 'app-timeline',
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })
@@ -44,7 +45,8 @@ export class TimelineComponent implements OnInit {
     ];
   }
 
-  constructor() {
+  constructor(private seoService: SeoService) {
+    this.seoService.setSeo('timeline');
   }
 
   ngOnInit() {

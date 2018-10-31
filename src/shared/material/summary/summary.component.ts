@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NguCarouselConfig } from '@ngu/carousel';
+import { SeoService } from '../../seo/shared/seo.service';
 
 export class MaterialModule {
   title: string;
@@ -31,7 +32,8 @@ export class SummaryComponent implements OnInit {
 
   materialsModules: Array<MaterialModule> = [];
 
-  constructor() {
+  constructor(private seoService: SeoService) {
+    this.seoService.setSeo('material');
   }
 
   ngOnInit() {

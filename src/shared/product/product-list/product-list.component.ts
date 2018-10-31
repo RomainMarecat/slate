@@ -11,6 +11,7 @@ import { Filter } from '../../facet/filter/shared/filter';
 import { environment } from '../../../app-ecommerce/environments/environment';
 import { Product } from '../shared/product';
 import { of } from 'rxjs';
+import { SeoService } from '../../seo/shared/seo.service';
 
 @Component({
   selector: 'app-product-list',
@@ -36,7 +37,8 @@ export class ProductListComponent implements OnInit {
               private userService: UserService,
               public alertService: AlertService,
               private loaderService: LoaderService,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private seoService: SeoService) {
     this.headerHeight = 0;
     this.pageLimit = 100;
     this.rowHeight = 300;
@@ -51,15 +53,7 @@ export class ProductListComponent implements OnInit {
    */
   ngOnInit() {
     this.loaderService.show();
-    this.translateService.get('meta.title.content')
-      .subscribe((translation: string) => {
-        this.meta.addTag({name: 'title', content: translation});
-      });
-    this.translateService.get('meta.description.content')
-      .subscribe((translation: string) => {
-        this.meta.addTag({name: 'description', content: translation});
-      });
-
+    this.seoService.setSeo('products');
     this.meta.addTags([
       {property: 'fb:app_id', content: environment.facebook_app_id},
       {rel: 'canonical', href: ''},

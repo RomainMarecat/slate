@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MapService } from '../shared/map.service';
 import { Map } from '../shared/map';
 import { AlertService } from '../../popup/alert.service';
+import { SeoService } from '../../seo/shared/seo.service';
 
 @Component({
   selector: 'app-map',
@@ -29,7 +30,9 @@ export class MapComponent implements OnInit {
   };
 
   constructor(private mapService: MapService,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private seoService: SeoService) {
+    this.seoService.setSeo('map');
   }
 
   ngOnInit() {

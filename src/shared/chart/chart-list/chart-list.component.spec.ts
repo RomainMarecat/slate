@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChartListComponent } from './chart-list.component';
 import { ChartsModule } from 'ng2-charts';
-import { SharedModule } from 'shared/shared.module';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MatCardModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -13,7 +12,9 @@ import { ChartRadarComponent } from '../chart-radar/chart-radar.component';
 import { ChartDoughnutComponent } from '../chart-doughnut/chart-doughnut.component';
 import { ChartDynamicComponent } from '../chart-dynamic/chart-dynamic.component';
 import { ChartPieComponent } from '../chart-pie/chart-pie.component';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { SeoModule } from '../../seo/seo.module';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { SharedModule } from '../../shared.module';
 
 describe('ChartListComponent', () => {
   let component: ChartListComponent;
@@ -28,6 +29,7 @@ describe('ChartListComponent', () => {
         SharedModule,
         MatCardModule,
         RouterTestingModule,
+        SeoModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
