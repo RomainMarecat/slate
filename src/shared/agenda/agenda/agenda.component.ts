@@ -11,24 +11,27 @@ import { AlertService } from '../../popup/alert.service';
 import { Router } from '@angular/router';
 import { RoutingState } from '../../util/routing-state';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { SeoService } from '../../seo/shared/seo.service';
 
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',
-  styleUrls: [ './agenda.component.scss' ]
+  styleUrls: ['./agenda.component.scss']
 })
 export class AgendaComponent implements OnInit, OnDestroy {
   viewMode: String;
   slotDuration: number;
   watcher: Subscription;
 
-  constructor(private router: Router,
+  constructor(private seoService: SeoService,
+              private router: Router,
               private i18nService: I18nService,
               private media: ObservableMedia,
               private sessionService: SessionService,
               private alertService: AlertService,
               private routingState: RoutingState,
               private localizeRouterService: LocalizeRouterService) {
+    this.seoService.setSeo('agenda');
   }
 
   ngOnInit() {
@@ -84,14 +87,14 @@ export class AgendaComponent implements OnInit, OnDestroy {
                 this.alertService.show(err, 'error');
               });
         }
-        this.router.navigate([ this.localizeRouterService.translateRoute('/cart') ]);
+        this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
       }, (err) => {
         console.error(err);
         this.alertService.show(err, 'error');
       })
       .catch((err) => {
         this.alertService.show(err, 'error');
-        this.router.navigate([ this.localizeRouterService.translateRoute('/cart') ]);
+        this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
       });
   }
 }

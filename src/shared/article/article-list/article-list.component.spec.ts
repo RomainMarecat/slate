@@ -24,6 +24,9 @@ import { MockMediaService } from 'shared/media/mock-media.service';
 import { LoaderService } from 'shared/loader/loader.service';
 import { MockLoaderService } from 'shared/loader/mock-loader.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MenuModule } from '../../menu/menu.module';
+import { MenuService } from '../../menu/menu.service';
+import { SeoModule } from '../../seo/seo.module';
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;
@@ -41,6 +44,7 @@ describe('ArticleListComponent', () => {
         HttpClientTestingModule,
         MatCardModule,
         MediaModule,
+        SeoModule,
         RouterTestingModule,
         BrowserAnimationsModule,
         LocalizeRouterModule,

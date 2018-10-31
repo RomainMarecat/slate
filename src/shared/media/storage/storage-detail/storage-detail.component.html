@@ -1,6 +1,6 @@
 <img [attr.src]="downloadURL"
      [attr.height]="height"
      [attr.width]="width"
-     [attr.alt]="metadata?.alt"
+     [attr.alt]="metadata?.alt ? metadata.alt : downloadURL"
      [attr.class]="classes"
      *ngIf="downloadURL">

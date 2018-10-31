@@ -4,6 +4,7 @@ import { Article } from '../shared/article';
 import { AlertService } from '../../popup/alert.service';
 import { firestore, Timestamp } from 'firebase/firestore';
 import { LoaderService } from '../../loader/loader.service';
+import { SeoService } from '../../seo/shared/seo.service';
 
 @Component({
   selector: 'app-article-list',
@@ -13,10 +14,12 @@ import { LoaderService } from '../../loader/loader.service';
 export class ArticleListComponent implements OnInit {
   articles: Article[] = [];
 
-  constructor(private articleService: ArticleService,
+  constructor(private seoService: SeoService,
+              private articleService: ArticleService,
               private alertService: AlertService,
               private loaderService: LoaderService) {
     this.loaderService.show();
+    this.seoService.setSeo('articles');
   }
 
   ngOnInit() {

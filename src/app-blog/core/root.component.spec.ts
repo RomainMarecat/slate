@@ -55,6 +55,11 @@ import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { environment } from '../../app-hockey/environments/environment';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { ContactModule } from 'shared/contact/contact.module';
+import { MapModule } from 'shared/map/map.module';
+import { ArticleModule } from 'shared/article/article.module';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -92,7 +97,9 @@ describe('AppRootComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
+        ArticleModule,
         RouterTestingModule,
+        ContactModule,
         BrowserModule,
         HttpClientTestingModule,
         BrowserAnimationsModule,
@@ -103,6 +110,8 @@ describe('AppRootComponent', () => {
           adClient: environment.clientAdSense,
           adSlot: environment.slotAdSense
         }),
+        LocalizeRouterModule,
+        MapModule,
         MatCardModule,
         MatToolbarModule,
         MatSidenavModule,
@@ -144,6 +153,7 @@ describe('AppRootComponent', () => {
         {provide: AlertService, useClass: MockAlertService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},
         {provide: CmsService, useClass: MockCmsService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         I18nService,
         MenuService,
         SidenavService,

@@ -8,7 +8,7 @@ import { SelectionService } from '../../shared/selection/selection.service';
 import { TweenMax, Circle, Cubic } from 'gsap';
 
 @Component({
-  selector: 'app-hockey-home',
+  selector: 'app-car-home',
   templateUrl: './home.component.html',
   styleUrls: [ './home.component.scss' ]
 })

@@ -12,6 +12,7 @@ export class ImageComponent {
   @Input() classes: string;
   _publicId: string;
   _key: string;
+  @Input() alt: string;
   @Input() resize: any;
   media: Media;
   @Output() mediaLoaded: EventEmitter<boolean> = new EventEmitter<boolean>();

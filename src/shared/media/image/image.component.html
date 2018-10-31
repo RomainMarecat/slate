@@ -12,6 +12,7 @@
   </app-cloudinary-image>
   <app-storage-detail [classes]="classes"
                       [path]="media?.public_id"
+                      [metadata]="{alt: alt}"
                       *ngIf="media?.type === 'storage'"
                       [height]="resize?.height"
                       [width]="resize?.width"></app-storage-detail>

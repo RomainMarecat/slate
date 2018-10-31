@@ -72,7 +72,14 @@
   },
   "meta": {
     "description": {
-      "dashboard": "Liste des features"
+      "cart": "panier",
+      "dashboard": "Liste des features",
+      "articles": "Liste des articles"
+    },
+    "title": {
+      "cart": "panier",
+      "dashboard": "dashboard",
+      "articles": "Les articles"
     }
   },
   "admin": {
@@ -895,7 +902,8 @@
     "title1": "ALR",
     "title2": " Dashboard",
     "title": {
-      "order": "Commandes"
+      "cart": "panier",
+      "order": "commandes"
     }
   },
   "placeholder": {

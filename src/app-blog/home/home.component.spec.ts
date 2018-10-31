@@ -28,7 +28,8 @@ import { ContactService } from '../../shared/contact/shared/contact.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockMapsAPILoader } from '../../shared/map/shared/mock-maps-api-loader';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -50,8 +51,9 @@ describe('HomeComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ HomeComponent ],
+      declarations: [HomeComponent],
       providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: ProductService, useClass: MockProductService},
         {provide: OfferService, useClass: MockOfferService},

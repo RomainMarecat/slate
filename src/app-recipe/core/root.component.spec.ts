@@ -55,6 +55,8 @@ import { MockCmsService } from '../../shared/cms/shared/mock-cms.service';
 import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { environment } from '../../app-hockey/environments/environment';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -103,6 +105,7 @@ describe('AppRootComponent', () => {
           adClient: environment.clientAdSense,
           adSlot: environment.slotAdSense
         }),
+        LocalizeRouterModule,
         MatCardModule,
         MatToolbarModule,
         MatSidenavModule,
@@ -136,6 +139,7 @@ describe('AppRootComponent', () => {
         AppRootComponent,
       ],
       providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: UserService, useClass: MockUserService},
         {provide: LoaderService, useClass: MockLoaderService},
         {provide: NgcCookieConsentService, useClass: NgcCookieConsentService},

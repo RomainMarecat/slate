@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DocumentReference } from '@firebase/firestore-types';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { Meta, Title } from '@angular/platform-browser';
+import { MenuService } from '../../menu/menu.service';
+import { SeoService } from '../../seo/shared/seo.service';
 
 @Component({
   selector: 'app-contact-add',
@@ -25,11 +28,13 @@ export class ContactAddComponent implements OnInit {
     });
   }
 
-  constructor(private contactService: ContactService,
+  constructor(private seoService: SeoService,
+              private contactService: ContactService,
               private alertService: AlertService,
               private router: Router,
-              private translate: TranslateService,
+              private translateService: TranslateService,
               private localizeRouterService: LocalizeRouterService) {
+    this.seoService.setSeo('contact-add');
   }
 
   ngOnInit() {
@@ -37,12 +42,15 @@ export class ContactAddComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.contact = {...this.form.value};
+      this.contact = this.form.value;
       this.contactService.createContact(this.contact)
         .then((doc: DocumentReference) => {
-          this.alertService.show(this.translate.instant(`contact.message.added`));
-          this.router.navigate(['/']);
-        }, (err) => {
+          this.translateService.get(`contact.message.added`)
+            .subscribe(trans => {
+              this.alertService.show(trans);
+              this.router.navigate(['/']);
+            });
+        }, () => {
           this.alertService.show(`contact.message.error`);
         });
     }

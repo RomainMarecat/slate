@@ -49,6 +49,8 @@ import { MockCmsDetailService } from '../../shared/cms-detail/shared/mock-cms-de
 import { CmsService } from '../../shared/cms/shared/cms.service';
 import { MockCmsService } from '../../shared/cms/shared/mock-cms.service';
 import { environment } from '../environments/environment';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('ProductComponent', () => {
   let component: AppRootComponent;
@@ -75,6 +77,7 @@ describe('ProductComponent', () => {
             clearIds: true,
           },
         }),
+        LocalizeRouterModule,
         MatCardModule,
         MatToolbarModule,
         MatSidenavModule,
@@ -107,6 +110,7 @@ describe('ProductComponent', () => {
         {provide: AlertService, useClass: MockAlertService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},
         {provide: CmsService, useClass: MockCmsService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         I18nService,
         MenuService,
         SidenavService,

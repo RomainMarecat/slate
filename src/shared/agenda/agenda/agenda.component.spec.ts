@@ -16,9 +16,10 @@ import { AlertService } from '../../popup/alert.service';
 import { SessionService } from '../../session/shared/session.service';
 import { MockSessionService } from '../../session/shared/mock-session.service';
 import { RoutingState } from '../../util/routing-state';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { SeoModule } from '../../seo/seo.module';
 
 describe('AgendaComponent', () => {
   let component: AgendaComponent;
@@ -32,6 +33,7 @@ describe('AgendaComponent', () => {
         HttpClientTestingModule,
         RouterTestingModule,
         SharedModule,
+        SeoModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),

@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
+import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 export const TABLE_CONTACT = new InjectionToken<string>('contact');
 
@@ -16,6 +17,7 @@ export const TABLE_CONTACT = new InjectionToken<string>('contact');
   imports: [
     CommonModule,
     FormsModule,
+    LocalizeRouterModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatIconModule,
@@ -25,11 +27,11 @@ export const TABLE_CONTACT = new InjectionToken<string>('contact');
     ContactRoutingModule,
     TranslateModule,
   ],
-  declarations: [ ContactAddComponent ],
-  exports: [ ContactAddComponent ],
+  declarations: [ContactAddComponent],
+  exports: [ContactAddComponent],
   providers: [
     {provide: TABLE_CONTACT, useValue: 'contact'},
-    {provide: ContactService, useClass: ContactService, deps: [ AngularFirestore, TABLE_CONTACT ]},
+    {provide: ContactService, useClass: ContactService, deps: [AngularFirestore, TABLE_CONTACT]},
   ]
 })
 export class ContactModule {

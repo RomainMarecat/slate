@@ -22,8 +22,8 @@ import { ObjectService } from '../../util/object.service';
 import { I18nService } from '../../i18n/i18n.service';
 import { DeviceService } from '../../device/device.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
 describe('ContactAddComponent', () => {
   let component: ContactAddComponent;

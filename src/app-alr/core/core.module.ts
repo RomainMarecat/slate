@@ -55,6 +55,7 @@ import { BoardService } from '../../shared/board/shared/board.service';
 import { ColumnService } from '../../shared/board/shared/column.service';
 import { CardService } from '../../shared/board/shared/card.service';
 import { PaymentService } from '../../shared/payment/shared/payment.service';
+import { SeoService } from 'shared/seo/shared/seo.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -210,6 +211,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     MenuService,
     ObjectService,
     ScoreService,
+    SeoService,
     SidenavService,
     UserGuard,
     UserService,
