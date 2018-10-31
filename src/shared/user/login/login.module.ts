@@ -37,8 +37,17 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     TranslateModule.forChild(),
   ],
-  declarations: [Login1Component, LoginListComponent, Login2Component, LoginComponent],
-  exports: [Login1Component, Login2Component, LoginListComponent],
+  declarations: [
+    Login1Component,
+    LoginListComponent,
+    Login2Component,
+    LoginComponent
+  ],
+  exports: [
+    Login1Component,
+    Login2Component,
+    LoginListComponent
+  ],
 })
 export class LoginModule {
 }

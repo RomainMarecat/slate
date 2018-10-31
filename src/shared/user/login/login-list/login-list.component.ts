@@ -20,11 +20,18 @@ export class LoginListComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Navigate to child route
+   */
   navigateTo(link: string) {
     this.router.navigate([
-      this.localizeRouterService.translateRoute('/users'),
-      this.localizeRouterService.translateRoute('logins'),
-      this.localizeRouterService.translateRoute(link)
-    ]);
+      this.localizeRouterService.translateRoute('/users')
+    ]).then(() => {
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('/users'),
+        'logins',
+        link
+      ]);
+    });
   }
 }

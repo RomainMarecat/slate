@@ -7,7 +7,7 @@
     <a class="breadcrumb-link"
        [attr.name]="location.label|translate"
        [attr.title]="location.label|translate"
-       [routerLink]="[location.url|localize]"
+       [routerLink]="[i > 1 ? location.url : location.url|localize]"
        *ngFor="let location of uriElements; let i = index;">
       <span *ngIf="i > 0"> - <span>{{ location.label |translate }}</span></span>
       <mat-icon color="primary"

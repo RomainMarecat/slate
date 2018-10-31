@@ -45,7 +45,7 @@ export class BreadcrumbComponent {
         tap(this.product = null),
         filter(event => event instanceof NavigationEnd),
         distinctUntilChanged(),
-        map(event => [{url: '', label: 'breadcrumb.home'}, ...this.buildBreadCrumb(this.route.root)]
+        map(event => [{url: '/', label: 'breadcrumb.home'}, ...this.buildBreadCrumb(this.route.root)]
         ));
   }
 
