@@ -76,30 +76,36 @@
       "articles": "Liste des articles",
       "boards": "Liste des tableaux de bord",
       "cart": "Panier",
-      "chart": "dashboard",
+      "chart": "Dashboard",
       "dashboard": "Liste de toutes les fonctionnalités de l'application",
-      "faq": "faq",
-      "gprd": "rgpd",
-      "invoice": "facturation",
+      "faq": "FAQ",
+      "gprd": "RGPD",
+      "invoice": "Facturation",
       "layout-builder": "Configurateur de thème. Changer en un click les couleurs du site",
       "map": "Carte de la France. Sélectionner une région pour afficher les produits près de chez vous.",
       "material": "Liste des fonctionalités material.io qui suit le thème du site et proposant queqlques exemple en plus",
       "products": "Liste des produits",
       "product": "Détail de la fiche produit",
-      "timeline": "timeline",
-      "user": "utilisateur"
+      "timeline": "Timeline",
+      "user": "Utilisateur"
     },
     "title": {
       "agenda": "Calendrier des sessions disponibles",
       "articles": "Les articles",
       "boards": "Liste des tableaux de bord",
       "cart": "Panier",
+      "chart": "Dashboard",
       "dashboard": "Dashboard",
+      "faq": "FAQ",
+      "gprd": "RGPD",
+      "invoice": "Facturation",
       "layout-builder": "Configurateur de thème",
       "map": "Carte de la France",
       "material": "Liste des fonctionalités material design",
       "products": "Tous les produits",
-      "product": "Détail du produit"
+      "product": "Détail du produit",
+      "timeline": "Timeline",
+      "user": "Utilisateur"
     }
   },
   "admin": {
