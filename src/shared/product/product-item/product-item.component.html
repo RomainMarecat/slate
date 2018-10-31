@@ -24,6 +24,7 @@
   <!-- If Cloudinary needed then add public Id to input, not key -->
   <app-image [key]="product.images[0]"
              [resize]="resizedImage"
+             [alt]="product?.name"
              (click)="productDetail()"
              *ngIf="product.images[0]"
              (mediaLoaded)="onMediaLoaded($event)"

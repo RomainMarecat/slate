@@ -49,6 +49,10 @@ import { MockSessionService } from '../../shared/session/shared/mock-session.ser
 import { CartService } from '../../shared/cart/shared/cart.service';
 import { MockCartService } from '../../shared/cart/shared/mock-cart.service';
 import { RoutingState } from '../../shared/util/routing-state';
+import { MapModule } from 'shared/map/map.module';
+import { CmsModule } from 'shared/cms/cms.module';
+import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -64,13 +68,16 @@ describe('HomeComponent', () => {
         BrowserAnimationsModule,
         ContactModule,
         HttpClientTestingModule,
+        LocalizeRouterModule,
         RouterTestingModule,
+        MapModule,
+        CmsModule,
         SharedModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ HomeComponent ],
+      declarations: [HomeComponent],
       providers: [
         RoutingState,
         {provide: AreaService, useClass: MockAreaService},
@@ -82,6 +89,7 @@ describe('HomeComponent', () => {
         {provide: ProductService, useClass: MockProductService},
         {provide: MediaService, useClass: MockMediaService},
         {provide: MapService, useClass: MockMapService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: PartnerService, useClass: MockPartnerService},
         {provide: OfferService, useClass: MockOfferService},
         {provide: ArticleService, useClass: MockArticleService},

@@ -39,6 +39,10 @@ export class StorageDetailComponent implements OnInit {
     this._downloadURL = downloadURL;
   }
 
+  @Input() set metadata(metadata) {
+    this._metadata = metadata;
+  }
+
   get downloadURL() {
     return this._downloadURL;
   }
@@ -66,6 +70,6 @@ export class StorageDetailComponent implements OnInit {
       .pipe(
         take(1)
       )
-      .subscribe(metadata => this._metadata = metadata);
+      .subscribe(metadata => this._metadata = {...this._metadata, ...metadata});
   }
 }
