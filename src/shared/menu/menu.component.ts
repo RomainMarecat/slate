@@ -1,9 +1,11 @@
-import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SidenavService } from '../sidenav/sidenav.service';
 import { UserService } from '../user/shared/user.service';
 import { MenuService } from './menu.service';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { SearchComponent } from '../search/search/search.component';
 
 @Component({
   selector: 'app-menu',
@@ -11,6 +13,15 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit, OnDestroy {
+
+  @Input() config: {
+    displayBurgerMenu: boolean,
+    displayButtonConnection: boolean,
+    displayIconButtonConnection: boolean,
+    underlineTitle: boolean,
+    displayCart: boolean
+  };
+
   title: string;
   private subscription: Subscription;
 
@@ -18,7 +29,15 @@ export class MenuComponent implements OnInit, OnDestroy {
               private activatedRoute: ActivatedRoute,
               private menuService: MenuService,
               private sidenavService: SidenavService,
-              public userService: UserService) {
+              public userService: UserService,
+              public matDialog: MatDialog) {
+    this.config = {
+      displayBurgerMenu: true,
+      displayButtonConnection: true,
+      displayIconButtonConnection: false,
+      underlineTitle: false,
+      displayCart: true
+    };
     this.title = null;
   }
 
@@ -33,6 +52,9 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   search() {
+    this.matDialog.open(SearchComponent, {
+      data: {}
+    });
   }
 
   /**

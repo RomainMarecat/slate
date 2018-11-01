@@ -64,36 +64,36 @@ $block-color-grey: rgba(255, 255, 255, 0.4);
 $block-color-keyword-tomatoes: #C65020;
 
 $mat-recipe-primary: (
-  50: #ffffff,
-  100: #bbdefb,
-  200: #90caf9,
-  300: #64b5f6,
-  400: #90323D,
-  500: #F4C71D,
-  600: #1e88e5,
-  700: #1976d2,
-  800: #4D4C4C,
-  900: #2F2F30,
-  A100: #82b1ff,
-  A200: #448aff,
-  A400: #2979ff,
-  A700: #2962ff,
-  contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $light-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $light-primary-text,
-    A400: $light-primary-text,
-    A700: $light-primary-text,
-  )
+        50: #ffffff,
+        100: #bbdefb,
+        200: #90caf9,
+        300: #64b5f6,
+        400: #90323D,
+        500: #F4C71D,
+        600: #1e88e5,
+        700: #1976d2,
+        800: #4D4C4C,
+        900: #2F2F30,
+        A100: #82b1ff,
+        A200: #448aff,
+        A400: #2979ff,
+        A700: #2962ff,
+        contrast: (
+                50: $dark-primary-text,
+                100: $dark-primary-text,
+                200: $dark-primary-text,
+                300: $dark-primary-text,
+                400: $dark-primary-text,
+                500: $light-primary-text,
+                600: $light-primary-text,
+                700: $light-primary-text,
+                800: $light-primary-text,
+                900: $light-primary-text,
+                A100: $dark-primary-text,
+                A200: $light-primary-text,
+                A400: $light-primary-text,
+                A700: $light-primary-text,
+        )
 );
 
 $primary: mat-palette($mat-recipe-primary, 900);
@@ -103,7 +103,7 @@ $white: mat-palette($mat-recipe-primary, 50);
 $grey: mat-palette($mat-recipe-primary, 800);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$theme: mat-light-theme($primary, $second, $error);
+$theme: mat-light-theme($primary, $error, $second);
 
 // Include theme styles for core and each component used in your app-clothe.
 // Alternatively, you can import and @include the theme mixins for each component

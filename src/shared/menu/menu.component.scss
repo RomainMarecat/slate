@@ -10,16 +10,20 @@
   #main-logo {
     .cls-2 {
       text-transform: capitalize;
-      text-decoration: underline;
-      font-family: Merriweather, serif;
+      font-family: $second-font, serif;
       font-size: 24px;
       font-weight: 700;
+
+      &.text-underline {
+        text-decoration: underline;
+      }
     }
   }
 
   .menu-spacer {
     flex: 1 1 auto;
   }
+
   a {
     height: 64px;
     line-height: 64px;
@@ -35,8 +39,9 @@
     justify-content: center;
     border-left: solid 1px mat-color($grey);
 
-    img {
+    mat-icon {
       width: 30px;
+      color: mat-color($white);
     }
 
     &.search {

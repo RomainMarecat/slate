@@ -1,20 +1,29 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgcCookieConsentService, NgcStatusChangeEvent, NgcInitializeEvent } from 'ngx-cookieconsent';
 import { Subscription } from 'rxjs';
-import { Meta, Title } from '@angular/platform-browser';
+import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { UserService } from '../../shared/user/shared/user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { Favicon } from '../../shared/favicon/favicon.service';
+import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'app-root',
   templateUrl: './root.component.html',
-  styleUrls: [ './root.component.scss' ]
+  styleUrls: ['./root.component.scss']
 })
 export class AppRootComponent implements OnInit, OnDestroy {
 
+
+  menuConfig = {
+    displayBurgerMenu: false,
+    displayButtonConnection: false,
+    displayIconButtonConnection: true,
+    underlineTitle: true,
+    displayCart: false
+  };
   // Keep refs to subscriptions to be able to unsubscribe later
   private popupOpenSubscription: Subscription;
   private popupCloseSubscription: Subscription;
@@ -30,9 +39,23 @@ export class AppRootComponent implements OnInit, OnDestroy {
               private loaderService: LoaderService,
               private i18nService: I18nService,
               private ccService: NgcCookieConsentService,
+              public matIconRegistry: MatIconRegistry,
+              private domSanitizer: DomSanitizer,
               private meta: Meta,
               private title: Title,
               private favicon: Favicon) {
+    this.matIconRegistry.addSvgIcon(
+      `search`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/images/search.svg`)
+    );
+    this.matIconRegistry.addSvgIcon(
+      `user`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/user.svg`)
+    );
+    this.matIconRegistry.addSvgIcon(
+      `arrow-right`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/arrow-right.svg`)
+    );
   }
 
   ngOnInit() {

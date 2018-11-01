@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu.component';
-import { MatButtonModule, MatIconModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatIconModule, MatToolbarModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { Angulartics2Module } from 'angulartics2';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { SearchModule } from 'shared/search/search.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,9 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatDialogModule,
     MatIconModule,
+    SearchModule,
     TranslateModule.forChild(),
     RouterModule,
     LocalizeRouterModule
@@ -27,4 +30,5 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
     MenuComponent
   ]
 })
-export class MenuModule {}
+export class MenuModule {
+}

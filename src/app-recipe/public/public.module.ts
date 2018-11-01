@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PublicRoutingModule } from './public-routing.module';
 import { HomeModule } from './home/home.module';
 import { RecipeModule } from './recipe/recipe.module';
-import { SearchModule } from './search/search.module';
+import { SearchModule } from '../../shared/search/search.module';
 import { IngredientModule } from './ingredient/ingredient.module';
 import { PreparationModule } from './preparation/preparation.module';
 
