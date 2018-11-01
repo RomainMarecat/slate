@@ -1134,7 +1134,7 @@
             "assets": [
               "src/app-recipe/favicon.ico",
               "src/app-recipe/assets",
-              "src/src/manifest.json"
+              "src/app-recipe/manifest.json"
             ]
           }
         },

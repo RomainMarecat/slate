@@ -7,7 +7,6 @@ import { RecipeModule } from './recipe/recipe.module';
 import { SearchModule } from './search/search.module';
 import { IngredientModule } from './ingredient/ingredient.module';
 import { PreparationModule } from './preparation/preparation.module';
-import { InstructionModule } from './instruction/instruction.module';
 
 @NgModule({
   imports: [

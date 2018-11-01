@@ -11,7 +11,7 @@ import { AlertService } from 'shared/popup/alert.service';
   styleUrls: ['./recipe-detail.component.scss']
 })
 export class RecipeDetailComponent implements OnInit {
-  recipes: Recipe[];
+  recipes: Recipe[] = [];
   sizeSubject: Subject<any>;
 
   constructor(private router: Router,

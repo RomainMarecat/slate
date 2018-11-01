@@ -1,16 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InstructionListComponent } from './instruction-list.component';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 
 describe('InstructionListComponent', () => {
   let component: InstructionListComponent;
   let fixture: ComponentFixture<InstructionListComponent>;
 
+  configureTestSuite();
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InstructionListComponent ]
+      declarations: [InstructionListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

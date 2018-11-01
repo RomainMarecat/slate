@@ -12,8 +12,9 @@ import { SeoService } from 'shared/seo/shared/seo.service';
   styleUrls: ['./recipe-list.component.scss']
 })
 export class RecipeListComponent implements OnInit {
-  recipes: Recipe[];
+  recipes: Recipe[] = [];
   sizeSubject: Subject<any>;
+  isLoading: boolean;
 
   constructor(private recipeService: RecipeService,
               private alertService: AlertService,
@@ -24,6 +25,8 @@ export class RecipeListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLoading;
+    true;
     this.route.params.forEach((params: Params) => {
       if (typeof params['ingredients'] !== 'undefined') {
         const ingredients: string = params['ingredients'].split(',');
@@ -35,9 +38,11 @@ export class RecipeListComponent implements OnInit {
       this.recipeService.getRecipes()
         .subscribe((recipes: Recipe[]) => {
           this.recipes = recipes;
+          this.isLoading = false;
         }, () => {
           this.alertService.show('error.api.errors');
           this.recipes = [];
+          this.isLoading = false;
         });
     });
   }
