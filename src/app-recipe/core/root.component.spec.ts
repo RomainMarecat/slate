@@ -3,7 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import {
   MatCardModule,
   MatToolbarModule,
@@ -57,6 +56,7 @@ import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.serv
 import { environment } from '../../app-hockey/environments/environment';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -96,7 +96,7 @@ describe('AppRootComponent', () => {
         CommonModule,
         RouterTestingModule,
         BrowserModule,
-        HttpClientModule,
+        HttpClientTestingModule,
         BrowserAnimationsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,

@@ -24,7 +24,7 @@ import {
   MatLineModule,
   MatMenuModule,
   MatCommonModule,
-  MatTooltipModule, MatProgressBarModule
+  MatTooltipModule, MatProgressBarModule, MatDialogModule, MatAutocompleteModule
 } from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,10 +52,10 @@ import { CmsService } from '../../cms/shared/cms.service';
 import { MockCmsService } from '../../cms/shared/mock-cms.service';
 import { CmsDetailService } from '../../cms-detail/shared/cms-detail.service';
 import { environment } from '../../../app-hockey/environments/environment';
-import { BreadcrumbModule } from 'shared/breadcrumb/breadcrumb.module';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { BreadcrumbModule } from '../../breadcrumb/breadcrumb.module';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
 describe('SidenavComponent', () => {
   let component: SidenavComponent;
@@ -95,14 +95,16 @@ describe('SidenavComponent', () => {
         MatInputModule,
         MatCheckboxModule,
         MatListModule,
+        MatDialogModule,
         MatSnackBarModule,
+        MatAutocompleteModule,
         MatProgressSpinnerModule,
         MatProgressBarModule,
         MatLineModule,
         MatMenuModule,
         MatCommonModule,
         MatTooltipModule,
-        Angulartics2Module.forRoot( {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
