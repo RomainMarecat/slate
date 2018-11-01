@@ -135,7 +135,9 @@ export const cookieConfig: NgcCookieConsentConfig = {
     CommonModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
-    Angulartics2Module.forRoot(),
+    Angulartics2Module.forRoot({
+      developerMode: !environment.production
+    }),
     AdsenseModule.forRoot({
       adClient: environment.clientAdSense,
       adSlot: environment.slotAdSense

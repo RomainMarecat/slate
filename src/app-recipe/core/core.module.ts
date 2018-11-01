@@ -8,12 +8,9 @@ import {
   Inject
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { AdsenseModule } from 'ng2-adsense';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
 
 import { FileUploadModule } from 'ng2-file-upload';
@@ -61,10 +58,6 @@ export const clientAdSense = new InjectionToken<string>('clientAdSense');
 export const slotAdSense = new InjectionToken<string>('slotAdSense');
 export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
-
-export function createTranslateLoader(http: HttpClient, name: string) {
-  return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
-}
 
 export const CONFIG_TOKEN = new InjectionToken<any>('Registered config');
 export const TABLE_EVENT = new InjectionToken<string>('event');
@@ -130,14 +123,9 @@ export const cookieConfig: NgcCookieConsentConfig = {
   imports: [
     CommonModule,
     AngularFireModule.initializeApp(environment.firebase),
-    /*    AngularFirestoreModule,
-     */
     AngularFirestoreModule.enablePersistence(),
     Angulartics2Module.forRoot({
-      developerMode: true,
-      pageTracking: {
-        clearIds: true,
-      },
+      developerMode: !environment.production,
     }),
     AdsenseModule.forRoot({
       adClient: environment.clientAdSense,
@@ -148,13 +136,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
     FileUploadModule,
     SharedModule.forRoot(CONFIG_TOKEN),
     SlackModule.forRoot(slackToken),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient, app_name]
-      }
-    })
   ],
   exports: [
     AdsenseModule,
