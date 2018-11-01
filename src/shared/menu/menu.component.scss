@@ -8,15 +8,8 @@
   }
 
   #main-logo {
-    .cls-2 {
-      text-transform: capitalize;
-      font-family: $second-font, serif;
-      font-size: 24px;
-      font-weight: 700;
-
-      &.text-underline {
-        text-decoration: underline;
-      }
+    &.text-underline {
+      text-decoration: underline;
     }
   }
 
@@ -51,37 +44,36 @@
     }
   }
 
-}
+  .mat-button {
+    @media (max-width: 600px) {
+      min-width: 44px;
+    }
+    /* medium*/
+    @media (min-width: 601px) and (max-width: 992px) {
+      min-width: 88px;
+    }
+    /* large */
+    @media (min-width: 993px) {
+      min-width: 88px;
+    }
+  }
 
-.mat-button {
-  @media (max-width: 600px) {
-    min-width: 44px;
-  }
-  /* medium*/
-  @media (min-width: 601px) and (max-width: 992px) {
-    min-width: 88px;
-  }
-  /* large */
-  @media (min-width: 993px) {
-    min-width: 88px;
-  }
-}
-
-.login-wrapper {
-  @include media-breakpoint-up(xs) {
-    display: none;
-  }
-  @include media-breakpoint-up(sm) {
-    display: block;
-  }
-  @include media-breakpoint-up(md) {
-    display: block;
-  }
-  @include media-breakpoint-up(lg) {
-    display: block;
-  }
-  @include media-breakpoint-up(xl) {
-    display: block;
+  .login-wrapper {
+    @include media-breakpoint-up(xs) {
+      display: none;
+    }
+    @include media-breakpoint-up(sm) {
+      display: block;
+    }
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
+    @include media-breakpoint-up(xl) {
+      display: block;
+    }
   }
 }
 

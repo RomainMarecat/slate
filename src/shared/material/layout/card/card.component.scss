@@ -15,3 +15,70 @@
     width: 100px;
   }
 }
+
+.album {
+  background: mat-color(mat-palette($mat-purple, 800));
+  * {
+    color: mat-color(mat-palette($mat-grey, 50));
+  }
+}
+
+.music {
+  background: mat-color(mat-palette($mat-teal, 900));
+  * {
+    color: mat-color(mat-palette($mat-grey, 50));
+  }
+}
+
+.note {
+  width: 600px;
+
+  @include media-breakpoint-up(xs) {
+    width: 95%;
+  }
+  @include media-breakpoint-up(sm) {
+    width: 300px;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 600px;
+  }
+
+  .blue {
+    background: mat-color(mat-palette($mat-blue, 300));
+    * {
+      color: mat-color(mat-palette($mat-grey, 50));
+    }
+  }
+
+  .grey {
+    background: mat-color(mat-palette($mat-grey, 700));
+    * {
+      color: mat-color(mat-palette($mat-grey, 50));
+    }
+  }
+
+  .dark-grey {
+    background: mat-color(mat-palette($mat-grey, 800));
+    * {
+      color: mat-color(mat-palette($mat-grey, 50));
+    }
+  }
+
+  .blue-grey {
+    background: mat-color(mat-palette($mat-blue-grey, 700));
+    * {
+      color: mat-color(mat-palette($mat-grey, 50));
+    }
+  }
+
+  .orange {
+    .mat-card-image {
+      height: 200px;
+    }
+
+    background: mat-color(mat-palette($mat-orange, 700));
+    * {
+      color: mat-color(mat-palette($mat-grey, 50));
+    }
+  }
+}
