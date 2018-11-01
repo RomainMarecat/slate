@@ -51,7 +51,23 @@
 }
 
 .button-yellow {
-  font-size: 2rem;
+  padding: 1rem 2rem;
+
+  &.mat-flat-button {
+    &.mat-warn {
+      color: mat-color($primary);
+    }
+  }
+  span {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+  mat-icon {
+    width: 12px;
+    height: 12px;
+    line-height: 12px; // Default width/height mat-icon
+  }
 }
 
 .search-container {
