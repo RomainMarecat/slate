@@ -1,12 +1,12 @@
 <div class="bg-wrapper">
     <img [src]="'assets/images/home/bg-desktop.jpg'">
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="chezmoi">
   <div class="row">
     <div class="col-12">
       <h1 class="text-center mt5">
-        <span class="first">Chez moi,</span>
-        <span class="second"> j'ai</span>
+        <span class="chezmoititre first">Chez moi,</span>
+        <span class="chezmoititre second"> j'ai :</span>
       </h1>
     </div>
   </div>
@@ -14,7 +14,8 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 offset-md-2 col-md-8 text-center mt3 form-group search-container">
-      <form [formGroup]="form" (ngSubmit)="addIngredient()">
+      <label for="search" class="form-control-label">Exemples : tomates, oignons, riz...</label>
+      <form [formGroup]="form" (ngSubmit)="addIngredient()" class="home-search">
         <div class="input-group">
           <input #inputIngredient id="search" type="search" class="form-control" formControlName="ingredient">
           <span class="input-group-btn">
@@ -24,7 +25,6 @@
           </span>
         </div>
       </form>
-      <label for="search" class="form-control-label">Exemple : tomates, oignons , riz...</label>
     </div>
     <div class="col-12 text-center mt2">
       <span class="badge badge-default badge-home pa05 ma05" *ngFor="let ingredient of ingredients">
@@ -36,8 +36,8 @@
     </div>
     <div class="col-12 text-center mt3">
       <button (click)="searchRecipe()" class="btn-large button-yellow" color="primary" type="button" mat-button
-              aria-label="c'est parti">
-        C'est parti
+              aria-label="Je cuisine">
+        Je cuisine <img src="/assets/images/fleche.svg">
       </button>
     </div>
   </div>
