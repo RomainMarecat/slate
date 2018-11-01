@@ -1,3 +1,29 @@
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-text {
+  cursor: text;
+}
+
+.cursor-help {
+  cursor: help;
+}
+
+.ucfirst,
+.text-ucfirst {
+  text-transform: lowercase;
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+
 .size--all-xxs {
   font-size: .57143em;
   line-height: 1.42857
@@ -42,7 +68,7 @@
   font-size: 3.42857em
 }
 
-@media (min-width:30em) {
+@media (min-width: 30em) {
   .size--fromW2-xxs {
     font-size: .57143em;
     line-height: 1.42857
@@ -77,7 +103,7 @@
   }
 }
 
-@media (min-width:48em) {
+@media (min-width: 48em) {
   .size--fromW3-xxs {
     font-size: .57143em;
     line-height: 1.42857
@@ -112,7 +138,7 @@
   }
 }
 
-@media (min-width:64em) {
+@media (min-width: 64em) {
   .size--fromW4-xxs {
     font-size: .57143em;
     line-height: 1.42857

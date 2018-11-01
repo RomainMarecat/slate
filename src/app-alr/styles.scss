@@ -27,7 +27,7 @@
 * visible-lg (only) = d-none d-lg-block d-xl-none
 * visible-xl (n/a 3.x) = d-none d-xl-block
 */
+@import "scss/helper";
+@import "scss/reset";
 @import "scss/theme";
-@import "scss/component/all";
-@import "scss/layout/body";
-@import "scss/base/all";
+@import "scss/desktop";

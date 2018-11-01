@@ -1,5 +1,5 @@
 <div class="bg-wrapper">
-    <img [src]="'assets/images/home/bg-desktop.jpg'">
+  <img [src]="'assets/images/home/bg-desktop.jpg'">
 </div>
 <div class="container-fluid" id="chezmoi">
   <div class="row">
@@ -14,10 +14,19 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 offset-md-2 col-md-8 text-center mt3 form-group search-container">
-      <label for="search" class="form-control-label">Exemples : tomates, oignons, riz...</label>
-      <form [formGroup]="form" (ngSubmit)="addIngredient()" class="home-search">
+      <label for="search"
+             class="form-control-label">
+        Exemples : tomates, oignons, riz...
+      </label>
+      <form [formGroup]="form"
+            (ngSubmit)="addIngredient()"
+            class="home-search">
         <div class="input-group">
-          <input #inputIngredient id="search" type="search" class="form-control" formControlName="ingredient">
+          <input #inputIngredient
+                 id="search"
+                 type="search"
+                 class="form-control"
+                 formControlName="ingredient">
           <span class="input-group-btn">
             <button class="btn btn-default" type="submit">
               <mat-icon>add</mat-icon>
@@ -27,7 +36,8 @@
       </form>
     </div>
     <div class="col-12 text-center mt2">
-      <span class="badge badge-default badge-home pa05 ma05" *ngFor="let ingredient of ingredients">
+      <span class="badge badge-default badge-home pa05 ma05"
+            *ngFor="let ingredient of ingredients">
         {{ ingredient }}
         <a (click)="removeIngredient(ingredient)">
           <mat-icon>close</mat-icon>
@@ -35,10 +45,15 @@
       </span>
     </div>
     <div class="col-12 text-center mt3">
-      <button (click)="searchRecipe()" class="btn-large button-yellow" color="primary" type="button" mat-button
-              aria-label="Je cuisine">
+      <button (click)="searchRecipe()"
+              class="btn-large button-yellow"
+              color="warn"
+              type="button"
+              mat-flat-button
+              [attr.aria-label]="'Je cuisine'">
         <span>Je cuisine</span>
-        <mat-icon color="primary" svgIcon="arrow-right"></mat-icon>
+        <mat-icon color="primary"
+                  svgIcon="arrow-right"></mat-icon>
       </button>
     </div>
   </div>
