@@ -10,10 +10,9 @@ import { MockUserService } from '../user/shared/mock-user.service';
 import {
   MatToolbarModule,
   MatIconModule,
-  MatButtonModule
+  MatButtonModule, MatDialogModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { SidenavService } from '../sidenav/sidenav.service';
 import {
   TranslateModule,
@@ -22,7 +21,7 @@ import {
 } from '@ngx-translate/core';
 import { MenuService } from './menu.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { MockLocalizeRouterService } from '../router/mock-localize-router.service';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -37,10 +36,14 @@ describe('MenuComponent', () => {
         BrowserAnimationsModule,
         CommonModule,
         LocalizeRouterModule,
+        MatDialogModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
         MatIconModule,
         MatButtonModule,
         MatToolbarModule,
-        Angulartics2Module.forRoot( {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
