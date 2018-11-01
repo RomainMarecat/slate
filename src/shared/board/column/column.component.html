@@ -4,13 +4,12 @@
      *ngIf="column">
   <div class="column-header">
     <h4 [innerHtml]="column.title"
-        [style.display]="editingColumn ?'none' : '' "
+        [style.display]="editingColumn ? 'none' : '' "
         (click)="editColumn()"></h4>
-    <input
-      [style.display]="editingColumn ?'' : 'none' "
-      (blur)="updateColumnOnBlur()"
-      (keyup)="addColumnOnEnter($event)"
-      [(ngModel)]="column.title"/>
+    <input [style.display]="editingColumn ? '' : 'none' "
+           (blur)="updateColumnOnBlur()"
+           (keyup)="addColumnOnEnter($event)"
+           [(ngModel)]="column.title"/>
   </div>
   <ul class="card-list"
       [attr.column-id]="column.key">
@@ -27,11 +26,10 @@
       Add a card...
     </span>
 
-    <input
-      [style.display]="addingCard ? '' : 'none' "
-      [attr.autofocus]="addingCard"
-      (keyup)="addCardOnEnter($event)"
-      (blur)="addCardOnBlur()"
-      [(ngModel)]="addCardText"/>
+    <input [style.display]="addingCard ? '' : 'none' "
+           [attr.autofocus]="addingCard"
+           (keyup)="addCardOnEnter($event)"
+           (blur)="addCardOnBlur()"
+           [(ngModel)]="addCardText"/>
   </div>
 </div>

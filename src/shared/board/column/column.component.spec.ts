@@ -18,6 +18,7 @@ import { BoardDetailComponent } from '../board-detail/board-detail.component';
 import { AlertService } from '../../popup/alert.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
 import { BoardComponent } from '../board/board.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 describe('ColumnComponent', () => {
   let component: ColumnComponent;
@@ -29,6 +30,7 @@ describe('ColumnComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
+        DragDropModule,
         SharedModule,
         HttpClientTestingModule,
         BoardRoutingModule

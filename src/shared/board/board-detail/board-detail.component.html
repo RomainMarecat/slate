@@ -17,19 +17,20 @@
     <div class="columns-wrapper"
          fxLayout="row"
          fxLayoutAlign="start stretch"
-         fxLayoutGap="10px">
-      <!--[dragula]="'board-bag'"-->
-      <!--[dragulaModel]="board.columns"-->
-      <!--[dragulaOptions]="options"-->
+         fxLayoutGap="10px"
+         cdkDropList
+         cdkDropListOrientation="horizontal"
+         [cdkDropListData]="board.columns"
+         (cdkDropListDropped)="drop($event)">
       <div *ngFor="let column of board.columns"
-           class="sortable-column">
+           class="sortable-column"
+           cdkDrag>
 
 
         <app-board-column [column]="column"
                           (cardAdded)="addCard($event)"
                           [cards]="board.cards">
         </app-board-column>
-
 
       </div>
       <div class="add-column"

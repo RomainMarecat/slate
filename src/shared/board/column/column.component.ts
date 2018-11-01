@@ -4,6 +4,7 @@ import { Column } from '../shared/column';
 import { ColumnService } from '../shared/column.service';
 import { CardService } from '../shared/card.service';
 import { AlertService } from '../../popup/alert.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-board-column',
@@ -40,19 +41,17 @@ export class ColumnComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.subscribeDragAndDrop();
   }
 
-  /**
-   * Drag an drop system for attributes
-   */
-  subscribeDragAndDrop() {
-    // this.dragulaService.drag.subscribe((value) => {
-    //   this.onDrag(value.slice(1));
-    // });
-    // this.dragulaService.drop.subscribe((value) => {
-    //   this.onDrop(value.slice(1));
-    // });
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
   /**

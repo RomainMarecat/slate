@@ -16,6 +16,7 @@ import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { SharedModule } from '../../shared.module';
 import { BoardDetailComponent } from '../board-detail/board-detail.component';
 import { BoardComponent } from '../board/board.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -27,6 +28,7 @@ describe('CardComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
+        DragDropModule,
         SharedModule,
         HttpClientTestingModule,
         BoardRoutingModule

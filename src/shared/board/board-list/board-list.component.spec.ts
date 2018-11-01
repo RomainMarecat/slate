@@ -21,6 +21,7 @@ import { MockLocalizeRouterService } from '../../router/mock-localize-router.ser
 import { BoardComponent } from '../board/board.component';
 import { SeoModule } from '../../seo/seo.module';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 describe('BoardListComponent', () => {
   let component: BoardListComponent;
@@ -32,6 +33,7 @@ describe('BoardListComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
+        DragDropModule,
         SharedModule,
         HttpClientTestingModule,
         LocalizeRouterModule,

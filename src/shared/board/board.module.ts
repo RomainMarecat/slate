@@ -8,10 +8,12 @@ import { BoardListComponent } from './board-list/board-list.component';
 import { SharedModule } from '../shared.module';
 import { BoardDetailComponent } from './board-detail/board-detail.component';
 import { BoardComponent } from './board/board.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
     CommonModule,
+    DragDropModule,
     SharedModule,
     BoardRoutingModule
   ],

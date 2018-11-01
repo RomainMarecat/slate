@@ -20,6 +20,7 @@ import { AlertService } from '../../popup/alert.service';
 import { ObjectService } from '../../util/object.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
 import { BoardComponent } from '../board/board.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 describe('BoardDetailComponent', () => {
   let component: BoardDetailComponent;
@@ -31,6 +32,7 @@ describe('BoardDetailComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
+        DragDropModule,
         SharedModule,
         HttpClientTestingModule,
         RouterTestingModule,
