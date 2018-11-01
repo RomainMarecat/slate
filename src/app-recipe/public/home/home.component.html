@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <img class="img-fluid" [src]="'https://lorempixel.com/1920/200/food'">
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center mt5">
+        <span class="first">Chez moi,</span>
+        <span class="second"> j'ai</span>
+      </h1>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 offset-md-2 col-md-8 text-center mt3 form-group search-container">
+      <form [formGroup]="form" (ngSubmit)="addIngredient()">
+        <div class="input-group">
+          <input #inputIngredient id="search" type="search" class="form-control" formControlName="ingredient">
+          <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">
+          <mat-icon>add</mat-icon>
+        </button>
+      </span>
+        </div>
+      </form>
+      <label for="search" class="form-control-label">Exemple : tomates, oignons , riz...</label>
+    </div>
+    <div class="col-12 text-center mt2">
+      <span class="badge badge-default badge-home pa05 ma05" *ngFor="let ingredient of ingredients">
+        {{ ingredient }}
+        <a (click)="removeIngredient(ingredient)">
+          <mat-icon >close</mat-icon>
+        </a>
+      </span>
+    </div>
+    <div class="col-12 text-center mt3">
+      <button (click)="searchRecipe()" class="btn-large button-yellow" color="primary" type="button" mat-button aria-label="c'est parti">
+        C'est parti
+      </button>
+    </div>
+  </div>
+</div>

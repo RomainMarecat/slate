@@ -1,0 +1,44 @@
+img {
+    overflow: hidden;
+}
+
+.button-yellow {
+    font-size: 2rem;
+}
+
+.search-container {
+    .input-group {
+        &:hover,
+        &:active,
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 0 2px rgba(2, 117, 216, 0.25);
+            border-radius: 0.25rem;
+        }
+        input[name="search"] {
+            border: none;
+            background-color: buttonface;
+            &:hover,
+            &:active,
+            &:focus {
+                box-shadow: none;
+            }
+        }
+        button {
+            &:hover,
+            &:active,
+            &:focus {
+                box-shadow: none;
+                border: 1px solid transparent;
+            }
+        }
+    }
+}
+
+.badge-home {
+    font-size: 2em;
+    color: black;
+    font-weight: 400;
+    border: 1px solid green;
+    background: white;
+}

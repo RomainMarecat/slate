@@ -49,6 +49,8 @@ import { ContactService } from '../../shared/contact/shared/contact.service';
 import { ArticleService } from '../../shared/article/shared/article.service';
 import { EventService } from '../../shared/agenda/shared/event.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
+import { PublicModule } from '../public/public.module';
+import { RecipeService } from '../public/recipe/shared/recipe.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -81,6 +83,7 @@ export const TABLE_OFFER = new InjectionToken<string>('offer');
 export const TABLE_ORDER = new InjectionToken<string>('order');
 export const TABLE_PARTNER = new InjectionToken<string>('partner');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
+export const TABLE_RECIPE = new InjectionToken<string>('recipe');
 
 @Injectable()
 export class ConfigService {
@@ -136,6 +139,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     FileUploadModule,
     SharedModule.forRoot(CONFIG_TOKEN),
     SlackModule.forRoot(slackToken),
+    PublicModule
   ],
   exports: [
     AdsenseModule,
@@ -162,6 +166,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_PARTNER, useValue: 'partner'},
     {provide: TABLE_PAYMENT, useValue: 'payment'},
     {provide: TABLE_PRODUCT, useValue: 'product'},
+    {provide: TABLE_RECIPE, useValue: 'recipe'},
     {provide: TABLE_SELECTION, useValue: 'selection'},
     {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_SCORE, useValue: 'scores'},
@@ -184,6 +189,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
     {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
+    {provide: RecipeService, useClass: RecipeService, deps: [AngularFirestore, TABLE_RECIPE]},
     AlertService,
     DateService,
     DeviceService,

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 recipe-loader mt5" *ngIf="(recipes | async) === null">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</div>
+<div class="recipe-detail" *ngFor="let recipe of recipes | async">
+  <div class="section bg-danger">
+    <div class="row">
+      <div class="col-12 mt2">
+        <h1 class="text-center text-white pa5">{{ recipe.name }}</h1>
+        <div class="divider">
+        </div>
+        <h2 class="text-center text-white">
+          <span *ngFor="let ingredient of recipe.ingredients">
+          {{ ingredient.name }}
+          </span>
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="row">
+      <div class="col-12 mt2">
+        <h1 class="text-center pa5">{{ recipe.name }}</h1>
+        <div class="divider">
+        </div>
+        <h2 class="text-center">{{ recipe.cook_time | date:'hh:mm' }}</h2>
+      </div>
+    </div>
+  </div>
+</div>
