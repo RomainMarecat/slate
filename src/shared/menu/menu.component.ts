@@ -32,6 +32,9 @@ export class MenuComponent implements OnInit, OnDestroy {
       });
   }
 
+  search() {
+  }
+
   /**
    * On destroy component
    */

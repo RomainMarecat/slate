@@ -72,7 +72,7 @@ $mat-recipe-primary: (
         500: #F4C71D,
         600: #1e88e5,
         700: #1976d2,
-        800: #1565c0,
+        800: #4D4C4C,
         900: #2F2F30,
         A100: #82b1ff,
         A200: #448aff,
@@ -97,13 +97,13 @@ $mat-recipe-primary: (
 );
 
 $primary: mat-palette($mat-recipe-primary, 900);
-$warn: mat-palette($mat-recipe-primary, 500);
-$accent: mat-palette($mat-recipe-primary, 400);
+$second: mat-palette($mat-recipe-primary, 500);
+$error: mat-palette($mat-recipe-primary, 400);
 $white: mat-palette($mat-recipe-primary, 50);
-$black: mat-palette($mat-recipe-primary, 900);
+$grey: mat-palette($mat-recipe-primary, 800);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$theme: mat-light-theme($primary, $accent, $warn);
+$theme: mat-light-theme($primary, $second, $error);
 
 // Include theme styles for core and each component used in your app-clothe.
 // Alternatively, you can import and @include the theme mixins for each component

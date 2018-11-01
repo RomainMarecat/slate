@@ -14,6 +14,7 @@ import { Angulartics2Module } from 'angulartics2';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CheckForUpdateService } from 'shared/pwa/shared/check-for-update.service';
+import { MenuModule } from 'shared/menu/menu.module';
 
 registerLocaleData(localeFr);
 registerLocaleData(localeEn);
@@ -29,6 +30,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
+    MenuModule,
     CoreModule.forRoot(environment),
     TranslateModule.forRoot({
       loader: {
