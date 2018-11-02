@@ -51,6 +51,7 @@ import { EventService } from '../../shared/agenda/shared/event.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { PublicModule } from '../public/public.module';
 import { RecipeService } from '../public/recipe/shared/recipe.service';
+import { MockRecipeService } from '../public/recipe/shared/mock-recipe.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -189,7 +190,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
     {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
-    {provide: RecipeService, useClass: RecipeService, deps: [AngularFirestore, TABLE_RECIPE]},
+    {provide: RecipeService, useClass: MockRecipeService, deps: [AngularFirestore, TABLE_RECIPE]},
     AlertService,
     DateService,
     DeviceService,

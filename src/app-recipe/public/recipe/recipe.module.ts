@@ -19,7 +19,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     RecipeRoutingModule,
     TranslateModule.forChild()
   ],
-  declarations: [RecipeListComponent, RecipeDetailComponent]
+  declarations: [
+    RecipeListComponent,
+    RecipeDetailComponent
+  ]
 })
 export class RecipeModule {
 }
