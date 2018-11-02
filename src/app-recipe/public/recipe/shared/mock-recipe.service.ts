@@ -1,7 +1,7 @@
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { AngularFirestoreCollection, CollectionReference, DocumentChangeAction, DocumentReference, Query } from '@angular/fire/firestore';
 import { Recipe } from './recipe';
-import { mockRecipe } from './mock-recipe';
+import { mockRecipe, mockRecipes } from './mock-recipe';
 import { Filter } from '../../../../shared/facet/filter/shared/filter';
 import { Sort } from '../../../../shared/facet/sort/shared/sort';
 
@@ -28,6 +28,10 @@ export class MockRecipeService {
   }
 
   getRecipes(): Observable<Array<Recipe>> {
-    return of([mockRecipe, mockRecipe]);
+    return of(mockRecipes);
+  }
+
+  getRecipe(): Observable<Recipe> {
+    return of(mockRecipe);
   }
 }

@@ -1,2 +1,7 @@
-<app-menu [config]="menuConfig"></app-menu>
-<router-outlet></router-outlet>
+<div class="column">
+  <app-menu class="top" [config]="menuConfig"></app-menu>
+  <div class="bottom">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

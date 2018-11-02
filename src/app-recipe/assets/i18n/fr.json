@@ -1,11 +1,32 @@
 {
-  "menu": {
-    "title1": "",
-    "title2": "recipe"
+  "home": {
+    "images": {
+      "header": "Image qui découpe du persil dans une cuisine"
+    }
   },
   "input": {
     "placeholder": {
       "search": "rechercher une recette"
+    }
+  },
+  "menu": {
+    "title1": "",
+    "title2": "recipe",
+    "title": {
+      "home": ""
+    }
+  },
+  "meta": {
+    "title": {
+      "home": "Recipe"
+    },
+    "description": {
+      "home": "Recipe le site de recette"
+    }
+  },
+  "recipes": {
+    "list": {
+      "empty": "Aucune recette n'est trouvée"
     }
   }
 }

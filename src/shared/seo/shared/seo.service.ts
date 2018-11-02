@@ -18,11 +18,13 @@ export class SeoService {
    * Seo's activation with entity type meta title and description
    */
   setSeo(type: string) {
-    this.translateService.get([`meta.title.${type}`, `meta.description.${type}`])
+    this.translateService.get([`meta.title.${type}`, `meta.description.${type}`, `menu.title.${type}`])
       .subscribe((translations: string[]) => {
         this.meta.updateTag({name: 'description', content: translations[`meta.description.${type}`]});
         this.title.setTitle(translations[`meta.title.${type}`]);
+        if (`menu.title.${type}` !== translations[`menu.title.${type}`]) {
+          this.menuService.nextTitle(`menu.title.${type}`);
+        }
       });
-    this.menuService.nextTitle(`meta.title.${type}`);
   }
 }

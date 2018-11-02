@@ -1,7 +1,7 @@
 #!/bin/bash
-for site in alr
+for site in recipe
 do
-	./node_modules/@angular/cli/bin/ng build --aot --project=$site --prod
+	./node_modules/@angular/cli/bin/ng build --configuration=production --project=$site
 	firebase use $site
 	firebase deploy
 done

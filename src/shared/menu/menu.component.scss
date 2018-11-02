@@ -7,9 +7,13 @@
     padding: 0 0 0 20px;
   }
 
-  #main-logo {
-    &.text-underline {
-      text-decoration: underline;
+  .logo {
+    .link-logo {
+      .cls-1, .cls-2 {
+        &.text-underline {
+          text-decoration: underline;
+        }
+      }
     }
   }
 

@@ -56,6 +56,10 @@ export class AppRootComponent implements OnInit, OnDestroy {
       `arrow-right`,
       this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/arrow-right.svg`)
     );
+    this.matIconRegistry.addSvgIcon(
+      `arrow-down`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/arrow-down.svg`)
+    );
   }
 
   ngOnInit() {

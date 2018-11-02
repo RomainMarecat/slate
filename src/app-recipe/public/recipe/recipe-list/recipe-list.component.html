@@ -1,14 +1,26 @@
+<div class="empty-list"
+     *ngIf="!isLoading && recipes.length === 0"
+     fxLayout="row"
+     fxLayoutAlign="center center">
+  <mat-card class="p-5">
+    <mat-card-title fxLayout="row"
+                    fxLayoutAlign="center stretch">
+      {{ 'recipes.list.empty'|translate }}
+    </mat-card-title>
+  </mat-card>
+</div>
+
 <div class="container">
   <div class="row">
-    <div class="col-12 recipe-loader mt5" *ngIf="isLoading">
+    <div class="col-12 recipe-loader mt-5" *ngIf="isLoading">
       <mat-spinner></mat-spinner>
     </div>
   </div>
-  <div class="row">
-    <div class="col-4 mt2" *ngFor="let recipe of recipes">
+  <div class="row" *ngIf="!isLoading">
+    <div class="col-4 mt-2" *ngFor="let recipe of recipes">
       <mat-card class="recipe-card">
         <mat-card-header>
-          <div md-card-avatar class="example-header-image"></div>
+          <div mat-card-avatar class="card-header-image"></div>
           <mat-card-title>
             {{ recipe.name }}
           </mat-card-title>
@@ -17,17 +29,17 @@
         <img md-card-image [src]="recipe.image">
         <mat-card-content>
           <p>
-            <span class="pa1" *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }}</span>
+            <span class="pa-1" *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }}</span>
           </p>
         </mat-card-content>
         <mat-card-actions class="text-center">
-          <button md-button (click)="navigateToRecipe(recipe.slug)">
+          <button mat-icon-button (click)="navigateToRecipe(recipe.slug)">
             <mat-icon>find_in_page</mat-icon>
           </button>
-          <button md-button>
+          <button mat-icon-button>
             <mat-icon>favorite</mat-icon>
           </button>
-          <button md-button>
+          <button mat-icon-button>
             <mat-icon>thumb_up</mat-icon>
           </button>
         </mat-card-actions>
