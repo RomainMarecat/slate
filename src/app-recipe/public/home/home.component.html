@@ -1,60 +1,85 @@
-<div class="bg-wrapper">
-  <img [src]="'assets/images/home/bg-desktop.jpg'">
-</div>
-<div class="container-fluid" id="chezmoi">
-  <div class="row">
-    <div class="col-12">
-      <h1 class="text-center mt5">
-        <span class="chezmoititre first">Chez moi,</span>
-        <span class="chezmoititre second"> j'ai :</span>
-      </h1>
+<div class="main-content-wrapper">
+  <div class="main-content">
+    <div class="bg-wrapper"
+         [class.xs]="mediaBreakpoint === 'xs'">
+      <img [src]="'assets/images/home/bg-desktop.jpg'"
+           [alt]="'home.images.header'|translate"
+           *ngIf="['sm', 'md', 'lg', 'xl'].includes(mediaBreakpoint)">
+      <img [src]="'assets/images/home/bg-mobile.jpg'"
+           [alt]="'home.images.header'|translate"
+           *ngIf="['xs'].includes(mediaBreakpoint)">
     </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 offset-md-2 col-md-8 text-center mt3 form-group search-container">
-      <label for="search"
-             class="form-control-label">
-        Exemples : tomates, oignons, riz...
-      </label>
-      <form [formGroup]="form"
-            (ngSubmit)="addIngredient()"
-            class="home-search">
-        <div class="input-group">
-          <input #inputIngredient
-                 id="search"
-                 type="search"
-                 class="form-control"
-                 formControlName="ingredient">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">
-              <mat-icon>add</mat-icon>
-            </button>
+    <div class="container home-title-wrapper">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center mt5 home-title">
+            <span class="chezmoititre first">Chez moi,</span>
+            <span class="chezmoititre second"> j'ai :</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 offset-md-2 col-md-8 text-center mt-3 form-group search-container">
+          <label for="search"
+                 class="form-control-label">
+            Exemples : tomates, oignons, riz...
+          </label>
+          <form [formGroup]="form"
+                (ngSubmit)="addIngredient()"
+                class="home-search">
+            <div class="input-group">
+              <input #inputIngredient
+                     id="search"
+                     type="search"
+                     class="form-control"
+                     formControlName="ingredient">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="col-12 text-center mt-2">
+          <span class="badge badge-default badge-home p-1 m-1"
+                *ngFor="let ingredient of ingredients">
+            <span>{{ ingredient }}</span>
+            <a (click)="removeIngredient(ingredient)">
+              <mat-icon>close</mat-icon>
+            </a>
           </span>
         </div>
-      </form>
-    </div>
-    <div class="col-12 text-center mt2">
-      <span class="badge badge-default badge-home pa05 ma05"
-            *ngFor="let ingredient of ingredients">
-        {{ ingredient }}
-        <a (click)="removeIngredient(ingredient)">
-          <mat-icon>close</mat-icon>
-        </a>
-      </span>
-    </div>
-    <div class="col-12 text-center mt3">
-      <button (click)="searchRecipe()"
-              class="btn-large button-yellow"
-              color="warn"
-              type="button"
-              mat-flat-button
-              [attr.aria-label]="'Je cuisine'">
-        <span>Je cuisine</span>
-        <mat-icon color="primary"
-                  svgIcon="arrow-right"></mat-icon>
-      </button>
+        <div class="col-12 text-center mt-5">
+          <button (click)="searchRecipe()"
+                  class="btn-large button-yellow"
+                  color="warn"
+                  type="button"
+                  mat-flat-button
+                  role="button"
+                  [attr.aria-label]="'Je cuisine'">
+            <span>Je cuisine</span>
+            <mat-icon class="arrow"
+                      color="primary"
+                      svgIcon="arrow-right"></mat-icon>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<mat-toolbar class="bottom-toolbar"
+             color="primary"
+             fxLayout="row"
+             fxLayoutAlign="center center">
+  <div fxLayout="row"
+       fxLayoutAlign="space-between center"
+       fxLayoutGap="10px">
+    <span>Inspirez-moi</span>
+    <mat-icon class="arrow"
+              color="warn"
+              svgIcon="arrow-right"></mat-icon>
+  </div>
+</mat-toolbar>

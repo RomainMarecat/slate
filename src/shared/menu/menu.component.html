@@ -22,7 +22,7 @@
             *ngIf="'menu.title2'|translate">{{ 'menu.title2' | translate }}</span>
     </a>
   </h1>
-  <span class="pl-4" [innerHtml]="title|translate" *ngIf="title"></span>
+  <span class="pl-4" [innerHtml]="title|translate" *ngIf="title && title.length > 0"></span>
   <span class="menu-spacer"></span>
   <a (click)="search()"
      *ngIf="config.displayIconButtonConnection">
