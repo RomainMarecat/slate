@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../shared/recipe';
-import { Subject } from 'rxjs';
 import { RecipeService } from '../shared/recipe.service';
 import { AlertService } from 'shared/popup/alert.service';
 import { SeoService } from 'shared/seo/shared/seo.service';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-recipe-list',
@@ -13,20 +13,19 @@ import { SeoService } from 'shared/seo/shared/seo.service';
 })
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];
-  sizeSubject: Subject<any>;
   isLoading: boolean;
 
   constructor(private recipeService: RecipeService,
               private alertService: AlertService,
               private seoService: SeoService,
               private router: Router,
-              private route: ActivatedRoute) {
-    this.sizeSubject = new Subject();
+              private route: ActivatedRoute,
+              private localizeRouterService: LocalizeRouterService) {
+    this.seoService.setSeo('recipe-list');
+    this.isLoading = true;
   }
 
   ngOnInit() {
-    this.isLoading;
-    true;
     this.route.params.forEach((params: Params) => {
       if (typeof params['ingredients'] !== 'undefined') {
         const ingredients: string = params['ingredients'].split(',');
@@ -47,7 +46,10 @@ export class RecipeListComponent implements OnInit {
     });
   }
 
-  navigateToRecipe(slug: string) {
-    this.router.navigate(['recipes', slug]);
+  navigateTo(recipe: Recipe) {
+    this.router.navigate([
+      this.localizeRouterService.translateRoute('recipes'),
+      `${recipe.key}-${recipe.slug}`
+    ]);
   }
 }

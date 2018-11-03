@@ -5,6 +5,7 @@ import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { SeoService } from 'shared/seo/shared/seo.service';
 import { RecipeService } from '../recipe/shared/recipe.service';
 import { Recipe } from '../recipe/shared/recipe';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-recipe-home',
@@ -16,19 +17,26 @@ export class HomeComponent implements OnInit {
   mediaBreakpoint: string;
   ingredients: Array<string>;
   form: FormGroup;
-  @ViewChild('inputIngredient') inputIngredient: ElementRef;
+  @ViewChild('search') search: ElementRef;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private observableMedia: ObservableMedia,
               private seoService: SeoService,
-              private recipeService: RecipeService) {
+              private recipeService: RecipeService,
+              private localizeRouterService: LocalizeRouterService) {
     this.ingredients = [];
     this.seoService.setSeo('home');
   }
 
-  scrollBottom() {
-    window.scrollTo(0, (document.body.scrollHeight || document.documentElement.scrollHeight) + 2000);
+  scrollPosition(id: string) {
+    if (typeof document === 'object' && document) {
+      const content = document.querySelector(id);
+      if (content) {
+        console.log(content);
+        content.scrollTop = 0;
+      }
+    }
   }
 
   ngOnInit() {
@@ -50,7 +58,7 @@ export class HomeComponent implements OnInit {
   addIngredient() {
     if (this.form.valid) {
       this.ingredients.push(this.form.value.ingredient);
-      this.inputIngredient.nativeElement.value = '';
+      this.search.nativeElement.value = '';
     }
   }
 
@@ -60,9 +68,21 @@ export class HomeComponent implements OnInit {
 
   searchRecipe() {
     if (this.ingredients.length > 0) {
-      this.router.navigate(['recipes/ingredients', this.ingredients.join(',')]);
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('recipes'),
+        'ingredients',
+        this.ingredients.join(',')]);
     } else {
-      this.router.navigate(['recipes']);
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('recipes'),
+      ]);
     }
+  }
+
+  navigateTo(recipe: Recipe) {
+    this.router.navigate([
+      this.localizeRouterService.translateRoute('recipes'),
+      `${recipe.key}-${recipe.slug}`
+    ]);
   }
 }

@@ -9,11 +9,11 @@
            [alt]="'home.images.header'|translate"
            *ngIf="['xs'].includes(mediaBreakpoint)">
     </div>
-    <div class="home-title-wrapper">
+    <div class="home-title-wrapper mt-4 mb-2 mt-sm-5 mb-sm-3">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <h1 class="text-center mt5 home-title">
+            <h1 class="text-center home-title mb-0">
               <span class="chezmoititre first">Chez moi,</span>
               <span class="chezmoititre second"> j'ai :</span>
             </h1>
@@ -23,8 +23,8 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 offset-md-2 col-md-8 text-center mt-3 form-group search-container">
-          <label for="search"
+        <div class="col-sm-12 offset-md-2 col-md-8 text-center mt-0 mt-sm-2 form-group search-container">
+          <label for="home-search-ingredients"
                  class="form-control-label">
             Exemples : tomates, oignons, riz...
           </label>
@@ -32,27 +32,30 @@
                 (ngSubmit)="addIngredient()"
                 class="home-search">
             <div class="input-group">
-              <input #inputIngredient
-                     id="search"
+              <input #search
+                     id="home-search-ingredients"
                      type="search"
                      class="form-control"
                      formControlName="ingredient">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">
+                <button class="btn btn-default"
+                        role="button"
+                        type="submit"
+                        [attr.aria-label]="'cta.add'|translate">
                   <mat-icon>add</mat-icon>
                 </button>
               </span>
             </div>
           </form>
         </div>
-        <div class="col-12 text-center mt-2">
-          <span class="badge badge-default badge-home px-3 py-2 m-3"
+        <div class="col-12 text-center mt-0 mt-sm-2">
+          <span class="badge badge-default badge-home px-3 py-2 m-1 m-sm-3"
                 *ngFor="let ingredient of ingredients">
             <span>{{ ingredient }}</span>
-              <mat-icon (click)="removeIngredient(ingredient)">close</mat-icon>
+            <mat-icon (click)="removeIngredient(ingredient)">close</mat-icon>
           </span>
         </div>
-        <div class="col-12 text-center mt-5">
+        <div class="col-12 text-center mt-2 mt-sm-5">
           <button (click)="searchRecipe()"
                   class="btn-large button-yellow"
                   color="warn"
@@ -76,15 +79,44 @@
              fxLayoutAlign="center center">
   <a fxLayout="column"
      fxLayoutAlign="space-around center"
-     (click)="scrollBottom()">
+     (click)="scrollPosition('#recipe-list')">
     <span>Inspirez-moi</span>
     <mat-icon class="arrow"
               color="warn"
               svgIcon="arrow-down"></mat-icon>
   </a>
 </mat-toolbar>
-<div class="recipe-list" *ngFor="let recipe of recipes">
-  <span class="recipe-name">{{ recipe.name }}</span>
-
+<div class="recipe-list"
+     *ngFor="let recipe of recipes; let i = index">
+  <mat-card class="recipe-card pt-5"
+            [class.pb-5]="i%2 !== 0"
+            [class.pb-0]="i%2 === 0"
+            (click)="navigateTo(recipe)"
+            [style.background-color]="recipe.color">
+    <mat-card-title class="recipe-name mat-card-title"
+                    fxLayout="row"
+                    fxLayoutAlign="center stretch">
+      {{ recipe.name }}
+    </mat-card-title>
+    <mat-card-content class="mat-card-content"
+                      fxLayout="row"
+                      fxLayoutAlign="center stretch">
+      -------------
+    </mat-card-content>
+    <img fxHide.gt-sm
+         fxShow.xs
+         class="recipe-image mb-0 mt-5"
+         mat-card-image
+         [src]="recipe.image ? recipe.image : 'https://picsum.photos/400/300?random'"
+         [alt]="recipe.name"
+         *ngIf="i%2 === 0">
+    <img fxHide.xs
+         fxShow.gt-sm
+         class="recipe-image mb-0 mt-5"
+         mat-card-image
+         [src]="recipe.image ? recipe.image : 'https://picsum.photos/1080/200?random'"
+         [alt]="recipe.name"
+         *ngIf="i%2 === 0">
+  </mat-card>
 </div>
 

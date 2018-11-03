@@ -1,4 +1,10 @@
 {
+  "routes": {
+    "recipes": "recettes"
+  },
+  "cta": {
+    "add": "ajouter"
+  },
   "home": {
     "images": {
       "header": "Image qui découpe du persil dans une cuisine"
@@ -18,15 +24,29 @@
   },
   "meta": {
     "title": {
-      "home": "Recipe"
+      "home": "Recipe",
+      "recipe-list": "Recipe",
+      "recipe-detail": "Recipe"
     },
     "description": {
-      "home": "Recipe le site de recette"
+      "home": "Recipe le site de recette",
+      "recipe-list": "Recipe le site de recette",
+      "recipe-detail": "Recipe le site de recette"
     }
   },
   "recipes": {
     "list": {
       "empty": "Aucune recette n'est trouvée"
+    }
+  },
+  "recipe-detail": {
+    "title": {
+      "total_time": "temps de la recette",
+      "cook_time": "temps de cuisson",
+      "prep_time": "temps de préparation",
+      "waiting_time": "temps d'attente",
+      "yield": "pour",
+      "rating": "difficulté"
     }
   }
 }

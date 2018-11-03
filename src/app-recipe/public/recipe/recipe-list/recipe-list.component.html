@@ -16,34 +16,40 @@
       <mat-spinner></mat-spinner>
     </div>
   </div>
-  <div class="row" *ngIf="!isLoading">
-    <div class="col-4 mt-2" *ngFor="let recipe of recipes">
-      <mat-card class="recipe-card">
-        <mat-card-header>
-          <div mat-card-avatar class="card-header-image"></div>
-          <mat-card-title>
-            {{ recipe.name }}
-          </mat-card-title>
-          <mat-card-subtitle>{{ recipe.cuisine_type }} - {{ recipe.creator }}</mat-card-subtitle>
-        </mat-card-header>
-        <img md-card-image [src]="recipe.image">
-        <mat-card-content>
-          <p>
-            <span class="pa-1" *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }}</span>
-          </p>
-        </mat-card-content>
-        <mat-card-actions class="text-center">
-          <button mat-icon-button (click)="navigateToRecipe(recipe.slug)">
-            <mat-icon>find_in_page</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>favorite</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>thumb_up</mat-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+</div>
+<div *ngIf="!isLoading"
+     fxLayout="row wrap"
+     fxLayoutAlign="center stretch">
+  <div id="identifier-recipe-list-wrapper"
+       class="recipe-list"
+       *ngFor="let recipe of recipes; let i = index">
+    <mat-card class="recipe-card pt-5 mb-2 pb-0"
+              (click)="navigateTo(recipe)"
+              [style.background-color]="recipe.color">
+      <mat-card-title class="recipe-name mat-card-title"
+                      fxLayout="row"
+                      fxLayoutAlign="center stretch">
+        {{ recipe.name }}
+      </mat-card-title>
+      <mat-card-content class="mat-card-content"
+                        fxLayout="row"
+                        fxLayoutAlign="center stretch">
+        -------------
+      </mat-card-content>
+      <img fxHide.gt-sm
+           fxShow.xs
+           class="recipe-image mb-0 mt-5"
+           mat-card-image
+           [src]="recipe.image ? recipe.image : 'https://picsum.photos/400/300?random'"
+           [alt]="recipe.name"
+           *ngIf="i%2 === 0">
+      <img fxHide.xs
+           fxShow.gt-sm
+           class="recipe-image mb-0 mt-5"
+           mat-card-image
+           [src]="recipe.image ? recipe.image : 'https://picsum.photos/1080/200?random'"
+           [alt]="recipe.name"
+           *ngIf="i%2 === 0">
+    </mat-card>
   </div>
 </div>

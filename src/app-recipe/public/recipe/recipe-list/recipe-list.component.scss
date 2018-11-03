@@ -1,13 +1,32 @@
+@import '../../../../app-recipe/scss/theme/theme';
+
 .recipe-loader * {
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
-
-mat-card-content {
-  max-height: 80px;
-}
-
 .empty-list {
   height: calc(100vh - 64px);
+}
+
+
+.recipe-list {
+  width: 100%;
+  mat-card {
+    mat-card-title {
+      color: mat-color($white);
+    }
+
+    mat-card-content {
+      line-height: 1rem;
+      font-size: 5rem;
+      text-align: center;
+      letter-spacing: -30px;
+      color: mat-color($white);
+    }
+  }
+
+  .recipe-image {
+    height: 200px;
+  }
 }

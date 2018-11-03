@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Subject } from 'rxjs';
 import { Recipe } from '../shared/recipe';
 import { RecipeService } from '../shared/recipe.service';
 import { AlertService } from 'shared/popup/alert.service';
+import { SeoService } from 'shared/seo/shared/seo.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -11,36 +11,29 @@ import { AlertService } from 'shared/popup/alert.service';
   styleUrls: ['./recipe-detail.component.scss']
 })
 export class RecipeDetailComponent implements OnInit {
-  recipes: Recipe[] = [];
-  sizeSubject: Subject<any>;
+  recipe: Recipe;
+  isLoading: boolean;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private alertService: AlertService,
-              private recipeService: RecipeService) {
-    this.sizeSubject = new Subject();
+              private recipeService: RecipeService,
+              private seoService: SeoService) {
+    this.isLoading = true;
+    this.seoService.setSeo('recipe-detail');
   }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       if (params.slug) {
-        const slug = params.slug;
-        this.recipeService.query$.next({
-          filters: [
-            {
-              column: 'slug',
-              operand: '==',
-              value: slug
-            }
-          ],
-          limit: 1
-        });
-        this.recipeService.getRecipes()
-          .subscribe((recipes: Recipe[]) => {
-            this.recipes = recipes;
+        const key = params.slug.substring(0, params.slug.indexOf('-'));
+        this.recipeService.getRecipe(key)
+          .subscribe((recipe: Recipe) => {
+            this.recipe = recipe;
+            this.isLoading = false;
           }, () => {
             this.alertService.show('error.api.errors');
-            this.recipes = [];
+            this.isLoading = false;
           });
       }
     });
