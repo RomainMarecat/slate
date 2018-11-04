@@ -42,13 +42,18 @@
                         role="button"
                         type="submit"
                         [attr.aria-label]="'cta.add'|translate">
-                  <mat-icon>add</mat-icon>
+                  <mat-icon color="warn">add</mat-icon>
                 </button>
               </span>
             </div>
           </form>
         </div>
         <div class="col-12 text-center mt-0 mt-sm-2">
+          <span class="badge badge-default badge-home badge-empty px-3 py-2 m-1 m-sm-3"
+                *ngIf="ingredients.length === 0">
+            <span>0</span>
+            <mat-icon>close</mat-icon>
+          </span>
           <span class="badge badge-default badge-home px-3 py-2 m-1 m-sm-3"
                 *ngFor="let ingredient of ingredients">
             <span>{{ ingredient }}</span>
@@ -62,12 +67,14 @@
                   type="button"
                   mat-flat-button
                   role="button"
-                  [attr.aria-label]="'Je cuisine'">
+                  [attr.aria-label]="'Je cuisine'"
+                  [@full]="ingredients.length > 0 ? 'full': 'empty'">
             <span>Je cuisine</span>
             <mat-icon class="arrow"
                       color="primary"
                       svgIcon="arrow-right"></mat-icon>
           </button>
+
         </div>
       </div>
     </div>
@@ -86,37 +93,5 @@
               svgIcon="arrow-down"></mat-icon>
   </a>
 </mat-toolbar>
-<div class="recipe-list"
-     *ngFor="let recipe of recipes; let i = index">
-  <mat-card class="recipe-card pt-5"
-            [class.pb-5]="i%2 !== 0"
-            [class.pb-0]="i%2 === 0"
-            (click)="navigateTo(recipe)"
-            [style.background-color]="recipe.color">
-    <mat-card-title class="recipe-name mat-card-title"
-                    fxLayout="row"
-                    fxLayoutAlign="center stretch">
-      {{ recipe.name }}
-    </mat-card-title>
-    <mat-card-content class="mat-card-content"
-                      fxLayout="row"
-                      fxLayoutAlign="center stretch">
-      -------------
-    </mat-card-content>
-    <img fxHide.gt-sm
-         fxShow.xs
-         class="recipe-image mb-0 mt-5"
-         mat-card-image
-         [src]="recipe.image ? recipe.image : 'https://picsum.photos/400/300?random'"
-         [alt]="recipe.name"
-         *ngIf="i%2 === 0">
-    <img fxHide.xs
-         fxShow.gt-sm
-         class="recipe-image mb-0 mt-5"
-         mat-card-image
-         [src]="recipe.image ? recipe.image : 'https://picsum.photos/1080/200?random'"
-         [alt]="recipe.name"
-         *ngIf="i%2 === 0">
-  </mat-card>
-</div>
 
+<app-recipe-list [query]="query"></app-recipe-list>

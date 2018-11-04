@@ -5,73 +5,51 @@
     </div>
   </div>
 </div>
-<div class="recipe-detail" *ngIf="!isLoading && recipe">
-  <div class="section"
-       [style.background-color]="recipe.color">
-    <div class="row">
-      <div class="col-12 mt-2">
-        <h1 class="text-center text-white p-5">{{ recipe.name }}</h1>
-      </div>
-    </div>
+<div class="recipe-detail"
+     #recipeDetail
+     *ngIf="!isLoading && recipe">
+  <div class="section header-section">
+    <app-recipe-title [recipe]="recipe"
+                      [showStepper]="currentInstruction > 0"
+                      [steps]="recipe.instructions"></app-recipe-title>
 
-    <div class="separator pb-5"
-         fxLayout="row"
-         fxLayoutAlign="center stretch">
-      -------------
-    </div>
+    <app-recipe-information [recipe]="recipe"></app-recipe-information>
 
-    <div class="row">
-      <div class="col-12">
-        <h2 class="cook-time text-center">
-          <span>
-            {{ 'recipe-detail.title.yield'|translate }}
-          </span>
-          {{ recipe.yield }}
-        </h2>
-      </div>
-    </div>
+    <app-recipe-preparation-list [recipe]="recipe"></app-recipe-preparation-list>
 
-
-    <div class="mt-5"
-         fxLayout="row wrap"
-         fxLayoutAlign="space-around stretch">
-
-      <mat-card class="card m-2"
-                fxFlex="40">
-        <p>{{ 'recipe-detail.title.cook_time'|translate }}</p>
-        <p *ngIf="recipe.cook_time; else noTime">{{ recipe.cook_time | date:'hh:mm' }}</p>
-      </mat-card>
-
-      <mat-card class="card m-2"
-                fxFlex="40">
-        <p>{{ 'recipe-detail.title.prep_time'|translate }}</p>
-        <p *ngIf="recipe.prep_time; else noTime">{{ recipe.prep_time | date:'hh:mm' }}</p>
-      </mat-card>
-
-      <mat-card class="card m-2"
-                fxFlex="40">
-        <p>{{ 'recipe-detail.title.rating'|translate }}</p>
-        <span *ngFor="let star of [1,2,3]">
-          <mat-icon *ngIf="star < recipe.rating">star_rate</mat-icon>
-          <mat-icon *ngIf="star >= recipe.rating">star_border</mat-icon>
-        </span>
-      </mat-card>
-
-      <mat-card class="card m-2"
-                fxFlex="40">
-        <p>{{ 'recipe-detail.title.waiting_time'|translate }}</p>
-        <p *ngIf="recipe.waiting_time; else noTime">{{ recipe.waiting_time | date:'hh:mm' }}</p>
-      </mat-card>
-    </div>
-
-    <ng-template #noTime>
-      -
-    </ng-template>
-
-    <h2 class="text-center text-white">
-      <span *ngFor="let ingredient of recipe.ingredients">
-        {{ ingredient.name }}
-      </span>
-    </h2>
   </div>
+
+  <div class="instruction-section"
+       *ngIf="recipe.instructions">
+    <app-recipe-instruction-list #instructionWrapper [recipe]="recipe"></app-recipe-instruction-list>
+
+  </div>
+</div>
+
+<div class="next-section-wrapper">
+
+  <button type="button"
+          (click)="onMore()"
+          role="button"
+          mat-fab
+          color="warn"
+          [attr.aria-label]="'cta.next'|translate"
+          *ngIf="limitInstructionReached === false; else topButton">
+    <mat-icon class="arrow"
+              color="primary"
+              svgIcon="arrow-down"></mat-icon>
+  </button>
+
+  <ng-template #topButton>
+    <button type="button"
+            role="button"
+            mat-fab
+            color="warn"
+            (click)="onTop()"
+            [attr.aria-label]="'cta.top'|translate">
+      <mat-icon class="arrow"
+                color="primary"
+                svgIcon="arrow-up"></mat-icon>
+    </button>
+  </ng-template>
 </div>

@@ -3,7 +3,8 @@
     "recipes": "recettes"
   },
   "cta": {
-    "add": "ajouter"
+    "add": "ajouter",
+    "search": "Rechercher"
   },
   "home": {
     "images": {
@@ -12,26 +13,26 @@
   },
   "input": {
     "placeholder": {
-      "search": "rechercher une recette"
+      "search": "rechercher une recette :"
     }
   },
   "menu": {
     "title1": "",
-    "title2": "recipe",
+    "title2": "Les recettes d'Anne-lise",
     "title": {
       "home": ""
     }
   },
   "meta": {
     "title": {
-      "home": "Recipe",
-      "recipe-list": "Recipe",
-      "recipe-detail": "Recipe"
+      "home": "Les recettes d'Anne-lise",
+      "recipe-list": "Les recettes d'Anne-lise",
+      "recipe-detail": "Les recettes d'Anne-lise"
     },
     "description": {
-      "home": "Recipe le site de recette",
-      "recipe-list": "Recipe le site de recette",
-      "recipe-detail": "Recipe le site de recette"
+      "home": "Les recettes d'Anne-lise le site de recette",
+      "recipe-list": "Les recettes d'Anne-lise le site de recette",
+      "recipe-detail": "Les recettes d'Anne-lise le site de recette"
     }
   },
   "recipes": {

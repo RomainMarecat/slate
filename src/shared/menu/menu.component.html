@@ -13,13 +13,18 @@
       angulartics2On="mouseover"
       angularticsAction="hoveredOverHomeLink"
       [angularticsCategory]="'home.title'">
-    <a class="link-logo" [routerLink]="['/']">
+    <a class="link-logo"
+       [routerLink]="['/']">
       <span class="cls-1"
             [class.text-underline]="config.underlineTitle"
-            *ngIf="'menu.title1'|translate">{{ 'menu.title1' | translate }}</span>
+            *ngIf="'menu.title1'|translate">
+        {{ 'menu.title1' | translate }}
+      </span>
       <span class="cls-2"
             [class.text-underline]="config.underlineTitle"
-            *ngIf="'menu.title2'|translate">{{ 'menu.title2' | translate }}</span>
+            *ngIf="'menu.title2'|translate">
+        {{ 'menu.title2' | translate }}
+      </span>
     </a>
   </h1>
   <span class="pl-4" [innerHtml]="title|translate" *ngIf="title && title.length > 0"></span>

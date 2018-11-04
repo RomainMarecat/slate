@@ -1,11 +1,12 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SidenavService } from '../sidenav/sidenav.service';
 import { UserService } from '../user/shared/user.service';
 import { MenuService } from './menu.service';
 import { Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material';
-import { SearchComponent } from '../search/search/search.component';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { SearchDialogComponent } from '../search/search-dialog/search-dialog.component';
+import { Filter } from 'shared/facet/filter/shared/filter';
 
 @Component({
   selector: 'app-menu',
@@ -22,8 +23,17 @@ export class MenuComponent implements OnInit, OnDestroy {
     displayCart: boolean
   };
 
+  @Input() _documents: any[];
+
+  @Input() searchUrl: string;
+
   title: string;
+
   private subscription: Subscription;
+
+  searchDialogRef: MatDialogRef<SearchDialogComponent, boolean>;
+
+  @Output() queryChange: EventEmitter<{limit?: number, filters?: Filter[]}> = new EventEmitter<{limit?: number, filters?: Filter[]}>();
 
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
@@ -52,9 +62,29 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    this.matDialog.open(SearchComponent, {
-      data: {}
+    this.searchDialogRef = this.matDialog.open(SearchDialogComponent, {
+      data: {
+        documents: this.documents,
+        url: this.searchUrl
+      },
+      panelClass: 'search-dialog',
     });
+
+    const queryChange = this.searchDialogRef.componentInstance.queryChange
+      .subscribe((query: {limit?: number, filters?: Filter[]}) => {
+        this.queryChange.emit(query);
+      });
+  }
+
+  @Input() set documents(documents: any[]) {
+    this._documents = documents;
+    if (this.searchDialogRef) {
+      this.searchDialogRef._containerInstance._config.data.documents = this.documents;
+    }
+  }
+
+  get documents() {
+    return this._documents;
   }
 
   /**

@@ -1,0 +1,12 @@
+@import '../../../../../app-recipe/scss/theme/theme';
+
+.recipe-informations {
+
+  mat-card.card-information {
+    background: $block-color-grey;
+
+    .recipe-values {
+      font-weight: 700;
+    }
+  }
+}

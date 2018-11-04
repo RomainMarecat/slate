@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SearchRoutingModule } from './search-routing.module';
-import { SearchComponent } from './search/search.component';
+import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -30,13 +30,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     TranslateModule.forChild()
   ],
   entryComponents: [
-    SearchComponent
+    SearchDialogComponent
   ],
   declarations: [
-    SearchComponent
+    SearchDialogComponent
   ],
   exports: [
-    SearchComponent
+    SearchDialogComponent
   ]
 })
 export class SearchModule {

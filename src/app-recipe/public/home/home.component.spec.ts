@@ -4,7 +4,7 @@ import { HomeComponent } from './home.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
 import { SeoModule } from 'shared/seo/seo.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -16,6 +16,8 @@ import { SeoService } from 'shared/seo/shared/seo.service';
 import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { RecipeModule } from '../recipe/recipe.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -26,15 +28,18 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        BrowserAnimationsModule,
         CommonModule,
         FlexLayoutModule,
         ReactiveFormsModule,
         LocalizeRouterModule,
         MatButtonModule,
         MatIconModule,
+        MatToolbarModule,
         MatProgressSpinnerModule,
         MatCardModule,
         SeoModule,
+        RecipeModule,
         MatCardModule,
         RouterTestingModule,
         TranslateModule.forRoot({

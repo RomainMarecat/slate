@@ -110,7 +110,9 @@
     }
   }
 }
-
+.badge-empty {
+  opacity: 0;
+}
 .badge-home {
   font-size: 2rem;
   color: mat-color($primary);

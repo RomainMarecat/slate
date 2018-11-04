@@ -29,7 +29,9 @@ const routes: Routes = [
     }),
     RouterModule.forRoot(routes, {
       enableTracing: false,
-      scrollPositionRestoration: 'enabled'
+      anchorScrolling: 'enabled',
+      scrollPositionRestoration: 'enabled',
+      scrollOffset: [0, 64] // [x, y]
     })
   ],
   exports: [

@@ -1,13 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgcCookieConsentService, NgcStatusChangeEvent, NgcInitializeEvent } from 'ngx-cookieconsent';
-import { Subscription } from 'rxjs';
-import { DomSanitizer, Meta, Title } from '@angular/platform-browser';
+import { NgcCookieConsentService } from 'ngx-cookieconsent';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { UserService } from '../../shared/user/shared/user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
-import { Favicon } from '../../shared/favicon/favicon.service';
 import { MatIconRegistry } from '@angular/material';
+import { filter } from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
+import { Recipe } from '../public/recipe/shared/recipe';
+import { Filter } from 'shared/facet/filter/shared/filter';
+import { RecipeService } from '../public/recipe/shared/recipe.service';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +18,6 @@ import { MatIconRegistry } from '@angular/material';
   styleUrls: ['./root.component.scss']
 })
 export class AppRootComponent implements OnInit, OnDestroy {
-
-
   menuConfig = {
     displayBurgerMenu: false,
     displayButtonConnection: false,
@@ -24,12 +25,8 @@ export class AppRootComponent implements OnInit, OnDestroy {
     underlineTitle: true,
     displayCart: false
   };
-  // Keep refs to subscriptions to be able to unsubscribe later
-  private popupOpenSubscription: Subscription;
-  private popupCloseSubscription: Subscription;
-  private initializeSubscription: Subscription;
-  private statusChangeSubscription: Subscription;
-  private revokeChoiceSubscription: Subscription;
+
+  recipes: Recipe[];
 
   /**
    * Root Constructor
@@ -41,9 +38,8 @@ export class AppRootComponent implements OnInit, OnDestroy {
               private ccService: NgcCookieConsentService,
               public matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer,
-              private meta: Meta,
-              private title: Title,
-              private favicon: Favicon) {
+              private router: Router,
+              private recipeService: RecipeService) {
     this.matIconRegistry.addSvgIcon(
       `search`,
       this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/images/search.svg`)
@@ -60,42 +56,74 @@ export class AppRootComponent implements OnInit, OnDestroy {
       `arrow-down`,
       this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/arrow-down.svg`)
     );
+    this.matIconRegistry.addSvgIcon(
+      `arrow-up`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/arrow-down.svg`)
+    );
+
+    // previous url
+    let previousRoute = router.routerState.snapshot.url;
+
+    // Route subscriber
+    router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((data: NavigationEnd) => {
+        // We want to reset the scroll position on navigation except when navigating within
+        // the page for a single component.
+        if (!isNavigationWithinComponentView(previousRoute, data.urlAfterRedirects)) {
+          resetScrollPosition();
+        }
+
+        previousRoute = data.urlAfterRedirects;
+      });
   }
 
   ngOnInit() {
-    // subscribe to cookieconsent observables to react to main events
-    this.popupOpenSubscription = this.ccService.popupOpen$.subscribe(
-      () => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
-
-    this.popupCloseSubscription = this.ccService.popupClose$.subscribe(
-      () => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
-
-    this.initializeSubscription = this.ccService.initialize$.subscribe(
-      (event: NgcInitializeEvent) => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
-
-    this.statusChangeSubscription = this.ccService.statusChange$.subscribe(
-      (event: NgcStatusChangeEvent) => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
-
-    this.revokeChoiceSubscription = this.ccService.revokeChoice$.subscribe(
-      () => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
+    this.startAnalytics();
+    this.onQuery({limit: 10});
   }
 
   ngOnDestroy() {
-    // unsubscribe to cookieconsent observables to prevent memory leaks
-    this.popupOpenSubscription.unsubscribe();
-    this.popupCloseSubscription.unsubscribe();
-    this.initializeSubscription.unsubscribe();
-    this.statusChangeSubscription.unsubscribe();
-    this.revokeChoiceSubscription.unsubscribe();
+  }
+
+  startAnalytics() {
+    this.angulartics2GoogleAnalytics.startTracking();
+  }
+
+  onQuery(query: {limit?: number, filters?: Filter[]}) {
+    if (query) {
+      this.recipeService.query$.next(query);
+      this.recipeService.getRecipes()
+        .subscribe((recipes) => {
+          this.recipes = recipes;
+        }, () => {
+          this.recipes = [];
+        });
+    }
+  }
+}
+
+
+/**
+ * If component is new component with a view
+ */
+function isNavigationWithinComponentView(oldUrl: string, newUrl: string) {
+  const componentViewExpression = /components\/(\w+)/;
+  return oldUrl && newUrl
+    && componentViewExpression.test(oldUrl)
+    && componentViewExpression.test(newUrl)
+    && oldUrl.match(componentViewExpression)[1] === newUrl.match(componentViewExpression)[1];
+}
+
+/**
+ * Reset scroll top 0 if side nav mat content exists
+ */
+function resetScrollPosition() {
+  if (typeof document === 'object' && document) {
+    const sidenavContent = document.querySelector('.main-content');
+    if (sidenavContent) {
+      console.log('reset top');
+      sidenavContent.scrollTop = 0;
+    }
   }
 }

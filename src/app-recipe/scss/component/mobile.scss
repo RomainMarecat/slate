@@ -1,0 +1,29 @@
+@include media-breakpoint-between(xs, sm) {
+  .cdk-overlay-pane {
+    &.search-dialog {
+      width: 100vw;
+      max-width: 100vw !important;
+      height: 100px;
+      position: absolute !important;
+      top: 64px;
+
+      form {
+        &.search-form {
+          label {
+            font-size: 1rem;
+          }
+
+          mat-form-field {
+            padding-left: 30px;
+            width: 70vw;
+          }
+        }
+      }
+    }
+
+    .search-autocomplete {
+      left: -30px;
+      width: 100vw;
+    }
+  }
+}

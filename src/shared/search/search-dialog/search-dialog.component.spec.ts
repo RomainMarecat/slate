@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchComponent } from './search.component';
+import { SearchDialogComponent } from './search-dialog.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import {
   MAT_DIALOG_DATA,
@@ -17,15 +17,20 @@ import { RecipeService } from '../../../app-recipe/public/recipe/shared/recipe.s
 import { MockRecipeService } from '../../../app-recipe/public/recipe/shared/mock-recipe.service';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
-describe('SearchComponent', () => {
-  let component: SearchComponent;
-  let fixture: ComponentFixture<SearchComponent>;
+describe('SearchDialogComponent', () => {
+  let component: SearchDialogComponent;
+  let fixture: ComponentFixture<SearchDialogComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
+        FlexLayoutModule,
         MatDialogModule,
         MatIconModule,
         MatFormFieldModule,
@@ -38,7 +43,7 @@ describe('SearchComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [SearchComponent],
+      declarations: [SearchDialogComponent],
       providers: [
         {provide: MAT_DIALOG_DATA, useValue: {}},
         {provide: MatDialogRef, useValue: {}},
@@ -50,7 +55,7 @@ describe('SearchComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchComponent);
+    fixture = TestBed.createComponent(SearchDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

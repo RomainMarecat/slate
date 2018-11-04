@@ -47,6 +47,7 @@ export class VisitorService {
       switchMap(([filters, limit, orderBy, query]) => {
         return this.afs.collection(this.table, (ref) => {
           this.query = ref;
+
           if (query && this.query) {
             if (query.limit) {
               this.query = this.query.limit(query.limit);

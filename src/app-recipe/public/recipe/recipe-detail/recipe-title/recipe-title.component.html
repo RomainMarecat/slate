@@ -1,0 +1,43 @@
+<div class="recipe-title-wrapper py-5"
+     [style.background-color]="recipe.color"
+     *ngIf="recipe && recipe.color">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center text-white p-5">
+        {{ recipe.name }}
+      </h1>
+    </div>
+  </div>
+
+  <div class="separator pb-5"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+    -------------
+  </div>
+
+  <div class="row" *ngIf="!showStepper">
+    <div class="col-12">
+      <h2 class="cook-time text-center">
+        <span>
+          {{ 'recipe-detail.title.yield'|translate }}
+        </span>
+        {{ recipe.yield }}
+      </h2>
+    </div>
+  </div>
+
+  <div fxLayout="row"
+       fxLayoutAlign="center stretch">
+    <div class="stepper"
+         fxFlex="50"
+         fxFlex.xs="90"
+         *ngIf="showStepper">
+      <mat-horizontal-stepper linear>
+        <ng-template matStepperIcon="edit">
+          <mat-icon>check</mat-icon>
+        </ng-template>
+        <mat-step *ngFor="let i of steps"></mat-step>
+      </mat-horizontal-stepper>
+    </div>
+  </div>
+</div>

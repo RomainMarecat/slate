@@ -1,0 +1,35 @@
+<div class="mt-5 text-center recipe-informations"
+     fxLayout="row wrap"
+     fxLayoutAlign="space-around stretch"
+     *ngIf="recipe">
+  <mat-card class="card-information m-2"
+            fxFlex="40">
+    <p>{{ 'recipe-detail.title.cook_time'|translate }}</p>
+    <p *ngIf="recipe.cook_time; else noTime" class="recipe-values">{{ recipe.cook_time | date:'hh:mm' }}</p>
+  </mat-card>
+
+  <mat-card class="card-information m-2"
+            fxFlex="40">
+    <p>{{ 'recipe-detail.title.prep_time'|translate }}</p>
+    <p *ngIf="recipe.prep_time; else noTime" class="recipe-values">{{ recipe.prep_time | date:'hh:mm' }}</p>
+  </mat-card>
+
+  <mat-card class="card-information m-2"
+            fxFlex="40">
+    <p>{{ 'recipe-detail.title.rating'|translate }}</p>
+    <span *ngFor="let star of [1,2,3]">
+      <mat-icon *ngIf="star < recipe.rating">star_rate</mat-icon>
+      <mat-icon *ngIf="star >= recipe.rating">star_border</mat-icon>
+    </span>
+  </mat-card>
+
+  <mat-card class="card-information m-2"
+            fxFlex="40">
+    <p>{{ 'recipe-detail.title.waiting_time'|translate }}</p>
+    <p *ngIf="recipe.waiting_time; else noTime" class="recipe-values">{{ recipe.waiting_time | date:'hh:mm' }}</p>
+  </mat-card>
+</div>
+
+<ng-template #noTime>
+  -
+</ng-template>

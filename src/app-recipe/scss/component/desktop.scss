@@ -1,12 +1,68 @@
-mat-toolbar.main-menu {
-  .logo {
-    .link-logo {
-      .cls-2 {
-        text-transform: capitalize;
-        font-family: $second-font, serif;
-        font-size: 24px;
-        font-weight: 700;
+@include media-breakpoint-up(lg) {
+  mat-toolbar.main-menu {
+    .logo {
+      .link-logo {
+        .cls-2 {
+          font-family: $second-font, serif;
+          font-size: 24px;
+          font-weight: 700;
+        }
       }
     }
+  }
+
+  .cdk-overlay-pane {
+
+    // Dialog search
+    &.search-dialog {
+      width: 100vw;
+      max-width: 100vw !important;
+      height: 100px;
+      position: absolute !important;
+      top: 64px;
+
+      .mat-dialog-container {
+        border-radius: 0;
+        padding: 24px 0;
+      }
+
+      form {
+        &.search-form {
+          label {
+            font-size: 2rem;
+          }
+
+          mat-form-field {
+            width: 25vw;
+          }
+        }
+      }
+    }
+
+    // Dialog search when autocomplete words
+    .mat-autocomplete-panel.search-autocomplete {
+
+      width: 100%;
+
+      mat-option {
+        border-bottom: solid 1px mat-color($white);
+        padding: 2.5rem;
+
+        .mat-option-text {
+          display: flex;
+          justify-content: flex-end;
+          flex-direction: row;
+          align-items: center;
+          font-size: 1.125rem;
+        }
+      }
+
+      mat-icon.arrow {
+        width: 12px;
+        height: 12px;
+        line-height: 12px; // Default width/height mat-icon
+      }
+    }
+
   }
 }
