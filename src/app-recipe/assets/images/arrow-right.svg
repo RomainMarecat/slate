@@ -1,9 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.98 12.98">
-    <defs></defs>
     <title>arrow-right</title>
-    <g id="arrow-right" data-name="arrow-right">
-        <g id="arrow-right-2" data-name="arrow-right">
-            <polygon id="arrow-right-3" data-name="&lt;Tracé&gt;" class="cls-1" points="0 0 0 12.98 8.98 6.49 0 0"/>
+    <g id="arrow-right">
+        <g id="arrow-right-2">
+            <polygon id="arrow-right-3" points="0 0 0 12.98 8.98 6.49 0 0"/>
         </g>
     </g>
 </svg>
