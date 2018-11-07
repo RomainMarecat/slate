@@ -15,6 +15,12 @@ import { RecipeService } from '../shared/recipe.service';
 import { AlertService } from 'shared/popup/alert.service';
 import { MockAlertService } from 'shared/popup/mock-alert.service';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { RecipeInformationComponent } from './recipe-information/recipe-information.component';
+import { RecipeInstructionListComponent } from './recipe-instruction-list/recipe-instruction-list.component';
+import { RecipePreparationListComponent } from './recipe-preparation-list/recipe-preparation-list.component';
+import { RecipeTitleComponent } from './recipe-title/recipe-title.component';
+import { ScrollService } from 'shared/scroll/shared/scroll.service';
+import { ScrollModule } from 'shared/scroll/scroll.module';
 
 describe('RecipeDetailComponent', () => {
   let component: RecipeDetailComponent;
@@ -35,15 +41,23 @@ describe('RecipeDetailComponent', () => {
         SeoModule,
         MatCardModule,
         RouterTestingModule,
+        ScrollModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
-        })
+        }),
       ],
-      declarations: [RecipeDetailComponent],
+      declarations: [
+        RecipeDetailComponent,
+        RecipeInformationComponent,
+        RecipeInstructionListComponent,
+        RecipePreparationListComponent,
+        RecipeTitleComponent
+      ],
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: RecipeService, useClass: MockRecipeService},
         {provide: SeoService, useClass: SeoService},
+        {provide: ScrollService, useClass: ScrollService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
       ]
     })

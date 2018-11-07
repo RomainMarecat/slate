@@ -42,6 +42,6 @@ testem.log
 Thumbs.db
 
 design/gt500.psd
-
-
+.firebase/*
+.firebase
 src/app-alr/assets/*.css

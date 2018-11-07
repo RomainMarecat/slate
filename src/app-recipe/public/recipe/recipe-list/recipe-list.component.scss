@@ -13,6 +13,8 @@
 .recipe-list {
   width: 100%;
   mat-card {
+    cursor: pointer;
+
     mat-card-title {
       color: mat-color($white);
     }

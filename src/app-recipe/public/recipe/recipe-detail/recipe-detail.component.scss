@@ -8,17 +8,22 @@
 
 .recipe-detail {
   width: 100%;
-  overflow-x: hidden;
-
-  .cook-time {
-    color: mat-color($white);
+  .section {
+    min-height: calc(100vh - 64px);
   }
+}
 
-  .separator {
-    line-height: 1rem;
-    font-size: 5rem;
-    text-align: center;
-    letter-spacing: -30px;
-    color: mat-color($white);
+.next-section-wrapper {
+  position: absolute;
+  bottom: 10px;
+  left: auto;
+  right: auto;
+  width: 100%;
+  text-align: center;
+  button {
+    background-color: mat-color($second);
+    mat-icon {
+      color: mat-color($white) !important;
+    }
   }
 }

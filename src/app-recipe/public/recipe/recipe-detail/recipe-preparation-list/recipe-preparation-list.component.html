@@ -1,0 +1,11 @@
+<mat-card class="preparation-wrapper mt-5"
+          *ngIf="recipe">
+  <ul fxLayout="row wrap"
+      fxLayoutAlign="space-around stretch">
+    <li class="m-2"
+        *ngFor="let preparation of recipe.preparations"
+        fxFlex="40"
+        [innerHTML]="getSentence(preparation)">
+    </li>
+  </ul>
+</mat-card>

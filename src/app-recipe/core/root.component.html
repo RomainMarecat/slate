@@ -1,6 +1,10 @@
-<div class="column">
-  <app-menu class="top" [config]="menuConfig"></app-menu>
-  <div class="bottom">
+<div id="recipe-app-content" class="site-content">
+  <app-menu class="menu-component"
+            [config]="menuConfig"
+            [searchUrl]="'recipes'"
+            [documents]="recipes"
+            (queryChange)="onQuery($event)"></app-menu>
+  <div class="router-content main-content">
     <router-outlet></router-outlet>
   </div>
 </div>

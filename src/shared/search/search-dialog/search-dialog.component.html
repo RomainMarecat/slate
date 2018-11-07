@@ -1,0 +1,46 @@
+<form class="search-form"
+      [formGroup]="form"
+      fxLayout="row"
+      fxLayoutAlign="end center"
+      fxLayoutGap="10px">
+  <label class="text-ucfirst" fxShow.gt-sm fxHide.xs>{{ 'input.placeholder.search'|translate }}</label>
+  <mat-form-field>
+    <input [matAutocomplete]="auto"
+           matInput
+           [formControl]="form.get('search')"
+           name="search"
+           type="search"
+           [placeholder]="'input.placeholder.search'|translate"
+           [attr.aria-label]="'input.placeholder.search'|translate" *ngIf="mqAlias === 'xs'">
+    <input [matAutocomplete]="auto"
+           matInput
+           [formControl]="form.get('search')"
+           name="search"
+           type="search"
+           [attr.aria-label]="'input.placeholder.search'|translate" *ngIf="mqAlias !== 'xs'">
+    <mat-autocomplete class="search-autocomplete mat-autocomplete-panel"
+                      #auto="matAutocomplete"
+                      [panelWidth]="mqAlias === 'xs' ? '100vw' : ''">
+      <mat-option [value]="document?.name"
+                  (click)="seeDocument(document)"
+                  *ngFor="let document of filteredDocuments"
+                  [style.background-color]="document.color">
+        <span class="mr-5">{{ document?.name }}</span>
+        <mat-icon class="arrow"
+                  color="primary"
+                  svgIcon="arrow-right">
+        </mat-icon>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button mat-icon-button
+          type="button"
+          role="button"
+          [attr.aria-label]="'cta.search'|translate"
+          class="search-button"
+          (click)="getResults()">
+    <mat-icon class="arrow"
+              color="warn"
+              svgIcon="arrow-right"></mat-icon>
+  </button>
+</form>

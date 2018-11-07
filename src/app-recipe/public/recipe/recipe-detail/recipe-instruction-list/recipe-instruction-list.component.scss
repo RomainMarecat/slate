@@ -1,0 +1,32 @@
+@import '../../../../../app-recipe/scss/theme/theme';
+
+.instruction-wrapper {
+  .order-index {
+    text-align: center;
+    span {
+      padding: 16px 24px;
+      height: 64px;
+      width: 64px;
+      line-height: 64px;
+      color: mat-color($white);
+      background-color: mat-color($second);
+      border-radius: 4px;
+    }
+
+  }
+
+  .ingredients-wrapper {
+    .badge {
+      padding: 12px 16px;
+    }
+  }
+
+  mat-card.instruction-card {
+    background: $block-color-grey;
+
+    &.section {
+      min-height: calc(100vh - 64px);
+    }
+
+  }
+}

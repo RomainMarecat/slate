@@ -23,7 +23,7 @@
   <div id="identifier-recipe-list-wrapper"
        class="recipe-list"
        *ngFor="let recipe of recipes; let i = index">
-    <mat-card class="recipe-card pt-5 mb-2 pb-0"
+    <mat-card class="recipe-card pt-5 mb-2 pb-5"
               (click)="navigateTo(recipe)"
               [style.background-color]="recipe.color">
       <mat-card-title class="recipe-name mat-card-title"

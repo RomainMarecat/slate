@@ -57,6 +57,10 @@ import { environment } from '../../app-hockey/environments/environment';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MockRecipeService } from '../public/recipe/shared/mock-recipe.service';
+import { RecipeService } from '../public/recipe/shared/recipe.service';
+import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { MenuModule } from 'shared/menu/menu.module';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -89,6 +93,8 @@ export const cookieConfig: NgcCookieConsentConfig = {
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
   let fixture: ComponentFixture<AppRootComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -123,6 +129,7 @@ describe('AppRootComponent', () => {
         MatMenuModule,
         MatCommonModule,
         MatTooltipModule,
+        MenuModule,
         NgcCookieConsentModule.forRoot(cookieConfig),
         Angulartics2Module.forRoot({
           developerMode: true,
@@ -148,6 +155,7 @@ describe('AppRootComponent', () => {
         {provide: AlertService, useClass: MockAlertService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},
         {provide: CmsService, useClass: MockCmsService},
+        {provide: RecipeService, useClass: MockRecipeService},
         I18nService,
         MenuService,
         SidenavService,

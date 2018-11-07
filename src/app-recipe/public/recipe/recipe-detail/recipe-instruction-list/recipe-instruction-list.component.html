@@ -1,0 +1,43 @@
+<div class="instruction-wrapper pb-5"
+     *ngIf="recipe">
+  <mat-card [attr.id]="'instruction-' + i"
+            *ngFor="let instruction of recipe.instructions; let i = index"
+            class="section instruction-card my-3"
+            [@scrollAnimation]="state">
+
+    <mat-card-title fxLayout="row"
+                    fxLayoutAlign="start stretch"
+                    fxLayoutGap="20px">
+      <div class="order-index"
+           fxFlex="20">
+        <span>{{ instruction.order_index}}</span>
+      </div>
+      <h3 fxFlex="70"
+          class="pb-0"
+          [innerHTML]="instruction.sentence"></h3>
+    </mat-card-title>
+    <mat-card-content fxLayout="row"
+                      fxLayoutAlign="center stretch"
+                      fxLayoutGap="20px">
+      <div class="ingredients-wrapper"
+           *ngFor="let ingredient of instruction.ingredients">
+        <span class="badge"
+              [style.background-color]="ingredient.color">
+          {{ ingredient.name }}
+        </span>
+      </div>
+    </mat-card-content>
+    <img fxHide.gt-sm
+         fxShow.xs
+         class="instruction-image mb-0 mt-5"
+         mat-card-image
+         [src]="instruction.image && instruction.image.length > 0 ? instruction.image : 'https://picsum.photos/400/300?random'"
+         [alt]="instruction.sentence">
+    <img fxHide.xs
+         fxShow.gt-sm
+         class="instruction-image mb-0 mt-5"
+         mat-card-image
+         [src]="instruction && instruction.image.length >0 ? instruction.image : 'https://picsum.photos/1080/200?random'"
+         [alt]="instruction.sentence">
+  </mat-card>
+</div>
