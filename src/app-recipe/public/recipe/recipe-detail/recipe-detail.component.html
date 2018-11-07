@@ -13,7 +13,8 @@
                       [showStepper]="currentInstruction > 0"
                       [steps]="recipe.instructions"></app-recipe-title>
 
-    <app-recipe-information [recipe]="recipe"></app-recipe-information>
+    <app-recipe-information [recipe]="recipe"
+                            [stickyContent]="currentInstruction > 0"></app-recipe-information>
 
     <app-recipe-preparation-list [recipe]="recipe"></app-recipe-preparation-list>
 

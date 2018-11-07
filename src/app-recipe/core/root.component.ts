@@ -49,6 +49,10 @@ export class AppRootComponent implements OnInit, OnDestroy {
       this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/user.svg`)
     );
     this.matIconRegistry.addSvgIcon(
+      `arrow-left`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/arrow-left.svg`)
+    );
+    this.matIconRegistry.addSvgIcon(
       `arrow-right`,
       this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/arrow-right.svg`)
     );
@@ -58,7 +62,7 @@ export class AppRootComponent implements OnInit, OnDestroy {
     );
     this.matIconRegistry.addSvgIcon(
       `arrow-up`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/arrow-down.svg`)
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/arrow-up.svg`)
     );
 
     // previous url

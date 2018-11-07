@@ -10,6 +10,8 @@ export class RecipeInformationComponent implements OnInit {
 
   @Input() recipe: Recipe;
 
+  @Input() stickyContent: boolean;
+
   constructor() {
   }
 
