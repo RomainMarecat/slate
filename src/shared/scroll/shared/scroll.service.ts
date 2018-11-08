@@ -27,7 +27,7 @@ export class ScrollService {
 
   get topOfPageElement() {
     if (!this._topOfPageElement) {
-      this._topOfPageElement = this.document.getElementById('recipe-app-content') || this.document.body;
+      this._topOfPageElement = this.document.querySelector('.recipe-detail') || this.document.body;
     }
     return this._topOfPageElement;
   }
@@ -71,7 +71,8 @@ export class ScrollService {
    */
   scrollToElement(element: Element | null) {
     if (element) {
-      element.scrollIntoView({behavior: 'smooth', block: 'end', inline: 'start'});
+
+      element.scrollIntoView();
 
       if (window && window.scrollBy) {
         // Scroll as much as necessary to align the top of `element` at `topOffset`.
@@ -127,8 +128,8 @@ export class ScrollService {
 
 
   /** Scroll to the top of the document. */
-  scrollToTop() {
-    this.scrollToElement(this.topOfPageElement);
+  scrollToTop(element?: HTMLElement) {
+    this.scrollToElement(element ? element : this.topOfPageElement);
   }
 
   /**

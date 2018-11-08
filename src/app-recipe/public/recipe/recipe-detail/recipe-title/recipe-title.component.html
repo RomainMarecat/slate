@@ -1,9 +1,14 @@
-<div class="recipe-title-wrapper py-5"
+<div class="recipe-title-wrapper"
      [style.background-color]="recipe.color"
+     [class.p-5]="!showStepper"
+     [class.p-3]="showStepper"
+     [class.sticky]="showStepper"
      *ngIf="recipe && recipe.color">
   <div class="row">
     <div class="col-12">
-      <h1 class="text-center text-white p-5">
+      <h1 class="text-center text-white"
+          [class.p-5]="!showStepper"
+          [class.p-3]="showStepper">
         {{ recipe.name }}
       </h1>
     </div>
@@ -11,7 +16,8 @@
 
   <div class="separator pb-5"
        fxLayout="row"
-       fxLayoutAlign="center stretch">
+       fxLayoutAlign="center stretch"
+       *ngIf="!showStepper">
     -------------
   </div>
 
