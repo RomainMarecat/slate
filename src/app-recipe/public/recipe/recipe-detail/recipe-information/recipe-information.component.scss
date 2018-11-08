@@ -4,6 +4,10 @@
 
   &.sticky {
     padding-top: 25vh;
+
+    &.xs {
+      padding-top: 128px;
+    }
   }
 
   mat-card.card-information {

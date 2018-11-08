@@ -25,9 +25,9 @@ export class ScrollService {
     return this._topOffset;
   }
 
-  get topOfPageElement() {
+  get topOfPageElement(): HTMLElement {
     if (!this._topOfPageElement) {
-      this._topOfPageElement = this.document.querySelector('.recipe-detail') || this.document.body;
+      this._topOfPageElement = this.document.body.querySelector('.main-content');
     }
     return this._topOfPageElement;
   }

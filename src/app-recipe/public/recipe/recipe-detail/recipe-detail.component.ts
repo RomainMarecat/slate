@@ -57,7 +57,7 @@ export class RecipeDetailComponent implements OnInit {
 
   onTop() {
     this.currentInstruction = 0;
-    this.scrollService.scrollToTop();
+    this.scrollService.scrollToTop(window.document.querySelector('.recipe-detail'));
     this.limitInstructionReached = false;
   }
 

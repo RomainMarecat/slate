@@ -1,14 +1,9 @@
 @import '../../../../../app-recipe/scss/theme/theme';
 
-.separator {
-  line-height: 1rem;
-  font-size: 5rem;
-  text-align: center;
-  letter-spacing: -30px;
-  color: mat-color($white);
-}
-
 .recipe-title-wrapper {
+  height: 64px;
+  overflow-y: hidden;
+
   &.sticky {
     position: fixed;
     top: 64px;
@@ -16,12 +11,38 @@
     z-index: 1;
   }
 
+  h1 {
+    margin-bottom: 0;
+    &.xs {
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+  }
+
+  .separator {
+    line-height: 0;
+    font-size: 5rem;
+    text-align: center;
+    letter-spacing: -30px;
+    color: mat-color($white);
+
+    &.xs {
+      font-size: 2rem;
+      letter-spacing: -4px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  }
+
   .cook-time {
     color: mat-color($white);
+
+    &.xs {
+      font-size: 1rem;
+    }
   }
 
   .stepper {
-
     .mat-stepper-horizontal {
       color: mat-color($primary);
       background-color: transparent;
@@ -43,6 +64,12 @@
 
       /deep/ .mat-horizontal-content-container {
         padding: 0;
+      }
+    }
+
+    &.xs {
+      /deep/ .mat-step-header {
+        height: 2rem;
       }
     }
   }
