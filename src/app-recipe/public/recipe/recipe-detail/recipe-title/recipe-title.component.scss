@@ -1,14 +1,20 @@
 @import '../../../../../app-recipe/scss/theme/theme';
 
 .recipe-title-wrapper {
-  height: 64px;
-  overflow-y: hidden;
+  height: 21rem;
+
+  &.xs {
+    height: 64px;
+    overflow-y: hidden;
+  }
 
   &.sticky {
     position: fixed;
-    top: 64px;
+    top: 0;
     width: 100%;
     z-index: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   h1 {

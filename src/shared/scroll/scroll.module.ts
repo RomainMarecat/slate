@@ -2,19 +2,22 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { ScrollService } from './shared/scroll.service';
 import { CommonModule } from '@angular/common';
 import { ScrollToDirective } from './scroll-to.directive';
+import { InfiniteScrollerDirective } from './infinite-scroller.directive';
 
 @NgModule({
   declarations: [
-    ScrollToDirective
+    ScrollToDirective,
+    InfiniteScrollerDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    ScrollToDirective
+    ScrollToDirective,
+    InfiniteScrollerDirective
   ],
   providers: [
-    ScrollService
+    ScrollService,
   ]
 })
 export class ScrollModule {

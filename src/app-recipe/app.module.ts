@@ -29,9 +29,10 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    CoreModule.forRoot(environment),
     CommonModule,
     MenuModule,
-    CoreModule.forRoot(environment),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -39,8 +40,6 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [
     AppRootComponent

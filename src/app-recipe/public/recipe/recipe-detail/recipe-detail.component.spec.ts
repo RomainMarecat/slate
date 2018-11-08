@@ -4,7 +4,7 @@ import { RecipeDetailComponent } from './recipe-detail.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule, MatStepperModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
@@ -21,6 +21,7 @@ import { RecipePreparationListComponent } from './recipe-preparation-list/recipe
 import { RecipeTitleComponent } from './recipe-title/recipe-title.component';
 import { ScrollService } from 'shared/scroll/shared/scroll.service';
 import { ScrollModule } from 'shared/scroll/scroll.module';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 describe('RecipeDetailComponent', () => {
   let component: RecipeDetailComponent;
@@ -37,6 +38,8 @@ describe('RecipeDetailComponent', () => {
         MatIconModule,
         MatButtonModule,
         MatProgressSpinnerModule,
+        MatStepperModule,
+        ScrollingModule,
         MatCardModule,
         SeoModule,
         MatCardModule,

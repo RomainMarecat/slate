@@ -1,17 +1,30 @@
-<div class="container">
+<div class="container"
+     *ngIf="isLoading && !recipe">
   <div class="row">
-    <div class="col-12 recipe-loader mt-5" *ngIf="isLoading && !recipe">
+    <div class="col-12 recipe-loader mt-5">
       <mat-spinner></mat-spinner>
     </div>
   </div>
 </div>
-<div class="recipe-detail"
-     #recipeDetail
-     *ngIf="!isLoading && recipe">
+
+
+<app-recipe-title [recipe]="recipe"
+                  [showStepper]="currentInstruction > 0"
+                  [steps]="recipe.instructions"
+                  *ngIf="currentInstruction > 0 && recipe?.instructions"></app-recipe-title>
+
+<cdk-virtual-scroll-viewport class="recipe-detail recipe-detail-cdk"
+                             [ngClass.xs]="{xs: true, 'show-stepper': currentInstruction > 0}"
+                             [ngClass.gt-sm]="{'show-stepper': currentInstruction > 0}"
+                             itemSize="600"
+                             *ngIf="!isLoading && recipe">
   <div class="section header-section">
+
     <app-recipe-title [recipe]="recipe"
                       [showStepper]="currentInstruction > 0"
-                      [steps]="recipe.instructions"></app-recipe-title>
+                      [steps]="recipe.instructions"
+                      *ngIf="currentInstruction === 0"></app-recipe-title>
+
 
     <app-recipe-information [recipe]="recipe"
                             [stickyContent]="currentInstruction > 0"></app-recipe-information>
@@ -22,35 +35,33 @@
 
   <div class="instruction-section"
        *ngIf="recipe.instructions">
-    <app-recipe-instruction-list #instructionWrapper [recipe]="recipe"></app-recipe-instruction-list>
+    <app-recipe-instruction-list [recipe]="recipe"></app-recipe-instruction-list>
 
   </div>
-</div>
+</cdk-virtual-scroll-viewport>
 
 <div class="next-section-wrapper">
-
   <button type="button"
           (click)="onMore()"
           role="button"
           mat-fab
           color="warn"
           [attr.aria-label]="'cta.next'|translate"
-          *ngIf="limitInstructionReached === false; else topButton">
+          [class.d-none]="limitInstructionReached || currentInstruction >= recipe.instructions.length">
     <mat-icon class="arrow"
               color="primary"
               svgIcon="arrow-down"></mat-icon>
   </button>
 
-  <ng-template #topButton>
-    <button type="button"
-            role="button"
-            mat-fab
-            color="warn"
-            (click)="onTop()"
-            [attr.aria-label]="'cta.top'|translate">
-      <mat-icon class="arrow"
-                color="primary"
-                svgIcon="arrow-up"></mat-icon>
-    </button>
-  </ng-template>
+  <button type="button"
+          role="button"
+          mat-fab
+          color="warn"
+          (click)="onTop()"
+          [attr.aria-label]="'cta.top'|translate"
+          [class.d-none]="!limitInstructionReached || currentInstruction < recipe.instructions.length">
+    <mat-icon class="arrow"
+              color="primary"
+              svgIcon="arrow-up"></mat-icon>
+  </button>
 </div>

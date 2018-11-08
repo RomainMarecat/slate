@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { Recipe } from '../../shared/recipe';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-recipe-instruction-list',
@@ -31,6 +32,6 @@ export class RecipeInstructionListComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
 
+  }
 }
