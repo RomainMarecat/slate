@@ -3,6 +3,7 @@
   <mat-card [attr.id]="'instruction-' + i"
             *ngFor="let instruction of recipe.instructions; let i = index"
             class="section instruction-card my-3"
+            [ngClass.xs]="{xs: true}"
             [@scrollAnimation]="state">
 
     <mat-card-title fxLayout="row"

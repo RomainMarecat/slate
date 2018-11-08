@@ -1,20 +1,22 @@
 <div class="recipe-title-wrapper"
      [style.background-color]="recipe.color"
-     [class.p-5]="!showStepper"
-     [class.p-3]="showStepper"
+     [ngClass.xs]="{'p-1': !showStepper, 'p-0': showStepper}"
+     [ngClass.gt-sm]="{'p-5': !showStepper, 'p-3': showStepper}"
      [class.sticky]="showStepper"
      *ngIf="recipe && recipe.color">
   <div class="row">
     <div class="col-12">
       <h1 class="text-center text-white"
-          [class.p-5]="!showStepper"
-          [class.p-3]="showStepper">
+          [ngClass.xs]="{'p-0' : !showStepper, 'p-0': showStepper, xs: true}"
+          [ngClass.gt-sm]="{'p-5' : !showStepper, 'p-3': showStepper}">
         {{ recipe.name }}
       </h1>
     </div>
   </div>
 
-  <div class="separator pb-5"
+  <div class="separator"
+       [ngClass.xs]="{'pb-1': true, xs: true}"
+       [ngClass.gt-sm]="{'pb-5' : true}"
        fxLayout="row"
        fxLayoutAlign="center stretch"
        *ngIf="!showStepper">
@@ -23,7 +25,8 @@
 
   <div class="row" *ngIf="!showStepper">
     <div class="col-12">
-      <h2 class="cook-time text-center">
+      <h2 class="cook-time text-center"
+          [ngClass.xs]="{xs: true}">
         <span>
           {{ 'recipe-detail.title.yield'|translate }}
         </span>
@@ -37,6 +40,7 @@
     <div class="stepper"
          fxFlex="50"
          fxFlex.xs="90"
+         [ngClass.xs]="{xs: true}"
          *ngIf="showStepper">
       <mat-horizontal-stepper linear>
         <ng-template matStepperIcon="edit">
