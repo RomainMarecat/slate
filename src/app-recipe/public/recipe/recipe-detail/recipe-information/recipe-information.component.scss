@@ -2,12 +2,16 @@
 
 .recipe-informations {
 
-  &.sticky {
-    padding-top: 25vh;
+  &.xs {
+    padding-top: 0;
+  }
 
-    &.xs {
-      padding-top: 128px;
-    }
+  &.sticky {
+    padding-top: 12rem;
+  }
+
+  &.xs.sticky {
+    padding-top: 64px;
   }
 
   mat-card.card-information {

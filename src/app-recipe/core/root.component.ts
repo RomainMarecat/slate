@@ -126,7 +126,6 @@ function resetScrollPosition() {
   if (typeof document === 'object' && document) {
     const sidenavContent = document.querySelector('.main-content');
     if (sidenavContent) {
-      console.log('reset top');
       sidenavContent.scrollTop = 0;
     }
   }

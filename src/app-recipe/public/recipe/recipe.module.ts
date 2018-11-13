@@ -13,6 +13,8 @@ import { RecipeInstructionListComponent } from './recipe-detail/recipe-instructi
 import { RecipeTitleComponent } from './recipe-detail/recipe-title/recipe-title.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ScrollModule } from 'shared/scroll/scroll.module';
+import { PlatformModule } from '@angular/cdk/platform';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { ScrollModule } from 'shared/scroll/scroll.module';
     MatStepperModule,
     MatProgressSpinnerModule,
     MatCardModule,
+    PlatformModule,
     RecipeRoutingModule,
+    ScrollingModule,
     ScrollModule.forRoot(),
     TranslateModule.forChild()
   ],

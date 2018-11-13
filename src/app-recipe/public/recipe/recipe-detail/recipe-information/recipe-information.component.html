@@ -1,6 +1,6 @@
 <div class="mt-5 text-center recipe-informations"
-     [ngClass.xs]="{xs: true}"
-     [class.sticky]="stickyContent"
+     [ngClass.xs]="{xs: true, sticky: stickyContent}"
+     [ngClass.gt-sm]="{sticky: stickyContent}"
      fxLayout="row wrap"
      fxLayoutAlign="space-around stretch"
      *ngIf="recipe">
