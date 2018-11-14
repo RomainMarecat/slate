@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { PlatformLocation, DOCUMENT } from '@angular/common';
-import { fromEvent, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, fromEvent, Observable, Subject } from 'rxjs';
 
 export const topMargin = 16;
 
@@ -12,6 +12,8 @@ export const topMargin = 16;
 })
 export class ScrollService {
 
+  scrollEvent: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  scrollEmitted$: Observable<boolean> = this.scrollEvent.asObservable();
   private _topOffset: number | null;
   private _topOfPageElement: HTMLElement;
 
@@ -36,6 +38,15 @@ export class ScrollService {
               private location: PlatformLocation) {
     // On resize, the toolbar might change height, so "invalidate" the top offset.
     fromEvent(window, 'resize').subscribe(() => this._topOffset = null);
+  }
+
+  /**
+   * Emit new scroll Event to parent
+   */
+  onScrollTop(value: boolean) {
+    if (value) {
+      this.scrollEvent.next(value);
+    }
   }
 
   scrollTo(element: string | HTMLElement, duration: number = 500, offset: number = 0): Observable<any> {

@@ -119,8 +119,6 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit {
   }
 
   onMore() {
-    // @todo on scrollTop Stop the limit reached
-
     if (this.limitInstructionReached === false) {
       const instructions: NodeList = document.querySelectorAll('.instruction-card');
       instructions.forEach((instruction: HTMLElement, index) => {
