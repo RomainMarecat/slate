@@ -29,12 +29,22 @@
   </h1>
   <span class="pl-4" [innerHtml]="title|translate" *ngIf="title && title.length > 0"></span>
   <span class="menu-spacer"></span>
+
+  <!--<span *ngIf="config.displayAdminRecipe">-->
+    <!--<a [routerLink]="['/admin'|localize, 'recipe']"-->
+       <!--mat-raised-button-->
+       <!--color="primary">-->
+      <!--{{ 'cta.admin'|translate }}-->
+    <!--</a>-->
+  <!--</span>-->
+
   <a (click)="search()"
      *ngIf="config.displayIconButtonConnection">
     <div class="menu-icon search">
       <mat-icon svgIcon="search"></mat-icon>
     </div>
   </a>
+
   <a (click)="userService.loginGoogle()"
      *ngIf="config.displayIconButtonConnection">
     <div class="menu-icon user">
@@ -51,6 +61,7 @@
             [innerHtml]="'menu.connection.title'|translate">
     </button>
   </span>
+
   <span *ngIf="config.displayCart">
     <a mat-icon-button
        color="primary"

@@ -1,10 +1,13 @@
 {
   "routes": {
-    "recipes": "recettes"
+    "recipes": "recettes",
+    "recipe": "recette",
+    "admin": "administration"
   },
   "cta": {
     "add": "ajouter",
-    "search": "Rechercher"
+    "search": "Rechercher",
+    "admin": "admin"
   },
   "home": {
     "images": {
@@ -20,7 +23,8 @@
     "title1": "",
     "title2": "Les recettes d'Anne-lise",
     "title": {
-      "home": ""
+      "home": "",
+      "recipe": "recette"
     }
   },
   "meta": {

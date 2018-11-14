@@ -16,6 +16,7 @@ import { Filter } from 'shared/facet/filter/shared/filter';
 export class MenuComponent implements OnInit, OnDestroy {
 
   @Input() config: {
+    displayAdminRecipe: boolean,
     displayBurgerMenu: boolean,
     displayButtonConnection: boolean,
     displayIconButtonConnection: boolean,
@@ -42,6 +43,7 @@ export class MenuComponent implements OnInit, OnDestroy {
               public userService: UserService,
               public matDialog: MatDialog) {
     this.config = {
+      displayAdminRecipe: false,
       displayBurgerMenu: true,
       displayButtonConnection: true,
       displayIconButtonConnection: false,

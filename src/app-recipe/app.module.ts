@@ -15,6 +15,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CheckForUpdateService } from 'shared/pwa/shared/check-for-update.service';
 import { MenuModule } from 'shared/menu/menu.module';
+import { AdminGuard } from 'shared/guard/admin.guard';
 
 registerLocaleData(localeFr);
 registerLocaleData(localeEn);
@@ -49,7 +50,8 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-FR'},
-    CheckForUpdateService
+    CheckForUpdateService,
+    AdminGuard // @todo delete when recipe admin is up
   ]
 })
 export class AppModule {

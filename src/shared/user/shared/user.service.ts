@@ -5,6 +5,7 @@ import { User } from './user';
 import { map, take, tap, timeout } from 'rxjs/operators';
 import { AlertService } from 'shared/popup/alert.service';
 import { Observable } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class UserService {
@@ -72,9 +73,11 @@ export class UserService {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
         }
-      }, (err) => {
-        this.alertService.show(err);
-      });
+      }, (err: HttpErrorResponse) => {
+        this.alertService.show(err.error);
+      }).catch((err) => {
+      this.alertService.show(err.message);
+    });
   }
 
   loginFacebook() {
@@ -84,9 +87,11 @@ export class UserService {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
         }
-      }, (err) => {
-        this.alertService.show(err);
-      });
+      }, (err: HttpErrorResponse) => {
+        this.alertService.show(err.error);
+      }).catch((err) => {
+      this.alertService.show(err.message);
+    });
   }
 
   logout() {

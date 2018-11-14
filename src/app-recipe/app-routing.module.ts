@@ -4,6 +4,7 @@ import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings, ManualPar
 import { TranslateService } from '@ngx-translate/core';
 import { Location } from '@angular/common';
 import { HomeComponent } from './public/home/home.component';
+import { AdminGuard } from 'shared/guard/admin.guard';
 
 export function ManualLoaderFactory(translate: TranslateService, location: Location, settings: LocalizeRouterSettings) {
   return new ManualParserLoader(translate, location, settings, ['fr', 'en'], 'routes.');
@@ -15,6 +16,11 @@ const routes: Routes = [
     path: '',
     component: HomeComponent
   },
+  {
+    canActivate: [AdminGuard],
+    path: 'admin',
+    loadChildren: './../shared/admin/app-recipe/app-recipe.module#AppRecipeModule'
+  }
 ];
 
 @NgModule({

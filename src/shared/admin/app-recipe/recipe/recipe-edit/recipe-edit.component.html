@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="form"
+            (ngSubmit)="saveDocument()"
+            class="form">
+        <mat-card class="mat-card mt-3">
+          <mat-card-content class="mat-card-content"
+                            fxLayout="row"
+                            fxLayoutAlign="space-around stretch"
+                            fxLayoutGap="30px">
+            <mat-form-field class="mat-form-field">
+              <input matInput
+                     maxlength="100"
+                     [placeholder]="'admin.placeholder.recipe.name'|translate"
+                     formControlName="name">
+              <mat-hint align="start"><strong [innerHtml]="'admin.hint.recipe.name'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">{{ form.get('name').value.length }} {{ '/100'|translate }}</mat-hint>
+              <mat-error *ngIf="form.get('name').invalid && form.get('name').value.length === 0"
+                         [innerHtml]="'admin.error.required.recipe.name'|translate"></mat-error>
+              <mat-error *ngIf="form.get('name').invalid && form.get('name').value.length > 0"
+                         [innerHtml]="'admin.error.invalid.recipe.name'|translate"></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="mat-form-field">
+              <input matInput
+                     maxlength="100"
+                     [placeholder]="'admin.placeholder.recipe.slug'|translate"
+                     [formControl]="form.get('slug')">
+              <mat-hint align="start"><strong [innerHtml]="'admin.hint.recipe.slug'|translate"></strong>
+              </mat-hint>
+              <mat-hint align="end">{{ form.get('slug').value.length }} {{ '/100'|translate }}</mat-hint>
+              <mat-error *ngIf="form.get('slug').invalid && form.get('slug').value.length === 0"
+                         [innerHtml]="'admin.error.required.recipe.slug'|translate"></mat-error>
+              <mat-error *ngIf="form.get('slug').invalid && form.get('slug').value.length > 0"
+                         [innerHtml]="'admin.error.invalid.recipe.slug'|translate"></mat-error>
+            </mat-form-field>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <div class="d-flex justify-content-around">
+              <button type="button"
+                      class="back text-uppercase"
+                      mat-raised-button
+                      role="button"
+                      [attr.aria-label]="'cta.cancel'|translate"
+                      [innerHtml]="'cta.cancel'|translate"
+                      (click)="cancel()"></button>
+
+              <button type="submit"
+                      class="validate text-uppercase"
+                      mat-raised-button
+                      role="button"
+                      [attr.aria-label]="'cta.save'|translate"
+                      color="primary">
+                {{ 'cta.save'|translate }}
+              </button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

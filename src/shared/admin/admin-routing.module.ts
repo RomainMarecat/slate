@@ -70,6 +70,11 @@ const routes: Routes = [
         canActivate: [AdminGuard],
         path: 'product',
         loadChildren: './product/product.module#ProductModule'
+      },
+      {
+        canActivate: [AdminGuard],
+        path: 'app-recipe',
+        loadChildren: './app-recipe/app-recipe.module#AppRecipeModule'
       }
     ]
   }

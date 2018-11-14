@@ -19,6 +19,7 @@ import { RecipeService } from '../public/recipe/shared/recipe.service';
 })
 export class AppRootComponent implements OnInit, OnDestroy {
   menuConfig = {
+    displayAdminRecipe: true,
     displayBurgerMenu: false,
     displayButtonConnection: false,
     displayIconButtonConnection: true,
