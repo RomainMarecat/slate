@@ -7,13 +7,13 @@
   <mat-card class="card-information m-2"
             fxFlex="40">
     <p>{{ 'recipe-detail.title.cook_time'|translate }}</p>
-    <p *ngIf="recipe.cook_time; else noTime" class="recipe-values">{{ recipe.cook_time | date:'hh:mm' }}</p>
+    <p *ngIf="recipe.cook_time; else noTime" class="recipe-values">{{ recipe.cook_time }}</p>
   </mat-card>
 
   <mat-card class="card-information m-2"
             fxFlex="40">
     <p>{{ 'recipe-detail.title.prep_time'|translate }}</p>
-    <p *ngIf="recipe.prep_time; else noTime" class="recipe-values">{{ recipe.prep_time | date:'hh:mm' }}</p>
+    <p *ngIf="recipe.prep_time; else noTime" class="recipe-values">{{ recipe.prep_time }}</p>
   </mat-card>
 
   <mat-card class="card-information m-2"
@@ -28,7 +28,7 @@
   <mat-card class="card-information m-2"
             fxFlex="40">
     <p>{{ 'recipe-detail.title.waiting_time'|translate }}</p>
-    <p *ngIf="recipe.waiting_time; else noTime" class="recipe-values">{{ recipe.waiting_time | date:'hh:mm' }}</p>
+    <p *ngIf="recipe.waiting_time; else noTime" class="recipe-values">{{ recipe.waiting_time }}</p>
   </mat-card>
 </div>
 

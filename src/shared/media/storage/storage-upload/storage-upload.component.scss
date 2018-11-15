@@ -47,4 +47,27 @@
     height: auto;
     border: 0;
   }
+
+  &.xs {
+    height: 40px;
+    width: 50px;
+    line-height: 40px;
+
+    .upload-icon {
+      font-size: 20px;
+      line-height: 40px;
+    }
+
+    .close-button {
+      height: 10px;
+      width: 10px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      mat-icon {
+        font-size: 5px;
+      }
+    }
+  }
+
 }

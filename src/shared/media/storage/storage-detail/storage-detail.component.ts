@@ -11,6 +11,8 @@ export class StorageDetailComponent implements OnInit {
 
   @Input() classes: string;
 
+  @Input() matCardImage: boolean;
+
   @Input() height: string;
 
   @Input() width: string;

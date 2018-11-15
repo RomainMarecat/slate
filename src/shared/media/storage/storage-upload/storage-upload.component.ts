@@ -14,6 +14,7 @@ import { AlertService } from '../../../popup/alert.service';
 export class StorageUploadComponent implements OnInit {
 
   @Input() folder: string;
+  @Input() xs: boolean;
   @Input() metadata: any;
   @Input() displayDownloadUrl: boolean;
 

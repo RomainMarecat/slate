@@ -1,36 +1,37 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecipeEditComponent } from './recipe-edit.component';
+import { InstructionEditComponent } from './instruction-edit.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
-import { environment } from '../../../../../app-recipe/environments/environment';
+import { environment } from '../../../../../../app-recipe/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxEditorModule } from 'ngx-editor';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SharedModule } from '../../../../shared.module';
+import { SharedModule } from '../../../../../shared.module';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { MockLocalizeRouterService } from '../../../../router/mock-localize-router.service';
-import { AlertService } from '../../../../popup/alert.service';
-import { MockAlertService } from '../../../../popup/mock-alert.service';
-import { LoaderService } from '../../../../loader/loader.service';
-import { MockLoaderService } from '../../../../loader/mock-loader.service';
-import { RecipeService } from '../../../../../app-recipe/public/recipe/shared/recipe.service';
-import { MockRecipeService } from '../../../../../app-recipe/public/recipe/shared/mock-recipe.service';
-import { configureTestSuite } from '../../../../unit-test/configure-test-suite';
-import { MediaService } from '../../../../media/media.service';
-import { MockMediaService } from '../../../../media/mock-media.service';
-import { InstructionEditComponent } from './instruction-edit/instruction-edit.component';
-import { ColorPickerModule } from 'ngx-color-picker';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { configureTestSuite } from '../../../../../unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../../../../router/mock-localize-router.service';
+import { RecipeService } from '../../../../../../app-recipe/public/recipe/shared/recipe.service';
+import { MockRecipeService } from '../../../../../../app-recipe/public/recipe/shared/mock-recipe.service';
+import { MediaService } from '../../../../../media/media.service';
+import { MockMediaService } from '../../../../../media/mock-media.service';
+import { AlertService } from '../../../../../popup/alert.service';
+import { MockAlertService } from '../../../../../popup/mock-alert.service';
+import { LoaderService } from '../../../../../loader/loader.service';
+import { MockLoaderService } from '../../../../../loader/mock-loader.service';
+import { MediaModule } from '../../../../../media/media.module';
+import { FormModule } from '../../../../../material/form/form.module';
+import { FormGroup } from '@angular/forms';
 
-describe('RecipeEditComponent', () => {
-  let component: RecipeEditComponent;
-  let fixture: ComponentFixture<RecipeEditComponent>;
+describe('InstructionEditComponent', () => {
+  let component: InstructionEditComponent;
+  let fixture: ComponentFixture<InstructionEditComponent>;
 
   configureTestSuite();
 
@@ -39,10 +40,11 @@ describe('RecipeEditComponent', () => {
       imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        ColorPickerModule,
         CommonModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
+        FormModule,
+        MediaModule,
         NgxDatatableModule,
         NgxEditorModule,
         NgSelectModule,
@@ -54,10 +56,7 @@ describe('RecipeEditComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [
-        RecipeEditComponent,
-        InstructionEditComponent
-      ],
+      declarations: [InstructionEditComponent],
       providers: [
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: RecipeService, useClass: MockRecipeService},
@@ -70,12 +69,17 @@ describe('RecipeEditComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RecipeEditComponent);
+    fixture = TestBed.createComponent(InstructionEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should create with empty form', () => {
+    component.form = new FormGroup({});
     expect(component).toBeTruthy();
   });
 });

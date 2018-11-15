@@ -5,7 +5,6 @@ import { AdminGuard } from '../../guard/admin.guard';
 
 const routes: Routes = [
   {
-    canActivate: [AdminGuard],
     path: 'recipe',
     loadChildren: './recipe/recipe.module#RecipeModule'
   }

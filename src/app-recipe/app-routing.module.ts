@@ -17,7 +17,6 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    canActivate: [AdminGuard],
     path: 'admin',
     loadChildren: './../shared/admin/app-recipe/app-recipe.module#AppRecipeModule'
   }

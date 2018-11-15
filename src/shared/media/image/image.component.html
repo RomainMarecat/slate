@@ -11,6 +11,7 @@
     <div appClTransformation [attr.height]="resize.height" [attr.width]="resize.width" crop="scale"></div>
   </app-cloudinary-image>
   <app-storage-detail [classes]="classes"
+                      [matCardImage]="matCardImage"
                       [path]="media?.public_id"
                       [metadata]="{alt: alt}"
                       *ngIf="media?.type === 'storage'"

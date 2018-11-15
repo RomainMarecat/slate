@@ -6,10 +6,10 @@ export interface Recipe {
   key?: string;
   name: string;
   slug: string;
-  total_time: Date;
-  cook_time: Date;
-  prep_time: Date;
-  waiting_time: Date;
+  total_time: string;
+  cook_time: string;
+  prep_time: string;
+  waiting_time: string;
   cuisine_type: string;
   creator: string;
   image: string;

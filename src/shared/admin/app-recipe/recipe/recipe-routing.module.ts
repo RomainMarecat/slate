@@ -9,7 +9,6 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [AdminGuard],
     component: RecipeComponent,
     data: {
       breadcrumb: 'breadcrumb.recipe.title'
@@ -17,7 +16,6 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        canActivate: [AdminGuard],
         component: RecipeListComponent,
         data: {
           breadcrumb: 'breadcrumb.recipe.list'
@@ -25,7 +23,6 @@ const routes: Routes = [
       },
       {
         path: 'add',
-        canActivate: [AdminGuard],
         component: RecipeEditComponent,
         data: {
           breadcrumb: 'breadcrumb.recipe.add'
@@ -33,7 +30,6 @@ const routes: Routes = [
       },
       {
         path: 'edit/:key',
-        canActivate: [AdminGuard],
         component: RecipeEditComponent,
         data: {
           breadcrumb: 'breadcrumb.recipe.edit'

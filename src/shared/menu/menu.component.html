@@ -30,13 +30,13 @@
   <span class="pl-4" [innerHtml]="title|translate" *ngIf="title && title.length > 0"></span>
   <span class="menu-spacer"></span>
 
-  <!--<span *ngIf="config.displayAdminRecipe">-->
-    <!--<a [routerLink]="['/admin'|localize, 'recipe']"-->
-       <!--mat-raised-button-->
-       <!--color="primary">-->
-      <!--{{ 'cta.admin'|translate }}-->
-    <!--</a>-->
-  <!--</span>-->
+  <a [routerLink]="['/admin'|localize, 'recipe']"
+     fxShow
+     fxHide.xs
+     class="mr-3"
+     *ngIf="config.displayAdminRecipe">
+    {{ 'cta.admin'|translate }}
+  </a>
 
   <a (click)="search()"
      *ngIf="config.displayIconButtonConnection">

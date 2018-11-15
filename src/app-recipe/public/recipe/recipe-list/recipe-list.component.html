@@ -36,20 +36,20 @@
                         fxLayoutAlign="center stretch">
         -------------
       </mat-card-content>
-      <img fxHide.gt-sm
-           fxShow.xs
-           class="recipe-image mb-0 mt-5"
-           mat-card-image
-           [src]="recipe.image ? recipe.image : 'https://picsum.photos/400/300?random'"
-           [alt]="recipe.name"
-           *ngIf="i%2 === 0">
-      <img fxHide.xs
-           fxShow.gt-sm
-           class="recipe-image mb-0 mt-5"
-           mat-card-image
-           [src]="recipe.image ? recipe.image : 'https://picsum.photos/1080/200?random'"
-           [alt]="recipe.name"
-           *ngIf="i%2 === 0">
+      <app-image fxHide.gt-sm
+                 fxShow.xs
+                 class="recipe-image mb-0 mt-5"
+                 [matCardImage]="true"
+                 [key]="recipe.image ? recipe.image : ''"
+                 [alt]="recipe.name"
+                 *ngIf="i%2 === 0"></app-image>
+      <app-image fxHide.xs
+                 fxShow.gt-sm
+                 class="recipe-image mb-0 mt-5"
+                 [matCardImage]="true"
+                 [key]="recipe.image ? recipe.image : ''"
+                 [alt]="recipe.name"
+                 *ngIf="i%2 === 0"></app-image>
     </mat-card>
   </div>
 </div>

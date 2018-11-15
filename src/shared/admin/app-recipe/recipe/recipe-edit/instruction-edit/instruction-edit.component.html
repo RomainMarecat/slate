@@ -1,0 +1,60 @@
+<mat-divider></mat-divider>
+<mat-list-item *ngIf="form">
+  <div class="instruction-wrapper"
+       [formGroup]="form"
+       fxLayout="row"
+       fxLayoutAlign="start center"
+       fxLayoutGap="20px">
+    <mat-form-field class="mat-form-field"
+                    fxFlex="10">
+      <input matInput
+             type="number"
+             min="1"
+             [placeholder]="'admin.placeholder.recipe.instructions.order_index'|translate"
+             formControlName="order_index">
+      <mat-error *ngIf="form.get('order_index').invalid && form.get('order_index').value.length === 0"
+                 [innerHtml]="'admin.error.required.recipe.instructions.order_index'|translate"></mat-error>
+      <mat-error *ngIf="form.get('order_index').invalid && form.get('order_index').value.length > 0"
+                 [innerHtml]="'admin.error.invalid.recipe.instructions.order_index'|translate"></mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mat-form-field"
+                    fxFlex="30">
+      <textarea matInput
+                maxlength="300"
+                [placeholder]="'admin.placeholder.recipe.instructions.sentence'|translate"
+                formControlName="sentence"></textarea>
+      <mat-hint align="end">{{ form.get('sentence').value.length }} {{ '/300'|translate }}</mat-hint>
+      <mat-error *ngIf="form.get('sentence').invalid && form.get('sentence').value.length === 0"
+                 [innerHtml]="'admin.error.required.recipe.instructions.sentence'|translate"></mat-error>
+      <mat-error *ngIf="form.get('sentence').invalid && form.get('sentence').value.length > 0"
+                 [innerHtml]="'admin.error.invalid.recipe.instructions.sentence'|translate"></mat-error>
+    </mat-form-field>
+
+    <div class="block-image"
+         fxLayout="row"
+         fxLayoutAlign="center stretch"
+         fxLayoutGap="20px"
+         fxFlex="30">
+      <app-storage-upload [folder]="'articles'"
+                          xs="true"
+                          [displayDownloadUrl]="false"
+                          [metadata]="imageStorageConfig"
+                          (imageChanged)="onImageChange($event)"
+                          (imageRefChanged)="onImageRefChanged($event)">
+      </app-storage-upload>
+    </div>
+
+    <div fxFlex="30">
+      <ng-select [items]="ingredients"
+                 [loadingText]="'admin.placeholder.recipe.instructions.ingredients.loading'|translate"
+                 [notFoundText]="'admin.placeholder.recipe.instructions.ingredients.not_found'|translate"
+                 [typeToSearchText]="'admin.placeholder.recipe.instructions.ingredients.type_to_search'|translate"
+                 [clearAllText]="'admin.placeholder.recipe.instructions.ingredients.clear_all'|translate">
+
+      </ng-select>
+    </div>
+  </div>
+</mat-list-item>
+
+<mat-divider></mat-divider>

@@ -15,6 +15,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ScrollModule } from 'shared/scroll/scroll.module';
 import { PlatformModule } from '@angular/cdk/platform';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MediaModule } from 'shared/media/media.module';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     RecipeRoutingModule,
     ScrollingModule,
     ScrollModule.forRoot(),
+    MediaModule,
     TranslateModule.forChild()
   ],
   declarations: [
