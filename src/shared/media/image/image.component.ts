@@ -10,6 +10,7 @@ import { take } from 'rxjs/operators';
 })
 export class ImageComponent {
   @Input() classes: string;
+  @Input() matCardImage: boolean;
   _publicId: string;
   _key: string;
   @Input() alt: string;

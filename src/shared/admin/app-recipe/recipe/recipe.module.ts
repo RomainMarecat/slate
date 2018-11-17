@@ -10,21 +10,27 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../shared.module';
 import { NgxEditorModule } from 'ngx-editor';
 import { TranslateModule } from '@ngx-translate/core';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { InstructionEditComponent } from './recipe-edit/instruction-edit/instruction-edit.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
     CommonModule,
+    ColorPickerModule,
     FlexLayoutModule,
     NgxDatatableModule,
     SharedModule,
     NgxEditorModule,
+    NgSelectModule,
     RecipeRoutingModule,
     TranslateModule.forChild(),
   ],
   declarations: [
     RecipeListComponent,
     RecipeEditComponent,
-    RecipeComponent
+    RecipeComponent,
+    InstructionEditComponent
   ]
 })
 export class RecipeModule {

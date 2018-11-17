@@ -1058,6 +1058,7 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/cookieconsent/build/cookieconsent.min.css",
+              "node_modules/@ng-select/ng-select/themes/material.theme.css",
               "src/app-recipe/styles.scss"
             ],
             "scripts": [

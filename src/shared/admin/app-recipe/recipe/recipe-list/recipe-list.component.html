@@ -102,3 +102,12 @@
     </a>
   </div>
 </ng-template>
+
+<button color="primary"
+        type="button"
+        [attr.aria-label]="'cta.admin.recipe.add'|translate"
+        [routerLink]="['/admin'|localize, 'recipe', 'add']"
+        mat-mini-fab
+        class="absolute-fab pulse">
+  <mat-icon aria-hidden="true">add</mat-icon>
+</button>

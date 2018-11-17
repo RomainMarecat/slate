@@ -50,8 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-FR'},
-    CheckForUpdateService,
-    AdminGuard // @todo delete when recipe admin is up
+    CheckForUpdateService
   ]
 })
 export class AppModule {

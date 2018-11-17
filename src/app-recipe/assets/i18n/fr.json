@@ -7,7 +7,102 @@
   "cta": {
     "add": "ajouter",
     "search": "Rechercher",
-    "admin": "admin"
+    "admin": "admin",
+    "save": "sauvegarder",
+    "cancel": "annuler"
+  },
+  "admin": {
+    "error": {
+      "required": {
+        "recipe": {
+          "name": "le nom est obligatoire",
+          "cuisine_type": "le type de cuisine est obligatoire",
+          "yield": "le nombre de personne est obligatoire",
+          "image": "l'image est obligatoire",
+          "color": "la couleur est obligatoire",
+          "total_time": "le temps total est obligatoire",
+          "cook_time": "le temps de cuisson est obligatoire",
+          "prep_time": "le temps de préparation est obligatoire",
+          "waiting_time": "le temps d'attente est obligatoire",
+          "creator": "le créateur est obligatoire"
+        }
+      },
+      "invalid": {
+        "recipe": {
+          "name": "le nom est invalide",
+          "cuisine_type": "le type de cuisine est invalide",
+          "yield": "le nombre de personne est invalide",
+          "image": "l'image est invalide",
+          "color": "la couleur est invalide",
+          "total_time": "le temps total est invalide",
+          "cook_time": "le temps de cuisson est invalide",
+          "prep_time": "le temps de préparation est invalide",
+          "waiting_time": "le temps d'attente est invalide",
+          "creator": "le créateur est invalide"
+        }
+      }
+    },
+    "hint": {
+      "recipe": {
+        "name": "nom",
+        "cuisine_type": "type de cuisine",
+        "yield": "nombre de personne",
+        "image": "image",
+        "color": "couleur",
+        "total_time": "temps total",
+        "cook_time": "temps de cuisson",
+        "prep_time": "temps de préparation",
+        "waiting_time": "temps d'attente",
+        "creator": "créateur"
+      }
+    },
+    "label": {
+      "recipe": {
+        "instructions": {
+          "title": "Ajouter des instructions"
+        },
+        "on_homepage": {
+          "true": "Affiché sur l'accueil",
+          "false": "Uniquement dans la recherche"
+        }
+      }
+    },
+    "placeholder": {
+      "recipe": {
+        "name": "nom",
+        "cuisine_type": "type de cuisine",
+        "yield": "nombre de personne",
+        "image": "image",
+        "color": "couleur",
+        "total_time": "temps total",
+        "cook_time": "temps de cuisson",
+        "prep_time": "temps de préparation",
+        "waiting_time": "temps d'attente",
+        "creator": "créateur",
+        "instructions": {
+          "order_index": "ordre",
+          "sentence": "phrase",
+          "ingredients": {
+            "title": "ingrédients",
+            "not_found": "aucun ingrédient",
+            "loading": "chargement",
+            "type_to_search": "entrer un mot",
+            "clear_all": "tout vider"
+          }
+        }
+      }
+    },
+    "recipe": {
+      "image": {
+        "saved": "l'image est sauvegardée"
+      },
+      "updated": "La recette {{name}} est mise à jour"
+    }
+  },
+  "error": {
+    "upload": {
+      "retry": "Le téléchargement a échoué, veuillez réessayer."
+    }
   },
   "home": {
     "images": {

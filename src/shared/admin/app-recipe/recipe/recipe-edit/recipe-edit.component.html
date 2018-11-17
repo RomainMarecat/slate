@@ -6,16 +6,13 @@
             class="form">
         <mat-card class="mat-card mt-3">
           <mat-card-content class="mat-card-content"
-                            fxLayout="row"
-                            fxLayoutAlign="space-around stretch"
-                            fxLayoutGap="30px">
+                            fxLayout="column wrap"
+                            fxLayoutAlign="start center">
             <mat-form-field class="mat-form-field">
               <input matInput
                      maxlength="100"
                      [placeholder]="'admin.placeholder.recipe.name'|translate"
                      formControlName="name">
-              <mat-hint align="start"><strong [innerHtml]="'admin.hint.recipe.name'|translate"></strong>
-              </mat-hint>
               <mat-hint align="end">{{ form.get('name').value.length }} {{ '/100'|translate }}</mat-hint>
               <mat-error *ngIf="form.get('name').invalid && form.get('name').value.length === 0"
                          [innerHtml]="'admin.error.required.recipe.name'|translate"></mat-error>
@@ -26,16 +23,150 @@
             <mat-form-field class="mat-form-field">
               <input matInput
                      maxlength="100"
-                     [placeholder]="'admin.placeholder.recipe.slug'|translate"
-                     [formControl]="form.get('slug')">
-              <mat-hint align="start"><strong [innerHtml]="'admin.hint.recipe.slug'|translate"></strong>
-              </mat-hint>
-              <mat-hint align="end">{{ form.get('slug').value.length }} {{ '/100'|translate }}</mat-hint>
-              <mat-error *ngIf="form.get('slug').invalid && form.get('slug').value.length === 0"
-                         [innerHtml]="'admin.error.required.recipe.slug'|translate"></mat-error>
-              <mat-error *ngIf="form.get('slug').invalid && form.get('slug').value.length > 0"
-                         [innerHtml]="'admin.error.invalid.recipe.slug'|translate"></mat-error>
+                     [placeholder]="'admin.placeholder.recipe.cuisine_type'|translate"
+                     [formControl]="form.get('cuisine_type')">
+              <mat-hint align="end">{{ form.get('cuisine_type').value.length }} {{ '/100'|translate }}</mat-hint>
+              <mat-error *ngIf="form.get('cuisine_type').invalid && form.get('cuisine_type').value.length === 0"
+                         [innerHtml]="'admin.error.required.recipe.cuisine_type'|translate"></mat-error>
+              <mat-error *ngIf="form.get('cuisine_type').invalid && form.get('cuisine_type').value.length > 0"
+                         [innerHtml]="'admin.error.invalid.recipe.cuisine_type'|translate"></mat-error>
             </mat-form-field>
+
+            <div fxLayout="row wrap"
+                 fxLayoutAlign="space-around stretch">
+              <mat-form-field class="mat-form-field"
+                              fxFlex="45">
+                <input matInput
+                       type="time"
+                       maxlength="100"
+                       [placeholder]="'admin.placeholder.recipe.cook_time'|translate"
+                       [formControl]="form.get('cook_time')">
+                <mat-hint align="start"><strong [innerHtml]="'admin.hint.recipe.cook_time'|translate"></strong>
+                </mat-hint>
+                <mat-error *ngIf="form.get('cook_time').invalid && form.get('cook_time').value.length === 0"
+                           [innerHtml]="'admin.error.required.recipe.cook_time'|translate"></mat-error>
+                <mat-error *ngIf="form.get('cook_time').invalid && form.get('cook_time').value.length > 0"
+                           [innerHtml]="'admin.error.invalid.recipe.cook_time'|translate"></mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="mat-form-field"
+                              fxFlex="45">
+                <input matInput
+                       type="time"
+                       maxlength="100"
+                       [placeholder]="'admin.placeholder.recipe.prep_time'|translate"
+                       [formControl]="form.get('prep_time')">
+                <mat-hint align="start"><strong [innerHtml]="'admin.hint.recipe.prep_time'|translate"></strong>
+                </mat-hint>
+                <mat-error *ngIf="form.get('prep_time').invalid && form.get('prep_time').value.length === 0"
+                           [innerHtml]="'admin.error.required.recipe.prep_time'|translate"></mat-error>
+                <mat-error *ngIf="form.get('prep_time').invalid && form.get('prep_time').value.length > 0"
+                           [innerHtml]="'admin.error.invalid.recipe.prep_time'|translate"></mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="mat-form-field"
+                              fxFlex="45">
+                <input matInput
+                       type="time"
+                       maxlength="100"
+                       [placeholder]="'admin.placeholder.recipe.waiting_time'|translate"
+                       [formControl]="form.get('waiting_time')">
+                <mat-hint align="start"><strong [innerHtml]="'admin.hint.recipe.waiting_time'|translate"></strong>
+                </mat-hint>
+                <mat-error *ngIf="form.get('waiting_time').invalid && form.get('waiting_time').value.length === 0"
+                           [innerHtml]="'admin.error.required.recipe.waiting_time'|translate"></mat-error>
+                <mat-error *ngIf="form.get('waiting_time').invalid && form.get('waiting_time').value.length > 0"
+                           [innerHtml]="'admin.error.invalid.recipe.waiting_time'|translate"></mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="mat-form-field"
+                              fxFlex="45">
+                <input matInput
+                       type="time"
+                       maxlength="100"
+                       [placeholder]="'admin.placeholder.recipe.total_time'|translate"
+                       [formControl]="form.get('total_time')">
+                <mat-hint align="start"><strong [innerHtml]="'admin.hint.recipe.total_time'|translate"></strong>
+                </mat-hint>
+                <mat-error *ngIf="form.get('total_time').invalid && form.get('total_time').value.length === 0"
+                           [innerHtml]="'admin.error.required.recipe.total_time'|translate"></mat-error>
+                <mat-error *ngIf="form.get('total_time').invalid && form.get('total_time').value.length > 0"
+                           [innerHtml]="'admin.error.invalid.recipe.total_time'|translate"></mat-error>
+              </mat-form-field>
+
+            </div>
+
+            <mat-form-field class="mat-form-field">
+              <input matInput
+                     maxlength="100"
+                     [placeholder]="'admin.placeholder.recipe.creator'|translate"
+                     formControlName="creator">
+              <mat-hint align="end">{{ form.get('creator').value.length }} {{ '/100'|translate }}</mat-hint>
+              <mat-error *ngIf="form.get('creator').invalid && form.get('creator').value.length === 0"
+                         [innerHtml]="'admin.error.required.recipe.creator'|translate"></mat-error>
+              <mat-error *ngIf="form.get('creator').invalid && form.get('creator').value.length > 0"
+                         [innerHtml]="'admin.error.invalid.recipe.creator'|translate"></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="mat-form-field">
+              <input matInput
+                     type="number"
+                     min="1"
+                     [placeholder]="'admin.placeholder.recipe.yield'|translate"
+                     formControlName="yield">
+              <mat-error *ngIf="form.get('yield').invalid && form.get('yield').value.length === 0"
+                         [innerHtml]="'admin.error.required.recipe.yield'|translate"></mat-error>
+              <mat-error *ngIf="form.get('yield').invalid && form.get('yield').value.length > 0"
+                         [innerHtml]="'admin.error.invalid.recipe.yield'|translate"></mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput
+                     [(colorPicker)]="color"
+                     [style.background-color]="color"
+                     [placeholder]="'admin.placeholder.recipe.color'|translate"
+                     formControlName="color">
+              <mat-error *ngIf="form.get('color').invalid && form.get('color').value.length === 0"
+                         [innerHtml]="'admin.error.required.recipe.color'|translate"></mat-error>
+              <mat-error *ngIf="form.get('color').invalid && form.get('color').value.length > 0"
+                         [innerHtml]="'admin.error.invalid.recipe.color'|translate"></mat-error>
+            </mat-form-field>
+
+            <div class="block-image"
+                 fxLayout="row"
+                 fxLayoutAlign="center stretch"
+                 fxLayoutGap="20px">
+              <app-storage-upload [folder]="'articles'"
+                                  [metadata]="imageStorageConfig"
+                                  (imageChanged)="onImageChange($event)"
+                                  (imageRefChanged)="onImageRefChanged($event)">
+              </app-storage-upload>
+              <app-storage-detail [downloadURL]="downloadURL"
+                                  classes="img-fluid">
+              </app-storage-detail>
+            </div>
+
+            <mat-radio-group class="mt-2"
+                             formControlName="on_homepage"
+                             fxLayout="row"
+                             fxLayoutAlign="center stretch"
+                             fxLayoutGap="20px">
+              <mat-radio-button [value]="true">{{ 'admin.label.recipe.on_homepage.true'|translate }}</mat-radio-button>
+              <mat-radio-button [value]="false">{{ 'admin.label.recipe.on_homepage.false'|translate }}
+              </mat-radio-button>
+            </mat-radio-group>
+
+
+            <div formArrayName="instructions"
+                 class="mt-2">
+              <p>{{ 'admin.label.recipe.instructions.title'|translate }}</p>
+              <mat-list>
+                <app-admin-recipe-instruction-edit [form]="instruction"
+                                                   *ngFor="let instruction of form.get('instructions').controls; let i = index;">
+                </app-admin-recipe-instruction-edit>
+              </mat-list>
+            </div>
+
           </mat-card-content>
 
           <mat-card-actions>
@@ -47,13 +178,14 @@
                       [attr.aria-label]="'cta.cancel'|translate"
                       [innerHtml]="'cta.cancel'|translate"
                       (click)="cancel()"></button>
-
+              <!--[disabled]="form.invalid"-->
               <button type="submit"
                       class="validate text-uppercase"
                       mat-raised-button
                       role="button"
+
                       [attr.aria-label]="'cta.save'|translate"
-                      color="primary">
+                      [color]="form.valid ? 'primary' : ''">
                 {{ 'cta.save'|translate }}
               </button>
             </div>

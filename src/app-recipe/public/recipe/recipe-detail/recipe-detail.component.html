@@ -11,7 +11,7 @@
 <app-recipe-title [recipe]="recipe"
                   [showStepper]="currentInstruction > 0"
                   [steps]="recipe.instructions"
-                  *ngIf="currentInstruction > 0 && recipe?.instructions"></app-recipe-title>
+                  *ngIf="!isLoading && recipe && currentInstruction > 0 && recipe?.instructions"></app-recipe-title>
 
 <cdk-virtual-scroll-viewport class="recipe-detail recipe-detail-cdk"
                              [ngClass.xs]="{xs: true, 'show-stepper': currentInstruction > 0}"
@@ -40,7 +40,8 @@
   </div>
 </cdk-virtual-scroll-viewport>
 
-<div class="next-section-wrapper">
+<div class="next-section-wrapper"
+     *ngIf="!isLoading && recipe && recipe?.instructions && recipe?.instructions.length">
   <button type="button"
           (click)="onMore()"
           role="button"

@@ -190,7 +190,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
     {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
-    {provide: RecipeService, useClass: MockRecipeService, deps: [AngularFirestore, TABLE_RECIPE]},
+    {provide: RecipeService, useClass: RecipeService, deps: [AngularFirestore, TABLE_RECIPE]},
     AlertService,
     DateService,
     DeviceService,

@@ -18,10 +18,13 @@ import { LoaderService } from '../../../../loader/loader.service';
 import { MockLoaderService } from '../../../../loader/mock-loader.service';
 import { RecipeService } from '../../../../../app-recipe/public/recipe/shared/recipe.service';
 import { MockRecipeService } from '../../../../../app-recipe/public/recipe/shared/mock-recipe.service';
+import { configureTestSuite } from '../../../../unit-test/configure-test-suite';
 
 describe('RecipeListComponent', () => {
   let component: RecipeListComponent;
   let fixture: ComponentFixture<RecipeListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

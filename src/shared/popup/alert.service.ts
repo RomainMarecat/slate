@@ -9,34 +9,34 @@ export class AlertService {
               private translateService: TranslateService) {
   }
 
-  message(message: string, state: string = 'info') {
-    this.toast(message, state);
+  message(message: string, parameters: Object = {}) {
+    this.toast(message, parameters);
   }
 
-  show(message: string, state: string = 'info') {
-    this.toast(message, state);
+  show(message: string, parameters: Object = {}) {
+    this.toast(message, parameters);
   }
 
-  toast(message: string, state: string = 'info') {
+  toast(message: string, parameters: Object = {}) {
     if (typeof message === 'string') {
       // Subscribe on message translation
-      this.translateService.get(message)
+      this.translateService.get(message, parameters)
         .subscribe((translation: string) => {
-          this.openAlertMessage(translation, state);
+          this.openAlertMessage(translation, parameters);
         }, (err) => {
-          this.openAlertMessage(message, state);
+          this.openAlertMessage(message, parameters);
         });
       return;
     }
-    this.openAlertMessage(message, state);
+    this.openAlertMessage(message, parameters);
   }
 
-  openAlertMessage(message: string, state: string) {
+  openAlertMessage(message: string, parameters: Object) {
     // Open Alert Component with a message
     const toastRef = this.snackBar.openFromComponent(AlertComponent, {
       data: message,
       // Add extra classes to define custom css or background color
-      panelClass: ['snackbar', state],
+      panelClass: ['snackbar'],
       // Timeout duration in ms
       duration: 8000
     });

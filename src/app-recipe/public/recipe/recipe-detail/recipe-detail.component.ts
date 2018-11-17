@@ -43,6 +43,7 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit {
           .subscribe((recipe: Recipe) => {
             this.recipe = recipe;
             this.isLoading = false;
+            this.setConstraints();
           }, () => {
             this.alertService.show('error.api.errors');
             this.isLoading = false;
@@ -53,7 +54,6 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.setConstraints();
   }
 
   setConstraints() {

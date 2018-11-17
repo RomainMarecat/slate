@@ -1,4 +1,4 @@
-<div class="upload-wrapper">
+<div class="upload-wrapper" [class.xs]="xs">
   <input type="file" (change)="uploadFile($event)" *ngIf="!downloadURL">
   <mat-icon class="upload-icon" *ngIf="!downloadURL">photo_camera</mat-icon>
   <mat-progress-bar [mode]="'determinate'"
