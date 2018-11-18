@@ -162,7 +162,7 @@
               <p>{{ 'admin.label.recipe.instructions.title'|translate }}</p>
               <mat-list>
                 <app-admin-recipe-instruction-edit [form]="instruction"
-                                                   *ngFor="let instruction of form.get('instructions').controls; let i = index;">
+                                                   *ngFor="let instruction of form.get('instructions'); let i = index;">
                 </app-admin-recipe-instruction-edit>
               </mat-list>
             </div>
