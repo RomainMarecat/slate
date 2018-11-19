@@ -39,21 +39,34 @@
       <app-storage-upload [folder]="'articles'"
                           xs="true"
                           [displayDownloadUrl]="false"
+                          [media]="form.get('image').value"
                           [metadata]="imageStorageConfig"
                           (imageChanged)="onImageChange($event)"
                           (imageRefChanged)="onImageRefChanged($event)">
       </app-storage-upload>
     </div>
 
-    <div fxFlex="30">
+    <div fxFlex="30"
+         *ngIf="form && form.contains('ingredients') && isLoaded">
       <ng-select [items]="ingredients"
+                 [formControl]="form.get('ingredients')"
+                 [multiple]="true"
+                 [bindLabel]="'name'"
                  [loadingText]="'admin.placeholder.recipe.instructions.ingredients.loading'|translate"
                  [notFoundText]="'admin.placeholder.recipe.instructions.ingredients.not_found'|translate"
                  [typeToSearchText]="'admin.placeholder.recipe.instructions.ingredients.type_to_search'|translate"
                  [clearAllText]="'admin.placeholder.recipe.instructions.ingredients.clear_all'|translate">
-
       </ng-select>
     </div>
+
+    <button type="button"
+            [attr.role]="'cta.close'|translate"
+            mat-icon-button
+            (click)="removeItem()">
+      <mat-icon>
+        close
+      </mat-icon>
+    </button>
   </div>
 </mat-list-item>
 

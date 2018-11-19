@@ -67,7 +67,6 @@ export class HomeComponent implements OnInit {
     if (typeof document === 'object' && document) {
       const content = document.querySelector(id);
       if (content) {
-        console.log(content);
         content.scrollTop = 0;
       }
     }

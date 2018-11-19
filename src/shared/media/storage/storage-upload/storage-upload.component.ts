@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
 import { Media } from '../../media';
 import { MediaService } from '../../media.service';
 import { DocumentReference } from '@firebase/firestore-types';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from '../../../popup/alert.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-storage-upload',
@@ -21,7 +22,9 @@ export class StorageUploadComponent implements OnInit {
   @Output() imageRefChanged: EventEmitter<any> = new EventEmitter<any>();
   @Output() imageChanged: EventEmitter<Media> = new EventEmitter<Media>();
   uploadPercent: number;
-  downloadURL: string;
+  @Input() downloadURL: string;
+  _mediaId: string;
+  storageRef: AngularFireStorageReference;
 
   constructor(private storage: AngularFireStorage,
               private mediaService: MediaService,
@@ -101,5 +104,32 @@ export class StorageUploadComponent implements OnInit {
       }, (err) => {
         console.error('onMediaChange:addMedia:err', err);
       });
+  }
+
+  @Input() set media(mediaId: string) {
+    this._mediaId = mediaId;
+    if (mediaId) {
+      this.mediaService.getMedia(mediaId)
+        .subscribe((media: Media) => {
+          this.getDownloadURL(media.public_id);
+        });
+    }
+  }
+
+  getDownloadURL(path: string) {
+    this.storageRef = this.storage.ref(path);
+    this.storageRef.getDownloadURL()
+      .pipe(
+        take(1)
+      )
+      .subscribe(downloadURL => {
+        this.downloadURL = downloadURL;
+        this.uploadPercent = 100;
+      });
+  }
+
+
+  get media(): string {
+    return this._mediaId;
   }
 }

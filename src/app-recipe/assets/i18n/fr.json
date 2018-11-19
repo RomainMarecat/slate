@@ -24,7 +24,11 @@
           "cook_time": "le temps de cuisson est obligatoire",
           "prep_time": "le temps de préparation est obligatoire",
           "waiting_time": "le temps d'attente est obligatoire",
-          "creator": "le créateur est obligatoire"
+          "creator": "le créateur est obligatoire",
+          "preparations": {
+            "quantity": "la quantité est obligatoire",
+            "sentence": "la phrase est obligatoire"
+          }
         }
       },
       "invalid": {
@@ -38,7 +42,11 @@
           "cook_time": "le temps de cuisson est invalide",
           "prep_time": "le temps de préparation est invalide",
           "waiting_time": "le temps d'attente est invalide",
-          "creator": "le créateur est invalide"
+          "creator": "le créateur est invalide",
+          "preparations": {
+            "quantity": "la quantité est invalide",
+            "sentence": "la phrase est invalide"
+          }
         }
       }
     },
@@ -53,13 +61,25 @@
         "cook_time": "temps de cuisson",
         "prep_time": "temps de préparation",
         "waiting_time": "temps d'attente",
-        "creator": "créateur"
+        "creator": "créateur",
+        "preparations": {
+          "quantity": "quantité",
+          "sentence": "phrase"
+        }
       }
     },
     "label": {
       "recipe": {
         "instructions": {
           "title": "Ajouter des instructions"
+        },
+        "ingredients": {
+          "title": "Ajouter des ingrédients"
+        },
+        "preparations": {
+          "title": "Ajouter des préparations",
+          "ingredient": "ingrédient",
+          "quantity": "quantité"
         },
         "on_homepage": {
           "true": "Affiché sur l'accueil",
@@ -81,6 +101,21 @@
         "creator": "créateur",
         "instructions": {
           "order_index": "ordre",
+          "sentence": "phrase",
+          "ingredients": {
+            "title": "ingrédients",
+            "not_found": "aucun ingrédient",
+            "loading": "chargement",
+            "type_to_search": "entrer un mot",
+            "clear_all": "tout vider"
+          }
+        },
+        "ingredients": {
+          "color": "couleur",
+          "name": "nom"
+        },
+        "preparations": {
+          "quantity": "quantité",
           "sentence": "phrase",
           "ingredients": {
             "title": "ingrédients",

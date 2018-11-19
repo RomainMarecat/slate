@@ -22,6 +22,8 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
   imageStorageConfig: {model: string, alt: string};
   downloadURL: string;
   instructions: FormArray = new FormArray([]);
+  ingredients: FormArray = new FormArray([]);
+  preparations: FormArray = new FormArray([]);
 
   constructor(protected activatedRoute: ActivatedRoute,
               protected router: Router,
@@ -82,6 +84,21 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
     this.instructions = this.form.get('instructions') as FormArray;
   }
 
+  addInstruction() {
+    this.instructions = this.form.get('instructions') as FormArray;
+    this.instructions.push(RecipeFormType.getInstruction(this.instructions.length + 1));
+  }
+
+  addIngredient() {
+    this.ingredients = this.form.get('ingredients') as FormArray;
+    this.ingredients.push(RecipeFormType.getIngredient());
+  }
+
+  addPreparation() {
+    this.preparations = this.form.get('preparations') as FormArray;
+    this.preparations.push(RecipeFormType.getPreparation());
+  }
+
   reset() {
     this.form.reset({
       name: '',
@@ -107,31 +124,51 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
     this.form.patchValue({slug: slug});
 
     if (this.form.valid) {
-      this.document = {...this.document, ...this.form.value};
+      this.document = {...this.document, ...this.form.value} as Recipe;
 
       if (this.document['published'] === true) {
         this.document['published_at'] = new Date();
       }
+
       if (this.document.key) {
-        this.recipeService.updateDocument(this.document)
-          .then((doc) => {
-            this.alertService.show(`admin.recipe.updated`, {name: this.document.name});
-            this.reset();
-            this.router.navigate([this.localizeRouterService.translateRoute('/admin'), 'recipe']);
-          }, (err) => {
-            this.alertService.show(`recipe error ${err}`);
-          });
+        this.updateDocument();
       } else {
-        this.recipeService.createDocument(this.document)
-          .then((doc: DocumentReference) => {
-            this.alertService.show(`recipe added ${doc.id}`);
-            this.reset();
-            this.router.navigate([this.localizeRouterService.translateRoute('/admin'), 'recipe']);
-          }, (err) => {
-            this.alertService.show(`recipe error ${err}`);
-          });
+        this.createDocument();
       }
     }
+  }
+
+  createDocument() {
+    this.recipeService.createDocument(this.document)
+      .then((doc: DocumentReference) => {
+        this.document.key = doc.id;
+        this.updateDocument();
+      }, (err) => {
+        this.alertService.show(`admin.recipe.error.create`, {error: err});
+      });
+  }
+
+  updateDocument() {
+    this.recipeService.updateDocument(this.document)
+      .then(() => {
+        this.alertService.show(`admin.recipe.updated`, {name: this.document.name});
+        this.reset();
+        this.router.navigate([this.localizeRouterService.translateRoute('/admin'), 'recipe']);
+      }, (err) => {
+        this.alertService.show(`admin.recipe.error.update`, {error: err});
+      });
+  }
+
+  removeIngredient(index: number) {
+    (this.form.get('ingredients') as FormArray).removeAt(index);
+  }
+
+  removeInstruction(index: number) {
+    (this.form.get('instructions') as FormArray).removeAt(index);
+  }
+
+  removePreparation(index: number) {
+    (this.form.get('preparations') as FormArray).removeAt(index);
   }
 
   get color() {

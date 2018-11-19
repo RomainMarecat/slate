@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Media } from '../../../../../media/media';
 import { FormGroup } from '@angular/forms';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
@@ -12,7 +12,7 @@ import { Ingredient } from '../../../../../../app-recipe/public/ingredient/share
 })
 export class InstructionEditComponent implements OnInit {
 
-  ingredients: Ingredient[] = [];
+  @Input() ingredients: Ingredient[] = [];
 
   _form: FormGroup;
 
@@ -20,10 +20,18 @@ export class InstructionEditComponent implements OnInit {
 
   downloadURL: string;
 
+  isLoaded: boolean;
+
+  @Output() removed: EventEmitter<number> = new EventEmitter<number>();
+
   constructor(private alertService: AlertService) {
   }
 
   ngOnInit() {
+  }
+
+  removeItem() {
+    this.removed.emit(1);
   }
 
   createImageStorageConfig() {
@@ -33,6 +41,10 @@ export class InstructionEditComponent implements OnInit {
         alt: this.form.get('sentence').value,
       };
     }
+  }
+
+  updateIngredients(ingredients: Ingredient[]) {
+    this.form.patchValue({ingredients: ingredients});
   }
 
   /**
@@ -61,6 +73,11 @@ export class InstructionEditComponent implements OnInit {
   @Input() set form(form: FormGroup) {
     this._form = form;
     this.createImageStorageConfig();
+    if (this.form) {
+      setTimeout(() => {
+        this.isLoaded = true;
+      }, 200);
+    }
   }
 
   get form(): FormGroup {

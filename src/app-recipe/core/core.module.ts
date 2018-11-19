@@ -52,6 +52,7 @@ import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.serv
 import { PublicModule } from '../public/public.module';
 import { RecipeService } from '../public/recipe/shared/recipe.service';
 import { MockRecipeService } from '../public/recipe/shared/mock-recipe.service';
+import { IngredientService } from '../public/ingredient/shared/ingredient.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -85,6 +86,7 @@ export const TABLE_ORDER = new InjectionToken<string>('order');
 export const TABLE_PARTNER = new InjectionToken<string>('partner');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
 export const TABLE_RECIPE = new InjectionToken<string>('recipe');
+export const TABLE_INGREDIENT = new InjectionToken<string>('ingredient');
 
 @Injectable()
 export class ConfigService {
@@ -168,6 +170,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_PAYMENT, useValue: 'payment'},
     {provide: TABLE_PRODUCT, useValue: 'product'},
     {provide: TABLE_RECIPE, useValue: 'recipe'},
+    {provide: TABLE_INGREDIENT, useValue: 'ingredient'},
     {provide: TABLE_SELECTION, useValue: 'selection'},
     {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_SCORE, useValue: 'scores'},
@@ -191,6 +194,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
     {provide: RecipeService, useClass: RecipeService, deps: [AngularFirestore, TABLE_RECIPE]},
+    {provide: IngredientService, useClass: IngredientService, deps: [AngularFirestore, TABLE_INGREDIENT]},
     AlertService,
     DateService,
     DeviceService,
