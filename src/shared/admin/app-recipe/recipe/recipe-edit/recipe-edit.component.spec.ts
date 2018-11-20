@@ -27,6 +27,11 @@ import { MockMediaService } from '../../../../media/mock-media.service';
 import { InstructionEditComponent } from './instruction-edit/instruction-edit.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { PreparationEditComponent } from './preparation-edit/preparation-edit.component';
+import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.component';
+import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
+import { IngredientService } from '../../../../../app-recipe/public/ingredient/shared/ingredient.service';
+import { MockIngredientService } from '../../../../../app-recipe/public/ingredient/shared/mock-ingredient.service';
 
 describe('RecipeEditComponent', () => {
   let component: RecipeEditComponent;
@@ -56,7 +61,10 @@ describe('RecipeEditComponent', () => {
       ],
       declarations: [
         RecipeEditComponent,
-        InstructionEditComponent
+        InstructionEditComponent,
+        PreparationEditComponent,
+        IngredientEditComponent,
+        IngredientListComponent
       ],
       providers: [
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
@@ -64,6 +72,7 @@ describe('RecipeEditComponent', () => {
         {provide: MediaService, useClass: MockMediaService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: LoaderService, useClass: MockLoaderService},
+        {provide: IngredientService, useClass: MockIngredientService}
       ]
     })
       .compileComponents();

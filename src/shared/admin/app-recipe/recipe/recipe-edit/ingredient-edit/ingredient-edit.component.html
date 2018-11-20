@@ -1,0 +1,45 @@
+<mat-divider></mat-divider>
+<mat-list-item *ngIf="form">
+  <div class="instruction-wrapper"
+       [formGroup]="form"
+       fxLayout="row"
+       fxLayoutAlign="start center"
+       fxLayoutGap="20px">
+    <mat-form-field class="mat-form-field"
+                    fxFlex="50">
+      <input matInput
+             min="1"
+             [placeholder]="'admin.placeholder.recipe.ingredients.name'|translate"
+             formControlName="name">
+      <mat-error *ngIf="form.get('name').invalid && form.get('name').value.length === 0"
+                 [innerHtml]="'admin.error.required.recipe.ingredients.name'|translate"></mat-error>
+      <mat-error *ngIf="form.get('name').invalid && form.get('name').value.length > 0"
+                 [innerHtml]="'admin.error.invalid.recipe.ingredients.name'|translate"></mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field fxFlex="50">
+      <input matInput
+             [(colorPicker)]="color"
+             [style.background-color]="color"
+             [placeholder]="'admin.placeholder.recipe.ingredients.color'|translate"
+             formControlName="color">
+      <mat-error *ngIf="form.get('color').invalid && form.get('color').value.length === 0"
+                 [innerHtml]="'admin.error.required.recipe.ingredients.color'|translate"></mat-error>
+      <mat-error *ngIf="form.get('color').invalid && form.get('color').value.length > 0"
+                 [innerHtml]="'admin.error.invalid.recipe.ingredients.color'|translate"></mat-error>
+    </mat-form-field>
+
+    <button type="button"
+            [attr.role]="'cta.close'|translate"
+            mat-icon-button
+            (click)="removeItem()">
+      <mat-icon>
+        close
+      </mat-icon>
+    </button>
+
+  </div>
+</mat-list-item>
+
+<mat-divider></mat-divider>

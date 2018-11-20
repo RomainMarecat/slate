@@ -8,6 +8,8 @@ import { IngredientRoutingModule } from './ingredient-routing.module';
     CommonModule,
     IngredientRoutingModule
   ],
+  providers: [
+  ]
 })
 export class IngredientModule {
 }

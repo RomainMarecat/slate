@@ -7,6 +7,37 @@ import { Preparation } from '../../../../app-recipe/public/preparation/shared/pr
 export class RecipeFormType {
   private form: FormGroup;
 
+  static getInstruction(orderIndex: number): FormGroup {
+    return new FormGroup({
+      key: new FormControl(''),
+      order_index: new FormControl(orderIndex),
+      sentence: new FormControl(''),
+      ingredients: new FormControl([]),
+      image: new FormControl('')
+    });
+  }
+
+  static getIngredient(): FormGroup {
+    return new FormGroup({
+      key: new FormControl(''),
+      color: new FormControl(''),
+      name: new FormControl(''),
+    });
+  }
+
+  static getPreparation(): FormGroup {
+    return new FormGroup({
+      key: new FormControl(''),
+      ingredient: new FormGroup({
+        key: new FormControl(''),
+        color: new FormControl(''),
+        name: new FormControl(''),
+      }),
+      quantity: new FormControl(1),
+      sentence: new FormControl(''),
+    });
+  }
+
   constructor(recipe ?: Recipe) {
     this.createForm(recipe);
   }
@@ -57,9 +88,9 @@ export class RecipeFormType {
       return recipe.instructions.map((instruction: Instruction) => {
         return new FormGroup({
           key: new FormControl(instruction.key),
-          order_index: new FormControl(instruction.order_index),
-          sentence: new FormControl(instruction.sentence),
-          ingredients: new FormArray(this.getIngredients(instruction)),
+          order_index: new FormControl(instruction.order_index, [Validators.required]),
+          sentence: new FormControl(instruction.sentence, [Validators.required]),
+          ingredients: new FormControl(this.getIngredients(instruction)),
           image: new FormControl(instruction.image)
         });
       });
@@ -68,10 +99,10 @@ export class RecipeFormType {
     return [
       new FormGroup({
         key: new FormControl(''),
-        order_index: new FormControl(1),
-        sentence: new FormControl(''),
+        order_index: new FormControl(1, [Validators.required]),
+        sentence: new FormControl('', [Validators.required]),
         ingredients: new FormArray([]),
-        image: new FormControl('')
+        image: new FormControl('', [Validators.required])
       })
     ];
   }
@@ -81,23 +112,23 @@ export class RecipeFormType {
       return recipe.ingredients.map((ingredient: Ingredient) => {
         return new FormGroup({
           key: new FormControl(ingredient.key),
-          color: new FormControl(ingredient.color),
-          name: new FormControl(ingredient.name),
+          color: new FormControl(ingredient.color, [Validators.required]),
+          name: new FormControl(ingredient.name, [Validators.required]),
         });
       });
     }
-    return [];
+    return [
+      new FormGroup({
+        key: new FormControl(''),
+        color: new FormControl('', [Validators.required]),
+        name: new FormControl('', [Validators.required]),
+      })
+    ];
   }
 
-  getIngredients(instruction: Instruction): Array<FormGroup> {
+  getIngredients(instruction: Instruction): Ingredient[] {
     if (instruction && instruction.ingredients && instruction.ingredients.length > 0) {
-      return instruction.ingredients.map((ingredient: Ingredient) => {
-        return new FormGroup({
-          key: new FormControl(ingredient.key),
-          color: new FormControl(ingredient.color),
-          name: new FormControl(ingredient.name),
-        });
-      });
+      return instruction.ingredients;
     }
     return [];
   }
@@ -119,16 +150,16 @@ export class RecipeFormType {
     }
 
     return [
-      // new FormGroup({
-      //   key: new FormControl(''),
-      //   ingredient: new FormGroup({
-      //     key: new FormControl(''),
-      //     color: new FormControl(''),
-      //     name: new FormControl(''),
-      //   }),
-      //   quantity: new FormControl(1),
-      //   sentence: new FormControl(''),
-      // })
+      new FormGroup({
+        key: new FormControl(''),
+        ingredient: new FormGroup({
+          key: new FormControl(''),
+          color: new FormControl(''),
+          name: new FormControl(''),
+        }),
+        quantity: new FormControl(1),
+        sentence: new FormControl(''),
+      })
     ];
   }
 

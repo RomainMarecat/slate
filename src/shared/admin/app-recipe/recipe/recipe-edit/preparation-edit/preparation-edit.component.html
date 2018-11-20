@@ -1,0 +1,79 @@
+<mat-divider></mat-divider>
+<mat-list-item *ngIf="form">
+  <div class="preparation-wrapper"
+       [formGroup]="form"
+       fxLayout="row"
+       fxLayoutAlign="start center"
+       fxLayoutGap="20px">
+
+    <mat-form-field class="mat-form-field"
+                    fxFlex="10">
+      <input matInput
+             type="number"
+             min="1"
+             [placeholder]="'admin.placeholder.recipe.preparations.quantity'|translate"
+             formControlName="quantity">
+      <mat-error *ngIf="form.get('quantity').invalid && form.get('quantity').value.length === 0"
+                 [innerHtml]="'admin.error.required.recipe.preparations.quantity'|translate"></mat-error>
+      <mat-error *ngIf="form.get('quantity').invalid && form.get('quantity').value.length > 0"
+                 [innerHtml]="'admin.error.invalid.recipe.preparations.quantity'|translate"></mat-error>
+    </mat-form-field>
+
+    <div>
+      <div class="button-shortcut"
+           fxLayout="row"
+           fxLayoutAlign="center stretch"
+           fxLayoutGap="20px">
+        <button (click)="addQuantity()"
+                mat-raised-button
+                type="button"
+                color="warn"
+                [attr.role]="'admin.label.recipe.preparations.quantity'">
+          {{ 'admin.label.recipe.preparations.quantity'|translate }}
+        </button>
+        <button (click)="addIngredient()"
+                mat-raised-button
+                type="button"
+                color="primary"
+                [attr.role]="'admin.label.recipe.preparations.ingredient'">
+          {{ 'admin.label.recipe.preparations.ingredient'|translate }}
+        </button>
+      </div>
+      <mat-form-field class="mat-form-field">
+        <textarea matInput
+                  maxlength="300"
+                  [placeholder]="'admin.placeholder.recipe.preparations.sentence'|translate"
+                  formControlName="sentence"></textarea>
+        <mat-hint align="end">{{ form.get('sentence').value.length }} {{ '/300'|translate }}</mat-hint>
+        <mat-error *ngIf="form.get('sentence').invalid && form.get('sentence').value.length === 0"
+                   [innerHtml]="'admin.error.required.recipe.preparations.sentence'|translate"></mat-error>
+        <mat-error *ngIf="form.get('sentence').invalid && form.get('sentence').value.length > 0"
+                   [innerHtml]="'admin.error.invalid.recipe.preparations.sentence'|translate"></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="30" *ngIf="form.contains('ingredient')">
+      <ng-select [items]="ingredients"
+                 (change)="updateIngredient($event)"
+                 [formControl]="form.get('ingredient')?.get('name')"
+                 [bindLabel]="'name'"
+                 [loadingText]="'admin.placeholder.recipe.preparations.ingredients.loading'|translate"
+                 [notFoundText]="'admin.placeholder.recipe.preparations.ingredients.not_found'|translate"
+                 [typeToSearchText]="'admin.placeholder.recipe.preparations.ingredients.type_to_search'|translate"
+                 [clearAllText]="'admin.placeholder.recipe.preparations.ingredients.clear_all'|translate">
+
+      </ng-select>
+    </div>
+
+    <button type="button"
+            [attr.role]="'cta.close'|translate"
+            mat-icon-button
+            (click)="removeItem()">
+      <mat-icon>
+        close
+      </mat-icon>
+    </button>
+  </div>
+</mat-list-item>
+
+<mat-divider></mat-divider>

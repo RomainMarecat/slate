@@ -137,6 +137,8 @@
                  fxLayoutAlign="center stretch"
                  fxLayoutGap="20px">
               <app-storage-upload [folder]="'articles'"
+                                  [displayDownloadUrl]="false"
+                                  [media]="form.get('image').value"
                                   [metadata]="imageStorageConfig"
                                   (imageChanged)="onImageChange($event)"
                                   (imageRefChanged)="onImageRefChanged($event)">
@@ -151,21 +153,86 @@
                              fxLayout="row"
                              fxLayoutAlign="center stretch"
                              fxLayoutGap="20px">
-              <mat-radio-button [value]="true">{{ 'admin.label.recipe.on_homepage.true'|translate }}</mat-radio-button>
-              <mat-radio-button [value]="false">{{ 'admin.label.recipe.on_homepage.false'|translate }}
+              <mat-radio-button [value]="true">
+                {{ 'admin.label.recipe.on_homepage.true'|translate }}
+              </mat-radio-button>
+              <mat-radio-button [value]="false">
+                {{ 'admin.label.recipe.on_homepage.false'|translate }}
               </mat-radio-button>
             </mat-radio-group>
 
+            <div formArrayName="ingredients"
+                 class="ingredients-wrapper mt-2"
+                 *ngIf="form.get('ingredients') && form.get('ingredients')?.controls">
+              <div class="ingredients-header-wrapper"
+                   fxLayout="row"
+                   fxLayoutAlign="space-around center">
+                <p class="mb-0">{{ 'admin.label.recipe.ingredients.title'|translate }}</p>
+                <button type="button"
+                        mat-icon-button
+                        class="button-add-ingredient"
+                        [attr.role]="'cta.add'|translate"
+                        (click)="addIngredient()">
+                  <mat-icon>add</mat-icon>
+                </button>
+                <app-admin-recipe-ingredient-list>
+                </app-admin-recipe-ingredient-list>
+              </div>
+              <mat-list>
+                <app-admin-recipe-ingredient-edit [form]="ingredient"
+                                                  (removed)="removeIngredient(i)"
+                                                  *ngFor="let ingredient of form.get('ingredients').controls; let i = index">
+                </app-admin-recipe-ingredient-edit>
+              </mat-list>
+            </div>
+
+            <div formArrayName="preparations"
+                 class="preparations-wrapper mt-2"
+                 *ngIf="form.get('preparations') && form.get('preparations')?.controls">
+              <div class="preparations-header-wrapper"
+                   fxLayout="row"
+                   fxLayoutAlign="space-around center">
+                <p class="mb-0">{{ 'admin.label.recipe.preparations.title'|translate }}</p>
+                <button type="button"
+                        mat-icon-button
+                        class="button-add-preparation"
+                        [attr.role]="'cta.add'|translate"
+                        (click)="addPreparation()">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+              <mat-list>
+                <app-admin-recipe-preparation-edit [form]="preparation"
+                                                   (removed)="removePreparation(i)"
+                                                   [ingredients]="form.get('ingredients').value"
+                                                   *ngFor="let preparation of form.get('preparations').controls; let i = index">
+                </app-admin-recipe-preparation-edit>
+              </mat-list>
+            </div>
 
             <div formArrayName="instructions"
-                 class="mt-2"
+                 class="instructions-wrapper mt-2"
                  *ngIf="form.get('instructions') && form.get('instructions')?.controls">
-              <p>{{ 'admin.label.recipe.instructions.title'|translate }}</p>
+              <div class="instructions-header-wrapper"
+                   fxLayout="row"
+                   fxLayoutAlign="space-around center">
+                <p class="mb-0">{{ 'admin.label.recipe.instructions.title'|translate }}</p>
+                <button type="button"
+                        mat-icon-button
+                        class="button-add-instruction"
+                        [attr.role]="'cta.add'|translate"
+                        (click)="addInstruction()">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
               <mat-list>
                 <app-admin-recipe-instruction-edit [form]="instruction"
-                                                   *ngFor="let instruction of form.get('instructions').controls; let i = index;">
+                                                   [ingredients]="form.get('ingredients').value"
+                                                   (removed)="removeInstruction(i)"
+                                                   *ngFor="let instruction of form.get('instructions').controls; let i = index">
                 </app-admin-recipe-instruction-edit>
               </mat-list>
+
             </div>
 
           </mat-card-content>

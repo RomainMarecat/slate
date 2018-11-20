@@ -13,6 +13,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { InstructionEditComponent } from './recipe-edit/instruction-edit/instruction-edit.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { IngredientEditComponent } from './recipe-edit/ingredient-edit/ingredient-edit.component';
+import { PreparationEditComponent } from './recipe-edit/preparation-edit/preparation-edit.component';
+import { IngredientListComponent } from './recipe-edit/ingredient-list/ingredient-list.component';
 
 @NgModule({
   imports: [
@@ -30,7 +33,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
     RecipeListComponent,
     RecipeEditComponent,
     RecipeComponent,
-    InstructionEditComponent
+    InstructionEditComponent,
+    IngredientEditComponent,
+    PreparationEditComponent,
+    IngredientListComponent
   ]
 })
 export class RecipeModule {
