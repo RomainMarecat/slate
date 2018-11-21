@@ -2,4 +2,9 @@
   align-items: center;
   padding: 3rem 0;
   display: flex;
+
+  &.xs {
+    padding: 2rem 0;
+    height: 10rem;
+  }
 }

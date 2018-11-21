@@ -1,10 +1,14 @@
 <mat-divider></mat-divider>
-<mat-list-item *ngIf="form">
+<mat-list-item *ngIf="form"
+               [ngClass.xs]="{xs:true}">
   <div class="instruction-wrapper"
        [formGroup]="form"
        fxLayout="row"
        fxLayoutAlign="start center"
-       fxLayoutGap="20px">
+       fxLayoutGap="20px"
+       fxLayout.xs="row wrap"
+       fxLayoutAlign.xs="start center"
+       fxLayoutGap.xs="10px">
     <mat-form-field class="mat-form-field"
                     fxFlex="50">
       <input matInput

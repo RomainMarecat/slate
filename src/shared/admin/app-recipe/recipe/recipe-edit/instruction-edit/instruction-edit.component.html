@@ -1,12 +1,17 @@
 <mat-divider></mat-divider>
-<mat-list-item *ngIf="form">
+<mat-list-item *ngIf="form"
+               [ngClass.xs]="{xs:true}">
   <div class="instruction-wrapper"
        [formGroup]="form"
        fxLayout="row"
        fxLayoutAlign="start center"
-       fxLayoutGap="20px">
+       fxLayoutGap="20px"
+       fxLayout.xs="row wrap"
+       fxLayoutAlign.xs="center stretch"
+       fxLayoutGap.xs="10px">
     <mat-form-field class="mat-form-field"
-                    fxFlex="10">
+                    fxFlex="10"
+                    fxFlex.xs="100">
       <input matInput
              type="number"
              min="1"
@@ -19,7 +24,8 @@
     </mat-form-field>
 
     <mat-form-field class="mat-form-field"
-                    fxFlex="30">
+                    fxFlex="30"
+                    fxFlex.xs="100">
       <textarea matInput
                 maxlength="300"
                 [placeholder]="'admin.placeholder.recipe.instructions.sentence'|translate"
@@ -35,7 +41,8 @@
          fxLayout="row"
          fxLayoutAlign="center stretch"
          fxLayoutGap="20px"
-         fxFlex="30">
+         fxFlex="30"
+         fxFlex.xs="100">
       <app-storage-upload [folder]="'articles'"
                           xs="true"
                           [displayDownloadUrl]="false"
@@ -47,6 +54,7 @@
     </div>
 
     <div fxFlex="30"
+         fxFlex.xs="100"
          *ngIf="form && form.contains('ingredients') && isLoaded">
       <ng-select [items]="ingredients"
                  [formControl]="form.get('ingredients')"
