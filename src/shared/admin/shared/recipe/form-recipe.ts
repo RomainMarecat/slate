@@ -17,11 +17,12 @@ export class RecipeFormType {
     });
   }
 
-  static getIngredient(): FormGroup {
+  static getIngredient(ingredient?: Ingredient): FormGroup {
     return new FormGroup({
-      key: new FormControl(''),
-      color: new FormControl(''),
-      name: new FormControl(''),
+      key: new FormControl(ingredient && ingredient.key ? ingredient.key : ''),
+      color: new FormControl(ingredient && ingredient.color ? ingredient.color : ''),
+      name: new FormControl(ingredient && ingredient.name ? ingredient.name : ''),
+      recipes: new FormControl(ingredient && ingredient.recipes ? ingredient.recipes : []),
     });
   }
 
@@ -114,6 +115,7 @@ export class RecipeFormType {
           key: new FormControl(ingredient.key),
           color: new FormControl(ingredient.color, [Validators.required]),
           name: new FormControl(ingredient.name, [Validators.required]),
+          recipes: new FormControl(ingredient.recipes ? ingredient.recipes : [])
         });
       });
     }
@@ -122,6 +124,7 @@ export class RecipeFormType {
         key: new FormControl(''),
         color: new FormControl('', [Validators.required]),
         name: new FormControl('', [Validators.required]),
+        recipes: new FormControl([])
       })
     ];
   }
