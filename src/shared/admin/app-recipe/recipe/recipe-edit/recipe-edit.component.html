@@ -152,7 +152,10 @@
                              formControlName="on_homepage"
                              fxLayout="row"
                              fxLayoutAlign="center stretch"
-                             fxLayoutGap="20px">
+                             fxLayoutGap="20px"
+                             fxLayout.xs="column"
+                             fxLayoutAlign.xs="start stretch"
+                             fxLayoutGap.xs="10px">
               <mat-radio-button [value]="true">
                 {{ 'admin.label.recipe.on_homepage.true'|translate }}
               </mat-radio-button>
@@ -166,15 +169,22 @@
                  *ngIf="form.get('ingredients') && form.get('ingredients')?.controls">
               <div class="ingredients-header-wrapper"
                    fxLayout="row"
-                   fxLayoutAlign="space-around center">
-                <p class="mb-0">{{ 'admin.label.recipe.ingredients.title'|translate }}</p>
-                <app-admin-recipe-ingredient-list (ingredientSelected)="onIngredientSelected($event)">
+                   fxLayoutAlign="space-around center"
+                   fxLayout.xs="row"
+                   fxLayoutAlign.xs="center center">
+                <p class="mb-0"
+                   fxFlex="50">
+                  {{ 'admin.label.recipe.ingredients.title'|translate }}
+                </p>
+                <app-admin-recipe-ingredient-list fxFlex="50"
+                                                  (ingredientSelected)="onIngredientSelected($event)">
                 </app-admin-recipe-ingredient-list>
                 <button type="button"
                         mat-icon-button
                         class="button-add-ingredient"
                         [attr.role]="'cta.add'|translate"
-                        (click)="addIngredient(selectedIngredient)">
+                        (click)="addIngredient(selectedIngredient)"
+                        fxFlex="10">
                   <mat-icon>add</mat-icon>
                 </button>
               </div>
@@ -192,7 +202,9 @@
                  *ngIf="form.get('preparations') && form.get('preparations')?.controls">
               <div class="preparations-header-wrapper"
                    fxLayout="row"
-                   fxLayoutAlign="space-around center">
+                   fxLayoutAlign="space-around center"
+                   fxLayout.xs="row"
+                   fxLayoutAlign.xs="center center">
                 <p class="mb-0">{{ 'admin.label.recipe.preparations.title'|translate }}</p>
                 <button type="button"
                         mat-icon-button
@@ -216,7 +228,9 @@
                  *ngIf="form.get('instructions') && form.get('instructions')?.controls">
               <div class="instructions-header-wrapper"
                    fxLayout="row"
-                   fxLayoutAlign="space-around center">
+                   fxLayoutAlign="space-around center"
+                   fxLayout.xs="row"
+                   fxLayoutAlign.xs="center center">
                 <p class="mb-0">{{ 'admin.label.recipe.instructions.title'|translate }}</p>
                 <button type="button"
                         mat-icon-button

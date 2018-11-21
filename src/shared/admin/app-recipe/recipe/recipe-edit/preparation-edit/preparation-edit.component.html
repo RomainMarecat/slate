@@ -1,13 +1,18 @@
 <mat-divider></mat-divider>
-<mat-list-item *ngIf="form">
+<mat-list-item *ngIf="form"
+               [ngClass.xs]="{xs:true}">
   <div class="preparation-wrapper"
        [formGroup]="form"
        fxLayout="row"
        fxLayoutAlign="start center"
-       fxLayoutGap="20px">
+       fxLayoutGap="20px"
+       fxLayout.xs="row wrap"
+       fxLayoutAlign.xs="start center"
+       fxLayoutGap.xs="10px">
 
     <mat-form-field class="mat-form-field"
-                    fxFlex="10">
+                    fxFlex="10"
+                    fxFlex.xs="100">
       <input matInput
              type="number"
              min="1"
@@ -19,7 +24,8 @@
                  [innerHtml]="'admin.error.invalid.recipe.preparations.quantity'|translate"></mat-error>
     </mat-form-field>
 
-    <div>
+    <div fxFlex.xs="100"
+         fxFlex="100">
       <div class="button-shortcut"
            fxLayout="row"
            fxLayoutAlign="center stretch"
@@ -52,7 +58,9 @@
       </mat-form-field>
     </div>
 
-    <div fxFlex="30" *ngIf="form.contains('ingredient')">
+    <div fxFlex="30"
+         fxFlex.xs="70"
+         *ngIf="form.contains('ingredient')">
       <ng-select [items]="ingredients"
                  (change)="updateIngredient($event)"
                  [formControl]="form.get('ingredient')?.get('name')"
@@ -68,7 +76,9 @@
     <button type="button"
             [attr.role]="'cta.close'|translate"
             mat-icon-button
-            (click)="removeItem()">
+            (click)="removeItem()"
+            fxFlex="20"
+            fxFlex.xs="20">
       <mat-icon>
         close
       </mat-icon>
