@@ -168,18 +168,19 @@
                    fxLayout="row"
                    fxLayoutAlign="space-around center">
                 <p class="mb-0">{{ 'admin.label.recipe.ingredients.title'|translate }}</p>
+                <app-admin-recipe-ingredient-list (ingredientSelected)="onIngredientSelected($event)">
+                </app-admin-recipe-ingredient-list>
                 <button type="button"
                         mat-icon-button
                         class="button-add-ingredient"
                         [attr.role]="'cta.add'|translate"
-                        (click)="addIngredient()">
+                        (click)="addIngredient(selectedIngredient)">
                   <mat-icon>add</mat-icon>
                 </button>
-                <app-admin-recipe-ingredient-list>
-                </app-admin-recipe-ingredient-list>
               </div>
               <mat-list>
-                <app-admin-recipe-ingredient-edit [form]="ingredient"
+                <app-admin-recipe-ingredient-edit [recipe]="document"
+                                                  [form]="ingredient"
                                                   (removed)="removeIngredient(i)"
                                                   *ngFor="let ingredient of form.get('ingredients').controls; let i = index">
                 </app-admin-recipe-ingredient-edit>

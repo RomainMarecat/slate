@@ -1,4 +1,6 @@
-<ng-select [items]="ingredients"
+<ng-select class="ingredients-select"
+           [items]="ingredients"
+           (change)="onSelect($event)"
            [multiple]="false"
            [bindLabel]="'name'"
            [loadingText]="'admin.placeholder.recipe.instructions.ingredients.loading'|translate"

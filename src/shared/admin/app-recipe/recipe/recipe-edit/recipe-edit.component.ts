@@ -11,9 +11,11 @@ import { Media } from '../../../../media/media';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 import { StringService } from '../../../../util/string.service';
 import { FormArray } from '@angular/forms';
+import { Ingredient } from '../../../../../app-recipe/public/ingredient/shared/ingredient';
+import { IngredientService } from '../../../../../app-recipe/public/ingredient/shared/ingredient.service';
 
 @Component({
-  selector: 'app-alr-recipe-edit',
+  selector: 'app-admin-recipe-edit',
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.scss']
 })
@@ -24,11 +26,13 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
   instructions: FormArray = new FormArray([]);
   ingredients: FormArray = new FormArray([]);
   preparations: FormArray = new FormArray([]);
+  selectedIngredient: Ingredient;
 
   constructor(protected activatedRoute: ActivatedRoute,
               protected router: Router,
               protected alertService: AlertService,
               protected recipeService: RecipeService,
+              protected ingredientService: IngredientService,
               protected localizeRouterService: LocalizeRouterService) {
     super(activatedRoute, router, alertService, recipeService, localizeRouterService);
     this.createForm();
@@ -89,14 +93,19 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
     this.instructions.push(RecipeFormType.getInstruction(this.instructions.length + 1));
   }
 
-  addIngredient() {
+  addIngredient(ingredient?: Ingredient) {
     this.ingredients = this.form.get('ingredients') as FormArray;
-    this.ingredients.push(RecipeFormType.getIngredient());
+    this.ingredients.push(RecipeFormType.getIngredient(ingredient));
+    this.selectedIngredient = null;
   }
 
   addPreparation() {
     this.preparations = this.form.get('preparations') as FormArray;
     this.preparations.push(RecipeFormType.getPreparation());
+  }
+
+  onIngredientSelected(ingredient: Ingredient) {
+    this.selectedIngredient = ingredient;
   }
 
   reset() {
@@ -151,11 +160,31 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
   updateDocument() {
     this.recipeService.updateDocument(this.document)
       .then(() => {
+        this.updateIngredients();
         this.alertService.show(`admin.recipe.updated`, {name: this.document.name});
         this.reset();
         this.router.navigate([this.localizeRouterService.translateRoute('/admin'), 'recipe']);
       }, (err) => {
         this.alertService.show(`admin.recipe.error.update`, {error: err});
+      });
+  }
+
+  updateIngredients() {
+    this.document.ingredients.forEach((ingredient: Ingredient) => {
+      if (typeof ingredient.recipes === 'undefined' || !ingredient.recipes) {
+        ingredient.recipes = [];
+      }
+      if (!ingredient.recipes.includes(this.document.key)) {
+        ingredient.recipes.push(this.document.key);
+        this.updateIngredient(ingredient);
+      }
+    });
+  }
+
+  updateIngredient(ingredient: Ingredient) {
+    this.ingredientService.updateIngredient(ingredient)
+      .then(() => {
+      }, () => {
       });
   }
 

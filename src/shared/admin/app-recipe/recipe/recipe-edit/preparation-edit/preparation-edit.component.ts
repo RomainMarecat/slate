@@ -22,11 +22,6 @@ export class PreparationEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.form) {
-      this.form.valueChanges.subscribe((v) => {
-        console.log(v);
-      });
-    }
   }
 
   addQuantity() {
