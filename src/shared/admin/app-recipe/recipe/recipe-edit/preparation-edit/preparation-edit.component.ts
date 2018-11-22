@@ -24,6 +24,14 @@ export class PreparationEditComponent implements OnInit {
   ngOnInit() {
   }
 
+  isQuantityIncluded() {
+    return this.form.get('sentence').value.includes('{{quantity}}');
+  }
+
+  isIngredientIncluded() {
+    return this.form.get('sentence').value.includes('{{ingredient}}');
+  }
+
   addQuantity() {
     this.form.patchValue({sentence: `${this.form.get('sentence').value}{{quantity}}`});
   }

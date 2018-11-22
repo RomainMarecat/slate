@@ -1,5 +1,11 @@
 @import '../../../../../app-recipe/scss/theme/theme';
 
+
+:host {
+  height: 100%;
+  display: block;
+}
+
 mat-card.preparation-wrapper {
-  background: $block-color-grey;
+  background: $block-color-light-grey;
 }
