@@ -8,7 +8,8 @@
 </div>
 
 
-<app-recipe-title [recipe]="recipe"
+<app-recipe-title (offsetHeightChange)="onRecipeTitleOffsetChange($event)"
+                  [recipe]="recipe"
                   [showStepper]="currentInstruction > 0"
                   [steps]="recipe.instructions"
                   *ngIf="!isLoading && recipe && currentInstruction > 0 && recipe?.instructions"></app-recipe-title>
@@ -20,7 +21,8 @@
                              *ngIf="!isLoading && recipe">
   <div class="section header-section">
 
-    <app-recipe-title [recipe]="recipe"
+    <app-recipe-title (offsetHeightChange)="onRecipeTitleOffsetChange($event)"
+                      [recipe]="recipe"
                       [showStepper]="currentInstruction > 0"
                       [steps]="recipe.instructions"
                       *ngIf="currentInstruction === 0"></app-recipe-title>
@@ -29,7 +31,9 @@
     <app-recipe-information [recipe]="recipe"
                             [stickyContent]="currentInstruction > 0"></app-recipe-information>
 
-    <app-recipe-preparation-list [recipe]="recipe"></app-recipe-preparation-list>
+    <app-recipe-preparation-list [recipe]="recipe"
+                                 (offsetHeightChange)="onRecipeTitleOffsetChange($event)">
+    </app-recipe-preparation-list>
 
   </div>
 

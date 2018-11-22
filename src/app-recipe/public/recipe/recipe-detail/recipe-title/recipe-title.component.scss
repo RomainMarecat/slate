@@ -1,5 +1,12 @@
 @import '../../../../../app-recipe/scss/theme/theme';
 
+:host {
+  left: 0;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+
 .recipe-title-wrapper {
   height: 21rem;
 
@@ -19,12 +26,14 @@
     top: 0;
     width: 100%;
     z-index: 1;
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
+    height: 10rem;
   }
 
   h1 {
     margin-bottom: 0;
+
     &.xs {
       font-size: 1rem;
       letter-spacing: 1px;

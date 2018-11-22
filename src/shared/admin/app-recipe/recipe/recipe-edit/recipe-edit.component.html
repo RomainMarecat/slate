@@ -261,12 +261,11 @@
                       [attr.aria-label]="'cta.cancel'|translate"
                       [innerHtml]="'cta.cancel'|translate"
                       (click)="cancel()"></button>
-              <!--[disabled]="form.invalid"-->
               <button type="submit"
                       class="validate text-uppercase"
                       mat-raised-button
                       role="button"
-
+                      [disabled]="form.invalid"
                       [attr.aria-label]="'cta.save'|translate"
                       [color]="form.valid ? 'primary' : ''">
                 {{ 'cta.save'|translate }}

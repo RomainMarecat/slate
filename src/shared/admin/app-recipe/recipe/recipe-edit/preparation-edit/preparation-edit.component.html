@@ -33,14 +33,16 @@
         <button (click)="addQuantity()"
                 mat-raised-button
                 type="button"
-                color="warn"
+                [color]="!isQuantityIncluded() ? 'warn' : ''"
+                [disabled]="isQuantityIncluded()"
                 [attr.role]="'admin.label.recipe.preparations.quantity'">
           {{ 'admin.label.recipe.preparations.quantity'|translate }}
         </button>
         <button (click)="addIngredient()"
                 mat-raised-button
                 type="button"
-                color="primary"
+                [color]="!isIngredientIncluded() ? 'primary' : ''"
+                [disabled]="isIngredientIncluded()"
                 [attr.role]="'admin.label.recipe.preparations.ingredient'">
           {{ 'admin.label.recipe.preparations.ingredient'|translate }}
         </button>

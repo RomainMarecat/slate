@@ -1,10 +1,10 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../shared/recipe';
 import { RecipeService } from '../shared/recipe.service';
-import { AlertService } from 'shared/popup/alert.service';
-import { SeoService } from 'shared/seo/shared/seo.service';
-import { ScrollService } from 'shared/scroll/shared/scroll.service';
+import { AlertService } from '../../../../shared/popup/alert.service';
+import { SeoService } from '../../../../shared/seo/shared/seo.service';
+import { ScrollService } from '../../../../shared/scroll/shared/scroll.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
 
@@ -13,13 +13,14 @@ import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
   templateUrl: './recipe-detail.component.html',
   styleUrls: ['./recipe-detail.component.scss'],
 })
-export class RecipeDetailComponent implements OnInit, AfterViewInit {
+export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   isLoading: boolean;
   currentInstruction = 0;
   limitInstructionReached = false;
   constraints: Array<{index: number, min: number, max: number}> = [];
   previousPosition: number;
+  top: number;
 
   constructor(private element: ElementRef,
               private router: Router,
@@ -33,9 +34,20 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit {
               private cd: ChangeDetectorRef) {
     this.isLoading = true;
     this.seoService.setSeo('recipe-detail');
+    this.getRecipe();
   }
 
   ngOnInit() {
+  }
+
+  onRecipeTitleOffsetChange(height: number) {
+    // 0 means that block was display none;
+    if (height > 0) {
+      this.setConstraints(height);
+    }
+  }
+
+  getRecipe() {
     this.route.params.subscribe((params: Params) => {
       if (params.slug) {
         const key = params.slug.substring(0, params.slug.indexOf('-'));
@@ -43,23 +55,19 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit {
           .subscribe((recipe: Recipe) => {
             this.recipe = recipe;
             this.isLoading = false;
-            this.setConstraints();
           }, () => {
             this.alertService.show('error.api.errors');
             this.isLoading = false;
           });
       }
     });
-    this.subscribeToScroll();
   }
 
-  ngAfterViewInit() {
-  }
-
-  setConstraints() {
+  setConstraints(offsetHeight: number) {
+    this.constraints = [];
     let total = 0;
-    this.constraints.push({index: 0, min: total, max: total + 800});
-    total += 800;
+    this.constraints.push({index: 0, min: total, max: total + offsetHeight});
+    total += offsetHeight;
     const instructionsElements = document.querySelectorAll('.instruction-card');
     this.recipe.instructions.forEach((ins, index) => {
       if (instructionsElements.length) {
@@ -72,29 +80,32 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit {
         total += htmlElement.offsetHeight + 32;
       }
     });
+    this.subscribeToScroll();
   }
 
   subscribeToScroll() {
     this.scrollDispatcher.scrolled(200)
       .subscribe((cdkScrollable: CdkScrollable) => {
         const bottom: number = cdkScrollable.measureScrollOffset('bottom');
-        const top: number = cdkScrollable.measureScrollOffset('top');
+        this.top = cdkScrollable.measureScrollOffset('top');
         const filteredInstructions = this.constraints.filter((constraint) => {
-          return constraint.min < top && constraint.max > top;
+          return constraint.min <= this.top && constraint.max >= this.top;
         });
 
+        console.log(filteredInstructions[0] ? filteredInstructions[0] : null, this.top, bottom);
         this.limitInstructionReached = false;
         if (filteredInstructions.length > 0) {
           this.currentInstruction = filteredInstructions[0].index;
           // If scroll bottom
-          if ((this.currentInstruction > 0 && this.previousPosition < top)) {
+          if ((this.currentInstruction > 0 && this.previousPosition < this.top)) {
             this.cd.detectChanges();
           }
-          // If scroll top before instruction
-          if (this.currentInstruction === 0) {
+
+          // Scroll top refresh pointer and banner
+          if (this.previousPosition > this.top) {
             setTimeout(() => {
               this.cd.detectChanges();
-            });
+            }, 200);
           }
 
           if (this.currentInstruction === this.recipe.instructions.length || bottom === 0) {
@@ -102,7 +113,7 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit {
             this.limitInstructionReached = true;
             this.cd.detectChanges();
           }
-          this.previousPosition = top;
+          this.previousPosition = this.top;
         }
       });
   }
@@ -123,17 +134,11 @@ export class RecipeDetailComponent implements OnInit, AfterViewInit {
       const instructions: NodeList = document.querySelectorAll('.instruction-card');
       instructions.forEach((instruction: HTMLElement, index) => {
         if (this.currentInstruction === index) {
-          // this.router.navigate(
-          //   [
-          //     this.localizeRouterService.translateRoute('recipes'),
-          //     `${this.recipe.key}-${this.recipe.slug}`
-          //   ],
-          //   {fragment: `instruction-${index}`}
-          // );
           this.scrollService.scrollTo(instruction, 500).subscribe();
         }
       });
       this.currentInstruction++;
+
       if (this.currentInstruction === instructions.length) {
         this.limitInstructionReached = true;
         this.cd.detectChanges();

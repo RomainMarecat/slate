@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Recipe } from '../../shared/recipe';
 import { Preparation } from '../../../preparation/shared/preparation';
 
@@ -7,14 +7,22 @@ import { Preparation } from '../../../preparation/shared/preparation';
   templateUrl: './recipe-preparation-list.component.html',
   styleUrls: ['./recipe-preparation-list.component.scss']
 })
-export class RecipePreparationListComponent implements OnInit {
+export class RecipePreparationListComponent implements OnInit, AfterViewInit {
 
   @Input() recipe: Recipe;
 
-  constructor() {
+  @Output() offsetHeightChange: EventEmitter<number> = new EventEmitter<number>();
+
+  constructor(private element: ElementRef) {
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.offsetHeightChange.emit(this.element.nativeElement.offsetTop + this.element.nativeElement.offsetHeight);
+    }, 500);
   }
 
   /**
@@ -22,7 +30,7 @@ export class RecipePreparationListComponent implements OnInit {
    */
   getSentence(preparation: Preparation): string {
     return preparation.sentence
-      .replace('{{quantity}}', preparation.quantity.toString(10))
-      .replace('{{ingredient}}', preparation.ingredient.name);
+      .replace('{{quantity}}', `<strong>${preparation.quantity.toString(10)}</strong>`)
+      .replace('{{ingredient}}', `<strong>${preparation.ingredient.name}</strong>`);
   }
 }

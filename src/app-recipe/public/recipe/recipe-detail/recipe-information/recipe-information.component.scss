@@ -1,7 +1,6 @@
 @import '../../../../../app-recipe/scss/theme/theme';
 
 .recipe-informations {
-
   &.xs {
     padding-top: 0;
   }
@@ -15,7 +14,7 @@
   }
 
   mat-card.card-information {
-    background: $block-color-grey;
+    background: $block-color-light-grey;
 
     .recipe-values {
       font-weight: 700;
