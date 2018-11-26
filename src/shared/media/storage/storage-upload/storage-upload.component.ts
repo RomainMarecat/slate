@@ -21,10 +21,10 @@ export class StorageUploadComponent implements OnInit {
 
   @Output() imageRefChanged: EventEmitter<any> = new EventEmitter<any>();
   @Output() imageChanged: EventEmitter<Media> = new EventEmitter<Media>();
-  uploadPercent: number;
   @Input() downloadURL: string;
   _mediaId: string;
   storageRef: AngularFireStorageReference;
+  uploadPercent: number;
 
   constructor(private storage: AngularFireStorage,
               private mediaService: MediaService,
@@ -40,16 +40,21 @@ export class StorageUploadComponent implements OnInit {
     this.uploadPercent = 0;
     const file = event.target.files[0];
     const filePath = (this.folder ? this.folder + '/' : '') + event.target.files[0].name;
-    let imageRef: AngularFireUploadTask = null;
-    if (this.metadata) {
-      const ref = this.storage.ref(filePath);
-      imageRef = ref.put(file, {customMetadata: this.metadata});
-    } else {
-      imageRef = this.storage.upload(filePath, file);
-    }
+
+    const ref = this.storage.ref(filePath);
+    const imageRef: AngularFireUploadTask = this.storage.upload(
+      filePath,
+      file,
+      {
+        ...{
+          cacheControl: 'public,max-age=7200',
+          contentType: 'image/jpeg',
+        },
+        ...{customMetadata: this.metadata}
+      });
 
     imageRef
-      .catch((error) => {
+      .catch(() => {
         this.translate.get('error.upload.retry')
           .subscribe((translated) => {
             this.alertService.toast(translated);
@@ -65,6 +70,10 @@ export class StorageUploadComponent implements OnInit {
       taskSnapshot.ref.getDownloadURL()
         .then(((downloadURL) => {
           this.downloadURL = downloadURL;
+          ref.updateMetatdata(this.metadata)
+            .subscribe((metadata) => {
+              console.log(this.metadata, metadata);
+            });
 
           const media: Media = {
             public_id: taskSnapshot.metadata.fullPath,

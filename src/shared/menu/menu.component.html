@@ -46,11 +46,19 @@
   </a>
 
   <a (click)="userService.loginGoogle()"
-     *ngIf="config.displayIconButtonConnection">
+     *ngIf="config.displayIconButtonConnection && !(userService.getAuthState() | async); else logged">
     <div class="menu-icon user">
       <mat-icon svgIcon="user"></mat-icon>
     </div>
   </a>
+
+  <ng-template #logged>
+    <a *ngIf="config.displayIconButtonConnection">
+      <div class="menu-icon user">
+        <mat-icon svgIcon="user"></mat-icon>
+      </div>
+    </a>
+  </ng-template>
 
   <span class="login-wrapper"
         *ngIf="!(userService.getAuthState() | async) && config.displayButtonConnection">
