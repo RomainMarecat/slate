@@ -20,9 +20,9 @@ export class RecipePreparationListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
+    if ((this.element.nativeElement.offsetTop + this.element.nativeElement.offsetHeight) > 0) {
       this.offsetHeightChange.emit(this.element.nativeElement.offsetTop + this.element.nativeElement.offsetHeight);
-    }, 500);
+    }
   }
 
   /**

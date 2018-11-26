@@ -12,6 +12,7 @@
                   [recipe]="recipe"
                   [showStepper]="currentInstruction > 0"
                   [steps]="recipe.instructions"
+                  [position]="currentInstruction"
                   *ngIf="!isLoading && recipe && currentInstruction > 0 && recipe?.instructions"></app-recipe-title>
 
 <cdk-virtual-scroll-viewport class="recipe-detail recipe-detail-cdk"

@@ -42,7 +42,7 @@
          fxFlex.xs="90"
          [ngClass.xs]="{xs: true}"
          *ngIf="showStepper">
-      <mat-horizontal-stepper linear>
+      <mat-horizontal-stepper #stepper linear>
         <ng-template matStepperIcon="edit">
           <mat-icon>check</mat-icon>
         </ng-template>

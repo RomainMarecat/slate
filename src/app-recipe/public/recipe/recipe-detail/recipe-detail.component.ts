@@ -137,12 +137,17 @@ export class RecipeDetailComponent implements OnInit {
           this.scrollService.scrollTo(instruction, 500).subscribe();
         }
       });
-      this.currentInstruction++;
+
+      this.nextStep();
 
       if (this.currentInstruction === instructions.length) {
         this.limitInstructionReached = true;
         this.cd.detectChanges();
       }
     }
+  }
+
+  nextStep() {
+    this.currentInstruction++;
   }
 }
