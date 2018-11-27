@@ -38,13 +38,24 @@ export class RecipeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.forEach((params: Params) => {
+    this.route.queryParams.forEach((params: Params) => {
       if (typeof params['ingredients'] !== 'undefined') {
         const ingredients: string = params['ingredients'].split(',');
 
+        console.log(ingredients);
         if (ingredients.length > 0) {
           this.getRecipes();
         }
+      }
+      if (typeof params['r'] !== 'undefined') {
+        const recipe: string = params['r'];
+
+        this.query.filters = [{
+          operator: '==',
+          column: 'name',
+          value: recipe
+        }];
+        this.getRecipes();
       }
     });
   }

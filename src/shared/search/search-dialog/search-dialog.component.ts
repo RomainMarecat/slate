@@ -1,13 +1,11 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
-import { Observable, of, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { map, tap } from 'rxjs/operators';
-import { Filter } from 'shared/facet/filter/shared/filter';
-import { RecipeService } from '../../../app-recipe/public/recipe/shared/recipe.service';
-import { VisitorService } from 'shared/firestore/visitor.service';
+import { map } from 'rxjs/operators';
+import { Filter } from '../../facet/filter/shared/filter';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 
 @Component({
@@ -108,7 +106,9 @@ export class SearchDialogComponent implements OnInit {
    * envoie les produits filtrés à la page de résultats et navigue vers elle
    */
   getResults() {
-    this.router.navigate([this.localizeService.translateRoute(this.url)]);
+    this.router.navigate(
+      [this.localizeService.translateRoute(this.url)],
+      {queryParams: {r: this.form.get('search').value}});
     this.dialogRef.close();
   }
 
