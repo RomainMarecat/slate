@@ -13,6 +13,36 @@ export class RecipeService extends VisitorService {
     super(afs, table);
   }
 
+  /**
+   * Get detail schema from recipe data
+   */
+  getDetailSchema(recipe: Recipe): Object {
+    return {
+      '@context': 'http://schema.org/',
+      '@type': 'Recipe',
+      'name': recipe.name,
+      'author': recipe.creator,
+      'image': recipe.image,
+      'recipeType': recipe.cuisine_type,
+      'aggregateRating': {
+        '@type': 'AggregateRating',
+        'ratingValue': '4'
+      },
+      'cookTime':
+        `PT${recipe.cook_time.substr(0, recipe.cook_time.indexOf(':'))}H${recipe
+          .cook_time.substr(recipe.cook_time.indexOf(':'))}M`,
+      'prepTime':
+        `PT${recipe.prep_time.substr(0, recipe.prep_time.indexOf(':'))}H${recipe
+          .prep_time.substr(recipe.prep_time.indexOf(':'))}M`,
+      'totalTime':
+        `PT${recipe.total_time.substr(0, recipe.total_time.indexOf(':'))}H${recipe
+          .total_time.substr(recipe.total_time.indexOf(':'))}M`,
+      'recipeYield': recipe.yield.toString(10),
+      'recipeIngredient': recipe.ingredients.map(ingredient => ingredient.name),
+      'recipeInstructions': recipe.instructions.map(instruction => instruction.sentence)
+    };
+  }
+
   getRecipes(): Observable<Recipe[]> {
     return super.getDocuments() as Observable<Recipe[]>;
   }

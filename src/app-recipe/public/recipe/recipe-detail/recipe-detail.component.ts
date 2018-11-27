@@ -7,6 +7,7 @@ import { SeoService } from '../../../../shared/seo/shared/seo.service';
 import { ScrollService } from '../../../../shared/scroll/shared/scroll.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
+import { Constraint } from '../shared/constraint';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -18,9 +19,10 @@ export class RecipeDetailComponent implements OnInit {
   isLoading: boolean;
   currentInstruction = 0;
   limitInstructionReached = false;
-  constraints: Array<{index: number, min: number, max: number}> = [];
+  constraints: Array<Constraint> = [];
   previousPosition: number;
   top: number;
+  schema: Object = {};
 
   constructor(private element: ElementRef,
               private router: Router,
@@ -47,14 +49,21 @@ export class RecipeDetailComponent implements OnInit {
     }
   }
 
+  getSchemaDetail(recipe: Recipe) {
+    if (recipe) {
+      this.schema = this.recipeService.getDetailSchema(recipe);
+    }
+  }
+
   getRecipe() {
     this.route.params.subscribe((params: Params) => {
       if (params.slug) {
-        const key = params.slug.substring(0, params.slug.indexOf('-'));
+        const key = params.slug.substring(0, params.slug.indexOf('-') !== -1 ? params.slug.indexOf('-') : params.slug.length);
         this.recipeService.getRecipe(key)
           .subscribe((recipe: Recipe) => {
             this.recipe = recipe;
             this.isLoading = false;
+            this.getSchemaDetail(recipe);
           }, () => {
             this.alertService.show('error.api.errors');
             this.isLoading = false;

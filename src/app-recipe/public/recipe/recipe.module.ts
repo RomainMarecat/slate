@@ -12,10 +12,11 @@ import { RecipePreparationListComponent } from './recipe-detail/recipe-preparati
 import { RecipeInstructionListComponent } from './recipe-detail/recipe-instruction-list/recipe-instruction-list.component';
 import { RecipeTitleComponent } from './recipe-detail/recipe-title/recipe-title.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { ScrollModule } from 'shared/scroll/scroll.module';
+import { ScrollModule } from '../../../shared/scroll/scroll.module';
 import { PlatformModule } from '@angular/cdk/platform';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { MediaModule } from 'shared/media/media.module';
+import { MediaModule } from '../../../shared/media/media.module';
+import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { MediaModule } from 'shared/media/media.module';
     MatStepperModule,
     MatProgressSpinnerModule,
     MatCardModule,
+    NgxJsonLdModule,
     PlatformModule,
     RecipeRoutingModule,
     ScrollingModule,

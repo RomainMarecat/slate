@@ -7,7 +7,7 @@
   </div>
 </div>
 
-
+<ngx-json-ld [json]="schema"></ngx-json-ld>
 <app-recipe-title (offsetHeightChange)="onRecipeTitleOffsetChange($event)"
                   [recipe]="recipe"
                   [showStepper]="currentInstruction > 0"

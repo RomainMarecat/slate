@@ -33,6 +33,7 @@
     "@gilsdav/ngx-translate-router": "^1.0.2",
     "@ng-select/ng-select": "^2.12.1",
     "@ngu/carousel": "^1.5.4",
+    "@ngx-lite/json-ld": "^0.5.2",
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
     "@swimlane/ngx-datatable": "^13.1.0",
