@@ -26,7 +26,7 @@ export class RecipeService extends VisitorService {
       'recipeType': recipe.cuisine_type,
       'aggregateRating': {
         '@type': 'AggregateRating',
-        'ratingValue': '4'
+        'ratingValue': recipe.rating.toString(10)
       },
       'cookTime':
         `PT${recipe.cook_time.substr(0, recipe.cook_time.indexOf(':'))}H${recipe

@@ -15,6 +15,7 @@ export interface Recipe {
   image: string;
   color: string;
   ingredients: Ingredient[];
+  search_ingredients: string[];
   preparations: Preparation[];
   instructions?: Instruction[];
   yield: number;

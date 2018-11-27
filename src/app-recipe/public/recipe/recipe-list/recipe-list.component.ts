@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../shared/recipe';
 import { RecipeService } from '../shared/recipe.service';
-import { AlertService } from 'shared/popup/alert.service';
-import { SeoService } from 'shared/seo/shared/seo.service';
+import { AlertService } from '../../../../shared/popup/alert.service';
+import { SeoService } from '../../../../shared/seo/shared/seo.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { Filter } from 'shared/facet/filter/shared/filter';
+import { Filter } from '../../../../shared/facet/filter/shared/filter';
 
 @Component({
   selector: 'app-recipe-list',
@@ -21,6 +21,8 @@ export class RecipeListComponent implements OnInit {
     limit: number
   };
 
+  params: string;
+
   constructor(private recipeService: RecipeService,
               private alertService: AlertService,
               private seoService: SeoService,
@@ -29,8 +31,6 @@ export class RecipeListComponent implements OnInit {
               private localizeRouterService: LocalizeRouterService) {
     this.seoService.setSeo('recipe-list');
     this.isLoading = true;
-
-    // @todo Bien penser à retirer le MockRecipeService
     this.query = {
       limit: 50,
       filters: []
@@ -38,26 +38,31 @@ export class RecipeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.queryParams.forEach((params: Params) => {
+    this.route.params.subscribe((params) => {
       if (typeof params['ingredients'] !== 'undefined') {
-        const ingredients: string = params['ingredients'].split(',');
+        const ingredients: string[] = (params['ingredients'] as string).split(',');
 
-        console.log(ingredients);
         if (ingredients.length > 0) {
-          this.getRecipes();
+          this.query.filters = ingredients.map((i) => {
+            return {
+              operator: 'array-contains',
+              column: 'search_ingredients',
+              value: i
+            };
+          });
         }
-      }
-      if (typeof params['r'] !== 'undefined') {
-        const recipe: string = params['r'];
-
-        this.query.filters = [{
-          operator: '==',
-          column: 'name',
-          value: recipe
-        }];
         this.getRecipes();
       }
     });
+
+    this.route.queryParams
+      .subscribe((params: Params) => {
+        if (typeof params['r'] !== 'undefined') {
+          this.params = params['r'];
+        }
+
+        this.getRecipes();
+      });
   }
 
   getRecipes() {
@@ -65,8 +70,12 @@ export class RecipeListComponent implements OnInit {
       this.recipeService.query$.next(this.query);
       this.recipeService.getRecipes()
         .subscribe((recipes: Recipe[]) => {
-          this.recipes = recipes;
           this.isLoading = false;
+          if (this.params) {
+            this.recipes = recipes.filter((r) => r.name.toLowerCase().includes(this.params.toLowerCase()));
+            return;
+          }
+          this.recipes = recipes;
         }, () => {
           this.alertService.show('error.api.errors');
           this.recipes = [];
