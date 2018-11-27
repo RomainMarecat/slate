@@ -124,7 +124,8 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
       rating: 0,
       instructions: [],
       preparations: [],
-      ingredients: []
+      ingredients: [],
+      search_ingredients: []
     });
   }
 
@@ -133,7 +134,8 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
     this.form.patchValue({slug: slug});
 
     if (this.form.valid) {
-      this.document = {...this.document, ...this.form.value} as Recipe;
+      this.document = {...this.document, ...this.form.value,
+        ...{search_ingredients: this.form.value.ingredients.map((i: Ingredient) => i.name)}} as Recipe;
 
       if (this.document['published'] === true) {
         this.document['published_at'] = new Date();

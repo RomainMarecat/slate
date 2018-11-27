@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../shared/recipe';
 import { RecipeService } from '../shared/recipe.service';
@@ -8,6 +8,7 @@ import { ScrollService } from '../../../../shared/scroll/shared/scroll.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
 import { Constraint } from '../shared/constraint';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -49,17 +50,26 @@ export class RecipeDetailComponent implements OnInit {
     }
   }
 
+  /**
+   * Get schema.org recipe schema
+   */
   getSchemaDetail(recipe: Recipe) {
     if (recipe) {
       this.schema = this.recipeService.getDetailSchema(recipe);
     }
   }
 
+  /**
+   * Get Recipe data id
+   */
   getRecipe() {
     this.route.params.subscribe((params: Params) => {
       if (params.slug) {
         const key = params.slug.substring(0, params.slug.indexOf('-') !== -1 ? params.slug.indexOf('-') : params.slug.length);
         this.recipeService.getRecipe(key)
+          .pipe(
+            timeout(10000)
+          )
           .subscribe((recipe: Recipe) => {
             this.recipe = recipe;
             this.isLoading = false;
@@ -72,6 +82,9 @@ export class RecipeDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * Set Default instructions
+   */
   setConstraints(offsetHeight: number) {
     this.constraints = [];
     let total = 0;
@@ -92,6 +105,9 @@ export class RecipeDetailComponent implements OnInit {
     this.subscribeToScroll();
   }
 
+  /**
+   * detect all scroll movement and animate movements
+   */
   subscribeToScroll() {
     this.scrollDispatcher.scrolled(200)
       .subscribe((cdkScrollable: CdkScrollable) => {
