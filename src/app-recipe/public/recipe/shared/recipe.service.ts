@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { VisitorService } from 'shared/firestore/visitor.service';
+import { VisitorService } from '../../../../shared/firestore/visitor.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Recipe } from './recipe';

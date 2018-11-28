@@ -3,7 +3,7 @@
   <mat-icon class="upload-icon" *ngIf="!downloadURL">photo_camera</mat-icon>
   <mat-progress-bar [mode]="'determinate'"
                     [value]="uploadPercent"
-                    *ngIf="uploadPercent"></mat-progress-bar>
+                    *ngIf="uploadPercent && !downloadURL"></mat-progress-bar>
   <img [src]="downloadURL" *ngIf="downloadURL && (uploadPercent === 100 || uploadPercent === null)">
   <button type="button"
           class="close-button"

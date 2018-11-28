@@ -123,6 +123,7 @@
             <mat-form-field>
               <input matInput
                      [(colorPicker)]="color"
+                     [cpPosition]="'bottom'"
                      [style.background-color]="color"
                      [placeholder]="'admin.placeholder.recipe.color'|translate"
                      formControlName="color">
@@ -132,7 +133,7 @@
                          [innerHtml]="'admin.error.invalid.recipe.color'|translate"></mat-error>
             </mat-form-field>
 
-            <div class="block-image"
+            <div class="mt-2 block-image"
                  fxLayout="row"
                  fxLayoutAlign="center stretch"
                  fxLayoutGap="20px">
@@ -143,12 +144,9 @@
                                   (imageChanged)="onImageChange($event)"
                                   (imageRefChanged)="onImageRefChanged($event)">
               </app-storage-upload>
-              <app-storage-detail [downloadURL]="downloadURL"
-                                  classes="img-fluid">
-              </app-storage-detail>
             </div>
 
-            <mat-radio-group class="mt-2"
+            <mat-radio-group class="mt-4"
                              formControlName="on_homepage"
                              fxLayout="row"
                              fxLayoutAlign="center stretch"
@@ -170,13 +168,15 @@
               <div class="ingredients-header-wrapper"
                    fxLayout="row"
                    fxLayoutAlign="space-around center"
-                   fxLayout.xs="row"
+                   fxLayout.xs="row wrap"
                    fxLayoutAlign.xs="center center">
-                <p class="mb-0"
-                   fxFlex="50">
+                <p class="mb-0 text-center"
+                   fxFlex="50"
+                   fxFlex.xs="80">
                   {{ 'admin.label.recipe.ingredients.title'|translate }}
                 </p>
                 <app-admin-recipe-ingredient-list fxFlex="50"
+                                                  fxFlex.xs="80"
                                                   (ingredientSelected)="onIngredientSelected($event)">
                 </app-admin-recipe-ingredient-list>
                 <button type="button"

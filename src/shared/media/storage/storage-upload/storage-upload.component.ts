@@ -42,19 +42,24 @@ export class StorageUploadComponent implements OnInit {
     const filePath = (this.folder ? this.folder + '/' : '') + event.target.files[0].name;
 
     const ref = this.storage.ref(filePath);
+    let metadata = {
+      cacheControl: 'public,max-age=7200',
+      contentType: 'image/jpeg',
+    };
+
+    if (this.metadata && this.metadata.name) {
+      metadata = {...metadata, ...{customMetadata: this.metadata}};
+    }
+
     const imageRef: AngularFireUploadTask = this.storage.upload(
       filePath,
       file,
-      {
-        ...{
-          cacheControl: 'public,max-age=7200',
-          contentType: 'image/jpeg',
-        },
-        ...{customMetadata: this.metadata}
-      });
+      metadata
+    );
 
     imageRef
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         this.translate.get('error.upload.retry')
           .subscribe((translated) => {
             this.alertService.toast(translated);
@@ -70,9 +75,9 @@ export class StorageUploadComponent implements OnInit {
       taskSnapshot.ref.getDownloadURL()
         .then(((downloadURL) => {
           this.downloadURL = downloadURL;
-          ref.updateMetatdata(this.metadata)
-            .subscribe((metadata) => {
-              console.log(this.metadata, metadata);
+          ref.updateMetatdata(metadata)
+            .subscribe((res) => {
+            }, (err) => {
             });
 
           const media: Media = {
