@@ -104,6 +104,9 @@ export class VisitorService {
       }));
   }
 
+  /**
+   * get snapshot change with state, from action
+   */
   private getDocPayload(path: string): Observable<any> {
     return this.document$ = this.collectionRef
       .doc(path)

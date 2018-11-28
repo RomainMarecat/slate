@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CmsService } from '../cms/shared/cms.service';
 import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
 import { Cms } from '../cms/shared/cms';
@@ -15,6 +15,16 @@ export class FooterComponent implements OnInit {
   cms: Cms;
 
   links: CmsDetail[] = [];
+
+  @Input() options: {
+    displayTopButton: boolean,
+    displayLinks: boolean,
+    displaySublinks: boolean
+  } = {
+    displayTopButton: true,
+    displayLinks: true,
+    displaySublinks: true
+  };
 
   constructor(private cmsService: CmsService,
               private cmsDetailService: CmsDetailService,

@@ -9,10 +9,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SeoModule } from 'shared/seo/seo.module';
 import { RecipeModule } from '../recipe/recipe.module';
+import { FooterModule } from 'shared/footer/footer.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    FooterModule,
     FormsModule,
     FlexLayoutModule,
     ReactiveFormsModule,
