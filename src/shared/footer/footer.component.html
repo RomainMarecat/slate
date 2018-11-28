@@ -7,7 +7,8 @@
     <mat-toolbar-row class="links-row"
                      fxLayout="row"
                      fxLayoutAlign="center stretch"
-                     fxLayoutGap="20px">
+                     fxLayoutGap="20px"
+                     *ngIf="options.displayLinks">
       <div class="links-wrapper mt-5"
            fxLayout="row wrap"
            fxLayoutAlign="center stretch"
@@ -26,17 +27,19 @@
         </span>
       </div>
     </mat-toolbar-row>
-
     <mat-toolbar-row>
       <div class="links-wrapper w-100"
            fxLayout="row"
            fxLayoutAlign="space-around stretch"
-           fxLayoutGap="20px">
+           fxLayoutGap="20px"
+           *ngIf="options.displayLinks">
 
       </div>
     </mat-toolbar-row>
+
     <mat-toolbar-row fxShow.gt-sm="true"
-                     fxHide.xs="true">
+                     fxHide.xs="true"
+                     *ngIf="options.displayTopButton">
       <div class="up-wrapper w-100"
            fxLayout="row"
            fxLayoutAlign="end stretch">
@@ -53,7 +56,8 @@
        fxLayoutAlign.xs="start center"
        fxLayoutGap.xs="20px"
        fxShow.xs="true"
-       fxHide.gt-sm="true">
+       fxHide.gt-sm="true"
+       *ngIf="options.displaySublinks">
     <div class="links-wrapper mt-5"
          fxLayout="column"
          fxLayoutAlign="start start"

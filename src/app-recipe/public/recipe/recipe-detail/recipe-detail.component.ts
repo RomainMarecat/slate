@@ -8,7 +8,6 @@ import { ScrollService } from '../../../../shared/scroll/shared/scroll.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
 import { Constraint } from '../shared/constraint';
-import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -43,6 +42,9 @@ export class RecipeDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * On display recipe title, set constraint of instructions with offset height title
+   */
   onRecipeTitleOffsetChange(height: number) {
     // 0 means that block was display none;
     if (height > 0) {
@@ -67,9 +69,6 @@ export class RecipeDetailComponent implements OnInit {
       if (params.slug) {
         const key = params.slug.substring(0, params.slug.indexOf('-') !== -1 ? params.slug.indexOf('-') : params.slug.length);
         this.recipeService.getRecipe(key)
-          .pipe(
-            timeout(10000)
-          )
           .subscribe((recipe: Recipe) => {
             this.recipe = recipe;
             this.isLoading = false;

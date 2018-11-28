@@ -10,8 +10,14 @@ import { MatHorizontalStepper, MatStepper } from '@angular/material';
   styleUrls: ['./recipe-title.component.scss'],
   animations: [
     trigger('stepperAnimation', [
-      state('show', style({})),
-      state('hide', style({})),
+      state('show', style({
+        opacity: 1,
+        transform: 'translateY(0)'
+      })),
+      state('hide', style({
+        opacity: 0,
+        transform: 'translateY(-400px)'
+      })),
       transition('show => hide', animate('700ms ease-out')),
       transition('hide => show', animate('700ms ease-in'))
     ])

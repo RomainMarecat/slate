@@ -3,7 +3,7 @@
      [ngClass.xs]="{'py-3': !showStepper, 'py-0': showStepper, xs: true, sticky: showStepper, normal: !showStepper}"
      [ngClass.gt-sm]="{'py-5': !showStepper, 'py-3': showStepper, sticky: showStepper}"
      *ngIf="recipe && recipe.color"
-     [@stepperAnimation]="showStepper ? 'show' : 'hide'">
+     [@stepperAnimation]="recipe && recipe.color ? 'show' : 'hide'">
   <div class="row">
     <div class="col-12">
       <h1 class="text-center text-white"

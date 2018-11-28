@@ -103,7 +103,8 @@ export class HomeComponent implements OnInit {
       this.router.navigate([
         this.localizeRouterService.translateRoute('recipes'),
         'ingredients',
-        this.ingredients.join(',')]);
+        this.ingredients.join(',').toLowerCase()
+      ]);
     } else {
       this.router.navigate([
         this.localizeRouterService.translateRoute('recipes'),
