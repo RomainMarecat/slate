@@ -69,6 +69,9 @@ export class RecipeDetailComponent implements OnInit {
       if (params.slug) {
         const key = params.slug.substring(0, params.slug.indexOf('-') !== -1 ? params.slug.indexOf('-') : params.slug.length);
         this.recipeService.getRecipe(key)
+          .pipe(
+            timeout(10000)
+          )
           .subscribe((recipe: Recipe) => {
             this.recipe = recipe;
             this.isLoading = false;
