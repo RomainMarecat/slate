@@ -8,4 +8,8 @@
 
 mat-card.preparation-wrapper {
   background: $block-color-light-grey;
+
+  .list-sentence {
+    padding-left: 0;
+  }
 }

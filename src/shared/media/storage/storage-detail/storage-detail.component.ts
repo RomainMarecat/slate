@@ -9,7 +9,9 @@ import { take } from 'rxjs/operators';
 })
 export class StorageDetailComponent implements OnInit {
 
-  @Input() classes: string;
+  @Input() panelClass: string | Object;
+
+  @Input() panelStyle: string | Object;
 
   @Input() matCardImage: boolean;
 

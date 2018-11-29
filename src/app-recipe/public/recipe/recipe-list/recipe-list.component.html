@@ -20,7 +20,7 @@
 <div *ngIf="!isLoading"
      fxLayout="row wrap"
      fxLayoutAlign="center stretch">
-  <div id="identifier-recipe-list-wrapper"
+  <div [attr.id]="'identifier-recipe-list-wrapper-' + i"
        class="recipe-list"
        *ngFor="let recipe of recipes; let i = index">
     <mat-card class="recipe-card pt-5 mb-2 pb-5"

@@ -58,7 +58,7 @@
                                           (imageRefChanged)="onImageRefChanged($event)">
                       </app-storage-upload>
                       <app-storage-detail [downloadURL]="downloadURL"
-                                          classes="img-fluid">
+                                          panelClass="img-fluid">
                       </app-storage-detail>
                       <div *ngIf="article?.images && article.images.length > 0">
                         <div class="drag-wrapper">

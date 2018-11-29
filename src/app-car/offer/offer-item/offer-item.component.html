@@ -16,7 +16,7 @@
            *ngIf="!offer || !offer?.images[0]">
       </div>
       <app-image class="app-image"
-                 [classes]="'img-fluid'"
+                 [panelClass]="'img-fluid'"
                  [key]="offer?.images[0]"
                  [resize]="{height: 200}"
                  (click)="offerDetail($event)"

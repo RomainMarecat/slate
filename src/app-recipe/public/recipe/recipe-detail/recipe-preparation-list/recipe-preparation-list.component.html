@@ -7,11 +7,14 @@
               fxFlex="91"
               fxFlex.xs="85"
               *ngIf="recipe">
-      <ul fxLayout="row wrap"
+      <ul  class="list-sentence"
+           fxLayout="row wrap"
           fxLayoutAlign.xs="start stretch"
-          fxLayoutAlign.gt-sm="center stretch"
+          fxLayoutAlign.gt-sm="start stretch"
           fxFlex="100">
-        <li class="m-2"
+        <li class="my-2 text-xs-left text-sm-center list-unstyled"
+            fxFlex="50"
+            fxFlex.xs="45"
             *ngFor="let preparation of recipe.preparations"
             [innerHTML]="getSentence(preparation)">
         </li>

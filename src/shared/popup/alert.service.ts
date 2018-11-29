@@ -35,7 +35,7 @@ export class AlertService {
     // Open Alert Component with a message
     const toastRef = this.snackBar.openFromComponent(AlertComponent, {
       data: message,
-      // Add extra classes to define custom css or background color
+      // Add extra class to define custom css or background color
       panelClass: ['snackbar'],
       // Timeout duration in ms
       duration: 8000

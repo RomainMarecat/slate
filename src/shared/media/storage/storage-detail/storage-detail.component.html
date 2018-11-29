@@ -3,5 +3,6 @@
      [attr.height]="height"
      [attr.width]="width"
      [attr.alt]="metadata?.alt ? metadata.alt : downloadURL"
-     [attr.class]="classes"
+     [ngClass]="panelClass"
+     [ngStyle]="panelStyle"
      *ngIf="downloadURL">

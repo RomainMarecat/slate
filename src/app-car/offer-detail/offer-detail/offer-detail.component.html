@@ -11,7 +11,7 @@
         <div class="app-image-loading"
              *ngIf="!offer || !offer?.images[0]"></div>
         <app-image class="app-image"
-                   classes="img-fluid"
+                   panelClass="img-fluid"
                    [key]="offer?.images[0]"
                    [resize]="resizedImage"
                    *ngIf="offer?.images[0]"></app-image>

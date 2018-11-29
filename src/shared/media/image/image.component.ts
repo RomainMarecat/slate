@@ -9,7 +9,8 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./image.component.scss']
 })
 export class ImageComponent {
-  @Input() classes: string;
+  @Input() panelClass: string | Object;
+  @Input() panelStyle: string | Object;
   @Input() matCardImage: boolean;
   _publicId: string;
   _key: string;
