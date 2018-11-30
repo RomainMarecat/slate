@@ -6,6 +6,7 @@ import { AlertService } from '../../../../shared/popup/alert.service';
 import { SeoService } from '../../../../shared/seo/shared/seo.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Filter } from '../../../../shared/facet/filter/shared/filter';
+import { StringService } from 'shared/util/string.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -72,7 +73,8 @@ export class RecipeListComponent implements OnInit {
         .subscribe((recipes: Recipe[]) => {
           this.isLoading = false;
           if (this.params) {
-            this.recipes = recipes.filter((r) => r.name.toLowerCase().includes(this.params.toLowerCase()));
+            this.recipes = recipes.filter((r) => StringService.replaceDiacritics(r.name.toLowerCase())
+              .includes(StringService.replaceDiacritics(this.params.toLowerCase())));
             return;
           }
           this.recipes = recipes;
