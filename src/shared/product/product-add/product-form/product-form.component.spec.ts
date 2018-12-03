@@ -39,7 +39,7 @@ import { MockMediaService } from '../../../media/mock-media.service';
 import { DeviceService } from '../../../device/device.service';
 import { MediaModule } from '../../../media/media.module';
 import { environment } from '../../../../app-ecommerce/environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ProductFormComponent', () => {
   let component: ProductFormComponent;

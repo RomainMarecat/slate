@@ -5,7 +5,7 @@ import { ProductService } from '../../../product/shared/product.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
 
 import { SortItemComponent } from './sort-item.component';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('SortItemComponent', () => {
   let component: SortItemComponent;

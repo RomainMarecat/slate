@@ -24,7 +24,6 @@ import { DateService } from '../../../util/date.service';
 import { MockLoaderService } from '../../../loader/mock-loader.service';
 import { DeviceService } from '../../../device/device.service';
 import { NotificationService } from '../../../slack/notification.service';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2Module } from 'angulartics2';
 import { CategoryService } from '../../../category/category.service';
 import { MockCategoryService } from '../../../category/mock-category.service';
@@ -38,7 +37,7 @@ import { environment } from '../../../../app-hockey/environments/environment';
 import { ProductService } from '../../../product/shared/product.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 
 describe('AttributeEditComponent', () => {
   let component: AttributeEditComponent;
@@ -59,7 +58,7 @@ describe('AttributeEditComponent', () => {
         NgxEditorModule,
         LocalizeRouterModule,
         NgxDatatableModule,
-        Angulartics2Module.forRoot( {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,

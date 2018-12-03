@@ -24,9 +24,9 @@ import { MockAlertService } from '../../../shared/popup/mock-alert.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { ScoreService } from '../../../shared/score/score.service';
 import { MockScoreService } from '../../../shared/score/mock-score.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
-import { CartService } from 'shared/cart/shared/cart.service';
-import { MockCartService } from 'shared/cart/shared/mock-cart.service';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
+import { CartService } from '../../../shared/cart/shared/cart.service';
+import { MockCartService } from '../../../shared/cart/shared/mock-cart.service';
 
 describe('ProductActionComponent', () => {
   let component: ProductActionComponent;
@@ -50,7 +50,7 @@ describe('ProductActionComponent', () => {
         MatInputModule,
         MatCheckboxModule,
         MatListModule,
-        Angulartics2Module.forRoot( {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,

@@ -10,7 +10,7 @@ import { SharedModule } from '../../../shared.module';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('OptinNewsletterComponent', () => {
   let component: OptinNewsletterComponent;

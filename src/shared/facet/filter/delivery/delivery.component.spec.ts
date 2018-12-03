@@ -7,7 +7,7 @@ import { MatIconModule, MatFormFieldModule, MatSelectModule } from '@angular/mat
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { DeliveryComponent } from './delivery.component';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('DeliveryComponent', () => {
   let component: DeliveryComponent;

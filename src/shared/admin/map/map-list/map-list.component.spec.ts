@@ -19,8 +19,8 @@ import { MenuService } from '../../../menu/menu.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { AlertService } from '../../../popup/alert.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 
 describe('MapListComponent', () => {
   let component: MapListComponent;

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Payment } from '../../payment/shared/payment';
 import { Order } from '../../order/shared/order';
 import { OrderService } from '../../order/shared/order.service';
 import { AlertService } from '../../popup/alert.service';
+import { Payment } from '../../payment/shared/payment';
 
 @Component({
   selector: 'app-cart-confirmation',

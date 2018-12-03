@@ -32,7 +32,7 @@ import { ProductActionComponent } from '../product-action/product-action.compone
 import { ProductAttributeComponent } from '../product-attribute/product-attribute.component';
 import { ProductDescriptionComponent } from '../product-description/product-description.component';
 import { environment } from '../../environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;

@@ -17,12 +17,11 @@ import {
 } from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { ObjectService } from '../../../util/object.service';
 import { MediaService } from '../../media.service';
 import { MockMediaService } from '../../mock-media.service';
 import { DeviceService } from '../../../device/device.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ImageProductComponent', () => {
   let component: ImageProductComponent;

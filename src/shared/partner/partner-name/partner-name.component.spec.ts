@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PartnerNameComponent } from './partner-name.component';
 import { PartnerService } from '../partner.service';
 import { MockPartnerService } from '../mock-partner.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('PartnerNameComponent', () => {
   let component: PartnerNameComponent;

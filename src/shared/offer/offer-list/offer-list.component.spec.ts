@@ -12,8 +12,8 @@ import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material
 import { PartnerModule } from '../../partner/partner.module';
 import { PartnerService } from '../../partner/partner.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { MockPartnerService } from 'shared/partner/mock-partner.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MockPartnerService } from '../../partner/mock-partner.service';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;

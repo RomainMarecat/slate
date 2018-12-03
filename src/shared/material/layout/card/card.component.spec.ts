@@ -7,7 +7,7 @@ import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule, MatListModule, MatRadioModule,
   MatToolbarModule
 } from '@angular/material';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('CardComponent', () => {
   let component: CardComponent;

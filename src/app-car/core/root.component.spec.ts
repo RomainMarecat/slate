@@ -50,7 +50,8 @@ import { MockCmsService } from '../../shared/cms/shared/mock-cms.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { environment } from '../../app-hockey/environments/environment';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -83,6 +84,8 @@ export const cookieConfig: NgcCookieConsentConfig = {
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
   let fixture: ComponentFixture<AppRootComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

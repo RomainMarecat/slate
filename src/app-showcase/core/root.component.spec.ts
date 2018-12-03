@@ -23,7 +23,7 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { NgcCookieConsentModule, NgcCookieConsentService, WindowService, NgcCookieConsentConfig } from 'ngx-cookieconsent';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,7 +50,8 @@ import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -83,6 +84,8 @@ export const cookieConfig: NgcCookieConsentConfig = {
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
   let fixture: ComponentFixture<AppRootComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

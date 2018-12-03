@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
@@ -13,7 +12,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { DeviceService } from '../../../shared/device/device.service';
 import { ProductAttributeComponent } from './product-attribute.component';
 import { environment } from '../../environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 
 describe('ProductAttributeComponent', () => {
   let component: ProductAttributeComponent;

@@ -24,7 +24,7 @@ import { RoutingState } from '../../util/routing-state';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
 describe('CartItemComponent', () => {
   let component: CartItemComponent;

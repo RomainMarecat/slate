@@ -5,16 +5,16 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
-import { SeoModule } from 'shared/seo/seo.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RecipeService } from '../shared/recipe.service';
 import { MockRecipeService } from '../shared/mock-recipe.service';
-import { SeoService } from 'shared/seo/shared/seo.service';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
-import { AlertService } from 'shared/popup/alert.service';
-import { MockAlertService } from 'shared/popup/mock-alert.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { SeoService } from '../../../../shared/seo/shared/seo.service';
+import { MockLocalizeRouterService } from '../../../../shared/router/mock-localize-router.service';
+import { AlertService } from '../../../../shared/popup/alert.service';
+import { MockAlertService } from '../../../../shared/popup/mock-alert.service';
+import { configureTestSuite } from '../../../../shared/unit-test/configure-test-suite';
+import { SeoModule } from '../../../../shared/seo/seo.module';
 
 describe('RecipeListComponent', () => {
   let component: RecipeListComponent;

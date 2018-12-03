@@ -5,7 +5,7 @@ import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, Mat
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('RadioButtonComponent', () => {
   let component: RadioButtonComponent;

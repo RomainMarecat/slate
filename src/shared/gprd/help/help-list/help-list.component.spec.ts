@@ -6,7 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HelpIconComponent } from '../help-icon/help-icon.component';
 import { MatCardModule, MatDialogModule, MatIconModule } from '@angular/material';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('HelpListComponent', () => {
   let component: HelpListComponent;

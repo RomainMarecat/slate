@@ -6,10 +6,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
-import { MenuService } from 'shared/menu/menu.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
+import { MenuService } from '../../../shared/menu/menu.service';
+import { MockLocalizeRouterService } from '../../../shared/router/mock-localize-router.service';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;

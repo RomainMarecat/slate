@@ -8,12 +8,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { SharedModule } from 'shared/shared.module';
-import { AlertService } from 'shared/popup/alert.service';
-import { MockAlertService } from 'shared/popup/mock-alert.service';
-import { PartnerService } from 'shared/partner/partner.service';
-import { MockPartnerService } from 'shared/partner/mock-partner.service';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { SharedModule } from '../../../shared.module';
+import { AlertService } from '../../../popup/alert.service';
+import { MockAlertService } from '../../../popup/mock-alert.service';
+import { PartnerService } from '../../../partner/partner.service';
+import { MockPartnerService } from '../../../partner/mock-partner.service';
 
 describe('PartnerImportComponent', () => {
   let component: PartnerImportComponent;

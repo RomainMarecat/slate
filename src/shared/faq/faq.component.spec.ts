@@ -16,8 +16,8 @@ import {
   MatInputModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 import { SeoModule } from '../seo/seo.module';
+import { configureTestSuite } from '../unit-test/configure-test-suite';
 
 describe('FaqComponent', () => {
   let component: FaqComponent;

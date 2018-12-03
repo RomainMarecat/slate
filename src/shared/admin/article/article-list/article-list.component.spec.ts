@@ -32,10 +32,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductService } from '../../../product/shared/product.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 import { MediaModule } from '../../../media/media.module';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;

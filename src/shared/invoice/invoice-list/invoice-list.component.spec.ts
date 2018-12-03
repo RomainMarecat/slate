@@ -11,12 +11,12 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { Invoice1Component } from 'shared/invoice/invoice1/invoice1.component';
-import { Invoice2Component } from 'shared/invoice/invoice2/invoice2.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { Invoice1Component } from '../invoice1/invoice1.component';
+import { Invoice2Component } from '../invoice2/invoice2.component';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
 describe('InvoiceListComponent', () => {
   let component: InvoiceListComponent;

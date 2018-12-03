@@ -10,7 +10,6 @@ import { MatCardModule, MatIconModule } from '@angular/material';
 import { NgPipesModule } from 'ngx-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
 import { Cloudinary } from 'cloudinary-core';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -22,7 +21,7 @@ import { MockUserService } from '../../../shared/user/shared/mock-user.service';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { MediaModule } from '../../../shared/media/media.module';
 import { environment } from '../../environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 
 
 describe('ProductItemComponent', () => {

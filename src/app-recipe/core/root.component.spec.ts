@@ -49,12 +49,12 @@ import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { environment } from '../../app-hockey/environments/environment';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockRecipeService } from '../public/recipe/shared/mock-recipe.service';
 import { RecipeService } from '../public/recipe/shared/recipe.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
-import { MenuModule } from 'shared/menu/menu.module';
+import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
+import { MenuModule } from '../../shared/menu/menu.module';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {

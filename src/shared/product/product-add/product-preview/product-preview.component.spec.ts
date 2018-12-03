@@ -6,7 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import {
   MatCardModule,
   MatIconModule,
@@ -25,7 +24,7 @@ import { DateService } from '../../../util/date.service';
 import { I18nService } from '../../../i18n/i18n.service';
 import { MediaModule } from '../../../media/media.module';
 import { environment } from '../../../../app-ecommerce/environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ProductPreviewComponent', () => {
   let component: ProductPreviewComponent;

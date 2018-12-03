@@ -11,11 +11,11 @@ import { CalendarBodyComponent } from './calendar-body/calendar-body.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AlertService } from '../../popup/alert.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
-import { SessionService } from 'shared/session/shared/session.service';
-import { MockSessionService } from 'shared/session/shared/mock-session.service';
-import { mockEnd, mockStart } from 'shared/agenda/shared/mock-day';
-import { mockOnlineSession } from 'shared/agenda/shared/mock-online-session';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { SessionService } from '../../session/shared/session.service';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MockSessionService } from '../../session/shared/mock-session.service';
+import { mockEnd, mockStart } from '../shared/mock-day';
+import { mockOnlineSession } from '../shared/mock-online-session';
 
 describe('CalendarComponent', () => {
   let component: CalendarComponent;

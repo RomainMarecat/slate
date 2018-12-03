@@ -6,15 +6,14 @@ import {
 } from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { FooterComponent } from './footer.component';
 import { MockCmsService } from '../cms/shared/mock-cms.service';
 import { CmsService } from '../cms/shared/cms.service';
 import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
 import { MockCmsDetailService } from '../cms-detail/shared/mock-cms-detail.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { MockLocalizeRouterService } from '../router/mock-localize-router.service';
+import { configureTestSuite } from '../unit-test/configure-test-suite';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;

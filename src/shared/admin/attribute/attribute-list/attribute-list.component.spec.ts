@@ -20,11 +20,14 @@ import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 
 describe('AttributeListComponent', () => {
   let component: AttributeListComponent;
   let fixture: ComponentFixture<AttributeListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

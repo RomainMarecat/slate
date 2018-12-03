@@ -1,8 +1,6 @@
 {
   "extends": "../tsconfig.app.json",
   "compilerOptions": {
-    "paths": {
-    },
     "outDir": "../../out-tsc/app",
     "baseUrl": "./",
     "module": "es2015",

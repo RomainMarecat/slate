@@ -7,7 +7,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { MatProgressBarModule } from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../../../app-car/environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('StorageDetailComponent', () => {
   let component: StorageDetailComponent;

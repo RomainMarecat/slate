@@ -7,7 +7,7 @@ import { MatIconModule, MatFormFieldModule, MatSelectModule } from '@angular/mat
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { ProductBrandComponent } from './product-brand.component';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ProductBrandComponent', () => {
   let component: ProductBrandComponent;

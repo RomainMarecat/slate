@@ -7,7 +7,7 @@ import { MatIconModule, MatInputModule, MatFormFieldModule, MatButtonModule } fr
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { ProductDescriptionComponent } from './product-description.component';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ProductDescriptionComponent', () => {
   let component: ProductDescriptionComponent;

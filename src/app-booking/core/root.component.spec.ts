@@ -50,7 +50,7 @@ import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { environment } from '../../app-hockey/environments/environment';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {

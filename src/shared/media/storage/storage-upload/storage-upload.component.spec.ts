@@ -10,9 +10,9 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { environment } from '../../../../app-car/environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('StorageUploadComponent', () => {
   let component: StorageUploadComponent;

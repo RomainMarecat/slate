@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChartLineComponent } from './chart-line.component';
 import { ChartsModule } from 'ng2-charts';
-import { SharedModule } from 'shared/shared.module';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { SharedModule } from '../../shared.module';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('ChartLineComponent', () => {
   let component: ChartLineComponent;
@@ -17,9 +17,9 @@ describe('ChartLineComponent', () => {
         ChartsModule,
         SharedModule,
       ],
-      declarations: [ ChartLineComponent ]
+      declarations: [ChartLineComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -5,7 +5,7 @@ import { LoaderService } from '../../../shared/loader/loader.service';
 import { Selection } from '../../../shared/selection/selection';
 import { MenuService } from '../../../shared/menu/menu.service';
 import { fromEvent } from 'rxjs';
-import { debounceTime, map } from 'rxjs/operators';
+import { map, debounceTime } from 'rxjs/operators';
 import { Meta, Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 
