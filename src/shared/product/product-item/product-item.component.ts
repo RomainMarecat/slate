@@ -74,13 +74,15 @@ export class ProductItemComponent implements OnInit {
    * Go to product page detail
    */
   productDetail() {
-    this.router.navigate(
-      [
-        this.localizeRouterService.translateRoute('/products'),
-        this.localizeRouterService.translateRoute('detail'),
-        `${this.product.key}-${this.product.name}`
-      ]
-    );
+    this.router.navigate(['/products']).then(() => {
+      this.router.navigate(
+        [
+          this.localizeRouterService.translateRoute('/products'),
+          this.localizeRouterService.translateRoute('detail'),
+          `${this.product.key}-${this.product.name}`
+        ]
+      );
+    });
   }
 
   /**

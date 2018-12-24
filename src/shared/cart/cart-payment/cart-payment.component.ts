@@ -1,12 +1,14 @@
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Component,
   ElementRef,
-  OnInit,
-  ViewChild,
-  Output,
   EventEmitter,
-  Input, AfterViewInit, OnDestroy
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild
 } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { PaymentService } from '../../payment/shared/payment.service';
@@ -19,10 +21,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../shared/cart.service';
 import { RoutingState } from '../../util/routing-state';
 import { OrderService } from '../../order/shared/order.service';
-import {
-  StripeService, Elements, Element as StripeElement, ElementsOptions, Error, ElementOptions,
-  StripeCardComponent
-} from 'ngx-stripe';
+import { ElementOptions, Elements, ElementsOptions, Error, StripeCardComponent, StripeService } from 'ngx-stripe';
 import { LoaderService } from '../../loader/loader.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -38,6 +37,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
 
   error: Error;
   @Output() paid: EventEmitter<any> = new EventEmitter<any>();
+  @Output() cancelled: EventEmitter<boolean> = new EventEmitter<boolean>();
   elements: Elements;
   @ViewChild(StripeCardComponent) card: StripeCardComponent;
 
@@ -84,7 +84,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.previousRoute = this.routingState.getPreviousUrl();
+    this.previousRoute = this.routingState.getPreviousUrl() || '/cart';
     this.getCart();
     this.onLine = navigator.onLine;
     // this.stripeService.elements(this.elementsOptions)
@@ -134,6 +134,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
 
   cancel() {
     this.router.navigate([this.previousRoute]);
+    this.cancelled.emit(true);
   }
 
   onChange(event: any) {

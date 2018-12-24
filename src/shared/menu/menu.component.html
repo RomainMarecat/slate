@@ -64,6 +64,8 @@
         *ngIf="!(userService.getAuthState() | async) && config.displayButtonConnection">
     <button mat-raised-button
             color="accent"
+            [style.background]="config.connectionBtn.background"
+            [style.color]="config.connectionBtn.color"
             type="button"
             (click)="userService.loginGoogle()"
             [innerHtml]="'menu.connection.title'|translate">

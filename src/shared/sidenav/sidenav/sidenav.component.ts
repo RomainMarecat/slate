@@ -41,6 +41,13 @@ export class SidenavComponent implements OnInit, OnDestroy {
     {link: '/material', label: 'admin.cta.material'},
   ];
 
+  configMenu = {
+    connectionBtn: {
+      color: '#fff',
+      background: '#90323d'
+    }
+  };
+
   private subscriptionSidenav: Subscription;
   private subscriptionSidenavFilter: Subscription;
   private subscriptionAuthState: Subscription;

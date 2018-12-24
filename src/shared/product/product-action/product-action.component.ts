@@ -199,6 +199,8 @@ export class ProductActionComponent implements OnInit {
             });
           return;
         }
+        this.isLoading = false;
+        this.loaderService.hide();
 
         this.alertService.show('product-detail.cart.error.user', 'error');
       }, () => {

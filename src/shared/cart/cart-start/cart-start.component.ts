@@ -141,6 +141,12 @@ export class CartStartComponent implements OnInit {
       });
   }
 
+  onCancel(event: boolean) {
+    if (event === true) {
+      this.stepper.previous();
+    }
+  }
+
   onPaid(payment: Payment) {
     this.cartConfirmationComponent.setPayment(payment);
     this.isPaymentCompleted = true;

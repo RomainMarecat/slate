@@ -37,7 +37,9 @@
             <!-- Step payment -->
             <mat-step [completed]="isPaymentCompleted">
               <ng-template matStepLabel>{{ 'cart.title.payment'|translate }}</ng-template>
-              <app-cart-payment [cart]="cart" (paid)="onPaid($event)"></app-cart-payment>
+              <app-cart-payment [cart]="cart"
+                                (paid)="onPaid($event)"
+                                (cancelled)="onCancel($event)"></app-cart-payment>
             </mat-step>
 
             <!-- Step confirmation -->

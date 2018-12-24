@@ -115,7 +115,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
       link: '#ffffff'
     },
     button: {
-      background: '#af300b',
+      background: '#90323d',
       text: '#ffffff',
       border: 'transparent'
     }

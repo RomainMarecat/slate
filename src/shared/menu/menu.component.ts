@@ -6,7 +6,7 @@ import { MenuService } from './menu.service';
 import { Subscription } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { SearchDialogComponent } from '../search/search-dialog/search-dialog.component';
-import { Filter } from 'shared/facet/filter/shared/filter';
+import { Filter } from '../facet/filter/shared/filter';
 
 @Component({
   selector: 'app-menu',
@@ -15,13 +15,24 @@ import { Filter } from 'shared/facet/filter/shared/filter';
 })
 export class MenuComponent implements OnInit, OnDestroy {
 
-  @Input() config: {
+  _config: {
     displayAdminRecipe: boolean,
     displayBurgerMenu: boolean,
     displayButtonConnection: boolean,
     displayIconButtonConnection: boolean,
     underlineTitle: boolean,
-    displayCart: boolean
+    displayCart: boolean,
+    connectionBtn?: {
+      color: string;
+      background: string;
+    }
+  } = {
+    displayAdminRecipe: false,
+    displayBurgerMenu: true,
+    displayButtonConnection: true,
+    displayIconButtonConnection: false,
+    underlineTitle: false,
+    displayCart: true
   };
 
   @Input() _documents: any[];
@@ -42,14 +53,6 @@ export class MenuComponent implements OnInit, OnDestroy {
               private sidenavService: SidenavService,
               public userService: UserService,
               public matDialog: MatDialog) {
-    this.config = {
-      displayAdminRecipe: false,
-      displayBurgerMenu: true,
-      displayButtonConnection: true,
-      displayIconButtonConnection: false,
-      underlineTitle: false,
-      displayCart: true
-    };
     this.title = null;
   }
 
@@ -101,5 +104,15 @@ export class MenuComponent implements OnInit, OnDestroy {
    */
   toggleSidenav() {
     this.sidenavService.open();
+  }
+
+  @Input() set config(config) {
+    if (config) {
+      this._config = {...this._config, ...config};
+    }
+  }
+
+  get config() {
+    return this._config;
   }
 }
