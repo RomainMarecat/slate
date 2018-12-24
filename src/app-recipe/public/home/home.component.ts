@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit {
     filters: Filter[],
     limit: number
   };
+  imageHome = '/assets/images/home/bg-desktop.jpg';
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -84,6 +85,9 @@ export class HomeComponent implements OnInit {
     this.observableMedia
       .subscribe((mediaChange: MediaChange) => {
         this.mediaBreakpoint = mediaChange.mqAlias;
+        if (['xs'].includes(this.mediaBreakpoint)) {
+          this.imageHome = '/assets/images/home/bg-mobile.jpg';
+        }
       });
   }
 

@@ -2,12 +2,8 @@
   <div class="main-content">
     <div class="bg-wrapper"
          [class.xs]="mediaBreakpoint === 'xs'">
-      <img [src]="'assets/images/home/bg-desktop.jpg'"
-           [alt]="'home.images.header'|translate"
-           *ngIf="['sm', 'md', 'lg', 'xl'].includes(mediaBreakpoint)">
-      <img [src]="'assets/images/home/bg-mobile.jpg'"
-           [alt]="'home.images.header'|translate"
-           *ngIf="['xs'].includes(mediaBreakpoint)">
+      <img [src]="imageHome"
+           [alt]="'home.images.header'|translate">
     </div>
     <div class="home-title-wrapper mt-4 mb-2 mt-sm-5 mb-sm-3">
       <div class="container">
