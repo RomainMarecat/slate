@@ -14,6 +14,20 @@ export class SeoService {
               private translateService: TranslateService) {
   }
 
+  disableZoom() {
+    this.meta.updateTag({
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
+    });
+  }
+
+  reactiveZoom() {
+    this.meta.updateTag({
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1'
+    });
+  }
+
   /**
    * Seo's activation with entity type meta title and description
    */

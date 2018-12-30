@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../shared/recipe';
 import { RecipeService } from '../shared/recipe.service';
@@ -9,13 +9,16 @@ import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
 import { Constraint } from '../shared/constraint';
 import { take, timeout } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { isSameDay } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
   styleUrls: ['./recipe-detail.component.scss'],
 })
-export class RecipeDetailComponent implements OnInit {
+export class RecipeDetailComponent implements OnInit, OnDestroy {
   recipe: Recipe;
   isLoading: boolean;
   currentInstruction = 0;
@@ -24,6 +27,10 @@ export class RecipeDetailComponent implements OnInit {
   previousPosition: number;
   top: number;
   schema: Object = {};
+  total = 0;
+  mqAlias: string;
+
+  scrollSubscriber: Subscription;
 
   constructor(private element: ElementRef,
               private router: Router,
@@ -34,6 +41,7 @@ export class RecipeDetailComponent implements OnInit {
               private localizeRouterService: LocalizeRouterService,
               private scrollService: ScrollService,
               private scrollDispatcher: ScrollDispatcher,
+              private observableMedia: ObservableMedia,
               private cd: ChangeDetectorRef) {
     this.isLoading = true;
     this.seoService.setSeo('recipe-detail');
@@ -41,14 +49,26 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.seoService.disableZoom();
+    this.observableMedia.subscribe((mediaChange: MediaChange) => {
+      this.mqAlias = mediaChange.mqAlias;
+    });
+  }
+
+  ngOnDestroy() {
+    this.seoService.reactiveZoom();
   }
 
   /**
    * On display recipe title, set constraint of instructions with offset height title
    */
-  onRecipeTitleOffsetChange(height: number) {
+  onRecipeTitleOffsetChange(height: number, reset?: boolean) {
     // 0 means that block was display none;
     if (height > 0) {
+
+      if (reset) {
+        this.total = 0;
+      }
       this.setConstraints(height);
     }
   }
@@ -87,20 +107,21 @@ export class RecipeDetailComponent implements OnInit {
    * Set Default instructions
    */
   setConstraints(offsetHeight: number) {
+    console.log(this.total, offsetHeight);
     this.constraints = [];
-    let total = 0;
-    this.constraints.push({index: 0, min: total, max: total + offsetHeight});
-    total += offsetHeight;
+    this.constraints.push({index: 0, min: this.total, max: this.total + offsetHeight});
+    this.total += offsetHeight;
+
     const instructionsElements = document.querySelectorAll('.instruction-card');
     this.recipe.instructions.forEach((ins, index) => {
       if (instructionsElements.length) {
         const htmlElement = (instructionsElements[index] as HTMLElement);
-        let itemSize: number = total + htmlElement.offsetHeight;
+        let itemSize: number = this.total + htmlElement.offsetHeight;
         if (index === this.recipe.instructions.length - 1) {
           itemSize = 99999;
         }
-        this.constraints.push({index: index + 1, min: (total) + 1, max: itemSize});
-        total += htmlElement.offsetHeight + 32;
+        this.constraints.push({index: index + 1, min: (this.total) + 1, max: itemSize});
+        this.total += htmlElement.offsetHeight + 32;
       }
     });
     this.subscribeToScroll();
@@ -110,15 +131,25 @@ export class RecipeDetailComponent implements OnInit {
    * detect all scroll movement and animate movements
    */
   subscribeToScroll() {
-    this.scrollDispatcher.scrolled(200)
+    if (this.scrollSubscriber) {
+      this.total = 0;
+      this.scrollSubscriber.unsubscribe();
+    }
+
+    this.scrollSubscriber = this.scrollDispatcher.scrolled(200)
       .subscribe((cdkScrollable: CdkScrollable) => {
         const bottom: number = cdkScrollable.measureScrollOffset('bottom');
         this.top = cdkScrollable.measureScrollOffset('top');
+
+        let offsetActive = 0;
+        if (this.currentInstruction > 1 && this.mqAlias !== 'xs') {
+          offsetActive = 0;
+        }
+
         const filteredInstructions = this.constraints.filter((constraint) => {
-          return constraint.min <= this.top && constraint.max >= this.top;
+          return constraint.min <= (this.top - offsetActive) && constraint.max >= (this.top - offsetActive);
         });
 
-        console.log(filteredInstructions[0] ? filteredInstructions[0] : null, this.top, bottom);
         this.limitInstructionReached = false;
         if (filteredInstructions.length > 0) {
           this.currentInstruction = filteredInstructions[0].index;
@@ -141,6 +172,8 @@ export class RecipeDetailComponent implements OnInit {
           }
           this.previousPosition = this.top;
         }
+
+        console.log(filteredInstructions[0], this.top, bottom, this.currentInstruction, this.limitInstructionReached);
       });
   }
 

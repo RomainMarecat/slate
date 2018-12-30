@@ -45,7 +45,6 @@
     font-size: 5rem;
     text-align: center;
     letter-spacing: -30px;
-    color: mat-color($white);
 
     &.xs {
       font-size: 2rem;
@@ -56,8 +55,6 @@
   }
 
   .cook-time {
-    color: mat-color($white);
-
     &.xs {
       font-size: 1rem;
     }

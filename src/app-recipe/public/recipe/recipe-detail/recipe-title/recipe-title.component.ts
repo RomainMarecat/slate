@@ -3,6 +3,7 @@ import { Recipe } from '../../shared/recipe';
 import { Instruction } from '../../../instruction/shared/instruction';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatHorizontalStepper, MatStepper } from '@angular/material';
+import { ContrastService } from 'shared/contrast/contrast.service';
 
 @Component({
   selector: 'app-recipe-title',
@@ -27,7 +28,7 @@ export class RecipeTitleComponent implements OnInit, AfterViewInit {
 
   @ViewChild('stepper') stepper: MatStepper;
 
-  @Input() recipe: Recipe;
+  _recipe: Recipe;
 
   @Input() showStepper: boolean;
 
@@ -45,7 +46,8 @@ export class RecipeTitleComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.offsetHeightChange.emit(this.element.nativeElement.offsetHeight);
+      // + 10 rem OR menu 64px + information 288px
+      this.offsetHeightChange.emit(this.element.nativeElement.offsetHeight + (this.showStepper ? 0 : 64 + 288));
     }, 100);
   }
 
@@ -74,6 +76,14 @@ export class RecipeTitleComponent implements OnInit, AfterViewInit {
         i++;
       }
     }
+  }
+
+  @Input() set recipe(recipe: Recipe) {
+    this._recipe = recipe;
+  }
+
+  get recipe(): Recipe {
+    return this._recipe;
   }
 
   @Input() set position(position: number) {

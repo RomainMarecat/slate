@@ -28,12 +28,14 @@
               [style.background-color]="recipe.color">
       <mat-card-title class="recipe-name mat-card-title"
                       fxLayout="row"
-                      fxLayoutAlign="center stretch">
+                      fxLayoutAlign="center stretch"
+                      [style.color]="recipe.overlay_color">
         {{ recipe.name }}
       </mat-card-title>
       <mat-card-content class="mat-card-content"
                         fxLayout="row"
-                        fxLayoutAlign="center stretch">
+                        fxLayoutAlign="center stretch"
+                        [style.color]="recipe.overlay_color">
         -------------
       </mat-card-content>
       <app-image fxHide.gt-sm

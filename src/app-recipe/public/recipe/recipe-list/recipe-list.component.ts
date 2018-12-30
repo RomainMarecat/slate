@@ -6,7 +6,7 @@ import { AlertService } from '../../../../shared/popup/alert.service';
 import { SeoService } from '../../../../shared/seo/shared/seo.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Filter } from '../../../../shared/facet/filter/shared/filter';
-import { StringService } from 'shared/util/string.service';
+import { StringService } from '../../../../shared/util/string.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -23,6 +23,8 @@ export class RecipeListComponent implements OnInit {
   };
 
   params: string;
+
+  overlayColor: string;
 
   constructor(private recipeService: RecipeService,
               private alertService: AlertService,

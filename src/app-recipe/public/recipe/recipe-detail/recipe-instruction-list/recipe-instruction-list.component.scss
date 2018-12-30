@@ -2,6 +2,8 @@
 
 .instruction-wrapper {
 
+
+
   .order-index {
     text-align: center;
 
@@ -28,6 +30,17 @@
   }
 
   mat-card.instruction-card {
+    padding: 30px 16px;
+
+    background: $block-color-light-grey;
+
+    * {
+      opacity: 0.5;
+    }
+
+    &.active * {
+      opacity: 1;
+    }
 
     &.section {
       min-height: calc(100vh - 64px - 300px);

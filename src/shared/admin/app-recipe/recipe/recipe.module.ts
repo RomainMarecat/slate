@@ -16,6 +16,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { IngredientEditComponent } from './recipe-edit/ingredient-edit/ingredient-edit.component';
 import { PreparationEditComponent } from './recipe-edit/preparation-edit/preparation-edit.component';
 import { IngredientListComponent } from './recipe-edit/ingredient-list/ingredient-list.component';
+import { ContrastService } from '../../../contrast/contrast.service';
 
 @NgModule({
   imports: [
@@ -37,6 +38,9 @@ import { IngredientListComponent } from './recipe-edit/ingredient-list/ingredien
     IngredientEditComponent,
     PreparationEditComponent,
     IngredientListComponent
+  ],
+  providers: [
+    ContrastService
   ]
 })
 export class RecipeModule {

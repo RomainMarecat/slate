@@ -73,6 +73,9 @@ export class RecipeFormType {
       color: new FormControl(recipe && recipe.color ? recipe.color : '', [
         Validators.required
       ]),
+      overlay_color: new FormControl(recipe && recipe.overlay_color ? recipe.overlay_color : '', [
+        Validators.required
+      ]),
       image: new FormControl(recipe && recipe.image ? recipe.image : '', [
         Validators.required
       ]),

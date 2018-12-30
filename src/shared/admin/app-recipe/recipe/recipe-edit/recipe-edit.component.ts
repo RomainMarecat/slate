@@ -13,6 +13,7 @@ import { StringService } from '../../../../util/string.service';
 import { FormArray } from '@angular/forms';
 import { Ingredient } from '../../../../../app-recipe/public/ingredient/shared/ingredient';
 import { IngredientService } from '../../../../../app-recipe/public/ingredient/shared/ingredient.service';
+import { ContrastService } from '../../../../contrast/contrast.service';
 
 @Component({
   selector: 'app-admin-recipe-edit',
@@ -33,7 +34,8 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
               protected alertService: AlertService,
               protected recipeService: RecipeService,
               protected ingredientService: IngredientService,
-              protected localizeRouterService: LocalizeRouterService) {
+              protected localizeRouterService: LocalizeRouterService,
+              private contrastService: ContrastService) {
     super(activatedRoute, router, alertService, recipeService, localizeRouterService);
     this.createForm();
   }
@@ -120,6 +122,7 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
       creator: 'Anne-Lise',
       yield: 4,
       color: '',
+      overlay_color: '',
       image: '',
       rating: 0,
       instructions: [],
@@ -134,8 +137,10 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
     this.form.patchValue({slug: slug});
 
     if (this.form.valid) {
-      this.document = {...this.document, ...this.form.value,
-        ...{search_ingredients: this.form.value.ingredients.map((i: Ingredient) => i.name)}} as Recipe;
+      this.document = {
+        ...this.document, ...this.form.value,
+        ...{search_ingredients: this.form.value.ingredients.map((i: Ingredient) => i.name)}
+      } as Recipe;
 
       if (this.document['published'] === true) {
         this.document['published_at'] = new Date();
@@ -207,7 +212,6 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
   }
 
   set color(color: string) {
-    this.form.patchValue({color: color});
+    this.form.patchValue({color: color, overlay_color: this.contrastService.getOverlayColor(color)});
   }
-
 }

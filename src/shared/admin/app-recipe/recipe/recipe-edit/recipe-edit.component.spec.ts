@@ -32,6 +32,7 @@ import { IngredientEditComponent } from './ingredient-edit/ingredient-edit.compo
 import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
 import { IngredientService } from '../../../../../app-recipe/public/ingredient/shared/ingredient.service';
 import { MockIngredientService } from '../../../../../app-recipe/public/ingredient/shared/mock-ingredient.service';
+import { ContrastService } from '../../../../contrast/contrast.service';
 
 describe('RecipeEditComponent', () => {
   let component: RecipeEditComponent;
@@ -72,7 +73,8 @@ describe('RecipeEditComponent', () => {
         {provide: MediaService, useClass: MockMediaService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: LoaderService, useClass: MockLoaderService},
-        {provide: IngredientService, useClass: MockIngredientService}
+        {provide: IngredientService, useClass: MockIngredientService},
+        ContrastService
       ]
     })
       .compileComponents();

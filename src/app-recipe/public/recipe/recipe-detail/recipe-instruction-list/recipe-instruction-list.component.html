@@ -1,9 +1,10 @@
 <div class="instruction-wrapper pb-5"
      *ngIf="recipe">
-  <mat-card [attr.id]="'instruction-' + i"
+  <mat-card [attr.id]="'instruction-' + (i + 1)"
             *ngFor="let instruction of recipe.instructions; let i = index"
             class="section instruction-card my-3 mat-elevation-z0"
             [ngClass.xs]="{xs: true}"
+            [class.active]="i + 1 === currentInstruction"
             [@scrollAnimation]="state">
 
     <mat-card-title fxLayout="row"

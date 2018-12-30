@@ -14,6 +14,7 @@ export interface Recipe {
   creator: string;
   image: string;
   color: string;
+  overlay_color: string;
   ingredients: Ingredient[];
   search_ingredients: string[];
   preparations: Preparation[];

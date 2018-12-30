@@ -22,7 +22,7 @@
                              *ngIf="!isLoading && recipe">
   <div class="section header-section">
 
-    <app-recipe-title (offsetHeightChange)="onRecipeTitleOffsetChange($event)"
+    <app-recipe-title (offsetHeightChange)="onRecipeTitleOffsetChange($event, true)"
                       [recipe]="recipe"
                       [showStepper]="currentInstruction > 0"
                       [steps]="recipe.instructions"
@@ -33,14 +33,15 @@
                             [stickyContent]="currentInstruction > 0"></app-recipe-information>
 
     <app-recipe-preparation-list [recipe]="recipe"
-                                 (offsetHeightChange)="onRecipeTitleOffsetChange($event)">
+                                 (offsetHeightChange)="onRecipeTitleOffsetChange($event, true)">
     </app-recipe-preparation-list>
 
   </div>
 
   <div class="instruction-section"
        *ngIf="recipe.instructions">
-    <app-recipe-instruction-list [recipe]="recipe"></app-recipe-instruction-list>
+    <app-recipe-instruction-list [recipe]="recipe"
+                                 [currentInstruction]="currentInstruction"></app-recipe-instruction-list>
 
   </div>
 </cdk-virtual-scroll-viewport>

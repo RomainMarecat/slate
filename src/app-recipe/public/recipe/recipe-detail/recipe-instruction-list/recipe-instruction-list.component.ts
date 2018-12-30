@@ -25,6 +25,8 @@ export class RecipeInstructionListComponent implements OnInit {
 
   @Input() recipe: Recipe;
 
+  @Input() currentInstruction: number;
+
   state = 'show';
 
   constructor() {
