@@ -1,4 +1,5 @@
 @import '../../../app-recipe/scss/theme/theme';
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
 
 .main-content-wrapper {
   overflow-y: auto;
@@ -19,6 +20,7 @@
   display: block;
   position: relative;
   overflow: hidden;
+
   &.xs {
     height: 100px;
   }
@@ -38,6 +40,7 @@
       font-family: $primary-font;
     }
   }
+
   .second {
     color: mat-color($second);
   }
@@ -47,16 +50,21 @@
   border: solid 1px mat-color($grey);
   border-radius: 3px;
   height: 70px;
+
   .input-group {
     height: 100%;
+
     .form-control {
       height: 100%;
       border: none;
     }
+
     .input-group-btn {
       height: 100%;
+
       .btn {
         background-color: transparent;
+
         .mat-icon {
           font-size: 50px;
           width: 100%;
@@ -67,20 +75,45 @@
 
 }
 
-.button-yellow {
-  padding: 1rem 2rem;
+.search-button {
 
-  &.mat-flat-button {
-    &.mat-warn {
-      color: mat-color($primary);
+  @include media-breakpoint-down(xs) {
+    margin-bottom: 1rem;
+    margin-top: 0;
+  }
+
+  @include media-breakpoint-up(xs) {
+    margin-bottom: 2rem;
+    margin-top: 4rem;
+  }
+
+  @include media-breakpoint-up(sm) {
+    margin-bottom: 1rem;
+    margin-top: 5rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: 0;
+    margin-top: 2rem;
+  }
+
+  .button-yellow {
+    padding: 1rem 2rem;
+
+    &.mat-flat-button {
+      &.mat-warn {
+        color: mat-color($primary);
+      }
+    }
+
+    span {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-right: 1rem;
     }
   }
-  span {
-    font-weight: 700;
-    font-size: 2rem;
-    margin-right: 1rem;
-  }
 }
+
 
 .search-container {
   .input-group {
@@ -91,15 +124,18 @@
       box-shadow: 0 0 0 2px rgba(2, 117, 216, 0.25);
       border-radius: 0.25rem;
     }
+
     input[name="search"] {
       border: none;
       background-color: buttonface;
+
       &:hover,
       &:active,
       &:focus {
         box-shadow: none;
       }
     }
+
     button {
       &:hover,
       &:active,
@@ -110,15 +146,18 @@
     }
   }
 }
+
 .badge-empty {
   opacity: 0;
 }
+
 .badge-home {
   font-size: 2rem;
   color: mat-color($primary);
   font-weight: 400;
   border: 1px solid green;
   background: mat-color($white);
+
   span {
     padding-right: 0.5rem;
   }
@@ -136,6 +175,7 @@
   span {
     cursor: pointer;
   }
+
   mat-icon {
     cursor: pointer;
     color: mat-color($white);
