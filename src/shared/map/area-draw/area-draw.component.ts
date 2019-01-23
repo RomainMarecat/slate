@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Area } from '../shared/area';
 import { Path2DConstructor } from '../shared/path2d';
 import { Router } from '@angular/router';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 declare var Path2D: Path2DConstructor;
@@ -23,7 +23,7 @@ export class AreaDrawComponent implements OnInit {
   paths: any[] = [];
 
   constructor(private router: Router,
-              private media: ObservableMedia,
+              private mediaObserver: MediaObserver,
               private localizeRouterService: LocalizeRouterService) {
   }
 
@@ -32,7 +32,7 @@ export class AreaDrawComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.media.asObservable()
+    this.mediaObserver.media$
       .subscribe((change: MediaChange) => {
         if (change.mqAlias === 'xs') {
           this.containerHeight = window.innerWidth * 0.91;

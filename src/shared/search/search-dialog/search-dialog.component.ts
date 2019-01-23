@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { map } from 'rxjs/operators';
 import { Filter } from '../../facet/filter/shared/filter';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-search',
@@ -31,14 +31,14 @@ export class SearchDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<SearchDialogComponent>,
               private router: Router,
               private localizeService: LocalizeRouterService,
-              private observableMedia: ObservableMedia,
+              private mediaObserver: MediaObserver,
               @Inject(MAT_DIALOG_DATA) public data: {documents: any[], url: string}) {
     this.setDocuments(this.data.documents);
     this.setUrl(this.data.url);
   }
 
   ngOnInit() {
-    this.observableMedia.subscribe((mediaChange: MediaChange) => {
+    this.mediaObserver.media$.subscribe((mediaChange: MediaChange) => {
       this.mqAlias = mediaChange.mqAlias;
     });
   }

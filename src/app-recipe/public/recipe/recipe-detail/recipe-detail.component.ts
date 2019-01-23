@@ -10,7 +10,7 @@ import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
 import { Constraint } from '../shared/constraint';
 import { take, timeout } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { isSameDay } from 'ngx-bootstrap';
 
 @Component({
@@ -41,7 +41,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
               private localizeRouterService: LocalizeRouterService,
               private scrollService: ScrollService,
               private scrollDispatcher: ScrollDispatcher,
-              private observableMedia: ObservableMedia,
+              private mediaObserver: MediaObserver,
               private cd: ChangeDetectorRef) {
     this.isLoading = true;
     this.seoService.setSeo('recipe-detail');
@@ -50,7 +50,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.seoService.disableZoom();
-    this.observableMedia.subscribe((mediaChange: MediaChange) => {
+    this.mediaObserver.media$.subscribe((mediaChange: MediaChange) => {
       this.mqAlias = mediaChange.mqAlias;
     });
   }

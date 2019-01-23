@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { SeoService } from 'shared/seo/shared/seo.service';
 import { Recipe } from '../recipe/shared/recipe';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private observableMedia: ObservableMedia,
+              private MediaObserver: MediaObserver,
               private seoService: SeoService,
               private localizeRouterService: LocalizeRouterService) {
     this.ingredients = [];
@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
       ]]
     });
 
-    this.observableMedia
+    this.MediaObserver
       .subscribe((mediaChange: MediaChange) => {
         this.mediaBreakpoint = mediaChange.mqAlias;
         if (['xs'].includes(this.mediaBreakpoint)) {

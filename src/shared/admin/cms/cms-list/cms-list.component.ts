@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { Cms } from '../../../cms/shared/cms';
 import { CmsService } from '../../../cms/shared/cms.service';
 import { Observable } from 'rxjs';
-import { MenuService } from 'shared/menu/menu.service';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { MenuService } from '../../../menu/menu.service';
 
 @Component({
   selector: 'app-cms-list',
@@ -25,7 +25,7 @@ export class CmsListComponent implements OnInit {
               private cmsService: CmsService,
               private router: Router,
               private menuService: MenuService,
-              private media: ObservableMedia,
+              private mediaObserver: MediaObserver,
               private localizeRouterService: LocalizeRouterService) {
     this.columns = [{
       prop: 'name',
@@ -81,7 +81,7 @@ export class CmsListComponent implements OnInit {
 
   onActivate(event: any) {
     // add media query xs to replace 1
-    this.media.asObservable()
+    this.mediaObserver.media$
       .subscribe((change: MediaChange) => {
         if (change.mqAlias === 'xs') {
           if (event.type === 'click' && event.row) {

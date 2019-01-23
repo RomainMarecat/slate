@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { I18nService } from '../../i18n/i18n.service';
 import * as moment from 'moment';
 import { Session } from '../../session/shared/session';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import 'moment/locale/en-gb';
 import 'moment/locale/fr';
@@ -26,7 +26,7 @@ export class AgendaComponent implements OnInit, OnDestroy {
   constructor(private seoService: SeoService,
               private router: Router,
               private i18nService: I18nService,
-              private media: ObservableMedia,
+              private media: MediaObserver,
               private sessionService: SessionService,
               private alertService: AlertService,
               private routingState: RoutingState,
@@ -44,7 +44,7 @@ export class AgendaComponent implements OnInit, OnDestroy {
 
     moment().locale(locale);
     this.setDefaultSlotDuration();
-    this.watcher = this.media.subscribe((change: MediaChange) => {
+    this.watcher = this.media.media$.subscribe((change: MediaChange) => {
       if (change.mqAlias === 'xs') {
         this.setViewMode('day');
         return;

@@ -10,7 +10,7 @@ import { AlertService } from '../../popup/alert.service';
 import { Cart } from '../shared/cart';
 import { Payment } from '../../payment/shared/payment';
 import { HttpErrorResponse } from '@angular/common/http';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-cart-start',
@@ -34,12 +34,12 @@ export class CartStartComponent implements OnInit {
   constructor(private userService: UserService,
               private cartService: CartService,
               private alertService: AlertService,
-              private observableMedia: ObservableMedia) {
+              private mediaObserver: MediaObserver) {
   }
 
   ngOnInit() {
     this.getUser();
-    this.observableMedia.subscribe((change: MediaChange) => {
+    this.mediaObserver.media$.subscribe((change: MediaChange) => {
       this.displayXs = change.mqAlias === 'xs';
     });
   }
