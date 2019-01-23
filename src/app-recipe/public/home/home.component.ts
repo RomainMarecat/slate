@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private MediaObserver: MediaObserver,
+              private mediaObserver: MediaObserver,
               private seoService: SeoService,
               private localizeRouterService: LocalizeRouterService) {
     this.ingredients = [];
@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
       ]]
     });
 
-    this.MediaObserver
+    this.mediaObserver.media$
       .subscribe((mediaChange: MediaChange) => {
         this.mediaBreakpoint = mediaChange.mqAlias;
         if (['xs'].includes(this.mediaBreakpoint)) {
