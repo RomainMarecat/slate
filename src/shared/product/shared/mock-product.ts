@@ -1,10 +1,12 @@
 import { Product } from './product';
+import * as firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 export const mockProduct: Product = {
   name: 'Apple Iphone 8 plus 64Go',
   score: 1,
   created_at: new Date(),
-  published_at: new Date(),
+  published_at: Timestamp.now(),
   url: 'key',
   description: '',
   thumbnail: '',
@@ -29,7 +31,7 @@ export const mockInvoiceProducts: Product[] = [
     name: 'Apple Iphone 8 plus 64Go',
     score: 1,
     created_at: new Date(),
-    published_at: new Date(),
+    published_at: Timestamp.now(),
     url: 'key',
     description: '',
     thumbnail: '',
@@ -53,7 +55,7 @@ export const mockInvoiceProducts: Product[] = [
     name: 'Macbook Pro 15" 512Go',
     score: 1,
     created_at: new Date(),
-    published_at: new Date(),
+    published_at: Timestamp.now(),
     url: 'key',
     description: '',
     thumbnail: '',

@@ -10,6 +10,8 @@ import { Filter } from '../../../facet/filter/shared/filter';
 import { ProductService } from '../../../product/shared/product.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import * as firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 @Component({
   selector: 'app-product-list',
@@ -69,7 +71,7 @@ export class ProductListComponent implements OnInit {
   private updatePublication(product: Product) {
     if (product.published === true) {
       if (!product.published_at) {
-        product.published_at = new Date();
+        product.published_at = Timestamp.now();
       }
     } else {
       product.published_at = null;

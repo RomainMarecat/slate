@@ -1,15 +1,30 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { ArticleComponent } from './article/article.component';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ArticleListComponent,
-    data: {
-      breadcrumb: 'breadcrumb.article.list'
-    }
+    component: ArticleComponent,
+    children: [
+      {
+        path: '',
+        component: ArticleListComponent,
+        data: {
+          breadcrumb: 'breadcrumb.article.list'
+        }
+      },
+      {
+        path: ':key/detail',
+        component: ArticleDetailComponent,
+        data: {
+          breadcrumb: 'breadcrumb.article.detail'
+        }
+      },
+    ]
   }
 ];
 

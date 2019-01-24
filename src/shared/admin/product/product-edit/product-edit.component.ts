@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormArray } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
 import { StringService } from '../../../util/string.service';
 import { Product } from '../../../product/shared/product';
@@ -22,6 +22,8 @@ import { debounceTime, take } from 'rxjs/operators';
 import { PartnerService } from '../../../partner/partner.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import * as firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 @Component({
   selector: 'app-product-edit',
@@ -240,7 +242,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       };
       if (this.product.key) {
         if (this.product.published === true) {
-          this.product.published_at = new Date();
+          this.product.published_at = Timestamp.now();
         }
         this.productService.updateProduct(this.product)
           .then((doc) => {

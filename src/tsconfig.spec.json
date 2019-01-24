@@ -1,26 +1,27 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "paths": {
-      "shared/*": [
-        "shared/*"
-      ]
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "paths": {
+            "shared/*": [
+                "shared/*"
+            ]
+        },
+        "outDir": "../out-tsc/spec",
+        "types": [
+            "jasmine",
+            "node"
+        ]
     },
-    "outDir": "../out-tsc/spec",
-    "types": [
-      "jasmine",
-      "node"
+    "files": [
+        "test.ts",
+        "polyfills.ts"
+    ],
+    "include": [
+        "shared/*",
+        "**/*.spec.ts",
+        "**/*.d.ts"
+    ],
+    "exclude": [
+        "**/*.tns.ts"
     ]
-  },
-  "files": [
-    "test.ts",
-    "polyfills.ts"
-  ],
-  "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts"
-  ],
-  "exclude": [
-    "**/*.tns.ts"
-  ]
 }

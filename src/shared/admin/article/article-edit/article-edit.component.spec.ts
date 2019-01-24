@@ -6,7 +6,6 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { Angulartics2Module } from 'angulartics2';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxEditorModule } from 'ngx-editor';

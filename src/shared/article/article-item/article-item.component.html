@@ -1,0 +1,18 @@
+<article *ngIf="article">
+  <mat-card class="mat-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>
+          <a [routerLink]="['/article', article.key + '-' + article.slug, 'detail']|localize">
+            {{ article.name }}
+          </a>
+        </h2>
+      </mat-card-title>
+    </mat-card-header>
+    <app-image [key]="article.images[0]" [resize]="{height: 200}"
+               *ngIf="article.images && article.images.length"></app-image>
+    <mat-card-content>
+      <p [innerHtml]="article.description|safeHtml"></p>
+    </mat-card-content>
+  </mat-card>
+</article>

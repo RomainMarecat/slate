@@ -8,7 +8,8 @@ import { ArticleService } from '../../../article/shared/article.service';
 import { AlertService } from '../../../popup/alert.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import * as moment from 'moment';
+import * as firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 @Component({
   selector: 'app-admin-article-list',
@@ -112,13 +113,7 @@ export class ArticleListComponent implements OnInit {
   getArticles() {
     this.articleService.getArticles()
       .subscribe((articles: Article[]) => {
-        this.articles = articles.map((article: Article) => {
-          if (article.published_at && article.published_at.seconds) {
-            article.published_at = moment(article.published_at.seconds * 1000).toDate() as Date;
-          }
-
-          return article;
-        });
+        this.articles = articles;
       }, (err) => {
         this.alertService.show(err);
         this.articles = [];
@@ -131,7 +126,7 @@ export class ArticleListComponent implements OnInit {
   private updatePublication(article: Article) {
     if (article.published === true) {
       if (!article.published_at) {
-        article.published_at = new Date();
+        article.published_at = Timestamp.now();
       }
     } else {
       article.published_at = null;

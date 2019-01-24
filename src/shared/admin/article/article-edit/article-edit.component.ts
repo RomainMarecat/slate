@@ -11,8 +11,10 @@ import { MatIconRegistry } from '@angular/material';
 import { debounceTime } from 'rxjs/operators';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Media } from '../../../media/media';
-import UploadTaskSnapshot = firebase.storage.UploadTaskSnapshot;
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
+import * as firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 @Component({
   selector: 'app-admin-article-edit',
@@ -22,7 +24,7 @@ import { TableColumn } from '@swimlane/ngx-datatable';
 export class ArticleEditComponent implements OnInit {
 
   form: FormGroup;
-  article: Article;
+  article: Article;F
   editorConfig: any;
 
   readonly headerHeight = 50;
@@ -145,7 +147,7 @@ export class ArticleEditComponent implements OnInit {
       this.article = {...this.article, ...this.form.value};
 
       if (this.article.published === true) {
-        this.article.published_at = new Date();
+        this.article.published_at = Timestamp.now();
       }
       if (this.article.key) {
         this.articleService.updateArticle(this.article)

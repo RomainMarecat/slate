@@ -1,6 +1,7 @@
 import { ClothingProduct } from './clothing-product';
 import { HockeyProduct } from './hockey-product';
-import { firestore, Timestamp } from 'firebase/firestore';
+import * as firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 export class Product implements ClothingProduct, HockeyProduct {
   name: string;
@@ -12,7 +13,7 @@ export class Product implements ClothingProduct, HockeyProduct {
   score: number;
 
   created_at: Date;
-  published_at: Date | Timestamp;
+  published_at: Timestamp;
   translations ?: {
     fr?: string;
   };
@@ -48,6 +49,6 @@ export class Product implements ClothingProduct, HockeyProduct {
     this.score = 0;
     this.published = false;
     this.created_at = new Date();
-    this.published_at = new Date();
+    this.published_at = Timestamp.now();
   }
 }

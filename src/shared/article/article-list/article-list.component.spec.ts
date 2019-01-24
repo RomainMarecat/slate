@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticleListComponent } from './article-list.component';
-import { ArticleDetailComponent } from '../article-detail/article-detail.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MockArticleService } from '../shared/mock-article.service';
 import { ArticleService } from '../shared/article.service';
@@ -24,6 +23,7 @@ import { LoaderService } from 'shared/loader/loader.service';
 import { MockLoaderService } from 'shared/loader/mock-loader.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { SeoModule } from '../../seo/seo.module';
+import { ArticleItemComponent } from '../article-item/article-item.component';
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;
@@ -49,7 +49,10 @@ describe('ArticleListComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ArticleListComponent, ArticleDetailComponent],
+      declarations: [
+        ArticleListComponent,
+        ArticleItemComponent
+      ],
       providers: [
         {provide: MediaService, useClass: MockMediaService},
         {provide: ArticleService, useClass: MockArticleService},

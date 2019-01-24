@@ -1,16 +1,15 @@
-import { Inject, Injectable, Optional } from '@angular/core';
-import { combineLatest, Observable, of } from 'rxjs';
-import { BehaviorSubject } from 'rxjs';
+import { Inject, Injectable } from '@angular/core';
+import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import { Document } from './document';
 import {
   CollectionReference,
-  Query,
-  DocumentSnapshot,
   DocumentReference,
-  WhereFilterOp,
-  OrderByDirection
+  DocumentSnapshot,
+  OrderByDirection,
+  Query,
+  WhereFilterOp
 } from '@firebase/firestore-types';
-import { AngularFirestoreCollection, DocumentChangeAction, Action, AngularFirestore } from '@angular/fire/firestore';
+import { Action, AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import { Filter } from './../facet/filter/shared/filter';
 import { Sort } from './../facet/sort/shared/sort';
 import { map, switchMap } from 'rxjs/operators';
