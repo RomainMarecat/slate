@@ -6,8 +6,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
 import { Filter } from '../../../facet/filter/shared/filter';
 import { TranslateService } from '@ngx-translate/core';
-import { Cms } from 'shared/cms/shared/cms';
-import { CmsService } from 'shared/cms/shared/cms.service';
+import { Cms } from '../../../cms/shared/cms';
+import { CmsService } from '../../../cms/shared/cms.service';
 
 @Component({
   selector: 'app-cms-detail-add',

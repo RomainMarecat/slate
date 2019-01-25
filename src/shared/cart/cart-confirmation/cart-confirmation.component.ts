@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Payment } from 'shared/payment/shared/payment';
+import { Payment } from '../../payment/shared/payment';
 import { Order } from '../../order/shared/order';
 import { OrderService } from '../../order/shared/order.service';
 import { AlertService } from '../../popup/alert.service';
@@ -7,7 +7,7 @@ import { AlertService } from '../../popup/alert.service';
 @Component({
   selector: 'app-cart-confirmation',
   templateUrl: './cart-confirmation.component.html',
-  styleUrls: [ './cart-confirmation.component.scss' ]
+  styleUrls: ['./cart-confirmation.component.scss']
 })
 export class CartConfirmationComponent implements OnInit {
 

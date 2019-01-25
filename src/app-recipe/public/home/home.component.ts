@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { SeoService } from 'shared/seo/shared/seo.service';
+import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { Recipe } from '../recipe/shared/recipe';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { Filter } from 'shared/facet/filter/shared/filter';
+import { Filter } from '../../../shared/facet/filter/shared/filter';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({

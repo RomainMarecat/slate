@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings, ManualParserLoader } from '@gilsdav/ngx-translate-router';
 import { TranslateService } from '@ngx-translate/core';
 import { Location } from '@angular/common';
 import { HomeComponent } from './public/home/home.component';
-import { AdminGuard } from 'shared/guard/admin.guard';
 
 export function ManualLoaderFactory(translate: TranslateService, location: Location, settings: LocalizeRouterSettings) {
   return new ManualParserLoader(translate, location, settings, ['fr', 'en'], 'routes.');

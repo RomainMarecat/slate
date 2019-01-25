@@ -1,34 +1,36 @@
-import { InjectionToken, NgModule, ModuleWithProviders, Injectable, Inject } from '@angular/core';
+import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgPipesModule } from 'ngx-pipes';
 import {
   MatAutocompleteModule,
-  MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
-  MatIconModule,
   MatButtonModule,
-  MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatInputModule,
+  MatCardModule,
   MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
+  MatChipsModule,
   MatCommonModule,
-  MatTooltipModule,
-  MatExpansionModule,
-  MatStepperModule,
-  MatRadioModule,
   MatDialogModule,
-  MatChipsModule, MatProgressBarModule, MatSlideToggleModule, MatTableModule
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatLineModule,
+  MatListModule,
+  MatMenuModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatStepperModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { SlackModule } from './slack/slack.module';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 import { Environment } from './util/environment';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -53,7 +55,6 @@ export class ConfigService {
 
 @NgModule({
   imports: [
-    AngularFireAuthModule,
     Angulartics2Module,
     FaviconModule,
     FlexLayoutModule,

@@ -1,0 +1,29 @@
+// Add your native dependencies here:
+
+// Uncomment to add recyclerview-v7 dependency
+//dependencies {
+//	compile 'com.android.support:recyclerview-v7:+'
+//}
+
+android {  
+  defaultConfig {  
+    generatedDensities = []
+    multiDexEnabled true
+    applicationId = "com.slate.recipe"
+    
+    //override supported platforms
+    // ndk {
+    //       abiFilters.clear()
+    //   		abiFilters "armeabi-v7a"
+ 		// }
+  
+  }
+
+  dexOptions {
+    javaMaxHeapSize "4g"
+  }
+
+  aaptOptions {  
+    additionalParameters "--no-version-vectors"  
+  }  
+} 

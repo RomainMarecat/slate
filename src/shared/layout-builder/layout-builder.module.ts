@@ -6,7 +6,7 @@ import { LayoutBuilderEditComponent } from './layout-builder-edit/layout-builder
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatTooltipModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
-import { ThemeStorageService } from 'shared/layout-builder/shared/theme-storage.service';
+import { ThemeStorageService } from './shared/theme-storage.service';
 
 @NgModule({
   imports: [

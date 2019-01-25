@@ -1,10 +1,10 @@
-import { Component, OnInit, ElementRef, ViewChild, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { DialogComponent } from './../../../popup/dialog/dialog.component';
+import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
-import { Partner } from 'shared/partner/partner';
-import { PartnerService } from 'shared/partner/partner.service';
-import { MenuService } from 'shared/menu/menu.service';
+import { Partner } from '../../../partner/partner';
+import { PartnerService } from '../../../partner/partner.service';
+import { MenuService } from '../../../menu/menu.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 

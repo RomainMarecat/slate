@@ -8,7 +8,7 @@ import { FooterModule } from '../footer/footer.module';
 import { RouterModule } from '@angular/router';
 import { LoaderModule } from '../loader/loader.module';
 import { FacetModule } from '../facet/facet.module';
-import { BreadcrumbModule } from 'shared/breadcrumb/breadcrumb.module';
+import { BreadcrumbModule } from '../breadcrumb/breadcrumb.module';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 
 @NgModule({

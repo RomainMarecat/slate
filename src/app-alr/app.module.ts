@@ -14,7 +14,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import localeEn from '@angular/common/locales/en';
-import { CheckForUpdateService } from 'shared/pwa/shared/check-for-update.service';
+import { CheckForUpdateService } from '../shared/pwa/shared/check-for-update.service';
 
 registerLocaleData(localeFr);
 registerLocaleData(localeEn);
@@ -41,7 +41,7 @@ export function createTranslateLoader(http: HttpClient) {
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   declarations: [
-    AppRootComponent
+    AppRootComponent,
   ],
   bootstrap: [
     AppRootComponent

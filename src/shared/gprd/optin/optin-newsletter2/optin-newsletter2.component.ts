@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OptinNewsletterComponent } from '../optin-newsletter/optin-newsletter.component';
-import { AlertService } from 'shared/popup/alert.service';
+import { AlertService } from '../../../popup/alert.service';
 
 @Component({
   selector: 'app-optin-newsletter2',

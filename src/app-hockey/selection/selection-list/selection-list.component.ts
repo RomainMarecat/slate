@@ -4,9 +4,8 @@ import { SelectionService } from '../../../shared/selection/selection.service';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { Selection } from '../../../shared/selection/selection';
 import { MenuService } from '../../../shared/menu/menu.service';
-import { Observable } from 'rxjs';
-import { take, map, debounceTime } from 'rxjs/operators';
-import 'rxjs/add/observable/fromEvent';
+import { fromEvent } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
 import { Meta, Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -35,7 +34,7 @@ export class SelectionListComponent implements OnInit {
               private router: Router,
               private meta: Meta,
               private title: Title) {
-    const $resizeEvent = Observable.fromEvent(window, 'resize')
+    const $resizeEvent = fromEvent(window, 'resize')
       .pipe(
         map(() =>
           (document.documentElement.clientHeight - 65).toString() + 'px'

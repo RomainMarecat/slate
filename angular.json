@@ -1188,5 +1188,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "defaultCollection": "@nativescript/schematics"
   }
 }

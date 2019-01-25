@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "android": "tns run android --bundle",
+    "ios": "tns run ios --bundle",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --configuration=production --project=alr",
@@ -29,7 +31,7 @@
     "@angular/pwa": "^0.12.3",
     "@angular/router": "~7.2.2",
     "@angular/service-worker": "^7.2.2",
-    "@firebase/app": "^0.3.7",
+    "@firebase/app": "^0.3.8",
     "@gilsdav/ngx-translate-router": "^1.0.2",
     "@ng-select/ng-select": "^2.14.0",
     "@ngu/carousel": "^1.5.5",
@@ -38,7 +40,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "@swimlane/ngx-datatable": "^14.0.0",
     "@types/crypto-js": "^3.1.43",
-    "@types/greensock": "^1.15.32",
+    "@types/gsap": "^1.20.1",
     "@types/twix": "^0.6.37",
     "angular-pipes": "^9.0.2",
     "angulartics2": "^7.4.1",
@@ -49,12 +51,15 @@
     "core-js": "^2.6.3",
     "crypto-js": "^3.1.9-1",
     "faker": "^4.1.0",
-    "firebase": "^5.8.0",
+    "firebase": "^5.8.1",
     "font-awesome": "^4.7.0",
     "gsap": "^2.0.2",
     "hammerjs": "^2.0.8",
     "material-design-icons": "^3.0.1",
     "moment": "^2.24.0",
+    "nativescript-angular": "~7.1.0",
+    "nativescript-plugin-firebase": "^7.7.0",
+    "nativescript-theme-core": "~1.0.4",
     "ng-lazyload-image": "^5.0.0",
     "ng2-adsense": "^5.4.0",
     "ng2-charts": "^1.6.0",
@@ -67,11 +72,15 @@
     "ngx-pipes": "^2.3.5",
     "ngx-responsive": "^7.0.1",
     "ngx-stripe": "^6.0.0-rc.0",
+    "reflect-metadata": "~0.1.8",
     "rxjs": "~6.3.3",
+    "tns-core-modules": "~5.1.1",
     "twix": "^1.2.1",
     "zone.js": "~0.8.29"
   },
   "devDependencies": {
+    "nativescript-dev-webpack": "^0.18.0",
+    "@nativescript/schematics": "^0.5.0",
     "@angular-devkit/build-angular": "^0.12.3",
     "@angular/cli": "~7.2.3",
     "@angular/compiler-cli": "~7.2.2",
@@ -94,5 +103,11 @@
     "ts-node": "~8.0.1",
     "tslint": "~5.12.1",
     "typescript": "^3.2.4"
+  },
+  "nativescript": {
+    "id": "com.slate.recipe",
+    "tns-android": {
+      "version": "5.1.0"
+    }
   }
 }

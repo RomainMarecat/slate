@@ -41,7 +41,7 @@ import { MenuService } from '../../../shared/menu/menu.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { SidenavService } from '../../../shared/sidenav/sidenav.service';
 import { environment } from '../../environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;

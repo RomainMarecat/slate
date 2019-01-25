@@ -3,6 +3,7 @@ import { Selection } from '../../../shared/selection/selection';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { ProductService } from '../../../shared/product/shared/product.service';
 import { Product } from '../../../shared/product/shared/product';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-hockey-selection-slider',
@@ -17,7 +18,8 @@ export class SelectionSliderComponent implements OnInit {
   products: Product[] = [];
 
   constructor(private selectionService: SelectionService,
-    private productService: ProductService) {}
+              private productService: ProductService) {
+  }
 
   ngOnInit() {
     this.getProductsBySelection(this.selection);
@@ -29,12 +31,14 @@ export class SelectionSliderComponent implements OnInit {
   getProductsBySelection(selection: Selection) {
     if (selection && selection.products && selection.products.length > 0) {
       this.productService.getProducts()
-        .map((products: Product[]) =>
-          products.filter((product: Product) =>
-            selection &&
-            selection.products &&
-            selection.products.length > 0 &&
-            selection.products.includes(product.key)))
+        .pipe(
+          map((products: Product[]) =>
+            products.filter((product: Product) =>
+              selection &&
+              selection.products &&
+              selection.products.length > 0 &&
+              selection.products.includes(product.key)))
+        )
         .subscribe((products: Product[]) => {
           this.products = products;
         });

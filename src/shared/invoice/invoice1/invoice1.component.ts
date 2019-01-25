@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'shared/product/shared/product';
-import { mockInvoiceProducts } from 'shared/product/shared/mock-product';
+import { Product } from '../../product/shared/product';
+import { mockInvoiceProducts } from '../../product/shared/mock-product';
 
 @Component({
   selector: 'app-invoice1',
@@ -36,6 +36,4 @@ export class Invoice1Component implements OnInit {
   getSubTotal() {
     this.subtotal = this.dataSource.reduce((acc, next) => acc + (next.quantity * next.price), 0);
   }
-
-
 }

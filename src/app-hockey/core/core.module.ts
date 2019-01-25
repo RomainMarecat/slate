@@ -1,25 +1,16 @@
-import {
-  InjectionToken,
-  ModuleWithProviders,
-  NgModule,
-  Optional,
-  SkipSelf,
-  Injectable,
-  Inject
-} from '@angular/core';
+import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { AdsenseModule } from 'ng2-adsense';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
+import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
 
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
-import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { UserService } from '../../shared/user/shared/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
 import { ObjectService } from '../../shared/util/object.service';
@@ -33,7 +24,7 @@ import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { DeviceService } from '../../shared/device/device.service';
 import CloudinaryConfiguration from '../../shared/media/cloudinary/cloudinary-configuration.class';
-import { FirebaseAppConfig, AngularFireModule } from '@angular/fire';
+import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
 import { ProductService } from '../../shared/product/shared/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
@@ -49,7 +40,8 @@ import { CommentService } from '../../shared/comment/shared/comment.service';
 import { environment } from '../environments/environment';
 import { CmsService } from '../../shared/cms/shared/cms.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
-import { OfferModule } from 'shared/offer/offer.module';
+import { OfferModule } from '../../shared/offer/offer.module';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -119,6 +111,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
 @NgModule({
   imports: [
     CommonModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     /*    AngularFirestoreModule,
      */

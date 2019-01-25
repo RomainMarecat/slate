@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { Angulartics2Module } from 'angulartics2';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
-import { SearchModule } from 'shared/search/search.module';
+import { SearchModule } from '../search/search.module';
 
 @NgModule({
   imports: [

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlertService } from 'shared/popup/alert.service';
+import { AlertService } from '../../../popup/alert.service';
 
 @Component({
   selector: 'app-optin-newsletter',
@@ -13,7 +13,7 @@ export class OptinNewsletterComponent implements OnInit {
 
   static getForm(): FormGroup {
     return new FormGroup({
-      email: new FormControl('', [ Validators.required ]),
+      email: new FormControl('', [Validators.required]),
       optinEmail: new FormControl(false),
     });
   }

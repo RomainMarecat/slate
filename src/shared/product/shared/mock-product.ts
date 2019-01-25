@@ -1,4 +1,4 @@
-import { Product } from 'shared/product/shared/product';
+import { Product } from './product';
 
 export const mockProduct: Product = {
   name: 'Apple Iphone 8 plus 64Go',

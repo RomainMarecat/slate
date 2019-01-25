@@ -6,7 +6,7 @@ import { HomeModule } from './home/home.module';
 import { RecipeModule } from './recipe/recipe.module';
 import { IngredientModule } from './ingredient/ingredient.module';
 import { PreparationModule } from './preparation/preparation.module';
-import { SearchModule } from 'shared/search/search.module';
+import { SearchModule } from '../../shared/search/search.module';
 
 @NgModule({
   imports: [

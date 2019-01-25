@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { DocumentReference } from '@firebase/firestore-types';
 import { PartnerFormType } from '../../shared/partner/form-partner';
-import { PartnerService } from 'shared/partner/partner.service';
-import { Partner } from 'shared/partner/partner';
-import { AlertService } from 'shared/popup/alert.service';
+import { PartnerService } from '../../../partner/partner.service';
+import { Partner } from '../../../partner/partner';
+import { AlertService } from '../../../popup/alert.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
