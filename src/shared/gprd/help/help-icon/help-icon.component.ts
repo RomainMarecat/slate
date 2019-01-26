@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogComponent } from 'shared/popup/dialog/dialog.component';
+import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-help-icon',
   templateUrl: './help-icon.component.html',
-  styleUrls: [ './help-icon.component.scss' ]
+  styleUrls: ['./help-icon.component.scss']
 })
 export class HelpIconComponent implements OnInit {
 
@@ -25,10 +25,9 @@ export class HelpIconComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
-      }
-    });
+    dialogRef.afterClosed()
+      .subscribe(() => {
+      });
   }
 
 }

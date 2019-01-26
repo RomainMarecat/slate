@@ -1,23 +1,15 @@
-import {
-  InjectionToken,
-  ModuleWithProviders,
-  NgModule,
-  Optional,
-  SkipSelf,
-  Injectable,
-  Inject
-} from '@angular/core';
+import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
 import { Angulartics2Module } from 'angulartics2';
 import { AdsenseModule } from 'ng2-adsense';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MenuService } from '../../shared/menu/menu.service';
 
 import { Cloudinary as CloudinaryCore } from 'cloudinary-core';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { UserService } from '../../shared/user/shared/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
 import { ObjectService } from '../../shared/util/object.service';
@@ -29,18 +21,9 @@ import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { DeviceService } from '../../shared/device/device.service';
 import CloudinaryConfiguration from '../../shared/media/cloudinary/cloudinary-configuration.class';
-import { FirebaseAppConfig } from '@angular/fire';
 import { ProductService } from '../../shared/product/shared/product.service';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { MediaService } from '../../shared/media/media.service';
 import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
-import { ProductDetailComponent } from '../../shared/product/product-detail/product-detail.component';
-import { ProductItemComponent } from '../../shared/product/product-item/product-item.component';
-import { ProductAddComponent } from '../../shared/product/product-add/product-add.component';
-import { ProductFormComponent } from '../../shared/product/product-add/product-form/product-form.component';
-import { ProductActionComponent } from '../../shared/product/product-action/product-action.component';
-import { ProductListComponent } from '../../shared/product/product-list/product-list.component';
-import { ProductPreviewComponent } from '../../shared/product/product-add/product-preview/product-preview.component';
 import { SharedModule } from '../../shared/shared.module';
 import { SlackModule } from '../../shared/slack/slack.module';
 import { environment } from '../environments/environment';
@@ -60,6 +43,7 @@ import { CategoryService } from '../../shared/category/category.service';
 import { OrderService } from '../../shared/order/shared/order.service';
 import { CartService } from '../../shared/cart/shared/cart.service';
 import { ContactService } from '../../shared/contact/shared/contact.service';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -111,6 +95,7 @@ export class ConfigService {
 @NgModule({
   imports: [
     CommonModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
     Angulartics2Module,

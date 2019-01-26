@@ -2,8 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 import { Recipe } from '../../shared/recipe';
 import { Instruction } from '../../../instruction/shared/instruction';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { MatHorizontalStepper, MatStepper } from '@angular/material';
-import { ContrastService } from 'shared/contrast/contrast.service';
+import { MatStepper } from '@angular/material';
 
 @Component({
   selector: 'app-recipe-title',

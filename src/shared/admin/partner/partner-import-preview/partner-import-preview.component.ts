@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatChipSelectionChange, MatDialogRef } from '@angular/material';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { Partner } from 'shared/partner/partner';
+import { Partner } from '../../../partner/partner';
 
 export interface SimpleTableColumn {
   prop: string;

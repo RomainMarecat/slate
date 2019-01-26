@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "390945472859",
+    "firebase_url": "https://recipe-384269.firebaseio.com",
+    "project_id": "recipe-384269",
+    "storage_bucket": "recipe-384269.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390945472859:android:cdeff6818265201b",
+        "android_client_info": {
+          "package_name": "com.slate.recipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390945472859-fmkccsd0tm4me0p5j55fen0p3jmnl2h0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu1zqRtMOFq_JEIN4kQDmvDpmY_on3vnE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

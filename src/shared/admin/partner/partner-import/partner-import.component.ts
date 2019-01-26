@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CsvExtratorService } from 'shared/csv/shared/csv-extrator.service';
-import { Partner } from 'shared/partner/partner';
+import { CsvExtratorService } from '../../../csv/shared/csv-extrator.service';
+import { Partner } from '../../../partner/partner';
 import {
   PartnerImportPreviewComponent
-} from 'shared/admin/partner/partner-import-preview/partner-import-preview.component';
+} from '../partner-import-preview/partner-import-preview.component';
 import { MatDialog } from '@angular/material';
-import { PartnerService } from 'shared/partner/partner.service';
-import { AlertService } from 'shared/popup/alert.service';
+import { PartnerService } from '../../../partner/partner.service';
+import { AlertService } from '../../../popup/alert.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
-import { SeoService } from 'shared/seo/shared/seo.service';
+import { SeoService } from '../../../shared/seo/shared/seo.service';
 
 @Component({
   selector: 'app-dashboard',

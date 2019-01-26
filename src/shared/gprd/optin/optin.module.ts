@@ -4,7 +4,7 @@ import { OptinListComponent } from './optin-list/optin-list.component';
 import { OptinManagerComponent } from './optin-manager/optin-manager.component';
 import { OptinNewsletter2Component } from './optin-newsletter2/optin-newsletter2.component';
 import { OptinNewsletterComponent } from './optin-newsletter/optin-newsletter.component';
-import { SharedModule } from 'shared/shared.module';
+import { SharedModule } from '../../shared.module';
 
 @NgModule({
   imports: [

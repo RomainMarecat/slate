@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Cart } from 'shared/cart/shared/cart';
+import { Cart } from '../shared/cart';
 import { CartItem } from '../shared/cart';
 
 @Component({

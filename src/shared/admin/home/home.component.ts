@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from 'shared/menu/menu.service';
+import { MenuService } from '../../menu/menu.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

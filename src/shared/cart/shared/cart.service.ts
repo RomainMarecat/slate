@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { VisitorService } from '../../firestore/visitor.service';
 import { Cart } from './cart';
-import { Product } from 'shared/product/shared/product';
 
 @Injectable()
 export class CartService extends VisitorService {

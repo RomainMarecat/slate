@@ -1,26 +1,26 @@
 import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
   ChangeDetectorRef,
+  Component,
   ElementRef,
-  ViewChildren,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
   Renderer2,
-  OnChanges
+  ViewChildren
 } from '@angular/core';
 import { OnlineSession } from '../shared/online-session';
 import { Session } from '../../session/shared/session';
 import { Event } from '../shared/event';
 import * as moment from 'moment';
+import { Moment } from 'moment';
 import { Twix, TwixIter } from 'twix';
 import 'twix';
-import { Moment } from 'moment';
 import { EventService } from '../shared/event.service';
 import { Day } from '../shared/day';
 import { Filter } from '../../facet/filter/shared/filter';
-import { SessionService } from 'shared/session/shared/session.service';
+import { SessionService } from '../../session/shared/session.service';
 
 @Component({
   selector: 'app-calendar',

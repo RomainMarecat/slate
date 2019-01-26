@@ -7,9 +7,9 @@ import { HomeComponent } from './home.component';
 import { MatButtonModule, MatCardModule, MatIconModule, MatToolbarModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SeoModule } from 'shared/seo/seo.module';
+import { SeoModule } from '../../../shared/seo/seo.module';
 import { RecipeModule } from '../recipe/recipe.module';
-import { FooterModule } from 'shared/footer/footer.module';
+import { FooterModule } from '../../../shared/footer/footer.module';
 
 @NgModule({
   imports: [

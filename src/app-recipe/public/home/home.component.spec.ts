@@ -15,7 +15,7 @@ import { MockRecipeService } from '../recipe/shared/mock-recipe.service';
 import { SeoService } from 'shared/seo/shared/seo.service';
 import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 import { RecipeModule } from '../recipe/recipe.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

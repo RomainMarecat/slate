@@ -1,0 +1,7 @@
+{
+  "appResourcesPath": "App_Resources",
+  "appPath": "src/app-recipe",
+  "nsext": ".tns",
+  "webext": "",
+  "shared": true
+}

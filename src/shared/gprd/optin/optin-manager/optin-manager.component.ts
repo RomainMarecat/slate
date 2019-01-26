@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AlertService } from 'shared/popup/alert.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AlertService } from '../../../popup/alert.service';
 
 @Component({
   selector: 'app-optin-manager',

@@ -2,9 +2,6 @@
   "extends": "../tsconfig.app.json",
   "compilerOptions": {
     "paths": {
-      "shared/*": [
-        "../shared/*"
-      ]
     },
     "outDir": "../../out-tsc/app",
     "baseUrl": "./",
@@ -21,6 +18,9 @@
     "test.ts",
     "**/*.spec.ts",
     "../shared/*.spec.ts",
-    "../shared/**/*.spec.ts"
+    "../shared/**/*.spec.ts",
+    "**/*.tns.ts",
+    "**/*.android.ts",
+    "**/*.ios.ts"
   ]
 }

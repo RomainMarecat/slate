@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { User } from './user';
 import { map, take, tap, timeout } from 'rxjs/operators';
-import { AlertService } from 'shared/popup/alert.service';
+import { AlertService } from '../../popup/alert.service';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 

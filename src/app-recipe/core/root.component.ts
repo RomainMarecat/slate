@@ -9,7 +9,7 @@ import { MatIconRegistry } from '@angular/material';
 import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { Recipe } from '../public/recipe/shared/recipe';
-import { Filter } from 'shared/facet/filter/shared/filter';
+import { Filter } from '../../shared/facet/filter/shared/filter';
 import { RecipeService } from '../public/recipe/shared/recipe.service';
 
 @Component({
