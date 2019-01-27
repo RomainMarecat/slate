@@ -15,6 +15,7 @@ import { MockRecipeService } from '../../shared/mock-recipe.service';
 import { SeoService } from 'shared/seo/shared/seo.service';
 import { MockLocalizeRouterService } from '../../../../../shared/router/mock-localize-router.service';
 import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { NgPipesModule } from 'ngx-pipes';
 
 describe('RecipeInstructionListComponent', () => {
   let component: RecipeInstructionListComponent;
@@ -32,6 +33,7 @@ describe('RecipeInstructionListComponent', () => {
         MatButtonModule,
         MatProgressSpinnerModule,
         MatCardModule,
+        NgPipesModule,
         SeoModule,
         MatCardModule,
         RouterTestingModule,

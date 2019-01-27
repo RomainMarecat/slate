@@ -22,6 +22,7 @@ import { RecipeTitleComponent } from './recipe-title/recipe-title.component';
 import { ScrollService } from 'shared/scroll/shared/scroll.service';
 import { ScrollModule } from 'shared/scroll/scroll.module';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { NgPipesModule } from 'ngx-pipes';
 
 describe('RecipeDetailComponent', () => {
   let component: RecipeDetailComponent;
@@ -41,6 +42,7 @@ describe('RecipeDetailComponent', () => {
         MatStepperModule,
         ScrollingModule,
         MatCardModule,
+        NgPipesModule,
         SeoModule,
         MatCardModule,
         RouterTestingModule,

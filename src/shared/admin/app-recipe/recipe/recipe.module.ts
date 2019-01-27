@@ -17,6 +17,7 @@ import { IngredientEditComponent } from './recipe-edit/ingredient-edit/ingredien
 import { PreparationEditComponent } from './recipe-edit/preparation-edit/preparation-edit.component';
 import { IngredientListComponent } from './recipe-edit/ingredient-list/ingredient-list.component';
 import { ContrastService } from '../../../contrast/contrast.service';
+import { NgPipesModule } from 'ngx-pipes';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { ContrastService } from '../../../contrast/contrast.service';
     NgxDatatableModule,
     SharedModule,
     NgxEditorModule,
+    NgPipesModule,
     NgSelectModule,
     RecipeRoutingModule,
     TranslateModule.forChild(),

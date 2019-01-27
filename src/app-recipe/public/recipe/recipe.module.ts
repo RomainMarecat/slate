@@ -17,6 +17,7 @@ import { PlatformModule } from '@angular/cdk/platform';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MediaModule } from '../../../shared/media/media.module';
 import { NgxJsonLdModule } from '@ngx-lite/json-ld';
+import { NgPipesModule } from 'ngx-pipes';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { NgxJsonLdModule } from '@ngx-lite/json-ld';
     MatProgressSpinnerModule,
     MatCardModule,
     NgxJsonLdModule,
+    NgPipesModule,
     PlatformModule,
     RecipeRoutingModule,
     ScrollingModule,
