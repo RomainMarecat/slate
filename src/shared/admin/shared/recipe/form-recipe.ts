@@ -94,7 +94,7 @@ export class RecipeFormType {
           key: new FormControl(instruction.key),
           order_index: new FormControl(instruction.order_index, [Validators.required]),
           sentence: new FormControl(instruction.sentence, [Validators.required]),
-          ingredients: new FormControl(this.getIngredients(instruction)),
+          ingredients: new FormControl(this.getIngredients(instruction), [Validators.required]),
           image: new FormControl(instruction.image)
         });
       });
@@ -105,8 +105,8 @@ export class RecipeFormType {
         key: new FormControl(''),
         order_index: new FormControl(1, [Validators.required]),
         sentence: new FormControl('', [Validators.required]),
-        ingredients: new FormArray([]),
-        image: new FormControl('', [Validators.required])
+        ingredients: new FormControl([], [Validators.required]),
+        image: new FormControl('')
       })
     ];
   }

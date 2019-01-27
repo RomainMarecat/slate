@@ -57,6 +57,7 @@
          fxFlex.xs="100"
          *ngIf="form && form.contains('ingredients') && isLoaded">
       <ng-select [items]="ingredients"
+                 (change)="updateIngredients($event)"
                  [formControl]="form.get('ingredients')"
                  [multiple]="true"
                  [bindLabel]="'name'"
