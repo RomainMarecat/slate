@@ -121,6 +121,8 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
       waiting_time: '00:00',
       creator: 'Anne-Lise',
       yield: 4,
+      difficulty: 3,
+      trick: '',
       color: '',
       overlay_color: '',
       image: '',
@@ -193,6 +195,17 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
       .then(() => {
       }, () => {
       });
+  }
+
+  cancel() {
+    this.router.navigate([
+      this.localizeRouterService.translateRoute('admin'),
+    ]).then(() => {
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('admin'),
+        'recipe'
+      ]);
+    });
   }
 
   removeIngredient(index: number) {

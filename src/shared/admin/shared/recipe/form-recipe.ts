@@ -10,9 +10,9 @@ export class RecipeFormType {
   static getInstruction(orderIndex: number): FormGroup {
     return new FormGroup({
       key: new FormControl(''),
-      order_index: new FormControl(orderIndex),
-      sentence: new FormControl(''),
-      ingredients: new FormControl([]),
+      order_index: new FormControl(orderIndex, [Validators.required]),
+      sentence: new FormControl('', [Validators.required]),
+      ingredients: new FormControl([], [Validators.required]),
       image: new FormControl('')
     });
   }
@@ -20,8 +20,8 @@ export class RecipeFormType {
   static getIngredient(ingredient?: Ingredient): FormGroup {
     return new FormGroup({
       key: new FormControl(ingredient && ingredient.key ? ingredient.key : ''),
-      color: new FormControl(ingredient && ingredient.color ? ingredient.color : ''),
-      name: new FormControl(ingredient && ingredient.name ? ingredient.name : ''),
+      color: new FormControl(ingredient && ingredient.color ? ingredient.color : '', [Validators.required]),
+      name: new FormControl(ingredient && ingredient.name ? ingredient.name : '', [Validators.required]),
       recipes: new FormControl(ingredient && ingredient.recipes ? ingredient.recipes : []),
     });
   }
@@ -52,6 +52,10 @@ export class RecipeFormType {
       cuisine_type: new FormControl(recipe && recipe.cuisine_type ? recipe.cuisine_type : '', [
         Validators.required
       ]),
+      difficulty: new FormControl(recipe && recipe.difficulty ? recipe.difficulty : 3, [
+        Validators.required
+      ]),
+      trick: new FormControl(recipe && recipe.trick ? recipe.trick : '', []),
       cook_time: new FormControl(recipe && recipe.cook_time ? recipe.cook_time : '01:00', [
         Validators.required
       ]),
@@ -67,6 +71,7 @@ export class RecipeFormType {
       creator: new FormControl(recipe && recipe.creator ? recipe.creator : 'Anne-lise', [
         Validators.required
       ]),
+      author: new FormControl(recipe && recipe.author ? recipe.author : '', []),
       yield: new FormControl(recipe && recipe.yield ? recipe.yield : 4, [
         Validators.required
       ]),
@@ -101,13 +106,13 @@ export class RecipeFormType {
     }
 
     return [
-      new FormGroup({
-        key: new FormControl(''),
-        order_index: new FormControl(1, [Validators.required]),
-        sentence: new FormControl('', [Validators.required]),
-        ingredients: new FormControl([], [Validators.required]),
-        image: new FormControl('')
-      })
+      // new FormGroup({
+      //   key: new FormControl(''),
+      //   order_index: new FormControl(1, [Validators.required]),
+      //   sentence: new FormControl('', [Validators.required]),
+      //   ingredients: new FormControl([], [Validators.required]),
+      //   image: new FormControl('')
+      // })
     ];
   }
 
@@ -123,12 +128,12 @@ export class RecipeFormType {
       });
     }
     return [
-      new FormGroup({
-        key: new FormControl(''),
-        color: new FormControl('', [Validators.required]),
-        name: new FormControl('', [Validators.required]),
-        recipes: new FormControl([])
-      })
+      // new FormGroup({
+      //   key: new FormControl(''),
+      //   color: new FormControl('', [Validators.required]),
+      //   name: new FormControl('', [Validators.required]),
+      //   recipes: new FormControl([])
+      // })
     ];
   }
 
@@ -156,16 +161,16 @@ export class RecipeFormType {
     }
 
     return [
-      new FormGroup({
-        key: new FormControl(''),
-        ingredient: new FormGroup({
-          key: new FormControl(''),
-          color: new FormControl(''),
-          name: new FormControl(''),
-        }),
-        quantity: new FormControl(1),
-        sentence: new FormControl(''),
-      })
+      // new FormGroup({
+      //   key: new FormControl(''),
+      //   ingredient: new FormGroup({
+      //     key: new FormControl(''),
+      //     color: new FormControl(''),
+      //     name: new FormControl(''),
+      //   }),
+      //   quantity: new FormControl(1),
+      //   sentence: new FormControl(''),
+      // })
     ];
   }
 

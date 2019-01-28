@@ -12,6 +12,11 @@
     "cancel": "annuler"
   },
   "admin": {
+    "option": {
+      "enter": "entrée",
+      "plate": "plat",
+      "dessert": "dessert"
+    },
     "error": {
       "required": {
         "recipe": {
@@ -20,11 +25,14 @@
           "yield": "le nombre de personne est obligatoire",
           "image": "l'image est obligatoire",
           "color": "la couleur est obligatoire",
+          "difficulty": "la difficulté est obligatoire",
+          "trick": "l'astuce est obligatoire",
           "total_time": "le temps total est obligatoire",
           "cook_time": "le temps de cuisson est obligatoire",
           "prep_time": "le temps de préparation est obligatoire",
           "waiting_time": "le temps d'attente est obligatoire",
           "creator": "le créateur est obligatoire",
+          "author": "l'auteur est obligatoire",
           "preparations": {
             "quantity": "la quantité est obligatoire",
             "sentence": "la phrase est obligatoire"
@@ -38,11 +46,14 @@
           "yield": "le nombre de personne est invalide",
           "image": "l'image est invalide",
           "color": "la couleur est invalide",
+          "difficulté": "la difficulté est invalide",
+          "trick": "l'astuce est invalide",
           "total_time": "le temps total est invalide",
           "cook_time": "le temps de cuisson est invalide",
           "prep_time": "le temps de préparation est invalide",
           "waiting_time": "le temps d'attente est invalide",
           "creator": "le créateur est invalide",
+          "author": "l'auteur est invalide",
           "preparations": {
             "quantity": "la quantité est invalide",
             "sentence": "la phrase est invalide"
@@ -57,6 +68,8 @@
         "yield": "nombre de personne",
         "image": "image",
         "color": "couleur",
+        "difficulty": "difficulté",
+        "trick": "astuce",
         "total_time": "temps total",
         "cook_time": "temps de cuisson",
         "prep_time": "temps de préparation",
@@ -92,12 +105,15 @@
         "name": "nom",
         "cuisine_type": "type de cuisine",
         "yield": "nombre de personne",
+        "difficulty": "difficulté",
+        "trick": "astuce",
         "image": "image",
         "color": "couleur",
         "total_time": "temps total",
         "cook_time": "temps de cuisson",
         "prep_time": "temps de préparation",
         "waiting_time": "temps d'attente",
+        "author": "attribuer la recette à",
         "creator": "créateur",
         "instructions": {
           "order_index": "ordre",

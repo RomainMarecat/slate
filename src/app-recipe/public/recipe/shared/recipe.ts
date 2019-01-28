@@ -11,7 +11,10 @@ export interface Recipe {
   prep_time: string;
   waiting_time: string;
   cuisine_type: string;
+  difficulty: number;
+  trick?: string;
   creator: string;
+  author?: string;
   image: string;
   color: string;
   overlay_color: string;
