@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { SidenavService } from '../sidenav/sidenav.service';
 import { UserService } from '../user/shared/user.service';
 import { MenuService } from './menu.service';
@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { SearchDialogComponent } from '../search/search-dialog/search-dialog.component';
 import { Filter } from '../facet/filter/shared/filter';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 @Component({
   selector: 'app-menu',
@@ -17,6 +18,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   _config: {
     displayAdminRecipe: boolean,
+    urlAdmin: string[],
     displayBurgerMenu: boolean,
     displayButtonConnection: boolean,
     displayIconButtonConnection: boolean,
@@ -28,6 +30,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     }
   } = {
     displayAdminRecipe: false,
+    urlAdmin: [],
     displayBurgerMenu: true,
     displayButtonConnection: true,
     displayIconButtonConnection: false,
@@ -47,7 +50,11 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   @Output() queryChange: EventEmitter<{limit?: number, filters?: Filter[]}> = new EventEmitter<{limit?: number, filters?: Filter[]}>();
 
-  constructor(private router: Router,
+  routerAdminUrl: string[];
+  currentRoute: string[];
+
+  constructor(public router: Router,
+              private localizeRouterService: LocalizeRouterService,
               private activatedRoute: ActivatedRoute,
               private menuService: MenuService,
               private sidenavService: SidenavService,
@@ -64,6 +71,19 @@ export class MenuComponent implements OnInit, OnDestroy {
       .subscribe((title: string) => {
         this.title = title;
       });
+
+    // Route admin observation
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.routerAdminUrl = this.config.urlAdmin.map((route: string, i: number) => {
+          if (i === 0) {
+            return this.localizeRouterService.translateRoute(route) as string;
+          }
+          return route;
+        });
+        this.currentRoute = this.router.url.substring(1).split('/');
+      }
+    });
   }
 
   search() {

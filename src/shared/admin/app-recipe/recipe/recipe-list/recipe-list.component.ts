@@ -16,8 +16,6 @@ import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
 export class RecipeListComponent extends BaseListComponent<Recipe> implements OnInit {
 
   @ViewChild('dataTableComponentTable') dataTableComponentTable: DatatableComponent;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
   @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
   @ViewChild('priceCell') priceCell: TemplateRef<any>;
   @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
@@ -74,14 +72,6 @@ export class RecipeListComponent extends BaseListComponent<Recipe> implements On
   getColumns(): TableColumn[] {
     return [
       {
-        width: 75,
-        sortable: false,
-        canAutoResize: false,
-        draggable: false,
-        resizeable: false,
-        headerTemplate: this.checkboxHeader,
-        cellTemplate: this.checkboxCell,
-      }, {
         prop: 'key',
         name: 'key',
         flexGrow: 1,
