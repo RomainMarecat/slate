@@ -18,11 +18,13 @@ import { PreparationEditComponent } from './recipe-edit/preparation-edit/prepara
 import { IngredientListComponent } from './recipe-edit/ingredient-list/ingredient-list.component';
 import { ContrastService } from '../../../contrast/contrast.service';
 import { NgPipesModule } from 'ngx-pipes';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
     CommonModule,
     ColorPickerModule,
+    DragDropModule,
     FlexLayoutModule,
     NgxDatatableModule,
     SharedModule,

@@ -26,6 +26,17 @@
 
     <div fxFlex.xs="100"
          fxFlex="100">
+      <mat-form-field class="mat-form-field">
+        <textarea matInput
+                  maxlength="300"
+                  [placeholder]="'admin.placeholder.recipe.preparations.sentence'|translate"
+                  formControlName="sentence"></textarea>
+        <mat-hint align="end">{{ form.get('sentence').value.length }} {{ '/300'|translate }}</mat-hint>
+        <mat-error *ngIf="form.get('sentence').invalid && form.get('sentence').value.length === 0"
+                   [innerHtml]="'admin.error.required.recipe.preparations.sentence'|translate"></mat-error>
+        <mat-error *ngIf="form.get('sentence').invalid && form.get('sentence').value.length > 0"
+                   [innerHtml]="'admin.error.invalid.recipe.preparations.sentence'|translate"></mat-error>
+      </mat-form-field>
       <div class="button-shortcut"
            fxLayout="row"
            fxLayoutAlign="center stretch"
@@ -47,17 +58,6 @@
           {{ 'admin.label.recipe.preparations.ingredient'|translate }}
         </button>
       </div>
-      <mat-form-field class="mat-form-field">
-        <textarea matInput
-                  maxlength="300"
-                  [placeholder]="'admin.placeholder.recipe.preparations.sentence'|translate"
-                  formControlName="sentence"></textarea>
-        <mat-hint align="end">{{ form.get('sentence').value.length }} {{ '/300'|translate }}</mat-hint>
-        <mat-error *ngIf="form.get('sentence').invalid && form.get('sentence').value.length === 0"
-                   [innerHtml]="'admin.error.required.recipe.preparations.sentence'|translate"></mat-error>
-        <mat-error *ngIf="form.get('sentence').invalid && form.get('sentence').value.length > 0"
-                   [innerHtml]="'admin.error.invalid.recipe.preparations.sentence'|translate"></mat-error>
-      </mat-form-field>
     </div>
 
     <div fxFlex="30"

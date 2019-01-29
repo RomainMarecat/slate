@@ -10,10 +10,11 @@ import { RecipeFormType } from '../../../shared/recipe/form-recipe';
 import { Media } from '../../../../media/media';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 import { StringService } from '../../../../util/string.service';
-import { FormArray } from '@angular/forms';
+import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
 import { Ingredient } from '../../../../../app-recipe/public/ingredient/shared/ingredient';
 import { IngredientService } from '../../../../../app-recipe/public/ingredient/shared/ingredient.service';
 import { ContrastService } from '../../../../contrast/contrast.service';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-admin-recipe-edit',
@@ -206,6 +207,25 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
         'recipe'
       ]);
     });
+  }
+
+  /**
+   * After Drop Item in new order index
+   */
+  drop(event: CdkDragDrop<FormGroup[]>) {
+    const dir: number = event.currentIndex > event.previousIndex ? 1 : -1;
+
+    const from: number = event.previousIndex;
+    const to: number = event.currentIndex;
+
+    const temp: AbstractControl = (this.form.get('instructions') as FormArray).at(from);
+    for (let i = from; i * dir < to * dir; i = i + dir) {
+      const current: AbstractControl = (this.form.get('instructions') as FormArray).at(i + dir);
+      current.patchValue({order_index: i + 1});
+      (this.form.get('instructions') as FormArray).setControl(i, current);
+    }
+    temp.patchValue({order_index: to + 1});
+    (this.form.get('instructions') as FormArray).setControl(to, temp);
   }
 
   removeIngredient(index: number) {

@@ -18,12 +18,6 @@ import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-transl
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { MockLocalizeRouterService } from '../../../../../router/mock-localize-router.service';
-import { RecipeService } from '../../../../../../app-recipe/public/recipe/shared/recipe.service';
-import { MockRecipeService } from '../../../../../../app-recipe/public/recipe/shared/mock-recipe.service';
-import { MediaService } from '../../../../../media/media.service';
-import { MockMediaService } from '../../../../../media/mock-media.service';
-import { AlertService } from '../../../../../popup/alert.service';
-import { MockAlertService } from '../../../../../popup/mock-alert.service';
 import { LoaderService } from '../../../../../loader/loader.service';
 import { MockLoaderService } from '../../../../../loader/mock-loader.service';
 import { FormGroup } from '@angular/forms';

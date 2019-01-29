@@ -66,11 +66,14 @@
             <mat-form-field class="mat-form-field">
               <mat-select formControlName="cuisine_type"
                           [placeholder]="'admin.placeholder.recipe.cuisine_type'|translate">
-                <mat-option [value]="'admin.option.enter'|translate">
-                  {{ 'admin.option.enter' | translate }}
+                <mat-option [value]="'admin.option.base'|translate">
+                  {{ 'admin.option.base' | translate }}
                 </mat-option>
-                <mat-option [value]="'admin.option.plate'|translate">
-                  {{ 'admin.option.plate' | translate }}
+                <mat-option [value]="'admin.option.starter'|translate">
+                  {{ 'admin.option.starter' | translate }}
+                </mat-option>
+                <mat-option [value]="'admin.option.dish'|translate">
+                  {{ 'admin.option.dish' | translate }}
                 </mat-option>
                 <mat-option [value]="'admin.option.dessert'|translate">
                   {{ 'admin.option.dessert' | translate }}
@@ -283,8 +286,11 @@
                   <mat-icon>add</mat-icon>
                 </button>
               </div>
-              <mat-list>
-                <app-admin-recipe-instruction-edit [form]="instruction"
+              <mat-list cdkDropList
+                        (cdkDropListDropped)="drop($event)"
+                        [cdkDropListData]="form.get('instructions').controls">
+                <app-admin-recipe-instruction-edit cdkDrag
+                                                   [form]="instruction"
                                                    [ingredients]="form.get('ingredients').value"
                                                    (removed)="removeInstruction(i)"
                                                    *ngFor="let instruction of form.get('instructions').controls; let i = index">

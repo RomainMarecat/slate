@@ -33,6 +33,7 @@ import { IngredientListComponent } from './ingredient-list/ingredient-list.compo
 import { IngredientService } from '../../../../../app-recipe/public/ingredient/shared/ingredient.service';
 import { MockIngredientService } from '../../../../../app-recipe/public/ingredient/shared/mock-ingredient.service';
 import { ContrastService } from '../../../../contrast/contrast.service';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 describe('RecipeEditComponent', () => {
   let component: RecipeEditComponent;
@@ -47,6 +48,7 @@ describe('RecipeEditComponent', () => {
         BrowserAnimationsModule,
         ColorPickerModule,
         CommonModule,
+        DragDropModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
         NgxDatatableModule,

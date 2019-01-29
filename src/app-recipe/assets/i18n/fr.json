@@ -13,8 +13,9 @@
   },
   "admin": {
     "option": {
-      "enter": "entrée",
-      "plate": "plat",
+      "base": "pâte",
+      "starter": "entrée",
+      "dish": "plat",
       "dessert": "dessert"
     },
     "error": {
