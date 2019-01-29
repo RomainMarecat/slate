@@ -3,7 +3,7 @@ export const environment = {
   site_name: 'recipe',
   app_name: 'recipe',
   cookie: {
-    domain: 'recipe-384269.firebaseapp.com'
+    domain: 'lesrecettesdannelise.com'
   },
   firebase: {
     apiKey: 'AIzaSyCw6VcozteJu43LV3LZITWN4_Ebu2UenhI',

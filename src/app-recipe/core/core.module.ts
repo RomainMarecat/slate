@@ -102,17 +102,17 @@ export const cookieConfig: NgcCookieConsentConfig = {
       link: '#ffffff'
     },
     button: {
-      background: '#af300b',
-      text: '#ffffff',
+      background: '#f4c71d',
+      text: '#2f2f30',
       border: 'transparent'
     }
   },
   type: 'info',
   content: {
-    message: 'This website uses cookies to ensure you get the best experience on our website.',
-    dismiss: 'Got it !',
-    deny: 'Refuse cookies',
-    link: 'Learn more',
+    message: 'Ce site utilise les cookies pour assurer la meilleure expérience utilisateur.',
+    dismiss: 'OK',
+    deny: 'Refuser les cookies',
+    link: 'En savoir plus',
     href: 'https://cookiesandyou.com'
   }
 };
