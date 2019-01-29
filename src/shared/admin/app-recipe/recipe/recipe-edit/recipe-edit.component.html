@@ -299,6 +299,30 @@
 
             </div>
 
+            <div>
+
+              <div class="associated-recipes-header-wrapper"
+                   fxLayout="row"
+                   fxLayoutAlign="space-around center"
+                   fxLayout.xs="row"
+                   fxLayoutAlign.xs="center center">
+                <p class="mb-0">{{ 'admin.label.recipe.associated-recipes.title'|translate }}</p>
+                <button type="button"
+                        mat-icon-button
+                        class="button-add-associated-recipe"
+                        [attr.role]="'cta.add'|translate"
+                        (click)="addAssociatedRecipe()">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+
+              <app-admin-recipe-associated *ngIf="showAssociatedRecipes"
+                                           [recipe]="document"
+                                           [form]="form.get('associated_recipes')"
+                                           (removed)="removeAssociatedRecipe(i)">
+              </app-admin-recipe-associated>
+            </div>
+
           </mat-card-content>
 
           <mat-card-actions>
@@ -308,8 +332,9 @@
                       mat-raised-button
                       role="button"
                       [attr.aria-label]="'cta.cancel'|translate"
-                      [innerHtml]="'cta.cancel'|translate"
-                      (click)="cancel()"></button>
+                      (click)="cancel()">
+                {{ 'cta.cancel'|translate }}
+              </button>
               <button type="submit"
                       class="validate text-uppercase"
                       mat-raised-button

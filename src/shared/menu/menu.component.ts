@@ -8,6 +8,8 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { SearchDialogComponent } from '../search/search-dialog/search-dialog.component';
 import { Filter } from '../facet/filter/shared/filter';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { User } from '../user/shared/user';
+import { adminsID } from '../guard/admin';
 
 @Component({
   selector: 'app-menu',
@@ -52,6 +54,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   routerAdminUrl: string[];
   currentRoute: string[];
+  isAdmin: boolean;
 
   constructor(public router: Router,
               private localizeRouterService: LocalizeRouterService,
@@ -82,6 +85,12 @@ export class MenuComponent implements OnInit, OnDestroy {
           return route;
         });
         this.currentRoute = this.router.url.substring(1).split('/');
+      }
+    });
+
+    this.userService.getAuthState().subscribe((user: User) => {
+      if (user && user.uid) {
+        this.isAdmin = adminsID.includes(user.uid);
       }
     });
   }

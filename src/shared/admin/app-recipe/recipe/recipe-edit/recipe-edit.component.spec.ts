@@ -34,6 +34,7 @@ import { IngredientService } from '../../../../../app-recipe/public/ingredient/s
 import { MockIngredientService } from '../../../../../app-recipe/public/ingredient/shared/mock-ingredient.service';
 import { ContrastService } from '../../../../contrast/contrast.service';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { RecipeAssociatedComponent } from './recipe-associated/recipe-associated.component';
 
 describe('RecipeEditComponent', () => {
   let component: RecipeEditComponent;
@@ -67,7 +68,8 @@ describe('RecipeEditComponent', () => {
         InstructionEditComponent,
         PreparationEditComponent,
         IngredientEditComponent,
-        IngredientListComponent
+        IngredientListComponent,
+        RecipeAssociatedComponent
       ],
       providers: [
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},

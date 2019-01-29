@@ -28,6 +28,7 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
   instructions: FormArray = new FormArray([]);
   ingredients: FormArray = new FormArray([]);
   preparations: FormArray = new FormArray([]);
+  showAssociatedRecipes = false;
   selectedIngredient: Ingredient;
 
   constructor(protected activatedRoute: ActivatedRoute,
@@ -49,6 +50,9 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
           .subscribe((document: Recipe) => {
             this.document = document;
             this.createForm();
+            if (this.form.get('associated_recipes').value.length > 0) {
+              this.showAssociatedRecipes = true;
+            }
             this.createImageStorageConfig();
           });
       }
@@ -91,6 +95,10 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
     this.instructions = this.form.get('instructions') as FormArray;
   }
 
+  addAssociatedRecipe() {
+    this.showAssociatedRecipes = true;
+  }
+
   addInstruction() {
     this.instructions = this.form.get('instructions') as FormArray;
     this.instructions.push(RecipeFormType.getInstruction(this.instructions.length + 1));
@@ -131,7 +139,8 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
       instructions: [],
       preparations: [],
       ingredients: [],
-      search_ingredients: []
+      search_ingredients: [],
+      associated_recipes: [],
     });
   }
 
@@ -226,6 +235,10 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
     }
     temp.patchValue({order_index: to + 1});
     (this.form.get('instructions') as FormArray).setControl(to, temp);
+  }
+
+  removeAssociatedRecipe() {
+    this.showAssociatedRecipes = false;
   }
 
   removeIngredient(index: number) {

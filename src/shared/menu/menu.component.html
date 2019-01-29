@@ -34,14 +34,14 @@
      fxShow
      fxHide.xs
      class="mr-3"
-     *ngIf="config.displayAdminRecipe">
+     *ngIf="config.displayAdminRecipe && isAdmin">
     {{ 'cta.admin'|translate }}
   </a>
 
   <div class="admin-mobile"
        fxHide
        fxShow.xs
-       *ngIf="currentRoute && routerAdminUrl && currentRoute.join('/') !== routerAdminUrl.join('/') && config.displayAdminRecipe">
+       *ngIf="isAdmin && currentRoute && routerAdminUrl && currentRoute.join('/') !== routerAdminUrl.join('/') && config.displayAdminRecipe">
     <a [routerLink]="routerAdminUrl">
       {{ 'cta.admin'|translate }}
     </a>

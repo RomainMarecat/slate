@@ -39,6 +39,19 @@ export class RecipeFormType {
     });
   }
 
+  /**
+   * Associated recipe listthis
+   */
+  static getAssociatedRecipes(recipe: Recipe): FormControl {
+    if (recipe && recipe.associated_recipes && recipe.associated_recipes.length > 0) {
+      return new FormControl(recipe.associated_recipes.map((r: string) => {
+        return r;
+      }));
+    }
+
+    return new FormControl([]);
+  }
+
   constructor(recipe ?: Recipe) {
     this.createForm(recipe);
   }
@@ -89,6 +102,7 @@ export class RecipeFormType {
       instructions: new FormArray(this.getInstructions(recipe)),
       preparations: new FormArray(this.getPreparations(recipe)),
       ingredients: new FormArray(this.getRecipeIngredients(recipe)),
+      associated_recipes: RecipeFormType.getAssociatedRecipes(recipe),
     });
   }
 

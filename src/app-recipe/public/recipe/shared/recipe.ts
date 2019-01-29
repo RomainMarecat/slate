@@ -25,4 +25,5 @@ export interface Recipe {
   yield: number;
   rating: number;
   on_homepage: boolean;
+  associated_recipes: string[];
 }

@@ -36,7 +36,7 @@ import { NgPipesModule } from 'ngx-pipes';
     ScrollingModule,
     ScrollModule.forRoot(),
     MediaModule,
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
   ],
   declarations: [
     RecipeListComponent,
@@ -44,7 +44,7 @@ import { NgPipesModule } from 'ngx-pipes';
     RecipeInformationComponent,
     RecipePreparationListComponent,
     RecipeInstructionListComponent,
-    RecipeTitleComponent
+    RecipeTitleComponent,
   ],
   exports: [
     RecipeListComponent,

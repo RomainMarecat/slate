@@ -1,204 +1,216 @@
 {
-  "routes": {
-    "recipes": "recettes",
-    "recipe": "recette",
-    "admin": "administration"
-  },
-  "cta": {
-    "add": "ajouter",
-    "search": "Rechercher",
-    "admin": "admin",
-    "save": "sauvegarder",
-    "cancel": "annuler"
-  },
-  "admin": {
-    "option": {
-      "base": "pâte",
-      "starter": "entrée",
-      "dish": "plat",
-      "dessert": "dessert"
+    "routes": {
+        "recipes": "recettes",
+        "recipe": "recette",
+        "admin": "administration"
+    },
+    "cta": {
+        "add": "ajouter",
+        "search": "Rechercher",
+        "admin": "admin",
+        "save": "sauvegarder",
+        "cancel": "annuler"
+    },
+    "admin": {
+        "option": {
+            "base": "pâte",
+            "starter": "entrée",
+            "dish": "plat",
+            "dessert": "dessert"
+        },
+        "error": {
+            "required": {
+                "recipe": {
+                    "name": "le nom est obligatoire",
+                    "cuisine_type": "le type de cuisine est obligatoire",
+                    "yield": "le nombre de personne est obligatoire",
+                    "image": "l'image est obligatoire",
+                    "color": "la couleur est obligatoire",
+                    "difficulty": "la difficulté est obligatoire",
+                    "trick": "l'astuce est obligatoire",
+                    "total_time": "le temps total est obligatoire",
+                    "cook_time": "le temps de cuisson est obligatoire",
+                    "prep_time": "le temps de préparation est obligatoire",
+                    "waiting_time": "le temps d'attente est obligatoire",
+                    "creator": "le créateur est obligatoire",
+                    "author": "l'auteur est obligatoire",
+                    "preparations": {
+                        "quantity": "la quantité est obligatoire",
+                        "sentence": "la phrase est obligatoire"
+                    }
+                }
+            },
+            "invalid": {
+                "recipe": {
+                    "name": "le nom est invalide",
+                    "cuisine_type": "le type de cuisine est invalide",
+                    "yield": "le nombre de personne est invalide",
+                    "image": "l'image est invalide",
+                    "color": "la couleur est invalide",
+                    "difficulté": "la difficulté est invalide",
+                    "trick": "l'astuce est invalide",
+                    "total_time": "le temps total est invalide",
+                    "cook_time": "le temps de cuisson est invalide",
+                    "prep_time": "le temps de préparation est invalide",
+                    "waiting_time": "le temps d'attente est invalide",
+                    "creator": "le créateur est invalide",
+                    "author": "l'auteur est invalide",
+                    "preparations": {
+                        "quantity": "la quantité est invalide",
+                        "sentence": "la phrase est invalide"
+                    }
+                }
+            }
+        },
+        "hint": {
+            "recipe": {
+                "name": "nom",
+                "cuisine_type": "type de cuisine",
+                "yield": "nombre de personne",
+                "image": "image",
+                "color": "couleur",
+                "difficulty": "difficulté",
+                "trick": "astuce",
+                "total_time": "temps total",
+                "cook_time": "temps de cuisson",
+                "prep_time": "temps de préparation",
+                "waiting_time": "temps d'attente",
+                "creator": "créateur",
+                "preparations": {
+                    "quantity": "quantité",
+                    "sentence": "phrase"
+                }
+            }
+        },
+        "label": {
+            "recipe": {
+                "associated-recipes": {
+                    "title": "Ajouter des recettes associées"
+                },
+                "instructions": {
+                    "title": "Ajouter des instructions"
+                },
+                "ingredients": {
+                    "title": "Ajouter des ingrédients"
+                },
+                "preparations": {
+                    "title": "Ajouter des préparations",
+                    "ingredient": "ingrédient",
+                    "quantity": "quantité"
+                },
+                "on_homepage": {
+                    "true": "Affiché sur l'accueil",
+                    "false": "Uniquement dans la recherche"
+                }
+            }
+        },
+        "placeholder": {
+            "recipe": {
+                "associated_recipes": {
+                    "not_found": "aucune recette",
+                    "loading": "chargement",
+                    "type_to_search": "entrer une recette existante",
+                    "clear_all": "tout effacer"
+                },
+                "name": "nom",
+                "cuisine_type": "type de cuisine",
+                "yield": "nombre de personne",
+                "difficulty": "difficulté",
+                "trick": "astuce",
+                "image": "image",
+                "color": "couleur",
+                "total_time": "temps total",
+                "cook_time": "temps de cuisson",
+                "prep_time": "temps de préparation",
+                "waiting_time": "temps d'attente",
+                "author": "attribuer la recette à",
+                "creator": "créateur",
+                "instructions": {
+                    "order_index": "ordre",
+                    "sentence": "phrase",
+                    "ingredients": {
+                        "title": "ingrédients",
+                        "not_found": "aucun ingrédient",
+                        "loading": "chargement",
+                        "type_to_search": "entrer un mot",
+                        "clear_all": "tout vider"
+                    }
+                },
+                "ingredients": {
+                    "color": "couleur",
+                    "name": "nom"
+                },
+                "preparations": {
+                    "quantity": "quantité",
+                    "sentence": "phrase",
+                    "ingredients": {
+                        "title": "ingrédients",
+                        "not_found": "aucun ingrédient",
+                        "loading": "chargement",
+                        "type_to_search": "entrer un mot",
+                        "clear_all": "tout vider"
+                    }
+                }
+            }
+        },
+        "recipe": {
+            "error": {
+                "update": "Une erreur est survenue pendant la sauvegarde de la recette"
+            },
+            "image": {
+                "saved": "l'image est sauvegardée"
+            },
+            "updated": "La recette {{name}} est mise à jour"
+        }
     },
     "error": {
-      "required": {
-        "recipe": {
-          "name": "le nom est obligatoire",
-          "cuisine_type": "le type de cuisine est obligatoire",
-          "yield": "le nombre de personne est obligatoire",
-          "image": "l'image est obligatoire",
-          "color": "la couleur est obligatoire",
-          "difficulty": "la difficulté est obligatoire",
-          "trick": "l'astuce est obligatoire",
-          "total_time": "le temps total est obligatoire",
-          "cook_time": "le temps de cuisson est obligatoire",
-          "prep_time": "le temps de préparation est obligatoire",
-          "waiting_time": "le temps d'attente est obligatoire",
-          "creator": "le créateur est obligatoire",
-          "author": "l'auteur est obligatoire",
-          "preparations": {
-            "quantity": "la quantité est obligatoire",
-            "sentence": "la phrase est obligatoire"
-          }
+        "upload": {
+            "retry": "Le téléchargement a échoué, veuillez réessayer."
         }
-      },
-      "invalid": {
-        "recipe": {
-          "name": "le nom est invalide",
-          "cuisine_type": "le type de cuisine est invalide",
-          "yield": "le nombre de personne est invalide",
-          "image": "l'image est invalide",
-          "color": "la couleur est invalide",
-          "difficulté": "la difficulté est invalide",
-          "trick": "l'astuce est invalide",
-          "total_time": "le temps total est invalide",
-          "cook_time": "le temps de cuisson est invalide",
-          "prep_time": "le temps de préparation est invalide",
-          "waiting_time": "le temps d'attente est invalide",
-          "creator": "le créateur est invalide",
-          "author": "l'auteur est invalide",
-          "preparations": {
-            "quantity": "la quantité est invalide",
-            "sentence": "la phrase est invalide"
-          }
+    },
+    "home": {
+        "images": {
+            "header": "Image qui découpe du persil dans une cuisine"
         }
-      }
     },
-    "hint": {
-      "recipe": {
-        "name": "nom",
-        "cuisine_type": "type de cuisine",
-        "yield": "nombre de personne",
-        "image": "image",
-        "color": "couleur",
-        "difficulty": "difficulté",
-        "trick": "astuce",
-        "total_time": "temps total",
-        "cook_time": "temps de cuisson",
-        "prep_time": "temps de préparation",
-        "waiting_time": "temps d'attente",
-        "creator": "créateur",
-        "preparations": {
-          "quantity": "quantité",
-          "sentence": "phrase"
+    "input": {
+        "placeholder": {
+            "search": "rechercher une recette :"
         }
-      }
     },
-    "label": {
-      "recipe": {
-        "instructions": {
-          "title": "Ajouter des instructions"
-        },
-        "ingredients": {
-          "title": "Ajouter des ingrédients"
-        },
-        "preparations": {
-          "title": "Ajouter des préparations",
-          "ingredient": "ingrédient",
-          "quantity": "quantité"
-        },
-        "on_homepage": {
-          "true": "Affiché sur l'accueil",
-          "false": "Uniquement dans la recherche"
+    "menu": {
+        "title1": "",
+        "title2": "Les recettes d'Anne-lise",
+        "title": {
+            "home": "",
+            "recipe": "recette"
         }
-      }
     },
-    "placeholder": {
-      "recipe": {
-        "name": "nom",
-        "cuisine_type": "type de cuisine",
-        "yield": "nombre de personne",
-        "difficulty": "difficulté",
-        "trick": "astuce",
-        "image": "image",
-        "color": "couleur",
-        "total_time": "temps total",
-        "cook_time": "temps de cuisson",
-        "prep_time": "temps de préparation",
-        "waiting_time": "temps d'attente",
-        "author": "attribuer la recette à",
-        "creator": "créateur",
-        "instructions": {
-          "order_index": "ordre",
-          "sentence": "phrase",
-          "ingredients": {
-            "title": "ingrédients",
-            "not_found": "aucun ingrédient",
-            "loading": "chargement",
-            "type_to_search": "entrer un mot",
-            "clear_all": "tout vider"
-          }
+    "meta": {
+        "title": {
+            "home": "Les recettes d'Anne-lise",
+            "recipe-list": "Les recettes d'Anne-lise",
+            "recipe-detail": "Les recettes d'Anne-lise"
         },
-        "ingredients": {
-          "color": "couleur",
-          "name": "nom"
-        },
-        "preparations": {
-          "quantity": "quantité",
-          "sentence": "phrase",
-          "ingredients": {
-            "title": "ingrédients",
-            "not_found": "aucun ingrédient",
-            "loading": "chargement",
-            "type_to_search": "entrer un mot",
-            "clear_all": "tout vider"
-          }
+        "description": {
+            "home": "Les recettes d'Anne-lise le site de recette",
+            "recipe-list": "Les recettes d'Anne-lise le site de recette",
+            "recipe-detail": "Les recettes d'Anne-lise le site de recette"
         }
-      }
     },
-    "recipe": {
-      "image": {
-        "saved": "l'image est sauvegardée"
-      },
-      "updated": "La recette {{name}} est mise à jour"
-    }
-  },
-  "error": {
-    "upload": {
-      "retry": "Le téléchargement a échoué, veuillez réessayer."
-    }
-  },
-  "home": {
-    "images": {
-      "header": "Image qui découpe du persil dans une cuisine"
-    }
-  },
-  "input": {
-    "placeholder": {
-      "search": "rechercher une recette :"
-    }
-  },
-  "menu": {
-    "title1": "",
-    "title2": "Les recettes d'Anne-lise",
-    "title": {
-      "home": "",
-      "recipe": "recette"
-    }
-  },
-  "meta": {
-    "title": {
-      "home": "Les recettes d'Anne-lise",
-      "recipe-list": "Les recettes d'Anne-lise",
-      "recipe-detail": "Les recettes d'Anne-lise"
+    "recipes": {
+        "list": {
+            "empty": "Aucune recette n'est trouvée"
+        }
     },
-    "description": {
-      "home": "Les recettes d'Anne-lise le site de recette",
-      "recipe-list": "Les recettes d'Anne-lise le site de recette",
-      "recipe-detail": "Les recettes d'Anne-lise le site de recette"
+    "recipe-detail": {
+        "title": {
+            "total_time": "temps de la recette",
+            "cook_time": "temps de cuisson",
+            "prep_time": "temps de préparation",
+            "waiting_time": "temps d'attente",
+            "yield": "pour",
+            "rating": "difficulté"
+        }
     }
-  },
-  "recipes": {
-    "list": {
-      "empty": "Aucune recette n'est trouvée"
-    }
-  },
-  "recipe-detail": {
-    "title": {
-      "total_time": "temps de la recette",
-      "cook_time": "temps de cuisson",
-      "prep_time": "temps de préparation",
-      "waiting_time": "temps d'attente",
-      "yield": "pour",
-      "rating": "difficulté"
-    }
-  }
 }

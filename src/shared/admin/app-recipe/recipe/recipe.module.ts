@@ -19,6 +19,7 @@ import { IngredientListComponent } from './recipe-edit/ingredient-list/ingredien
 import { ContrastService } from '../../../contrast/contrast.service';
 import { NgPipesModule } from 'ngx-pipes';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { RecipeAssociatedComponent } from './recipe-edit/recipe-associated/recipe-associated.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     InstructionEditComponent,
     IngredientEditComponent,
     PreparationEditComponent,
-    IngredientListComponent
+    IngredientListComponent,
+    RecipeAssociatedComponent
   ],
   providers: [
     ContrastService

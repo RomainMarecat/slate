@@ -6,4 +6,5 @@ export const adminsID = [
   'dGfjXhTByjNqtSXXISxvc7IY7SD3', // showcase,
   'yjIt03P8vSVQL59MnmrH5BLDZ0k1', // ALR Dashboard
   '2JoIca0sDCPdw3sQP8rcW9fkgsk2', // Recipe
+  'eK4R80hv1VYnJsRtJDmx55EwC9w2', // Recipe
 ];
