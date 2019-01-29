@@ -7,7 +7,7 @@
             [class.active]="i + 1 === currentInstruction"
             [@scrollAnimation]="state">
 
-    <mat-card-title fxLayout="row"
+    <mat-card-title fxLayout="row wrap"
                     fxLayoutAlign.gt-sm="center stretch"
                     fxLayoutAlign.xs="start center"
                     fxLayoutGap.gt-sm="20px"
@@ -16,7 +16,7 @@
            fxFlex="20">
         <span>{{ instruction.order_index}}</span>
       </div>
-      <!-- Desktop -->
+      <!-- Mobile -->
       <div class="ingredients-wrapper"
            *ngFor="let ingredient of instruction.ingredients"
            fxShow.xs
