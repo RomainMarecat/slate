@@ -190,12 +190,13 @@
         "title": {
             "home": "Les recettes d'Anne-lise",
             "recipe-list": "Les recettes d'Anne-lise",
-            "recipe-detail": "Les recettes d'Anne-lise"
+            "recipe-list-ingredients": "Que faire comme recette avec {{ ingredients }} ? - Les recettes d'Anne-lise",
+            "recipe-detail": "{{ name }} - Les recettes d'Anne-lise"
         },
         "description": {
-            "home": "Les recettes d'Anne-lise le site de recette",
-            "recipe-list": "Les recettes d'Anne-lise le site de recette",
-            "recipe-detail": "Les recettes d'Anne-lise le site de recette"
+            "home": "Les recettes d'Anne-lise le site de recettes de cuisine",
+            "recipe-list": "Les recettes d'Anne-lise le site de recettes de cuisine",
+            "recipe-detail": "Les recettes d'Anne-lise le site de recettes de cuisine"
         }
     },
     "recipes": {

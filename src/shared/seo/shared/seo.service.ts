@@ -31,8 +31,8 @@ export class SeoService {
   /**
    * Seo's activation with entity type meta title and description
    */
-  setSeo(type: string) {
-    this.translateService.get([`meta.title.${type}`, `meta.description.${type}`, `menu.title.${type}`])
+  setSeo(type: string, parameters: Object = {}) {
+    this.translateService.get([`meta.title.${type}`, `meta.description.${type}`, `menu.title.${type}`], parameters)
       .subscribe((translations: string[]) => {
         this.meta.updateTag({name: 'description', content: translations[`meta.description.${type}`]});
         this.title.setTitle(translations[`meta.title.${type}`]);

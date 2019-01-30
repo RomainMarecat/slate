@@ -59,7 +59,6 @@ export class StorageUploadComponent implements OnInit {
 
     imageRef
       .catch((err) => {
-        console.log(err);
         this.translate.get('error.upload.retry')
           .subscribe((translated) => {
             this.alertService.toast(translated);

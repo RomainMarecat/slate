@@ -55,6 +55,7 @@ export class RecipeListComponent implements OnInit {
           });
         }
         this.getRecipes();
+        this.seoService.setSeo('recipe-list-ingredients', {ingredients: params['ingredients']});
       }
     });
 

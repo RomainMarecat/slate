@@ -3,7 +3,7 @@
   "background_color": "#ffffff",
   "theme_color": "#6EE3E7",
   "display": "standalone",
-  "Scope": "/",
+  "scope": "/",
   "start_url": "/",
   "short_name": "ALR",
   "orientation": "portrait",

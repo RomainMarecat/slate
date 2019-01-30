@@ -15,7 +15,7 @@ export class AppRootComponent implements OnInit {
         persist: false
       });
     } catch (err) {
-      console.log('Firebase init error: ' + err);
+      console.error('Firebase init error: ' + err);
     }
   }
 }

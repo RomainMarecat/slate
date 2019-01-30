@@ -11,7 +11,7 @@ import { Constraint } from '../shared/constraint';
 import { take, timeout } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { isSameDay } from 'ngx-bootstrap';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -42,7 +42,8 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
               private scrollService: ScrollService,
               private scrollDispatcher: ScrollDispatcher,
               private mediaObserver: MediaObserver,
-              private cd: ChangeDetectorRef) {
+              private cd: ChangeDetectorRef,
+              private translateService: TranslateService) {
     this.isLoading = true;
     this.seoService.setSeo('recipe-detail');
     this.getRecipe();
@@ -95,6 +96,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
             this.recipe = recipe;
             this.isLoading = false;
             this.getSchemaDetail(recipe);
+            this.seoService.setSeo('recipe-detail', {name: recipe.name});
           }, () => {
             this.alertService.show('error.api.errors');
             this.isLoading = false;
@@ -107,7 +109,6 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
    * Set Default instructions
    */
   setConstraints(offsetHeight: number) {
-    console.log(this.total, offsetHeight);
     this.constraints = [];
     this.constraints.push({index: 0, min: this.total, max: this.total + offsetHeight});
     this.total += offsetHeight;
@@ -172,8 +173,6 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
           }
           this.previousPosition = this.top;
         }
-
-        console.log(filteredInstructions[0], this.top, bottom, this.currentInstruction, this.limitInstructionReached);
       });
   }
 

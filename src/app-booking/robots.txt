@@ -1,4 +1,4 @@
 User-Agent: *
 Disallow:
 
-Sitemap: https://recipe-384269.firebaseapp.com/sitemap.xml
+Sitemap: https://booking-384269.firebaseapp.com/sitemap.xml
