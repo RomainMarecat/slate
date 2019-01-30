@@ -7,7 +7,7 @@ export const environment = {
   },
   firebase: {
     apiKey: 'AIzaSyCw6VcozteJu43LV3LZITWN4_Ebu2UenhI',
-    authDomain: 'recipe-384269.firebaseapp.com',
+    authDomain: 'localhost',
     databaseURL: 'https://recipe-384269.firebaseio.com',
     projectId: 'recipe-384269',
     storageBucket: 'recipe-384269.appspot.com',
