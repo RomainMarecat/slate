@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router';
 import { Recipe } from '../shared/recipe';
 import { RecipeService } from '../shared/recipe.service';
 import { AlertService } from '../../../../shared/popup/alert.service';
@@ -32,7 +32,15 @@ export class RecipeListComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private localizeRouterService: LocalizeRouterService) {
-    this.seoService.setSeo('recipe-list');
+    // Route admin observation
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        if (event.url !== '/') {
+          this.seoService.setSeo('recipe-list');
+        }
+      }
+    });
+
     this.isLoading = true;
     this.query = {
       limit: 50,

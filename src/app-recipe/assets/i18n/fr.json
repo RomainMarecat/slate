@@ -194,8 +194,8 @@
             "recipe-detail": "{{ name }} - Les recettes d'Anne-lise"
         },
         "description": {
-            "home": "Les recettes d'Anne-lise le site de recettes de cuisine",
-            "recipe-list": "Les recettes d'Anne-lise le site de recettes de cuisine",
+            "home": "Anne-lise vous propose sa liste de recettes toutes plus délicieuses les unes que les autres.",
+            "recipe-list": "Les recettes d'Anne-lise. Voici la liste des recettes.",
             "recipe-detail": "Les recettes d'Anne-lise le site de recettes de cuisine"
         }
     },

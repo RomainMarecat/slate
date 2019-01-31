@@ -3,9 +3,16 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://lesrecettesdannelise.com</loc>
-    <lastmod>2019-01-30T12:00:00+00:00</lastmod>
+    <loc>https://lesrecettesdannelise.com/</loc>
+    <lastmod>2019-01-31T18:25:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
+  </url>
+
+  <url>
+    <loc>https://lesrecettesdannelise.com/recettes</loc>
+    <lastmod>2019-01-31T18:25:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
