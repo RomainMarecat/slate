@@ -5,26 +5,26 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {
-  MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
-  MatIconModule,
   MatButtonModule,
-  MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatInputModule,
+  MatCardModule,
   MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
   MatCommonModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatLineModule,
+  MatListModule,
+  MatMenuModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
-import { NgcCookieConsentModule, NgcCookieConsentService, WindowService, NgcCookieConsentConfig } from 'ngx-cookieconsent';
-import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { NgcCookieConsentConfig, NgcCookieConsentModule, NgcCookieConsentService, WindowService } from 'ngx-cookieconsent';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,7 +36,6 @@ import { MockUserService } from '../../shared/user/shared/mock-user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MockLoaderService } from '../../shared/loader/mock-loader.service';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRootComponent } from './root.component';
 import { SharedModule } from '../../shared/shared.module';
@@ -94,7 +93,6 @@ describe('AppRootComponent', () => {
         HttpClientModule,
         BrowserAnimationsModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule,
         AngularFireAuthModule,
         AdsenseModule.forRoot({
           adClient: environment.clientAdSense,

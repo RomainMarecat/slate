@@ -7,7 +7,6 @@ import { MockGeocodeService } from '../../../shared/map/shared/mock-geocode.serv
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AngularFireModule } from '@angular/fire';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MockProductService } from '../../../shared/product/shared/mock-product.service';
 import { MockAlertService } from '../../../shared/popup/mock-alert.service';
 import { MockOfferService } from '../../../shared/offer/mock-offer.service';
@@ -37,7 +36,6 @@ describe('OfferConfirmationComponent', () => {
           apiKey: environment.googleMapApiKey
         }),
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule,
         AngularFireStorageModule,
         CommonModule,
         HttpClientTestingModule,

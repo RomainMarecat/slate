@@ -4,7 +4,6 @@ import { StorageDetailComponent } from './storage-detail.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CommonModule } from '@angular/common';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MatProgressBarModule } from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../../../app-car/environments/environment';
@@ -21,7 +20,6 @@ describe('StorageDetailComponent', () => {
       imports: [
         CommonModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule,
         AngularFireStorageModule,
         HttpClientTestingModule,
         MatProgressBarModule

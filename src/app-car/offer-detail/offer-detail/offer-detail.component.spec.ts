@@ -16,7 +16,6 @@ import { MockCategoryService } from '../../../shared/category/mock-category.serv
 import { DeviceService } from '../../../shared/device/device.service';
 import { OfferService } from '../../../shared/offer/offer.service';
 import { MockOfferService } from '../../../shared/offer/mock-offer.service';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { MockCommentService } from '../../../shared/comment/shared/mock-comment.service';
 import { CommentService } from '../../../shared/comment/shared/comment.service';
@@ -37,7 +36,6 @@ describe('OfferDetailComponent', () => {
             clearIds: true,
           },
         }),
-        AngularFirestoreModule,
         AngularFireStorageModule,
         CommonModule,
         HttpClientTestingModule,

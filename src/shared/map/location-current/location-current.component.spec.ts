@@ -9,10 +9,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CommonModule } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MockMapsAPILoader } from '../shared/mock-maps-api-loader';
 import { environment } from '../../../app-blog/environments/environment';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('LocationCurrentComponent', () => {
   let component: LocationCurrentComponent;
@@ -27,7 +26,6 @@ describe('LocationCurrentComponent', () => {
           apiKey: environment.googleMapApiKey
         }),
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule,
         AngularFireStorageModule,
         CommonModule,
         HttpClientTestingModule,
@@ -37,12 +35,12 @@ describe('LocationCurrentComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ LocationCurrentComponent ],
+      declarations: [LocationCurrentComponent],
       providers: [
         {provide: MapsAPILoader, useClass: MockMapsAPILoader},
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -36,7 +36,6 @@ import { LoaderService } from '../../shared/loader/loader.service';
 import { MockLoaderService } from '../../shared/loader/mock-loader.service';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRootComponent } from './root.component';
 import { SharedModule } from '../../shared/shared.module';
@@ -94,7 +93,6 @@ describe('AppRootComponent', () => {
         HttpClientTestingModule,
         BrowserAnimationsModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule,
         AngularFireAuthModule,
         AdsenseModule.forRoot({
           adClient: environment.clientAdSense,

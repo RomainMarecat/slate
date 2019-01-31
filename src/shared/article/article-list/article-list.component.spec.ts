@@ -7,7 +7,6 @@ import { MockArticleService } from '../shared/mock-article.service';
 import { ArticleService } from '../shared/article.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
@@ -24,8 +23,6 @@ import { MockMediaService } from 'shared/media/mock-media.service';
 import { LoaderService } from 'shared/loader/loader.service';
 import { MockLoaderService } from 'shared/loader/mock-loader.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
-import { MenuModule } from '../../menu/menu.module';
-import { MenuService } from '../../menu/menu.service';
 import { SeoModule } from '../../seo/seo.module';
 
 describe('ArticleListComponent', () => {
@@ -37,7 +34,6 @@ describe('ArticleListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        AngularFirestoreModule,
         AngularFireStorageModule,
         CommonModule,
         FlexLayoutModule,

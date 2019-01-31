@@ -6,27 +6,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import {
-  MatCardModule,
-  MatToolbarModule,
-  MatSidenavModule,
-  MatIconModule,
+  MatAutocompleteModule,
   MatButtonModule,
-  MatGridListModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatInputModule,
+  MatCardModule,
   MatCheckboxModule,
-  MatListModule,
-  MatSnackBarModule,
-  MatProgressSpinnerModule,
-  MatLineModule,
-  MatMenuModule,
   MatCommonModule,
-  MatTooltipModule, MatProgressBarModule, MatDialogModule, MatAutocompleteModule
+  MatDialogModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatLineModule,
+  MatListModule,
+  MatMenuModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material';
-import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavService } from '../sidenav.service';
 import { SidenavComponent } from './sidenav.component';
@@ -40,7 +42,6 @@ import { MockUserService } from '../../user/shared/mock-user.service';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MenuService } from '../../menu/menu.service';
 import { ProductService } from '../../product/shared/product.service';
@@ -79,7 +80,6 @@ describe('SidenavComponent', () => {
         RouterTestingModule,
         BrowserAnimationsModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule,
         AngularFireAuthModule,
         AdsenseModule.forRoot(options),
         FilterModule,
@@ -125,7 +125,7 @@ describe('SidenavComponent', () => {
         SidenavService,
         {provide: CmsService, useClass: MockCmsService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},
-        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
       ]
     })
       .compileComponents();

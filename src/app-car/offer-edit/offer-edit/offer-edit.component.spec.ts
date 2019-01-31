@@ -19,7 +19,6 @@ import { MockProductService } from '../../../shared/product/shared/mock-product.
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { GeocodeService } from '../../../shared/map/shared/geocode.service';
 import { MockGeocodeService } from '../../../shared/map/shared/mock-geocode.service';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { DeviceService } from '../../../shared/device/device.service';
@@ -39,7 +38,6 @@ describe('OfferEditComponent', () => {
           apiKey: environment.googleMapApiKey
         }),
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFirestoreModule,
         AngularFireStorageModule,
         CommonModule,
         HttpClientTestingModule,
