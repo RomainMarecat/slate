@@ -1,14 +1,24 @@
-<article *ngIf="article">
-  <mat-card class="mat-card">
-    <mat-card-header>
-      <mat-card-title>
-        <h2>{{ article.name }}</h2>
-      </mat-card-title>
-    </mat-card-header>
-    <app-image [key]="article.images[0]" [resize]="{height: 200}"
-               *ngIf="article.images && article.images.length"></app-image>
-    <mat-card-content>
-      <p [innerHtml]="article.description|safeHtml"></p>
-    </mat-card-content>
-  </mat-card>
-</article>
+<section fxLayout="column"
+         fxLayoutGap="20px"
+         fxLayoutAlign="center center">
+  <article *ngIf="article"
+           fxLayout="row"
+           fxLayoutAlign="center stretch">
+
+    <mat-card class="mat-card">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>{{ article.name }}</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ article.published_at.toDate() }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <app-image [key]="article.images[0]" [resize]="{height: 200}"
+                 *ngIf="article.images && article.images.length"></app-image>
+      <mat-card-content>
+        <p [innerHtml]="article.description|safeHtml"></p>
+      </mat-card-content>
+    </mat-card>
+  </article>
+</section>

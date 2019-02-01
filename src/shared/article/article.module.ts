@@ -13,6 +13,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { NgArrayPipesModule } from 'ngx-pipes';
 import { MediaModule } from '../media/media.module';
 import { MediaService } from '../media/media.service';
+import { ArticleItemComponent } from './article-item/article-item.component';
+import { ArticleComponent } from './article/article.component';
 
 const TABLE_ARTICLE = new InjectionToken<string>('article');
 const TABLE_MEDIA = new InjectionToken<string>('media');
@@ -30,11 +32,15 @@ const TABLE_MEDIA = new InjectionToken<string>('media');
   ],
   declarations: [
     ArticleListComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    ArticleItemComponent,
+    ArticleComponent,
   ],
   exports: [
     ArticleListComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    ArticleItemComponent,
+    ArticleComponent
   ],
   providers: [
     {provide: TABLE_MEDIA, useValue: 'media'},

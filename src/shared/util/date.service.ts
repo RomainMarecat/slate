@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { I18nService } from '../i18n/i18n.service';
+import * as moment from 'moment';
 
 @Injectable()
 export class DateService {
@@ -65,6 +66,4 @@ export class DateService {
 
     return readableTime;
   }
-
-
 }

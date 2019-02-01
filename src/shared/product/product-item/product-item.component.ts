@@ -4,7 +4,6 @@ import { Product } from '../shared/product';
 import { DateService } from '../../util/date.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { LoaderService } from '../../loader/loader.service';
-import { firestore, Timestamp } from 'firebase/firestore';
 
 @Component({
   selector: 'app-product-item',

@@ -1,39 +1,66 @@
-.mat-card {
-  margin-top: 30px;
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
 
-  .mat-card-content {
-    padding: 50px;
-    p {
-      position: relative;
-      text-overflow: ellipsis;
-      max-height: 6rem;
-      overflow: hidden;
-      resize: horizontal;
-      text-align: justify;
-      line-height: 1.5rem;
-      font-size: 1.5rem;
-      margin-right: -1em;
-      padding-right: 1em;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
+section {
+  width: 100%;
+  margin-bottom: 30px;
 
-      &:before {
-        content: '...';
-        position: absolute;
-        right: 0;
-        bottom: 0;
+  article {
+    @include media-breakpoint-down(xs) {
+      width: 100%;
+    }
+
+    @include media-breakpoint-up(xs) {
+      width: 80vw;
+    }
+
+    @include media-breakpoint-up(sm) {
+      width: 80vw;
+    }
+
+    @include media-breakpoint-up(md) {
+      width: 50vw;
+    }
+
+
+    .mat-card {
+      margin-top: 30px;
+
+      .mat-card-content {
+        padding: 50px;
+
+        p {
+          position: relative;
+          text-overflow: ellipsis;
+          max-height: 6rem;
+          overflow: hidden;
+          resize: horizontal;
+          text-align: justify;
+          line-height: 1.5rem;
+          font-size: 1.5rem;
+          margin-right: -1em;
+          padding-right: 1em;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+
+          &:before {
+            content: '...';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+          }
+
+          &:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            width: 1em;
+            height: 1em;
+            margin-top: 0.2em;
+            background: white;
+          }
+
+        }
       }
-
-      &:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        width: 1em;
-        height: 1em;
-        margin-top: 0.2em;
-        background: white;
-      }
-
     }
   }
 }

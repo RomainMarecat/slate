@@ -1,28 +1,29 @@
-import { firestore, Timestamp } from 'firebase/firestore';
+import * as firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 export interface ClothingProduct {
   name: string;
   score: number;
 
   created_at: Date;
-  published_at: Date | Timestamp;
+  published_at: Timestamp;
 
   url: string;
 
-  description ?: string;
+  description?: string;
   thumbnail: string;
-  images ?: string[];
+  images?: string[];
   image1: string;
-  image2 ?: string;
-  image3 ?: string;
+  image2?: string;
+  image3?: string;
   price: number;
   published: boolean;
-  delivery_fee ?: number;
-  delivery_free ?: boolean;
-  reseller ?: string;
-  key ?: string;
+  delivery_fee?: number;
+  delivery_free?: boolean;
+  reseller?: string;
+  key?: string;
   user: string;
-  creator ?: string;
-  external_url ?: string;
-  category ?: string;
+  creator?: string;
+  external_url?: string;
+  category?: string;
 }

@@ -1,4 +1,5 @@
-import { firestore, Timestamp } from 'firebase/firestore';
+import * as firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 export interface Article {
   key?: string;
@@ -12,7 +13,7 @@ export interface Article {
   author?: string;
   category?: string;
   tags?: string[];
-  published_at: Date | Timestamp;
+  published_at: Timestamp;
   published: boolean;
 
 }

@@ -3,8 +3,8 @@
     <div class="col-12 articles-wrapper">
       <section fxLayout="row wrap"
                fxLayoutAlign="space-around stretch">
-        <app-article-detail [article]="article"
-                            *ngFor="let article of articles"></app-article-detail>
+        <app-article-item [article]="article"
+                          *ngFor="let article of articles"></app-article-item>
       </section>
     </div>
   </div>

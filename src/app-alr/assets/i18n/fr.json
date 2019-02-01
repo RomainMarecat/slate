@@ -74,6 +74,7 @@
     "description": {
       "agenda": "Calendrier des sessions disponibles",
       "articles": "Liste des articles",
+      "article": "{{ article.description }}",
       "boards": "Liste des tableaux de bord",
       "cart": "Panier",
       "chart": "Dashboard",
@@ -92,6 +93,7 @@
     "title": {
       "agenda": "Calendrier des sessions disponibles",
       "articles": "Les articles",
+      "article": "{{ article.name }}",
       "boards": "Liste des tableaux de bord",
       "cart": "Panier",
       "chart": "Dashboard",

@@ -1,34 +1,35 @@
-import { firestore, Timestamp } from 'firebase/firestore';
+import * as firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 export interface HockeyProduct {
   name: string;
   score: number;
 
-  brand ?: string;
+  brand?: string;
 
   created_at: Date;
-  published_at: Date | Timestamp;
+  published_at: Timestamp;
 
   url: string;
-  translations ?: {
-    fr ?: string;
+  translations?: {
+    fr?: string;
   };
 
-  description ?: string;
+  description?: string;
   thumbnail: string;
-  images ?: string[];
+  images?: string[];
   image1: string;
-  promo ?: number;
+  promo?: number;
   price: number;
   published: boolean;
-  delivery_fee ?: number;
-  reseller ?: string;
-  offers ?: string[];
-  key ?: string;
+  delivery_fee?: number;
+  reseller?: string;
+  offers?: string[];
+  key?: string;
   user: string;
-  creator ?: string;
-  external_url ?: string;
-  category ?: string;
-  attributes ?: Array < any > ;
+  creator?: string;
+  external_url?: string;
+  category?: string;
+  attributes?: Array<any>;
 
 }

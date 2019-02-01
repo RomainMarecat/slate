@@ -1,4 +1,8 @@
-export const mockArticle = {
+import { Article } from './article';
+import * as firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
+
+export const mockArticle: Article = {
   key: 'd4f32s',
   name: 'test',
   translations: {
@@ -7,5 +11,5 @@ export const mockArticle = {
   slug: 'test',
   description: 'test',
   published: true,
-  published_at: new Date()
+  published_at: Timestamp.now()
 };
