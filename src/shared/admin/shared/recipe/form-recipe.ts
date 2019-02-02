@@ -12,7 +12,7 @@ export class RecipeFormType {
       key: new FormControl(''),
       order_index: new FormControl(orderIndex, [Validators.required]),
       sentence: new FormControl('', [Validators.required]),
-      ingredients: new FormControl([], [Validators.required]),
+      ingredients: new FormControl([]),
       image: new FormControl('')
     });
   }
@@ -113,7 +113,7 @@ export class RecipeFormType {
           key: new FormControl(instruction.key),
           order_index: new FormControl(instruction.order_index, [Validators.required]),
           sentence: new FormControl(instruction.sentence, [Validators.required]),
-          ingredients: new FormControl(this.getIngredients(instruction), [Validators.required]),
+          ingredients: new FormControl(this.getIngredients(instruction)),
           image: new FormControl(instruction.image)
         });
       });
