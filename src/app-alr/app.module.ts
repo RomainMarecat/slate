@@ -28,7 +28,6 @@ export function createTranslateLoader(http: HttpClient) {
     Angulartics2Module.forRoot(),
     AppRoutingModule,
     BrowserAnimationsModule,
-    BrowserModule,
     CommonModule,
     CoreModule.forRoot(environment),
     TranslateModule.forRoot({

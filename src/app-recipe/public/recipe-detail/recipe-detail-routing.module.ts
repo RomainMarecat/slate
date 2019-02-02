@@ -20,5 +20,5 @@ const routes: Routes = [
     LocalizeRouterModule
   ]
 })
-export class RecipeRoutingModule {
+export class RecipeDetailRoutingModule {
 }

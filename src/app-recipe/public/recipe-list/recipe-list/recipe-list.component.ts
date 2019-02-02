@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router';
-import { Recipe } from '../shared/recipe';
-import { RecipeService } from '../shared/recipe.service';
+import { Recipe } from '../../recipe/shared/recipe';
+import { RecipeService } from '../../recipe/shared/recipe.service';
 import { AlertService } from '../../../../shared/popup/alert.service';
 import { SeoService } from '../../../../shared/seo/shared/seo.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';

@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { RecipeRoutingModule } from './recipe-routing.module';
-import { RecipeListComponent } from '../recipe-list/recipe-list/recipe-list.component';
-import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule, MatStepperModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -17,7 +13,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MediaModule } from '../../../shared/media/media.module';
 import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { NgPipesModule } from 'ngx-pipes';
-import { RecipeSharedListModule } from '../recipe-list/recipe-list/recipe-shared-list.module';
+import { RecipeDetailRoutingModule } from './recipe-detail-routing.module';
+import { RecipeDetailComponent } from '../recipe/recipe-detail/recipe-detail.component';
 
 @NgModule({
   imports: [
@@ -31,8 +28,7 @@ import { RecipeSharedListModule } from '../recipe-list/recipe-list/recipe-shared
     NgxJsonLdModule,
     NgPipesModule,
     PlatformModule,
-    RecipeSharedListModule,
-    RecipeRoutingModule,
+    RecipeDetailRoutingModule,
     ScrollingModule,
     ScrollModule.forRoot(),
     MediaModule,
@@ -40,11 +36,7 @@ import { RecipeSharedListModule } from '../recipe-list/recipe-list/recipe-shared
   ],
   declarations: [
     RecipeDetailComponent,
-    RecipeInformationComponent,
-    RecipePreparationListComponent,
-    RecipeInstructionListComponent,
-    RecipeTitleComponent,
   ],
 })
-export class RecipeModule {
+export class RecipeDetailModule {
 }

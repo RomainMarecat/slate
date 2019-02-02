@@ -9,6 +9,10 @@
   "include": [
     "main.ts",
     "polyfills.ts",
+    "public/home/home.module.ts",
+    "public/recipe/recipe.module.ts",
+    "public/recipe-list/recipe-list.module.ts",
+    "public/recipe-detail/recipe-detail.module.ts",
     "../shared/*",
     "../shared/**/*.ts"
   ],

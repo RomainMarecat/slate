@@ -7,8 +7,8 @@ import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-transl
 import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { RecipeService } from '../shared/recipe.service';
-import { MockRecipeService } from '../shared/mock-recipe.service';
+import { RecipeService } from '../../recipe/shared/recipe.service';
+import { MockRecipeService } from '../../recipe/shared/mock-recipe.service';
 import { SeoService } from '../../../../shared/seo/shared/seo.service';
 import { MockLocalizeRouterService } from '../../../../shared/router/mock-localize-router.service';
 import { AlertService } from '../../../../shared/popup/alert.service';
