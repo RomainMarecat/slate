@@ -1,8 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 const routes: Routes = [
+  {
+    path: 'ingredients/:ingredients',
+    component: RecipeListComponent
+  },
+  {
+    path: '',
+    component: RecipeListComponent
+  },
 ];
 
 @NgModule({
@@ -15,4 +24,5 @@ const routes: Routes = [
     LocalizeRouterModule
   ]
 })
-export class PublicRoutingModule { }
+export class RecipeListRoutingModule {
+}

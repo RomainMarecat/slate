@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Params, Router } from '@angular/router';
-import { Recipe } from '../shared/recipe';
-import { RecipeService } from '../shared/recipe.service';
+import { Recipe } from '../../recipe/shared/recipe';
+import { RecipeService } from '../../recipe/shared/recipe.service';
 import { AlertService } from '../../../../shared/popup/alert.service';
 import { SeoService } from '../../../../shared/seo/shared/seo.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Filter } from '../../../../shared/facet/filter/shared/filter';
 import { StringService } from '../../../../shared/util/string.service';
+import { MenuService } from '../../../../shared/menu/menu.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -31,6 +32,7 @@ export class RecipeListComponent implements OnInit {
               private seoService: SeoService,
               private router: Router,
               private route: ActivatedRoute,
+              private menuService: MenuService,
               private localizeRouterService: LocalizeRouterService) {
     // Route admin observation
     this.router.events.subscribe((event) => {
@@ -40,6 +42,8 @@ export class RecipeListComponent implements OnInit {
         }
       }
     });
+
+    this.menuService.nextTitle('');
 
     this.isLoading = true;
     this.query = {
@@ -99,7 +103,7 @@ export class RecipeListComponent implements OnInit {
 
   navigateTo(recipe: Recipe) {
     this.router.navigate([
-      this.localizeRouterService.translateRoute('recipes'),
+      this.localizeRouterService.translateRoute('recipe'),
       `${recipe.key}-${recipe.slug}`
     ]);
   }

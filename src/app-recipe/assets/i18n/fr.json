@@ -164,6 +164,9 @@
         }
     },
     "error": {
+        "api": {
+            "errors": "Une erreur est survenue."
+        },
         "upload": {
             "retry": "Le téléchargement a échoué, veuillez réessayer."
         }

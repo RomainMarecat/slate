@@ -1,8 +1,5 @@
 import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Angulartics2Module } from 'angulartics2';
-import { AdsenseModule } from 'ng2-adsense';
-import { TranslateModule } from '@ngx-translate/core';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
 
 import { FileUploadModule } from 'ng2-file-upload';
@@ -23,8 +20,6 @@ import { DeviceService } from '../../shared/device/device.service';
 import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
 import { ProductService } from '../../shared/product/shared/product.service';
 import { MediaService } from '../../shared/media/media.service';
-import { SharedModule } from '../../shared/shared.module';
-import { SlackModule } from '../../shared/slack/slack.module';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { OfferService } from '../../shared/offer/offer.service';
@@ -41,10 +36,13 @@ import { ContactService } from '../../shared/contact/shared/contact.service';
 import { ArticleService } from '../../shared/article/shared/article.service';
 import { EventService } from '../../shared/agenda/shared/event.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
-import { PublicModule } from '../public/public.module';
 import { RecipeService } from '../public/recipe/shared/recipe.service';
 import { IngredientService } from '../public/ingredient/shared/ingredient.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material';
+import { FooterModule } from '../../shared/footer/footer.module';
+import { PopupModule } from '../../shared/popup/popup.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -123,24 +121,16 @@ export const cookieConfig: NgcCookieConsentConfig = {
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule.enablePersistence(),
-    Angulartics2Module.forRoot({
-      developerMode: !environment.production,
-    }),
-    AdsenseModule.forRoot({
-      adClient: environment.clientAdSense,
-      adSlot: environment.slotAdSense
-    }),
+    HttpClientModule,
+    MatSnackBarModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     ImageCropperModule,
     FileUploadModule,
-    SharedModule.forRoot(CONFIG_TOKEN),
-    SlackModule.forRoot(slackToken),
-    PublicModule
+    FooterModule,
+    PopupModule
   ],
   exports: [
-    AdsenseModule,
-    TranslateModule,
-    SharedModule
+    FooterModule
   ],
   providers: [
     {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},

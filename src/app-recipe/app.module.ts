@@ -1,6 +1,5 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { AppRootComponent } from './core/root.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { environment } from './environments/environment';
@@ -14,7 +13,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CheckForUpdateService } from '../shared/pwa/shared/check-for-update.service';
 import { MenuModule } from '../shared/menu/menu.module';
-import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 
 registerLocaleData(localeFr);
@@ -26,15 +24,16 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   imports: [
-    Angulartics2Module.forRoot(),
+    Angulartics2Module.forRoot({
+      developerMode: !environment.production,
+    }),
     AppRoutingModule,
     BrowserAnimationsModule,
-    BrowserModule.withServerTransition({appId: 'recipe-384269'}),
-    CoreModule.forRoot(environment),
+    // BrowserModule.withServerTransition({appId: environment.app_name}),
     CommonModule,
+    CoreModule.forRoot(environment),
     MenuModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    RouterModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -51,7 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-FR'},
-    CheckForUpdateService
+    CheckForUpdateService,
   ]
 })
 export class AppModule {

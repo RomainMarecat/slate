@@ -1,25 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecipeInstructionListComponent } from './recipe-instruction-list.component';
+import { RecipeTitleComponent } from './recipe-title.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
-import { SeoModule } from '../../../../../shared/seo/seo.module';
+import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule, MatStepperModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { SeoModule } from '../../../../../shared/seo/seo.module';
 import { AlertService } from '../../../../../shared/popup/alert.service';
 import { MockAlertService } from '../../../../../shared/popup/mock-alert.service';
-import { RecipeService } from '../../shared/recipe.service';
-import { MockRecipeService } from '../../shared/mock-recipe.service';
+import { RecipeService } from '../../../recipe/shared/recipe.service';
+import { MockRecipeService } from '../../../recipe/shared/mock-recipe.service';
 import { SeoService } from '../../../../../shared/seo/shared/seo.service';
 import { MockLocalizeRouterService } from '../../../../../shared/router/mock-localize-router.service';
-import { NgPipesModule } from 'ngx-pipes';
 import { configureTestSuite } from '../../../../../shared/unit-test/configure-test-suite';
 
-describe('RecipeInstructionListComponent', () => {
-  let component: RecipeInstructionListComponent;
-  let fixture: ComponentFixture<RecipeInstructionListComponent>;
+describe('RecipeTitleComponent', () => {
+  let component: RecipeTitleComponent;
+  let fixture: ComponentFixture<RecipeTitleComponent>;
 
   configureTestSuite();
 
@@ -33,15 +32,15 @@ describe('RecipeInstructionListComponent', () => {
         MatButtonModule,
         MatProgressSpinnerModule,
         MatCardModule,
-        NgPipesModule,
         SeoModule,
         MatCardModule,
+        MatStepperModule,
         RouterTestingModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [RecipeInstructionListComponent],
+      declarations: [RecipeTitleComponent],
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: RecipeService, useClass: MockRecipeService},
@@ -53,7 +52,7 @@ describe('RecipeInstructionListComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RecipeInstructionListComponent);
+    fixture = TestBed.createComponent(RecipeTitleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

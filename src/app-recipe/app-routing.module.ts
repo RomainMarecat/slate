@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings, ManualParserLoader } from '@gilsdav/ngx-translate-router';
 import { TranslateService } from '@ngx-translate/core';
 import { Location } from '@angular/common';
-import { HomeComponent } from './public/home/home.component';
 import { AdminGuard } from '../shared/guard/admin.guard';
 
 export function ManualLoaderFactory(translate: TranslateService, location: Location, settings: LocalizeRouterSettings) {
@@ -12,9 +11,16 @@ export function ManualLoaderFactory(translate: TranslateService, location: Locat
 
 const routes: Routes = [
   {
-    // On root we go to root. On other route we start with this route and go on children route
     path: '',
-    component: HomeComponent
+    loadChildren: './public/home/home.module#HomeModule'
+  },
+  {
+    path: 'recipes',
+    loadChildren: './public/recipe-list/recipe-list.module#RecipeListModule'
+  },
+  {
+    path: 'recipe',
+    loadChildren: './public/recipe-detail/recipe-detail.module#RecipeDetailModule'
   },
   {
     path: 'admin',

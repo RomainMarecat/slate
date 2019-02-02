@@ -15,9 +15,13 @@ import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { MockLocalizeRouterService } from '../../../shared/router/mock-localize-router.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
-import { RecipeModule } from '../recipe/recipe.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SeoModule } from '../../../shared/seo/seo.module';
+import { RecipeSharedListModule } from '../recipe-list/recipe-list/recipe-shared-list.module';
+import { MenuService } from '../../../shared/menu/menu.service';
+import { MockMediaService } from '../../../shared/media/mock-media.service';
+import { MediaService } from '../../../shared/media/media.service';
+import { MediaModule } from '../../../shared/media/media.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -38,8 +42,9 @@ describe('HomeComponent', () => {
         MatToolbarModule,
         MatProgressSpinnerModule,
         MatCardModule,
+        MediaModule,
         SeoModule,
-        RecipeModule,
+        RecipeSharedListModule,
         MatCardModule,
         RouterTestingModule,
         TranslateModule.forRoot({
@@ -48,7 +53,9 @@ describe('HomeComponent', () => {
       ],
       declarations: [HomeComponent],
       providers: [
+        MenuService,
         {provide: AlertService, useClass: MockAlertService},
+        {provide: MediaService, useClass: MockMediaService},
         {provide: RecipeService, useClass: MockRecipeService},
         {provide: SeoService, useClass: SeoService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}

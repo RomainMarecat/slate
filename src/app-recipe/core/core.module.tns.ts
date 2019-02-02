@@ -14,8 +14,8 @@ import { SidenavService } from '../../shared/sidenav/sidenav.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { DeviceService } from '../../shared/device/device.service';
 import { environment } from '../environments/environment';
-import { PublicModule } from '../public/public.module';
 import { FirebaseAppConfig } from '@angular/fire';
+import { HomeModule } from '../public/home/home.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -93,7 +93,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     CommonModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
     FileUploadModule,
-    PublicModule
+    HomeModule
   ],
   exports: [
     AdsenseModule,

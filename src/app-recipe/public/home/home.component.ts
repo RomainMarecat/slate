@@ -7,6 +7,7 @@ import { Recipe } from '../recipe/shared/recipe';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Filter } from '../../../shared/facet/filter/shared/filter';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { MenuService } from '../../../shared/menu/menu.service';
 
 @Component({
   selector: 'app-recipe-home',
@@ -49,9 +50,11 @@ export class HomeComponent implements OnInit {
               private router: Router,
               private mediaObserver: MediaObserver,
               private seoService: SeoService,
+              private menuService: MenuService,
               private localizeRouterService: LocalizeRouterService) {
     this.ingredients = [];
     this.seoService.setSeo('home');
+    this.menuService.nextTitle('');
     this.query = {
       limit: 5,
       filters: [

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Recipe } from '../../shared/recipe';
 import { Preparation } from '../../../preparation/shared/preparation';
+import { Recipe } from '../../../recipe/shared/recipe';
 
 @Component({
   selector: 'app-recipe-preparation-list',

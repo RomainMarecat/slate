@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { RecipeRoutingModule } from './recipe-routing.module';
-import { RecipeListComponent } from './recipe-list/recipe-list.component';
-import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule, MatStepperModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -11,7 +7,8 @@ import { RecipeInformationComponent } from './recipe-detail/recipe-information/r
 import { RecipePreparationListComponent } from './recipe-detail/recipe-preparation-list/recipe-preparation-list.component';
 import { RecipeInstructionListComponent } from './recipe-detail/recipe-instruction-list/recipe-instruction-list.component';
 import { RecipeTitleComponent } from './recipe-detail/recipe-title/recipe-title.component';
-import { BrowserModule } from '@angular/platform-browser';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { RecipeDetailRoutingModule } from './recipe-detail-routing.module';
 import { ScrollModule } from '../../../shared/scroll/scroll.module';
 import { PlatformModule } from '@angular/cdk/platform';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -21,7 +18,6 @@ import { NgPipesModule } from 'ngx-pipes';
 
 @NgModule({
   imports: [
-    BrowserModule,
     CommonModule,
     FlexLayoutModule,
     MatIconModule,
@@ -32,23 +28,19 @@ import { NgPipesModule } from 'ngx-pipes';
     NgxJsonLdModule,
     NgPipesModule,
     PlatformModule,
-    RecipeRoutingModule,
+    RecipeDetailRoutingModule,
     ScrollingModule,
     ScrollModule.forRoot(),
     MediaModule,
     TranslateModule.forChild(),
   ],
   declarations: [
-    RecipeListComponent,
     RecipeDetailComponent,
     RecipeInformationComponent,
     RecipePreparationListComponent,
     RecipeInstructionListComponent,
     RecipeTitleComponent,
   ],
-  exports: [
-    RecipeListComponent,
-  ]
 })
-export class RecipeModule {
+export class RecipeDetailModule {
 }
