@@ -18,8 +18,8 @@ import { MockAlertService } from '../../../popup/mock-alert.service';
 import { MockAreaService } from '../../../map/shared/mock-area.service';
 import { MapAreasComponent } from '../map-areas/map-areas.component';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('MapEditComponent', () => {
   let component: MapEditComponent;

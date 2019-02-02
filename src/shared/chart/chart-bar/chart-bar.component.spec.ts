@@ -2,8 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChartBarComponent } from './chart-bar.component';
 import { ChartsModule } from 'ng2-charts';
-import { SharedModule } from 'shared/shared.module';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { SharedModule } from '../../shared.module';
 
 describe('ChartBarComponent', () => {
   let component: ChartBarComponent;
@@ -17,9 +17,9 @@ describe('ChartBarComponent', () => {
         ChartsModule,
         SharedModule,
       ],
-      declarations: [ ChartBarComponent ]
+      declarations: [ChartBarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

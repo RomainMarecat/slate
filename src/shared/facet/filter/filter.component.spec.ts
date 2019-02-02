@@ -29,7 +29,7 @@ import { ProductService } from '../../product/shared/product.service';
 import { MockProductService } from '../../product/shared/mock-product.service';
 import { SortModule } from '../sort/sort.module';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('FilterComponent', () => {
   let component: FilterComponent;

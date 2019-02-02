@@ -7,7 +7,7 @@ import { MatIconModule, MatFormFieldModule, MatSlideToggleModule } from '@angula
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { ProductBestSellerComponent } from './product-best-seller.component';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ProductBestSellerComponent', () => {
   let component: ProductBestSellerComponent;

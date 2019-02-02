@@ -8,12 +8,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OptinManagerComponent } from '../optin-manager/optin-manager.component';
 import { OptinNewsletterComponent } from '../optin-newsletter/optin-newsletter.component';
-import { SharedModule } from 'shared/shared.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MockAlertService } from 'shared/popup/mock-alert.service';
-import { AlertService } from 'shared/popup/alert.service';
 import { OptinNewsletter2Component } from '../optin-newsletter2/optin-newsletter2.component';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { SharedModule } from '../../../shared.module';
+import { AlertService } from '../../../popup/alert.service';
+import { MockAlertService } from '../../../popup/mock-alert.service';
 
 describe('OptinListComponent', () => {
   let component: OptinListComponent;

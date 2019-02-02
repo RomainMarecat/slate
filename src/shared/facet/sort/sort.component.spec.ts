@@ -8,7 +8,7 @@ import { MockProductService } from '../../product/shared/mock-product.service';
 import { SortComponent } from './sort.component';
 import { SortItemComponent } from './sort-item/sort-item.component';
 import { SortContainerComponent } from './sort-container/sort-container.component';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('SortComponent', () => {
   let component: SortComponent;

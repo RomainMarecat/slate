@@ -1029,7 +1029,7 @@
       }
     },
     "recipe": {
-      "root": "src",
+      "root": "",
       "sourceRoot": "src/app-recipe",
       "prefix": "app-recipe",
       "projectType": "application",
@@ -1154,6 +1154,24 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "src/app-recipe/main.server.ts",
+            "tsConfig": "src/app-recipe/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app-recipe/environments/environment.ts",
+                  "with": "src/app-recipe/environments/environment.prod.ts"
+                }
+              ]
+            }
           }
         }
       }

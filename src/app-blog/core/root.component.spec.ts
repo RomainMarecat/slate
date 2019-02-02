@@ -50,10 +50,10 @@ import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.serv
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { environment } from '../../app-hockey/environments/environment';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
-import { ContactModule } from 'shared/contact/contact.module';
-import { MapModule } from 'shared/map/map.module';
-import { ArticleModule } from 'shared/article/article.module';
+import { ArticleModule } from '../../shared/article/article.module';
+import { ContactModule } from '../../shared/contact/contact.module';
+import { MapModule } from '../../shared/map/map.module';
+import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {

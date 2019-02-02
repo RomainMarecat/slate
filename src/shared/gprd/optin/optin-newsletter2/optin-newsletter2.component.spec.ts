@@ -4,13 +4,13 @@ import { OptinNewsletter2Component } from './optin-newsletter2.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatCardModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { AlertService } from 'shared/popup/alert.service';
-import { MockAlertService } from 'shared/popup/mock-alert.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'shared/shared.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { SharedModule } from '../../../shared.module';
+import { AlertService } from '../../../popup/alert.service';
+import { MockAlertService } from '../../../popup/mock-alert.service';
 
 describe('OptinNewsletter2Component', () => {
   let component: OptinNewsletter2Component;

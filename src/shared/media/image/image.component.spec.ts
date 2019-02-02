@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgPipesModule } from 'ngx-pipes';
 import { CloudinaryModule } from '../cloudinary/cloudinary.module';
 import { ImageComponent } from './image.component';
@@ -9,7 +8,7 @@ import { MockMediaService } from '../mock-media.service';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { StorageModule } from '../storage/storage.module';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('ImageComponent', () => {
   let component: ImageComponent;

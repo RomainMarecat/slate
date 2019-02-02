@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { AlertService } from '../../../popup/alert.service';
@@ -24,7 +24,7 @@ import Timestamp = firebase.firestore.Timestamp;
 export class ArticleEditComponent implements OnInit {
 
   form: FormGroup;
-  article: Article;F
+  article: Article;
   editorConfig: any;
 
   readonly headerHeight = 50;

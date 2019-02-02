@@ -10,10 +10,9 @@ import { EventService } from '../../shared/event.service';
 import { MockEventService } from '../../shared/mock-event.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { AlertService } from '../../../popup/alert.service';
-import { mockAvailabilities, mockDays, mockEnd, mockStart } from 'shared/agenda/shared/mock-day';
-import * as moment from 'moment';
-import { mockOnlineSession } from 'shared/agenda/shared/mock-online-session';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { mockAvailabilities, mockDays, mockEnd, mockStart } from '../../shared/mock-day';
+import { mockOnlineSession } from '../../shared/mock-online-session';
 
 describe('CalendarBodyComponent', () => {
   let component: CalendarBodyComponent;

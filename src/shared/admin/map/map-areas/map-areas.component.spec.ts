@@ -16,7 +16,7 @@ import { MapService } from '../../../map/shared/map.service';
 import { MockMapService } from '../../../map/shared/mock-map.service';
 import { MockAreaService } from '../../../map/shared/mock-area.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('MapAreasComponent', () => {
   let component: MapAreasComponent;

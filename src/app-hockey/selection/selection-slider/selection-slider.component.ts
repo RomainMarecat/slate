@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Selection } from '../../../shared/selection/selection';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { ProductService } from '../../../shared/product/shared/product.service';

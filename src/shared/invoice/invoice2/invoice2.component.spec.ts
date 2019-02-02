@@ -12,9 +12,9 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
 import { RouterTestingModule } from '@angular/router/testing';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
 describe('Invoice2Component', () => {
   let component: Invoice2Component;

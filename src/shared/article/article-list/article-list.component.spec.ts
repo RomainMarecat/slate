@@ -12,17 +12,17 @@ import { CommonModule } from '@angular/common';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { MatCardModule } from '@angular/material';
 import { PipeModule } from '../../pipe/pipe.module';
-import { AlertService } from 'shared/popup/alert.service';
-import { MockAlertService } from 'shared/popup/mock-alert.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
-import { MediaModule } from 'shared/media/media.module';
-import { MediaService } from 'shared/media/media.service';
-import { MockMediaService } from 'shared/media/mock-media.service';
-import { LoaderService } from 'shared/loader/loader.service';
-import { MockLoaderService } from 'shared/loader/mock-loader.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { SeoModule } from '../../seo/seo.module';
+import { MediaModule } from '../../media/media.module';
+import { MediaService } from '../../media/media.service';
+import { MockMediaService } from '../../media/mock-media.service';
+import { AlertService } from '../../popup/alert.service';
+import { MockAlertService } from '../../popup/mock-alert.service';
+import { LoaderService } from '../../loader/loader.service';
+import { MockLoaderService } from '../../loader/mock-loader.service';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { ArticleItemComponent } from '../article-item/article-item.component';
 
 describe('ArticleListComponent', () => {

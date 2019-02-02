@@ -49,7 +49,7 @@ import { CmsService } from '../../shared/cms/shared/cms.service';
 import { MockCmsService } from '../../shared/cms/shared/mock-cms.service';
 import { environment } from '../environments/environment';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
+import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 
 describe('ProductComponent', () => {
   let component: AppRootComponent;

@@ -14,12 +14,12 @@ import { MenuService } from '../../../menu/menu.service';
 import { PartnerListComponent } from './partner-list.component';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
-import { PartnerService } from 'shared/partner/partner.service';
-import { MockPartnerService } from 'shared/partner/mock-partner.service';
 import { PartnerImportComponent } from '../partner-import/partner-import.component';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { PartnerService } from '../../../partner/partner.service';
+import { MockPartnerService } from '../../../partner/mock-partner.service';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 
 describe('PartnerListComponent', () => {
   let component: PartnerListComponent;

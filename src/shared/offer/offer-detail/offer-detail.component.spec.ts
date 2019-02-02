@@ -4,7 +4,7 @@ import { OfferDetailComponent } from './offer-detail.component';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { PartnerModule } from '../../partner/partner.module';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('OfferDetailComponent', () => {
   let component: OfferDetailComponent;

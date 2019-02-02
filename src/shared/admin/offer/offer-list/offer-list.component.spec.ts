@@ -15,8 +15,8 @@ import { MenuService } from '../../../menu/menu.service';
 import { OfferService } from '../../shared/offer/offer.service';
 import { MockOfferService } from '../../shared/offer/mock-offer.service';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { MockLocalizeRouterService } from 'shared/router/mock-localize-router.service';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;

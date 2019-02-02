@@ -7,7 +7,7 @@ import { MatIconModule, MatFormFieldModule } from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { AttributeComponent } from './attribute.component';
-import { configureTestSuite } from 'shared/unit-test/configure-test-suite';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('AttributeComponent', () => {
   let component: AttributeComponent;
