@@ -9,12 +9,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RecipeService } from '../../recipe/shared/recipe.service';
 import { MockRecipeService } from '../../recipe/shared/mock-recipe.service';
-import { SeoService } from '../../../../shared/seo/shared/seo.service';
-import { MockLocalizeRouterService } from '../../../../shared/router/mock-localize-router.service';
-import { AlertService } from '../../../../shared/popup/alert.service';
-import { MockAlertService } from '../../../../shared/popup/mock-alert.service';
 import { configureTestSuite } from '../../../../shared/unit-test/configure-test-suite';
 import { SeoModule } from '../../../../shared/seo/seo.module';
+import { AlertService } from '../../../../shared/popup/alert.service';
+import { MockAlertService } from '../../../../shared/popup/mock-alert.service';
+import { MockLocalizeRouterService } from '../../../../shared/router/mock-localize-router.service';
+import { SeoService } from '../../../../shared/seo/shared/seo.service';
+import { MediaService } from '../../../../shared/media/media.service';
+import { MockMediaService } from '../../../../shared/media/mock-media.service';
+import { MediaModule } from '../../../../shared/media/media.module';
 
 describe('RecipeListComponent', () => {
   let component: RecipeListComponent;
@@ -33,6 +36,7 @@ describe('RecipeListComponent', () => {
         MatProgressSpinnerModule,
         MatCardModule,
         SeoModule,
+        MediaModule,
         MatCardModule,
         RouterTestingModule,
         TranslateModule.forRoot({
@@ -43,8 +47,9 @@ describe('RecipeListComponent', () => {
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: RecipeService, useClass: MockRecipeService},
-        {provide: SeoService, useClass: SeoService},
-        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
+        SeoService
       ]
     })
       .compileComponents();

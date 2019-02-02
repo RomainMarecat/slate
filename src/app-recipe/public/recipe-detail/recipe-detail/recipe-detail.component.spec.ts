@@ -7,22 +7,26 @@ import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-transl
 import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule, MatStepperModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { NgPipesModule } from 'ngx-pipes';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { RecipeInformationComponent } from './recipe-information/recipe-information.component';
+import { RecipePreparationListComponent } from './recipe-preparation-list/recipe-preparation-list.component';
+import { RecipeInstructionListComponent } from './recipe-instruction-list/recipe-instruction-list.component';
+import { RecipeTitleComponent } from './recipe-title/recipe-title.component';
+import { configureTestSuite } from '../../../../shared/unit-test/configure-test-suite';
 import { SeoModule } from '../../../../shared/seo/seo.module';
-import { MockRecipeService } from '../shared/mock-recipe.service';
-import { RecipeService } from '../shared/recipe.service';
+import { ScrollModule } from '../../../../shared/scroll/scroll.module';
 import { AlertService } from '../../../../shared/popup/alert.service';
 import { MockAlertService } from '../../../../shared/popup/mock-alert.service';
-import { configureTestSuite } from '../../../../shared/unit-test/configure-test-suite';
-import { RecipeInformationComponent } from './recipe-information/recipe-information.component';
-import { RecipeInstructionListComponent } from './recipe-instruction-list/recipe-instruction-list.component';
-import { RecipePreparationListComponent } from './recipe-preparation-list/recipe-preparation-list.component';
-import { RecipeTitleComponent } from './recipe-title/recipe-title.component';
-import { ScrollService } from '../../../../shared/scroll/shared/scroll.service';
-import { ScrollModule } from '../../../../shared/scroll/scroll.module';
-import { ScrollingModule } from '@angular/cdk/scrolling';
+import { RecipeService } from '../../recipe/shared/recipe.service';
+import { MockRecipeService } from '../../recipe/shared/mock-recipe.service';
 import { SeoService } from '../../../../shared/seo/shared/seo.service';
+import { ScrollService } from '../../../../shared/scroll/shared/scroll.service';
 import { MockLocalizeRouterService } from '../../../../shared/router/mock-localize-router.service';
-import { NgPipesModule } from 'ngx-pipes';
+import { NgxJsonLdModule } from '@ngx-lite/json-ld';
+import { MediaModule } from '../../../../shared/media/media.module';
+import { MediaService } from '../../../../shared/media/media.service';
+import { MockMediaService } from '../../../../shared/media/mock-media.service';
 
 describe('RecipeDetailComponent', () => {
   let component: RecipeDetailComponent;
@@ -42,6 +46,8 @@ describe('RecipeDetailComponent', () => {
         MatStepperModule,
         ScrollingModule,
         MatCardModule,
+        MediaModule,
+        NgxJsonLdModule,
         NgPipesModule,
         SeoModule,
         MatCardModule,
@@ -61,6 +67,7 @@ describe('RecipeDetailComponent', () => {
       providers: [
         {provide: AlertService, useClass: MockAlertService},
         {provide: RecipeService, useClass: MockRecipeService},
+        {provide: MediaService, useClass: MockMediaService},
         {provide: SeoService, useClass: SeoService},
         {provide: ScrollService, useClass: ScrollService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}

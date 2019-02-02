@@ -1,17 +1,18 @@
 import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Recipe } from '../shared/recipe';
-import { RecipeService } from '../shared/recipe.service';
 import { AlertService } from '../../../../shared/popup/alert.service';
 import { SeoService } from '../../../../shared/seo/shared/seo.service';
 import { ScrollService } from '../../../../shared/scroll/shared/scroll.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
-import { Constraint } from '../shared/constraint';
 import { take, timeout } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { TranslateService } from '@ngx-translate/core';
+import { Recipe } from '../../recipe/shared/recipe';
+import { Constraint } from '../../recipe/shared/constraint';
+import { RecipeService } from '../../recipe/shared/recipe.service';
+import { MenuService } from '../../../../shared/menu/menu.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -42,11 +43,13 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
               private scrollService: ScrollService,
               private scrollDispatcher: ScrollDispatcher,
               private mediaObserver: MediaObserver,
+              private menuService: MenuService,
               private cd: ChangeDetectorRef,
               private translateService: TranslateService) {
     this.isLoading = true;
     this.seoService.setSeo('recipe-detail');
     this.getRecipe();
+    this.menuService.nextTitle('');
   }
 
   ngOnInit() {

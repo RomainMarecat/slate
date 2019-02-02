@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Recipe } from '../../shared/recipe';
 import { Instruction } from '../../../instruction/shared/instruction';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MatStepper } from '@angular/material';
+import { Recipe } from '../../../recipe/shared/recipe';
 
 @Component({
   selector: 'app-recipe-title',

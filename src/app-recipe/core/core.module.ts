@@ -42,6 +42,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material';
 import { FooterModule } from '../../shared/footer/footer.module';
+import { PopupModule } from '../../shared/popup/popup.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -126,6 +127,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     ImageCropperModule,
     FileUploadModule,
     FooterModule,
+    PopupModule
   ],
   exports: [
     FooterModule
