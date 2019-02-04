@@ -20,6 +20,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { DeviceService } from '../../../shared/device/device.service';
 import { take } from 'rxjs/operators';
+import * as firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 @Component({
   selector: 'app-car-offer-edit',
@@ -270,7 +272,7 @@ export class OfferEditComponent implements OnInit {
       offer.model = this.form.value.model.key;
       offer.product = this.form.value.product.key;
       offer.published = true;
-      offer.published_at = new Date();
+      offer.published_at = Timestamp.now();
       this.offerService.createOffer(offer)
         .then((doc) => {
           this.translate.get('offer-edit.message.offer.saved')

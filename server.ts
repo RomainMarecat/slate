@@ -3,9 +3,18 @@ import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 
 import { enableProdMode } from '@angular/core';
+// Express Engine
+import { ngExpressEngine } from '@nguniversal/express-engine';
+// Import module map for lazy loading
+import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 
 import * as express from 'express';
 import { join } from 'path';
+import { readFileSync } from 'fs';
+
+// Polyfills required for Firebase
+(global as any).WebSocket = require('ws');
+(global as any).XMLHttpRequest = require('xhr2');
 
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
@@ -13,16 +22,28 @@ enableProdMode();
 // Express server
 const app = express();
 
-const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist/server/main');
+const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require(`./dist/server/main`);
 
-// Express Engine
-import { ngExpressEngine } from '@nguniversal/express-engine';
-// Import module map for lazy loading
-import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toString();
+
+// PlatformServer offers a method called renderModuleFactory() that we can use to pass in our AoT'd AppServerModule,
+// to serialize our application, and then we'll be returning that result to the Browser.
+// app.engine('html', (_, options, callback) => {
+//   renderModuleFactory(AppServerModuleNgFactory, {
+//     // Our index.html
+//     document: template,
+//     url: options.req.url,
+//     // DI so that we can get lazy-loading to work differently (since we need it to just instantly render it)
+//     extraProviders: [
+//       provideModuleMap(LAZY_MODULE_MAP)
+//     ]
+//   }).then(html => {
+//     callback(null, html);
+//   });
+// });
 
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
@@ -44,10 +65,13 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
-  res.render('index', {req});
+  res.render(join(DIST_FOLDER, 'browser', 'index.html'), {req});
 });
 
 // Start up the Node server
-app.listen(PORT, () => {
-  console.log(`Node server listening on http://localhost:${PORT}`);
-});
+if (!process.env.FUNCTION_NAME) {
+  const PORT = process.env.PORT || 4000;
+  app.listen(PORT, () => {
+    console.log(`Node server listening on http://localhost:${PORT}`);
+  });
+}

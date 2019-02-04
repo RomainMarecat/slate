@@ -1,9 +1,6 @@
 import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
-
-import { FileUploadModule } from 'ng2-file-upload';
-import { ImageCropperModule } from 'ngx-img-cropper';
 import { AngularFirestore, AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { UserService } from '../../shared/user/shared/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
@@ -43,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material';
 import { FooterModule } from '../../shared/footer/footer.module';
 import { PopupModule } from '../../shared/popup/popup.module';
+import { StorageModule } from '../../shared/media/storage/storage.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -124,13 +122,13 @@ export const cookieConfig: NgcCookieConsentConfig = {
     HttpClientModule,
     MatSnackBarModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
-    ImageCropperModule,
-    FileUploadModule,
     FooterModule,
+    StorageModule,
     PopupModule
   ],
   exports: [
-    FooterModule
+    FooterModule,
+    StorageModule
   ],
   providers: [
     {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},
@@ -197,7 +195,7 @@ export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     if (parentModule) {
       throw new Error(
-        'CoreModule is already loaded. Import it in the AppModule only');
+          'CoreModule is already loaded. Import it in the AppModule only');
     }
   }
 

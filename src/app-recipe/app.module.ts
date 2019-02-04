@@ -14,6 +14,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { CheckForUpdateService } from '../shared/pwa/shared/check-for-update.service';
 import { MenuModule } from '../shared/menu/menu.module';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 registerLocaleData(localeFr);
 registerLocaleData(localeEn);
@@ -29,7 +30,7 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     AppRoutingModule,
     BrowserAnimationsModule,
-    // BrowserModule.withServerTransition({appId: environment.app_name}),
+    BrowserModule.withServerTransition({appId: environment.app_name}),
     CommonModule,
     CoreModule.forRoot(environment),
     MenuModule,

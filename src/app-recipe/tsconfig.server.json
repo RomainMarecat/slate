@@ -9,6 +9,16 @@
   "angularCompilerOptions": {
     "entryModule": "app.server.module#AppServerModule"
   },
+  "include": [
+    "main.server.ts",
+    "polyfills.ts",
+    "home/home.module.ts",
+    "recipe/recipe.module.ts",
+    "recipe-list/recipe-list.module.ts",
+    "recipe-detail/recipe-detail.module.ts",
+    "../shared/*",
+    "../shared/**/*.ts"
+  ],
   "exclude": [
     "test.ts",
     "**/*.spec.ts",

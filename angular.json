@@ -1038,7 +1038,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
+            "outputPath": "dist/browser",
             "index": "src/app-recipe/index.html",
             "main": "src/app-recipe/main.ts",
             "polyfills": "src/app-recipe/polyfills.ts",
