@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { RecipeService } from '../../../../../../app-recipe/public/recipe/shared/recipe.service';
-import { Recipe } from '../../../../../../app-recipe/public/recipe/shared/recipe';
+import { RecipeService } from '../../../../../../app-recipe/recipe/shared/recipe.service';
+import { Recipe } from '../../../../../../app-recipe/recipe/shared/recipe';
 import { FormControl } from '@angular/forms';
 
 @Component({

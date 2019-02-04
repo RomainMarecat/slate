@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Ingredient } from '../../../../../../app-recipe/public/ingredient/shared/ingredient';
+import { Ingredient } from '../../../../../../app-recipe/ingredient/shared/ingredient';
 import { DocumentReference } from '@angular/fire/firestore';
-import { IngredientService } from '../../../../../../app-recipe/public/ingredient/shared/ingredient.service';
+import { IngredientService } from '../../../../../../app-recipe/ingredient/shared/ingredient.service';
 import { debounceTime } from 'rxjs/operators';
-import { Recipe } from '../../../../../../app-recipe/public/recipe/shared/recipe';
+import { Recipe } from '../../../../../../app-recipe/recipe/shared/recipe';
 
 @Component({
   selector: 'app-admin-recipe-ingredient-edit',

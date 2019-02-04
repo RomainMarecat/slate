@@ -20,6 +20,18 @@ import { ContrastService } from '../../../contrast/contrast.service';
 import { NgPipesModule } from 'ngx-pipes';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RecipeAssociatedComponent } from './recipe-edit/recipe-associated/recipe-associated.component';
+import {
+  MatButtonModule, MatCardModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatRadioModule,
+  MatSelectModule
+} from '@angular/material';
+import { FormModule } from '../../../material/form/form.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MediaModule } from '../../../media/media.module';
 
 @NgModule({
   imports: [
@@ -27,11 +39,21 @@ import { RecipeAssociatedComponent } from './recipe-edit/recipe-associated/recip
     ColorPickerModule,
     DragDropModule,
     FlexLayoutModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatListModule,
+    MatCardModule,
+    MediaModule,
+    FormModule,
     NgxDatatableModule,
-    SharedModule,
     NgxEditorModule,
     NgPipesModule,
     NgSelectModule,
+    ReactiveFormsModule,
     RecipeRoutingModule,
     TranslateModule.forChild(),
   ],

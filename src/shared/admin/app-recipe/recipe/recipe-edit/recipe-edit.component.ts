@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseEditComponent } from '../../../base/base-edit/base-edit.component';
-import { Recipe } from '../../../../../app-recipe/public/recipe/shared/recipe';
+import { Recipe } from '../../../../../app-recipe/recipe/shared/recipe';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../../../popup/alert.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { RecipeService } from '../../../../../app-recipe/public/recipe/shared/recipe.service';
+import { RecipeService } from '../../../../../app-recipe/recipe/shared/recipe.service';
 import { DocumentReference } from '@angular/fire/firestore';
 import { RecipeFormType } from '../../../shared/recipe/form-recipe';
 import { Media } from '../../../../media/media';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 import { StringService } from '../../../../util/string.service';
 import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
-import { Ingredient } from '../../../../../app-recipe/public/ingredient/shared/ingredient';
-import { IngredientService } from '../../../../../app-recipe/public/ingredient/shared/ingredient.service';
+import { Ingredient } from '../../../../../app-recipe/ingredient/shared/ingredient';
+import { IngredientService } from '../../../../../app-recipe/ingredient/shared/ingredient.service';
 import { ContrastService } from '../../../../contrast/contrast.service';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 

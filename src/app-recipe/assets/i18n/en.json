@@ -1,220 +1,231 @@
 {
-  "routes": {
-    "recipes": "recipes",
-    "recipe": "recipe",
-    "admin": "administrator"
-  },
-  "cta": {
-    "add": "add",
-    "search": "search",
-    "admin": "admin",
-    "save": "save",
-    "cancel": "cancel"
-  },
-  "admin": {
-    "option": {
-      "base": "base",
-      "starter": "starter",
-      "dish": "dish",
-      "dessert": "dessert"
+    "routes": {
+        "recipes": "recipes",
+        "recipe": "recipe",
+        "admin": "administrator"
+    },
+    "cta": {
+        "add": "add",
+        "search": "search",
+        "admin": "admin",
+        "save": "save",
+        "cancel": "cancel"
+    },
+    "admin": {
+        "option": {
+            "base": "base",
+            "starter": "starter",
+            "dish": "dish",
+            "dessert": "dessert"
+        },
+        "error": {
+            "required": {
+                "recipe": {
+                    "name": "the name is required",
+                    "cuisine_type": "le type de cuisine is required",
+                    "yield": "the person number is required",
+                    "image": "image is required",
+                    "color": "the color is required",
+                    "difficulty": "rating is required",
+                    "trick": "trick is required",
+                    "total_time": "total time is required",
+                    "cook_time": "cook time is required",
+                    "prep_time": "preparation time is required",
+                    "waiting_time": "waiting time is required",
+                    "creator": "creator is required",
+                    "author": "author is required",
+                    "preparations": {
+                        "quantity": "the quantity is required",
+                        "sentence": "the sentence is required"
+                    }
+                }
+            },
+            "invalid": {
+                "recipe": {
+                    "name": "the name is invalid",
+                    "cuisine_type": "the cooking type is invalid",
+                    "yield": "yield is invalid",
+                    "image": "image is invalid",
+                    "color": "the color is invalid",
+                    "difficulté": "rating is invalid",
+                    "trick": "trick is invalid",
+                    "total_time": "total time is invalid",
+                    "cook_time": "cook time is invalid",
+                    "prep_time": "preparation time is invalid",
+                    "waiting_time": "waiting time is invalid",
+                    "creator": "creator is invalid",
+                    "author": "author is invalid",
+                    "preparations": {
+                        "quantity": "the quantity is invalid",
+                        "sentence": "the sentence is invalid"
+                    }
+                }
+            }
+        },
+        "hint": {
+            "recipe": {
+                "name": "name",
+                "cuisine_type": "cooking type",
+                "yield": "yield",
+                "image": "image",
+                "color": "color",
+                "difficulty": "rating",
+                "trick": "trick",
+                "total_time": "total time",
+                "cook_time": "cook time",
+                "prep_time": "preparation time",
+                "waiting_time": "waiting time",
+                "creator": "creator",
+                "preparations": {
+                    "quantity": "quantity",
+                    "sentence": "sentence"
+                }
+            }
+        },
+        "label": {
+            "recipe": {
+                "associated-recipes": {
+                    "title": "Add associated recipes"
+                },
+                "instructions": {
+                    "title": "Add instructions"
+                },
+                "ingredients": {
+                    "title": "Add ingredients"
+                },
+                "preparations": {
+                    "title": "Add preparations",
+                    "ingredient": "ingredient",
+                    "quantity": "quantity"
+                },
+                "on_homepage": {
+                    "true": "Show on homepage",
+                    "false": "Only on search"
+                }
+            }
+        },
+        "placeholder": {
+            "recipe": {
+                "associated_recipes": {
+                    "not_found": "any recipe",
+                    "loading": "loading",
+                    "type_to_search": "type to search",
+                    "clear_all": "clear all"
+                },
+                "name": "name",
+                "cuisine_type": "cooking type",
+                "yield": "yield",
+                "difficulty": "rating",
+                "trick": "trick",
+                "image": "image",
+                "color": "color",
+                "total_time": "total time",
+                "cook_time": "cook time",
+                "prep_time": "preparation time",
+                "waiting_time": "waiting time",
+                "author": "author",
+                "creator": "creator",
+                "instructions": {
+                    "order_index": "order",
+                    "sentence": "sentence",
+                    "ingredients": {
+                        "title": "ingredients",
+                        "not_found": "no ingrédient",
+                        "loading": "loading",
+                        "type_to_search": "type a word",
+                        "clear_all": "clear all"
+                    }
+                },
+                "ingredients": {
+                    "color": "color",
+                    "name": "name"
+                },
+                "preparations": {
+                    "quantity": "quantity",
+                    "sentence": "sentence",
+                    "ingredients": {
+                        "title": "ingredients",
+                        "not_found": "no ingredient",
+                        "loading": "loading",
+                        "type_to_search": "type a word",
+                        "clear_all": "clear all"
+                    }
+                }
+            }
+        },
+        "recipe": {
+            "error": {
+                "update": "An error was occured when recipe is saving."
+            },
+            "image": {
+                "saved": "image was saved"
+            },
+            "updated": "The recipe {{name}} was upadted"
+        }
     },
     "error": {
-      "required": {
-        "recipe": {
-          "name": "the name is required",
-          "cuisine_type": "le type de cuisine is required",
-          "yield": "the person number is required",
-          "image": "image is required",
-          "color": "the color is required",
-          "difficulty": "rating is required",
-          "trick": "trick is required",
-          "total_time": "total time is required",
-          "cook_time": "cook time is required",
-          "prep_time": "preparation time is required",
-          "waiting_time": "waiting time is required",
-          "creator": "creator is required",
-          "author": "author is required",
-          "preparations": {
-            "quantity": "the quantity is required",
-            "sentence": "the sentence is required"
-          }
+        "api": {
+            "errors": "An error was occured."
+        },
+        "upload": {
+            "retry": "The download has failed, retry to complete."
         }
-      },
-      "invalid": {
-        "recipe": {
-          "name": "the name is invalid",
-          "cuisine_type": "the cooking type is invalid",
-          "yield": "yield is invalid",
-          "image": "image is invalid",
-          "color": "the color is invalid",
-          "difficulté": "rating is invalid",
-          "trick": "trick is invalid",
-          "total_time": "total time is invalid",
-          "cook_time": "cook time is invalid",
-          "prep_time": "preparation time is invalid",
-          "waiting_time": "waiting time is invalid",
-          "creator": "creator is invalid",
-          "author": "author is invalid",
-          "preparations": {
-            "quantity": "the quantity is invalid",
-            "sentence": "the sentence is invalid"
-          }
+    },
+    "home": {
+        "cta": {
+            "ingredients": "I cook",
+            "scroll-down": "Inspire me"
+        },
+        "h1": {
+            "title": "At home,",
+            "subtitle": " I have : "
+        },
+        "label": {
+            "form": "Example : tomatos, onions ..."
+        },
+        "images": {
+            "header": "persil image"
         }
-      }
     },
-    "hint": {
-      "recipe": {
-        "name": "name",
-        "cuisine_type": "cooking type",
-        "yield": "yield",
-        "image": "image",
-        "color": "color",
-        "difficulty": "rating",
-        "trick": "trick",
-        "total_time": "total time",
-        "cook_time": "cook time",
-        "prep_time": "preparation time",
-        "waiting_time": "waiting time",
-        "creator": "creator",
-        "preparations": {
-          "quantity": "quantity",
-          "sentence": "sentence"
+    "input": {
+        "placeholder": {
+            "search": "search a recipe :"
         }
-      }
     },
-    "label": {
-      "recipe": {
-        "associated-recipes": {
-          "title": "Add associated recipes"
-        },
-        "instructions": {
-          "title": "Add instructions"
-        },
-        "ingredients": {
-          "title": "Add ingredients"
-        },
-        "preparations": {
-          "title": "Add preparations",
-          "ingredient": "ingredient",
-          "quantity": "quantity"
-        },
-        "on_homepage": {
-          "true": "Show on homepage",
-          "false": "Only on search"
+    "menu": {
+        "title1": "",
+        "title2": "Anne-lise's recipes",
+        "title": {
+            "home": "",
+            "recipe": "recipe"
         }
-      }
     },
-    "placeholder": {
-      "recipe": {
-        "associated_recipes": {
-          "not_found": "any recipe",
-          "loading": "loading",
-          "type_to_search": "type to search",
-          "clear_all": "clear all"
+    "meta": {
+        "title": {
+            "home": "Anne-lise's recipes",
+            "recipe-list": "Anne-lise's recipes",
+            "recipe-list-ingredients": "How to do like recipe with {{ ingredients }} ? - Anne-lise's recipes",
+            "recipe-detail": "{{ name }} - Anne-lise's recipes"
         },
-        "name": "name",
-        "cuisine_type": "cooking type",
-        "yield": "yield",
-        "difficulty": "rating",
-        "trick": "trick",
-        "image": "image",
-        "color": "color",
-        "total_time": "total time",
-        "cook_time": "cook time",
-        "prep_time": "preparation time",
-        "waiting_time": "waiting time",
-        "author": "author",
-        "creator": "creator",
-        "instructions": {
-          "order_index": "order",
-          "sentence": "sentence",
-          "ingredients": {
-            "title": "ingredients",
-            "not_found": "no ingrédient",
-            "loading": "loading",
-            "type_to_search": "type a word",
-            "clear_all": "clear all"
-          }
-        },
-        "ingredients": {
-          "color": "color",
-          "name": "name"
-        },
-        "preparations": {
-          "quantity": "quantity",
-          "sentence": "sentence",
-          "ingredients": {
-            "title": "ingredients",
-            "not_found": "no ingredient",
-            "loading": "loading",
-            "type_to_search": "type a word",
-            "clear_all": "clear all"
-          }
+        "description": {
+            "home": "Anne-lise purpose you her list of recipes .",
+            "recipe-list": "Anne-lise's recipes. List of recipe.",
+            "recipe-detail": "Anne-lise's recipes the cooking website"
         }
-      }
     },
-    "recipe": {
-      "error": {
-        "update": "An error was occured when recipe is saving."
-      },
-      "image": {
-        "saved": "image was saved"
-      },
-      "updated": "The recipe {{name}} was upadted"
-    }
-  },
-  "error": {
-    "api": {
-      "errors": "An error was occured."
+    "recipes": {
+        "list": {
+            "empty": "Recipe was not found"
+        }
     },
-    "upload": {
-      "retry": "The download has failed, retry to complete."
+    "recipe-detail": {
+        "title": {
+            "total_time": "total time of recipe",
+            "cook_time": "cook time",
+            "prep_time": "preparation time",
+            "waiting_time": "waiting time",
+            "yield": "yield",
+            "rating": "rating"
+        }
     }
-  },
-  "home": {
-    "images": {
-      "header": "persil image"
-    }
-  },
-  "input": {
-    "placeholder": {
-      "search": "search a recipe :"
-    }
-  },
-  "menu": {
-    "title1": "",
-    "title2": "Anne-lise's recipes",
-    "title": {
-      "home": "",
-      "recipe": "recipe"
-    }
-  },
-  "meta": {
-    "title": {
-      "home": "Anne-lise's recipes",
-      "recipe-list": "Anne-lise's recipes",
-      "recipe-list-ingredients": "How to do like recipe with {{ ingredients }} ? - Anne-lise's recipes",
-      "recipe-detail": "{{ name }} - Anne-lise's recipes"
-    },
-    "description": {
-      "home": "Anne-lise purpose you her list of recipes .",
-      "recipe-list": "Anne-lise's recipes. List of recipe.",
-      "recipe-detail": "Anne-lise's recipes the cooking website"
-    }
-  },
-  "recipes": {
-    "list": {
-      "empty": "Recipe was not found"
-    }
-  },
-  "recipe-detail": {
-    "title": {
-      "total_time": "total time of recipe",
-      "cook_time": "cook time",
-      "prep_time": "preparation time",
-      "waiting_time": "waiting time",
-      "yield": "yield",
-      "rating": "rating"
-    }
-  }
 }

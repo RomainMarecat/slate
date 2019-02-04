@@ -172,8 +172,19 @@
         }
     },
     "home": {
+        "cta": {
+            "ingredients": "Je cuisine",
+            "scroll-down": "Inspirez-moi"
+        },
+        "h1": {
+            "title": "Chez moi,",
+            "subtitle": " j'ai : "
+        },
         "images": {
             "header": "Image qui découpe du persil dans une cuisine"
+        },
+        "label": {
+            "form": "Exemples : tomates, oignons, riz..."
         }
     },
     "input": {

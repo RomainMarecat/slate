@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Ingredient } from '../../../../../../app-recipe/public/ingredient/shared/ingredient';
-import { IngredientService } from '../../../../../../app-recipe/public/ingredient/shared/ingredient.service';
-import { Recipe } from '../../../../../../app-recipe/public/recipe/shared/recipe';
+import { Ingredient } from '../../../../../../app-recipe/ingredient/shared/ingredient';
+import { IngredientService } from '../../../../../../app-recipe/ingredient/shared/ingredient.service';
+import { Recipe } from '../../../../../../app-recipe/recipe/shared/recipe';
 
 @Component({
   selector: 'app-admin-recipe-ingredient-list',

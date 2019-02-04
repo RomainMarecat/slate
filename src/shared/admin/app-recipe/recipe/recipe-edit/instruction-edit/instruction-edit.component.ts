@@ -3,7 +3,7 @@ import { Media } from '../../../../../media/media';
 import { FormGroup } from '@angular/forms';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 import { AlertService } from '../../../../../popup/alert.service';
-import { Ingredient } from '../../../../../../app-recipe/public/ingredient/shared/ingredient';
+import { Ingredient } from '../../../../../../app-recipe/ingredient/shared/ingredient';
 
 @Component({
   selector: 'app-admin-recipe-instruction-edit',

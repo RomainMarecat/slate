@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Preparation } from '../../../../../../app-recipe/public/preparation/shared/preparation';
-import { Ingredient } from '../../../../../../app-recipe/public/ingredient/shared/ingredient';
+import { Preparation } from '../../../../../../app-recipe/preparation/shared/preparation';
+import { Ingredient } from '../../../../../../app-recipe/ingredient/shared/ingredient';
 
 @Component({
   selector: 'app-admin-recipe-preparation-edit',

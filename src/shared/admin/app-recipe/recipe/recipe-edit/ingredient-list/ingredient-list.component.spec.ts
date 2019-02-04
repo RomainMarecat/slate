@@ -17,8 +17,8 @@ import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-transl
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { MockLocalizeRouterService } from '../../../../../router/mock-localize-router.service';
-import { IngredientService } from '../../../../../../app-recipe/public/ingredient/shared/ingredient.service';
-import { MockIngredientService } from '../../../../../../app-recipe/public/ingredient/shared/mock-ingredient.service';
+import { IngredientService } from '../../../../../../app-recipe/ingredient/shared/ingredient.service';
+import { MockIngredientService } from '../../../../../../app-recipe/ingredient/shared/mock-ingredient.service';
 import { configureTestSuite } from '../../../../../unit-test/configure-test-suite';
 
 describe('IngredientListComponent', () => {

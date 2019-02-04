@@ -8,8 +8,8 @@ import { I18nService } from '../../shared/i18n/i18n.service';
 import { MatIconRegistry } from '@angular/material';
 import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
-import { Recipe } from '../public/recipe/shared/recipe';
-import { RecipeService } from '../public/recipe/shared/recipe.service';
+import { Recipe } from '../recipe/shared/recipe';
+import { RecipeService } from '../recipe/shared/recipe.service';
 import { Filter } from '../../shared/facet/filter/shared/filter';
 
 @Component({

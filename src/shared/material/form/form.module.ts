@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxEditorModule } from 'ngx-editor';
+import { StorageModule } from '../../media/storage/storage.module';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { NgxEditorModule } from 'ngx-editor';
     MatSlideToggleModule,
     MatSliderModule,
     MatAutocompleteModule,
+    StorageModule,
     MatInputModule,
     NgxEditorModule,
     FormsModule,

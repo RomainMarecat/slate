@@ -1,8 +1,8 @@
 import { Form, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Recipe } from '../../../../app-recipe/public/recipe/shared/recipe';
-import { Instruction } from '../../../../app-recipe/public/instruction/shared/instruction';
-import { Ingredient } from '../../../../app-recipe/public/ingredient/shared/ingredient';
-import { Preparation } from '../../../../app-recipe/public/preparation/shared/preparation';
+import { Recipe } from '../../../../app-recipe/recipe/shared/recipe';
+import { Instruction } from '../../../../app-recipe/instruction/shared/instruction';
+import { Ingredient } from '../../../../app-recipe/ingredient/shared/ingredient';
+import { Preparation } from '../../../../app-recipe/preparation/shared/preparation';
 
 export class RecipeFormType {
   private form: FormGroup;

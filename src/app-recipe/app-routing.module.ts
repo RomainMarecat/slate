@@ -12,15 +12,15 @@ export function ManualLoaderFactory(translate: TranslateService, location: Locat
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './public/home/home.module#HomeModule'
+    loadChildren: './home/home.module#HomeModule'
   },
   {
     path: 'recipes',
-    loadChildren: './public/recipe-list/recipe-list.module#RecipeListModule'
+    loadChildren: './recipe-list/recipe-list.module#RecipeListModule'
   },
   {
     path: 'recipe',
-    loadChildren: './public/recipe-detail/recipe-detail.module#RecipeDetailModule'
+    loadChildren: './recipe-detail/recipe-detail.module#RecipeDetailModule'
   },
   {
     path: 'admin',

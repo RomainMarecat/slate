@@ -1,0 +1,93 @@
+<div class="main-content-wrapper">
+  <div class="main-content">
+    <div class="bg-wrapper"
+         [class.xs]="mediaBreakpoint === 'xs'">
+      <img [src]="imageHome"
+           [alt]="'home.images.header'|translate">
+    </div>
+    <div class="home-title-wrapper mt-4 mb-2 mt-sm-5 mb-sm-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="text-center home-title mb-0">
+              <span class="title first">{{ 'home.h1.title'|translate }}</span>
+              <span class="title second">{{ 'home.h1.subtitle'|translate }}</span>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 offset-md-2 col-md-8 text-center mt-0 mt-sm-2 form-group search-container">
+          <label for="home-search-ingredients"
+                 class="form-control-label">
+            {{ 'home.label.form'|translate }}
+          </label>
+          <form [formGroup]="form"
+                (ngSubmit)="addIngredient()"
+                class="home-search">
+            <div class="input-group">
+              <input #search
+                     id="home-search-ingredients"
+                     type="search"
+                     class="form-control"
+                     formControlName="ingredient">
+              <span class="input-group-btn">
+                <button class="btn btn-default"
+                        role="button"
+                        type="submit"
+                        [attr.aria-label]="'cta.add'|translate">
+                  <mat-icon color="warn">add</mat-icon>
+                </button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="col-12 text-center mt-0 mt-sm-2">
+          <span class="badge badge-default badge-home badge-empty px-3 py-2 m-1 m-sm-3"
+                *ngIf="ingredients.length === 0">
+            <span>0</span>
+            <mat-icon>close</mat-icon>
+          </span>
+          <span class="badge badge-default badge-home px-3 py-2 m-1 m-sm-3"
+                *ngFor="let ingredient of ingredients">
+            <span>{{ ingredient }}</span>
+            <mat-icon (click)="removeIngredient(ingredient)">close</mat-icon>
+          </span>
+        </div>
+        <div class="search-button col-12 text-center">
+          <button (click)="searchRecipe()"
+                  class="btn-large button-yellow"
+                  color="warn"
+                  type="button"
+                  mat-flat-button
+                  role="button"
+                  [attr.aria-label]="'Je cuisine'"
+                  [@full]="ingredients.length > 0 ? 'full': 'empty'">
+            <span>{{ 'home.cta.ingredients'|translate }}</span>
+            <mat-icon class="arrow"
+                      color="primary"
+                      svgIcon="arrow-right"></mat-icon>
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-toolbar class="bottom-toolbar"
+             color="primary"
+             fxLayout="row"
+             fxLayoutAlign="center center">
+  <a fxLayout="column"
+     fxLayoutAlign="space-around center"
+     (click)="scrollPosition('#recipe-list')">
+    <span>{{ 'home.cta.scroll-down'|translate }}</span>
+    <mat-icon class="arrow"
+              color="warn"
+              svgIcon="arrow-down"></mat-icon>
+  </a>
+</mat-toolbar>
+
+<app-recipe-list [query]="query"></app-recipe-list>

@@ -1,0 +1,15 @@
+@import '../../../scss/theme/theme';
+
+
+:host {
+  height: 100%;
+  display: block;
+}
+
+mat-card.preparation-wrapper {
+  background: $block-color-light-grey;
+
+  .list-sentence {
+    padding-left: 0;
+  }
+}

@@ -21,8 +21,8 @@ import { MockLocalizeRouterService } from '../../../../../router/mock-localize-r
 import { LoaderService } from '../../../../../loader/loader.service';
 import { MockLoaderService } from '../../../../../loader/mock-loader.service';
 import { FormGroup } from '@angular/forms';
-import { IngredientService } from '../../../../../../app-recipe/public/ingredient/shared/ingredient.service';
-import { MockIngredientService } from '../../../../../../app-recipe/public/ingredient/shared/mock-ingredient.service';
+import { IngredientService } from '../../../../../../app-recipe/ingredient/shared/ingredient.service';
+import { MockIngredientService } from '../../../../../../app-recipe/ingredient/shared/mock-ingredient.service';
 
 describe('IngredientEditComponent', () => {
   let component: IngredientEditComponent;

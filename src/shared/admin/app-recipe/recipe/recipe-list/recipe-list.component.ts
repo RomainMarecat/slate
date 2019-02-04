@@ -1,11 +1,11 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { BaseListComponent } from '../../../base/base-list/base-list.component';
-import { Recipe } from '../../../../../app-recipe/public/recipe/shared/recipe';
+import { Recipe } from '../../../../../app-recipe/recipe/shared/recipe';
 import { MenuService } from '../../../../menu/menu.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { RecipeService } from '../../../../../app-recipe/public/recipe/shared/recipe.service';
+import { RecipeService } from '../../../../../app-recipe/recipe/shared/recipe.service';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({

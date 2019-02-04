@@ -16,9 +16,9 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { MockLocalizeRouterService } from '../../../../../router/mock-localize-router.service';
 import { FormControl } from '@angular/forms';
 import { RecipeAssociatedComponent } from './recipe-associated.component';
-import { mockRecipes } from '../../../../../../app-recipe/public/recipe/shared/mock-recipe';
-import { RecipeService } from '../../../../../../app-recipe/public/recipe/shared/recipe.service';
-import { MockRecipeService } from '../../../../../../app-recipe/public/recipe/shared/mock-recipe.service';
+import { mockRecipes } from '../../../../../../app-recipe/recipe/shared/mock-recipe';
+import { RecipeService } from '../../../../../../app-recipe/recipe/shared/recipe.service';
+import { MockRecipeService } from '../../../../../../app-recipe/recipe/shared/mock-recipe.service';
 
 describe('RecipeAssociatedComponent', () => {
   let component: RecipeAssociatedComponent;

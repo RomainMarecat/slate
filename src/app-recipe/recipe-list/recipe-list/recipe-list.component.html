@@ -1,0 +1,61 @@
+<ngx-json-ld [json]="schema"></ngx-json-ld>
+<div class="empty-list"
+     *ngIf="!isLoading && recipes.length === 0"
+     fxLayout="row"
+     fxLayoutAlign="center center">
+  <mat-card class="p-5">
+    <mat-card-title fxLayout="row"
+                    fxLayoutAlign="center stretch">
+      {{ 'recipes.list.empty'|translate }}
+    </mat-card-title>
+  </mat-card>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 recipe-loader mt-5" *ngIf="isLoading">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isLoading"
+     class="recipe-list-wrapper"
+     fxLayout="row wrap"
+     fxLayoutAlign="center stretch">
+  <div [attr.id]="'identifier-recipe-list-wrapper-' + i"
+       class="recipe-list"
+       *ngFor="let recipe of recipes; let i = index">
+    <mat-card class="recipe-card pt-5 mb-2 pb-5"
+              (click)="navigateTo(recipe)"
+              [style.background-color]="recipe.color">
+      <mat-card-title class="recipe-name mat-card-title"
+                      fxLayout="row"
+                      fxLayoutAlign="center stretch"
+                      [style.color]="recipe.overlay_color">
+        {{ recipe.name }}
+      </mat-card-title>
+      <mat-card-content class="mat-card-content"
+                        fxLayout="row"
+                        fxLayoutAlign="center stretch"
+                        [style.color]="recipe.overlay_color">
+        -------------
+      </mat-card-content>
+      <app-image fxHide.gt-sm
+                 fxShow.xs
+                 [resize]="{height: '300px'}"
+                 class="recipe-image mb-0 mt-5"
+                 [matCardImage]="true"
+                 [key]="recipe.image ? recipe.image : ''"
+                 [alt]="recipe.name"
+                 *ngIf="i%2 === 0"></app-image>
+      <app-image fxHide.xs
+                 fxShow.gt-sm
+                 [resize]="{height: '300px'}"
+                 class="recipe-image mb-0 mt-5"
+                 [matCardImage]="true"
+                 [key]="recipe.image ? recipe.image : ''"
+                 [alt]="recipe.name"
+                 *ngIf="i%2 === 0"></app-image>
+    </mat-card>
+  </div>
+</div>

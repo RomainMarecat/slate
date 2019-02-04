@@ -1,0 +1,38 @@
+@import '../../scss/theme/theme';
+
+.recipe-loader * {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.empty-list {
+  height: calc(100vh - 64px);
+}
+
+.recipe-list-wrapper {
+
+  scroll-behavior: smooth;
+  
+  .recipe-list {
+    width: 100%;
+
+    mat-card {
+      cursor: pointer;
+
+      mat-card-title {
+      }
+
+      mat-card-content {
+        line-height: 1rem;
+        font-size: 5rem;
+        text-align: center;
+        letter-spacing: -30px;
+      }
+    }
+
+    .recipe-image {
+      height: 200px;
+    }
+  }
+}

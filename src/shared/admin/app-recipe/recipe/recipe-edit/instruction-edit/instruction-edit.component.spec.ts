@@ -17,8 +17,8 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { NgSelectModule } from '@ng-select/ng-select';
 import { configureTestSuite } from '../../../../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../../../../router/mock-localize-router.service';
-import { RecipeService } from '../../../../../../app-recipe/public/recipe/shared/recipe.service';
-import { MockRecipeService } from '../../../../../../app-recipe/public/recipe/shared/mock-recipe.service';
+import { RecipeService } from '../../../../../../app-recipe/recipe/shared/recipe.service';
+import { MockRecipeService } from '../../../../../../app-recipe/recipe/shared/mock-recipe.service';
 import { MediaService } from '../../../../../media/media.service';
 import { MockMediaService } from '../../../../../media/mock-media.service';
 import { AlertService } from '../../../../../popup/alert.service';
