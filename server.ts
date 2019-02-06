@@ -25,7 +25,7 @@ const app = express();
 const DIST_FOLDER = join(process.cwd(), 'dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require(`./dist/server/main`);
+const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require(`./server/main`);
 
 const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toString();
 
@@ -45,6 +45,7 @@ const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toStri
 //   });
 // });
 
+// Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 app.engine('html', ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
   providers: [
@@ -61,17 +62,22 @@ app.get('/api/*', (req, res) => {
 });
 
 // Server static files from /browser
-app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
+// Server static files from /browser
+app.get('*.*', express.static(join(DIST_FOLDER, 'browser'), {
+  maxAge: '1y'
+}));
 
 // All regular routes use the Universal engine
 app.get('*', (req, res) => {
-  res.render(join(DIST_FOLDER, 'browser', 'index.html'), {req});
+  res.render('index', {req});
 });
+
 
 // Start up the Node server
 if (!process.env.FUNCTION_NAME) {
   const PORT = process.env.PORT || 4000;
   app.listen(PORT, () => {
-    console.log(`Node server listening on http://localhost:${PORT}`);
+    console.log(`Node Express server listening on http://localhost:${PORT}`);
   });
 }
+

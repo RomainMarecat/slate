@@ -11,7 +11,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { NgPipesModule } from 'ngx-pipes';
 import { RecipeSharedListModule } from './recipe-list/recipe-shared-list.module';
-import { MediaModule } from '../../shared/media/media.module';
+import { StorageModule } from '../../shared/media/storage/storage.module';
 
 @NgModule({
   imports: [
@@ -29,7 +29,7 @@ import { MediaModule } from '../../shared/media/media.module';
     RecipeListRoutingModule,
     ScrollingModule,
     ScrollModule.forRoot(),
-    MediaModule,
+    StorageModule,
     TranslateModule.forChild(),
   ],
 })

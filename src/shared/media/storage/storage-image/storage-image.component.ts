@@ -1,14 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Media } from '../media';
-import { MediaService } from '../media.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Media } from '../../media';
+import { MediaService } from '../../media.service';
 import { take } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-image',
-  templateUrl: './image.component.html',
-  styleUrls: ['./image.component.scss']
+  selector: 'app-storage-image',
+  templateUrl: './storage-image.component.html',
+  styleUrls: ['./storage-image.component.scss']
 })
-export class ImageComponent {
+export class StorageImageComponent {
   @Input() panelClass: string | Object;
   @Input() panelStyle: string | Object;
   @Input() matCardImage: boolean;

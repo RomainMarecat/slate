@@ -15,6 +15,7 @@ import { MediaViewerComponent } from './media-viewer/media-viewer.component';
 import { Angulartics2Module } from 'angulartics2';
 import { TranslateModule } from '@ngx-translate/core';
 import { FileUploadModule } from 'ng2-file-upload';
+import { ImageComponent } from './image/image.component';
 
 export { Cloudinary, provideCloudinary } from './cloudinary.service';
 
@@ -43,6 +44,7 @@ export function createCloudinary(cloudinaryJsLib: any, configuration: Cloudinary
     CloudinaryTransformationDirective,
     CloudinaryVideoComponent,
     ImageProductComponent,
+    ImageComponent,
     MediaViewerComponent
   ],
   exports: [
@@ -51,6 +53,7 @@ export function createCloudinary(cloudinaryJsLib: any, configuration: Cloudinary
     CloudinaryVideoComponent,
     CloudinaryTransformationDirective,
     ImageProductComponent,
+    ImageComponent,
     MediaViewerComponent
   ]
 })
@@ -66,7 +69,7 @@ export class CloudinaryModule {
         {
           provide: Cloudinary,
           useFactory: createCloudinary,
-          deps: [ CLOUDINARY_LIB, CLOUDINARY_CONFIGURATION ]
+          deps: [CLOUDINARY_LIB, CLOUDINARY_CONFIGURATION]
         }
       ]
     };
