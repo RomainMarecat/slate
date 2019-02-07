@@ -1,3 +1,6 @@
+import { firestore } from 'firebase';
+import Timestamp = firestore.Timestamp;
+
 export class Offer {
   key ?: string;
   product: string;
@@ -5,7 +8,7 @@ export class Offer {
   price: number;
   external_url?: string;
   published: boolean;
-  published_at: Date | string;
+  published_at: Timestamp;
 }
 
 export interface CarOffer {
@@ -29,5 +32,5 @@ export interface CarOffer {
     phone: string;
   };
   published: boolean;
-  published_at: Date | string;
+  published_at: Timestamp;
 }

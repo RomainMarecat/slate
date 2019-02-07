@@ -1,3 +1,6 @@
+import { firestore } from 'firebase';
+import Timestamp = firestore.Timestamp;
+
 export const mockOffer = {
   key: '546526326',
   price: 10,
@@ -5,5 +8,5 @@ export const mockOffer = {
   partner: '6dsf2s3f',
   product: 'qf23df2sc6sdf',
   published: true,
-  published_at: new Date(),
+  published_at: Timestamp.now(),
 };

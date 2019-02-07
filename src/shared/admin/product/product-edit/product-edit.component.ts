@@ -22,8 +22,8 @@ import { debounceTime, take } from 'rxjs/operators';
 import { PartnerService } from '../../../partner/partner.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import * as firebase from 'firebase/app';
-import Timestamp = firebase.firestore.Timestamp;
+import { firestore } from 'firebase';
+import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-product-edit',
@@ -279,7 +279,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
           this.addFinally();
         }, (err) => this.addError(err));
       } else {
-        offer.published_at = new Date();
+        offer.published_at = Timestamp.now();
         this.offerService.createOffer(offer).then((res) => {
           this.addProductOffer(res.id);
         }, (err) => this.addError(err));

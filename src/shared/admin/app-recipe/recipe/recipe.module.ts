@@ -7,7 +7,6 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { SharedModule } from '../../../shared.module';
 import { NgxEditorModule } from 'ngx-editor';
 import { TranslateModule } from '@ngx-translate/core';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -21,7 +20,8 @@ import { NgPipesModule } from 'ngx-pipes';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RecipeAssociatedComponent } from './recipe-edit/recipe-associated/recipe-associated.component';
 import {
-  MatButtonModule, MatCardModule,
+  MatButtonModule,
+  MatCardModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -31,7 +31,7 @@ import {
 } from '@angular/material';
 import { FormModule } from '../../../material/form/form.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MediaModule } from '../../../media/media.module';
+import { StorageModule } from '../../../media/storage/storage.module';
 
 @NgModule({
   imports: [
@@ -47,7 +47,7 @@ import { MediaModule } from '../../../media/media.module';
     MatRadioModule,
     MatListModule,
     MatCardModule,
-    MediaModule,
+    StorageModule,
     FormModule,
     NgxDatatableModule,
     NgxEditorModule,

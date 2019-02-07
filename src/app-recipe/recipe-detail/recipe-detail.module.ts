@@ -14,7 +14,7 @@ import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { NgPipesModule } from 'ngx-pipes';
 import { RecipeDetailRoutingModule } from './recipe-detail-routing.module';
 import { ScrollModule } from '../../shared/scroll/scroll.module';
-import { MediaModule } from '../../shared/media/media.module';
+import { StorageModule } from '../../shared/media/storage/storage.module';
 
 @NgModule({
   imports: [
@@ -31,7 +31,7 @@ import { MediaModule } from '../../shared/media/media.module';
     RecipeDetailRoutingModule,
     ScrollingModule,
     ScrollModule.forRoot(),
-    MediaModule,
+    StorageModule,
     TranslateModule.forChild(),
   ],
   declarations: [

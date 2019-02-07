@@ -62,7 +62,6 @@ export class OfferDetailComponent implements OnInit {
         this.offerService.getOffer(value.key)
           .subscribe((offer: CarOffer) => {
             this.meta.addTag({name: 'description', content: offer.description});
-            offer.published_at = moment(offer.published_at, 'x').format('DD/MM/YYYY HH:mm');
             this.offer = offer;
 
             if (offer.brand) {

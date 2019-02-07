@@ -9,8 +9,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { NgPipesModule } from 'ngx-pipes';
 import { ScrollModule } from '../../../shared/scroll/scroll.module';
-import { MediaModule } from '../../../shared/media/media.module';
 import { RecipeListComponent } from './recipe-list.component';
+import { StorageModule } from '../../../shared/media/storage/storage.module';
 
 @NgModule({
   imports: [
@@ -26,7 +26,7 @@ import { RecipeListComponent } from './recipe-list.component';
     PlatformModule,
     ScrollingModule,
     ScrollModule.forRoot(),
-    MediaModule,
+    StorageModule,
     TranslateModule.forChild(),
   ],
   declarations: [

@@ -1,41 +1,44 @@
+import { firestore } from 'firebase';
+import Timestamp = firestore.Timestamp;
+
 export interface CarProduct {
   name: string;
   score: number;
 
-  brand ?: string;
-  model ?: string;
+  brand?: string;
+  model?: string;
 
   created_at: Date;
-  published_at: Date;
+  published_at: Timestamp;
 
   url: string;
-  translations ?: {
-    fr ?: string;
+  translations?: {
+    fr?: string;
   };
 
-  description ?: string;
+  description?: string;
   thumbnail: string;
-  images ?: string[];
+  images?: string[];
   image1: string;
-  promo ?: number;
+  promo?: number;
   price: number;
   published: boolean;
-  delivery_fee ?: number;
-  reseller ?: string;
-  offers ?: string[];
-  key ?: string;
+  delivery_fee?: number;
+  reseller?: string;
+  offers?: string[];
+  key?: string;
   user: string;
-  creator ?: string;
-  external_url ?: string;
-  category ?: string;
-  attributes ?: Array<any>;
-  area ?: string;
-  yearMin ?: number;
-  yearMax ?: number;
+  creator?: string;
+  external_url?: string;
+  category?: string;
+  attributes?: Array<any>;
+  area?: string;
+  yearMin?: number;
+  yearMax?: number;
   fuel?: string;
-  gearbox ?: string;
-  door_number ?: number;
-  type ?: string;
+  gearbox?: string;
+  door_number?: number;
+  type?: string;
 }
 
 export const mileages: number[] = [

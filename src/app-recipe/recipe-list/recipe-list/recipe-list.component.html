@@ -40,22 +40,22 @@
                         [style.color]="recipe.overlay_color">
         -------------
       </mat-card-content>
-      <app-image fxHide.gt-sm
+      <app-storage-image fxHide.gt-sm
                  fxShow.xs
                  [resize]="{height: '300px'}"
                  class="recipe-image mb-0 mt-5"
                  [matCardImage]="true"
                  [key]="recipe.image ? recipe.image : ''"
                  [alt]="recipe.name"
-                 *ngIf="i%2 === 0"></app-image>
-      <app-image fxHide.xs
+                 *ngIf="i%2 === 0"></app-storage-image>
+      <app-storage-image fxHide.xs
                  fxShow.gt-sm
                  [resize]="{height: '300px'}"
                  class="recipe-image mb-0 mt-5"
                  [matCardImage]="true"
                  [key]="recipe.image ? recipe.image : ''"
                  [alt]="recipe.name"
-                 *ngIf="i%2 === 0"></app-image>
+                 *ngIf="i%2 === 0"></app-storage-image>
     </mat-card>
   </div>
 </div>

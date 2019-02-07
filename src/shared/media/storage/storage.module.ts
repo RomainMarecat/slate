@@ -5,6 +5,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatProgressBarModule } from '@angular/material';
 import { StorageDetailComponent } from './storage-detail/storage-detail.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { StorageImageComponent } from './storage-image/storage-image.component';
 
 @NgModule({
   imports: [
@@ -19,11 +20,13 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   declarations: [
     StorageUploadComponent,
-    StorageDetailComponent
+    StorageDetailComponent,
+    StorageImageComponent
   ],
   exports: [
     StorageUploadComponent,
-    StorageDetailComponent
+    StorageDetailComponent,
+    StorageImageComponent
   ]
 })
 export class StorageModule {

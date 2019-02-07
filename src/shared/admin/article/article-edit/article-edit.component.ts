@@ -13,8 +13,8 @@ import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Media } from '../../../media/media';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
-import * as firebase from 'firebase/app';
-import Timestamp = firebase.firestore.Timestamp;
+import { firestore } from 'firebase';
+import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-admin-article-edit',

@@ -1,0 +1,12 @@
+<div *ngIf="media" class="image-container">
+
+
+  <app-storage-detail [panelClass]="panelClass"
+                      [panelStyle]="panelStyle"
+                      [matCardImage]="matCardImage"
+                      [path]="media?.public_id"
+                      [metadata]="{alt: alt}"
+                      *ngIf="media?.type === 'storage'"
+                      [height]="resize?.height"
+                      [width]="resize?.width"></app-storage-detail>
+</div>

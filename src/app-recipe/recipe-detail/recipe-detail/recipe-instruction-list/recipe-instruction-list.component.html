@@ -58,20 +58,20 @@
         </span>
       </div>
     </mat-card-content>
-    <app-image fxHide.gt-sm
+    <app-storage-image fxHide.gt-sm
                fxShow.xs
                class="instruction-image mb-0 mt-5"
                [matCardImage]="true"
                [panelStyle]="{'max-height': '400px'}"
                [key]="instruction.image && instruction.image.length > 0 ? instruction.image : ''"
-               [alt]="instruction.sentence"></app-image>
+               [alt]="instruction.sentence"></app-storage-image>
 
-    <app-image fxHide.xs
+    <app-storage-image fxHide.xs
                fxShow.gt-sm
                class="instruction-image mb-0 mt-5"
                [matCardImage]="true"
                [panelStyle]="{'max-height': '400px'}"
                [key]="instruction && instruction.image.length > 0 ? instruction.image : ''"
-               [alt]="instruction.sentence"></app-image>
+               [alt]="instruction.sentence"></app-storage-image>
   </mat-card>
 </div>

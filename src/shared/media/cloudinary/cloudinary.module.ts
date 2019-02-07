@@ -1,16 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { NgModule, ModuleWithProviders, InjectionToken, Injectable } from '@angular/core';
+import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { Cloudinary } from './cloudinary.service';
 import { CloudinaryImageComponent } from './cloudinary-image/cloudinary-image.component';
 import { CloudinaryVideoComponent } from './cloudinary-video/cloudinary-video.component';
 import { CloudinaryTransformationDirective } from './cloudinary-transformation.directive';
 import { CloudinaryImageSourceDirective } from './cloudinary-image-source.directive';
 import CloudinaryConfiguration from './cloudinary-configuration.class';
-import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { CloudinaryTagService } from './cloudinary-tag.service';
 import { ImageCropperModule } from 'ngx-img-cropper';
-
-export { Cloudinary, provideCloudinary } from './cloudinary.service';
 import { NgPipesModule } from 'ngx-pipes';
 import { CloudinaryUploadService } from './cloudinary-upload.service';
 import { ImageProductComponent } from './image-product/image-product.component';
@@ -18,6 +15,9 @@ import { MediaViewerComponent } from './media-viewer/media-viewer.component';
 import { Angulartics2Module } from 'angulartics2';
 import { TranslateModule } from '@ngx-translate/core';
 import { FileUploadModule } from 'ng2-file-upload';
+import { ImageComponent } from './image/image.component';
+
+export { Cloudinary, provideCloudinary } from './cloudinary.service';
 
 export const CLOUDINARY_LIB = new InjectionToken<any>('CLOUDINARY_LIB');
 export const CLOUDINARY_CONFIGURATION = new InjectionToken<CloudinaryConfiguration>('CLOUDINARY_CONFIGURATION');
@@ -35,7 +35,6 @@ export function createCloudinary(cloudinaryJsLib: any, configuration: Cloudinary
     CommonModule,
     FileUploadModule,
     ImageCropperModule,
-    LazyLoadImageModule,
     NgPipesModule,
     TranslateModule
   ],
@@ -45,6 +44,7 @@ export function createCloudinary(cloudinaryJsLib: any, configuration: Cloudinary
     CloudinaryTransformationDirective,
     CloudinaryVideoComponent,
     ImageProductComponent,
+    ImageComponent,
     MediaViewerComponent
   ],
   exports: [
@@ -53,6 +53,7 @@ export function createCloudinary(cloudinaryJsLib: any, configuration: Cloudinary
     CloudinaryVideoComponent,
     CloudinaryTransformationDirective,
     ImageProductComponent,
+    ImageComponent,
     MediaViewerComponent
   ]
 })
@@ -68,7 +69,7 @@ export class CloudinaryModule {
         {
           provide: Cloudinary,
           useFactory: createCloudinary,
-          deps: [ CLOUDINARY_LIB, CLOUDINARY_CONFIGURATION ]
+          deps: [CLOUDINARY_LIB, CLOUDINARY_CONFIGURATION]
         }
       ]
     };

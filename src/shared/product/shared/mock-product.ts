@@ -1,6 +1,6 @@
 import { Product } from './product';
-import * as firebase from 'firebase/app';
-import Timestamp = firebase.firestore.Timestamp;
+import { firestore } from 'firebase';
+import Timestamp = firestore.Timestamp;
 
 export const mockProduct: Product = {
   name: 'Apple Iphone 8 plus 64Go',
