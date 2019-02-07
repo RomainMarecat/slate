@@ -13,8 +13,10 @@
         "recipe/recipe.module.ts",
         "recipe-list/recipe-list.module.ts",
         "recipe-detail/recipe-detail.module.ts",
-        "../shared/*",
-        "../shared/**/*.ts"
+        "../shared/admin/app-recipe/recipe/*.ts",
+        "../shared/admin/app-recipe/*.ts",
+        "../shared/admin/base/*/*.ts",
+        "../shared/admin/base/*.ts"
     ],
     "exclude": [
         "test.ts",

@@ -8,8 +8,8 @@ import { ArticleService } from '../../../article/shared/article.service';
 import { AlertService } from '../../../popup/alert.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import * as firebase from 'firebase/app';
-import Timestamp = firebase.firestore.Timestamp;
+import { firestore } from 'firebase';
+import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-admin-article-list',

@@ -9,6 +9,14 @@ import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-tran
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { StorageModule } from '../../storage/storage.module';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { CloudinaryImageSourceDirective } from '../cloudinary-image-source.directive';
+import { CloudinaryImageComponent } from '../cloudinary-image/cloudinary-image.component';
+import { CloudinaryTransformationDirective } from '../cloudinary-transformation.directive';
+import { CloudinaryVideoComponent } from '../cloudinary-video/cloudinary-video.component';
+import { ImageProductComponent } from '../image-product/image-product.component';
+import { MediaViewerComponent } from '../media-viewer/media-viewer.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { ImageCropperModule } from 'ngx-img-cropper';
 
 describe('ImageComponent', () => {
   let component: ImageComponent;
@@ -21,19 +29,28 @@ describe('ImageComponent', () => {
       imports: [
         NgPipesModule,
         AngularFireStorageModule,
-        Angulartics2Module.forRoot( {
+        Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {
             clearIds: true,
           },
         }),
-        CloudinaryModule,
+        FileUploadModule,
+        ImageCropperModule,
         StorageModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      declarations: [ImageComponent],
+      declarations: [
+        CloudinaryImageSourceDirective,
+        CloudinaryImageComponent,
+        CloudinaryTransformationDirective,
+        CloudinaryVideoComponent,
+        ImageProductComponent,
+        ImageComponent,
+        MediaViewerComponent
+      ],
       providers: [
         {provide: MediaService, useClass: MockMediaService},
 

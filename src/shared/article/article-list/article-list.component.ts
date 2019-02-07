@@ -4,8 +4,8 @@ import { Article } from '../shared/article';
 import { AlertService } from '../../popup/alert.service';
 import { LoaderService } from '../../loader/loader.service';
 import { SeoService } from '../../seo/shared/seo.service';
-import * as firebase from 'firebase/app';
-import Timestamp = firebase.firestore.Timestamp;
+import { firestore } from 'firebase';
+import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-article-list',

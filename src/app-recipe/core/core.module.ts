@@ -117,7 +117,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
   imports: [
     CommonModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase, environment.firebase.projectId),
     AngularFirestoreModule.enablePersistence(),
     HttpClientModule,
     MatSnackBarModule,

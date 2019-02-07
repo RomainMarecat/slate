@@ -71,7 +71,10 @@ export class UserService {
       .then((result) => {
         const user = result.user;
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
+          try {
+            localStorage.setItem('user', JSON.stringify(user));
+          } catch (e) {
+          }
         }
       }, (err: HttpErrorResponse) => {
         this.alertService.show(err.error);
@@ -85,7 +88,10 @@ export class UserService {
       .then((result) => {
         const user = result.user;
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
+          try {
+            localStorage.setItem('user', JSON.stringify(user));
+          } catch (e) {
+          }
         }
       }, (err: HttpErrorResponse) => {
         this.alertService.show(err.error);
@@ -104,8 +110,11 @@ export class UserService {
   }
 
   clear() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    try {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+    } catch (e) {
+    }
   }
 
   getAuthState(): Observable<User> {

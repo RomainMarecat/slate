@@ -10,11 +10,10 @@ import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 
 import * as express from 'express';
 import { join } from 'path';
-import { readFileSync } from 'fs';
 
 // Polyfills required for Firebase
 (global as any).WebSocket = require('ws');
-(global as any).XMLHttpRequest = require('xhr2');
+(global as any).XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
@@ -25,25 +24,7 @@ const app = express();
 const DIST_FOLDER = join(process.cwd(), 'dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require(`./server/main`);
-
-const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toString();
-
-// PlatformServer offers a method called renderModuleFactory() that we can use to pass in our AoT'd AppServerModule,
-// to serialize our application, and then we'll be returning that result to the Browser.
-// app.engine('html', (_, options, callback) => {
-//   renderModuleFactory(AppServerModuleNgFactory, {
-//     // Our index.html
-//     document: template,
-//     url: options.req.url,
-//     // DI so that we can get lazy-loading to work differently (since we need it to just instantly render it)
-//     extraProviders: [
-//       provideModuleMap(LAZY_MODULE_MAP)
-//     ]
-//   }).then(html => {
-//     callback(null, html);
-//   });
-// });
+const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require(`./dist/server/main`);
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 app.engine('html', ngExpressEngine({

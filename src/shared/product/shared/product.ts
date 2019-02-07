@@ -1,7 +1,7 @@
 import { ClothingProduct } from './clothing-product';
 import { HockeyProduct } from './hockey-product';
-import * as firebase from 'firebase/app';
-import Timestamp = firebase.firestore.Timestamp;
+import { firestore } from 'firebase';
+import Timestamp = firestore.Timestamp;
 
 export class Product implements ClothingProduct, HockeyProduct {
   name: string;

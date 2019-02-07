@@ -14,13 +14,19 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { CheckForUpdateService } from '../shared/pwa/shared/check-for-update.service';
 import { MenuModule } from '../shared/menu/menu.module';
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, TransferState } from '@angular/platform-browser';
+import { TransferHttpCacheModule } from '@nguniversal/common';
+import { TranslateBrowserLoader } from '../shared/i18n/translate-browser-loader.service.ts';
 
 registerLocaleData(localeFr);
 registerLocaleData(localeEn);
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
+}
+
+export function exportTranslateStaticLoader(http: HttpClient, transferState: TransferState): TranslateBrowserLoader {
+  return new TranslateBrowserLoader('/assets/i18n/', '.json', transferState, http);
 }
 
 @NgModule({
@@ -30,16 +36,17 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     AppRoutingModule,
     BrowserAnimationsModule,
-    BrowserModule.withServerTransition({appId: environment.app_name}),
+    BrowserModule.withServerTransition({appId: environment.firebase.projectId}),
     CommonModule,
     CoreModule.forRoot(environment),
     MenuModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    TransferHttpCacheModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
+        useFactory: exportTranslateStaticLoader, // (createTranslateLoader)
+        deps: [HttpClient, TransferState]
       }
     }),
   ],

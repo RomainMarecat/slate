@@ -7,15 +7,15 @@
     "ios": "tns run ios --bundle",
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration=production --project=alr",
+    "build": "ng build --configuration=production --project=recipe",
     "build-themes": "bash ./tools/build-themes.sh",
-    "test": "./node_modules/@angular/cli/bin/ng test --watch=false --project=alr",
+    "test": "./node_modules/@angular/cli/bin/ng test --watch=false --project=recipe",
     "lint": "./node_modules/@angular/cli/bin/ng lint",
     "e2e": "./node_modules/@angular/cli/bin/ng e2e",
     "build-universal": "npm run build:ssr",
     "build-universal2": "npm run build:ssr2",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:ssr",
-    "serve:ssr": "node dist/server.js",
+    "serve:ssr": "sed -i '/module.exports = require(\".\")/d' ./dist/server/main.js && node dist/server.js",
     "build:client-and-server-bundles": "ng build --project=recipe && ng run recipe:server:production",
     "webpack:ssr": "webpack --config webpack.server.config.js --progress --colors",
     "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
@@ -23,7 +23,7 @@
     "compile:server": "tsc -p server.tsconfig.json",
     "generate:prerender": "cd dist && node prerender",
     "serve:prerender": "cd dist/browser && http-server",
-    "serve:ssr2": "node dist/server"
+    "serve:ssr2": "sed -i '/module.exports = require(\".\")/d' ./dist/server/main.js && node dist/server"
   },
   "private": true,
   "dependencies": {
