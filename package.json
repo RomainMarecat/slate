@@ -16,7 +16,7 @@
     "build-universal2": "npm run build:ssr2",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:ssr",
     "serve:ssr": "sed -i '/module.exports = require(\".\")/d' ./dist/server/main.js && node dist/server.js",
-    "build:client-and-server-bundles": "ng build --project=recipe && ng run recipe:server:production",
+    "build:client-and-server-bundles": "ng build --project=store && ng run store:server:production",
     "webpack:ssr": "webpack --config webpack.server.config.js --progress --colors",
     "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
     "build:ssr2": "npm run build:client-and-server-bundles && npm run compile:server",

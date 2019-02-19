@@ -8,7 +8,7 @@ import { ArticleService } from '../../../article/shared/article.service';
 import { AlertService } from '../../../popup/alert.service';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { firestore } from 'firebase';
+import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;
 
 @Component({

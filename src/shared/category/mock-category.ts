@@ -1,3 +1,6 @@
+import { Category } from './category';
+import * as faker from 'faker';
+
 export const mockCategory = {
   name: 'Jam',
   description: 'High School',
@@ -5,6 +8,72 @@ export const mockCategory = {
     fr: 'Jam'
   }
 };
+
+export const mockStoreCategories: Category[] = [
+  {
+    key: faker.random.uuid(),
+    name: faker.commerce.product(),
+    description: faker.commerce.productName(),
+    translations: {
+      fr: faker.commerce.product()
+    },
+    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+  },
+  {
+    key: faker.random.uuid(),
+    name: faker.commerce.product(),
+    description: faker.commerce.productName(),
+    translations: {
+      fr: faker.commerce.product()
+    },
+    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+  },
+  {
+    key: faker.random.uuid(),
+    name: faker.commerce.product(),
+    description: faker.commerce.productName(),
+    translations: {
+      fr: faker.commerce.product()
+    },
+    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+  },
+  {
+    key: faker.random.uuid(),
+    name: faker.commerce.product(),
+    description: faker.commerce.productName(),
+    translations: {
+      fr: faker.commerce.product()
+    },
+    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+  },
+  {
+    key: faker.random.uuid(),
+    name: faker.commerce.product(),
+    description: faker.commerce.productName(),
+    translations: {
+      fr: faker.commerce.product()
+    },
+    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+  },
+  {
+    key: faker.random.uuid(),
+    name: faker.commerce.product(),
+    description: faker.commerce.productName(),
+    translations: {
+      fr: faker.commerce.product()
+    },
+    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+  },
+  {
+    key: faker.random.uuid(),
+    name: faker.commerce.product(),
+    description: faker.commerce.productName(),
+    translations: {
+      fr: faker.commerce.product()
+    },
+    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+  },
+];
 
 export const mockGroupFamily = [
   {

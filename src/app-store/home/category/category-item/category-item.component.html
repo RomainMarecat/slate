@@ -1,0 +1,56 @@
+<div class="main-wrapper category-item-component"
+     fxLayout="column"
+     fxLayoutAlign="start stretch"
+     *ngIf="category && options">
+
+  <div fxLayout="row" *ngIf="options.display_image">
+    <a class="image-wrapper"
+       [routerLink]="'/categories/' + category.key | localize"
+       *ngIf="options.image_link; else elementImage">
+      <app-storage-image [resize]="{width: 486, height: 79}"
+                         [matCardImage]="false"
+                         [downloadURL]="category.image"></app-storage-image>
+    </a>
+    <ng-template #elementImage>
+      <div class="image-wrapper">
+        <app-storage-image [resize]="{width: 486, height: 79}"
+                           [matCardImage]="false"
+                           [downloadURL]="category.image"></app-storage-image>
+      </div>
+    </ng-template>
+  </div>
+
+  <div fxLayout="row">
+    <div class="heading-wrapper">
+      <h3 class="heading-title">
+        <ng-container *ngIf="options.text_link; else simpleTitle">
+          <a class="heading-link text-lowercase"
+             [routerLink]="'/categories/' + category.key | localize"
+             fxLayout="row"
+             fxLayoutAlign="start center">
+            <span>
+              {{ category.name |translate }}
+            </span>
+            <mat-icon class="mat-icon"
+                      *ngIf="options.display_icon">
+              forward
+            </mat-icon>
+          </a>
+        </ng-container>
+        <ng-template #simpleTitle>
+          <span class="heading-link text-lowercase"
+                fxLayout="row"
+                fxLayoutAlign="start center">
+            <span>
+              {{ category.name |translate }}
+            </span>
+            <mat-icon class="mat-icon"
+                      *ngIf="options.display_icon">
+              forward
+            </mat-icon>
+          </span>
+        </ng-template>
+      </h3>
+    </div>
+  </div>
+</div>

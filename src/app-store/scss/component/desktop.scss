@@ -1,0 +1,64 @@
+@include media-breakpoint-up(lg) {
+  // bloc CAROUSEL
+  .carousel {
+    height: 450px;
+
+    .carousel-inner {
+      height: 100%;
+
+      .carousel-caption {
+        color: mat-color($primary);
+      }
+    }
+
+    .carousel-control {
+      display: none;
+    }
+
+    .carousel-indicators {
+      bottom: 0;
+      margin-bottom: 0;
+
+      li {
+        margin: 4px 5px 0;
+        height: 5px;
+        width: 40px;
+
+        &.active {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  // BLOCK HOME - CATEGORIES
+  .category-item-component {
+    &.main-wrapper {
+      border: 0.5px solid $block-color-light-grey;
+
+      .image-wrapper {
+        &::after {
+          background-color: mat-color($primary);
+        }
+      }
+
+      .heading-title {
+        font-family: $primary-font;
+      }
+
+      // bloc SEPARATEUR
+      .separator-wrapper {
+        border: 3px solid mat-color($primary);
+      }
+
+      .heading-wrapper {
+        .heading-title {
+          .heading-link {
+            color: mat-color($primary);
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}

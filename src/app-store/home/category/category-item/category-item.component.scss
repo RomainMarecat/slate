@@ -1,0 +1,33 @@
+.category-item-component {
+  min-height: 211px;
+
+  .image-wrapper {
+    width: 486px;
+    height: 79px;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      content: "";
+      height: 4px;
+      width: 40px;
+      position: absolute;
+    }
+
+  }
+
+  .heading-wrapper {
+    margin: 25px 10px 0;
+
+    .heading-title {
+      height: 44px;
+      font-size: 1.875rem;
+      letter-spacing: -2px;
+
+      .mat-icon {
+        width: 64px;
+        text-align: center;
+      }
+    }
+  }
+}

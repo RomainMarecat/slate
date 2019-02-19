@@ -1,5 +1,6 @@
 <mat-toolbar color="primary"
-             class="mat-toolbar main-menu">
+             class="mat-toolbar main-menu"
+             *ngIf="config">
   <a mat-button
      (click)="toggleSidenav()"
      angulartics2On="click"
@@ -70,7 +71,7 @@
   </ng-template>
 
   <span class="login-wrapper"
-        *ngIf="!(userService.getAuthState() | async) && config.displayButtonConnection">
+        *ngIf="!(userService.getAuthState() | async) && config.displayButtonConnection && config.connectionBtn">
     <button mat-raised-button
             color="accent"
             [style.background]="config.connectionBtn.background"

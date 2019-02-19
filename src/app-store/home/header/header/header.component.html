@@ -1,0 +1,30 @@
+<div class="header-component">
+  <header class="header-component main-wrapper">
+    <carousel>
+      <slide *ngFor="let slider of sliders">
+        <img class="img-slide"
+             [src]="slider.image"
+             [alt]="slider.title">
+
+        <div class="container slider-text">
+          <div fxLayout="row"
+               fxLayoutAlign="start stretch">
+            <div class="carousel-caption" *ngIf="slider.title">
+              <h3>{{ slider.title | translate | uppercase }}</h3>
+              <p *ngIf="slider.link" [innerHTML]="slider?.link|translate"></p>
+            </div>
+          </div>
+          <div fxLayout="row"
+               fxLayoutAlign="start stretch">
+            <a [routerLink]="['/search'|localize]"
+               class="btn-slider"
+               mat-flat-button
+               color="primary">
+              {{ 'cta.btn_slider'|translate }}
+            </a>
+          </div>
+        </div>
+      </slide>
+    </carousel>
+  </header>
+</div>

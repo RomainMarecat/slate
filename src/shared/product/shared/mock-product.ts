@@ -1,5 +1,5 @@
 import { Product } from './product';
-import { firestore } from 'firebase';
+import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;
 
 export const mockProduct: Product = {

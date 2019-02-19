@@ -12,6 +12,8 @@ export class StorageImageComponent {
   @Input() panelClass: string | Object;
   @Input() panelStyle: string | Object;
   @Input() matCardImage: boolean;
+  @Input() downloadURL: string;
+  @Input() type: string;
   _publicId: string;
   _key: string;
   @Input() alt: string;
@@ -43,6 +45,10 @@ export class StorageImageComponent {
         .subscribe((medias: Media[]) => {
           this.media = medias[0];
           if (this.media) {
+            if (this.media.type) {
+              this.type = this.media.type;
+            }
+
             this.mediaLoaded.emit(true);
           }
         }, () => {
@@ -62,6 +68,9 @@ export class StorageImageComponent {
         .subscribe((media: Media) => {
           this.media = media;
           if (media) {
+            if (this.media.type) {
+              this.type = this.media.type;
+            }
             this.mediaLoaded.emit(true);
           }
         }, () => {

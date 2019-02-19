@@ -4,7 +4,7 @@ import { Article } from '../shared/article';
 import { AlertService } from '../../popup/alert.service';
 import { LoaderService } from '../../loader/loader.service';
 import { SeoService } from '../../seo/shared/seo.service';
-import { firestore } from 'firebase';
+import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;
 
 @Component({

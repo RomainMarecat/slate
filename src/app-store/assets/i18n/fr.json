@@ -1,0 +1,16 @@
+{
+    "category": {
+        "title": "Découvrez nos catégories",
+        "subtitle": "Sélectionner une catégorie afin de découvrir notre large gamme des produits"
+    },
+    "menu": {
+        "connection": {
+            "title": "Se connecter"
+        },
+        "title1": "store",
+        "title2": ""
+    },
+    "cta": {
+        "btn_slider": "Accéder à l'offre"
+    }
+}

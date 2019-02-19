@@ -8,7 +8,7 @@ import { AlertService } from '../../popup/alert.service';
 import { LoaderService } from '../../loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Filter } from '../../facet/filter/shared/filter';
-import { environment } from '../../../app-ecommerce/environments/environment';
+import { environment } from '../../../app-store/environments/environment';
 import { Product } from '../shared/product';
 import { of } from 'rxjs';
 import { SeoService } from '../../seo/shared/seo.service';

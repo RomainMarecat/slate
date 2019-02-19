@@ -5,6 +5,7 @@ export class Category {
   translations: {
     fr: string;
   };
+  image?: string;
   slug ?: string;
   description: string;
   keywords ?: string;
@@ -15,4 +16,7 @@ export class Category {
   parent ?: string;
   published_at ?: Date;
   published ?: boolean;
+  metadata?: {
+    size: number;
+  };
 }

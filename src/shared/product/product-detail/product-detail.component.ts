@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MediaService } from '../../media/media.service';
 import { LoaderService } from '../../loader/loader.service';
 import { CloudinaryTagService } from '../../media/cloudinary/cloudinary-tag.service';
-import { environment } from '../../../app-ecommerce/environments/environment';
+import { environment } from '../../../app-store/environments/environment';
 import { Product } from '../shared/product';
 import { SeoService } from '../../seo/shared/seo.service';
 

@@ -38,7 +38,7 @@ import { MediaService } from '../../../media/media.service';
 import { MockMediaService } from '../../../media/mock-media.service';
 import { DeviceService } from '../../../device/device.service';
 import { MediaModule } from '../../../media/media.module';
-import { environment } from '../../../../app-ecommerce/environments/environment';
+import { environment } from '../../../../app-store/environments/environment';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
 describe('ProductFormComponent', () => {

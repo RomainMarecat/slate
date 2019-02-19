@@ -1,0 +1,28 @@
+{
+    "extends": "../tsconfig.app.json",
+    "compilerOptions": {
+        "outDir": "../../out-tsc/app",
+        "baseUrl": "./",
+        "module": "es2015",
+        "types": []
+    },
+    "include": [
+        "main.ts",
+        "polyfills.ts",
+        "home/home.module.ts",
+        "../shared/product/product.module.ts",
+        "../shared/cart/cart.module.ts",
+        "../shared/admin/base/*/*.ts",
+        "../shared/admin/base/*.ts"
+    ],
+    "exclude": [
+        "test.ts",
+        "../shared/i18n/translate-server-loader.service.ts",
+        "**/*.spec.ts",
+        "../shared/*.spec.ts",
+        "../shared/**/*.spec.ts",
+        "**/*.tns.ts",
+        "**/*.android.ts",
+        "**/*.ios.ts"
+    ]
+}
