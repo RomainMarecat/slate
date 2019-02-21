@@ -10,7 +10,7 @@ import { Filter } from '../../../facet/filter/shared/filter';
 import { ProductService } from '../../../product/shared/product.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
-import { firestore } from 'firebase';
+import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;
 
 @Component({

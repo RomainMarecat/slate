@@ -1,0 +1,51 @@
+.header-component {
+  position: relative;
+  height: 450px;
+  display: block;
+
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 450px;
+    width: 100%;
+    z-index: 1;
+    display: block;
+
+    slide {
+      height: 450px;
+
+      .img-slide {
+        height: 450px;
+        width: 100%;
+        display: block;
+        object-fit: cover;
+      }
+    }
+
+    .slider-text {
+      position: relative;
+      top: -230px;
+
+      .carousel-caption {
+        margin-bottom: .5rem;
+        padding: 0;
+        position: inherit;
+        right: unset;
+        text-align: left;
+        left: 0;
+        top: 0;
+
+        h3 {
+          font-size: 3.75rem;
+          letter-spacing: -4px;
+        }
+      }
+
+      .btn-slider {
+        text-decoration: none;
+      }
+    }
+  }
+}
+

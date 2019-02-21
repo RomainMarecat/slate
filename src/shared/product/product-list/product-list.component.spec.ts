@@ -36,7 +36,7 @@ import { DateService } from '../../util/date.service';
 import { MockScoreService } from '../../score/mock-score.service';
 import { I18nService } from '../../i18n/i18n.service';
 import { MediaModule } from '../../media/media.module';
-import { environment } from '../../../app-ecommerce/environments/environment';
+import { environment } from '../../../app-store/environments/environment';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { LoaderModule } from '../../loader/loader.module';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';

@@ -16,7 +16,7 @@ import { MenuModule } from '../shared/menu/menu.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule, TransferState } from '@angular/platform-browser';
 import { TransferHttpCacheModule } from '@nguniversal/common';
-import { TranslateBrowserLoader } from '../shared/i18n/translate-browser-loader.service.ts';
+import { TranslateBrowserLoader } from '../shared/i18n/translate-browser-loader.service';
 
 registerLocaleData(localeFr);
 registerLocaleData(localeEn);

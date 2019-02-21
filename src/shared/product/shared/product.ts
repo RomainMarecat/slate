@@ -1,7 +1,6 @@
 import { ClothingProduct } from './clothing-product';
 import { HockeyProduct } from './hockey-product';
-import { firestore } from 'firebase';
-import Timestamp = firestore.Timestamp;
+import * as moment from 'moment';
 
 export class Product implements ClothingProduct, HockeyProduct {
   name: string;
@@ -13,7 +12,7 @@ export class Product implements ClothingProduct, HockeyProduct {
   score: number;
 
   created_at: Date;
-  published_at: Timestamp;
+  published_at: any;
   translations ?: {
     fr?: string;
   };
@@ -49,6 +48,6 @@ export class Product implements ClothingProduct, HockeyProduct {
     this.score = 0;
     this.published = false;
     this.created_at = new Date();
-    this.published_at = Timestamp.now();
+    this.published_at = moment().unix();
   }
 }

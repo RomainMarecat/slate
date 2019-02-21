@@ -28,7 +28,7 @@ import { MockMediaService } from '../../media/mock-media.service';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
 import { MediaModule } from '../../media/media.module';
-import { environment } from '../../../app-ecommerce/environments/environment';
+import { environment } from '../../../app-store/environments/environment';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { SeoModule } from '../../seo/seo.module';
 

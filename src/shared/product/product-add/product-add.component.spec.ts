@@ -45,7 +45,7 @@ import { DeviceService } from '../../device/device.service';
 import { MockNotificationService } from '../../slack/mock-notification.service';
 import { NgPipesModule } from 'ngx-pipes';
 import { MediaModule } from '../../media/media.module';
-import { environment } from '../../../app-ecommerce/environments/environment';
+import { environment } from '../../../app-store/environments/environment';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 
 describe('ProductAddComponent', () => {

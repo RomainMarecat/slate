@@ -1,4 +1,4 @@
-import { mockCategory } from './mock-category';
+import { mockCategory, mockStoreCategories } from './mock-category';
 import { Category } from './category';
 import { Observable, of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
@@ -29,7 +29,7 @@ export class MockCategoryService {
   }
 
   getCategories(): Observable<Array<Category>> {
-    return of([mockCategory]);
+    return of(mockStoreCategories);
   }
 
   getCategory(): Observable<Category> {

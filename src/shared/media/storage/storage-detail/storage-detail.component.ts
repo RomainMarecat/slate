@@ -13,7 +13,7 @@ export class StorageDetailComponent implements OnInit {
 
   @Input() panelStyle: string | Object;
 
-  @Input() matCardImage: boolean;
+  @Input() matCardImage = false;
 
   @Input() height: string;
 

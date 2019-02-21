@@ -1,0 +1,37 @@
+<div class="category-list-component"
+     fxLayout="column"
+     fxLayoutAlign="start center"
+     *ngIf="options">
+  <div class="category-header-wrapper">
+    <div class="category-title-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="center stretch">
+      <h4 class="category-title text-center"
+          *ngIf="options.display_title">
+        {{ 'category.title'|translate }}
+      </h4>
+    </div>
+    <div class="category-subtitle-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="center stretch">
+      <p class="category-subtitle text-center"
+         *ngIf="options.display_subtitle">
+        {{ 'category.subtitle'|translate }}
+      </p>
+    </div>
+  </div>
+
+  <div class="category-list-wrapper"
+       fxLayout="row wrap"
+       fxLayoutAlign="center stretch"
+       *ngIf="categories && categories.length > 0">
+    <app-category-item [options]="options"
+                       [category]="category"
+                       *ngFor="let category of categories"
+                       [fxFlex]="category?.metadata?.size">
+
+    </app-category-item>
+  </div>
+
+</div>
+

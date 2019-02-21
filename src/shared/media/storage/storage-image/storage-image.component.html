@@ -1,12 +1,22 @@
-<div *ngIf="media" class="image-container">
-
-
-  <app-storage-detail [panelClass]="panelClass"
-                      [panelStyle]="panelStyle"
-                      [matCardImage]="matCardImage"
-                      [path]="media?.public_id"
-                      [metadata]="{alt: alt}"
-                      *ngIf="media?.type === 'storage'"
-                      [height]="resize?.height"
-                      [width]="resize?.width"></app-storage-detail>
+<div class="image-container">
+  <ng-container *ngIf="media; else simpleUrl">
+    <app-storage-detail [panelClass]="panelClass"
+                        [downloadURL]="downloadURL"
+                        [panelStyle]="panelStyle"
+                        [matCardImage]="matCardImage"
+                        [path]="media?.public_id"
+                        [metadata]="{alt: alt}"
+                        [height]="resize?.height"
+                        *ngIf="type === 'storage'"
+                        [width]="resize?.width"></app-storage-detail>
+  </ng-container>
+  <ng-template #simpleUrl>
+    <app-storage-detail [panelClass]="panelClass"
+                        [downloadURL]="downloadURL"
+                        [panelStyle]="panelStyle"
+                        [matCardImage]="matCardImage"
+                        [height]="resize?.height"
+                        [width]="resize?.width"
+                        *ngIf="downloadURL"></app-storage-detail>
+  </ng-template>
 </div>

@@ -1,0 +1,29 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../out-tsc/app",
+        "baseUrl": "./",
+        "module": "commonjs",
+        "types": [
+            "node"
+        ]
+    },
+    "angularCompilerOptions": {
+        "entryModule": "app.server.module#AppServerModule"
+    },
+    "include": [
+        "main.server.ts",
+        "polyfills.ts",
+        "home/home.module.ts",
+        "../shared/product/product.module.ts",
+        "../shared/cart/cart.module.ts",
+        "../shared/admin/base/*/*.ts",
+        "../shared/admin/base/*.ts"
+    ],
+    "exclude": [
+        "test.ts",
+        "**/*.spec.ts",
+        "../shared/*.spec.ts",
+        "../shared/**/*.spec.ts"
+    ]
+}

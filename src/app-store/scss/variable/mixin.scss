@@ -1,0 +1,24 @@
+// mixins - TRANSITION
+@mixin transition($transition...) {
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  -webkit-transition: $transition;
+  transition:         $transition;
+}
+
+// mixins - TRANSFORMATION
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// mixins - FILTRES
+@mixin filter($value) {
+  -webkit-filter: $value;
+  -moz-filter: $value;
+  -o-filter: $value;
+  filter: $value;
+}
