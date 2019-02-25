@@ -6,9 +6,19 @@ import { VisitorService } from '../../firestore/visitor.service';
 
 @Injectable()
 export class ProductService extends VisitorService {
+  static getDiscountRate(product: Product): number {
+    if (product && product.price && product.promo) {
+      return -Math.floor((Math.abs(product.price - product.promo)) /
+        ((product.price + product.promo) / 2) * 100);
+    }
+    return 0;
+  }
+
+
   constructor(afs: AngularFirestore, @Inject('TABLE_PRODUCT') table: string) {
     super(afs, table);
   }
+
 
   getProducts(): Observable<Product[]> {
     return super.getDocuments() as Observable<Product[]>;

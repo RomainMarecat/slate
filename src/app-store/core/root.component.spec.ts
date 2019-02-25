@@ -3,7 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import {
   MatButtonModule,
   MatCardModule,
@@ -59,6 +58,7 @@ import { CategoryService } from '../../shared/category/category.service';
 import { MockCategoryService } from '../../shared/category/mock-category.service';
 import { NgcCookieConsentModule, NgcCookieConsentService } from 'ngx-cookieconsent';
 import { cookieConfig } from './core.module';
+import { ProductModule } from '../home/product/product.module';
 
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
@@ -106,6 +106,7 @@ describe('AppRootComponent', () => {
         MatTooltipModule,
         MenuModule,
         NgcCookieConsentModule.forRoot(cookieConfig),
+        ProductModule,
         RouterTestingModule.withRoutes([
           {path: '', component: HomeComponent}
         ]),

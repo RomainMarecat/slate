@@ -2,6 +2,42 @@
 import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 
+// for debug
+// require('source-map-support').install();
+
+// for tests
+const test = process.env['TEST'] === 'true';
+
+// ssr DOM
+const domino = require('domino');
+const fs = require('fs');
+const path = require('path');
+// index from browser build!
+const template = fs.readFileSync(path.join(__dirname, '.', 'functions', 'dist', 'index.html')).toString();
+// for mock global window by domino
+const win = domino.createWindow(template);
+win.navigator.language = 'fr';
+// from server build
+const files = fs.readdirSync(`${process.cwd()}/functions/dist/server`);
+// mock
+global['window'] = win;
+// not implemented property and functions
+Object.defineProperty(win.document.body.style, 'transform', {
+  value: () => {
+    return {
+      enumerable: true,
+      configurable: true,
+    };
+  },
+});
+// mock documnet
+global['document'] = win.document;
+// othres mock
+global['CSS'] = null;
+// global['XMLHttpRequest'] = require('xmlhttprequest').XMLHttpRequest;
+global['Prism'] = null;
+
+
 import { enableProdMode } from '@angular/core';
 // Express Engine
 import { ngExpressEngine } from '@nguniversal/express-engine';
@@ -21,10 +57,10 @@ enableProdMode();
 // Express server
 const app = express();
 
-const DIST_FOLDER = join(process.cwd(), 'dist');
+const DIST_FOLDER = join(process.cwd(), 'functions/dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require(`./dist/server/main`);
+const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require(`./functions/dist/server/main`);
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
 app.engine('html', ngExpressEngine({

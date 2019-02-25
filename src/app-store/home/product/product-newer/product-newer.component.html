@@ -1,0 +1,38 @@
+<div class="product-newer-component product-list-wrapper">
+  <div *ngIf="options.layout === 'card'; then cardsLayout; else listLayout"></div>
+</div>
+
+<!-- vue CARD -->
+<ng-template #cardsLayout>
+  <div class="product-list"
+       fxLayout="row wrap"
+       fxLayoutAlign="start stretch"
+       fxLayoutGap="10px">
+    <div class="text-center product-item-element"
+         fxFlex="30"
+         fxFlex.xs="80"
+         *ngFor="let product of options.display_products">
+      <app-product-item [product]="product"
+                        [options]="options"
+                        [authenticated]="authenticated"
+                        [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
+                        (favoriteAdded)="onFavoriteAdded($event)"
+                        (favoriteRemoved)="onFavoriteRemoved($event)">
+      </app-product-item>
+    </div>
+  </div>
+</ng-template>
+
+<!-- vue LIST -->
+<ng-template #listLayout>
+  <div class="row product-item-borderless" [class.background-light-grey]="o"
+       *ngFor="let product of options.display_products; let o=odd">
+    <app-product-item [product]="product"
+                      [options]="options"
+                      [authenticated]="authenticated"
+                      [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
+                      (favoriteAdded)="onFavoriteAdded($event)"
+                      (favoriteRemoved)="onFavoriteRemoved($event)">
+    </app-product-item>
+  </div>
+</ng-template>

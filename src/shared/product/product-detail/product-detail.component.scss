@@ -1,106 +1,52 @@
-@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
-
 .item-card {
-  .mat-card-header {
-    position: relative;
 
-    .mat-card-subtitle,
-    .mat-card-title {
-      display: inline-block;
+  .item-card-title {
+    font-size: 1.875rem;
+  }
+
+  .item-card-brand {
+    font-size: 1.5rem;
+
+    .prefix {
+      font-size: 1.125rem;
+      opacity: 0.5;
+    }
+  }
+
+  .product-detail-price {
+    height: 4rem;
+    line-height: 4rem;
+
+    .product-item-short-description-text {
+      text-align: justify;
+      font-size: 1rem;
+      line-height: 1rem;
+      height: auto;
+      letter-spacing: -1px;
+      opacity: .5;
     }
 
-    .mat-card-avatar {
-      @include media-breakpoint-up(xs) {
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        left: 10px;
-        top: 0;
-      }
-      @include media-breakpoint-up(sm) {
-        margin: 10px 50px;
-      }
-      @include media-breakpoint-up(md) {
-        margin: 10px 100px;
-      }
-      @include media-breakpoint-up(lg) {
-        margin: 10px 100px;
-      }
-      @include media-breakpoint-up(xl) {
-        margin: 10px 100px;
-      }
+    .product-item-price-value {
+      font-size: 1.875rem;
+      letter-spacing: -1px;
+    }
+  }
+}
+
+section {
+  .section-card {
+    .title-wrapper {
+      font-size: 1.875rem;
     }
 
-    .mat-card-title {
-      @include media-breakpoint-up(xs) {
-        span {
-          font-size: 8px;
-          display: inline;
-          margin-left: 40px;
-        }
-        h2 {
-          margin-left: 40px;
-          font-size: 14px;
-        }
-      }
-      @include media-breakpoint-up(sm) {
-        margin: 10px 30px 50px;
-        span {
-          display: none;
-        }
-        h2 {
-          font-size: 14px;
-        }
-      }
-      @include media-breakpoint-up(md) {
-        margin: 10px 100px;
-        span {
-          display: none;
-        }
-        h2 {
-          font-size: 20px;
-        }
-      }
-      @include media-breakpoint-up(lg) {
-        margin: 20px 150px;
-        span {
-          display: none;
-        }
-        h2 {
-          font-size: 20px;
-        }
-      }
-      @include media-breakpoint-up(xl) {
-        margin: 20px 250px;
-        span {
-          display: none;
-        }
-        h2 {
-          font-size: 20px;
-        }
-      }
-    }
+  }
 
-    .mat-card-subtitle {
-
-      @include media-breakpoint-up(xs) {
-        margin: inherit;
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-      }
-      @include media-breakpoint-up(sm) {
-        margin: 10px 20px;
-      }
-      @include media-breakpoint-up(md) {
-        margin: 10px 30px;
-      }
-      @include media-breakpoint-up(lg) {
-        margin: 10px 40px;
-      }
-      @include media-breakpoint-up(xl) {
-        margin: 10px 50px;
+  .section-description-wrapper {
+    mat-list {
+      mat-list-item {
+        ::ng-deep .mat-list-item-content {
+          padding: 0 0;
+        }
       }
     }
   }

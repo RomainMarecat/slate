@@ -3,18 +3,17 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatCardModule,
-  MatIconModule,
   MatButtonModule,
-  MatGridListModule,
-  MatInputModule,
+  MatCardModule,
   MatCheckboxModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
   MatListModule
 } from '@angular/material';
-import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { NgPipesModule } from 'ngx-pipes';
 import { Cloudinary } from 'cloudinary-core';
@@ -31,6 +30,8 @@ import { MediaModule } from '../../media/media.module';
 import { environment } from '../../../app-store/environments/environment';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { SeoModule } from '../../seo/seo.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
@@ -51,7 +52,8 @@ describe('ProductDetailComponent', () => {
         BrowserModule,
         BrowserAnimationsModule,
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
-        HttpClientModule,
+        FlexLayoutModule,
+        HttpClientTestingModule,
         MatCardModule,
         MatIconModule,
         MatButtonModule,

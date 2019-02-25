@@ -1,43 +1,118 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <mat-card class="item-card mt2" *ngIf="product" angulartics2On="click"
-                angularticsAction="hoveredOverProductDetail" [angularticsCategory]="'product.detail'">
-        <mat-card-header class="mat-card-header d-flex justify-content-center">
-          <img class="mat-card-avatar d-flex align-items-start"
-               mat-card-avatar
-               [src]="product.thumbnail"
-               *ngIf="product.thumbnail"
-               [alt]="product?.thumbnail">
-          <span mat-card-avatar class="mat-card-avatar text-left" *ngIf="!product || !product.thumbnail">
-            <mat-icon>account_circle</mat-icon>
+<div class="container mt-5"
+     fxLayout="row">
+  <div class="item-card"
+       *ngIf="product"
+       angulartics2On="click"
+       angularticsAction="hoveredOverProductDetail"
+       [angularticsCategory]="'product.detail'">
+    <div fxLayout="row"
+         fxLayoutAlign="center stretch">
+      <app-storage-image fxFlex="50"
+                         [resize]="{height: 500}"
+                         [matCardImage]="false"
+                         [downloadURL]="product.image1"></app-storage-image>
+
+
+      <div fxLayout="column"
+           fxLayoutAlign="center start"
+           fxLayoutGap="30px"
+           fxFlex="50">
+        <div class="item-card-header">
+          <h2 class="item-card-title"
+              *ngIf="product.name">
+            {{ product.name }}
+          </h2>
+          <h3 class="item-card-brand"
+              *ngIf="product.brand">
+            <span class="prefix">{{ 'product-detail.brand.prefix'|translate }}</span><span
+            class="ml-1">{{ product.brand }}</span>
+          </h3>
+        </div>
+        <div>
+          <!--<span class="item-card-date">-->
+          <!--{{ product.created_at | date: 'short' }}-->
+          <!--</span>-->
+
+          <div class="product-detail-price"
+               fxLayout="row"
+               fxLayoutAlign="start center">
+            <div fxFlex.xs="100"
+                 fxFlex.gt-sm="70"
+                 fxFlexOffset.gt-sm="0"
+                 fxFlexOffset.xs="0">
+              <p class="product-item-short-description-text">
+                {{product?.short_description}}
+              </p>
+            </div>
+            <div class="text-center"
+                 fxFlex.xs="100"
+                 fxFlex.gt-sm="30">
+              <p class="product-item-price-value">
+                {{ (product?.promo ? product.promo : product?.price) | currency:'EUR' }}
+              </p>
+            </div>
+          </div>
+
+          <a [href]="product.external_url"
+             *ngIf="product.external_url"
+             target="_blank">
+            {{ 'cta.show-product-external-url'|translate }}
+          </a>
+          <span *ngIf="product.reseller">
+            {{ product.reseller }}
           </span>
-          <mat-card-title class="mat-card-title">
-            <span *ngIf="product?.creator">
-              {{ product.creator }}
-            </span>
-            <h2 class="item-card-title">
-              {{ product.name }}
-            </h2>
-          </mat-card-title>
-          <mat-card-subtitle class="mat-card-subtitle">
-            <span class="item-card-date">{{ product.created_at | date: 'short' }}</span>
-            <span *ngIf="product.price">{{ product.price | currency : 'EUR' }}</span>
-            <a href="{{ product.external_url }}"
-               *ngIf="product.external_url" target="_blank">Voir le pull</a>
-            <span *ngIf="product.reseller">{{ product.reseller }}</span>
-          </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content *ngIf="product.images && product.images.length > 0">
-          <app-image [key]="image"
-                     [resize]="resizedImage"
-                     *ngFor="let image of product.images"></app-image>
-        </mat-card-content>
-        <app-product-action [isProductScorable]="false"
-                            [isProductSellable]="true"
-                            [product]="product"
-                            (updateScore)="updateScoreProduct($event)"></app-product-action>
-      </mat-card>
+        </div>
+
+        <div class="w-100 h-100"
+             fxLayout="row"
+             fxLayoutAlign="center center">
+          <app-product-action [isProductScorable]="false"
+                              [isProductSellable]="true"
+                              [product]="product"
+                              (updateScore)="updateScoreProduct($event)"></app-product-action>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<section class="container my-5"
+         fxLayout="row"
+         *ngFor="let section of sections">
+  <article class="section-card"
+           *ngIf="product">
+    <div class="title-wrapper">
+      <span class="text-uppercase">
+        {{ 'product-detail.section.title.' + section.title |translate }}
+      </span>
+    </div>
+
+    <div class="section-description-wrapper">
+      <div [ngSwitch]="section.title">
+        <b *ngSwitchCase="'overview'">
+          <mat-list>
+            <mat-list-item *ngFor="let spec of section.specifications">
+              {{ spec  }}
+            </mat-list-item>
+          </mat-list>
+        </b>
+        <b *ngSwitchCase="'description'">
+          <div class="my-3">
+            <p>
+              {{ product.short_description }}
+            </p>
+            <p>
+              {{ product.description }}
+            </p>
+          </div>
+        </b>
+        <b *ngSwitchCase="'review'">
+          <span *ngFor="let star of [1, 2, 3, 4, 5]">
+            <mat-icon *ngIf="star <= product.score">star_rate</mat-icon>
+            <mat-icon *ngIf="star > product.score">star_border</mat-icon>
+          </span>
+        </b>
+      </div>
+    </div>
+  </article>
+</section>

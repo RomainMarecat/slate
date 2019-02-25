@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { Slider } from './shared/slider';
@@ -10,16 +10,7 @@ import { Slider } from './shared/slider';
 })
 export class HeaderComponent implements OnInit {
 
-  sliders: Slider[] = [
-    {
-      title: 'magazines',
-      image: '/assets/images/bg-1.jpg',
-
-    }, {
-      title: 'shopping',
-      image: '/assets/images/bg-2.jpg'
-    }
-  ];
+  @Input() slidersOptions: {sliders: Slider[]};
 
   constructor(public router: Router,
               private localizeService: LocalizeRouterService) {

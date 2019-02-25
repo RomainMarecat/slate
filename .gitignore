@@ -50,3 +50,9 @@ design/gt500.psd
 .firebase/*
 .firebase
 src/app-alr/assets/*.css
+
+# firebase
+public
+functions/node_modules
+functions/dist
+firebase-debug.log

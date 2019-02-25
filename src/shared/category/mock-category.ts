@@ -17,7 +17,7 @@ export const mockStoreCategories: Category[] = [
     translations: {
       fr: faker.commerce.product()
     },
-    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+    image: '/assets/images/category/cat1.jpg'
   },
   {
     key: faker.random.uuid(),
@@ -26,7 +26,7 @@ export const mockStoreCategories: Category[] = [
     translations: {
       fr: faker.commerce.product()
     },
-    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+    image: '/assets/images/category/cat2.jpg'
   },
   {
     key: faker.random.uuid(),
@@ -35,7 +35,7 @@ export const mockStoreCategories: Category[] = [
     translations: {
       fr: faker.commerce.product()
     },
-    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+    image: '/assets/images/category/cat1.jpg'
   },
   {
     key: faker.random.uuid(),
@@ -44,7 +44,7 @@ export const mockStoreCategories: Category[] = [
     translations: {
       fr: faker.commerce.product()
     },
-    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+    image: '/assets/images/category/cat2.jpg'
   },
   {
     key: faker.random.uuid(),
@@ -53,7 +53,7 @@ export const mockStoreCategories: Category[] = [
     translations: {
       fr: faker.commerce.product()
     },
-    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+    image: '/assets/images/category/cat1.jpg'
   },
   {
     key: faker.random.uuid(),
@@ -62,7 +62,7 @@ export const mockStoreCategories: Category[] = [
     translations: {
       fr: faker.commerce.product()
     },
-    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+    image: '/assets/images/category/cat2.jpg'
   },
   {
     key: faker.random.uuid(),
@@ -71,7 +71,7 @@ export const mockStoreCategories: Category[] = [
     translations: {
       fr: faker.commerce.product()
     },
-    image: faker.image.imageUrl(486, 79) + '?id=' + faker.random.uuid()
+    image: '/assets/images/category/cat2.jpg'
   },
 ];
 

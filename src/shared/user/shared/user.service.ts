@@ -44,12 +44,7 @@ export class UserService {
       .pipe(
         timeout(5000),
         take(1),
-        map(authState => !!authState),
-        tap(authenticated => {
-          if (!authenticated) {
-            this.alertService.toast('user.access_denied.connect');
-          }
-        })
+        map(authState => !!authState)
       );
   }
 

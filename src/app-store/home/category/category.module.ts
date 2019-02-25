@@ -29,9 +29,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     TranslateModule.forChild(),
     LocalizeRouterModule
   ],
-  providers: [
-    {provide: CategoryService, useClass: MockCategoryService} // @todo to remove
-  ]
 })
 export class CategoryModule {
 }
