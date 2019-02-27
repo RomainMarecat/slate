@@ -62,7 +62,7 @@ export const TABLE_EVENT = new InjectionToken<string>('event');
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_AREA = new InjectionToken<string>('area');
 export const TABLE_CART = new InjectionToken<string>('cart');
-export const TABLE_PRODUCT = new InjectionToken<string>('clothes');
+export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_CONTACT = new InjectionToken<string>('contact');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
 export const TABLE_SELECTION = new InjectionToken<string>('selection');
@@ -152,7 +152,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_POST, useValue: 'post'},
     {provide: TABLE_PARTNER, useValue: 'partner'},
     {provide: TABLE_PAYMENT, useValue: 'payment'},
-    {provide: TABLE_PRODUCT, useValue: 'clothes'},
+    {provide: TABLE_PRODUCT, useValue: 'product'},
     {provide: TABLE_SELECTION, useValue: 'selection'},
     {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_SCORE, useValue: 'scores'},

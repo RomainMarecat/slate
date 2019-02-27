@@ -3,6 +3,11 @@
         "title": "Découvrez nos catégories",
         "subtitle": "Sélectionner une catégorie afin de découvrir notre large gamme des produits"
     },
+    "cta": {
+        "btn_slider": "Accéder à l'offre",
+        "show-product": "voir le produit",
+        "add-to-cart": "ajouter au panier"
+    },
     "menu": {
         "connection": {
             "title": "Se connecter"
@@ -10,7 +15,21 @@
         "title1": "store",
         "title2": ""
     },
-    "cta": {
-        "btn_slider": "Accéder à l'offre"
+    "product-detail": {
+        "brand": {
+            "prefix": "par"
+        },
+        "section": {
+            "title": {
+                "overview": "aperçu",
+                "description": "description",
+                "review": "avis"
+            }
+        }
+    },
+    "product-item": {
+        "new": {
+            "text": "nouveauté"
+        }
     }
 }

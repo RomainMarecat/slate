@@ -8,6 +8,7 @@ import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 import { TransferState } from '@angular/platform-browser';
 import { TranslateServerLoader } from '../shared/i18n/translate-server-loader.service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
 export function translateFactory(transferState: TransferState): TranslateServerLoader {
@@ -16,10 +17,11 @@ export function translateFactory(transferState: TransferState): TranslateServerL
 
 @NgModule({
   imports: [
-    AppModule,
-    FlexLayoutServerModule,
     ServerModule,
     ServerTransferStateModule,
+    AppModule,
+    NoopAnimationsModule,
+    FlexLayoutServerModule,
     ModuleMapLoaderModule,
     TranslateModule.forRoot({
       loader: {

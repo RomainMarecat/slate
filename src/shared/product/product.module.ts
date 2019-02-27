@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import {
   MatAutocompleteModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule,
-  MatInputModule, MatSelectModule, MatStepperModule, MatExpansionModule
+  MatInputModule, MatSelectModule, MatStepperModule, MatExpansionModule, MatListModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -24,6 +24,7 @@ import { ProductAddComponent } from './product-add/product-add.component';
 import { ScoreService } from '../score/score.service';
 import { ProductService } from './shared/product.service';
 import { ProductComponent } from './product/product.component';
+import { MockProductService } from './shared/mock-product.service';
 
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_SCORE = new InjectionToken<string>('score');
@@ -36,6 +37,7 @@ export const TABLE_SCORE = new InjectionToken<string>('score');
     FlexLayoutModule,
     LoaderModule,
     MatFormFieldModule,
+    MatListModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,
@@ -76,6 +78,7 @@ export const TABLE_SCORE = new InjectionToken<string>('score');
     {provide: ScoreService, useClass: ScoreService, deps: [AngularFirestore, TABLE_SCORE]},
     {provide: TABLE_PRODUCT, useValue: 'product'},
     {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
+    {provide: ProductService, useClass: MockProductService}, // @todo remove mock
   ]
 })
 export class ProductModule {

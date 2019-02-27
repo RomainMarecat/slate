@@ -1,7 +1,7 @@
 <div class="header-component">
   <header class="header-component main-wrapper">
-    <carousel>
-      <slide *ngFor="let slider of sliders">
+    <carousel *ngIf="slidersOptions">
+      <slide *ngFor="let slider of slidersOptions.sliders">
         <img class="img-slide"
              [src]="slider.image"
              [alt]="slider.title">

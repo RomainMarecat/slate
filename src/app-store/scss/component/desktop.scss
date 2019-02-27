@@ -1,39 +1,44 @@
 @include media-breakpoint-up(lg) {
-  // bloc CAROUSEL
-  .carousel {
-    height: 450px;
+  // HOME HEADER CAROUSEL
+  app-header {
+    header {
+      .carousel {
+        height: 450px;
 
-    .carousel-inner {
-      height: 100%;
+        .carousel-inner {
+          height: 100%;
 
-      .carousel-caption {
-        color: mat-color($primary);
-      }
-    }
+          .carousel-caption {
+            color: mat-color($primary);
+          }
+        }
 
-    .carousel-control {
-      display: none;
-    }
+        .carousel-control {
+          display: none;
+        }
 
-    .carousel-indicators {
-      bottom: 0;
-      margin-bottom: 0;
+        .carousel-indicators {
+          bottom: 0;
+          margin-bottom: 0;
 
-      li {
-        margin: 4px 5px 0;
-        height: 5px;
-        width: 40px;
+          li {
+            margin: 4px 5px 0;
+            height: 5px;
+            width: 40px;
 
-        &.active {
-          margin-top: 0;
+            &.active {
+              margin-top: 0;
+            }
+          }
         }
       }
     }
   }
 
+
   // BLOCK HOME - CATEGORIES
-  .category-item-component {
-    &.main-wrapper {
+  app-category-item {
+    .main-wrapper {
       border: 0.5px solid $block-color-light-grey;
 
       .image-wrapper {
@@ -58,6 +63,51 @@
             text-decoration: none;
           }
         }
+      }
+    }
+  }
+
+  app-product-item {
+    border: .5px solid $block-color-light-grey;
+
+    .product-detail-top-icons-wrapper {
+      .icon-wrapper {
+        @include transition(all .2s ease-in);
+      }
+    }
+
+    .card-discount-wrapper {
+      .card-discount {
+        color: mat-color($white);
+        background-color: mat-color($primary);
+        font-family: $primary-font;
+      }
+    }
+
+    .card-product-new {
+      .product-new {
+        color: mat-color($white);
+        background-color: mat-color($primary);
+      }
+
+      .product-picto {
+        color: mat-color($primary);
+        border-color: mat-color($primary);
+      }
+    }
+
+    .product-item-price {
+      .product-item-price-text, .product-item-price-value {
+        font-family: $primary-font;
+      }
+    }
+
+    .btn-card {
+      background-color: transparent;
+      font-family: $primary-font;
+
+      &:hover {
+        color: mat-color($primary);
       }
     }
   }

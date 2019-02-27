@@ -148,7 +148,7 @@ export class VisitorService {
   /**
    * Delete a document
    */
-  deleteDocument(document: Document) {
-    this.collectionRef.doc(document.key).delete();
+  deleteDocument(document: Document): Promise<void> {
+    return this.collectionRef.doc(document.key).delete();
   }
 }

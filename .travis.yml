@@ -13,8 +13,8 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 before_deploy:
-  - ./node_modules/@angular/cli/bin/ng build --configuration=production --project=recipe
-  - firebase use recipe
+  - npm run build
+  - firebase use store
 deploy:
   - skip_cleanup: true
     provider: firebase

@@ -23,7 +23,9 @@ export class Product implements ClothingProduct, HockeyProduct {
   user: string;
   creator ?: string;
 
+  novelty?: boolean;
   description ?: string;
+  short_description?: string;
   external_url ?: string;
   thumbnail: string;
   images ?: string[];

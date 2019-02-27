@@ -1,6 +1,11 @@
 <div class="page-home">
   <div fxLayout="row">
-    <app-header></app-header>
+    <app-product-newer [authenticated]="authenticated"
+                       [options]="productOptions"></app-product-newer>
+  </div>
+
+  <div fxLayout="row">
+    <app-header [slidersOptions]="sliderOptions"></app-header>
   </div>
 
   <div fxLayout="row">

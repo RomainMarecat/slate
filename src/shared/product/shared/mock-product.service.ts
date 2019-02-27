@@ -1,4 +1,4 @@
-import { mockProduct } from './mock-product';
+import { mockHomeProductNewer, mockProduct } from './mock-product';
 import { Product } from './product';
 import { Observable, of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
@@ -28,6 +28,10 @@ export class MockProductService {
   }
 
   getProducts(): Observable<Array<Product>> {
-    return of([mockProduct]);
+    return of(mockHomeProductNewer);
+  }
+
+  getProduct(): Observable<Product> {
+    return of(mockProduct);
   }
 }

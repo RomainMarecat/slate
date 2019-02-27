@@ -1,0 +1,162 @@
+<div class="product-item" *ngIf="options">
+  <ng-container *ngIf="options.layout === 'card'; then cards; else list">
+  </ng-container>
+</div>
+<!-- VUE CARTE -->
+<ng-template #cards>
+  <div class="product-item-top-icons-wrapper"
+       fxLayout="row">
+    <div class="text-center"
+         fxFlex="30"
+         fxFlexOffset="40">
+      <div class="icon-wrapper"
+           [title]="'cta.add_to_favorite'|translate"
+           (click)="toggleFavorite(product, favoriteProduct)"
+           [class.background-primary]="favoriteProduct?.key"
+           [matTooltipDisabled]="matTooltipFavorite.length === 0"
+           [matTooltip]="matTooltipFavorite|translate"
+           *ngIf="authenticated">
+        <mat-icon>star_rate</mat-icon>
+      </div>
+    </div>
+    <div class="text-center"
+         fxFlex="30">
+      <div class="icon-wrapper pointer"
+           [title]="'cta.add_to_cart'|translate"
+           [class.background-primary]="inCart"
+           (click)="addToCart(product)"
+           [matTooltipDisabled]="matTooltipCart.length === 0"
+           [matTooltip]="matTooltipCart|translate">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </div>
+    </div>
+  </div>
+
+  <a [attr.data-content]="product?.name"
+     [attr.title]="'cta.show-product'|translate"
+     class="card-img-container"
+     fxLayout="row"
+     [routerLink]="['products/detail', product.key]|localize">
+    <div class="card-wrapper card-img-top"
+         fxFlex="100">
+      <app-storage-image [resize]="{height: 200}"
+                         [matCardImage]="false"
+                         [downloadURL]="product.image1"></app-storage-image>
+    </div>
+    <div class="card-discount-wrapper" *ngIf="product">
+      <div class="card-discount" *ngIf="getDiscountRate(product) !== 0">
+        {{ getDiscountRate(product) }}%
+      </div>
+    </div>
+  </a>
+
+  <div class="card-product-new text-center"
+       fxLayout="row">
+    <div fxFlex="50"
+         fxFlexOffset="25"
+         *ngIf="product.novelty === true">
+      <div fxLayout="row">
+        <div class="product-new"
+             fxFlex="70">
+          <span>{{ 'product-item.new.text'|translate }}</span>
+        </div>
+        <div class="product-picto"
+             fxFlex="30">
+          <mat-icon color="primary">notifications</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-name flex-container mt-2"
+       fxLayout="row">
+    <div fxFlex="90"
+         fxFlexOffset="10">
+      <span>
+        {{product?.name | uppercase}}
+      </span>
+    </div>
+  </div>
+
+  <div class="product-item-price"
+       fxLayout="row"
+       fxLayoutAlign="center center">
+    <div fxFlex.xs="100"
+         fxFlex.gt-sm="60"
+         fxFlexOffset.gt-sm="10"
+         fxFlexOffset.xs="0">
+      <p class="product-item-short-description-text">
+        {{product?.short_description}}
+      </p>
+    </div>
+    <div class="text-center"
+         fxFlex.xs="100"
+         fxFlex.gt-sm="30">
+      <p class="product-item-price-value">
+        {{ (product?.promo ? product.promo : product?.price) | currency:'EUR' }}
+      </p>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlex="50"
+         fxFlexOffset="25">
+      <a [routerLink]="['products/detail', product.key]|localize"
+         [attr.title]="'cta.show-product'|translate"
+         class="btn btn-card"
+         mat-stroked-button>
+        {{ 'cta.show-product'|translate }}
+      </a>
+    </div>
+  </div>
+</ng-template>
+
+<!-- VUE LISTE -->
+<ng-template #list>
+  <div class="row list-view flex-container">
+    <div class="col-lg-1 col-1 text-center">
+      <div class="icon-wrapper"
+           [title]="'cta.add_to_favorite'|translate"
+           (click)="toggleFavorite(product, favoriteProduct)"
+           [class.background-primary]="favoriteProduct?.key"
+           [matTooltipDisabled]="matTooltipFavorite.length === 0"
+           [matTooltip]="matTooltipFavorite|translate"
+           *ngIf="authenticated">
+        <mat-icon>star_rate</mat-icon>
+      </div>
+    </div>
+    <div class="col-lg-4 col-4">
+      <span>{{product?.name | uppercase}}</span>
+    </div>
+    <div class="col-lg-1 col-1 text-center" *ngIf="product">
+      <div class="card-discount" *ngIf="getDiscountRate(product) !== 0">
+        <span>{{ getDiscountRate(product) }}%</span>
+      </div>
+    </div>
+    <div class="col-lg-2 col-2 text-center list-price">
+      <span class="price-text">
+        {{ (product?.promo ? 'product-item.price.text' : 'product-item.public-price.text')|translate }}
+      </span>
+      <span class="price-value">
+        {{(product?.promo ? product?.promo : product?.price) | currency:'EUR' }}
+      </span>
+    </div>
+    <div class="col-lg-3 col-3 text-center">
+      <a [routerLink]="['products/detail', product.key]|localize"
+         [attr.title]="'cta.show-product'|translate"
+         class="btn btn-card">
+        {{ 'cta.show-product'|translate }}
+      </a>
+    </div>
+    <div class="col-lg-1 col-1 text-center">
+      <div class="icon-wrapper pointer"
+           [title]="'cta.add_to_cart'|translate"
+           [matTooltipDisabled]="matTooltipCart.length === 0"
+           [matTooltip]="matTooltipCart|translate"
+           [class.background-primary]="inCart"
+           (click)="addToCart(product)">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </div>
+    </div>
+  </div>
+</ng-template>
