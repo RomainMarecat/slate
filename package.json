@@ -15,15 +15,15 @@
     "build-universal": "npm run build:ssr",
     "build-universal2": "npm run build:ssr2",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:ssr",
-    "serve:ssr": "sed -i '/module.exports = require(\".\")/d' ./dist/server/main.js && node dist/server.js",
+    "serve:ssr": "sed -i '/module.exports = require(\".\")/d' ./functions/dist/server/main.js && node functions/dist/server.js",
     "build:client-and-server-bundles": "ng build --configuration=production --project=store && ng run store:server:production",
     "webpack:ssr": "webpack --config webpack.server.config.js --progress --colors",
     "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
     "build:ssr2": "npm run build:client-and-server-bundles && npm run compile:server",
     "compile:server": "tsc -p server.tsconfig.json",
     "generate:prerender": "cd dist && node prerender",
-    "serve:prerender": "cd dist/browser && http-server",
-    "serve:ssr2": "sed -i '/module.exports = require(\".\")/d' ./dist/server/main.js && node dist/server"
+    "serve:prerender": "cd functions/dist/browser && http-server",
+    "serve:ssr2": "sed -i '/module.exports = require(\".\")/d' ./functions/dist/server/main.js && node functions/dist/server"
   },
   "private": true,
   "dependencies": {

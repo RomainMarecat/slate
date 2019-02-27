@@ -13,7 +13,10 @@ const domino = require('domino');
 const fs = require('fs');
 const path = require('path');
 // index from browser build!
-const template = fs.readFileSync(path.join(__dirname, '.', 'functions', 'dist', 'index.html')).toString();
+const template = fs
+  .readFileSync(path.resolve(__dirname, './functions/dist/browser/index.html'), 'utf8')
+  .toString();
+
 // for mock global window by domino
 const win = domino.createWindow(template);
 win.navigator.language = 'fr';
@@ -36,7 +39,6 @@ global['document'] = win.document;
 global['CSS'] = null;
 // global['XMLHttpRequest'] = require('xmlhttprequest').XMLHttpRequest;
 global['Prism'] = null;
-
 
 import { enableProdMode } from '@angular/core';
 // Express Engine
@@ -78,7 +80,6 @@ app.get('/api/*', (req, res) => {
   res.status(404).send('data requests are not supported');
 });
 
-// Server static files from /browser
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser'), {
   maxAge: '1y'

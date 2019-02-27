@@ -13,7 +13,7 @@ const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist/server/main'
 
 enableProdMode();
 
-const template = require('fs')
+const template = fs
     .readFileSync(path.resolve(__dirname, './dist/browser/index.html'), 'utf8')
     .toString();
 

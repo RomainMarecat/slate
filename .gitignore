@@ -52,7 +52,9 @@ design/gt500.psd
 src/app-alr/assets/*.css
 
 # firebase
-public
+!/public
+public/*
+!/public/.gitkeep
 functions/node_modules
 functions/dist
 firebase-debug.log
