@@ -14,7 +14,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 before_deploy:
   - npm run build
-  - mv functions/dist/browser/. public
+  - mv ./functions/dist/browser/. ./public
   - firebase use store
 deploy:
   - skip_cleanup: true
