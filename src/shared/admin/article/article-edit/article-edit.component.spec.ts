@@ -33,7 +33,7 @@ import { DateService } from '../../../util/date.service';
 import { MockAttributeService } from '../../../attribute/mock-attribute.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
 import { ProductService } from '../../../product/shared/product.service';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';

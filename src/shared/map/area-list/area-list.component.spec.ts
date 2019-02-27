@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgArrayPipesModule } from 'ngx-pipes';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 

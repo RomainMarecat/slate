@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Area } from '../shared/area';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-area-list',

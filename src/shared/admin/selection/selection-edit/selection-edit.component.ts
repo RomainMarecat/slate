@@ -9,7 +9,7 @@ import { Media } from '../../../media/media';
 import { StringService } from '../../../util/string.service';
 import { SelectionService } from '../../../selection/selection.service';
 import { ProductService } from '../../../product/shared/product.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({

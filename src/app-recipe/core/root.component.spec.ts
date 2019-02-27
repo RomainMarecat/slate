@@ -48,7 +48,7 @@ import { MockCmsService } from '../../shared/cms/shared/mock-cms.service';
 import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { environment } from '../../app-hockey/environments/environment';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockRecipeService } from '../recipe/shared/mock-recipe.service';

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { LoginListComponent } from './login-list/login-list.component';
 import { Login1Component } from './login1/login1.component';
 import { Login2Component } from './login2/login2.component';

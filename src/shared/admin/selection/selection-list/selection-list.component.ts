@@ -7,7 +7,7 @@ import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 import { SelectionService } from '../../../selection/selection.service';
 import { ProductService } from '../../../product/shared/product.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-selection-list',

@@ -3,7 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { ScrollService } from '../../../shared/scroll/shared/scroll.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/overlay';
 import { take, timeout } from 'rxjs/operators';
 import { Subscription } from 'rxjs';

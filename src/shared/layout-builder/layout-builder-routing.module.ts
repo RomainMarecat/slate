@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutBuilderEditComponent } from './layout-builder-edit/layout-builder-edit.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 
 const routes: Routes = [
   {

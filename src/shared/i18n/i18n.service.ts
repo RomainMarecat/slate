@@ -1,5 +1,5 @@
 import { Injectable, Inject, LOCALE_ID, PLATFORM_ID } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { MissingTranslationHandler, MissingTranslationHandlerParams, TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class I18nService {
@@ -25,5 +25,18 @@ export class I18nService {
     if (browserLanguage !== this.locale) {
       this.translateService.use(this.locale);
     }
+  }
+}
+
+export class CommonMissingTranslationHandler implements MissingTranslationHandler {
+  handle(params: MissingTranslationHandlerParams) {
+    if (
+      params.key.match(/\w+\.\w+/) &&
+      params.translateService.translations['fr'] &&
+      !params.translateService.translations['fr'][params.key]
+    ) {
+      console.warn(`Missing key "${params.key}"`);
+    }
+    return params.key;
   }
 }

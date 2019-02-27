@@ -3,7 +3,7 @@ import { ContactService } from '../../../contact/shared/contact.service';
 import { AlertService } from '../../../popup/alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '../../../contact/shared/contact';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-blog-contact-detail',

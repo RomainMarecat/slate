@@ -31,7 +31,7 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductService } from '../../../product/shared/product.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MediaModule } from '../../../media/media.module';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';

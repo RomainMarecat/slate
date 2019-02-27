@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 const routes: Routes = [

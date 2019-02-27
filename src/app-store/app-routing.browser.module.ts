@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings, ManualParserLoader } from '@gilsdav/ngx-translate-router';
+import { RouterModule, Routes } from '@angular/router';
+import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings, ManualParserLoader } from 'localize-router';
 import { TranslateService } from '@ngx-translate/core';
 import { Location } from '@angular/common';
 
-export function ManualLoaderFactory(translate: TranslateService, location: Location, settings: LocalizeRouterSettings) {
+export function localizeLoaderFactory(translate: TranslateService, location: Location, settings: LocalizeRouterSettings) {
   return new ManualParserLoader(translate, location, settings, ['fr', 'en'], 'routes.');
 }
 
@@ -28,7 +28,7 @@ const routes: Routes = [
     LocalizeRouterModule.forRoot(routes, {
       parser: {
         provide: LocalizeParser,
-        useFactory: ManualLoaderFactory,
+        useFactory: localizeLoaderFactory,
         deps: [TranslateService, Location, LocalizeRouterSettings]
       },
       alwaysSetPrefix: false
@@ -42,5 +42,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule {
+export class AppRoutingBrowserModule {
 }

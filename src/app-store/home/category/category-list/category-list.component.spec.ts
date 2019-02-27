@@ -7,7 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MatIconModule } from '@angular/material';
 import { StorageModule } from '../../../../shared/media/storage/storage.module';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../../../shared/router/mock-localize-router.service';
 import { configureTestSuite } from '../../../../shared/unit-test/configure-test-suite';
 import { CategoryService } from '../../../../shared/category/category.service';

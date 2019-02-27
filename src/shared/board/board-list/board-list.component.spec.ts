@@ -13,7 +13,7 @@ import { MockBoardService } from '../shared/mock-board.service';
 import { MockColumnService } from '../shared/mock-column.service';
 import { MockCardService } from '../shared/mock-card.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { SharedModule } from '../../shared.module';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { BoardDetailComponent } from '../board-detail/board-detail.component';

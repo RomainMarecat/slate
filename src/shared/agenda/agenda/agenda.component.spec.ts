@@ -16,7 +16,7 @@ import { AlertService } from '../../popup/alert.service';
 import { SessionService } from '../../session/shared/session.service';
 import { MockSessionService } from '../../session/shared/mock-session.service';
 import { RoutingState } from '../../util/routing-state';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { SeoModule } from '../../seo/seo.module';

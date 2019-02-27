@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { SearchDialogComponent } from '../search/search-dialog/search-dialog.component';
 import { Filter } from '../facet/filter/shared/filter';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { User } from '../user/shared/user';
 import { adminsID } from '../guard/admin';
 

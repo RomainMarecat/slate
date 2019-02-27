@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { SortHeaderComponent } from './sort-header/sort-header.component';
 import { TableComponent } from './table/table.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 
 const routes: Routes = [
   {

@@ -14,7 +14,7 @@ import { AlertService } from '../../../popup/alert.service';
 import { SharedModule } from '../../../shared.module';
 import { MenuService } from '../../../menu/menu.service';
 import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 
 describe('CategoryListComponent', () => {
   let component: CategoryListComponent;

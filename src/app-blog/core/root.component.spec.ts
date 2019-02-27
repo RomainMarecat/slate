@@ -49,7 +49,7 @@ import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { environment } from '../../app-hockey/environments/environment';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { ArticleModule } from '../../shared/article/article.module';
 import { ContactModule } from '../../shared/contact/contact.module';
 import { MapModule } from '../../shared/map/map.module';

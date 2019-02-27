@@ -3,10 +3,10 @@ import { Subscription } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { map } from 'rxjs/operators';
 import { Filter } from '../../facet/filter/shared/filter';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-search',

@@ -14,6 +14,8 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LocalizeRouterModule } from 'localize-router';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -26,6 +28,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatIconModule,
     MatFormFieldModule,
     MatAutocompleteModule,
+    RouterModule,
     SearchRoutingModule,
     TranslateModule.forChild()
   ],

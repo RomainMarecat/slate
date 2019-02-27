@@ -4,7 +4,7 @@ import { Recipe } from '../../recipe/shared/recipe';
 import { RecipeService } from '../../recipe/shared/recipe.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { SeoService } from '../../../shared/seo/shared/seo.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { Filter } from '../../../shared/facet/filter/shared/filter';
 import { StringService } from '../../../shared/util/string.service';
 import { MenuService } from '../../../shared/menu/menu.service';

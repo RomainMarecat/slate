@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
 import { SelectionListComponent } from './selection-list/selection-list.component';
 import { SelectionEditComponent } from './selection-edit/selection-edit.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { SelectionComponent } from './selection/selection.component';
 
 const routes: Routes = [

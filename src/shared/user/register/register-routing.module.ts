@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { RegisterComponent } from './register/register.component';
 import { RegisterListComponent } from './register-list/register-list.component';
 import { Register1Component } from './register1/register1.component';

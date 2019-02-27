@@ -15,7 +15,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CmsService } from '../../cms/shared/cms.service';
 import { CmsDetailComponent } from './cms-detail/cms-detail.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 
 const TABLE_CMS_DETAIL = new InjectionToken<string>('cms-detail');
 const TABLE_CMS = new InjectionToken<string>('cms');

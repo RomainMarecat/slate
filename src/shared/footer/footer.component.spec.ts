@@ -11,7 +11,7 @@ import { MockCmsService } from '../cms/shared/mock-cms.service';
 import { CmsService } from '../cms/shared/cms.service';
 import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
 import { MockCmsDetailService } from '../cms-detail/shared/mock-cms-detail.service';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../router/mock-localize-router.service';
 import { configureTestSuite } from '../unit-test/configure-test-suite';
 

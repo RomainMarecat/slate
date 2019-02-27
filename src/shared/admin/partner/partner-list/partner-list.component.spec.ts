@@ -15,7 +15,7 @@ import { PartnerListComponent } from './partner-list.component';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { PartnerImportComponent } from '../partner-import/partner-import.component';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 import { PartnerService } from '../../../partner/partner.service';
 import { MockPartnerService } from '../../../partner/mock-partner.service';

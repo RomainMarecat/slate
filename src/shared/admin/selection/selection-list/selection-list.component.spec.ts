@@ -26,7 +26,7 @@ import { SelectionService } from '../../../selection/selection.service';
 import { MockSelectionService } from '../../../selection/mock-selection.service';
 import { ProductService } from '../../../product/shared/product.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 

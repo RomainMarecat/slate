@@ -9,7 +9,7 @@ import { ArticleService } from '../../../article/shared/article.service';
 import { ArticleFormType } from '../../shared/article/form-article';
 import { MatIconRegistry } from '@angular/material';
 import { debounceTime } from 'rxjs/operators';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { Media } from '../../../media/media';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';

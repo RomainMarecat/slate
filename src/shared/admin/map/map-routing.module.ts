@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
 import { MapListComponent } from './map-list/map-list.component';
 import { MapEditComponent } from './map-edit/map-edit.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { MapComponent } from './map/map.component';
 
 const routes: Routes = [

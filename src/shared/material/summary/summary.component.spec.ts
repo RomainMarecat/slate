@@ -6,7 +6,7 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { SummaryComponent } from './summary.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { SeoModule } from '../../seo/seo.module';

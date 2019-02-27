@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Invoice1Component } from './invoice1/invoice1.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { Invoice2Component } from './invoice2/invoice2.component';
 import { InvoiceComponent } from './invoice/invoice.component';

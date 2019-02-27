@@ -36,7 +36,7 @@ import { MockUserService } from '../../../user/shared/mock-user.service';
 import { environment } from '../../../../app-hockey/environments/environment';
 import { ProductService } from '../../../product/shared/product.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 
 describe('AttributeEditComponent', () => {

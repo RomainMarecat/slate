@@ -9,7 +9,7 @@ import { MapService } from '../../../map/shared/map.service';
 import { AreaFormType } from '../../shared/map/form-area';
 import { Area } from '../../../map/shared/area';
 import { AreaService } from '../../../map/shared/area.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-admin-map-edit',

@@ -5,7 +5,7 @@ import { CmsService } from '../../../cms/shared/cms.service';
 import { Observable } from 'rxjs';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { MenuService } from '../../../menu/menu.service';
 
 @Component({

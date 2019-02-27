@@ -21,7 +21,7 @@ import { ProductService } from '../../../product/shared/product.service';
 import { debounceTime, take } from 'rxjs/operators';
 import { PartnerService } from '../../../partner/partner.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;
 

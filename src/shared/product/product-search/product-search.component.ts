@@ -7,7 +7,7 @@ import { Category } from '../../category/category';
 import { map, startWith, take } from 'rxjs/operators';
 import { CategoryService } from '../../category/category.service';
 import { Router } from '@angular/router';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-product-search',

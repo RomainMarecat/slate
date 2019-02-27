@@ -4,7 +4,7 @@ import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MenuService } from '../../../menu/menu.service';
 import { VisitorService } from '../../../firestore/visitor.service';
 import { MatDialog } from '@angular/material';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { Router } from '@angular/router';
 
 @Component({

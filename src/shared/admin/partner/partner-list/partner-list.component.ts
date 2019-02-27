@@ -6,7 +6,7 @@ import { Partner } from '../../../partner/partner';
 import { PartnerService } from '../../../partner/partner.service';
 import { MenuService } from '../../../menu/menu.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-partner-list',

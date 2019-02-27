@@ -27,7 +27,7 @@ import { MockCartService } from '../../cart/shared/mock-cart.service';
 import { CartService } from '../../cart/shared/cart.service';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
 describe('ProductActionComponent', () => {

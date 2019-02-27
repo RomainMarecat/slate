@@ -53,7 +53,7 @@ import { CmsService } from '../../cms/shared/cms.service';
 import { MockCmsService } from '../../cms/shared/mock-cms.service';
 import { CmsDetailService } from '../../cms-detail/shared/cms-detail.service';
 import { environment } from '../../../app-hockey/environments/environment';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { BreadcrumbModule } from '../../breadcrumb/breadcrumb.module';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';

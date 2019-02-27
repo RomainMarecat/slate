@@ -3,7 +3,7 @@ import { Area } from '../shared/area';
 import { Path2DConstructor } from '../shared/path2d';
 import { Router } from '@angular/router';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 
 declare var Path2D: Path2DConstructor;
 

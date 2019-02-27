@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { AdminGuard } from '../../../guard/admin.guard';
 
 const routes: Routes = [

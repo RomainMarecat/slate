@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Board } from '../shared/board';
 import { BoardService } from '../shared/board.service';
 import { Router } from '@angular/router';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { SeoService } from '../../seo/shared/seo.service';
 
 @Component({

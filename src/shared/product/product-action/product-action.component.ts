@@ -8,7 +8,7 @@ import { CartService } from '../../cart/shared/cart.service';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../loader/loader.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { take } from 'rxjs/operators';
 
 @Component({

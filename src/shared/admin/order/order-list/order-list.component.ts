@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { BaseListComponent } from '../../base/base-list/base-list.component';
 import { Order } from '../../../order/shared/order';
 import { MenuService } from '../../../menu/menu.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { OrderService } from '../../../order/shared/order.service';

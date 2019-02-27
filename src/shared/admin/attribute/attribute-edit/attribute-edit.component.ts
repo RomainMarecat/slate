@@ -8,7 +8,7 @@ import { AttributeService } from '../../../attribute/attribute.service';
 import { Attribute } from '../../../attribute/attribute';
 import { AttributeFormType } from '../../shared/attribute/form-attribute';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({

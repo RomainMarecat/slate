@@ -4,7 +4,7 @@ import { HeaderComponent } from './header.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CarouselConfig, CarouselModule } from 'ngx-bootstrap';
 import { RouterTestingModule } from '@angular/router/testing';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MockLocalizeRouterService } from '../../../../shared/router/mock-localize-router.service';
 import { configureTestSuite } from '../../../../shared/unit-test/configure-test-suite';

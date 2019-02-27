@@ -12,7 +12,7 @@ import {
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { RecipeService } from '../../../app-recipe/recipe/shared/recipe.service';
 import { MockRecipeService } from '../../../app-recipe/recipe/shared/mock-recipe.service';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
