@@ -4,7 +4,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { CategoryItemComponent } from './category-item/category-item.component';
 import { RouterModule } from '@angular/router';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { MatIconModule } from '@angular/material';
 import { StorageModule } from '../../../shared/media/storage/storage.module';
 import { CategoryService } from '../../../shared/category/category.service';

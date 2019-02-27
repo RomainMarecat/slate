@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CartPaymentComponent } from './cart-payment/cart-payment.component';
 import { UserGuard } from '../guard/user.guard';
 import { CartComponent } from './cart/cart.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { CartStartComponent } from './cart-start/cart-start.component';
 
 const routes: Routes = [

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { OfferEditComponent } from './offer-edit/offer-edit.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { OfferComponent } from './offer/offer.component';
 
 const routes: Routes = [{

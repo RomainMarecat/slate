@@ -27,7 +27,7 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { MockCmsService } from '../../../cms/shared/mock-cms.service';
 import { CmsService } from '../../../cms/shared/cms.service';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 
 describe('CmsDetailListComponent', () => {

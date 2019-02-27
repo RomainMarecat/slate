@@ -8,7 +8,7 @@ import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 
 @NgModule({
   imports: [

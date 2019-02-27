@@ -5,7 +5,7 @@ import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MatDialog } from '@angular/material';
 import { MapService } from '../../../map/shared/map.service';
 import { Map } from '../../../map/shared/map';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { TableColumn } from '@swimlane/ngx-datatable';
 
 @Component({

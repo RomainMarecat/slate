@@ -10,7 +10,7 @@ import { AreaDrawComponent } from '../area-draw/area-draw.component';
 import { MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgArrayPipesModule } from 'ngx-pipes';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 

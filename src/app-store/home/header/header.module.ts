@@ -4,7 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { CarouselConfig, CarouselModule } from 'ngx-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { MatButtonModule } from '@angular/material';
 
 @NgModule({

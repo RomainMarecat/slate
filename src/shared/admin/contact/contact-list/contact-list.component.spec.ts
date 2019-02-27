@@ -32,7 +32,7 @@ import { DeviceService } from '../../../device/device.service';
 import { ContactService } from '../../../contact/shared/contact.service';
 import { MockContactService } from '../../../contact/shared/mock-contact.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 

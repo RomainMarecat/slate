@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material';
 import { Article } from '../../../article/shared/article';
 import { ArticleService } from '../../../article/shared/article.service';
 import { AlertService } from '../../../popup/alert.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;

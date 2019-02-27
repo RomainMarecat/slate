@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
 import { CmsDetailListComponent } from './cms-detail-list/cms-detail-list.component';
 import { CmsDetailAddComponent } from './cms-detail-add/cms-detail-add.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { CmsDetailComponent } from './cms-detail/cms-detail.component';
 
 const routes: Routes = [

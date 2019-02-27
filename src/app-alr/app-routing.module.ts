@@ -6,7 +6,7 @@ import {
   LocalizeRouterModule,
   LocalizeRouterSettings,
   ManualParserLoader
-} from '@gilsdav/ngx-translate-router';
+} from 'localize-router';
 import { Location } from '@angular/common';
 
 export function ManualLoaderFactory(translate: TranslateService, location: Location, settings: LocalizeRouterSettings) {

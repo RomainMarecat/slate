@@ -6,7 +6,7 @@ import { AlertService } from '../../popup/alert.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DocumentReference } from '@firebase/firestore-types';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { Meta, Title } from '@angular/platform-browser';
 import { MenuService } from '../../menu/menu.service';
 import { SeoService } from '../../seo/shared/seo.service';

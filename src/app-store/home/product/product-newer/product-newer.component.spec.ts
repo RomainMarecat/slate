@@ -7,7 +7,7 @@ import { MenuModule } from '../../../../shared/menu/menu.module';
 import { StorageModule } from '../../../../shared/media/storage/storage.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../../../shared/router/mock-localize-router.service';
 import { CategoryService } from '../../../../shared/category/category.service';
 import { MockCategoryService } from '../../../../shared/category/mock-category.service';

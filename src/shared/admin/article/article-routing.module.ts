@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { AdminGuard } from '../../guard/admin.guard';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { ArticleComponent } from './article/article.component';
 
 const routes: Routes = [

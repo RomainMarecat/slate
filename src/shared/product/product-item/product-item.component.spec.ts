@@ -24,7 +24,7 @@ import { I18nService } from '../../i18n/i18n.service';
 import { MediaModule } from '../../media/media.module';
 import { environment } from '../../../app-store/environments/environment';
 import { LoaderModule } from '../../loader/loader.module';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';

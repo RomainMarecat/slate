@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../../popup/alert.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { VisitorService } from '../../../firestore/visitor.service';
 import { FormGroup } from '@angular/forms';
 import { DocumentReference } from '@angular/fire/firestore';

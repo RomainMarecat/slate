@@ -3,7 +3,7 @@ import { BaseEditComponent } from '../../../base/base-edit/base-edit.component';
 import { Recipe } from '../../../../../app-recipe/recipe/shared/recipe';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../../../popup/alert.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { RecipeService } from '../../../../../app-recipe/recipe/shared/recipe.service';
 import { DocumentReference } from '@angular/fire/firestore';
 import { RecipeFormType } from '../../../shared/recipe/form-recipe';

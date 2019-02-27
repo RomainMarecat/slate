@@ -49,7 +49,7 @@ import { MockCmsService } from '../../shared/cms/shared/mock-cms.service';
 import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 

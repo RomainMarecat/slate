@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminGuard } from '../../guard/admin.guard';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { OrderComponent } from './order/order.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OrderEditComponent } from './order-edit/order-edit.component';

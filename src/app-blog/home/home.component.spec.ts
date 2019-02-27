@@ -28,7 +28,7 @@ import { ContactService } from '../../shared/contact/shared/contact.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockMapsAPILoader } from '../../shared/map/shared/mock-maps-api-loader';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
 

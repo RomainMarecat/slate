@@ -4,7 +4,7 @@ import { HomeComponent } from './home.component';
 import { CategoryModule } from '../category/category.module';
 import { HeaderModule } from '../header/header.module';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../../shared/router/mock-localize-router.service';
 import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 import { RouterTestingModule } from '@angular/router/testing';

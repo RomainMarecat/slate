@@ -7,7 +7,7 @@ import { Contact } from '../../../contact/shared/contact';
 import { ContactService } from '../../../contact/shared/contact.service';
 import { AlertService } from '../../../popup/alert.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-admin-contact-list',

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { AdminGuard } from '../../guard/admin.guard';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [

@@ -12,7 +12,7 @@ import { SharedModule } from '../../../shared.module';
 import { PartnerEditComponent } from './partner-edit.component';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 import { PartnerService } from '../../../partner/partner.service';
 import { MockPartnerService } from '../../../partner/mock-partner.service';

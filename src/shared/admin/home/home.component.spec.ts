@@ -19,7 +19,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HomeComponent } from './home.component';
 import { SharedModule } from '../../shared.module';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MenuService } from '../../menu/menu.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';

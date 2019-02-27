@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductNewerComponent } from './product-newer/product-newer.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { ProductItemComponent } from './product-item/product-item.component';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../../../shared/menu/menu.service';
 import { Router } from '@angular/router';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { SeoService } from '../../../shared/seo/shared/seo.service';

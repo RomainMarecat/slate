@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material';
 import { Offer } from '../../../offer/offer';
 import { OfferService } from '../../shared/offer/offer.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-offer-list',

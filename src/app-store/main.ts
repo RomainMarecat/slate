@@ -1,16 +1,15 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from './app.module';
 import 'hammerjs';
 import { environment } from './environments/environment';
+import { AppBrowserModule } from './app.browser.module';
 
 if (environment.production) {
   enableProdMode();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  platformBrowserDynamic().bootstrapModule(AppModule)
+  platformBrowserDynamic().bootstrapModule(AppBrowserModule)
     .then(() => {
       if ('serviceWorker' in navigator && environment.production) {
         navigator.serviceWorker.register('/ngsw-worker.js');

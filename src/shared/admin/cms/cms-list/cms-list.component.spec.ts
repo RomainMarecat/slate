@@ -23,7 +23,7 @@ import { MockAlertService } from '../../../popup/mock-alert.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MenuService } from '../../../menu/menu.service';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 

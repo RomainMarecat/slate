@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseEditComponent } from '../../base/base-edit/base-edit.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../../../popup/alert.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 import { Order } from '../../../order/shared/order';
 import { OrderService } from '../../../order/shared/order.service';
 import { OrderFormType } from '../../shared/order/form-order';

@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../../../shared/router/mock-localize-router.service';
 import { StorageModule } from '../../../../shared/media/storage/storage.module';
 import { configureTestSuite } from '../../../../shared/unit-test/configure-test-suite';

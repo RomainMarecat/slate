@@ -1,6 +1,6 @@
 import { NavigationExtras } from '@angular/router';
 import { Subject } from 'rxjs';
-import { DummyLocalizeParser } from '@gilsdav/ngx-translate-router';
+import { DummyLocalizeParser } from 'localize-router';
 
 export class MockLocalizeRouterService {
 

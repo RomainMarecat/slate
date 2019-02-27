@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material';
 import { take } from 'rxjs/operators';
 import { AlertService } from '../../../popup/alert.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-attribute-list',

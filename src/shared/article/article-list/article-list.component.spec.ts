@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { MatCardModule } from '@angular/material';
 import { PipeModule } from '../../pipe/pipe.module';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { SeoModule } from '../../seo/seo.module';
 import { MediaModule } from '../../media/media.module';

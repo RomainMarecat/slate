@@ -8,7 +8,7 @@ import { SelectComponent } from './select/select.component';
 import { SliderComponent } from './slider/slider.component';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 
 const routes: Routes = [
   {

@@ -6,7 +6,7 @@ import { PartnerFormType } from '../../shared/partner/form-partner';
 import { PartnerService } from '../../../partner/partner.service';
 import { Partner } from '../../../partner/partner';
 import { AlertService } from '../../../popup/alert.service';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-partner-edit',

@@ -18,7 +18,7 @@ import { NgxStripeModule, StripeService } from 'ngx-stripe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterTestingModule } from '@angular/router/testing';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CartListComponent } from '../cart-list/cart-list.component';
 import { CartItemComponent } from '../cart-item/cart-item.component';

@@ -4,7 +4,7 @@ import { AdminGuard } from '../../guard/admin.guard';
 import { CmsListComponent } from './cms-list/cms-list.component';
 import { CmsDetailComponent } from './cms-detail/cms-detail.component';
 import { CmsAddComponent } from './cms-add/cms-add.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 import { CmsComponent } from './cms/cms.component';
 
 const routes: Routes = [

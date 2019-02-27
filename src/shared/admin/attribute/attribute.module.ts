@@ -10,7 +10,7 @@ import { AttributeRoutingModule } from './attribute-routing.module';
 import { AttributeListComponent } from './attribute-list/attribute-list.component';
 import { AttributeEditComponent } from './attribute-edit/attribute-edit.component';
 import { AttributeComponent } from './attribute/attribute.component';
-import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule } from 'localize-router';
 
 const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
 

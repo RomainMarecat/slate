@@ -19,7 +19,7 @@ import { MockAttributeService } from '../../../attribute/mock-attribute.service'
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
 

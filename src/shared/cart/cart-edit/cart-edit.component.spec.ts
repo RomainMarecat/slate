@@ -25,7 +25,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { CartListComponent } from '../../cart/cart-list/cart-list.component';
 import { CartItemComponent } from '../../cart/cart-item/cart-item.component';
-import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../..//router/mock-localize-router.service';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
