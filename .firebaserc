@@ -8,5 +8,17 @@
     "car": "menincar-384269",
     "store": "store-384269",
     "recipe": "recipe-384269"
+  },
+  "targets": {
+    "store-384269": {
+      "hosting": {
+        "aot": [
+          "store-384269"
+        ],
+        "ssr": [
+          "store-384269"
+        ]
+      }
+    }
   }
 }

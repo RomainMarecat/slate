@@ -1,8 +1,8 @@
 #!/bin/bash
-for site in recipe
+for site in store
 do
 	./node_modules/@angular/cli/bin/ng build --configuration=production --project=$site
 	firebase use $site
-	firebase deploy
+	firebase deploy --only=hosting:aot
 done
 exit 0

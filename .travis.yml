@@ -8,22 +8,18 @@ addons:
     packages:
       - google-chrome-stable
 before_install:
-  - npm i -g npm
+  - npm i -g npm firebase-tools
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-before_deploy:
+before_script:
   - npm run build
-  - mv ./functions/dist/browser/. ./public
   - firebase use store
-deploy:
-  - skip_cleanup: true
-    provider: firebase
-    token:
-      secure: MJ+IdTagUR8mqc8mOT9KdKalR6VuTwvR79GPetMxJGQauRjgRh8S4t6LPaG1HgJPsg378loFKFB00o3QKHTU9Fqs8BTBNfNmbk2PoCZ3x9V6iFRajuSW3qvuNWbkswe0lfmjJ7DbK+CZci6WJ61UPe6+CjCiZT9D/IYIBX+4DpWomiMjHxJIK7iPbM7e3US9HFK9RykbgdpP8YdkinJTrTO68zOX9HjpWAwoaaMj2Qy+paXAnlLHTwcxmWojA65I0ZYE8jSD+UPTKQKVNvUp312+bsK14kqZl7NgAZIvM/cXkOdNbQcOW1SUIwADSg+E6YRGPFA5ZdA/eDVk5k4BVFG8HfXFy+JcHMacYcGIPqdUWzwUDB613xADIniZLw5zVwSHD4Dr1OszB/5V9B0AgjhNx33t/45dI0ygttk6Jhe9+xvRQz8kq+EgM8hbNrMcQWAm4IMYjP/WbHUD/qB8ZOt9vvyggfjjZq40Ndl4AmA4HQyQI1R/8ash3ACgefZcOfD2DtAIPgUDfvFy/dbxHHtAyoHFh3bp79+l5it0UHFsVlI48bpJW66sJ/IuSYi9fzhGkNZ9Y/s1OA1T6E03kE9J/c1TU3A1xviz89MTP4EoNRhFszitVMQVW2wYhXbmrOClBJOszJ4ex5mEfQJaOAgwexA3bB2DTZzEG24KLWM=
-    on:
-      branch: master
-    message: Project deployed
+script:
+  - firebase deploy --only hosting:aot --token "MJ+IdTagUR8mqc8mOT9KdKalR6VuTwvR79GPetMxJGQauRjgRh8S4t6LPaG1HgJPsg378loFKFB00o3QKHTU9Fqs8BTBNfNmbk2PoCZ3x9V6iFRajuSW3qvuNWbkswe0lfmjJ7DbK+CZci6WJ61UPe6+CjCiZT9D/IYIBX+4DpWomiMjHxJIK7iPbM7e3US9HFK9RykbgdpP8YdkinJTrTO68zOX9HjpWAwoaaMj2Qy+paXAnlLHTwcxmWojA65I0ZYE8jSD+UPTKQKVNvUp312+bsK14kqZl7NgAZIvM/cXkOdNbQcOW1SUIwADSg+E6YRGPFA5ZdA/eDVk5k4BVFG8HfXFy+JcHMacYcGIPqdUWzwUDB613xADIniZLw5zVwSHD4Dr1OszB/5V9B0AgjhNx33t/45dI0ygttk6Jhe9+xvRQz8kq+EgM8hbNrMcQWAm4IMYjP/WbHUD/qB8ZOt9vvyggfjjZq40Ndl4AmA4HQyQI1R/8ash3ACgefZcOfD2DtAIPgUDfvFy/dbxHHtAyoHFh3bp79+l5it0UHFsVlI48bpJW66sJ/IuSYi9fzhGkNZ9Y/s1OA1T6E03kE9J/c1TU3A1xviz89MTP4EoNRhFszitVMQVW2wYhXbmrOClBJOszJ4ex5mEfQJaOAgwexA3bB2DTZzEG24KLWM="
+branches:
+  only:
+    - master
 notifications:
   slack:
     secure: HBTlDv0fdeax1WntTvbxpyrX+ktoIUKgSZAjOC52Amyrvg0JdYZRXMVEW6y63OneWTMBN5iCZNh7gr02858ozfmazsNLHYsxsH8rUMlR3G6hg2H2oy9KQO37ZI62SmjIUKD6rgD+bvvvbrm1POH+dW4Q3FwR+Xo26YNpo9gsZw/gwG8ulvFIeB/FGGaprJX5C1jGP+UnxMpKkP4qi3LQolsEC0BULX5g4iyoVCYdyJxLqmmDgv01d4+tjAja5GmOm0dFW8p8A8pKQYUm+6JCTYZa52/zxyTxHaJ6o6ERRWHNHP8d6l3Vg2MY9l2nEzWVhXgpYyh9WfsfmQEUBv9f0JPvugU1BwV9C+JzDhB+sWFXrmF6MwaN/WoQoB66Myxy8lerIkb/FwELA9usAI8g6CEDun2it4uERGJO5xA1WL6x+AAfkcOIT/srCEEuPwHwJHtOMpfKjKG7d9DWk7bWVGXiGVDxYv1KF5GKcCx7jkd1vKzwC3J8nKnKi6NK7lE7FgsCZSxi4bGIPC8rZeqv+NWHrJGex29puci7WxaIj75oVWBjtteOabNCFcptEvksVfxpWwqP92dFN+/JXH1HoCNRf9DviVxfqgTXTqdXWyRBXG2NwKkeZbl1rtPAsaOOBr1hUh6qfilcUblAedSY8vgX2kPwTeWIEwSRoPsTOe8=

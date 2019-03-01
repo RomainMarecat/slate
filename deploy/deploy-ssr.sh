@@ -5,6 +5,7 @@ do
 	cp -a functions/dist/browser/. public
 	mv public/index.html public/index2.html
 	firebase use $site
-	firebase deploy
+	firebase deploy --only=functions:ssr
+	firebase deploy --only=hosting:ssr
 done
 exit 0
