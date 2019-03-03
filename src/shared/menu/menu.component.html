@@ -65,10 +65,12 @@
 
   <ng-template #logged>
     <span class="icon-wrapper">
-      <a>
-        <ng-container *ngIf="config.customIconConnection then customIconConnection; else defaultIconConnection">
+      <button type="button"
+              mat-icon-button
+              role="button">
+        <ng-container *ngIf="config.customIconConnection then customIconConnection; else defaultLoggedIconConnection">
         </ng-container>
-      </a>
+      </button>
     </span>
   </ng-template>
 
@@ -80,7 +82,6 @@
         </ng-container>
       </a>
     </span>
-
   </ng-template>
 
   <ng-template #customIconConnection>
@@ -91,6 +92,10 @@
 
   <ng-template #defaultIconConnection>
     <mat-icon>person</mat-icon>
+  </ng-template>
+
+  <ng-template #defaultLoggedIconConnection>
+    <mat-icon>verified_user</mat-icon>
   </ng-template>
 
   <span class="login-wrapper"

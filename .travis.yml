@@ -12,11 +12,11 @@ before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-before_script:
-  - npm run build
-  - firebase use store
 script:
-  - firebase deploy --only hosting:aot --token "MJ+IdTagUR8mqc8mOT9KdKalR6VuTwvR79GPetMxJGQauRjgRh8S4t6LPaG1HgJPsg378loFKFB00o3QKHTU9Fqs8BTBNfNmbk2PoCZ3x9V6iFRajuSW3qvuNWbkswe0lfmjJ7DbK+CZci6WJ61UPe6+CjCiZT9D/IYIBX+4DpWomiMjHxJIK7iPbM7e3US9HFK9RykbgdpP8YdkinJTrTO68zOX9HjpWAwoaaMj2Qy+paXAnlLHTwcxmWojA65I0ZYE8jSD+UPTKQKVNvUp312+bsK14kqZl7NgAZIvM/cXkOdNbQcOW1SUIwADSg+E6YRGPFA5ZdA/eDVk5k4BVFG8HfXFy+JcHMacYcGIPqdUWzwUDB613xADIniZLw5zVwSHD4Dr1OszB/5V9B0AgjhNx33t/45dI0ygttk6Jhe9+xvRQz8kq+EgM8hbNrMcQWAm4IMYjP/WbHUD/qB8ZOt9vvyggfjjZq40Ndl4AmA4HQyQI1R/8ash3ACgefZcOfD2DtAIPgUDfvFy/dbxHHtAyoHFh3bp79+l5it0UHFsVlI48bpJW66sJ/IuSYi9fzhGkNZ9Y/s1OA1T6E03kE9J/c1TU3A1xviz89MTP4EoNRhFszitVMQVW2wYhXbmrOClBJOszJ4ex5mEfQJaOAgwexA3bB2DTZzEG24KLWM="
+  - npm run build
+after_success:
+  - firebase use store --token $FIREBASE_TOKEN
+  - firebase deploy --only hosting:aot --token $FIREBASE_TOKEN
 branches:
   only:
     - master
