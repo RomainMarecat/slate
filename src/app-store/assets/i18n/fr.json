@@ -6,14 +6,28 @@
     "cta": {
         "btn_slider": "Accéder à l'offre",
         "show-product": "voir le produit",
-        "add-to-cart": "ajouter au panier"
+        "add_to_cart": "ajouter au panier",
+        "add_to_favorite": "ajouter aux favoris"
     },
     "menu": {
         "connection": {
             "title": "Se connecter"
         },
         "title1": "store",
-        "title2": ""
+        "title2": "",
+        "title": {
+            "product": ""
+        }
+    },
+    "meta": {
+        "title": {
+            "product": "{{ name }}",
+            "product-detail": "{{ name }}"
+        },
+        "description": {
+            "product": "Description du produit {{ description }}",
+            "product-detail": "Description du produit {{ description }}"
+        }
     },
     "product-detail": {
         "brand": {
@@ -31,5 +45,13 @@
         "new": {
             "text": "nouveauté"
         }
+    },
+    "routes": {
+        "admin": "admin",
+        "cart": "panier",
+        "categories": "catégories",
+        "products": "produits",
+        "detail": "detail",
+        "search": "recherche"
     }
 }

@@ -625,7 +625,7 @@
   },
   "cta": {
     "add": "ajouter",
-    "add-to-cart": "ajouter au panier",
+    "add_to_cart": "ajouter au panier",
     "add-france": "ajouter toutes les régions de la france",
     "learn-more": "en savoir plus",
     "back_to_home": "retour à la l'accueil",

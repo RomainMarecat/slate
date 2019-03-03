@@ -7,8 +7,8 @@
   <div class="product-item-top-icons-wrapper"
        fxLayout="row">
     <div class="text-center"
-         fxFlex="30"
-         fxFlexOffset="40">
+         fxFlex="10"
+         fxFlexOffset="80">
       <div class="icon-wrapper"
            [title]="'cta.add_to_favorite'|translate"
            (click)="toggleFavorite(product, favoriteProduct)"
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="text-center"
-         fxFlex="30">
+         fxFlex="10">
       <div class="icon-wrapper pointer"
            [title]="'cta.add_to_cart'|translate"
            [class.background-primary]="inCart"

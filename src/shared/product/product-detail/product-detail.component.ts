@@ -61,7 +61,6 @@ export class ProductDetailComponent implements OnInit {
     this.cols = 0;
     this.loaderService.show();
     this.cloudinary = !!this.cloudinaryTagService;
-    this.seoService.setSeo('product');
   }
 
   /**
@@ -81,19 +80,10 @@ export class ProductDetailComponent implements OnInit {
               if (product) {
                 this.product = product;
                 this.loaderService.hide();
+                this.seoService.setSeo('product-detail', {name: product.name, description: product.description});
                 /* itemscope itemtype="http://schema.org/Product" */
-                // Title + description
-                this.translateService.get('product-detail.meta.title', {value: product.name})
-                  .subscribe((translation: string) => {
-                    this.meta.addTag({name: 'title', content: translation});
-                  });
-                this.translateService.get('product-detail.meta.description', {value: product.name})
-                  .subscribe((translation: string) => {
-                    this.meta.addTag({name: 'description', content: translation});
-                  });
-
                 // Open Graph data
-                this.translateService.get('product-detail.meta.og:site_name')
+                this.translateService.get('meta.og:site_name.product-detail')
                   .subscribe((translation: string) => {
                     this.meta.addTag({name: 'og:site_name', content: translation});
                   });
