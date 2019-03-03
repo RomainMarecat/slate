@@ -12,14 +12,6 @@ mat-card-actions {
   left: 0;
 }
 
-.mat-drawer-content {
-  position: relative;
-  z-index: 1;
-  display: block;
-  height: 100%;
-  overflow: auto;
-}
-
 .site-content {
   height: 100%;  /*allows both columns to span the full height of the browser window*/
   display: flex;
@@ -33,5 +25,4 @@ mat-card-actions {
 
 .main-content {
   flex-grow: 1;  /*ensures that the container will take up the full height of the parent container*/
-  overflow-y: auto;  /*adds scroll to this container*/
 }

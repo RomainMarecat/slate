@@ -28,7 +28,11 @@
       </span>
     </a>
   </h1>
-  <span class="pl-4" [innerHtml]="title|translate" *ngIf="title && title.length > 0"></span>
+
+  <ng-container *ngIf="config.show_page_title">
+    <span class="pl-4" [innerHtml]="title|translate" *ngIf="title && title.length > 0"></span>
+  </ng-container>
+
   <span class="menu-spacer"></span>
 
   <a [routerLink]="routerAdminUrl"
@@ -49,25 +53,44 @@
   </div>
 
   <a (click)="search()"
-     *ngIf="config.displayIconButtonConnection">
+     *ngIf="config.displaySearchIcon">
     <div class="menu-icon search">
       <mat-icon svgIcon="search"></mat-icon>
     </div>
   </a>
 
-  <a (click)="userService.loginGoogle()"
-     *ngIf="config.displayIconButtonConnection && !(userService.getAuthState() | async); else logged">
+  <ng-container
+    *ngIf="config.displayIconButtonConnection && !(userService.getAuthState() | async) then disconnected else logged">
+  </ng-container>
+
+  <ng-template #logged>
+    <span class="icon-wrapper">
+      <a>
+        <ng-container *ngIf="config.customIconConnection then customIconConnection; else defaultIconConnection">
+        </ng-container>
+      </a>
+    </span>
+  </ng-template>
+
+  <ng-template #disconnected>
+    <span class="icon-wrapper">
+      <a (click)="userService.loginGoogle()"
+         mat-icon-button>
+        <ng-container *ngIf="config.customIconConnection then customIconConnection; else defaultIconConnection">
+        </ng-container>
+      </a>
+    </span>
+
+  </ng-template>
+
+  <ng-template #customIconConnection>
     <div class="menu-icon user">
       <mat-icon svgIcon="user"></mat-icon>
     </div>
-  </a>
+  </ng-template>
 
-  <ng-template #logged>
-    <a *ngIf="config.displayIconButtonConnection">
-      <div class="menu-icon user">
-        <mat-icon svgIcon="user"></mat-icon>
-      </div>
-    </a>
+  <ng-template #defaultIconConnection>
+    <mat-icon>person</mat-icon>
   </ng-template>
 
   <span class="login-wrapper"
@@ -82,7 +105,8 @@
     </button>
   </span>
 
-  <span *ngIf="config.displayCart">
+  <span class="icon-wrapper"
+        *ngIf="config.displayCart">
     <a mat-icon-button
        color="primary"
        [routerLink]="['/cart']|localize"

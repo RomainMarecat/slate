@@ -17,11 +17,14 @@ import { I18nService } from '../../shared/i18n/i18n.service';
 export class AppRootComponent implements OnInit {
 
   menuConfig = {
+    show_page_title: false,
     displayAdminRecipe: false,
     urlAdmin: ['admin'],
     displayBurgerMenu: false,
-    displayButtonConnection: false,
-    displayIconButtonConnection: false,
+    displayButtonConnection: true,
+    displayIconButtonConnection: true,
+    displaySearchIcon: false,
+    customIconConnection: false,
     underlineTitle: false,
     displayCart: true
   };

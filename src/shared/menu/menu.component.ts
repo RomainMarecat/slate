@@ -24,18 +24,24 @@ export class MenuComponent implements OnInit, OnDestroy {
     displayBurgerMenu: boolean,
     displayButtonConnection: boolean,
     displayIconButtonConnection: boolean,
+    customIconConnection: boolean,
+    displaySearchIcon: boolean,
     underlineTitle: boolean,
     displayCart: boolean,
+    show_page_title: boolean,
     connectionBtn?: {
       color: string;
       background: string;
     }
   } = {
     displayAdminRecipe: false,
+    show_page_title: true,
     urlAdmin: [],
     displayBurgerMenu: true,
     displayButtonConnection: true,
     displayIconButtonConnection: false,
+    displaySearchIcon: true,
+    customIconConnection: true,
     underlineTitle: false,
     displayCart: true
   };
