@@ -34,7 +34,6 @@ export class SeoService {
   setSeo(type: string, parameters: Object = {}) {
     this.translateService.get([`meta.title.${type}`, `meta.description.${type}`, `menu.title.${type}`], parameters)
       .subscribe((translations: string[]) => {
-        console.log(translations);
         this.meta.updateTag({name: 'description', content: translations[`meta.description.${type}`]});
         this.title.setTitle(translations[`meta.title.${type}`]);
         if (`menu.title.${type}` !== translations[`menu.title.${type}`]) {

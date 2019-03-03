@@ -11,6 +11,7 @@ import { Cart } from '../shared/cart';
 import { Payment } from '../../payment/shared/payment';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart-start',
@@ -30,6 +31,7 @@ export class CartStartComponent implements OnInit {
   user: User;
   cart: Cart;
   displayXs: boolean;
+  cartsSubscription: Subscription;
 
   constructor(private userService: UserService,
               private cartService: CartService,
@@ -57,7 +59,7 @@ export class CartStartComponent implements OnInit {
         value: 'current'
       }
     ]);
-    this.cartService.getCarts()
+    this.cartsSubscription = this.cartService.getCarts()
       .subscribe((carts) => {
         this.cart = carts.filter((cart) => cart.status === 'current')[0];
         if (!this.cart) {
@@ -93,8 +95,12 @@ export class CartStartComponent implements OnInit {
       .then(doc => {
         cart.key = doc.id;
         this.updateCart(cart);
+      }, () => {
+        if (this.cartsSubscription) {
+          this.cartsSubscription.unsubscribe();
+        }
+        this.alertService.message('cart.creation.error');
       });
-
   }
 
   updateCart(cart: Cart) {
