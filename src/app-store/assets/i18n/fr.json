@@ -1,37 +1,62 @@
 {
     "category": {
-        "title": "Découvrez nos catégories",
-        "subtitle": "Sélectionner une catégorie afin de découvrir notre large gamme des produits"
+        "title": "découvrez nos catégories",
+        "subtitle": "sélectionner une catégorie afin de découvrir notre large gamme des produits"
+    },
+    "cart": {
+        "creation": {
+            "error": "impossible de créer un nouveau panier"
+        },
+        "empty": "le panier est vide.",
+        "product": {
+            "add": "ajouter un produit"
+        },
+        "title": {
+            "start": "mon panier",
+            "payment": "paiement",
+            "cart": "mon panier",
+            "confirmation": "confirmation"
+        },
+        "total": {
+            "total": "total"
+        }
     },
     "cta": {
+        "add_to_cart": "ajouter au panier",
+        "add_to_favorite": "ajouter aux favoris",
         "btn_slider": "Accéder à l'offre",
         "show-product": "voir le produit",
-        "add_to_cart": "ajouter au panier",
-        "add_to_favorite": "ajouter aux favoris"
+        "validate": "valider"
     },
     "menu": {
         "connection": {
-            "title": "Se connecter"
+            "title": "se connecter"
         },
         "title1": "store",
         "title2": "",
         "title": {
-            "product": ""
+            "product": "",
+            "cart": ""
         }
     },
     "meta": {
         "title": {
+            "cart": "mon panier",
             "product": "{{ name }}",
             "product-detail": "{{ name }}"
         },
         "description": {
-            "product": "Description du produit {{ description }}",
-            "product-detail": "Description du produit {{ description }}"
+            "cart": "mon panier",
+            "product": "description du produit {{ description }}",
+            "product-detail": "deescription du produit {{ description }}"
         }
     },
     "product-detail": {
         "brand": {
             "prefix": "par"
+        },
+        "cart": {
+            "add": "produit ajouté au panier"
         },
         "section": {
             "title": {
