@@ -76,9 +76,12 @@ export class ProductItemComponent implements OnInit {
       }
       this.favoriteService.createFavorite({key: null, product: product, user: null})
         .then((favoriteProduct: Favorite) => {
-          this.favoriteAdded.emit(favoriteProduct);
-          this.translateService.get('label.product_added_to_favorite')
-            .subscribe((label) => this.matTooltipFavorite = label);
+          this.favoriteService.updateFavorite(favoriteProduct)
+            .then(() => {
+              this.favoriteAdded.emit(favoriteProduct);
+              this.translateService.get('label.product_added_to_favorite')
+                .subscribe((label) => this.matTooltipFavorite = label);
+            });
         }, (err) => {
           this.alertService.show(err);
         });
