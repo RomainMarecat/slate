@@ -9,26 +9,30 @@
     <div class="text-center"
          fxFlex="10"
          fxFlexOffset="80">
-      <div class="icon-wrapper"
-           [title]="'cta.add_to_favorite'|translate"
-           (click)="toggleFavorite(product, favoriteProduct)"
-           [class.background-primary]="favoriteProduct?.key"
-           [matTooltipDisabled]="matTooltipFavorite.length === 0"
-           [matTooltip]="matTooltipFavorite|translate"
-           *ngIf="authenticated">
-        <mat-icon>star_rate</mat-icon>
-      </div>
+      <button class="icon-wrapper"
+              type="button"
+              mat-button
+              [title]="'cta.add_to_favorite'|translate"
+              (click)="toggleFavorite(product, favoriteProduct)"
+              [matTooltipDisabled]="matTooltipFavorite.length === 0"
+              [matTooltip]="matTooltipFavorite|translate"
+              *ngIf="authenticated">
+        <mat-icon [color]="favoriteProduct?.key ? 'warn' : 'primary'">star_rate</mat-icon>
+      </button>
     </div>
     <div class="text-center"
          fxFlex="10">
-      <div class="icon-wrapper pointer"
-           [title]="'cta.add_to_cart'|translate"
-           [class.background-primary]="inCart"
-           (click)="addToCart(product)"
-           [matTooltipDisabled]="matTooltipCart.length === 0"
-           [matTooltip]="matTooltipCart|translate">
+      <button class="icon-wrapper pointer"
+              mat-button
+              type="button"
+              [disabled]="isLoadingCartAdd"
+              [title]="'cta.add_to_cart'|translate"
+              [class.background-primary]="inCart"
+              (click)="addToCart(product)"
+              [matTooltipDisabled]="matTooltipCart.length === 0"
+              [matTooltip]="matTooltipCart|translate">
         <mat-icon>add_shopping_cart</mat-icon>
-      </div>
+      </button>
     </div>
   </div>
 
@@ -39,7 +43,8 @@
      [routerLink]="['products/detail', product.key]|localize">
     <div class="card-wrapper card-img-top"
          fxFlex="100">
-      <app-storage-image [resize]="{height: 200}"
+      <app-storage-image [panelStyle]="{height: '200px', width: 'auto'}"
+                         [panelClass]="'scale'"
                          [matCardImage]="false"
                          [downloadURL]="product.image1"></app-storage-image>
     </div>
@@ -82,6 +87,7 @@
        fxLayout="row"
        fxLayoutAlign="center center">
     <div fxFlex.xs="100"
+         fxHide.xs
          fxFlex.gt-sm="60"
          fxFlexOffset.gt-sm="10"
          fxFlexOffset.xs="0">
@@ -118,11 +124,10 @@
       <div class="icon-wrapper"
            [title]="'cta.add_to_favorite'|translate"
            (click)="toggleFavorite(product, favoriteProduct)"
-           [class.background-primary]="favoriteProduct?.key"
            [matTooltipDisabled]="matTooltipFavorite.length === 0"
            [matTooltip]="matTooltipFavorite|translate"
            *ngIf="authenticated">
-        <mat-icon>star_rate</mat-icon>
+        <mat-icon [color]="favoriteProduct?.key ? 'warn' : 'primary'">star_rate</mat-icon>
       </div>
     </div>
     <div class="col-lg-4 col-4">

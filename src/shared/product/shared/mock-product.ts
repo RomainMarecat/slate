@@ -123,7 +123,7 @@ export const mockHomeProductNewer: Product[] = [
     delivery_free: true,
     reseller: '',
     offers: ['kjolpm656', 'jx6vff65s6'],
-    key: 'a65F545dD485412REVD',
+    key: 'a65F545dD46f5ds6bnfds54fds59n',
     user: '',
     creator: '',
     external_url: '',

@@ -1,29 +1,109 @@
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /cart {
-      allow read: if true;
+    match /{cart=**} {
       allow get: if true;
       allow list: if true;
       allow create: if true;
       allow update: if request.auth.uid != null;
       allow delete: if request.auth.uid == 'CiKK3i9fIjRmbgKvWbQG5xWDNT72';
     }
-
-    match /favorite {
-      allow read: if true;
+    match /{order=**} {
       allow get: if true;
       allow list: if true;
-      allow create: if true;
+      allow create: if request.auth.uid != null;
+      allow update: if request.auth.uid != null;
+      allow delete: if request.auth.uid == 'CiKK3i9fIjRmbgKvWbQG5xWDNT72';
+    }
+
+    match /{payment=**} {
+      allow get: if true;
+      allow list: if true;
+      allow create: if request.auth.uid != null;
+      allow update: if request.auth.uid != null;
+      allow delete: if request.auth.uid == 'CiKK3i9fIjRmbgKvWbQG5xWDNT72';
+    }
+
+    match /{favorite=**} {
+      allow get: if true;
+      allow list: if request.auth.uid != null;
+      allow create: if request.auth.uid != null;
       allow update: if request.auth.uid != null;
       allow delete: if request.auth.uid != null;
     }
 
-    match /product {
+    match /{product=**} {
       allow read: if true;
       allow write: if false;
     }
 
-    match /category {
+    match /{category=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /{article=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /{area=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /{session=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{attribute=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{contact=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{comment=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{cms=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /cms-detail {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{event=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{map=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{media=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{offer=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{scores=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{partner=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{post=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /{offer=**} {
       allow read: if true;
       allow write: if false;
     }

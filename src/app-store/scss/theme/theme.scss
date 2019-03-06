@@ -6,66 +6,6 @@ $custom-typography: mat-typography-config(
 );
 @include mat-core($custom-typography);
 
-/// Text
-
-$base-font-size: 1rem !default;
-$base-line-height: 1.5 !default;
-$primary-font: 'Lato', sans-serif;
-$second-font: 'Roboto', serif;
-
-/// @type Color
-/// text White
-$text-color-light-white: #FFFFFF;
-$white: #FFFFFF;
-
-/// @type Color
-/// text Grey
-$text-color-grey: #4D4C4C;
-
-/// @type Color
-/// text Light Grey
-$text-color-light-grey: #9D9D9C;
-
-/// @type Color
-/// a Grey
-$link-color-grey: #4D4C4C;
-
-/// @type Color
-/// a:hover Grey
-$link-hover-color-grey: #4D4C4C;
-
-/// Block
-
-/// @type Color
-/// block Deep Blue
-$block-color-deep-blue: #3C4B65;
-
-/// @type Color
-/// block Deep Blue
-$block-color-dark-deep-blue: #334157;
-
-/// @type Color
-/// block Gold
-$block-color-gold: #F4C71D;
-
-/// @type Color
-/// block Light Gold
-$block-color-light-gold: #F4C71D;
-
-/// @type Color
-/// block Light Grey
-$block-color-light-grey: #e6e6e6;
-
-/// @type Color
-/// block Grey
-$block-color-grey: #d9d9d9;
-
-///Block-key-word-stores
-
-/// @type Color
-/// block key word #tomatoes
-$block-color-keyword-tomatoes: #C65020;
-
 $mat-store-primary: (
         50: #ffffff,
         100: #bbdefb,
@@ -118,4 +58,20 @@ body {
   color: $text-color-grey;
   font-size: $base-font-size;
   line-height: $base-line-height;
+}
+
+.background-white {
+  background-color: mat-color($white);
+}
+
+.background-primary {
+  background-color: mat-color($primary);
+}
+
+.background-warn {
+  background-color: mat-color($second);
+}
+
+.background-accent {
+  background-color: mat-color($error);
 }

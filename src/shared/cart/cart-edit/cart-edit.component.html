@@ -1,20 +1,12 @@
 <form class="form"
       [formGroup]="form">
   <mat-card-header fxLayout="row"
-                   fxLayoutAlign="center stretch">
+                   fxLayoutAlign="center stretch"
+                   fxHide.xs>
     <mat-card-title class="text-capitalize">
       {{ 'cart.title.start'|translate }}
     </mat-card-title>
   </mat-card-header>
-  <!--<div class="products">-->
-    <!--<button type="button"-->
-            <!--role="button"-->
-            <!--color="primary"-->
-            <!--mat-raised-button-->
-            <!--(click)="setProduct()">-->
-      <!--{{ 'cart.product.add'|translate }}-->
-    <!--</button>-->
-  <!--</div>-->
 
   <mat-card-content>
 
@@ -24,7 +16,15 @@
   </mat-card-content>
   <mat-card-actions class="mat-card-actions w-100">
     <div fxLayout="row"
-         fxLayoutAlign="end stretch">
+         fxLayoutAlign="space-between stretch">
+
+      <button type="button"
+              class="text-uppercase"
+              (click)="cancel()"
+              mat-raised-button>
+        {{ 'cta.cancel'|translate }}
+      </button>
+
       <button type="button"
               (click)="save()"
               [disabled]="isSaving || cart?.items?.length === 0"

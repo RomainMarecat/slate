@@ -1,37 +1,45 @@
-<div class="cart-confirmation-wrapper">
-  <div class="cart-confirmation-header">
+<div class="container">
+  <mat-card class="cart-card my-5">
+    <div fxLayout="row"
+         fxLayoutAlign="center stretch">
+      <div class="cart-confirmation-wrapper">
+        <div class="cart-confirmation-header">
 
-    <h2 class="cart-confirmation-title">
-      {{ 'order-confirmation.title'|translate }}
-    </h2>
-  </div>
-  <div class="cart-confirmation-content">
-    <p class="waiting">
-      {{ 'order-confirmation.content.waiting'|translate }}
-    </p>
+          <h2 class="cart-confirmation-title">
+            {{ 'order-confirmation.title'|translate }}
+          </h2>
+        </div>
+        <div class="cart-confirmation-content">
+          <p class="waiting">
+            {{ 'order-confirmation.content.waiting'|translate }}
+          </p>
 
-    <h3 class="text-capitalize">
-      {{ 'order-confirmation.content.summary'|translate }}
-    </h3>
+          <h3 class="text-capitalize">
+            {{ 'order-confirmation.content.summary'|translate }}
+          </h3>
 
-    <p>
-      <strong class="text-capitalize">{{ 'order-confirmation.content.key'|translate }} : </strong>
-      <span>{{ order?.key }}</span>
-    </p>
+          <p>
+            <strong class="text-ucfirst">{{ 'order-confirmation.content.key'|translate }} : </strong>
+            <span>{{ order?.key }}</span>
+          </p>
 
-    <p>
-      <strong class="text-capitalize">{{ 'order-confirmation.content.total'|translate }} : </strong>
-      <span>{{ order?.total }} {{ 'euro'|translate }}</span>
-    </p>
+          <p>
+            <strong class="text-capitalize">{{ 'order-confirmation.content.total'|translate }} : </strong>
+            <span>{{ order?.total }} {{ 'euro'|translate }}</span>
+          </p>
 
-  </div>
-  <div class="order-actions">
-    <a mat-raised-button
-       color="primary"
-       class="order-actions-link"
-       routerLink="/">
-      <mat-icon>home</mat-icon>
-      <span>{{ 'cta.back_to_home'|translate }}</span>
-    </a>
-  </div>
+        </div>
+        <div class="order-actions">
+          <a mat-raised-button
+             color="primary"
+             class="order-actions-link"
+             routerLink="/">
+            <mat-icon>home</mat-icon>
+            <span>{{ 'cta.back_to_home'|translate }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </mat-card>
 </div>

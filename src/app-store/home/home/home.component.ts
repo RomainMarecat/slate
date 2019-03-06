@@ -4,6 +4,9 @@ import { Product } from '../../../shared/product/shared/product';
 import { ProductService } from '../../../shared/product/shared/product.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { UserService } from '../../../shared/user/shared/user.service';
+import { CartService } from '../../../shared/cart/shared/cart.service';
+import { Cart } from '../../../shared/cart/shared/cart';
+import { SeoService } from '../../../shared/seo/shared/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -46,11 +49,13 @@ export class HomeComponent implements OnInit {
   productOptions: {
     layout: string;
     products: Product[],
-    display_products: Product[]
+    display_products: Product[],
+    cart: Cart
   } = {
     layout: 'card',
     products: [],
-    display_products: []
+    display_products: [],
+    cart: null
   };
 
   @Output() productCount: EventEmitter<number> = new EventEmitter<number>();
@@ -81,13 +86,17 @@ export class HomeComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private alertService: AlertService,
-              private userService: UserService) {
+              private userService: UserService,
+              private cartService: CartService,
+              private seoService: SeoService) {
     this.authenticated = false;
+    this.seoService.setSeo('home');
   }
 
   ngOnInit() {
     this.isAuhenticated();
     this.getProducts();
+    this.getCart();
   }
 
 
@@ -110,7 +119,33 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  getCart() {
+    this.userService.getAuthState()
+      .subscribe((user) => {
+        if (user) {
+          this.cartService.filters$.next([
+            {
+              operator: '==',
+              column: 'user',
+              value: user.uid
+            },
+            {
+              operator: '==',
+              column: 'status',
+              value: 'current'
+            }
+          ]);
+          this.cartService.getCarts()
+            .subscribe((carts) => {
+              this.productOptions.cart = carts[0];
+              this.cartService.cart$.next(carts[0]);
+            });
+        }
+      });
+  }
+
   isAuhenticated() {
+
     this.userService.isAuthenticated()
       .subscribe((authenticated) => {
         this.authenticated = authenticated;

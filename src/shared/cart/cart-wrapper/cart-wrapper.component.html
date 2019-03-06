@@ -1,0 +1,140 @@
+<div class="container">
+  <div class="row"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+    <div class="cart-wrapper col-12">
+      <mat-card class="cart-card my-5">
+        <ng-template #loading>
+          <div fxLayout="row"
+               fxLayoutAlign="center stretch">
+            <mat-progress-spinner color="primary"
+                                  mode="indeterminate">
+            </mat-progress-spinner>
+          </div>
+        </ng-template>
+        <mat-card-content *ngIf="cart; else loading">
+          <div fxLayout.xs="column">
+            <mat-list fxLayout="row"
+                      fxLayoutAlign="center stretch"
+                      *ngIf="!displayXs; else stepsTmpl">
+              <mat-list-item class="text-center">
+                <button color="primary"
+                        type="button"
+                        role="button"
+                        mat-mini-fab>
+                  <span>1</span>
+                </button>
+                <span class="text-center w-100">{{ 'cart.title.cart'|translate }}</span>
+              </mat-list-item>
+              <mat-list-item class="text-center" *ngIf="isUserAlreadyLogged !== true">
+                <button color="primary"
+                        type="button"
+                        role="button"
+                        mat-mini-fab>
+                  <span class="text-center w-100">2</span>
+                </button>
+                <span class="text-center w-100">{{ 'cart.title.login'|translate }}</span>
+              </mat-list-item>
+              <mat-list-item class="text-center">
+                <button color="primary"
+                        type="button"
+                        role="button"
+                        mat-mini-fab>
+                  <span *ngIf="user">3</span>
+                  <span *ngIf="!user">4</span>
+                </button>
+                <span class="text-center w-100">{{ 'cart.title.delivery'|translate }}</span>
+              </mat-list-item>
+              <mat-list-item class="text-center">
+                <button color="primary"
+                        type="button"
+                        role="button"
+                        mat-mini-fab>
+                  <span *ngIf="user">4</span>
+                  <span *ngIf="!user">5</span>
+                </button>
+                <span class="text-center w-100">{{ 'cart.title.payment'|translate }}</span>
+              </mat-list-item>
+              <mat-list-item class="text-center">
+                <button color="primary"
+                        type="button"
+                        role="button"
+                        mat-mini-fab>
+                  <span *ngIf="user">5</span>
+                  <span *ngIf="!user">6</span>
+                </button>
+                <span class="text-center w-100">{{ 'cart.title.confirmation'|translate }}</span>
+              </mat-list-item>
+            </mat-list>
+
+            <ng-template #stepsTmpl>
+              <mat-list fxLayout="row"
+                        fxLayoutAlign="center stretch"
+                        class="step-list">
+                <mat-list-item class="text-center">
+                  <button color="primary"
+                          type="button"
+                          role="button"
+                          mat-mini-fab>
+                    <ng-container [ngSwitch]="cart.state">
+                      <span *ngSwitchCase="'cart'">
+                        <span>1</span>
+                      </span>
+                      <span *ngSwitchCase="'connection'">
+                        <span>2</span>
+                      </span>
+                      <span *ngSwitchCase="'delivery'">
+                        <span *ngIf="user">2</span>
+                      </span>
+                      <span *ngSwitchCase="'payment'">3</span>
+                      <span *ngSwitchCase="'confirmation'">4</span>
+                    </ng-container>
+                  </button>
+                  <span class="text-center w-100">
+                    {{ 'cart.title.' + cart.state|translate }}
+                  </span>
+                </mat-list-item>
+              </mat-list>
+            </ng-template>
+
+            <!-- Step booking -->
+            <div *ngIf="cart.state === 'cart' || !cart.state">
+              <app-cart-edit [cart]="cart"
+                             (submitted)="onSaveCart($event)"
+                             (updateCart)="updateCart($event)"></app-cart-edit>
+            </div>
+
+
+            <!-- Step user -->
+            <div *ngIf="!isUserAlreadyLogged && cart.state === 'connection'">
+              <div class="login-wrapper"
+                   fxLayout="row"
+                   fxLayoutAlign="center stretch">
+                <button mat-raised-button
+                        color="accent"
+                        type="button"
+                        (click)="onLogin()"
+                        [innerHTML]="'menu.connection.title'|translate">
+                </button>
+              </div>
+            </div>
+
+            <!--Step delivery-->
+            <ng-container *ngIf="cart.state === 'delivery'">
+              <app-cart-delivery [cart]="cart"
+                                 (cancelled)="onCancel($event, user ? 'cart' : 'connection')"
+                                 (acceptDelivery)="onAcceptDelivery($event)"></app-cart-delivery>
+            </ng-container>
+
+            <!-- Step payment -->
+            <div *ngIf="cart.state === 'payment'">
+              <app-cart-payment [cart]="cart"
+                                (paid)="onPaid($event)"
+                                (cancelled)="onCancel($event, user ? 'delivery' : 'connection')"></app-cart-payment>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

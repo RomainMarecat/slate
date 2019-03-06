@@ -44,20 +44,6 @@ module.exports = function (config) {
         included: false,
       },
       {
-        pattern: './app-recipe/assets/images/*.*',
-        watched: false,
-        included: false,
-        served: true,
-        nocache: false
-      },
-      {
-        pattern: './app-alr/assets/images/*.*',
-        watched: false,
-        included: false,
-        served: true,
-        nocache: false
-      },
-      {
         pattern: './app-showcase/assets/images/*.jpg',
         watched: false,
         included: false,

@@ -1,0 +1,164 @@
+<div class="delivery-wrapper">
+
+  <form [formGroup]="form"
+        (ngSubmit)="saveDelivery()">
+
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-around stretch"
+         fxLayoutGap="30px"
+         fxLayout.xs="column"
+         fxLayoutAlign.xs="center center">
+      <div formGroupName="address"
+           fxLayout="column">
+        <div>
+          <h2 class="text-ucfirst">
+            {{ 'delivery.address.title'|translate }}
+          </h2>
+        </div>
+        <ng-container *ngIf="true then spacerTmpl">
+        </ng-container>
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="email"
+                 autocomplete="email"
+                 type="email"
+                 [placeholder]="'delivery.address.email'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="address"
+                 autocomplete="address"
+                 [placeholder]="'delivery.address.address'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="address_complement"
+                 autocomplete="address_complement"
+                 [placeholder]="'delivery.address.address_complement'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="zipcode"
+                 autocomplete="zipcode"
+                 [placeholder]="'delivery.address.zipcode'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="city"
+                 autocomplete="city"
+                 [placeholder]="'delivery.address.city'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="country"
+                 autocomplete="country"
+                 [placeholder]="'delivery.address.country'|translate">
+        </mat-form-field>
+      </div>
+
+
+      <div formGroupName="billing"
+           fxLayout="column">
+        <div>
+          <h2 class="text-ucfirst">
+            {{ 'delivery.billing.title'|translate }}
+          </h2>
+        </div>
+
+        <ng-container *ngIf="isDeliveryCompleted(); else spacerTmpl">
+          <div class="duplicate-wrapper">
+            <button [title]="'cta.duplicate'|translate"
+                    *ngIf="isDeliveryCompleted()"
+                    type="button"
+                    role="button"
+                    (click)="copyDeliveryIntoBilling()"
+                    mat-flat-button
+                    color="primary">
+              {{ 'cta.duplicate_same_delivery_as_billing'|translate }}
+            </button>
+          </div>
+        </ng-container>
+
+        <ng-template #spacerTmpl>
+          <div class="spacer-wrapper">
+          </div>
+        </ng-template>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="email"
+                 autocomplete="email"
+                 [placeholder]="'delivery.address.email'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="address"
+                 autocomplete="address"
+                 [placeholder]="'delivery.billing.address'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="address_complement"
+                 autocomplete="address_complement"
+                 [placeholder]="'delivery.billing.address_complement'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="zipcode"
+                 autocomplete="zipcode"
+                 [placeholder]="'delivery.billing.zipcode'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="city"
+                 autocomplete="city"
+                 [placeholder]="'delivery.billing.city'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="country"
+                 autocomplete="country"
+                 [placeholder]="'delivery.billing.country'|translate">
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="actions-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="space-around stretch">
+      <button type="button"
+              class="text-uppercase"
+              role="button"
+              mat-raised-button
+              title="cancel"
+              (click)="cancel()"
+              [disabled]="disableDeliveryButton">
+        {{ 'cta.cancel'|translate }}
+      </button>
+      <button type="submit"
+              class="text-uppercase"
+              role="button"
+              [title]="'cta.accept_delivery'|translate"
+              [color]="!disableDeliveryButton ? 'primary' : ''"
+              mat-button
+              mat-raised-button
+              [disabled]="disableDeliveryButton || form.invalid">
+        {{ 'cta.pay'|translate }}
+      </button>
+    </div>
+  </form>
+
+
+</div>

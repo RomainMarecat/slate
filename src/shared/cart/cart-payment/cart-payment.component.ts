@@ -120,16 +120,17 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getCart() {
-    this.activatedRoute.params.subscribe((value: {key: string}) => {
-      if (value.key) {
-        this.cartService.getCart(value.key)
-          .subscribe((cart: Cart) => {
-            this.cart = cart;
-          }, (err) => {
-            this.handleHttpErrorResponse(err);
-          });
-      }
-    });
+    this.activatedRoute.params
+      .subscribe((value: {key: string}) => {
+        if (value.key) {
+          this.cartService.getCart(value.key)
+            .subscribe((cart: Cart) => {
+              this.cart = cart;
+            }, (err) => {
+              this.handleHttpErrorResponse(err);
+            });
+        }
+      });
   }
 
   cancel() {
@@ -153,7 +154,10 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   onSubmit(form: NgForm) {
     this.loaderService.show();
     this.togglePayButton();
-    if (this.userService.getUser().uid && this.cart && this.cart.total) {
+    if (this.userService.getUser() &&
+      this.userService.getUser().uid &&
+      this.cart &&
+      this.cart.total) {
       this.stripeService
         .createToken(this.card.getCard(), {name: this.userService.getUser().email})
         .subscribe(result => {
@@ -161,6 +165,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
             // Use the token to create a charge or a customer
             // https://stripe.com/docs/charges
             const order: Order = {
+              cart: this.cart.key,
               total: this.cart.total,
               user: this.cart.user,
               items: this.cart.items,
@@ -176,20 +181,22 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
             // Never never process charge here with access token from your secret key
             // send the token to the your backend to process the charge
             this.orderService.createOrder(order)
-              .then((createdOrder) => {
+              .subscribe((createdOrder) => {
                 order.key = createdOrder.id;
                 this.orderService.updateOrder(order)
-                  .then(() => {
+                  .subscribe(() => {
                     this.payment.order = order.key;
                     this.paymentService.createPayment(this.payment)
-                      .then((createdPayment) => {
+                      .subscribe((createdPayment) => {
                         this.payment.key = createdPayment.id;
                         this.paymentService.updatePayment(this.payment)
-                          .then(() => {
-                            this.cart.status = 'finished';
+                          .subscribe(() => {
+                            this.cart.state = 'confirmation';
+                            this.cart.order = order.key;
                             this.cartService.updateCart(this.cart)
-                              .then(() => {
+                              .subscribe(() => {
                                 this.paid.emit(this.payment);
+                                this.paymentService.payment$.next(this.payment);
                                 this.loaderService.hide();
                               }, (err: HttpErrorResponse) => {
                                 this.handleHttpErrorResponse(err);

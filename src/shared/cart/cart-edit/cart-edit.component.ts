@@ -42,38 +42,33 @@ export class CartEditComponent implements OnInit {
     this.routingState.loadRouting();
   }
 
-  setProduct() {
-    if (this.cart) {
-      const item: CartItem = {
-        name: faker.commerce.productName(),
-        code: faker.random.uuid(),
-        quantity: faker.random.number(10),
-        price: faker.random.number(1000),
-        created_at: faker.date.recent(),
-        updated_at: faker.date.recent()
-      };
-      this.cart.items.push(item);
+  save() {
+    if (this.form.valid) {
+      if (this.cart) {
+        this.cart.updated_at = new Date();
+        this.isSaving = true;
+        this.loaderService.show();
+        this.cartService.updateCart(this.cart)
+          .subscribe(() => {
+            this.alertService.show(this.translate.instant('cart-add.saved'));
+            this.submitted.emit(this.cart);
+            this.loaderService.hide();
+            this.isSaving = false;
+          }, () => {
+            this.isSaving = false;
+            this.loaderService.hide();
+            if (!navigator.onLine) {
+              this.alertService.show('error.no-internet-connection');
+              return;
+            }
 
-      this.cart.total += item.price * item.quantity;
+            this.alertService.show('cart-add.error.validate-cart');
+          });
+      }
     }
   }
 
-  save() {
-    if (this.form.valid) {
-      this.cart.updated_at = new Date();
-      this.isSaving = true;
-      this.loaderService.show();
-      this.cartService.updateCart(this.cart)
-        .then(() => {
-          this.alertService.show(this.translate.instant('cart-add.saved'));
-          this.submitted.emit(this.cart);
-          this.loaderService.hide();
-          this.isSaving = false;
-        }, (err: HttpErrorResponse) => {
-          this.isSaving = false;
-          this.loaderService.hide();
-          this.alertService.show(err.error.message);
-        });
-    }
+  cancel() {
+    this.router.navigate(['/']);
   }
 }

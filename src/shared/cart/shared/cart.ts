@@ -13,10 +13,12 @@ export interface Cart {
   total: number;
   user: string;
   status?: string;
+  state?: 'cart' | 'connection' | 'delivery' | 'payment' | 'confirmation'; // current active route
   created_at: Date;
   updated_at: Date;
   items?: CartItem[];
   fees?: any;
+  order?: string;
 }
 
 export class CreditCardList {

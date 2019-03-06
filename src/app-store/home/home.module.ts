@@ -13,6 +13,7 @@ import { CategoryService } from '../../shared/category/category.service';
 import { MockCategoryService } from '../../shared/category/mock-category.service';
 import { MockProductService } from '../../shared/product/shared/mock-product.service';
 import { FavoriteService } from '../../shared/favorite/shared/favorite.service';
+import { PopupModule } from '../../shared/popup/popup.module';
 
 export const TABLE_EVENT = new InjectionToken<string>('event');
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
@@ -47,6 +48,7 @@ export const TABLE_FAVORITE = new InjectionToken<string>('favorite');
     CommonModule,
     HeaderModule,
     HomeRoutingModule,
+    PopupModule,
     TranslateModule.forChild()
   ],
   providers: [

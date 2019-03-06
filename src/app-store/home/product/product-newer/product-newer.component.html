@@ -7,9 +7,13 @@
   <div class="product-list"
        fxLayout="row wrap"
        fxLayoutAlign="start stretch"
-       fxLayoutGap="10px">
+       fxLayoutAlign.lt-lg="center stretch"
+       fxLayoutGap="10px"
+       fxLayoutGap.xs="0px">
     <div class="text-center product-item-element"
          fxFlex="30"
+         fxFlex.md="40"
+         fxFlex.sm="40"
          fxFlex.xs="80"
          *ngFor="let product of options.display_products">
       <app-product-item [product]="product"
