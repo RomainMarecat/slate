@@ -1,15 +1,14 @@
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Product } from '../shared/product';
 import { UserService } from '../../user/shared/user.service';
 import { ScoreService } from '../../score/score.service';
 import { AlertService } from '../../popup/alert.service';
-import { Cart, CartItem } from '../../cart/shared/cart';
+import { Cart } from '../../cart/shared/cart';
 import { CartService } from '../../cart/shared/cart.service';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../loader/loader.service';
 import { LocalizeRouterService } from 'localize-router';
-import { take, timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-action',
@@ -113,22 +112,6 @@ export class ProductActionComponent implements OnInit {
       .toString();
   }
 
-  getCart() {
-    const filters: Filter[] = [{
-      column: 'user',
-      operator: '==',
-      value: this.userService.getUser().uid
-    }];
-
-    this.cartService.filters$.next(filters);
-    this.cartService.getCarts()
-      .subscribe((carts: Cart[]) => {
-        if (carts && carts.length > 0 && carts[0]) {
-          this.cart = carts[0];
-        }
-      });
-  }
-
   /**
    * Add to cart a product
    */
@@ -138,74 +121,16 @@ export class ProductActionComponent implements OnInit {
     this.userService.isAuthenticated()
       .subscribe((authenticated) => {
         if (authenticated) {
-          const cartItem: CartItem = {
-            name: product.name,
-            code: product.key,
-            quantity: parseInt(quantity, 10),
-            price: product.price,
-            created_at: new Date(),
-            updated_at: new Date(),
-          };
-          const filters: Filter[] = [{
-            column: 'user',
-            operator: '==',
-            value: this.userService.getUser().uid
-          }, {
-            column: 'status',
-            operator: '==',
-            value: 'current'
-          }];
-
-          this.cartService.filters$.next(filters);
-          this.cartService.getCarts()
-            .pipe(take(1))
-            .subscribe((carts: Cart[]) => {
-              this.loaderService.hide();
+          this.cartService.addToCart(product, this.userService.getUser(), parseInt(quantity, 10))
+            .subscribe(() => {
               this.isLoading = false;
-              if (carts && carts.length > 0 && carts[0]) {
-                const cart: Cart = carts[0];
-
-                const filtered = cart.items.filter((item) => item.code === cartItem.code);
-                if (filtered.length === 0) {
-                  cart.items.push(cartItem);
-                  cart.total += cartItem.quantity * cartItem.price;
-                } else {
-                  cart.items = cart.items.map((item: CartItem) => {
-                    if (item.code === product.key) {
-                      item = cartItem;
-                      item.quantity = item.quantity + cartItem.quantity;
-                      cart.total += cartItem.quantity * cartItem.price;
-                    }
-                    return item;
-                  });
-                }
-
-                // Always reset cart to state "cart" when we add product to cart
-                cart.state = 'cart';
-
-                this.cartService.updateCart(cart)
-                  .subscribe(() => {
-                    this.isLoading = false;
-                    this.loaderService.hide();
-                    this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
-                    this.alertService.show('product-detail.cart.added');
-                  }, () => {
-                    this.loaderService.hide();
-                    this.isLoading = false;
-                    this.alertService.show('product-detail.error.cart-add');
-                  });
-              }
-            }, (err) => {
+              this.addedCart.emit(product);
+              this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
+            }, () => {
               this.isLoading = false;
-              this.loaderService.hide();
-              this.alertService.show(err);
+              this.alertService.show('cart-add.error.save-new-product');
             });
-          return;
         }
-        this.isLoading = false;
-        this.loaderService.hide();
-
-        this.alertService.show('product-detail.cart.error.user', 'error');
       }, () => {
         this.isLoading = false;
         this.loaderService.hide();

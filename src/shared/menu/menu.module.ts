@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu.component';
-import { MatButtonModule, MatDialogModule, MatIconModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatDialogModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { Angulartics2Module } from 'angulartics2';
@@ -16,6 +16,7 @@ import { SearchModule } from '../search/search.module';
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatMenuModule,
     MatDialogModule,
     MatIconModule,
     SearchModule,

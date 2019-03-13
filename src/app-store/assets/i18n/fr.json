@@ -32,11 +32,13 @@
         }
     },
     "cta": {
+        "account": "mon compte",
         "add_to_cart": "ajouter au panier",
         "add_to_favorite": "ajouter aux favoris",
         "back_to_home": "retour vers l'accueil",
         "btn_slider": "Accéder à l'offre",
         "duplicate_same_delivery_as_billing": "c'est aussi l'adresse de facturation",
+        "logout": "se déconnecter",
         "show-product": "voir le produit",
         "validate": "valider",
         "cancel": "annuler",

@@ -87,6 +87,11 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.getAuthorized();
   }
 
+  logout() {
+    this.userService.logout().subscribe(() => {
+    });
+  }
+
   getAuthorized() {
     this.subscriptionAuthState = this.userService.getAuthState()
       .subscribe((user: User) => {

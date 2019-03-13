@@ -42,6 +42,7 @@ export class MockUserService {
 
   logout() {
     this.clear();
+    return of(true);
   }
 
   clear() {

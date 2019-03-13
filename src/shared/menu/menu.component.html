@@ -66,6 +66,7 @@
   <ng-template #logged>
     <span class="icon-wrapper">
       <button type="button"
+              [matMenuTriggerFor]="account"
               mat-icon-button
               role="button">
         <ng-container *ngIf="config.customIconConnection then customIconConnection; else defaultLoggedIconConnection">
@@ -73,6 +74,12 @@
       </button>
     </span>
   </ng-template>
+
+  <mat-menu #account="matMenu"
+            xPosition="before">
+    <button mat-menu-item>{{ 'cta.account'|translate }}</button>
+    <button mat-menu-item (click)="logout()">{{ 'cta.logout'|translate }}</button>
+  </mat-menu>
 
   <ng-template #disconnected>
     <span class="icon-wrapper">
