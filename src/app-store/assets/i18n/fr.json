@@ -33,6 +33,7 @@
     },
     "cta": {
         "account": "mon compte",
+        "accept_delivery": "Valider la livraison",
         "add_to_cart": "ajouter au panier",
         "add_to_favorite": "ajouter aux favoris",
         "back_to_home": "retour vers l'accueil",
