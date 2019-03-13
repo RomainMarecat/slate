@@ -27,6 +27,8 @@ import { FavoriteService } from '../../../shared/favorite/shared/favorite.servic
 import { MockFavoriteService } from '../../../shared/favorite/shared/mock-favorite.service';
 import { MockCartService } from '../../../shared/cart/shared/mock-cart.service';
 import { CartService } from '../../../shared/cart/shared/cart.service';
+import { SeoService } from '../../../shared/seo/shared/seo.service';
+import { MenuService } from '../../../shared/menu/menu.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -55,6 +57,8 @@ describe('HomeComponent', () => {
         }),
       ],
       providers: [
+        SeoService,
+        MenuService,
         {provide: AlertService, useClass: MockAlertService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: CategoryService, useClass: MockCategoryService},
