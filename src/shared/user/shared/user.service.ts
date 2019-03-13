@@ -4,7 +4,7 @@ import { auth } from 'firebase/app';
 import { User } from './user';
 import { map, take, tap, timeout } from 'rxjs/operators';
 import { AlertService } from '../../popup/alert.service';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
@@ -95,13 +95,12 @@ export class UserService {
     });
   }
 
-  logout() {
-    this.afAuth.auth.signOut().then(() => {
-      this.clear();
-      // Sign-out successful.
-    }).catch(function (error) {
-      // An error happened.
-    });
+  logout(): Observable<void> {
+    return from(this.afAuth.auth.signOut())
+      .pipe(
+        timeout(5000),
+        tap(() => this.clear())
+      );
   }
 
   clear() {
