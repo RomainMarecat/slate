@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ProductNewerComponent } from './product-newer/product-newer.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterModule } from 'localize-router';
-import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatSnackBarModule, MatTooltipModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { FavoriteModule } from '../../../shared/favorite/favorite.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StorageModule } from '../../../shared/media/storage/storage.module';
+import { PopupModule } from '../../../shared/popup/popup.module';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,12 @@ import { StorageModule } from '../../../shared/media/storage/storage.module';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
+    MatSnackBarModule,
+    PopupModule,
     RouterModule,
     StorageModule,
     TranslateModule.forChild(),
-  ]
+  ],
 })
 export class ProductModule {
 }

@@ -8,4 +8,5 @@ export const mockOrder: Order = {
   items: [],
   created_at: new Date(),
   updated_at: new Date(),
+  cart: 'fs6ffd2g6f9d'
 };

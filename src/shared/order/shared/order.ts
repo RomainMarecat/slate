@@ -1,5 +1,6 @@
 export interface Order {
   key?: string;
+  cart: string;
   total: number;
   user: string;
   delivery?: string;

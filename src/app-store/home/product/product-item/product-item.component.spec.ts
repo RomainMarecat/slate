@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductItemComponent } from './product-item.component';
-import { CategoryModule } from '../../category/category.module';
-import { HeaderModule } from '../../header/header.module';
 import { MenuModule } from '../../../../shared/menu/menu.module';
 import { StorageModule } from '../../../../shared/media/storage/storage.module';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -22,6 +20,10 @@ import { MatIconModule, MatTooltipModule } from '@angular/material';
 import { configureTestSuite } from '../../../../shared/unit-test/configure-test-suite';
 import { AlertService } from '../../../../shared/popup/alert.service';
 import { MockAlertService } from '../../../../shared/popup/mock-alert.service';
+import { CartService } from '../../../../shared/cart/shared/cart.service';
+import { MockCartService } from '../../../../shared/cart/shared/mock-cart.service';
+import { UserService } from '../../../../shared/user/shared/user.service';
+import { MockUserService } from '../../../../shared/user/shared/mock-user.service';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -51,7 +53,9 @@ describe('ProductItemComponent', () => {
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: MediaService, useClass: MockMediaService},
+        {provide: UserService, useClass: MockUserService},
         {provide: FavoriteService, useClass: MockFavoriteService},
+        {provide: CartService, useClass: MockCartService},
         {provide: AngularFireStorage, useClass: MockAngularFireStorage}
       ],
       declarations: [ProductItemComponent]

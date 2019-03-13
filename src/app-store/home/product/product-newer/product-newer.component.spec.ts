@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductNewerComponent } from './product-newer.component';
-import { CategoryModule } from '../../category/category.module';
-import { HeaderModule } from '../../header/header.module';
 import { MenuModule } from '../../../../shared/menu/menu.module';
 import { StorageModule } from '../../../../shared/media/storage/storage.module';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -19,6 +17,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { configureTestSuite } from '../../../../shared/unit-test/configure-test-suite';
 import { MatIconModule, MatTooltipModule } from '@angular/material';
+import { FavoriteService } from '../../../../shared/favorite/shared/favorite.service';
+import { MockFavoriteService } from '../../../../shared/favorite/shared/mock-favorite.service';
+import { UserService } from '../../../../shared/user/shared/user.service';
+import { MockUserService } from '../../../../shared/user/shared/mock-user.service';
 
 describe('ProductNewerComponent', () => {
   let component: ProductNewerComponent;
@@ -51,7 +53,9 @@ describe('ProductNewerComponent', () => {
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: MediaService, useClass: MockMediaService},
-        {provide: AngularFireStorage, useClass: MockAngularFireStorage}
+        {provide: AngularFireStorage, useClass: MockAngularFireStorage},
+        {provide: FavoriteService, useClass: MockFavoriteService},
+        {provide: UserService, useClass: MockUserService}
       ]
     })
       .compileComponents();

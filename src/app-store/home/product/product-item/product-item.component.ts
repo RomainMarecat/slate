@@ -5,6 +5,15 @@ import { FavoriteService } from '../../../../shared/favorite/shared/favorite.ser
 import { AlertService } from '../../../../shared/popup/alert.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ProductService } from '../../../../shared/product/shared/product.service';
+import { UserService } from '../../../../shared/user/shared/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { CartService } from '../../../../shared/cart/shared/cart.service';
+import { Cart, CartItem } from '../../../../shared/cart/shared/cart';
+import * as faker from 'faker';
+import { User } from '../../../../shared/user/shared/user';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-product-item',
@@ -12,12 +21,13 @@ import { ProductService } from '../../../../shared/product/shared/product.servic
   styleUrls: ['./product-item.component.scss']
 })
 export class ProductItemComponent implements OnInit {
+
   @Input() options;
 
   @Input() inCart: boolean;
 
   /**
-   * Si le produit est ajouté en favoris
+   * If product was added to favorite
    */
   @Input() favoriteProduct: Favorite;
   /**
@@ -36,12 +46,12 @@ export class ProductItemComponent implements OnInit {
   @Input() authenticated: boolean;
 
   /**
-   * Le label ajouté lors d'un ajout panier
+   * label added on click to cta add to cart
    */
   matTooltipCart = '';
 
   /**
-   * Le label ajouté lors d'un ajout au favoris
+   * label added on favorite
    */
   matTooltipFavorite = '';
 
@@ -51,16 +61,24 @@ export class ProductItemComponent implements OnInit {
 
   getDiscountRate = ProductService.getDiscountRate;
 
-  constructor(private favoriteService: FavoriteService,
+  isLoadingCartAdd: boolean;
+
+  @Output() cartUpdated: EventEmitter<Cart> = new EventEmitter<Cart>();
+
+  constructor(private router: Router,
+              private localizeRouterService: LocalizeRouterService,
+              private favoriteService: FavoriteService,
               private alertService: AlertService,
-              private translateService: TranslateService) {
+              private translateService: TranslateService,
+              private userService: UserService,
+              private cartService: CartService) {
   }
 
   ngOnInit() {
   }
 
   /**
-   * Ajout du produit au favoris de l'utilisateur
+   * Add product to favorite for current user
    */
   toggleFavorite(product: Product, favProduct: Favorite) {
     if (this.authenticated) {
@@ -69,27 +87,46 @@ export class ProductItemComponent implements OnInit {
           .then(() => {
             this.favoriteRemoved.emit(favProduct);
             this.matTooltipFavorite = '';
-          }, (err) => {
-            this.alertService.show(err);
+          }, (err: HttpErrorResponse) => {
+            this.alertService.show(err.error);
           });
         return;
       }
-      this.favoriteService.createFavorite({key: null, product: product, user: null})
-        .then((favoriteProduct: Favorite) => {
+      const favoriteProduct: Favorite = {key: null, product: product.key, user: this.userService.getUser().uid};
+      this.favoriteService.createFavorite(favoriteProduct)
+        .then((doc) => {
+          favoriteProduct.key = doc.id;
           this.favoriteService.updateFavorite(favoriteProduct)
             .then(() => {
               this.favoriteAdded.emit(favoriteProduct);
               this.translateService.get('label.product_added_to_favorite')
                 .subscribe((label) => this.matTooltipFavorite = label);
+            }, (err: HttpErrorResponse) => {
+              this.alertService.show(err.error);
             });
-        }, (err) => {
-          this.alertService.show(err);
+        }, (err: HttpErrorResponse) => {
+          this.alertService.show(err.error);
         });
+      return;
     }
+    this.alertService.show('favorite.user.unauthenticated');
   }
 
-
+  /**
+   * Add a product to cart
+   */
   addToCart(product: Product) {
-
+    if (this.options.user) {
+      this.isLoadingCartAdd = true;
+      this.cartService.addToCart(product, this.options.user)
+        .subscribe((cart: Cart) => {
+          this.isLoadingCartAdd = false;
+          this.cartUpdated.emit(cart);
+          this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
+        }, () => {
+          this.isLoadingCartAdd = false;
+          this.alertService.show('cart-add.error.save-new-product');
+        });
+    }
   }
 }

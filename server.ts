@@ -95,7 +95,6 @@ app.get('*', (req, res) => {
 if (!process.env.FUNCTION_NAME) {
   const PORT = process.env.PORT || 4000;
   app.listen(PORT, () => {
-    console.log(`Node Express server listening on http://localhost:${PORT}`);
   });
 }
 

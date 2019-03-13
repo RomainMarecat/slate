@@ -1,4 +1,13 @@
-:host {
+.img-wrapper {
   height: 100%;
-  display: block;
+  overflow-x: hidden;
+
+  img.scale {
+    display: flex;
+    max-width: 100%;
+    /* just in case, to force correct aspect ratio */
+    height: auto;
+    width: auto;
+    -ms-interpolation-mode: bicubic;
+  }
 }

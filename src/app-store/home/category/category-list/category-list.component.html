@@ -24,11 +24,13 @@
   <div class="category-list-wrapper"
        fxLayout="row wrap"
        fxLayoutAlign="center stretch"
+       fxLayoutAlign.xs="center center"
        *ngIf="categories && categories.length > 0">
     <app-category-item [options]="options"
                        [category]="category"
                        *ngFor="let category of categories"
-                       [fxFlex]="category?.metadata?.size">
+                       [fxFlex]="category?.metadata?.size"
+                       fxFlex.xs="80">
 
     </app-category-item>
   </div>

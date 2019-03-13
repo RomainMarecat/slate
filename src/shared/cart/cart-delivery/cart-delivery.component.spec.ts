@@ -1,32 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CartStartComponent } from './cart-start.component';
+import { CartDeliveryComponent } from './cart-delivery.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatListModule,
   MatSelectModule,
   MatStepperModule,
   MatTooltipModule
 } from '@angular/material';
-import { NgxStripeModule, StripeService } from 'ngx-stripe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { CartListComponent } from '../cart-list/cart-list.component';
-import { CartItemComponent } from '../cart-item/cart-item.component';
-import { CartPaymentComponent } from '../cart-payment/cart-payment.component';
-import { CartConfirmationComponent } from '../cart-confirmation/cart-confirmation.component';
-import { CartEditComponent } from '../cart-edit/cart-edit.component';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { RoutingState } from '../../util/routing-state';
+import { LoaderService } from '../../loader/loader.service';
+import { MockLoaderService } from '../../loader/mock-loader.service';
 import { AlertService } from '../../popup/alert.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
 import { CartService } from '../shared/cart.service';
@@ -37,13 +32,14 @@ import { PaymentService } from '../../payment/shared/payment.service';
 import { MockPaymentService } from '../../payment/shared/mock-payment.service';
 import { UserService } from '../../user/shared/user.service';
 import { MockUserService } from '../../user/shared/mock-user.service';
+import { StripeService } from 'ngx-stripe';
+import { DeliveryService } from '../shared/delivery.service';
+import { MockDeliveryService } from '../shared/mock-delivery.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
-import { MockLoaderService } from '../../loader/mock-loader.service';
-import { LoaderService } from '../../loader/loader.service';
 
-describe('CartStartComponent', () => {
-  let component: CartStartComponent;
-  let fixture: ComponentFixture<CartStartComponent>;
+describe('CartDeliveryComponent', () => {
+  let component: CartDeliveryComponent;
+  let fixture: ComponentFixture<CartDeliveryComponent>;
 
   configureTestSuite();
 
@@ -52,16 +48,15 @@ describe('CartStartComponent', () => {
       imports: [
         NoopAnimationsModule,
         CommonModule,
-        HttpClientTestingModule,
         MatCardModule,
         MatFormFieldModule,
         MatIconModule,
+        MatListModule,
         MatTooltipModule,
         MatStepperModule,
         MatInputModule,
         MatSelectModule,
         MatButtonModule,
-        NgxStripeModule.forRoot('pk_test_ZMBhVWlsAzGDErk8PFH28TWX'),
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
@@ -71,21 +66,14 @@ describe('CartStartComponent', () => {
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [
-        CartListComponent,
-        CartItemComponent,
-        CartPaymentComponent,
-        CartConfirmationComponent,
-        CartEditComponent,
-        CartStartComponent,
-      ],
+      declarations: [CartDeliveryComponent],
       providers: [
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
-        RoutingState,
         {provide: LoaderService, useClass: MockLoaderService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: CartService, useClass: MockCartService},
         {provide: OrderService, useClass: MockOrderService},
+        {provide: DeliveryService, useClass: MockDeliveryService},
         {provide: PaymentService, useClass: MockPaymentService},
         {provide: UserService, useClass: MockUserService},
         {provide: StripeService, useClass: StripeService},
@@ -95,7 +83,7 @@ describe('CartStartComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CartStartComponent);
+    fixture = TestBed.createComponent(CartDeliveryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

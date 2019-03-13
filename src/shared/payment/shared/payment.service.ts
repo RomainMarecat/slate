@@ -1,11 +1,14 @@
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { BehaviorSubject, from, Observable } from 'rxjs';
+import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { VisitorService } from '../../firestore/visitor.service';
 import { Payment } from './payment';
+import { timeout } from 'rxjs/operators';
 
 @Injectable()
 export class PaymentService extends VisitorService {
+
+  payment$: BehaviorSubject<Payment> = new BehaviorSubject<Payment>(null);
 
   constructor(afs: AngularFirestore,
               @Inject('TABLE_CMS') table: string,
@@ -25,12 +28,18 @@ export class PaymentService extends VisitorService {
     return super.getDocument(key) as Observable<Payment>;
   }
 
-  createPayment(payment: Payment): Promise<any> {
-    return super.createDocument(payment);
+  createPayment(payment: Payment): Observable<DocumentReference> {
+    return from(super.createDocument(payment))
+      .pipe(
+        timeout(5000)
+      );
   }
 
-  updatePayment(payment: Payment) {
-    return super.updateDocument(payment);
+  updatePayment(payment: Payment): Observable<void> {
+    return from(super.updateDocument(payment))
+      .pipe(
+        timeout(5000)
+      );
   }
 
   deletePayment(payment: Payment) {

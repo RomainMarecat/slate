@@ -11,7 +11,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import {
-  MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatStepperModule,
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule, MatProgressSpinnerModule,
+  MatSelectModule,
+  MatStepperModule,
   MatTooltipModule
 } from '@angular/material';
 import { PaymentService } from '../payment/shared/payment.service';
@@ -20,7 +27,8 @@ import { CartComponent } from './cart/cart.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { RoutingState } from '../util/routing-state';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { CartStartComponent } from './cart-start/cart-start.component';
+import { CartWrapperComponent } from './cart-wrapper/cart-wrapper.component';
+import { CartDeliveryComponent } from './cart-delivery/cart-delivery.component';
 
 export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
@@ -34,8 +42,9 @@ export const STRIPE_KEY = new InjectionToken<string>('');
     MatCardModule,
     MatFormFieldModule,
     MatIconModule,
+    MatListModule,
     MatTooltipModule,
-    MatStepperModule,
+    MatProgressSpinnerModule,
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
@@ -52,7 +61,8 @@ export const STRIPE_KEY = new InjectionToken<string>('');
     CartConfirmationComponent,
     CartEditComponent,
     CartComponent,
-    CartStartComponent,
+    CartDeliveryComponent,
+    CartWrapperComponent,
   ],
   exports: [
     CartListComponent,
@@ -60,6 +70,8 @@ export const STRIPE_KEY = new InjectionToken<string>('');
     CartPaymentComponent,
     CartConfirmationComponent,
     CartEditComponent,
+    CartDeliveryComponent,
+    CartWrapperComponent,
     CartComponent,
   ],
   providers: [

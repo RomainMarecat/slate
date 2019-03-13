@@ -1,8 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { from, Observable } from 'rxjs';
+import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { Order } from './order';
 import { VisitorService } from '../../firestore/visitor.service';
+import { timeout } from 'rxjs/operators';
 
 @Injectable()
 export class OrderService extends VisitorService {
@@ -12,19 +13,25 @@ export class OrderService extends VisitorService {
   }
 
   getOrders(): Observable<Order[]> {
-    return <Observable<Order[]>> super.getDocuments();
+    return <Observable<Order[]>>super.getDocuments();
   }
 
   getOrder(key: string): Observable<Order> {
     return super.getDocument(key) as Observable<Order>;
   }
 
-  createOrder(order: Order): Promise<any> {
-    return super.createDocument(order);
+  createOrder(order: Order): Observable<DocumentReference> {
+    return from(super.createDocument(order))
+      .pipe(
+        timeout(5000)
+      );
   }
 
-  updateOrder(order: Order) {
-    return super.updateDocument(order);
+  updateOrder(order: Order): Observable<void> {
+    return from(super.updateDocument(order))
+      .pipe(
+        timeout(5000)
+      );
   }
 
 

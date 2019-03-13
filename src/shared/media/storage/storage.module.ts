@@ -6,11 +6,13 @@ import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatProgr
 import { StorageDetailComponent } from './storage-detail/storage-detail.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { StorageImageComponent } from './storage-image/storage-image.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
     CommonModule,
     AngularFireStorageModule,
+    FlexLayoutModule,
     MatInputModule,
     MatIconModule,
     MatCardModule,

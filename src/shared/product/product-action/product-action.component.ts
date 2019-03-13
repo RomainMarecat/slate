@@ -9,7 +9,7 @@ import { Filter } from '../../facet/filter/shared/filter';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../loader/loader.service';
 import { LocalizeRouterService } from 'localize-router';
-import { take } from 'rxjs/operators';
+import { take, timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-action',
@@ -180,16 +180,19 @@ export class ProductActionComponent implements OnInit {
                   });
                 }
 
+                // Always reset cart to state "cart" when we add product to cart
+                cart.state = 'cart';
+
                 this.cartService.updateCart(cart)
-                  .then(() => {
+                  .subscribe(() => {
                     this.isLoading = false;
                     this.loaderService.hide();
                     this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
                     this.alertService.show('product-detail.cart.added');
-                  }, (err) => {
+                  }, () => {
                     this.loaderService.hide();
                     this.isLoading = false;
-                    this.alertService.show(err);
+                    this.alertService.show('product-detail.error.cart-add');
                   });
               }
             }, (err) => {

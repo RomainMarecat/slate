@@ -13,7 +13,9 @@
         },
         "title": {
             "start": "mon panier",
+            "delivery": "livraison",
             "payment": "paiement",
+            "login": "connexion",
             "cart": "mon panier",
             "confirmation": "confirmation"
         },
@@ -21,12 +23,55 @@
             "total": "total"
         }
     },
+    "cart-add": {
+        "saved": "le panier est sauvegardé",
+        "error": {
+            "save-new-product": "le produit ne s'est pas ajouté au panier",
+            "validate-cart": "Le panier n'a pas pu être validé correctement",
+            "update-cart-error": "Le panier ne s'est pas mis à jour"
+        }
+    },
     "cta": {
         "add_to_cart": "ajouter au panier",
         "add_to_favorite": "ajouter aux favoris",
+        "back_to_home": "retour vers l'accueil",
         "btn_slider": "Accéder à l'offre",
+        "duplicate_same_delivery_as_billing": "c'est aussi l'adresse de facturation",
         "show-product": "voir le produit",
-        "validate": "valider"
+        "validate": "valider",
+        "cancel": "annuler",
+        "pay": "payer"
+    },
+    "delivery": {
+        "address": {
+            "title": "choisir votre adresse de livraison",
+            "address": "adresse",
+            "address_complement": "complément d'adresse",
+            "email": "email",
+            "zipcode": "code postal",
+            "city": "ville",
+            "country": "pays"
+        },
+        "billing": {
+            "title": "choisir votre adresse de facturation",
+            "address": "adresse",
+            "address_complement": "complément d'adresse",
+            "email": "email",
+            "zipcode": "code postal",
+            "city": "ville",
+            "country": "pays"
+        },
+        "error": {
+            "validate-delivery": "Les informations de livraison n'ont pas été enregistrées"
+        }
+    },
+    "error": {
+        "no-internet-connection": "Aucune connexion internet"
+    },
+    "favorite": {
+        "user": {
+            "unauthentication": "il faut être authentifié pour utiliser l'ajout aux favoris"
+        }
     },
     "menu": {
         "connection": {
@@ -36,19 +81,32 @@
         "title2": "",
         "title": {
             "product": "",
-            "cart": ""
+            "home": "",
+            "cart": "",
+            "product-detail": ""
         }
     },
     "meta": {
         "title": {
             "cart": "mon panier",
+            "home": "store - accueil",
             "product": "{{ name }}",
             "product-detail": "{{ name }}"
         },
         "description": {
             "cart": "mon panier",
+            "home": "accueil",
             "product": "description du produit {{ description }}",
             "product-detail": "deescription du produit {{ description }}"
+        }
+    },
+    "order-confirmation": {
+        "title": "commande confirmée",
+        "content": {
+            "waiting": "votre commande sera bientôt validée",
+            "summary": "",
+            "total": "total",
+            "key": "n° de commande"
         }
     },
     "product-detail": {
@@ -56,7 +114,10 @@
             "prefix": "par"
         },
         "cart": {
-            "add": "produit ajouté au panier"
+            "added": "produit ajouté au panier"
+        },
+        "error": {
+            "cart-add": "Erreur lors de l'ajout du produit au panier"
         },
         "section": {
             "title": {
@@ -76,7 +137,9 @@
         "cart": "panier",
         "categories": "catégories",
         "products": "produits",
+        "order": "commande",
         "detail": "detail",
-        "search": "recherche"
+        "search": "recherche",
+        "payment": "paiement"
     }
 }

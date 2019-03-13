@@ -41,6 +41,7 @@ import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsen
 import { FooterModule } from '../../shared/footer/footer.module';
 import { StorageModule } from '../../shared/media/storage/storage.module';
 import { PopupModule } from '../../shared/popup/popup.module';
+import { DeliveryService } from '../../shared/cart/shared/delivery.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -79,6 +80,7 @@ export const TABLE_OFFER = new InjectionToken<string>('offer');
 export const TABLE_ORDER = new InjectionToken<string>('order');
 export const TABLE_PARTNER = new InjectionToken<string>('partner');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
+export const TABLE_DELIVERY = new InjectionToken<string>('delivery');
 
 @Injectable()
 export class ConfigService {
@@ -156,6 +158,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_SELECTION, useValue: 'selection'},
     {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_SCORE, useValue: 'scores'},
+    {provide: TABLE_DELIVERY, useValue: 'delivery'},
     {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
     {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
     {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
@@ -175,6 +178,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
     {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
+    {provide: DeliveryService, useClass: DeliveryService, deps: [AngularFirestore, TABLE_DELIVERY]},
     UserService,
     AlertService,
     MenuService,

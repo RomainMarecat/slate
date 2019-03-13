@@ -25,6 +25,8 @@ import { UserService } from '../../../shared/user/shared/user.service';
 import { MockUserService } from '../../../shared/user/shared/mock-user.service';
 import { FavoriteService } from '../../../shared/favorite/shared/favorite.service';
 import { MockFavoriteService } from '../../../shared/favorite/shared/mock-favorite.service';
+import { MockCartService } from '../../../shared/cart/shared/mock-cart.service';
+import { CartService } from '../../../shared/cart/shared/cart.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -60,6 +62,7 @@ describe('HomeComponent', () => {
         {provide: FavoriteService, useClass: MockFavoriteService},
         {provide: MediaService, useClass: MockMediaService},
         {provide: ProductService, useClass: MockProductService},
+        {provide: CartService, useClass: MockCartService},
         {provide: AngularFireStorage, useClass: MockAngularFireStorage}
       ]
     })

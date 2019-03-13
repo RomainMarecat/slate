@@ -1,21 +1,25 @@
-<ng-container *ngIf="matCardImage; else simpleImg">
-  <img [attr.src]="downloadURL"
-       [attr.mat-card-image]="matCardImage"
-       [attr.height]="height"
-       [attr.width]="width"
-       [attr.alt]="metadata?.alt ? metadata.alt : downloadURL"
-       [ngClass]="panelClass"
-       [ngStyle]="panelStyle"
-       *ngIf="downloadURL">
-</ng-container>
+<div class="img-wrapper"
+     fxLayout="row"
+     fxLayoutAlign="center stretch">
+  <ng-container *ngIf="matCardImage; else simpleImg">
+    <img [attr.src]="downloadURL"
+         [attr.mat-card-image]="matCardImage"
+         [attr.height]="height"
+         [attr.width]="width"
+         [attr.alt]="metadata?.alt ? metadata.alt : downloadURL"
+         [ngClass]="panelClass"
+         [ngStyle]="panelStyle"
+         *ngIf="downloadURL">
+  </ng-container>
 
-<ng-template #simpleImg>
-  <img [attr.src]="downloadURL"
-       [attr.mat-card-image]="matCardImage"
-       [attr.height]="height"
-       [attr.width]="width"
-       [attr.alt]="metadata?.alt ? metadata.alt : downloadURL"
-       [ngClass]="panelClass"
-       [ngStyle]="panelStyle"
-       *ngIf="downloadURL">
-</ng-template>
+  <ng-template #simpleImg>
+    <img [attr.src]="downloadURL"
+         [attr.mat-card-image]="matCardImage"
+         [attr.height]="height"
+         [attr.width]="width"
+         [attr.alt]="metadata?.alt ? metadata.alt : downloadURL"
+         [ngClass]="panelClass"
+         [ngStyle]="panelStyle"
+         *ngIf="downloadURL">
+  </ng-template>
+</div>
