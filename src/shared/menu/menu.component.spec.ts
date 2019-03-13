@@ -10,7 +10,7 @@ import { MockUserService } from '../user/shared/mock-user.service';
 import {
   MatToolbarModule,
   MatIconModule,
-  MatButtonModule, MatDialogModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule
+  MatButtonModule, MatDialogModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatMenuModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { SidenavService } from '../sidenav/sidenav.service';
@@ -38,6 +38,7 @@ describe('MenuComponent', () => {
         LocalizeRouterModule,
         MatDialogModule,
         MatInputModule,
+        MatMenuModule,
         MatFormFieldModule,
         MatAutocompleteModule,
         MatIconModule,

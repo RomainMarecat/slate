@@ -17,7 +17,7 @@ export class CartService extends VisitorService {
     super(afs, table);
   }
 
-  addToCart(product: Product, user: User): Observable<Cart> {
+  addToCart(product: Product, user: User, quantity: number = 1): Observable<Cart> {
     const cart: Cart = {
       key: null,
       status: 'current',
@@ -28,7 +28,6 @@ export class CartService extends VisitorService {
       updated_at: new Date(),
       user: user.uid
     };
-    const quantity = 1;
 
     const item: CartItem = {
       name: product.name,

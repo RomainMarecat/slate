@@ -101,6 +101,11 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
   }
 
+  logout() {
+    this.userService.logout().subscribe(() => {
+    });
+  }
+
   search() {
     this.searchDialogRef = this.matDialog.open(SearchDialogComponent, {
       data: {
