@@ -11,7 +11,10 @@
         "polyfills.ts",
         "home/home.module.ts",
         "../shared/product/product.module.ts",
+        "../shared/account/account.module.ts",
         "../shared/cart/cart.module.ts",
+        "../shared/order/order.module.ts",
+        "../shared/preference/preference.module.ts",
         "../shared/admin/base/*/*.ts",
         "../shared/admin/base/*.ts"
     ],

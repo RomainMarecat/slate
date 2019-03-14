@@ -34,6 +34,14 @@ export class CartDeliveryComponent implements OnInit {
           delivery && delivery.address && delivery.address.address ? delivery.address.address : '',
           [Validators.required, Validators.minLength(1)]
         ),
+        firstname: new FormControl(
+          delivery && delivery.address && delivery.address.firstname ? delivery.address.firstname : '',
+          [Validators.required, Validators.minLength(1)]
+        ),
+        lastname: new FormControl(
+          delivery && delivery.address && delivery.address.lastname ? delivery.address.lastname : '',
+          [Validators.required, Validators.minLength(1)]
+        ),
         address_complement: new FormControl(
           delivery && delivery.address && delivery.address.address_complement ? delivery.address.address_complement : '',
           []
@@ -54,6 +62,14 @@ export class CartDeliveryComponent implements OnInit {
       billing: new FormGroup({
         email: new FormControl(delivery && delivery.address && delivery.address.email ? delivery.address.email : '',
           [Validators.required, Validators.minLength(1), Validators.email]
+        ),
+        firstname: new FormControl(
+          delivery && delivery.address && delivery.address.firstname ? delivery.address.firstname : '',
+          [Validators.required, Validators.minLength(1)]
+        ),
+        lastname: new FormControl(
+          delivery && delivery.address && delivery.address.lastname ? delivery.address.lastname : '',
+          [Validators.required, Validators.minLength(1)]
         ),
         address: new FormControl(
           delivery && delivery.billing && delivery.billing.address ? delivery.billing.address : '',

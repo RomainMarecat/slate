@@ -3,6 +3,8 @@ export interface Delivery {
   cart: string;
   address: {
     email: string;
+    firstname: string;
+    lastname: string;
     address: string;
     address_complement: string;
     zipcode: string;
@@ -11,6 +13,8 @@ export interface Delivery {
   };
   billing: {
     email: string;
+    firstname: string;
+    lastname: string;
     address: string;
     address_complement: string;
     zipcode: string;

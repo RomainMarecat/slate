@@ -17,6 +17,7 @@ import { I18nService } from '../../shared/i18n/i18n.service';
 export class AppRootComponent implements OnInit {
 
   menuConfig = {
+    displayLogo: true,
     show_page_title: false,
     displayAdminRecipe: false,
     urlAdmin: ['admin'],
@@ -40,6 +41,11 @@ export class AppRootComponent implements OnInit {
               public matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer,
               private router: Router) {
+    this.matIconRegistry.addSvgIcon(
+      `logo`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/images/icons/logo.svg`)
+    );
+
     // previous url
     let previousRoute = router.routerState.snapshot.url;
 

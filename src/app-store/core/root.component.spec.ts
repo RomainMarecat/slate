@@ -3,25 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatCommonModule,
-  MatFormFieldModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatLineModule,
-  MatListModule,
-  MatMenuModule,
-  MatProgressSpinnerModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSnackBarModule,
-  MatToolbarModule,
-  MatTooltipModule
-} from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
@@ -59,6 +40,8 @@ import { MockCategoryService } from '../../shared/category/mock-category.service
 import { NgcCookieConsentModule, NgcCookieConsentService } from 'ngx-cookieconsent';
 import { cookieConfig } from './core.module';
 import { ProductModule } from '../home/product/product.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MaterialModule } from '../../shared/material/material.module';
 
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
@@ -87,23 +70,8 @@ describe('AppRootComponent', () => {
         BrowserAnimationsModule,
         HeaderModule,
         LocalizeRouterModule,
-        MatCardModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatButtonModule,
-        MatGridListModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatListModule,
-        MatSnackBarModule,
-        MatProgressSpinnerModule,
-        MatLineModule,
-        MatMenuModule,
-        MatCommonModule,
-        MatTooltipModule,
+        HttpClientTestingModule,
+        MaterialModule,
         MenuModule,
         NgcCookieConsentModule.forRoot(cookieConfig),
         ProductModule,

@@ -19,6 +19,7 @@ import { adminsID } from '../guard/admin';
 export class MenuComponent implements OnInit, OnDestroy {
 
   _config: {
+    displayLogo: boolean,
     displayAdminRecipe: boolean,
     urlAdmin: string[],
     displayBurgerMenu: boolean,
@@ -34,6 +35,7 @@ export class MenuComponent implements OnInit, OnDestroy {
       background: string;
     }
   } = {
+    displayLogo: false,
     displayAdminRecipe: false,
     show_page_title: true,
     urlAdmin: [],

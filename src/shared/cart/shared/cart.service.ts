@@ -6,7 +6,6 @@ import { Cart, CartItem } from './cart';
 import { Product } from '../../product/shared/product';
 import { User } from '../../user/shared/user';
 import { tap, timeout } from 'rxjs/operators';
-import { time } from 'tns-core-modules/profiling';
 
 @Injectable()
 export class CartService extends VisitorService {
@@ -33,6 +32,7 @@ export class CartService extends VisitorService {
       name: product.name,
       code: product.key,
       quantity: quantity,
+      image: product.image1,
       price: product.price,
       created_at: new Date(),
       updated_at: new Date()

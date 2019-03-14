@@ -1,0 +1,118 @@
+<div class="account-submodule-view mt-5"
+     fxLayout="row"
+     fxLayoutAlign="center stretch">
+  <div fxFlex="60"
+       *ngIf="order">
+    <div class="row">
+      <div class="col-lg-9 col-12">
+        <h1 class="title_connect text-uppercase">
+          {{ 'order-detail.title'|translate }}
+        </h1>
+      </div>
+
+      <div class="col-8 offset-2 my-2 my-lg-0 col-lg-3 offset-lg-0">
+        <div class="button_wrapper">
+          <button mat-flat-button
+                  color="primary"
+                  [disabled]="downloadingInvoice"
+                  *ngIf="order?.key"
+                  (click)="downloadInvoice(order)">
+            {{ 'order-detail.invoice.download'|translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-3">
+      <div class="col-12 col-md-6">
+        <div class="row">
+          <div class="col-8 col-md-6">
+            <ul class="list-unstyled">
+              <li>
+                {{ 'order-detail.total-product'|translate }} :
+              </li>
+              <li *ngIf="order?.delivery_fee">
+                {{ 'order-detail.total-delivery-fee'|translate }} :
+              </li>
+              <li>
+                {{ 'order-detail.total'|translate }} :
+              </li>
+            </ul>
+          </div>
+          <div class="col-4 col-md-6 text-left text-md-center">
+            <ul class="list-unstyled">
+              <li>
+                <strong>{{ order.total | currency:'EUR' }}</strong>
+              </li>
+              <li>
+                <strong>{{ order?.delivery_fee | currency:'EUR' }}</strong>
+              </li>
+              <li>
+                <strong>{{ (order.total + (order?.delivery_fee || 0)) | currency:'EUR' }}</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6" *ngIf="delivery && delivery.address">
+        <!-- TODO trad -->
+        <div class="d-block d-md-none">livré à :</div>
+        <strong>{{ delivery.address?.firstname }} {{ delivery.address?.lastname }}</strong>
+        <span class="address-address d-block d-lg-inline"> {{ delivery.address?.address }}
+          <br/>
+          <span *ngIf="delivery.address?.address_complement">
+            {{ delivery.address?.address_complement }}</span>
+        </span>
+        <span class="address-zipcode">{{ delivery.address?.zipcode }} {{ delivery.address?.city }}
+          {{ delivery.address?.country }}</span>
+      </div>
+    </div>
+
+    <!-- liste de produits -->
+    <div class="row my-4 my-md-0">
+      <div class="col-12">
+        <div class="row d-none d-md-flex">
+          <div class="col-4">
+            {{ 'order-detail.reference'|translate }}
+          </div>
+          <div class="col-2">
+            {{ 'order-detail.quantity'|translate }}
+          </div>
+          <div class="col-2">
+            {{ 'order-detail.price'|translate }}
+          </div>
+          <div class="col-4">
+            {{ 'order-detail.e-ticket.title'|translate }}
+          </div>
+        </div>
+
+        <div class="row" *ngFor="let orderItem of order.items">
+          <div class="col-12 col-md-4 text-left">
+            <strong>{{ orderItem.name }}</strong>
+          </div>
+          <div class="col-6 col-md-2 text-center text-md-left">
+            <div>
+              <span class="d-inline d-md-none">{{ 'order-detail.quantity'|translate }}
+                :</span> {{ orderItem.quantity }}
+            </div>
+          </div>
+          <div class="col-6 col-md-2 text-center text-md-left">
+            <div>
+              {{ orderItem?.price | currency:'EUR' }}
+            </div>
+          </div>
+          <div class="col-12 col-md-4" *ngIf="orderItem?.is_eticket === true; else noEticketTmpl">
+            <button class="btn btn-shadow"
+                    [disabled]="downloadingEticket"
+                    (click)="downloadTickets(orderItem)">
+              <div>{{ 'order-detail.e-ticket.download'|translate }}</div>
+            </button>
+          </div>
+          <ng-template #noEticketTmpl>
+            /
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

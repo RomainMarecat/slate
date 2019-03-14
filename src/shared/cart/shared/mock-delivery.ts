@@ -7,6 +7,8 @@ export const mockDeliveries: Delivery[] = [
     cart: '6dq6sdq',
     address: {
       email: faker.random.words(),
+      firstname: faker.random.words(),
+      lastname: faker.random.words(),
       address: faker.random.words(),
       address_complement: faker.random.words(),
       zipcode: faker.random.words(),
@@ -15,6 +17,8 @@ export const mockDeliveries: Delivery[] = [
     },
     billing: {
       email: faker.random.words(),
+      firstname: faker.random.words(),
+      lastname: faker.random.words(),
       address: faker.random.words(),
       address_complement: faker.random.words(),
       zipcode: faker.random.words(),
@@ -28,6 +32,8 @@ export const mockDeliveries: Delivery[] = [
     cart: '6dq6sdq',
     address: {
       email: faker.random.words(),
+      firstname: faker.random.words(),
+      lastname: faker.random.words(),
       address: faker.random.words(),
       address_complement: faker.random.words(),
       zipcode: faker.random.words(),
@@ -36,6 +42,8 @@ export const mockDeliveries: Delivery[] = [
     },
     billing: {
       email: faker.random.words(),
+      firstname: faker.random.words(),
+      lastname: faker.random.words(),
       address: faker.random.words(),
       address_complement: faker.random.words(),
       zipcode: faker.random.words(),
@@ -53,6 +61,8 @@ export const mockDelivery: Delivery = {
   cart: '6dq6sdq',
   address: {
     email: faker.random.words(),
+    firstname: faker.random.words(),
+    lastname: faker.random.words(),
     address: faker.random.words(),
     address_complement: faker.random.words(),
     zipcode: faker.random.words(),
@@ -61,6 +71,8 @@ export const mockDelivery: Delivery = {
   },
   billing: {
     email: faker.random.words(),
+    firstname: faker.random.words(),
+    lastname: faker.random.words(),
     address: faker.random.words(),
     address_complement: faker.random.words(),
     zipcode: faker.random.words(),

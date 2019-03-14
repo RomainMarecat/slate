@@ -1,4 +1,31 @@
 {
+    "account": {
+        "title": "mon compte",
+        "favorite": {
+            "description": "",
+            "name": "mes favoris"
+        },
+        "delivery": {
+            "description": "",
+            "name": "mes adresses"
+        },
+        "informations": {
+            "description": "",
+            "name": "mes préférences"
+        },
+        "logout": {
+            "description": "",
+            "name": "se déconnecter"
+        },
+        "notification": {
+            "description": "",
+            "name": "mes notifications"
+        },
+        "orders": {
+            "description": "",
+            "name": "mes commandes"
+        }
+    },
     "category": {
         "title": "découvrez nos catégories",
         "subtitle": "sélectionner une catégorie afin de découvrir notre large gamme des produits"
@@ -40,6 +67,7 @@
         "btn_slider": "Accéder à l'offre",
         "duplicate_same_delivery_as_billing": "c'est aussi l'adresse de facturation",
         "logout": "se déconnecter",
+        "orders": "mes commandes",
         "show-product": "voir le produit",
         "validate": "valider",
         "cancel": "annuler",
@@ -48,6 +76,8 @@
     "delivery": {
         "address": {
             "title": "choisir votre adresse de livraison",
+            "firstname": "prénom",
+            "lastname": "nom",
             "address": "adresse",
             "address_complement": "complément d'adresse",
             "email": "email",
@@ -57,6 +87,8 @@
         },
         "billing": {
             "title": "choisir votre adresse de facturation",
+            "firstname": "prénom",
+            "lastname": "nom",
             "address": "adresse",
             "address_complement": "complément d'adresse",
             "email": "email",
@@ -112,6 +144,44 @@
             "key": "n° de commande"
         }
     },
+    "order-detail": {
+        "title": "détail de ma commande",
+        "subtitle": "total commande",
+        "invoice": {
+            "download": "télécharger la facture"
+        },
+        "reference": "référence",
+        "price": "prix",
+        "total-product": "total produits",
+        "total-delivery-fee": "total frais de livraison",
+        "total": "total",
+        "quantity": "quantité",
+        "e-ticket": {
+            "title": "e-billet",
+            "download": "télécharger mes e-billets"
+        },
+        "retailer": "partenaire"
+    },
+    "order-list": {
+        "title": "mes dernières commandes",
+        "subtitle": "",
+        "actions": {
+            "title": "voir toutes les commandes"
+        },
+        "error": {
+            "empty": "aucune commande trouvée."
+        }
+    },
+    "order-item": {
+        "title": {
+            "actions": "détails de la commande",
+            "products": "",
+            "created_at": "date de commande",
+            "reference": "numéro de commande",
+            "price": "prix",
+            "total": "total"
+        }
+    },
     "product-detail": {
         "brand": {
             "prefix": "par"
@@ -136,13 +206,16 @@
         }
     },
     "routes": {
+        "account": "mon-compte",
         "admin": "admin",
         "cart": "panier",
         "categories": "catégories",
         "products": "produits",
         "order": "commande",
+        "orders": "commandes",
         "detail": "detail",
         "search": "recherche",
-        "payment": "paiement"
+        "payment": "paiement",
+        "preferences": "paramètres"
     }
 }

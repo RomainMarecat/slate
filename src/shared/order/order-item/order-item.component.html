@@ -1,0 +1,94 @@
+<div class="item-wrapper mt-5"
+     fxLayout="column"
+     fxLayoutAlign="center center"
+     *ngIf="order">
+  <div fxLayout="column"
+       fxLayoutAlign="center start">
+
+    <div class="date-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="space-between center"
+         fxLayoutGap="10px"
+         *ngIf="order.created_at">
+      <span>
+        {{ 'order-item.title.created_at'|translate }}
+      </span>
+      <strong>
+        {{ order?.created_at?.seconds * 1000 | date:'short' }}
+      </strong>
+    </div>
+
+
+    <div class="reference-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="space-between center"
+         fxLayoutGap="10px">
+      <span>{{ 'order-item.title.reference' |translate }}</span>
+      <strong>{{ order?.key }}</strong>
+    </div>
+
+    <div class="products-wrapper mt-2">
+      <div *ngFor="let item of order.items"
+           fxLayout="row"
+           fxLayoutAlign="space-between center"
+           fxLayoutGap="10px">
+        <div class="image-wrapper"
+             fxFlex="20">
+          <img [src]="item.image"
+               *ngIf="item.image; else noImageAvailableIcon">
+
+          <ng-template #noImageAvailableIcon>
+            <img src="/assets/images/no-image-available.jpg">
+          </ng-template>
+        </div>
+        <div fxFlex="75"
+             fxLayout="column">
+          <div class="item-wrapper">
+            <h4 class="product-name">{{ item.name }}</h4>
+          </div>
+
+          <div fxLayout="row"
+               fxLayoutAlign="start end"
+               fxLayoutGap="10px">
+            <span class="product-price-label">
+              {{ 'order-item.title.price' |translate }}
+            </span>
+            <strong class="product-price" *ngIf="item.price">
+              {{ item.price | currency:'EUR' }}
+            </strong>
+
+            <span class="product-quantity" *ngIf="item.quantity">
+              x{{ item.quantity }}
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="total-wrapper mt-2"
+         fxLayout="row"
+         fxLayoutAlign="space-between center"
+         fxLayoutGap="10px">
+      <span class="total-name">{{ 'order-item.title.total' |translate }}</span>
+      <strong class="total-price" *ngIf="order?.total && order?.delivery_fee; else zeroDelivery">
+        {{(order.total + order.delivery_fee) | currency:'EUR' }}
+      </strong>
+      <ng-template #zeroDelivery>
+        <strong class="total-price">{{ order?.total | currency:'EUR' }}</strong>
+      </ng-template>
+    </div>
+  </div>
+
+
+  <div>
+    <div class="actions-wrapper text-center mt-2">
+      <a mat-flat-button
+         color="primary"
+         (click)="navigateTo(order?.key)">
+        <span>{{ 'order-item.title.actions' |translate }}</span>
+        <mat-icon>arrow_forward_ios</mat-icon>
+      </a>
+    </div>
+  </div>
+</div>

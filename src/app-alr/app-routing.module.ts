@@ -61,7 +61,7 @@ const routes: Routes = [
   },
   {
     path: 'material',
-    loadChildren: './../shared/material/material.module#MaterialModule'
+    loadChildren: './../shared/material/example-material.module#ExampleMaterialModule'
   },
   {
     path: 'contact-us',

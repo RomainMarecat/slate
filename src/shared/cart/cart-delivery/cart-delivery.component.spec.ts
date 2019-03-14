@@ -8,7 +8,8 @@ import {
   MatCardModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule, MatListModule,
+  MatInputModule,
+  MatListModule,
   MatSelectModule,
   MatStepperModule,
   MatTooltipModule
@@ -19,7 +20,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
-import { RoutingState } from '../../util/routing-state';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
 import { AlertService } from '../../popup/alert.service';

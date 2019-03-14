@@ -27,6 +27,20 @@
 
         <mat-form-field appearance="standard">
           <input matInput
+                 formControlName="firstname"
+                 autocomplete="firstname"
+                 [placeholder]="'delivery.address.firstname'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="lastname"
+                 autocomplete="lastname"
+                 [placeholder]="'delivery.address.lastname'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
                  formControlName="address"
                  autocomplete="address"
                  [placeholder]="'delivery.address.address'|translate">
@@ -72,14 +86,18 @@
 
         <ng-container *ngIf="isDeliveryCompleted(); else spacerTmpl">
           <div class="duplicate-wrapper">
-            <button [title]="'cta.duplicate'|translate"
+
+            <button [title]="'cta.duplicate_same_delivery_as_billing'|translate"
                     *ngIf="isDeliveryCompleted()"
                     type="button"
                     role="button"
                     (click)="copyDeliveryIntoBilling()"
                     mat-flat-button
-                    color="primary">
-              {{ 'cta.duplicate_same_delivery_as_billing'|translate }}
+                    color="primary"
+                    fxLayout="row"
+                    fxLayoutAlign="start center">
+              <mat-icon style="line-height: 24px;" fontSet="fa" fontIcon="fa-copy"></mat-icon>
+              <span>{{ 'cta.duplicate_same_delivery_as_billing'|translate }}</span>
             </button>
           </div>
         </ng-container>
@@ -94,6 +112,20 @@
                  formControlName="email"
                  autocomplete="email"
                  [placeholder]="'delivery.address.email'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="firstname"
+                 autocomplete="firstname"
+                 [placeholder]="'delivery.address.firstname'|translate">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+          <input matInput
+                 formControlName="lastname"
+                 autocomplete="lastname"
+                 [placeholder]="'delivery.address.lastname'|translate">
         </mat-form-field>
 
         <mat-form-field appearance="standard">
