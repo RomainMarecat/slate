@@ -1,0 +1,75 @@
+<div class="account-header-wrapper mt-5"
+     fxLayout="row"
+     fxLayoutAlign="center stretch">
+  <div class="heading-title">
+    <h1 class="title text-uppercase">
+      {{ 'account.title'|translate }}
+    </h1>
+  </div>
+</div>
+
+<div class="row content-account mt-5"
+     fxLayout="row"
+     fxLayoutAlign="center stretch"
+     fxLayoutGap="30px"
+     fxShow.gt-sm
+     fxHide.xs>
+  <div class="account-bloc"
+       *ngFor="let accountNavigation of accountNavigations">
+    <div class="account-avatar-wrapper text-center">
+      <i [class]="'fa fa-3x fa-' + accountNavigation.avatar"></i>
+    </div>
+    <p class="account-text text-center"
+       *ngIf="(accountNavigation.description|translate) && (accountNavigation.description|translate) !== ''">
+      {{ accountNavigation.description | translate }}
+    </p>
+    <div class="text-center account-link-actions">
+      <div *ngIf="accountNavigation.link !== 'logout'; else logoutDesktop;">
+        <a class="btn btn-shadow" [routerLink]="[accountNavigation.link]">
+          {{ accountNavigation.name | translate }}
+        </a>
+      </div>
+      <ng-template #logoutDesktop>
+        <a class="btn btn-shadow" (click)="onLogout()">
+          {{ accountNavigation.name | translate }}
+        </a>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<div class="preference-wrapper"
+     fxLayout="row"
+     fxLayoutAlign="center stretch"
+     fxShow.xs
+     fxHide.gt-sm>
+  <div fxLayout="row"
+       fxLayoutAlign="center stretch"
+       fxFlex="50"
+       fxFlex.xs="80">
+    <mat-nav-list class="w-100">
+      <mat-list-item *ngFor="let accountNavigation of accountNavigations">
+
+        <a matLine
+           [routerLink]="accountNavigation.link|translate"
+           fxLayout="row"
+           fxLayoutAlign="start center"
+           fxLayoutGap="20px"
+           *ngIf="accountNavigation.link !== 'logout'; else logoutXs">
+
+          <i [class]="'fa fa-' + accountNavigation.avatar"></i>
+          <span>{{ accountNavigation.name | translate }}</span>
+
+        </a>
+
+        <ng-template #logoutXs>
+          <a mat-flat-button
+             color="primary"
+             (click)="onLogout()">
+            {{ accountNavigation.name | translate }}
+          </a>
+        </ng-template>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+</div>

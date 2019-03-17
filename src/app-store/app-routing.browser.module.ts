@@ -21,6 +21,10 @@ const routes: Routes = [
     path: 'cart',
     loadChildren: './../shared/cart/cart.module#CartModule'
   },
+  {
+    path: 'account',
+    loadChildren: './../shared/account/account.module#AccountModule'
+  },
 ];
 
 @NgModule({

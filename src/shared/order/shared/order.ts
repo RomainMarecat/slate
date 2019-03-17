@@ -13,6 +13,7 @@ export interface OrderItem {
   key?: string;
   name: string;
   code: string;
+  image: string;
   quantity: number;
   price: number;
   created_at: Date;

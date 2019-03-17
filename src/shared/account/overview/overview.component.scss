@@ -1,0 +1,27 @@
+.account-header-wrapper{
+  .subtitle{
+    font-size: 0.8125rem;
+    line-height: 1.5rem;
+  }
+}
+
+.content-account{
+  margin-top: 2rem;
+  .account-bloc{
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+    .account-avatar-wrapper{
+      margin: 1rem 0;
+    }
+    .account-text{
+      height: 2rem;
+      margin: 1rem 0 2rem;
+      font-size: 0.8125rem;
+    }
+    .account-link-actions{
+      .btn-shadow{
+        width: 80%;
+      }
+    }
+  }
+}

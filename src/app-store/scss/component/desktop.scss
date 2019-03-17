@@ -111,4 +111,38 @@
       }
     }
   }
+
+  // Account
+  // Order
+  app-order-list {
+    app-order-item {
+      .date-wrapper,
+      .reference-wrapper,
+      .products-wrapper,
+      .total-wrapper {
+        width: 100%;
+
+        span {
+          font-size: 1rem;
+        }
+
+        strong {
+          font-size: 1.5rem;
+        }
+      }
+
+      .image-wrapper {
+        img {
+          height: 48px;
+          width: auto;
+        }
+      }
+
+      .products-wrapper {
+        h4 {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
 }

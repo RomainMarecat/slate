@@ -9,6 +9,12 @@
      *ngIf="config.displayBurgerMenu">
     <mat-icon>menu</mat-icon>
   </a>
+  <a mat-button
+     class="logo-wrapper"
+     routerLink="/"
+     *ngIf="config.displayLogo">
+    <mat-icon svgIcon="logo"></mat-icon>
+  </a>
   <h1 id="main-logo"
       class="logo"
       angulartics2On="mouseover"
@@ -77,7 +83,7 @@
 
   <mat-menu #account="matMenu"
             xPosition="before">
-    <button mat-menu-item>{{ 'cta.account'|translate }}</button>
+    <button mat-menu-item [routerLink]="['/account']|localize">{{ 'cta.account'|translate }}</button>
     <button mat-menu-item (click)="logout()">{{ 'cta.logout'|translate }}</button>
   </mat-menu>
 
@@ -113,7 +119,7 @@
             [style.color]="config.connectionBtn.color"
             type="button"
             (click)="userService.loginGoogle()"
-            [innerHtml]="'menu.connection.title'|translate">
+            [innerHTML]="'menu.connection.title'|translate">
     </button>
   </span>
 
