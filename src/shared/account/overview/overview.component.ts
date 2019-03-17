@@ -27,19 +27,19 @@ export class OverviewComponent implements OnInit {
     {
       avatar: 'address-card',
       description: 'account.delivery.description',
-      link: 'delivery',
+      link: 'deliveries',
       name: 'account.delivery.name'
     },
-    {
-      avatar: 'bell',
-      description: 'account.notification.description',
-      link: 'notification',
-      name: 'account.notification.name'
-    },
+    // {
+    //   avatar: 'bell',
+    //   description: 'account.notification.description',
+    //   link: 'notification',
+    //   name: 'account.notification.name'
+    // },
     {
       avatar: 'star-o',
       description: 'account.favorite.description',
-      link: 'favorite',
+      link: 'favorites',
       name: 'account.favorite.name'
     },
     {

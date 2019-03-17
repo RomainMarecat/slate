@@ -49,4 +49,8 @@ export class MockUserService {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
   }
+
+  getCurrentUser() {
+    return of(mockUser);
+  }
 }

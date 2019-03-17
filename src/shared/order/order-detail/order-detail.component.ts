@@ -61,7 +61,7 @@ export class OrderDetailComponent implements OnInit {
           value: order.cart
         }
       ]);
-      this.deliveryService.getDeliverys()
+      this.deliveryService.getDeliveries()
         .subscribe((deliveries) => this.delivery = deliveries[0]);
     }
   }

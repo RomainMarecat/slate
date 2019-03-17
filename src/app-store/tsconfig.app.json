@@ -14,6 +14,8 @@
         "../shared/account/account.module.ts",
         "../shared/cart/cart.module.ts",
         "../shared/order/order.module.ts",
+        "../shared/delivery/delivery.module.ts",
+        "../shared/favorite/favorite.module.ts",
         "../shared/preference/preference.module.ts",
         "../shared/admin/base/*/*.ts",
         "../shared/admin/base/*.ts"

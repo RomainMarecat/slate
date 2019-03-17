@@ -1,0 +1,19 @@
+<div class="delivery-wrapper"
+     fxLayout="column"
+     fxLayoutAlign="center start"
+     fxLayoutGap="20px"
+     *ngIf="delivery">
+  <mat-card class="m-1 w-100">
+    <mat-card-title>
+      {{ delivery.address?.lastname }} {{ delivery.address?.firstname }}
+    </mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>{{ delivery.address.address }}</mat-list-item>
+        <mat-list-item *ngIf="delivery.address.address_complement">{{ delivery.address.address_complement }}</mat-list-item>
+        <mat-list-item>{{ delivery.address.zipcode }} {{ delivery.address.city }}</mat-list-item>
+        <mat-list-item>{{ delivery.address.country }}</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

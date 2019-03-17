@@ -120,7 +120,7 @@ export class CartDeliveryComponent implements OnInit {
         value: this.cart.key
       }
     ]);
-    this.deliveryService.getDeliverys()
+    this.deliveryService.getDeliveries()
       .subscribe((deliveries: Delivery[]) => {
         this.form = CartDeliveryComponent.getForm(deliveries[0]);
       });
@@ -135,9 +135,9 @@ export class CartDeliveryComponent implements OnInit {
   }
 
   saveDelivery() {
-    if (this.form.valid && this.cart && this.cart.key) {
+    if (this.form.valid && this.cart && this.cart.key && this.cart.user) {
       this.disableDeliveryButton = true;
-      const delivery: Delivery = {...this.form.value, ...{cart: this.cart.key}};
+      const delivery: Delivery = {...this.form.value, ...{cart: this.cart.key, user: this.cart.user}};
       this.deliveryService.createDelivery(delivery)
         .subscribe((doc: DocumentReference) => {
           delivery.key = doc.id;

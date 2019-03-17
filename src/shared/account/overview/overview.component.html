@@ -12,7 +12,7 @@
      fxLayout="row"
      fxLayoutAlign="center stretch"
      fxLayoutGap="30px"
-     fxShow.gt-sm
+     fxShow.gt-xs
      fxHide.xs>
   <div class="account-bloc"
        *ngFor="let accountNavigation of accountNavigations">
@@ -25,7 +25,8 @@
     </p>
     <div class="text-center account-link-actions">
       <div *ngIf="accountNavigation.link !== 'logout'; else logoutDesktop;">
-        <a class="btn btn-shadow" [routerLink]="[accountNavigation.link]">
+        <a class="btn btn-shadow"
+           [routerLink]="[accountNavigation.link]">
           {{ accountNavigation.name | translate }}
         </a>
       </div>
@@ -42,7 +43,7 @@
      fxLayout="row"
      fxLayoutAlign="center stretch"
      fxShow.xs
-     fxHide.gt-sm>
+     fxHide.gt-xs>
   <div fxLayout="row"
        fxLayoutAlign="center stretch"
        fxFlex="50"
