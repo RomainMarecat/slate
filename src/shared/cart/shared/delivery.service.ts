@@ -14,7 +14,7 @@ export class DeliveryService extends VisitorService {
     super(afs, table);
   }
 
-  getDeliverys(): Observable<Delivery[]> {
+  getDeliveries(): Observable<Delivery[]> {
     return super.getDocuments() as Observable<Delivery[]>;
   }
 

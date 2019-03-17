@@ -1,18 +1,47 @@
 <div class="preference-user-wrapper"
      fxLayout="row"
      fxLayoutAlign="center stretch">
-  <form [formGroup]="form"
-        (ngSubmit)="save()">
-    <mat-form-field class="mat-form-field">
-      <input matInput
-             maxlength="100"
-             [placeholder]="'preference-user.placeholder.recipe.email'|translate"
-             formControlName="email">
-      <mat-hint align="end">{{ form.get('email').value.length }} {{ '/100'|translate }}</mat-hint>
-      <mat-error *ngIf="form.get('email').invalid && form.get('email').value.length === 0"
-                 [innerHTML]="'preference-user.error.required.recipe.email'|translate"></mat-error>
-      <mat-error *ngIf="form.get('email').invalid && form.get('email').value.length > 0"
-                 [innerHTML]="'preference-user.error.invalid.recipe.email'|translate"></mat-error>
-    </mat-form-field>
-  </form>
+
+  <mat-card class="w-100 m-3">
+    <mat-card-content>
+      <form [formGroup]="form"
+            (ngSubmit)="save()"
+            fxLayout="column">
+        <mat-form-field class="mat-form-field">
+          <input matInput
+                 maxlength="100"
+                 [placeholder]="'preference-user.placeholder.email'|translate"
+                 formControlName="email">
+          <mat-hint align="end">{{ form.get('email').value.length }} {{ '/100'|translate }}</mat-hint>
+          <mat-error *ngIf="form.get('email').invalid && form.get('email').value.length === 0"
+                     [innerHTML]="'preference-user.error.required.email'|translate"></mat-error>
+          <mat-error *ngIf="form.get('email').invalid && form.get('email').value.length > 0"
+                     [innerHTML]="'preference-user.error.invalid.email'|translate"></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mat-form-field">
+          <input matInput
+                 maxlength="100"
+                 [placeholder]="'preference-user.placeholder.displayName'|translate"
+                 formControlName="displayName">
+          <mat-hint align="end">{{ form.get('displayName').value.length }} {{ '/100'|translate }}</mat-hint>
+          <mat-error *ngIf="form.get('displayName').invalid && form.get('displayName').value.length === 0"
+                     [innerHTML]="'preference-user.error.required.displayName'|translate"></mat-error>
+          <mat-error *ngIf="form.get('displayName').invalid && form.get('displayName').value.length > 0"
+                     [innerHTML]="'preference-user.error.invalid.displayName'|translate"></mat-error>
+        </mat-form-field>
+
+
+        <mat-card-actions>
+          <button type="button"
+                  [attr.role]="'cta.save'|translate"
+                  mat-flat-button
+                  color="primary"
+                  (click)="save()">
+            {{ 'cta.save'|translate }}
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

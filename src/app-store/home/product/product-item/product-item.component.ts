@@ -8,10 +8,7 @@ import { ProductService } from '../../../../shared/product/shared/product.servic
 import { UserService } from '../../../../shared/user/shared/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CartService } from '../../../../shared/cart/shared/cart.service';
-import { Cart, CartItem } from '../../../../shared/cart/shared/cart';
-import * as faker from 'faker';
-import { User } from '../../../../shared/user/shared/user';
-import { Subscription } from 'rxjs';
+import { Cart } from '../../../../shared/cart/shared/cart';
 import { Router } from '@angular/router';
 import { LocalizeRouterService } from 'localize-router';
 

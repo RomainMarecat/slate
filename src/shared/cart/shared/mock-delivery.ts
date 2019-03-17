@@ -5,6 +5,7 @@ export const mockDeliveries: Delivery[] = [
   {
     key: 'd6fs62',
     cart: '6dq6sdq',
+    user: 'fsdfsd6f2',
     address: {
       email: faker.random.words(),
       firstname: faker.random.words(),
@@ -30,6 +31,7 @@ export const mockDeliveries: Delivery[] = [
   }, {
     key: 'd6fs62',
     cart: '6dq6sdq',
+    user: 'fsdfsd6f2',
     address: {
       email: faker.random.words(),
       firstname: faker.random.words(),
@@ -59,6 +61,7 @@ export const mockDeliveries: Delivery[] = [
 export const mockDelivery: Delivery = {
   key: 'd6fs62',
   cart: '6dq6sdq',
+  user: 'fsdfsd6f2',
   address: {
     email: faker.random.words(),
     firstname: faker.random.words(),

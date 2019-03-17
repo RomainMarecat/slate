@@ -1,6 +1,8 @@
 export interface Delivery {
   key: string;
   cart: string;
+  order?: string;
+  user: string;
   address: {
     email: string;
     firstname: string;

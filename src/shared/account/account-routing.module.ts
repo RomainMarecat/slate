@@ -20,6 +20,14 @@ const routes: Routes = [
       {
         path: 'preferences',
         loadChildren: './../preference/preference.module#PreferenceModule'
+      },
+      {
+        path: 'deliveries',
+        loadChildren: './../delivery/delivery.module#DeliveryModule'
+      },
+      {
+        path: 'favorites',
+        loadChildren: './../favorite/favorite.module#FavoriteModule'
       }
     ]
   }

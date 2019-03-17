@@ -7,11 +7,11 @@
         },
         "delivery": {
             "description": "",
-            "name": "mes adresses"
+            "name": "mes adresses de livraison"
         },
         "informations": {
             "description": "",
-            "name": "mes préférences"
+            "name": "profil"
         },
         "logout": {
             "description": "",
@@ -71,7 +71,8 @@
         "show-product": "voir le produit",
         "validate": "valider",
         "cancel": "annuler",
-        "pay": "payer"
+        "pay": "payer",
+        "save": "enregistrer"
     },
     "delivery": {
         "address": {
@@ -100,6 +101,12 @@
             "validate-delivery": "Les informations de livraison n'ont pas été enregistrées"
         }
     },
+    "delivery-list": {
+        "title": "mes adresses de livraison",
+        "error": {
+            "empty": "Aucun adresse saisie."
+        }
+    },
     "error": {
         "no-internet-connection": "Aucune connexion internet"
     },
@@ -107,6 +114,9 @@
         "user": {
             "unauthentication": "il faut être authentifié pour utiliser l'ajout aux favoris"
         }
+    },
+    "favorite-list": {
+        "title": "mes favoris"
     },
     "menu": {
         "connection": {
@@ -182,6 +192,26 @@
             "total": "total"
         }
     },
+    "preference-user": {
+        "placeholder": {
+            "displayName": "nom",
+            "email": "email"
+        },
+        "error": {
+            "update": "le profil n'a pas été mis à jour",
+            "required": {
+                "displayName": "champs nom requis",
+                "email": "champs email requis"
+            },
+            "invalid": {
+                "displayName": "champs nom invalide",
+                "email": "email invalide"
+            }
+        },
+        "user": {
+            "updated": "le profil a été mis à jour"
+        }
+    },
     "product-detail": {
         "brand": {
             "prefix": "par"
@@ -216,6 +246,7 @@
         "detail": "detail",
         "search": "recherche",
         "payment": "paiement",
-        "preferences": "paramètres"
+        "preferences": "paramètres",
+        "deliveries": "adresses"
     }
 }

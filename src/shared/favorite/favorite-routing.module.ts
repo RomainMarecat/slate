@@ -1,22 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrderListComponent } from './order-list/order-list.component';
 import { LocalizeRouterModule } from 'localize-router';
-import { OrderDetailComponent } from './order-detail/order-detail.component';
-import { OrderComponent } from './order/order.component';
+import { FavoriteComponent } from './favorite/favorite.component';
+import { FavoriteListComponent } from './favorite-list/favorite-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: OrderComponent,
+    component: FavoriteComponent,
     children: [
       {
         path: '',
-        component: OrderListComponent
-      },
-      {
-        path: ':key/detail',
-        component: OrderDetailComponent
+        component: FavoriteListComponent
       }
     ]
   },
@@ -32,5 +27,5 @@ const routes: Routes = [
     LocalizeRouterModule
   ]
 })
-export class OrderRoutingModule {
+export class FavoriteRoutingModule {
 }

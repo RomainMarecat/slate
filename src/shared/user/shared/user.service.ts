@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
-import { User } from './user';
 import { map, take, tap, timeout } from 'rxjs/operators';
 import { AlertService } from '../../popup/alert.service';
 import { from, Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { User } from '@firebase/auth-types';
 
 @Injectable()
 export class UserService {
@@ -113,5 +113,16 @@ export class UserService {
 
   getAuthState(): Observable<User> {
     return this.afAuth.authState;
+  }
+
+  getCurrentUser(): Observable<User> {
+    return this.afAuth.user;
+  }
+
+  updateProfile(user: User, profile: {
+    displayName: string | null;
+    photoURL: string | null;
+  }): Observable<void> {
+    return from(user.updateProfile(profile));
   }
 }
