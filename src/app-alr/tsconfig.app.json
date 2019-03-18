@@ -19,6 +19,8 @@
   ],
   "exclude": [
     "test.ts",
+    "../shared/i18n/translate-server-loader.service.ts",
+    "../shared/i18n/translates-server/*.ts",
     "**/*.spec.ts",
     "../shared/*.spec.ts",
     "../shared/**/*.spec.ts",
