@@ -1,5 +1,5 @@
 export const mockUser = {
-  uid: '',
+  uid: 'sdf4sdf52',
   photoURL: '',
   displayName: '',
   email: '',

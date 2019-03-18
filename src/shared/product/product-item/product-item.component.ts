@@ -1,9 +1,16 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Favorite } from '../../favorite/shared/favorite';
 import { Product } from '../shared/product';
-import { DateService } from '../../util/date.service';
+import { FavoriteService } from '../../favorite/shared/favorite.service';
+import { AlertService } from '../../popup/alert.service';
+import { TranslateService } from '@ngx-translate/core';
+import { ProductService } from '../shared/product.service';
+import { UserService } from '../../user/shared/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { CartService } from '../../cart/shared/cart.service';
+import { Cart } from '../../cart/shared/cart';
+import { Router } from '@angular/router';
 import { LocalizeRouterService } from 'localize-router';
-import { LoaderService } from '../../loader/loader.service';
 
 @Component({
   selector: 'app-product-item',
@@ -12,90 +19,111 @@ import { LoaderService } from '../../loader/loader.service';
 })
 export class ProductItemComponent implements OnInit {
 
-  _product: Product;
-  @Output() updatedProduct: EventEmitter<Product> = new EventEmitter<Product>();
-  cols: number;
-  resizedImage: any;
-  humanPublishedAt: string;
-  @Input() showScore: boolean;
-  @Input() showAdd: boolean;
-  loading: boolean;
+  @Input() options;
+
+  @Input() inCart: boolean;
+
+  /**
+   * If product was added to favorite
+   */
+  @Input() favoriteProduct: Favorite;
+  /**
+   * the product we need to show
+   */
+  @Input() product: Product;
+
+  /**
+   * est-on dans une modale ? (suggestions) ou non
+   */
+  @Input() inModal: boolean;
+
+  /**
+   * Authentication de l'utilisateur si oui ou non
+   */
+  @Input() authenticated: boolean;
+
+  /**
+   * label added on click to cta add to cart
+   */
+  matTooltipCart = '';
+
+  /**
+   * label added on favorite
+   */
+  matTooltipFavorite = '';
+
+  @Output() favoriteAdded: EventEmitter<Favorite> = new EventEmitter<Favorite>();
+
+  @Output() favoriteRemoved: EventEmitter<Favorite> = new EventEmitter<Favorite>();
+
+  getDiscountRate = ProductService.getDiscountRate;
+
+  isLoadingCartAdd: boolean;
+
+  @Output() cartUpdated: EventEmitter<Cart> = new EventEmitter<Cart>();
 
   constructor(private router: Router,
-              public dateService: DateService,
               private localizeRouterService: LocalizeRouterService,
-              private loaderService: LoaderService) {
-    // Add columns number for each images max < 4
-    this.cols = 0;
-    // Display fixed images for item view
-    this.resizedImage = {height: '240'};
-    this.loading = true;
-    this.loaderService.show();
+              private favoriteService: FavoriteService,
+              private alertService: AlertService,
+              private translateService: TranslateService,
+              private userService: UserService,
+              private cartService: CartService) {
   }
 
   ngOnInit() {
   }
 
   /**
-   * Getter for product
+   * Add product to favorite for current user
    */
-  get product() {
-    return this._product;
+  toggleFavorite(product: Product, favProduct: Favorite) {
+    if (this.authenticated) {
+      if (favProduct) {
+        this.favoriteService.deleteFavorite(favProduct)
+          .then(() => {
+            this.favoriteRemoved.emit(favProduct);
+            this.matTooltipFavorite = '';
+          }, (err: HttpErrorResponse) => {
+            this.alertService.show(err.error);
+          });
+        return;
+      }
+      const favoriteProduct: Favorite = {key: null, product: product.key, user: this.userService.getUser().uid};
+      this.favoriteService.createFavorite(favoriteProduct)
+        .then((doc) => {
+          favoriteProduct.key = doc.id;
+          this.favoriteService.updateFavorite(favoriteProduct)
+            .then(() => {
+              this.favoriteAdded.emit(favoriteProduct);
+              this.translateService.get('label.product_added_to_favorite')
+                .subscribe((label) => this.matTooltipFavorite = label);
+            }, (err: HttpErrorResponse) => {
+              this.alertService.show(err.error);
+            });
+        }, (err: HttpErrorResponse) => {
+          this.alertService.show(err.error);
+        });
+      return;
+    }
+    this.alertService.show('favorite.user.unauthenticated');
   }
 
   /**
-   * Product binding and auto resize columns
+   * Add a product to cart
    */
-  @Input() set product(product: Product) {
-    if (product.published_at && product.published_at.seconds && product.published_at.nanoseconds) {
-      this.humanPublishedAt = this.dateService
-        .compareDatetoHumanReadableString(product.published_at.toDate());
-    }
-    this._product = product;
-    this.countCols();
-  }
-
-  /**
-   * Update a new score from a new score event
-   */
-  updateScoreProduct(product: Product) {
-    this.updatedProduct.emit(product);
-  }
-
-  onMediaLoaded(loaded: boolean) {
-    this.loading = !loaded;
-    if (loaded) {
-      this.loaderService.hide();
-    }
-  }
-
-  /**
-   * Go to product page detail
-   */
-  productDetail() {
-    this.router.navigate(['/products']).then(() => {
-      this.router.navigate(
-        [
-          this.localizeRouterService.translateRoute('/products'),
-          this.localizeRouterService.translateRoute('detail'),
-          `${this.product.key}-${this.product.name}`
-        ]
-      );
-    });
-  }
-
-  /**
-   * Count columns for each image in Product type
-   */
-  countCols() {
-    if (this._product.image1) {
-      this.cols++;
-    }
-    if (this._product.image2) {
-      this.cols++;
-    }
-    if (this._product.image3) {
-      this.cols++;
+  addToCart(product: Product) {
+    if (this.options.user) {
+      this.isLoadingCartAdd = true;
+      this.cartService.addToCart(product, this.options.user)
+        .subscribe((cart: Cart) => {
+          this.isLoadingCartAdd = false;
+          this.cartUpdated.emit(cart);
+          this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
+        }, () => {
+          this.isLoadingCartAdd = false;
+          this.alertService.show('cart-add.error.save-new-product');
+        });
     }
   }
 }

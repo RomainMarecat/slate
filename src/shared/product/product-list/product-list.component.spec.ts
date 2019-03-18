@@ -5,21 +5,20 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {
-  MatCardModule,
-  MatIconModule,
   MatButtonModule,
-  MatGridListModule,
-  MatInputModule,
+  MatCardModule,
   MatCheckboxModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
   MatListModule,
 } from '@angular/material';
-import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgPipesModule } from 'ngx-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './product-list.component';
-import { ProductItemComponent } from '../product-item/product-item.component';
+import { ProductItemCardComponent } from '../product-item-card/product-item-card.component';
 import { ProductActionComponent } from '../product-action/product-action.component';
 import { Cloudinary } from 'cloudinary-core';
 import { CloudinaryModule } from '../../media/cloudinary/cloudinary.module';
@@ -80,7 +79,11 @@ describe('ProductListComponent', () => {
         }),
         MediaModule
       ],
-      declarations: [ProductListComponent, ProductItemComponent, ProductActionComponent],
+      declarations: [
+        ProductListComponent,
+        ProductItemCardComponent,
+        ProductActionComponent
+      ],
       providers: [
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: ProductService, useClass: MockProductService},

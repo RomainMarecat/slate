@@ -5,19 +5,18 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterModule } from 'localize-router';
 import { MatButtonModule, MatIconModule, MatSnackBarModule, MatTooltipModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { ProductItemComponent } from './product-item/product-item.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StorageModule } from '../../../shared/media/storage/storage.module';
 import { PopupModule } from '../../../shared/popup/popup.module';
+import { SharedProductModule } from '../../../shared/product/shared-product.module';
 
 @NgModule({
   declarations: [
-    ProductNewerComponent,
-    ProductItemComponent
+    ProductNewerComponent
   ],
   exports: [
     ProductNewerComponent,
-    ProductItemComponent
+    SharedProductModule,
   ],
   imports: [
     CommonModule,
@@ -30,6 +29,7 @@ import { PopupModule } from '../../../shared/popup/popup.module';
     PopupModule,
     RouterModule,
     StorageModule,
+    SharedProductModule,
     TranslateModule.forChild(),
   ],
 })

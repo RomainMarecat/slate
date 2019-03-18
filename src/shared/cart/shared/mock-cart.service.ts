@@ -18,6 +18,7 @@ export class MockCartService {
   endAt$: BehaviorSubject<string | null>;
   endBefore$: BehaviorSubject<string | null>;
   query: CollectionReference | Query;
+  cart$: BehaviorSubject<Cart> = new BehaviorSubject<Cart>(mockCart);
 
   constructor() {
     this.filters$ = new BehaviorSubject([{column: 'published', operator: '==', value: true}]);

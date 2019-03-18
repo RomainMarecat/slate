@@ -1,0 +1,40 @@
+<mat-card class="item-card"
+          *ngIf="product"
+          angulartics2On="mouseover"
+          angularticsAction="hoveredOverProductItem"
+          [angularticsCategory]="'product.item'">
+  <mat-card-header class="item-card-header">
+    <img mat-card-avatar class="item-card-avatar" [src]="product?.thumbnail" *ngIf="product.thumbnail">
+    <span class="text-left">
+      <mat-icon *ngIf="!product?.thumbnail">account_circle</mat-icon>
+    </span>
+    <mat-card-title class="item-card-title" (click)="productDetail()" angulartics2On="click"
+                    angularticsAction="clickedOnTitleShowProduct" [angularticsCategory]="'product.detail'">
+      <h2 class="item-card-name size--all-xl">
+        {{ product?.name | shorten: 30: '...'}}
+      </h2>
+    </mat-card-title>
+    <span class="item-card-date size--all-xs text-right"
+          [innerHtml]="humanPublishedAt"
+          *ngIf="humanPublishedAt">
+    </span>
+  </mat-card-header>
+  <app-loader></app-loader>
+
+  <!-- If Cloudinary needed then add public Id to input, not key -->
+  <app-image [key]="product.images[0]"
+             [resize]="resizedImage"
+             [alt]="product?.name"
+             (click)="productDetail()"
+             *ngIf="product.images[0]"
+             (mediaLoaded)="onMediaLoaded($event)"
+             (mediaErrored)="onMediaLoaded(!$event)"
+             angulartics2On="click"
+             angularticsAction="clickedOnImageShowProduct"
+             [angularticsCategory]="'product.detail'"></app-image>
+
+
+  <app-product-action [product]="product"
+                      (updateScore)="updateScoreProduct($event)"
+                      *ngIf="showScore"></app-product-action>
+</mat-card>

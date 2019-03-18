@@ -1,9 +1,10 @@
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { mockUser } from './mock-user';
 import { User } from './user';
 
 export class MockUserService {
   authorized: string[] = [];
+  user$: BehaviorSubject<User> = new BehaviorSubject<User>(mockUser);
 
   getAuthState(): Observable<User> {
     return of(mockUser);

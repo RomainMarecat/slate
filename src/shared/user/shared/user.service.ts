@@ -3,13 +3,16 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { map, take, tap, timeout } from 'rxjs/operators';
 import { AlertService } from '../../popup/alert.service';
-import { from, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '@firebase/auth-types';
+import { Cart } from '../../cart/shared/cart';
 
 @Injectable()
 export class UserService {
   authorized: string[] = [];
+
+  user$: BehaviorSubject<User> = new BehaviorSubject<User>(null);
 
   constructor(private afAuth: AngularFireAuth, private alertService: AlertService) {
     this.authorized.push('6glT4N2SUMW2HWibhefumuRiVIh2');
@@ -112,11 +115,21 @@ export class UserService {
   }
 
   getAuthState(): Observable<User> {
-    return this.afAuth.authState;
+    return this.afAuth.authState
+      .pipe(
+        tap((user) => {
+          this.user$.next(user);
+        })
+      );
   }
 
   getCurrentUser(): Observable<User> {
-    return this.afAuth.user;
+    return this.afAuth.user
+      .pipe(
+        tap((user) => {
+          this.user$.next(user);
+        })
+      );
   }
 
   updateProfile(user: User, profile: {
