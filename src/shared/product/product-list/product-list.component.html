@@ -38,14 +38,14 @@
      fxLayoutAlign="center stretch"
      fxLayout.xs="row wrap"
      fxLayoutAlign.xs="center stretch">
-  <app-product-item *ngFor="let product of products"
+  <app-product-item-card *ngFor="let product of products"
                     fxFlex="30"
                     fxFlex.xs="100"
                     class="grid-tile-item"
                     [product]="product"
                     [showScore]="showScore"
                     [showAdd]="showAdd"
-                    (updatedProduct)="updateProduct($event)"></app-product-item>
+                    (updatedProduct)="updateProduct($event)"></app-product-item-card>
 </div>
 <div class="card-container"
      *ngIf="products.length === 0 && loading === false">

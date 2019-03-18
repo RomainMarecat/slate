@@ -14,7 +14,7 @@ import { of } from 'rxjs';
 import { SeoService } from '../../seo/shared/seo.service';
 
 @Component({
-  selector: 'app-product-list',
+  selector: 'app-shared-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })

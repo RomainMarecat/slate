@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    loadChildren: './../shared/product/product.module#ProductModule'
+    loadChildren: './../shared/product/product.module#SharedProductModule'
   },
   {
     path: 'cart',
@@ -24,6 +24,10 @@ const routes: Routes = [
   {
     path: 'account',
     loadChildren: './../shared/account/account.module#AccountModule'
+  },
+  {
+    path: '',
+    loadChildren: './../shared/category/category.module#CategoryModule'
   },
 ];
 

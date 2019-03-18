@@ -1,0 +1,26 @@
+<div class="category-header-wrapper mt-5"
+     fxLayout="row"
+     fxLayoutAlign="center stretch">
+  <h2>{{ 'category-detail.title' |translate}}</h2>
+</div>
+<div class="product-list mt-3"
+     fxLayout="row wrap"
+     fxLayoutAlign="start stretch"
+     fxLayoutAlign.lt-lg="center stretch"
+     fxLayoutGap="10px"
+     fxLayoutGap.xs="0px">
+  <div class="text-center product-item-element"
+       fxFlex="30"
+       fxFlex.md="40"
+       fxFlex.sm="40"
+       fxFlex.xs="80"
+       *ngFor="let product of products">
+    <app-product-item [product]="product"
+                      [options]="options"
+                      [authenticated]="authenticated"
+                      [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
+                      (favoriteAdded)="onFavoriteAdded($event)"
+                      (favoriteRemoved)="onFavoriteRemoved($event)">
+    </app-product-item>
+  </div>
+</div>

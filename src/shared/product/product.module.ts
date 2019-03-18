@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import {
   MatAutocompleteModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule,
-  MatInputModule, MatSelectModule, MatStepperModule, MatExpansionModule, MatListModule
+  MatInputModule, MatSelectModule, MatStepperModule, MatExpansionModule, MatListModule, MatTooltipModule, MatSnackBarModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -17,7 +17,6 @@ import { ProductRoutingModule } from './product-routing.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductFormComponent } from './product-add/product-form/product-form.component';
-import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductActionComponent } from './product-action/product-action.component';
 import { ProductPreviewComponent } from './product-add/product-preview/product-preview.component';
 import { ProductAddComponent } from './product-add/product-add.component';
@@ -25,6 +24,9 @@ import { ScoreService } from '../score/score.service';
 import { ProductService } from './shared/product.service';
 import { ProductComponent } from './product/product.component';
 import { MockProductService } from './shared/mock-product.service';
+import { ProductItemCardComponent } from './product-item-card/product-item-card.component';
+import { ProductItemComponent } from './product-item/product-item.component';
+import { SharedProductModule } from './shared-product.module';
 
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_SCORE = new InjectionToken<string>('score');
@@ -46,32 +48,14 @@ export const TABLE_SCORE = new InjectionToken<string>('score');
     MatAutocompleteModule,
     MatStepperModule,
     MatExpansionModule,
+    MatTooltipModule,
+    MatSnackBarModule,
     MediaModule,
     NgStringPipesModule,
     TranslateModule.forChild(),
     ReactiveFormsModule,
+    SharedProductModule,
     ProductRoutingModule
-  ],
-  declarations: [
-    ProductSearchComponent,
-    ProductListComponent,
-    ProductDetailComponent,
-    ProductItemComponent,
-    ProductAddComponent,
-    ProductFormComponent,
-    ProductPreviewComponent,
-    ProductActionComponent,
-    ProductComponent,
-  ],
-  exports: [
-    ProductSearchComponent,
-    ProductListComponent,
-    ProductDetailComponent,
-    ProductItemComponent,
-    ProductAddComponent,
-    ProductFormComponent,
-    ProductPreviewComponent,
-    ProductActionComponent,
   ],
   providers: [
     {provide: TABLE_SCORE, useValue: 'score'},
@@ -81,5 +65,5 @@ export const TABLE_SCORE = new InjectionToken<string>('score');
     {provide: ProductService, useClass: MockProductService}, // @todo remove mock
   ]
 })
-export class ProductModule {
+export class SharedProductWithRoutesModule {
 }

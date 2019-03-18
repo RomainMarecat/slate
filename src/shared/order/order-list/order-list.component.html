@@ -3,14 +3,10 @@
     <div class="order-wrapper">
       <div class="order-header">
         <div class="row heading-title">
-          <div class="col-lg-12 offset-lg-0 col-md-10 offset-md-1col-10 offset-1 heading-wrapper">
+          <div class="col-lg-12 offset-lg-0 col-md-10 offset-md-1col-10 offset-1 heading-wrapper"
+               fxLayout="row"
+               fxLayoutAlign="center stretch">
             <h2 class="title text-uppercase">{{ 'order-list.title'|translate }}</h2>
-          </div>
-        </div>
-
-        <div class="row order-subtitle-wrapper">
-          <div class="col-lg-12 offset-lg-0 col-md-10 offset-md-1 col-10 offset-1">
-            <h2 class="order-subtitle">{{ 'order-list.subtitle'|translate }}</h2>
           </div>
         </div>
       </div>
@@ -23,13 +19,14 @@
         </div>
 
         <div class="col-lg-12 offset-lg-0 col-md-10 offset-md-1 col-10 offset-1 text-center"
-        *ngIf="orders.length === 0 && !isLoading">
+             *ngIf="orders.length === 0 && !isLoading">
           {{ 'order-list.error.empty'|translate }}
         </div>
 
 
         <div class="col-lg-12 offset-lg-0 col-md-10 offset-md-1 col-10 offset-1" *ngIf="orders.length && !isLoading">
-          <app-order-item *ngFor="let order of orders | orderBy: '-created_at.seconds'" [order]="order"></app-order-item>
+          <app-order-item *ngFor="let order of orders | orderBy: '-created_at.seconds'"
+                          [order]="order"></app-order-item>
         </div>
       </div>
 

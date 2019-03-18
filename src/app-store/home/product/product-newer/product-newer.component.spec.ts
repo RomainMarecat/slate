@@ -14,7 +14,7 @@ import { MockMediaService } from '../../../../shared/media/mock-media.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { MockAngularFireStorage } from '../../../../shared/media/shared/mock-angular-fire-storage';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ProductItemComponent } from '../product-item/product-item.component';
+import { ProductItemComponent } from '../../../../shared/product/product-item/product-item.component';
 import { configureTestSuite } from '../../../../shared/unit-test/configure-test-suite';
 import { MatIconModule, MatTooltipModule } from '@angular/material';
 import { FavoriteService } from '../../../../shared/favorite/shared/favorite.service';

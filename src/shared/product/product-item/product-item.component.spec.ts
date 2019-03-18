@@ -1,34 +1,29 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatIconModule,
-} from '@angular/material';
-import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
-import { NgPipesModule } from 'ngx-pipes';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductItemComponent } from './product-item.component';
-import { ProductActionComponent } from '../product-action/product-action.component';
-import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../../media/cloudinary/cloudinary.module';
-import { DateService } from '../../util/date.service';
-import { I18nService } from '../../i18n/i18n.service';
-import { MediaModule } from '../../media/media.module';
-import { environment } from '../../../app-store/environments/environment';
-import { LoaderModule } from '../../loader/loader.module';
+import { MenuModule } from '../../menu/menu.module';
+import { StorageModule } from '../../media/storage/storage.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
-import { configureTestSuite } from '../../unit-test/configure-test-suite';
-import { LoaderService } from '../../loader/loader.service';
-import { MockLoaderService } from '../../loader/mock-loader.service';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { CategoryService } from '../../category/category.service';
+import { MockCategoryService } from '../../category/mock-category.service';
+import { MediaService } from '../../media/media.service';
+import { MockMediaService } from '../../media/mock-media.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { MockAngularFireStorage } from '../../media/shared/mock-angular-fire-storage';
+import { FavoriteService } from '../../favorite/shared/favorite.service';
+import { MockFavoriteService } from '../../favorite/shared/mock-favorite.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule, MatTooltipModule } from '@angular/material';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { AlertService } from '../../popup/alert.service';
+import { MockAlertService } from '../../popup/mock-alert.service';
+import { CartService } from '../../cart/shared/cart.service';
+import { MockCartService } from '../../cart/shared/mock-cart.service';
+import { UserService } from '../../user/shared/user.service';
+import { MockUserService } from '../../user/shared/mock-user.service';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -39,38 +34,31 @@ describe('ProductItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule,
-        RouterTestingModule,
-        BrowserModule,
-        HttpClientModule,
+        FlexLayoutModule,
+        MenuModule,
         MatIconModule,
-        MatButtonModule,
-        MatCardModule,
-        NgPipesModule,
-        LoaderModule,
+        MatTooltipModule,
+        StorageModule,
         LocalizeRouterModule,
         RouterTestingModule,
-        BrowserAnimationsModule,
-        MatCardModule,
-        Angulartics2Module.forRoot({
-          developerMode: true,
-          pageTracking: {
-            clearIds: true,
-          },
-        }),
-        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
-        MediaModule,
         TranslateModule.forRoot({
-          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
-        })
+          loader: {
+            provide: TranslateLoader,
+            useClass: TranslateFakeLoader
+          }
+        }),
       ],
-      declarations: [ProductItemComponent, ProductActionComponent],
       providers: [
-        {provide: LoaderService, useClass: MockLoaderService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
-        {provide: DateService, useClass: DateService},
-        I18nService
-      ]
+        {provide: CategoryService, useClass: MockCategoryService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: FavoriteService, useClass: MockFavoriteService},
+        {provide: CartService, useClass: MockCartService},
+        {provide: AngularFireStorage, useClass: MockAngularFireStorage}
+      ],
+      declarations: [ProductItemComponent]
     })
       .compileComponents();
   }));

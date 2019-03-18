@@ -44,7 +44,10 @@ describe('ProductListComponent', () => {
         MediaModule,
         SharedModule,
       ],
-      declarations: [ProductListComponent, ProductFilterComponent],
+      declarations: [
+        ProductListComponent,
+        ProductFilterComponent
+      ],
       providers: [
         MenuService,
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
