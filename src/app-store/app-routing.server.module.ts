@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    loadChildren: './../shared/product/product.module#SharedProductModule'
+    loadChildren: './../shared/product/product.module#SharedProductWithRoutesModule'
   },
   {
     path: 'cart',

@@ -11,15 +11,15 @@ export class CategoryService extends VisitorService {
     super(afs, table);
   }
 
-  getCategories(): Observable < Category[] > {
-    return super.getDocuments() as Observable < Category[] > ;
+  getCategories(): Observable<Category[]> {
+    return super.getDocuments() as Observable<Category[]>;
   }
 
-  getCategory(key: string): Observable < Category > {
-    return super.getDocument(key) as Observable < Category > ;
+  getCategory(key: string): Observable<Category> {
+    return super.getDocument(key) as Observable<Category>;
   }
 
-  createCategory(category: Category): Promise < any > {
+  createCategory(category: Category): Promise<any> {
     return super.createDocument(category);
   }
 

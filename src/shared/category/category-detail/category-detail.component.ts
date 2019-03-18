@@ -8,6 +8,8 @@ import { Cart } from '../../cart/shared/cart';
 import { User } from '../../user/shared/user';
 import { CartService } from '../../cart/shared/cart.service';
 import { UserService } from '../../user/shared/user.service';
+import { Favorite } from '../../favorite/shared/favorite';
+import { FavoriteService } from '../../favorite/shared/favorite.service';
 
 @Component({
   selector: 'app-category-detail',
@@ -30,11 +32,16 @@ export class CategoryDetailComponent implements OnInit {
     user: null
   };
 
+  favoriteProducts: Map<string, Favorite> = new Map<string, Favorite>();
+
+  authenticated: boolean;
+
   constructor(private activatedRoute: ActivatedRoute,
               private categoryService: CategoryService,
               private productService: ProductService,
               private cartService: CartService,
-              private userService: UserService) {
+              private userService: UserService,
+              private favoriteService: FavoriteService) {
   }
 
   ngOnInit() {
@@ -43,8 +50,42 @@ export class CategoryDetailComponent implements OnInit {
     this.getUser();
   }
 
+  setFavorite(user: User) {
+    this.favoriteService.filters$.next([
+      {
+        column: 'user',
+        operator: '==',
+        value: user.uid
+      },
+    ]);
+    this.favoriteService.getFavorites()
+      .subscribe((favorites) => {
+        if (favorites.length > 0) {
+          favorites.forEach(favorite => {
+            this.favoriteProducts.set(favorite.product, favorite);
+          });
+        }
+      });
+  }
+
+  onFavoriteAdded(favorite: Favorite) {
+    this.favoriteProducts.set(favorite.product, favorite);
+  }
+
+  onFavoriteRemoved(favoriteProduct: Favorite) {
+    this.favoriteProducts.delete(favoriteProduct.product);
+  }
+
   getUser() {
-    this.userService.user$.subscribe((user) => this.options.user = user);
+    this.userService.user$.subscribe((user) => {
+      if (user) {
+        this.authenticated = true;
+        this.options.user = user;
+        this.setFavorite(user);
+        return;
+      }
+      this.authenticated = false;
+    });
   }
 
   getCart() {

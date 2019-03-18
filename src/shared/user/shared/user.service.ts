@@ -115,21 +115,11 @@ export class UserService {
   }
 
   getAuthState(): Observable<User> {
-    return this.afAuth.authState
-      .pipe(
-        tap((user) => {
-          this.user$.next(user);
-        })
-      );
+    return this.afAuth.authState;
   }
 
   getCurrentUser(): Observable<User> {
-    return this.afAuth.user
-      .pipe(
-        tap((user) => {
-          this.user$.next(user);
-        })
-      );
+    return this.afAuth.user;
   }
 
   updateProfile(user: User, profile: {

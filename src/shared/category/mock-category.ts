@@ -2,6 +2,7 @@ import { Category } from './category';
 import * as faker from 'faker';
 
 export const mockCategory = {
+  key: faker.random.uuid(),
   name: 'Jam',
   description: 'High School',
   translations: {

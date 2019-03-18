@@ -24,6 +24,10 @@ import { UserService } from '../../user/shared/user.service';
 import { MockUserService } from '../../user/shared/mock-user.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MediaService } from '../../media/media.service';
+import { MockMediaService } from '../../media/mock-media.service';
+import { FavoriteService } from '../../favorite/shared/favorite.service';
+import { MockFavoriteService } from '../../favorite/shared/mock-favorite.service';
 
 describe('CategoryDetailComponent', () => {
   let component: CategoryDetailComponent;
@@ -56,6 +60,8 @@ describe('CategoryDetailComponent', () => {
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: ProductService, useClass: MockProductService},
         {provide: UserService, useClass: MockUserService},
+        {provide: MediaService, useClass: MockMediaService},
+        {provide: FavoriteService, useClass: MockFavoriteService},
       ]
     })
       .compileComponents();

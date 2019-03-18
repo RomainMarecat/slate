@@ -30,6 +30,9 @@
         "title": "découvrez nos catégories",
         "subtitle": "sélectionner une catégorie afin de découvrir notre large gamme des produits"
     },
+    "category-detail": {
+        "title": "découvrez la catégorie {{ category }}"
+    },
     "cart": {
         "creation": {
             "error": "impossible de créer un nouveau panier"

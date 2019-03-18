@@ -1,7 +1,9 @@
 <div class="category-header-wrapper mt-5"
      fxLayout="row"
      fxLayoutAlign="center stretch">
-  <h2>{{ 'category-detail.title' |translate}}</h2>
+  <h2 class="text-ucfirst" *ngIf="category && category.name">
+    {{ 'category-detail.title'|translate: {category: category.name} }}
+  </h2>
 </div>
 <div class="product-list mt-3"
      fxLayout="row wrap"
