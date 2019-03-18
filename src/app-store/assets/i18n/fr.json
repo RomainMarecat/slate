@@ -121,6 +121,9 @@
     "favorite-list": {
         "title": "mes favoris"
     },
+    "label": {
+        "product_added_to_favorite": "produit ajouté aux favoris"
+    },
     "menu": {
         "connection": {
             "title": "se connecter"

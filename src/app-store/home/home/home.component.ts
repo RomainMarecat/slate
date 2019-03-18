@@ -104,6 +104,14 @@ export class HomeComponent implements OnInit {
    * gets the products from the API
    */
   getProducts() {
+    this.productService.filters$.next([
+      {
+        column: 'published',
+        operator: '==',
+        value: true
+      }
+    ]);
+    this.productService.limit$.next(3);
     this.productService.getProducts()
       .subscribe((products: Product[]) => {
         this.productOptions.products = products;
@@ -145,7 +153,6 @@ export class HomeComponent implements OnInit {
   }
 
   isAuhenticated() {
-
     this.userService.isAuthenticated()
       .subscribe((authenticated) => {
         this.authenticated = authenticated;

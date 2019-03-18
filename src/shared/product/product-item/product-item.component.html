@@ -92,7 +92,7 @@
          fxFlexOffset.gt-sm="10"
          fxFlexOffset.xs="0">
       <p class="product-item-short-description-text">
-        {{product?.short_description}}
+        {{product?.short_description | shorten : 100 : '...' }}
       </p>
     </div>
     <div class="text-center"

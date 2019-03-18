@@ -9,6 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { StorageModule } from '../../../shared/media/storage/storage.module';
 import { PopupModule } from '../../../shared/popup/popup.module';
 import { SharedProductModule } from '../../../shared/product/shared-product.module';
+import { NgPipesModule } from 'ngx-pipes';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SharedProductModule } from '../../../shared/product/shared-product.modu
     MatIconModule,
     MatTooltipModule,
     MatSnackBarModule,
+    NgPipesModule,
     PopupModule,
     RouterModule,
     StorageModule,

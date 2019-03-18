@@ -43,7 +43,6 @@ import { StorageModule } from '../../shared/media/storage/storage.module';
 import { PopupModule } from '../../shared/popup/popup.module';
 import { DeliveryService } from '../../shared/cart/shared/delivery.service';
 import { FavoriteService } from '../../shared/favorite/shared/favorite.service';
-import { MockProductService } from '../../shared/product/shared/mock-product.service';
 import { MockCategoryService } from '../../shared/category/mock-category.service';
 
 export const production = new InjectionToken<string>('production');
@@ -187,7 +186,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
     {provide: DeliveryService, useClass: DeliveryService, deps: [AngularFirestore, TABLE_DELIVERY]},
     {provide: FavoriteService, useClass: FavoriteService, deps: [AngularFirestore, TABLE_FAVORITE]},
-    {provide: ProductService, useClass: MockProductService}, // @todo remove mock
     {provide: CategoryService, useClass: MockCategoryService}, // @todo remove mock
     UserService,
     AlertService,
