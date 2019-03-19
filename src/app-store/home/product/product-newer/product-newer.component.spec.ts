@@ -21,6 +21,7 @@ import { FavoriteService } from '../../../../shared/favorite/shared/favorite.ser
 import { MockFavoriteService } from '../../../../shared/favorite/shared/mock-favorite.service';
 import { UserService } from '../../../../shared/user/shared/user.service';
 import { MockUserService } from '../../../../shared/user/shared/mock-user.service';
+import { NgPipesModule } from 'ngx-pipes';
 
 describe('ProductNewerComponent', () => {
   let component: ProductNewerComponent;
@@ -35,6 +36,7 @@ describe('ProductNewerComponent', () => {
         MenuModule,
         MatIconModule,
         MatTooltipModule,
+        NgPipesModule,
         StorageModule,
         RouterTestingModule,
         LocalizeRouterModule,

@@ -28,6 +28,7 @@ import { MediaService } from '../../media/media.service';
 import { MockMediaService } from '../../media/mock-media.service';
 import { FavoriteService } from '../../favorite/shared/favorite.service';
 import { MockFavoriteService } from '../../favorite/shared/mock-favorite.service';
+import { NgPipesModule } from 'ngx-pipes';
 
 describe('CategoryDetailComponent', () => {
   let component: CategoryDetailComponent;
@@ -46,6 +47,7 @@ describe('CategoryDetailComponent', () => {
         ReactiveFormsModule,
         MatIconModule,
         MatFormFieldModule,
+        NgPipesModule,
         RouterTestingModule,
         SharedProductModule,
         TranslateModule.forRoot({

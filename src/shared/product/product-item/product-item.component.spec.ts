@@ -24,6 +24,7 @@ import { CartService } from '../../cart/shared/cart.service';
 import { MockCartService } from '../../cart/shared/mock-cart.service';
 import { UserService } from '../../user/shared/user.service';
 import { MockUserService } from '../../user/shared/mock-user.service';
+import { NgPipesModule } from 'ngx-pipes';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -38,6 +39,7 @@ describe('ProductItemComponent', () => {
         MenuModule,
         MatIconModule,
         MatTooltipModule,
+        NgPipesModule,
         StorageModule,
         LocalizeRouterModule,
         RouterTestingModule,
