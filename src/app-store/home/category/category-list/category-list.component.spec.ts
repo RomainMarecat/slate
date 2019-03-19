@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CategoryListComponent } from './category-list.component';
-import { CategoryItemComponent } from '../category-item/category-item.component';
+import { CategoryItemComponent } from '../../../../shared/category/category-item/category-item.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatIconModule } from '@angular/material';

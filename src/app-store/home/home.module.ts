@@ -8,6 +8,7 @@ import { HeaderModule } from './header/header.module';
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
 import { PopupModule } from '../../shared/popup/popup.module';
+import { CategoryFavoriteModule } from './category-favorite/category-favorite.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PopupModule } from '../../shared/popup/popup.module';
   ],
   imports: [
     CategoryModule,
+    CategoryFavoriteModule,
     ProductModule,
     CommonModule,
     HeaderModule,

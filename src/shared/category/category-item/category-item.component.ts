@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Category } from '../../../../shared/category/category';
+import { Category } from '../category';
 
 @Component({
   selector: 'app-category-item',

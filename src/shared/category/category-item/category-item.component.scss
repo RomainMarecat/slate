@@ -2,18 +2,10 @@
   min-height: 211px;
 
   .image-wrapper {
-    width: 486px;
-    height: 79px;
+    //width: 486px;
+    //height: 79px;
     overflow: hidden;
     position: relative;
-
-    &::after {
-      content: "";
-      height: 4px;
-      width: 40px;
-      position: absolute;
-    }
-
   }
 
   .heading-wrapper {

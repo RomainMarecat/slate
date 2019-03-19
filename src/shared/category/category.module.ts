@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CategoryComponent } from './category/category.component';
 import { SharedProductModule } from '../product/shared-product.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedCategoryModule } from './shared-category.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     FlexLayoutModule,
     CommonModule,
+    SharedCategoryModule,
     SharedProductModule,
     CategoryRoutingModule,
     TranslateModule.forChild()

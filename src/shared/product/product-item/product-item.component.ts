@@ -91,10 +91,10 @@ export class ProductItemComponent implements OnInit {
       }
       const favoriteProduct: Favorite = {key: null, product: product.key, user: this.userService.getUser().uid};
       this.favoriteService.createFavorite(favoriteProduct)
-        .then((doc) => {
+        .subscribe((doc) => {
           favoriteProduct.key = doc.id;
           this.favoriteService.updateFavorite(favoriteProduct)
-            .then(() => {
+            .subscribe(() => {
               this.favoriteAdded.emit(favoriteProduct);
               this.translateService.get('label.product_added_to_favorite')
                 .subscribe((label) => this.matTooltipFavorite = label);

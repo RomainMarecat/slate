@@ -10,6 +10,8 @@ import { CartService } from '../../cart/shared/cart.service';
 import { UserService } from '../../user/shared/user.service';
 import { Favorite } from '../../favorite/shared/favorite';
 import { FavoriteService } from '../../favorite/shared/favorite.service';
+import { take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 export interface CategoryOption {
   display_title: boolean;
@@ -45,6 +47,7 @@ export class CategoryDetailComponent implements OnInit {
   };
 
   favoriteProducts: Map<string, Favorite> = new Map<string, Favorite>();
+  favoriteCategories: Map<string, Favorite> = new Map<string, Favorite>();
 
   authenticated: boolean;
 
@@ -59,10 +62,9 @@ export class CategoryDetailComponent implements OnInit {
   ngOnInit() {
     this.getCategory();
     this.getCart();
-    this.getUser();
   }
 
-  setFavorite(user: User) {
+  setFavorite(category: string, user: User) {
     this.favoriteService.filters$.next([
       {
         column: 'user',
@@ -71,13 +73,44 @@ export class CategoryDetailComponent implements OnInit {
       },
     ]);
     this.favoriteService.getFavorites()
+      .pipe(
+        take(1)
+      )
       .subscribe((favorites) => {
         if (favorites.length > 0) {
+          let found = null;
           favorites.forEach(favorite => {
-            this.favoriteProducts.set(favorite.product, favorite);
+            if (favorite.product) {
+              this.favoriteProducts.set(favorite.product, favorite);
+            }
+
+            if (favorite.category) {
+              if (favorite.category === category) {
+                found = favorite;
+              }
+              this.favoriteCategories.set(favorite.category, favorite);
+            }
           });
+          if (found) {
+            found.nb_view++;
+            this.favoriteService.updateFavorite(found)
+              .subscribe(() => {
+              });
+            return;
+          }
         }
+        this.createFavorite(category, user);
       });
+  }
+
+  createFavorite(category: string, user: User) {
+    this.favoriteService.createFavorite({
+      key: null,
+      category: category,
+      user: user.uid,
+      nb_view: 1
+    }).subscribe(() => {
+    });
   }
 
   onFavoriteAdded(favorite: Favorite) {
@@ -88,16 +121,24 @@ export class CategoryDetailComponent implements OnInit {
     this.favoriteProducts.delete(favoriteProduct.product);
   }
 
-  getUser() {
-    this.userService.user$.subscribe((user) => {
-      if (user) {
-        this.authenticated = true;
-        this.options.user = user;
-        this.setFavorite(user);
-        return;
-      }
-      this.authenticated = false;
-    });
+  getUser(category: string) {
+    const subscription: Subscription = this.userService.getCurrentUser()
+      .pipe(
+        take(1)
+      )
+      .subscribe((user) => {
+        if (subscription) {
+          subscription.unsubscribe();
+        }
+
+        if (user) {
+          this.authenticated = true;
+          this.options.user = user;
+          this.setFavorite(category, user);
+          return;
+        }
+        this.authenticated = false;
+      });
   }
 
   getCart() {
@@ -111,6 +152,7 @@ export class CategoryDetailComponent implements OnInit {
           .subscribe((category: Category) => {
             this.category = category;
           });
+        this.getUser(param.key);
         this.getProducts(param.key);
       }
     });

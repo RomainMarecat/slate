@@ -1,23 +1,15 @@
 <div class="category-list-component"
      fxLayout="column"
      fxLayoutAlign="start center"
-     *ngIf="options">
+     *ngIf="options && categories.length">
   <div class="category-header-wrapper">
     <div class="category-title-wrapper"
          fxLayout="row"
          fxLayoutAlign="center stretch">
       <h4 class="category-title text-center text-ucfirst"
           *ngIf="options.display_title">
-        {{ 'category.title'|translate }}
+        {{ 'category-favorite.title'|translate }}
       </h4>
-    </div>
-    <div class="category-subtitle-wrapper"
-         fxLayout="row"
-         fxLayoutAlign="center stretch">
-      <p class="category-subtitle text-center"
-         *ngIf="options.display_subtitle">
-        {{ 'category.subtitle'|translate }}
-      </p>
     </div>
   </div>
 
@@ -29,7 +21,7 @@
     <app-category-item [options]="options"
                        [category]="category"
                        *ngFor="let category of categories"
-                       [fxFlex]="category?.metadata?.size"
+                       fxFlex="50"
                        fxFlex.xs="80">
     </app-category-item>
   </div>

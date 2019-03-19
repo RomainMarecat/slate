@@ -1,19 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CategoryService } from '../../../../shared/category/category.service';
 import { Category } from '../../../../shared/category/category';
-
-
-export interface CategoryOption {
-  display_title: boolean;
-  display_subtitle: boolean;
-  image_link: boolean;
-  text_link: boolean;
-  display_icon: boolean;
-  display_image: boolean;
-}
+import { CategoryOption } from '../../../../shared/category/category-option';
 
 @Component({
-  selector: 'app-category-list',
+  selector: 'app-category-default-list',
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.scss']
 })

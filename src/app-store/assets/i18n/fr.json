@@ -30,6 +30,9 @@
         "title": "découvrez nos catégories",
         "subtitle": "sélectionner une catégorie afin de découvrir notre large gamme des produits"
     },
+    "category-favorite": {
+        "title": "vos catégories favorites"
+    },
     "category-detail": {
         "title": "découvrez la catégorie {{ category }}"
     },

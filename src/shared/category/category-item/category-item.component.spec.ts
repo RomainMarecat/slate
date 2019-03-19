@@ -6,11 +6,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
-import { MockLocalizeRouterService } from '../../../../shared/router/mock-localize-router.service';
-import { StorageModule } from '../../../../shared/media/storage/storage.module';
-import { configureTestSuite } from '../../../../shared/unit-test/configure-test-suite';
-import { MediaService } from '../../../../shared/media/media.service';
-import { MockMediaService } from '../../../../shared/media/mock-media.service';
+import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { StorageModule } from '../../media/storage/storage.module';
+import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MediaService } from '../../media/media.service';
+import { MockMediaService } from '../../media/mock-media.service';
 
 describe('CategoryItemComponent', () => {
   let component: CategoryItemComponent;

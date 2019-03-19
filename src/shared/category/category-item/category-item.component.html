@@ -4,16 +4,20 @@
      *ngIf="category && options">
 
   <div fxLayout="row" *ngIf="options.display_image">
-    <a class="image-wrapper"
+    <a class="image-wrapper w-100"
+       fxLayout="row"
+       fxLayoutAlign="center stretch"
        [routerLink]="'/categories/' + category.key | localize"
        *ngIf="options.image_link; else elementImage">
-      <app-storage-image [resize]="{width: 486, height: 79}"
+      <app-storage-image [resize]="{width: 'auto', height: 79}"
                          [matCardImage]="false"
                          [downloadURL]="category.image"></app-storage-image>
     </a>
     <ng-template #elementImage>
-      <div class="image-wrapper">
-        <app-storage-image [resize]="{width: 486, height: 79}"
+      <div class="image-wrapper w-100"
+           fxLayout="row"
+           fxLayoutAlign="center stretch">
+        <app-storage-image [resize]="{width: 'auto', height: 79}"
                            [matCardImage]="false"
                            [downloadURL]="category.image"></app-storage-image>
       </div>

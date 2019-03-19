@@ -1,0 +1,22 @@
+
+.category-list-wrapper {
+  max-width: 1024px;
+  overflow-x: hidden;
+}
+
+
+.category-header-wrapper,
+.category-list-wrapper {
+  padding-top: 50px;
+  margin-bottom: 2rem;
+
+  .category-title {
+    font-size: 4.375rem;
+    letter-spacing: -4px;
+  }
+
+  .category-subtitle-wrapper {
+    font-size: 0.8125rem;
+    line-height: 1.5rem;
+  }
+}
