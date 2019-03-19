@@ -2,6 +2,16 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CategoryService } from '../../../../shared/category/category.service';
 import { Category } from '../../../../shared/category/category';
 
+
+export interface CategoryOption {
+  display_title: boolean;
+  display_subtitle: boolean;
+  image_link: boolean;
+  text_link: boolean;
+  display_icon: boolean;
+  display_image: boolean;
+}
+
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
@@ -9,18 +19,8 @@ import { Category } from '../../../../shared/category/category';
 })
 export class CategoryListComponent implements OnInit {
 
-  @Input() options: {
-    display_title: boolean;
-    display_subtitle: boolean;
-    image_link: boolean;
-    text_link: boolean;
-    display_icon: boolean;
-    display_image: boolean;
-  };
+  @Input() options: CategoryOption;
 
-  /**
-   * Default categories
-   */
   categories: Category[] = [];
 
   static randomIntFromInterval(min: number, max: number) {
@@ -35,6 +35,13 @@ export class CategoryListComponent implements OnInit {
   }
 
   getCategories() {
+    this.categoryService.filters$.next([
+      {
+        column: 'published',
+        operator: '==',
+        value: true
+      }
+    ]);
     this.categoryService.getCategories()
       .subscribe((categories: Category[]) => {
         this.categories = categories.map((category: Category) => {

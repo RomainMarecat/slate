@@ -13,15 +13,15 @@ import { Cart } from '../../../../shared/cart/shared/cart';
   styleUrls: ['./product-newer.component.scss']
 })
 export class ProductNewerComponent implements OnInit {
-  @Input() authenticated: boolean;
-
   @Input() options: {
     layout: string;
+    authenticated: boolean;
     products: Product[];
     display_products: Product[],
     cart: Cart,
     user: User
   } = {
+    authenticated: false,
     layout: 'card',
     products: [],
     display_products: [],

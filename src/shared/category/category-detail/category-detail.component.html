@@ -1,16 +1,27 @@
 <div class="category-header-wrapper mt-5"
-     fxLayout="row"
-     fxLayoutAlign="center stretch">
-  <h2 class="text-ucfirst" *ngIf="category && category.name">
-    {{ 'category-detail.title'|translate: {category: category.name} }}
-  </h2>
+     fxLayout="column"
+     fxLayoutAlign="start center"
+     *ngIf="category">
+  <div class="title-wrapper"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+    <h2 class="text-ucfirst" *ngIf="category.name && option.display_title">
+      {{ 'category-detail.title'|translate: {category: category.name} }}
+    </h2>
+  </div>
+
+  <div class="image-wrapper" *ngIf="option.display_image">
+    <img [src]="category.image"
+         *ngIf="category.image">
+  </div>
 </div>
 <div class="product-list mt-3"
      fxLayout="row wrap"
      fxLayoutAlign="start stretch"
      fxLayoutAlign.lt-lg="center stretch"
      fxLayoutGap="10px"
-     fxLayoutGap.xs="0px">
+     fxLayoutGap.xs="0px"
+     *ngIf="option.display_products">
   <div class="text-center product-item-element"
        fxFlex="30"
        fxFlex.md="40"

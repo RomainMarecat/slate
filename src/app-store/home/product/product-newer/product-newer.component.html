@@ -18,7 +18,7 @@
          *ngFor="let product of options.display_products">
       <app-product-item [product]="product"
                         [options]="options"
-                        [authenticated]="authenticated"
+                        [authenticated]="options.authenticated"
                         [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
                         (favoriteAdded)="onFavoriteAdded($event)"
                         (favoriteRemoved)="onFavoriteRemoved($event)">
@@ -33,7 +33,7 @@
        *ngFor="let product of options.display_products; let o=odd">
     <app-product-item [product]="product"
                       [options]="options"
-                      [authenticated]="authenticated"
+                      [authenticated]="options.authenticated"
                       [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
                       (favoriteAdded)="onFavoriteAdded($event)"
                       (favoriteRemoved)="onFavoriteRemoved($event)">

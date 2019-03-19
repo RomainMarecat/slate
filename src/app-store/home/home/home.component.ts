@@ -15,8 +15,6 @@ import { SeoService } from '../../../shared/seo/shared/seo.service';
 })
 export class HomeComponent implements OnInit {
 
-  authenticated: boolean;
-
   categoryOptions: {
     display_title: boolean;
     display_subtitle: boolean;
@@ -47,11 +45,13 @@ export class HomeComponent implements OnInit {
   };
 
   productOptions: {
+    authenticated: boolean;
     layout: string;
     products: Product[],
     display_products: Product[],
     cart: Cart
   } = {
+    authenticated: false,
     layout: 'card',
     products: [],
     display_products: [],
@@ -89,7 +89,6 @@ export class HomeComponent implements OnInit {
               private userService: UserService,
               private cartService: CartService,
               private seoService: SeoService) {
-    this.authenticated = false;
     this.seoService.setSeo('home');
   }
 
@@ -155,9 +154,9 @@ export class HomeComponent implements OnInit {
   isAuhenticated() {
     this.userService.isAuthenticated()
       .subscribe((authenticated) => {
-        this.authenticated = authenticated;
+        this.productOptions.authenticated = authenticated;
       }, () => {
-        this.authenticated = false;
+        this.productOptions.authenticated = false;
       });
   }
 

@@ -186,7 +186,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
     {provide: DeliveryService, useClass: DeliveryService, deps: [AngularFirestore, TABLE_DELIVERY]},
     {provide: FavoriteService, useClass: FavoriteService, deps: [AngularFirestore, TABLE_FAVORITE]},
-    {provide: CategoryService, useClass: MockCategoryService}, // @todo remove mock
     UserService,
     AlertService,
     MenuService,

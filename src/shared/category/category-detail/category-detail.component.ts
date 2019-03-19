@@ -11,12 +11,24 @@ import { UserService } from '../../user/shared/user.service';
 import { Favorite } from '../../favorite/shared/favorite';
 import { FavoriteService } from '../../favorite/shared/favorite.service';
 
+export interface CategoryOption {
+  display_title: boolean;
+  display_image: boolean;
+  display_products: boolean;
+}
+
 @Component({
   selector: 'app-category-detail',
   templateUrl: './category-detail.component.html',
   styleUrls: ['./category-detail.component.scss']
 })
 export class CategoryDetailComponent implements OnInit {
+
+  @Input() option: CategoryOption = {
+    display_title: true,
+    display_image: true,
+    display_products: true,
+  };
 
   category: Category;
 
