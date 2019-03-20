@@ -29,6 +29,7 @@ import { MockCartService } from '../../../shared/cart/shared/mock-cart.service';
 import { CartService } from '../../../shared/cart/shared/cart.service';
 import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { MenuService } from '../../../shared/menu/menu.service';
+import { CategoryFavoriteModule } from '../category-favorite/category-favorite.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -43,6 +44,7 @@ describe('HomeComponent', () => {
       ],
       imports: [
         CategoryModule,
+        CategoryFavoriteModule,
         HeaderModule,
         MenuModule,
         ProductModule,

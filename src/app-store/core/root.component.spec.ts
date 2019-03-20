@@ -42,6 +42,9 @@ import { cookieConfig } from './core.module';
 import { ProductModule } from '../home/product/product.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MaterialModule } from '../../shared/material/material.module';
+import { FavoriteService } from '../../shared/favorite/shared/favorite.service';
+import { MockFavoriteService } from '../../shared/favorite/shared/mock-favorite.service';
+import { CategoryFavoriteModule } from '../home/category-favorite/category-favorite.module';
 
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
@@ -65,6 +68,7 @@ describe('AppRootComponent', () => {
           },
         }),
         CategoryModule,
+        CategoryFavoriteModule,
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
@@ -90,6 +94,8 @@ describe('AppRootComponent', () => {
         {provide: UserService, useClass: MockUserService},
         {provide: LoaderService, useClass: MockLoaderService},
         {provide: ProductService, useClass: MockProductService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: FavoriteService, useClass: MockFavoriteService},
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},
