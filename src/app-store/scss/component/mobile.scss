@@ -31,4 +31,36 @@
       }
     }
   }
+
+
+  // BLOCK HOME - CATEGORIES
+  app-category-item {
+    .main-wrapper {
+      border: 0.5px solid $block-color-light-grey;
+
+      .image-wrapper {
+        &::after {
+          background-color: mat-color($primary);
+        }
+      }
+
+      .heading-title {
+        font-family: $primary-font;
+      }
+
+      // bloc SEPARATEUR
+      .separator-wrapper {
+        border: 3px solid mat-color($primary);
+      }
+
+      .heading-wrapper {
+        .heading-title {
+          .heading-link {
+            color: mat-color($primary);
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
 }

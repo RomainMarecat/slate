@@ -244,6 +244,16 @@
             "text": "nouveauté"
         }
     },
+    "product-new": {
+        "header": {
+            "title": "les nouveautés produits"
+        }
+    },
+    "product-recent-month": {
+        "header": {
+            "title": "les produits récemment ajoutés"
+        }
+    },
     "routes": {
         "account": "mon-compte",
         "admin": "admin",

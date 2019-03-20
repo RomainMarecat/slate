@@ -8,13 +8,18 @@
     <div fxLayout="row"
          fxLayoutAlign="center stretch"
          fxLayout.xs="row wrap">
+      <!-- Image Desktop -->
       <app-storage-image fxFlex="50"
-                         fxFlex.xs="90"
-                         [resize]="{height: 500}"
+                         fxHide.xs
+                         [panelStyle]="{'max-height': '200px'}"
                          [matCardImage]="false"
                          [downloadURL]="product.image1"></app-storage-image>
-
-
+      <!-- Image Mobile -->
+      <app-storage-image fxFlex.xs="90"
+                         fxHide.gt-xs
+                         [panelStyle]="{'max-height': '500px'}"
+                         [matCardImage]="false"
+                         [downloadURL]="product.image1"></app-storage-image>
       <div fxLayout="column"
            fxLayoutAlign="center start"
            fxLayoutGap="30px"

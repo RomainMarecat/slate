@@ -5,9 +5,15 @@ import { User } from '../../user/shared/user';
 export interface ProductOption {
   layout: string;
   authenticated: boolean;
-  new_products: Product[];
-  new_products_displayed: Product[];
-  recent_month_products: Product[];
+  product_new?: {
+    display_title: boolean;
+    products: Product[];
+    products_displayed: Product[];
+  };
+  product_recent_month?: {
+    display_title: boolean;
+    products: Product[];
+  };
   cart: Cart;
   user: User;
 }

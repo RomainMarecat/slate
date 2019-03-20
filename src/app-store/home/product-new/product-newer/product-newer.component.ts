@@ -15,9 +15,11 @@ export class ProductNewerComponent implements OnInit {
   @Input() options: ProductOption = {
     authenticated: false,
     layout: 'card',
-    new_products: [],
-    new_products_displayed: [],
-    recent_month_products: [],
+    product_new: {
+      display_title: true,
+      products: [],
+      products_displayed: []
+    },
     cart: null,
     user: null
   };

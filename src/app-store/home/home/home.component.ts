@@ -5,7 +5,6 @@ import { ProductService } from '../../../shared/product/shared/product.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { CartService } from '../../../shared/cart/shared/cart.service';
-import { Cart } from '../../../shared/cart/shared/cart';
 import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { Observable, Subscription } from 'rxjs';
 import * as moment from 'moment';
@@ -50,9 +49,15 @@ export class HomeComponent implements OnInit {
   productOptions: ProductOption = {
     authenticated: false,
     layout: 'card',
-    new_products: [],
-    new_products_displayed: [],
-    recent_month_products: [],
+    product_new: {
+      display_title: true,
+      products: [],
+      products_displayed: []
+    },
+    product_recent_month: {
+      display_title: true,
+      products: []
+    },
     user: null,
     cart: null
   };
@@ -62,13 +67,15 @@ export class HomeComponent implements OnInit {
   private _productStartIndex = 0;
   @Input() set productStartIndex(val: number) {
     this._productStartIndex = val;
-    this.productOptions.new_products_displayed = this.productOptions.new_products.slice(this._productStartIndex, this._productEndIndex);
+    this.productOptions.product_new.products_displayed =
+      this.productOptions.product_new.products.slice(this._productStartIndex, this._productEndIndex);
   }
 
   private _productEndIndex = 4;
   @Input() set productEndIndex(val: number) {
     this._productEndIndex = val;
-    this.productOptions.new_products_displayed = this.productOptions.new_products.slice(this._productStartIndex, this._productEndIndex);
+    this.productOptions.product_new.products_displayed =
+      this.productOptions.product_new.products.slice(this._productStartIndex, this._productEndIndex);
   }
 
   /**
@@ -119,17 +126,17 @@ export class HomeComponent implements OnInit {
           if (subscription) {
             subscription.unsubscribe();
           }
-          this.productOptions.new_products = products;
-          this.productCount.emit(this.productOptions.new_products.length);
-          this.productOptions.new_products_displayed =
-            this.productOptions.new_products.slice(this._productStartIndex, this._productEndIndex);
+          this.productOptions.product_new.products = products;
+          this.productCount.emit(this.productOptions.product_new.products.length);
+          this.productOptions.product_new.products_displayed =
+            this.productOptions.product_new.products.slice(this._productStartIndex, this._productEndIndex);
           observer.next();
         }, (err) => {
           this.alertService.show('error.api.general');
-          this.productOptions.new_products = [];
-          this.productCount.emit(this.productOptions.new_products.length);
-          this.productOptions.new_products_displayed =
-            this.productOptions.new_products.slice(this._productStartIndex, this._productEndIndex);
+          this.productOptions.product_new.products = [];
+          this.productCount.emit(this.productOptions.product_new.products.length);
+          this.productOptions.product_new.products_displayed =
+            this.productOptions.product_new.products.slice(this._productStartIndex, this._productEndIndex);
           observer.error(err);
         });
     });
@@ -155,7 +162,7 @@ export class HomeComponent implements OnInit {
           if (subscription) {
             subscription.unsubscribe();
           }
-          this.productOptions.recent_month_products = products;
+          this.productOptions.product_recent_month.products = products;
           observer.next();
         }, (err) => {
           this.alertService.show('error.api.general');

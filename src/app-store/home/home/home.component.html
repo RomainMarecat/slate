@@ -1,14 +1,14 @@
 <div class="page-home">
   <div fxLayout="row">
+    <app-header [slidersOptions]="sliderOptions"></app-header>
+  </div>
+
+  <div fxLayout="row">
     <app-product-recent-month [options]="productOptions"></app-product-recent-month>
   </div>
 
   <div fxLayout="row">
     <app-product-newer [options]="productOptions"></app-product-newer>
-  </div>
-
-  <div fxLayout="row">
-    <app-header [slidersOptions]="sliderOptions"></app-header>
   </div>
 
   <div fxLayout="row">

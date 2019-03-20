@@ -16,7 +16,7 @@ import { MockMediaService } from '../../../shared/media/mock-media.service';
 import { StorageModule } from '../../../shared/media/storage/storage.module';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { MockAngularFireStorage } from '../../../shared/media/shared/mock-angular-fire-storage';
-import { ProductModule } from '../product/product.module';
+import { ProductModule } from '../product-new/product.module';
 import { ProductService } from '../../../shared/product/shared/product.service';
 import { MockProductService } from '../../../shared/product/shared/mock-product.service';
 import { AlertService } from '../../../shared/popup/alert.service';

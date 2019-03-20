@@ -39,7 +39,7 @@ import { CategoryService } from '../../shared/category/category.service';
 import { MockCategoryService } from '../../shared/category/mock-category.service';
 import { NgcCookieConsentModule, NgcCookieConsentService } from 'ngx-cookieconsent';
 import { cookieConfig } from './core.module';
-import { ProductModule } from '../home/product/product.module';
+import { ProductModule } from '../home/product-new/product.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MaterialModule } from '../../shared/material/material.module';
 import { FavoriteService } from '../../shared/favorite/shared/favorite.service';

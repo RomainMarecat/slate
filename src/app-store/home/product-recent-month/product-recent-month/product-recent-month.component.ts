@@ -16,9 +16,10 @@ export class ProductRecentMonthComponent implements OnInit {
   @Input() options: ProductOption = {
     authenticated: false,
     layout: 'card',
-    new_products: [],
-    new_products_displayed: [],
-    recent_month_products: [],
+    product_recent_month: {
+      display_title: true,
+      products: []
+    },
     cart: null,
     user: null
   };

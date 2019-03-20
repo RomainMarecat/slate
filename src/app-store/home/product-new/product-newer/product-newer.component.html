@@ -1,4 +1,14 @@
-<div class="product-newer-component product-list-wrapper">
+<div class="product-newer-component product-list-wrapper"
+     *ngIf="options.product_new.products_displayed.length">
+  <div class="product-header-wrapper"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+    <h4 class="product-title text-center text-ucfirst"
+        *ngIf="options.product_new.display_title">
+      {{ 'product-new.header.title' |translate }}
+    </h4>
+  </div>
+
   <div *ngIf="options.layout === 'card'; then cardsLayout; else listLayout"></div>
 </div>
 
@@ -15,7 +25,7 @@
          fxFlex.md="40"
          fxFlex.sm="40"
          fxFlex.xs="80"
-         *ngFor="let product of options.new_products_displayed">
+         *ngFor="let product of options.product_new.products_displayed">
       <app-product-item [product]="product"
                         [options]="options"
                         [authenticated]="options.authenticated"
@@ -30,7 +40,7 @@
 <!-- vue LIST -->
 <ng-template #listLayout>
   <div class="row product-item-borderless" [class.background-light-grey]="o"
-       *ngFor="let product of options.new_products_displayed; let o=odd">
+       *ngFor="let product of options.product_new.products_displayed; let o=odd">
     <app-product-item [product]="product"
                       [options]="options"
                       [authenticated]="options.authenticated"
