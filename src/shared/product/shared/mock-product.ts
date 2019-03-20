@@ -53,7 +53,7 @@ export const mockHomeProductNewer: Product[] = [
       'ph/iphone/compare/iphone-compare-models-201809?wid=282&hei=383&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1535588384763',
     image2: '',
     image3: '',
-    novelty: true,
+    is_new: true,
     price: 979,
     quantity: 10,
     published: true,

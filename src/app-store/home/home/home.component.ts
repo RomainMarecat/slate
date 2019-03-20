@@ -7,6 +7,9 @@ import { UserService } from '../../../shared/user/shared/user.service';
 import { CartService } from '../../../shared/cart/shared/cart.service';
 import { Cart } from '../../../shared/cart/shared/cart';
 import { SeoService } from '../../../shared/seo/shared/seo.service';
+import { Observable, Subscription } from 'rxjs';
+import * as moment from 'moment';
+import { ProductOption } from '../../../shared/product/shared/product-option';
 
 @Component({
   selector: 'app-home',
@@ -44,17 +47,13 @@ export class HomeComponent implements OnInit {
     ]
   };
 
-  productOptions: {
-    authenticated: boolean;
-    layout: string;
-    products: Product[],
-    display_products: Product[],
-    cart: Cart
-  } = {
+  productOptions: ProductOption = {
     authenticated: false,
     layout: 'card',
-    products: [],
-    display_products: [],
+    new_products: [],
+    new_products_displayed: [],
+    recent_month_products: [],
+    user: null,
     cart: null
   };
 
@@ -63,13 +62,13 @@ export class HomeComponent implements OnInit {
   private _productStartIndex = 0;
   @Input() set productStartIndex(val: number) {
     this._productStartIndex = val;
-    this.productOptions.display_products = this.productOptions.products.slice(this._productStartIndex, this._productEndIndex);
+    this.productOptions.new_products_displayed = this.productOptions.new_products.slice(this._productStartIndex, this._productEndIndex);
   }
 
   private _productEndIndex = 4;
   @Input() set productEndIndex(val: number) {
     this._productEndIndex = val;
-    this.productOptions.display_products = this.productOptions.products.slice(this._productStartIndex, this._productEndIndex);
+    this.productOptions.new_products_displayed = this.productOptions.new_products.slice(this._productStartIndex, this._productEndIndex);
   }
 
   /**
@@ -94,36 +93,75 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isAuhenticated();
-    this.getProducts();
+    this.getNewProducts().subscribe(() => {
+      this.getRecentPublishedProducts().subscribe();
+    });
     this.getCart();
   }
 
-
-  /**
-   * gets the products from the API
-   */
-  getProducts() {
+  getNewProducts(): Observable<void> {
     this.productService.filters$.next([
       {
         column: 'published',
         operator: '==',
         value: true
+      },
+      {
+        column: 'is_new',
+        operator: '==',
+        value: true
       }
     ]);
     this.productService.limit$.next(3);
-    this.productService.getProducts()
-      .subscribe((products: Product[]) => {
-        this.productOptions.products = products;
-        this.checkProductsInCart();
-        this.getFavoriteProducts();
-        this.productCount.emit(this.productOptions.products.length);
-        this.productOptions.display_products = this.productOptions.products.slice(this._productStartIndex, this._productEndIndex);
-      }, () => {
-        this.alertService.show('error.api.general');
-        this.productOptions.products = [];
-        this.productCount.emit(this.productOptions.products.length);
-        this.productOptions.display_products = this.productOptions.products.slice(this._productStartIndex, this._productEndIndex);
-      });
+    return new Observable((observer) => {
+      const subscription: Subscription = this.productService.getProducts()
+        .subscribe((products: Product[]) => {
+          if (subscription) {
+            subscription.unsubscribe();
+          }
+          this.productOptions.new_products = products;
+          this.productCount.emit(this.productOptions.new_products.length);
+          this.productOptions.new_products_displayed =
+            this.productOptions.new_products.slice(this._productStartIndex, this._productEndIndex);
+          observer.next();
+        }, (err) => {
+          this.alertService.show('error.api.general');
+          this.productOptions.new_products = [];
+          this.productCount.emit(this.productOptions.new_products.length);
+          this.productOptions.new_products_displayed =
+            this.productOptions.new_products.slice(this._productStartIndex, this._productEndIndex);
+          observer.error(err);
+        });
+    });
+  }
+
+  getRecentPublishedProducts(): Observable<void> {
+    this.productService.filters$.next([
+      {
+        column: 'published',
+        operator: '==',
+        value: true
+      },
+      {
+        column: 'published_at',
+        operator: '>',
+        value: moment().subtract(1, 'months').toDate()
+      }
+    ]);
+    this.productService.limit$.next(6);
+    return new Observable((observer) => {
+      const subscription: Subscription = this.productService.getProducts()
+        .subscribe((products: Product[]) => {
+          if (subscription) {
+            subscription.unsubscribe();
+          }
+          this.productOptions.recent_month_products = products;
+          observer.next();
+        }, (err) => {
+          this.alertService.show('error.api.general');
+          observer.error(err);
+        });
+    });
   }
 
   getCart() {
@@ -158,12 +196,5 @@ export class HomeComponent implements OnInit {
       }, () => {
         this.productOptions.authenticated = false;
       });
-  }
-
-  checkProductsInCart() {
-
-  }
-
-  getFavoriteProducts() {
   }
 }

@@ -1,17 +1,18 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from '../../../../shared/user/shared/user';
+import { Subscription } from 'rxjs';
 import { Favorite } from '../../../../shared/favorite/shared/favorite';
 import { FavoriteService } from '../../../../shared/favorite/shared/favorite.service';
 import { UserService } from '../../../../shared/user/shared/user.service';
-import { User } from '../../../../shared/user/shared/user';
-import { Subscription } from 'rxjs';
 import { ProductOption } from '../../../../shared/product/shared/product-option';
 
 @Component({
-  selector: 'app-product-newer',
-  templateUrl: './product-newer.component.html',
-  styleUrls: ['./product-newer.component.scss']
+  selector: 'app-product-recent-month',
+  templateUrl: './product-recent-month.component.html',
+  styleUrls: ['./product-recent-month.component.scss']
 })
-export class ProductNewerComponent implements OnInit {
+export class ProductRecentMonthComponent implements OnInit {
+
   @Input() options: ProductOption = {
     authenticated: false,
     layout: 'card',
@@ -71,5 +72,4 @@ export class ProductNewerComponent implements OnInit {
   onFavoriteRemoved(favoriteProduct: Favorite) {
     this.favoriteProducts.delete(favoriteProduct.product);
   }
-
 }

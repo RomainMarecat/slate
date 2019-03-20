@@ -45,6 +45,7 @@ import { MaterialModule } from '../../shared/material/material.module';
 import { FavoriteService } from '../../shared/favorite/shared/favorite.service';
 import { MockFavoriteService } from '../../shared/favorite/shared/mock-favorite.service';
 import { CategoryFavoriteModule } from '../home/category-favorite/category-favorite.module';
+import { ProductRecentMonthModule } from '../home/product-recent-month/product-recent-month.module';
 
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
@@ -79,6 +80,7 @@ describe('AppRootComponent', () => {
         MenuModule,
         NgcCookieConsentModule.forRoot(cookieConfig),
         ProductModule,
+        ProductRecentMonthModule,
         RouterTestingModule.withRoutes([
           {path: '', component: HomeComponent}
         ]),

@@ -9,6 +9,7 @@ import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
 import { PopupModule } from '../../shared/popup/popup.module';
 import { CategoryFavoriteModule } from './category-favorite/category-favorite.module';
+import { ProductRecentMonthModule } from './product-recent-month/product-recent-month.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CategoryFavoriteModule } from './category-favorite/category-favorite.mo
     CategoryModule,
     CategoryFavoriteModule,
     ProductModule,
+    ProductRecentMonthModule,
     CommonModule,
     HeaderModule,
     HomeRoutingModule,

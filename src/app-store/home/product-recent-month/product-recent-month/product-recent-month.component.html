@@ -15,7 +15,7 @@
          fxFlex.md="40"
          fxFlex.sm="40"
          fxFlex.xs="80"
-         *ngFor="let product of options.new_products_displayed">
+         *ngFor="let product of options.recent_month_products">
       <app-product-item [product]="product"
                         [options]="options"
                         [authenticated]="options.authenticated"
@@ -30,7 +30,7 @@
 <!-- vue LIST -->
 <ng-template #listLayout>
   <div class="row product-item-borderless" [class.background-light-grey]="o"
-       *ngFor="let product of options.new_products_displayed; let o=odd">
+       *ngFor="let product of options.recent_month_products; let o=odd">
     <app-product-item [product]="product"
                       [options]="options"
                       [authenticated]="options.authenticated"
