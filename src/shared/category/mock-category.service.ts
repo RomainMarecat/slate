@@ -35,4 +35,8 @@ export class MockCategoryService {
   getCategory(): Observable<Category> {
     return of(mockCategory);
   }
+
+  getPublishedCategories(): Observable<Array<Category>> {
+    return of(mockStoreCategories);
+  }
 }

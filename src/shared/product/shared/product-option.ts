@@ -14,6 +14,10 @@ export interface ProductOption {
     display_title: boolean;
     products: Product[];
   };
+  product_best?: {
+    display_title: boolean;
+    products: Product[];
+  };
   cart: Cart;
   user: User;
 }

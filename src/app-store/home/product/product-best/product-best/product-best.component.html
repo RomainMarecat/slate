@@ -1,0 +1,52 @@
+<div class="product-best-component product-list-wrapper"
+     *ngIf="options.product_best.products.length">
+  <div class="product-header-wrapper"
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
+    <h4 class="product-title text-center text-ucfirst"
+        *ngIf="options.product_best.display_title">
+      {{ 'product-best.header.title' |translate }}
+    </h4>
+  </div>
+
+  <div *ngIf="options.layout === 'card'; then cardsLayout; else listLayout"></div>
+</div>
+
+<!-- vue CARD -->
+<ng-template #cardsLayout>
+  <div class="product-list"
+       fxLayout="row wrap"
+       fxLayoutAlign="start stretch"
+       fxLayoutAlign.lt-lg="center stretch"
+       fxLayoutGap="10px"
+       fxLayoutGap.xs="0px">
+    <div class="text-center product-item-element"
+         fxFlex="30"
+         fxFlex.md="40"
+         fxFlex.sm="40"
+         fxFlex.xs="80"
+         *ngFor="let product of options.product_best.products">
+      <app-product-item [product]="product"
+                        [options]="options"
+                        [authenticated]="options.authenticated"
+                        [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
+                        (favoriteAdded)="onFavoriteAdded($event)"
+                        (favoriteRemoved)="onFavoriteRemoved($event)">
+      </app-product-item>
+    </div>
+  </div>
+</ng-template>
+
+<!-- vue LIST -->
+<ng-template #listLayout>
+  <div class="row product-item-borderless" [class.background-light-grey]="o"
+       *ngFor="let product of options.product_best.products; let o=odd">
+    <app-product-item [product]="product"
+                      [options]="options"
+                      [authenticated]="options.authenticated"
+                      [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
+                      (favoriteAdded)="onFavoriteAdded($event)"
+                      (favoriteRemoved)="onFavoriteRemoved($event)">
+    </app-product-item>
+  </div>
+</ng-template>

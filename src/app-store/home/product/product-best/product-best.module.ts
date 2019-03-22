@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductNewerComponent } from './product-newer/product-newer.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { ProductBestComponent } from './product-best/product-best.component';
+import { SharedProductModule } from '../../../../shared/product/shared-product.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule } from 'localize-router';
 import { MatButtonModule, MatIconModule, MatSnackBarModule, MatTooltipModule } from '@angular/material';
-import { RouterModule } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { StorageModule } from '../../../shared/media/storage/storage.module';
-import { PopupModule } from '../../../shared/popup/popup.module';
-import { SharedProductModule } from '../../../shared/product/shared-product.module';
 import { NgPipesModule } from 'ngx-pipes';
+import { PopupModule } from '../../../../shared/popup/popup.module';
+import { RouterModule } from '@angular/router';
+import { StorageModule } from '../../../../shared/media/storage/storage.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
-    ProductNewerComponent
+    ProductBestComponent
   ],
   exports: [
-    ProductNewerComponent,
+    ProductBestComponent,
     SharedProductModule,
   ],
   imports: [
@@ -35,5 +35,5 @@ import { NgPipesModule } from 'ngx-pipes';
     TranslateModule.forChild(),
   ],
 })
-export class ProductModule {
+export class ProductBestModule {
 }

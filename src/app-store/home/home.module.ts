@@ -6,10 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeaderModule } from './header/header.module';
 import { CategoryModule } from './category/category.module';
-import { ProductModule } from './product-new/product.module';
 import { PopupModule } from '../../shared/popup/popup.module';
 import { CategoryFavoriteModule } from './category-favorite/category-favorite.module';
-import { ProductRecentMonthModule } from './product-recent-month/product-recent-month.module';
+import { ProductModule } from './product/product.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import { ProductRecentMonthModule } from './product-recent-month/product-recent-
     CategoryModule,
     CategoryFavoriteModule,
     ProductModule,
-    ProductRecentMonthModule,
     CommonModule,
     HeaderModule,
     HomeRoutingModule,

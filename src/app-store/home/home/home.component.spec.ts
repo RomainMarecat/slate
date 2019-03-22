@@ -16,7 +16,6 @@ import { MockMediaService } from '../../../shared/media/mock-media.service';
 import { StorageModule } from '../../../shared/media/storage/storage.module';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { MockAngularFireStorage } from '../../../shared/media/shared/mock-angular-fire-storage';
-import { ProductModule } from '../product-new/product.module';
 import { ProductService } from '../../../shared/product/shared/product.service';
 import { MockProductService } from '../../../shared/product/shared/mock-product.service';
 import { AlertService } from '../../../shared/popup/alert.service';
@@ -30,7 +29,7 @@ import { CartService } from '../../../shared/cart/shared/cart.service';
 import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { MenuService } from '../../../shared/menu/menu.service';
 import { CategoryFavoriteModule } from '../category-favorite/category-favorite.module';
-import { ProductRecentMonthModule } from '../product-recent-month/product-recent-month.module';
+import { ProductModule } from '../product/product.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -49,7 +48,6 @@ describe('HomeComponent', () => {
         HeaderModule,
         MenuModule,
         ProductModule,
-        ProductRecentMonthModule,
         RouterTestingModule,
         StorageModule,
         LocalizeRouterModule,

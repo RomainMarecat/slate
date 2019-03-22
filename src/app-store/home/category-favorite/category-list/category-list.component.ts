@@ -36,31 +36,17 @@ export class CategoryListComponent implements OnInit {
   }
 
   getFavorites(user: User) {
-    this.favoriteService.filters$.next([
-      {
-        column: 'user',
-        operator: '==',
-        value: user.uid
-      },
-      {
-        column: 'nb_view',
-        operator: '>',
-        value: 3
-      }
-    ]);
-    this.favoriteService.getFavorites()
-      .pipe(
-        take(1)
-      )
+    this.favoriteService.getUserFavoritesByNbView(user)
       .subscribe((favorites) => {
         this.favorites = favorites;
         this.favorites.forEach((favorite) => {
-          if (favorite.category && favorite.nb_view > 3) {
-            this.categoryService.getCategory(favorite.category)
-              .subscribe((category) => {
-                this.categories = [...this.categories, ...[category]];
-              });
-          }
+          this.categoryService.getCategory(favorite.category)
+            .pipe(
+              take(1)
+            )
+            .subscribe((category) => {
+              this.categories = [...this.categories, ...[category]];
+            });
         });
       }, () => {
         this.favorites = [];

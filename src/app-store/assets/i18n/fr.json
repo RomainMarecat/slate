@@ -249,6 +249,11 @@
             "title": "les nouveautés produits"
         }
     },
+    "product-best": {
+        "header": {
+            "title": "les meilleurs produits"
+        }
+    },
     "product-recent-month": {
         "header": {
             "title": "les produits récemment ajoutés"

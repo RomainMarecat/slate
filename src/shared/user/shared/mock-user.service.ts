@@ -6,6 +6,10 @@ export class MockUserService {
   authorized: string[] = [];
   user$: BehaviorSubject<User> = new BehaviorSubject<User>(mockUser);
 
+  getAuthStateUser(): Observable<User> {
+    return of(mockUser);
+  }
+
   getAuthState(): Observable<User> {
     return of(mockUser);
   }

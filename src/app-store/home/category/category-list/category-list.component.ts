@@ -14,36 +14,19 @@ export class CategoryListComponent implements OnInit {
 
   categories: Category[] = [];
 
-  static randomIntFromInterval(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
   constructor(private categoryService: CategoryService) {
   }
 
   ngOnInit() {
-    this.getCategories();
+    this.getPublishedCategories();
   }
 
-  getCategories() {
-    this.categoryService.filters$.next([
-      {
-        column: 'published',
-        operator: '==',
-        value: true
-      }
-    ]);
-    this.categoryService.getCategories()
+  getPublishedCategories() {
+    this.categoryService.getPublishedCategories()
       .subscribe((categories: Category[]) => {
-        this.categories = categories.map((category: Category) => {
-          category.metadata = {
-            size: CategoryListComponent.randomIntFromInterval(25, 40)
-          };
-          return category;
-        });
+        this.categories = categories;
       }, () => {
         this.categories = [];
       });
   }
-
 }

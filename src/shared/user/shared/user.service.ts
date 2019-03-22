@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { map, take, tap, timeout } from 'rxjs/operators';
 import { AlertService } from '../../popup/alert.service';
-import { BehaviorSubject, from, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable, Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '@firebase/auth-types';
 import { Cart } from '../../cart/shared/cart';
@@ -112,6 +112,31 @@ export class UserService {
       localStorage.removeItem('token');
     } catch (e) {
     }
+  }
+
+  getAuthStateUser(): Observable<User> {
+    return new Observable((observer) => {
+      const userSubscription: Subscription = this.getAuthState()
+        .pipe(
+          timeout(10000)
+        )
+        .subscribe((user: User) => {
+            if (user) {
+              this.user$.next(user);
+              observer.next(user);
+            }
+
+            observer.next(null);
+
+            if (userSubscription) {
+              userSubscription.unsubscribe();
+            }
+          },
+          (err) => {
+            observer.error(err);
+          });
+    });
+
   }
 
   getAuthState(): Observable<User> {
