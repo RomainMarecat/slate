@@ -43,7 +43,6 @@ export class ProductNewerComponent implements OnInit {
   trackFavorites() {
     this.favoriteService.favoriteUserProducts$
       .subscribe((favoriteUserProducts) => {
-        console.log(favoriteUserProducts);
         this.favoriteProducts = favoriteUserProducts;
       });
   }
