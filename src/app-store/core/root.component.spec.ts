@@ -39,13 +39,12 @@ import { CategoryService } from '../../shared/category/category.service';
 import { MockCategoryService } from '../../shared/category/mock-category.service';
 import { NgcCookieConsentModule, NgcCookieConsentService } from 'ngx-cookieconsent';
 import { cookieConfig } from './core.module';
-import { ProductModule } from '../home/product-new/product.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MaterialModule } from '../../shared/material/material.module';
 import { FavoriteService } from '../../shared/favorite/shared/favorite.service';
 import { MockFavoriteService } from '../../shared/favorite/shared/mock-favorite.service';
 import { CategoryFavoriteModule } from '../home/category-favorite/category-favorite.module';
-import { ProductRecentMonthModule } from '../home/product-recent-month/product-recent-month.module';
+import { ProductModule } from '../home/product/product.module';
 
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
@@ -80,7 +79,6 @@ describe('AppRootComponent', () => {
         MenuModule,
         NgcCookieConsentModule.forRoot(cookieConfig),
         ProductModule,
-        ProductRecentMonthModule,
         RouterTestingModule.withRoutes([
           {path: '', component: HomeComponent}
         ]),
