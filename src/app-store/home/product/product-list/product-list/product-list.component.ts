@@ -1,27 +1,30 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductOption } from '../../../../../shared/product/shared/product-option';
 import { Favorite } from '../../../../../shared/favorite/shared/favorite';
 import { FavoriteService } from '../../../../../shared/favorite/shared/favorite.service';
 import { UserService } from '../../../../../shared/user/shared/user.service';
 import { User } from '../../../../../shared/user/shared/user';
+import { Product } from '../../../../../shared/product/shared/product';
 
 @Component({
-  selector: 'app-product-best',
-  templateUrl: './product-best.component.html',
-  styleUrls: ['./product-best.component.scss']
+  selector: 'app-home-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.scss']
 })
-export class ProductBestComponent implements OnInit {
+export class ProductListComponent implements OnInit {
 
-  @Input() options: ProductOption = {
+  @Input() options = {
     authenticated: false,
     layout: 'card',
-    product_best: {
-      display_title: true,
-      products: [],
-    },
     cart: null,
     user: null
   };
+
+  @Input() specificOptions: {
+    display_title: true,
+    title: null
+  };
+
+  @Input() products: Product[] = [];
 
   favoriteProducts: Map<string, Favorite> = new Map<string, Favorite>();
 

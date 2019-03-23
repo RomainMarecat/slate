@@ -1,4 +1,4 @@
-import { Component, TemplateRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClothingProduct } from '../shared/clothing-product';
 import { ProductService } from '../shared/product.service';
@@ -9,6 +9,7 @@ import { NotificationService } from '../../slack/notification.service';
 import { Meta } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Product } from '../shared/product';
 
 @Component({
   selector: 'app-product-add',
@@ -49,8 +50,8 @@ export class ProductAddComponent implements OnInit {
    * When the form is submitted, we create new product
    * And show a toast to display info
    */
-  onProductSubmit(product: ClothingProduct) {
-    this.productService.createProduct(product);
+  onProductSubmit(product: Product) {
+    this.productService.createProduct(product).subscribe();
     try {
       this.slackNotification.notifySlack({
         text: `New product has been send. ${product.name} by ${this.user.displayName}`

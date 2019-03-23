@@ -254,6 +254,16 @@
             "title": "les meilleurs produits"
         }
     },
+    "product-most-viewed": {
+        "header": {
+            "title": "les produits les plus vus"
+        }
+    },
+    "product-most-commented": {
+        "header": {
+            "title": "les produits les plus commmentés"
+        }
+    },
     "product-recent-month": {
         "header": {
             "title": "les produits récemment ajoutés"

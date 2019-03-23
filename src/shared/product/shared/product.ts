@@ -45,6 +45,8 @@ export class Product implements ClothingProduct, HockeyProduct {
   category ?: string;
   attributes ?: Array<any>;
   area?: string;
+  viewed?: number;
+  commented?: number;
 
   constructor() {
     this.score = 0;

@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductBestComponent } from './product-best.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuModule } from '../../../../../shared/menu/menu.module';
 import { MatIconModule, MatTooltipModule } from '@angular/material';
@@ -22,10 +21,11 @@ import { MockFavoriteService } from '../../../../../shared/favorite/shared/mock-
 import { UserService } from '../../../../../shared/user/shared/user.service';
 import { MockUserService } from '../../../../../shared/user/shared/mock-user.service';
 import { configureTestSuite } from '../../../../../shared/unit-test/configure-test-suite';
+import { ProductListComponent } from './product-list.component';
 
-describe('ProductBestComponent', () => {
-  let component: ProductBestComponent;
-  let fixture: ComponentFixture<ProductBestComponent>;
+describe('ProductListComponent', () => {
+  let component: ProductListComponent;
+  let fixture: ComponentFixture<ProductListComponent>;
 
   configureTestSuite();
 
@@ -48,7 +48,7 @@ describe('ProductBestComponent', () => {
         }),
       ],
       declarations: [
-        ProductBestComponent,
+        ProductListComponent,
         ProductItemComponent
       ],
       providers: [
@@ -60,11 +60,11 @@ describe('ProductBestComponent', () => {
         {provide: UserService, useClass: MockUserService}
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductBestComponent);
+    fixture = TestBed.createComponent(ProductListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

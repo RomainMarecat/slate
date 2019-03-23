@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductBestModule } from './product-best/product-best.module';
-import { ProductNewModule } from './product-new/product-new.module';
-import { ProductRecentMonthModule } from './product-recent-month/product-recent-month.module';
+import { ProductListModule } from './product-list/product-list.module';
 
 @NgModule({
   exports: [
     CommonModule,
-    ProductBestModule,
-    ProductNewModule,
-    ProductRecentMonthModule
+    ProductListModule,
   ],
 })
 export class ProductModule {

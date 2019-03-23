@@ -1,11 +1,11 @@
-<div class="product-recent-month-component product-list-wrapper"
-     *ngIf="options.product_recent_month.products.length">
+<div class="product-best-component product-list-wrapper"
+     *ngIf="products.length">
   <div class="product-header-wrapper"
        fxLayout="row"
        fxLayoutAlign="center stretch">
     <h4 class="product-title text-center text-ucfirst"
-        *ngIf="options.product_recent_month.display_title">
-      {{ 'product-recent-month.header.title' |translate }}
+        *ngIf="specificOptions.display_title">
+      {{ specificOptions.title |translate }}
     </h4>
   </div>
 
@@ -25,7 +25,7 @@
          fxFlex.md="40"
          fxFlex.sm="40"
          fxFlex.xs="80"
-         *ngFor="let product of options.product_recent_month.products">
+         *ngFor="let product of products">
       <app-product-item [product]="product"
                         [options]="options"
                         [authenticated]="options.authenticated"
@@ -40,7 +40,7 @@
 <!-- vue LIST -->
 <ng-template #listLayout>
   <div class="row product-item-borderless" [class.background-light-grey]="o"
-       *ngFor="let product of options.product_recent_month.products; let o=odd">
+       *ngFor="let product of products; let o=odd">
     <app-product-item [product]="product"
                       [options]="options"
                       [authenticated]="options.authenticated"

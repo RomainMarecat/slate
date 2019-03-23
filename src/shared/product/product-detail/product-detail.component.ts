@@ -9,6 +9,7 @@ import { CloudinaryTagService } from '../../media/cloudinary/cloudinary-tag.serv
 import { environment } from '../../../app-store/environments/environment';
 import { Product } from '../shared/product';
 import { SeoService } from '../../seo/shared/seo.service';
+import { Subscription } from 'rxjs';
 
 export interface Section {
   title: string;
@@ -75,10 +76,14 @@ export class ProductDetailComponent implements OnInit {
             key = value.key.substring(0, value.key.indexOf('-'));
           }
 
-          this.productService.getProduct(key)
+          const subscription: Subscription = this.productService.getProduct(key)
             .subscribe((product: Product) => {
+              if (subscription) {
+                subscription.unsubscribe();
+              }
               if (product) {
                 this.product = product;
+                this.updateProduct(product);
                 this.loaderService.hide();
                 this.seoService.setSeo('product-detail', {name: product.name, description: product.description});
                 /* itemscope itemtype="http://schema.org/Product" */
@@ -153,7 +158,15 @@ export class ProductDetailComponent implements OnInit {
         this.cols++;
       }
     }
+  }
 
+  updateProduct(product: Product) {
+    if (product.viewed) {
+      product.viewed += 1;
+    } else {
+      product.viewed = 1;
+    }
+    this.productService.updateProduct(product).subscribe();
   }
 
   /**

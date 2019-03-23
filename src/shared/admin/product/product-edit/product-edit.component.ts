@@ -245,7 +245,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
           this.product.published_at = Timestamp.now();
         }
         this.productService.updateProduct(this.product)
-          .then((doc) => {
+          .subscribe((doc) => {
             this.isSaving = false;
             this.saveOffer(offers, {id: this.product.key});
           }, (err) => {
@@ -255,7 +255,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       } else {
 
         this.productService.createProduct(this.product)
-          .then((doc: DocumentReference) => {
+          .subscribe((doc: DocumentReference) => {
             this.isSaving = false;
             this.saveOffer(this.form.get('offers').value, doc);
           }, (err) => {
@@ -299,7 +299,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
    */
   addProductOffer(key: string) {
     this.product.offers.push(key);
-    this.productService.updateProduct(this.product).then((doc) => {
+    this.productService.updateProduct(this.product).subscribe((doc) => {
       this.addFinally();
     }, (err) => this.addError(err));
   }

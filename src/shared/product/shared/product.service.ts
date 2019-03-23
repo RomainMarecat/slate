@@ -1,8 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
 import { Product } from './product';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { VisitorService } from '../../firestore/visitor.service';
+import { timeout } from 'rxjs/operators';
 
 @Injectable()
 export class ProductService extends VisitorService {
@@ -28,12 +29,18 @@ export class ProductService extends VisitorService {
     return super.getDocument(key) as Observable<Product>;
   }
 
-  createProduct(product: Product): Promise<any> {
-    return super.createDocument(product);
+  createProduct(product: Product): Observable<any> {
+    return from(super.createDocument(product))
+      .pipe(
+        timeout(5000)
+      );
   }
 
-  updateProduct(product: Product) {
-    return super.updateDocument(product);
+  updateProduct(product: Product): Observable<void> {
+    return from(super.updateDocument(product))
+      .pipe(
+        timeout(5000)
+      );
   }
 
   deleteProduct(product: Product) {

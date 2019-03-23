@@ -3,16 +3,36 @@
     <app-header [slidersOptions]="sliderOptions"></app-header>
   </div>
 
+
   <div fxLayout="row">
-    <app-product-best [options]="productOptions"></app-product-best>
+    <app-home-product-list [products]="productOptions.product_new.products"
+                           [specificOptions]="productOptions.product_new"
+                           [options]="productOptions"></app-home-product-list>
   </div>
 
   <div fxLayout="row">
-    <app-product-recent-month [options]="productOptions"></app-product-recent-month>
+    <app-home-product-list [products]="productOptions.product_recent_month.products"
+                           [specificOptions]="productOptions.product_recent_month"
+                           [options]="productOptions"></app-home-product-list>
   </div>
 
   <div fxLayout="row">
-    <app-product-newer [options]="productOptions"></app-product-newer>
+    <app-home-product-list [products]="productOptions.product_best.products"
+                           [specificOptions]="productOptions.product_best"
+                           [options]="productOptions"></app-home-product-list>
+  </div>
+
+
+  <div fxLayout="row">
+    <app-home-product-list [products]="productOptions.product_most_viewed.products"
+                           [specificOptions]="productOptions.product_most_viewed"
+                           [options]="productOptions"></app-home-product-list>
+  </div>
+
+  <div fxLayout="row">
+    <app-home-product-list [products]="productOptions.product_most_commented.products"
+                           [specificOptions]="productOptions.product_most_commented"
+                           [options]="productOptions"></app-home-product-list>
   </div>
 
   <div fxLayout="row">

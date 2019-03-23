@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductBestComponent } from './product-best/product-best.component';
+import { ProductListComponent } from './product-list/product-list.component';
 import { SharedProductModule } from '../../../../shared/product/shared-product.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule } from 'localize-router';
@@ -13,10 +13,10 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
-    ProductBestComponent
+    ProductListComponent
   ],
   exports: [
-    ProductBestComponent,
+    ProductListComponent,
     SharedProductModule,
   ],
   imports: [
@@ -35,5 +35,5 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule.forChild(),
   ],
 })
-export class ProductBestModule {
+export class ProductListModule {
 }
