@@ -11,13 +11,15 @@
       <!-- Image Desktop -->
       <app-storage-image fxFlex="50"
                          fxHide.xs
-                         [panelStyle]="{'max-height': '200px'}"
+                         fxHide.sm
+                         [panelStyle]="{'max-height': '500px'}"
                          [matCardImage]="false"
                          [downloadURL]="product.image1"></app-storage-image>
       <!-- Image Mobile -->
       <app-storage-image fxFlex.xs="90"
-                         fxHide.gt-xs
-                         [panelStyle]="{'max-height': '500px'}"
+                         fxFlex.sm="90"
+                         fxHide.gt-sm
+                         [panelStyle]="{'max-height': '200px'}"
                          [matCardImage]="false"
                          [downloadURL]="product.image1"></app-storage-image>
       <div fxLayout="column"
