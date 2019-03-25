@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MenuModule } from '../../../../../shared/menu/menu.module';
-import { MatIconModule, MatTooltipModule } from '@angular/material';
+import { MatBadgeModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { NgPipesModule } from 'ngx-pipes';
 import { StorageModule } from '../../../../../shared/media/storage/storage.module';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -35,6 +35,7 @@ describe('ProductListComponent', () => {
         FlexLayoutModule,
         MenuModule,
         MatIconModule,
+        MatBadgeModule,
         MatTooltipModule,
         NgPipesModule,
         StorageModule,

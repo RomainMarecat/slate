@@ -100,9 +100,9 @@
     <div class="section-description-wrapper">
       <div [ngSwitch]="section.title">
         <b *ngSwitchCase="'overview'">
-          <mat-list>
-            <mat-list-item class="h-100" *ngFor="let spec of section.specifications">
-              {{ spec  }}
+          <mat-list *ngIf="product?.specifications">
+            <mat-list-item class="h-100" *ngFor="let specification of product.specifications">
+              {{ specification }}
             </mat-list-item>
           </mat-list>
         </b>

@@ -25,15 +25,6 @@ export class ProductDetailComponent implements OnInit {
   sections: Section[] = [
     {
       title: 'overview',
-      specifications: [
-        `Écran Super Retina (OLED) de 6,5 pouces avec HDR`,
-        `Indice IP68 de résistance à la poussière et à l’eau (profondeur maximale de 2 mètres pendant 30 minutes maximum)`,
-        `Double appareil photo 12 Mpx avec double OIS (stabilisation optique de l’image) et caméra avant TrueDepth 7 Mpx,
-         avec mode Portrait, Éclairage de portrait, Contrôle de la profondeur et HDR intelligent`,
-        `Face ID pour l’authentification sécurisée et Apple Pay`,
-        `Puce A12 Bionic avec Neural Engine de nouvelle génération`,
-        `Recharge sans fil (avec chargeurs Qi)`
-      ]
     },
     {
       title: 'description',

@@ -11,6 +11,8 @@ import { CartService } from '../../cart/shared/cart.service';
 import { Cart } from '../../cart/shared/cart';
 import { Router } from '@angular/router';
 import { LocalizeRouterService } from 'localize-router';
+import { MatDialog } from '@angular/material';
+import { CommentDialogComponent } from '../../comment/comment-dialog/comment-dialog.component';
 
 @Component({
   selector: 'app-product-item',
@@ -68,10 +70,34 @@ export class ProductItemComponent implements OnInit {
               private alertService: AlertService,
               private translateService: TranslateService,
               private userService: UserService,
-              private cartService: CartService) {
+              private cartService: CartService,
+              private productService: ProductService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
+  }
+
+  toggleComment(product: Product) {
+    const dialogRef = this.dialog.open(CommentDialogComponent, {
+      data: {
+        comment: {
+          entity_type: 'product',
+          entity_key: product.key,
+          commentTime: new Date(),
+          order: 1
+        }
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.product.commented++;
+        this.productService.updateProduct(this.product)
+          .subscribe(() => {
+          });
+      }
+    });
   }
 
   /**

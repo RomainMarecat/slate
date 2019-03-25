@@ -27,6 +27,12 @@ describe('CommentAddComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        Angulartics2Module.forRoot({
+          developerMode: true,
+          pageTracking: {
+            clearIds: true,
+          },
+        }),
         FlexLayoutModule,
         FormsModule,
         ReactiveFormsModule,
