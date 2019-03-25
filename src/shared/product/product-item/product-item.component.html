@@ -8,8 +8,27 @@
        fxLayout="row"
        fxLayoutAlign="center stretch">
     <div class="text-center"
+         fxFlex="30">
+      <span *ngFor="let star of [1, 2, 3, 4, 5]">
+        <mat-icon color="warn" *ngIf="star <= product.score">star_rate</mat-icon>
+        <mat-icon color="primary" *ngIf="star > product.score || !product.score">star_border</mat-icon>
+      </span>
+    </div>
+    <div class="icon-wrapper"
          fxFlex="10"
-         fxFlexOffset="80">
+         fxFlexOffset="40">
+      <button type="button"
+              [title]="'cta.add_a_comment'|translate"
+              mat-button
+              (click)="toggleComment(product)">
+        <mat-icon [matBadge]="product.commented"
+                  matBadgePosition="above after">
+          comment
+        </mat-icon>
+      </button>
+    </div>
+    <div class="text-center"
+         fxFlex="10">
       <button class="icon-wrapper"
               type="button"
               mat-button
@@ -18,7 +37,12 @@
               [matTooltipDisabled]="matTooltipFavorite.length === 0"
               [matTooltip]="matTooltipFavorite|translate"
               *ngIf="authenticated">
-        <mat-icon [color]="favoriteProduct?.key ? 'warn' : 'primary'">star_rate</mat-icon>
+        <mat-icon color="primary"
+                  *ngIf="!favoriteProduct?.key">favorite_border
+        </mat-icon>
+        <mat-icon color="accent"
+                  *ngIf="favoriteProduct?.key">favorite
+        </mat-icon>
       </button>
     </div>
     <div class="text-center"

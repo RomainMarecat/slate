@@ -16,7 +16,7 @@ import { MockAngularFireStorage } from '../../media/shared/mock-angular-fire-sto
 import { FavoriteService } from '../../favorite/shared/favorite.service';
 import { MockFavoriteService } from '../../favorite/shared/mock-favorite.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatIconModule, MatTooltipModule } from '@angular/material';
+import { MatBadgeModule, MatDialogModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { AlertService } from '../../popup/alert.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
@@ -25,6 +25,9 @@ import { MockCartService } from '../../cart/shared/mock-cart.service';
 import { UserService } from '../../user/shared/user.service';
 import { MockUserService } from '../../user/shared/mock-user.service';
 import { NgPipesModule } from 'ngx-pipes';
+import { CommentModule } from '../../comment/comment.module';
+import { ProductService } from '../shared/product.service';
+import { MockProductService } from '../shared/mock-product.service';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;
@@ -35,10 +38,13 @@ describe('ProductItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        CommentModule,
         FlexLayoutModule,
         MenuModule,
         MatIconModule,
+        MatBadgeModule,
         MatTooltipModule,
+        MatDialogModule,
         NgPipesModule,
         StorageModule,
         LocalizeRouterModule,
@@ -58,9 +64,10 @@ describe('ProductItemComponent', () => {
         {provide: UserService, useClass: MockUserService},
         {provide: FavoriteService, useClass: MockFavoriteService},
         {provide: CartService, useClass: MockCartService},
-        {provide: AngularFireStorage, useClass: MockAngularFireStorage}
+        {provide: AngularFireStorage, useClass: MockAngularFireStorage},
+        {provide: ProductService, useClass: MockProductService}
       ],
-      declarations: [ProductItemComponent]
+      declarations: [ProductItemComponent],
     })
       .compileComponents();
   }));

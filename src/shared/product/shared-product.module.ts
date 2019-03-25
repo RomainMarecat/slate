@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoaderModule } from '../loader/loader.module';
 import {
-  MatAutocompleteModule,
+  MatAutocompleteModule, MatBadgeModule,
   MatButtonModule,
   MatCardModule,
   MatExpansionModule,
@@ -33,11 +33,13 @@ import { ProductActionComponent } from './product-action/product-action.componen
 import { ProductComponent } from './product/product.component';
 import { RouterModule } from '@angular/router';
 import { LocalizeRouterModule } from 'localize-router';
+import { CommentModule } from '../comment/comment.module';
 
 @NgModule({
   imports: [
     Angulartics2Module,
     CommonModule,
+    CommentModule,
     FormsModule,
     FlexLayoutModule,
     LoaderModule,
@@ -50,6 +52,7 @@ import { LocalizeRouterModule } from 'localize-router';
     MatSelectModule,
     MatAutocompleteModule,
     MatStepperModule,
+    MatBadgeModule,
     MatExpansionModule,
     MatTooltipModule,
     MatSnackBarModule,

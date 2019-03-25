@@ -30,6 +30,7 @@ import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { MenuService } from '../../../shared/menu/menu.service';
 import { CategoryFavoriteModule } from '../category-favorite/category-favorite.module';
 import { ProductModule } from '../product/product.module';
+import { MatDialogModule } from '@angular/material';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -46,6 +47,7 @@ describe('HomeComponent', () => {
         CategoryModule,
         CategoryFavoriteModule,
         HeaderModule,
+        MatDialogModule,
         MenuModule,
         ProductModule,
         RouterTestingModule,

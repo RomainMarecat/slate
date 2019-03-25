@@ -11,11 +11,12 @@ import {
   MatIconModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatInputModule,
+  MatInputModule, MatDialogModule,
 } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
 
 @NgModule({
   imports: [
@@ -27,21 +28,28 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatDialogModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     TranslateModule.forChild()
+  ],
+  entryComponents: [
+    CommentDialogComponent
   ],
   declarations: [
     CommentAddComponent,
     CommentListComponent,
     CommentEditComponent,
-    CommentDetailComponent
+    CommentDetailComponent,
+    CommentDialogComponent
   ],
   exports: [
     CommentAddComponent,
     CommentListComponent,
     CommentEditComponent,
-    CommentDetailComponent
+    CommentDetailComponent,
+    CommentDialogComponent
   ]
 })
-export class CommentModule {}
+export class CommentModule {
+}

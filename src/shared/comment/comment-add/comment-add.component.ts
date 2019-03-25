@@ -39,12 +39,4 @@ export class CommentAddComponent implements OnInit {
       this.reset();
     }
   }
-
-  get commentText() {
-    return this.form.get('commentText');
-  }
-
-  set commentText(commentText) {
-    this.form.patchValue({ commentText: commentText });
-  }
 }

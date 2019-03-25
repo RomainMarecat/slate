@@ -1,7 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { VisitorService } from '../../firestore/visitor.service';
+import { timeout } from 'rxjs/operators';
 import { Comment } from './comment';
 
 @Injectable()
@@ -12,19 +13,25 @@ export class CommentService extends VisitorService {
   }
 
   getComments(): Observable<Comment[]> {
-    return <Observable<Comment[]>> super.getDocuments();
+    return <Observable<Comment[]>>super.getDocuments();
   }
 
   getComment(key: string): Observable<Comment> {
-    return <Observable<Comment>> super.getDocument(key);
+    return <Observable<Comment>>super.getDocument(key);
   }
 
-  createComment(comment: Comment): Promise<any> {
-    return super.createDocument(comment);
+  createComment(comment: Comment): Observable<any> {
+    return from(super.createDocument(comment))
+      .pipe(
+        timeout(5000)
+      );
   }
 
-  updateComment(comment: Comment) {
-    return super.updateDocument(comment);
+  updateComment(comment: Comment): Observable<void> {
+    return from(super.updateDocument(comment))
+      .pipe(
+        timeout(5000)
+      );
   }
 
   deleteComment(comment: Comment) {

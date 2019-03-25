@@ -73,7 +73,7 @@ export class ProductDetailComponent implements OnInit {
     comment.entity_key = this.product.key;
     comment.entity_type = 'Product';
     comment.order = this.comments.length + 1;
-    this.commentService.createComment(comment).then((doc) => {
+    this.commentService.createComment(comment).subscribe((doc) => {
       this.alertService.toast('Commentaire enregistré', 'success');
     }, (err) => {
       this.alertService.toast(err, 'error');
