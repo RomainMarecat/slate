@@ -1,6 +1,7 @@
 import { ClothingProduct } from './clothing-product';
 import { HockeyProduct } from './hockey-product';
 import * as moment from 'moment';
+import { Attribute } from '../../attribute/attribute';
 
 export class Product implements ClothingProduct, HockeyProduct {
   name: string;
@@ -43,11 +44,11 @@ export class Product implements ClothingProduct, HockeyProduct {
   reseller ?: string;
   offers ?: string[];
   category ?: string;
-  attributes ?: Array<any>;
   area?: string;
   viewed?: number;
   commented?: number;
   specifications?: string[];
+  attributes?: Attribute[];
 
   constructor() {
     this.score = 0;

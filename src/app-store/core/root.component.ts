@@ -41,16 +41,39 @@ export class AppRootComponent implements OnInit {
               public matIconRegistry: MatIconRegistry,
               private domSanitizer: DomSanitizer,
               private router: Router) {
+    this.initScroll();
+    this.registerIcons();
+  }
+
+  ngOnInit() {
+    this.startAnalytics();
+  }
+
+  /**
+   * Start tracking with analytics2
+   */
+  startAnalytics() {
+    this.angulartics2GoogleAnalytics.startTracking();
+  }
+
+  /**
+   * Register all custom mat-icon
+   */
+  registerIcons() {
     this.matIconRegistry.addSvgIcon(
       `logo`,
       this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/images/icons/logo.svg`)
     );
+  }
 
+  /**
+   * Init reset croll when navigate on other route
+   */
+  initScroll() {
     // previous url
-    let previousRoute = router.routerState.snapshot.url;
-
+    let previousRoute = this.router.routerState.snapshot.url;
     // Route subscriber
-    router.events
+    this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((data: NavigationEnd) => {
         // We want to reset the scroll position on navigation except when navigating within
@@ -61,14 +84,6 @@ export class AppRootComponent implements OnInit {
 
         previousRoute = data.urlAfterRedirects;
       });
-  }
-
-  ngOnInit() {
-    this.startAnalytics();
-  }
-
-  startAnalytics() {
-    this.angulartics2GoogleAnalytics.startTracking();
   }
 }
 

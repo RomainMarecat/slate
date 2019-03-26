@@ -9,7 +9,6 @@ import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { Observable, Subscription } from 'rxjs';
 import * as moment from 'moment';
 import { ProductOption } from '../../../shared/product/shared/product-option';
-import { CommentService } from '../../../shared/comment/shared/comment.service';
 
 @Component({
   selector: 'app-home',
@@ -102,6 +101,7 @@ export class HomeComponent implements OnInit {
   private _layout = true;
   @Input() set layout(layout: boolean) {
     this._layout = layout;
+    this.productOptions.layout = layout ? 'card' : 'list';
   }
 
   get layout() {
@@ -122,10 +122,13 @@ export class HomeComponent implements OnInit {
       this.getRecentPublishedProducts().subscribe(() => {
         this.getBestProducts().subscribe(() => {
           this.getProductsMostViewed().subscribe(() => {
-            this.getProductsMostCommented().subscribe();
+            this.getProductsMostCommented().subscribe(() => {
+            });
           });
         });
       });
+    }, () => {
+
     });
     this.getCart();
   }
@@ -154,6 +157,7 @@ export class HomeComponent implements OnInit {
           observer.next();
         }, (err) => {
           this.alertService.show('error.api.general');
+          this.productOptions.product_most_commented.products = [];
           observer.error(err);
         });
     });
@@ -183,6 +187,7 @@ export class HomeComponent implements OnInit {
           observer.next();
         }, (err) => {
           this.alertService.show('error.api.general');
+          this.productOptions.product_most_viewed.products = [];
           observer.error(err);
         });
     });
@@ -248,6 +253,7 @@ export class HomeComponent implements OnInit {
           observer.next();
         }, (err) => {
           this.alertService.show('error.api.general');
+          this.productOptions.product_recent_month.products = [];
           observer.error(err);
         });
     });
@@ -277,6 +283,7 @@ export class HomeComponent implements OnInit {
           observer.next();
         }, (err) => {
           this.alertService.show('error.api.general');
+          this.productOptions.product_best.products = [];
           observer.error(err);
         });
     });

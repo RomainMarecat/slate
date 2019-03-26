@@ -25,30 +25,37 @@ import { CategoryService } from '../../shared/category/category.service';
 import { MockCategoryService } from '../../shared/category/mock-category.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatAutocompleteModule, MatButtonModule, MatFormFieldModule, MatIconModule,
-  MatInputModule
-} from '@angular/material';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
+import { SharedProductModule } from '../../shared/product/shared-product.module';
+import { MapModule } from '../../shared/map/map.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
+import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
         BrowserAnimationsModule,
+        FlexLayoutModule,
         HttpClientTestingModule,
+        MapModule,
         SharedModule,
+        LocalizeRouterModule,
+        SharedProductModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
-      declarations: [ HomeComponent ],
+      declarations: [HomeComponent],
       providers: [
+        {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: AreaService, useClass: MockAreaService},
         {provide: CategoryService, useClass: MockCategoryService},

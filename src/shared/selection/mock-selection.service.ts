@@ -2,16 +2,15 @@ import { mockSelection } from './mock-selection';
 import { Selection } from './selection';
 import { Observable, of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
-import { AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
 import { CollectionReference, Query } from '@firebase/firestore-types';
+import { Filter } from '../facet/filter/shared/filter';
 
 export class MockSelectionService {
   selectionCollectionRef: AngularFirestoreCollection<Selection>;
-  publishedFilter$: BehaviorSubject<boolean | true>;
-  parentFilter$: BehaviorSubject<string | null>;
-  levelFilter$: BehaviorSubject<number | null>;
-  nameFilters$: BehaviorSubject<string | null>;
-  keyFilters$: BehaviorSubject<string | null>;
+  selections$: Observable<DocumentChangeAction<Selection>[]>;
+  selection$: Observable<Selection>;
+  filters$: BehaviorSubject<Filter[]>;
   userFilter$: BehaviorSubject<string | null>;
   limit$: BehaviorSubject<number | null>;
   startAt$: BehaviorSubject<string | null>;
@@ -22,11 +21,7 @@ export class MockSelectionService {
   query: CollectionReference | Query;
 
   constructor() {
-    this.keyFilters$ = new BehaviorSubject(null);
-    this.publishedFilter$ = new BehaviorSubject(true);
-    this.parentFilter$ = new BehaviorSubject(null);
-    this.levelFilter$ = new BehaviorSubject(null);
-    this.nameFilters$ = new BehaviorSubject(null);
+    this.filters$ = new BehaviorSubject([{column: 'published', operator: '==', value: true}]);
     this.userFilter$ = new BehaviorSubject(null);
     this.limit$ = new BehaviorSubject(20);
     this.orderBy$ = new BehaviorSubject('published_at');

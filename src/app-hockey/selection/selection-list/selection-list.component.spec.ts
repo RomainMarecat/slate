@@ -25,10 +25,13 @@ import { MenuService } from '../../../shared/menu/menu.service';
 import { MockProductService } from '../../../shared/product/shared/mock-product.service';
 import { SelectionService } from '../../../shared/selection/selection.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 
 describe('SelectionListComponent', () => {
   let component: SelectionListComponent;
   let fixture: ComponentFixture < SelectionListComponent > ;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

@@ -3,7 +3,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { OfferListComponent } from './offer-list.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatGridListModule, MatIconModule, MatInputModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
   MatListModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
@@ -13,7 +18,6 @@ import { CommonModule } from '@angular/common';
 import { NgPipesModule } from 'ngx-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Cloudinary } from 'cloudinary-core';
 import { SharedModule } from '../../../shared/shared.module';
 import { MockSelectionService } from '../../../shared/selection/mock-selection.service';
@@ -40,10 +44,13 @@ import { OfferService } from '../../../shared/offer/offer.service';
 import { MockCategoryService } from '../../../shared/category/mock-category.service';
 import { CategoryService } from '../../../shared/category/category.service';
 import { environment } from '../../../app-hockey/environments/environment';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;
   let fixture: ComponentFixture<OfferListComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

@@ -26,10 +26,13 @@ import { MockMapsAPILoader } from '../../../shared/map/shared/mock-maps-api-load
 import { environment } from '../../environments/environment';
 import { MockMediaService } from '../../../shared/media/mock-media.service';
 import { MediaService } from '../../../shared/media/media.service';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 
 describe('OfferEditComponent', () => {
   let component: OfferEditComponent;
   let fixture: ComponentFixture<OfferEditComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -48,7 +51,7 @@ describe('OfferEditComponent', () => {
         }),
         SharedModule
       ],
-      declarations: [ OfferEditComponent ],
+      declarations: [OfferEditComponent],
       providers: [
         DeviceService,
         {provide: CategoryService, useClass: MockCategoryService},

@@ -22,10 +22,14 @@ import { CommentService } from '../../../shared/comment/shared/comment.service';
 import { MockUserService } from '../../../shared/user/shared/mock-user.service';
 import { UserService } from '../../../shared/user/shared/user.service';
 import { Angulartics2Module } from 'angulartics2';
+import { CommentModule } from '../../../shared/comment/comment.module';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 
 describe('OfferDetailComponent', () => {
   let component: OfferDetailComponent;
   let fixture: ComponentFixture<OfferDetailComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -38,6 +42,7 @@ describe('OfferDetailComponent', () => {
         }),
         AngularFireStorageModule,
         CommonModule,
+        CommentModule,
         HttpClientTestingModule,
         RouterTestingModule,
         BrowserAnimationsModule,

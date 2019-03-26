@@ -24,10 +24,13 @@ import { SharedModule } from '../../../shared/shared.module';
 import { DeviceService } from '../../../shared/device/device.service';
 import { MockMapsAPILoader } from '../../../shared/map/shared/mock-maps-api-loader';
 import { environment } from '../../environments/environment';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 
 describe('OfferConfirmationComponent', () => {
   let component: OfferConfirmationComponent;
   let fixture: ComponentFixture<OfferConfirmationComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -46,7 +49,7 @@ describe('OfferConfirmationComponent', () => {
         }),
         SharedModule
       ],
-      declarations: [ OfferConfirmationComponent ],
+      declarations: [OfferConfirmationComponent],
       providers: [
         DeviceService,
         {provide: CategoryService, useClass: MockCategoryService},

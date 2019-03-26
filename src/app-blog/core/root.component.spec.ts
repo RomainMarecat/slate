@@ -54,6 +54,7 @@ import { ArticleModule } from '../../shared/article/article.module';
 import { ContactModule } from '../../shared/contact/contact.module';
 import { MapModule } from '../../shared/map/map.module';
 import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
+import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -86,6 +87,8 @@ export const cookieConfig: NgcCookieConsentConfig = {
 describe('AppRootComponent', () => {
   let component: AppRootComponent;
   let fixture: ComponentFixture<AppRootComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

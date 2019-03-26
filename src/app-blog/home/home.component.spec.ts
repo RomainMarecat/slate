@@ -31,6 +31,13 @@ import { MockMapsAPILoader } from '../../shared/map/shared/mock-maps-api-loader'
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
+import { ArticleModule } from '../../shared/article/article.module';
+import { MapModule } from '../../shared/map/map.module';
+import { LoaderService } from '../../shared/loader/loader.service';
+import { MockLoaderService } from '../../shared/loader/mock-loader.service';
+import { MediaService } from '../../shared/media/media.service';
+import { MockMediaService } from '../../shared/media/mock-media.service';
+import { SeoService } from '../../shared/seo/shared/seo.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -44,10 +51,12 @@ describe('HomeComponent', () => {
         AgmCoreModule.forRoot({
           apiKey: environment.googleMapApiKey
         }),
+        ArticleModule,
         BrowserAnimationsModule,
         HttpClientTestingModule,
         ContactModule,
         RouterTestingModule,
+        MapModule,
         LocalizeRouterModule,
         SharedModule,
         TranslateModule.forRoot({
@@ -57,11 +66,14 @@ describe('HomeComponent', () => {
       declarations: [HomeComponent],
       providers: [
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
+        {provide: LoaderService, useClass: MockLoaderService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: ProductService, useClass: MockProductService},
+        {provide: SeoService, useClass: SeoService},
         {provide: OfferService, useClass: MockOfferService},
         {provide: ArticleService, useClass: MockArticleService},
         {provide: CategoryService, useClass: MockCategoryService},
+        {provide: MediaService, useClass: MockMediaService},
         {provide: ContactService, useClass: MockContactService},
         {provide: CommentService, useClass: MockCommentService},
         {provide: UserService, useClass: MockUserService},

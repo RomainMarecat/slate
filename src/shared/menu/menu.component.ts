@@ -138,7 +138,9 @@ export class MenuComponent implements OnInit, OnDestroy {
    * On destroy component
    */
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   /**
