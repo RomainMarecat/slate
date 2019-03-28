@@ -1,5 +1,30 @@
 .product-item {
-  height: 500px;
+
+  &.card-wrapper {
+    height: 500px;
+
+    .card-img-container {
+      height: 200px;
+    }
+
+    .product-item-price {
+      height: 4rem;
+      line-height: 4rem;
+    }
+  }
+
+  &.list-wrapper {
+    height: 100px;
+
+    .card-img-container {
+      height: 90px;
+    }
+
+    .product-item-price {
+      height: 100px;
+      line-height: 4rem;
+    }
+  }
 
   // BLOC ICONS ACTION
   .product-item-top-icons-wrapper {
@@ -14,7 +39,6 @@
 
   // BLOC CARD
   .card-img-container {
-    height: 200px;
     position: relative;
     text-align: center;
     cursor: pointer;
@@ -111,7 +135,7 @@
 
   // view LIST
   .list-view {
-    height: 100px;
+
     // BLOC DISCOUNT
     .card-discount {
       span {

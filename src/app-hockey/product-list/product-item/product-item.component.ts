@@ -8,7 +8,7 @@ import { StringService } from '../../../shared/util/string.service';
 import { Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'app-product-item',
+  selector: 'app-hockey-product-item',
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss']
 })

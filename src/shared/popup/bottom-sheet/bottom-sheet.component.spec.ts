@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BottomSheetComponent } from './bottom-sheet.component';
-import { MatBottomSheetModule, MatBottomSheetRef, MatListModule } from '@angular/material';
+import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetModule, MatBottomSheetRef, MatListModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -33,6 +33,7 @@ describe('BottomSheetComponent', () => {
       ],
       providers: [
         {provide: MatBottomSheetRef, useValue: {}},
+        {provide: MAT_BOTTOM_SHEET_DATA, useValue: {}},
         {provide: AlertService, useClass: MockAlertService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
       ]

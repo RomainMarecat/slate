@@ -2,8 +2,8 @@
 <div class="card-container">
   <div class="wrapper product-layout" fxLayoutGap="10px 10px" fxLayoutAlign="space-around wrap"
        fxLayoutAlign.xs="space-around stretch" fxLayout="row" fxLayout.xs="column wrap">
-    <app-product-item *ngFor="let product of products" class="grid-tile-item" [product]="product">
-    </app-product-item>
+    <app-hockey-product-item *ngFor="let product of products" class="grid-tile-item" [product]="product">
+    </app-hockey-product-item>
     <div *ngIf="products && products?.length <= 0 && !isLoading"
          [innerHtml]="'Produits bientôt disponibles ...'|translate">
     </div>

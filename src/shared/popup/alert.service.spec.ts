@@ -1,8 +1,8 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
-import { MatSnackBarModule } from '@angular/material';
+import { MatBottomSheetModule, MatSnackBarModule } from '@angular/material';
 import { AlertService } from './alert.service';
-import { TranslateModule, TranslateService, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { I18nService } from '../i18n/i18n.service';
 
 describe('AlertService', () => {
@@ -10,11 +10,15 @@ describe('AlertService', () => {
     TestBed.configureTestingModule({
       imports: [
         MatSnackBarModule,
+        MatBottomSheetModule,
         TranslateModule.forRoot({
-          loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         })
       ],
-      providers: [AlertService, I18nService]
+      providers: [
+        AlertService,
+        I18nService
+      ]
     });
   });
 

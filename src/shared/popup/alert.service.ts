@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetRef, MatSnackBar } from '@angular/material';
 import { AlertComponent } from './snackbar/alert.component';
 import { TranslateService } from '@ngx-translate/core';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { Alert } from './alert';
 
 @Injectable()
 export class AlertService {
   constructor(public snackBar: MatSnackBar,
+              public matBottomSheet: MatBottomSheet,
               private translateService: TranslateService) {
   }
 
@@ -40,5 +43,20 @@ export class AlertService {
       // Timeout duration in ms
       duration: 8000
     });
+  }
+
+  /**
+   * Display bottom sheet message
+   */
+  bottomSheetMessage(title: string, message: string) {
+    setTimeout(() => {
+      const matBottomSheetRef: MatBottomSheetRef = this.matBottomSheet.open(BottomSheetComponent, {
+        data: {
+          title: title,
+          message: message,
+        },
+        hasBackdrop: false
+      });
+    }, 500);
   }
 }

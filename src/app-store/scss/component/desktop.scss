@@ -67,8 +67,13 @@
     }
   }
 
+  app-product-list {
+    .card-wrapper {
+      border: .5px solid $block-color-light-grey;
+    }
+  }
+
   app-product-item {
-    border: .5px solid $block-color-light-grey;
 
     .product-detail-top-icons-wrapper {
       .icon-wrapper {

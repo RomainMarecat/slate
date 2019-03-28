@@ -48,65 +48,49 @@ export class HomeComponent implements OnInit {
 
   productOptions: ProductOption = {
     authenticated: false,
-    layout: 'card',
+    cart: null,
     product_new: {
+      layout: 'card',
+      limit: 3,
       display_title: true,
       initial_products: [],
       products: [],
       title: 'product-new.header.title'
     },
     product_recent_month: {
+      layout: 'list',
+      limit: 6,
       display_title: true,
+      threshold: moment().subtract(1, 'months'),
       products: [],
       title: 'product-recent-month.header.title'
     },
     product_best: {
+      layout: 'card',
+      limit: 3,
       display_title: true,
       products: [],
+      threshold: 4,
       title: 'product-best.header.title'
     },
     product_most_viewed: {
+      layout: 'card',
+      limit: 10,
       display_title: true,
       products: [],
+      threshold: 10,
       title: 'product-most-viewed.header.title'
     },
     product_most_commented: {
+      layout: 'card',
+      limit: 3,
       display_title: true,
       products: [],
+      threshold: 10,
       title: 'product-most-commented.header.title'
     },
     user: null,
-    cart: null
   };
-
-  @Output() productCount: EventEmitter<number> = new EventEmitter<number>();
-
-  private _productStartIndex = 0;
-  @Input() set productStartIndex(val: number) {
-    this._productStartIndex = val;
-    this.productOptions.product_new.products =
-      this.productOptions.product_new.initial_products.slice(this._productStartIndex, this._productEndIndex);
-  }
-
-  private _productEndIndex = 4;
-  @Input() set productEndIndex(val: number) {
-    this._productEndIndex = val;
-    this.productOptions.product_new.products =
-      this.productOptions.product_new.initial_products.slice(this._productStartIndex, this._productEndIndex);
-  }
-
-  /**
-   * private, setter et getter pour le mode de layout (cards ou liste)
-   */
-  private _layout = true;
-  @Input() set layout(layout: boolean) {
-    this._layout = layout;
-    this.productOptions.layout = layout ? 'card' : 'list';
-  }
-
-  get layout() {
-    return this._layout;
-  }
 
   constructor(private productService: ProductService,
               private alertService: AlertService,
@@ -128,7 +112,6 @@ export class HomeComponent implements OnInit {
         });
       });
     }, () => {
-
     });
     this.getCart();
   }
@@ -143,10 +126,10 @@ export class HomeComponent implements OnInit {
       {
         column: 'commented',
         operator: '>',
-        value: 10
+        value: this.productOptions.product_most_commented.threshold
       }
     ]);
-    this.productService.limit$.next(3);
+    this.productService.limit$.next(this.productOptions.product_most_commented.limit);
     return new Observable((observer) => {
       const subscription: Subscription = this.productService.getProducts()
         .subscribe((products: Product[]) => {
@@ -173,10 +156,10 @@ export class HomeComponent implements OnInit {
       {
         column: 'viewed',
         operator: '>',
-        value: 10
+        value: this.productOptions.product_most_viewed.threshold
       }
     ]);
-    this.productService.limit$.next(10);
+    this.productService.limit$.next(this.productOptions.product_most_viewed.limit);
     return new Observable((observer) => {
       const subscription: Subscription = this.productService.getProducts()
         .subscribe((products: Product[]) => {
@@ -206,24 +189,18 @@ export class HomeComponent implements OnInit {
         value: true
       }
     ]);
-    this.productService.limit$.next(3);
+    this.productService.limit$.next(this.productOptions.product_new.limit);
     return new Observable((observer) => {
       const subscription: Subscription = this.productService.getProducts()
         .subscribe((products: Product[]) => {
           if (subscription) {
             subscription.unsubscribe();
           }
-          this.productOptions.product_new.initial_products = products;
-          this.productCount.emit(this.productOptions.product_new.initial_products.length);
-          this.productOptions.product_new.products =
-            this.productOptions.product_new.initial_products.slice(this._productStartIndex, this._productEndIndex);
+          this.productOptions.product_new.products = products;
           observer.next();
         }, (err) => {
           this.alertService.show('error.api.general');
-          this.productOptions.product_new.initial_products = [];
-          this.productCount.emit(this.productOptions.product_new.initial_products.length);
-          this.productOptions.product_new.products =
-            this.productOptions.product_new.initial_products.slice(this._productStartIndex, this._productEndIndex);
+          this.productOptions.product_new.products = [];
           observer.error(err);
         });
     });
@@ -239,10 +216,10 @@ export class HomeComponent implements OnInit {
       {
         column: 'published_at',
         operator: '>',
-        value: moment().subtract(1, 'months').toDate()
+        value: this.productOptions.product_recent_month.threshold.toDate()
       }
     ]);
-    this.productService.limit$.next(6);
+    this.productService.limit$.next(this.productOptions.product_recent_month.limit);
     return new Observable((observer) => {
       const subscription: Subscription = this.productService.getProducts()
         .subscribe((products: Product[]) => {
@@ -269,10 +246,10 @@ export class HomeComponent implements OnInit {
       {
         column: 'score',
         operator: '>=',
-        value: 4
+        value: this.productOptions.product_best.threshold
       }
     ]);
-    this.productService.limit$.next(3);
+    this.productService.limit$.next(this.productOptions.product_best.limit);
     return new Observable((observer) => {
       const subscription: Subscription = this.productService.getProducts()
         .subscribe((products: Product[]) => {
