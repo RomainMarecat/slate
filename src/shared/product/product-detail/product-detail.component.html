@@ -166,8 +166,8 @@
           </b>
           <b *ngSwitchCase="'review'">
             <span *ngFor="let star of [1, 2, 3, 4, 5]">
-              <mat-icon *ngIf="star <= product.score">star_rate</mat-icon>
-              <mat-icon *ngIf="star > product.score">star_border</mat-icon>
+              <mat-icon color="warn" *ngIf="star <= product.score">star_rate</mat-icon>
+              <mat-icon color="primary" *ngIf="star > product.score || !product.score">star_border</mat-icon>
             </span>
           </b>
         </div>

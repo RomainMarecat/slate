@@ -35,7 +35,7 @@ export class CommonMissingTranslationHandler implements MissingTranslationHandle
       params.translateService.translations['fr'] &&
       !params.translateService.translations['fr'][params.key]
     ) {
-      console.warn(`Missing key "${params.key}"`);
+      console.log(`${params.key}`);
     }
     return params.key;
   }

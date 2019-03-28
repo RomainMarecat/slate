@@ -9,12 +9,12 @@
     </h4>
   </div>
 
-  <div *ngIf="options.layout === 'card'; then cardsLayout; else listLayout"></div>
+  <div *ngIf="specificOptions.layout === 'card'; then cardsLayout; else listLayout"></div>
 </div>
 
 <!-- vue CARD -->
 <ng-template #cardsLayout>
-  <div class="product-list"
+  <div class="product-list card-wrapper px-4"
        fxLayout="row wrap"
        fxLayoutAlign="start stretch"
        fxLayoutAlign.lt-lg="center stretch"
@@ -24,10 +24,10 @@
          fxFlex="30"
          fxFlex.md="40"
          fxFlex.sm="40"
-         fxFlex.xs="80"
+         fxFlex.xs="100"
          *ngFor="let product of products">
       <app-product-item [product]="product"
-                        [options]="options"
+                        [options]="specificOptions"
                         [authenticated]="options.authenticated"
                         [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
                         (favoriteAdded)="onFavoriteAdded($event)"
@@ -39,14 +39,21 @@
 
 <!-- vue LIST -->
 <ng-template #listLayout>
-  <div class="row product-item-borderless" [class.background-light-grey]="o"
+  <div class="product-list list-wrapper px-4"
+       fxLayout="row wrap"
+       fxLayoutAlign="start stretch"
+       fxLayoutAlign.lt-lg="start stretch"
+       [class.background-light-grey]="o"
        *ngFor="let product of products; let o=odd">
-    <app-product-item [product]="product"
-                      [options]="options"
-                      [authenticated]="options.authenticated"
-                      [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
-                      (favoriteAdded)="onFavoriteAdded($event)"
-                      (favoriteRemoved)="onFavoriteRemoved($event)">
-    </app-product-item>
+    <div class="product-item-element"
+         fxFlex="100">
+      <app-product-item [product]="product"
+                        [options]="specificOptions"
+                        [authenticated]="options.authenticated"
+                        [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
+                        (favoriteAdded)="onFavoriteAdded($event)"
+                        (favoriteRemoved)="onFavoriteRemoved($event)">
+      </app-product-item>
+    </div>
   </div>
 </ng-template>

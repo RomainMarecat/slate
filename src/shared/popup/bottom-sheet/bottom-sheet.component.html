@@ -1,8 +1,11 @@
-<mat-nav-list>
-  <a href="https://keep.google.com/"
-     mat-list-item
-     (click)="openLink($event)">
-    <span mat-line>Google Keep</span>
-    <span mat-line>Add to a note</span>
-  </a>
-</mat-nav-list>
+<mat-list>
+  <mat-list-item *ngIf="data?.message">
+    <span mat-line>
+      {{ data.title|translate }}
+    </span>
+    <span mat-line
+          class="text-danger">
+      {{ data.message|translate }}
+    </span>
+  </mat-list-item>
+</mat-list>

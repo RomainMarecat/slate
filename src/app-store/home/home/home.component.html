@@ -10,6 +10,12 @@
                            [options]="productOptions"></app-home-product-list>
   </div>
 
+
+  <div fxLayout="row">
+    <app-category-default-list [options]="categoryOptions"></app-category-default-list>
+  </div>
+
+
   <div fxLayout="row">
     <app-home-product-list [products]="productOptions.product_recent_month.products"
                            [specificOptions]="productOptions.product_recent_month"
@@ -33,10 +39,6 @@
     <app-home-product-list [products]="productOptions.product_most_commented.products"
                            [specificOptions]="productOptions.product_most_commented"
                            [options]="productOptions"></app-home-product-list>
-  </div>
-
-  <div fxLayout="row">
-    <app-category-default-list [options]="categoryOptions"></app-category-default-list>
   </div>
 
   <div fxLayout="row">

@@ -4,6 +4,7 @@ import { FavoriteService } from '../../../../../shared/favorite/shared/favorite.
 import { UserService } from '../../../../../shared/user/shared/user.service';
 import { User } from '../../../../../shared/user/shared/user';
 import { Product } from '../../../../../shared/product/shared/product';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'app-home-product-list',
@@ -14,15 +15,11 @@ export class ProductListComponent implements OnInit {
 
   @Input() options = {
     authenticated: false,
-    layout: 'card',
     cart: null,
     user: null
   };
 
-  @Input() specificOptions: {
-    display_title: true,
-    title: null
-  };
+  @Input() specificOptions;
 
   @Input() products: Product[] = [];
 

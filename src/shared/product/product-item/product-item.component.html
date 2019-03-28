@@ -1,4 +1,6 @@
-<div class="product-item" *ngIf="options">
+<div class="product-item"
+     [ngClass]="[options.layout + '-wrapper']"
+     *ngIf="options">
   <ng-container *ngIf="options.layout === 'card'; then cards; else list">
   </ng-container>
 </div>
@@ -157,49 +159,105 @@
 
 <!-- VUE LISTE -->
 <ng-template #list>
-  <div class="row list-view flex-container">
-    <div class="col-lg-1 col-1 text-center">
+  <div class="list-view"
+       fxLayout="row"
+       fxLayoutAlign="start stretch">
+    <!--Bloc icon wrapper-->
+    <div fxFlex="20"
+         fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap.xs="15px"
+         fxLayoutGap.sm="10px">
+      <div class="text-center"
+           fxFlex="50"
+           fxFlex.sm="60"
+           fxFlex.xs="60">
+        <span *ngFor="let star of [1, 2, 3, 4, 5]">
+          <mat-icon color="warn" *ngIf="star <= product.score">star_rate</mat-icon>
+          <mat-icon color="primary" *ngIf="star > product.score || !product.score">star_border</mat-icon>
+        </span>
+      </div>
       <div class="icon-wrapper"
-           [title]="'cta.add_to_favorite'|translate"
-           (click)="toggleFavorite(product, favoriteProduct)"
-           [matTooltipDisabled]="matTooltipFavorite.length === 0"
-           [matTooltip]="matTooltipFavorite|translate"
-           *ngIf="authenticated">
-        <mat-icon [color]="favoriteProduct?.key ? 'warn' : 'primary'">star_rate</mat-icon>
+           fxFlex="20">
+        <button type="button"
+                [title]="'cta.add_a_comment'|translate"
+                mat-button
+                (click)="toggleComment(product)">
+          <mat-icon [matBadge]="product.commented"
+                    matBadgePosition="above after">
+            comment
+          </mat-icon>
+        </button>
+      </div>
+      <div class="text-center"
+           fxFlex="20">
+        <button class="icon-wrapper"
+                type="button"
+                mat-button
+                [title]="'cta.add_to_favorite'|translate"
+                (click)="toggleFavorite(product, favoriteProduct)"
+                [matTooltipDisabled]="matTooltipFavorite.length === 0"
+                [matTooltip]="matTooltipFavorite|translate"
+                *ngIf="authenticated">
+          <mat-icon color="primary"
+                    *ngIf="!favoriteProduct?.key">favorite_border
+          </mat-icon>
+          <mat-icon color="accent"
+                    *ngIf="favoriteProduct?.key">favorite
+          </mat-icon>
+        </button>
       </div>
     </div>
-    <div class="col-lg-4 col-4">
+
+    <a fxFlex="10"
+       [attr.data-content]="product?.name"
+       [attr.title]="'cta.show-product'|translate"
+       class="card-img-container"
+       fxLayout="row"
+       fxLayoutAlign="center center"
+       [routerLink]="['/products/detail', product.key]|localize">
+      <div class="card-wrapper card-img-top"
+           fxFlex="100">
+        <app-storage-image [panelStyle]="{height: '90px', width: 'auto'}"
+                           [panelClass]="'scale'"
+                           [matCardImage]="false"
+                           [downloadURL]="product.image1"></app-storage-image>
+      </div>
+    </a>
+
+    <div fxFlex="30"
+         fxLayout="row"
+         fxLayoutAlign="center center">
       <span>{{product?.name | uppercase}}</span>
     </div>
-    <div class="col-lg-1 col-1 text-center" *ngIf="product">
-      <div class="card-discount" *ngIf="getDiscountRate(product) !== 0">
-        <span>{{ getDiscountRate(product) }}%</span>
+
+    <div fxFlex="15"
+         class="product-item-price"
+         fxLayout="row"
+         fxLayoutAlign="center center">
+      <div class="text-center"
+           fxFlex.xs="100">
+        <p class="product-item-price-value">
+          {{ (product?.promo ? product.promo : product?.price) | currency:'EUR' }}
+        </p>
       </div>
     </div>
-    <div class="col-lg-2 col-2 text-center list-price">
-      <span class="price-text">
-        {{ (product?.promo ? 'product-item.price.text' : 'product-item.public-price.text')|translate }}
-      </span>
-      <span class="price-value">
-        {{(product?.promo ? product?.promo : product?.price) | currency:'EUR' }}
-      </span>
-    </div>
-    <div class="col-lg-3 col-3 text-center">
-      <a [routerLink]="['products/detail', product.key]|localize"
-         [attr.title]="'cta.show-product'|translate"
-         class="btn btn-card">
-        {{ 'cta.show-product'|translate }}
-      </a>
-    </div>
-    <div class="col-lg-1 col-1 text-center">
-      <div class="icon-wrapper pointer"
-           [title]="'cta.add_to_cart'|translate"
-           [matTooltipDisabled]="matTooltipCart.length === 0"
-           [matTooltip]="matTooltipCart|translate"
-           [class.background-primary]="inCart"
-           (click)="addToCart(product)">
-        <mat-icon>add_shopping_cart</mat-icon>
+
+    <div fxFlex="25"
+         fxLayout="row"
+         fxLayoutAlign="center center">
+      <div fxFlex="50"
+           fxFlex.xs="100"
+           fxFlexOffset="25"
+           fxFlexOffset.xs="0">
+        <a [routerLink]="['products/detail', product.key]|localize"
+           [attr.title]="'cta.show-product'|translate"
+           class="btn btn-card"
+           mat-stroked-button>
+          {{ 'cta.show-product'|translate }}
+        </a>
       </div>
     </div>
+
   </div>
 </ng-template>

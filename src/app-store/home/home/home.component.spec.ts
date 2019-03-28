@@ -95,26 +95,14 @@ describe('HomeComponent', () => {
   });
 
   it('should set products', () => {
-    component.productStartIndex = 0;
-    component.productEndIndex = 0;
-    expect(component.productOptions.product_new.products.length).toEqual(0);
-
-
-    component.productStartIndex = 0;
-    component.productEndIndex = 4;
     expect(component.productOptions.product_new.products.length).toEqual(3);
   });
 
   it('should set layout and switch to list', () => {
 
-    component.layout = true;
-    expect(component.layout).toEqual(true);
-    expect(component.productOptions.layout).toEqual('card');
-
-
-    component.layout = false;
-    expect(component.layout).toEqual(false);
-    expect(component.productOptions.layout).toEqual('list');
+    expect(component.productOptions.product_new.layout).toEqual('card');
+    component.productOptions.product_new.layout = 'list';
+    expect(component.productOptions.product_new.layout).toEqual('list');
   });
 
   it('should subscribe and result on getProducts', fakeAsync(() => {
@@ -150,15 +138,12 @@ describe('HomeComponent', () => {
 
   it('should subscribe and throw error', fakeAsync(() => {
     spyOn(productService, 'getProducts').and.returnValue(throwError({error: 'error'}));
-    component.productStartIndex = 0;
-    component.productEndIndex = 4;
     component.ngOnInit();
 
     tick();
     fixture.detectChanges();
 
     expect(productService.getProducts).toHaveBeenCalledTimes(1);
-    expect(component.productOptions.product_new.initial_products).toEqual([]);
     expect(component.productOptions.product_new.products).toEqual([]);
   }));
 
