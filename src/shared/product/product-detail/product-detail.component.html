@@ -1,128 +1,177 @@
-<div class="container mt-5"
-     fxLayout="row">
-  <div class="item-card"
-       *ngIf="product"
-       angulartics2On="click"
-       angularticsAction="hoveredOverProductDetail"
-       [angularticsCategory]="'product.detail'">
-    <div fxLayout="row"
-         fxLayoutAlign="center stretch"
-         fxLayout.xs="row wrap">
-      <!-- Image Desktop -->
-      <app-storage-image fxFlex="50"
-                         fxHide.xs
-                         fxHide.sm
-                         [panelStyle]="{'max-height': '500px'}"
-                         [matCardImage]="false"
-                         [downloadURL]="product.image1"></app-storage-image>
-      <!-- Image Mobile -->
-      <app-storage-image fxFlex.xs="90"
-                         fxFlex.sm="90"
-                         fxHide.gt-sm
-                         [panelStyle]="{'max-height': '200px'}"
-                         [matCardImage]="false"
-                         [downloadURL]="product.image1"></app-storage-image>
-      <div fxLayout="column"
-           fxLayoutAlign="center start"
-           fxLayoutGap="30px"
-           fxFlex="50"
-           fxFlex.xs="90">
-        <div class="item-card-header">
-          <h2 class="item-card-title"
-              *ngIf="product.name">
-            {{ product.name }}
-          </h2>
-          <h3 class="item-card-brand"
-              *ngIf="product.brand">
-            <span class="prefix">{{ 'product-detail.brand.prefix'|translate }}</span><span
-            class="ml-1">{{ product.brand }}</span>
-          </h3>
-        </div>
-        <div>
-          <!--<span class="item-card-date">-->
-          <!--{{ product.created_at | date: 'short' }}-->
-          <!--</span>-->
+<div class="global-container">
 
-          <div class="product-detail-price"
-               fxLayout="row"
-               fxLayoutAlign="start center">
-            <div fxFlex.xs="100"
-                 fxFlex.gt-sm="70"
-                 fxFlexOffset.gt-sm="0"
-                 fxFlexOffset.xs="0">
-              <p class="product-item-short-description-text">
-                {{product?.short_description}}
-              </p>
+  <div class="container my-lg-5"
+       fxLayout="row"
+       fxLayoutAlign="start stretch">
+    <div class="item-card"
+         *ngIf="product"
+         angulartics2On="click"
+         angularticsAction="hoveredOverProductDetail"
+         [angularticsCategory]="'product.detail'">
+      <div fxLayout="row"
+           fxLayoutAlign="center stretch"
+           fxLayout.xs="row wrap">
+        <!-- Image Desktop -->
+        <app-storage-image fxFlex="50"
+                           fxHide.xs
+                           fxHide.sm
+                           [panelStyle]="{'max-height': '500px'}"
+                           [matCardImage]="false"
+                           [downloadURL]="product.image1"></app-storage-image>
+        <!-- Image Mobile -->
+        <app-storage-image fxFlex.xs="90"
+                           fxFlex.sm="90"
+                           fxHide.gt-sm
+                           [panelStyle]="{'max-height': '200px'}"
+                           [matCardImage]="false"
+                           [downloadURL]="product.image1"></app-storage-image>
+        <div fxLayout="row wrap"
+             fxLayoutAlign="center start"
+             fxLayoutGap="30px"
+             fxLayoutGap.xs="0"
+             fxFlex="50"
+             fxFlex.xs="90">
+
+          <!-- HEADER -->
+          <div class="item-card-header"
+               fxFlex="100"
+               fxLayout="row wrap">
+            <h2 class="item-card-title"
+                fxFlex="100"
+                fxLayout.xs="row"
+                fxLayoutAlign.xs="center stretch"
+                *ngIf="product.name">
+              {{ product.name }}
+            </h2>
+            <h3 class="item-card-brand"
+                fxFlex="100"
+                *ngIf="product.brand">
+              <span class="prefix">{{ 'product-detail.brand.prefix'|translate }}</span><span
+              class="ml-1">{{ product.brand }}</span>
+            </h3>
+          </div>
+
+          <!--CONTENT-->
+          <div class="item-content"
+               fxFlex.xs="100"
+               fxLayout="row wrap">
+
+            <!-- short description and price align -->
+            <div class="product-detail-price"
+                 fxLayout="row wrap"
+                 fxLayoutAlign="start stretch"
+                 fxFlex="100">
+
+              <div fxFlex.xs="100"
+                   fxFlex.gt-sm="70">
+                <p class="product-item-short-description-text">
+                  {{product?.short_description}}
+                </p>
+              </div>
+
+              <div class="text-center"
+                   fxFlex.xs="100"
+                   fxFlex.gt-sm="30">
+                <p class="product-item-price-value">
+                  {{ (product?.promo ? product.promo : product?.price) | currency:'EUR' }}
+                </p>
+              </div>
+
             </div>
-            <div class="text-center"
-                 fxFlex.xs="100"
-                 fxFlex.gt-sm="30">
-              <p class="product-item-price-value">
-                {{ (product?.promo ? product.promo : product?.price) | currency:'EUR' }}
-              </p>
+
+            <div fxFlex="100"
+                 fxHide.xs
+                 fxLayout="row">
+              <a [href]="product.external_url"
+                 *ngIf="product.external_url"
+                 target="_blank">
+                {{ 'cta.show-product-external-url'|translate }}
+              </a>
+            </div>
+
+            <div fxFlex="100"
+                 fxHide.xs
+                 fxLayout="row">
+              <span *ngIf="product.reseller">
+                {{ product.reseller }}
+              </span>
             </div>
           </div>
 
-          <a [href]="product.external_url"
-             *ngIf="product.external_url"
-             target="_blank">
-            {{ 'cta.show-product-external-url'|translate }}
-          </a>
-          <span *ngIf="product.reseller">
-            {{ product.reseller }}
-          </span>
-        </div>
+          <div class="attribute-wrapper"
+               fxLayout="row"
+               fxLayoutAlign="start stretch"
+               *ngIf="product.attributes && product.attributes.length">
+            <div *ngFor="let attribute of product.attributes">
+              <span>{{ attribute.translations.fr }}</span>
+            </div>
+          </div>
 
-        <div class="w-100 h-100"
-             fxLayout="row"
-             fxLayoutAlign="center center">
-          <app-product-action [isProductScorable]="false"
-                              [isProductSellable]="true"
-                              [product]="product"
-                              (updateScore)="updateScoreProduct($event)"></app-product-action>
+          <div fxLayout="row"
+               fxLayoutAlign="center center">
+            <app-product-action [isProductScorable]="false"
+                                [isProductSellable]="true"
+                                [product]="product"
+                                (updateScore)="updateScoreProduct($event)"></app-product-action>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<section class="container my-5"
-         fxLayout="row"
-         *ngFor="let section of sections">
-  <article class="section-card"
-           *ngIf="product">
-    <div class="title-wrapper">
-      <span class="text-uppercase">
-        {{ 'product-detail.section.title.' + section.title |translate }}
-      </span>
-    </div>
-
-    <div class="section-description-wrapper">
-      <div [ngSwitch]="section.title">
-        <b *ngSwitchCase="'overview'">
-          <mat-list *ngIf="product?.specifications">
-            <mat-list-item class="h-100" *ngFor="let specification of product.specifications">
-              {{ specification }}
-            </mat-list-item>
-          </mat-list>
-        </b>
-        <b *ngSwitchCase="'description'">
-          <div class="my-3">
-            <p>
-              {{ product.short_description }}
-            </p>
-            <p>
-              {{ product.description }}
-            </p>
-          </div>
-        </b>
-        <b *ngSwitchCase="'review'">
-          <span *ngFor="let star of [1, 2, 3, 4, 5]">
-            <mat-icon *ngIf="star <= product.score">star_rate</mat-icon>
-            <mat-icon *ngIf="star > product.score">star_border</mat-icon>
+  <section class="container my-5"
+           fxLayout="row"
+           *ngFor="let section of sections">
+    <article class="section-card"
+             *ngIf="product">
+      <ng-container [ngSwitch]="section.title">
+        <div class="title-wrapper" *ngSwitchCase="'overview'">
+          <span class="text-uppercase" *ngIf="product.specifications">
+            {{ 'product-detail.section.title.' + section.title |translate }}
           </span>
-        </b>
+        </div>
+        <div class="title-wrapper" *ngSwitchCase="'description'">
+          <span class="text-uppercase" *ngIf="product?.short_description || product?.description">
+            {{ 'product-detail.section.title.' + section.title |translate }}
+          </span>
+        </div>
+        <div class="title-wrapper" *ngSwitchCase="'review'">
+          <span class="text-uppercase" *ngIf="product?.score">
+            {{ 'product-detail.section.title.' + section.title |translate }}
+          </span>
+        </div>
+      </ng-container>
+
+
+      <div class="section-description-wrapper">
+        <div [ngSwitch]="section.title">
+
+          <b *ngSwitchCase="'overview'">
+            <mat-list *ngIf="product?.specifications">
+              <mat-list-item class="h-100" *ngFor="let specification of product.specifications">
+                {{ specification }}
+              </mat-list-item>
+            </mat-list>
+          </b>
+
+          <b *ngSwitchCase="'description'">
+            <div class="my-3">
+              <p>
+                {{ product.short_description }}
+              </p>
+              <p>
+                {{ product.description }}
+              </p>
+            </div>
+          </b>
+          <b *ngSwitchCase="'review'">
+            <span *ngFor="let star of [1, 2, 3, 4, 5]">
+              <mat-icon *ngIf="star <= product.score">star_rate</mat-icon>
+              <mat-icon *ngIf="star > product.score">star_border</mat-icon>
+            </span>
+          </b>
+        </div>
       </div>
-    </div>
-  </article>
-</section>
+    </article>
+  </section>
+</div>

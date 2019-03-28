@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
@@ -45,10 +45,33 @@ import { FavoriteService } from '../../shared/favorite/shared/favorite.service';
 import { MockFavoriteService } from '../../shared/favorite/shared/mock-favorite.service';
 import { CategoryFavoriteModule } from '../home/category-favorite/category-favorite.module';
 import { ProductModule } from '../home/product/product.module';
+import { Observable, of } from 'rxjs';
+import { Event, NavigationEnd, Router } from '@angular/router';
 
-describe('AppRootComponent', () => {
+
+// export class RouterStub {
+//   get events(): Observable<Event> {
+//     return of(new NavigationEnd(1, '', ''));
+//   }
+//
+//   routerState: {
+//     snapshot: {
+//       url: string;
+//     }
+//   } = {
+//     snapshot: {
+//       url: ''
+//     }
+//   };
+//   createUrlTree: {};
+//   navigate: () => {};
+//   navigateByUrl: () => {};
+// }
+
+describe('Store AppRootComponent', () => {
   let component: AppRootComponent;
   let fixture: ComponentFixture<AppRootComponent>;
+  let router: Router;
 
   configureTestSuite();
 
@@ -115,10 +138,16 @@ describe('AppRootComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppRootComponent);
     component = fixture.componentInstance;
+    router = TestBed.get(Router);
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should start analytics', () => {
+    component.startAnalytics();
     expect(component).toBeTruthy();
   });
 });

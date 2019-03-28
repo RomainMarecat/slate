@@ -33,6 +33,8 @@ import { ProductAttributeComponent } from '../product-attribute/product-attribut
 import { ProductDescriptionComponent } from '../product-description/product-description.component';
 import { environment } from '../../environments/environment';
 import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
+import { OfferModule } from '../../../shared/offer/offer.module';
+import { CommentModule } from '../../../shared/comment/comment.module';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
@@ -44,6 +46,7 @@ describe('ProductDetailComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
+        CommentModule,
         HttpClientTestingModule,
         RouterTestingModule,
         BrowserAnimationsModule,
@@ -53,6 +56,7 @@ describe('ProductDetailComponent', () => {
             clearIds: true,
           },
         }),
+        OfferModule,
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}

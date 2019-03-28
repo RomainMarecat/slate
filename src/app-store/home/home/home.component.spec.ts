@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { CategoryModule } from '../category/category.module';
@@ -31,10 +31,14 @@ import { MenuService } from '../../../shared/menu/menu.service';
 import { CategoryFavoriteModule } from '../category-favorite/category-favorite.module';
 import { ProductModule } from '../product/product.module';
 import { MatDialogModule } from '@angular/material';
+import { mockHomeProductNewer } from '../../../shared/product/shared/mock-product';
+import { of, throwError } from 'rxjs';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
+  let productService: ProductService;
+  let userService: UserService;
 
   configureTestSuite();
 
@@ -79,6 +83,9 @@ describe('HomeComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
+    productService = TestBed.get(ProductService);
+    userService = TestBed.get(UserService);
+
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -86,4 +93,167 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set products', () => {
+    component.productStartIndex = 0;
+    component.productEndIndex = 0;
+    expect(component.productOptions.product_new.products.length).toEqual(0);
+
+
+    component.productStartIndex = 0;
+    component.productEndIndex = 4;
+    expect(component.productOptions.product_new.products.length).toEqual(3);
+  });
+
+  it('should set layout and switch to list', () => {
+
+    component.layout = true;
+    expect(component.layout).toEqual(true);
+    expect(component.productOptions.layout).toEqual('card');
+
+
+    component.layout = false;
+    expect(component.layout).toEqual(false);
+    expect(component.productOptions.layout).toEqual('list');
+  });
+
+  it('should subscribe and result on getProducts', fakeAsync(() => {
+    spyOn(component, 'getNewProducts').and.returnValue(of(null));
+    spyOn(component, 'getRecentPublishedProducts').and.returnValue(of(null));
+    spyOn(component, 'getBestProducts').and.returnValue(of(null));
+    spyOn(component, 'getProductsMostViewed').and.returnValue(of(null));
+    spyOn(component, 'getProductsMostCommented').and.returnValue(of(null));
+
+    component.ngOnInit();
+
+    fixture.detectChanges();
+    tick();
+
+    expect(component.getNewProducts).toHaveBeenCalledTimes(1);
+    expect(component.getRecentPublishedProducts).toHaveBeenCalledTimes(1);
+    expect(component.getBestProducts).toHaveBeenCalledTimes(1);
+    expect(component.getProductsMostViewed).toHaveBeenCalledTimes(1);
+    expect(component.getProductsMostCommented).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should subscribe on getProducts', fakeAsync(() => {
+    spyOn(productService, 'getProducts').and.returnValue(of(mockHomeProductNewer));
+
+    component.ngOnInit();
+
+    fixture.detectChanges();
+    tick();
+
+    expect(component.productOptions.product_new.products).toEqual(mockHomeProductNewer);
+    expect(productService.getProducts).toHaveBeenCalledTimes(5);
+  }));
+
+  it('should subscribe and throw error', fakeAsync(() => {
+    spyOn(productService, 'getProducts').and.returnValue(throwError({error: 'error'}));
+    component.productStartIndex = 0;
+    component.productEndIndex = 4;
+    component.ngOnInit();
+
+    tick();
+    fixture.detectChanges();
+
+    expect(productService.getProducts).toHaveBeenCalledTimes(1);
+    expect(component.productOptions.product_new.initial_products).toEqual([]);
+    expect(component.productOptions.product_new.products).toEqual([]);
+  }));
+
+  it('should subscribe and throw error on getBestProducts', fakeAsync(() => {
+    spyOn(productService, 'getProducts').and.returnValue(throwError({error: 'error'}));
+
+    component.getBestProducts().subscribe(() => {
+    }, () => {
+    });
+
+    fixture.detectChanges();
+    tick();
+
+    expect(component.productOptions.product_best.products).toEqual([]);
+    expect(productService.getProducts).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should subscribe and throw error on getProductsMostViewed', fakeAsync(() => {
+    spyOn(productService, 'getProducts').and.returnValue(throwError({error: 'error'}));
+
+    component.getProductsMostViewed().subscribe(() => {
+    }, () => {
+    });
+
+    fixture.detectChanges();
+    tick();
+
+    expect(component.productOptions.product_most_viewed.products).toEqual([]);
+    expect(productService.getProducts).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should subscribe and throw error on getRecentPublishedProducts', fakeAsync(() => {
+    spyOn(productService, 'getProducts').and.returnValue(throwError({error: 'error'}));
+
+    component.getRecentPublishedProducts().subscribe(() => {
+    }, () => {
+    });
+
+    fixture.detectChanges();
+    tick();
+
+    expect(component.productOptions.product_recent_month.products).toEqual([]);
+    expect(productService.getProducts).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should subscribe and throw error on getProductsMostCommented', fakeAsync(() => {
+    spyOn(productService, 'getProducts').and.returnValue(throwError({error: 'error'}));
+
+    component.getProductsMostCommented().subscribe(() => {
+    }, () => {
+    });
+
+    fixture.detectChanges();
+    tick();
+
+    expect(component.productOptions.product_most_commented.products).toEqual([]);
+    expect(productService.getProducts).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should subscribe and throw error on getNewProducts', fakeAsync(() => {
+    spyOn(productService, 'getProducts').and.returnValue(throwError({error: 'error'}));
+
+    component.getNewProducts().subscribe(() => {
+    }, () => {
+    });
+
+    fixture.detectChanges();
+    tick();
+
+    expect(component.productOptions.product_new.products).toEqual([]);
+    expect(productService.getProducts).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should subscribe on isAuthenticated', fakeAsync(() => {
+    spyOn(userService, 'isAuthenticated').and.returnValue(of(true));
+
+    component.isAuhenticated();
+
+    fixture.detectChanges();
+    tick();
+
+    expect(userService.isAuthenticated).toHaveBeenCalledTimes(1);
+    expect(component.productOptions.authenticated).toEqual(true);
+  }));
+
+  it('should subscribe on isAuthenticated and throw an error', fakeAsync(() => {
+    spyOn(userService, 'isAuthenticated').and.returnValue(throwError({error: 'error'}));
+
+    component.isAuhenticated();
+
+    fixture.detectChanges();
+    tick();
+
+    expect(userService.isAuthenticated).toHaveBeenCalledTimes(1);
+    expect(component.productOptions.authenticated).toEqual(false);
+
+  }));
 });

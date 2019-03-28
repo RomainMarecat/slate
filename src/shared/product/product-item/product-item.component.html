@@ -6,9 +6,13 @@
 <ng-template #cards>
   <div class="product-item-top-icons-wrapper"
        fxLayout="row"
-       fxLayoutAlign="center stretch">
+       fxLayoutAlign="center center"
+       fxLayoutGap.xs="15px"
+       fxLayoutGap.sm="10px">
     <div class="text-center"
-         fxFlex="30">
+         fxFlex="30"
+         fxFlex.sm="60"
+         fxFlex.xs="60">
       <span *ngFor="let star of [1, 2, 3, 4, 5]">
         <mat-icon color="warn" *ngIf="star <= product.score">star_rate</mat-icon>
         <mat-icon color="primary" *ngIf="star > product.score || !product.score">star_border</mat-icon>
@@ -16,7 +20,9 @@
     </div>
     <div class="icon-wrapper"
          fxFlex="10"
-         fxFlexOffset="40">
+         fxFlexOffset="40"
+         fxFlexOffset.sm="0"
+         fxFlexOffset.xs="0">
       <button type="button"
               [title]="'cta.add_a_comment'|translate"
               mat-button
@@ -99,9 +105,12 @@
   </div>
 
   <div class="card-name flex-container mt-2"
-       fxLayout="row">
+       fxLayout="row"
+       fxLayoutAlign="center stretch">
     <div fxFlex="90"
-         fxFlexOffset="10">
+         fxFlexOffset="10"
+         fxFlexOffset.sm="0"
+         fxFlexOffset.xs="0">
       <span>
         {{product?.name | uppercase}}
       </span>
@@ -117,10 +126,13 @@
         {{ (product?.promo ? product.promo : product?.price) | currency:'EUR' }}
       </p>
     </div>
-    <div fxFlex.xs="100"
+    <div class="text-center"
+         fxFlex.xs="100"
          fxHide.xs
+         fxHide.sm
          fxFlex.gt-sm="75"
-         fxFlexOffset.gt-sm="5"
+         fxFlexOffset="5"
+         fxFlexOffset.sm="0"
          fxFlexOffset.xs="0">
       <p class="product-item-short-description-text">
         {{product?.short_description | shorten : 100 : '...' }}
@@ -130,7 +142,9 @@
 
   <div fxLayout="row">
     <div fxFlex="50"
-         fxFlexOffset="25">
+         fxFlex.xs="100"
+         fxFlexOffset="25"
+         fxFlexOffset.xs="0">
       <a [routerLink]="['products/detail', product.key]|localize"
          [attr.title]="'cta.show-product'|translate"
          class="btn btn-card"
