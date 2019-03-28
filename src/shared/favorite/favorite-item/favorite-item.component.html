@@ -3,7 +3,7 @@
      [attr.title]="'cta.show-product'|translate"
      class="card-img-container"
      fxLayout="row"
-     [routerLink]="['products/detail', product.key]|localize">
+     [routerLink]="['/products/detail', product.key]|localize">
     <div class="card-wrapper card-img-top"
          fxFlex="100">
       <app-storage-image [panelStyle]="{height: '200px', width: 'auto'}"
@@ -70,7 +70,7 @@
   <div fxLayout="row">
     <div fxFlex="50"
          fxFlexOffset="25">
-      <a [routerLink]="['products/detail', product.key]|localize"
+      <a [routerLink]="['/products/detail', product.key]|localize"
          [attr.title]="'cta.show-product'|translate"
          class="btn btn-card"
          mat-stroked-button>
