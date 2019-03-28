@@ -14,8 +14,6 @@
   }
 
   &.list-wrapper {
-    height: 100px;
-
     .card-img-container {
       height: 90px;
     }
@@ -122,8 +120,7 @@
     }
 
     .product-item-price-value {
-      font-size: 1.875rem;
-      letter-spacing: -1px;
+      margin-bottom: 0;
     }
   }
 

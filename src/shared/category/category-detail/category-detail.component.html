@@ -5,7 +5,8 @@
   <div class="title-wrapper"
        fxLayout="row"
        fxLayoutAlign="center stretch">
-    <h2 class="text-ucfirst" *ngIf="category.name && option.display_title">
+    <h2 class="text-ucfirst text-center"
+        *ngIf="category.name && option.display_title">
       {{ 'category-detail.title'|translate: {category: category.name} }}
     </h2>
   </div>
@@ -17,8 +18,7 @@
 </div>
 <div class="product-list mt-3"
      fxLayout="row wrap"
-     fxLayoutAlign="start stretch"
-     fxLayoutAlign.lt-lg="center stretch"
+     fxLayoutAlign="center stretch"
      fxLayoutGap="10px"
      fxLayoutGap.xs="0px"
      *ngIf="option.display_products">

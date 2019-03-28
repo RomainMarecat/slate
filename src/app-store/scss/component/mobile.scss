@@ -32,6 +32,13 @@
     }
   }
 
+  app-category-detail {
+    .category-header-wrapper {
+      h2 {
+        font-family: $primary-font;
+      }
+    }
+  }
 
   // BLOCK HOME - CATEGORIES
   app-category-item {
@@ -59,6 +66,27 @@
             color: mat-color($primary);
             text-decoration: none;
           }
+        }
+      }
+    }
+  }
+
+  app-product-detail {
+    .global-container {
+      margin-top: 2rem;
+    }
+  }
+
+
+  app-product-item {
+    .product-item {
+      margin: 0.5rem 0;
+
+      .product-item-price {
+        .product-item-price-text, .product-item-price-value {
+          font-family: $primary-font;
+          letter-spacing: normal;
+          font-size: 1.2rem;
         }
       }
     }

@@ -1,7 +1,7 @@
 <div class="product-item"
-     [ngClass]="[options.layout + '-wrapper']"
+     [ngClass]="[options?.layout + '-wrapper']"
      *ngIf="options">
-  <ng-container *ngIf="options.layout === 'card'; then cards; else list">
+  <ng-container *ngIf="options?.layout === 'card'; then cards; else list">
   </ng-container>
 </div>
 <!-- CARD VIEW -->
@@ -29,7 +29,7 @@
               [title]="'cta.add_a_comment'|translate"
               mat-button
               (click)="toggleComment(product)">
-        <mat-icon [matBadge]="product.commented"
+        <mat-icon [matBadge]="product?.commented ? product.commented.toString(10) : ''"
                   matBadgePosition="above after">
           comment
         </mat-icon>
@@ -147,7 +147,7 @@
          fxFlex.xs="100"
          fxFlexOffset="25"
          fxFlexOffset.xs="0">
-      <a [routerLink]="['products/detail', product.key]|localize"
+      <a [routerLink]="['/products/detail', product.key]|localize"
          [attr.title]="'cta.show-product'|translate"
          class="btn btn-card"
          mat-stroked-button>
@@ -161,9 +161,11 @@
 <ng-template #list>
   <div class="list-view"
        fxLayout="row"
+       fxLayout.xs="row wrap"
        fxLayoutAlign="start stretch">
     <!--Bloc icon wrapper-->
     <div fxFlex="20"
+         fxFlex.xs="100"
          fxLayout="row"
          fxLayoutAlign="center center"
          fxLayoutGap.xs="15px"
@@ -183,7 +185,7 @@
                 [title]="'cta.add_a_comment'|translate"
                 mat-button
                 (click)="toggleComment(product)">
-          <mat-icon [matBadge]="product.commented"
+          <mat-icon [matBadge]="product?.commented ? product.commented.toString(10) : ''"
                     matBadgePosition="above after">
             comment
           </mat-icon>
@@ -210,6 +212,7 @@
     </div>
 
     <a fxFlex="10"
+       fxFlex.xs="30"
        [attr.data-content]="product?.name"
        [attr.title]="'cta.show-product'|translate"
        class="card-img-container"
@@ -226,12 +229,14 @@
     </a>
 
     <div fxFlex="30"
+         fxHide.xs
          fxLayout="row"
          fxLayoutAlign="center center">
       <span>{{product?.name | uppercase}}</span>
     </div>
 
-    <div fxFlex="15"
+    <div fxHide.xs
+         fxFlex="15"
          class="product-item-price"
          fxLayout="row"
          fxLayoutAlign="center center">
@@ -243,14 +248,37 @@
       </div>
     </div>
 
+
+    <div fxHide.gt-xs
+         fxFlex.xs="43"
+         fxLayout="row"
+         fxLayoutAlign="center center">
+      <span class="text-center">{{product?.name | uppercase}}</span>
+    </div>
+
+    <div fxFlex.xs="27"
+         fxHide.gt-xs
+         class="product-item-price-xs"
+         fxLayout="row"
+         fxLayoutAlign="center center">
+      <div class="text-center"
+           fxFlex.xs="100">
+        <p class="product-item-price-value">
+          {{ (product?.promo ? product.promo : product?.price) | currency:'EUR' }}
+        </p>
+      </div>
+    </div>
+
+
     <div fxFlex="25"
+         fxHide.xs
          fxLayout="row"
          fxLayoutAlign="center center">
       <div fxFlex="50"
            fxFlex.xs="100"
            fxFlexOffset="25"
            fxFlexOffset.xs="0">
-        <a [routerLink]="['products/detail', product.key]|localize"
+        <a [routerLink]="['/products/detail', product.key]|localize"
            [attr.title]="'cta.show-product'|translate"
            class="btn btn-card"
            mat-stroked-button>

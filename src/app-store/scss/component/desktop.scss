@@ -67,6 +67,12 @@
     }
   }
 
+  app-product-detail {
+    .global-container {
+      margin-top: 2rem;
+    }
+  }
+
   app-product-list {
     .card-wrapper {
       border: .5px solid $block-color-light-grey;
@@ -104,6 +110,8 @@
     .product-item-price {
       .product-item-price-text, .product-item-price-value {
         font-family: $primary-font;
+        font-size: 1.875rem;
+        letter-spacing: -1px;
       }
     }
 
@@ -113,6 +121,15 @@
 
       &:hover {
         color: mat-color($primary);
+      }
+    }
+  }
+
+  app-category-detail {
+    .category-header-wrapper {
+      h2 {
+        font-size: 2.5rem;
+        font-family: $primary-font;
       }
     }
   }
