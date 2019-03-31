@@ -7,7 +7,12 @@ import { MockOrderService } from '../../order/shared/mock-order.service';
 import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
-  MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatStepperModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatSelectModule,
+  MatStepperModule,
   MatTooltipModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,9 +28,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { RoutingState } from '../../util/routing-state';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
-import { CartItemComponent } from '../../cart/cart-item/cart-item.component';
+import { CartItemComponent } from '../cart-item/cart-item.component';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { StorageModule } from '../../media/storage/storage.module';
+import { MediaModule } from '../../media/media.module';
 
 describe('CartListComponent', () => {
   let component: CartListComponent;
@@ -45,6 +52,8 @@ describe('CartListComponent', () => {
         MatInputModule,
         MatSelectModule,
         MatButtonModule,
+        StorageModule,
+        MediaModule,
         NoopAnimationsModule,
         FormsModule,
         ReactiveFormsModule,

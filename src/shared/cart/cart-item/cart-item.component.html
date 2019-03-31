@@ -1,6 +1,22 @@
 <div class="col-12" *ngIf="item">
   <div class="row d-flex">
-    <div class="col-lg-4 col-md-4 col-12 d-flex">
+    <div class="col-lg-2 col-md-2 col-12 d-flex">
+      <a [attr.data-content]="item?.name"
+         [attr.title]="'cta.show-product'|translate"
+         class="card-img-container"
+         fxLayout="row"
+         [routerLink]="['/products/detail', item.code]|localize">
+        <div class="card-wrapper card-img-top"
+             fxFlex="100">
+          <app-storage-image [panelStyle]="{height: '100px', width: 'auto'}"
+                             [panelClass]="'scale'"
+                             [matCardImage]="false"
+                             [downloadURL]="item.image"></app-storage-image>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-lg-2 col-md-2 col-12 d-flex">
       <span class="cart-title w-100 text-uppercase align-self-center">
         <a [routerLink]="'/products/' + item?.key | localize"
            *ngIf="item?.key; else itemNoLink">{{item.name}}</a>
@@ -20,7 +36,7 @@
     <div class="d-none d-lg-block d-md-block col-lg-2 col-md-3 text-center align-self-center">
       <span class="cart-price">{{ item.price|currency: 'EUR' }}</span>
     </div>
-    <div class="col-lg-2 col-md-1 col-4 text-lg-center text-md-center text-left">
+    <div class="col-lg-2 col-md-1 col-4 text-lg-center text-md-center text-left align-self-center">
       <div class="row">
         <!-- Uniquement desktop -->
         <div class="d-none d-lg-block text-center col-lg-4">

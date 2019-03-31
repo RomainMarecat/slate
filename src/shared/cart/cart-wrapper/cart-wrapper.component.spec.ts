@@ -43,6 +43,8 @@ import { CartWrapperComponent } from './cart-wrapper.component';
 import { CartDeliveryComponent } from '../cart-delivery/cart-delivery.component';
 import { DeliveryService } from '../shared/delivery.service';
 import { MockDeliveryService } from '../shared/mock-delivery.service';
+import { StorageModule } from '../../media/storage/storage.module';
+import { MediaModule } from '../../media/media.module';
 
 describe('CartWrapperComponent', () => {
   let component: CartWrapperComponent;
@@ -66,6 +68,8 @@ describe('CartWrapperComponent', () => {
         MatInputModule,
         MatSelectModule,
         MatButtonModule,
+        StorageModule,
+        MediaModule,
         NgxStripeModule.forRoot('pk_test_ZMBhVWlsAzGDErk8PFH28TWX'),
         FormsModule,
         ReactiveFormsModule,

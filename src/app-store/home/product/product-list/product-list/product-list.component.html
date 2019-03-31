@@ -27,7 +27,8 @@
          fxFlex.xs="100"
          *ngFor="let product of products">
       <app-product-item [product]="product"
-                        [options]="specificOptions"
+                        [options]="options"
+                        [specificOptions]="specificOptions"
                         [authenticated]="options.authenticated"
                         [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
                         (favoriteAdded)="onFavoriteAdded($event)"
@@ -48,7 +49,8 @@
     <div class="product-item-element"
          fxFlex="100">
       <app-product-item [product]="product"
-                        [options]="specificOptions"
+                        [options]="options"
+                        [specificOptions]="specificOptions"
                         [authenticated]="options.authenticated"
                         [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
                         (favoriteAdded)="onFavoriteAdded($event)"

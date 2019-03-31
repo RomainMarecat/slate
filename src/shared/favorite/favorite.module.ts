@@ -12,6 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PopupModule } from '../popup/popup.module';
 import { RouterModule } from '@angular/router';
 import { StorageModule } from '../media/storage/storage.module';
+import { SharedProductModule } from '../product/shared-product.module';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { StorageModule } from '../media/storage/storage.module';
     PopupModule,
     RouterModule,
     StorageModule,
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
+    SharedProductModule
   ],
   declarations: [
     FavoriteComponent,

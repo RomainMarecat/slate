@@ -16,9 +16,9 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatListModule, MatProgressSpinnerModule,
+  MatListModule,
+  MatProgressSpinnerModule,
   MatSelectModule,
-  MatStepperModule,
   MatTooltipModule
 } from '@angular/material';
 import { PaymentService } from '../payment/shared/payment.service';
@@ -29,11 +29,12 @@ import { RoutingState } from '../util/routing-state';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { CartWrapperComponent } from './cart-wrapper/cart-wrapper.component';
 import { CartDeliveryComponent } from './cart-delivery/cart-delivery.component';
+import { StorageModule } from '../media/storage/storage.module';
+import { MediaModule } from '../media/media.module';
 
 export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
 export const STRIPE_KEY = new InjectionToken<string>('');
-
 
 @NgModule({
   imports: [
@@ -49,6 +50,8 @@ export const STRIPE_KEY = new InjectionToken<string>('');
     MatSelectModule,
     MatButtonModule,
     FormsModule,
+    StorageModule,
+    MediaModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     NgxStripeModule.forRoot('pk_test_ZMBhVWlsAzGDErk8PFH28TWX'),

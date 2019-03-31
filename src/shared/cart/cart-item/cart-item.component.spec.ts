@@ -25,6 +25,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { StorageModule } from '../../media/storage/storage.module';
+import { MediaModule } from '../../media/media.module';
 
 describe('CartItemComponent', () => {
   let component: CartItemComponent;
@@ -46,6 +48,8 @@ describe('CartItemComponent', () => {
         MatButtonModule,
         NoopAnimationsModule,
         FormsModule,
+        StorageModule,
+        MediaModule,
         ReactiveFormsModule,
         FlexLayoutModule,
         RouterTestingModule,

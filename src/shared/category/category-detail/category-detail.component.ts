@@ -12,6 +12,7 @@ import { Favorite } from '../../favorite/shared/favorite';
 import { FavoriteService } from '../../favorite/shared/favorite.service';
 import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { ProductOption, SpecificProductOption } from '../../product/shared/product-option';
 
 export interface CategoryOption {
   display_title: boolean;
@@ -34,16 +35,20 @@ export class CategoryDetailComponent implements OnInit {
 
   category: Category;
 
-  products: Product[] = [];
-
-  @Input() options: {
-    layout: string;
-    cart: Cart,
-    user: User
-  } = {
-    layout: 'card',
+  @Input() options: ProductOption = {
+    authenticated: false,
     cart: null,
     user: null
+  };
+
+  @Input() specificOptions: SpecificProductOption = {
+    layout: 'card',
+    display_title: false,
+    products: [],
+    favorite: {
+      display_icon: true
+    },
+    title: ''
   };
 
   favoriteProducts: Map<string, Favorite> = new Map<string, Favorite>();
@@ -169,9 +174,9 @@ export class CategoryDetailComponent implements OnInit {
 
     this.productService.getProducts()
       .subscribe((products) => {
-        this.products = products;
+        this.specificOptions.products = products;
       }, () => {
-        this.products = [];
+        this.specificOptions.products = [];
       });
   }
 }

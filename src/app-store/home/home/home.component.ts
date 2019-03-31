@@ -9,6 +9,7 @@ import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { Observable, Subscription } from 'rxjs';
 import * as moment from 'moment';
 import { ProductOption } from '../../../shared/product/shared/product-option';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -50,14 +51,19 @@ export class HomeComponent implements OnInit {
     authenticated: false,
     cart: null,
     product_new: {
+      favorite: {
+        display_icon: true,
+      },
       layout: 'card',
       limit: 3,
       display_title: true,
-      initial_products: [],
       products: [],
       title: 'product-new.header.title'
     },
     product_recent_month: {
+      favorite: {
+        display_icon: true,
+      },
       layout: 'list',
       limit: 6,
       display_title: true,
@@ -66,6 +72,9 @@ export class HomeComponent implements OnInit {
       title: 'product-recent-month.header.title'
     },
     product_best: {
+      favorite: {
+        display_icon: true,
+      },
       layout: 'card',
       limit: 3,
       display_title: true,
@@ -74,6 +83,9 @@ export class HomeComponent implements OnInit {
       title: 'product-best.header.title'
     },
     product_most_viewed: {
+      favorite: {
+        display_icon: true,
+      },
       layout: 'card',
       limit: 10,
       display_title: true,
@@ -82,6 +94,9 @@ export class HomeComponent implements OnInit {
       title: 'product-most-viewed.header.title'
     },
     product_most_commented: {
+      favorite: {
+        display_icon: true,
+      },
       layout: 'card',
       limit: 3,
       display_title: true,
@@ -126,7 +141,7 @@ export class HomeComponent implements OnInit {
       {
         column: 'commented',
         operator: '>',
-        value: this.productOptions.product_most_commented.threshold
+        value: this.productOptions.product_most_commented.threshold as number
       }
     ]);
     this.productService.limit$.next(this.productOptions.product_most_commented.limit);
@@ -156,7 +171,7 @@ export class HomeComponent implements OnInit {
       {
         column: 'viewed',
         operator: '>',
-        value: this.productOptions.product_most_viewed.threshold
+        value: this.productOptions.product_most_viewed.threshold as number
       }
     ]);
     this.productService.limit$.next(this.productOptions.product_most_viewed.limit);
@@ -216,7 +231,7 @@ export class HomeComponent implements OnInit {
       {
         column: 'published_at',
         operator: '>',
-        value: this.productOptions.product_recent_month.threshold.toDate()
+        value: (this.productOptions.product_recent_month.threshold as Moment).toDate()
       }
     ]);
     this.productService.limit$.next(this.productOptions.product_recent_month.limit);
@@ -246,7 +261,7 @@ export class HomeComponent implements OnInit {
       {
         column: 'score',
         operator: '>=',
-        value: this.productOptions.product_best.threshold
+        value: this.productOptions.product_best.threshold as number
       }
     ]);
     this.productService.limit$.next(this.productOptions.product_best.limit);

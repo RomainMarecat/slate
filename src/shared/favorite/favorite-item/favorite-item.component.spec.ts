@@ -22,6 +22,9 @@ import { MockUserService } from '../../user/shared/mock-user.service';
 import { ProductService } from '../../product/shared/product.service';
 import { MockProductService } from '../../product/shared/mock-product.service';
 import { LoaderModule } from '../../loader/loader.module';
+import { SharedProductModule } from '../../product/shared-product.module';
+import { CartService } from '../../cart/shared/cart.service';
+import { MockCartService } from '../../cart/shared/mock-cart.service';
 
 describe('FavoriteItemComponent', () => {
   let component: FavoriteItemComponent;
@@ -39,6 +42,7 @@ describe('FavoriteItemComponent', () => {
         NgPipesModule,
         MatTooltipModule,
         StorageModule,
+        SharedProductModule,
         RouterTestingModule,
         LocalizeRouterModule,
         TranslateModule.forRoot({
@@ -51,6 +55,7 @@ describe('FavoriteItemComponent', () => {
         {provide: AlertService, useClass: MockAlertService},
         {provide: FavoriteService, useClass: MockFavoriteService},
         {provide: UserService, useClass: MockUserService},
+        {provide: CartService, useClass: MockCartService},
         {provide: ProductService, useClass: MockProductService},
       ]
     })

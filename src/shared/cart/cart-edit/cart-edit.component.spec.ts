@@ -29,6 +29,8 @@ import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../..//router/mock-localize-router.service';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
+import { StorageModule } from '../../media/storage/storage.module';
+import { MediaModule } from '../../media/media.module';
 
 describe('CartEditComponent', () => {
   let component: CartEditComponent;
@@ -50,6 +52,8 @@ describe('CartEditComponent', () => {
         MatSelectModule,
         MatButtonModule,
         FormsModule,
+        StorageModule,
+        MediaModule,
         ReactiveFormsModule,
         FlexLayoutModule,
         RouterTestingModule,

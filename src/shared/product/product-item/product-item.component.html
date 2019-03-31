@@ -1,7 +1,7 @@
 <div class="product-item"
-     [ngClass]="[options?.layout + '-wrapper']"
-     *ngIf="options">
-  <ng-container *ngIf="options?.layout === 'card'; then cards; else list">
+     [ngClass]="[specificOptions?.layout + '-wrapper']"
+     *ngIf="options && specificOptions && product">
+  <ng-container *ngIf="specificOptions?.layout === 'card'; then cards; else list">
   </ng-container>
 </div>
 <!-- CARD VIEW -->
@@ -36,7 +36,8 @@
       </button>
     </div>
     <div class="text-center"
-         fxFlex="10">
+         fxFlex="10"
+         *ngIf="specificOptions?.favorite?.display_icon === true">
       <button class="icon-wrapper"
               type="button"
               mat-button
@@ -180,7 +181,7 @@
         </span>
       </div>
       <div class="icon-wrapper"
-           fxFlex="20">
+           fxFlex="15">
         <button type="button"
                 [title]="'cta.add_a_comment'|translate"
                 mat-button
@@ -192,7 +193,8 @@
         </button>
       </div>
       <div class="text-center"
-           fxFlex="20">
+           fxFlex="15"
+           *ngIf="specificOptions?.favorite?.display_icon === true">
         <button class="icon-wrapper"
                 type="button"
                 mat-button
@@ -209,6 +211,22 @@
           </mat-icon>
         </button>
       </div>
+
+      <div class="text-center"
+           fxFlex="15">
+        <button class="icon-wrapper pointer"
+                mat-button
+                type="button"
+                [disabled]="isLoadingCartAdd"
+                [title]="'cta.add_to_cart'|translate"
+                [class.background-primary]="inCart"
+                (click)="addToCart(product)"
+                [matTooltipDisabled]="matTooltipCart.length === 0"
+                [matTooltip]="matTooltipCart|translate">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+      </div>
+
     </div>
 
     <a fxFlex="10"

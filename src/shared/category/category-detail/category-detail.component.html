@@ -27,9 +27,10 @@
        fxFlex.md="40"
        fxFlex.sm="40"
        fxFlex.xs="80"
-       *ngFor="let product of products">
+       *ngFor="let product of specificOptions.products">
     <app-product-item [product]="product"
                       [options]="options"
+                      [specificOptions]="specificOptions"
                       [authenticated]="authenticated"
                       [favoriteProduct]="favoriteProducts.has(product?.key) ? favoriteProducts.get(product.key) : null"
                       (favoriteAdded)="onFavoriteAdded($event)"

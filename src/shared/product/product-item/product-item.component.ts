@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 import { LocalizeRouterService } from 'localize-router';
 import { MatDialog } from '@angular/material';
 import { CommentDialogComponent } from '../../comment/comment-dialog/comment-dialog.component';
+import { User } from '../../user/shared/user';
+import { ProductOption, SpecificProductOption } from '../shared/product-option';
 
 @Component({
   selector: 'app-product-item',
@@ -21,8 +23,19 @@ import { CommentDialogComponent } from '../../comment/comment-dialog/comment-dia
 })
 export class ProductItemComponent implements OnInit {
 
-  @Input() options;
+  /**
+   * All specific options
+   */
+  @Input() options: ProductOption;
 
+  /**
+   * All options to display product
+   */
+  @Input() specificOptions: SpecificProductOption;
+
+  /**
+   * When product was added in cart
+   */
   @Input() inCart: boolean;
 
   /**
