@@ -7,6 +7,9 @@ import { OverviewComponent } from './overview/overview.component';
 const routes: Routes = [
   {
     path: '',
+    data: {
+      breadcrumb: 'breadcrumb.account',
+    },
     component: AccountComponent,
     children: [
       {
@@ -15,7 +18,7 @@ const routes: Routes = [
       },
       {
         path: 'orders',
-        loadChildren: './../order/order.module#OrderModule'
+        loadChildren: './../order/order.module#OrderModule',
       },
       {
         path: 'preferences',

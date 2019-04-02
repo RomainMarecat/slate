@@ -43,6 +43,7 @@ import { StorageModule } from '../../shared/media/storage/storage.module';
 import { PopupModule } from '../../shared/popup/popup.module';
 import { DeliveryService } from '../../shared/cart/shared/delivery.service';
 import { FavoriteService } from '../../shared/favorite/shared/favorite.service';
+import { BreadcrumbModule } from '../../shared/breadcrumb/breadcrumb.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -135,6 +136,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     PopupModule
   ],
   exports: [
+    BreadcrumbModule,
     FooterModule,
     StorageModule
   ],

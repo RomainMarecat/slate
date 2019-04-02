@@ -53,6 +53,8 @@ import { environment } from '../environments/environment';
 import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
+import { CategoryService } from '../../shared/category/category.service';
+import { MockCategoryService } from '../../shared/category/mock-category.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -141,6 +143,7 @@ describe('AppRootComponent', () => {
         {provide: NgcCookieConsentService, useClass: NgcCookieConsentService},
         {provide: WindowService, useClass: WindowService},
         {provide: ProductService, useClass: MockProductService},
+        {provide: CategoryService, useClass: MockCategoryService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},
         {provide: CmsService, useClass: MockCmsService},

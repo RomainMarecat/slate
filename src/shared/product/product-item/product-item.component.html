@@ -72,7 +72,7 @@
 
   <a [attr.data-content]="product?.name"
      [attr.title]="'cta.show-product'|translate"
-     class="card-img-container"
+     class="card-img-container product-link"
      fxLayout="row"
      [routerLink]="['/products/detail', product.key]|localize">
     <div class="card-wrapper card-img-top"
@@ -150,7 +150,7 @@
          fxFlexOffset.xs="0">
       <a [routerLink]="['/products/detail', product.key]|localize"
          [attr.title]="'cta.show-product'|translate"
-         class="btn btn-card"
+         class="btn btn-card product-link"
          mat-stroked-button>
         {{ 'cta.show-product'|translate }}
       </a>
@@ -271,7 +271,13 @@
          fxFlex.xs="43"
          fxLayout="row"
          fxLayoutAlign="center center">
-      <span class="text-center">{{product?.name | uppercase}}</span>
+      <a class="product-link text-center"
+         [routerLink]="['/products/detail', product.key]|localize"
+         [attr.title]="'cta.show-product'|translate">
+        <span>
+          {{product?.name | uppercase}}
+        </span>
+      </a>
     </div>
 
     <div fxFlex.xs="27"
@@ -298,7 +304,7 @@
            fxFlexOffset.xs="0">
         <a [routerLink]="['/products/detail', product.key]|localize"
            [attr.title]="'cta.show-product'|translate"
-           class="btn btn-card"
+           class="btn btn-card product-link"
            mat-stroked-button>
           {{ 'cta.show-product'|translate }}
         </a>

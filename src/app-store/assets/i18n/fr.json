@@ -26,6 +26,18 @@
             "name": "mes commandes"
         }
     },
+    "breadcrumb": {
+        "account": "mon compte",
+        "home": "accueil",
+        "order-list": "mes commandes",
+        "order-detail": "détail de ma commande",
+        "preference-user": "modifier mon profil",
+        "delivery-list": "mes adresses de livraison",
+        "favorite-list": "mes favoris",
+        "product-list": "mes produits",
+        "product-detail": "",
+        "category-detail": ""
+    },
     "category": {
         "title": "découvrez nos catégories",
         "subtitle": "sélectionner une catégorie afin de découvrir notre large gamme des produits"
@@ -180,7 +192,8 @@
             "title": "e-billet",
             "download": "télécharger mes e-billets"
         },
-        "retailer": "partenaire"
+        "retailer": "partenaire",
+        "delivery-address": "livré à :"
     },
     "order-list": {
         "title": "mes dernières commandes",

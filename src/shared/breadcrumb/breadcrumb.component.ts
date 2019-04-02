@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { distinctUntilChanged, map, filter, take, tap } from 'rxjs/operators';
+import { distinctUntilChanged, map, filter, take, tap, timeout } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { ProductService } from '../product/shared/product.service';
 import { Product } from '../product/shared/product';
 import { TranslateService } from '@ngx-translate/core';
+import { CategoryService } from '../category/category.service';
+import { Category } from '../category/category';
 
 interface UriElement {
   url: string;
@@ -22,13 +24,17 @@ export class BreadcrumbComponent {
 
   product: Product;
 
-  notAllowedUrls: string[] = [
-    'products/:slug'
-  ];
+  category: Category;
+
+  notAllowedUrls: {[key: string]: {breadcrumb: string, function: string}} = {
+    'detail/:slug': {breadcrumb: 'breadcrumb.product-detail', function: 'getProduct'},
+    ':slug': {breadcrumb: 'breadcrumb.category-detail', function: 'getCategory'}
+  };
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private productService: ProductService,
+              private categoryService: CategoryService,
               private translateService: TranslateService) {
     this.getUriElements()
       .subscribe((uriElements) => {
@@ -60,7 +66,7 @@ export class BreadcrumbComponent {
   ): UriElement[] {
     // If no routeConfig is avalailable we are on the root path
     let breadcrumb: UriElement = null;
-    const link = route.routeConfig && !this.notAllowedUrls.includes(route.routeConfig.path) ? route.routeConfig.path : '';
+    const link = route.routeConfig && typeof this.notAllowedUrls[route.routeConfig.path] === 'undefined' ? route.routeConfig.path : '';
     const nextUrl = `${url}${link}/`;
 
     if (route && route.routeConfig && route.routeConfig.data && route.routeConfig.data['breadcrumb']) {
@@ -71,8 +77,9 @@ export class BreadcrumbComponent {
         label: label,
         url: nextUrl
       };
+      console.log(route.routeConfig.path, route.snapshot.params.slug);
 
-      if (this.notAllowedUrls.includes(route.routeConfig.path)) {
+      if (typeof this.notAllowedUrls[route.routeConfig.path] !== 'undefined') {
         // Ajoute pour la route détail produit un lien en plus concernant le titre du produit
         this.addCustomProduct(route);
       } else {
@@ -98,11 +105,20 @@ export class BreadcrumbComponent {
       route.routeConfig.data &&
       route.routeConfig.data['breadcrumb'] &&
       route.snapshot.params.slug &&
-      route.routeConfig.data['breadcrumb'] === 'breadcrumb.product.detail') {
-      this.getProduct(route.snapshot.params.slug);
+      route.routeConfig.data['breadcrumb'] === this.notAllowedUrls[route.routeConfig.path].breadcrumb) {
+      this[this.notAllowedUrls[route.routeConfig.path].function](route.snapshot.params.slug);
     } else {
       this.product = null;
     }
+  }
+
+  getCategory(key: string) {
+    this.categoryService.getCategory(key)
+      .subscribe((category) => {
+        this.category = category;
+      }, () => {
+        this.category = null;
+      });
   }
 
   /**
@@ -111,20 +127,16 @@ export class BreadcrumbComponent {
   getProduct(id: string) {
     this.productService.getProduct(id)
       .pipe(
-        take(1)
+        take(1),
+        timeout(5000)
       )
-      .subscribe((res) => {
-        this.product = res;
+      .subscribe((product: Product) => {
+        this.product = product;
+        if (product && product.category) {
+          this.getCategory(product.category);
+        }
       }, () => {
         this.product = null;
       });
-  }
-
-  /**
-   * @issue
-   * Doesnt work
-   */
-  isHome(): boolean {
-    return this.router.routerState.snapshot.url === '/';
   }
 }

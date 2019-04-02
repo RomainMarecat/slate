@@ -12,35 +12,35 @@ const routes: Routes = [
     path: '',
     component: ProductComponent,
     data: {
-      breadcrumb: 'breadcrumb.products.title'
+      breadcrumb: 'breadcrumb.product-list'
     },
     children: [
       {
-        path: 'detail/:key',
+        path: 'detail/:slug',
         component: ProductDetailComponent,
         data: {
-          breadcrumb: 'breadcrumb.products.detail'
+          breadcrumb: 'breadcrumb.product-detail'
         }
       },
       {
         path: 'list',
         component: ProductListComponent,
         data: {
-          breadcrumb: 'breadcrumb.products.list'
+          breadcrumb: 'breadcrumb.product-list'
         }
       },
       {
         path: '',
         component: ProductListComponent,
         data: {
-          breadcrumb: 'breadcrumb.products.list'
+          breadcrumb: 'breadcrumb.product-list'
         }
       },
       {
         path: 'map/area/:key/products',
         component: ProductListComponent,
         data: {
-          breadcrumb: 'breadcrumb.products.list'
+          breadcrumb: 'breadcrumb.product-list'
         }
       },
     ]
@@ -50,7 +50,7 @@ const routes: Routes = [
     component: ProductAddComponent,
     canActivate: [UserGuard],
     data: {
-      breadcrumb: 'breadcrumb.products.add'
+      breadcrumb: 'breadcrumb.product-add'
     }
   }
 ];

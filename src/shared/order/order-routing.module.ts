@@ -9,14 +9,20 @@ const routes: Routes = [
   {
     path: '',
     component: OrderComponent,
+    data: {
+      breadcrumb: 'breadcrumb.order-list',
+    },
     children: [
       {
         path: '',
-        component: OrderListComponent
+        component: OrderListComponent,
       },
       {
         path: ':key/detail',
-        component: OrderDetailComponent
+        component: OrderDetailComponent,
+        data: {
+          breadcrumb: 'breadcrumb.order-detail',
+        },
       }
     ]
   },

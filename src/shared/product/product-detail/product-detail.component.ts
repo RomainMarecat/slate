@@ -60,14 +60,14 @@ export class ProductDetailComponent implements OnInit {
    */
   ngOnInit() {
     this.activatedRoute.params
-      .subscribe((value: {key: string}) => {
-        if (value.key) {
-          let key = value.key;
-          if (value.key.indexOf('-') !== -1) {
-            key = value.key.substring(0, value.key.indexOf('-'));
+      .subscribe((value: {slug: string}) => {
+        if (value.slug) {
+          let slug = value.slug;
+          if (value.slug.indexOf('-') !== -1) {
+            slug = value.slug.substring(0, value.slug.indexOf('-'));
           }
 
-          const subscription: Subscription = this.productService.getProduct(key)
+          const subscription: Subscription = this.productService.getProduct(slug)
             .subscribe((product: Product) => {
               if (subscription) {
                 subscription.unsubscribe();

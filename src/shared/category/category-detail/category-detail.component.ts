@@ -152,12 +152,12 @@ export class CategoryDetailComponent implements OnInit {
 
   getCategory() {
     this.activatedRoute.params.subscribe((param) => {
-      if (param.key) {
-        this.categoryService.getCategory(param.key)
+      if (param.slug) {
+        this.categoryService.getCategory(param.slug)
           .subscribe((category: Category) => {
             this.category = category;
           });
-        this.getUser(param.key);
+        this.getUser(param.slug);
         this.getProducts(param.key);
       }
     });

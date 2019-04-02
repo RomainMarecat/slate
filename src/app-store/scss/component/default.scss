@@ -1,0 +1,26 @@
+app-shared-breadcrumb {
+  a {
+    text-decoration: none;
+    color: mat-color($primary);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+      color: mat-color($primary);
+    }
+  }
+}
+
+
+app-product-item {
+  a.product-link {
+    text-decoration: none;
+    color: mat-color($primary);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+      color: mat-color($primary);
+    }
+  }
+}

@@ -10,8 +10,11 @@ const routes: Routes = [
     component: CategoryComponent,
     children: [
       {
-        path: ':key',
-        component: CategoryDetailComponent
+        path: ':slug',
+        component: CategoryDetailComponent,
+        data: {
+          breadcrumb: 'breadcrumb.category-detail'
+        }
       }
     ]
   }

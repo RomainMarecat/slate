@@ -11,7 +11,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DeliveryListComponent
+        component: DeliveryListComponent,
+        data: {
+          breadcrumb: 'breadcrumb.delivery-list'
+        }
       },
     ]
   },

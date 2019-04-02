@@ -1,6 +1,5 @@
 <div class="container"
-     fxHide.xs
-     *ngIf="!isHome() && uriElements.length > 1">
+     *ngIf="uriElements.length > 1">
   <div fxLayout="row"
        fxLayout.xs="row wrap"
        fxLayoutAlign="start stretch">
@@ -14,6 +13,11 @@
                 *ngIf="i === 0"
                 [matTooltip]="'cta.back_to_home'|translate">home
       </mat-icon>
+    </a>
+    <a *ngIf="category && category?.name"
+       [routerLink]="['/categories'|localize, category.key]"
+       class="primary d-inline-flex align-items-center">
+      {{ category.name }}
     </a>
     <span *ngIf="product && product?.name"
           class="primary d-inline-flex align-items-center">
