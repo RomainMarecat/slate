@@ -27,6 +27,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { DeliveryService } from '../shared/delivery.service';
+import { MockDeliveryService } from '../shared/mock-delivery.service';
 
 describe('CartPaymentComponent', () => {
   let component: CartPaymentComponent;
@@ -65,6 +67,7 @@ describe('CartPaymentComponent', () => {
         {provide: AlertService, useClass: MockAlertService},
         {provide: LoaderService, useClass: MockLoaderService},
         {provide: CartService, useClass: MockCartService},
+        {provide: DeliveryService, useClass: MockDeliveryService},
         {provide: OrderService, useClass: MockOrderService},
         {provide: PaymentService, useClass: MockPaymentService},
         {provide: UserService, useClass: MockUserService},

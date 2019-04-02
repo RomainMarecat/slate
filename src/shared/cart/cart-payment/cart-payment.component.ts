@@ -24,6 +24,9 @@ import { OrderService } from '../../order/shared/order.service';
 import { ElementOptions, Elements, ElementsOptions, Error, StripeCardComponent, StripeService } from 'ngx-stripe';
 import { LoaderService } from '../../loader/loader.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Delivery } from '../shared/delivery';
+import { DeliveryService } from '../shared/delivery.service';
+import { DocumentReference } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-cart-payment',
@@ -32,7 +35,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('cardInfo') cardInfo: ElementRef;
+
   @Input() cart: Cart;
+
+  @Input() delivery: Delivery;
+
   onLine: boolean;
 
   error: Error;
@@ -80,7 +87,8 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
               private routingState: RoutingState,
               private cd: ChangeDetectorRef,
               private stripeService: StripeService,
-              private loaderService: LoaderService) {
+              private loaderService: LoaderService,
+              private deliveryService: DeliveryService) {
   }
 
   ngOnInit() {
@@ -126,9 +134,26 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
           this.cartService.getCart(value.key)
             .subscribe((cart: Cart) => {
               this.cart = cart;
+              this.getDelivery();
             }, (err) => {
               this.handleHttpErrorResponse(err);
             });
+        }
+      });
+  }
+
+  getDelivery() {
+    this.deliveryService.filters$.next([
+      {
+        column: 'cart',
+        operator: '==',
+        value: this.cart.key
+      }
+    ]);
+    this.deliveryService.getDeliveries()
+      .subscribe((deliveries: Delivery[]) => {
+        if (deliveries && deliveries.length) {
+          this.delivery = deliveries[0];
         }
       });
   }
@@ -157,6 +182,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.userService.getUser() &&
       this.userService.getUser().uid &&
       this.cart &&
+      this.delivery &&
       this.cart.total) {
       this.stripeService
         .createToken(this.card.getCard(), {name: this.userService.getUser().email})
@@ -169,6 +195,8 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
               total: this.cart.total,
               user: this.cart.user,
               items: this.cart.items,
+              delivery_fee: 0,
+              delivery: this.delivery.key,
               created_at: new Date(),
               updated_at: new Date(),
             };
@@ -187,7 +215,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
                   .subscribe(() => {
                     this.payment.order = order.key;
                     this.paymentService.createPayment(this.payment)
-                      .subscribe((createdPayment) => {
+                      .subscribe((createdPayment: DocumentReference) => {
                         this.payment.key = createdPayment.id;
                         this.paymentService.updatePayment(this.payment)
                           .subscribe(() => {

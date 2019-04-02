@@ -56,9 +56,9 @@
       </div>
       <div class="col-12 col-md-6" *ngIf="delivery && delivery.address">
         <!-- TODO trad -->
-        <div class="d-block d-md-none">livré à :</div>
+        <div class="d-block d-md-none">{{ 'order-detail.delivery-address'|translate }}</div>
         <strong>{{ delivery.address?.firstname }} {{ delivery.address?.lastname }}</strong>
-        <span class="address-address d-block d-lg-inline"> {{ delivery.address?.address }}
+        <span class="address-address d-block"> {{ delivery.address?.address }}
           <br/>
           <span *ngIf="delivery.address?.address_complement">
             {{ delivery.address?.address_complement }}</span>
@@ -81,7 +81,7 @@
           <div class="col-2">
             {{ 'order-detail.price'|translate }}
           </div>
-          <div class="col-4">
+          <div class="col-4" *ngIf="hasEtickets">
             {{ 'order-detail.e-ticket.title'|translate }}
           </div>
         </div>
@@ -101,16 +101,13 @@
               {{ orderItem?.price | currency:'EUR' }}
             </div>
           </div>
-          <div class="col-12 col-md-4" *ngIf="orderItem?.is_eticket === true; else noEticketTmpl">
+          <div class="col-12 col-md-4" *ngIf="orderItem?.is_eticket === true">
             <button class="btn btn-shadow"
                     [disabled]="downloadingEticket"
                     (click)="downloadTickets(orderItem)">
               <div>{{ 'order-detail.e-ticket.download'|translate }}</div>
             </button>
           </div>
-          <ng-template #noEticketTmpl>
-            /
-          </ng-template>
         </div>
       </div>
     </div>

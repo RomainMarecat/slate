@@ -180,7 +180,8 @@
             "title": "e-billet",
             "download": "télécharger mes e-billets"
         },
-        "retailer": "partenaire"
+        "retailer": "partenaire",
+        "delivery-address": "livré à :"
     },
     "order-list": {
         "title": "mes dernières commandes",
