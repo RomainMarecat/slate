@@ -48,7 +48,10 @@ export class BreadcrumbComponent {
   getUriElements(): Observable<UriElement[]> {
     return this.router.events
       .pipe(
-        tap(this.product = null),
+        tap(() => {
+          this.product = null;
+          this.category = null;
+        }),
         filter(event => event instanceof NavigationEnd),
         distinctUntilChanged(),
         map(event => [{url: '/', label: 'breadcrumb.home'}, ...this.buildBreadCrumb(this.route.root)]
@@ -77,13 +80,12 @@ export class BreadcrumbComponent {
         label: label,
         url: nextUrl
       };
-      console.log(route.routeConfig.path, route.snapshot.params.slug);
-
       if (typeof this.notAllowedUrls[route.routeConfig.path] !== 'undefined') {
         // Ajoute pour la route détail produit un lien en plus concernant le titre du produit
         this.addCustomProduct(route);
       } else {
         this.product = null;
+        this.category = null;
       }
     }
 
@@ -106,9 +108,12 @@ export class BreadcrumbComponent {
       route.routeConfig.data['breadcrumb'] &&
       route.snapshot.params.slug &&
       route.routeConfig.data['breadcrumb'] === this.notAllowedUrls[route.routeConfig.path].breadcrumb) {
+      this.product = null;
+      this.category = null;
       this[this.notAllowedUrls[route.routeConfig.path].function](route.snapshot.params.slug);
     } else {
       this.product = null;
+      this.category = null;
     }
   }
 

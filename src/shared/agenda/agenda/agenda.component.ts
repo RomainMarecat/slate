@@ -44,11 +44,11 @@ export class AgendaComponent implements OnInit, OnDestroy {
 
     moment().locale(locale);
     this.setDefaultSlotDuration();
-    this.watcher = this.media.media$.subscribe((change: MediaChange) => {
-      if (change.mqAlias === 'xs') {
+    this.watcher = this.media.asObservable().subscribe((change: MediaChange[]) => {
+      if (change.length && change[0].mqAlias === 'xs') {
         this.setViewMode('day');
         return;
-      } else if (change.mqAlias === 'sm' || change.mqAlias === 'md') {
+      } else if (change.length && (change[0].mqAlias === 'sm' || change[0].mqAlias === 'md')) {
         this.setViewMode('3days');
         return;
       }
@@ -89,7 +89,6 @@ export class AgendaComponent implements OnInit, OnDestroy {
         }
         this.router.navigate([this.localizeRouterService.translateRoute('/cart')]);
       }, (err) => {
-        console.error(err);
         this.alertService.show(err, 'error');
       })
       .catch((err) => {

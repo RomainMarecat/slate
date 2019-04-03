@@ -26,7 +26,7 @@
              [resize]="resizedImage"
              [alt]="product?.name"
              (click)="productDetail()"
-             *ngIf="product.images[0]"
+             *ngIf="product && product.images && product.images[0]"
              (mediaLoaded)="onMediaLoaded($event)"
              (mediaErrored)="onMediaLoaded(!$event)"
              angulartics2On="click"

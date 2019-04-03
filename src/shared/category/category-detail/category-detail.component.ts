@@ -158,7 +158,7 @@ export class CategoryDetailComponent implements OnInit {
             this.category = category;
           });
         this.getUser(param.slug);
-        this.getProducts(param.key);
+        this.getProducts(param.slug);
       }
     });
   }

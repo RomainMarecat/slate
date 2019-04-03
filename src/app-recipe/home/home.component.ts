@@ -85,9 +85,11 @@ export class HomeComponent implements OnInit {
       ]]
     });
 
-    this.mediaObserver.media$
-      .subscribe((mediaChange: MediaChange) => {
-        this.mediaBreakpoint = mediaChange.mqAlias;
+    this.mediaObserver.asObservable()
+      .subscribe((mediaChange: MediaChange[]) => {
+        if (mediaChange.length) {
+          this.mediaBreakpoint = mediaChange[0].mqAlias;
+        }
         if (['xs'].includes(this.mediaBreakpoint)) {
           this.imageHome = '/assets/images/home/bg-mobile.jpg';
         }

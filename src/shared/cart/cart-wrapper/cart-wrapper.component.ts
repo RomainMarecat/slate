@@ -47,8 +47,10 @@ export class CartWrapperComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
-    this.mediaObserver.media$.subscribe((change: MediaChange) => {
-      this.displayXs = change.mqAlias === 'xs';
+    this.mediaObserver.asObservable().subscribe((changes: MediaChange[]) => {
+      if (changes.length > 0) {
+        this.displayXs = changes[0].mqAlias === 'xs';
+      }
     });
   }
 

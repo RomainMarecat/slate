@@ -55,6 +55,9 @@ import { ContactModule } from '../../shared/contact/contact.module';
 import { MapModule } from '../../shared/map/map.module';
 import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
+import { BreadcrumbModule } from '../../shared/breadcrumb/breadcrumb.module';
+import { CategoryService } from '../../shared/category/category.service';
+import { MockCategoryService } from '../../shared/category/mock-category.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -84,7 +87,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
   }
 };
 
-describe('AppRootComponent', () => {
+describe('Blog AppRootComponent', () => {
   let component: AppRootComponent;
   let fixture: ComponentFixture<AppRootComponent>;
 
@@ -95,6 +98,7 @@ describe('AppRootComponent', () => {
       imports: [
         CommonModule,
         ArticleModule,
+        BreadcrumbModule,
         RouterTestingModule,
         ContactModule,
         BrowserModule,
@@ -146,6 +150,7 @@ describe('AppRootComponent', () => {
         {provide: NgcCookieConsentService, useClass: NgcCookieConsentService},
         {provide: WindowService, useClass: WindowService},
         {provide: ProductService, useClass: MockProductService},
+        {provide: CategoryService, useClass: MockCategoryService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},
         {provide: CmsService, useClass: MockCmsService},

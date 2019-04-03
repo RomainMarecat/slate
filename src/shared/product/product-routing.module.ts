@@ -25,16 +25,10 @@ const routes: Routes = [
       {
         path: 'list',
         component: ProductListComponent,
-        data: {
-          breadcrumb: 'breadcrumb.product-list'
-        }
       },
       {
         path: '',
         component: ProductListComponent,
-        data: {
-          breadcrumb: 'breadcrumb.product-list'
-        }
       },
       {
         path: 'map/area/:key/products',

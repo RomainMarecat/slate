@@ -52,6 +52,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
+import { BreadcrumbModule } from '../../shared/breadcrumb/breadcrumb.module';
+import { MockCategoryService } from '../../shared/category/mock-category.service';
+import { CategoryService } from '../../shared/category/category.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
@@ -81,7 +84,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
   }
 };
 
-describe('AppRootComponent', () => {
+describe('Showcase AppRootComponent', () => {
   let component: AppRootComponent;
   let fixture: ComponentFixture<AppRootComponent>;
 
@@ -91,6 +94,7 @@ describe('AppRootComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
+        BreadcrumbModule,
         RouterTestingModule,
         BrowserModule,
         HttpClientTestingModule,
@@ -141,6 +145,7 @@ describe('AppRootComponent', () => {
         {provide: NgcCookieConsentService, useClass: NgcCookieConsentService},
         {provide: WindowService, useClass: WindowService},
         {provide: ProductService, useClass: MockProductService},
+        {provide: CategoryService, useClass: MockCategoryService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: CmsDetailService, useClass: MockCmsDetailService},
         {provide: CmsService, useClass: MockCmsService},

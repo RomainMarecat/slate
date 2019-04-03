@@ -250,7 +250,11 @@
          fxHide.xs
          fxLayout="row"
          fxLayoutAlign="center center">
-      <span>{{product?.name | uppercase}}</span>
+      <a class="product-link text-center"
+         [routerLink]="['/products/detail', product.key]|localize"
+         [attr.title]="'cta.show-product'|translate">
+        <span>{{product?.name | uppercase}}</span>
+      </a>
     </div>
 
     <div fxHide.xs

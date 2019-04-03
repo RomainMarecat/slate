@@ -5,10 +5,10 @@
   <div class="title-wrapper"
        fxLayout="row"
        fxLayoutAlign="center stretch">
-    <h2 class="text-ucfirst text-center"
+    <h1 class="text-ucfirst text-center"
         *ngIf="category.name && option.display_title">
       {{ 'category-detail.title'|translate: {category: category.name} }}
-    </h2>
+    </h1>
   </div>
 
   <div class="image-wrapper" *ngIf="option.display_image">
