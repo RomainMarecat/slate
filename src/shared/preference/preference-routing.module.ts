@@ -11,7 +11,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: PreferenceUserComponent
+        component: PreferenceUserComponent,
+        data: {
+          breadcrumb: 'breadcrumb.preference-user',
+        },
       }
     ]
   },

@@ -10,7 +10,7 @@
           <div fxLayout="row"
                fxLayoutAlign="start stretch">
             <div class="carousel-caption" *ngIf="slider.title">
-              <h3>{{ slider.title | translate | uppercase }}</h3>
+              <h2 class="carousel-title">{{ slider.title | translate | uppercase }}</h2>
               <p *ngIf="slider.link" [innerHTML]="slider?.link|translate"></p>
             </div>
           </div>

@@ -38,8 +38,10 @@ export class SearchDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mediaObserver.media$.subscribe((mediaChange: MediaChange) => {
-      this.mqAlias = mediaChange.mqAlias;
+    this.mediaObserver.asObservable().subscribe((mediaChanges: MediaChange[]) => {
+      if (mediaChanges.length) {
+        this.mqAlias = mediaChanges[0].mqAlias;
+      }
     });
   }
 

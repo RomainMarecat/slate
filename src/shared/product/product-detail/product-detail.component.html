@@ -36,19 +36,19 @@
           <div class="item-card-header"
                fxFlex="100"
                fxLayout="row wrap">
-            <h2 class="item-card-title"
+            <h1 class="item-card-title"
                 fxFlex="100"
                 fxLayout.xs="row"
                 fxLayoutAlign.xs="center stretch"
                 *ngIf="product.name">
               {{ product.name }}
-            </h2>
-            <h3 class="item-card-brand"
+            </h1>
+            <h2 class="item-card-brand"
                 fxFlex="100"
                 *ngIf="product.brand">
               <span class="prefix">{{ 'product-detail.brand.prefix'|translate }}</span><span
               class="ml-1">{{ product.brand }}</span>
-            </h3>
+            </h2>
           </div>
 
           <!--CONTENT-->

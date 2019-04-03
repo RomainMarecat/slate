@@ -26,6 +26,18 @@
             "name": "mes commandes"
         }
     },
+    "breadcrumb": {
+        "account": "mon compte",
+        "home": "accueil",
+        "order-list": "mes commandes",
+        "order-detail": "détail de ma commande",
+        "preference-user": "modifier mon profil",
+        "delivery-list": "mes adresses de livraison",
+        "favorite-list": "mes favoris",
+        "product-list": "mes produits",
+        "product-detail": "",
+        "category-detail": ""
+    },
     "category": {
         "title": "découvrez nos catégories",
         "subtitle": "sélectionner une catégorie afin de découvrir notre large gamme des produits"
@@ -284,6 +296,7 @@
         "payment": "paiement",
         "preferences": "paramètres",
         "deliveries": "adresses",
+        "qO9luf3MyDHs1YIyfjTO": "qO9luf3MyDHs1YIyfjTO",
         "Uss09Q3yDCXOXExi1SeA": "Uss09Q3yDCXOXExi1SeA",
         "i8kyOw5VRMp08dIZlBI4": "i8kyOw5VRMp08dIZlBI4",
         "kAThehjn75uCpSMZ52CG": "kAThehjn75uCpSMZ52CG",

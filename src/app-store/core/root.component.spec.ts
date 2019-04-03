@@ -47,6 +47,7 @@ import { CategoryFavoriteModule } from '../home/category-favorite/category-favor
 import { ProductModule } from '../home/product/product.module';
 import { Observable, of } from 'rxjs';
 import { Event, NavigationEnd, Router } from '@angular/router';
+import { BreadcrumbModule } from '../../shared/breadcrumb/breadcrumb.module';
 
 
 // export class RouterStub {
@@ -90,6 +91,7 @@ describe('Store AppRootComponent', () => {
             clearIds: true,
           },
         }),
+        BreadcrumbModule,
         CategoryModule,
         CategoryFavoriteModule,
         CommonModule,

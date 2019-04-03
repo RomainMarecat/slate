@@ -32,9 +32,9 @@ export class AreaDrawComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mediaObserver.media$
-      .subscribe((change: MediaChange) => {
-        if (change.mqAlias === 'xs') {
+    this.mediaObserver.asObservable()
+      .subscribe((changes: MediaChange[]) => {
+        if (changes.length && changes[0].mqAlias === 'xs') {
           this.containerHeight = window.innerWidth * 0.91;
         }
       });

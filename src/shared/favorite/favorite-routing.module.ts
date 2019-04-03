@@ -11,7 +11,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: FavoriteListComponent
+        component: FavoriteListComponent,
+        data: {
+          breadcrumb: 'breadcrumb.favorite-list',
+        },
       }
     ]
   },

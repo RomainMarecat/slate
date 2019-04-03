@@ -15,7 +15,7 @@
      *ngIf="config.displayLogo">
     <mat-icon svgIcon="logo"></mat-icon>
   </a>
-  <h1 id="main-logo"
+  <div id="main-logo"
       class="logo"
       angulartics2On="mouseover"
       angularticsAction="hoveredOverHomeLink"
@@ -33,7 +33,7 @@
         {{ 'menu.title2' | translate }}
       </span>
     </a>
-  </h1>
+  </div>
 
   <ng-container *ngIf="config.show_page_title">
     <span class="pl-4" [innerHtml]="title|translate" *ngIf="title && title.length > 0"></span>

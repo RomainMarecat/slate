@@ -32,12 +32,12 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavService } from '../sidenav.service';
 import { SidenavComponent } from './sidenav.component';
-import { FooterComponent } from '../../../shared/footer/footer.component';
-import { MenuComponent } from '../../../shared/menu/menu.component';
+import { FooterComponent } from '../../footer/footer.component';
+import { MenuComponent } from '../../menu/menu.component';
 import { AdsenseModule } from 'ng2-adsense';
-import { LoaderComponent } from '../../../shared/loader/loader.component';
+import { LoaderComponent } from '../../loader/loader.component';
 import { UserService } from '../../user/shared/user.service';
-import { I18nService } from '../../../shared/i18n/i18n.service';
+import { I18nService } from '../../i18n/i18n.service';
 import { MockUserService } from '../../user/shared/mock-user.service';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
@@ -57,6 +57,8 @@ import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { BreadcrumbModule } from '../../breadcrumb/breadcrumb.module';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { CategoryService } from '../../category/category.service';
+import { MockCategoryService } from '../../category/mock-category.service';
 
 describe('SidenavComponent', () => {
   let component: SidenavComponent;
@@ -120,6 +122,7 @@ describe('SidenavComponent', () => {
         {provide: UserService, useClass: MockUserService},
         {provide: LoaderService, useClass: MockLoaderService},
         {provide: ProductService, useClass: MockProductService},
+        {provide: CategoryService, useClass: MockCategoryService},
         I18nService,
         MenuService,
         SidenavService,

@@ -3,10 +3,10 @@
   <div class="product-header-wrapper"
        fxLayout="row"
        fxLayoutAlign="center stretch">
-    <h4 class="product-title text-center text-ucfirst"
+    <h1 class="product-title text-center text-ucfirst"
         *ngIf="specificOptions.display_title">
       {{ specificOptions.title |translate }}
-    </h4>
+    </h1>
   </div>
 
   <div *ngIf="specificOptions.layout === 'card'; then cardsLayout; else listLayout"></div>

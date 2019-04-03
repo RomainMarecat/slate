@@ -2475,16 +2475,16 @@ body {
   background: #eceff1;
 }
 
-h1.logo a {
+.logo a {
   fill: #fff;
 }
 
-h1.logo a .cls-1 {
+.logo a .cls-1 {
   font-size: 41.09px;
   font-family: Sacramento-Regular, Sacramento;
 }
 
-h1.logo a .cls-2 {
+.logo a .cls-2 {
   font-size: 32.44px;
   font-family: Lato-Regular, Lato;
 }

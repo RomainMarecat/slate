@@ -81,9 +81,9 @@ export class CmsListComponent implements OnInit {
 
   onActivate(event: any) {
     // add media query xs to replace 1
-    this.mediaObserver.media$
-      .subscribe((change: MediaChange) => {
-        if (change.mqAlias === 'xs') {
+    this.mediaObserver.asObservable()
+      .subscribe((change: MediaChange[]) => {
+        if (change.length && change[0].mqAlias === 'xs') {
           if (event.type === 'click' && event.row) {
             const cms = event.row as Cms;
             this.showCmsDetail(cms);

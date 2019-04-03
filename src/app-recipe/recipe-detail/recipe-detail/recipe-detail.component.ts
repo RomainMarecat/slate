@@ -54,8 +54,10 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.seoService.disableZoom();
-    this.mediaObserver.media$.subscribe((mediaChange: MediaChange) => {
-      this.mqAlias = mediaChange.mqAlias;
+    this.mediaObserver.asObservable().subscribe((mediaChange: MediaChange[]) => {
+      if (mediaChange.length) {
+        this.mqAlias = mediaChange[0].mqAlias;
+      }
     });
   }
 

@@ -11,6 +11,8 @@ import { ProductService } from '../product/shared/product.service';
 import { CommonModule } from '@angular/common';
 import { LocalizeRouterModule } from 'localize-router';
 import { configureTestSuite } from '../unit-test/configure-test-suite';
+import { CategoryService } from '../category/category.service';
+import { MockCategoryService } from '../category/mock-category.service';
 
 describe('BreadcrumbComponent', () => {
   let component: BreadcrumbComponent;
@@ -34,7 +36,8 @@ describe('BreadcrumbComponent', () => {
       ],
       declarations: [BreadcrumbComponent],
       providers: [
-        {provide: ProductService, useClass: MockProductService}
+        {provide: ProductService, useClass: MockProductService},
+        {provide: CategoryService, useClass: MockCategoryService},
       ]
     })
       .compileComponents();
