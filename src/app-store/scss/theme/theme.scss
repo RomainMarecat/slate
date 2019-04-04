@@ -1,6 +1,15 @@
 @import '../../../../node_modules/@angular/material/theming';
 @import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
 
+@include font-face(Lato, '/assets/fonts/lato-regular-webfont', normal, normal, woff2 woff ttf);
+@include font-face(Lato-Black, '/assets/fonts/lato-black-webfont', normal, normal, woff2 woff ttf);
+@include font-face(Lato-Bold, '/assets/fonts/lato-bold-webfont', normal, normal, woff2 woff ttf);
+
+@include font-face(Roboto, '/assets/fonts/roboto-Regular-webfont', normal, normal, woff2 woff ttf);
+@include font-face(Roboto-Black, '/assets/fonts/roboto-Black-webfont', normal, normal, woff2 woff ttf);
+@include font-face(Roboto-Bold, '/assets/fonts/roboto-Bold-webfont', normal, normal, woff2 woff ttf);
+
+
 $custom-typography: mat-typography-config(
         $font-family: 'Lato, Roboto, sans-serif'
 );

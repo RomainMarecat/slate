@@ -31,6 +31,7 @@ import { CartWrapperComponent } from './cart-wrapper/cart-wrapper.component';
 import { CartDeliveryComponent } from './cart-delivery/cart-delivery.component';
 import { StorageModule } from '../media/storage/storage.module';
 import { MediaModule } from '../media/media.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
@@ -49,6 +50,7 @@ export const STRIPE_KEY = new InjectionToken<string>('');
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    NgSelectModule,
     FormsModule,
     StorageModule,
     MediaModule,

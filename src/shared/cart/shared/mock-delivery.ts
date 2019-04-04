@@ -4,7 +4,7 @@ import * as faker from 'faker';
 export const mockDeliveries: Delivery[] = [
   {
     key: 'd6fs62',
-    cart: '6dq6sdq',
+    cart: ['dsf6g2fs65gfd6gf23fdg9fd'],
     user: 'fsdfsd6f2',
     address: {
       email: faker.random.words(),
@@ -30,7 +30,7 @@ export const mockDeliveries: Delivery[] = [
     updated_at: new Date(),
   }, {
     key: 'd6fs62',
-    cart: '6dq6sdq',
+    cart: ['dsf6g2fs65gfd6gf23fdg9fd'],
     user: 'fsdfsd6f2',
     address: {
       email: faker.random.words(),
@@ -60,7 +60,7 @@ export const mockDeliveries: Delivery[] = [
 
 export const mockDelivery: Delivery = {
   key: 'd6fs62',
-  cart: '6dq6sdq',
+  cart: ['dsf6g2fs65gfd6gf23fdg9fd'],
   user: 'fsdfsd6f2',
   address: {
     email: faker.random.words(),

@@ -27,7 +27,7 @@
       <!-- Uniquement mobile bloc SUPPRESSION -->
       <div class="w-10 text-right d-block d-sm-none">
         <span class="cart-delete pointer"
-              (click)="updateCartItemQuantity(item, 0)"
+              (click)="updateCartItemQuantity(item, '0')"
               *ngIf="editable">
           <mat-icon>close</mat-icon>
         </span>
@@ -41,7 +41,7 @@
         <!-- Uniquement desktop -->
         <div class="d-none d-lg-block text-center col-lg-4">
           <button class="btn btn-icon"
-                  (click)="updateCartItemQuantity(item, item.quantity-1)"
+                  (click)="updateCartItemQuantity(item, (item.quantity-1).toString(10))"
                   *ngIf="editable">-
           </button>
         </div>
@@ -51,14 +51,14 @@
           <span class="d-lg-none d-md-none">x</span>
           <input class="cart-quantity number-override text-center" type="number" name="input"
                  [(ngModel)]="item.quantity"
-                 (blur)="updateCartItemQuantity(item, item.quantity)"
+                 (blur)="updateCartItemQuantity(item, item.quantity.toString(10))"
                  min="0"
                  [disabled]="!editable">
         </div>
         <!-- Uniquement desktop-->
         <div class="d-none d-lg-block text-center col-lg-4">
           <button class="btn btn-icon"
-                  (click)="updateCartItemQuantity(item, item.quantity+1)"
+                  (click)="updateCartItemQuantity(item, (item.quantity+1).toString(10))"
                   *ngIf="editable">+
           </button>
         </div>
@@ -71,7 +71,7 @@
     <!-- Uniquement desktop bloc SUPPRESSION -->
     <div class="d-none d-sm-block col-1 text-center text-lg-right align-self-center align-items-center">
       <span class="cart-delete pointer"
-            (click)="updateCartItemQuantity(item, 0)"
+            (click)="updateCartItemQuantity(item, '0')"
             *ngIf="editable">
         <mat-icon>close</mat-icon>
       </span>

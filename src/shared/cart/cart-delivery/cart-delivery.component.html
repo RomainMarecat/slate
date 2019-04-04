@@ -10,83 +10,138 @@
          fxLayout.xs="column"
          fxLayoutAlign.xs="center center">
       <div formGroupName="address"
+           fxFlex="45"
            fxLayout="column">
         <div>
-          <h2 class="text-ucfirst">
+          <h2 class="text-ucfirst delivery-title">
             {{ 'delivery.address.title'|translate }}
           </h2>
         </div>
         <ng-container *ngIf="true then spacerTmpl">
         </ng-container>
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="email"
-                 autocomplete="email"
-                 [placeholder]="'delivery.address.email'|translate">
-        </mat-form-field>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="firstname"
-                 autocomplete="firstname"
-                 [placeholder]="'delivery.address.firstname'|translate">
-        </mat-form-field>
+        <ng-template #activableDeliveryFormTmpl>
+          <div class="form-delivery-wrapper"
+               fxLayout="column">
+            <mat-form-field *ngIf="myPreviousDeliveries.length">
+              <mat-select [attr.name]="'deliveries'"
+                          (selectionChange)="onDeliveryChange($event)"
+                          [placeholder]="'delivery.deliveries.select.type_to_search'|translate">
+                <mat-option [value]="null">-</mat-option>
+                <mat-option [value]="delivery" *ngFor="let delivery of myPreviousDeliveries">
+                  {{ delivery.address.title }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="lastname"
-                 autocomplete="lastname"
-                 [placeholder]="'delivery.address.lastname'|translate">
-        </mat-form-field>
+            <button type="button"
+                    color="primary"
+                    (click)="activeDeliveryAddress()"
+                    mat-raised-button
+                    [attr.role]="'cta.active_delivery_form'|translate"
+                    *ngIf="deliveryConfig.display_add_address_button">
+              {{ 'cta.active_delivery_form'|translate }}
+            </button>
+          </div>
+        </ng-template>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="address"
-                 autocomplete="address"
-                 [placeholder]="'delivery.address.address'|translate">
-        </mat-form-field>
+        <div class="form-delivery-wrapper"
+             fxLayout="column"
+             *ngIf="isDeliveryAddressFormActive; else activableDeliveryFormTmpl">
+          <mat-form-field appearance="standard">
+            <input matInput
+                   formControlName="email"
+                   autocomplete="email"
+                   [placeholder]="'delivery.address.email'|translate">
+          </mat-form-field>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="address_complement"
-                 autocomplete="address_complement"
-                 [placeholder]="'delivery.address.address_complement'|translate">
-        </mat-form-field>
+          <div fxLayout="row"
+               fxLayoutGap="10px">
+            <mat-form-field appearance="standard"
+                            fxFlex="50">
+              <input matInput
+                     formControlName="lastname"
+                     autocomplete="lastname"
+                     [placeholder]="'delivery.address.lastname'|translate">
+            </mat-form-field>
+            <mat-form-field appearance="standard"
+                            fxFlex="50">
+              <input matInput
+                     formControlName="firstname"
+                     autocomplete="firstname"
+                     [placeholder]="'delivery.address.firstname'|translate">
+            </mat-form-field>
+          </div>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="zipcode"
-                 autocomplete="zipcode"
-                 [placeholder]="'delivery.address.zipcode'|translate">
-        </mat-form-field>
+          <mat-form-field appearance="standard">
+            <input matInput
+                   formControlName="address"
+                   autocomplete="address"
+                   [placeholder]="'delivery.address.address'|translate">
+          </mat-form-field>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="city"
-                 autocomplete="city"
-                 [placeholder]="'delivery.address.city'|translate">
-        </mat-form-field>
+          <mat-form-field appearance="standard">
+            <input matInput
+                   formControlName="address_complement"
+                   autocomplete="address_complement"
+                   [placeholder]="'delivery.address.address_complement'|translate">
+          </mat-form-field>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="country"
-                 autocomplete="country"
-                 [placeholder]="'delivery.address.country'|translate">
-        </mat-form-field>
+          <div fxLayout="row"
+               fxLayoutGap="10px">
+            <mat-form-field appearance="standard"
+                            fxFlex="30">
+              <input matInput
+                     formControlName="zipcode"
+                     autocomplete="zipcode"
+                     [placeholder]="'delivery.address.zipcode'|translate">
+            </mat-form-field>
+
+            <mat-form-field appearance="standard"
+                            fxFlex="40">
+              <input matInput
+                     formControlName="city"
+                     autocomplete="city"
+                     [placeholder]="'delivery.address.city'|translate">
+            </mat-form-field>
+
+            <mat-form-field appearance="standard"
+                            fxFlex="30">
+              <input matInput
+                     formControlName="country"
+                     autocomplete="country"
+                     [placeholder]="'delivery.address.country'|translate">
+            </mat-form-field>
+          </div>
+        </div>
+
+
+        <div class="delivery-address-choice"
+             fxLayout="row"
+             fxLayoutAlign="center stretch"
+             *ngIf="deliveryConfig.display_address_resume">
+          <mat-list>
+            <mat-list-item>{{ form.value?.address?.lastname }} {{ form.value?.address?.firstname }}</mat-list-item>
+            <mat-list-item>{{ form.value?.address?.address }} {{ form.value?.address?.address_complement }}</mat-list-item>
+            <mat-list-item>{{ form.value?.address?.zipcode }} {{ form.value?.address?.city }}
+              , {{ form.value?.address?.country }}</mat-list-item>
+          </mat-list>
+        </div>
+
       </div>
 
 
       <div formGroupName="billing"
+           fxFlex="45"
            fxLayout="column">
         <div>
-          <h2 class="text-ucfirst">
+          <h2 class="text-ucfirst delivery-title">
             {{ 'delivery.billing.title'|translate }}
           </h2>
         </div>
 
         <ng-container *ngIf="isDeliveryCompleted(); else spacerTmpl">
           <div class="duplicate-wrapper">
-
             <button [title]="'cta.duplicate_same_delivery_as_billing'|translate"
                     *ngIf="isDeliveryCompleted()"
                     type="button"
@@ -107,61 +162,105 @@
           </div>
         </ng-template>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="email"
-                 autocomplete="email"
-                 [placeholder]="'delivery.address.email'|translate">
-        </mat-form-field>
+        <ng-template #activableBillingFormTmpl>
+          <div class="form-billing-wrapper"
+               fxLayout="column"
+               *ngIf="deliveryConfig.display_add_billing_button">
+            <button type="button"
+                    color="primary"
+                    (click)="activeBillingAddress()"
+                    mat-raised-button
+                    [attr.role]="'cta.active_billing_form'|translate">
+              {{ 'cta.active_billing_form'|translate }}
+            </button>
+          </div>
+        </ng-template>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="firstname"
-                 autocomplete="firstname"
-                 [placeholder]="'delivery.address.firstname'|translate">
-        </mat-form-field>
+        <div class="form-delivery-wrapper"
+             fxLayout="column"
+             *ngIf="isBillingActivable(); else activableBillingFormTmpl">
+          <mat-form-field appearance="standard">
+            <input matInput
+                   formControlName="email"
+                   autocomplete="email"
+                   [placeholder]="'delivery.address.email'|translate">
+          </mat-form-field>
+          <div fxLayout="row"
+               fxLayoutGap="10px">
+            <mat-form-field appearance="standard"
+                            fxFlex="50">
+              <input matInput
+                     formControlName="lastname"
+                     autocomplete="lastname"
+                     [placeholder]="'delivery.billing.lastname'|translate">
+            </mat-form-field>
+            <mat-form-field appearance="standard"
+                            fxFlex="50">
+              <input matInput
+                     formControlName="firstname"
+                     autocomplete="firstname"
+                     [placeholder]="'delivery.billing.firstname'|translate">
+            </mat-form-field>
+          </div>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="lastname"
-                 autocomplete="lastname"
-                 [placeholder]="'delivery.address.lastname'|translate">
-        </mat-form-field>
+          <mat-form-field appearance="standard">
+            <input matInput
+                   formControlName="address"
+                   autocomplete="address"
+                   [placeholder]="'delivery.billing.address'|translate">
+          </mat-form-field>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="address"
-                 autocomplete="address"
-                 [placeholder]="'delivery.billing.address'|translate">
-        </mat-form-field>
+          <mat-form-field appearance="standard">
+            <input matInput
+                   formControlName="address_complement"
+                   autocomplete="address_complement"
+                   [placeholder]="'delivery.billing.address_complement'|translate">
+          </mat-form-field>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="address_complement"
-                 autocomplete="address_complement"
-                 [placeholder]="'delivery.billing.address_complement'|translate">
-        </mat-form-field>
+          <div fxLayout="row"
+               fxLayoutGap="10px">
+            <mat-form-field appearance="standard"
+                            fxFlex="30">
+              <input matInput
+                     formControlName="zipcode"
+                     autocomplete="zipcode"
+                     [placeholder]="'delivery.billing.zipcode'|translate">
+            </mat-form-field>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="zipcode"
-                 autocomplete="zipcode"
-                 [placeholder]="'delivery.billing.zipcode'|translate">
-        </mat-form-field>
+            <mat-form-field appearance="standard"
+                            fxFlex="40">
+              <input matInput
+                     formControlName="city"
+                     autocomplete="city"
+                     [placeholder]="'delivery.billing.city'|translate">
+            </mat-form-field>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="city"
-                 autocomplete="city"
-                 [placeholder]="'delivery.billing.city'|translate">
-        </mat-form-field>
+            <mat-form-field appearance="standard"
+                            fxFlex="30">
+              <input matInput
+                     formControlName="country"
+                     autocomplete="country"
+                     [placeholder]="'delivery.billing.country'|translate">
+            </mat-form-field>
+          </div>
+        </div>
 
-        <mat-form-field appearance="standard">
-          <input matInput
-                 formControlName="country"
-                 autocomplete="country"
-                 [placeholder]="'delivery.billing.country'|translate">
-        </mat-form-field>
+        <div class="spacer-select-wrapper"
+             *ngIf="deliveryConfig.display_billing_resume">
+        </div>
+
+        <div class="delivery-billing-choice"
+             fxLayout="row"
+             fxLayoutAlign="center stretch"
+             *ngIf="deliveryConfig.display_billing_resume">
+          <mat-list>
+            <mat-list-item>{{ form.value?.billing?.lastname }} {{ form.value?.billing?.firstname }}</mat-list-item>
+            <mat-list-item>{{ form.value?.billing?.address }} {{ form.value?.billing?.address_complement }}</mat-list-item>
+            <mat-list-item>{{ form.value?.billing?.zipcode }} {{ form.value?.billing?.city }}
+              , {{ form.value?.billing?.country }}</mat-list-item>
+          </mat-list>
+        </div>
+
       </div>
 
     </div>
