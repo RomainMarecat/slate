@@ -5,6 +5,9 @@ import { Delivery } from '../shared/delivery';
 import { DeliveryService } from '../shared/delivery.service';
 import { DocumentReference } from '@angular/fire/firestore';
 import { AlertService } from '../../popup/alert.service';
+import { Subscription } from 'rxjs';
+import { User } from '@firebase/auth-types';
+import { MatSelectChange } from '@angular/material';
 
 @Component({
   selector: 'app-cart-delivery',
@@ -21,11 +24,36 @@ export class CartDeliveryComponent implements OnInit {
 
   form: FormGroup = CartDeliveryComponent.getForm();
 
+  isDeliveryAddressFormActive: boolean;
+
+  isBillingAddressFormActive: boolean;
+
+  myPreviousDeliveries: Delivery[] = [];
+
+  deliveryConfig: {
+    display_add_address_button: boolean,
+    display_add_billing_button: boolean,
+    display_billing_form: boolean,
+    display_billing_resume: boolean
+    display_address_resume: boolean
+  } = {
+    display_billing_form: false,
+    display_billing_resume: false,
+    display_address_resume: false,
+    display_add_address_button: true,
+    display_add_billing_button: true
+  };
+
+  _user: User;
+
   @Output() cancelled: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   static getForm(delivery: Delivery = null): FormGroup {
     return new FormGroup({
       key: new FormControl(delivery && delivery.key ? delivery.key : null),
+      user: new FormControl(delivery && delivery.user ? delivery.user : null),
+      cart: new FormControl(delivery && delivery.cart ? delivery.cart : []),
+      order: new FormControl(delivery && delivery.order ? delivery.order : []),
       address: new FormGroup({
         email: new FormControl(delivery && delivery.address && delivery.address.email ? delivery.address.email : '',
           [Validators.required, Validators.minLength(1), Validators.email]
@@ -101,8 +129,6 @@ export class CartDeliveryComponent implements OnInit {
 
   @Input() set cart(cart: Cart) {
     this._cart = cart;
-    // After get cart then get delivery associated to cart
-    this.getDelivery();
   }
 
   get cart(): Cart {
@@ -112,22 +138,100 @@ export class CartDeliveryComponent implements OnInit {
   ngOnInit() {
   }
 
+  @Input() set user(user: User) {
+    if (user) {
+      this._user = user;
+      this.getPreviousDeliveries(user);
+    }
+
+  }
+
+  getPreviousDeliveries(user: User) {
+    this.deliveryService.filters$.next([
+      {
+        column: 'user',
+        operator: '==',
+        value: user.uid
+      }
+    ]);
+
+    const subscription: Subscription = this.deliveryService.getDeliveries()
+      .subscribe((deliveries: Delivery[]) => {
+        this.myPreviousDeliveries = deliveries.map((delivery: Delivery) => {
+          delivery.address.title = `${delivery.address.lastname} ${delivery.address.firstname} ${delivery.address.address} ` +
+            `${delivery.address.zipcode} ${delivery.address.city} ${delivery.address.country}`;
+
+          return delivery;
+        });
+        if (subscription) {
+          subscription.unsubscribe();
+        }
+
+        if (this.cart) {
+          // After get cart then get delivery associated to cart
+          this.getDelivery();
+        }
+      }, () => {
+        this.myPreviousDeliveries = [];
+      });
+  }
+
   getDelivery() {
     this.deliveryService.filters$.next([
       {
         column: 'cart',
-        operator: '==',
+        operator: 'array-contains',
         value: this.cart.key
       }
     ]);
-    this.deliveryService.getDeliveries()
+
+    const subscription: Subscription = this.deliveryService.getDeliveries()
       .subscribe((deliveries: Delivery[]) => {
-        this.form = CartDeliveryComponent.getForm(deliveries[0]);
+        if (deliveries[0]) {
+          this.isDeliveryAddressFormActive = true;
+          this.deliveryConfig.display_billing_form = true;
+          this.form = CartDeliveryComponent.getForm(deliveries[0]);
+        }
+        if (subscription) {
+          subscription.unsubscribe();
+        }
       });
   }
 
+  onDeliveryChange(change: MatSelectChange) {
+    if (change.value) {
+      this.form.patchValue(change.value);
+      this.deliveryConfig.display_add_address_button = false;
+      this.deliveryConfig.display_add_billing_button = false;
+      this.deliveryConfig.display_billing_form = false;
+      this.deliveryConfig.display_billing_resume = true;
+      this.deliveryConfig.display_address_resume = true;
+      return;
+    }
+
+    this.form.reset();
+    this.deliveryConfig.display_add_address_button = true;
+    this.deliveryConfig.display_add_billing_button = true;
+    this.deliveryConfig.display_address_resume = false;
+    this.deliveryConfig.display_billing_resume = false;
+    this.deliveryConfig.display_billing_form = true;
+  }
+
+  activeDeliveryAddress() {
+    this.isDeliveryAddressFormActive = true;
+  }
+
+  activeBillingAddress() {
+    this.isBillingAddressFormActive = true;
+    this.deliveryConfig.display_billing_form = true;
+  }
+
+  isBillingActivable(): boolean {
+    return (this.isBillingAddressFormActive || this.form.get('billing').valid) && this.deliveryConfig.display_billing_form;
+  }
+
   isDeliveryCompleted(): boolean {
-    return this.form.get('address').valid;
+    return this.form.get('address').valid && this.deliveryConfig.display_billing_form;
   }
 
   copyDeliveryIntoBilling() {
@@ -137,7 +241,20 @@ export class CartDeliveryComponent implements OnInit {
   saveDelivery() {
     if (this.form.valid && this.cart && this.cart.key && this.cart.user) {
       this.disableDeliveryButton = true;
-      const delivery: Delivery = {...this.form.value, ...{cart: this.cart.key, user: this.cart.user}};
+      const delivery: Delivery = {...this.form.value, ...{user: this.cart.user}};
+      if (!delivery.cart || !delivery.cart.length) {
+        delivery.cart = [];
+      }
+      if (!delivery.cart.includes(this.cart.key)) {
+        delivery.cart.push(this.cart.key);
+      }
+
+      if (!delivery.key) {
+        delivery.created_at = new Date();
+      }
+
+      delivery.updated_at = new Date();
+
       this.deliveryService.createDelivery(delivery)
         .subscribe((doc: DocumentReference) => {
           delivery.key = doc.id;

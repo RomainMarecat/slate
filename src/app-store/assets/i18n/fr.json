@@ -76,9 +76,17 @@
             "update-cart-error": "Le panier ne s'est pas mis à jour"
         }
     },
+    "cart-payment": {
+        "errors": {
+            "cart": "votre panier n'a pas été retrouvé. Il est possible que vous soyez hors-ligne. Vous n'avez pas été débité",
+            "delivery": "vos informations de livraison n'ont pas été récupéré. Veuillez revenir en arrière pour réessayer"
+        }
+    },
     "cta": {
         "account": "mon compte",
         "accept_delivery": "Valider la livraison",
+        "active_delivery_form": "Ajouter une adresse de livraison",
+        "active_billing_form": "Ajouter une adresse de facturation",
         "add_to_cart": "ajouter au panier",
         "add_to_favorite": "ajouter aux favoris",
         "add_a_comment": "ajouter un commentaire",
@@ -94,6 +102,14 @@
         "save": "enregistrer"
     },
     "delivery": {
+        "deliveries": {
+            "select": {
+                "loading": "chargement",
+                "not_found": "aucun trouvé",
+                "type_to_search": "entrer un mot pour retrouvé votre adresse",
+                "clear_all": "effacer"
+            }
+        },
         "address": {
             "title": "choisir votre adresse de livraison",
             "firstname": "prénom",

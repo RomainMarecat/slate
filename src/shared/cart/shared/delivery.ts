@@ -1,9 +1,10 @@
 export interface Delivery {
   key: string;
-  cart: string;
-  order?: string;
+  cart: string[];
+  order?: string[];
   user: string;
   address: {
+    title?: string;
     email: string;
     firstname: string;
     lastname: string;
@@ -14,6 +15,7 @@ export interface Delivery {
     country: string;
   };
   billing: {
+    title?: string;
     email: string;
     firstname: string;
     lastname: string;

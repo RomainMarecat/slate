@@ -29,6 +29,7 @@ export class CartWrapperComponent implements OnInit {
     confirmation: false,
   };
 
+  loading: boolean;
   isUserCompleted = false;
   isUserAlreadyLogged = false;
   user: User;
@@ -43,6 +44,7 @@ export class CartWrapperComponent implements OnInit {
               private cartService: CartService,
               private alertService: AlertService,
               private mediaObserver: MediaObserver) {
+    this.loading = true;
   }
 
   ngOnInit() {
@@ -94,10 +96,12 @@ export class CartWrapperComponent implements OnInit {
           ]);
         }
         this.cartService.cart$.next(this.cart);
+        this.loading = false;
       }, (err: HttpErrorResponse) => {
         if (err && err.error && err.error.message) {
           this.alertService.show(err.error.message);
         }
+        this.loading = false;
       });
   }
 
@@ -111,8 +115,10 @@ export class CartWrapperComponent implements OnInit {
           this.getCart();
           return;
         }
+        this.loading = false;
         this.isUserAlreadyLogged = false;
       }, () => {
+        this.loading = false;
         this.isUserAlreadyLogged = false;
       });
   }
@@ -131,7 +137,9 @@ export class CartWrapperComponent implements OnInit {
       .subscribe(doc => {
         cart.key = doc.id;
         this.updateCart(cart);
+        this.loading = false;
       }, () => {
+        this.loading = false;
         if (this.cartsSubscription) {
           this.cartsSubscription.unsubscribe();
         }

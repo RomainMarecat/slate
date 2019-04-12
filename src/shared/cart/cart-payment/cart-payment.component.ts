@@ -27,6 +27,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Delivery } from '../shared/delivery';
 import { DeliveryService } from '../shared/delivery.service';
 import { DocumentReference } from '@angular/fire/firestore';
+import { User } from '@firebase/auth-types';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart-payment',
@@ -36,7 +38,9 @@ import { DocumentReference } from '@angular/fire/firestore';
 export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('cardInfo') cardInfo: ElementRef;
 
-  @Input() cart: Cart;
+  _cart: Cart;
+
+  @Input() user: User;
 
   @Input() delivery: Delivery;
 
@@ -93,7 +97,6 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.previousRoute = this.routingState.getPreviousUrl() || '/cart';
-    this.getCart();
     this.onLine = navigator.onLine;
     // this.stripeService.elements(this.elementsOptions)
     //   .subscribe(elements => {
@@ -127,34 +130,35 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  getCart() {
-    this.activatedRoute.params
-      .subscribe((value: {key: string}) => {
-        if (value.key) {
-          this.cartService.getCart(value.key)
-            .subscribe((cart: Cart) => {
-              this.cart = cart;
-              this.getDelivery();
-            }, (err) => {
-              this.handleHttpErrorResponse(err);
-            });
-        }
-      });
+  @Input() set cart(cart: Cart) {
+    if (cart) {
+      this._cart = cart;
+      this.getDelivery(cart);
+    }
   }
 
-  getDelivery() {
+  get cart(): Cart {
+    return this._cart;
+  }
+
+  getDelivery(cart: Cart) {
     this.deliveryService.filters$.next([
       {
         column: 'cart',
-        operator: '==',
-        value: this.cart.key
+        operator: 'array-contains',
+        value: cart.key
       }
     ]);
-    this.deliveryService.getDeliveries()
+    const subscription: Subscription = this.deliveryService.getDeliveries()
       .subscribe((deliveries: Delivery[]) => {
         if (deliveries && deliveries.length) {
           this.delivery = deliveries[0];
         }
+        if (subscription) {
+          subscription.unsubscribe();
+        }
+      }, (err: HttpErrorResponse) => {
+        this.alertService.show('cart-payment.errors.delivery');
       });
   }
 
@@ -170,10 +174,6 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
       this.error = null;
     }
     this.cd.detectChanges();
-  }
-
-  setCart(cart: Cart) {
-    this.cart = cart;
   }
 
   onSubmit(form: NgForm) {
@@ -225,6 +225,19 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
                               .subscribe(() => {
                                 this.paid.emit(this.payment);
                                 this.paymentService.payment$.next(this.payment);
+                                if (!this.delivery.order) {
+                                  this.delivery.order = [];
+                                }
+                                if (!this.delivery.order.includes(order.key)) {
+                                  this.delivery.order.push(order.key);
+                                }
+                                this.deliveryService.updateDelivery(this.delivery)
+                                  .subscribe(() => {
+                                      // async save delivery order key
+                                    },
+                                    (err: HttpErrorResponse) => {
+                                      this.handleHttpErrorResponse(err);
+                                    });
                                 this.loaderService.hide();
                               }, (err: HttpErrorResponse) => {
                                 this.handleHttpErrorResponse(err);

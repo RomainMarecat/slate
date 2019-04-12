@@ -4,7 +4,7 @@
        fxLayoutAlign="center stretch">
     <div class="cart-wrapper col-12">
       <mat-card class="cart-card my-5">
-        <ng-template #loading>
+        <ng-template #loadingTmpl>
           <div fxLayout="row"
                fxLayoutAlign="center stretch">
             <mat-progress-spinner color="primary"
@@ -12,7 +12,7 @@
             </mat-progress-spinner>
           </div>
         </ng-template>
-        <mat-card-content *ngIf="cart; else loading">
+        <mat-card-content *ngIf="!loading; else loadingTmpl">
           <div fxLayout.xs="column">
             <mat-list fxLayout="row"
                       fxLayoutAlign="center stretch"
@@ -40,8 +40,8 @@
                         type="button"
                         role="button"
                         mat-mini-fab>
-                  <span *ngIf="user">3</span>
-                  <span *ngIf="!user">4</span>
+                  <span *ngIf="user">2</span>
+                  <span *ngIf="!user">3</span>
                 </button>
                 <span class="text-center w-100">{{ 'cart.title.delivery'|translate }}</span>
               </mat-list-item>
@@ -50,8 +50,8 @@
                         type="button"
                         role="button"
                         mat-mini-fab>
-                  <span *ngIf="user">4</span>
-                  <span *ngIf="!user">5</span>
+                  <span *ngIf="user">3</span>
+                  <span *ngIf="!user">4</span>
                 </button>
                 <span class="text-center w-100">{{ 'cart.title.payment'|translate }}</span>
               </mat-list-item>
@@ -60,8 +60,8 @@
                         type="button"
                         role="button"
                         mat-mini-fab>
-                  <span *ngIf="user">5</span>
-                  <span *ngIf="!user">6</span>
+                  <span *ngIf="user">4</span>
+                  <span *ngIf="!user">5</span>
                 </button>
                 <span class="text-center w-100">{{ 'cart.title.confirmation'|translate }}</span>
               </mat-list-item>
@@ -76,7 +76,7 @@
                           type="button"
                           role="button"
                           mat-mini-fab>
-                    <ng-container [ngSwitch]="cart.state">
+                    <ng-container [ngSwitch]="cart?.state">
                       <span *ngSwitchCase="'cart'">
                         <span>1</span>
                       </span>
@@ -91,14 +91,21 @@
                     </ng-container>
                   </button>
                   <span class="text-center w-100">
-                    {{ 'cart.title.' + cart.state|translate }}
+                    {{ 'cart.title.' + cart?.state|translate }}
                   </span>
                 </mat-list-item>
               </mat-list>
             </ng-template>
 
+            <div *ngIf="!cart"
+                 class="cart-text-wrapper"
+                 fxLayout="row"
+                 fxLayoutAlign="center stretch">
+              <span class="cart-text my-5">{{ 'cart.empty'|translate }}</span>
+            </div>
+
             <!-- Step booking -->
-            <div *ngIf="cart.state === 'cart' || !cart.state">
+            <div *ngIf="cart && (cart.state === 'cart' || !cart.state)">
               <app-cart-edit [cart]="cart"
                              (submitted)="onSaveCart($event)"
                              (updateCart)="updateCart($event)"></app-cart-edit>
@@ -106,7 +113,7 @@
 
 
             <!-- Step user -->
-            <div *ngIf="!isUserAlreadyLogged && cart.state === 'connection'">
+            <div *ngIf="!isUserAlreadyLogged && cart && cart.state === 'connection'">
               <div class="login-wrapper"
                    fxLayout="row"
                    fxLayoutAlign="center stretch">
@@ -120,15 +127,17 @@
             </div>
 
             <!--Step delivery-->
-            <ng-container *ngIf="cart.state === 'delivery'">
+            <ng-container *ngIf="cart && cart.state === 'delivery'">
               <app-cart-delivery [cart]="cart"
+                                 [user]="user"
                                  (cancelled)="onCancel($event, user ? 'cart' : 'connection')"
                                  (acceptDelivery)="onAcceptDelivery($event)"></app-cart-delivery>
             </ng-container>
 
             <!-- Step payment -->
-            <div *ngIf="cart.state === 'payment'">
+            <div *ngIf="cart && cart.state === 'payment'">
               <app-cart-payment [cart]="cart"
+                                [user]="user"
                                 (paid)="onPaid($event)"
                                 (cancelled)="onCancel($event, user ? 'delivery' : 'connection')"></app-cart-payment>
             </div>
