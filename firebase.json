@@ -21,6 +21,10 @@
                         {
                             "key": "Access-Control-Allow-Origin",
                             "value": "*"
+                        },
+                        {
+                            "key": "Cache-Control",
+                            "value": "max-age=604800"
                         }
                     ]
                 },
@@ -29,20 +33,7 @@
                     "headers": [
                         {
                             "key": "Cache-Control",
-                            "value": "max-age=30672000"
-                        },
-                        {
-                            "key": "Content-Encoding",
-                            "value": "gzip"
-                        }
-                    ]
-                },
-                {
-                    "source": "https://firebasestorage.googleapis.com/**",
-                    "headers": [
-                        {
-                            "key": "Cache-Control",
-                            "value": "max-age=30672000"
+                            "value": "max-age=604800"
                         },
                         {
                             "key": "Content-Encoding",
@@ -87,7 +78,7 @@
                     "headers": [
                         {
                             "key": "Cache-Control",
-                            "value": "max-age=30672000"
+                            "value": "max-age=604800"
                         }
                     ]
                 },
