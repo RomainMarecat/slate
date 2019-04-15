@@ -16,10 +16,10 @@ service cloud.firestore {
     }
 
     match /{payment=**} {
-      allow get: if true;
-      allow list: if true;
+      allow get: if request.auth.uid == resource.data.user;
+      allow list: if request.auth.uid == resource.data.user || request.auth.uid == 'CiKK3i9fIjRmbgKvWbQG5xWDNT72';
       allow create: if request.auth.uid != null;
-      allow update: if request.auth.uid != null;
+      allow update: if request.auth.uid == resource.data.user;
       allow delete: if request.auth.uid == 'CiKK3i9fIjRmbgKvWbQG5xWDNT72';
     }
 
@@ -33,7 +33,10 @@ service cloud.firestore {
 
     match /{product=**} {
       allow read: if true;
-      allow write: if false;
+      allow create: if false;
+      allow update: if request.auth.uid == 'CiKK3i9fIjRmbgKvWbQG5xWDNT72' ||
+        (resource.data.viewed < request.data.viewed);
+      allow delete: if false;
     }
 
     match /{category=**} {
@@ -100,10 +103,6 @@ service cloud.firestore {
       allow write: if false;
     }
     match /{post=**} {
-      allow read: if true;
-      allow write: if false;
-    }
-    match /{offer=**} {
       allow read: if true;
       allow write: if false;
     }

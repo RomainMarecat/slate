@@ -1,16 +1,16 @@
 export const environment = {
   production: true,
-  site_name: 'menincar.com',
-  app_name: 'menincar',
+  site_name: 'car.com',
+  app_name: 'car',
   cookie: {
-    domain: 'menincar-384269.firebaseapp.com'
+    domain: 'car-384269.firebaseapp.com'
   },
   firebase: {
     apiKey: 'AIzaSyAN6P0GKiJcYdGKZ-svTKlXjNFGVuTvtFY',
-    authDomain: 'menincar-384269.firebaseapp.com',
-    databaseURL: 'https://menincar-384269.firebaseio.com',
-    projectId: 'menincar-384269',
-    storageBucket: 'menincar-384269.appspot.com',
+    authDomain: 'car-384269.firebaseapp.com',
+    databaseURL: 'https://car-384269.firebaseio.com',
+    projectId: 'car-384269',
+    storageBucket: 'car-384269.appspot.com',
     messagingSenderId: '25862177025'
   },
   googleMapApiKey: 'AIzaSyAn-C_BQH5PtKUJpxZNJLGCooZOcDCTg-U',

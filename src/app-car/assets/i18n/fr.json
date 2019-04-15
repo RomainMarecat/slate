@@ -213,16 +213,16 @@
   },
   "meta": {
     "title": {
-      "homepage": "Men In Car - Trouvez la bonne voiture",
-      "offer-list": "Toutes les annonces de voitures - Men In Car",
-      "offer-detail": " - Men In Car",
-      "selection": "Men In Car"
+      "homepage": "Car - Trouvez la bonne voiture",
+      "offer-list": "Toutes les annonces de voitures - Car",
+      "offer-detail": " - Car",
+      "selection": "Car"
     },
     "description": {
-      "homepage": "Trouver la bonne affaire parmi nos petites annonces - Men In Car",
-      "offer-list": "Les annonces de voitures au meilleur prix - Men in Car",
-      "offer-detail": " - Men in Car",
-      "selection": "Découvre toutes les voitures de Men In Car"
+      "homepage": "Trouver la bonne affaire parmi nos petites annonces - Car",
+      "offer-list": "Les annonces de voitures au meilleur prix - Car",
+      "offer-detail": " - Car",
+      "selection": "Découvre toutes les voitures de Car"
     }
   },
   "cta": {
@@ -258,8 +258,8 @@
   },
   "home": {
     "title": {
-      "main": "Trouvez la bonne affaire parmi toutes nos petites annonces sur Men in car.",
-      "second": "Sur le site menincar.fr, passez des annonces gratuites et sans commission. Vous pouvez consulter des petites annonces de particuliers et de professionnels partout en France, que vous cherchiez des voitures neuves ou d'occasion."
+      "main": "Trouvez la bonne affaire parmi toutes nos petites annonces sur Car.",
+      "second": "Sur le site car.fr, passez des annonces gratuites et sans commission. Vous pouvez consulter des petites annonces de particuliers et de professionnels partout en France, que vous cherchiez des voitures neuves ou d'occasion."
     },
     "search": {
       "title": "Rechercher",
@@ -448,8 +448,8 @@
   },
   "offer-detail": {
     "meta": {
-      "og:site_name": "Men In Car",
-      "description": "{{value}} - Men In Car"
+      "og:site_name": "Car",
+      "description": "{{value}} - Car"
     }
   },
   "offer-confirmation": {
@@ -463,7 +463,7 @@
   },
   "footer": {
     "title": {
-      "about": "A propos de Men In Car",
+      "about": "A propos de Car",
       "legal_information": "Informations légales",
       "professional": "professionnels",
       "questions": "Des questions ?"

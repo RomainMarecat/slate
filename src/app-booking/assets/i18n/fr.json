@@ -213,13 +213,13 @@
   },
   "meta": {
     "title": {
-      "homepage": "Men In Car - Trouvez la bonne voiture",
-      "product-list": "Liste des voitures - Men In Car",
-      "selection": "Men In Car"
+      "homepage": "Car - Trouvez la bonne voiture",
+      "product-list": "Liste des voitures - Car",
+      "selection": "Car"
     },
     "description": {
       "product-list": "Les produits de la sélection",
-      "selection": "Découvre toutes les voitures de Men In Car"
+      "selection": "Découvre toutes les voitures de Car"
     }
   },
   "cta": {
@@ -247,7 +247,7 @@
   },
   "home": {
     "main": {
-      "title": "Trouvez la bonne affaire parmi toutes nos petites annonces sur Men in car."
+      "title": "Trouvez la bonne affaire parmi toutes nos petites annonces sur Car."
     },
     "search": {
       "title": "Rechercher",
@@ -412,16 +412,16 @@
   },
   "product-detail": {
     "meta": {
-      "og:site_name": "Men In Car",
-      "description": "{{value}} - Men In Car"
+      "og:site_name": "Car",
+      "description": "{{value}} - Car"
     }
   },
   "product-list": {
     "card-title": {
-      "title": "Men In Car title"
+      "title": "Car title"
     },
     "card-subtitle": {
-      "title": "Men In Car subtitle"
+      "title": "Car subtitle"
     },
     "card-actions": {
       "title": "Je poste en un clic !",

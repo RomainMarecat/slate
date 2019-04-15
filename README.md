@@ -3,13 +3,13 @@
 ALR Slate
 
 ## Features
-
-- A calendar / meeting project
-- Blog site
+- Online store with secure payment system
+- Features list site
+- A Demo site 
+- Blog site (WIP)
 - Recipe site
-- Car site
-- Hockey sit
-- Clothes site
+- Car site 
+- Hockey site
 
 ### Coming soon
 - Booking site
@@ -20,12 +20,13 @@ ALR Slate
 ### Best integration with tools :
 - Angular cli
 - Webpack
-- Progressive web app
+- PWA
+- SSR (WIP on firebase ssr function)
 - Sass
 - Firebase
 
 ### Easy to plug to enterprise
-- Simple configuration from firebase 
+- Simple configuration from firebase with secure rules
 - All connection to firebase
 - Travis CI Integration
 - Fast deployment with firebase 
@@ -43,8 +44,8 @@ ALR Slate
 - All library was included typings to compile native code
 
 ## Prerequistes:
-`node -v` :  v8.9.1
-`npm -v` : 6.1.0
+`node -v` : >= v8.9.1
+`npm -v` : >= 6.1.0
 
 ### Right on npm global installation folder
 `sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}`
@@ -73,7 +74,7 @@ Run `ng lint -fix`
 
 ## Deploy 
 
-`ng build --aot --prod --app=showcase`
+`deploy/deploy.sh` 
 
 ## Firebase 
 Adding a new environment
