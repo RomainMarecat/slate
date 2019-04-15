@@ -13,7 +13,7 @@ import {
 import { FormGroup, NgForm } from '@angular/forms';
 import { PaymentService } from '../../payment/shared/payment.service';
 import { Payment } from '../../payment/shared/payment';
-import { Order } from '../../order/shared/order';
+import { Order, OrderItem } from '../../order/shared/order';
 import { Cart } from '../shared/cart';
 import { UserService } from '../../user/shared/user.service';
 import { AlertService } from '../../popup/alert.service';
@@ -29,6 +29,8 @@ import { DeliveryService } from '../shared/delivery.service';
 import { DocumentReference } from '@angular/fire/firestore';
 import { User } from '@firebase/auth-types';
 import { Subscription } from 'rxjs';
+import { ProductService } from '../../product/shared/product.service';
+import { Product } from '../../product/shared/product';
 
 @Component({
   selector: 'app-cart-payment',
@@ -91,6 +93,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
               private routingState: RoutingState,
               private cd: ChangeDetectorRef,
               private stripeService: StripeService,
+              private productService: ProductService,
               private loaderService: LoaderService,
               private deliveryService: DeliveryService) {
   }
@@ -238,6 +241,9 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
                                     (err: HttpErrorResponse) => {
                                       this.handleHttpErrorResponse(err);
                                     });
+
+                                this.updateOrderedProducts(order);
+
                                 this.loaderService.hide();
                               }, (err: HttpErrorResponse) => {
                                 this.handleHttpErrorResponse(err);
@@ -273,6 +279,15 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
       this.loaderService.hide();
     }
   }
+
+  updateOrderedProducts(order: Order) {
+    order.items.forEach((orderItem: OrderItem) => {
+      this.productService.updateProductByKey(orderItem.code, {ordered: orderItem.quantity} as Product)
+        .subscribe(() => {
+        });
+    });
+  }
+
 
   togglePayButton() {
     this.disablePayButton = !this.disablePayButton;

@@ -29,6 +29,8 @@ import { MockLoaderService } from '../../loader/mock-loader.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { DeliveryService } from '../shared/delivery.service';
 import { MockDeliveryService } from '../shared/mock-delivery.service';
+import { ProductService } from '../../product/shared/product.service';
+import { MockProductService } from '../../product/shared/mock-product.service';
 
 describe('CartPaymentComponent', () => {
   let component: CartPaymentComponent;
@@ -72,6 +74,7 @@ describe('CartPaymentComponent', () => {
         {provide: PaymentService, useClass: MockPaymentService},
         {provide: UserService, useClass: MockUserService},
         {provide: StripeService, useClass: StripeService},
+        {provide: ProductService, useClass: MockProductService},
       ]
     })
       .compileComponents();

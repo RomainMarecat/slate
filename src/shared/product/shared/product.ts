@@ -50,6 +50,14 @@ export class Product implements ClothingProduct, HockeyProduct {
   specifications?: string[];
   attributes?: Attribute[];
 
+  // Incrementation of number user ordered
+  ordered?: number;
+
+  ordered_by_month?: {
+    // key represents Date Y-m-d with number of user ordered this product
+    [key: string]: number;
+  };
+
   constructor() {
     this.score = 0;
     this.published = false;
