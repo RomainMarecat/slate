@@ -4,6 +4,7 @@ import { from, Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { VisitorService } from '../../firestore/visitor.service';
 import { timeout } from 'rxjs/operators';
+import * as moment from 'moment';
 
 @Injectable()
 export class ProductService extends VisitorService {
@@ -20,6 +21,33 @@ export class ProductService extends VisitorService {
     super(afs, table);
   }
 
+  updateProductByKey(key: string, body: Product): Observable<Product> {
+    return new Observable<Product>(observer => {
+      this.getProduct(key).subscribe((product) => {
+        if (body.ordered) {
+          if (product.ordered) {
+            product.ordered += body.ordered;
+          } else {
+            product.ordered = body.ordered;
+          }
+          if (product.ordered_by_month && product.ordered_by_month[moment().format('YYYY-MM-DD')]) {
+            product.ordered_by_month[moment().format('YYYY-MM-DD')] += body.ordered;
+          } else {
+            product.ordered_by_month = {};
+            product.ordered_by_month[moment().format('YYYY-MM-DD')] = body.ordered;
+          }
+        }
+
+        product = {...product, ...body};
+
+        this.updateProduct(product).subscribe(() => {
+          observer.next(product);
+        }, (err) => {
+          observer.error(err);
+        });
+      }, (err) => observer.error(err));
+    });
+  }
 
   getProducts(): Observable<Product[]> {
     return super.getDocuments() as Observable<Product[]>;

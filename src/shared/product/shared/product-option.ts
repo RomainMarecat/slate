@@ -9,6 +9,7 @@ export interface SpecificProductOption {
   };
   layout: string;
   limit?: number;
+  order_by?: {column: string, direction: string};
   display_title: boolean;
   title: string;
   products: Product[];
@@ -22,6 +23,7 @@ export interface ProductOption {
   product_best?: SpecificProductOption;
   product_most_viewed?: SpecificProductOption;
   product_most_commented?: SpecificProductOption;
+  product_most_ordered?: SpecificProductOption;
   cart: Cart;
   user: User;
 }

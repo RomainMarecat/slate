@@ -4,6 +4,12 @@
   </div>
 
   <div fxLayout="row">
+    <app-home-product-list [products]="productOptions.product_most_ordered.products"
+                           [specificOptions]="productOptions.product_most_ordered"
+                           [options]="productOptions"></app-home-product-list>
+  </div>
+
+  <div fxLayout="row">
     <app-home-product-list [products]="productOptions.product_recent_month.products"
                            [specificOptions]="productOptions.product_recent_month"
                            [options]="productOptions"></app-home-product-list>

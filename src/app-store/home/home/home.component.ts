@@ -50,6 +50,17 @@ export class HomeComponent implements OnInit {
   productOptions: ProductOption = {
     authenticated: false,
     cart: null,
+    product_most_ordered: {
+      favorite: {
+        display_icon: true,
+      },
+      layout: 'card',
+      limit: 6,
+      display_title: true,
+      products: [],
+      order_by: {column: 'ordered', direction: 'desc'},
+      title: 'product-most-ordered.header.title'
+    },
     product_new: {
       favorite: {
         display_icon: true,
@@ -122,6 +133,9 @@ export class HomeComponent implements OnInit {
         this.getBestProducts().subscribe(() => {
           this.getProductsMostViewed().subscribe(() => {
             this.getProductsMostCommented().subscribe(() => {
+              this.getProductsMostOrdered().subscribe(() => {
+
+              });
             });
           });
         });
@@ -129,6 +143,37 @@ export class HomeComponent implements OnInit {
     }, () => {
     });
     this.getCart();
+  }
+
+  getProductsMostOrdered(): Observable<void> {
+    this.productService.filters$.next([
+      {
+        column: 'published',
+        operator: '==',
+        value: true
+      },
+      {
+        column: 'ordered',
+        operator: '>',
+        value: 0
+      },
+    ]);
+    this.productService.orderBy$.next(this.productOptions.product_most_ordered.order_by);
+    this.productService.limit$.next(this.productOptions.product_most_ordered.limit);
+    return new Observable((observer) => {
+      const subscription: Subscription = this.productService.getProducts()
+        .subscribe((products: Product[]) => {
+          if (subscription) {
+            subscription.unsubscribe();
+          }
+          this.productOptions.product_most_ordered.products = products;
+          observer.next();
+        }, (err) => {
+          this.alertService.show('error.api.general');
+          this.productOptions.product_most_ordered.products = [];
+          observer.error(err);
+        });
+    });
   }
 
   getProductsMostCommented(): Observable<void> {
