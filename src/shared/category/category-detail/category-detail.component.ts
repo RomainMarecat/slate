@@ -153,9 +153,12 @@ export class CategoryDetailComponent implements OnInit {
   getCategory() {
     this.activatedRoute.params.subscribe((param) => {
       if (param.slug) {
-        this.categoryService.getCategory(param.slug)
+        const subscription: Subscription = this.categoryService.getCategory(param.slug)
           .subscribe((category: Category) => {
             this.category = category;
+            if (subscription) {
+              subscription.unsubscribe();
+            }
           });
         this.getUser(param.slug);
         this.getProducts(param.slug);
@@ -171,10 +174,13 @@ export class CategoryDetailComponent implements OnInit {
         value: category
       }
     ]);
-
-    this.productService.getProducts()
+    this.productService.limit$.next(20);
+    const subscription: Subscription = this.productService.getProducts()
       .subscribe((products) => {
         this.specificOptions.products = products;
+        if (subscription) {
+          subscription.unsubscribe();
+        }
       }, () => {
         this.specificOptions.products = [];
       });

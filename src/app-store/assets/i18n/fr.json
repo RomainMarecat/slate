@@ -91,10 +91,12 @@
         "add_to_favorite": "ajouter aux favoris",
         "add_a_comment": "ajouter un commentaire",
         "back_to_home": "retour vers l'accueil",
+        "back_to_delivery_choice": "Revenir aux choix de vos adresses",
         "btn_slider": "Accéder à l'offre",
         "duplicate_same_delivery_as_billing": "c'est aussi l'adresse de facturation",
         "logout": "se déconnecter",
         "orders": "mes commandes",
+        "profile": "mon profil",
         "show-product": "voir le produit",
         "validate": "valider",
         "cancel": "annuler",
@@ -302,6 +304,11 @@
     "product-recent-month": {
         "header": {
             "title": "les produits récemment ajoutés"
+        }
+    },
+    "product-most-ordered-this-month": {
+        "header": {
+            "title": "les produits les plus commandés ce mois-ci"
         }
     },
     "routes": {

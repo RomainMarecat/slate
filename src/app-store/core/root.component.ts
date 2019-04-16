@@ -23,8 +23,9 @@ export class AppRootComponent implements OnInit {
     urlAdmin: ['admin'],
     displayBurgerMenu: false,
     displayButtonConnection: true,
-    displayIconButtonConnection: true,
+    displayIconButtonConnection: false,
     displaySearchIcon: false,
+    connectionBtn: true,
     customIconConnection: false,
     underlineTitle: false,
     displayCart: true
