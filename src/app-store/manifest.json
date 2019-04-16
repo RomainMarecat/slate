@@ -2,7 +2,7 @@
     "name": "Store",
     "background_color": "#fffbbd",
     "theme_color": "#7fb069",
-    "display": "browser",
+    "display": "fullscreen",
     "Scope": "/",
     "start_url": "/",
     "short_name": "store",

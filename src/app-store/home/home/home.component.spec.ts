@@ -133,7 +133,7 @@ describe('HomeComponent', () => {
     tick();
 
     expect(component.productOptions.product_new.products).toEqual(mockHomeProductNewer);
-    expect(productService.getProducts).toHaveBeenCalledTimes(5);
+    expect(productService.getProducts).toHaveBeenCalledTimes(6);
   }));
 
   it('should subscribe and throw error', fakeAsync(() => {

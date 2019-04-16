@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Slider } from '../header/header/shared/slider';
 import { Product } from '../../../shared/product/shared/product';
 import { ProductService } from '../../../shared/product/shared/product.service';
@@ -8,8 +8,8 @@ import { CartService } from '../../../shared/cart/shared/cart.service';
 import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { Observable, Subscription } from 'rxjs';
 import * as moment from 'moment';
-import { ProductOption } from '../../../shared/product/shared/product-option';
 import { Moment } from 'moment';
+import { ProductOption } from '../../../shared/product/shared/product-option';
 
 @Component({
   selector: 'app-home',
@@ -189,6 +189,7 @@ export class HomeComponent implements OnInit {
         value: this.productOptions.product_most_commented.threshold as number
       }
     ]);
+    this.productService.orderBy$.next({column: 'commented', direction: 'desc'});
     this.productService.limit$.next(this.productOptions.product_most_commented.limit);
     return new Observable((observer) => {
       const subscription: Subscription = this.productService.getProducts()
@@ -219,6 +220,7 @@ export class HomeComponent implements OnInit {
         value: this.productOptions.product_most_viewed.threshold as number
       }
     ]);
+    this.productService.orderBy$.next({column: 'viewed', direction: 'desc'});
     this.productService.limit$.next(this.productOptions.product_most_viewed.limit);
     return new Observable((observer) => {
       const subscription: Subscription = this.productService.getProducts()
@@ -279,6 +281,7 @@ export class HomeComponent implements OnInit {
         value: (this.productOptions.product_recent_month.threshold as Moment).toDate()
       }
     ]);
+    this.productService.orderBy$.next({column: 'published_at', direction: 'desc'});
     this.productService.limit$.next(this.productOptions.product_recent_month.limit);
     return new Observable((observer) => {
       const subscription: Subscription = this.productService.getProducts()
@@ -309,6 +312,7 @@ export class HomeComponent implements OnInit {
         value: this.productOptions.product_best.threshold as number
       }
     ]);
+    this.productService.orderBy$.next({column: 'score', direction: 'desc'});
     this.productService.limit$.next(this.productOptions.product_best.limit);
     return new Observable((observer) => {
       const subscription: Subscription = this.productService.getProducts()
