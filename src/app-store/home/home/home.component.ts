@@ -7,9 +7,9 @@ import { UserService } from '../../../shared/user/shared/user.service';
 import { CartService } from '../../../shared/cart/shared/cart.service';
 import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { Observable, Subscription } from 'rxjs';
+import { ProductOption } from '../../../shared/product/shared/product-option';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import { ProductOption } from '../../../shared/product/shared/product-option';
 
 @Component({
   selector: 'app-home',
@@ -60,6 +60,17 @@ export class HomeComponent implements OnInit {
       products: [],
       order_by: {column: 'ordered', direction: 'desc'},
       title: 'product-most-ordered.header.title'
+    },
+    product_most_ordered_this_month: {
+      favorite: {
+        display_icon: true,
+      },
+      layout: 'list',
+      limit: 6,
+      display_title: true,
+      products: [],
+      order_by: {column: `ordered_by_month.${moment().format('YYYY-MM-DD')}`, direction: 'desc'},
+      title: 'product-most-ordered-this-month.header.title'
     },
     product_new: {
       favorite: {
@@ -128,21 +139,55 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isAuhenticated();
-    this.getNewProducts().subscribe(() => {
-      this.getRecentPublishedProducts().subscribe(() => {
-        this.getBestProducts().subscribe(() => {
-          this.getProductsMostViewed().subscribe(() => {
-            this.getProductsMostCommented().subscribe(() => {
-              this.getProductsMostOrdered().subscribe(() => {
+    this.getProductsMostOrderedThisMonth().subscribe(() => {
+      this.getNewProducts().subscribe(() => {
+        this.getRecentPublishedProducts().subscribe(() => {
+          this.getBestProducts().subscribe(() => {
+            this.getProductsMostViewed().subscribe(() => {
+              this.getProductsMostCommented().subscribe(() => {
+                this.getProductsMostOrdered().subscribe(() => {
 
+                });
               });
             });
           });
         });
       });
-    }, () => {
     });
+
     this.getCart();
+  }
+
+  getProductsMostOrderedThisMonth(): Observable<void> {
+    const now: string = moment().format('YYYY-MM-DD');
+    this.productService.filters$.next([
+      {
+        column: 'published',
+        operator: '==',
+        value: true
+      },
+      {
+        column: `ordered_by_month.${now}`,
+        operator: '>',
+        value: 0
+      },
+    ]);
+    this.productService.orderBy$.next(this.productOptions.product_most_ordered_this_month.order_by);
+    this.productService.limit$.next(this.productOptions.product_most_ordered_this_month.limit);
+    return new Observable((observer) => {
+      const subscription: Subscription = this.productService.getProducts()
+        .subscribe((products: Product[]) => {
+          if (subscription) {
+            subscription.unsubscribe();
+          }
+          this.productOptions.product_most_ordered_this_month.products = products;
+          observer.next();
+        }, (err) => {
+          this.alertService.show('error.api.general');
+          this.productOptions.product_most_ordered_this_month.products = [];
+          observer.error(err);
+        });
+    });
   }
 
   getProductsMostOrdered(): Observable<void> {
@@ -251,6 +296,7 @@ export class HomeComponent implements OnInit {
         value: true
       }
     ]);
+    this.productService.orderBy$.next({column: 'published_at', direction: 'desc'});
     this.productService.limit$.next(this.productOptions.product_new.limit);
     return new Observable((observer) => {
       const subscription: Subscription = this.productService.getProducts()

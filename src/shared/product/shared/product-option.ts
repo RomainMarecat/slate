@@ -24,6 +24,7 @@ export interface ProductOption {
   product_most_viewed?: SpecificProductOption;
   product_most_commented?: SpecificProductOption;
   product_most_ordered?: SpecificProductOption;
+  product_most_ordered_this_month?: SpecificProductOption;
   cart: Cart;
   user: User;
 }

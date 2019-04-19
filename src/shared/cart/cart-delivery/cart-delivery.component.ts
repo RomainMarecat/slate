@@ -143,7 +143,6 @@ export class CartDeliveryComponent implements OnInit {
       this._user = user;
       this.getPreviousDeliveries(user);
     }
-
   }
 
   getPreviousDeliveries(user: User) {
@@ -215,6 +214,21 @@ export class CartDeliveryComponent implements OnInit {
     this.deliveryConfig.display_address_resume = false;
     this.deliveryConfig.display_billing_resume = false;
     this.deliveryConfig.display_billing_form = true;
+  }
+
+  showDeliveryChoice() {
+    this.form.get('address').reset();
+    this.isDeliveryAddressFormActive = false;
+    this.deliveryConfig.display_add_address_button = true;
+    this.deliveryConfig.display_address_resume = false;
+  }
+
+  showBillingChoice() {
+    this.form.get('billing').reset();
+    this.isBillingAddressFormActive = false;
+    this.deliveryConfig.display_billing_resume = false;
+    this.deliveryConfig.display_add_billing_button = true;
+    this.deliveryConfig.display_billing_form = false;
   }
 
   activeDeliveryAddress() {

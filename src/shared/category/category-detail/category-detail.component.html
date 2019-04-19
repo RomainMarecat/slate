@@ -11,7 +11,10 @@
     </h1>
   </div>
 
-  <div class="image-wrapper" *ngIf="option.display_image">
+  <div class="image-wrapper"
+       fxLayout="row"
+       fxLayoutAlign="center stretch"
+       *ngIf="option.display_image">
     <img [src]="category.image"
          *ngIf="category.image">
   </div>

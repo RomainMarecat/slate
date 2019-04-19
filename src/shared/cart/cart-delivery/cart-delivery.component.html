@@ -7,10 +7,12 @@
     <div fxLayout="row"
          fxLayoutAlign="space-around stretch"
          fxLayoutGap="30px"
-         fxLayout.xs="column"
-         fxLayoutAlign.xs="center center">
+         fxLayoutGap.xs="0px"
+         fxLayout.xs="row wrap"
+         fxLayoutAlign.xs="center stretch">
       <div formGroupName="address"
            fxFlex="45"
+           fxFlex.xs="100"
            fxLayout="column">
         <div>
           <h2 class="text-ucfirst delivery-title">
@@ -47,8 +49,23 @@
 
         <div class="form-delivery-wrapper"
              fxLayout="column"
+             fxLayout.xs="row wrap"
+             fxFlex.xs="100"
              *ngIf="isDeliveryAddressFormActive; else activableDeliveryFormTmpl">
-          <mat-form-field appearance="standard">
+          <button [title]="'cta.back_to_delivery_choice'|translate"
+                  type="button"
+                  role="button"
+                  (click)="showDeliveryChoice()"
+                  mat-flat-button
+                  color="primary"
+                  fxLayout="row"
+                  fxLayoutAlign="start center">
+            <mat-icon style="line-height: 24px;" fontSet="fa" fontIcon="fa-undo"></mat-icon>
+            <span>{{ 'cta.back_to_delivery_choice'|translate }}</span>
+          </button>
+
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
             <input matInput
                    formControlName="email"
                    autocomplete="email"
@@ -56,16 +73,19 @@
           </mat-form-field>
 
           <div fxLayout="row"
-               fxLayoutGap="10px">
+               fxLayoutGap="10px"
+               fxFlex.xs="100">
             <mat-form-field appearance="standard"
-                            fxFlex="50">
+                            fxFlex="50"
+                            fxFlex.xs="45">
               <input matInput
                      formControlName="lastname"
                      autocomplete="lastname"
                      [placeholder]="'delivery.address.lastname'|translate">
             </mat-form-field>
             <mat-form-field appearance="standard"
-                            fxFlex="50">
+                            fxFlex="50"
+                            fxFlex.xs="45">
               <input matInput
                      formControlName="firstname"
                      autocomplete="firstname"
@@ -73,14 +93,16 @@
             </mat-form-field>
           </div>
 
-          <mat-form-field appearance="standard">
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
             <input matInput
                    formControlName="address"
                    autocomplete="address"
                    [placeholder]="'delivery.address.address'|translate">
           </mat-form-field>
 
-          <mat-form-field appearance="standard">
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
             <input matInput
                    formControlName="address_complement"
                    autocomplete="address_complement"
@@ -88,6 +110,7 @@
           </mat-form-field>
 
           <div fxLayout="row"
+               fxFlex.xs="100"
                fxLayoutGap="10px">
             <mat-form-field appearance="standard"
                             fxFlex="30">
@@ -98,7 +121,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="standard"
-                            fxFlex="40">
+                            fxFlex="30">
               <input matInput
                      formControlName="city"
                      autocomplete="city"
@@ -133,6 +156,7 @@
 
       <div formGroupName="billing"
            fxFlex="45"
+           fxFlex.xs="100"
            fxLayout="column">
         <div>
           <h2 class="text-ucfirst delivery-title">
@@ -178,24 +202,41 @@
 
         <div class="form-delivery-wrapper"
              fxLayout="column"
+             fxLayout.xs="row wrap"
              *ngIf="isBillingActivable(); else activableBillingFormTmpl">
-          <mat-form-field appearance="standard">
+          <button [title]="'cta.back_to_delivery_choice'|translate"
+                  type="button"
+                  role="button"
+                  (click)="showBillingChoice()"
+                  mat-flat-button
+                  color="primary"
+                  fxLayout="row"
+                  fxLayoutAlign="start center">
+            <mat-icon style="line-height: 24px;" fontSet="fa" fontIcon="fa-undo"></mat-icon>
+            <span>{{ 'cta.back_to_delivery_choice'|translate }}</span>
+          </button>
+
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
             <input matInput
                    formControlName="email"
                    autocomplete="email"
                    [placeholder]="'delivery.address.email'|translate">
           </mat-form-field>
           <div fxLayout="row"
-               fxLayoutGap="10px">
+               fxLayoutGap="10px"
+               fxFlex.xs="100">
             <mat-form-field appearance="standard"
-                            fxFlex="50">
+                            fxFlex="50"
+                            fxFlex.xs="45">
               <input matInput
                      formControlName="lastname"
                      autocomplete="lastname"
                      [placeholder]="'delivery.billing.lastname'|translate">
             </mat-form-field>
             <mat-form-field appearance="standard"
-                            fxFlex="50">
+                            fxFlex="50"
+                            fxFlex.xs="45">
               <input matInput
                      formControlName="firstname"
                      autocomplete="firstname"
@@ -203,14 +244,16 @@
             </mat-form-field>
           </div>
 
-          <mat-form-field appearance="standard">
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
             <input matInput
                    formControlName="address"
                    autocomplete="address"
                    [placeholder]="'delivery.billing.address'|translate">
           </mat-form-field>
 
-          <mat-form-field appearance="standard">
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
             <input matInput
                    formControlName="address_complement"
                    autocomplete="address_complement"
@@ -218,7 +261,8 @@
           </mat-form-field>
 
           <div fxLayout="row"
-               fxLayoutGap="10px">
+               fxLayoutGap="10px"
+               fxFlex.xs="100">
             <mat-form-field appearance="standard"
                             fxFlex="30">
               <input matInput
@@ -228,7 +272,8 @@
             </mat-form-field>
 
             <mat-form-field appearance="standard"
-                            fxFlex="40">
+                            fxFlex="40"
+                            fxFlex.xs="30">
               <input matInput
                      formControlName="city"
                      autocomplete="city"

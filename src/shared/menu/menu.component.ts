@@ -10,6 +10,8 @@ import { Filter } from '../facet/filter/shared/filter';
 import { LocalizeRouterService } from 'localize-router';
 import { User } from '../user/shared/user';
 import { adminsID } from '../guard/admin';
+import { timeout } from 'rxjs/operators';
+import { MenuConfiguration } from './shared/menu-configuration';
 
 @Component({
   selector: 'app-menu',
@@ -18,23 +20,7 @@ import { adminsID } from '../guard/admin';
 })
 export class MenuComponent implements OnInit, OnDestroy {
 
-  _config: {
-    displayLogo: boolean,
-    displayAdminRecipe: boolean,
-    urlAdmin: string[],
-    displayBurgerMenu: boolean,
-    displayButtonConnection: boolean,
-    displayIconButtonConnection: boolean,
-    customIconConnection: boolean,
-    displaySearchIcon: boolean,
-    underlineTitle: boolean,
-    displayCart: boolean,
-    show_page_title: boolean,
-    connectionBtn?: {
-      color: string;
-      background: string;
-    }
-  } = {
+  _config: MenuConfiguration = {
     displayLogo: false,
     displayAdminRecipe: false,
     show_page_title: true,
@@ -45,7 +31,10 @@ export class MenuComponent implements OnInit, OnDestroy {
     displaySearchIcon: true,
     customIconConnection: true,
     underlineTitle: false,
-    displayCart: true
+    displayCart: true,
+    connectionBtn: {
+      mat_color: 'primary'
+    }
   };
 
   @Input() _documents: any[];
@@ -64,12 +53,15 @@ export class MenuComponent implements OnInit, OnDestroy {
   currentRoute: string[];
   isAdmin: boolean;
 
+  isLogged: boolean;
+  isLoading: boolean;
+
   constructor(public router: Router,
               private localizeRouterService: LocalizeRouterService,
               private activatedRoute: ActivatedRoute,
               private menuService: MenuService,
               private sidenavService: SidenavService,
-              public userService: UserService,
+              private userService: UserService,
               public matDialog: MatDialog) {
     this.title = null;
   }
@@ -96,16 +88,40 @@ export class MenuComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.userService.getAuthState().subscribe((user: User) => {
-      if (user && user.uid) {
-        this.isAdmin = adminsID.includes(user.uid);
-      }
-    });
+    this.getAuthentication();
+  }
+
+  getAuthentication() {
+    this.isLoading = true;
+    const userSubscription: Subscription = this.userService.getAuthState()
+      .pipe(timeout(20000))
+      .subscribe((user: User) => {
+        if (userSubscription) {
+          userSubscription.unsubscribe();
+        }
+        if (user && user.uid) {
+          this.isLogged = true;
+          this.isLoading = false;
+          this.isAdmin = adminsID.includes(user.uid);
+          return;
+        }
+
+        this.isLogged = false;
+        this.isLoading = false;
+      }, () => {
+        this.isLogged = false;
+        this.isLoading = false;
+      });
   }
 
   logout() {
     this.userService.logout().subscribe(() => {
+      this.getAuthentication();
     });
+  }
+
+  loginGoogle() {
+    this.userService.loginGoogle();
   }
 
   search() {
@@ -150,13 +166,13 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.sidenavService.open();
   }
 
-  @Input() set config(config) {
+  @Input() set config(config: MenuConfiguration) {
     if (config) {
       this._config = {...this._config, ...config};
     }
   }
 
-  get config() {
+  get config(): MenuConfiguration {
     return this._config;
   }
 }

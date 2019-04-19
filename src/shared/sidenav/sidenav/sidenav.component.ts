@@ -9,6 +9,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { I18nService } from '../../../shared/i18n/i18n.service';
 import { User } from '../../user/shared/user';
 import { adminsID } from '../../guard/admin';
+import { MenuConfiguration } from '../../menu/shared/menu-configuration';
 
 @Component({
   selector: 'app-sidenav',
@@ -41,8 +42,20 @@ export class SidenavComponent implements OnInit, OnDestroy {
     {link: '/material', label: 'admin.cta.material'},
   ];
 
-  configMenu = {
+  configMenu: MenuConfiguration = {
+    displayLogo: false,
+    displayAdminRecipe: false,
+    show_page_title: true,
+    urlAdmin: [],
+    displayBurgerMenu: true,
+    displayButtonConnection: true,
+    displayIconButtonConnection: false,
+    displaySearchIcon: true,
+    customIconConnection: true,
+    underlineTitle: false,
+    displayCart: true,
     connectionBtn: {
+      mat_color: 'primary',
       color: '#fff',
       background: '#90323d'
     }

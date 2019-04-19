@@ -39,6 +39,21 @@ module.exports = function (config) {
         included: false,
       },
       {
+        pattern: './app-store/assets/fonts/roboto-regular-webfont.woff',
+        watched: false,
+        included: false,
+      },
+      {
+        pattern: './app-store/assets/fonts/roboto-regular-webfont.woff2',
+        watched: false,
+        included: false,
+      },
+      {
+        pattern: './app-store/assets/fonts/roboto-regular-webfont.ttf',
+        watched: false,
+        included: false,
+      },
+      {
         pattern: '../node_modules/@swimlane/ngx-datatable/release/assets/fonts/data-table.woff',
         watched: false,
         included: false,

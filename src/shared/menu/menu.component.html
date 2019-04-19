@@ -16,10 +16,10 @@
     <mat-icon svgIcon="logo"></mat-icon>
   </a>
   <div id="main-logo"
-      class="logo"
-      angulartics2On="mouseover"
-      angularticsAction="hoveredOverHomeLink"
-      [angularticsCategory]="'home.title'">
+       class="logo"
+       angulartics2On="mouseover"
+       angularticsAction="hoveredOverHomeLink"
+       [angularticsCategory]="'home.title'">
     <a class="link-logo"
        [routerLink]="['/']">
       <span class="cls-1"
@@ -65,11 +65,13 @@
     </div>
   </a>
 
-  <ng-container
-    *ngIf="config.displayIconButtonConnection && !(userService.getAuthState() | async) then disconnected else logged">
+  <ng-container *ngIf="!isLoading && config.displayIconButtonConnection">
+    <ng-container
+      *ngIf="isLogged then loggedIconConnection else diconnectedIconConnection">
+    </ng-container>
   </ng-container>
 
-  <ng-template #logged>
+  <ng-template #loggedIconConnection>
     <span class="icon-wrapper">
       <button type="button"
               [matMenuTriggerFor]="account"
@@ -87,9 +89,9 @@
     <button mat-menu-item (click)="logout()">{{ 'cta.logout'|translate }}</button>
   </mat-menu>
 
-  <ng-template #disconnected>
+  <ng-template #diconnectedIconConnection>
     <span class="icon-wrapper">
-      <a (click)="userService.loginGoogle()"
+      <a (click)="loginGoogle()"
          mat-icon-button>
         <ng-container *ngIf="config.customIconConnection then customIconConnection; else defaultIconConnection">
         </ng-container>
@@ -111,17 +113,37 @@
     <mat-icon>verified_user</mat-icon>
   </ng-template>
 
-  <span class="login-wrapper"
-        *ngIf="!(userService.getAuthState() | async) && config.displayButtonConnection && config.connectionBtn">
-    <button mat-raised-button
-            color="accent"
-            [style.background]="config.connectionBtn.background"
-            [style.color]="config.connectionBtn.color"
-            type="button"
-            (click)="userService.loginGoogle()"
-            [innerHTML]="'menu.connection.title'|translate">
-    </button>
-  </span>
+  <ng-container *ngIf="!isLoading">
+    <ng-container
+      *ngIf="isLogged && config.displayButtonConnection then loggedButtonConnection else diconnectedButtonConnection">
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loggedButtonConnection>
+    <span class="login-wrapper">
+      <button type="button"
+              [color]="config.connectionBtn.mat_color"
+              [matMenuTriggerFor]="account"
+              mat-flat-button
+              role="button">
+        {{ 'cta.profile'|translate }}
+      </button>
+    </span>
+  </ng-template>
+
+  <ng-template #diconnectedButtonConnection>
+    <span class="login-wrapper">
+      <button mat-flat-button
+              [color]="config.connectionBtn.mat_color"
+              [style.background]="config.connectionBtn.background"
+              [style.color]="config.connectionBtn.color"
+              type="button"
+              (click)="loginGoogle()"
+              [innerHTML]="'menu.connection.title'|translate"
+              *ngIf="config.connectionBtn">
+      </button>
+    </span>
+  </ng-template>
 
   <span class="icon-wrapper"
         *ngIf="config.displayCart">
