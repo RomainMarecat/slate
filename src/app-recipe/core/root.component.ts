@@ -11,6 +11,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Recipe } from '../recipe/shared/recipe';
 import { RecipeService } from '../recipe/shared/recipe.service';
 import { Filter } from '../../shared/facet/filter/shared/filter';
+import { MenuConfiguration } from '../../shared/menu/shared/menu-configuration';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,14 @@ import { Filter } from '../../shared/facet/filter/shared/filter';
   styleUrls: ['./root.component.scss']
 })
 export class AppRootComponent implements OnInit, OnDestroy {
-  menuConfig = {
+  menuConfig: MenuConfiguration = {
+    displayLogo: false,
+    show_page_title: true,
+    displaySearchIcon: true,
+    customIconConnection: true,
+    connectionBtn: {
+      mat_color: 'primary'
+    },
     displayAdminRecipe: true,
     urlAdmin: ['admin', 'recipe'],
     displayBurgerMenu: false,

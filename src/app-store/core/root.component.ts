@@ -8,6 +8,7 @@ import { filter } from 'rxjs/operators';
 import { UserService } from '../../shared/user/shared/user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
+import { MenuConfiguration } from '../../shared/menu/shared/menu-configuration';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ import { I18nService } from '../../shared/i18n/i18n.service';
 })
 export class AppRootComponent implements OnInit {
 
-  menuConfig = {
+  menuConfig: MenuConfiguration = {
     displayLogo: true,
     show_page_title: false,
     displayAdminRecipe: false,
@@ -25,7 +26,9 @@ export class AppRootComponent implements OnInit {
     displayButtonConnection: true,
     displayIconButtonConnection: false,
     displaySearchIcon: false,
-    connectionBtn: true,
+    connectionBtn: {
+      mat_color: 'primary'
+    },
     customIconConnection: false,
     underlineTitle: false,
     displayCart: true

@@ -34,7 +34,7 @@ import { MatDialogModule } from '@angular/material';
 import { mockHomeProductNewer } from '../../../shared/product/shared/mock-product';
 import { of, throwError } from 'rxjs';
 
-describe('HomeComponent', () => {
+fdescribe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let productService: ProductService;
@@ -106,22 +106,26 @@ describe('HomeComponent', () => {
   });
 
   it('should subscribe and result on getProducts', fakeAsync(() => {
+    spyOn(component, 'getProductsMostOrderedThisMonth').and.returnValue(of(null));
     spyOn(component, 'getNewProducts').and.returnValue(of(null));
     spyOn(component, 'getRecentPublishedProducts').and.returnValue(of(null));
     spyOn(component, 'getBestProducts').and.returnValue(of(null));
     spyOn(component, 'getProductsMostViewed').and.returnValue(of(null));
     spyOn(component, 'getProductsMostCommented').and.returnValue(of(null));
+    spyOn(component, 'getProductsMostOrdered').and.returnValue(of(null));
 
     component.ngOnInit();
 
     fixture.detectChanges();
     tick();
 
+    expect(component.getProductsMostOrderedThisMonth).toHaveBeenCalledTimes(1);
     expect(component.getNewProducts).toHaveBeenCalledTimes(1);
     expect(component.getRecentPublishedProducts).toHaveBeenCalledTimes(1);
     expect(component.getBestProducts).toHaveBeenCalledTimes(1);
     expect(component.getProductsMostViewed).toHaveBeenCalledTimes(1);
     expect(component.getProductsMostCommented).toHaveBeenCalledTimes(1);
+    expect(component.getProductsMostOrdered).toHaveBeenCalledTimes(1);
   }));
 
   it('should subscribe on getProducts', fakeAsync(() => {
@@ -133,18 +137,7 @@ describe('HomeComponent', () => {
     tick();
 
     expect(component.productOptions.product_new.products).toEqual(mockHomeProductNewer);
-    expect(productService.getProducts).toHaveBeenCalledTimes(6);
-  }));
-
-  it('should subscribe and throw error', fakeAsync(() => {
-    spyOn(productService, 'getProducts').and.returnValue(throwError({error: 'error'}));
-    component.ngOnInit();
-
-    tick();
-    fixture.detectChanges();
-
-    expect(productService.getProducts).toHaveBeenCalledTimes(1);
-    expect(component.productOptions.product_new.products).toEqual([]);
+    expect(productService.getProducts).toHaveBeenCalledTimes(7);
   }));
 
   it('should subscribe and throw error on getBestProducts', fakeAsync(() => {

@@ -175,6 +175,7 @@ export class CategoryDetailComponent implements OnInit {
       }
     ]);
     this.productService.limit$.next(20);
+    this.productService.orderBy$.next({column: 'published_at', direction: 'desc'});
     const subscription: Subscription = this.productService.getProducts()
       .subscribe((products) => {
         this.specificOptions.products = products;

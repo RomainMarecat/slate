@@ -11,6 +11,7 @@ import { LocalizeRouterService } from 'localize-router';
 import { User } from '../user/shared/user';
 import { adminsID } from '../guard/admin';
 import { timeout } from 'rxjs/operators';
+import { MenuConfiguration } from './shared/menu-configuration';
 
 @Component({
   selector: 'app-menu',
@@ -19,24 +20,7 @@ import { timeout } from 'rxjs/operators';
 })
 export class MenuComponent implements OnInit, OnDestroy {
 
-  _config: {
-    displayLogo: boolean,
-    displayAdminRecipe: boolean,
-    urlAdmin: string[],
-    displayBurgerMenu: boolean,
-    displayButtonConnection: boolean,
-    displayIconButtonConnection: boolean,
-    customIconConnection: boolean,
-    displaySearchIcon: boolean,
-    underlineTitle: boolean,
-    displayCart: boolean,
-    show_page_title: boolean,
-    connectionBtn?: {
-      color?: string;
-      background?: string;
-      mat_color?: string;
-    }
-  } = {
+  _config: MenuConfiguration = {
     displayLogo: false,
     displayAdminRecipe: false,
     show_page_title: true,
@@ -182,13 +166,13 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.sidenavService.open();
   }
 
-  @Input() set config(config) {
+  @Input() set config(config: MenuConfiguration) {
     if (config) {
       this._config = {...this._config, ...config};
     }
   }
 
-  get config() {
+  get config(): MenuConfiguration {
     return this._config;
   }
 }
