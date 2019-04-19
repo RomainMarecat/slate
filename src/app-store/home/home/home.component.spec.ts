@@ -34,7 +34,7 @@ import { MatDialogModule } from '@angular/material';
 import { mockHomeProductNewer } from '../../../shared/product/shared/mock-product';
 import { of, throwError } from 'rxjs';
 
-fdescribe('HomeComponent', () => {
+describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let productService: ProductService;
