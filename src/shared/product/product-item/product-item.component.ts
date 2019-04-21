@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
 import { LocalizeRouterService } from 'localize-router';
 import { MatDialog } from '@angular/material';
 import { CommentDialogComponent } from '../../comment/comment-dialog/comment-dialog.component';
-import { User } from '../../user/shared/user';
 import { ProductOption, SpecificProductOption } from '../shared/product-option';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-product-item',
@@ -89,6 +89,14 @@ export class ProductItemComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getOrderedNumber(): string {
+    const month: string = moment().format('YYYY-MM');
+    if (this.product && this.product.ordered_by_month && this.product.ordered_by_month[month]) {
+      return this.product.ordered_by_month[month].toString(10);
+    }
+    return '0';
   }
 
   toggleComment(product: Product) {

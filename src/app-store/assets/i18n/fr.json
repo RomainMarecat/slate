@@ -145,7 +145,10 @@
         }
     },
     "error": {
-        "no-internet-connection": "Aucune connexion internet"
+        "no-internet-connection": "Aucune connexion internet",
+        "api": {
+            "general": "Une erreur est survenue"
+        }
     },
     "favorite": {
         "user": {
@@ -293,7 +296,7 @@
     },
     "product-most-ordered": {
         "header": {
-            "title": "les produits les commandés"
+            "title": "les produits les plus commandés"
         }
     },
     "product-most-commented": {

@@ -31,6 +31,7 @@ import { User } from '@firebase/auth-types';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../../product/shared/product.service';
 import { Product } from '../../product/shared/product';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart-payment',
@@ -283,6 +284,9 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   updateOrderedProducts(order: Order) {
     order.items.forEach((orderItem: OrderItem) => {
       this.productService.updateProductByKey(orderItem.code, {ordered: orderItem.quantity} as Product)
+        .pipe(
+          take(1)
+        )
         .subscribe(() => {
         });
     });

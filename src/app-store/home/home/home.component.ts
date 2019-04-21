@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
       limit: 6,
       display_title: true,
       products: [],
-      order_by: {column: `ordered_by_month.${moment().format('YYYY-MM-DD')}`, direction: 'desc'},
+      order_by: {column: `ordered_by_month.${moment().format('YYYY-MM')}`, direction: 'desc'},
       title: 'product-most-ordered-this-month.header.title'
     },
     product_new: {
@@ -159,7 +159,7 @@ export class HomeComponent implements OnInit {
   }
 
   getProductsMostOrderedThisMonth(): Observable<void> {
-    const now: string = moment().format('YYYY-MM-DD');
+    const now: string = moment().format('YYYY-MM');
     this.productService.filters$.next([
       {
         column: 'published',

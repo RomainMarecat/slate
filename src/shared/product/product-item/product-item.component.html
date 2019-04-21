@@ -306,12 +306,26 @@
            fxFlex.xs="100"
            fxFlexOffset="25"
            fxFlexOffset.xs="0">
-        <a [routerLink]="['/products/detail', product.key]|localize"
-           [attr.title]="'cta.show-product'|translate"
-           class="btn btn-card product-link"
-           mat-stroked-button>
-          {{ 'cta.show-product'|translate }}
-        </a>
+        <ng-container *ngIf="product?.ordered_by_month; else notOrdered">
+          <a [routerLink]="['/products/detail', product.key]|localize"
+             [attr.title]="'cta.show-product'|translate"
+             class="btn btn-card product-link"
+             mat-stroked-button
+             [matBadge]="getOrderedNumber()"
+             matBadgePosition="above after">
+            {{ 'cta.show-product'|translate }}
+          </a>
+        </ng-container>
+        <ng-template #notOrdered>
+          <ng-container *ngIf="product?.ordered_by_month">
+            <a [routerLink]="['/products/detail', product.key]|localize"
+               [attr.title]="'cta.show-product'|translate"
+               class="btn btn-card product-link"
+               mat-stroked-button>
+              {{ 'cta.show-product'|translate }}
+            </a>
+          </ng-container>
+        </ng-template>
       </div>
     </div>
 
