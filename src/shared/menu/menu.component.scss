@@ -64,6 +64,7 @@
       cursor: pointer;
     }
   }
+
   .icon-wrapper {
     width: 40px;
   }
@@ -88,34 +89,17 @@
   }
 
   .mat-button {
-    @media (max-width: 600px) {
+    @include media-breakpoint-up(xs) {
       min-width: 44px;
     }
-    /* medium*/
-    @media (min-width: 601px) and (max-width: 992px) {
-      min-width: 88px;
-    }
-    /* large */
-    @media (min-width: 993px) {
-      min-width: 88px;
-    }
-  }
-
-  .login-wrapper {
-    @include media-breakpoint-up(xs) {
-      display: none;
-    }
     @include media-breakpoint-up(sm) {
-      display: block;
+      min-width: 66px;
     }
     @include media-breakpoint-up(md) {
-      display: block;
+      min-width: 88px;
     }
     @include media-breakpoint-up(lg) {
-      display: block;
-    }
-    @include media-breakpoint-up(xl) {
-      display: block;
+      min-width: 88px;
     }
   }
 }
