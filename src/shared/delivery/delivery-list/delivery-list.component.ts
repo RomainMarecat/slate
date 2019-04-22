@@ -5,6 +5,7 @@ import { DeliveryService } from '../../cart/shared/delivery.service';
 import { Delivery } from '../../cart/shared/delivery';
 import { UserService } from '../../user/shared/user.service';
 import { User } from '@firebase/auth-types';
+import { FirebaseError } from 'firebase';
 
 @Component({
   selector: 'app-delivery-list',
@@ -46,9 +47,9 @@ export class DeliveryListComponent implements OnInit {
           this.loaderService.hide();
           this.deliveries = res;
           this.isLoading = false;
-        }, () => {
+        }, (err: FirebaseError) => {
+          this.alertService.openBottomSheetMessage({title: 'error.api.general', message: err.message});
           this.loaderService.hide();
-          this.alertService.show('error.api.general');
           this.isLoading = false;
         });
     });

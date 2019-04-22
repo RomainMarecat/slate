@@ -10,6 +10,7 @@ import { Observable, Subscription } from 'rxjs';
 import { ProductOption } from '../../../shared/product/shared/product-option';
 import * as moment from 'moment';
 import { Moment } from 'moment';
+import { FirebaseError } from 'firebase';
 
 @Component({
   selector: 'app-home',
@@ -182,8 +183,12 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_most_ordered_this_month.products = products;
           observer.next();
-        }, (err) => {
-          this.alertService.show('error.api.general');
+          observer.complete();
+        }, (err: FirebaseError) => {
+          this.alertService.openBottomSheetMessage(
+            {title: 'error.api.general', message: err.message},
+            {panelClass: 'alert-danger'}
+          );
           this.productOptions.product_most_ordered_this_month.products = [];
           observer.error(err);
         });
@@ -213,8 +218,11 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_most_ordered.products = products;
           observer.next();
-        }, (err) => {
-          this.alertService.show('error.api.general');
+        }, (err: FirebaseError) => {
+          this.alertService.openBottomSheetMessage(
+            {title: 'error.api.general', message: err.message},
+            {panelClass: 'alert-danger'}
+          );
           this.productOptions.product_most_ordered.products = [];
           observer.error(err);
         });
@@ -244,8 +252,11 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_most_commented.products = products;
           observer.next();
-        }, (err) => {
-          this.alertService.show('error.api.general');
+        }, (err: FirebaseError) => {
+          this.alertService.openBottomSheetMessage(
+            {title: 'error.api.general', message: err.message},
+            {panelClass: 'alert-danger'}
+          );
           this.productOptions.product_most_commented.products = [];
           observer.error(err);
         });
@@ -275,8 +286,11 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_most_viewed.products = products;
           observer.next();
-        }, (err) => {
-          this.alertService.show('error.api.general');
+        }, (err: FirebaseError) => {
+          this.alertService.openBottomSheetMessage(
+            {title: 'error.api.general', message: err.message},
+            {panelClass: 'alert-danger'}
+          );
           this.productOptions.product_most_viewed.products = [];
           observer.error(err);
         });
@@ -306,8 +320,11 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_new.products = products;
           observer.next();
-        }, (err) => {
-          this.alertService.show('error.api.general');
+        }, (err: FirebaseError) => {
+          this.alertService.openBottomSheetMessage(
+            {title: 'error.api.general', message: err.message},
+            {panelClass: 'alert-danger'}
+          );
           this.productOptions.product_new.products = [];
           observer.error(err);
         });
@@ -337,8 +354,11 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_recent_month.products = products;
           observer.next();
-        }, (err) => {
-          this.alertService.show('error.api.general');
+        }, (err: FirebaseError) => {
+          this.alertService.openBottomSheetMessage(
+            {title: 'error.api.general', message: err.message},
+            {panelClass: 'alert-danger'}
+          );
           this.productOptions.product_recent_month.products = [];
           observer.error(err);
         });
@@ -368,8 +388,11 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_best.products = products;
           observer.next();
-        }, (err) => {
-          this.alertService.show('error.api.general');
+        }, (err: FirebaseError) => {
+          this.alertService.openBottomSheetMessage(
+            {title: 'error.api.general', message: err.message},
+            {panelClass: 'alert-danger'}
+          );
           this.productOptions.product_best.products = [];
           observer.error(err);
         });

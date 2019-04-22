@@ -32,6 +32,8 @@ import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { SeoModule } from '../../seo/seo.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AlertService } from '../../popup/alert.service';
+import { MockAlertService } from '../../popup/mock-alert.service';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
@@ -71,6 +73,7 @@ describe('ProductDetailComponent', () => {
       ],
       declarations: [ProductDetailComponent, ProductActionComponent],
       providers: [
+        {provide: AlertService, useClass: MockAlertService},
         {provide: ProductService, useClass: MockProductService},
         {provide: MediaService, useClass: MockMediaService},
         {provide: LoaderService, useClass: MockLoaderService},

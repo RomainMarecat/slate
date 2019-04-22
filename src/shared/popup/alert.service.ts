@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatBottomSheet, MatBottomSheetRef, MatSnackBar } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetConfig, MatBottomSheetRef, MatSnackBar } from '@angular/material';
 import { AlertComponent } from './snackbar/alert.component';
 import { TranslateService } from '@ngx-translate/core';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
@@ -46,17 +46,36 @@ export class AlertService {
   }
 
   /**
-   * Display bottom sheet message
+   * Ouvre une popup en bas de page pour afficher une alerte personnalisée
    */
-  bottomSheetMessage(title: string, message: string) {
-    setTimeout(() => {
-      const matBottomSheetRef: MatBottomSheetRef = this.matBottomSheet.open(BottomSheetComponent, {
+  openBottomSheetMessage(alert: Alert,
+                         customConfig: MatBottomSheetConfig<Alert> = {}): MatBottomSheetRef {
+    const defaultConfig: MatBottomSheetConfig<Alert> = {
+      data: {
+        title: 'alert.bottom-sheet.default.title',
+        message: 'alert.bottom-sheet.default.message',
+        duration: 5000,
+      },
+      panelClass: null,
+      hasBackdrop: false,
+      closeOnNavigation: true
+    };
+
+    const config: MatBottomSheetConfig<Alert> = {
+      ...defaultConfig,
+      ...customConfig,
+      ...{
         data: {
-          title: title,
-          message: message,
-        },
-        hasBackdrop: false
-      });
-    }, 500);
+          title: alert.title,
+          message: alert.message,
+          duration: alert.duration ? alert.duration : defaultConfig.data.duration,
+        }
+      }
+    };
+
+    return this.matBottomSheet.open(
+      BottomSheetComponent,
+      config
+    );
   }
 }

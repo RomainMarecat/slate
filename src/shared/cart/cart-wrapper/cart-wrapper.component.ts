@@ -99,7 +99,10 @@ export class CartWrapperComponent implements OnInit {
         this.loading = false;
       }, (err: HttpErrorResponse) => {
         if (err && err.error && err.error.message) {
-          this.alertService.show(err.error.message);
+          this.alertService.openBottomSheetMessage(
+            {title: '', message: err.error.message},
+            {panelClass: 'alert-danger'}
+          );
         }
         this.loading = false;
       });
@@ -152,7 +155,10 @@ export class CartWrapperComponent implements OnInit {
       .subscribe(() => {
         },
         (err: HttpErrorResponse) => {
-          this.alertService.show('cart-add.error.update-cart-error');
+          this.alertService.openBottomSheetMessage(
+            {title: 'cart-add.error.update-cart-error', message: err.error.message},
+            {panelClass: 'alert-danger'}
+          );
         });
   }
 
@@ -199,12 +205,18 @@ export class CartWrapperComponent implements OnInit {
                 );
               }, 200);
             }, (err: HttpErrorResponse) => {
-              this.alertService.show(err.error.message);
+              this.alertService.openBottomSheetMessage(
+                {title: '', message: err.error.message},
+                {panelClass: 'alert-danger'}
+              );
             });
         }
       }, (err: HttpErrorResponse) => {
         if (err && err.error && err.error.message) {
-          this.alertService.show(err.error.message);
+          this.alertService.openBottomSheetMessage(
+            {title: '', message: err.error.message},
+            {panelClass: 'alert-danger'}
+          );
         }
       });
   }

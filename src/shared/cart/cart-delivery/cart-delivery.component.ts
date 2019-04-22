@@ -291,11 +291,17 @@ export class CartDeliveryComponent implements OnInit {
     this.disableDeliveryButton = false;
 
     if (!navigator.onLine) {
-      this.alertService.show('error.no-internet-connection');
+      this.alertService.openBottomSheetMessage(
+        {title: '', message: 'error.no-internet-connection'},
+        {panelClass: 'alert-danger'}
+      );
       return;
     }
 
-    this.alertService.show('delivery.error.validate-delivery');
+    this.alertService.openBottomSheetMessage(
+      {title: '', message: 'delivery.error.validate-delivery'},
+      {panelClass: 'alert-danger'}
+    );
   }
 
   cancel() {

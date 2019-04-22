@@ -10,6 +10,9 @@ import { environment } from '../../../app-store/environments/environment';
 import { Product } from '../shared/product';
 import { SeoService } from '../../seo/shared/seo.service';
 import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { FirebaseError } from 'firebase';
+import { AlertService } from '../../popup/alert.service';
 
 export interface Section {
   title: string;
@@ -48,6 +51,7 @@ export class ProductDetailComponent implements OnInit {
               private translateService: TranslateService,
               private mediaService: MediaService,
               private loaderService: LoaderService,
+              private alertService: AlertService,
               private seoService: SeoService,
               @Optional() private cloudinaryTagService: CloudinaryTagService) {
     this.cols = 0;
@@ -157,7 +161,16 @@ export class ProductDetailComponent implements OnInit {
     } else {
       product.viewed = 1;
     }
-    this.productService.updateProduct(product).subscribe();
+    this.productService.updateProduct(product)
+      .pipe(take(1))
+      .subscribe(() => {
+        },
+        (err: FirebaseError) => {
+          this.alertService.openBottomSheetMessage(
+            {title: 'error.api.general', message: err.message},
+            {panelClass: 'alert-danger'}
+          );
+        });
   }
 
   /**

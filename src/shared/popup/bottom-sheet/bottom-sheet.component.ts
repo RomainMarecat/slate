@@ -9,16 +9,22 @@ import { Alert } from '../alert';
 })
 export class BottomSheetComponent implements OnInit {
 
+  timer: number;
+
   constructor(private bottomSheetRef: MatBottomSheetRef<BottomSheetComponent>,
               @Inject(MAT_BOTTOM_SHEET_DATA) public data: Alert) {
+    this.timer = data.duration;
   }
 
   ngOnInit() {
+    if (this.timer) {
+      setTimeout(() => {
+        this.closeBottomSheet();
+      }, this.timer);
+    }
   }
 
-  openLink(event: MouseEvent): void {
+  closeBottomSheet() {
     this.bottomSheetRef.dismiss();
-    event.preventDefault();
   }
-
 }

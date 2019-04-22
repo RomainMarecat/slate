@@ -1,3 +1,76 @@
+.cdk-overlay-container {
+
+  // Bottom sheet custom par rapport à bootstrap
+  mat-bottom-sheet-container {
+    // Valeur par défaut sans niveau de précision de sur le panelClass du bottom sheet
+    background: mat-color($white);
+    color: mat-color($grey);
+
+    // Ajout d'espace entre le titre et le descriptif de l'erreur
+    mat-list.mat-list-base {
+      mat-list-item.mat-list-item {
+        .mat-list-text {
+          .mat-line, .mat-line:nth-child(n+2) {
+            padding: 10px 0;
+
+            &.text-title {
+              font-size: 1rem;
+            }
+
+            &.text-message {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+
+    &.alert-danger {
+      background: mat-color($error); // css bootstrap
+
+      // List par défaut pour le bottom sheet
+      mat-list-item {
+        .mat-list-item-content {
+          color: mat-color($white);
+        }
+      }
+    }
+
+    &.alert-warning {
+      background: mat-color($second); // css bootstrap
+
+      // List par défaut pour le bottom sheet
+      mat-list-item {
+        .mat-list-item-content {
+          color: mat-color($white);
+        }
+      }
+    }
+
+    &.alert-success {
+      background: mat-color($primary); // css bootstrap
+
+      // List par défaut pour le bottom sheet
+      mat-list-item {
+        .mat-list-item-content {
+          color: mat-color($white);
+        }
+      }
+    }
+
+    &.alert-primary {
+      background: mat-color($primary); // css bootstrap
+
+      // List par défaut pour le bottom sheet
+      mat-list-item {
+        .mat-list-item-content {
+          color: mat-color($white);
+        }
+      }
+    }
+  }
+}
+
 app-shared-breadcrumb {
   a {
     text-decoration: none;
@@ -24,3 +97,4 @@ app-product-item {
     }
   }
 }
+

@@ -54,9 +54,59 @@ module.exports = function (config) {
         included: false,
       },
       {
+        pattern: './app-store/assets/fonts/lato-regular-webfont.woff',
+        watched: false,
+        included: false,
+      },
+      {
+        pattern: './app-store/assets/fonts/lato-regular-webfont.woff2',
+        watched: false,
+        included: false,
+      },
+      {
+        pattern: './app-store/assets/fonts/lato-regular-webfont.ttf',
+        watched: false,
+        included: false,
+      },
+      {
         pattern: '../node_modules/@swimlane/ngx-datatable/release/assets/fonts/data-table.woff',
         watched: false,
         included: false,
+      },
+      {
+        pattern: './app-alr/assets/images/material/*.jpg',
+        watched: false,
+        included: false,
+        served: true,
+        nocache: false
+      },
+      {
+        pattern: './app-alr/assets/images/*.jpg',
+        watched: false,
+        included: false,
+        served: true,
+        nocache: false
+      },
+      {
+        pattern: './app-store/assets/images/*.jpg',
+        watched: false,
+        included: false,
+        served: true,
+        nocache: false
+      },
+      {
+        pattern: './app-recipe/assets/images/*.svg',
+        watched: false,
+        included: false,
+        served: true,
+        nocache: false
+      },
+      {
+        pattern: './app-recipe/assets/images/home/*.jpg',
+        watched: false,
+        included: false,
+        served: true,
+        nocache: false
       },
       {
         pattern: './app-showcase/assets/images/*.jpg',

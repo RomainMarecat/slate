@@ -5,6 +5,7 @@ import { AlertService } from '../../popup/alert.service';
 import { User } from '@firebase/auth-types';
 import { Favorite } from '../shared/favorite';
 import { FavoriteService } from '../shared/favorite.service';
+import { FirebaseError } from 'firebase';
 
 @Component({
   selector: 'app-favorite-list',
@@ -46,9 +47,9 @@ export class FavoriteListComponent implements OnInit {
           this.loaderService.hide();
           this.favorites = favorites;
           this.isLoading = false;
-        }, () => {
+        }, (err: FirebaseError) => {
+          this.alertService.openBottomSheetMessage({title: 'error.api.general', message: err.message});
           this.loaderService.hide();
-          this.alertService.show('error.api.general');
           this.isLoading = false;
         });
     });

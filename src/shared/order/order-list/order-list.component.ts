@@ -3,6 +3,7 @@ import { Order } from '../shared/order';
 import { OrderService } from '../shared/order.service';
 import { AlertService } from '../../popup/alert.service';
 import { LoaderService } from '../../loader/loader.service';
+import { FirebaseError } from 'firebase';
 
 @Component({
   selector: 'app-order-list',
@@ -38,9 +39,9 @@ export class OrderListComponent implements OnInit {
         this.loaderService.hide();
         this.orders = res;
         this.isLoading = false;
-      }, () => {
+      }, (err: FirebaseError) => {
+        this.alertService.openBottomSheetMessage({title: 'error.api.general', message: err.message});
         this.loaderService.hide();
-        this.alertService.show('error.api.general');
         this.isLoading = false;
       });
   }

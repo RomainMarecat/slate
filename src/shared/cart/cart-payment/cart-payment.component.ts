@@ -21,9 +21,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../shared/cart.service';
 import { RoutingState } from '../../util/routing-state';
 import { OrderService } from '../../order/shared/order.service';
-import { ElementOptions, Elements, ElementsOptions, Error, StripeCardComponent, StripeService } from 'ngx-stripe';
+import { ElementOptions, Elements, ElementsOptions, Error, StripeCardComponent, StripeService, TokenResult } from 'ngx-stripe';
 import { LoaderService } from '../../loader/loader.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Delivery } from '../shared/delivery';
 import { DeliveryService } from '../shared/delivery.service';
 import { DocumentReference } from '@angular/fire/firestore';
@@ -32,6 +31,9 @@ import { Subscription } from 'rxjs';
 import { ProductService } from '../../product/shared/product.service';
 import { Product } from '../../product/shared/product';
 import { take } from 'rxjs/operators';
+import { FirebaseError } from 'firebase';
+import { HttpErrorResponse } from '@angular/common/http';
+import { onlineStatus$ } from '../../util/online-status';
 
 @Component({
   selector: 'app-cart-payment',
@@ -49,10 +51,14 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onLine: boolean;
 
-  error: Error;
+  error: Error | FirebaseError;
+
   @Output() paid: EventEmitter<any> = new EventEmitter<any>();
+
   @Output() cancelled: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   elements: Elements;
+
   @ViewChild(StripeCardComponent) card: StripeCardComponent;
 
   elementsOptions: ElementsOptions = {
@@ -101,31 +107,9 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.previousRoute = this.routingState.getPreviousUrl() || '/cart';
-    this.onLine = navigator.onLine;
-    // this.stripeService.elements(this.elementsOptions)
-    //   .subscribe(elements => {
-    //     this.elements = elements;
-    //     // Only mount the element the first time
-    //     if (!this.card) {
-    //       // this.card = this.elements.create('card', {
-    //       //   style: {
-    //       //     base: {
-    //       //       iconColor: '#666EE8',
-    //       //       color: '#31325F',
-    //       //       lineHeight: '40px',
-    //       //       fontWeight: 300,
-    //       //       fontFamily: 'monospace',
-    //       //       fontSmoothing: 'antialiased',
-    //       //       fontSize: '19px',
-    //       //       '::placeholder': {
-    //       //         color: '#6d6d6d'
-    //       //       }
-    //       //     }
-    //       //   }
-    //       // });
-    //       // this.card.mount('#card-element');
-    //     }
-    //   });
+    onlineStatus$().subscribe((online: boolean) => {
+      this.onLine = online;
+    });
   }
 
   ngAfterViewInit() {
@@ -161,8 +145,11 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
         if (subscription) {
           subscription.unsubscribe();
         }
-      }, (err: HttpErrorResponse) => {
-        this.alertService.show('cart-payment.errors.delivery');
+      }, () => {
+        this.alertService.openBottomSheetMessage(
+          {title: '', message: 'cart-payment.errors.delivery'},
+          {panelClass: 'alert-danger'}
+        );
       });
   }
 
@@ -190,7 +177,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
       this.cart.total) {
       this.stripeService
         .createToken(this.card.getCard(), {name: this.userService.getUser().email})
-        .subscribe(result => {
+        .subscribe((result: TokenResult) => {
           if (result.token) {
             // Use the token to create a charge or a customer
             // https://stripe.com/docs/charges
@@ -239,43 +226,46 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
                                   .subscribe(() => {
                                       // async save delivery order key
                                     },
-                                    (err: HttpErrorResponse) => {
-                                      this.handleHttpErrorResponse(err);
+                                    (err) => {
+                                      this.handleErrorResponse(err);
                                     });
 
                                 this.updateOrderedProducts(order);
 
                                 this.loaderService.hide();
-                              }, (err: HttpErrorResponse) => {
-                                this.handleHttpErrorResponse(err);
+                              }, (err) => {
+                                this.handleErrorResponse(err);
                                 this.togglePayButton();
                               });
                             this.togglePayButton();
-                          }, (err: HttpErrorResponse) => {
-                            this.handleHttpErrorResponse(err);
+                          }, (err) => {
+                            this.handleErrorResponse(err);
                             this.togglePayButton();
                           });
-                      }, (err: HttpErrorResponse) => {
-                        this.handleHttpErrorResponse(err);
+                      }, (err) => {
+                        this.handleErrorResponse(err);
                         this.togglePayButton();
                       });
-                  }, (err: HttpErrorResponse) => {
-                    this.handleHttpErrorResponse(err);
+                  }, (err) => {
+                    this.handleErrorResponse(err);
                     this.togglePayButton();
                   });
-              }, (err: HttpErrorResponse) => {
-                this.handleHttpErrorResponse(err);
+              }, (err) => {
+                this.handleErrorResponse(err);
                 this.togglePayButton();
               });
           } else if (result.error) {
             // Error creating the token
-            this.handleError(result.error);
+            this.handleErrorResponse(result.error);
             this.togglePayButton();
           }
         });
     } else {
       // Undefined cart or undefined total
-      this.alertService.show('cart-payment.errors.cart');
+      this.alertService.openBottomSheetMessage(
+        {title: '', message: 'cart-payment.errors.cart'},
+        {panelClass: 'alert-danger'}
+      );
       this.togglePayButton();
       this.loaderService.hide();
     }
@@ -297,16 +287,21 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
     this.disablePayButton = !this.disablePayButton;
   }
 
-  handleHttpErrorResponse(err: HttpErrorResponse) {
-    this.alertService.show(err.error.message);
-    this.loaderService.hide();
-  }
+  handleErrorResponse(err: HttpErrorResponse | FirebaseError | Error) {
+    if (typeof err.message === 'string') {
+      this.error = <FirebaseError | Error>err;
 
-  handleError(error: Error) {
-    this.error = error;
-    this.loaderService.hide();
-    if (error && error.message) {
-      this.alertService.show(error.message);
+      this.alertService.openBottomSheetMessage(
+        {title: '', message: err.message},
+        {panelClass: 'alert-danger'}
+      );
     }
+    if (err instanceof HttpErrorResponse) {
+      this.alertService.openBottomSheetMessage(
+        {title: '', message: err.error.message},
+        {panelClass: 'alert-danger'}
+      );
+    }
+    this.loaderService.hide();
   }
 }

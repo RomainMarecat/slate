@@ -50,7 +50,10 @@ export class CartEditComponent implements OnInit {
         this.loaderService.show();
         this.cartService.updateCart(this.cart)
           .subscribe(() => {
-            this.alertService.show(this.translate.instant('cart-add.saved'));
+            this.alertService.openBottomSheetMessage(
+              {title: '', message: 'cart-add.saved'},
+              {panelClass: 'alert-success'}
+            );
             this.submitted.emit(this.cart);
             this.loaderService.hide();
             this.isSaving = false;
@@ -58,11 +61,16 @@ export class CartEditComponent implements OnInit {
             this.isSaving = false;
             this.loaderService.hide();
             if (!navigator.onLine) {
-              this.alertService.show('error.no-internet-connection');
+              this.alertService.openBottomSheetMessage(
+                {title: '', message: 'error.no-internet-connection'},
+                {panelClass: 'alert-danger'}
+              );
               return;
             }
-
-            this.alertService.show('cart-add.error.validate-cart');
+            this.alertService.openBottomSheetMessage(
+              {title: '', message: 'cart-add.error.validate-cart'},
+              {panelClass: 'alert-danger'}
+            );
           });
       }
     }
