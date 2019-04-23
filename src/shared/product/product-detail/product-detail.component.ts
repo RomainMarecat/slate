@@ -168,7 +168,7 @@ export class ProductDetailComponent implements OnInit {
         (err: FirebaseError) => {
           this.alertService.openBottomSheetMessage(
             {title: 'error.api.general', message: err.message},
-            {panelClass: 'alert-danger'}
+            {panelClass: 'alert-warning'}
           );
         });
   }

@@ -198,7 +198,26 @@
         }
     },
     "order-detail": {
-        "title": "détail de ma commande",
+        "header": {
+            "title": "détail de ma commande"
+        },
+        "title": {
+            "created_at": "commandé le",
+            "key": "n° de commande",
+            "delivery": {
+                "address": "Adresse de livraison"
+            },
+            "payment": {
+                "mode": "Mode de paiement"
+            },
+            "resume": {
+                "title": "Récapitulatif de commande",
+                "article": "Articles",
+                "delivery": "Livraison",
+                "total": "Total",
+                "total_ttc": "Montant total TTC"
+            }
+        },
         "subtitle": "total commande",
         "invoice": {
             "download": "télécharger la facture"

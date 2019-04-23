@@ -4,6 +4,7 @@ import { OrderService } from '../shared/order.service';
 import { AlertService } from '../../popup/alert.service';
 import { LoaderService } from '../../loader/loader.service';
 import { FirebaseError } from 'firebase';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-order-list',
@@ -34,11 +35,15 @@ export class OrderListComponent implements OnInit {
   getOrders() {
     this.isLoading = true;
     this.loaderService.show();
-    this.orderService.getOrders()
+    const orderSubscription: Subscription = this.orderService.getOrders()
       .subscribe((res: Order[]) => {
         this.loaderService.hide();
         this.orders = res;
         this.isLoading = false;
+
+        if (orderSubscription) {
+          orderSubscription.unsubscribe();
+        }
       }, (err: FirebaseError) => {
         this.alertService.openBottomSheetMessage({title: 'error.api.general', message: err.message});
         this.loaderService.hide();

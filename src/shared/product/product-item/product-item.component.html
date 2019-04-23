@@ -80,6 +80,7 @@
       <app-storage-image [panelStyle]="{height: '200px', width: 'auto'}"
                          [panelClass]="'scale'"
                          [matCardImage]="false"
+                         [alt]="product.name"
                          [downloadURL]="product.image1"></app-storage-image>
     </div>
     <div class="card-discount-wrapper" *ngIf="product">
@@ -242,6 +243,7 @@
         <app-storage-image [panelStyle]="{height: '90px', width: 'auto'}"
                            [panelClass]="'scale'"
                            [matCardImage]="false"
+                           [alt]="product.name"
                            [downloadURL]="product.image1"></app-storage-image>
       </div>
     </a>

@@ -5,7 +5,7 @@ import { OrderRoutingModule } from './order-routing.module';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { OrderItemComponent } from './order-item/order-item.component';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule, MatListModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OrderComponent } from './order/order.component';
@@ -22,6 +22,8 @@ import { LoaderModule } from '../loader/loader.module';
   imports: [
     CommonModule,
     LoaderModule,
+    MatCardModule,
+    MatListModule,
     MatButtonModule,
     NgPipesModule,
     FlexLayoutModule,

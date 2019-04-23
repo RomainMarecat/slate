@@ -1,0 +1,19 @@
+.order-detail-wrapper {
+  .header-wrapper {
+    .title-wrapper {
+      .title {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .content-wrapper {
+    mat-list-item {
+      height: 24px;
+    }
+
+    .resume-title-wrapper {
+      width: 130px;
+    }
+  }
+}

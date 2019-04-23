@@ -11,7 +11,7 @@ export class PaymentService extends VisitorService {
   payment$: BehaviorSubject<Payment> = new BehaviorSubject<Payment>(null);
 
   constructor(afs: AngularFirestore,
-              @Inject('TABLE_CMS') table: string,
+              @Inject('TABLE_PAYMENT') table: string,
               @Inject('STRIPE_KEY') private stripeKey: string) {
     super(afs, table);
   }

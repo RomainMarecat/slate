@@ -17,6 +17,7 @@
                            fxHide.sm
                            [panelStyle]="{'max-height': '500px'}"
                            [matCardImage]="false"
+                           [alt]="product.name"
                            [downloadURL]="product.image1"></app-storage-image>
         <!-- Image Mobile -->
         <app-storage-image fxFlex.xs="90"
@@ -24,6 +25,7 @@
                            fxHide.gt-sm
                            [panelStyle]="{'max-height': '200px'}"
                            [matCardImage]="false"
+                           [alt]="product.name"
                            [downloadURL]="product.image1"></app-storage-image>
         <div fxLayout="row wrap"
              fxLayoutAlign="center start"

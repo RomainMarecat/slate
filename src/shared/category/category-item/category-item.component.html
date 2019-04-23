@@ -11,6 +11,7 @@
        *ngIf="options.image_link; else elementImage">
       <app-storage-image [resize]="{width: 'auto', height: 79}"
                          [matCardImage]="false"
+                         [alt]="category.name"
                          [downloadURL]="category.image"></app-storage-image>
     </a>
     <ng-template #elementImage>
@@ -19,6 +20,7 @@
            fxLayoutAlign="center stretch">
         <app-storage-image [resize]="{width: 'auto', height: 79}"
                            [matCardImage]="false"
+                           [alt]="category.name"
                            [downloadURL]="category.image"></app-storage-image>
       </div>
     </ng-template>
