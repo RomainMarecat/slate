@@ -41,30 +41,48 @@
   }
 
   // BLOCK HOME - CATEGORIES
-  app-category-item {
-    .main-wrapper {
-      border: 0.5px solid $block-color-light-grey;
 
-      .image-wrapper {
-        &::after {
-          background-color: mat-color($primary);
+  app-category-default-list {
+    .category-list-component {
+      .category-header-wrapper,
+      .category-list-wrapper {
+        padding-top: 25px;
+        margin-bottom: 1rem;
+
+        .category-title {
+          &.title-header {
+            font-size: 2rem;
+            letter-spacing: normal;
+          }
         }
       }
 
-      .heading-title {
-        font-family: $primary-font;
-      }
+      app-category-item {
+        .main-wrapper {
+          border: 0.5px solid $block-color-light-grey;
 
-      // bloc SEPARATEUR
-      .separator-wrapper {
-        border: 3px solid mat-color($primary);
-      }
+          .image-wrapper {
+            &::after {
+              background-color: mat-color($primary);
+            }
+          }
 
-      .heading-wrapper {
-        .heading-title {
-          .heading-link {
-            color: mat-color($primary);
-            text-decoration: none;
+          .heading-title {
+            font-family: $primary-font;
+          }
+
+          // bloc SEPARATEUR
+          .separator-wrapper {
+            border: 3px solid mat-color($primary);
+          }
+
+          .heading-wrapper {
+            .heading-title {
+              .heading-link {
+                color: mat-color($primary);
+                text-decoration: none;
+              }
+            }
           }
         }
       }
@@ -77,18 +95,36 @@
     }
   }
 
+  app-home-product-list {
+    .product-list-wrapper {
+      .product-header-wrapper {
 
-  app-product-item {
-    .product-item {
-      margin: 0.5rem 0;
+        padding-top: 25px;
+        margin-bottom: 1rem;
 
-      .product-item-price {
-        .product-item-price-text, .product-item-price-value {
-          font-family: $primary-font;
-          letter-spacing: normal;
-          font-size: 1.2rem;
+        .product-title {
+          &.title-product {
+            font-size: 2rem;
+            letter-spacing: normal;
+          }
+        }
+      }
+    }
+
+    app-product-item {
+      .product-item {
+        margin: 0.5rem 0;
+
+        .product-item-price {
+          .product-item-price-text, .product-item-price-value {
+            font-family: $primary-font;
+            letter-spacing: normal;
+            font-size: 1.2rem;
+          }
         }
       }
     }
   }
+
+
 }
