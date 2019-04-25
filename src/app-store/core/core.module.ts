@@ -216,6 +216,7 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
+        {provide: STRIPE_KEY, useValue: config.stripeKey},
         {provide: production, useValue: config.production},
         {provide: site_name, useValue: config.site_name},
         {provide: app_name, useValue: config.app_name},
