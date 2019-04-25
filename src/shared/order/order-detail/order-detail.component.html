@@ -1,115 +1,174 @@
-<div class="account-submodule-view mt-5"
+<div class="order-detail-wrapper mt-5"
      fxLayout="row"
      fxLayoutAlign="center stretch">
   <div fxFlex="60"
+       fxLayout="column"
+       fxLayoutGap="30px"
        *ngIf="order">
-    <div class="row">
-      <div class="col-lg-9 col-12">
-        <h1 class="title_connect text-uppercase">
-          {{ 'order-detail.title'|translate }}
+    <div class="header-wrapper"
+         fxLayout="column">
+      <div fxLayout="row" class="title-wrapper">
+        <h1 class="title text-uppercase">
+          {{ 'order-detail.header.title'|translate }}
         </h1>
       </div>
 
-      <div class="col-8 offset-2 my-2 my-lg-0 col-lg-3 offset-lg-0">
-        <div class="button_wrapper">
-          <button mat-flat-button
-                  color="primary"
-                  [disabled]="downloadingInvoice"
-                  *ngIf="order?.key"
-                  (click)="downloadInvoice(order)">
-            {{ 'order-detail.invoice.download'|translate }}
-          </button>
+      <div fxLayout="row"
+           fxLayoutGap="30px"
+           class="subtitle-wrapper">
+
+        <div class="date-wrapper"
+             fxLayout="row"
+             fxLayoutGap="5px"
+             *ngIf="order.created_at">
+          <span class="text-ucfirst">
+            {{ 'order-detail.title.created_at'|translate }}
+          </span>
+          <span>
+            {{ order?.created_at?.seconds * 1000 | date:'short' }}
+          </span>
+        </div>
+
+
+        <div class="key-wrapper">
+          <span class="text-ucfirst">
+            {{ 'order-detail.title.key'|translate }}
+          </span>
+          <span>
+            {{ order.key }}
+          </span>
         </div>
       </div>
     </div>
 
-    <div class="row my-3">
-      <div class="col-12 col-md-6">
-        <div class="row">
-          <div class="col-8 col-md-6">
-            <ul class="list-unstyled">
-              <li>
-                {{ 'order-detail.total-product'|translate }} :
-              </li>
-              <li *ngIf="order?.delivery_fee">
-                {{ 'order-detail.total-delivery-fee'|translate }} :
-              </li>
-              <li>
-                {{ 'order-detail.total'|translate }} :
-              </li>
-            </ul>
-          </div>
-          <div class="col-4 col-md-6 text-left text-md-center">
-            <ul class="list-unstyled">
-              <li>
-                <strong>{{ order.total | currency:'EUR' }}</strong>
-              </li>
-              <li>
-                <strong>{{ order?.delivery_fee | currency:'EUR' }}</strong>
-              </li>
-              <li>
-                <strong>{{ (order.total + (order?.delivery_fee || 0)) | currency:'EUR' }}</strong>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <mat-card class="content-wrapper"
+              fxLayout="row"
+              fxLayoutGap="50px"
+              *ngIf="delivery">
+      <div class="delivery-wrapper">
+        <mat-card-title>
+          {{ 'order-detail.title.delivery.address' |translate}}
+        </mat-card-title>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              {{ delivery.address?.lastname }} {{ delivery.address?.firstname }}
+            </mat-list-item>
+            <mat-list-item>{{ delivery.address.address }}</mat-list-item>
+            <mat-list-item
+              *ngIf="delivery.address.address_complement">{{ delivery.address.address_complement }}</mat-list-item>
+            <mat-list-item>{{ delivery.address.zipcode }} {{ delivery.address.city }}</mat-list-item>
+            <mat-list-item>{{ delivery.address.country }}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
       </div>
-      <div class="col-12 col-md-6" *ngIf="delivery && delivery.address">
-        <!-- TODO trad -->
-        <div class="d-block d-md-none">{{ 'order-detail.delivery-address'|translate }}</div>
-        <strong>{{ delivery.address?.firstname }} {{ delivery.address?.lastname }}</strong>
-        <span class="address-address d-block"> {{ delivery.address?.address }}
-          <br/>
-          <span *ngIf="delivery.address?.address_complement">
-            {{ delivery.address?.address_complement }}</span>
-        </span>
-        <span class="address-zipcode">{{ delivery.address?.zipcode }} {{ delivery.address?.city }}
-          {{ delivery.address?.country }}</span>
+
+      <div class="payment-mode-wrapper">
+        <mat-card-title>
+          {{ 'order-detail.title.payment.mode' |translate}}
+        </mat-card-title>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <mat-icon style="line-height: 24px;" fontSet="fa"
+                        [fontIcon]="'fa-cc-' + (payment?.token?.card?.brand|lowercase)"></mat-icon>
+              ****{{ payment?.token?.card?.last4 }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
       </div>
-    </div>
 
-    <!-- liste de produits -->
-    <div class="row my-4 my-md-0">
-      <div class="col-12">
-        <div class="row d-none d-md-flex">
-          <div class="col-4">
-            {{ 'order-detail.reference'|translate }}
-          </div>
-          <div class="col-2">
-            {{ 'order-detail.quantity'|translate }}
-          </div>
-          <div class="col-2">
-            {{ 'order-detail.price'|translate }}
-          </div>
-          <div class="col-4" *ngIf="hasEtickets">
-            {{ 'order-detail.e-ticket.title'|translate }}
-          </div>
-        </div>
+      <div class="resume-wrapper">
+        <mat-card-title>
+          {{ 'order-detail.title.resume.title' |translate}}
+        </mat-card-title>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <div fxLayout="row"
+                   fxLayoutGap="50px"
+                   fxLayoutAlign="space-between stretch">
+                <span class="resume-title-wrapper">{{ 'order-detail.title.resume.article' |translate}}</span>
+                <span>{{ totalArticles | currency: 'EUR' }}</span>
+              </div>
+            </mat-list-item>
 
-        <div class="row" *ngFor="let orderItem of order.items">
-          <div class="col-12 col-md-4 text-left">
-            <strong>{{ orderItem.name }}</strong>
-          </div>
-          <div class="col-6 col-md-2 text-center text-md-left">
-            <div>
-              <span class="d-inline d-md-none">{{ 'order-detail.quantity'|translate }}
-                :</span> {{ orderItem.quantity }}
+
+            <mat-list-item>
+              <div fxLayout="row"
+                   fxLayoutGap="50px"
+                   fxLayoutAlign="space-between stretch">
+                <span class="resume-title-wrapper">{{ 'order-detail.title.resume.delivery' |translate}}</span>
+                <span>{{ order.delivery_fee | currency: 'EUR' }}</span>
+              </div>
+            </mat-list-item>
+
+            <mat-list-item>
+              <div fxLayout="row"
+                   fxLayoutGap="50px"
+                   fxLayoutAlign="space-between stretch">
+                <span class="resume-title-wrapper">{{ 'order-detail.title.resume.total' |translate}}</span>
+                <span>{{ order.total | currency: 'EUR' }}</span>
+              </div>
+            </mat-list-item>
+
+            <mat-list-item>
+              <div fxLayout="row"
+                   fxLayoutGap="50px"
+                   fxLayoutAlign="space-between stretch">
+                <span class="resume-title-wrapper">{{ 'order-detail.title.resume.total_ttc' |translate}}</span>
+                <span>{{ order.total | currency: 'EUR' }}</span>
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </div>
+    </mat-card>
+
+    <mat-card>
+      <div class="row">
+        <div class="col-12">
+          <div class="row d-none d-md-flex">
+            <div class="col-4">
+              {{ 'order-detail.reference'|translate }}
+            </div>
+            <div class="col-2">
+              {{ 'order-detail.quantity'|translate }}
+            </div>
+            <div class="col-2">
+              {{ 'order-detail.price'|translate }}
+            </div>
+            <div class="col-4" *ngIf="hasEtickets">
+              {{ 'order-detail.e-ticket.title'|translate }}
             </div>
           </div>
-          <div class="col-6 col-md-2 text-center text-md-left">
-            <div>
-              {{ orderItem?.price | currency:'EUR' }}
+
+          <div class="row" *ngFor="let orderItem of order.items">
+            <div class="col-12 col-md-4 text-left">
+              <strong>{{ orderItem.name }}</strong>
             </div>
-          </div>
-          <div class="col-12 col-md-4" *ngIf="orderItem?.is_eticket === true">
-            <button class="btn btn-shadow"
-                    [disabled]="downloadingEticket"
-                    (click)="downloadTickets(orderItem)">
-              <div>{{ 'order-detail.e-ticket.download'|translate }}</div>
-            </button>
+            <div class="col-6 col-md-2 text-center text-md-left">
+              <div>
+                <span class="d-inline d-md-none">{{ 'order-detail.quantity'|translate }}
+                  :</span> {{ orderItem.quantity }}
+              </div>
+            </div>
+            <div class="col-6 col-md-2 text-center text-md-left">
+              <div>
+                {{ orderItem?.price | currency:'EUR' }}
+              </div>
+            </div>
+            <div class="col-12 col-md-4" *ngIf="orderItem?.is_eticket === true">
+              <button class="btn btn-shadow"
+                      [disabled]="downloadingEticket"
+                      (click)="downloadTickets(orderItem)">
+                <div>{{ 'order-detail.e-ticket.download'|translate }}</div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </mat-card>
+
   </div>
 </div>

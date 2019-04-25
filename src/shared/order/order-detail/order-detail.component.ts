@@ -4,10 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { OrderService } from '../shared/order.service';
 import { AlertService } from '../../popup/alert.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Product } from '../../product/shared/product';
 import { Delivery } from '../../cart/shared/delivery';
 import { DeliveryService } from '../../cart/shared/delivery.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { PaymentService } from '../../payment/shared/payment.service';
+import { Payment } from '../../payment/shared/payment';
 
 @Component({
   selector: 'app-order-detail',
@@ -24,6 +25,13 @@ export class OrderDetailComponent implements OnInit {
    * Delivery from order
    */
   delivery: Delivery;
+
+  /**
+   * Payment informations
+   */
+  payment: Payment;
+
+  totalArticles: number;
 
   loading = false;
 
@@ -46,6 +54,7 @@ export class OrderDetailComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private orderService: OrderService,
               private deliveryService: DeliveryService,
+              private paymentService: PaymentService,
               private alertService: AlertService) {
   }
 
@@ -53,6 +62,7 @@ export class OrderDetailComponent implements OnInit {
     this.getOrder()
       .subscribe((order: Order) => {
         this.getDelivery(order);
+        this.getPayment(order);
         this.hasEtickets = OrderDetailComponent.orderHasEtickets(order);
       });
   }
@@ -64,9 +74,16 @@ export class OrderDetailComponent implements OnInit {
     return new Observable((observer) => this.activatedRoute.params
       .subscribe((value: {key: string}) => {
         if (value && value.key) {
-          this.orderService.getOrder(value.key)
+          const orderSubscription: Subscription = this.orderService.getOrder(value.key)
             .subscribe((order: Order) => {
               this.order = order;
+              console.log(order);
+              this.totalArticles = this.order.items.reduce((acc, next) => {
+                return acc + (next.quantity * next.price);
+              }, 0);
+              if (orderSubscription) {
+                orderSubscription.unsubscribe();
+              }
               observer.next(order);
             }, (err: HttpErrorResponse) => {
               this.alertService.show(err.error);
@@ -76,17 +93,45 @@ export class OrderDetailComponent implements OnInit {
       }));
   }
 
+  /**
+   * Payment informations
+   */
+  getPayment(order: Order) {
+    if (order.key) {
+      this.paymentService.filters$.next([
+        {
+          column: 'order',
+          operator: '==',
+          value: order.key
+        }
+      ]);
+      const paymentSubscription: Subscription = this.paymentService.getPayments()
+        .subscribe((payments) => {
+          this.payment = payments[0];
+          console.log(this.payment);
+          if (paymentSubscription) {
+            paymentSubscription.unsubscribe();
+          }
+        });
+    }
+  }
+
   getDelivery(order: Order) {
     if (order.cart) {
       this.deliveryService.filters$.next([
         {
-          column: 'cart',
-          operator: '==',
-          value: order.cart
+          column: 'order',
+          operator: 'array-contains',
+          value: order.key
         }
       ]);
-      this.deliveryService.getDeliveries()
-        .subscribe((deliveries) => this.delivery = deliveries[0]);
+      const deliverySubscription: Subscription = this.deliveryService.getDeliveries()
+        .subscribe((deliveries) => {
+          this.delivery = deliveries[0];
+          if (deliverySubscription) {
+            deliverySubscription.unsubscribe();
+          }
+        });
     }
   }
 

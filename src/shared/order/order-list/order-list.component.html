@@ -32,7 +32,9 @@
 
       <div class="row order-actions" *ngIf="orders.length && showAllOrdersListButton">
         <div class="col-lg-4 offset-lg-8">
-          <a class="btn btn-shadow" [routerLink]="'/order' | localize">
+          <a [routerLink]="'/order' | localize"
+             mat-stroked-button
+             color="primary">
             {{ 'order-list.actions.title'|translate }}
           </a>
         </div>
