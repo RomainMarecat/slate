@@ -23,22 +23,26 @@
 
         <div class="date-wrapper"
              fxLayout="row"
+             fxLayoutAlign="start center"
              fxLayoutGap="5px"
              *ngIf="order.created_at">
-          <span class="text-ucfirst">
+          <span class="text-label text-ucfirst">
             {{ 'order-detail.title.created_at'|translate }}
           </span>
-          <span>
+          <span class="text-value">
             {{ order?.created_at?.seconds * 1000 | date:'short' }}
           </span>
         </div>
 
 
-        <div class="key-wrapper">
-          <span class="text-ucfirst">
+        <div class="key-wrapper"
+             fxLayout="row wrap"
+             fxLayoutAlign="start center"
+             fxLayoutGap="5px">
+          <span class="text-label text-ucfirst">
             {{ 'order-detail.title.key'|translate }}
           </span>
-          <span>
+          <span class="text-value">
             {{ order.key }}
           </span>
         </div>
@@ -133,11 +137,15 @@
 
     <mat-card class="content-wrapper"
               *ngIf="order?.items?.length">
-
       <mat-card-header>
         <mat-card-title>
-          {{ 'order-detail.title.delivery.received_at'|translate }}
-          {{ order.created_at?.seconds * 1000 | date:'short' }}
+          <ng-container *ngIf="order?.shipping && shipping; else processingShipping">
+            {{ 'order-detail.title.delivery.received_at'|translate }}
+            {{ order.created_at?.seconds * 1000 | date:'short' }}
+          </ng-container>
+          <ng-template #processingShipping>
+            {{ 'order-detail.shipping.processing' |translate }}
+          </ng-template>
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
@@ -158,7 +166,9 @@
 
               <div fxFlex="70">
                 <mat-list>
-                  <mat-list-item>
+                  <mat-list-item class="item-name"
+                                 fxLayout="row"
+                                 fxLayoutAlign="start center">
                     {{ item.name }}
                   </mat-list-item>
                   <mat-list-item>

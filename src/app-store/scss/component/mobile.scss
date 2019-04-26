@@ -35,14 +35,32 @@
   app-order-detail {
     .order-detail-wrapper[_ngcontent-c10] {
       margin-top: 2rem;
+
       .header-wrapper[_ngcontent-c10] {
         .title-wrapper[_ngcontent-c10] {
           .title[_ngcontent-c10] {
             &.order-detail-title {
-              font-size: 1rem;
+              font-size: 1.25rem;
               font-weight: 800;
             }
           }
+        }
+
+        .key-wrapper {
+          .text-label {
+            font-size: 0.7rem;
+          }
+
+          .text-value {
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      mat-card {
+        mat-card-title {
+          font-size: 1.125rem;
+          font-weight: 700;
         }
       }
     }

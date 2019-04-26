@@ -9,6 +9,8 @@ import { DeliveryService } from '../../cart/shared/delivery.service';
 import { Observable, Subscription } from 'rxjs';
 import { PaymentService } from '../../payment/shared/payment.service';
 import { Payment } from '../../payment/shared/payment';
+import { Shipping } from '../../shipping/shared/shipping';
+import { ShippingService } from '../../shipping/shared/shipping.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -30,6 +32,8 @@ export class OrderDetailComponent implements OnInit {
    * Payment informations
    */
   payment: Payment;
+
+  shipping: Shipping;
 
   totalArticles: number;
 
@@ -55,6 +59,7 @@ export class OrderDetailComponent implements OnInit {
               private orderService: OrderService,
               private deliveryService: DeliveryService,
               private paymentService: PaymentService,
+              private shippingService: ShippingService,
               private alertService: AlertService) {
   }
 
@@ -63,6 +68,7 @@ export class OrderDetailComponent implements OnInit {
       .subscribe((order: Order) => {
         this.getDelivery(order);
         this.getPayment(order);
+        this.getShipping(order);
         this.hasEtickets = OrderDetailComponent.orderHasEtickets(order);
       });
   }
@@ -94,6 +100,30 @@ export class OrderDetailComponent implements OnInit {
   }
 
   /**
+   * Shipping informations
+   */
+  getShipping(order: Order) {
+    if (order.key) {
+      this.shippingService.filters$.next([
+        {
+          column: 'order',
+          operator: '==',
+          value: order.key
+        }
+      ]);
+      const shippingSubscription: Subscription = this.shippingService.getShippings()
+        .subscribe((shippings) => {
+          if (shippings && shippings.length) {
+            this.shipping = shippings[0];
+          }
+          if (shippingSubscription) {
+            shippingSubscription.unsubscribe();
+          }
+        });
+    }
+  }
+
+  /**
    * Payment informations
    */
   getPayment(order: Order) {
@@ -107,8 +137,9 @@ export class OrderDetailComponent implements OnInit {
       ]);
       const paymentSubscription: Subscription = this.paymentService.getPayments()
         .subscribe((payments) => {
-          this.payment = payments[0];
-          console.log(this.payment);
+          if (payments && payments.length) {
+            this.payment = payments[0];
+          }
           if (paymentSubscription) {
             paymentSubscription.unsubscribe();
           }
@@ -132,43 +163,6 @@ export class OrderDetailComponent implements OnInit {
             deliverySubscription.unsubscribe();
           }
         });
-    }
-  }
-
-  downloadInvoice(order: Order) {
-    // this.orderService.getInvoice(order.key)
-    //   .subscribe(res => {
-    //     const url = window.URL.createObjectURL(res);
-    //     window.open(url);
-    //     const anchor = document.createElement('a');
-    //     anchor.href = url;
-    //     anchor.download = order.key;
-    //     anchor.click();
-    //   }, (err: HttpErrorResponse) => {
-    //     this.alertService.show(err.error);
-    //   });
-  }
-
-
-  downloadTickets(orderItem: OrderItem) {
-    if (orderItem) {
-      // this.orderService.getEtickets(this.order.key)
-      //   .subscribe(res => {
-      //     res.forEach((ticket: PdfData) => {
-      //       const url = window.URL.createObjectURL(
-      //         FileService.b64toBlob(ticket.data, ticket.type)
-      //       );
-      //       window.open(url);
-      //       const anchor = document.createElement('a');
-      //       anchor.href = url;
-      //       anchor.download = ticket.name;
-      //       anchor.click();
-      //     });
-      //   }, (err: HttpErrorResponse) => {
-      //     this.alertService.show('L\'e-billet n\'a pas pu être trouvé.');
-      //   });
-    } else {
-      this.alertService.show('L\'e-billet n\'a pas pu être trouvé.');
     }
   }
 }

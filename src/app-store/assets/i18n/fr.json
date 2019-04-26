@@ -237,7 +237,10 @@
             "download": "télécharger mes e-billets"
         },
         "retailer": "partenaire",
-        "delivery-address": "livré à :"
+        "delivery-address": "livré à :",
+        "shipping": {
+            "processing": "Les articles n'ont pas encore été envoyés"
+        }
     },
     "order-list": {
         "title": "mes dernières commandes",

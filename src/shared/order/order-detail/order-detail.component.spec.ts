@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrderDetailComponent } from './order-detail.component';
-import { LocalizeRouterService } from 'localize-router';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
@@ -24,6 +24,9 @@ import { MaterialModule } from '../../material/material.module';
 import { NgPipesModule } from 'ngx-pipes';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { StorageModule } from '../../media/storage/storage.module';
+import { ShippingService } from '../../shipping/shared/shipping.service';
+import { MockShippingService } from '../../shipping/shared/mock-shipping.service';
 
 describe('OrderDetailComponent', () => {
   let component: OrderDetailComponent;
@@ -38,7 +41,9 @@ describe('OrderDetailComponent', () => {
         FlexLayoutModule,
         MaterialModule,
         NgPipesModule,
+        StorageModule,
         RouterTestingModule,
+        LocalizeRouterModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
@@ -51,6 +56,7 @@ describe('OrderDetailComponent', () => {
         {provide: OrderService, useClass: MockOrderService},
         {provide: DeliveryService, useClass: MockDeliveryService},
         {provide: PaymentService, useClass: MockPaymentService},
+        {provide: ShippingService, useClass: MockShippingService},
         {provide: UserService, useClass: MockUserService},
         {provide: StripeService, useClass: StripeService},
       ]

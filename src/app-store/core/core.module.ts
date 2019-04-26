@@ -45,6 +45,7 @@ import { DeliveryService } from '../../shared/cart/shared/delivery.service';
 import { FavoriteService } from '../../shared/favorite/shared/favorite.service';
 import { BreadcrumbModule } from '../../shared/breadcrumb/breadcrumb.module';
 import { PaymentService } from '../../shared/payment/shared/payment.service';
+import { ShippingService } from '../../shared/shipping/shared/shipping.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -85,6 +86,7 @@ export const TABLE_PARTNER = new InjectionToken<string>('partner');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
 export const TABLE_DELIVERY = new InjectionToken<string>('delivery');
 export const TABLE_FAVORITE = new InjectionToken<string>('favorite');
+export const TABLE_SHIPPING = new InjectionToken<string>('shipping');
 export const STRIPE_KEY = new InjectionToken<string>('');
 
 @Injectable()
@@ -168,6 +170,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_FAVORITE, useValue: 'favorite'},
     {provide: TABLE_SCORE, useValue: 'score'},
     {provide: TABLE_PRODUCT, useValue: 'product'},
+    {provide: TABLE_SHIPPING, useValue: 'shipping'},
     {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
     {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
     {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
@@ -189,6 +192,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
     {provide: DeliveryService, useClass: DeliveryService, deps: [AngularFirestore, TABLE_DELIVERY]},
     {provide: FavoriteService, useClass: FavoriteService, deps: [AngularFirestore, TABLE_FAVORITE]},
+    {provide: ShippingService, useClass: ShippingService, deps: [AngularFirestore, TABLE_SHIPPING]},
     {provide: PaymentService, useClass: PaymentService, deps: [AngularFirestore, TABLE_PAYMENT, STRIPE_KEY]},
     UserService,
     AlertService,
