@@ -32,6 +32,22 @@
     }
   }
 
+  app-order-detail {
+    .order-detail-wrapper[_ngcontent-c10] {
+      margin-top: 2rem;
+      .header-wrapper[_ngcontent-c10] {
+        .title-wrapper[_ngcontent-c10] {
+          .title[_ngcontent-c10] {
+            &.order-detail-title {
+              font-size: 1rem;
+              font-weight: 800;
+            }
+          }
+        }
+      }
+    }
+  }
+
   app-category-detail {
     .category-header-wrapper {
       h2 {

@@ -205,7 +205,8 @@
             "created_at": "commandé le",
             "key": "n° de commande",
             "delivery": {
-                "address": "Adresse de livraison"
+                "address": "Adresse de livraison",
+                "received_at": "Livré le "
             },
             "payment": {
                 "mode": "Mode de paiement"
@@ -216,6 +217,9 @@
                 "delivery": "Livraison",
                 "total": "Total",
                 "total_ttc": "Montant total TTC"
+            },
+            "product": {
+                "buy": "Acheter à nouveau"
             }
         },
         "subtitle": "total commande",
@@ -227,7 +231,7 @@
         "total-product": "total produits",
         "total-delivery-fee": "total frais de livraison",
         "total": "total",
-        "quantity": "quantité",
+        "quantity": "x",
         "e-ticket": {
             "title": "e-billet",
             "download": "télécharger mes e-billets"
