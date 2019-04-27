@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Order, OrderItem } from '../shared/order';
-import { ActivatedRoute } from '@angular/router';
-import { OrderService } from '../shared/order.service';
-import { AlertService } from '../../popup/alert.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 import { Delivery } from '../../cart/shared/delivery';
 import { DeliveryService } from '../../cart/shared/delivery.service';
-import { Observable, Subscription } from 'rxjs';
-import { PaymentService } from '../../payment/shared/payment.service';
 import { Payment } from '../../payment/shared/payment';
+import { PaymentService } from '../../payment/shared/payment.service';
+import { AlertService } from '../../popup/alert.service';
 import { Shipping } from '../../shipping/shared/shipping';
 import { ShippingService } from '../../shipping/shared/shipping.service';
+import { Order } from '../shared/order';
+import { OrderService } from '../shared/order.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -33,15 +33,20 @@ export class OrderDetailComponent implements OnInit {
    */
   payment: Payment;
 
+  /**
+   * Shipping informations
+   */
   shipping: Shipping;
 
+  /**
+   * Total articles number shortcut variable
+   */
   totalArticles: number;
 
+  /**
+   * Loading page boolean
+   */
   loading = false;
-
-  downloadingInvoice = false;
-
-  downloadingEticket = false;
 
   /**
    * Etickets template informations
@@ -83,7 +88,6 @@ export class OrderDetailComponent implements OnInit {
           const orderSubscription: Subscription = this.orderService.getOrder(value.key)
             .subscribe((order: Order) => {
               this.order = order;
-              console.log(order);
               this.totalArticles = this.order.items.reduce((acc, next) => {
                 return acc + (next.quantity * next.price);
               }, 0);
