@@ -74,10 +74,12 @@
           line-height: 40px;
         }
       }
-    }
 
-    mat-icon {
-      line-height: 64px;
+      &.user {
+        mat-icon {
+          line-height: 64px;
+        }
+      }
     }
   }
 
