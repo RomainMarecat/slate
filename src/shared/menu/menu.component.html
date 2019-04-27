@@ -65,23 +65,21 @@
     </div>
   </a>
 
-  <ng-container *ngIf="!isLoading && config.displayIconButtonConnection">
-    <ng-container
-      *ngIf="isLogged then loggedIconConnection else diconnectedIconConnection">
-    </ng-container>
+  <ng-container *ngIf="!isLoading && config.displayButtonConnection && config.displayIconButtonConnection">
+    <span class="icon-wrapper">
+      <ng-container
+        *ngIf="isLogged then loggedIconConnection else diconnectedIconConnection">
+      </ng-container>
+    </span>
   </ng-container>
 
-  <ng-template #loggedIconConnection>
-    <span class="icon-wrapper">
-      <button type="button"
-              [matMenuTriggerFor]="account"
-              mat-icon-button
-              role="button">
-        <ng-container *ngIf="config.customIconConnection then customIconConnection; else defaultLoggedIconConnection">
-        </ng-container>
-      </button>
+  <ng-container *ngIf="!isLoading && config.displayButtonConnection && !config.displayIconButtonConnection">
+    <span class="login-wrapper">
+      <ng-container
+        *ngIf="isLogged then loggedButtonConnection else diconnectedButtonConnection">
+      </ng-container>
     </span>
-  </ng-template>
+  </ng-container>
 
   <mat-menu #account="matMenu"
             xPosition="before">
@@ -89,18 +87,27 @@
     <button mat-menu-item (click)="logout()">{{ 'cta.logout'|translate }}</button>
   </mat-menu>
 
+  <ng-template #loggedIconConnection>
+    <button type="button"
+            [matMenuTriggerFor]="account"
+            mat-icon-button
+            role="button">
+      <ng-container *ngIf="config.customIconConnection then customIconConnection; else defaultLoggedIconConnection">
+      </ng-container>
+    </button>
+  </ng-template>
+
   <ng-template #diconnectedIconConnection>
-    <span class="icon-wrapper">
-      <a (click)="loginGoogle()"
-         mat-icon-button>
-        <ng-container *ngIf="config.customIconConnection then customIconConnection; else defaultIconConnection">
-        </ng-container>
-      </a>
-    </span>
+    <a (click)="loginGoogle()"
+       mat-icon-button>
+      <ng-container *ngIf="config.customIconConnection then customIconConnection; else defaultIconConnection">
+      </ng-container>
+    </a>
   </ng-template>
 
   <ng-template #customIconConnection>
-    <div class="menu-icon user">
+    <div class="menu-icon user"
+         [class.connected]="isLogged">
       <mat-icon svgIcon="user"></mat-icon>
     </div>
   </ng-template>
@@ -113,36 +120,26 @@
     <mat-icon>verified_user</mat-icon>
   </ng-template>
 
-  <ng-container *ngIf="!isLoading">
-    <ng-container
-      *ngIf="isLogged && config.displayButtonConnection then loggedButtonConnection else diconnectedButtonConnection">
-    </ng-container>
-  </ng-container>
-
   <ng-template #loggedButtonConnection>
-    <span class="login-wrapper">
-      <button type="button"
-              [color]="config.connectionBtn.mat_color"
-              [matMenuTriggerFor]="account"
-              mat-flat-button
-              role="button">
-        {{ 'cta.profile'|translate }}
-      </button>
-    </span>
+    <button type="button"
+            [color]="config.connectionBtn.mat_color"
+            [matMenuTriggerFor]="account"
+            mat-flat-button
+            role="button">
+      {{ 'cta.profile'|translate }}
+    </button>
   </ng-template>
 
   <ng-template #diconnectedButtonConnection>
-    <span class="login-wrapper">
-      <button mat-flat-button
-              [color]="config.connectionBtn.mat_color"
-              [style.background]="config.connectionBtn.background"
-              [style.color]="config.connectionBtn.color"
-              type="button"
-              (click)="loginGoogle()"
-              [innerHTML]="'menu.connection.title'|translate"
-              *ngIf="config.connectionBtn">
-      </button>
-    </span>
+    <button mat-flat-button
+            [color]="config.connectionBtn.mat_color"
+            [style.background]="config.connectionBtn.background"
+            [style.color]="config.connectionBtn.color"
+            type="button"
+            (click)="loginGoogle()"
+            [innerHTML]="'menu.connection.title'|translate"
+            *ngIf="config.connectionBtn">
+    </button>
   </ng-template>
 
   <span class="icon-wrapper"

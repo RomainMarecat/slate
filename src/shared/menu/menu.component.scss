@@ -66,7 +66,19 @@
   }
 
   .icon-wrapper {
-    width: 40px;
+    width: 64px;
+
+    .menu-icon {
+      &.connected {
+        mat-icon {
+          line-height: 40px;
+        }
+      }
+    }
+
+    mat-icon {
+      line-height: 64px;
+    }
   }
 
   .menu-icon {

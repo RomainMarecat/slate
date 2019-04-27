@@ -30,7 +30,7 @@ export class AppRootComponent implements OnInit, OnDestroy {
     displayAdminRecipe: true,
     urlAdmin: ['admin', 'recipe'],
     displayBurgerMenu: false,
-    displayButtonConnection: false,
+    displayButtonConnection: true,
     displayIconButtonConnection: true,
     underlineTitle: true,
     displayCart: false

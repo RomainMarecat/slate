@@ -9,7 +9,9 @@
         "search": "Rechercher",
         "admin": "admin",
         "save": "sauvegarder",
-        "cancel": "annuler"
+        "cancel": "annuler",
+        "account": "mon compte",
+        "logout": "se déconnecter"
     },
     "admin": {
         "option": {
@@ -198,6 +200,9 @@
         "title": {
             "home": "",
             "recipe": "recette"
+        },
+        "connection": {
+            "title": "Connexion"
         }
     },
     "meta": {

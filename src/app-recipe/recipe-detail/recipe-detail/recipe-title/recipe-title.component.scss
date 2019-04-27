@@ -65,7 +65,7 @@
       color: mat-color($primary);
       background-color: transparent;
 
-      /deep/ .mat-step-header {
+      ::ng-deep .mat-step-header {
         padding: 0;
         width: 24px;
 
@@ -75,18 +75,18 @@
         }
       }
 
-      /deep/ .mat-stepper-horizontal-line {
+      ::ng-deep .mat-stepper-horizontal-line {
         border-top-width: 8px;
         border-top-color: mat-color($primary);
       }
 
-      /deep/ .mat-horizontal-content-container {
+      ::ng-deep .mat-horizontal-content-container {
         padding: 0;
       }
     }
 
     &.xs {
-      /deep/ .mat-step-header {
+      ::ng-deep .mat-step-header {
         height: 2rem;
       }
     }
