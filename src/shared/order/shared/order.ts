@@ -8,6 +8,7 @@ export interface Order {
   items: OrderItem[];
   created_at: Date;
   updated_at: Date;
+  shipping?: string;
 }
 
 export interface OrderItem {

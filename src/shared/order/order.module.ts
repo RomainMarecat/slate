@@ -11,6 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { OrderComponent } from './order/order.component';
 import { NgPipesModule } from 'ngx-pipes';
 import { LoaderModule } from '../loader/loader.module';
+import { StorageModule } from '../media/storage/storage.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LoaderModule } from '../loader/loader.module';
     FlexLayoutModule,
     MatIconModule,
     OrderRoutingModule,
+    StorageModule,
     TranslateModule.forChild()
   ]
 })

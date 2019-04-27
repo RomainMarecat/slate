@@ -1,40 +1,48 @@
-<div class="order-detail-wrapper mt-5"
+<div class="order-detail-wrapper"
      fxLayout="row"
      fxLayoutAlign="center stretch">
   <div fxFlex="60"
        fxLayout="column"
+       fxFlex.xs="95"
+       fxLayoutGap.xs="10px"
        fxLayoutGap="30px"
        *ngIf="order">
     <div class="header-wrapper"
          fxLayout="column">
       <div fxLayout="row" class="title-wrapper">
-        <h1 class="title text-uppercase">
+        <h1 class="title order-detail-title text-uppercase">
           {{ 'order-detail.header.title'|translate }}
         </h1>
       </div>
 
       <div fxLayout="row"
            fxLayoutGap="30px"
+           fxLayoutGap.xs="10px"
+           fxLayout.xs="column"
            class="subtitle-wrapper">
 
         <div class="date-wrapper"
              fxLayout="row"
+             fxLayoutAlign="start center"
              fxLayoutGap="5px"
              *ngIf="order.created_at">
-          <span class="text-ucfirst">
+          <span class="text-label text-ucfirst">
             {{ 'order-detail.title.created_at'|translate }}
           </span>
-          <span>
+          <span class="text-value">
             {{ order?.created_at?.seconds * 1000 | date:'short' }}
           </span>
         </div>
 
 
-        <div class="key-wrapper">
-          <span class="text-ucfirst">
+        <div class="key-wrapper"
+             fxLayout="row wrap"
+             fxLayoutAlign="start center"
+             fxLayoutGap="5px">
+          <span class="text-label text-ucfirst">
             {{ 'order-detail.title.key'|translate }}
           </span>
-          <span>
+          <span class="text-value">
             {{ order.key }}
           </span>
         </div>
@@ -44,6 +52,8 @@
     <mat-card class="content-wrapper"
               fxLayout="row"
               fxLayoutGap="50px"
+              fxLayoutGap.xs="10px"
+              fxLayout.xs="column"
               *ngIf="delivery">
       <div class="delivery-wrapper">
         <mat-card-title>
@@ -125,49 +135,63 @@
       </div>
     </mat-card>
 
-    <mat-card>
-      <div class="row">
-        <div class="col-12">
-          <div class="row d-none d-md-flex">
-            <div class="col-4">
-              {{ 'order-detail.reference'|translate }}
-            </div>
-            <div class="col-2">
-              {{ 'order-detail.quantity'|translate }}
-            </div>
-            <div class="col-2">
-              {{ 'order-detail.price'|translate }}
-            </div>
-            <div class="col-4" *ngIf="hasEtickets">
-              {{ 'order-detail.e-ticket.title'|translate }}
-            </div>
-          </div>
+    <mat-card class="content-wrapper"
+              *ngIf="order?.items?.length">
+      <mat-card-header>
+        <mat-card-title>
+          <ng-container *ngIf="order?.shipping && shipping; else processingShipping">
+            {{ 'order-detail.title.delivery.received_at'|translate }}
+            {{ order.created_at?.seconds * 1000 | date:'short' }}
+          </ng-container>
+          <ng-template #processingShipping>
+            {{ 'order-detail.shipping.processing' |translate }}
+          </ng-template>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxFlex="60"
+             fxFlex.md="70"
+             fxFlex.sm="80"
+             fxFlex.xs="100">
+          <div *ngFor="let item of order.items">
+            <div fxLayout="row">
+              <div class="card-wrapper card-img-top"
+                   fxFlex="30">
+                <app-storage-image [panelStyle]="{height: '90px', width: 'auto'}"
+                                   [panelClass]="'scale'"
+                                   [matCardImage]="false"
+                                   [alt]="item.name"
+                                   [downloadURL]="item.image"></app-storage-image>
+              </div>
 
-          <div class="row" *ngFor="let orderItem of order.items">
-            <div class="col-12 col-md-4 text-left">
-              <strong>{{ orderItem.name }}</strong>
-            </div>
-            <div class="col-6 col-md-2 text-center text-md-left">
-              <div>
-                <span class="d-inline d-md-none">{{ 'order-detail.quantity'|translate }}
-                  :</span> {{ orderItem.quantity }}
+              <div fxFlex="70">
+                <mat-list>
+                  <mat-list-item class="item-name"
+                                 fxLayout="row"
+                                 fxLayoutAlign="start center">
+                    {{ item.name }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    {{ 'order-detail.quantity'|translate }} {{ item.quantity }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    {{ item.quantity * item.price | currency : 'EUR' }}
+                  </mat-list-item>
+                  <mat-list-item class="my-2">
+                    <div class="py-2 my-2">
+                      <a mat-stroked-button
+                         color="primary"
+                         [routerLink]="['products/detail', item.code]|localize">
+                        {{ 'order-detail.title.product.buy'|translate }}
+                      </a>
+                    </div>
+                  </mat-list-item>
+                </mat-list>
               </div>
-            </div>
-            <div class="col-6 col-md-2 text-center text-md-left">
-              <div>
-                {{ orderItem?.price | currency:'EUR' }}
-              </div>
-            </div>
-            <div class="col-12 col-md-4" *ngIf="orderItem?.is_eticket === true">
-              <button class="btn btn-shadow"
-                      [disabled]="downloadingEticket"
-                      (click)="downloadTickets(orderItem)">
-                <div>{{ 'order-detail.e-ticket.download'|translate }}</div>
-              </button>
             </div>
           </div>
         </div>
-      </div>
+      </mat-card-content>
     </mat-card>
 
   </div>

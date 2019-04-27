@@ -1,7 +1,9 @@
 .order-detail-wrapper {
+  margin-top: 5rem;
+
   .header-wrapper {
     .title-wrapper {
-      .title {
+      .order-detail-title {
         font-size: 2rem;
       }
     }
@@ -10,6 +12,15 @@
   .content-wrapper {
     mat-list-item {
       height: 24px;
+
+      &.item-name {
+        height: 48px;
+        &.mat-list-item {
+          font-size: 14px;
+        }
+      }
+
+
     }
 
     .resume-title-wrapper {
@@ -17,3 +28,4 @@
     }
   }
 }
+
