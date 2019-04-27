@@ -1,11 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Favorite } from '../../../../../shared/favorite/shared/favorite';
 import { FavoriteService } from '../../../../../shared/favorite/shared/favorite.service';
-import { UserService } from '../../../../../shared/user/shared/user.service';
-import { User } from '../../../../../shared/user/shared/user';
 import { Product } from '../../../../../shared/product/shared/product';
-import { Moment } from 'moment';
 import { SpecificProductOption } from '../../../../../shared/product/shared/product-option';
+import { User } from '../../../../../shared/user/shared/user';
+import { UserService } from '../../../../../shared/user/shared/user.service';
 
 @Component({
   selector: 'app-home-product-list',

@@ -10,6 +10,7 @@
     "build": "./node_modules/@angular/cli/bin/ng build --configuration=production --project=store",
     "build-themes": "bash ./tools/build-themes.sh",
     "test": "./node_modules/@angular/cli/bin/ng test --watch=false --project=store",
+    "test-cc": "./node_modules/@angular/cli/bin/ng test --watch=false --project=store --code-coverage",
     "lint": "./node_modules/@angular/cli/bin/ng lint --project=store",
     "e2e": "./node_modules/@angular/cli/bin/ng e2e",
     "build-universal": "npm run build:ssr",

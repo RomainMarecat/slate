@@ -1,26 +1,28 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MenuModule } from '../../../../../shared/menu/menu.module';
 import { MatBadgeModule, MatIconModule, MatTooltipModule } from '@angular/material';
-import { NgPipesModule } from 'ngx-pipes';
-import { StorageModule } from '../../../../../shared/media/storage/storage.module';
 import { RouterTestingModule } from '@angular/router/testing';
-import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { ProductItemComponent } from '../../../../../shared/product/product-item/product-item.component';
-import { MockLocalizeRouterService } from '../../../../../shared/router/mock-localize-router.service';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
+import { NgPipesModule } from 'ngx-pipes';
 import { CategoryService } from '../../../../../shared/category/category.service';
 import { MockCategoryService } from '../../../../../shared/category/mock-category.service';
+import { FavoriteService } from '../../../../../shared/favorite/shared/favorite.service';
+import { mockFavorite } from '../../../../../shared/favorite/shared/mock-favorite';
+import { MockFavoriteService } from '../../../../../shared/favorite/shared/mock-favorite.service';
 import { MediaService } from '../../../../../shared/media/media.service';
 import { MockMediaService } from '../../../../../shared/media/mock-media.service';
-import { AngularFireStorage } from '@angular/fire/storage';
 import { MockAngularFireStorage } from '../../../../../shared/media/shared/mock-angular-fire-storage';
-import { FavoriteService } from '../../../../../shared/favorite/shared/favorite.service';
-import { MockFavoriteService } from '../../../../../shared/favorite/shared/mock-favorite.service';
-import { UserService } from '../../../../../shared/user/shared/user.service';
-import { MockUserService } from '../../../../../shared/user/shared/mock-user.service';
+import { StorageModule } from '../../../../../shared/media/storage/storage.module';
+import { MenuModule } from '../../../../../shared/menu/menu.module';
+import { ProductItemComponent } from '../../../../../shared/product/product-item/product-item.component';
+import { MockLocalizeRouterService } from '../../../../../shared/router/mock-localize-router.service';
 import { configureTestSuite } from '../../../../../shared/unit-test/configure-test-suite';
+import { mockUser } from '../../../../../shared/user/shared/mock-user';
+import { MockUserService } from '../../../../../shared/user/shared/mock-user.service';
+import { UserService } from '../../../../../shared/user/shared/user.service';
 import { ProductListComponent } from './product-list.component';
 
 describe('ProductListComponent', () => {
@@ -71,6 +73,24 @@ describe('ProductListComponent', () => {
   });
 
   it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should add favorite', () => {
+    component.setFavorite(mockUser);
+
+    expect(component).toBeTruthy();
+  });
+
+  it('should add favorite', () => {
+    component.onFavoriteAdded(mockFavorite);
+
+    expect(component).toBeTruthy();
+  });
+
+  it('should remove favorite', () => {
+    component.onFavoriteRemoved(mockFavorite);
+
     expect(component).toBeTruthy();
   });
 });
