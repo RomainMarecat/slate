@@ -50,7 +50,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     displayBurgerMenu: true,
     displayButtonConnection: true,
     displayIconButtonConnection: false,
-    displaySearchIcon: true,
+    displaySearchIcon: false,
     customIconConnection: true,
     underlineTitle: false,
     displayCart: true,
