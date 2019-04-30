@@ -9,6 +9,7 @@ export interface Order {
   created_at: Date;
   updated_at: Date;
   shipping?: string;
+  status: 'capture_authorized' | 'payment_authorized' | 'payment_error' | 'payment_cancelled';
 }
 
 export interface OrderItem {

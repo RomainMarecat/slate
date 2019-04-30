@@ -22,6 +22,7 @@ export class OrderListComponent extends BaseListComponent<Order> implements OnIn
   @ViewChild('priceCell') priceCell: TemplateRef<any>;
   @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
   @ViewChild('desktopHeader') desktopHeader: TemplateRef<any>;
+  @ViewChild('dateTmpl') dateTmpl: TemplateRef<any>;
 
   constructor(protected menuService: MenuService,
               protected orderService: OrderService,
@@ -38,7 +39,7 @@ export class OrderListComponent extends BaseListComponent<Order> implements OnIn
 
     this.orderService.query$.next({
       orderBy: {
-        column: 'updated_at',
+        column: 'created_at',
         direction: 'desc'
       }
     });
@@ -64,6 +65,12 @@ export class OrderListComponent extends BaseListComponent<Order> implements OnIn
         resizeable: false,
         headerTemplate: this.checkboxHeader,
         cellTemplate: this.checkboxCell,
+      },
+      {
+        prop: 'created_at',
+        name: 'created_at',
+        flexGrow: 1,
+        cellTemplate: this.dateTmpl,
       }, {
         prop: 'key',
         name: 'key',
@@ -75,8 +82,7 @@ export class OrderListComponent extends BaseListComponent<Order> implements OnIn
         name: 'user',
         flexGrow: 1,
         headerTemplate: this.desktopHeader,
-      },
-      {
+      }, {
         prop: 'total',
         name: 'total',
         flexGrow: 1,

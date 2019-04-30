@@ -113,9 +113,9 @@ export class BoardDetailComponent implements OnInit {
     });
 
     el.addEventListener('mousedown', (e) => {
-      //if (e.target.id === 'main' || e.target.id === 'board-wrapper') {
+      // if (e.target.id === 'main' || e.target.id === 'board-wrapper') {
       //  this.curDown = true;
-      //}
+      // }
       this.curYPos = e.pageY;
       this.curXPos = e.pageX;
     });

@@ -186,6 +186,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
               total: this.cart.total,
               user: this.cart.user,
               items: this.cart.items,
+              status: 'capture_authorized',
               delivery_fee: 0,
               delivery: this.delivery.key,
               created_at: new Date(),

@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseEditComponent } from '../../base/base-edit/base-edit.component';
+import { DocumentReference } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertService } from '../../../popup/alert.service';
 import { LocalizeRouterService } from 'localize-router';
+import { Subscription } from 'rxjs';
+import { Address, Delivery } from '../../../cart/shared/delivery';
+import { DeliveryService } from '../../../cart/shared/delivery.service';
 import { Order } from '../../../order/shared/order';
 import { OrderService } from '../../../order/shared/order.service';
+import { AlertService } from '../../../popup/alert.service';
+import { BaseEditComponent } from '../../base/base-edit/base-edit.component';
 import { OrderFormType } from '../../shared/order/form-order';
-import { DocumentReference } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-order-edit',
@@ -15,11 +18,27 @@ import { DocumentReference } from '@angular/fire/firestore';
 })
 export class OrderEditComponent extends BaseEditComponent<Order> implements OnInit {
 
+  billingAddress: string;
+
+  deliveryAddress: string;
+
+  delivery: Delivery;
+
+  static setAddressText(address: Address): string {
+    return address.firstname + ' ' +
+      address.firstname + ' ' +
+      address.address + ' ' +
+      address.address_complement + ' ' +
+      address.zipcode + ' ' +
+      address.country + ' ';
+  }
+
   constructor(protected activatedRoute: ActivatedRoute,
               protected router: Router,
               protected alertService: AlertService,
               protected orderService: OrderService,
-              protected localizeRouterService: LocalizeRouterService) {
+              protected localizeRouterService: LocalizeRouterService,
+              private deliveryService: DeliveryService) {
     super(activatedRoute, router, alertService, orderService, localizeRouterService);
     this.createForm();
   }
@@ -31,6 +50,8 @@ export class OrderEditComponent extends BaseEditComponent<Order> implements OnIn
         this.orderService.getOrder(key)
           .subscribe((document: Order) => {
             this.document = document;
+            console.log(this.document);
+            this.getDelivery(this.document);
             this.createForm();
           });
       }
@@ -70,5 +91,49 @@ export class OrderEditComponent extends BaseEditComponent<Order> implements OnIn
           });
       }
     }
+  }
+
+  onConfirmPayment() {
+    const order: Order = this.document;
+
+    order.status = 'payment_authorized';
+    order.updated_at = new Date();
+
+    this.orderService.updateOrder(order).subscribe();
+  }
+
+  markPaymentAsCancelled() {
+    const order: Order = this.document;
+
+    order.status = 'payment_cancelled';
+    order.updated_at = new Date();
+
+    this.orderService.updateOrder(order).subscribe();
+  }
+
+  getDelivery(order: Order) {
+    if (order.key) {
+      this.deliveryService.filters$.next([
+        {
+          column: 'order',
+          operator: 'array-contains',
+          value: order.key
+        }
+      ]);
+      const deliverySubscription: Subscription = this.deliveryService.getDeliveries()
+        .subscribe((deliveries) => {
+          this.delivery = deliveries[0];
+          this.deliveryAddress = OrderEditComponent.setAddressText(this.delivery.address);
+          this.billingAddress = OrderEditComponent.setAddressText(this.delivery.billing);
+
+          if (deliverySubscription) {
+            deliverySubscription.unsubscribe();
+          }
+        });
+    }
+  }
+
+  copied(event) {
+    this.alertService.openBottomSheetMessage({title: '', message: 'shop.order.copied_text'});
   }
 }

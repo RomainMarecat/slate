@@ -1,0 +1,13 @@
+app-store-admin-dashboard {
+  .dashboard-content-wrapper {
+    mat-card {
+      mat-card-header {
+        mat-card-title {
+          .link {
+            color: mat-color($black);
+          }
+        }
+      }
+    }
+  }
+}
