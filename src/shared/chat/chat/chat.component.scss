@@ -1,0 +1,26 @@
+.content-card {
+  padding: 0;
+
+  mat-sidenav-container {
+    border-radius: 4px;
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, .87);
+    display: flex;
+    flex: 1;
+    width: 100%;
+
+    mat-sidenav {
+      width: 400px;
+      max-width: 90%;
+      overflow: hidden;
+    }
+
+    mat-sidenav-content {
+      max-width: 100%;
+      display: flex;
+      flex: 1 1 auto;
+      height: auto;
+      min-height: 400px;
+    }
+  }
+}

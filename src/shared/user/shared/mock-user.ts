@@ -1,8 +1,9 @@
-export const mockUser = {
+import { User } from './user';
+
+export const mockUser: User = {
   uid: 'sdf4sdf52',
   photoURL: '',
-  displayName: '',
-  email: '',
-  photoUrl: '',
+  displayName: 'John Doe',
+  email: 'john.doe@fake.com',
   emailVerified: true,
 };

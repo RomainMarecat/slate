@@ -11,7 +11,10 @@
         "save": "sauvegarder",
         "cancel": "annuler",
         "account": "mon compte",
-        "logout": "se déconnecter"
+        "logout": "se déconnecter",
+        "footer": {
+            "top-of-page": "haut de page"
+        }
     },
     "admin": {
         "option": {

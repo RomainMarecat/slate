@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ConversationService } from '../../chat/shared/conversation.service';
+import { MockConversationService } from '../../chat/shared/mock-conversation.service';
+import { MockUserService } from '../../user/shared/mock-user.service';
+import { UserService } from '../../user/shared/user.service';
 
 import { ContactAddComponent } from './contact-add.component';
 import { MockContactService } from '../shared/mock-contact.service';
@@ -57,6 +61,8 @@ describe('ContactAddComponent', () => {
       declarations: [ContactAddComponent],
       providers: [
         {provide: ContactService, useClass: MockContactService},
+        {provide: ConversationService, useClass: MockConversationService},
+        {provide: UserService, useClass: MockUserService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         DateService,

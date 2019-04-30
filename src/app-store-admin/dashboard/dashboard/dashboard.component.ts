@@ -18,8 +18,8 @@ export class DashboardComponent implements OnInit {
   static getFeatures(): {name: string, img: string, url: string}[] {
     return [
       {name: 'dashboard.features.name.order', img: '/assets/images/cart.jpg', url: '/admin/order'},
-      {name: 'dashboard.features.name.cart', img: '/assets/images/cart.jpg', url: '/cart'},
-      {name: 'dashboard.features.name.contact', img: '/assets/images/contact.jpg', url: '/contact'},
+      {name: 'dashboard.features.name.cart', img: '/assets/images/cart.jpg', url: '/admin/cart'},
+      {name: 'dashboard.features.name.contact', img: '/assets/images/contact.jpg', url: '/admin/contact'},
     ];
   }
 

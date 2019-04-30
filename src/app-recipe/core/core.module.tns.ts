@@ -33,6 +33,7 @@ export const TABLE_AREA = new InjectionToken<string>('area');
 export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_CONTACT = new InjectionToken<string>('contact');
+export const TABLE_CONVERSATION = new InjectionToken<string>('conversation');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
 export const TABLE_SELECTION = new InjectionToken<string>('selection');
 export const TABLE_SESSION = new InjectionToken<string>('session');
@@ -101,6 +102,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
   ],
   providers: [
     {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},
+    {provide: TABLE_CONVERSATION, useValue: 'conversation'},
     // {provide: TABLE_RECIPE, useValue: 'recipe'},
     // {provide: TABLE_INGREDIENT, useValue: 'ingredient'},
     // {provide: RecipeService, useClass: RecipeService, deps: [AngularFirestore, TABLE_RECIPE]},

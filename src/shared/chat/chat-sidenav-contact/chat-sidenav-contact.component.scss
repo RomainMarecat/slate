@@ -1,0 +1,68 @@
+.sidenav-content {
+  .chat-list {
+
+    .mat-subheader {
+      color: #039be5;
+
+      padding-left: 16px;
+      font-size: 20px;
+      font-weight: 300;
+      height: 88px;
+      line-height: 88px;
+    }
+
+    .contact {
+      border-bottom-color: rgba(0, 0, 0, .12);
+      color: inherit;
+      background: 0 0;
+
+      white-space: normal;
+      text-align: left;
+      letter-spacing: .010em;
+      min-height: 88px;
+      border-bottom: 1px solid;
+      padding: 16px;
+      font-weight: 400;
+      border-radius: 0;
+
+      &:hover {
+        background-color: #fafafa;
+      }
+
+      .avatar-wrapper {
+        border-radius: 50%;
+        border: 1px solid #000000;
+        width: 24px;
+        height: 24px;
+      }
+
+      .contact-name {
+        font-size: 16px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .contact-last-message {
+        color: rgba(0, 0, 0, .54);
+        line-height: normal;
+        margin-top: 0;
+      }
+
+      .contact-last-message-time {
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      .unread-message-count {
+        font-size: 12px;
+        border-radius: 50%;
+        text-align: center;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        background-color: #039be5;
+        color: #fff;
+      }
+    }
+  }
+}

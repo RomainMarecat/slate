@@ -105,6 +105,29 @@
   </span>
 </ng-template>
 
+<ng-template #statusTmpl
+             let-value="value"
+             ngx-datatable-cell-template>
+  <div [ngSwitch]="value">
+    <span *ngSwitchCase="'capture_authorized'"
+          class="text-primary">
+      {{ 'admin.cart-list.status.current'|translate }}
+    </span>
+    <span *ngSwitchCase="'payment_authorized'"
+          class="text-success">
+      {{ 'admin.cart-list.status.finished'|translate }}
+    </span>
+    <span *ngSwitchCase="'payment_error'"
+          class="text-danger">
+      {{ 'admin.cart-list.status.finished'|translate }}
+    </span>
+    <span *ngSwitchCase="'payment_cancelled'"
+          class="text-warning">
+      {{ 'admin.cart-list.status.finished'|translate }}
+    </span>
+  </div>
+</ng-template>
+
 <ng-template #actionsCell
              let-row="row"
              ngx-datatable-cell-template>

@@ -50,7 +50,9 @@ $mat-store-primary: (
 
 $primary: mat-palette($mat-store-primary, 900);
 $second: mat-palette($mat-store-primary, 500);
+$warn: mat-palette($mat-store-primary, 500);
 $error: mat-palette($mat-store-primary, 400);
+$accent: mat-palette($mat-store-primary, 400);
 $white: mat-palette($mat-store-primary, 50);
 $grey: mat-palette($mat-store-primary, 800);
 

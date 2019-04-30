@@ -98,3 +98,31 @@ app-product-item {
   }
 }
 
+
+app-footer {
+  footer {
+    background-color: mat-color($primary);
+
+    .mat-toolbar {
+      background-color: mat-color($primary);
+    }
+
+    a {
+      color: mat-color($warn);
+
+      &:hover {
+        color: mat-color($warn, 700);
+        text-decoration: none;
+      }
+
+      &.text-sublink {
+        &:hover {
+          color: mat-color($warn, 700);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+

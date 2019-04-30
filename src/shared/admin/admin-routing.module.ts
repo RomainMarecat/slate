@@ -53,6 +53,11 @@ const routes: Routes = [
       },
       {
         canActivate: [AdminGuard],
+        path: 'cart',
+        loadChildren: './cart/cart.module#CartModule'
+      },
+      {
+        canActivate: [AdminGuard],
         path: 'order',
         loadChildren: './order/order.module#OrderModule'
       },

@@ -1,0 +1,78 @@
+.sidenav-header {
+  mat-toolbar {
+    background: #f5f5f5;
+    color: rgba(0, 0, 0, .87);
+
+    .avatar-wrapper {
+      position: relative;
+
+      .avatar {
+        cursor: pointer;
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin: 0 8px 0 0;
+        border-radius: 50%;
+        font-size: 17px;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        vertical-align: top;
+        border: none;
+      }
+
+      mat-icon {
+        &.status {
+          position: absolute;
+          top: 28px;
+          left: 28px;
+        }
+      }
+    }
+
+    .mat-icon-button {
+      display: inline-block;
+      padding: 0;
+      min-width: 0;
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      line-height: 40px;
+      border-radius: 50%;
+
+      mat-icon {
+        line-height: 24px;
+      }
+    }
+
+    .search-wrapper {
+      .search {
+        background: #fafafa;
+        height: 36px;
+        line-height: 36px;
+        padding: 8px;
+        font-size: 13px;
+        border-radius: 18px;
+        border: 1px solid rgba(0, 0, 0, .12);
+        overflow: hidden;
+
+        mat-icon {
+          margin: 0;
+        }
+
+        input {
+          background: #fafafa;
+          color: rgba(0, 0, 0, .87);
+          padding: 0 12px 0 8px;
+          height: 36px;
+          border: none;
+        }
+      }
+    }
+  }
+}

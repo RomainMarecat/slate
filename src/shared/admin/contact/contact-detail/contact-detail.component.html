@@ -3,11 +3,11 @@
      fxLayoutAlign="center stretch">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>{{ contact?.name}}</mat-card-title>
-      <mat-card-subtitle>{{ contact?.email}}</mat-card-subtitle>
+      <mat-card-title>{{ contact?.user?.displayName }}</mat-card-title>
+      <mat-card-subtitle>{{ contact?.user?.email }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      {{ contact?.message }}
+      {{ contact?.last_message }}
     </mat-card-content>
     <mat-card-actions>
       <button (click)="back()"

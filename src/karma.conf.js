@@ -95,6 +95,13 @@ module.exports = function (config) {
         nocache: false
       },
       {
+        pattern: './app-store/assets/images/*/*.jpg',
+        watched: false,
+        included: false,
+        served: true,
+        nocache: false
+      },
+      {
         pattern: './app-recipe/assets/images/*.svg',
         watched: false,
         included: false,
@@ -117,6 +124,13 @@ module.exports = function (config) {
       },
       {
         pattern: './app-showcase/assets/images/*.png',
+        watched: false,
+        included: false,
+        served: true,
+        nocache: false
+      },
+      {
+        pattern: './app-hockey/assets/images/ice-hcokey-home.jpg',
         watched: false,
         included: false,
         served: true,

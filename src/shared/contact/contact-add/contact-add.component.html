@@ -23,7 +23,7 @@
         <input matInput
                autocomplete="name"
                [placeholder]="'name'|translate"
-               [formControl]="form.controls.name">
+               formControlName="name">
         <mat-hint align="start"><strong [innerHtml]="'name'|translate"></strong></mat-hint>
         <mat-error *ngIf="form.controls.name.invalid && form.controls.name.value.length === 0"
                    [innerHtml]="'Le nom ne peut pas être vide'|translate"></mat-error>
@@ -35,7 +35,7 @@
                autocomplete="email"
                type="email"
                [placeholder]="'email'|translate"
-               [formControl]="form.controls.email">
+               formControlName="email">
         <mat-hint align="start"><strong [innerHtml]="'email'|translate"></strong></mat-hint>
         <mat-error *ngIf="form.controls.email.invalid && form.controls.email.value.length === 0"
                    [innerHtml]="'L\'email ne peut pas être vide'|translate"></mat-error>
@@ -44,11 +44,11 @@
       </mat-form-field>
 
       <mat-form-field class="mat-form-field">
-    <textarea matInput
-              maxlength="500"
-              [placeholder]="'message'|translate"
-              [formControl]="form.controls.message">
-    </textarea>
+        <textarea matInput
+                  maxlength="500"
+                  [placeholder]="'message'|translate"
+                  formControlName="message">
+        </textarea>
         <mat-hint align="start"><strong [innerHtml]="'message'|translate"></strong></mat-hint>
         <mat-hint align="end">{{ form.controls.message.value.length }} {{ '/500'|translate }}</mat-hint>
         <mat-error *ngIf="form.controls.message.invalid && form.controls.message.value.length === 0"
@@ -59,7 +59,7 @@
 
       <div class="send-wrapper"
            fxLayout="row"
-           fxLayourAlign="space-around stretch"
+           fxLayoutAlign="space-around stretch"
            fxLayoutGap="50px"
            fxLayoutGap.xs="20px">
         <button type="button"

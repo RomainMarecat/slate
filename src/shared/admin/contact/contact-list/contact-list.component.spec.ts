@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ChatModule } from '../../../chat/chat.module';
+import { ConversationService } from '../../../chat/shared/conversation.service';
+import { MockConversationService } from '../../../chat/shared/mock-conversation.service';
 
 import { ContactListComponent } from './contact-list.component';
 import { ContactDetailComponent } from '../contact-detail/contact-detail.component';
@@ -48,6 +51,7 @@ describe('ContactListComponent', () => {
         BrowserAnimationsModule,
         NgxDatatableModule,
         SharedModule,
+        ChatModule,
         NgxEditorModule,
         HttpClientTestingModule,
         LocalizeRouterModule,
@@ -62,6 +66,7 @@ describe('ContactListComponent', () => {
       ],
       providers: [
         {provide: ContactService, useClass: MockContactService},
+        {provide: ConversationService, useClass: MockConversationService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: LoaderService, useClass: MockLoaderService},
         {provide: UserService, useClass: MockUserService},

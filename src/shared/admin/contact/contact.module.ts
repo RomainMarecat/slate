@@ -1,5 +1,6 @@
 import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChatModule } from '../../chat/chat.module';
 
 import { ContactRoutingModule } from './contact-routing.module';
 import { ContactListComponent } from './contact-list/contact-list.component';
@@ -19,7 +20,8 @@ const TABLE_CONTACT = new InjectionToken<string>('contact');
     FlexLayoutModule,
     NgxDatatableModule,
     SharedModule,
-    ContactRoutingModule
+    ContactRoutingModule,
+    ChatModule
   ],
   declarations: [
     ContactListComponent,

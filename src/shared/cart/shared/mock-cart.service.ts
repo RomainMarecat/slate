@@ -10,6 +10,7 @@ export class MockCartService {
   sessionCollectionRef: AngularFirestoreCollection<Cart>;
   sessions$: Observable<DocumentChangeAction<Cart[]>[]>;
   session$: Observable<Cart>;
+  query$: BehaviorSubject<any | null>;
   filters$: BehaviorSubject<Filter[]>;
   limit$: BehaviorSubject<number | null>;
   startAt$: BehaviorSubject<string | null>;
@@ -22,6 +23,7 @@ export class MockCartService {
 
   constructor() {
     this.filters$ = new BehaviorSubject([{column: 'published', operator: '==', value: true}]);
+    this.query$ = new BehaviorSubject({orderBy: [{column: 'published', operator: '==', value: true}]});
     this.limit$ = new BehaviorSubject(20);
     this.orderBy$ = new BehaviorSubject('published_at');
   }

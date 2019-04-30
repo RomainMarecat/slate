@@ -1,1272 +1,1307 @@
 {
-  "routes": {
-    "add": "ajouter",
-    "add-product": "ajouter-un-produit",
-    "boards": "tableau-de-bord",
-    "board": "tableau",
-    "category": "category",
-    "cms": "cms",
-    "cms-detail": "cms détail",
-    "categories": "categories",
-    "selections": "selections",
-    "selection": "selection",
-    "layout-builder": "configurateur-de-layout",
-    "material": "material-design",
-    "button-indicators": "button-indicators",
-    "detail": "detail",
-    "datatable": "datatable",
-    "form": "form",
-    "layout": "layout",
-    "navigation": "navigation",
-    "component": "component",
-    "button": "button",
-    "button-toggle": "button-toggle",
-    "icon": "icon",
-    "chips": "chips",
-    "progress-bar": "progress-bar",
-    "progress-spinner": "progress-spinner",
-    "paginator": "paginator",
-    "sort-header": "sort-header",
-    "table": "table",
-    "order": "order",
-    "autocomplete": "autocomplete",
-    "checkbox": "checkbox",
-    "datepicker": "datepicker",
-    "input": "input",
-    "radio-button": "radio-button",
-    "select": "select",
-    "slider": "slider",
-    "slide-toggle": "slide-toggle",
-    "card": "card",
-    "divider": "divider",
-    "expansion-panel": "expansion-panel",
-    "grid-list": "grid-list",
-    "list": "list",
-    "stepper": "stepper",
-    "tabs": "tabs",
-    "sidenav": "sidenav",
-    "toolbar": "toolbar",
-    "dialog": "dialog",
-    "snackbar": "snackar",
-    "tooltip": "tooltip",
-    "menu": "menu",
-    "popup": "modal",
-    "charts": "dashboard",
-    "gprd": "rgpd",
-    "faq": "foire-aux-questions",
-    "invoices": "facturation",
-    "login1": "login-style-1",
-    "login2": "login-style-2",
-    "logins": "connexion",
-    "registers": "enregistrement",
-    "user": "utilisateur",
-    "users": "utilisateurs",
-    "calendar": "agenda",
-    "admin": "administration",
-    "article": "article",
-    "map": "map",
-    "cart": "panier",
-    "contact-us": "contacter-nous",
-    "product": "product",
-    "products": "produits"
-  },
-  "meta": {
-    "description": {
-      "agenda": "Calendrier des sessions disponibles",
-      "articles": "Liste des articles",
-      "article": "{{ article.description }}",
-      "boards": "Liste des tableaux de bord",
-      "cart": "Panier",
-      "chart": "Dashboard",
-      "dashboard": "Liste de toutes les fonctionnalités de l'application",
-      "faq": "FAQ",
-      "gprd": "RGPD",
-      "invoice": "Facturation",
-      "layout-builder": "Configurateur de thème. Changer en un click les couleurs du site",
-      "map": "Carte de la France. Sélectionner une région pour afficher les produits près de chez vous.",
-      "material": "Liste des fonctionalités material.io qui suit le thème du site et proposant queqlques exemple en plus",
-      "products": "Liste des produits",
-      "product": "Détail de la fiche produit",
-      "timeline": "Timeline",
-      "user": "Utilisateur"
-    },
-    "title": {
-      "agenda": "Calendrier des sessions disponibles",
-      "articles": "Les articles",
-      "article": "{{ article.name }}",
-      "boards": "Liste des tableaux de bord",
-      "cart": "Panier",
-      "chart": "Dashboard",
-      "dashboard": "Dashboard",
-      "faq": "FAQ",
-      "gprd": "RGPD",
-      "invoice": "Facturation",
-      "layout-builder": "Configurateur de thème",
-      "map": "Carte de la France",
-      "material": "Liste des fonctionalités material design",
-      "products": "Tous les produits",
-      "product": "Détail du produit",
-      "timeline": "Timeline",
-      "user": "Utilisateur"
-    }
-  },
-  "admin": {
-    "article": {
-      "images": {
-        "title": "les médias"
-      }
-    },
-    "authentication": {
-      "needed": "authentification requise pour accéder à ce contenu"
-    },
-    "cms": {
-      "keys": {
-        "footer": "Le footer",
-        "faq": "La FAQ"
-      }
-    },
-    "cms-detail": {
-      "alert": {
-        "updated": "mis à jour"
-      }
-    },
-    "order": {
-      "items": {
-        "name": "nom",
-        "price": "prix",
-        "code": "code",
-        "quantity": "quantité"
-      }
-    },
-    "partner": {
-      "import": {
-        "nothing_to_import": "Aucun partenaire à importer",
-        "created": "Le partenaire est sauvegardé",
-        "stop": "Plusieurs partenaires en erreur, l'import est stoppé",
-        "dialog": {
-          "title": "prévisualisation des informations partenaires"
-        },
-        "title": "importer un fichier de partenaires"
-      }
-    },
-    "title": {
-      "home": "Back office admin",
-      "area": {
-        "add": "ajouter une région"
-      },
-      "article": {
-        "title": "liste des articles",
-        "selection": "sélectionné(s)"
-      },
-      "contact": {
-        "title": "tous les messages",
-        "selection": "sélectionné(s)"
-      },
-      "cms": {
-        "used": {
-          "key": "Les valeurs déjà utilisées dans les différents composants"
-        },
-        "title": "tous les cms",
-        "add": "ajouter un cms",
-        "selection": "sélectionné(s)"
-      },
-      "cms-detail": {
-        "title": "tous les templates",
-        "subtitle": "appartenant au cms ",
-        "selection": "sélectionné(s)",
-        "already-exist": "Le template est déjà utilisé"
-      },
-      "map": {
-        "title": "les cartes",
-        "selection": "sélectionné(s)"
-      },
-      "selection": {
-        "title": "les sélections",
-        "selection": "sélectionné(s)",
-        "products": "produits associés",
-        "parent": "associer une sélection parente"
-      }
-    },
-    "cta": {
-      "add": {
-        "attribute": "ajouter un attribut",
-        "contact": "ajouter un message",
-        "article": "ajouter un article",
-        "cms": "ajouter un cms"
-      },
-      "product": "produits",
-      "order": "commandes",
-      "cms": "cms",
-      "attribute": "attributs",
-      "category": "categories",
-      "contact": "contacts",
-      "offer": "offres",
-      "partner": "partenaires",
-      "selection": "sélections",
-      "map": "cartes",
-      "material": "material",
-      "article": "articles"
-    },
-    "label": {
-      "attribute": {
-        "name": "nom",
-        "fr": "traduction française",
-        "radio": "bouton radio",
+    "routes": {
+        "add": "ajouter",
+        "add-product": "ajouter-un-produit",
+        "boards": "tableau-de-bord",
+        "board": "tableau",
+        "category": "category",
+        "cms": "cms",
+        "cms-detail": "cms détail",
+        "categories": "categories",
+        "contact": "contact",
+        "selections": "selections",
+        "selection": "selection",
+        "layout-builder": "configurateur-de-layout",
+        "material": "material-design",
+        "button-indicators": "button-indicators",
+        "detail": "detail",
+        "datatable": "datatable",
+        "form": "form",
+        "layout": "layout",
+        "navigation": "navigation",
+        "component": "component",
+        "button": "button",
+        "button-toggle": "button-toggle",
+        "icon": "icon",
+        "chips": "chips",
+        "progress-bar": "progress-bar",
+        "progress-spinner": "progress-spinner",
+        "paginator": "paginator",
+        "sort-header": "sort-header",
+        "table": "table",
+        "order": "order",
+        "autocomplete": "autocomplete",
         "checkbox": "checkbox",
-        "text": "texte",
-        "select": "menu déroulant",
-        "type": "Détermine avec quel composant choisir l'attribut",
-        "order_by": "Détermine comment sont triés les valeurs de cet attribut en front sur la page du produit"
-      },
-      "article": {
-        "name": "nom",
-        "description": "contenu de l'article",
-        "facebook": "publication facebook",
-        "unpublish": "brouillon",
-        "publish": "publier",
-        "unpublished": "dépublié",
-        "published": "publié"
-      },
-      "contact": {
-        "name": "nom",
-        "email": "email",
-        "message": "message"
-      },
-      "cms": {
-        "name": "nom",
-        "site_name": "nom valeur correspondante / clé",
-        "key": "clé"
-      },
-      "cms-detail": {
-        "title": "titre",
-        "content": "contenu",
-        "icon": "l'icône",
-        "parent": "le contenu parent"
-      },
-      "selection": {
-      }
+        "datepicker": "datepicker",
+        "input": "input",
+        "radio-button": "radio-button",
+        "select": "select",
+        "slider": "slider",
+        "slide-toggle": "slide-toggle",
+        "card": "card",
+        "divider": "divider",
+        "expansion-panel": "expansion-panel",
+        "grid-list": "grid-list",
+        "list": "list",
+        "stepper": "stepper",
+        "tabs": "tabs",
+        "sidenav": "sidenav",
+        "toolbar": "toolbar",
+        "dialog": "dialog",
+        "snackbar": "snackar",
+        "tooltip": "tooltip",
+        "menu": "menu",
+        "popup": "modal",
+        "charts": "dashboard",
+        "gprd": "rgpd",
+        "faq": "foire-aux-questions",
+        "invoices": "facturation",
+        "login1": "login-style-1",
+        "login2": "login-style-2",
+        "logins": "connexion",
+        "registers": "enregistrement",
+        "user": "utilisateur",
+        "users": "utilisateurs",
+        "calendar": "agenda",
+        "admin": "administration",
+        "article": "article",
+        "map": "map",
+        "cart": "cart",
+        "contact-us": "contacter-nous",
+        "product": "product",
+        "products": "produits"
     },
-    "placeholder": {
-      "article": {
-        "name": "nom",
-        "description": "copier/coller ici le lien vers le post facebook"
-      },
-      "attribute": {
-        "name": "nom",
-        "fr": "traduction française",
-        "variantes": "variantes",
-        "term": "terme"
-      },
-      "cms": {
-        "name": "nom",
-        "site_name": "clé"
-      },
-      "cms-detail": {
-        "parent": {
-          "no-data": "Aucune valeur"
+    "meta": {
+        "description": {
+            "agenda": "Calendrier des sessions disponibles",
+            "articles": "Liste des articles",
+            "article": "{{ article.description }}",
+            "boards": "Liste des tableaux de bord",
+            "cart": "Panier",
+            "chart": "Dashboard",
+            "dashboard": "Liste de toutes les fonctionnalités de l'application",
+            "faq": "FAQ",
+            "gprd": "RGPD",
+            "invoice": "Facturation",
+            "layout-builder": "Configurateur de thème. Changer en un click les couleurs du site",
+            "map": "Carte de la France. Sélectionner une région pour afficher les produits près de chez vous.",
+            "material": "Liste des fonctionalités material.io qui suit le thème du site et proposant queqlques exemple en plus",
+            "products": "Liste des produits",
+            "product": "Détail de la fiche produit",
+            "timeline": "Timeline",
+            "user": "Utilisateur"
         },
-        "title": "titre",
-        "content": "entrer du contenu",
-        "icon": "l'icône"
-      },
-      "map": {
-        "name": "pays"
-      },
-      "area": {
-        "name": "région",
-        "path": "points 2D"
-      },
-      "order": {
-        "user": "utilisateur",
-        "total": "total"
-      },
-      "product": {
-        "price": "prix"
-      },
-      "selection": {
-        "name": "nom de la sélection",
-        "description": "description",
-        "fr": "traduction française",
-        "keywords": "mots clés",
-        "level": "niveau",
-        "root": "racine"
-      }
+        "title": {
+            "agenda": "Calendrier des sessions disponibles",
+            "articles": "Les articles",
+            "article": "{{ article.name }}",
+            "boards": "Liste des tableaux de bord",
+            "cart": "Panier",
+            "chart": "Dashboard",
+            "dashboard": "Dashboard",
+            "faq": "FAQ",
+            "gprd": "RGPD",
+            "invoice": "Facturation",
+            "layout-builder": "Configurateur de thème",
+            "map": "Carte de la France",
+            "material": "Liste des fonctionalités material design",
+            "products": "Tous les produits",
+            "product": "Détail du produit",
+            "timeline": "Timeline",
+            "user": "Utilisateur"
+        }
     },
-    "hint": {
-      "article": {
-        "name": "titre de l'article"
-      },
-      "attribute": {
-        "name": "nom de l'attribut",
-        "fr": "traduction française de l'attribut"
-      },
-      "cms": {
-        "name": "nom du cms",
-        "site_name": "clé du cms"
-      },
-      "cms-detail": {
-        "title": "titre",
-        "content": "contenu",
-        "icon": "icône"
-      },
-      "map": {
-        "name": "pays de la carte"
-      },
-      "order": {
-        "user": "utilisateur",
-        "total": "total"
-      },
-      "area": {
-        "name": "région de la carte",
-        "path": "points de la région"
-      },
-      "product": {
-        "price": "prix"
-      },
-      "selection": {
-        "name": "nom de la sélection",
-        "description": "description",
-        "fr": "traduction française",
-        "keywords": "mots clés",
-        "level": "niveau",
-        "root": "racine"
-      }
-    },
-    "error": {
-      "required": {
+    "admin": {
         "article": {
-          "name": "le titre est obligatoire"
+            "images": {
+                "title": "les médias"
+            }
         },
-        "attribute": {
-          "name": "le nom est obligatoire",
-          "fr": "la traduction française est obligatoire"
+        "authentication": {
+            "needed": "authentification requise pour accéder à ce contenu"
+        },
+        "cart-list": {
+            "status": {
+                "current": "en cours",
+                "finished": "terminé"
+            }
         },
         "cms": {
-          "name": "le nom est obligatoire",
-          "site_name": "la clé est obligatoire"
+            "keys": {
+                "footer": "Le footer",
+                "faq": "La FAQ"
+            }
         },
         "cms-detail": {
-          "title": "le titre est obligatoire",
-          "content": "le contenu est obligatoire",
-          "icon": "l'icône est obligatoire"
-        },
-        "map": {
-          "name": "le pays est obligatoire"
-        },
-        "area": {
-          "name": "la région est obligatoire",
-          "path": "les points sont obligatoires"
+            "alert": {
+                "updated": "mis à jour"
+            }
         },
         "order": {
-          "user": "l'utilisateur est obligatoire",
-          "total": "le total est obligatoire"
+            "items": {
+                "name": "nom",
+                "price": "prix",
+                "code": "code",
+                "quantity": "quantité"
+            }
         },
-        "selection": {
-          "name": "le nom est obligatoire",
-          "fr": "la traduction est obligatoire",
-          "description": "la description est obligatoire",
-          "keywords": "les mots clés sont obligatoires",
-          "level": "le niveau est obligatoire"
+        "order-edit": {
+            "key": "n° de commande",
+            "created_at": "date de la commande",
+            "cta": {
+                "confirm-payment": "confirmer le paiement",
+                "cancel-payment": "annuler le paiement"
+            },
+            "copied_text": "texte copié",
+            "delivery_address": "adresse d'expédition",
+            "billing": "adresse de facturation",
+            "contact_email": "email de contact"
+        },
+        "partner": {
+            "import": {
+                "nothing_to_import": "Aucun partenaire à importer",
+                "created": "Le partenaire est sauvegardé",
+                "stop": "Plusieurs partenaires en erreur, l'import est stoppé",
+                "dialog": {
+                    "title": "prévisualisation des informations partenaires"
+                },
+                "title": "importer un fichier de partenaires"
+            }
+        },
+        "title": {
+            "home": "Back office admin",
+            "area": {
+                "add": "ajouter une région"
+            },
+            "article": {
+                "title": "liste des articles",
+                "selection": "sélectionné(s)"
+            },
+            "contact": {
+                "title": "tous les messages",
+                "selection": "sélectionné(s)"
+            },
+            "cms": {
+                "used": {
+                    "key": "Les valeurs déjà utilisées dans les différents composants"
+                },
+                "title": "tous les cms",
+                "add": "ajouter un cms",
+                "selection": "sélectionné(s)"
+            },
+            "cms-detail": {
+                "title": "tous les templates",
+                "subtitle": "appartenant au cms ",
+                "selection": "sélectionné(s)",
+                "already-exist": "Le template est déjà utilisé"
+            },
+            "map": {
+                "title": "les cartes",
+                "selection": "sélectionné(s)"
+            },
+            "selection": {
+                "title": "les sélections",
+                "selection": "sélectionné(s)",
+                "products": "produits associés",
+                "parent": "associer une sélection parente"
+            }
+        },
+        "cta": {
+            "add": {
+                "attribute": "ajouter un attribut",
+                "contact": "ajouter un message",
+                "article": "ajouter un article",
+                "cms": "ajouter un cms"
+            },
+            "product": "produits",
+            "order": "commandes",
+            "cms": "cms",
+            "attribute": "attributs",
+            "category": "categories",
+            "contact": "contacts",
+            "offer": "offres",
+            "partner": "partenaires",
+            "selection": "sélections",
+            "map": "cartes",
+            "material": "material",
+            "article": "articles"
+        },
+        "label": {
+            "attribute": {
+                "name": "nom",
+                "fr": "traduction française",
+                "radio": "bouton radio",
+                "checkbox": "checkbox",
+                "text": "texte",
+                "select": "menu déroulant",
+                "type": "Détermine avec quel composant choisir l'attribut",
+                "order_by": "Détermine comment sont triés les valeurs de cet attribut en front sur la page du produit"
+            },
+            "article": {
+                "name": "nom",
+                "description": "contenu de l'article",
+                "facebook": "publication facebook",
+                "unpublish": "brouillon",
+                "publish": "publier",
+                "unpublished": "dépublié",
+                "published": "publié"
+            },
+            "contact": {
+                "name": "nom",
+                "email": "email",
+                "message": "message"
+            },
+            "cms": {
+                "name": "nom",
+                "site_name": "nom valeur correspondante / clé",
+                "key": "clé"
+            },
+            "cms-detail": {
+                "title": "titre",
+                "content": "contenu",
+                "icon": "l'icône",
+                "parent": "le contenu parent"
+            },
+            "selection": {
+            }
+        },
+        "placeholder": {
+            "article": {
+                "name": "nom",
+                "description": "copier/coller ici le lien vers le post facebook"
+            },
+            "attribute": {
+                "name": "nom",
+                "fr": "traduction française",
+                "variantes": "variantes",
+                "term": "terme"
+            },
+            "cms": {
+                "name": "nom",
+                "site_name": "clé"
+            },
+            "cms-detail": {
+                "parent": {
+                    "no-data": "Aucune valeur"
+                },
+                "title": "titre",
+                "content": "entrer du contenu",
+                "icon": "l'icône"
+            },
+            "map": {
+                "name": "pays"
+            },
+            "area": {
+                "name": "région",
+                "path": "points 2D"
+            },
+            "order": {
+                "user": "utilisateur",
+                "total": "total"
+            },
+            "product": {
+                "price": "prix"
+            },
+            "selection": {
+                "name": "nom de la sélection",
+                "description": "description",
+                "fr": "traduction française",
+                "keywords": "mots clés",
+                "level": "niveau",
+                "root": "racine"
+            }
+        },
+        "hint": {
+            "article": {
+                "name": "titre de l'article"
+            },
+            "attribute": {
+                "name": "nom de l'attribut",
+                "fr": "traduction française de l'attribut"
+            },
+            "cms": {
+                "name": "nom du cms",
+                "site_name": "clé du cms"
+            },
+            "cms-detail": {
+                "title": "titre",
+                "content": "contenu",
+                "icon": "icône"
+            },
+            "map": {
+                "name": "pays de la carte"
+            },
+            "order": {
+                "user": "utilisateur",
+                "total": "total"
+            },
+            "area": {
+                "name": "région de la carte",
+                "path": "points de la région"
+            },
+            "product": {
+                "price": "prix"
+            },
+            "selection": {
+                "name": "nom de la sélection",
+                "description": "description",
+                "fr": "traduction française",
+                "keywords": "mots clés",
+                "level": "niveau",
+                "root": "racine"
+            }
+        },
+        "error": {
+            "required": {
+                "article": {
+                    "name": "le titre est obligatoire"
+                },
+                "attribute": {
+                    "name": "le nom est obligatoire",
+                    "fr": "la traduction française est obligatoire"
+                },
+                "cms": {
+                    "name": "le nom est obligatoire",
+                    "site_name": "la clé est obligatoire"
+                },
+                "cms-detail": {
+                    "title": "le titre est obligatoire",
+                    "content": "le contenu est obligatoire",
+                    "icon": "l'icône est obligatoire"
+                },
+                "map": {
+                    "name": "le pays est obligatoire"
+                },
+                "area": {
+                    "name": "la région est obligatoire",
+                    "path": "les points sont obligatoires"
+                },
+                "order": {
+                    "user": "l'utilisateur est obligatoire",
+                    "total": "le total est obligatoire"
+                },
+                "selection": {
+                    "name": "le nom est obligatoire",
+                    "fr": "la traduction est obligatoire",
+                    "description": "la description est obligatoire",
+                    "keywords": "les mots clés sont obligatoires",
+                    "level": "le niveau est obligatoire"
+                }
+            },
+            "invalid": {
+                "article": {
+                    "name": "le titre est invalide"
+                },
+                "attribute": {
+                    "name": "le nom est invalide",
+                    "fr": "la traduction française est invalide"
+                },
+                "cms": {
+                    "name": "le nom est invalide",
+                    "site_name": "la clé est invalide"
+                },
+                "cms-detail": {
+                    "title": "le titre est invalide",
+                    "content": "le contenu est invalide",
+                    "icon": "l'icône est invalide"
+                },
+                "map": {
+                    "name": "le pays est invalide"
+                },
+                "area": {
+                    "name": "la région est invalide",
+                    "path": "les points sont invalides"
+                },
+                "selection": {
+                    "name": "le nom est invalide",
+                    "fr": "la traduction est invalide",
+                    "description": "la description est invalide",
+                    "keywords": "les mots clés sont invalides",
+                    "level": "le niveau est invalide"
+                }
+            }
         }
-      },
-      "invalid": {
+    },
+    "breadcrumb": {
         "article": {
-          "name": "le titre est invalide"
+            "title": "articles",
+            "add": "ajouter un article",
+            "edit": "éditer un article",
+            "list": "liste des articles",
+            "detail": "détail de l'article"
         },
         "attribute": {
-          "name": "le nom est invalide",
-          "fr": "la traduction française est invalide"
+            "title": "attributs",
+            "add": "ajouter un attribut",
+            "edit": "éditer un attribut",
+            "list": "liste des attributs",
+            "detail": "détail de l'attribut"
         },
+        "board": {
+            "title": "tableau de bord",
+            "list": "liste des tableaux de bord",
+            "detail": "détail du tableau de bord"
+        },
+        "category": {
+            "title": "catégories",
+            "add": "ajouter un catégorie",
+            "edit": "éditer un catégorie",
+            "list": "liste des catégories",
+            "detail": "détail de la catégorie"
+        },
+        "contacts": {
+            "title": "contacts",
+            "add": "ajouter un contact",
+            "edit": "éditer un contact",
+            "list": "liste des contacts",
+            "detail": "détail du contact"
+        },
+        "chart": "chart",
         "cms": {
-          "name": "le nom est invalide",
-          "site_name": "la clé est invalide"
+            "title": "cms",
+            "add": "ajouter un cms",
+            "edit": "éditer un cms",
+            "list": "liste des cms",
+            "detail": "détail du cms"
         },
         "cms-detail": {
-          "title": "le titre est invalide",
-          "content": "le contenu est invalide",
-          "icon": "l'icône est invalide"
+            "title": "template cms",
+            "add": "ajouter un template cms",
+            "edit": "éditer un template cms",
+            "list": "liste des template cms",
+            "detail": "détail du template cms"
         },
+        "faq": "foire aux questions",
+        "gprd": "rgpd",
+        "home": "accueil",
+        "invoices": {
+            "title": "facturation",
+            "invoice1": "facture style 1",
+            "invoice2": "facture style 2"
+        },
+        "layout-builder": "Configurateur de thème",
         "map": {
-          "name": "le pays est invalide"
+            "title": "cartes",
+            "add": "ajouter une carte",
+            "edit": "éditer les régions",
+            "list": "liste des cartes",
+            "detail": "détail de la carte"
         },
-        "area": {
-          "name": "la région est invalide",
-          "path": "les points sont invalides"
+        "material": {
+            "title": "material",
+            "summary": "sommaire",
+            "button": {
+                "title": "button"
+            },
+            "datatable": {
+                "title": "datatable"
+            },
+            "form": {
+                "title": "form"
+            },
+            "layout": {
+                "title": "layout"
+            },
+            "navigation": {
+                "title": "navigation"
+            },
+            "popup": {
+                "title": "popup"
+            }
+        },
+        "offer": {
+            "title": "offres",
+            "add": "ajouter une offre",
+            "edit": "éditer une offre",
+            "list": "liste des offres",
+            "detail": "détail de l'offre"
+        },
+        "order": {
+            "title": "commandes",
+            "add": "ajouter une commande",
+            "edit": "éditer une commande",
+            "list": "liste des commandes",
+            "detail": "détail de la commande"
+        },
+        "cart": {
+            "title": "tous les paniers",
+            "edit": "éditer un panier",
+            "list": "liste des paniers",
+            "detail": "détail du panier"
+        },
+        "timeline": "timeline",
+        "partner": {
+            "title": "partenaires",
+            "add": "ajouter un partenaire",
+            "edit": "éditer un partenaire",
+            "list": "liste des partenaires",
+            "detail": "détail du partenaire"
+        },
+        "product": {
+            "title": "produits",
+            "add": "ajouter un produit",
+            "edit": "éditer un produit",
+            "list": "liste des produits",
+            "detail": "détail du produit"
+        },
+        "products": {
+            "title": "produits",
+            "add": "ajouter un produit",
+            "edit": "éditer un produit",
+            "list": "liste des produits",
+            "detail": "détail du produit"
         },
         "selection": {
-          "name": "le nom est invalide",
-          "fr": "la traduction est invalide",
-          "description": "la description est invalide",
-          "keywords": "les mots clés sont invalides",
-          "level": "le niveau est invalide"
-        }
-      }
-    }
-  },
-  "breadcrumb": {
-    "article": {
-      "title": "articles",
-      "add": "ajouter un article",
-      "edit": "éditer un article",
-      "list": "liste des articles",
-      "detail": "détail de l'article"
-    },
-    "attribute": {
-      "title": "attributs",
-      "add": "ajouter un attribut",
-      "edit": "éditer un attribut",
-      "list": "liste des attributs",
-      "detail": "détail de l'attribut"
-    },
-    "board": {
-      "title": "tableau de bord",
-      "list": "liste des tableaux de bord",
-      "detail": "détail du tableau de bord"
-    },
-    "category": {
-      "title": "catégories",
-      "add": "ajouter un catégorie",
-      "edit": "éditer un catégorie",
-      "list": "liste des catégories",
-      "detail": "détail de la catégorie"
-    },
-    "contacts": {
-      "title": "contacts",
-      "add": "ajouter un contact",
-      "edit": "éditer un contact",
-      "list": "liste des contacts",
-      "detail": "détail du contact"
-    },
-    "chart": "chart",
-    "cms": {
-      "title": "cms",
-      "add": "ajouter un cms",
-      "edit": "éditer un cms",
-      "list": "liste des cms",
-      "detail": "détail du cms"
-    },
-    "cms-detail": {
-      "title": "template cms",
-      "add": "ajouter un template cms",
-      "edit": "éditer un template cms",
-      "list": "liste des template cms",
-      "detail": "détail du template cms"
-    },
-    "faq": "foire aux questions",
-    "gprd": "rgpd",
-    "home": "accueil",
-    "invoices": {
-      "title": "facturation",
-      "invoice1": "facture style 1",
-      "invoice2": "facture style 2"
-    },
-    "layout-builder": "Configurateur de thème",
-    "map": {
-      "title": "cartes",
-      "add": "ajouter une carte",
-      "edit": "éditer les régions",
-      "list": "liste des cartes",
-      "detail": "détail de la carte"
-    },
-    "material": {
-      "title": "material",
-      "summary": "sommaire",
-      "button": {
-        "title": "button"
-      },
-      "datatable": {
-        "title": "datatable"
-      },
-      "form": {
-        "title": "form"
-      },
-      "layout": {
-        "title": "layout"
-      },
-      "navigation": {
-        "title": "navigation"
-      },
-      "popup": {
-        "title": "popup"
-      }
-    },
-    "offer": {
-      "title": "offres",
-      "add": "ajouter une offre",
-      "edit": "éditer une offre",
-      "list": "liste des offres",
-      "detail": "détail de l'offre"
-    },
-    "order": {
-      "title": "commandes",
-      "add": "ajouter une commande",
-      "edit": "éditer une commande",
-      "list": "liste des commandes",
-      "detail": "détail de la commande"
-    },
-    "timeline": "timeline",
-    "partner": {
-      "title": "partenaires",
-      "add": "ajouter un partenaire",
-      "edit": "éditer un partenaire",
-      "list": "liste des partenaires",
-      "detail": "détail du partenaire"
-    },
-    "product": {
-      "title": "produits",
-      "add": "ajouter un produit",
-      "edit": "éditer un produit",
-      "list": "liste des produits",
-      "detail": "détail du produit"
-    },
-    "products": {
-      "title": "produits",
-      "add": "ajouter un produit",
-      "edit": "éditer un produit",
-      "list": "liste des produits",
-      "detail": "détail du produit"
-    },
-    "selection": {
-      "title": "sélections",
-      "add": "ajouter un sélection",
-      "edit": "éditer un sélection",
-      "list": "liste des sélections",
-      "detail": "détail de la sélection"
-    },
-    "user": {
-      "title": "utilisateur",
-      "login": {
-        "title": "connexion",
-        "style-1": "style 1",
-        "style-2": "style 2"
-      },
-      "register": {
-        "title": "s'enregistrer",
-        "style-1": "style 1",
-        "style-2": "style 2"
-      }
-    }
-  },
-  "cart": {
-    "empty": "le panier est vide",
-    "product": {
-      "add": "ajouter un produit"
-    },
-    "quantity": "quantité",
-    "total": {
-      "total": "total",
-      "delivery_fee": "frais de livraison",
-      "total_item": "total produits"
-    },
-    "title": {
-      "start": "mon panier",
-      "cart": "validation",
-      "login": "se connecter",
-      "payment": "paiement",
-      "confirmation": "confirmation"
-    }
-  },
-  "cart-add": {
-    "title": "réservation",
-    "saved": "la réservation est sauvegardée"
-  },
-  "cart-payment": {
-    "errors": {
-      "cart": "Une erreur est survenue. Le montant du panier est incohérent."
-    }
-  },
-  "datatable": {
-    "column": {
-      "name": "nom",
-      "description": "description",
-      "published": "publication",
-      "published_at": "date de publication",
-      "actions": "actions"
-    }
-  },
-  "order-confirmation": {
-    "title": "La commande est confirmée",
-    "content": {
-      "waiting": "La commande est maintenant en cours de traitement.",
-      "key": "numéro de commande",
-      "summary": "récapitulatif",
-      "total": "montant total"
-    }
-  },
-  "calendar": {
-    "today": "aujourd'hui",
-    "back-today": "revenir à la date d'aujourd'hui",
-    "day": "jour",
-    "3days": "3 jours",
-    "week": "semaine",
-    "title": "réserver votre créneau",
-    "subtitle": "toutes les disponibilités",
-    "availability": {
-      "empty": "Aucune disponibilité"
-    },
-    "session": {
-      "info": "Créneau vérrouillé"
-    }
-  },
-  "chart": {
-    "title": {
-      "line": "courbe",
-      "bar": "bar",
-      "doughnut": "croissant",
-      "dynamic": "valeurs dynamiques",
-      "pie": "circulaire",
-      "polar-area": "région",
-      "radar": "radar"
-    }
-  },
-  "contact": {
-    "title": "Nous contacter",
-    "subtitle": "Envoyer un message"
-  },
-  "cta": {
-    "add": "ajouter",
-    "add_to_cart": "ajouter au panier",
-    "add-france": "ajouter toutes les régions de la france",
-    "learn-more": "en savoir plus",
-    "back_to_home": "retour à la l'accueil",
-    "back_to_users": "retour aux fonctionnalités utilisateurs",
-    "back_to_invoice_list": "retour à la liste des facturations",
-    "back_to_login_list": "retour à la liste des pages de connexion",
-    "back_to_register_list": "retour à la liste des pages d'inscription",
-    "buy": "acheter",
-    "booking": "réserver",
-    "choose": "choisir",
-    "delete": "supprimer",
-    "next-available-slot": "prochaines disponibilités",
-    "home": "accueil",
-    "import": "importer",
-    "import-last-file": "importer le précédent fichier",
-    "keep_colomn_in_memory": "config de colonnes précédentes",
-    "login": "se connecter",
-    "remember_me": "se souvenir de moi",
-    "forgot_password": "mot de passe oublié",
-    "back": "retour",
-    "cancel": "annuler",
-    "pay": "payer",
-    "previous": "précédent",
-    "publish": "publier",
-    "published": "publié",
-    "ok": "ok",
-    "refresh": "rafraîchir",
-    "register": "s'enregistrer",
-    "remove": "supprimer",
-    "save": "enregistrer",
-    "show": "voir",
-    "send": "envoyer",
-    "next": "suivant",
-    "subscribe": "souscrire",
-    "take_meeting": "prendre rendez-vous",
-    "toggle": "changer",
-    "understand": "j'ai compris",
-    "unpublish": "dépublier",
-    "unpublished": "dépublié",
-    "validate": "valider"
-  },
-  "dashboard": {
-    "features": {
-      "name": {
-        "order": "gestion des commandes",
-        "cart": "gestion des paniers",
-        "contact": "gestion des contacts"
-      }
-    }
-  },
-  "faq": {
-    "links": "La FAQ",
-    "shipping": "livraison",
-    "general-question": "questions générales",
-    "about-service": "a propos du service",
-    "privacyandpolicy": "politique de confidencialité",
-    "buyandsell": "acheter et vendre"
-  },
-  "footer": {
-    "links": "Le Footer",
-    "title": {
-      "about": "A propos de ALR",
-      "legal-information": "Informations légales",
-      "professional": "professionnels",
-      "questions": "Des questions ?",
-      "cgu": "Conditions générales d'utilisation",
-      "cgv": "Conditions générales de vente",
-      "gprd": "Vie privée et cookies",
-      "privacy-policy": "politique de protection des données",
-      "who-are-us": "Qui nous sommes ?",
-      "join-us": "Nous rejoindre",
-      "advert": "publicité",
-      "hiring": "recrutements",
-      "solutions-pro": "Nos solutions pros",
-      "help": "Aide",
-      "contact": "Nous contacter"
-    },
-    "cgu": "Conditions générales d'utilisation",
-    "cgv": "Conditions générales de vente",
-    "gprd": "Vie privée et cookies",
-    "privacy-policy": "politique de protection des données",
-    "who-are-us": "Qui nous sommes ?",
-    "join-us": "Nous rejoindre",
-    "advert": "publicité",
-    "hiring": "recrutements",
-    "solutions-pro": "Nos solutions pros",
-    "help": "Aide",
-    "contact": "Nous contacter"
-  },
-  "gprd": {
-    "title": "RGPD",
-    "help": {
-      "block": {
-        "title": "bulle d'information",
-        "content": "l'email est destiné à des fins commercials. Vous serez contacté pour recevoir nos dernières promotions"
-      },
-      "dialog": {
-        "title": "utilisation de l'email",
-        "content": "l'email est destiné à des fins commercials. Vous serez contacté pour recevoir nos dernières promotions"
-      },
-      "content": {
-        "link": "cliquer sur la bulle d'info pour ouvrir les conditions"
-      }
-    },
-    "optin": {
-      "title": {
-        "email": "nous rejoindre",
-        "manager": "confidentialité",
-        "chirstmas": "soldes de noël"
-      },
-      "save": {
-        "success": "souscription avec succès"
-      },
-      "subtitle": {
-        "email": "bienvenue dans notre monde",
-        "manager": "gérer mes préférences",
-        "chirstmas": "souscrire aux prochains"
-      },
-      "button": {
-        "email": "souscrire"
-      },
-      "toggle": {
-        "email": "souscrire à la newsletter",
-        "manager": "recevoir la newsletter partenaires",
-        "member_follow": "autoriser d'autres membres à me suivre",
-        "member_send_message": "autoriser d'autres membres à m'envoyer des messages privés",
-        "statistics": "autoriser le site à collecter des statistiques d'utilisation du site",
-        "member_comments": "m'abonner automatiquement aux nouveaux commentaires lorsque je commente",
-        "offline": "afficher mon status en ligne / hors ligne"
-      },
-      "label": {
-        "email": "adresse email"
-      },
-      "placeholder": {
-        "email": "entrer l'adresse email"
-      },
-      "hint": {
-        "email": "l'email sera uniquement utilisé à l'envoi de newsletters provenant de nos partenaires (NewsChimp & MailForest)"
-      },
-      "error": {
-        "required": {
-          "email": "le champs email est requis"
-        }
-      }
-    }
-  },
-  "invoices": {
-    "invoice1": {
-      "title": "facture style 1",
-      "content": {
-        "id": "code barre",
-        "name": "description",
-        "unit_price": "prix",
-        "amount": "montant",
-        "quantity": "quantité",
-        "subtotal": "sous-total",
-        "fees": "frais de livraison",
-        "total": "total",
-        "euro": "€",
-        "invoice": {
-          "name": "Teddy Bear",
-          "address": "10 rue de la paix",
-          "zipcode": "42800",
-          "city": "Rive de Gier",
-          "country": "France"
+            "title": "sélections",
+            "add": "ajouter un sélection",
+            "edit": "éditer un sélection",
+            "list": "liste des sélections",
+            "detail": "détail de la sélection"
         },
-        "delivery": {
-          "name": "Teddy Bear",
-          "address": "10 rue de la paix",
-          "zipcode": "42800",
-          "city": "Rive de Gier",
-          "country": "France"
-        },
-        "invoice_id": {
-          "data": "16582699",
-          "label": "numéro de facture"
-        },
-        "date": {
-          "data": "12/01/2018",
-          "label": "date de la vente"
-        },
-        "created_at": {
-          "data": "12/01/2018",
-          "label": "date de facturation"
-        },
-        "title": "facture",
-        "company": {
-          "name": "magic mouse",
-          "address": "36 avenue de la république, <br> 42800 Rive de Gier, France"
-        }
-      }
-    },
-    "invoice2": {
-      "title": "facture style 2",
-      "content": {
-        "account": {
-          "label": "titulaire de la carte",
-          "data": "Kante"
-        },
-        "card_number": {
-          "label": "numéro de carte",
-          "data": "************6561"
-        },
-        "bank_detail": {
-          "data": "paiement accepté",
-          "label": "statut de transaction"
-        },
-        "terms": {
-          "label": "terms & conditions",
-          "data": "The content of the pages of this website is for your general information and use only. It is subject to change without notice. Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
-        },
-        "phone": {
-          "label": "téléphone",
-          "data": "0783465950"
-        },
-        "website": {
-          "label": "site web",
-          "data": "https://alr-384269.firebaseapp.com"
-        },
-        "address": {
-          "label": "adresse",
-          "data": "25 rue michelet 42800 Rive de Gier"
-        },
-        "payment": {
-          "label": "information de paiement"
-        },
-        "thanks": "merci pour votre commande",
-        "id": "code barre",
-        "name": "description",
-        "unit_price": "prix",
-        "amount": "montant",
-        "quantity": "quantité",
-        "subtotal": "sous-total",
-        "fees": "frais de livraison",
-        "total": "total",
-        "euro": "€",
-        "invoice": {
-          "name": "Teddy Bear",
-          "address": "10 rue de la paix",
-          "zipcode": "42800",
-          "city": "Rive de Gier",
-          "country": "France"
-        },
-        "delivery": {
-          "name": "Teddy Bear",
-          "address": "10 rue de la paix",
-          "zipcode": "42800",
-          "city": "Rive de Gier",
-          "country": "France"
-        },
-        "invoice_id": {
-          "data": "16582699",
-          "label": "numéro de facture"
-        },
-        "date": {
-          "data": "12/01/2018",
-          "label": "date de la vente"
-        },
-        "created_at": {
-          "data": "12/01/2018",
-          "label": "date de facturation"
-        },
-        "title": "facture",
-        "company": {
-          "name": "magic mouse",
-          "address": "36 avenue de la république, <br> 42800 Rive de Gier, France"
-        }
-      }
-    },
-    "title": {
-      "invoice1": "facturation style 1",
-      "invoice2": "facturation style 2"
-    },
-    "action": {
-      "invoice1": "facturation style 1",
-      "invoice2": "facturation style 2"
-    }
-  },
-  "layout-builder": {
-    "edit": {
-      "title": "Configurateur de layout",
-      "content": {
-        "title": "Configuration"
-      }
-    }
-  },
-  "menu": {
-    "connection": {
-      "title": "Se connecter"
-    },
-    "title1": "ALR",
-    "title2": " Dashboard",
-    "title": {
-      "cart": "panier",
-      "order": "commandes"
-    }
-  },
-  "placeholder": {
-    "reason": "Choisir le motif"
-  },
-  "date": {
-    "now": "maintenant",
-    "prefix": "Il y a ",
-    "short_hour": "h",
-    "and": " et ",
-    "short_minutes": "min"
-  },
-  "product-add": {
-    "meta": {
-      "title": "Ajouter un nouveau produit",
-      "description": "Ajouter un nouveau produit. Prend une photo de ton produit"
-    },
-    "title": "Poster un nouveau produit",
-    "product-preview": {
-      "title": "Aperçu",
-      "name": {
-        "title": "Donne un titre court et un descriptif au produit"
-      },
-      "description": {
-        "title": "Donne une description correspondant au produit"
-      },
-      "image": {
-        "title": "Image"
-      },
-      "mat-card-actions": {
-        "button": {
-          "minus": "Moins",
-          "plus": "Plus"
-        }
-      }
-    },
-    "product-form": {
-      "steps": {
-        "image": {
-          "section": "Télécharger une image",
-          "card-title": {
-            "title": "Importe la photo du produit"
-          },
-          "product-image": {
-            "image-cropper": {
-              "cropper": {
-                "title": "Valider",
-                "tooltip": {
-                  "title": "Ajuste en redimensionnant ou déplaçant le cadre ton image"
-                }
-              }
+        "user": {
+            "title": "utilisateur",
+            "login": {
+                "title": "connexion",
+                "style-1": "style 1",
+                "style-2": "style 2"
             },
-            "image-button-wrapper": {
-              "button": {
-                "aria-label": {
-                  "title": "Valider l'image au dessus"
-                },
-                "tooltip": {
-                  "title": "Penser à valider l'image !"
-                }
-              }
+            "register": {
+                "title": "s'enregistrer",
+                "style-1": "style 1",
+                "style-2": "style 2"
             }
-          }
-        },
-        "detail": {
-          "section": "Ajouter des informations",
-          "button": {
-            "back": {
-              "title": "Retour"
-            },
-            "next": {
-              "title": "Suivant"
-            }
-          },
-          "form": {
-            "name": {
-              "title": "Donne un titre court au produit",
-              "placeholder": "Titre",
-              "length": "/ 50",
-              "error": {
-                "length": "Le nom du produit est vide",
-                "invalid": "Le nom du produit contient des erreurs",
-                "required": "Le nom du produit est requis"
-              }
-            }
-          }
-        },
-        "additional": {
-          "button": {
-            "back": {
-              "title": "Retour"
-            }
-          },
-          "section": "Finaliser",
-          "title": "Il est possible d'apporter des précisions sur le produit",
-          "panel": {
-            "description": {
-              "title": "Donne un court descriptif au produit",
-              "description": ""
-            },
-            "external_url": {
-              "title": "Déja vu sur un site ? Donnez-nous des informations sur le site.",
-              "description": ""
-            }
-          },
-          "form": {
-            "description": {
-              "title": "Descriptif du produit",
-              "placeholder": "description",
-              "length": "/ 2000",
-              "error": {
-                "length": "La description du produit est vide",
-                "invalid": "La description du produit est invalide",
-                "required": "La description du produit est requise"
-              }
-            },
-            "delivery_fee": {
-              "placeholder": "Frais de livraison",
-              "error": {
-                "min": "Les frais de livraison ne peuvent pas être négatifs",
-                "max": "Les frais de livraison sont un peu trop chers !",
-                "length": "Les frais de livraison sont vides",
-                "invalid": "Les frais de livraison doivent être un nombre (sans €)",
-                "required": "Les frais de livraison sont requis"
-              }
-            },
-            "external_url": {
-              "placeholder": "Lien vers le produit",
-              "error": {
-                "length": "Le lien vers le produit est vide",
-                "invalid": "Le lien vers le produit est invalide",
-                "required": "Le lien vers le produit est requis"
-              }
-            },
-            "price": {
-              "placeholder": "Prix",
-              "error": {
-                "min": "Le prix ne peut pas être négatif",
-                "max": "Le prix est un peu trop cher !",
-                "length": "Le prix est vide",
-                "invalid": "Le prix doit être un nombre (sans €)",
-                "required": "Le prix est requise"
-              }
-            },
-            "validation": {
-              "button": {
-                "label": "Valider",
-                "title": "Valider"
-              }
-            }
-          }
         }
-      }
-    }
-  },
-  "product-detail": {
-    "meta": {
-      "og:site_name": "E-commerce",
-      "description": "{{value}} - E-commerce"
     },
     "cart": {
-      "added": "produit ajouté au panier",
-      "error": {
-        "user": "Il faut d'abord se connecter pour ajouter un produit au panier"
-      }
-    }
-  },
-  "product-list": {
-    "empty-list": "Aucun produit pour le moment...",
-    "card-title": {
-      "title": "Tu as déjà un produit ?"
+        "empty": "le panier est vide",
+        "product": {
+            "add": "ajouter un produit"
+        },
+        "quantity": "quantité",
+        "total": {
+            "total": "total",
+            "delivery_fee": "frais de livraison",
+            "total_item": "total produits"
+        },
+        "title": {
+            "start": "mon panier",
+            "cart": "validation",
+            "login": "se connecter",
+            "payment": "paiement",
+            "confirmation": "confirmation"
+        }
     },
-    "card-subtitle": {
-      "title": "Envoie-nous ta photo et essaie d'obtenir le meilleur score !"
+    "cart-add": {
+        "title": "réservation",
+        "saved": "la réservation est sauvegardée"
     },
-    "card-actions": {
-      "title": "Je poste en un clic !",
-      "aria-label": "Je poste en un clic !"
+    "cart-payment": {
+        "errors": {
+            "cart": "Une erreur est survenue. Le montant du panier est incohérent."
+        }
     },
-    "fab-button": {
-      "title": "Ajouter un nouveau produit"
-    }
-  },
-  "snackbar": {
+    "datatable": {
+        "column": {
+            "name": "nom",
+            "description": "description",
+            "published": "publication",
+            "published_at": "date de publication",
+            "actions": "actions"
+        }
+    },
+    "order-confirmation": {
+        "title": "La commande est confirmée",
+        "content": {
+            "waiting": "La commande est maintenant en cours de traitement.",
+            "key": "numéro de commande",
+            "summary": "récapitulatif",
+            "total": "montant total"
+        }
+    },
+    "calendar": {
+        "today": "aujourd'hui",
+        "back-today": "revenir à la date d'aujourd'hui",
+        "day": "jour",
+        "3days": "3 jours",
+        "week": "semaine",
+        "title": "réserver votre créneau",
+        "subtitle": "toutes les disponibilités",
+        "availability": {
+            "empty": "Aucune disponibilité"
+        },
+        "session": {
+            "info": "Créneau vérrouillé"
+        }
+    },
+    "chart": {
+        "title": {
+            "line": "courbe",
+            "bar": "bar",
+            "doughnut": "croissant",
+            "dynamic": "valeurs dynamiques",
+            "pie": "circulaire",
+            "polar-area": "région",
+            "radar": "radar"
+        }
+    },
+    "contact": {
+        "title": "Nous contacter",
+        "subtitle": "Envoyer un message",
+        "message": {
+            "added": "Votre message a bien été envoyé",
+            "error": "Votre message ne s'est pas envoyé"
+        }
+    },
+    "cta": {
+        "add": "ajouter",
+        "account": "mon compte",
+        "add_to_cart": "ajouter au panier",
+        "add-france": "ajouter toutes les régions de la france",
+        "learn-more": "en savoir plus",
+        "back_to_home": "retour à la l'accueil",
+        "back_to_users": "retour aux fonctionnalités utilisateurs",
+        "back_to_invoice_list": "retour à la liste des facturations",
+        "back_to_login_list": "retour à la liste des pages de connexion",
+        "back_to_register_list": "retour à la liste des pages d'inscription",
+        "buy": "acheter",
+        "booking": "réserver",
+        "choose": "choisir",
+        "delete": "supprimer",
+        "next-available-slot": "prochaines disponibilités",
+        "home": "accueil",
+        "import": "importer",
+        "import-last-file": "importer le précédent fichier",
+        "keep_colomn_in_memory": "config de colonnes précédentes",
+        "login": "se connecter",
+        "logout": "se déconnecter",
+        "remember_me": "se souvenir de moi",
+        "forgot_password": "mot de passe oublié",
+        "back": "retour",
+        "cancel": "annuler",
+        "pay": "payer",
+        "previous": "précédent",
+        "profile": "menu",
+        "publish": "publier",
+        "published": "publié",
+        "ok": "ok",
+        "refresh": "rafraîchir",
+        "register": "s'enregistrer",
+        "remove": "supprimer",
+        "save": "enregistrer",
+        "show": "voir",
+        "send": "envoyer",
+        "next": "suivant",
+        "subscribe": "souscrire",
+        "take_meeting": "prendre rendez-vous",
+        "toggle": "changer",
+        "understand": "j'ai compris",
+        "unpublish": "dépublier",
+        "unpublished": "dépublié",
+        "validate": "valider",
+        "footer": {
+            "top-of-page": "haut de page"
+        }
+    },
+    "dashboard": {
+        "features": {
+            "name": {
+                "order": "gestion des commandes",
+                "cart": "gestion des paniers",
+                "contact": "gestion des contacts"
+            }
+        }
+    },
+    "faq": {
+        "links": "La FAQ",
+        "shipping": "livraison",
+        "general-question": "questions générales",
+        "about-service": "a propos du service",
+        "privacyandpolicy": "politique de confidencialité",
+        "buyandsell": "acheter et vendre"
+    },
+    "footer": {
+        "links": "Le Footer",
+        "title": {
+            "about": "A propos de ALR",
+            "legal-information": "Informations légales",
+            "professional": "professionnels",
+            "questions": "Des questions ?",
+            "cgu": "Conditions générales d'utilisation",
+            "cgv": "Conditions générales de vente",
+            "gprd": "Vie privée et cookies",
+            "privacy-policy": "politique de protection des données",
+            "who-are-us": "Qui nous sommes ?",
+            "join-us": "Nous rejoindre",
+            "advert": "publicité",
+            "hiring": "recrutements",
+            "solutions-pro": "Nos solutions pros",
+            "help": "Aide",
+            "contact": "Nous contacter"
+        },
+        "cgu": "Conditions générales d'utilisation",
+        "cgv": "Conditions générales de vente",
+        "gprd": "Vie privée et cookies",
+        "privacy-policy": "politique de protection des données",
+        "who-are-us": "Qui nous sommes ?",
+        "join-us": "Nous rejoindre",
+        "advert": "publicité",
+        "hiring": "recrutements",
+        "solutions-pro": "Nos solutions pros",
+        "help": "Aide",
+        "contact": "Nous contacter"
+    },
+    "gprd": {
+        "title": "RGPD",
+        "help": {
+            "block": {
+                "title": "bulle d'information",
+                "content": "l'email est destiné à des fins commercials. Vous serez contacté pour recevoir nos dernières promotions"
+            },
+            "dialog": {
+                "title": "utilisation de l'email",
+                "content": "l'email est destiné à des fins commercials. Vous serez contacté pour recevoir nos dernières promotions"
+            },
+            "content": {
+                "link": "cliquer sur la bulle d'info pour ouvrir les conditions"
+            }
+        },
+        "optin": {
+            "title": {
+                "email": "nous rejoindre",
+                "manager": "confidentialité",
+                "chirstmas": "soldes de noël"
+            },
+            "save": {
+                "success": "souscription avec succès"
+            },
+            "subtitle": {
+                "email": "bienvenue dans notre monde",
+                "manager": "gérer mes préférences",
+                "chirstmas": "souscrire aux prochains"
+            },
+            "button": {
+                "email": "souscrire"
+            },
+            "toggle": {
+                "email": "souscrire à la newsletter",
+                "manager": "recevoir la newsletter partenaires",
+                "member_follow": "autoriser d'autres membres à me suivre",
+                "member_send_message": "autoriser d'autres membres à m'envoyer des messages privés",
+                "statistics": "autoriser le site à collecter des statistiques d'utilisation du site",
+                "member_comments": "m'abonner automatiquement aux nouveaux commentaires lorsque je commente",
+                "offline": "afficher mon status en ligne / hors ligne"
+            },
+            "label": {
+                "email": "adresse email"
+            },
+            "placeholder": {
+                "email": "entrer l'adresse email"
+            },
+            "hint": {
+                "email": "l'email sera uniquement utilisé à l'envoi de newsletters provenant de nos partenaires (NewsChimp & MailForest)"
+            },
+            "error": {
+                "required": {
+                    "email": "le champs email est requis"
+                }
+            }
+        }
+    },
+    "invoices": {
+        "invoice1": {
+            "title": "facture style 1",
+            "content": {
+                "id": "code barre",
+                "name": "description",
+                "unit_price": "prix",
+                "amount": "montant",
+                "quantity": "quantité",
+                "subtotal": "sous-total",
+                "fees": "frais de livraison",
+                "total": "total",
+                "euro": "€",
+                "invoice": {
+                    "name": "Teddy Bear",
+                    "address": "10 rue de la paix",
+                    "zipcode": "42800",
+                    "city": "Rive de Gier",
+                    "country": "France"
+                },
+                "delivery": {
+                    "name": "Teddy Bear",
+                    "address": "10 rue de la paix",
+                    "zipcode": "42800",
+                    "city": "Rive de Gier",
+                    "country": "France"
+                },
+                "invoice_id": {
+                    "data": "16582699",
+                    "label": "numéro de facture"
+                },
+                "date": {
+                    "data": "12/01/2018",
+                    "label": "date de la vente"
+                },
+                "created_at": {
+                    "data": "12/01/2018",
+                    "label": "date de facturation"
+                },
+                "title": "facture",
+                "company": {
+                    "name": "magic mouse",
+                    "address": "36 avenue de la république, <br> 42800 Rive de Gier, France"
+                }
+            }
+        },
+        "invoice2": {
+            "title": "facture style 2",
+            "content": {
+                "account": {
+                    "label": "titulaire de la carte",
+                    "data": "Kante"
+                },
+                "card_number": {
+                    "label": "numéro de carte",
+                    "data": "************6561"
+                },
+                "bank_detail": {
+                    "data": "paiement accepté",
+                    "label": "statut de transaction"
+                },
+                "terms": {
+                    "label": "terms & conditions",
+                    "data": "The content of the pages of this website is for your general information and use only. It is subject to change without notice. Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law."
+                },
+                "phone": {
+                    "label": "téléphone",
+                    "data": "0783465950"
+                },
+                "website": {
+                    "label": "site web",
+                    "data": "https://alr-384269.firebaseapp.com"
+                },
+                "address": {
+                    "label": "adresse",
+                    "data": "25 rue michelet 42800 Rive de Gier"
+                },
+                "payment": {
+                    "label": "information de paiement"
+                },
+                "thanks": "merci pour votre commande",
+                "id": "code barre",
+                "name": "description",
+                "unit_price": "prix",
+                "amount": "montant",
+                "quantity": "quantité",
+                "subtotal": "sous-total",
+                "fees": "frais de livraison",
+                "total": "total",
+                "euro": "€",
+                "invoice": {
+                    "name": "Teddy Bear",
+                    "address": "10 rue de la paix",
+                    "zipcode": "42800",
+                    "city": "Rive de Gier",
+                    "country": "France"
+                },
+                "delivery": {
+                    "name": "Teddy Bear",
+                    "address": "10 rue de la paix",
+                    "zipcode": "42800",
+                    "city": "Rive de Gier",
+                    "country": "France"
+                },
+                "invoice_id": {
+                    "data": "16582699",
+                    "label": "numéro de facture"
+                },
+                "date": {
+                    "data": "12/01/2018",
+                    "label": "date de la vente"
+                },
+                "created_at": {
+                    "data": "12/01/2018",
+                    "label": "date de facturation"
+                },
+                "title": "facture",
+                "company": {
+                    "name": "magic mouse",
+                    "address": "36 avenue de la république, <br> 42800 Rive de Gier, France"
+                }
+            }
+        },
+        "title": {
+            "invoice1": "facturation style 1",
+            "invoice2": "facturation style 2"
+        },
+        "action": {
+            "invoice1": "facturation style 1",
+            "invoice2": "facturation style 2"
+        }
+    },
+    "layout-builder": {
+        "edit": {
+            "title": "Configurateur de layout",
+            "content": {
+                "title": "Configuration"
+            }
+        }
+    },
+    "menu": {
+        "connection": {
+            "title": "Se connecter"
+        },
+        "title1": "ALR",
+        "title2": " Dashboard",
+        "title": {
+            "cart": "panier",
+            "order": "commandes"
+        }
+    },
+    "placeholder": {
+        "reason": "Choisir le motif"
+    },
+    "date": {
+        "now": "maintenant",
+        "prefix": "Il y a ",
+        "short_hour": "h",
+        "and": " et ",
+        "short_minutes": "min"
+    },
     "product-add": {
-      "submit": "Ton produit est en attente de validation"
+        "meta": {
+            "title": "Ajouter un nouveau produit",
+            "description": "Ajouter un nouveau produit. Prend une photo de ton produit"
+        },
+        "title": "Poster un nouveau produit",
+        "product-preview": {
+            "title": "Aperçu",
+            "name": {
+                "title": "Donne un titre court et un descriptif au produit"
+            },
+            "description": {
+                "title": "Donne une description correspondant au produit"
+            },
+            "image": {
+                "title": "Image"
+            },
+            "mat-card-actions": {
+                "button": {
+                    "minus": "Moins",
+                    "plus": "Plus"
+                }
+            }
+        },
+        "product-form": {
+            "steps": {
+                "image": {
+                    "section": "Télécharger une image",
+                    "card-title": {
+                        "title": "Importe la photo du produit"
+                    },
+                    "product-image": {
+                        "image-cropper": {
+                            "cropper": {
+                                "title": "Valider",
+                                "tooltip": {
+                                    "title": "Ajuste en redimensionnant ou déplaçant le cadre ton image"
+                                }
+                            }
+                        },
+                        "image-button-wrapper": {
+                            "button": {
+                                "aria-label": {
+                                    "title": "Valider l'image au dessus"
+                                },
+                                "tooltip": {
+                                    "title": "Penser à valider l'image !"
+                                }
+                            }
+                        }
+                    }
+                },
+                "detail": {
+                    "section": "Ajouter des informations",
+                    "button": {
+                        "back": {
+                            "title": "Retour"
+                        },
+                        "next": {
+                            "title": "Suivant"
+                        }
+                    },
+                    "form": {
+                        "name": {
+                            "title": "Donne un titre court au produit",
+                            "placeholder": "Titre",
+                            "length": "/ 50",
+                            "error": {
+                                "length": "Le nom du produit est vide",
+                                "invalid": "Le nom du produit contient des erreurs",
+                                "required": "Le nom du produit est requis"
+                            }
+                        }
+                    }
+                },
+                "additional": {
+                    "button": {
+                        "back": {
+                            "title": "Retour"
+                        }
+                    },
+                    "section": "Finaliser",
+                    "title": "Il est possible d'apporter des précisions sur le produit",
+                    "panel": {
+                        "description": {
+                            "title": "Donne un court descriptif au produit",
+                            "description": ""
+                        },
+                        "external_url": {
+                            "title": "Déja vu sur un site ? Donnez-nous des informations sur le site.",
+                            "description": ""
+                        }
+                    },
+                    "form": {
+                        "description": {
+                            "title": "Descriptif du produit",
+                            "placeholder": "description",
+                            "length": "/ 2000",
+                            "error": {
+                                "length": "La description du produit est vide",
+                                "invalid": "La description du produit est invalide",
+                                "required": "La description du produit est requise"
+                            }
+                        },
+                        "delivery_fee": {
+                            "placeholder": "Frais de livraison",
+                            "error": {
+                                "min": "Les frais de livraison ne peuvent pas être négatifs",
+                                "max": "Les frais de livraison sont un peu trop chers !",
+                                "length": "Les frais de livraison sont vides",
+                                "invalid": "Les frais de livraison doivent être un nombre (sans €)",
+                                "required": "Les frais de livraison sont requis"
+                            }
+                        },
+                        "external_url": {
+                            "placeholder": "Lien vers le produit",
+                            "error": {
+                                "length": "Le lien vers le produit est vide",
+                                "invalid": "Le lien vers le produit est invalide",
+                                "required": "Le lien vers le produit est requis"
+                            }
+                        },
+                        "price": {
+                            "placeholder": "Prix",
+                            "error": {
+                                "min": "Le prix ne peut pas être négatif",
+                                "max": "Le prix est un peu trop cher !",
+                                "length": "Le prix est vide",
+                                "invalid": "Le prix doit être un nombre (sans €)",
+                                "required": "Le prix est requise"
+                            }
+                        },
+                        "validation": {
+                            "button": {
+                                "label": "Valider",
+                                "title": "Valider"
+                            }
+                        }
+                    }
+                }
+            }
+        }
     },
-    "guard": {
-      "unauthenticated": "Se connecter pour ajouter autant de produit que possible"
+    "product-detail": {
+        "meta": {
+            "og:site_name": "E-commerce",
+            "description": "{{value}} - E-commerce"
+        },
+        "cart": {
+            "added": "produit ajouté au panier",
+            "error": {
+                "user": "Il faut d'abord se connecter pour ajouter un produit au panier"
+            }
+        }
+    },
+    "product-list": {
+        "empty-list": "Aucun produit pour le moment...",
+        "card-title": {
+            "title": "Tu as déjà un produit ?"
+        },
+        "card-subtitle": {
+            "title": "Envoie-nous ta photo et essaie d'obtenir le meilleur score !"
+        },
+        "card-actions": {
+            "title": "Je poste en un clic !",
+            "aria-label": "Je poste en un clic !"
+        },
+        "fab-button": {
+            "title": "Ajouter un nouveau produit"
+        }
+    },
+    "snackbar": {
+        "product-add": {
+            "submit": "Ton produit est en attente de validation"
+        },
+        "guard": {
+            "unauthenticated": "Se connecter pour ajouter autant de produit que possible"
+        }
+    },
+    "sidenav": {
+        "card": {
+            "list-item": {
+                "admin": {
+                    "title": "Back office admin"
+                },
+                "facebook": {
+                    "title": "Se connecter avec Facebook"
+                },
+                "google": {
+                    "title": "Se connecter avec Google"
+                },
+                "login": {
+                    "title": "Connexion"
+                },
+                "logout": {
+                    "title": "Déconnexion",
+                    "aria-label": "Déconnexion"
+                },
+                "pwa": "Ajouter l'application en favoris"
+            },
+            "image": {
+                "alt": "Image de fond du menu"
+            }
+        }
+    },
+    "timeline": {
+        "title": "timeline style 1"
+    },
+    "user": {
+        "logins": {
+            "login1": {
+                "title": "connexion style 1",
+                "name": "connexion",
+                "email": {
+                    "label": "email",
+                    "hint": "adresse email",
+                    "placeholder": "entrer un email",
+                    "error": {
+                        "required": "l'email est obligatoire",
+                        "pattern": "l'email est invalide"
+                    }
+                },
+                "password": {
+                    "label": "mot de passe",
+                    "hint": "mot de passe",
+                    "placeholder": "entrer un mot de passe",
+                    "error": {
+                        "required": "le mot de passe est obligatoire",
+                        "pattern": "le mot de passe est invalide"
+                    }
+                }
+            },
+            "login2": {
+                "title": "connexion style 2",
+                "name": "connexion",
+                "email": {
+                    "label": "email",
+                    "hint": "adresse email",
+                    "placeholder": "entrer un email",
+                    "error": {
+                        "required": "l'email est obligatoire",
+                        "pattern": "l'email est invalide"
+                    }
+                },
+                "password": {
+                    "label": "mot de passe",
+                    "hint": "mot de passe",
+                    "placeholder": "entrer un mot de passe",
+                    "error": {
+                        "required": "le mot de passe est obligatoire",
+                        "pattern": "le mot de passe est invalide"
+                    }
+                }
+            }
+        },
+        "list": {
+            "header": {
+                "title": "fonctionnalités utilisateurs"
+            },
+            "logins": {
+                "header": {
+                    "title": "page de connexion"
+                },
+                "name": "page de connexion",
+                "login1": {
+                    "name": "connexion style 1"
+                },
+                "login2": {
+                    "name": "connexion style 2"
+                }
+            },
+            "registers": {
+                "header": {
+                    "title": "page d'inscription"
+                },
+                "name": "page d'inscription",
+                "register1": {
+                    "name": "inscription style 1"
+                }
+            }
+        },
+        "registers": {
+            "register1": {
+                "title": "inscription style 1",
+                "name": "créer un compte",
+                "email": {
+                    "label": "email",
+                    "hint": "adresse email",
+                    "placeholder": "entrer un email",
+                    "error": {
+                        "required": "l'email est obligatoire",
+                        "pattern": "l'email est invalide"
+                    }
+                },
+                "email_confirmation": {
+                    "label": "email de confirmation",
+                    "hint": "adresse email",
+                    "placeholder": "confirmer l'adresse email",
+                    "error": {
+                        "required": "l'email est obligatoire",
+                        "pattern": "l'email est invalide"
+                    }
+                },
+                "password": {
+                    "label": "mot de passe",
+                    "hint": "mot de passe",
+                    "placeholder": "entrer un mot de passe",
+                    "error": {
+                        "required": "le mot de passe est obligatoire",
+                        "pattern": "le mot de passe est invalide"
+                    }
+                },
+                "firstname": {
+                    "label": "prénom",
+                    "hint": "prénom",
+                    "placeholder": "entrer un prénom",
+                    "error": {
+                        "required": "le prénom est obligatoire",
+                        "pattern": "le prénom est invalide"
+                    }
+                },
+                "lastname": {
+                    "label": "nom",
+                    "hint": "nom",
+                    "placeholder": "entrer un nom",
+                    "error": {
+                        "required": "le nom est obligatoire",
+                        "pattern": "le nom est invalide"
+                    }
+                }
+            }
+        },
+        "access_denied": {
+            "connect": "Il faut se connecter pour effectuer cette action"
+        }
     }
-  },
-  "sidenav": {
-    "card": {
-      "list-item": {
-        "admin": {
-          "title": "Back office admin"
-        },
-        "facebook": {
-          "title": "Se connecter avec Facebook"
-        },
-        "google": {
-          "title": "Se connecter avec Google"
-        },
-        "login": {
-          "title": "Connexion"
-        },
-        "logout": {
-          "title": "Déconnexion",
-          "aria-label": "Déconnexion"
-        },
-        "pwa": "Ajouter l'application en favoris"
-      },
-      "image": {
-        "alt": "Image de fond du menu"
-      }
-    }
-  },
-  "timeline": {
-    "title": "timeline style 1"
-  },
-  "user": {
-    "logins": {
-      "login1": {
-        "title": "connexion style 1",
-        "name": "connexion",
-        "email": {
-          "label": "email",
-          "hint": "adresse email",
-          "placeholder": "entrer un email",
-          "error": {
-            "required": "l'email est obligatoire",
-            "pattern": "l'email est invalide"
-          }
-        },
-        "password": {
-          "label": "mot de passe",
-          "hint": "mot de passe",
-          "placeholder": "entrer un mot de passe",
-          "error": {
-            "required": "le mot de passe est obligatoire",
-            "pattern": "le mot de passe est invalide"
-          }
-        }
-      },
-      "login2": {
-        "title": "connexion style 2",
-        "name": "connexion",
-        "email": {
-          "label": "email",
-          "hint": "adresse email",
-          "placeholder": "entrer un email",
-          "error": {
-            "required": "l'email est obligatoire",
-            "pattern": "l'email est invalide"
-          }
-        },
-        "password": {
-          "label": "mot de passe",
-          "hint": "mot de passe",
-          "placeholder": "entrer un mot de passe",
-          "error": {
-            "required": "le mot de passe est obligatoire",
-            "pattern": "le mot de passe est invalide"
-          }
-        }
-      }
-    },
-    "list": {
-      "header": {
-        "title": "fonctionnalités utilisateurs"
-      },
-      "logins": {
-        "header": {
-          "title": "page de connexion"
-        },
-        "name": "page de connexion",
-        "login1": {
-          "name": "connexion style 1"
-        },
-        "login2": {
-          "name": "connexion style 2"
-        }
-      },
-      "registers": {
-        "header": {
-          "title": "page d'inscription"
-        },
-        "name": "page d'inscription",
-        "register1": {
-          "name": "inscription style 1"
-        }
-      }
-    },
-    "registers": {
-      "register1": {
-        "title": "inscription style 1",
-        "name": "créer un compte",
-        "email": {
-          "label": "email",
-          "hint": "adresse email",
-          "placeholder": "entrer un email",
-          "error": {
-            "required": "l'email est obligatoire",
-            "pattern": "l'email est invalide"
-          }
-        },
-        "email_confirmation": {
-          "label": "email de confirmation",
-          "hint": "adresse email",
-          "placeholder": "confirmer l'adresse email",
-          "error": {
-            "required": "l'email est obligatoire",
-            "pattern": "l'email est invalide"
-          }
-        },
-        "password": {
-          "label": "mot de passe",
-          "hint": "mot de passe",
-          "placeholder": "entrer un mot de passe",
-          "error": {
-            "required": "le mot de passe est obligatoire",
-            "pattern": "le mot de passe est invalide"
-          }
-        },
-        "firstname": {
-          "label": "prénom",
-          "hint": "prénom",
-          "placeholder": "entrer un prénom",
-          "error": {
-            "required": "le prénom est obligatoire",
-            "pattern": "le prénom est invalide"
-          }
-        },
-        "lastname": {
-          "label": "nom",
-          "hint": "nom",
-          "placeholder": "entrer un nom",
-          "error": {
-            "required": "le nom est obligatoire",
-            "pattern": "le nom est invalide"
-          }
-        }
-      }
-    },
-    "access_denied": {
-      "connect": "Il faut se connecter pour effectuer cette action"
-    }
-  }
 }

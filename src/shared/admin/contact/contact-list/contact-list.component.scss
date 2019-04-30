@@ -1,13 +1,5 @@
-
-.mat-card {
-  min-width: 30vw;
-}
-
-.card-content {
-  width: 100%;
-  min-width: 90vw;
-  .datatable {
-    height: 70vh;
-    min-width: 90vw;
-  }
+.card-wrapper {
+  padding: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
 }

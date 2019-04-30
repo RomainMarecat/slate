@@ -1,6 +1,10 @@
+import { User } from '../../user/shared/user';
+
 export interface Contact {
   key?: string;
-  name: string;
-  email: string;
-  message: string;
+  user: User;
+  last_message: string;
+  created_at: Date;
+  updated_at: Date;
+  conversations: string[];
 }
