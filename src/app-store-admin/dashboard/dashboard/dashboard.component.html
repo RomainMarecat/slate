@@ -1,0 +1,25 @@
+<div class="dashboard-content-wrapper"
+     fxLayout="row wrap"
+     fxLayoutAlign="center stretch"
+     fxLayoutGap="30px"
+     fxLayout.xs="row wrap"
+     fxLayoutAlign.xs="center stretch"
+     fxLayoutGap.xs="0px">
+  <mat-card class="mat-card m-4"
+            (click)="navigateTo(feature.url)"
+            *ngFor="let feature of features">
+    <img mat-card-image
+         class="dashboard-image"
+         [alt]="feature.name"
+         [src]="feature.img">
+    <mat-card-header fxLayout="row"
+                     fxLayoutAlign="center stretch">
+      <mat-card-title class="text-ucfirst">
+        <a class="link"
+           [routerLink]="[feature.url | localize]">
+          {{ feature.name | translate }}
+        </a>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</div>

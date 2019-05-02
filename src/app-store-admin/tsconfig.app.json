@@ -1,0 +1,26 @@
+{
+    "extends": "../tsconfig.app.json",
+    "compilerOptions": {
+        "outDir": "../../out-tsc/app",
+        "baseUrl": "./",
+        "module": "es2015",
+        "types": []
+    },
+    "include": [
+        "main.ts",
+        "polyfills.ts",
+        "dashboard/dashboard.module.ts",
+        "../shared/admin/order/order.module.ts"
+    ],
+    "exclude": [
+        "test.ts",
+        "../shared/i18n/translate-server-loader.service.ts",
+        "../shared/i18n/translates-server/*.ts",
+        "**/*.spec.ts",
+        "../shared/*.spec.ts",
+        "../shared/**/*.spec.ts",
+        "**/*.tns.ts",
+        "**/*.android.ts",
+        "**/*.ios.ts"
+    ]
+}

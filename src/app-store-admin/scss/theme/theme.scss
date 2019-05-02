@@ -1,0 +1,178 @@
+@import '../../../../node_modules/@angular/material/theming';
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
+
+@include font-face(Lato, '/assets/fonts/lato-regular-webfont', normal, normal, woff2 woff ttf);
+@include font-face(Lato-Black, '/assets/fonts/lato-black-webfont', normal, normal, woff2 woff ttf);
+@include font-face(Lato-Bold, '/assets/fonts/lato-bold-webfont', normal, normal, woff2 woff ttf);
+
+@include font-face(Roboto, '/assets/fonts/roboto-regular-webfont', normal, normal, woff2 woff ttf);
+@include font-face(Roboto-Black, '/assets/fonts/roboto-black-webfont', normal, normal, woff2 woff ttf);
+@include font-face(Roboto-Bold, '/assets/fonts/roboto-bold-webfont', normal, normal, woff2 woff ttf);
+
+
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+
+$custom-typography: mat-typography-config(
+        $font-family: 'Lato, Roboto, sans-serif'
+);
+@include mat-core($custom-typography);
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+
+$color1: #131629; // Bleu
+$color2: #ffffff; // Blanc
+$color3: #af300b; // Rouge
+$color5: #af8401;
+
+$mat-store-primary: (
+        50: #ffffff,
+        100: #bbdefb,
+        200: #90caf9,
+        300: #64b5f6,
+        400: #90323D,
+        500: #F4C71D,
+        600: #1e88e5,
+        700: #1976d2,
+        800: #4D4C4C,
+        900: #2F2F30,
+        A100: #82b1ff,
+        A200: #448aff,
+        A400: #2979ff,
+        A700: #2962ff,
+        contrast: (
+                50: $dark-primary-text,
+                100: $dark-primary-text,
+                200: $dark-primary-text,
+                300: $dark-primary-text,
+                400: $dark-primary-text,
+                500: $light-primary-text,
+                600: $light-primary-text,
+                700: $light-primary-text,
+                800: $light-primary-text,
+                900: $light-primary-text,
+                A100: $dark-primary-text,
+                A200: $light-primary-text,
+                A400: $light-primary-text,
+                A700: $light-primary-text,
+        )
+);
+
+$primary: mat-palette($mat-store-primary, 900);
+$warn: mat-palette($mat-store-primary, 500);
+$accent: mat-palette($mat-store-primary, 400);
+$light-grey: mat-palette($mat-grey, 100);
+$white: mat-palette($mat-grey, 50);
+$black: mat-palette($mat-grey, 900);
+
+@mixin mat-button-theme($theme) {
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .mat-raised-button,
+  .mat-button,
+  .mat-icon-button,
+  .mat-mini-fab {
+    @if length(&) {
+      &.mat-primary {
+        background-color: mat-color($primary, darker);
+        color: mat-color($white);
+      }
+    }
+
+    @if length(&) {
+      &.mat-accent {
+        background-color: mat-color($accent);
+        color: mat-color($white);
+      }
+    }
+
+    @if length(&) {
+      &.mat-warn {
+        background-color: mat-color($warn);
+        color: mat-color($black);
+      }
+    }
+  }
+}
+
+@mixin no-underline {
+  #{if(&, "&", "*")}.mat-form-field--no-underline {
+    .mat-form-field-underline {
+      background-color: transparent;
+    }
+  }
+}
+
+@mixin mat-form-field-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $foreground: map-get($theme, foreground);
+  $is-dark-theme: map-get($theme, is-dark);
+
+  .mat-form-field-underline {
+    transform: perspective(1px);
+    background-color: mat-color($primary);
+  }
+
+  @include no-underline;
+
+  .mat-form-field--no-underline {
+    .mat-form-field-underline {
+      background-color: transparent;
+    }
+  }
+}
+
+@mixin color-hovered {
+  #{if(&, "&", "*")}:hover {
+    color: mat-color($white, 200);
+  }
+}
+
+@mixin mat-toolbar-theme($theme) {
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  mat-toolbar.mat-primary {
+    background-color: mat-color($primary, darker);
+    color: mat-color($white);
+
+    @include color-hovered;
+
+    a {
+      color: mat-color($white);
+    }
+  }
+}
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@mixin custom-theme($theme) {
+  @include mat-core-theme($theme);
+  @include mat-button-theme($theme);
+  @include mat-form-field-theme($theme);
+  @include mat-toolbar-theme($theme);
+}
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+@include custom-theme($theme);
+
+body {
+  font-family: $primary-font;
+  color: mat-color($black);
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}

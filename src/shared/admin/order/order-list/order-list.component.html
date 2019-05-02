@@ -97,6 +97,14 @@
   <span class="mobile-hidden">{{ value|currency:'EUR' }}</span>
 </ng-template>
 
+<ng-template #dateTmpl
+             let-value="value"
+             ngx-datatable-cell-template>
+  <span class="text-value">
+    {{ value?.seconds * 1000 | date:'short' }}
+  </span>
+</ng-template>
+
 <ng-template #actionsCell
              let-row="row"
              ngx-datatable-cell-template>

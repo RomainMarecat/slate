@@ -1,0 +1,174 @@
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-text {
+  cursor: text;
+}
+
+.cursor-help {
+  cursor: help;
+}
+
+.ucfirst,
+.text-ucfirst {
+  text-transform: lowercase;
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+
+.size--all-xxs {
+  font-size: .57143em;
+  line-height: 1.42857
+}
+
+.size--all-xs {
+  font-size: .71429em;
+  line-height: 1.42857
+}
+
+.size--all-s {
+  font-size: .85714em;
+  line-height: 1.42857
+}
+
+.size--all-m {
+  font-size: 1em;
+  line-height: 1.42857
+}
+
+.size--all-l {
+  font-size: 1.14286em;
+  line-height: 1.42857
+}
+
+.size--all-xl {
+  font-size: 1.28571em;
+  line-height: 1.42857
+}
+
+.size--all-xxl {
+  font-size: 1.42857em;
+  line-height: 1.42857
+}
+
+.size--all-xxxl {
+  font-size: 1.71429em;
+  line-height: 1.42857
+}
+
+.size--all-48 {
+  font-size: 3.42857em
+}
+
+@media (min-width: 30em) {
+  .size--fromW2-xxs {
+    font-size: .57143em;
+    line-height: 1.42857
+  }
+  .size--fromW2-xs {
+    font-size: .71429em;
+    line-height: 1.42857
+  }
+  .size--fromW2-s {
+    font-size: .85714em;
+    line-height: 1.42857
+  }
+  .size--fromW2-m {
+    font-size: 1em;
+    line-height: 1.42857
+  }
+  .size--fromW2-l {
+    font-size: 1.14286em;
+    line-height: 1.42857
+  }
+  .size--fromW2-xl {
+    font-size: 1.28571em;
+    line-height: 1.42857
+  }
+  .size--fromW2-xxl {
+    font-size: 1.42857em;
+    line-height: 1.42857
+  }
+  .size--fromW2-xxxl {
+    font-size: 1.71429em;
+    line-height: 1.42857
+  }
+}
+
+@media (min-width: 48em) {
+  .size--fromW3-xxs {
+    font-size: .57143em;
+    line-height: 1.42857
+  }
+  .size--fromW3-xs {
+    font-size: .71429em;
+    line-height: 1.42857
+  }
+  .size--fromW3-s {
+    font-size: .85714em;
+    line-height: 1.42857
+  }
+  .size--fromW3-m {
+    font-size: 1em;
+    line-height: 1.42857
+  }
+  .size--fromW3-l {
+    font-size: 1.14286em;
+    line-height: 1.42857
+  }
+  .size--fromW3-xl {
+    font-size: 1.28571em;
+    line-height: 1.42857
+  }
+  .size--fromW3-xxl {
+    font-size: 1.42857em;
+    line-height: 1.42857
+  }
+  .size--fromW3-xxxl {
+    font-size: 1.71429em;
+    line-height: 1.42857
+  }
+}
+
+@media (min-width: 64em) {
+  .size--fromW4-xxs {
+    font-size: .57143em;
+    line-height: 1.42857
+  }
+  .size--fromW4-xs {
+    font-size: .71429em;
+    line-height: 1.42857
+  }
+  .size--fromW4-s {
+    font-size: .85714em;
+    line-height: 1.42857
+  }
+  .size--fromW4-m {
+    font-size: 1em;
+    line-height: 1.42857
+  }
+  .size--fromW4-l {
+    font-size: 1.14286em;
+    line-height: 1.42857
+  }
+  .size--fromW4-xl {
+    font-size: 1.28571em;
+    line-height: 1.42857
+  }
+  .size--fromW4-xxl {
+    font-size: 1.42857em;
+    line-height: 1.42857
+  }
+  .size--fromW4-xxxl {
+    font-size: 1.71429em;
+    line-height: 1.42857
+  }
+}

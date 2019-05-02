@@ -8,6 +8,7 @@ export const mockOrder: Order = {
   delivery: faker.random.uuid(),
   items: [],
   delivery_fee: 0,
+  status: 'payment_authorized',
   created_at: new Date(),
   updated_at: new Date(),
   cart: 'fs6ffd2g6f9d'

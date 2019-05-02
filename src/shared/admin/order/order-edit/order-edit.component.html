@@ -1,41 +1,114 @@
-<div class="container">
+<div class="container" *ngIf="document">
   <div class="row">
     <div class="col">
       <form [formGroup]="form"
             (ngSubmit)="saveDocument()"
             class="form">
         <mat-card class="mat-card mt-3">
-          <mat-card-content class="mat-card-content"
-                            fxLayout="row"
-                            fxLayoutAlign="space-around stretch"
-                            fxLayoutGap="30px">
-            <mat-form-field class="mat-form-field">
-              <input matInput
-                     maxlength="100"
-                     [placeholder]="'admin.placeholder.order.total'|translate"
-                     formControlName="total">
-              <mat-hint align="start"><strong [innerHtml]="'admin.hint.order.total'|translate"></strong>
-              </mat-hint>
-              <mat-hint align="end">{{ form.get('total').value.length }} {{ '/100'|translate }}</mat-hint>
-              <mat-error *ngIf="form.get('total').invalid && form.get('total').value.length === 0"
-                         [innerHtml]="'admin.error.required.order.total'|translate"></mat-error>
-              <mat-error *ngIf="form.get('total').invalid && form.get('total').value.length > 0"
-                         [innerHtml]="'admin.error.invalid.order.total'|translate"></mat-error>
-            </mat-form-field>
+          <mat-card-header>
+            <mat-card-title class="mat-card-title">
+              {{'admin.order-edit.key'|translate}} {{ document.key }}
+            </mat-card-title>
+            <mat-card-title>
+              <small>
+                {{'admin.order-edit.created_at'|translate}} {{ document?.created_at?.seconds * 1000 | date : 'short'}}
+              </small>
+            </mat-card-title>
+            <!-- Confirm stripe payment -->
+            <mat-card-subtitle fxLayout="row"
+                               fxLayoutGap="10px">
+              <button color="primary"
+                      mat-raised-button
+                      (click)="onConfirmPayment()"
+                      type="button"
+                      role="button">
+                {{ 'admin.order-edit.cta.confirm-payment' |translate }}
+              </button>
+              <button color="accent"
+                      mat-raised-button
+                      (click)="markPaymentAsCancelled()"
+                      type="button"
+                      role="button">
+                {{ 'admin.order-edit.cta.cancel-payment' |translate }}
+              </button>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content *ngIf="delivery">
+            <div class="addresses"
+                 fxLayout="row"
+                 fxLayoutAlign="center stretch"
+                 fxLayoutGap="20px">
+              <!-- adresse de livraison -->
+              <div class="delivery">
+                <h4>
+                  {{'admin.order-edit.delivery_address'|translate}}
+                  <button type="button" class="btn btn-default btn-xs"
+                          ngxClipboard
+                          (click)="copied($event)"
+                          [cbContent]="deliveryAddress">
+                    <i class="fa fa-copy"></i>
+                  </button>
+                </h4>
+                <mat-list id="delivery-address-wrapper">
+                  <mat-list-item>
+                    {{ delivery.address.firstname }}&nbsp;
+                    {{ delivery.address.lastname }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    {{ delivery.address.address }}<br>
+                    {{ delivery.address.address_complement }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span>{{ delivery.address.zipcode }}
+                      {{ delivery.address.city }},&nbsp;</span>
+                    {{ delivery.address.country }}
+                  </mat-list-item>
+                </mat-list>
+              </div>
+              <!-- adresse de facturation -->
+              <div class="billing" *ngIf="delivery.billing">
+                <h4>
+                  {{'admin.order-edit.billing'|translate}}
+                  <button type="button" class="btn btn-default btn-xs"
+                          ngxClipboard
+                          (click)="copied($event)"
+                          [cbContent]="billingAddress">
+                    <i class="fa fa-copy"></i>
+                  </button>
+                </h4>
 
-            <mat-form-field class="mat-form-field">
-              <input matInput
-                     maxlength="100"
-                     [placeholder]="'admin.placeholder.order.user'|translate"
-                     [formControl]="form.get('user')">
-              <mat-hint align="start"><strong [innerHtml]="'admin.hint.order.user'|translate"></strong>
-              </mat-hint>
-              <mat-hint align="end">{{ form.get('user').value.length }} {{ '/100'|translate }}</mat-hint>
-              <mat-error *ngIf="form.get('user').invalid && form.get('user').value.length === 0"
-                         [innerHtml]="'admin.error.required.order.user'|translate"></mat-error>
-              <mat-error *ngIf="form.get('user').invalid && form.get('user').value.length > 0"
-                         [innerHtml]="'admin.error.invalid.order.user'|translate"></mat-error>
-            </mat-form-field>
+                <mat-list id="billing-address-wrapper">
+                  <mat-list-item>
+                    {{ delivery.billing.firstname }}&nbsp;
+                    {{ delivery.billing.lastname }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    {{ delivery.billing.address }}<br>
+                    {{ delivery.billing.address_complement }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span>{{ delivery.billing.zipcode }}
+                      {{ delivery.billing.city }},&nbsp;</span>
+                    {{ delivery.billing.country }}
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+
+            <hr>
+
+            <!-- email attaché à la commande -->
+            <div class="email-wrapper">
+              <b class="width-100">{{'admin.order-edit.contact_email'|translate}}</b>
+              {{ delivery.address.email }}
+
+              <button type="button" class="btn btn-default btn-xs"
+                      ngxClipboard
+                      [cbContent]="delivery.address.email"
+                      (click)="copied($event)">
+                <i class="fa fa-copy"></i>
+              </button>
+            </div>
           </mat-card-content>
 
           <mat-card-actions>

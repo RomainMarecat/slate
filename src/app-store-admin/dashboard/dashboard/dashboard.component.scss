@@ -1,0 +1,30 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap-grid';
+
+.dashboard-content-wrapper {
+
+  margin: 20px 0;
+
+  .mat-card {
+    @include media-breakpoint-up(xs) {
+      margin: 10px 0;
+    }
+    @include media-breakpoint-up(sm) {
+      margin: 10px 0;
+    }
+    @include media-breakpoint-up(md) {
+      margin: 0;
+    }
+    width: 500px;
+    cursor: pointer;
+
+    .link {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .dashboard-image {
+      height: 300px;
+      overflow-x: hidden;
+    }
+  }
+}

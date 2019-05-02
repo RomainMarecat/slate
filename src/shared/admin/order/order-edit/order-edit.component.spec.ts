@@ -1,31 +1,36 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { OrderEditComponent } from './order-edit.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
-import { AngularFireModule } from '@angular/fire';
-import { environment } from '../../../../app-hockey/environments/environment';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SharedModule } from '../../../shared.module';
-import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { BaseEditComponent } from '../../base/base-edit/base-edit.component';
-import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
-import { OrderService } from '../../../order/shared/order.service';
-import { MockOrderService } from '../../../order/shared/mock-order.service';
-import { AlertService } from '../../../popup/alert.service';
-import { MockAlertService } from '../../../popup/mock-alert.service';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
+import { ClipboardModule } from 'ngx-clipboard';
+import { NgxEditorModule } from 'ngx-editor';
+import { environment } from '../../../../app-hockey/environments/environment';
+import { DeliveryService } from '../../../cart/shared/delivery.service';
+import { MockDeliveryService } from '../../../cart/shared/mock-delivery.service';
 import { LoaderService } from '../../../loader/loader.service';
 import { MockLoaderService } from '../../../loader/mock-loader.service';
+import { MockOrderService } from '../../../order/shared/mock-order.service';
+import { OrderService } from '../../../order/shared/order.service';
+import { AlertService } from '../../../popup/alert.service';
+import { MockAlertService } from '../../../popup/mock-alert.service';
+import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
+import { SharedModule } from '../../../shared.module';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+
+import { OrderEditComponent } from './order-edit.component';
 
 describe('OrderEditComponent', () => {
   let component: OrderEditComponent;
   let fixture: ComponentFixture<OrderEditComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,6 +38,7 @@ describe('OrderEditComponent', () => {
         BrowserModule,
         BrowserAnimationsModule,
         CommonModule,
+        ClipboardModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
         NgxDatatableModule,
@@ -49,11 +55,12 @@ describe('OrderEditComponent', () => {
       providers: [
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: OrderService, useClass: MockOrderService},
+        {provide: DeliveryService, useClass: MockDeliveryService},
         {provide: AlertService, useClass: MockAlertService},
         {provide: LoaderService, useClass: MockLoaderService},
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
