@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Contact } from '../../contact/shared/contact';
 import { ContactService } from '../../contact/shared/contact.service';
+import { ChatConfiguration } from '../shared/chat-configuration';
 
 @Component({
   selector: 'app-chat',
@@ -8,6 +9,12 @@ import { ContactService } from '../../contact/shared/contact.service';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+
+  @Input() configuration: ChatConfiguration = {
+    style: {
+      'min-height': '400px'
+    }
+  };
 
   @Input() contacts: Contact[] = [];
 

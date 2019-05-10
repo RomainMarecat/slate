@@ -7,12 +7,16 @@
     </div>
 
     <button class="contact"
+            type="button"
+            role="button"
             mat-button
             (click)="onContactSelected(contact)"
             *ngFor="let contact of contacts">
       <div fxLayout="row"
+           class="content-wrapper"
            fxLayoutAlign="start center"
            fxLayoutGap="10px">
+        <!-- Column avatar -->
         <div class="avatar-wrapper"
              fxFlex="0 1 auto"
              fxLayoutAlign="center center">
@@ -20,6 +24,8 @@
             {{ contact?.user?.displayName | shorten : 1 }}
           </span>
         </div>
+
+        <!-- Column name -->
         <div fxFlex
              fxLayout="row">
           <div class="pr-4"
@@ -33,12 +39,13 @@
               {{ contact.last_message | shorten : 50 : '...' }}
             </div>
           </div>
+
           <div fxLayout="column"
                fxLayoutAlign="start end">
             <div class="contact-last-message-time">
               {{ contact.created_at?.seconds | date : 'short' }}
             </div>
-            <div class="mt-4 unread-message-count">
+            <div class="mt-2 unread-message-count">
               {{ contact.conversations?.length }}
             </div>
           </div>

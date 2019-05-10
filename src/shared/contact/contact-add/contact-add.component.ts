@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '@firebase/auth-types';
 import { DocumentReference } from '@firebase/firestore-types';
 import { TranslateService } from '@ngx-translate/core';
+import { ChatConfiguration } from '../../chat/shared/chat-configuration';
 import { Conversation } from '../../chat/shared/conversation';
 import { ConversationService } from '../../chat/shared/conversation.service';
 import { AlertService } from '../../popup/alert.service';
@@ -21,6 +22,12 @@ export class ContactAddComponent {
   form: FormGroup = ContactAddComponent.getForm();
   contact: Contact;
   user: User;
+  previousContacts: Contact[] = [];
+  chatConfiguration: ChatConfiguration = {
+    style: {
+      'min-height': '500px'
+    }
+  };
 
   static getForm(): FormGroup {
     return new FormGroup({
@@ -53,8 +60,30 @@ export class ContactAddComponent {
           email: user.email,
           photoURL: user.photoURL
         });
+
+        this.getContacts(user);
       }
     });
+  }
+
+  getContacts(user: User) {
+    this.contactService.query$.next({
+      orderBy: {
+        direction: 'asc',
+        column: 'created_at'
+      },
+      filters: [
+        {
+          column: 'user.uid',
+          operator: '==',
+          value: user.uid
+        }
+      ]
+    });
+    this.contactService.getContacts()
+      .subscribe((contacts: Contact[]) => {
+        this.previousContacts = contacts;
+      });
   }
 
   onSubmit() {
@@ -99,7 +128,6 @@ export class ContactAddComponent {
                   this.translateService.get(`contact.message.added`)
                     .subscribe(trans => {
                       this.alertService.show(trans);
-                      this.router.navigate(['/']);
                       this.contact = null;
                       this.form.reset();
                     });

@@ -7,7 +7,7 @@
                  fxLayout="column">
       <app-chat-sidenav-left [contacts]="contacts"></app-chat-sidenav-left>
     </mat-sidenav>
-    <mat-sidenav-content cdkScrollable>
+    <mat-sidenav-content cdkScrollable [ngStyle]="configuration.style">
       <app-chat-sidenav-right [contact]="selectedContact">
       </app-chat-sidenav-right>
     </mat-sidenav-content>

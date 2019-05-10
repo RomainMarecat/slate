@@ -1,6 +1,7 @@
 <div class="contact-wrapper"
      fxLayout="row wrap"
-     fxLayoutAlign="center stretch">
+     fxLayoutAlign="center stretch"
+     fxLayoutGap="30px">
   <div class="contact-header"
        fxFlex="100"
        fxLayout="column"
@@ -8,14 +9,22 @@
     <div class="contact-title-wrapper">
       <h2>{{ 'contact.title'|translate }}</h2>
     </div>
-    <div class="contact-subtitle-wrapper">
-      <h3>{{ 'contact.subtitle'|translate }}</h3>
-    </div>
   </div>
-  <div class="contact-content-wrapper"
-       fxFlex="100">
-    <form [formGroup]="form"
+  <div class="conversation-wrapper"
+       fxFlex="47"
+       *ngIf="previousContacts.length">
+    <app-chat [contacts]="previousContacts"
+    [configuration]="chatConfiguration"></app-chat>
+  </div>
+  <mat-card class="contact-content-wrapper"
+            fxFlex="47">
 
+    <mat-card-title class="contact-subtitle-wrapper"
+                    fxLayoutAlign="center stretch">
+      <h3>{{ 'contact.subtitle'|translate }}</h3>
+    </mat-card-title>
+
+    <form [formGroup]="form"
           (ngSubmit)="onSubmit()"
           fxLayout="row wrap"
           fxLayoutAlign="center stretch">
@@ -76,5 +85,5 @@
         </button>
       </div>
     </form>
-  </div>
+  </mat-card>
 </div>

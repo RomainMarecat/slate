@@ -97,6 +97,7 @@
             "article": "{{ article.name }}",
             "boards": "Liste des tableaux de bord",
             "cart": "Panier",
+            "contact-add": "Nous contacter",
             "chart": "Dashboard",
             "dashboard": "Dashboard",
             "faq": "FAQ",
