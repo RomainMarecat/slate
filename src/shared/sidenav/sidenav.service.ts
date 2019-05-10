@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
-import { ToggleState } from './toggle';
 import { Subject } from 'rxjs';
+import { ToggleState } from './toggle';
 
 @Injectable()
 export class SidenavService {
-  private toggleSubject = new Subject < ToggleState > ();
+  private toggleSubject = new Subject<ToggleState>();
 
   toggleState = this.toggleSubject.asObservable();
 
-  constructor() {}
+  constructor() {
+  }
 
   open(side ?: string, view ?: string) {
-    this.toggleSubject.next( < ToggleState > { open: true, side: side ? side : 'left', view: view ? view : '' });
+    this.toggleSubject.next(<ToggleState>{open: true, side: side ? side : 'left', view: view ? view : ''});
   }
 
   toggle(side ?: string, view ?: string) {
-    this.toggleSubject.next( < ToggleState > { open: true, side: side ? side : 'left', view: view ? view : '' });
+    this.toggleSubject.next(<ToggleState>{open: true, side: side ? side : 'left', view: view ? view : ''});
   }
 }

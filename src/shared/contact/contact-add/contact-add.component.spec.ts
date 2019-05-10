@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ChatModule } from '../../chat/chat.module';
 import { ConversationService } from '../../chat/shared/conversation.service';
 import { MockConversationService } from '../../chat/shared/mock-conversation.service';
 import { MockUserService } from '../../user/shared/mock-user.service';
@@ -45,6 +46,7 @@ describe('ContactAddComponent', () => {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         SharedModule,
+        ChatModule,
         LocalizeRouterModule,
         NgxEditorModule,
         NgxDatatableModule,

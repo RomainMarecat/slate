@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Contact } from '../../contact/shared/contact';
 
 @Component({
@@ -9,6 +9,8 @@ import { Contact } from '../../contact/shared/contact';
 export class ChatSidenavRightComponent implements OnInit {
 
   @Input() contact: Contact;
+
+  @Output() toggleSidenav: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() {
   }

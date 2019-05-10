@@ -1,7 +1,10 @@
 <div class="contact-wrapper"
      fxLayout="row wrap"
+     fxLayout.xs="column"
      fxLayoutAlign="center stretch"
+     fxLayoutAlign.xs="start center"
      fxLayoutGap="30px">
+
   <div class="contact-header"
        fxFlex="100"
        fxLayout="column"
@@ -12,12 +15,14 @@
   </div>
   <div class="conversation-wrapper"
        fxFlex="47"
+       fxFlex.xs="100"
        *ngIf="previousContacts.length">
     <app-chat [contacts]="previousContacts"
-    [configuration]="chatConfiguration"></app-chat>
+              [configuration]="chatConfiguration"></app-chat>
   </div>
   <mat-card class="contact-content-wrapper"
-            fxFlex="47">
+            fxFlex="47"
+            fxFlex.xs="100">
 
     <mat-card-title class="contact-subtitle-wrapper"
                     fxLayoutAlign="center stretch">

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DocumentReference } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '@firebase/auth-types';
@@ -24,6 +24,10 @@ export class ChatConversationComponent implements OnInit {
   conversationSubscription: Subscription;
 
   form: FormGroup = ChatConversationComponent.getForm();
+
+  sidenavState = false;
+
+  @Output() toggleSidenav: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   static getForm(): FormGroup {
     return new FormGroup({

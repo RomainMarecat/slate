@@ -1,14 +1,17 @@
 <mat-card class="content-card">
   <mat-sidenav-container>
     <mat-sidenav class="sidenav"
+                 #sidenavLeft
                  mode="side"
-                 opened="true"
+                 [opened]="opened"
                  position="start"
                  fxLayout="column">
       <app-chat-sidenav-left [contacts]="contacts"></app-chat-sidenav-left>
     </mat-sidenav>
-    <mat-sidenav-content cdkScrollable [ngStyle]="configuration.style">
-      <app-chat-sidenav-right [contact]="selectedContact">
+    <mat-sidenav-content cdkScrollable
+                         [ngStyle]="configuration.style">
+      <app-chat-sidenav-right [contact]="selectedContact"
+                              (toggleSidenav)="sidenavLeft.toggle()">
       </app-chat-sidenav-right>
     </mat-sidenav-content>
   </mat-sidenav-container>

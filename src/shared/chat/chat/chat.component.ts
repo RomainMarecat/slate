@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Contact } from '../../contact/shared/contact';
 import { ContactService } from '../../contact/shared/contact.service';
 import { ChatConfiguration } from '../shared/chat-configuration';
@@ -16,11 +17,20 @@ export class ChatComponent implements OnInit {
     }
   };
 
+  opened: boolean;
+
   @Input() contacts: Contact[] = [];
 
   selectedContact: Contact;
 
-  constructor(private contactService: ContactService) {
+  constructor(private contactService: ContactService,
+              private mediaObserver: MediaObserver) {
+    this.opened = true;
+    this.mediaObserver.asObservable().subscribe((changes: MediaChange[]) => {
+      if (changes.length > 0) {
+        this.opened = changes[0].mqAlias !== 'xs';
+      }
+    });
   }
 
   ngOnInit() {

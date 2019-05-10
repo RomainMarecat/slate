@@ -8,9 +8,12 @@
       <div fxLayout="row"
            fxLayoutAlign="start center">
         <button aria-label="chats button"
+                type="button"
+                role="button"
                 class="responsive-chats-button mr-16 mat-icon-button"
                 fxHide.gt-md
-                mat-icon-button>
+                mat-icon-button
+                (click)="toggleSidenav.emit(!sidenavState)">
           <mat-icon role="img"
                     aria-hidden="true">
             chat
