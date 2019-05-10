@@ -1,6 +1,7 @@
 <footer angulartics2On="mouseover"
         angularticsAction="HoveredOverFooter"
         [angularticsCategory]="'footer.content'">
+  <!-- Desktop -->
   <mat-toolbar class="mat-toolbar"
                fxShow.gt-sm="true"
                fxHide.xs="true">
@@ -19,10 +20,21 @@
               *ngFor="let link of links">
           <span class=" text-white text-uppercase">{{ link.title |translate }}</span>
           <span *ngFor="let sublink of link?.children">
-            <a class="text-capitalize"
-               [routerLink]="['/content',  sublink.key + '-' + sublink.content]|localize">
-              {{ sublink.title |translate }}
-            </a>
+            <ng-container
+              *ngIf="sublink?.title; then linkTmpl; else contentTmpl">
+            </ng-container>
+            <ng-template #linkTmpl>
+              <a class="text-capitalize text-sublink"
+                 [routerLink]="sublink.link">
+                {{ sublink.title |translate }}
+              </a>
+            </ng-template>
+            <ng-template #contentTmpl>
+              <a class="text-capitalize text-sublink"
+                 [routerLink]="'/content/' + sublink.key + '-' + sublink.content">
+                {{ sublink.title |translate }}
+              </a>
+            </ng-template>
           </span>
         </span>
       </div>
@@ -33,7 +45,7 @@
            fxLayoutAlign="space-around stretch"
            fxLayoutGap="20px"
            *ngIf="options.displayLinks">
-
+        routerLink
       </div>
     </mat-toolbar-row>
 
@@ -46,11 +58,13 @@
         <a mat-raised-button
            class="link-anchor"
            color="warn"
-           href="#main-logo">Haut de page</a>
+           href="#main-logo">
+          {{ 'cta.footer.top-of-page'|translate }}
+        </a>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
-
+  <!--Mobile -->
   <div class="mat-toolbar ml-5"
        fxLayout.xs="column"
        fxLayoutAlign.xs="start center"
@@ -66,11 +80,28 @@
       <span fxLayout="column"
             fxLayoutAlign="start start"
             *ngFor="let link of links">
-        <span class=" text-white text-uppercase">{{ link.title |translate }}</span>
-        <span *ngFor="let sublink of link?.children">
-          <a class="text-capitalize text-sublink"
-             [routerLink]="'/content/' + sublink.key + '-' + sublink.content">{{ sublink.title |translate }}</a>
+        <span class=" text-white text-uppercase">
+          {{ link.title |translate }}
         </span>
+        <ng-container *ngIf="link.children && link.children.length">
+          <span *ngFor="let sublink of link.children">
+            <ng-container
+              *ngIf="sublink?.title; then linkTmpl; else contentTmpl">
+            </ng-container>
+            <ng-template #linkTmpl>
+              <a class="text-capitalize text-sublink"
+                 [routerLink]="sublink.link">
+                {{ sublink.title |translate }}
+              </a>
+            </ng-template>
+            <ng-template #contentTmpl>
+              <a class="text-capitalize text-sublink"
+                 [routerLink]="'/content/' + sublink.key + '-' + sublink.content">
+                {{ sublink.title |translate }}
+              </a>
+            </ng-template>
+          </span>
+        </ng-container>
       </span>
     </div>
   </div>

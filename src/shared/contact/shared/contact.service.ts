@@ -1,11 +1,14 @@
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { timeout } from 'rxjs/operators';
 import { VisitorService } from '../../firestore/visitor.service';
 import { Contact } from './contact';
 
 @Injectable()
 export class ContactService extends VisitorService {
+
+  contactSelected: BehaviorSubject<Contact> = new BehaviorSubject<Contact>(null);
 
   constructor(afs: AngularFirestore, @Inject('TABLE_CONTACT') table: string) {
     super(afs, table);
@@ -19,14 +22,19 @@ export class ContactService extends VisitorService {
     return super.getDocument(key) as Observable<Contact>;
   }
 
-  createContact(contact: Contact): Promise<any> {
-    return super.createDocument(contact);
+  createContact(contact: Contact): Observable<any> {
+    return from(super.createDocument(contact))
+      .pipe(
+        timeout(5000)
+      );
   }
 
-  updateContact(contact: Contact) {
-    return super.updateDocument(contact);
+  updateContact(contact: Contact): Observable<void> {
+    return from(super.updateDocument(contact))
+      .pipe(
+        timeout(5000)
+      );
   }
-
 
   deleteContact(contact: Contact) {
     return super.deleteDocument(contact);

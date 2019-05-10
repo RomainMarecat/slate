@@ -6,10 +6,10 @@
             class="form">
         <mat-card class="mat-card mt-3">
           <mat-card-header>
-            <mat-card-title class="mat-card-title">
+            <mat-card-title class="mat-card-title text-ucfirst">
               {{'admin.order-edit.key'|translate}} {{ document.key }}
             </mat-card-title>
-            <mat-card-title>
+            <mat-card-title class="text-ucfirst">
               <small>
                 {{'admin.order-edit.created_at'|translate}} {{ document?.created_at?.seconds * 1000 | date : 'short'}}
               </small>
@@ -40,9 +40,10 @@
                  fxLayoutGap="20px">
               <!-- adresse de livraison -->
               <div class="delivery">
-                <h4>
+                <h4 class="text-ucfirst">
                   {{'admin.order-edit.delivery_address'|translate}}
-                  <button type="button" class="btn btn-default btn-xs"
+                  <button type="button"
+                          class="btn btn-default btn-xs"
                           ngxClipboard
                           (click)="copied($event)"
                           [cbContent]="deliveryAddress">
@@ -67,9 +68,10 @@
               </div>
               <!-- adresse de facturation -->
               <div class="billing" *ngIf="delivery.billing">
-                <h4>
+                <h4 class="text-ucfirst">
                   {{'admin.order-edit.billing'|translate}}
-                  <button type="button" class="btn btn-default btn-xs"
+                  <button type="button"
+                          class="btn btn-default btn-xs"
                           ngxClipboard
                           (click)="copied($event)"
                           [cbContent]="billingAddress">
@@ -99,10 +101,13 @@
 
             <!-- email attaché à la commande -->
             <div class="email-wrapper">
-              <b class="width-100">{{'admin.order-edit.contact_email'|translate}}</b>
+              <b class="w-100 text-ucfirst">
+                {{'admin.order-edit.contact_email'|translate}}
+              </b>
               {{ delivery.address.email }}
 
-              <button type="button" class="btn btn-default btn-xs"
+              <button type="button"
+                      class="btn btn-default btn-xs"
                       ngxClipboard
                       [cbContent]="delivery.address.email"
                       (click)="copied($event)">

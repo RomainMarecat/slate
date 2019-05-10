@@ -4,7 +4,7 @@ export const environment = {
   app_name: 'store',
   firebase: {
     apiKey: 'AIzaSyDFMGdlDQ8jndrs3uz5lYCeI7Q3M63CU9I',
-    authDomain: 'store-384269.firebaseapp.com',
+    authDomain: 'store-admin-384269.firebaseapp.com',
     databaseURL: 'https://store-384269.firebaseio.com',
     projectId: 'store-384269',
     storageBucket: 'store-384269.appspot.com',

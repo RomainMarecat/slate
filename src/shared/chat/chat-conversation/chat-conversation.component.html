@@ -1,0 +1,107 @@
+<div class="chat"
+     fxFlex
+     fxLayout="column">
+  <mat-toolbar class="chat-toolbar">
+    <div fxFlex
+         fxLayout="row"
+         fxLayoutAlign="space-between center">
+      <div fxLayout="row"
+           fxLayoutAlign="start center">
+        <button aria-label="chats button"
+                class="responsive-chats-button mr-16 mat-icon-button"
+                fxHide.gt-md
+                mat-icon-button>
+          <mat-icon role="img"
+                    aria-hidden="true">
+            chat
+          </mat-icon>
+        </button>
+        <div class="chat-contact"
+             fxLayout="row"
+             fxLayoutAlign="start center"
+             fxLayoutGap="10px">
+          <div class="avatar-wrapper"
+               fxFlex="0 1 auto"
+               fxLayoutAlign="center center">
+            <span>
+              {{ contact?.user?.displayName | shorten : 1 }}
+            </span>
+          </div>
+          <div class="chat-contact-name">
+            {{ contact?.user?.displayName| shorten : 100 : '...' }}
+          </div>
+        </div>
+      </div>
+      <div>
+        <button aria-haspopup="true"
+                aria-label="more"
+                mat-icon-button>
+          <mat-icon role="img" aria-hidden="true">
+            more_vert
+          </mat-icon>
+        </button>
+        <mat-menu></mat-menu>
+      </div>
+    </div>
+  </mat-toolbar>
+  <div fxFlex="1 1 auto"
+       id="chat-content">
+    <div class="chat-messages">
+
+      <div class="message-row"
+           [class.contact]="conversation?.user?.uid !== user?.uid"
+           [class.me]="conversation?.user?.uid === user?.uid"
+           *ngFor="let conversation of conversations">
+        <div class="bubble"
+             fxLayout="row"
+             fxLayoutAlign="center center">
+          <div class="message"
+               [innerHTML]="conversation.message">
+          </div>
+          <div class="time secondary-text"
+               [class.d-flex]="true">
+            {{ conversation.created_at?.seconds | date : 'short' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chat-footer"
+       fxFlex="0 0 auto"
+       fxLayout="column">
+    <div class="reply-form"
+         fxFlex="0 0 auto"
+         fxLayout="row"
+         fxLayoutAlign="center center">
+      <form fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            [formGroup]="form"
+            (ngSubmit)="addMessage()">
+        <mat-form-field appearance="standard"
+                        class="message-text"
+                        floatLabel="never"
+                        fxFlex>
+          <textarea matInput
+                    formControlName="message"
+                    name="message"
+                    placeholder="Type your message"
+                    rows="1"
+                    (keydown.enter)="addMessage()">
+          </textarea>
+        </mat-form-field>
+        <button aria-label="Send message"
+                title="Send message"
+                class="send-message-button"
+                mat-icon-button
+                type="submit"
+                role="button">
+          <mat-icon role="img"
+                    aria-hidden="true">
+            send
+          </mat-icon>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

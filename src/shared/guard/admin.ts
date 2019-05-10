@@ -8,4 +8,5 @@ export const adminsID = [
   '2JoIca0sDCPdw3sQP8rcW9fkgsk2', // Recipe
   'eK4R80hv1VYnJsRtJDmx55EwC9w2', // Recipe
   'CiKK3i9fIjRmbgKvWbQG5xWDNT72', // Store Admin
+  'Q1Z158oVtySaDMMFDADrTlfHxkG2', // Store Admin grangeon.marecat
 ];

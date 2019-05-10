@@ -1,1382 +1,1382 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "newProjectRoot": "slate",
-  "defaultProject": "store-admin",
-  "projects": {
-    "alr": {
-      "root": "src",
-      "sourceRoot": "src/app-alr",
-      "prefix": "app-alr",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist",
-            "index": "src/app-alr/index.html",
-            "main": "src/app-alr/main.ts",
-            "polyfills": "src/app-alr/polyfills.ts",
-            "tsConfig": "src/app-alr/tsconfig.app.json",
-            "assets": [
-              "src/app-alr/assets",
-              "src/app-alr/robots.txt",
-              "src/app-alr/sitemap.xml",
-              "src/app-alr/favicon.ico",
-              "src/app-alr/manifest.json"
-            ],
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-alr/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/chart.js/dist/Chart.js",
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/app-alr/environments/environment.ts",
-                  "with": "src/app-alr/environments/environment.prod.ts"
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "slate",
+    "defaultProject": "store-admin",
+    "projects": {
+        "alr": {
+            "root": "src",
+            "sourceRoot": "src/app-alr",
+            "prefix": "app-alr",
+            "projectType": "application",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "functions/dist/browser",
+                        "index": "src/app-alr/index.html",
+                        "main": "src/app-alr/main.ts",
+                        "polyfills": "src/app-alr/polyfills.ts",
+                        "tsConfig": "src/app-alr/tsconfig.app.json",
+                        "assets": [
+                            "src/app-alr/assets",
+                            "src/app-alr/robots.txt",
+                            "src/app-alr/sitemap.xml",
+                            "src/app-alr/favicon.ico",
+                            "src/app-alr/manifest.json"
+                        ],
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-alr/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/chart.js/dist/Chart.js",
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-alr/environments/environment.ts",
+                                    "with": "src/app-alr/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ],
+                            "serviceWorker": true,
+                            "ngswConfigPath": "src/app-alr/ngsw-config.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "alr:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "alr:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "alr:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/app-alr/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-alr/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ],
+                        "assets": [
+                            "src/app-alr/favicon.ico",
+                            "src/app-alr/assets",
+                            "src/app-alr/manifest.json"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/app-alr/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+            }
+        },
+        "store-admin": {
+            "root": "src",
+            "sourceRoot": "src/app-store-admin",
+            "prefix": "app-store-admin",
+            "projectType": "application",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "functions/dist/browser",
+                        "index": "src/app-store-admin/index.html",
+                        "main": "src/app-store-admin/main.ts",
+                        "polyfills": "src/app-store-admin/polyfills.ts",
+                        "tsConfig": "src/app-store-admin/tsconfig.app.json",
+                        "assets": [
+                            "src/app-store-admin/assets",
+                            "src/app-store-admin/robots.txt",
+                            "src/app-store-admin/sitemap.xml",
+                            "src/app-store-admin/favicon.ico",
+                            "src/app-store-admin/manifest.json"
+                        ],
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-store-admin/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/chart.js/dist/Chart.js",
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-store-admin/environments/environment.ts",
+                                    "with": "src/app-store-admin/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ],
+                            "serviceWorker": true,
+                            "ngswConfigPath": "src/app-store-admin/ngsw-config.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "store-admin:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "store-admin:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "store-admin:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/app-store-admin/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-store-admin/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ],
+                        "assets": [
+                            "src/app-store-admin/favicon.ico",
+                            "src/app-store-admin/assets",
+                            "src/app-store-admin/manifest.json"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/app-store-admin/tsconfig.app.json",
+                            "src/app/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
                 }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "src/app-alr/ngsw-config.json"
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "alr:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "alr:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "alr:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/app-alr/test.ts",
-            "polyfills": "src/app-alr/polyfills.ts",
-            "tsConfig": "src/app-alr/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-alr/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ],
-            "assets": [
-              "src/app-alr/favicon.ico",
-              "src/app-alr/assets",
-              "src/app-alr/manifest.json"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/app-alr/tsconfig.app.json",
-              "src/app-alr/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "store-admin": {
-      "root": "src",
-      "sourceRoot": "src/app-store-admin",
-      "prefix": "app-store-admin",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist",
-            "index": "src/app-store-admin/index.html",
-            "main": "src/app-store-admin/main.ts",
-            "polyfills": "src/app-store-admin/polyfills.ts",
-            "tsConfig": "src/app-store-admin/tsconfig.app.json",
-            "assets": [
-              "src/app-store-admin/assets",
-              "src/app-store-admin/robots.txt",
-              "src/app-store-admin/sitemap.xml",
-              "src/app-store-admin/favicon.ico",
-              "src/app-store-admin/manifest.json"
-            ],
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-store-admin/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/chart.js/dist/Chart.js",
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/app-store-admin/environments/environment.ts",
-                  "with": "src/app-store-admin/environments/environment.prod.ts"
+        "alr-e2e": {
+            "root": "e2e/",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "alr:serve"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": "e2e/tsconfig.e2e.json",
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+            }
+        },
+        "showcase": {
+            "root": "src",
+            "sourceRoot": "src/app-showcase",
+            "prefix": "app-showcase",
+            "projectType": "application",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "functions/dist/browser",
+                        "index": "src/app-showcase/index.html",
+                        "main": "src/app-showcase/main.ts",
+                        "polyfills": "src/app-showcase/polyfills.ts",
+                        "tsConfig": "src/app-showcase/tsconfig.app.json",
+                        "assets": [
+                            "src/app-showcase/assets",
+                            "src/app-showcase/robots.txt",
+                            "src/app-showcase/sitemap.xml",
+                            "src/app-showcase/favicon.ico",
+                            "src/app-showcase/manifest.json"
+                        ],
+                        "styles": [
+                            "./node_modules/material-design-icons/iconfont/material-icons.css",
+                            "./node_modules/font-awesome/css/font-awesome.css",
+                            "./node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "./node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "./node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "./node_modules/bootstrap/dist/css/bootstrap.css",
+                            "./node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-showcase/styles.scss"
+                        ],
+                        "scripts": [
+                            "./node_modules/moment/min/moment.min.js",
+                            "./node_modules/moment/locale/fr.js",
+                            "./node_modules/twix/dist/twix.min.js",
+                            "./node_modules/crypto-js/crypto-js.js",
+                            "./node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-showcase/environments/environment.ts",
+                                    "with": "src/app-showcase/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "serviceWorker": true,
+                            "ngswConfigPath": "src/app-showcase/ngsw-config.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "showcase:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "showcase:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "showcase:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/app-showcase/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-showcase/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ],
+                        "assets": [
+                            "src/app-showcase/favicon.ico",
+                            "src/app-showcase/assets"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/app-showcase/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
                 }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "src/app-store-admin/ngsw-config.json"
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "store-admin:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "store-admin:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "store-admin:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/app-store-admin/test.ts",
-            "polyfills": "src/app-store-admin/polyfills.ts",
-            "tsConfig": "src/app-store-admin/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-store-admin/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ],
-            "assets": [
-              "src/app-store-admin/favicon.ico",
-              "src/app-store-admin/assets",
-              "src/app-store-admin/manifest.json"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/app-store-admin/tsconfig.app.json",
-              "src/app-store-admin/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "alr-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "alr:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "showcase": {
-      "root": "src",
-      "sourceRoot": "src/app-showcase",
-      "prefix": "app-showcase",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist",
-            "index": "src/app-showcase/index.html",
-            "main": "src/app-showcase/main.ts",
-            "polyfills": "src/app-showcase/polyfills.ts",
-            "tsConfig": "src/app-showcase/tsconfig.app.json",
-            "assets": [
-              "src/app-showcase/assets",
-              "src/app-showcase/robots.txt",
-              "src/app-showcase/sitemap.xml",
-              "src/app-showcase/favicon.ico",
-              "src/app-showcase/manifest.json"
-            ],
-            "styles": [
-              "./node_modules/material-design-icons/iconfont/material-icons.css",
-              "./node_modules/font-awesome/css/font-awesome.css",
-              "./node_modules/@swimlane/ngx-datatable/release/index.css",
-              "./node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "./node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.css",
-              "./node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-showcase/styles.scss"
-            ],
-            "scripts": [
-              "./node_modules/moment/min/moment.min.js",
-              "./node_modules/moment/locale/fr.js",
-              "./node_modules/twix/dist/twix.min.js",
-              "./node_modules/crypto-js/crypto-js.js",
-              "./node_modules/cookieconsent/build/cookieconsent.min.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/app-showcase/environments/environment.ts",
-                  "with": "src/app-showcase/environments/environment.prod.ts"
+        "showcase-e2e": {
+            "root": "e2e/",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "showcase:serve"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": "e2e/tsconfig.e2e.json",
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "serviceWorker": true,
-              "ngswConfigPath": "src/app-showcase/ngsw-config.json"
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "showcase:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "showcase:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "showcase:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/app-showcase/test.ts",
-            "polyfills": "src/app-showcase/polyfills.ts",
-            "tsConfig": "src/app-showcase/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-showcase/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ],
-            "assets": [
-              "src/app-showcase/favicon.ico",
-              "src/app-showcase/assets"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/app-showcase/tsconfig.app.json",
-              "src/app-showcase/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "showcase-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "showcase:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "car": {
-      "root": "src",
-      "sourceRoot": "src/app-car",
-      "prefix": "app-car",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist",
-            "index": "src/app-car/index.html",
-            "main": "src/app-car/main.ts",
-            "polyfills": "src/app-car/polyfills.ts",
-            "tsConfig": "src/app-car/tsconfig.app.json",
-            "assets": [
-              "src/app-car/assets",
-              "src/app-car/robots.txt",
-              "src/app-car/sitemap.xml",
-              "src/app-car/favicon.ico",
-              "src/app-car/manifest.json"
-            ],
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-car/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/app-car/environments/environment.ts",
-                  "with": "src/app-car/environments/environment.prod.ts"
+        "car": {
+            "root": "src",
+            "sourceRoot": "src/app-car",
+            "prefix": "app-car",
+            "projectType": "application",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "functions/dist/browser",
+                        "index": "src/app-car/index.html",
+                        "main": "src/app-car/main.ts",
+                        "polyfills": "src/app-car/polyfills.ts",
+                        "tsConfig": "src/app-car/tsconfig.app.json",
+                        "assets": [
+                            "src/app-car/assets",
+                            "src/app-car/robots.txt",
+                            "src/app-car/sitemap.xml",
+                            "src/app-car/favicon.ico",
+                            "src/app-car/manifest.json"
+                        ],
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-car/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-car/environments/environment.ts",
+                                    "with": "src/app-car/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "serviceWorker": true,
+                            "ngswConfigPath": "src/app-car/ngsw-config.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "car:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "car:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "car:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/app-car/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-car/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ],
+                        "assets": [
+                            "src/app-car/favicon.ico",
+                            "src/app-car/assets"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/app-car/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "serviceWorker": true,
-              "ngswConfigPath": "src/app-car/ngsw-config.json"
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "car:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "car:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "car:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/app-car/test.ts",
-            "polyfills": "src/app-car/polyfills.ts",
-            "tsConfig": "src/app-car/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-car/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ],
-            "assets": [
-              "src/app-car/favicon.ico",
-              "src/app-car/assets"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/app-car/tsconfig.app.json",
-              "src/app-car/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "car-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "car:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "blog": {
-      "root": "src",
-      "sourceRoot": "src/app-blog",
-      "prefix": "app-blog",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist",
-            "index": "src/app-blog/index.html",
-            "main": "src/app-blog/main.ts",
-            "polyfills": "src/app-blog/polyfills.ts",
-            "tsConfig": "src/app-blog/tsconfig.app.json",
-            "assets": [
-              "src/app-blog/assets",
-              "src/app-blog/robots.txt",
-              "src/app-blog/sitemap.xml",
-              "src/app-blog/favicon.ico",
-              "src/app-blog/manifest.json"
-            ],
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-blog/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/app-blog/environments/environment.ts",
-                  "with": "src/app-blog/environments/environment.prod.ts"
+        "car-e2e": {
+            "root": "e2e/",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "car:serve"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": "e2e/tsconfig.e2e.json",
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "serviceWorker": true,
-              "ngswConfigPath": "src/app-blog/ngsw-config.json"
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "blog:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "blog:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "blog:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/app-blog/test.ts",
-            "polyfills": "src/app-blog/polyfills.ts",
-            "tsConfig": "src/app-blog/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-blog/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ],
-            "assets": [
-              "src/app-blog/favicon.ico",
-              "src/app-blog/assets"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/app-blog/tsconfig.app.json",
-              "src/app-blog/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "blog-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "blog:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "booking": {
-      "root": "src",
-      "sourceRoot": "src/app-booking",
-      "prefix": "app-booking",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist",
-            "index": "src/app-booking/index.html",
-            "main": "src/app-booking/main.ts",
-            "polyfills": "src/app-booking/polyfills.ts",
-            "tsConfig": "src/app-booking/tsconfig.app.json",
-            "assets": [
-              "src/app-booking/assets",
-              "src/app-booking/robots.txt",
-              "src/app-booking/sitemap.xml",
-              "src/app-booking/favicon.ico",
-              "src/app-booking/manifest.json"
-            ],
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-booking/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/app-booking/environments/environment.ts",
-                  "with": "src/app-booking/environments/environment.prod.ts"
+        "blog": {
+            "root": "src",
+            "sourceRoot": "src/app-blog",
+            "prefix": "app-blog",
+            "projectType": "application",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "functions/dist/browser",
+                        "index": "src/app-blog/index.html",
+                        "main": "src/app-blog/main.ts",
+                        "polyfills": "src/app-blog/polyfills.ts",
+                        "tsConfig": "src/app-blog/tsconfig.app.json",
+                        "assets": [
+                            "src/app-blog/assets",
+                            "src/app-blog/robots.txt",
+                            "src/app-blog/sitemap.xml",
+                            "src/app-blog/favicon.ico",
+                            "src/app-blog/manifest.json"
+                        ],
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-blog/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-blog/environments/environment.ts",
+                                    "with": "src/app-blog/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "serviceWorker": true,
+                            "ngswConfigPath": "src/app-blog/ngsw-config.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "blog:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "blog:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "blog:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/app-blog/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-blog/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ],
+                        "assets": [
+                            "src/app-blog/favicon.ico",
+                            "src/app-blog/assets"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/app-blog/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "serviceWorker": true,
-              "ngswConfigPath": "src/app-booking/ngsw-config.json"
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "booking:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "booking:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "booking:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/app-booking/test.ts",
-            "polyfills": "src/app-booking/polyfills.ts",
-            "tsConfig": "src/app-booking/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-booking/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ],
-            "assets": [
-              "src/app-booking/favicon.ico",
-              "src/app-booking/assets"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/app-booking/tsconfig.app.json",
-              "src/app-booking/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "booking-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "booking:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "hockey": {
-      "root": "src",
-      "sourceRoot": "src/app-hockey",
-      "prefix": "app-hockey",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist",
-            "index": "src/app-hockey/index.html",
-            "main": "src/app-hockey/main.ts",
-            "polyfills": "src/app-hockey/polyfills.ts",
-            "tsConfig": "src/app-hockey/tsconfig.app.json",
-            "assets": [
-              "src/app-hockey/assets",
-              "src/app-hockey/robots.txt",
-              "src/app-hockey/sitemap.xml",
-              "src/app-hockey/favicon.ico",
-              "src/app-hockey/manifest.json"
-            ],
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-hockey/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/app-hockey/environments/environment.ts",
-                  "with": "src/app-hockey/environments/environment.prod.ts"
+        "blog-e2e": {
+            "root": "e2e/",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "blog:serve"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": "e2e/tsconfig.e2e.json",
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "serviceWorker": true,
-              "ngswConfigPath": "src/app-hockey/ngsw-config.json"
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "hockey:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "hockey:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "hockey:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/app-hockey/test.ts",
-            "polyfills": "src/app-hockey/polyfills.ts",
-            "tsConfig": "src/app-hockey/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-hockey/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ],
-            "assets": [
-              "src/app-hockey/favicon.ico",
-              "src/app-hockey/assets"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/app-hockey/tsconfig.app.json",
-              "src/app-hockey/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "hockey-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "hockey:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "store": {
-      "root": "src",
-      "sourceRoot": "src/app-store",
-      "prefix": "app-store",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "functions/dist/browser",
-            "index": "src/app-store/index.html",
-            "main": "src/app-store/main.ts",
-            "polyfills": "src/app-store/polyfills.ts",
-            "tsConfig": "src/app-store/tsconfig.app.json",
-            "assets": [
-              "src/app-store/assets",
-              "src/app-store/robots.txt",
-              "src/app-store/sitemap.xml",
-              "src/app-store/favicon.ico",
-              "src/app-store/manifest.json"
-            ],
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-store/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/app-store/environments/environment.ts",
-                  "with": "src/app-store/environments/environment.prod.ts"
+        "booking": {
+            "root": "src",
+            "sourceRoot": "src/app-booking",
+            "prefix": "app-booking",
+            "projectType": "application",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "functions/dist/browser",
+                        "index": "src/app-booking/index.html",
+                        "main": "src/app-booking/main.ts",
+                        "polyfills": "src/app-booking/polyfills.ts",
+                        "tsConfig": "src/app-booking/tsconfig.app.json",
+                        "assets": [
+                            "src/app-booking/assets",
+                            "src/app-booking/robots.txt",
+                            "src/app-booking/sitemap.xml",
+                            "src/app-booking/favicon.ico",
+                            "src/app-booking/manifest.json"
+                        ],
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-booking/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-booking/environments/environment.ts",
+                                    "with": "src/app-booking/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "serviceWorker": true,
+                            "ngswConfigPath": "src/app-booking/ngsw-config.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "booking:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "booking:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "booking:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/app-booking/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-booking/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ],
+                        "assets": [
+                            "src/app-booking/favicon.ico",
+                            "src/app-booking/assets"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/app-booking/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "serviceWorker": true,
-              "ngswConfigPath": "src/app-store/ngsw-config.json"
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "store:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "store:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "store:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/app-store/test.ts",
-            "polyfills": "src/app-store/polyfills.ts",
-            "tsConfig": "src/app-store/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-store/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ],
-            "assets": [
-              "src/app-store/favicon.ico",
-              "src/app-store/assets"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/app-store/tsconfig.app.json",
-              "src/app-store/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "functions/dist/server",
-            "main": "src/app-store/main.server.ts",
-            "tsConfig": "src/app-store/tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/app-store/environments/environment.ts",
-                  "with": "src/app-store/environments/environment.prod.ts"
+        "booking-e2e": {
+            "root": "e2e/",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "booking:serve"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": "e2e/tsconfig.e2e.json",
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
                 }
-              ]
             }
-          }
+        },
+        "hockey": {
+            "root": "src",
+            "sourceRoot": "src/app-hockey",
+            "prefix": "app-hockey",
+            "projectType": "application",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "functions/dist/browser",
+                        "index": "src/app-hockey/index.html",
+                        "main": "src/app-hockey/main.ts",
+                        "polyfills": "src/app-hockey/polyfills.ts",
+                        "tsConfig": "src/app-hockey/tsconfig.app.json",
+                        "assets": [
+                            "src/app-hockey/assets",
+                            "src/app-hockey/robots.txt",
+                            "src/app-hockey/sitemap.xml",
+                            "src/app-hockey/favicon.ico",
+                            "src/app-hockey/manifest.json"
+                        ],
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-hockey/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-hockey/environments/environment.ts",
+                                    "with": "src/app-hockey/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "serviceWorker": true,
+                            "ngswConfigPath": "src/app-hockey/ngsw-config.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "hockey:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "hockey:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "hockey:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/app-hockey/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-hockey/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ],
+                        "assets": [
+                            "src/app-hockey/favicon.ico",
+                            "src/app-hockey/assets"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/app-hockey/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
+        },
+        "hockey-e2e": {
+            "root": "e2e/",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "hockey:serve"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": "e2e/tsconfig.e2e.json",
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
+        },
+        "store": {
+            "root": "src",
+            "sourceRoot": "src/app-store",
+            "prefix": "app-store",
+            "projectType": "application",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "functions/dist/browser",
+                        "index": "src/app-store/index.html",
+                        "main": "src/app-store/main.ts",
+                        "polyfills": "src/app-store/polyfills.ts",
+                        "tsConfig": "src/app-store/tsconfig.app.json",
+                        "assets": [
+                            "src/app-store/assets",
+                            "src/app-store/robots.txt",
+                            "src/app-store/sitemap.xml",
+                            "src/app-store/favicon.ico",
+                            "src/app-store/manifest.json"
+                        ],
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-store/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-store/environments/environment.ts",
+                                    "with": "src/app-store/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "serviceWorker": true,
+                            "ngswConfigPath": "src/app-store/ngsw-config.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "store:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "store:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "store:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/app-store/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-store/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ],
+                        "assets": [
+                            "src/app-store/favicon.ico",
+                            "src/app-store/assets"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/app-store/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "server": {
+                    "builder": "@angular-devkit/build-angular:server",
+                    "options": {
+                        "outputPath": "functions/dist/server",
+                        "main": "src/app-store/main.server.ts",
+                        "tsConfig": "src/app-store/tsconfig.server.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-store/environments/environment.ts",
+                                    "with": "src/app-store/environments/environment.prod.ts"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "store-e2e": {
+            "root": "e2e/",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "store:serve"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": "e2e/tsconfig.e2e.json",
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
+        },
+        "recipe": {
+            "root": "",
+            "sourceRoot": "src/app-recipe",
+            "prefix": "app-recipe",
+            "projectType": "application",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/browser",
+                        "index": "src/app-recipe/index.html",
+                        "main": "src/app-recipe/main.ts",
+                        "polyfills": "src/app-recipe/polyfills.ts",
+                        "tsConfig": "src/app-recipe/tsconfig.app.json",
+                        "assets": [
+                            "src/app-recipe/assets",
+                            "src/app-recipe/robots.txt",
+                            "src/app-recipe/sitemap.xml",
+                            "src/app-recipe/favicon.ico",
+                            "src/app-recipe/manifest.json"
+                        ],
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "node_modules/@ng-select/ng-select/themes/material.theme.css",
+                            "src/app-recipe/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-recipe/environments/environment.ts",
+                                    "with": "src/app-recipe/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ],
+                            "serviceWorker": true,
+                            "ngswConfigPath": "src/app-recipe/ngsw-config.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "recipe:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "recipe:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "recipe:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/app-recipe/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-recipe/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ],
+                        "assets": [
+                            "src/app-recipe/favicon.ico",
+                            "src/app-recipe/assets",
+                            "src/app-recipe/manifest.json"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/app-recipe/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "server": {
+                    "builder": "@angular-devkit/build-angular:server",
+                    "options": {
+                        "outputPath": "dist/server",
+                        "main": "src/app-recipe/main.server.ts",
+                        "tsConfig": "src/app-recipe/tsconfig.server.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-recipe/environments/environment.ts",
+                                    "with": "src/app-recipe/environments/environment.prod.ts"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "recipe-e2e": {
+            "root": "e2e/",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "e2e/protractor.conf.js",
+                        "devServerTarget": "recipe:serve"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": "e2e/tsconfig.e2e.json",
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
         }
-      }
     },
-    "store-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "store:serve"
-          }
+    "schematics": {
+        "@schematics/angular:class": {
+            "spec": false
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
+        "@schematics/angular:component": {
+            "spec": true,
+            "inlineStyle": false,
+            "inlineTemplate": false,
+            "prefix": "app",
+            "styleext": "scss"
+        },
+        "@schematics/angular:directive": {
+            "spec": false,
+            "prefix": "app"
+        },
+        "@schematics/angular:guard": {
+            "spec": false
+        },
+        "@schematics/angular:module": {
+            "spec": false
+        },
+        "@schematics/angular:pipe": {
+            "spec": false
+        },
+        "@schematics/angular:service": {
+            "spec": false
         }
-      }
     },
-    "recipe": {
-      "root": "",
-      "sourceRoot": "src/app-recipe",
-      "prefix": "app-recipe",
-      "projectType": "application",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/browser",
-            "index": "src/app-recipe/index.html",
-            "main": "src/app-recipe/main.ts",
-            "polyfills": "src/app-recipe/polyfills.ts",
-            "tsConfig": "src/app-recipe/tsconfig.app.json",
-            "assets": [
-              "src/app-recipe/assets",
-              "src/app-recipe/robots.txt",
-              "src/app-recipe/sitemap.xml",
-              "src/app-recipe/favicon.ico",
-              "src/app-recipe/manifest.json"
-            ],
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "node_modules/@ng-select/ng-select/themes/material.theme.css",
-              "src/app-recipe/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/app-recipe/environments/environment.ts",
-                  "with": "src/app-recipe/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "src/app-recipe/ngsw-config.json"
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "recipe:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "recipe:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "recipe:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/app-recipe/test.ts",
-            "polyfills": "src/app-recipe/polyfills.ts",
-            "tsConfig": "src/app-recipe/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/@swimlane/ngx-datatable/release/index.css",
-              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/cookieconsent/build/cookieconsent.min.css",
-              "src/app-recipe/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/moment/min/moment.min.js",
-              "node_modules/moment/locale/fr.js",
-              "node_modules/twix/dist/twix.min.js",
-              "node_modules/crypto-js/crypto-js.js",
-              "node_modules/cookieconsent/build/cookieconsent.min.js"
-            ],
-            "assets": [
-              "src/app-recipe/favicon.ico",
-              "src/app-recipe/assets",
-              "src/app-recipe/manifest.json"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/app-recipe/tsconfig.app.json",
-              "src/app-recipe/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/server",
-            "main": "src/app-recipe/main.server.ts",
-            "tsConfig": "src/app-recipe/tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/app-recipe/environments/environment.ts",
-                  "with": "src/app-recipe/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        }
-      }
-    },
-    "recipe-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "recipe:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
+    "cli": {
     }
-  },
-  "schematics": {
-    "@schematics/angular:class": {
-      "spec": false
-    },
-    "@schematics/angular:component": {
-      "spec": true,
-      "inlineStyle": false,
-      "inlineTemplate": false,
-      "prefix": "app",
-      "styleext": "scss"
-    },
-    "@schematics/angular:directive": {
-      "spec": false,
-      "prefix": "app"
-    },
-    "@schematics/angular:guard": {
-      "spec": false
-    },
-    "@schematics/angular:module": {
-      "spec": false
-    },
-    "@schematics/angular:pipe": {
-      "spec": false
-    },
-    "@schematics/angular:service": {
-      "spec": false
-    }
-  },
-  "cli": {
-  }
 }

@@ -31,13 +31,13 @@ const routes: Routes = [
   //   path: 'users',
   //   loadChildren: './../shared/user/user.module#UserModule'
   // },
-  // {
-  //   path: 'contact',
-  //   loadChildren: './../shared/contact/contact.module#ContactModule'
-  // },
   {
-    path: 'admin/order',
-    loadChildren: './../shared/admin/order/order.module#OrderModule'
+    path: 'contact',
+    loadChildren: './../shared/contact/contact.module#ContactModule'
+  },
+  {
+    path: 'admin',
+    loadChildren: './../shared/admin/admin.module#AdminModule'
   },
   // {
   //   path: 'cart',

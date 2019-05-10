@@ -23,6 +23,7 @@ export class OrderListComponent extends BaseListComponent<Order> implements OnIn
   @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
   @ViewChild('desktopHeader') desktopHeader: TemplateRef<any>;
   @ViewChild('dateTmpl') dateTmpl: TemplateRef<any>;
+  @ViewChild('statusTmpl') statusTmpl: TemplateRef<any>;
 
   constructor(protected menuService: MenuService,
               protected orderService: OrderService,
@@ -82,6 +83,12 @@ export class OrderListComponent extends BaseListComponent<Order> implements OnIn
         name: 'user',
         flexGrow: 1,
         headerTemplate: this.desktopHeader,
+      }, {
+        prop: 'status',
+        name: 'status',
+        flexGrow: 1,
+        headerTemplate: this.desktopHeader,
+        cellTemplate: this.statusTmpl,
       }, {
         prop: 'total',
         name: 'total',

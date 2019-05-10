@@ -7,6 +7,7 @@
     "hockey": "hockey-f2b77",
     "car": "car-384269",
     "store": "store-384269",
+    "store-admin": "store-admin-384269",
     "recipe": "recipe-384269"
   },
   "targets": {
@@ -17,6 +18,16 @@
         ],
         "ssr": [
           "store-384269"
+        ]
+      }
+    },
+    "store-admin-384269": {
+      "hosting": {
+        "aot": [
+          "store-admin-384269"
+        ],
+        "ssr": [
+          "store-admin-384269"
         ]
       }
     }

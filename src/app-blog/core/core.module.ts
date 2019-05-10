@@ -10,6 +10,7 @@ import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsen
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { ConversationService } from 'shared/chat/shared/conversation.service';
 import { UserService } from '../../shared/user/shared/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
 import { ObjectService } from '../../shared/util/object.service';
@@ -61,6 +62,7 @@ export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_AREA = new InjectionToken<string>('area');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_CONTACT = new InjectionToken<string>('contact');
+export const TABLE_CONVERSATION = new InjectionToken<string>('conversation');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
 export const TABLE_SELECTION = new InjectionToken<string>('selection');
 export const TABLE_SCORE = new InjectionToken<string>('score');
@@ -154,6 +156,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_AREA, useValue: 'area'},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
     {provide: TABLE_CONTACT, useValue: 'contact'},
+    {provide: TABLE_CONVERSATION, useValue: 'conversation'},
     {provide: TABLE_CATEGORY, useValue: 'category'},
     {provide: TABLE_COMMENT, useValue: 'comment'},
     {provide: TABLE_CMS, useValue: 'cms'},
@@ -170,6 +173,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
     {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
     {provide: ContactService, useClass: ContactService, deps: [AngularFirestore, TABLE_CONTACT]},
+    {provide: ConversationService, useClass: ConversationService, deps: [AngularFirestore, TABLE_CONVERSATION]},
     {provide: CategoryService, useClass: CategoryService, deps: [AngularFirestore, TABLE_CATEGORY]},
     {provide: CmsService, useClass: CmsService, deps: [AngularFirestore, TABLE_CMS]},
     {provide: CmsDetailService, useClass: CmsDetailService, deps: [AngularFirestore, TABLE_CMS_DETAIL]},

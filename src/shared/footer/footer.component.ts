@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CmsService } from '../cms/shared/cms.service';
 import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
 import { Cms } from '../cms/shared/cms';
@@ -37,16 +38,20 @@ export class FooterComponent implements OnInit {
 
   getLinks() {
     this.cmsService.filters$.next([{column: 'name', operator: '==', value: 'footer.links'}]);
-    this.cmsService.getCmss()
+    const cmsSubscription: Subscription = this.cmsService.getCmss()
       .subscribe((cmss: Cms[]) => {
         cmss = cmss.filter((v) => v.name === 'footer.links');
         if (cmss && cmss.length > 0) {
           this.cms = cmss[0];
+          if (cmsSubscription) {
+            cmsSubscription.unsubscribe();
+          }
           this.cmsDetailService.filters$.next([{column: 'cms', operator: '==', value: this.cms.key}]);
-          this.cmsDetailService.getCmsDetails()
+          const cmsDetailSubscription: Subscription = this.cmsDetailService.getCmsDetails()
             .subscribe((cmsDetails: CmsDetail[]) => {
               const links = cmsDetails.filter((cmsD) => cmsD.parent === null || typeof cmsD.parent === 'undefined');
               const sublinks = cmsDetails.filter((cmsD) => cmsD.parent !== null);
+
               this.links = links.map((link: CmsDetail) => {
                 const children = [];
                 sublinks.forEach((sublink: CmsDetail) => {

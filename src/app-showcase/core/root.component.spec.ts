@@ -27,6 +27,10 @@ import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-tran
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConversationService } from '../../shared/chat/shared/conversation.service';
+import { MockConversationService } from '../../shared/chat/shared/mock-conversation.service';
+import { ContactService } from '../../shared/contact/shared/contact.service';
+import { MockContactService } from '../../shared/contact/shared/mock-contact.service';
 import { SidenavService } from '../../shared/sidenav/sidenav.service';
 import { AdsenseModule } from 'ng2-adsense';
 import { UserService } from '../../shared/user/shared/user.service';
@@ -141,6 +145,8 @@ describe('Showcase AppRootComponent', () => {
       providers: [
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         {provide: UserService, useClass: MockUserService},
+        {provide: ContactService, useClass: MockContactService},
+        {provide: ConversationService, useClass: MockConversationService},
         {provide: LoaderService, useClass: MockLoaderService},
         {provide: NgcCookieConsentService, useClass: NgcCookieConsentService},
         {provide: WindowService, useClass: WindowService},

@@ -50,7 +50,6 @@ export class OrderEditComponent extends BaseEditComponent<Order> implements OnIn
         this.orderService.getOrder(key)
           .subscribe((document: Order) => {
             this.document = document;
-            console.log(this.document);
             this.getDelivery(this.document);
             this.createForm();
           });
@@ -93,15 +92,26 @@ export class OrderEditComponent extends BaseEditComponent<Order> implements OnIn
     }
   }
 
+  /**
+   * Change order status to payment accepted
+   */
   onConfirmPayment() {
     const order: Order = this.document;
 
     order.status = 'payment_authorized';
     order.updated_at = new Date();
 
-    this.orderService.updateOrder(order).subscribe();
+    const updateOrderSubscription: Subscription = this.orderService.updateOrder(order)
+      .subscribe(() => {
+        if (updateOrderSubscription) {
+          updateOrderSubscription.unsubscribe();
+        }
+      });
   }
 
+  /**
+   * Change order to payment cancelled
+   */
   markPaymentAsCancelled() {
     const order: Order = this.document;
 
@@ -111,6 +121,9 @@ export class OrderEditComponent extends BaseEditComponent<Order> implements OnIn
     this.orderService.updateOrder(order).subscribe();
   }
 
+  /**
+   * get single delivery by order key
+   */
   getDelivery(order: Order) {
     if (order.key) {
       this.deliveryService.filters$.next([
@@ -133,7 +146,11 @@ export class OrderEditComponent extends BaseEditComponent<Order> implements OnIn
     }
   }
 
-  copied(event) {
-    this.alertService.openBottomSheetMessage({title: '', message: 'shop.order.copied_text'});
+  /**
+   * Copy a text to clipboard with directive ngxClipboard
+   * Symply alert user that the text was copied
+   */
+  copied() {
+    this.alertService.openBottomSheetMessage({title: '', message: 'admin.order-edit.copied_text'});
   }
 }

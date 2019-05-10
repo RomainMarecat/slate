@@ -1,0 +1,15 @@
+<mat-card class="content-card">
+  <mat-sidenav-container>
+    <mat-sidenav class="sidenav"
+                 mode="side"
+                 opened="true"
+                 position="start"
+                 fxLayout="column">
+      <app-chat-sidenav-left [contacts]="contacts"></app-chat-sidenav-left>
+    </mat-sidenav>
+    <mat-sidenav-content cdkScrollable>
+      <app-chat-sidenav-right [contact]="selectedContact">
+      </app-chat-sidenav-right>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</mat-card>

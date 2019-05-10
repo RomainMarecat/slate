@@ -33,4 +33,9 @@ export interface CmsDetail {
    * Helper to associate all CmsDetails in this attributes
    */
   children?: CmsDetail[];
+
+  /**
+   * Deeplink into app (optional)
+   */
+  link?: string;
 }

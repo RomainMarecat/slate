@@ -1,0 +1,52 @@
+<div class="sidenav-header">
+  <mat-toolbar>
+    <mat-toolbar-row fxLayout="row"
+                     fxLayoutAlign="space-between center">
+      <div class="avatar-wrapper"
+           *ngIf="user">
+        <img class="mat-avatar avatar"
+             [src]="user.photoURL"
+             [alt]="user.displayName">
+        <mat-icon class="status"
+                  aria-haspopup="true"
+                  role="img"
+                  aria-hidden="true">
+          {{ status }}
+        </mat-icon>
+        <mat-menu id="user-status-menu">
+        </mat-menu>
+      </div>
+      <div>
+        <button class="mat-icon-button"
+                aria-haspopup="true"
+                aria-label="more"
+                mat-icon-button>
+          <mat-icon role="img"
+                    aria-hidden="true">
+            more_vert
+          </mat-icon>
+        </button>
+        <mat-menu></mat-menu>
+      </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <div class="search-wrapper"
+           fxFlex
+           fxLayout="row"
+           fxLayoutAlign="start center">
+        <div class="search"
+             fxFlex
+             fxLayout="row"
+             fxLayoutAlign="start center">
+          <mat-icon role="img"
+                    aria-hidden="true">
+            search
+          </mat-icon>
+          <input fxFlex
+                 placeholder="Search or start new chat"
+                 type="text"/>
+        </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

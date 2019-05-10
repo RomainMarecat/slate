@@ -241,7 +241,10 @@
     "send": "envoyer",
     "take_meeting": "prendre rendez-vous",
     "unpublish": "dépublier",
-    "unpublished": "dépublié"
+    "unpublished": "dépublié",
+    "footer": {
+      "top-of-page": "haut de page"
+    }
   },
   "faq": {
     "shipping": "livraison",

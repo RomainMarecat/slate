@@ -101,7 +101,10 @@
         "validate": "valider",
         "cancel": "annuler",
         "pay": "payer",
-        "save": "enregistrer"
+        "save": "enregistrer",
+        "footer": {
+            "top-of-page": "haut de page"
+        }
     },
     "delivery": {
         "deliveries": {

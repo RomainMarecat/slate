@@ -124,9 +124,12 @@ export class UserService {
             if (user) {
               this.user$.next(user);
               observer.next(user);
+              observer.complete();
+              return;
             }
 
             observer.next(null);
+            observer.complete();
 
             if (userSubscription) {
               userSubscription.unsubscribe();
@@ -134,6 +137,7 @@ export class UserService {
           },
           (err) => {
             observer.error(err);
+            observer.complete();
           });
     });
 

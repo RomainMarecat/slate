@@ -1,0 +1,41 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.big-circle {
+  background: #fff;
+  border-color: rgba(0, 0, 0, .12);
+
+  border-radius: 50%;
+  width: 240px;
+  height: 240px;
+  line-height: 240px;
+  text-align: center;
+  border: 1px solid;
+
+  mat-icon {
+
+    &.md-128 {
+      font-size: 128px !important;
+      width: 128px !important;
+      height: 128px !important;
+      min-width: 128px !important;
+      min-height: 128px !important;
+      line-height: 128px !important;
+    }
+  }
+}
+
+.app-title {
+  font-weight: 600;
+  font-size: 32px;
+}
+
+.mt-48 {
+  margin-top: 48px !important;
+}
+
+.mb-8 {
+  margin-bottom: 8px !important;
+}

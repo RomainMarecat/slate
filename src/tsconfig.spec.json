@@ -12,11 +12,12 @@
         "polyfills.ts"
     ],
     "include": [
-        "shared/*",
         "**/*.spec.ts",
-        "**/*.d.ts"
+        "**/*.d.ts",
+        "**/polyfills.ts"
     ],
     "exclude": [
-        "**/*.tns.ts"
+        "**/*.tns.ts",
+        "typings.d.ts"
     ]
 }

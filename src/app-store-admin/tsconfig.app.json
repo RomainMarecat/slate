@@ -10,7 +10,9 @@
         "main.ts",
         "polyfills.ts",
         "dashboard/dashboard.module.ts",
-        "../shared/admin/order/order.module.ts"
+        "../shared/admin/*",
+        "../shared/contact/*",
+        "../shared/admin/**/*"
     ],
     "exclude": [
         "test.ts",

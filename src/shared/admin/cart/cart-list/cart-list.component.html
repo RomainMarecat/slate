@@ -1,0 +1,145 @@
+<div class="mt-2"
+     fxLayout="row"
+     fxLayoutAlign="center stretch">
+  <ngx-datatable #dataTableComponentTable
+                 class="material striped scrolling-documents expandable"
+                 [columnMode]="'force'"
+                 [rows]="documents"
+                 [columns]="columns"
+                 [headerHeight]="headerHeight"
+                 [rowHeight]="rowHeight"
+                 [loadingIndicator]="isLoading"
+                 [scrollbarV]="true"
+                 [scrollbarH]="false"
+                 (scroll)="onScroll($event.offsetY)"
+                 [selected]="selected"
+                 [selectionType]="'checkbox'"
+                 (activate)="onActivate($event)"
+                 (select)="onSelect($event)">
+    <ngx-datatable-row-detail [rowHeight]="rowHeight * 3"
+                              #detailRow
+                              (toggle)="onDetailToggle($event)">
+      <ng-template let-row="row"
+                   let-expanded="expanded"
+                   ngx-datatable-row-detail-template>
+        <table class="table table-bordered table-striped p-2">
+          <tr>
+            <th>{{ 'admin.cart.items.name'|translate }}</th>
+            <th>{{ 'admin.cart.items.code'|translate }}</th>
+            <th>{{ 'admin.cart.items.quantity'|translate }}</th>
+            <th>{{ 'admin.cart.items.price'|translate }}</th>
+          </tr>
+          <tr *ngFor="let item of row?.items">
+            <td>
+              {{ item.name }}
+            </td>
+            <td>
+              {{ item.code }}
+            </td>
+            <td>
+              {{ item.quantity }}
+            </td>
+            <td>
+              {{ item.price | currency : 'EUR' }}
+            </td>
+          </tr>
+        </table>
+      </ng-template>
+    </ngx-datatable-row-detail>
+  </ngx-datatable>
+</div>
+
+
+<!-- Header Template -->
+<ng-template #desktopHeader let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+  <span class="mobile-hidden">
+    {{column.name}}
+  </span>
+</ng-template>
+<ng-template #checkboxHeader ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+             let-selectFn="selectFn">
+  <input type="checkbox"
+         [checked]="allRowsSelected"
+         (change)="selectFn(!allRowsSelected)">
+  <span *ngIf="selected && selected.length > 0">({{selected?.length}})</span>
+</ng-template>
+
+
+<!-- Cell Template -->
+<ng-template #checkboxCell
+             ngx-datatable-cell-template
+             let-value="value"
+             let-isSelected="isSelected"
+             let-onCheckboxChangeFn="onCheckboxChangeFn"
+             let-row="row"
+             let-expanded="expanded">
+  <span fxLayout="row"
+        fxLayoutAlign="center stretch"
+        fxLayoutGap="20px">
+    <input type="checkbox"
+           [checked]="isSelected"
+           (change)="onCheckboxChangeFn($event)">
+    <button mat-icon-button
+            class="desktop-hidden button-expand"
+            role="button"
+            type="button"
+            [class.datatable-icon-right]="!expanded"
+            [class.datatable-icon-down]="expanded"
+            title="Expand/Collapse Row"
+            (click)="toggleExpandRow(row)">
+    </button>
+  </span>
+</ng-template>
+
+<ng-template #priceCell
+             let-value="value"
+             ngx-datatable-cell-template>
+  <span class="mobile-hidden">{{ value|currency:'EUR' }}</span>
+</ng-template>
+
+<ng-template #dateTmpl
+             let-value="value"
+             ngx-datatable-cell-template>
+  <span class="text-value">
+    {{ value?.seconds * 1000 | date:'short' }}
+  </span>
+</ng-template>
+
+<ng-template #statusTmpl
+             let-value="value"
+             ngx-datatable-cell-template>
+  <div [ngSwitch]="value">
+    <span *ngSwitchCase="'current'"
+          class="text-primary">
+      {{ 'admin.cart-list.status.current'|translate }}
+    </span>
+    <span *ngSwitchCase="'finished'"
+          class="text-success">
+      {{ 'admin.cart-list.status.finished'|translate }}
+    </span>
+  </div>
+</ng-template>
+
+<ng-template #actionsCell
+             let-row="row"
+             ngx-datatable-cell-template>
+  <div class="document-actions"
+       fxLayout="row"
+       fxLayoutAlign="space-around stretch">
+    <!--<a class="mobile-hidden"-->
+    <!--[routerLink]="showDocument(row)"-->
+    <!--[attr.aria-label]="'cta.show'|translate">-->
+    <!--<mat-icon aria-hidden="true">remove_red_eye</mat-icon>-->
+    <!--</a>-->
+    <a class="mobile-hidden"
+       (click)="editDocument(row)"
+       [attr.aria-label]="'cta.edit'|translate">
+      <mat-icon aria-hidden="true">mode_edit</mat-icon>
+    </a>
+    <a class="mobile-hidden"
+       (click)="confirmDelete(row)"
+       [attr.aria-label]="'cta.delete'|translate">
+      <mat-icon aria-hidden="true">delete</mat-icon>
+    </a>
+  </div>
+</ng-template>

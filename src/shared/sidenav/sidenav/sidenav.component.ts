@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ViewEncapsulation, Input } from '@angular/core';
 import { UserService } from '../../user/shared/user.service';
 import { SidenavService } from './../sidenav.service';
 import { Subscription } from 'rxjs';
@@ -42,7 +42,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     {link: '/material', label: 'admin.cta.material'},
   ];
 
-  configMenu: MenuConfiguration = {
+  @Input() configMenu: MenuConfiguration = {
     displayLogo: false,
     displayAdminRecipe: false,
     show_page_title: true,

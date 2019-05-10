@@ -1,63 +1,56 @@
-import {
-  InjectionToken,
-  ModuleWithProviders,
-  NgModule,
-  Optional,
-  SkipSelf,
-  Injectable,
-  Inject
-} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { AdsenseModule } from 'ng2-adsense';
-import { TranslateModule } from '@ngx-translate/core';
-import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
 
 import { FileUploadModule } from 'ng2-file-upload';
+import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
 import { ImageCropperModule } from 'ngx-img-cropper';
-import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
+import { EventService } from '../../shared/agenda/shared/event.service';
+import { ArticleService } from '../../shared/article/shared/article.service';
+import { AttributeService } from '../../shared/attribute/attribute.service';
+import { BoardService } from '../../shared/board/shared/board.service';
+import { CardService } from '../../shared/board/shared/card.service';
+import { ColumnService } from '../../shared/board/shared/column.service';
+import { CartService } from '../../shared/cart/shared/cart.service';
 import { DeliveryService } from '../../shared/cart/shared/delivery.service';
-import { UserService } from '../../shared/user/shared/user.service';
-import { AlertService } from '../../shared/popup/alert.service';
-import { ObjectService } from '../../shared/util/object.service';
-import { DateService } from '../../shared/util/date.service';
-import { LoaderService } from '../../shared/loader/loader.service';
-import { MenuService } from '../../shared/menu/menu.service';
-import { ScoreService } from '../../shared/score/score.service';
-import { SelectionService } from '../../shared/selection/selection.service';
-import { SidenavService } from '../../shared/sidenav/sidenav.service';
+import { CategoryService } from '../../shared/category/category.service';
+import { ConversationService } from '../../shared/chat/shared/conversation.service';
+import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
+import { CmsService } from '../../shared/cms/shared/cms.service';
+import { CommentService } from '../../shared/comment/shared/comment.service';
+import { ContactService } from '../../shared/contact/shared/contact.service';
+import { DeviceService } from '../../shared/device/device.service';
 import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
-import { DeviceService } from '../../shared/device/device.service';
-import { FirebaseAppConfig, AngularFireModule } from '@angular/fire';
-import { Environment } from '../../shared/util/environment';
-import { ProductService } from '../../shared/product/shared/product.service';
+import { LoaderService } from '../../shared/loader/loader.service';
+import { AreaService } from '../../shared/map/shared/area.service';
+import { MapService } from '../../shared/map/shared/map.service';
 import { MediaService } from '../../shared/media/media.service';
-import { SharedModule } from '../../shared/shared.module';
-import { SlackModule } from '../../shared/slack/slack.module';
-import { AttributeService } from '../../shared/attribute/attribute.service';
-import { PartnerService } from '../../shared/partner/partner.service';
+import { MenuService } from '../../shared/menu/menu.service';
 import { OfferService } from '../../shared/offer/offer.service';
-import { CommentService } from '../../shared/comment/shared/comment.service';
+import { OrderService } from '../../shared/order/shared/order.service';
+import { PartnerService } from '../../shared/partner/partner.service';
+import { PaymentService } from '../../shared/payment/shared/payment.service';
+import { AlertService } from '../../shared/popup/alert.service';
+import { ProductService } from '../../shared/product/shared/product.service';
+import { ScoreService } from '../../shared/score/score.service';
+import { SelectionService } from '../../shared/selection/selection.service';
+import { SeoService } from '../../shared/seo/shared/seo.service';
+import { SessionService } from '../../shared/session/shared/session.service';
+import { SharedModule } from '../../shared/shared.module';
+import { SidenavService } from '../../shared/sidenav/sidenav.service';
+import { SlackModule } from '../../shared/slack/slack.module';
+import { UserService } from '../../shared/user/shared/user.service';
+import { DateService } from '../../shared/util/date.service';
+import { Environment } from '../../shared/util/environment';
+import { ObjectService } from '../../shared/util/object.service';
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { environment } from '../environments/environment';
-import { ArticleService } from '../../shared/article/shared/article.service';
-import { OrderService } from '../../shared/order/shared/order.service';
-import { SessionService } from '../../shared/session/shared/session.service';
-import { MapService } from '../../shared/map/shared/map.service';
-import { CartService } from '../../shared/cart/shared/cart.service';
-import { CmsService } from '../../shared/cms/shared/cms.service';
-import { EventService } from '../../shared/agenda/shared/event.service';
-import { AreaService } from '../../shared/map/shared/area.service';
-import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
-import { CategoryService } from '../../shared/category/category.service';
-import { ContactService } from '../../shared/contact/shared/contact.service';
-import { BoardService } from '../../shared/board/shared/board.service';
-import { ColumnService } from '../../shared/board/shared/column.service';
-import { CardService } from '../../shared/board/shared/card.service';
-import { PaymentService } from '../../shared/payment/shared/payment.service';
-import { SeoService } from '../../shared/seo/shared/seo.service';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -75,6 +68,7 @@ export const TABLE_AREA = new InjectionToken<string>('area');
 export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_CONTACT = new InjectionToken<string>('contact');
+export const TABLE_CONVERSATION = new InjectionToken<string>('conversation');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
 export const TABLE_SELECTION = new InjectionToken<string>('selection');
 export const TABLE_SESSION = new InjectionToken<string>('session');
@@ -160,12 +154,14 @@ export const cookieConfig: NgcCookieConsentConfig = {
     SharedModule
   ],
   providers: [
+    {provide: FirestoreSettingsToken, useValue: {}},
     {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},
     {provide: TABLE_ARTICLE, useValue: 'article'},
     {provide: TABLE_AREA, useValue: 'area'},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
     {provide: TABLE_CART, useValue: 'cart'},
     {provide: TABLE_CONTACT, useValue: 'contact'},
+    {provide: TABLE_CONVERSATION, useValue: 'conversation'},
     {provide: TABLE_CATEGORY, useValue: 'category'},
     {provide: TABLE_COMMENT, useValue: 'comment'},
     {provide: TABLE_CMS, useValue: 'cms'},
@@ -192,6 +188,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: AttributeService, useClass: AttributeService, deps: [AngularFirestore, TABLE_ATTRIBUTE]},
     {provide: CartService, useClass: CartService, deps: [AngularFirestore, TABLE_CART]},
     {provide: ContactService, useClass: ContactService, deps: [AngularFirestore, TABLE_CONTACT]},
+    {provide: ConversationService, useClass: ConversationService, deps: [AngularFirestore, TABLE_CONVERSATION]},
     {provide: CategoryService, useClass: CategoryService, deps: [AngularFirestore, TABLE_CATEGORY]},
     {provide: CmsService, useClass: CmsService, deps: [AngularFirestore, TABLE_CMS]},
     {provide: CmsDetailService, useClass: CmsDetailService, deps: [AngularFirestore, TABLE_CMS_DETAIL]},

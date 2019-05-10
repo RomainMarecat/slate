@@ -46,7 +46,10 @@
       "selection": "sélections",
       "map": "cartes",
       "material": "material",
-      "article": "articles"
+      "article": "articles",
+      "footer": {
+        "top-of-page": "haut de page"
+      }
     },
     "label": {
       "attribute": {

@@ -1,0 +1,49 @@
+<div class="sidenav-content"
+     fxFlex>
+  <div class="chat-list"
+       fxLayout="column">
+    <div class="mat-subheader">
+      Chats
+    </div>
+
+    <button class="contact"
+            mat-button
+            (click)="onContactSelected(contact)"
+            *ngFor="let contact of contacts">
+      <div fxLayout="row"
+           fxLayoutAlign="start center"
+           fxLayoutGap="10px">
+        <div class="avatar-wrapper"
+             fxFlex="0 1 auto"
+             fxLayoutAlign="center center">
+          <span>
+            {{ contact?.user?.displayName | shorten : 1 }}
+          </span>
+        </div>
+        <div fxFlex
+             fxLayout="row">
+          <div class="pr-4"
+               fxFlex
+               fxLayout="column"
+               fxLayoutAlign="center start">
+            <div class="contact-name">
+              {{ contact?.user?.displayName | shorten : 25 : '...' }}
+            </div>
+            <div class="contact-last-message">
+              {{ contact.last_message | shorten : 50 : '...' }}
+            </div>
+          </div>
+          <div fxLayout="column"
+               fxLayoutAlign="start end">
+            <div class="contact-last-message-time">
+              {{ contact.created_at?.seconds | date : 'short' }}
+            </div>
+            <div class="mt-4 unread-message-count">
+              {{ contact.conversations?.length }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>
