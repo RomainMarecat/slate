@@ -26,16 +26,6 @@
   }
 }
 
-.mat-sidenav {
-  button {
-    display: table-cell;
-    display: flex;
-    width: 100%;
-    transition: all .3s;
-    box-sizing: border-box;
-  }
-}
-
 .card-sidebar {
   position: relative;
   height: 64px;
@@ -51,8 +41,8 @@
   text-decoration: none;
 
   &:hover,
-   :active,
-   :focus {
+  :active,
+  :focus {
     text-decoration: none;
   }
 }

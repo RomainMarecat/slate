@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { LocalizeRouterModule } from 'localize-router';
 import { NgPipesModule } from 'ngx-pipes';
 import { MaterialModule } from '../material/material.module';
 import { ChatSidenavContactComponent } from './chat-sidenav-contact/chat-sidenav-contact.component';
@@ -11,6 +14,7 @@ import { ChatSidenavLeftComponent } from './chat-sidenav-left/chat-sidenav-left.
 import { ChatSidenavRightComponent } from './chat-sidenav-right/chat-sidenav-right.component';
 import { ChatSidenavHeaderComponent } from './chat-sidenav-header/chat-sidenav-header.component';
 import { ChatConversationStartComponent } from './chat-conversation-start/chat-conversation-start.component';
+import { ChatContactInfoComponent } from './chat-contact-info/chat-contact-info.component';
 
 @NgModule({
   declarations: [
@@ -20,18 +24,22 @@ import { ChatConversationStartComponent } from './chat-conversation-start/chat-c
     ChatSidenavLeftComponent,
     ChatSidenavRightComponent,
     ChatSidenavHeaderComponent,
-    ChatConversationStartComponent
+    ChatConversationStartComponent,
+    ChatContactInfoComponent
   ],
   exports: [
     ChatComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule,
     FlexLayoutModule,
     FormsModule,
+    LocalizeRouterModule,
+    RouterModule,
+    MaterialModule,
+    NgPipesModule,
     ReactiveFormsModule,
-    NgPipesModule
+    TranslateModule.forChild()
   ]
 })
 export class ChatModule {

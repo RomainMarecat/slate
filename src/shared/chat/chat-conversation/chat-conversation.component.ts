@@ -29,6 +29,8 @@ export class ChatConversationComponent implements OnInit {
 
   @Output() toggleSidenav: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  @Output() toggleContactInfo: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   static getForm(): FormGroup {
     return new FormGroup({
       message: new FormControl('', [Validators.required])

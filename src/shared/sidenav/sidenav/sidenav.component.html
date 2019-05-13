@@ -1,6 +1,6 @@
 <mat-sidenav-container fullscreen class="sidenav-container">
   <app-menu class="menu-component"
-  [config]="configMenu"></app-menu>
+            [config]="configMenu"></app-menu>
   <mat-sidenav #sidenav class="leftSidenav mat-sidenav" mode="over" opened="false">
     <div *ngIf="userService.getAuthState() | async; let user; else showLogin">
       <mat-card class="card-sidebar">
@@ -39,7 +39,11 @@
       </mat-nav-list>
     </div>
   </mat-sidenav>
-  <mat-sidenav #sidenavFilter class="rightSidenav mat-sidenav" mode="over" opened="false" position="end">
+  <mat-sidenav #sidenavFilter
+               class="rightSidenav mat-sidenav"
+               mode="over"
+               opened="false"
+               position="end">
     <app-facet-sort *ngIf="!viewFilter; else filter" (closeSidenav)="sidenavFilter.close()"></app-facet-sort>
   </mat-sidenav>
   <ng-template #filter>

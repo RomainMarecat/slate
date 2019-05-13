@@ -2,8 +2,6 @@
   .chat-list {
 
     .mat-subheader {
-      color: #039be5;
-
       padding-left: 16px;
       font-size: 20px;
       font-weight: 300;
@@ -12,7 +10,6 @@
     }
 
     .contact {
-      border-bottom-color: rgba(0, 0, 0, .12);
       color: inherit;
       background: 0 0;
 
@@ -20,7 +17,8 @@
       text-align: left;
       letter-spacing: .010em;
       min-height: 88px;
-      border-bottom: 1px solid;
+      border-bottom: 1px solid rgba(0, 0, 0, .12);
+
       padding: 16px;
       font-weight: 400;
       border-radius: 0;
@@ -61,7 +59,6 @@
         width: 20px;
         height: 20px;
         line-height: 20px;
-        background-color: #039be5;
         color: #fff;
       }
     }

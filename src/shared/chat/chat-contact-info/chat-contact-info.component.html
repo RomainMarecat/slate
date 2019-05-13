@@ -1,0 +1,42 @@
+<div class="sidenav-header">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row"
+                     fxLayoutAlign="space-between center">
+      <div>
+        {{ 'chat.chat-contact-info.title'|translate }}
+      </div>
+      <button aria-label="close"
+              class="close-button"
+              (click)="toggleContactInfo.emit(true)"
+              mat-icon-button
+              type="button"
+              role="button">
+        <mat-icon role="img"
+                  aria-hidden="true">
+          close
+        </mat-icon>
+      </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row fxLayout="column"
+                     fxLayoutAlign="center center">
+      <div class="avatar-wrapper"
+           fxFlex="0 1 auto"
+           fxLayoutAlign="center center"
+           *ngIf="contact?.user?.displayName">
+        <span>
+          {{ contact?.user?.displayName | shorten : 1 }}
+        </span>
+      </div>
+      <div class="contact-name my-2">
+        {{ contact?.user?.displayName }}
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+<div class="sidenav-content py-5 px-3"
+     fxFlex
+     fxLayout="column">
+  <div class="secondary-text mb-8">
+    {{ contact?.user?.email }}
+  </div>
+</div>

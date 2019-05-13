@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,34 +16,20 @@ import { MockLocalizeRouterService } from '../../router/mock-localize-router.ser
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockUserService } from '../../user/shared/mock-user.service';
 import { UserService } from '../../user/shared/user.service';
-import { ChatContactInfoComponent } from '../chat-contact-info/chat-contact-info.component';
-import { ChatConversationStartComponent } from '../chat-conversation-start/chat-conversation-start.component';
-import { ChatConversationComponent } from '../chat-conversation/chat-conversation.component';
-import { ChatSidenavContactComponent } from '../chat-sidenav-contact/chat-sidenav-contact.component';
-import { ChatSidenavHeaderComponent } from '../chat-sidenav-header/chat-sidenav-header.component';
-import { ChatSidenavLeftComponent } from '../chat-sidenav-left/chat-sidenav-left.component';
-import { ChatSidenavRightComponent } from '../chat-sidenav-right/chat-sidenav-right.component';
 import { ConversationService } from '../shared/conversation.service';
 import { MockConversationService } from '../shared/mock-conversation.service';
 
-import { ChatComponent } from './chat.component';
+import { ChatContactInfoComponent } from './chat-contact-info.component';
 
-describe('ChatComponent', () => {
-  let component: ChatComponent;
-  let fixture: ComponentFixture<ChatComponent>;
+describe('ChatContactInfoComponent', () => {
+  let component: ChatContactInfoComponent;
+  let fixture: ComponentFixture<ChatContactInfoComponent>;
 
   configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ChatComponent,
-        ChatConversationComponent,
-        ChatConversationStartComponent,
-        ChatSidenavContactComponent,
-        ChatSidenavHeaderComponent,
-        ChatSidenavLeftComponent,
-        ChatSidenavRightComponent,
         ChatContactInfoComponent
       ],
       imports: [
@@ -52,6 +39,7 @@ describe('ChatComponent', () => {
         LocalizeRouterModule,
         MaterialModule,
         NgPipesModule,
+        FlexLayoutModule,
         ReactiveFormsModule,
         RouterTestingModule,
         TranslateModule.forRoot({
@@ -70,7 +58,7 @@ describe('ChatComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChatComponent);
+    fixture = TestBed.createComponent(ChatContactInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
