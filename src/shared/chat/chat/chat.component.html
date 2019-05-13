@@ -11,8 +11,18 @@
     <mat-sidenav-content cdkScrollable
                          [ngStyle]="configuration.style">
       <app-chat-sidenav-right [contact]="selectedContact"
-                              (toggleSidenav)="sidenavLeft.toggle()">
+                              (toggleSidenav)="sidenavLeft.toggle()"
+                              (toggleContactInfo)="sidenavContactInfo.toggle()">
       </app-chat-sidenav-right>
     </mat-sidenav-content>
+    <mat-sidenav #sidenavContactInfo
+                 mode="side"
+                 [opened]="false"
+                 position="end">
+      <app-chat-contact-info (toggleContactInfo)="sidenavContactInfo.toggle()"
+                             [contact]="selectedContact">
+      </app-chat-contact-info>
+    </mat-sidenav>
   </mat-sidenav-container>
+
 </mat-card>

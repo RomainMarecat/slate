@@ -38,12 +38,19 @@
       <div>
         <button aria-haspopup="true"
                 aria-label="more"
+                [matMenuTriggerFor]="preferences"
                 mat-icon-button>
           <mat-icon role="img" aria-hidden="true">
             more_vert
           </mat-icon>
         </button>
-        <mat-menu></mat-menu>
+        <mat-menu #preferences="matMenu"
+                  xPosition="before">
+          <button mat-menu-item
+                  (click)="toggleContactInfo.emit(true)">
+            {{ 'cta.contact-info'|translate }}
+          </button>
+        </mat-menu>
       </div>
     </div>
   </mat-toolbar>
@@ -63,7 +70,7 @@
           </div>
           <div class="time secondary-text"
                [class.d-flex]="true">
-            {{ conversation.created_at?.seconds | date : 'short' }}
+            {{ conversation.created_at?.seconds * 1000 | date : 'short' }}
           </div>
         </div>
       </div>
@@ -88,7 +95,7 @@
           <textarea matInput
                     formControlName="message"
                     name="message"
-                    placeholder="Type your message"
+                    [placeholder]="'chat.chat-conversation.placeholder.message'|translate"
                     rows="1"
                     (keydown.enter)="addMessage()">
           </textarea>
@@ -100,6 +107,7 @@
                 type="submit"
                 role="button">
           <mat-icon role="img"
+                    color="primary"
                     aria-hidden="true">
             send
           </mat-icon>

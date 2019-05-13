@@ -143,7 +143,7 @@ $black: mat-palette($mat-grey, 900);
   $foreground: map-get($theme, foreground);
 
   mat-toolbar.mat-primary {
-    background-color: mat-color($primary, darker);
+    background-color: mat-color($primary);
     color: mat-color($white);
 
     @include color-hovered;
@@ -175,4 +175,16 @@ body {
   color: mat-color($black);
   font-size: $base-font-size;
   line-height: $base-line-height;
+}
+
+.mat-bg-primary {
+  background-color: mat-color($primary);
+}
+
+.mat-bg-warn {
+  background-color: mat-color($warn);
+}
+
+.mat-bg-accent {
+  background-color: mat-color($accent);
 }

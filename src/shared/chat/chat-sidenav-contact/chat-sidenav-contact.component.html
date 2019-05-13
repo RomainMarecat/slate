@@ -3,7 +3,7 @@
   <div class="chat-list"
        fxLayout="column">
     <div class="mat-subheader">
-      Chats
+      {{ 'chat.chat-sidenav-contact.title'|translate }}
     </div>
 
     <button class="contact"
@@ -43,9 +43,9 @@
           <div fxLayout="column"
                fxLayoutAlign="start end">
             <div class="contact-last-message-time">
-              {{ contact.created_at?.seconds | date : 'short' }}
+              {{ contact.created_at?.seconds * 1000 | date : 'short' }}
             </div>
-            <div class="mt-2 unread-message-count">
+            <div class="mt-2 unread-message-count mat-bg-primary">
               {{ contact.conversations?.length }}
             </div>
           </div>

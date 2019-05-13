@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-header {
+  .avatar-wrapper {
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+    width: 24px;
+    height: 24px;
+  }
+
+  button.close-button {
+    background: 0;
+    color: inherit;
+  }
+}

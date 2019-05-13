@@ -11,17 +11,17 @@
     </mat-icon>
   </div>
   <span class="app-title mt-48 mb-8">
-    Chat App
+    {{ 'chat.chat-conversation-start.title'|translate }}
   </span>
   <span class="app-message"
         fxHide
         fxShow.gt-md>
-    Select a contact to start a chat !
+    {{ 'chat.chat-conversation-start.message'|translate }}
   </span>
   <button type="button"
           role="button"
           fxHide.gt-md
           mat-raised-button>
-    Select a contact to start a chat !
+    {{ 'chat.chat-conversation-start.cta'|translate }}
   </button>
 </div>

@@ -17,8 +17,8 @@
         </mat-menu>
       </div>
       <div>
-        <button class="mat-icon-button"
-                aria-haspopup="true"
+        <button aria-haspopup="true"
+                [matMenuTriggerFor]="account"
                 aria-label="more"
                 mat-icon-button>
           <mat-icon role="img"
@@ -26,27 +26,41 @@
             more_vert
           </mat-icon>
         </button>
-        <mat-menu></mat-menu>
+        <mat-menu #account="matMenu"
+                  xPosition="before">
+          <button mat-menu-item [routerLink]="['/account']|localize">
+            {{ 'cta.account'|translate }}
+          </button>
+          <button mat-menu-item (click)="logout()">
+            {{ 'cta.logout'|translate }}
+          </button>
+        </mat-menu>
       </div>
     </mat-toolbar-row>
     <mat-toolbar-row>
-      <div class="search-wrapper"
-           fxFlex
-           fxLayout="row"
-           fxLayoutAlign="start center">
+      <form class="search-wrapper"
+            [formGroup]="form"
+            (ngSubmit)="search()"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center">
         <div class="search"
              fxFlex
+             (click)="search()"
              fxLayout="row"
              fxLayoutAlign="start center">
           <mat-icon role="img"
+                    color="primary"
                     aria-hidden="true">
             search
           </mat-icon>
           <input fxFlex
-                 placeholder="Search or start new chat"
-                 type="text"/>
+                 (keyup)="search()"
+                 formControlName="search"
+                 [placeholder]="'chat.chat-sidenav-header.search'|translate"
+                 type="search">
         </div>
-      </div>
+      </form>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>

@@ -653,6 +653,27 @@
             "error": "Votre message ne s'est pas envoyé"
         }
     },
+    "chat": {
+        "chat-sidenav-contact": {
+            "title": "Chats"
+        },
+        "chat-contact-info": {
+            "title": "Info contact"
+        },
+        "chat-conversation": {
+            "placeholder": {
+                "message": "Message"
+            }
+        },
+        "chat-conversation-start": {
+            "message": "Sélectionner un contact pour démarrer un chat",
+            "cta": "Sélectionner un contact pour démarrer un chat",
+            "title": "Chat Message"
+        },
+        "chat-sidenav-header": {
+            "search": "Rechercher ou démarrer un nouveau chat"
+        }
+    },
     "cta": {
         "add": "ajouter",
         "account": "mon compte",
@@ -667,6 +688,7 @@
         "buy": "acheter",
         "booking": "réserver",
         "choose": "choisir",
+        "contact-info": "informations du contact",
         "delete": "supprimer",
         "next-available-slot": "prochaines disponibilités",
         "home": "accueil",

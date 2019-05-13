@@ -12,6 +12,8 @@ export class ChatSidenavRightComponent implements OnInit {
 
   @Output() toggleSidenav: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  @Output() toggleContactInfo: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor() {
   }
 
