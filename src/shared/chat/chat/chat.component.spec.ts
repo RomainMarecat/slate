@@ -8,6 +8,7 @@ import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { NgPipesModule } from 'ngx-pipes';
 import { ContactService } from '../../contact/shared/contact.service';
 import { MockContactService } from '../../contact/shared/mock-contact.service';
+import { LayoutBuilderModule } from '../../layout-builder/layout-builder.module';
 import { MaterialModule } from '../../material/material.module';
 import { AlertService } from '../../popup/alert.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
@@ -51,6 +52,7 @@ describe('ChatComponent', () => {
         BrowserAnimationsModule,
         LocalizeRouterModule,
         MaterialModule,
+        LayoutBuilderModule,
         NgPipesModule,
         ReactiveFormsModule,
         RouterTestingModule,

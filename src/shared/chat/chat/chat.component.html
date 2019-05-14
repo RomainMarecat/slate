@@ -12,16 +12,19 @@
                          [ngStyle]="configuration.style">
       <app-chat-sidenav-right [contact]="selectedContact"
                               (toggleSidenav)="sidenavLeft.toggle()"
-                              (toggleContactInfo)="sidenavContactInfo.toggle()">
+                              (toggleSidenavRight)="toggleSidenavRight($event)">
       </app-chat-sidenav-right>
     </mat-sidenav-content>
-    <mat-sidenav #sidenavContactInfo
+    <mat-sidenav #sidenavRight
                  mode="side"
                  [opened]="false"
                  position="end">
-      <app-chat-contact-info (toggleContactInfo)="sidenavContactInfo.toggle()"
-                             [contact]="selectedContact">
+      <app-chat-contact-info (toggleSidenavRight)="sidenavRight.toggle()"
+                             [contact]="selectedContact"
+                             *ngIf="selectedContentSidenavRight === 'contact-info'">
       </app-chat-contact-info>
+      <app-alr-layout-builder-edit *ngIf="selectedContentSidenavRight === 'layout-builder'">
+      </app-alr-layout-builder-edit>
     </mat-sidenav>
   </mat-sidenav-container>
 

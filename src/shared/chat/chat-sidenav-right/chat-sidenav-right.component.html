@@ -1,5 +1,6 @@
 <app-chat-conversation [contact]="contact"
                        (toggleSidenav)="toggleSidenav.emit($event)"
-                       (toggleContactInfo)="toggleContactInfo.emit($event)"
+                       (toggleSidenavRight)="toggleSidenavRight.emit($event)"
                        *ngIf="contact"></app-chat-conversation>
-<app-chat-conversation-start *ngIf="!contact"></app-chat-conversation-start>
+<app-chat-conversation-start *ngIf="!contact"
+                             (toggleSidenav)="toggleSidenav.emit($event)"></app-chat-conversation-start>

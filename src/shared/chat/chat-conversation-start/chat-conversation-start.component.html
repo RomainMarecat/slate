@@ -1,3 +1,17 @@
+<div>
+  <button aria-label="chats button"
+          type="button"
+          role="button"
+          class="responsive-chats-button mr-16 mat-icon-button"
+          fxHide.gt-md
+          mat-icon-button
+          (click)="toggleSidenav.emit(!sidenavState)">
+    <mat-icon role="img"
+              aria-hidden="true">
+      chat
+    </mat-icon>
+  </button>
+</div>
 <div fxFlex
      fxLayout="column"
      fxLayoutAlign="center center">

@@ -1,0 +1,28 @@
+@import "../../scss/variable/mixin";
+@import "../../scss/variable/variables";
+@import '../../scss/theme/theme';
+
+// Define the dark theme.
+$primary: mat-palette($mat-purple);
+$accent: mat-palette($mat-green, A200, A100, A400);
+
+$theme: mat-dark-theme($primary, $accent);
+@include angular-material-theme($theme);
+@include custom-theme($theme);
+
+
+.mat-bg-primary {
+  background-color: mat-color($primary);
+}
+
+.mat-bg-primary-lighter {
+  background-color: mat-color($primary, lighter);
+}
+
+.mat-bg-warn {
+  background-color: mat-color($warn);
+}
+
+.mat-bg-accent {
+  background-color: mat-color($accent);
+}

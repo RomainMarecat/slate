@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterModule } from 'localize-router';
 import { NgPipesModule } from 'ngx-pipes';
+import { LayoutBuilderModule } from '../layout-builder/layout-builder.module';
 import { MaterialModule } from '../material/material.module';
 import { ChatSidenavContactComponent } from './chat-sidenav-contact/chat-sidenav-contact.component';
 import { ChatConversationComponent } from './chat-conversation/chat-conversation.component';
@@ -39,7 +40,8 @@ import { ChatContactInfoComponent } from './chat-contact-info/chat-contact-info.
     MaterialModule,
     NgPipesModule,
     ReactiveFormsModule,
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
+    LayoutBuilderModule
   ]
 })
 export class ChatModule {

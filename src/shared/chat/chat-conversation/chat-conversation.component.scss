@@ -9,6 +9,11 @@
     color: rgba(0, 0, 0, .87);
     min-height: 64px;
     border-bottom: 1px solid rgba(0, 0, 0, .12);
+    padding: 0 16px;
+
+    &.xs {
+      padding: 0;
+    }
 
     .chat-contact {
       .avatar-wrapper {
@@ -16,6 +21,16 @@
         border: 1px solid #000000;
         width: 24px;
         height: 24px;
+      }
+
+      .chat-contact-name {
+        font-size: 1rem;
+        margin: 0;
+
+        &.xs {
+          font-size: 0.70rem;
+          word-wrap: break-word;
+        }
       }
     }
 
@@ -47,8 +62,6 @@
 
           .bubble {
             color: rgba(0, 0, 0, .87);
-            background-color: #e0e0e0;
-
             margin-left: auto;
           }
 
@@ -66,7 +79,6 @@
           }
 
           .bubble {
-            background-color: #3c4252;
             color: #fff;
           }
 

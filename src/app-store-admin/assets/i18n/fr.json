@@ -672,6 +672,12 @@
         },
         "chat-sidenav-header": {
             "search": "Rechercher ou démarrer un nouveau chat"
+        },
+        "chat-sidenav-right": {
+            "cta": {
+                "contact-info": "informations du contact",
+                "theming": "Changer le thème"
+            }
         }
     },
     "cta": {
@@ -688,7 +694,6 @@
         "buy": "acheter",
         "booking": "réserver",
         "choose": "choisir",
-        "contact-info": "informations du contact",
         "delete": "supprimer",
         "next-available-slot": "prochaines disponibilités",
         "home": "accueil",

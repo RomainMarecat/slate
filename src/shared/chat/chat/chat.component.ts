@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { MatSidenav } from '@angular/material';
 import { Contact } from '../../contact/shared/contact';
 import { ContactService } from '../../contact/shared/contact.service';
 import { ChatConfiguration } from '../shared/chat-configuration';
@@ -21,7 +22,11 @@ export class ChatComponent implements OnInit {
 
   @Input() contacts: Contact[] = [];
 
+  @ViewChild('sidenavRight') sidenavRight: MatSidenav;
+
   selectedContact: Contact;
+
+  selectedContentSidenavRight: string;
 
   constructor(private contactService: ContactService,
               private mediaObserver: MediaObserver) {
@@ -37,5 +42,10 @@ export class ChatComponent implements OnInit {
     this.contactService.contactSelected.subscribe((contact: Contact) => {
       this.selectedContact = contact;
     });
+  }
+
+  toggleSidenavRight(event: {open: boolean, content: string}) {
+    this.sidenavRight.toggle();
+    this.selectedContentSidenavRight = event.content;
   }
 }

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DocumentReference } from '@angular/fire/firestore';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '@firebase/auth-types';
 import { Subscription } from 'rxjs';
@@ -29,7 +30,9 @@ export class ChatConversationComponent implements OnInit {
 
   @Output() toggleSidenav: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  @Output() toggleContactInfo: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() toggleSidenavRight: EventEmitter<{open: boolean, content: string}> = new EventEmitter<{open: boolean, content: string}>();
+
+  mqAlias: string;
 
   static getForm(): FormGroup {
     return new FormGroup({
@@ -38,7 +41,13 @@ export class ChatConversationComponent implements OnInit {
   }
 
   constructor(private conversationService: ConversationService,
-              private userService: UserService) {
+              private userService: UserService,
+              private mediaObserver: MediaObserver) {
+    this.mediaObserver.asObservable().subscribe((changes: MediaChange[]) => {
+      if (changes.length > 0) {
+        this.mqAlias = changes[0].mqAlias;
+      }
+    });
   }
 
   ngOnInit() {

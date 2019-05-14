@@ -27,6 +27,9 @@ export class ChatSidenavContactComponent implements OnInit {
 
   @Input() set contacts(contacts: Contact[]) {
     this._contacts = contacts;
+    // if (contacts && contacts.length) {
+    //  this.contactService.contactSelected.next(contacts[contacts.length - 1]);
+    // }
   }
 
   get contacts(): Contact[] {

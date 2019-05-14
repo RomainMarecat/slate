@@ -181,6 +181,10 @@ body {
   background-color: mat-color($primary);
 }
 
+.mat-bg-primary-lighter {
+  background-color: mat-color($primary, lighter);
+}
+
 .mat-bg-warn {
   background-color: mat-color($warn);
 }
