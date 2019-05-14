@@ -21,6 +21,9 @@ import { ThemeStorageService } from './shared/theme-storage.service';
     TranslateModule
   ],
   declarations: [LayoutBuilderEditComponent],
+  exports: [
+    LayoutBuilderEditComponent
+  ],
   providers: [
     ThemeStorageService
   ]

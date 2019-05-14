@@ -8,7 +8,7 @@ import { Contact } from '../../contact/shared/contact';
 })
 export class ChatContactInfoComponent implements OnInit {
 
-  @Output() toggleContactInfo: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() toggleSidenavRight: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Input() contact: Contact;
 

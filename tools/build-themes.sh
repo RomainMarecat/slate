@@ -1,13 +1,13 @@
 #!/bin/bash
 
-DEST_PATH=src/app-alr/assets
+DEST_PATH=src/app-store-admin/assets
 INPUT_PATH=$DEST_PATH/custom-themes/
 
 
 echo Building custom theme scss files.
 
 # Get the files
-FILES=$(find src/app-alr/assets/custom-themes -name "*.scss")
+FILES=$(find src/app-store-admin/assets/custom-themes -name "*.scss")
 
 for FILE in $FILES
 do

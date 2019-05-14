@@ -1,0 +1,34 @@
+@import "../../scss/variable/mixin";
+@import "../../scss/variable/variables";
+@import '../../scss/theme/theme';
+
+// Define the light theme.
+$primary: mat-palette($mat-deep-purple);
+$accent: mat-palette($mat-amber, A200, A100, A400);
+
+$theme: mat-light-theme($primary, $accent);
+@include angular-material-theme($theme);
+@include custom-theme($theme);
+
+body {
+  font-family: $primary-font;
+  color: mat-color($black);
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
+.mat-bg-primary {
+  background-color: mat-color($primary);
+}
+
+.mat-bg-primary-lighter {
+  background-color: mat-color($primary, lighter);
+}
+
+.mat-bg-warn {
+  background-color: mat-color($warn);
+}
+
+.mat-bg-accent {
+  background-color: mat-color($accent);
+}

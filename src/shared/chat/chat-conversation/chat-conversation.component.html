@@ -1,7 +1,7 @@
 <div class="chat"
      fxFlex
      fxLayout="column">
-  <mat-toolbar class="chat-toolbar">
+  <mat-toolbar [class]="'chat-toolbar ' + mqAlias">
     <div fxFlex
          fxLayout="row"
          fxLayoutAlign="space-between center">
@@ -30,9 +30,9 @@
               {{ contact?.user?.displayName | shorten : 1 }}
             </span>
           </div>
-          <div class="chat-contact-name">
-            {{ contact?.user?.displayName| shorten : 100 : '...' }}
-          </div>
+          <p [class]="'chat-contact-name ' + mqAlias">
+            {{ contact?.user?.displayName| shorten : (mqAlias === 'xs' ? 30 : 100) : '...' }}
+          </p>
         </div>
       </div>
       <div>
@@ -40,15 +40,21 @@
                 aria-label="more"
                 [matMenuTriggerFor]="preferences"
                 mat-icon-button>
-          <mat-icon role="img" aria-hidden="true">
+          <mat-icon role="img"
+                    aria-hidden="true"
+                    color="primary">
             more_vert
           </mat-icon>
         </button>
         <mat-menu #preferences="matMenu"
                   xPosition="before">
           <button mat-menu-item
-                  (click)="toggleContactInfo.emit(true)">
-            {{ 'cta.contact-info'|translate }}
+                  (click)="toggleSidenavRight.emit({open: true, content: 'contact-info'})">
+            {{ 'chat.chat-sidenav-right.cta.contact-info'|translate }}
+          </button>
+          <button mat-menu-item
+                  (click)="toggleSidenavRight.emit({open: true, content: 'layout-builder'})">
+            {{ 'chat.chat-sidenav-right.cta.theming'|translate }}
           </button>
         </mat-menu>
       </div>
@@ -63,6 +69,8 @@
            [class.me]="conversation?.user?.uid === user?.uid"
            *ngFor="let conversation of conversations">
         <div class="bubble"
+             [class.mat-bg-primary]="conversation?.user?.uid !== user?.uid"
+             [class.mat-bg-primary-lighter]="conversation?.user?.uid === user?.uid"
              fxLayout="row"
              fxLayoutAlign="center center">
           <div class="message"
