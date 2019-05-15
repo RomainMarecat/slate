@@ -10,10 +10,10 @@
     </mat-sidenav>
     <mat-sidenav-content cdkScrollable
                          [ngStyle]="configuration.style">
-      <app-chat-sidenav-right [contact]="selectedContact"
+      <app-chat-sidenav-content [contact]="selectedContact"
                               (toggleSidenav)="sidenavLeft.toggle()"
                               (toggleSidenavRight)="toggleSidenavRight($event)">
-      </app-chat-sidenav-right>
+      </app-chat-sidenav-content>
     </mat-sidenav-content>
     <mat-sidenav #sidenavRight
                  mode="side"

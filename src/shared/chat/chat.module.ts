@@ -14,7 +14,7 @@ import { ChatConversationComponent } from './chat-conversation/chat-conversation
 import { ChatSidenavContactComponent } from './chat-sidenav-contact/chat-sidenav-contact.component';
 import { ChatSidenavHeaderComponent } from './chat-sidenav-header/chat-sidenav-header.component';
 import { ChatSidenavLeftComponent } from './chat-sidenav-left/chat-sidenav-left.component';
-import { ChatSidenavRightComponent } from './chat-sidenav-right/chat-sidenav-right.component';
+import { ChatSidenavContentComponent } from './chat-sidenav-right/chat-sidenav-content.component';
 import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { ChatComponent } from './chat/chat.component';
     ChatConversationComponent,
     ChatComponent,
     ChatSidenavLeftComponent,
-    ChatSidenavRightComponent,
+    ChatSidenavContentComponent,
     ChatSidenavHeaderComponent,
     ChatConversationStartComponent,
     ChatContactInfoComponent

@@ -20,18 +20,18 @@ import { ChatConversationComponent } from '../chat-conversation/chat-conversatio
 import { ConversationService } from '../shared/conversation.service';
 import { MockConversationService } from '../shared/mock-conversation.service';
 
-import { ChatSidenavRightComponent } from './chat-sidenav-right.component';
+import { ChatSidenavContentComponent } from './chat-sidenav-content.component';
 
-describe('ChatSidenavRightComponent', () => {
-  let component: ChatSidenavRightComponent;
-  let fixture: ComponentFixture<ChatSidenavRightComponent>;
+describe('ChatSidenavContentComponent', () => {
+  let component: ChatSidenavContentComponent;
+  let fixture: ComponentFixture<ChatSidenavContentComponent>;
 
   configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ChatSidenavRightComponent,
+        ChatSidenavContentComponent,
         ChatConversationStartComponent,
         ChatConversationComponent
       ],
@@ -60,7 +60,7 @@ describe('ChatSidenavRightComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChatSidenavRightComponent);
+    fixture = TestBed.createComponent(ChatSidenavContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
