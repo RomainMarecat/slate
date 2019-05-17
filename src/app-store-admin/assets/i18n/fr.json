@@ -146,6 +146,14 @@
                 "quantity": "quantité"
             }
         },
+        "cart": {
+            "items": {
+                "name": "nom",
+                "price": "prix",
+                "code": "code",
+                "quantity": "quantité"
+            }
+        },
         "order-edit": {
             "key": "n° de commande",
             "created_at": "date de la commande",
