@@ -1,49 +1,48 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ProductEditComponent } from './product-edit.component';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterTestingModule } from '@angular/router/testing';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { NgxEditorModule } from 'ngx-editor';
-import { AlertService } from '../../../popup/alert.service';
-import { MockAlertService } from '../../../popup/mock-alert.service';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { SharedModule } from '../../../shared.module';
-import { ObjectService } from '../../../util/object.service';
-import { MediaService } from '../../../media/media.service';
-import { MockMediaService } from '../../../media/mock-media.service';
-import { LoaderService } from '../../../loader/loader.service';
-import { MockNotificationService } from '../../../slack/mock-notification.service';
-import { UserService } from '../../../user/shared/user.service';
-import { I18nService } from '../../../i18n/i18n.service';
-import { DateService } from '../../../util/date.service';
-import { MockUserService } from '../../../user/shared/mock-user.service';
-import { MockLoaderService } from '../../../loader/mock-loader.service';
-import { DeviceService } from '../../../device/device.service';
-import { NotificationService } from '../../../slack/notification.service';
-import { Angulartics2Module } from 'angulartics2';
-import { CategoryService } from '../../../category/category.service';
-import { MockCategoryService } from '../../../category/mock-category.service';
-import { AttributeService } from '../../../attribute/attribute.service';
-import { MockAttributeService } from '../../../attribute/mock-attribute.service';
-import { OfferService } from '../../shared/offer/offer.service';
-import { MockOfferService } from '../../shared/offer/mock-offer.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ProductImageOrderComponent } from '../product-image-order/product-image-order.component';
-import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MockSlackNotificationService, SlackNotificationService } from '@romainmarecat/ngx-slack-notification';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { Angulartics2Module } from 'angulartics2';
 import { Cloudinary } from 'cloudinary-core';
+import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
+import { NgxEditorModule } from 'ngx-editor';
 import { environment } from '../../../../app-hockey/environments/environment';
+import { AttributeService } from '../../../attribute/attribute.service';
+import { MockAttributeService } from '../../../attribute/mock-attribute.service';
+import { CategoryService } from '../../../category/category.service';
+import { MockCategoryService } from '../../../category/mock-category.service';
+import { DeviceService } from '../../../device/device.service';
+import { I18nService } from '../../../i18n/i18n.service';
+import { LoaderService } from '../../../loader/loader.service';
+import { MockLoaderService } from '../../../loader/mock-loader.service';
+import { CloudinaryModule } from '../../../media/cloudinary/cloudinary.module';
+import { MediaService } from '../../../media/media.service';
+import { MockMediaService } from '../../../media/mock-media.service';
+import { MockPartnerService } from '../../../partner/mock-partner.service';
+import { PartnerService } from '../../../partner/partner.service';
+import { AlertService } from '../../../popup/alert.service';
+import { MockAlertService } from '../../../popup/mock-alert.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
 import { ProductService } from '../../../product/shared/product.service';
-import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
-import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
-import { PartnerService } from '../../../partner/partner.service';
-import { MockPartnerService } from '../../../partner/mock-partner.service';
+import { SharedModule } from '../../../shared.module';
+import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MockUserService } from '../../../user/shared/mock-user.service';
+import { UserService } from '../../../user/shared/user.service';
+import { DateService } from '../../../util/date.service';
+import { ObjectService } from '../../../util/object.service';
+import { MockOfferService } from '../../shared/offer/mock-offer.service';
+import { OfferService } from '../../shared/offer/offer.service';
+import { ProductImageOrderComponent } from '../product-image-order/product-image-order.component';
+
+import { ProductEditComponent } from './product-edit.component';
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
@@ -87,7 +86,7 @@ describe('ProductEditComponent', () => {
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: LoaderService, useClass: MockLoaderService},
         {provide: MediaService, useClass: MockMediaService},
-        {provide: NotificationService, useClass: MockNotificationService},
+        {provide: SlackNotificationService, useClass: MockSlackNotificationService},
         {provide: PartnerService, useClass: MockPartnerService},
         {provide: OfferService, useClass: MockOfferService},
         {provide: ProductService, useClass: MockProductService},

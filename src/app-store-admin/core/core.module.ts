@@ -4,6 +4,7 @@ import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { TranslateModule } from '@ngx-translate/core';
+import { SlackModule } from '@romainmarecat/ngx-slack-notification';
 import { Angulartics2Module } from 'angulartics2';
 import { AdsenseModule } from 'ng2-adsense';
 
@@ -44,7 +45,6 @@ import { SeoService } from '../../shared/seo/shared/seo.service';
 import { SessionService } from '../../shared/session/shared/session.service';
 import { SharedModule } from '../../shared/shared.module';
 import { SidenavService } from '../../shared/sidenav/sidenav.service';
-import { SlackModule } from '../../shared/slack/slack.module';
 import { UserService } from '../../shared/user/shared/user.service';
 import { DateService } from '../../shared/util/date.service';
 import { Environment } from '../../shared/util/environment';
@@ -145,7 +145,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     FileUploadModule,
     TranslateModule.forChild(),
     SharedModule.forRoot(CONFIG_TOKEN),
-    SlackModule.forRoot(slackToken),
+    SlackModule.forRoot(environment.slackToken),
     DashboardModule,
   ],
   exports: [

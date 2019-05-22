@@ -58,3 +58,6 @@ public/*
 functions/node_modules
 functions/dist
 firebase-debug.log
+
+#projects release
+projects/*/release

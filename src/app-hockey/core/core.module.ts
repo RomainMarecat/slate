@@ -29,7 +29,7 @@ import { ProductService } from '../../shared/product/shared/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
 import { SharedModule } from '../../shared/shared.module';
-import { SlackModule } from '../../shared/slack/slack.module';
+import { SlackModule } from '@romainmarecat/ngx-slack-notification';
 import { ProductListModule } from '../product-list/product-list.module';
 import { ProductDetailModule } from '../product-detail/product-detail.module';
 import { SelectionModule } from '../selection/selection.module';

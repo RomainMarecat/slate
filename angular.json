@@ -1,7 +1,7 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
-    "newProjectRoot": "slate",
+    "newProjectRoot": "projects",
     "defaultProject": "store-admin",
     "projects": {
         "alr": {
@@ -258,8 +258,7 @@
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
                         "tsConfig": [
-                            "src/app-store-admin/tsconfig.app.json",
-                            "src/app/tsconfig.spec.json"
+                            "src/app-store-admin/tsconfig.app.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
@@ -1347,6 +1346,41 @@
                     }
                 }
             }
+        },
+        "slack": {
+            "root": "projects/ngx-slack-notification",
+            "sourceRoot": "projects/ngx-slack-notification/src",
+            "projectType": "library",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "tsConfig": "projects/ngx-slack-notification/tsconfig.lib.json",
+                        "project": "projects/ngx-slack-notification/ng-package.json"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/ngx-slack-notification/src/test.ts",
+                        "tsConfig": "projects/ngx-slack-notification/tsconfig.spec.json",
+                        "karmaConfig": "projects/ngx-slack-notification/karma.conf.js"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "projects/ngx-slack-notification/tsconfig.lib.json",
+                            "projects/ngx-slack-notification/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
         }
     },
     "schematics": {
@@ -1377,6 +1411,5 @@
             "spec": false
         }
     },
-    "cli": {
-    }
+    "cli": {}
 }

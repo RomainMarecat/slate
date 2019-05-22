@@ -1,52 +1,49 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
-  MatCardModule,
-  MatIconModule,
   MatButtonModule,
-  MatGridListModule,
-  MatInputModule,
+  MatCardModule,
   MatCheckboxModule,
-  MatListModule,
   MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
   MatStepperModule,
 } from '@angular/material';
-import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MockSlackNotificationService, SlackNotificationService } from '@romainmarecat/ngx-slack-notification';
+import { Angulartics2Module } from 'angulartics2';
+import { Cloudinary } from 'cloudinary-core';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
-import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../../media/cloudinary/cloudinary.module';
-import { MockProductService } from '../shared/mock-product.service';
-import { ProductService } from '../shared/product.service';
-import { ProductPreviewComponent } from './product-preview/product-preview.component';
-import { ProductAddComponent } from './product-add.component';
-import { ProductFormComponent } from './product-form/product-form.component';
-import { MockAlertService } from '../../popup/mock-alert.service';
-import { AlertService } from '../../popup/alert.service';
-import { MockUserService } from '../../user/shared/mock-user.service';
-import { UserService } from '../../user/shared/user.service';
-import { ObjectService } from '../../util/object.service';
-import { MediaService } from '../../media/media.service';
-import { MockMediaService } from '../../media/mock-media.service';
+import { NgPipesModule } from 'ngx-pipes';
+import { environment } from '../../../app-store/environments/environment';
+import { DeviceService } from '../../device/device.service';
+import { I18nService } from '../../i18n/i18n.service';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
-import { DateService } from '../../util/date.service';
-import { I18nService } from '../../i18n/i18n.service';
-import { NotificationService } from '../../slack/notification.service';
-import { DeviceService } from '../../device/device.service';
-import { MockNotificationService } from '../../slack/mock-notification.service';
-import { NgPipesModule } from 'ngx-pipes';
+import { CloudinaryModule } from '../../media/cloudinary/cloudinary.module';
 import { MediaModule } from '../../media/media.module';
-import { environment } from '../../../app-store/environments/environment';
+import { MediaService } from '../../media/media.service';
+import { MockMediaService } from '../../media/mock-media.service';
+import { AlertService } from '../../popup/alert.service';
+import { MockAlertService } from '../../popup/mock-alert.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MockUserService } from '../../user/shared/mock-user.service';
+import { UserService } from '../../user/shared/user.service';
+import { DateService } from '../../util/date.service';
+import { ObjectService } from '../../util/object.service';
+import { MockProductService } from '../shared/mock-product.service';
+import { ProductService } from '../shared/product.service';
+import { ProductAddComponent } from './product-add.component';
+import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductPreviewComponent } from './product-preview/product-preview.component';
 
 describe('ProductAddComponent', () => {
   let component: ProductAddComponent;
@@ -104,10 +101,7 @@ describe('ProductAddComponent', () => {
         ObjectService,
         I18nService,
         DeviceService,
-        {
-          provide: NotificationService,
-          useClass: MockNotificationService
-        }
+        {provide: SlackNotificationService, useClass: MockSlackNotificationService}
       ]
     })
       .compileComponents();

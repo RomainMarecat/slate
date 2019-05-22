@@ -1,47 +1,45 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-
 import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {
-  MatCardModule,
-  MatIconModule,
   MatButtonModule,
-  MatGridListModule,
-  MatInputModule,
+  MatCardModule,
   MatCheckboxModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
   MatListModule
 } from '@angular/material';
-import { NgPipesModule } from 'ngx-pipes';
-import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
-import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductListComponent } from './product-list.component';
-import { ProductItemComponent } from '../product-item/product-item.component';
-import { ProductActionComponent } from '../product-action/product-action.component';
-import { ProductFilterComponent } from '../product-filter/product-filter.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { Angulartics2Module } from 'angulartics2';
 import { Cloudinary } from 'cloudinary-core';
-import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
-import { ProductService } from '../../../shared/product/shared/product.service';
-import { MockProductService } from '../../../shared/product/shared/mock-product.service';
-import { MockUserService } from '../../../shared/user/shared/mock-user.service';
-import { UserService } from '../../../shared/user/shared/user.service';
-import { MockAlertService } from '../../../shared/popup/mock-alert.service';
-import { AlertService } from '../../../shared/popup/alert.service';
+import { NgPipesModule } from 'ngx-pipes';
+import { I18nService } from '../../../shared/i18n/i18n.service';
 import { LoaderService } from '../../../shared/loader/loader.service';
 import { MockLoaderService } from '../../../shared/loader/mock-loader.service';
-import { ScoreService } from '../../../shared/score/score.service';
-import { DateService } from '../../../shared/util/date.service';
-import { MockScoreService } from '../../../shared/score/mock-score.service';
-import { I18nService } from '../../../shared/i18n/i18n.service';
-import { SelectionService } from '../../../shared/selection/selection.service';
-import { MockSelectionService } from '../../../shared/selection/mock-selection.service';
+import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
 import { MenuService } from '../../../shared/menu/menu.service';
+import { AlertService } from '../../../shared/popup/alert.service';
+import { MockAlertService } from '../../../shared/popup/mock-alert.service';
+import { MockProductService } from '../../../shared/product/shared/mock-product.service';
+import { ProductService } from '../../../shared/product/shared/product.service';
+import { MockScoreService } from '../../../shared/score/mock-score.service';
+import { ScoreService } from '../../../shared/score/score.service';
+import { MockSelectionService } from '../../../shared/selection/mock-selection.service';
+import { SelectionService } from '../../../shared/selection/selection.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { SidenavService } from '../../../shared/sidenav/sidenav.service';
-import { environment } from '../../environments/environment';
 import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
+import { MockUserService } from '../../../shared/user/shared/mock-user.service';
+import { UserService } from '../../../shared/user/shared/user.service';
+import { DateService } from '../../../shared/util/date.service';
+import { environment } from '../../environments/environment';
+import { ProductActionComponent } from '../product-action/product-action.component';
+import { ProductFilterComponent } from '../product-filter/product-filter.component';
+import { ProductItemComponent } from '../product-item/product-item.component';
+import { ProductListComponent } from './product-list.component';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;

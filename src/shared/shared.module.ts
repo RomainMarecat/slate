@@ -1,5 +1,6 @@
 import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SlackModule } from '@romainmarecat/ngx-slack-notification';
 import { NgPipesModule } from 'ngx-pipes';
 import {
   MatAutocompleteModule,
@@ -30,7 +31,6 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
-import { SlackModule } from './slack/slack.module';
 import { Environment } from './util/environment';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
