@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
 
 import { SelectionItemComponent } from './selection-item.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -24,32 +25,35 @@ import { I18nService } from '../../../shared/i18n/i18n.service';
 
 describe('SelectionItemComponent', () => {
   let component: SelectionItemComponent;
-  let fixture: ComponentFixture < SelectionItemComponent > ;
+  let fixture: ComponentFixture<SelectionItemComponent>;
+
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          CommonModule,
-          HttpClientModule,
-          RouterTestingModule,
-          BrowserAnimationsModule,
-          SharedModule,
-          TranslateModule.forRoot({
-            loader: { provide: TranslateLoader, useClass: TranslateFakeLoader }
-          }),
-        ],
-        declarations: [SelectionItemComponent],
-        providers: [
-          { provide: SelectionService, useClass: MockSelectionService },
-          { provide: ProductService, useClass: MockProductService },
-          { provide: UserService, useClass: MockUserService },
-          { provide: AlertService, useClass: MockAlertService },
-          { provide: LoaderService, useClass: MockLoaderService },
-          { provide: ScoreService, useClass: MockScoreService },
-          { provide: DateService, useClass: DateService },
-          I18nService
-        ]
-      })
+      imports: [
+        CommonModule,
+        HttpClientModule,
+        RouterTestingModule,
+        BrowserAnimationsModule,
+        SharedModule,
+        TranslateModule.forRoot({
+          loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+      ],
+      declarations: [SelectionItemComponent],
+      providers: [
+        {provide: SelectionService, useClass: MockSelectionService},
+        {provide: ProductService, useClass: MockProductService},
+        {provide: UserService, useClass: MockUserService},
+        {provide: AlertService, useClass: MockAlertService},
+        {provide: LoaderService, useClass: MockLoaderService},
+        {provide: ScoreService, useClass: MockScoreService},
+        {provide: DateService, useClass: DateService},
+        I18nService
+      ]
+    })
       .compileComponents();
   }));
 

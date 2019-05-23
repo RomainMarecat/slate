@@ -7,7 +7,7 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { RouterTestingModule } from '@angular/router/testing';
 import { LoaderService } from '../../../loader/loader.service';
 import { MediaService } from '../../../media/media.service';
-import { MockNotificationService } from '../../../slack/mock-notification.service';
+import { MockSlackNotificationService } from '@romainmarecat/ngx-slack-notification';
 import { AlertService } from '../../../popup/alert.service';
 import { UserService } from '../../../user/shared/user.service';
 import { I18nService } from '../../../i18n/i18n.service';
@@ -19,7 +19,7 @@ import { MockMediaService } from '../../../media/mock-media.service';
 import { MockLoaderService } from '../../../loader/mock-loader.service';
 import { DeviceService } from '../../../device/device.service';
 import { MenuService } from '../../../menu/menu.service';
-import { NotificationService } from '../../../slack/notification.service';
+import { SlackNotificationService } from '@romainmarecat/ngx-slack-notification';
 import { Angulartics2Module } from 'angulartics2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SelectionService } from '../../../selection/selection.service';
@@ -63,7 +63,7 @@ describe('SelectionListComponent', () => {
         {provide: UserService, useClass: MockUserService},
         {provide: MediaService, useClass: MockMediaService},
         {provide: ProductService, useClass: MockProductService},
-        {provide: NotificationService, useClass: MockNotificationService},
+        {provide: SlackNotificationService, useClass: MockSlackNotificationService},
         DateService,
         ObjectService,
         I18nService,

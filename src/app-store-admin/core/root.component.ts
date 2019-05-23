@@ -1,15 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgcCookieConsentService, NgcStatusChangeEvent, NgcInitializeEvent } from 'ngx-cookieconsent';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { NavigationEnd, Router } from '@angular/router';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { NgcCookieConsentService, NgcInitializeEvent, NgcStatusChangeEvent } from 'ngx-cookieconsent';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { Favicon } from '../../shared/favicon/favicon.service';
+import { I18nService } from '../../shared/i18n/i18n.service';
+import { LoaderService } from '../../shared/loader/loader.service';
 import { MenuConfiguration } from '../../shared/menu/shared/menu-configuration';
 import { UserService } from '../../shared/user/shared/user.service';
-import { LoaderService } from '../../shared/loader/loader.service';
-import { I18nService } from '../../shared/i18n/i18n.service';
-import { Favicon } from '../../shared/favicon/favicon.service';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -56,6 +56,7 @@ export class AppRootComponent implements OnInit, OnDestroy {
               private title: Title,
               private favicon: Favicon,
               private router: Router) {
+
     this.angulartics2GoogleAnalytics.startTracking();
 
     // previous url

@@ -8,7 +8,7 @@ import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { LoaderService } from '../../../loader/loader.service';
 import { MediaService } from '../../../media/media.service';
-import { MockNotificationService } from '../../../slack/mock-notification.service';
+import { MockSlackNotificationService } from '@romainmarecat/ngx-slack-notification';
 import { UserService } from '../../../user/shared/user.service';
 import { I18nService } from '../../../i18n/i18n.service';
 import { DateService } from '../../../util/date.service';
@@ -17,7 +17,7 @@ import { MockUserService } from '../../../user/shared/mock-user.service';
 import { MockMediaService } from '../../../media/mock-media.service';
 import { MockLoaderService } from '../../../loader/mock-loader.service';
 import { DeviceService } from '../../../device/device.service';
-import { NotificationService } from '../../../slack/notification.service';
+import { SlackNotificationService } from '@romainmarecat/ngx-slack-notification';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Angulartics2Module } from 'angulartics2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -69,7 +69,7 @@ describe('SelectionEditComponent', () => {
         {provide: UserService, useClass: MockUserService},
         {provide: MediaService, useClass: MockMediaService},
         {provide: ProductService, useClass: MockProductService},
-        {provide: NotificationService, useClass: MockNotificationService},
+        {provide: SlackNotificationService, useClass: MockSlackNotificationService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         DateService,
         ObjectService,

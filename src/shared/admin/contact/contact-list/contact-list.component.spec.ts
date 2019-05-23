@@ -23,8 +23,8 @@ import { CategoryService } from '../../../category/category.service';
 import { MockCategoryService } from '../../../category/mock-category.service';
 import { ProductService } from '../../../product/shared/product.service';
 import { MockProductService } from '../../../product/shared/mock-product.service';
-import { NotificationService } from '../../../slack/notification.service';
-import { MockNotificationService } from '../../../slack/mock-notification.service';
+import { SlackNotificationService } from '@romainmarecat/ngx-slack-notification';
+import { MockSlackNotificationService } from '@romainmarecat/ngx-slack-notification';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { MockAttributeService } from '../../../attribute/mock-attribute.service';
 import { DateService } from '../../../util/date.service';
@@ -73,7 +73,7 @@ describe('ContactListComponent', () => {
         {provide: MediaService, useClass: MockMediaService},
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: ProductService, useClass: MockProductService},
-        {provide: NotificationService, useClass: MockNotificationService},
+        {provide: SlackNotificationService, useClass: MockSlackNotificationService},
         {provide: AttributeService, useClass: MockAttributeService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         DateService,

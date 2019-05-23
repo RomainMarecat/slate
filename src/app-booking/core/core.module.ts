@@ -27,7 +27,7 @@ import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
 import { ProductService } from '../../shared/product/shared/product.service';
 import { MediaService } from '../../shared/media/media.service';
 import { SharedModule } from '../../shared/shared.module';
-import { SlackModule } from '../../shared/slack/slack.module';
+import { SlackModule } from '@romainmarecat/ngx-slack-notification';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { PartnerService } from '../../shared/partner/partner.service';
 import { OfferService } from '../../shared/offer/offer.service';

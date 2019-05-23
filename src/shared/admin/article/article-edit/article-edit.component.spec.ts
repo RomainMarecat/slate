@@ -18,12 +18,12 @@ import { AttributeService } from '../../../attribute/attribute.service';
 import { I18nService } from '../../../i18n/i18n.service';
 import { MockMediaService } from '../../../media/mock-media.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
-import { NotificationService } from '../../../slack/notification.service';
+import { SlackNotificationService } from '@romainmarecat/ngx-slack-notification';
 import { MediaService } from '../../../media/media.service';
 import { AlertService } from '../../../popup/alert.service';
 import { ObjectService } from '../../../util/object.service';
 import { MockLoaderService } from '../../../loader/mock-loader.service';
-import { MockNotificationService } from '../../../slack/mock-notification.service';
+import { MockSlackNotificationService } from '@romainmarecat/ngx-slack-notification';
 import { DeviceService } from '../../../device/device.service';
 import { UserService } from '../../../user/shared/user.service';
 import { MockCategoryService } from '../../../category/mock-category.service';
@@ -82,7 +82,7 @@ describe('ArticleEditComponent', () => {
         {provide: MediaService, useClass: MockMediaService},
         {provide: CategoryService, useClass: MockCategoryService},
         {provide: ProductService, useClass: MockProductService},
-        {provide: NotificationService, useClass: MockNotificationService},
+        {provide: SlackNotificationService, useClass: MockSlackNotificationService},
         {provide: AttributeService, useClass: MockAttributeService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         DateService,
