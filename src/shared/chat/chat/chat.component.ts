@@ -45,7 +45,9 @@ export class ChatComponent implements OnInit {
   }
 
   toggleSidenavRight(event: {open: boolean, content: string}) {
-    this.sidenavRight.toggle();
+    if (event.open) {
+      this.sidenavRight.open();
+    }
     this.selectedContentSidenavRight = event.content;
   }
 }

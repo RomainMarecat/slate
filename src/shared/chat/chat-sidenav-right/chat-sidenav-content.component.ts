@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Contact } from '../../contact/shared/contact';
 
 @Component({
-  selector: 'app-chat-sidenav-right',
-  templateUrl: './chat-sidenav-right.component.html',
-  styleUrls: ['./chat-sidenav-right.component.scss']
+  selector: 'app-chat-sidenav-content',
+  templateUrl: './chat-sidenav-content.component.html',
+  styleUrls: ['./chat-sidenav-content.component.scss']
 })
-export class ChatSidenavRightComponent implements OnInit {
+export class ChatSidenavContentComponent implements OnInit {
 
   @Input() contact: Contact;
 
