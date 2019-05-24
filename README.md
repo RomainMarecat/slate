@@ -1,4 +1,7 @@
-# Slate [![Build Status](https://travis-ci.com/RomainStudent/slate.svg?token=ft2MNN7yrCxWmByy17ND&branch=master)](https://travis-ci.com/RomainStudent/slate)
+# Slate 
+[![Code Climate](https://codeclimate.com/github/RomainMarecat/slate/badges/gpa.svg)](https://codeclimate.com/github/RomainMarecat/slate)
+[![Build Status](https://travis-ci.org/RomainMarecat/slate.svg?token=ft2MNN7yrCxWmByy17ND&branch=master)](https://travis-ci.org/RomainMarecat/slate)
+[![Test Coverage](https://codeclimate.com/github/RomainMarecat/slate/badges/coverage.svg)](https://codeclimate.com/github/RomainMarecat/slate/coverage)
 
 ALR Slate
 

@@ -22,7 +22,7 @@ import { ChatConversationComponent } from '../chat-conversation/chat-conversatio
 import { ChatSidenavContactComponent } from '../chat-sidenav-contact/chat-sidenav-contact.component';
 import { ChatSidenavHeaderComponent } from '../chat-sidenav-header/chat-sidenav-header.component';
 import { ChatSidenavLeftComponent } from '../chat-sidenav-left/chat-sidenav-left.component';
-import { ChatSidenavContentComponent } from '../chat-sidenav-right/chat-sidenav-right.component';
+import { ChatSidenavContentComponent } from '../chat-sidenav-right/chat-sidenav-content.component';
 import { ConversationService } from '../shared/conversation.service';
 import { MockConversationService } from '../shared/mock-conversation.service';
 
