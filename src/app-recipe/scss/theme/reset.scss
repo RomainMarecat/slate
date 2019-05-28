@@ -6,7 +6,6 @@ html {
 body {
   height: 100%;
   width: 100%;
-  overflow: hidden; /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
   margin: 0; /*removes default style*/
   display: flex; /*enables flex content for its children*/
   box-sizing: border-box;
