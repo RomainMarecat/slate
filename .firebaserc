@@ -11,6 +11,16 @@
     "recipe": "recipe-384269"
   },
   "targets": {
+    "recipe-384269": {
+        "hosting": {
+          "aot": [
+            "recipe-384269"
+        ],
+        "ssr": [
+          "recipe-384269"
+        ]
+      }
+    },
     "store-384269": {
       "hosting": {
         "aot": [
