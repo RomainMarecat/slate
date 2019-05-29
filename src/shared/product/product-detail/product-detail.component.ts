@@ -103,10 +103,7 @@ export class ProductDetailComponent implements OnInit {
 
   addOpenGraphData(product: Product) {
     // Open Graph data
-    this.translateService.get('meta.og:site_name.product-detail')
-      .subscribe((translation: string) => {
-        this.meta.addTag({name: 'og:site_name', content: translation});
-      });
+    this.seoService.addTag('og:site_name', 'meta.og:site_name.product-detail');
     this.meta.addTag({name: 'og:title', content: product.name});
     this.meta.addTag({name: 'og:type', content: 'article'});
     this.meta.addTag({
@@ -140,13 +137,22 @@ export class ProductDetailComponent implements OnInit {
 
   addGoogleData(product: Product) {
     // Google +
-    this.meta.addTag({itemprop: 'name', content: product.name});
-    this.meta.addTag({itemprop: 'description', content: product.description});
+    this.seoService.addTag(
+      'name',
+      product.name,
+      'itemprop'
+    );
+    this.seoService.addTag(
+      'description',
+      product.description,
+      'itemprop'
+    );
     if (this.cloudinary) {
-      this.meta.addTag({
-        itemprop: 'image',
-        content: this.cloudinaryTagService.getPictureSrc(product.image1)
-      });
+      this.seoService.addTag(
+        'image',
+        this.cloudinaryTagService.getPictureSrc(product.image1),
+        'itemprop'
+      );
     }
   }
 

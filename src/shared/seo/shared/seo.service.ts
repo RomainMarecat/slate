@@ -41,4 +41,13 @@ export class SeoService {
         }
       });
   }
+
+  addTag(name: string, description: string, property: string = 'name') {
+    this.translateService.get(description)
+      .subscribe((translation: string) => {
+        const tag = {content: translation};
+        tag[property] = name;
+        this.meta.addTag(tag);
+      });
+  }
 }
