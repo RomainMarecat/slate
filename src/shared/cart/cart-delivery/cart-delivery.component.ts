@@ -54,78 +54,42 @@ export class CartDeliveryComponent {
       user: new FormControl(delivery && delivery.user ? delivery.user : null),
       cart: new FormControl(delivery && delivery.cart ? delivery.cart : []),
       order: new FormControl(delivery && delivery.order ? delivery.order : []),
-      address: CartDeliveryComponent.getAddressForm(delivery),
-      billing: CartDeliveryComponent.getBillingForm(delivery)
+      address: CartDeliveryComponent.getChildForm('address', delivery),
+      billing: CartDeliveryComponent.getChildForm('billing', delivery)
     });
   }
 
-  static getBillingForm(delivery: Delivery = null): FormGroup {
+  static getChildForm(type: string, delivery: Delivery = null): FormGroup {
     return new FormGroup({
-      email: new FormControl(delivery && delivery.address && delivery.address.email ? delivery.address.email : '',
+      email: new FormControl(delivery && delivery[type] && delivery[type].email ? delivery[type].email : '',
         [Validators.required, Validators.minLength(1), Validators.email]
       ),
       firstname: new FormControl(
-        delivery && delivery.address && delivery.address.firstname ? delivery.address.firstname : '',
+        delivery && delivery[type] && delivery[type].firstname ? delivery[type].firstname : '',
         [Validators.required, Validators.minLength(1)]
       ),
       lastname: new FormControl(
-        delivery && delivery.address && delivery.address.lastname ? delivery.address.lastname : '',
+        delivery && delivery[type] && delivery[type].lastname ? delivery[type].lastname : '',
         [Validators.required, Validators.minLength(1)]
       ),
       address: new FormControl(
-        delivery && delivery.billing && delivery.billing.address ? delivery.billing.address : '',
+        delivery && delivery[type] && delivery[type].address ? delivery[type].address : '',
         [Validators.required, Validators.minLength(1)]
       ),
       address_complement: new FormControl(
-        delivery && delivery.billing && delivery.billing.address_complement ? delivery.billing.address_complement : '',
+        delivery && delivery[type] && delivery[type].address_complement ? delivery[type].address_complement : '',
         []
       ),
       zipcode: new FormControl(
-        delivery && delivery.billing && delivery.billing.zipcode ? delivery.billing.zipcode : '',
+        delivery && delivery[type] && delivery[type].zipcode ? delivery[type].zipcode : '',
         [Validators.required, Validators.minLength(4)]
       ),
       city: new FormControl(
-        delivery && delivery.billing && delivery.billing.city ? delivery.billing.city : '',
+        delivery && delivery[type] && delivery[type].city ? delivery[type].city : '',
         [Validators.required, Validators.minLength(2)]
       ),
       country: new FormControl(
-        delivery && delivery.billing && delivery.billing.country ? delivery.billing.country : '',
-        [Validators.required, Validators.minLength(2)]
-      )
-    });
-  }
-
-  static getAddressForm(delivery: Delivery = null): FormGroup {
-    return new FormGroup({
-      email: new FormControl(delivery && delivery.address && delivery.address.email ? delivery.address.email : '',
-        [Validators.required, Validators.minLength(1), Validators.email]
-      ),
-      address: new FormControl(
-        delivery && delivery.address && delivery.address.address ? delivery.address.address : '',
-        [Validators.required, Validators.minLength(1)]
-      ),
-      firstname: new FormControl(
-        delivery && delivery.address && delivery.address.firstname ? delivery.address.firstname : '',
-        [Validators.required, Validators.minLength(1)]
-      ),
-      lastname: new FormControl(
-        delivery && delivery.address && delivery.address.lastname ? delivery.address.lastname : '',
-        [Validators.required, Validators.minLength(1)]
-      ),
-      address_complement: new FormControl(
-        delivery && delivery.address && delivery.address.address_complement ? delivery.address.address_complement : '',
-        []
-      ),
-      zipcode: new FormControl(
-        delivery && delivery.address && delivery.address.zipcode ? delivery.address.zipcode : '',
-        [Validators.required, Validators.minLength(4)]
-      ),
-      city: new FormControl(
-        delivery && delivery.address && delivery.address.city ? delivery.address.city : '',
-        [Validators.required, Validators.minLength(2)]
-      ),
-      country: new FormControl(
-        delivery && delivery.address && delivery.address.country ? delivery.address.country : '',
+        delivery && delivery[type] && delivery[type].country ? delivery[type].country : '',
         [Validators.required, Validators.minLength(2)]
       )
     });
