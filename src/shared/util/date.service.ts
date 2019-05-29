@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { I18nService } from '../i18n/i18n.service';
-import * as moment from 'moment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DateService {
 
   constructor(private translateService: TranslateService, private i18nService: I18nService) {
@@ -46,7 +47,10 @@ export class DateService {
     if (year > 0 || month > 0 || day > 0) {
       return comparePast.toLocaleDateString(this.i18nService.locale);
     }
-    if (year <= 0 && month <= 0 && day <= 0 && hours <= 0 && minutes <= 1 && minutes >= 0) {
+    const isInvalidDate: boolean = year <= 0 && month <= 0 && day <= 0;
+    const isInvalidTime: boolean = hours <= 0 && minutes <= 1 && minutes >= 0;
+
+    if (isInvalidDate && isInvalidTime) {
       return this.translateService.instant('date.now');
     }
     // Format to string locale fr
@@ -62,8 +66,6 @@ export class DateService {
    */
   compareDatetoHumanReadableString(comparePast: Date = new Date(), source: Date = new Date()): string {
     const diff = this.diff(source, comparePast);
-    const readableTime = this.getHumanReadableDate(diff, comparePast);
-
-    return readableTime;
+    return this.getHumanReadableDate(diff, comparePast);
   }
 }

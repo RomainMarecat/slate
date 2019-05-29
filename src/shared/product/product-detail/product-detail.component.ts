@@ -34,7 +34,7 @@ export class ProductDetailComponent implements OnInit {
     },
     {
       title: 'review',
-    },
+    }
   ];
 
   product: Product;
@@ -70,72 +70,84 @@ export class ProductDetailComponent implements OnInit {
           if (value.slug.indexOf('-') !== -1) {
             slug = value.slug.substring(0, value.slug.indexOf('-'));
           }
+          this.getProduct(slug);
+          return;
+        }
+        this.loaderService.hide();
+      }, () => {
+        this.loaderService.hide();
+      });
+  }
 
-          const subscription: Subscription = this.productService.getProduct(slug)
-            .subscribe((product: Product) => {
-              if (subscription) {
-                subscription.unsubscribe();
-              }
-              if (product) {
-                this.product = product;
-                this.updateProduct(product);
-                this.loaderService.hide();
-                this.seoService.setSeo('product-detail', {name: product.name, description: product.description});
-                /* itemscope itemtype="http://schema.org/Product" */
-                // Open Graph data
-                this.translateService.get('meta.og:site_name.product-detail')
-                  .subscribe((translation: string) => {
-                    this.meta.addTag({name: 'og:site_name', content: translation});
-                  });
-                this.meta.addTag({name: 'og:title', content: product.name});
-                this.meta.addTag({name: 'og:type', content: 'article'});
-                this.meta.addTag({
-                  name: 'og:url',
-                  content: `https://${environment.site_name}/products/product/${this.product.key}-${this.product.name}`
-                });
-                this.meta.addTag({name: 'og:description', content: product.name});
-                if (product.published_at) {
-                  this.meta.addTag({name: 'product:published', content: product.published_at.toString()});
-                }
-                if (product.price) {
-                  this.meta.addTag({name: 'og:price:amount', content: product.price.toString()});
-                }
-                this.meta.addTag({name: 'og:price:currency', content: 'EUR'});
-
-                // Twiter Card
-                this.meta.addTag({name: 'twitter:card', content: 'summary'});
-                this.meta.addTag({name: 'twitter:site', content: '@clothe'});
-                this.meta.addTag({name: 'twitter:title', content: product.name});
-                this.meta.addTag({name: 'twitter:description', content: product.description});
-                this.meta.addTag({name: 'twitter:creator', content: product.creator});
-                if (this.cloudinary) {
-                  this.meta.addTag({
-                    name: 'twitter:image',
-                    content: this.cloudinaryTagService.getPictureSrc(product.image1)
-                  });
-                }
-
-                // Google +
-                this.meta.addTag({itemprop: 'name', content: product.name});
-                this.meta.addTag({itemprop: 'description', content: product.description});
-                if (this.cloudinary) {
-                  this.meta.addTag({
-                    itemprop: 'image',
-                    content: this.cloudinaryTagService.getPictureSrc(product.image1)
-                  });
-                }
-
-                this.countCols();
-              }
-            }, () => {
-              this.loaderService.hide();
-            });
-        } else {
+  getProduct(slug: string) {
+    const subscription: Subscription = this.productService.getProduct(slug)
+      .subscribe((product: Product) => {
+        if (subscription) {
+          subscription.unsubscribe();
+        }
+        if (product) {
+          this.product = product;
+          this.updateProduct(product);
           this.loaderService.hide();
+          this.seoService.setSeo('product-detail', {name: product.name, description: product.description});
+          this.addOpenGraphData(product);
+          this.addTwitterData(product);
+          this.addGoogleData(product);
+
+          this.countCols();
         }
       }, () => {
         this.loaderService.hide();
       });
+  }
+
+  addOpenGraphData(product: Product) {
+    // Open Graph data
+    this.translateService.get('meta.og:site_name.product-detail')
+      .subscribe((translation: string) => {
+        this.meta.addTag({name: 'og:site_name', content: translation});
+      });
+    this.meta.addTag({name: 'og:title', content: product.name});
+    this.meta.addTag({name: 'og:type', content: 'article'});
+    this.meta.addTag({
+      name: 'og:url',
+      content: `https://${environment.site_name}/products/product/${this.product.key}-${this.product.name}`
+    });
+    this.meta.addTag({name: 'og:description', content: product.name});
+    if (product.published_at) {
+      this.meta.addTag({name: 'product:published', content: product.published_at.toString()});
+    }
+    if (product.price) {
+      this.meta.addTag({name: 'og:price:amount', content: product.price.toString()});
+    }
+    this.meta.addTag({name: 'og:price:currency', content: 'EUR'});
+  }
+
+  addTwitterData(product: Product) {
+    // Twiter Card
+    this.meta.addTag({name: 'twitter:card', content: 'summary'});
+    this.meta.addTag({name: 'twitter:site', content: '@clothe'});
+    this.meta.addTag({name: 'twitter:title', content: product.name});
+    this.meta.addTag({name: 'twitter:description', content: product.description});
+    this.meta.addTag({name: 'twitter:creator', content: product.creator});
+    if (this.cloudinary) {
+      this.meta.addTag({
+        name: 'twitter:image',
+        content: this.cloudinaryTagService.getPictureSrc(product.image1)
+      });
+    }
+  }
+
+  addGoogleData(product: Product) {
+    // Google +
+    this.meta.addTag({itemprop: 'name', content: product.name});
+    this.meta.addTag({itemprop: 'description', content: product.description});
+    if (this.cloudinary) {
+      this.meta.addTag({
+        itemprop: 'image',
+        content: this.cloudinaryTagService.getPictureSrc(product.image1)
+      });
+    }
   }
 
   /**

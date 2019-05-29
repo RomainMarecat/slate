@@ -22,6 +22,7 @@ exclude_paths:
   - "webpack.config.js"
   - "webpack.server.config.js"
   - "src/shared/admin/map/shared/map-list.ts"
+  - "src/*.js"
 ratings:
   paths:
     - "src/**/**.ts"

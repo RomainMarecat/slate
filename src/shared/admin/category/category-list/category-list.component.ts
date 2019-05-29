@@ -61,6 +61,10 @@ export class CategoryListComponent implements OnInit {
         this.categories = categories;
         this.isLoading = false;
       });
+    this.setColumns();
+  }
+
+  setColumns() {
     this.columns = [{
       width: 50,
       sortable: false,
