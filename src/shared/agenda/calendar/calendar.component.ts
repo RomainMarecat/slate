@@ -59,9 +59,17 @@ export class CalendarComponent implements OnInit, OnChanges {
   sessionsEndSlots: Set<string>;
   sessions: Map<string, Session>;
 
-  static splitRangeToNextTime(slotTimeRange: TwixIter): {time: Twix, mmtTime: Moment} {
+  static splitRangeToNextTime(slotTimeRange: TwixIter, slotDuration: number): {time: Twix, mmtTime: Moment} {
     const time: Twix = slotTimeRange.next();
-    return {time: time, mmtTime: moment(time.toDate())};
+    return {time: time, mmtTime: CalendarComponent.getMinutesDifference(moment(time.toDate()), slotDuration)};
+  }
+
+  static getMinutesDifference(mmtTime: Moment, slotDuration: number): Moment {
+    if (mmtTime.minutes() % slotDuration !== 0) {
+      mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % slotDuration));
+    }
+
+    return mmtTime;
   }
 
   constructor(private eventService: EventService,
@@ -277,10 +285,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const timeEarlierRange: TwixIter = mmtEarlyStart.twix(mmtStart).iterate(this.slotDuration, 'minutes');
     while (timeEarlierRange.hasNext()) {
       const time: Twix = timeEarlierRange.next();
-      const mmtTime: Moment = moment(time.toDate());
-      if (mmtTime.minutes() % this.slotDuration !== 0) {
-        mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-      }
+      const mmtTime: Moment = CalendarComponent.getMinutesDifference(moment(time.toDate()), this.slotDuration);
       if (mmtTime.isSameOrAfter(mmtEarlyStart) && mmtTime.isBefore(mmtStart)) {
         this.earlySlots.add(mmtTime.format('YYYY-MM-DDHH:mm'));
       }
@@ -292,11 +297,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const timePauseRange: TwixIter = mmtEarlyEnd.twix(mmtPauseEnd).iterate(this.slotDuration, 'minutes');
     while (timePauseRange.hasNext()) {
       const time: Twix = timePauseRange.next();
-      const mmtTime: Moment = moment(time.toDate());
-
-      if (mmtTime.minutes() % this.slotDuration !== 0) {
-        mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-      }
+      const mmtTime: Moment = CalendarComponent.getMinutesDifference(moment(time.toDate()), this.slotDuration);
       if (mmtTime.isSameOrAfter(mmtEarlyEnd) && mmtTime.isBefore(mmtPauseEnd)) {
         this.pauseSlots.add(mmtTime.format('YYYY-MM-DDHH:mm'));
       }
@@ -323,11 +324,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const timeEarlyRange: TwixIter = mmtEarlyStart.twix(mmtStart).iterate(this.slotDuration, 'minutes');
     while (timeEarlyRange.hasNext()) {
       const time: Twix = timeEarlyRange.next();
-      const mmtTime: Moment = moment(time.toDate());
-
-      if (mmtTime.minutes() % this.slotDuration !== 0) {
-        mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-      }
+      const mmtTime: Moment = CalendarComponent.getMinutesDifference(moment(time.toDate()), this.slotDuration);
       if (mmtTime.isSameOrAfter(mmtEarlyStart) && mmtTime.isBefore(mmtStart)) {
         this.earlySlots.delete(mmtTime.format('YYYY-MM-DDHH:mm'));
       }
@@ -340,11 +337,7 @@ export class CalendarComponent implements OnInit, OnChanges {
       const timePauseRange: TwixIter = mmtEarlyEnd.twix(mmtPauseEnd).iterate(this.slotDuration, 'minutes');
       while (timePauseRange.hasNext()) {
         const time: Twix = timePauseRange.next();
-        const mmtTime: Moment = moment(time.toDate());
-
-        if (mmtTime.minutes() % this.slotDuration !== 0) {
-          mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-        }
+        const mmtTime: Moment = CalendarComponent.getMinutesDifference(moment(time.toDate()), this.slotDuration);
         if (mmtTime.isSameOrAfter(mmtEarlyEnd) && mmtTime.isBefore(mmtPauseEnd)) {
           this.pauseSlots.delete(mmtTime.format('YYYY-MM-DDHH:mm'));
         }
@@ -391,11 +384,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     /* building busy slots by events*/
     const eventsTimeRange: TwixIter = mmtEventStart.twix(mmtEventEnd).iterate(this.slotDuration, 'minutes');
     while (eventsTimeRange.hasNext()) {
-      const {time, mmtTime} = CalendarComponent.splitRangeToNextTime(eventsTimeRange);
-
-      if (mmtTime.minutes() % this.slotDuration !== 0) {
-        mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-      }
+      const {time, mmtTime} = CalendarComponent.splitRangeToNextTime(eventsTimeRange, this.slotDuration);
       /* IF the busy slot is in availability and not already in busySloits we count it */
       if (this.daysAvailability && this.daysAvailability.has(time.format('YYYY-MM-DD'))
         && !this.busySlots.has(time.format('YYYY-MM-DDHH:mm'))
@@ -418,11 +407,7 @@ export class CalendarComponent implements OnInit, OnChanges {
       (mmtEarlyStart.minutes() % this.slotDuration) + this.slotDuration);
     const earliestTimeRange: TwixIter = mmtEarlyStart.twix(mmtEventStart).iterate(this.slotDuration, 'minutes');
     while (earliestTimeRange.hasNext()) {
-      const {time, mmtTime} = CalendarComponent.splitRangeToNextTime(earliestTimeRange);
-
-      if (mmtTime.minutes() % this.slotDuration !== 0) {
-        mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-      }
+      const {time, mmtTime} = CalendarComponent.splitRangeToNextTime(earliestTimeRange, this.slotDuration);
       /* IF the busy slot is in availability and not already in busySloits we count it */
       if (this.daysAvailability && this.daysAvailability.has(time.format('YYYY-MM-DD'))
         && !this.busySlots.has(time.format('YYYY-MM-DDHH:mm'))
