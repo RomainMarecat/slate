@@ -32,8 +32,10 @@ import { CloudinaryModule } from '../../media/cloudinary/cloudinary.module';
 import { MediaModule } from '../../media/media.module';
 import { MediaService } from '../../media/media.service';
 import { MockMediaService } from '../../media/mock-media.service';
+import { MenuService } from '../../menu/menu.service';
 import { AlertService } from '../../popup/alert.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
+import { SeoService } from '../../seo/shared/seo.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockUserService } from '../../user/shared/mock-user.service';
 import { UserService } from '../../user/shared/user.service';
@@ -97,6 +99,8 @@ describe('ProductAddComponent', () => {
         {provide: UserService, useClass: MockUserService},
         {provide: MediaService, useClass: MockMediaService},
         {provide: ProductService, useClass: MockProductService},
+        MenuService,
+        SeoService,
         DateService,
         ObjectService,
         I18nService,

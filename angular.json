@@ -1187,7 +1187,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/browser",
+                        "outputPath": "functions/dist/browser",
                         "index": "src/app-recipe/index.html",
                         "main": "src/app-recipe/main.ts",
                         "polyfills": "src/app-recipe/polyfills.ts",
@@ -1308,7 +1308,7 @@
                 "server": {
                     "builder": "@angular-devkit/build-angular:server",
                     "options": {
-                        "outputPath": "dist/server",
+                        "outputPath": "functions/dist/server",
                         "main": "src/app-recipe/main.server.ts",
                         "tsConfig": "src/app-recipe/tsconfig.server.json"
                     },
