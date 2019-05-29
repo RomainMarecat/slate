@@ -67,91 +67,115 @@ export class ImageProductComponent implements OnInit {
    */
   ngOnInit() {
     if (this.cloudinary) {
-
-      const uploaderOptions: FileUploaderOptions = {
-        url: `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/image/upload`,
-        autoUpload: true,
-        isHTML5: true,
-        removeAfterUpload: true,
-        headers: [{
-          name: 'X-Requested-With',
-          value: 'XMLHttpRequest'
-        }]
-      };
-      this.uploader = new FileUploader(uploaderOptions);
+      this.uploader = this.getUploaderConfig();
       this.initCanvas();
-      this.uploader.onAfterAddingFile = (fileItem: any) => {
-        return fileItem;
-      };
-
-      this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
-        const timestamp = Math.round(new Date().getTime() / 1000);
-        const transform = 't_media_web_import';
-        const paramsStr = 'timestamp=' + timestamp +
-          '&transformation=' +
-          't_media_web_import' +
-          '&upload_preset=' + this.cloudinary.config().upload_preset +
-          this.cloudinary.config().api_secret;
-        const signature = SHA1(paramsStr);
-
-        form.append('upload_preset', this.cloudinary.config().upload_preset);
-        form.append('file', fileItem);
-        form.append('timestamp', timestamp.toString());
-        form.append('signature', signature.toString());
-        form.append('api_key', this.cloudinary.config().api_key);
-        form.append('transformation', transform);
-
-        fileItem.withCredentials = false;
-        return {fileItem, form};
-      };
-
-      this.uploader.onCancelItem = (item: any, response: string, status: number, headers: any) => {
-        this.uploaderMessage = 'You cancel picture upload';
-        this.onCancelUpload();
-
-        return {item, response, status, headers};
-      };
-
-      this.uploader.onBeforeUploadItem = (fileItem: any) => {
-        this.progressData = 0;
-
-        return {fileItem};
-      };
-
-      this.uploader.onProgressItem = (fileItem: any, progress: any) => {
-        this.progressData = progress as number;
-
-        return {fileItem, progress};
-      };
-
-      this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any) => {
-        // response is the cloudinary response
-        // see http://cloudinary.com/documentation/upload_images#upload_response
-        const res: any = JSON.parse(response);
-        this.publicId = res.public_id;
-        this.url = res.secure_url;
-        this.extension = res.format;
-
-        const image: HTMLImageElement = new Image();
-        image.src = this.url;
-        image.setAttribute('crossOrigin', '');
-        image.addEventListener('load', (data) => {
-          this.cropper.setImage(image);
-          this.cropperClass = '';
-        });
-
-        this.isUploaded = true;
-
-        return {item, response, status, headers};
-      };
-
-      this.uploader.onErrorItem = (item: any, response: string, status: number, headers: ParsedResponseHeaders) => {
-        console.error(response);
-        return {item, response, status, headers};
-      };
-
-      return;
+      this.handleOnAfterAddingFile();
+      this.handleOnBuildItemForm();
+      this.handleOnCancelItem();
+      this.handleOnBeforeUploadItem();
+      this.handleOnProgressItem();
+      this.handleOnSuccessItem();
+      this.handleOnErrorItem();
     }
+  }
+
+  handleOnErrorItem() {
+    this.uploader.onErrorItem = (item: any, response: string, status: number, headers: ParsedResponseHeaders) => {
+      console.error(response);
+      return {item, response, status, headers};
+    };
+  }
+
+  handleOnSuccessItem() {
+    this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any) => {
+      // response is the cloudinary response
+      // see http://cloudinary.com/documentation/upload_images#upload_response
+      const res: any = JSON.parse(response);
+      this.publicId = res.public_id;
+      this.url = res.secure_url;
+      this.extension = res.format;
+
+      const image: HTMLImageElement = new Image();
+      image.src = this.url;
+      image.setAttribute('crossOrigin', '');
+      image.addEventListener('load', (data) => {
+        this.cropper.setImage(image);
+        this.cropperClass = '';
+      });
+
+      this.isUploaded = true;
+
+      return {item, response, status, headers};
+    };
+  }
+
+  handleOnProgressItem() {
+    this.uploader.onProgressItem = (fileItem: any, progress: any) => {
+      this.progressData = progress as number;
+
+      return {fileItem, progress};
+    };
+  }
+
+  handleOnBeforeUploadItem() {
+    this.uploader.onBeforeUploadItem = (fileItem: any) => {
+      this.progressData = 0;
+
+      return {fileItem};
+    };
+  }
+
+  handleOnCancelItem() {
+    this.uploader.onCancelItem = (item: any, response: string, status: number, headers: any) => {
+      this.uploaderMessage = 'You cancel picture upload';
+      this.onCancelUpload();
+
+      return {item, response, status, headers};
+    };
+  }
+
+  handleOnBuildItemForm() {
+    this.uploader.onBuildItemForm = (fileItem: any, form: FormData): any => {
+      const timestamp = Math.round(new Date().getTime() / 1000);
+      const transform = 't_media_web_import';
+      const paramsStr = 'timestamp=' + timestamp +
+        '&transformation=' +
+        't_media_web_import' +
+        '&upload_preset=' + this.cloudinary.config().upload_preset +
+        this.cloudinary.config().api_secret;
+      const signature = SHA1(paramsStr);
+
+      form.append('upload_preset', this.cloudinary.config().upload_preset);
+      form.append('file', fileItem);
+      form.append('timestamp', timestamp.toString());
+      form.append('signature', signature.toString());
+      form.append('api_key', this.cloudinary.config().api_key);
+      form.append('transformation', transform);
+
+      fileItem.withCredentials = false;
+      return {fileItem, form};
+    };
+  }
+
+  handleOnAfterAddingFile() {
+    this.uploader.onAfterAddingFile = (fileItem: any) => {
+      return fileItem;
+    };
+
+  }
+
+  getUploaderConfig(): FileUploader {
+    const uploaderOptions: FileUploaderOptions = {
+      url: `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/image/upload`,
+      autoUpload: true,
+      isHTML5: true,
+      removeAfterUpload: true,
+      headers: [{
+        name: 'X-Requested-With',
+        value: 'XMLHttpRequest'
+      }]
+    };
+    return new FileUploader(uploaderOptions);
   }
 
   initCanvas() {

@@ -1,11 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
-import { Media } from '../../media';
-import { MediaService } from '../../media.service';
+import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 import { DocumentReference } from '@firebase/firestore-types';
 import { TranslateService } from '@ngx-translate/core';
-import { AlertService } from '../../../popup/alert.service';
 import { take } from 'rxjs/operators';
+import { TouchAction } from 'tns-core-modules/ui/gestures';
+import { AlertService } from '../../../popup/alert.service';
+import { Media } from '../../media';
+import { MediaService } from '../../media.service';
+import down = TouchAction.down;
 
 @Component({
   selector: 'app-storage-upload',
@@ -41,7 +44,7 @@ export class StorageUploadComponent implements OnInit {
     const file = event.target.files[0];
     const filePath = (this.folder ? this.folder + '/' : '') + event.target.files[0].name;
 
-    const ref = this.storage.ref(filePath);
+    const ref: AngularFireStorageReference = this.storage.ref(filePath);
     let metadata = {
       cacheControl: 'public,max-age=7200',
       contentType: 'image/jpeg',
@@ -58,7 +61,7 @@ export class StorageUploadComponent implements OnInit {
     );
 
     imageRef
-      .catch((err) => {
+      .catch(() => {
         this.translate.get('error.upload.retry')
           .subscribe((translated) => {
             this.alertService.toast(translated);
@@ -68,36 +71,41 @@ export class StorageUploadComponent implements OnInit {
     // observe percentage changes
     imageRef.percentageChanges().subscribe(percent => this.uploadPercent = percent);
 
+    this.getNotifiedOnDownloadUrlChange(imageRef, metadata, ref);
+  }
+
+  getNotifiedOnDownloadUrlChange(imageRef: AngularFireUploadTask, metadata: object, ref: AngularFireStorageReference) {
     // get notified when the download URL is available
-    imageRef.then((taskSnapshot) => {
+    imageRef.then((taskSnapshot: UploadTaskSnapshot) => {
       this.imageRefChanged.emit(taskSnapshot);
       taskSnapshot.ref.getDownloadURL()
         .then(((downloadURL) => {
           this.downloadURL = downloadURL;
           ref.updateMetatdata(metadata)
-            .subscribe((res) => {
-            }, (err) => {
-            });
-
-          const media: Media = {
-            public_id: taskSnapshot.metadata.fullPath,
-            bucket: taskSnapshot.metadata.bucket,
-            content_type: taskSnapshot.metadata.contentType,
-            created_at: taskSnapshot.metadata.timeCreated,
-            updated_at: taskSnapshot.metadata.updated,
-            url: downloadURL,
-            type: 'storage',
-            alt: taskSnapshot.metadata.customMetadata && taskSnapshot.metadata.customMetadata.alt ?
-              taskSnapshot.metadata.customMetadata.alt : null,
-            extension: taskSnapshot.metadata.fullPath.substring(
-              taskSnapshot.metadata.fullPath.lastIndexOf('.') + 1, taskSnapshot.metadata.fullPath.length
-            ),
-            public: true,
-          };
+            .subscribe();
+          const media: Media = this.createMedia(taskSnapshot, downloadURL);
           this.onMediaChange(media);
 
         }));
     });
+  }
+
+  createMedia(taskSnapshot, downloadURL: string): Media {
+    return {
+      public_id: taskSnapshot.metadata.fullPath,
+      bucket: taskSnapshot.metadata.bucket,
+      content_type: taskSnapshot.metadata.contentType,
+      created_at: taskSnapshot.metadata.timeCreated,
+      updated_at: taskSnapshot.metadata.updated,
+      url: downloadURL,
+      type: 'storage',
+      alt: taskSnapshot.metadata.customMetadata && taskSnapshot.metadata.customMetadata.alt ?
+        taskSnapshot.metadata.customMetadata.alt : null,
+      extension: taskSnapshot.metadata.fullPath.substring(
+        taskSnapshot.metadata.fullPath.lastIndexOf('.') + 1, taskSnapshot.metadata.fullPath.length
+      ),
+      public: true,
+    };
   }
 
   deleteImage() {

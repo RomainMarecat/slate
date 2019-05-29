@@ -188,6 +188,17 @@ export class ProductListComponent implements OnInit {
    */
   ngOnInit() {
     this.menuService.nextTitle('Products');
+    this.setColumns();
+    this.isLoading = true;
+    this.productService.getProducts()
+      .subscribe((products: Product[]) => {
+        this.products = products;
+        this.cache = products;
+        this.isLoading = false;
+      });
+  }
+
+  setColumns() {
     this.columns = [{
       width: 75,
       sortable: false,
@@ -233,13 +244,6 @@ export class ProductListComponent implements OnInit {
       headerTemplate: this.desktopHeader,
       cellTemplate: this.actionsCell,
     }];
-    this.isLoading = true;
-    this.productService.getProducts()
-      .subscribe((products: Product[]) => {
-        this.products = products;
-        this.cache = products;
-        this.isLoading = false;
-      });
   }
 
   /**

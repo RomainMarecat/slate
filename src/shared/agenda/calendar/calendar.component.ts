@@ -10,17 +10,17 @@ import {
   Renderer2,
   ViewChildren
 } from '@angular/core';
-import { OnlineSession } from '../shared/online-session';
-import { Session } from '../../session/shared/session';
-import { Event } from '../shared/event';
 import * as moment from 'moment';
 import { Moment } from 'moment';
 import { Twix, TwixIter } from 'twix';
 import 'twix';
-import { EventService } from '../shared/event.service';
-import { Day } from '../shared/day';
 import { Filter } from '../../facet/filter/shared/filter';
+import { Session } from '../../session/shared/session';
 import { SessionService } from '../../session/shared/session.service';
+import { Day } from '../shared/day';
+import { Event } from '../shared/event';
+import { EventService } from '../shared/event.service';
+import { OnlineSession } from '../shared/online-session';
 
 @Component({
   selector: 'app-calendar',
@@ -58,6 +58,19 @@ export class CalendarComponent implements OnInit, OnChanges {
   sessionsSlots: Set<string>;
   sessionsEndSlots: Set<string>;
   sessions: Map<string, Session>;
+
+  static splitRangeToNextTime(slotTimeRange: TwixIter, slotDuration: number): {time: Twix, mmtTime: Moment} {
+    const time: Twix = slotTimeRange.next();
+    return {time: time, mmtTime: CalendarComponent.getMinutesDifference(moment(time.toDate()), slotDuration)};
+  }
+
+  static getMinutesDifference(mmtTime: Moment, slotDuration: number): Moment {
+    if (mmtTime.minutes() % slotDuration !== 0) {
+      mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % slotDuration));
+    }
+
+    return mmtTime;
+  }
 
   constructor(private eventService: EventService,
               private sessionService: SessionService,
@@ -272,10 +285,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const timeEarlierRange: TwixIter = mmtEarlyStart.twix(mmtStart).iterate(this.slotDuration, 'minutes');
     while (timeEarlierRange.hasNext()) {
       const time: Twix = timeEarlierRange.next();
-      const mmtTime: Moment = moment(time.toDate());
-      if (mmtTime.minutes() % this.slotDuration !== 0) {
-        mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-      }
+      const mmtTime: Moment = CalendarComponent.getMinutesDifference(moment(time.toDate()), this.slotDuration);
       if (mmtTime.isSameOrAfter(mmtEarlyStart) && mmtTime.isBefore(mmtStart)) {
         this.earlySlots.add(mmtTime.format('YYYY-MM-DDHH:mm'));
       }
@@ -287,11 +297,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const timePauseRange: TwixIter = mmtEarlyEnd.twix(mmtPauseEnd).iterate(this.slotDuration, 'minutes');
     while (timePauseRange.hasNext()) {
       const time: Twix = timePauseRange.next();
-      const mmtTime: Moment = moment(time.toDate());
-
-      if (mmtTime.minutes() % this.slotDuration !== 0) {
-        mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-      }
+      const mmtTime: Moment = CalendarComponent.getMinutesDifference(moment(time.toDate()), this.slotDuration);
       if (mmtTime.isSameOrAfter(mmtEarlyEnd) && mmtTime.isBefore(mmtPauseEnd)) {
         this.pauseSlots.add(mmtTime.format('YYYY-MM-DDHH:mm'));
       }
@@ -318,11 +324,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const timeEarlyRange: TwixIter = mmtEarlyStart.twix(mmtStart).iterate(this.slotDuration, 'minutes');
     while (timeEarlyRange.hasNext()) {
       const time: Twix = timeEarlyRange.next();
-      const mmtTime: Moment = moment(time.toDate());
-
-      if (mmtTime.minutes() % this.slotDuration !== 0) {
-        mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-      }
+      const mmtTime: Moment = CalendarComponent.getMinutesDifference(moment(time.toDate()), this.slotDuration);
       if (mmtTime.isSameOrAfter(mmtEarlyStart) && mmtTime.isBefore(mmtStart)) {
         this.earlySlots.delete(mmtTime.format('YYYY-MM-DDHH:mm'));
       }
@@ -335,11 +337,7 @@ export class CalendarComponent implements OnInit, OnChanges {
       const timePauseRange: TwixIter = mmtEarlyEnd.twix(mmtPauseEnd).iterate(this.slotDuration, 'minutes');
       while (timePauseRange.hasNext()) {
         const time: Twix = timePauseRange.next();
-        const mmtTime: Moment = moment(time.toDate());
-
-        if (mmtTime.minutes() % this.slotDuration !== 0) {
-          mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-        }
+        const mmtTime: Moment = CalendarComponent.getMinutesDifference(moment(time.toDate()), this.slotDuration);
         if (mmtTime.isSameOrAfter(mmtEarlyEnd) && mmtTime.isBefore(mmtPauseEnd)) {
           this.pauseSlots.delete(mmtTime.format('YYYY-MM-DDHH:mm'));
         }
@@ -366,60 +364,60 @@ export class CalendarComponent implements OnInit, OnChanges {
         this.daysBusySlotNumber = new Map();
 
         this.events.forEach((event: Event) => {
-          const mmtEventStart = moment(event.start, 'YYYY-MM-DDHH:mm');
-          const mmtEventEnd = moment(event.end, 'YYYY-MM-DDHH:mm');
-          if (!mmtEventStart || !mmtEventStart.isValid()
-            || !mmtEventEnd || !mmtEventEnd.isValid()
-            || !mmtEventStart.isBefore(mmtEventEnd)) {
-            console.error('invalid dates');
-            return -1;
-          }
-          /* building busy slots by events*/
-          const eventsTimeRange: TwixIter = mmtEventStart.twix(mmtEventEnd).iterate(this.slotDuration, 'minutes');
-          while (eventsTimeRange.hasNext()) {
-            const time: Twix = eventsTimeRange.next();
-            const mmtTime: Moment = moment(time.toDate());
-            if (mmtTime.minutes() % this.slotDuration !== 0) {
-              mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-            }
-            /* IF the busy slot is in availability and not already in busySloits we count it */
-            if (this.daysAvailability && this.daysAvailability.has(time.format('YYYY-MM-DD'))
-              && !this.busySlots.has(time.format('YYYY-MM-DDHH:mm'))
-              && this.daysAvailability.get(time.format('YYYY-MM-DD')).indexOf(time.format('HH:mm')) >= 0) {
-              let dayBusyNumber = this.daysBusySlotNumber.has(time.format('YYYY-MM-DD')) ?
-                this.daysBusySlotNumber.get(time.format('YYYY-MM-DD')) : 0;
-              dayBusyNumber++;
-              this.daysBusySlotNumber.set(time.format('YYYY-MM-DD'), dayBusyNumber);
-            }
-            this.busySlots.add(time.format('YYYY-MM-DDHH:mm'));
-          }
-          /* building earliest slot before event */
-          const mmtEarlyStart = mmtEventStart.clone().subtract(this.trueDuration, 'minutes');
-          mmtEarlyStart.minutes(mmtEarlyStart.minutes() -
-            (mmtEarlyStart.minutes() % this.slotDuration) + this.slotDuration);
-          const earliestTimeRange: TwixIter = mmtEarlyStart.twix(mmtEventStart).iterate(this.slotDuration, 'minutes');
-          while (earliestTimeRange.hasNext()) {
-            const time: Twix = earliestTimeRange.next();
-            const mmtTime: Moment = moment(time.toDate());
-
-            if (mmtTime.minutes() % this.slotDuration !== 0) {
-              mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
-            }
-            /* IF the busy slot is in availability and not already in busySloits we count it */
-            if (this.daysAvailability && this.daysAvailability.has(time.format('YYYY-MM-DD'))
-              && !this.busySlots.has(time.format('YYYY-MM-DDHH:mm'))
-              && this.daysAvailability.get(time.format('YYYY-MM-DD')).indexOf(time.format('HH:mm')) >= 0) {
-              let dayBusyNumber = this.daysBusySlotNumber.has(time.format('YYYY-MM-DD')) ?
-                this.daysBusySlotNumber.get(time.format('YYYY-MM-DD')) : 0;
-              dayBusyNumber++;
-              this.daysBusySlotNumber.set(time.format('YYYY-MM-DD'), dayBusyNumber);
-            }
-            this.busySlots.add(time.format('YYYY-MM-DDHH:mm'));
-
-          }
+          let mmtEventStart = moment(event.start, 'YYYY-MM-DDHH:mm');
+          mmtEventStart = this.buildinBusySlot(mmtEventStart, event);
+          this.buildingEarliestSlot(mmtEventStart);
         });
 
         this.cd.markForCheck();
       });
+  }
+
+  buildinBusySlot(mmtEventStart: Moment, event: Event): Moment {
+    const mmtEventEnd = moment(event.end, 'YYYY-MM-DDHH:mm');
+    if (!mmtEventStart || !mmtEventStart.isValid()
+      || !mmtEventEnd || !mmtEventEnd.isValid()
+      || !mmtEventStart.isBefore(mmtEventEnd)) {
+      console.error('invalid dates');
+      return null;
+    }
+    /* building busy slots by events*/
+    const eventsTimeRange: TwixIter = mmtEventStart.twix(mmtEventEnd).iterate(this.slotDuration, 'minutes');
+    while (eventsTimeRange.hasNext()) {
+      const {time, mmtTime} = CalendarComponent.splitRangeToNextTime(eventsTimeRange, this.slotDuration);
+      /* IF the busy slot is in availability and not already in busySloits we count it */
+      if (this.daysAvailability && this.daysAvailability.has(time.format('YYYY-MM-DD'))
+        && !this.busySlots.has(time.format('YYYY-MM-DDHH:mm'))
+        && this.daysAvailability.get(time.format('YYYY-MM-DD')).indexOf(time.format('HH:mm')) >= 0) {
+        let dayBusyNumber = this.daysBusySlotNumber.has(time.format('YYYY-MM-DD')) ?
+          this.daysBusySlotNumber.get(time.format('YYYY-MM-DD')) : 0;
+        dayBusyNumber++;
+        this.daysBusySlotNumber.set(time.format('YYYY-MM-DD'), dayBusyNumber);
+      }
+      this.busySlots.add(time.format('YYYY-MM-DDHH:mm'));
+    }
+
+    return mmtEventStart;
+  }
+
+  buildingEarliestSlot(mmtEventStart: Moment) {
+    /* building earliest slot before event */
+    const mmtEarlyStart = mmtEventStart.clone().subtract(this.trueDuration, 'minutes');
+    mmtEarlyStart.minutes(mmtEarlyStart.minutes() -
+      (mmtEarlyStart.minutes() % this.slotDuration) + this.slotDuration);
+    const earliestTimeRange: TwixIter = mmtEarlyStart.twix(mmtEventStart).iterate(this.slotDuration, 'minutes');
+    while (earliestTimeRange.hasNext()) {
+      const {time, mmtTime} = CalendarComponent.splitRangeToNextTime(earliestTimeRange, this.slotDuration);
+      /* IF the busy slot is in availability and not already in busySloits we count it */
+      if (this.daysAvailability && this.daysAvailability.has(time.format('YYYY-MM-DD'))
+        && !this.busySlots.has(time.format('YYYY-MM-DDHH:mm'))
+        && this.daysAvailability.get(time.format('YYYY-MM-DD')).indexOf(time.format('HH:mm')) >= 0) {
+        let dayBusyNumber = this.daysBusySlotNumber.has(time.format('YYYY-MM-DD')) ?
+          this.daysBusySlotNumber.get(time.format('YYYY-MM-DD')) : 0;
+        dayBusyNumber++;
+        this.daysBusySlotNumber.set(time.format('YYYY-MM-DD'), dayBusyNumber);
+      }
+      this.busySlots.add(time.format('YYYY-MM-DDHH:mm'));
+    }
   }
 }

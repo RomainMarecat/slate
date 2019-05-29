@@ -18,14 +18,11 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getFacets();
+  }
+
+  getFacets() {
     this.facets = [
-      // {
-      //   name: 'Catégorie',
-      //   column: 'category',
-      //   operator: '==',
-      //   value: '',
-      //   selected: true
-      // },
       {
         name: 'Les produits les plus vendus',
         column: 'best-seller',
@@ -51,13 +48,6 @@ export class FilterComponent implements OnInit {
         value: '',
         selected: false
       },
-      // {
-      //   name: 'Attributs',
-      //   column: 'attribute',
-      //   operator: '==',
-      //   value: '',
-      //   selected: false
-      // },
       {
         name: 'Rechercher dans la descripion',
         column: 'description',

@@ -1,11 +1,10 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { SlackNotificationService } from '@romainmarecat/ngx-slack-notification';
 import { LoaderService } from '../../loader/loader.service';
 import { AlertService } from '../../popup/alert.service';
+import { SeoService } from '../../seo/shared/seo.service';
 import { UserService } from '../../user/shared/user.service';
 import { ClothingProduct } from '../shared/clothing-product';
 import { Product } from '../shared/product';
@@ -21,10 +20,14 @@ export class ProductAddComponent implements OnInit {
   ratio: string;
   user: any;
 
-  constructor(private router: Router, private productService: ProductService,
-              public alertService: AlertService, private userService: UserService,
-              private loaderService: LoaderService, private slackNotification: SlackNotificationService,
-              private meta: Meta, private translateService: TranslateService) {
+  constructor(private router: Router,
+              private productService: ProductService,
+              public alertService: AlertService,
+              private userService: UserService,
+              private loaderService: LoaderService,
+              private slackNotification: SlackNotificationService,
+              private meta: Meta,
+              private seoService: SeoService) {
     this.user = this.userService.getUser();
     this.ratio = '3:5';
     this.loaderService.show();
@@ -36,14 +39,8 @@ export class ProductAddComponent implements OnInit {
   ngOnInit() {
     this.loaderService.hide();
     // Title + description
-    this.translateService.get('product-add.meta.title')
-      .subscribe((translation: string) => {
-        this.meta.addTag({name: 'title', content: translation});
-      });
-    this.translateService.get('product-add.meta.description')
-      .subscribe((translation: string) => {
-        this.meta.addTag({name: 'description', content: translation});
-      });
+    this.seoService.addTag('title', 'product-add.meta.title');
+    this.seoService.addTag('description', 'product-add.meta.description');
   }
 
   /**

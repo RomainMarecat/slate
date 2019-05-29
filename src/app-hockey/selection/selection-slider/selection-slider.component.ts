@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Product } from '../../../shared/product/shared/product';
+import { ProductService } from '../../../shared/product/shared/product.service';
 import { Selection } from '../../../shared/selection/selection';
 import { SelectionService } from '../../../shared/selection/selection.service';
-import { ProductService } from '../../../shared/product/shared/product.service';
-import { Product } from '../../../shared/product/shared/product';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-hockey-selection-slider',
@@ -33,11 +33,7 @@ export class SelectionSliderComponent implements OnInit {
       this.productService.getProducts()
         .pipe(
           map((products: Product[]) =>
-            products.filter((product: Product) =>
-              selection &&
-              selection.products &&
-              selection.products.length > 0 &&
-              selection.products.includes(product.key)))
+            products.filter((product: Product) => selection.products.includes(product.key)))
         )
         .subscribe((products: Product[]) => {
           this.products = products;
