@@ -175,92 +175,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
       this.cart &&
       this.delivery &&
       this.cart.total) {
-      this.stripeService
-        .createToken(this.card.getCard(), {name: this.userService.getUser().email})
-        .subscribe((result: TokenResult) => {
-          if (result.token) {
-            // Use the token to create a charge or a customer
-            // https://stripe.com/docs/charges
-            const order: Order = {
-              cart: this.cart.key,
-              total: this.cart.total,
-              user: this.cart.user,
-              items: this.cart.items,
-              status: 'capture_authorized',
-              delivery_fee: 0,
-              delivery: this.delivery.key,
-              created_at: new Date(),
-              updated_at: new Date(),
-            };
-
-            this.payment = {
-              token: result.token,
-              created_at: new Date(),
-              updated_at: new Date(),
-            };
-            // Never never process charge here with access token from your secret key
-            // send the token to the your backend to process the charge
-            this.orderService.createOrder(order)
-              .subscribe((createdOrder) => {
-                order.key = createdOrder.id;
-                this.orderService.updateOrder(order)
-                  .subscribe(() => {
-                    this.payment.order = order.key;
-                    this.paymentService.createPayment(this.payment)
-                      .subscribe((createdPayment: DocumentReference) => {
-                        this.payment.key = createdPayment.id;
-                        this.paymentService.updatePayment(this.payment)
-                          .subscribe(() => {
-                            this.cart.state = 'confirmation';
-                            this.cart.order = order.key;
-                            this.cartService.updateCart(this.cart)
-                              .subscribe(() => {
-                                this.paid.emit(this.payment);
-                                this.paymentService.payment$.next(this.payment);
-                                if (!this.delivery.order) {
-                                  this.delivery.order = [];
-                                }
-                                if (!this.delivery.order.includes(order.key)) {
-                                  this.delivery.order.push(order.key);
-                                }
-                                this.deliveryService.updateDelivery(this.delivery)
-                                  .subscribe(() => {
-                                      // async save delivery order key
-                                    },
-                                    (err) => {
-                                      this.handleErrorResponse(err);
-                                    });
-
-                                this.updateOrderedProducts(order);
-
-                                this.loaderService.hide();
-                              }, (err) => {
-                                this.handleErrorResponse(err);
-                                this.togglePayButton();
-                              });
-                            this.togglePayButton();
-                          }, (err) => {
-                            this.handleErrorResponse(err);
-                            this.togglePayButton();
-                          });
-                      }, (err) => {
-                        this.handleErrorResponse(err);
-                        this.togglePayButton();
-                      });
-                  }, (err) => {
-                    this.handleErrorResponse(err);
-                    this.togglePayButton();
-                  });
-              }, (err) => {
-                this.handleErrorResponse(err);
-                this.togglePayButton();
-              });
-          } else if (result.error) {
-            // Error creating the token
-            this.handleErrorResponse(result.error);
-            this.togglePayButton();
-          }
-        });
+      this.createToken();
     } else {
       // Undefined cart or undefined total
       this.alertService.openBottomSheetMessage(
@@ -270,6 +185,119 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
       this.togglePayButton();
       this.loaderService.hide();
     }
+  }
+
+  createToken(): void {
+    this.stripeService
+      .createToken(this.card.getCard(), {name: this.userService.getUser().email})
+      .subscribe((result: TokenResult) => {
+        if (result.token) {
+          const order = this.createOrder(result);
+          this.saveOrder(order);
+        } else if (result.error) {
+          // Error creating the token
+          this.handleErrorResponse(result.error);
+          this.togglePayButton();
+        }
+      });
+  }
+
+  saveOrder(order: Order) {
+    // Never never process charge here with access token from your secret key
+    // send the token to the your backend to process the charge
+    this.orderService.createOrder(order)
+      .subscribe((createdOrder) => {
+        order.key = createdOrder.id;
+        this.orderService.updateOrder(order)
+          .subscribe(() => {
+            this.payment.order = order.key;
+            this.savePayment(order);
+          }, (err) => {
+            this.handleErrorResponse(err);
+            this.togglePayButton();
+          });
+      }, (err) => {
+        this.handleErrorResponse(err);
+        this.togglePayButton();
+      });
+  }
+
+  savePayment(order: Order) {
+    this.paymentService.createPayment(this.payment)
+      .subscribe((createdPayment: DocumentReference) => {
+        this.payment.key = createdPayment.id;
+        this.paymentService.updatePayment(this.payment)
+          .subscribe(() => {
+            this.cart.state = 'confirmation';
+            this.cart.order = order.key;
+
+            this.updateCart(order);
+
+            this.togglePayButton();
+          }, (err) => {
+            this.handleErrorResponse(err);
+            this.togglePayButton();
+          });
+      }, (err) => {
+        this.handleErrorResponse(err);
+        this.togglePayButton();
+      });
+  }
+
+  updateCart(order: Order) {
+    this.cartService.updateCart(this.cart)
+      .subscribe(() => {
+        this.paid.emit(this.payment);
+        this.paymentService.payment$.next(this.payment);
+        this.updateDelivery(order);
+
+        this.updateOrderedProducts(order);
+
+        this.loaderService.hide();
+      }, (err) => {
+        this.handleErrorResponse(err);
+        this.togglePayButton();
+      });
+  }
+
+  updateDelivery(order: Order) {
+    if (!this.delivery.order) {
+      this.delivery.order = [];
+    }
+    if (!this.delivery.order.includes(order.key)) {
+      this.delivery.order.push(order.key);
+    }
+    this.deliveryService.updateDelivery(this.delivery)
+      .subscribe(() => {
+          // async save delivery order key
+        },
+        (err) => {
+          this.handleErrorResponse(err);
+        });
+  }
+
+  createOrder(result: TokenResult): Order {
+    // Use the token to create a charge or a customer
+    // https://stripe.com/docs/charges
+    const order: Order = {
+      cart: this.cart.key,
+      total: this.cart.total,
+      user: this.cart.user,
+      items: this.cart.items,
+      status: 'capture_authorized',
+      delivery_fee: 0,
+      delivery: this.delivery.key,
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
+
+    this.payment = {
+      token: result.token,
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
+
+    return order;
   }
 
   updateOrderedProducts(order: Order) {

@@ -1,18 +1,18 @@
-import { Component, OnInit, Output, EventEmitter, Optional } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../shared/product.service';
+import { Component, EventEmitter, OnInit, Optional, Output } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { MediaService } from '../../media/media.service';
-import { LoaderService } from '../../loader/loader.service';
-import { CloudinaryTagService } from '../../media/cloudinary/cloudinary-tag.service';
-import { environment } from '../../../app-store/environments/environment';
-import { Product } from '../shared/product';
-import { SeoService } from '../../seo/shared/seo.service';
+import { FirebaseError } from 'firebase';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { FirebaseError } from 'firebase';
+import { environment } from '../../../app-store/environments/environment';
+import { LoaderService } from '../../loader/loader.service';
+import { CloudinaryTagService } from '../../media/cloudinary/cloudinary-tag.service';
+import { MediaService } from '../../media/media.service';
 import { AlertService } from '../../popup/alert.service';
+import { SeoService } from '../../seo/shared/seo.service';
+import { Product } from '../shared/product';
+import { ProductService } from '../shared/product.service';
 
 export interface Section {
   title: string;
