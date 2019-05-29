@@ -59,6 +59,11 @@ export class CalendarComponent implements OnInit, OnChanges {
   sessionsEndSlots: Set<string>;
   sessions: Map<string, Session>;
 
+  static splitRangeToNextTime(slotTimeRange: TwixIter): {time: Twix, mmtTime: Moment} {
+    const time: Twix = slotTimeRange.next();
+    return {time: time, mmtTime: moment(time.toDate())};
+  }
+
   constructor(private eventService: EventService,
               private sessionService: SessionService,
               private cd: ChangeDetectorRef,
@@ -386,8 +391,8 @@ export class CalendarComponent implements OnInit, OnChanges {
     /* building busy slots by events*/
     const eventsTimeRange: TwixIter = mmtEventStart.twix(mmtEventEnd).iterate(this.slotDuration, 'minutes');
     while (eventsTimeRange.hasNext()) {
-      const time: Twix = eventsTimeRange.next();
-      const mmtTime: Moment = moment(time.toDate());
+      const {time, mmtTime} = CalendarComponent.splitRangeToNextTime(eventsTimeRange);
+
       if (mmtTime.minutes() % this.slotDuration !== 0) {
         mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
       }
@@ -413,8 +418,7 @@ export class CalendarComponent implements OnInit, OnChanges {
       (mmtEarlyStart.minutes() % this.slotDuration) + this.slotDuration);
     const earliestTimeRange: TwixIter = mmtEarlyStart.twix(mmtEventStart).iterate(this.slotDuration, 'minutes');
     while (earliestTimeRange.hasNext()) {
-      const time: Twix = earliestTimeRange.next();
-      const mmtTime: Moment = moment(time.toDate());
+      const {time, mmtTime} = CalendarComponent.splitRangeToNextTime(earliestTimeRange);
 
       if (mmtTime.minutes() % this.slotDuration !== 0) {
         mmtTime.minutes(mmtTime.minutes() - (mmtTime.minutes() % this.slotDuration));
