@@ -1,16 +1,16 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Selection } from '../../../selection/selection';
-import { SelectionFormType } from '../../shared/navigation/selection/form-selection';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AlertService } from '../../../popup/alert.service';
-import { Product } from '../../../product/shared/product';
-import { Media } from '../../../media/media';
-import { StringService } from '../../../util/string.service';
-import { SelectionService } from '../../../selection/selection.service';
-import { ProductService } from '../../../product/shared/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalizeRouterService } from 'localize-router';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Media } from '../../../media/media';
+import { AlertService } from '../../../popup/alert.service';
+import { Product } from '../../../product/shared/product';
+import { ProductService } from '../../../product/shared/product.service';
+import { Selection } from '../../../selection/selection';
+import { SelectionService } from '../../../selection/selection.service';
+import { StringService } from '../../../util/string.service';
+import { SelectionFormType } from '../../shared/navigation/selection/form-selection';
 
 @Component({
   selector: 'app-selection-edit',
@@ -49,6 +49,79 @@ export class SelectionEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setColumnsProduct();
+    this.setColumnsParent();
+    this.createForm();
+    this.getSelection();
+    this.isLoadingProducts = true;
+    this.isLoadingParents = true;
+
+    this.getSelections();
+    this.getProducts();
+  }
+
+  getSelections() {
+    this.selectionService.getSelections()
+      .subscribe((parents: Selection[]) => {
+        this.parents = parents;
+        this.parents.forEach((parent) => {
+          if (this.selection && parent.key === this.selection.parent) {
+            this.selectedParent.push(parent);
+          }
+        });
+        this.isLoadingParents = false;
+      });
+  }
+
+  getProducts() {
+    this.productService.getProducts()
+      .subscribe((products: Product[]) => {
+        this.associatedProducts = products.sort((prev: Product, next: Product) => {
+          return prev.translations.fr > next.translations.fr ? 1 : -1;
+        });
+        if (this.selection && this.selection.products) {
+          this.associatedProducts.forEach((product: Product) => {
+            this.selection.products.forEach((keyProduct: string) => {
+              if (product.key === keyProduct) {
+                this.selectedProducts.push(product);
+              }
+            });
+
+          });
+        }
+        this.isLoadingProducts = false;
+      });
+  }
+
+  setColumnsParent() {
+    this.columnsParent = [{
+      width: 50,
+      sortable: false,
+      canAutoResize: false,
+      draggable: false,
+      resizeable: false,
+      cellTemplate: this.checkboxCell,
+      headerTemplate: this.checkboxHeader,
+    }, {
+      prop: 'name',
+      name: 'name',
+    }, {
+      prop: 'translations.fr',
+      name: 'fr',
+      flexGrow: 1
+    }, {
+      prop: 'published',
+      name: 'published',
+      flexGrow: 1,
+      cellTemplate: this.publicationCell
+    }, {
+      prop: 'level',
+      name: 'level',
+      flexGrow: 1
+    }];
+  }
+
+  setColumnsProduct() {
     this.columnsProduct = [{
       width: 50,
       sortable: false,
@@ -71,64 +144,6 @@ export class SelectionEditComponent implements OnInit {
       name: 'category',
       flexGrow: 1
     }];
-    this.columnsParent = [{
-      width: 50,
-      sortable: false,
-      canAutoResize: false,
-      draggable: false,
-      resizeable: false,
-      cellTemplate: this.checkboxCell,
-      headerTemplate: this.checkboxHeader,
-    }, {
-      prop: 'name',
-      name: 'name',
-      flexGrow: 1
-    }, {
-      prop: 'translations.fr',
-      name: 'fr',
-      flexGrow: 1
-    }, {
-      prop: 'published',
-      name: 'published',
-      flexGrow: 1,
-      cellTemplate: this.publicationCell
-    }, {
-      prop: 'level',
-      name: 'level',
-      flexGrow: 1
-    }];
-    this.createForm();
-    this.getSelection();
-    this.isLoadingProducts = true;
-    this.isLoadingParents = true;
-
-    this.selectionService.getSelections()
-      .subscribe((parents: Selection[]) => {
-        this.parents = parents;
-        this.parents.forEach((parent) => {
-          if (this.selection && parent.key === this.selection.parent) {
-            this.selectedParent.push(parent);
-          }
-        });
-        this.isLoadingParents = false;
-      });
-    this.productService.getProducts()
-      .subscribe((products: Product[]) => {
-        this.associatedProducts = products.sort((prev: Product, next: Product) => {
-          return prev.translations.fr > next.translations.fr ? 1 : -1;
-        });
-        if (this.selection && this.selection.products) {
-          this.associatedProducts.forEach((product: Product) => {
-            this.selection.products.forEach((keyProduct: string) => {
-              if (product.key === keyProduct) {
-                this.selectedProducts.push(product);
-              }
-            });
-
-          });
-        }
-        this.isLoadingProducts = false;
-      });
   }
 
   observeUpdate() {

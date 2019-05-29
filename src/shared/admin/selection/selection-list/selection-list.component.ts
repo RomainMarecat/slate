@@ -118,6 +118,10 @@ export class SelectionListComponent implements OnInit {
         this.isLoading = false;
       });
 
+    this.setColumns();
+  }
+
+  setColumns() {
     this.columns = [{
       width: 50,
       sortable: false,
@@ -191,7 +195,7 @@ export class SelectionListComponent implements OnInit {
       cellTemplate: this.actionsCell,
       width: 50,
       flexGrow: 1,
-    }, ];
+    }];
   }
 
   /**
