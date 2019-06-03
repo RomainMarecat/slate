@@ -1,4 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { observe } from 'tns-core-modules/ui/gestures';
 import { BaseListComponent } from '../../../base/base-list/base-list.component';
 import { Recipe } from '../../../../../app-recipe/recipe/shared/recipe';
 import { MenuService } from '../../../../menu/menu.service';
@@ -32,7 +34,7 @@ export class RecipeListComponent extends BaseListComponent<Recipe> implements On
   ngOnInit() {
     this.isLoading = true;
     this.menuService.nextTitle('menu.title.recipe');
-    this.columns = this.getColumns();
+    this.getColumns().subscribe(columns => this.columns = columns);
 
     this.recipeService.query$.next({
       recipeBy: {
@@ -69,32 +71,34 @@ export class RecipeListComponent extends BaseListComponent<Recipe> implements On
     });
   }
 
-  getColumns(): TableColumn[] {
-    return [
-      {
-        prop: 'key',
-        name: 'key',
-        flexGrow: 1,
-        headerTemplate: this.desktopHeader,
-        minWidth: 50,
-      }, {
-        prop: 'name',
-        name: 'name',
-        flexGrow: 1,
-        headerTemplate: this.desktopHeader,
-      },
-      {
-        prop: 'slug',
-        name: 'slug',
-        flexGrow: 1,
-        headerTemplate: this.desktopHeader,
-      }, {
-        prop: 'key',
-        name: 'Actions',
-        flexGrow: 1,
-        headerTemplate: this.desktopHeader,
-        cellTemplate: this.actionsCell,
-      }
-    ];
+  getColumns(): Observable<TableColumn[]> {
+    return new Observable(observer => {
+      observer.next([
+        {
+          prop: 'key',
+          name: 'key',
+          flexGrow: 1,
+          headerTemplate: this.desktopHeader,
+          minWidth: 50,
+        }, {
+          prop: 'name',
+          name: 'name',
+          flexGrow: 1,
+          headerTemplate: this.desktopHeader,
+        },
+        {
+          prop: 'slug',
+          name: 'slug',
+          flexGrow: 1,
+          headerTemplate: this.desktopHeader,
+        }, {
+          prop: 'key',
+          name: 'Actions',
+          flexGrow: 1,
+          headerTemplate: this.desktopHeader,
+          cellTemplate: this.actionsCell,
+        }
+      ]);
+    });
   }
 }

@@ -1,6 +1,14 @@
 :host {
+  position: relative;
   display: flex;
+  justify-content: center;
   flex: 1;
+}
+
+.sidenav-opener {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .big-circle {
