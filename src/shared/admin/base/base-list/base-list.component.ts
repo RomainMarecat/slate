@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
+import { Observable } from 'rxjs';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MenuService } from '../../../menu/menu.service';
 import { VisitorService } from '../../../firestore/visitor.service';
@@ -70,7 +71,7 @@ export class BaseListComponent<T> implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this.menuService.nextTitle('Base');
-    this.columns = this.getColumns();
+    this.getColumns().subscribe(columns => this.columns = columns);
     this.visitorService.getDocuments()
       .subscribe((documents: T[]) => {
         this.documents = documents;
@@ -83,36 +84,38 @@ export class BaseListComponent<T> implements OnInit {
       });
   }
 
-  getColumns(): TableColumn[] {
-    return [
-      {
-        width: 75,
-        sortable: false,
-        canAutoResize: false,
-        draggable: false,
-        resizeable: false,
-        headerTemplate: this.checkboxHeader,
-        cellTemplate: this.checkboxCell,
-      }, {
-        prop: 'key',
-        name: 'key',
-        flexGrow: 1,
-        headerTemplate: this.desktopHeader,
-        minWidth: 50,
-      }, {
-        prop: 'published',
-        name: 'published',
-        flexGrow: 1,
-        headerTemplate: this.desktopHeader,
-        cellTemplate: this.publicationCell,
-      }, {
-        prop: 'key',
-        name: 'Actions',
-        flexGrow: 1,
-        headerTemplate: this.desktopHeader,
-        cellTemplate: this.actionsCell,
-      }
-    ];
+  getColumns(): Observable<TableColumn[]> {
+    return new Observable(observer => {
+      observer.next([
+        {
+          width: 75,
+          sortable: false,
+          canAutoResize: false,
+          draggable: false,
+          resizeable: false,
+          headerTemplate: this.checkboxHeader,
+          cellTemplate: this.checkboxCell,
+        }, {
+          prop: 'key',
+          name: 'key',
+          flexGrow: 1,
+          headerTemplate: this.desktopHeader,
+          minWidth: 50,
+        }, {
+          prop: 'published',
+          name: 'published',
+          flexGrow: 1,
+          headerTemplate: this.desktopHeader,
+          cellTemplate: this.publicationCell,
+        }, {
+          prop: 'key',
+          name: 'Actions',
+          flexGrow: 1,
+          headerTemplate: this.desktopHeader,
+          cellTemplate: this.actionsCell,
+        }
+      ]);
+    });
   }
 
 

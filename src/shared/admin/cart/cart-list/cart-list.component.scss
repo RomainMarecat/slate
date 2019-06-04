@@ -12,3 +12,36 @@
 .document-actions a {
   color: #000;
 }
+
+.text-date {
+  font-size: 9px;
+}
+
+@media screen and (max-width: 800px) {
+  span {
+    font-size: 12px;
+  }
+
+  .text-date {
+    font-size: 9px;
+  }
+
+  .desktop-hidden {
+    display: initial;
+  }
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .desktop-hidden {
+    display: none !important;
+  }
+  .mobile-hidden {
+    display: initial;
+  }
+  ::ng-deep .ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell:nth-child(2) {
+    padding: 0 1.2rem;
+  }
+}
