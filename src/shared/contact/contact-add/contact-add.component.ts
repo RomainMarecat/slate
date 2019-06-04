@@ -86,38 +86,46 @@ export class ContactAddComponent {
       });
   }
 
+  getContactFromForm(form: FormGroup): Contact {
+    return {
+      key: null,
+      last_message: form.value.message,
+      user: {
+        uid: form.value.uid,
+        displayName: form.value.name,
+        email: form.value.email,
+        photoURL: form.value.photoURL,
+      },
+      created_at: new Date(),
+      updated_at: new Date(),
+      conversations: []
+    };
+  }
+
+  getConversationFromForm(doc: DocumentReference, form: FormGroup): Conversation {
+    return {
+      key: null,
+      message: form.value.message,
+      contact: doc.id,
+      user: {
+        uid: form.value.uid,
+        displayName: form.value.name,
+        email: form.value.email,
+        photoURL: form.value.photoURL,
+      },
+      created_at: new Date(),
+      updated_at: new Date()
+    };
+  }
+
   onSubmit() {
     if (this.form.valid) {
-      this.contact = {
-        key: null,
-        last_message: this.form.value.message,
-        user: {
-          uid: this.form.value.uid,
-          displayName: this.form.value.name,
-          email: this.form.value.email,
-          photoURL: this.form.value.photoURL,
-        },
-        created_at: new Date(),
-        updated_at: new Date(),
-        conversations: []
-      };
+      this.contact = this.getContactFromForm(this.form);
       this.contactService.createContact(this.contact)
         .subscribe((doc: DocumentReference) => {
           this.contact.key = doc.id;
 
-          const conversation: Conversation = {
-            key: null,
-            message: this.form.value.message,
-            contact: doc.id,
-            user: {
-              uid: this.form.value.uid,
-              displayName: this.form.value.name,
-              email: this.form.value.email,
-              photoURL: this.form.value.photoURL,
-            },
-            created_at: new Date(),
-            updated_at: new Date()
-          };
+          const conversation: Conversation = this.getConversationFromForm(doc, this.form);
           this.conversationService.createConversation(conversation)
             .subscribe((docConversation: DocumentReference) => {
               conversation.key = docConversation.id;

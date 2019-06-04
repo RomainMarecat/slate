@@ -71,25 +71,33 @@ export class OrderEditComponent extends BaseEditComponent<Order> implements OnIn
         this.document['published_at'] = new Date();
       }
       if (this.document.key) {
-        this.orderService.updateDocument(this.document)
-          .then((doc) => {
-            this.alertService.show(`document updated ${this.document.key}`);
-            this.reset();
-            this.router.navigate([this.localizeRouterService.translateRoute('/admin/order')]);
-          }, (err) => {
-            this.alertService.show(`order error ${err}`);
-          });
+        this.updateDocument();
       } else {
-        this.orderService.createDocument(this.document)
-          .then((doc: DocumentReference) => {
-            this.alertService.show(`order added ${doc.id}`);
-            this.reset();
-            this.router.navigate([this.localizeRouterService.translateRoute('/admin/order')]);
-          }, (err) => {
-            this.alertService.show(`order error ${err}`);
-          });
+        this.createDocument();
       }
     }
+  }
+
+  createDocument() {
+    this.orderService.createDocument(this.document)
+      .then((doc: DocumentReference) => {
+        this.alertService.show(`order added ${doc.id}`);
+        this.reset();
+        this.router.navigate([this.localizeRouterService.translateRoute('/admin/order')]);
+      }, (err) => {
+        this.alertService.show(`order error ${err}`);
+      });
+  }
+
+  updateDocument() {
+    this.orderService.updateDocument(this.document)
+      .then((doc) => {
+        this.alertService.show(`document updated ${this.document.key}`);
+        this.reset();
+        this.router.navigate([this.localizeRouterService.translateRoute('/admin/order')]);
+      }, (err) => {
+        this.alertService.show(`order error ${err}`);
+      });
   }
 
   /**

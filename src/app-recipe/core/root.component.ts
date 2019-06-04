@@ -50,6 +50,30 @@ export class AppRootComponent implements OnInit, OnDestroy {
               private domSanitizer: DomSanitizer,
               private router: Router,
               private recipeService: RecipeService) {
+
+    this.initIconsFactory();
+    this.routeSubscriber();
+  }
+
+  routeSubscriber() {
+    // previous url
+    let previousRoute = this.router.routerState.snapshot.url;
+
+    // Route subscriber
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((data: NavigationEnd) => {
+        // We want to reset the scroll position on navigation except when navigating within
+        // the page for a single component.
+        if (!isNavigationWithinComponentView(previousRoute, data.urlAfterRedirects)) {
+          resetScrollPosition();
+        }
+
+        previousRoute = data.urlAfterRedirects;
+      });
+  }
+
+  initIconsFactory() {
     this.matIconRegistry.addSvgIcon(
       `search`,
       this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/images/search.svg`)
@@ -74,22 +98,6 @@ export class AppRootComponent implements OnInit, OnDestroy {
       `arrow-up`,
       this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/images/arrow-up.svg`)
     );
-
-    // previous url
-    let previousRoute = router.routerState.snapshot.url;
-
-    // Route subscriber
-    router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((data: NavigationEnd) => {
-        // We want to reset the scroll position on navigation except when navigating within
-        // the page for a single component.
-        if (!isNavigationWithinComponentView(previousRoute, data.urlAfterRedirects)) {
-          resetScrollPosition();
-        }
-
-        previousRoute = data.urlAfterRedirects;
-      });
   }
 
   ngOnInit() {

@@ -70,32 +70,40 @@ export class OfferListComponent implements OnInit {
   loadOffers() {
     this.activatedRoute.params.subscribe((value: {area: string, category: string}) => {
       if (value.area) {
-        const key = value.area.substring(0, value.area.indexOf('-'));
-        this.areaService.getArea(key)
-          .pipe(
-            take(1)
-          )
-          .subscribe((area: Area) => {
-            this.area = area;
-            if (area) {
-              this.getOffersByRegion(area);
-            }
-          });
+        const key: string = value.area.substring(0, value.area.indexOf('-'));
+        this.getArea(key);
       }
       if (value.category) {
-        const key = value.category.substring(0, value.category.indexOf('-'));
-        this.categoryService.getCategory(key)
-          .pipe(
-            take(1)
-          )
-          .subscribe((category: Category) => {
-            this.category = category;
-            if (category) {
-              this.getOffersByModel(category);
-            }
-          });
+        const key: string = value.category.substring(0, value.category.indexOf('-'));
+        this.getCategory(key);
       }
     });
+  }
+
+  getArea(key: string) {
+    this.areaService.getArea(key)
+      .pipe(
+        take(1)
+      )
+      .subscribe((area: Area) => {
+        this.area = area;
+        if (area) {
+          this.getOffersByRegion(area);
+        }
+      });
+  }
+
+  getCategory(key: string) {
+    this.categoryService.getCategory(key)
+      .pipe(
+        take(1)
+      )
+      .subscribe((category: Category) => {
+        this.category = category;
+        if (category) {
+          this.getOffersByModel(category);
+        }
+      });
   }
 
   getOffersByModel(model: Category) {

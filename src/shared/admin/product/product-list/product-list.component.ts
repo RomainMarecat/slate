@@ -275,15 +275,6 @@ export class ProductListComponent implements OnInit {
     this.dataTableComponentTable.rowDetail.toggleExpandRow(row);
   }
 
-  onDetailToggle(event) {
-  }
-
-  onScroll(event: any) {
-  }
-
-  onCheckboxChangeFn(event) {
-  }
-
   /**
    * Filtre sur les colonnes du produit
    */
@@ -295,22 +286,21 @@ export class ProductListComponent implements OnInit {
         needle = needle.toLowerCase();
       }
       if (this.cache.length > 0) {
-        // filter our data
-        const temp = this.cache.filter((product: Product) => {
-          if (column === 'translations.fr') {
-            return product.translations.fr.toLowerCase().indexOf(needle.toString()) !== -1 || !needle;
-          } else if (column === 'price') {
-            return product.price.toString(10).indexOf(needle.toString()) !== -1 || !needle;
-          } else if (column === 'published') {
-            return product.published === (needle.toString() === 'true') || !needle;
-          }
-          return product[column].toLowerCase().indexOf(needle) !== -1 || !needle;
-        });
-
-        // update the rows
-        this.products = temp;
+        this.products = this.filtersOnColumn(column, needle);
       }
-
     }
+  }
+
+  filtersOnColumn(column: string, needle: any): Product[] {
+    return this.cache.filter((product: Product) => {
+      if (column === 'translations.fr') {
+        return product.translations.fr.toLowerCase().indexOf(needle.toString()) !== -1 || !needle;
+      } else if (column === 'price') {
+        return product.price.toString(10).indexOf(needle.toString()) !== -1 || !needle;
+      } else if (column === 'published') {
+        return product.published === (needle.toString() === 'true') || !needle;
+      }
+      return product[column].toLowerCase().indexOf(needle) !== -1 || !needle;
+    });
   }
 }

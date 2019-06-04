@@ -238,22 +238,26 @@ export class CartDeliveryComponent {
 
       delivery.updated_at = new Date();
 
-      this.deliveryService.createDelivery(delivery)
-        .subscribe((doc: DocumentReference) => {
-          delivery.key = doc.id;
-          this.form.patchValue(delivery);
-          this.deliveryService.updateDelivery(delivery)
-            .subscribe(() => {
-              this.acceptDelivery.emit(this.cart);
-              this.disableDeliveryButton = false;
-            }, () => {
-              this.handleError();
-            });
-        }, () => {
-          this.handleError();
-        });
+      this.createDelivery(delivery);
       return;
     }
+  }
+
+  createDelivery(delivery: Delivery) {
+    this.deliveryService.createDelivery(delivery)
+      .subscribe((doc: DocumentReference) => {
+        delivery.key = doc.id;
+        this.form.patchValue(delivery);
+        this.deliveryService.updateDelivery(delivery)
+          .subscribe(() => {
+            this.acceptDelivery.emit(this.cart);
+            this.disableDeliveryButton = false;
+          }, () => {
+            this.handleError();
+          });
+      }, () => {
+        this.handleError();
+      });
   }
 
   handleError() {

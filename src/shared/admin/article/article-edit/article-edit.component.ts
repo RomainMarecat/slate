@@ -150,25 +150,33 @@ export class ArticleEditComponent implements OnInit {
         this.article.published_at = Timestamp.now();
       }
       if (this.article.key) {
-        this.articleService.updateArticle(this.article)
-          .then((doc) => {
-            this.alertService.show(`article updated ${this.article.name}`);
-            this.reset();
-            this.router.navigate([this.localizeRouterService.translateRoute('/admin/article')]);
-          }, (err) => {
-            this.alertService.show(`article error ${err}`);
-          });
+        this.updateArticle();
       } else {
-        this.articleService.createArticle(this.article)
-          .then((doc: DocumentReference) => {
-            this.alertService.show(`article added ${doc.id}`);
-            this.reset();
-            this.router.navigate([this.localizeRouterService.translateRoute('/admin/article')]);
-          }, (err) => {
-            this.alertService.show(`article error ${err}`);
-          });
+        this.createArticle();
       }
     }
+  }
+
+  createArticle() {
+    this.articleService.createArticle(this.article)
+      .then((doc: DocumentReference) => {
+        this.alertService.show(`article added ${doc.id}`);
+        this.reset();
+        this.router.navigate([this.localizeRouterService.translateRoute('/admin/article')]);
+      }, (err) => {
+        this.alertService.show(`article error ${err}`);
+      });
+  }
+
+  updateArticle() {
+    this.articleService.updateArticle(this.article)
+      .then((doc) => {
+        this.alertService.show(`article updated ${this.article.name}`);
+        this.reset();
+        this.router.navigate([this.localizeRouterService.translateRoute('/admin/article')]);
+      }, (err) => {
+        this.alertService.show(`article error ${err}`);
+      });
   }
 
   get facebook() {

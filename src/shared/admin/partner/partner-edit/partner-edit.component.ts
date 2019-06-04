@@ -60,27 +60,36 @@ export class PartnerEditComponent implements OnInit {
         if (this.partner.published === true) {
           this.partner.published_at = new Date();
         }
-        this.partnerService.updatePartner(this.partner)
-          .then((doc) => {
-            this.alertService.toast(`partner updated ${this.partner.name}`);
-            this.reset();
-          }, (err) => {
-            this.alertService.toast(`partner error ${err}`);
-          });
+        this.updatePartner();
+
         this.router.navigate([
           this.localizeRouterService.translateRoute('/admin'),
           'partner'
         ]);
       } else {
-        this.partnerService.createPartner(this.partner)
-          .then((doc: DocumentReference) => {
-            this.alertService.toast(`partner added ${doc.id}`);
-            this.reset();
-          }, (err) => {
-            this.alertService.toast(`partner error ${err}`);
-          });
+        this.createPartner();
       }
     }
+  }
+
+  updatePartner() {
+    this.partnerService.updatePartner(this.partner)
+      .then((doc) => {
+        this.alertService.toast(`partner updated ${this.partner.name}`);
+        this.reset();
+      }, (err) => {
+        this.alertService.toast(`partner error ${err}`);
+      });
+  }
+
+  createPartner() {
+    this.partnerService.createPartner(this.partner)
+      .then((doc: DocumentReference) => {
+        this.alertService.toast(`partner added ${doc.id}`);
+        this.reset();
+      }, (err) => {
+        this.alertService.toast(`partner error ${err}`);
+      });
   }
 
   createForm() {

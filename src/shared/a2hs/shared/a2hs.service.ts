@@ -49,18 +49,31 @@ export class A2hsService {
     this.userAgent = navigator.userAgent.toLowerCase();
     const uaString = this.userAgent;
 
-    this.isChrome = /chrome/.test(uaString);
-    this.isExplorer = /msie/.test(uaString);
-    this.isExplorer_11 = /rv:11/.test(uaString);
-    this.isFirefox = /firefox/.test(uaString);
-    this.isSafari = /safari/.test(uaString);
-    this.isOpera = /opr/.test(uaString);
-    this.isEdgeDesktop = /edge/.test(uaString);
-    this.isEdgeiOS = /edgios/.test(uaString);
-    this.isEdgeAndroid = /edga/.test(uaString);
+    this.testUserAgent(uaString);
 
-    this.isIOS = /ipad|iphone|ipod/.test(uaString);
-    this.isMobile = /mobile/.test(uaString);
+    this.addInverseBrowserUserAgent();
+
+    if (/ipad/.test(uaString)) {
+      this.whereIsShare = 'top';
+    }
+  }
+
+  testUserAgent(userAgent: string) {
+    this.isChrome = /chrome/.test(userAgent);
+    this.isExplorer = /msie/.test(userAgent);
+    this.isExplorer_11 = /rv:11/.test(userAgent);
+    this.isFirefox = /firefox/.test(userAgent);
+    this.isSafari = /safari/.test(userAgent);
+    this.isOpera = /opr/.test(userAgent);
+    this.isEdgeDesktop = /edge/.test(userAgent);
+    this.isEdgeiOS = /edgios/.test(userAgent);
+    this.isEdgeAndroid = /edga/.test(userAgent);
+
+    this.isIOS = /ipad|iphone|ipod/.test(userAgent);
+    this.isMobile = /mobile/.test(userAgent);
+  }
+
+  addInverseBrowserUserAgent() {
     if ((this.isChrome) && (this.isSafari)) {
       this.isSafari = false;
     }
@@ -77,11 +90,6 @@ export class A2hsService {
     if ((this.isChrome) && (this.isOpera)) {
       this.isChrome = false;
     }
-
-    if (/ipad/.test(uaString)) {
-      this.whereIsShare = 'top';
-    }
-
   }
 
   trackStandalone() {

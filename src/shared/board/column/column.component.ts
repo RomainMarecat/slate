@@ -86,11 +86,6 @@ export class ColumnComponent implements OnInit {
     });
   }
 
-  onDrag(args: any) {
-    const [el, target, source] = args;
-  }
-
-
   blurOnEnter(event) {
     if (event.key === 13) {
       event.target.blur();
@@ -132,10 +127,12 @@ export class ColumnComponent implements OnInit {
       if (this.addCardText && this.addCardText.trim() !== '') {
         this.addCard();
         this.addCardText = '';
-      } else {
-        this.clearAddCard();
+        return;
       }
-    } else if (event.key === '27') {
+      this.clearAddCard();
+      return;
+    }
+    if (event.key === '27') {
       this.clearAddCard();
     }
   }
@@ -199,9 +196,5 @@ export class ColumnComponent implements OnInit {
   clearAddCard() {
     this.addingCard = false;
     this.addCardText = '';
-  }
-
-  onCardUpdate(card: Card) {
-    this.cardUpdate.emit(card);
   }
 }

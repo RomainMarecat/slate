@@ -76,30 +76,35 @@ export class BoardDetailComponent implements OnInit {
                 value: board.key
               }
             ]);
-            this.columnService.getColumns()
-              .subscribe((columns) => {
-                this.board.columns = this.objectService.bubbleSort(columns, 'order');
-                this.cardService.getCards()
-                  .subscribe((cards) => {
-                    this.board.cards = this.objectService.bubbleSort(cards, 'order');
-                    this.board.columns = this.board.columns.map(col => {
-                      col.cards = this.board.cards.filter((c) => {
-                        return c.columnId === col.key;
-                      });
-                      return col;
-                    });
 
-                  }, (err) => {
-                    this.alertService.show(err);
-                  });
-              }, (err) => {
-                this.alertService.show(err);
-              });
+            this.getColumns();
 
             this.title.setTitle(this.board.title + ' | Generic Task Manager');
           });
       }
     }));
+  }
+
+  getColumns() {
+    this.columnService.getColumns()
+      .subscribe((columns) => {
+        this.board.columns = this.objectService.bubbleSort(columns, 'order');
+        this.cardService.getCards()
+          .subscribe((cards) => {
+            this.board.cards = this.objectService.bubbleSort(cards, 'order');
+            this.board.columns = this.board.columns.map(col => {
+              col.cards = this.board.cards.filter((c) => {
+                return c.columnId === col.key;
+              });
+              return col;
+            });
+
+          }, (err) => {
+            this.alertService.show(err);
+          });
+      }, (err) => {
+        this.alertService.show(err);
+      });
   }
 
   bindPane() {

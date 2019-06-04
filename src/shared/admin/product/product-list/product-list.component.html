@@ -31,11 +31,18 @@
   <div class="col-12">
     <div class="px-2 my-2">
       <ngx-datatable #dataTableComponentTable class="material striped scrolling-products expandable"
-                     [columnMode]="'force'" [rows]="products" [columns]="columns" [headerHeight]="headerHeight"
-                     [rowHeight]="rowHeight" [loadingIndicator]="isLoading" [scrollbarV]="true"
-                     (scroll)="onScroll($event.offsetY)" [selected]="selected" [selectionType]="'checkbox'"
-                     (activate)="onActivate($event)" (select)='onSelect($event)'>
-        <ngx-datatable-row-detail [rowHeight]="100" #detailRow (toggle)="onDetailToggle($event)">
+                     [columnMode]="'force'"
+                     [rows]="products"
+                     [columns]="columns"
+                     [headerHeight]="headerHeight"
+                     [rowHeight]="rowHeight"
+                     [loadingIndicator]="isLoading"
+                     [scrollbarV]="true"
+                     [selected]="selected"
+                     [selectionType]="'checkbox'"
+                     (activate)="onActivate($event)"
+                     (select)='onSelect($event)'>
+        <ngx-datatable-row-detail [rowHeight]="100" #detailRow>
           <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
             <table class="mat-table">
               <tr>
@@ -67,7 +74,7 @@
     <!-- Cell Template -->
     <ng-template #checkboxCell ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
                  let-onCheckboxChangeFn="onCheckboxChangeFn" let-row="row" let-expanded="expanded">
-      <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
+      <input type="checkbox" [checked]="isSelected">
       <button mat-icon-button role="button" type="button" [class.datatable-icon-right]="!expanded"
               [class.datatable-icon-down]="expanded" title="Expand/Collapse Row" (click)="toggleExpandRow(row)"
               class="desktop-hidden">

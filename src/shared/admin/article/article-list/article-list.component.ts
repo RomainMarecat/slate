@@ -70,44 +70,46 @@ export class ArticleListComponent implements OnInit {
    */
   ngOnInit() {
     this.menuService.nextTitle('Articles');
-    this.columns = [
-      {
-        width: 50,
-        sortable: false,
-        canAutoResize: false,
-        draggable: false,
-        resizeable: false,
-        cellTemplate: this.checkboxCell,
-      }, {
-        prop: 'name',
-        name: 'datatable.column.name',
-        headerTemplate: this.headerTemplate,
-        flexGrow: 1
-      }, {
-        prop: 'description',
-        name: 'datatable.column.description',
-        headerTemplate: this.headerTemplate,
-        flexGrow: 1
-      }, {
-        prop: 'published_at',
-        name: 'datatable.column.published_at',
-        headerTemplate: this.headerTemplate,
-        flexGrow: 1
-      }, {
-        prop: 'published',
-        name: 'datatable.column.published',
-        headerTemplate: this.headerTemplate,
-        flexGrow: 1,
-        cellTemplate: this.publicationCell
-      }, {
-        prop: 'key',
-        name: 'datatable.column.actions',
-        headerTemplate: this.headerTemplate,
-        flexGrow: 1,
-        cellTemplate: this.actionsCell
-      }
-    ];
+    this.setColumns();
     this.getArticles();
+  }
+
+  setColumns() {
+    this.columns = [{
+      width: 50,
+      sortable: false,
+      canAutoResize: false,
+      draggable: false,
+      resizeable: false,
+      cellTemplate: this.checkboxCell,
+    }, {
+      prop: 'name',
+      name: 'datatable.column.name',
+      headerTemplate: this.headerTemplate,
+      flexGrow: 1
+    }, {
+      prop: 'description',
+      name: 'datatable.column.description',
+      headerTemplate: this.headerTemplate,
+      flexGrow: 1
+    }, {
+      prop: 'published_at',
+      name: 'datatable.column.published_at',
+      headerTemplate: this.headerTemplate,
+      flexGrow: 1
+    }, {
+      prop: 'published',
+      name: 'datatable.column.published',
+      headerTemplate: this.headerTemplate,
+      flexGrow: 1,
+      cellTemplate: this.publicationCell
+    }, {
+      prop: 'key',
+      name: 'datatable.column.actions',
+      headerTemplate: this.headerTemplate,
+      flexGrow: 1,
+      cellTemplate: this.actionsCell
+    }];
   }
 
   getArticles() {

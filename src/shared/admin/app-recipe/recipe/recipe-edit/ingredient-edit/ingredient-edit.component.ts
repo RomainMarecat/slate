@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { Ingredient } from '../../../../../../app-recipe/ingredient/shared/ingredient';
 import { DocumentReference } from '@angular/fire/firestore';
 import { IngredientService } from '../../../../../../app-recipe/ingredient/shared/ingredient.service';
-import { debounceTime } from 'rxjs/operators';
 import { Recipe } from '../../../../../../app-recipe/recipe/shared/recipe';
 
 @Component({
@@ -49,10 +48,15 @@ export class IngredientEditComponent implements OnInit {
     }
   }
 
+  hasValidIngredient(ingredient: Ingredient): boolean {
+    return (this.isAutoSave === false &&
+      this.form.valid &&
+      typeof ingredient.color !== 'undefined' &&
+      typeof ingredient.name !== 'undefined');
+  }
 
   autoSaveIngredient(ingredient: Ingredient) {
-
-    if (this.isAutoSave === false && this.form.valid && ingredient.color && ingredient.name) {
+    if (this.hasValidIngredient(ingredient)) {
       this.isAutoSave = true;
       if (this.recipe && this.recipe.key && !ingredient.recipes.includes(this.recipe.key)) {
         ingredient.recipes.push(this.recipe.key);

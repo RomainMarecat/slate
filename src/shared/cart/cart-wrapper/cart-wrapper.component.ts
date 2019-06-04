@@ -70,33 +70,8 @@ export class CartWrapperComponent implements OnInit {
       }
     ]);
     this.cartsSubscription = this.cartService.getCarts()
-      .subscribe((carts) => {
-        this.cart = carts.sort((previous, next) => {
-          if (previous.updated_at < next.updated_at) {
-            return 1;
-          }
-          return -1;
-        })[0];
-        if (!this.cart) {
-          this.createCart();
-          return;
-        }
-
-        if (!this.cart.state) {
-          this.cart.state = 'cart';
-        }
-
-        if (this.cart &&
-          this.cart.order &&
-          this.cart.state === 'confirmation') {
-          this.router.navigate([
-            this.localizeRouterService.translateRoute('cart'),
-            'order',
-            this.cart.order
-          ]);
-        }
-        this.cartService.cart$.next(this.cart);
-        this.loading = false;
+      .subscribe((carts: Cart[]) => {
+        this.patchCart(carts);
       }, (err: HttpErrorResponse) => {
         if (err && err.error && err.error.message) {
           this.alertService.openBottomSheetMessage(
@@ -106,6 +81,39 @@ export class CartWrapperComponent implements OnInit {
         }
         this.loading = false;
       });
+  }
+
+  patchCart(carts: Cart[]) {
+    this.cart = carts.sort((previous, next) => {
+      if (previous.updated_at < next.updated_at) {
+        return 1;
+      }
+      return -1;
+    })[0];
+    if (!this.cart) {
+      this.createCart();
+      return;
+    }
+
+    if (!this.cart.state) {
+      this.cart.state = 'cart';
+    }
+    this.navigateOnConfirmation();
+
+    this.cartService.cart$.next(this.cart);
+    this.loading = false;
+  }
+
+  navigateOnConfirmation() {
+    if (this.cart &&
+      this.cart.order &&
+      this.cart.state === 'confirmation') {
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('cart'),
+        'order',
+        this.cart.order
+      ]);
+    }
   }
 
   getUser() {

@@ -8,7 +8,7 @@ export class State {
   }
 }
 
-export class Instructor {
+export interface Instructor {
   firstname: string;
   lastname: string;
   picture?: string;
@@ -45,6 +45,35 @@ export class AutocompleteComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setInstructors();
+    this.setStates();
+  }
+
+  setInstructors() {
+    this.instructors = [{
+      firstname: 'Kara',
+      lastname: 'Evans',
+      picture: 'http://placehold.it/32x32'
+    }, {
+      firstname: 'Cochran',
+      lastname: 'Munoz',
+      picture: 'http://placehold.it/32x32'
+    }, {
+      firstname: 'Guerra',
+      lastname: 'Frost',
+      picture: 'http://placehold.it/32x32'
+    }, {
+      firstname: 'Aisha',
+      lastname: 'Farmer',
+      picture: 'http://placehold.it/32x32'
+    }, {
+      firstname: 'Dorothea',
+      lastname: 'Barry',
+      picture: 'http://placehold.it/32x32'
+    }];
+  }
+
+  setStates() {
     this.states = [{
       name: 'Arkansas',
       population: '2.978M',
@@ -64,33 +93,6 @@ export class AutocompleteComponent implements OnInit {
         name: 'Texas',
         population: '27.47M',
         flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
-      }
-    ];
-
-    this.instructors = [{
-      firstname: 'Kara',
-      lastname: 'Evans',
-      picture: 'http://placehold.it/32x32'
-    },
-      {
-        firstname: 'Cochran',
-        lastname: 'Munoz',
-        picture: 'http://placehold.it/32x32'
-      },
-      {
-        firstname: 'Guerra',
-        lastname: 'Frost',
-        picture: 'http://placehold.it/32x32'
-      },
-      {
-        firstname: 'Aisha',
-        lastname: 'Farmer',
-        picture: 'http://placehold.it/32x32'
-      },
-      {
-        firstname: 'Dorothea',
-        lastname: 'Barry',
-        picture: 'http://placehold.it/32x32'
       }
     ];
   }

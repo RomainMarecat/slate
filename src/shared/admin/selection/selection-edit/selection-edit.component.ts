@@ -186,20 +186,10 @@ export class SelectionEditComponent implements OnInit {
           this.selection.published_at = new Date();
         }
         this.selection = {...this.selection, ...this.form.value};
-        this.selectionService.updateSelection(this.selection)
-          .then(() => {
-            this.alertService.show(`La selection ${this.selection.name} est mise à jour`, 'info');
-          }, (err) => {
-            this.alertService.show(err);
-          });
+        this.updateSelection();
       } else {
         this.selection = this.form.value;
-        this.selectionService.createSelection(this.selection)
-          .then(() => {
-            this.alertService.show(`La selection ${this.selection.name} est crée`, 'info');
-          }, (err) => {
-            this.alertService.show(err);
-          });
+        this.createSelection();
       }
 
       this.router.navigate([
@@ -208,6 +198,24 @@ export class SelectionEditComponent implements OnInit {
         'selection'
       ]);
     }
+  }
+
+  createSelection() {
+    this.selectionService.createSelection(this.selection)
+      .then(() => {
+        this.alertService.show(`La selection ${this.selection.name} est crée`, 'info');
+      }, (err) => {
+        this.alertService.show(err);
+      });
+  }
+
+  updateSelection() {
+    this.selectionService.updateSelection(this.selection)
+      .then(() => {
+        this.alertService.show(`La selection ${this.selection.name} est mise à jour`, 'info');
+      }, (err) => {
+        this.alertService.show(err);
+      });
   }
 
   onImageChange(media: Media) {

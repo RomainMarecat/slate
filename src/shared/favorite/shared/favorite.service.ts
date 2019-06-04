@@ -44,7 +44,7 @@ export class FavoriteService extends VisitorService {
     return super.deleteDocument(favorite);
   }
 
-  getUserFavoritesByNbView(user: User): Observable<Favorite[]> {
+  filterFavoritesByNbView(user: User) {
     this.filters$.next([
       {
         column: 'user',
@@ -58,6 +58,10 @@ export class FavoriteService extends VisitorService {
       }
     ]);
     this.limit$.next(4);
+  }
+
+  getUserFavoritesByNbView(user: User): Observable<Favorite[]> {
+    this.filterFavoritesByNbView(user);
     return new Observable((observer) => {
       const subscription: Subscription = this.getFavorites()
         .pipe(
@@ -75,10 +79,8 @@ export class FavoriteService extends VisitorService {
           observer.error(err);
         });
     });
-
   }
-
-
+  
   setFavorite(user: User) {
     this.filters$.next([
       {

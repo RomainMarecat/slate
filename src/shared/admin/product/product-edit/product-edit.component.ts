@@ -1,12 +1,12 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormGroup } from '@angular/forms';
+import { off } from 'tns-core-modules/application';
 import { AlertService } from '../../../popup/alert.service';
 import { StringService } from '../../../util/string.service';
 import { Product } from '../../../product/shared/product';
 import { Media } from '../../../media/media';
 import { CategoryService } from '../../../category/category.service';
-import { Observable } from 'rxjs';
 import { DocumentReference } from '@firebase/firestore-types';
 import { ImageProductComponent } from '../../../media/cloudinary/image-product/image-product.component';
 import { ProductFormType } from '../../shared/product/form-product';
@@ -21,7 +21,6 @@ import { ProductService } from '../../../product/shared/product.service';
 import { debounceTime, take } from 'rxjs/operators';
 import { PartnerService } from '../../../partner/partner.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { LocalizeRouterService } from 'localize-router';
 import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;
 
@@ -30,19 +29,17 @@ import Timestamp = firestore.Timestamp;
   templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.scss']
 })
-export class ProductEditComponent implements OnInit, OnDestroy {
+export class ProductEditComponent implements OnInit {
   form: FormGroup;
   product: Product;
   editorConfig: any;
   medias: Media[] = [];
   partners: Partner[] = [];
-  productOffers: Offer[] = [];
   readonly headerHeight = 50;
   readonly rowHeight = 50;
   columns: TableColumn[];
   categories: Category[] = [];
   selected: Category[] = [];
-  filteredAttributes: Observable<any[]>;
   isLoading = false;
   @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
   @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
@@ -59,8 +56,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
               private categoryService: CategoryService,
               private attributeService: AttributeService,
               private partnerService: PartnerService,
-              private offerService: OfferService,
-              private localizeRouterService: LocalizeRouterService) {
+              private offerService: OfferService) {
   }
 
   /**
@@ -73,7 +69,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.createEditorConfig();
     this.getCategories();
     this.getAttributes();
-    // this.subscribeDragAndDrop();
     this.getPartners();
   }
 
@@ -237,32 +232,35 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       this.product = {
         ...this.product,
         ...this.form.value,
-        ...{offers: offers.filter((o) => o.key && o.key !== '').map((off) => off.key)},
+        ...{offers: offers.filter((o) => o.key && o.key !== '').map((offer) => offer.key)},
         ...{keywords: this.form.controls.name.value.toLowerCase().split(' ')}
       };
-      if (this.product.key) {
-        if (this.product.published === true) {
-          this.product.published_at = Timestamp.now();
-        }
-        this.productService.updateProduct(this.product)
-          .subscribe((doc) => {
-            this.isSaving = false;
-            this.saveOffer(offers, {id: this.product.key});
-          }, (err) => {
-            this.isSaving = false;
-            this.addError(err);
-          });
-      } else {
+      this.updateProduct(offers);
+    }
+  }
 
-        this.productService.createProduct(this.product)
-          .subscribe((doc: DocumentReference) => {
-            this.isSaving = false;
-            this.saveOffer(this.form.get('offers').value, doc);
-          }, (err) => {
-            this.isSaving = false;
-            this.addError(err);
-          });
+  updateProduct(offers: Offer[]) {
+    if (this.product.key) {
+      if (this.product.published === true) {
+        this.product.published_at = Timestamp.now();
       }
+      this.productService.updateProduct(this.product)
+        .subscribe((doc) => {
+          this.isSaving = false;
+          this.saveOffer(offers, {id: this.product.key});
+        }, (err) => {
+          this.isSaving = false;
+          this.addError(err);
+        });
+    } else {
+      this.productService.createProduct(this.product)
+        .subscribe((doc: DocumentReference) => {
+          this.isSaving = false;
+          this.saveOffer(this.form.get('offers').value, doc);
+        }, (err) => {
+          this.isSaving = false;
+          this.addError(err);
+        });
     }
   }
 
@@ -371,34 +369,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       .subscribe((partners: Partner[]) => {
         this.partners = partners;
       });
-  }
-
-  // /**
-  //  * Dra an drop system for attributes
-  //  */
-  // subscribeDragAndDrop() {
-  //   this.dragulaService.dropModel.subscribe((value) => {
-  //     this.onDropModel(value.slice(1));
-  //   });
-  //   this.dragulaService.removeModel.subscribe((value) => {
-  //     this.onRemoveModel(value.slice(1));
-  //   });
-  // }
-  //
-  // private onDropModel(args: any): void {
-  //   const [el, target, source] = args;
-  // }
-  //
-  // private onRemoveModel(args: any): void {
-  //   const [el, source] = args;
-  // }
-
-  /**
-   * destroy all subscriptions
-   */
-  ngOnDestroy() {
-    // this.dragulaService.dropModel.unsubscribe();
-    // this.dragulaService.removeModel.unsubscribe();
   }
 
   /**

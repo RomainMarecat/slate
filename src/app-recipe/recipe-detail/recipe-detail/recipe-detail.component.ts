@@ -156,29 +156,33 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
           return constraint.min <= (this.top - offsetActive) && constraint.max >= (this.top - offsetActive);
         });
 
-        this.limitInstructionReached = false;
-        if (filteredInstructions.length > 0) {
-          this.currentInstruction = filteredInstructions[0].index;
-          // If scroll bottom
-          if ((this.currentInstruction > 0 && this.previousPosition < this.top)) {
-            this.cd.detectChanges();
-          }
-
-          // Scroll top refresh pointer and banner
-          if (this.previousPosition > this.top) {
-            setTimeout(() => {
-              this.cd.detectChanges();
-            }, 200);
-          }
-
-          if (this.currentInstruction === this.recipe.instructions.length || bottom === 0) {
-            this.currentInstruction = this.recipe.instructions.length;
-            this.limitInstructionReached = true;
-            this.cd.detectChanges();
-          }
-          this.previousPosition = this.top;
-        }
+        this.scrollOnInstructions(filteredInstructions, bottom);
       });
+  }
+
+  scrollOnInstructions(filteredInstructions: Constraint[], bottom: number) {
+    this.limitInstructionReached = false;
+    if (filteredInstructions.length > 0) {
+      this.currentInstruction = filteredInstructions[0].index;
+      // If scroll bottom
+      if ((this.currentInstruction > 0 && this.previousPosition < this.top)) {
+        this.cd.detectChanges();
+      }
+
+      // Scroll top refresh pointer and banner
+      if (this.previousPosition > this.top) {
+        setTimeout(() => {
+          this.cd.detectChanges();
+        }, 200);
+      }
+
+      if (this.currentInstruction === this.recipe.instructions.length || bottom === 0) {
+        this.currentInstruction = this.recipe.instructions.length;
+        this.limitInstructionReached = true;
+        this.cd.detectChanges();
+      }
+      this.previousPosition = this.top;
+    }
   }
 
   onTop() {

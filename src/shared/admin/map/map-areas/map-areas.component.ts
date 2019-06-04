@@ -10,7 +10,7 @@ import { TableColumn } from '@swimlane/ngx-datatable';
 @Component({
   selector: 'app-admin-map-areas',
   templateUrl: './map-areas.component.html',
-  styleUrls: [ './map-areas.component.scss' ]
+  styleUrls: ['./map-areas.component.scss']
 })
 export class MapAreasComponent implements OnInit {
   readonly headerHeight = 50;
@@ -54,8 +54,8 @@ export class MapAreasComponent implements OnInit {
       });
   }
 
-  getColumns(): Array<any> {
-    return [ {
+  getColumns(): TableColumn[] {
+    return [{
       width: 75,
       sortable: false,
       canAutoResize: false,
@@ -83,7 +83,7 @@ export class MapAreasComponent implements OnInit {
       name: 'Actions',
       flexGrow: 1,
       cellTemplate: this.actionsCell,
-    } ];
+    }];
   }
 
   private updatePublication(area: Area) {
@@ -98,7 +98,7 @@ export class MapAreasComponent implements OnInit {
     this.areaService.updateArea(area);
   }
 
-  updateAreaPublication(area: Area, event: { source: any, value: boolean }) {
+  updateAreaPublication(area: Area, event: {source: any, value: boolean}) {
     area.published = event.value;
     this.updatePublication(area);
   }
@@ -129,9 +129,9 @@ export class MapAreasComponent implements OnInit {
    * Update a column value with inline editing
    */
   updateValue(event: any, cell: string, row: Area, rowIndex: number) {
-    this.editing[ rowIndex + '-' + cell ] = false;
+    this.editing[rowIndex + '-' + cell] = false;
     const data = {};
-    data[ cell ] = event.target.value;
+    data[cell] = event.target.value;
     const area: Area = {...row, ...data};
     this.areaService.updateDocument(area)
       .then((res) => {
