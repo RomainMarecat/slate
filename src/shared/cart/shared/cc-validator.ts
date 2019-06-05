@@ -68,8 +68,7 @@ export class CCValidator {
     let j: number;
 
     sum = 0;
-    const numbers: Array<number>
-      = cardNumber.split('').reverse().map((val) => parseFloat(val));
+    const numbers: number[] = cardNumber.split('').reverse().map((val) => parseFloat(val));
     const len: number = numbers.length;
     n = 0;
     j = 0;
@@ -91,7 +90,6 @@ export class CCValidator {
 
       n = ++j;
     }
-
     return sum % 10 === 0;
   }
 }

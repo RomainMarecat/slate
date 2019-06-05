@@ -72,6 +72,17 @@ export class BreadcrumbComponent {
     const link = route.routeConfig && typeof this.notAllowedUrls[route.routeConfig.path] === 'undefined' ? route.routeConfig.path : '';
     const nextUrl = `${url}${link}/`;
 
+    breadcrumb = this.addLabel(route, breadcrumb, nextUrl);
+    const newBreadcrumbs = breadcrumb ? [...breadcrumbs, breadcrumb] : breadcrumbs;
+    if (route.firstChild) {
+      // If we are not on our current path yet,
+      // there will be more children to look after, to build our breadcrumb
+      return this.buildBreadCrumb(route.firstChild, nextUrl, newBreadcrumbs, routeIndex + 1);
+    }
+    return newBreadcrumbs;
+  }
+
+  addLabel(route: ActivatedRoute, breadcrumb: UriElement, nextUrl: string): UriElement {
     if (route && route.routeConfig && route.routeConfig.data && route.routeConfig.data['breadcrumb']) {
       const label = route.routeConfig.data['breadcrumb'];
       // In the routeConfig the complete path is not available,
@@ -89,13 +100,7 @@ export class BreadcrumbComponent {
       }
     }
 
-    const newBreadcrumbs = breadcrumb ? [...breadcrumbs, breadcrumb] : breadcrumbs;
-    if (route.firstChild) {
-      // If we are not on our current path yet,
-      // there will be more children to look after, to build our breadcrumb
-      return this.buildBreadCrumb(route.firstChild, nextUrl, newBreadcrumbs, routeIndex + 1);
-    }
-    return newBreadcrumbs;
+    return breadcrumb;
   }
 
   /**

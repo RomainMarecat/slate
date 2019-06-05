@@ -10,8 +10,8 @@ import {
   WhereFilterOp
 } from '@firebase/firestore-types';
 import { Action, AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
-import { Filter } from './../facet/filter/shared/filter';
-import { Sort } from './../facet/sort/shared/sort';
+import { Filter } from '../facet/filter/shared/filter';
+import { Sort } from '../facet/sort/shared/sort';
 import { map, switchMap } from 'rxjs/operators';
 
 @Injectable()
@@ -31,12 +31,7 @@ export class VisitorService {
   table: string;
 
   constructor(public afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
-    this.table = table;
-    this.query$ = new BehaviorSubject(null);
-    this.filters$ = new BehaviorSubject(null);
-    this.limit$ = new BehaviorSubject(null);
-    this.orderBy$ = new BehaviorSubject(null);
-    this.collectionRef = this.afs.collection(this.table);
+    this.initializeBehaviour(table);
     this.documents$ = combineLatest(
       this.filters$,
       this.limit$,
@@ -46,38 +41,49 @@ export class VisitorService {
       switchMap(([filters, limit, orderBy, query]) => {
         return this.afs.collection(this.table, (ref) => {
           this.query = ref;
-
-          if (query && this.query) {
-            if (query.limit) {
-              this.query = this.query.limit(query.limit);
-            }
-            if (query.filters) {
-              query.filters.forEach((filter: Filter) => {
-                this.query = this.query.where(filter.column, filter.operator as WhereFilterOp, filter.value);
-              });
-            }
-            if (query.orderBy) {
-              this.query = this.query.orderBy(query.orderBy.column, query.orderBy.direction as OrderByDirection);
-            }
-          }
-
-          if (limit) {
-            this.query = this.query.limit(limit);
-          }
-          if (filters && this.query) {
-            filters.forEach((filter: Filter) => {
-              this.query = this.query.where(filter.column, filter.operator as WhereFilterOp, filter.value);
-            });
-          }
-          if (orderBy) {
-            this.query = this.query.orderBy(orderBy.column, orderBy.direction as OrderByDirection);
-          }
-
+          this.createQuery(filters, limit, orderBy, query);
           return this.query;
         })
           .snapshotChanges();
       })
     );
+  }
+
+  createQuery(filters, limit, orderBy, query) {
+    if (query && this.query) {
+      if (query.limit) {
+        this.query = this.query.limit(query.limit);
+      }
+      if (query.filters) {
+        query.filters.forEach((filter: Filter) => {
+          this.query = this.query.where(filter.column, filter.operator as WhereFilterOp, filter.value);
+        });
+      }
+      if (query.orderBy) {
+        this.query = this.query.orderBy(query.orderBy.column, query.orderBy.direction as OrderByDirection);
+      }
+    }
+
+    if (limit) {
+      this.query = this.query.limit(limit);
+    }
+    if (filters && this.query) {
+      filters.forEach((filter: Filter) => {
+        this.query = this.query.where(filter.column, filter.operator as WhereFilterOp, filter.value);
+      });
+    }
+    if (orderBy) {
+      this.query = this.query.orderBy(orderBy.column, orderBy.direction as OrderByDirection);
+    }
+  }
+
+  initializeBehaviour(table: string) {
+    this.table = table;
+    this.query$ = new BehaviorSubject(null);
+    this.filters$ = new BehaviorSubject(null);
+    this.limit$ = new BehaviorSubject(null);
+    this.orderBy$ = new BehaviorSubject(null);
+    this.collectionRef = this.afs.collection(this.table);
   }
 
   /**
@@ -90,12 +96,6 @@ export class VisitorService {
         return documents.map((document: DocumentChangeAction<any>) => {
           if (document.payload.doc.exists) {
             const doc = document.payload.doc.data() as Document;
-            // Useful if doc id is missing on forgot update after create function
-            // if (!doc.key) {
-            //   doc.key = document.payload.doc.id;
-            //   this.updateDocument(doc).then(() => {
-            //   });
-            // }
             doc.key = document.payload.doc.id;
             return doc;
           }

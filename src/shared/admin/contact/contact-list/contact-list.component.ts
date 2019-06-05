@@ -68,6 +68,14 @@ export class ContactListComponent implements OnInit {
    */
   ngOnInit() {
     this.menuService.nextTitle('Contacts');
+    this.setColumns();
+    this.contactService.getContacts()
+      .subscribe((contacts: Contact[]) => {
+        this.contacts = contacts;
+      });
+  }
+
+  setColumns() {
     this.columns = [{
       width: 50,
       sortable: false,
@@ -92,11 +100,7 @@ export class ContactListComponent implements OnInit {
       name: 'Actions',
       flexGrow: 1,
       cellTemplate: this.actionsCell
-    }, ];
-    this.contactService.getContacts()
-      .subscribe((contacts: Contact[]) => {
-        this.contacts = contacts;
-      });
+    }];
   }
 
   /**

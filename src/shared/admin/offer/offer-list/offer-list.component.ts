@@ -53,7 +53,7 @@ export class OfferListComponent implements OnInit {
       });
   }
 
-  getColumns(): Array<any> {
+  getColumns(): Array<TableColumn> {
     return [{
       width: 75,
       sortable: false,

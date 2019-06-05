@@ -38,6 +38,18 @@ export class AttributeListComponent implements OnInit {
    * Init list of Attribute
    */
   ngOnInit() {
+    this.setColumns();
+    this.attributeService.getAttributes()
+      .pipe(take(1))
+      .subscribe((attributes: Attribute[]) => {
+        this.attributes = attributes;
+      }, (err) => {
+        this.alertService.show(err);
+        this.attributes = [];
+      });
+  }
+
+  setColumns() {
     this.columns = [{
       width: 50,
       sortable: false,
@@ -70,15 +82,7 @@ export class AttributeListComponent implements OnInit {
       name: 'Actions',
       flexGrow: 1,
       cellTemplate: this.actionsCell
-    }, ];
-    this.attributeService.getAttributes()
-      .pipe(take(1))
-      .subscribe((attributes: Attribute[]) => {
-        this.attributes = attributes;
-      }, (err) => {
-        this.alertService.show(err);
-        this.attributes = [];
-      });
+    }];
   }
 
   /**

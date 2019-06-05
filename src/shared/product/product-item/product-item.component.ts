@@ -127,33 +127,41 @@ export class ProductItemComponent implements OnInit {
   toggleFavorite(product: Product, favProduct: Favorite) {
     if (this.authenticated) {
       if (favProduct) {
-        this.favoriteService.deleteFavorite(favProduct)
-          .then(() => {
-            this.favoriteRemoved.emit(favProduct);
-            this.matTooltipFavorite = '';
-          }, (err: HttpErrorResponse) => {
-            this.alertService.show(err.error);
-          });
+        this.deleteFavorite(favProduct);
         return;
       }
       const favoriteProduct: Favorite = {key: null, product: product.key, user: this.userService.getUser().uid};
-      this.favoriteService.createFavorite(favoriteProduct)
-        .subscribe((doc) => {
-          favoriteProduct.key = doc.id;
-          this.favoriteService.updateFavorite(favoriteProduct)
-            .subscribe(() => {
-              this.favoriteAdded.emit(favoriteProduct);
-              this.translateService.get('label.product_added_to_favorite')
-                .subscribe((label) => this.matTooltipFavorite = label);
-            }, (err: HttpErrorResponse) => {
-              this.alertService.show(err.error);
-            });
-        }, (err: HttpErrorResponse) => {
-          this.alertService.show(err.error);
-        });
+      this.createFavorite(favoriteProduct);
       return;
     }
     this.alertService.show('favorite.user.unauthenticated');
+  }
+
+  createFavorite(favoriteProduct: Favorite) {
+    this.favoriteService.createFavorite(favoriteProduct)
+      .subscribe((doc) => {
+        favoriteProduct.key = doc.id;
+        this.favoriteService.updateFavorite(favoriteProduct)
+          .subscribe(() => {
+            this.favoriteAdded.emit(favoriteProduct);
+            this.translateService.get('label.product_added_to_favorite')
+              .subscribe((label) => this.matTooltipFavorite = label);
+          }, (err: HttpErrorResponse) => {
+            this.alertService.show(err.error);
+          });
+      }, (err: HttpErrorResponse) => {
+        this.alertService.show(err.error);
+      });
+  }
+
+  deleteFavorite(favoriteProduct: Favorite) {
+    this.favoriteService.deleteFavorite(favoriteProduct)
+      .then(() => {
+        this.favoriteRemoved.emit(favoriteProduct);
+        this.matTooltipFavorite = '';
+      }, (err: HttpErrorResponse) => {
+        this.alertService.show(err.error);
+      });
   }
 
   /**

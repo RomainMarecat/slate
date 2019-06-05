@@ -47,25 +47,29 @@ export class FooterComponent implements OnInit {
             cmsSubscription.unsubscribe();
           }
           this.cmsDetailService.filters$.next([{column: 'cms', operator: '==', value: this.cms.key}]);
-          const cmsDetailSubscription: Subscription = this.cmsDetailService.getCmsDetails()
-            .subscribe((cmsDetails: CmsDetail[]) => {
-              const links = cmsDetails.filter((cmsD) => cmsD.parent === null || typeof cmsD.parent === 'undefined');
-              const sublinks = cmsDetails.filter((cmsD) => cmsD.parent !== null);
-
-              this.links = links.map((link: CmsDetail) => {
-                const children = [];
-                sublinks.forEach((sublink: CmsDetail) => {
-                  if (link.key === sublink.parent) {
-                    children.push(sublink);
-                  }
-                });
-                link.children = children;
-
-                return link;
-
-              });
-            });
+          this.getCmsDetails();
         }
+      });
+  }
+
+  getCmsDetails() {
+    const cmsDetailSubscription: Subscription = this.cmsDetailService.getCmsDetails()
+      .subscribe((cmsDetails: CmsDetail[]) => {
+        const links = cmsDetails.filter((cmsD) => cmsD.parent === null || typeof cmsD.parent === 'undefined');
+        const sublinks = cmsDetails.filter((cmsD) => cmsD.parent !== null);
+
+        this.links = links.map((link: CmsDetail) => {
+          const children = [];
+          sublinks.forEach((sublink: CmsDetail) => {
+            if (link.key === sublink.parent) {
+              children.push(sublink);
+            }
+          });
+          link.children = children;
+
+          return link;
+
+        });
       });
   }
 }

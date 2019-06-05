@@ -40,6 +40,11 @@ export class ProductSearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCategories();
+    this.getBrands();
+  }
+
+  getCategories() {
     this.categoryService.filters$.next([{
       column: 'level',
       operator: '==',
@@ -52,6 +57,9 @@ export class ProductSearchComponent implements OnInit {
       )
       .subscribe(brands => this.brands = brands);
 
+  }
+
+  getBrands() {
     this.filteredBrands.subscribe((brands: Category[]) => {
       this.brandSelected = brands[0];
       if (brands && brands.length > 0) {

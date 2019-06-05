@@ -33,29 +33,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.columns = [{
-      width: 50,
-      sortable: false,
-      canAutoResize: false,
-      draggable: false,
-      resizeable: false,
-      cellTemplate: this.checkboxCell,
-      headerTemplate: this.checkboxHeader,
-    },
-      {
-        prop: 'name',
-        name: 'name',
-        flexGrow: 1
-      }, {
-        prop: 'published',
-        name: 'published',
-        flexGrow: 1
-      }, {
-        prop: 'level',
-        name: 'level',
-        flexGrow: 1
-      }
-    ];
+    this.setColumns();
     this.categoryService.orderBy$.next({column: 'name', direction: 'asc'});
     this.categories$ = this.categoryService.getCategories();
 
@@ -79,6 +57,32 @@ export class CategoryAddComponent implements OnInit {
           });
         }
       });
+  }
+
+  setColumns() {
+    this.columns = [{
+      width: 50,
+      sortable: false,
+      canAutoResize: false,
+      draggable: false,
+      resizeable: false,
+      cellTemplate: this.checkboxCell,
+      headerTemplate: this.checkboxHeader,
+    },
+      {
+        prop: 'name',
+        name: 'name',
+        flexGrow: 1
+      }, {
+        prop: 'published',
+        name: 'published',
+        flexGrow: 1
+      }, {
+        prop: 'level',
+        name: 'level',
+        flexGrow: 1
+      }
+    ];
   }
 
   createForm() {

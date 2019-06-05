@@ -11,6 +11,8 @@ import { ProductOption } from '../../../shared/product/shared/product-option';
 import * as moment from 'moment';
 import { Moment } from 'moment';
 import { FirebaseError } from 'firebase';
+import { CategoryOption } from './shared/category-option';
+import { HomeConfigService } from './shared/home-config.service';
 
 @Component({
   selector: 'app-home',
@@ -19,123 +21,22 @@ import { FirebaseError } from 'firebase';
 })
 export class HomeComponent implements OnInit {
 
-  categoryOptions: {
-    display_title: boolean;
-    display_subtitle: boolean;
-    image_link: boolean;
-    text_link: boolean;
-    display_icon: boolean;
-    display_image: boolean;
-  } = {
-    display_title: true,
-    display_subtitle: true,
-    image_link: true,
-    text_link: true,
-    display_icon: true,
-    display_image: true,
-  };
+  categoryOptions: CategoryOption;
 
-  sliderOptions: {sliders: Slider[]} = {
-    sliders: [
-      {
-        title: 'magazines',
-        image: '/assets/images/bg-1.jpg',
+  sliderOptions: {sliders: Slider[]};
 
-      }, {
-        title: 'shopping',
-        image: '/assets/images/bg-2.jpg'
-      }
-    ]
-  };
-
-  productOptions: ProductOption = {
-    authenticated: false,
-    cart: null,
-    product_most_ordered: {
-      favorite: {
-        display_icon: true,
-      },
-      layout: 'card',
-      limit: 6,
-      display_title: true,
-      products: [],
-      order_by: {column: 'ordered', direction: 'desc'},
-      title: 'product-most-ordered.header.title'
-    },
-    product_most_ordered_this_month: {
-      favorite: {
-        display_icon: true,
-      },
-      layout: 'list',
-      limit: 6,
-      display_title: true,
-      products: [],
-      order_by: {column: `ordered_by_month.${moment().format('YYYY-MM')}`, direction: 'desc'},
-      title: 'product-most-ordered-this-month.header.title'
-    },
-    product_new: {
-      favorite: {
-        display_icon: true,
-      },
-      layout: 'card',
-      limit: 3,
-      display_title: true,
-      products: [],
-      title: 'product-new.header.title'
-    },
-    product_recent_month: {
-      favorite: {
-        display_icon: true,
-      },
-      layout: 'list',
-      limit: 6,
-      display_title: true,
-      threshold: moment().subtract(1, 'months'),
-      products: [],
-      title: 'product-recent-month.header.title'
-    },
-    product_best: {
-      favorite: {
-        display_icon: true,
-      },
-      layout: 'card',
-      limit: 3,
-      display_title: true,
-      products: [],
-      threshold: 4,
-      title: 'product-best.header.title'
-    },
-    product_most_viewed: {
-      favorite: {
-        display_icon: true,
-      },
-      layout: 'card',
-      limit: 10,
-      display_title: true,
-      products: [],
-      threshold: 10,
-      title: 'product-most-viewed.header.title'
-    },
-    product_most_commented: {
-      favorite: {
-        display_icon: true,
-      },
-      layout: 'card',
-      limit: 3,
-      display_title: true,
-      products: [],
-      threshold: 10,
-      title: 'product-most-commented.header.title'
-    },
-    user: null,
-  };
+  productOptions: ProductOption;
 
   constructor(private productService: ProductService,
               private alertService: AlertService,
               private userService: UserService,
               private cartService: CartService,
-              private seoService: SeoService) {
+              private seoService: SeoService,
+              private homeConfigService: HomeConfigService) {
     this.seoService.setSeo('home');
+    this.categoryOptions = this.homeConfigService.getCategoryOptions();
+    this.sliderOptions = this.homeConfigService.getSliderOption();
+    this.productOptions = this.homeConfigService.getProductOption();
   }
 
   ngOnInit() {
@@ -218,6 +119,7 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_most_ordered.products = products;
           observer.next();
+          observer.complete();
         }, (err: FirebaseError) => {
           this.alertService.openBottomSheetMessage(
             {title: 'error.api.general', message: err.message},
@@ -252,6 +154,7 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_most_commented.products = products;
           observer.next();
+          observer.complete();
         }, (err: FirebaseError) => {
           this.alertService.openBottomSheetMessage(
             {title: 'error.api.general', message: err.message},
@@ -286,6 +189,7 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_most_viewed.products = products;
           observer.next();
+          observer.complete();
         }, (err: FirebaseError) => {
           this.alertService.openBottomSheetMessage(
             {title: 'error.api.general', message: err.message},
@@ -320,6 +224,7 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_new.products = products;
           observer.next();
+          observer.complete();
         }, (err: FirebaseError) => {
           this.alertService.openBottomSheetMessage(
             {title: 'error.api.general', message: err.message},
@@ -354,6 +259,7 @@ export class HomeComponent implements OnInit {
           }
           this.productOptions.product_recent_month.products = products;
           observer.next();
+          observer.complete();
         }, (err: FirebaseError) => {
           this.alertService.openBottomSheetMessage(
             {title: 'error.api.general', message: err.message},

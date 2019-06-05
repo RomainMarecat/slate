@@ -53,7 +53,7 @@ export class PartnerListComponent implements OnInit {
       });
   }
 
-  getColumns(): Array<any> {
+  getColumns(): TableColumn[] {
     return [{
       width: 75,
       sortable: false,
@@ -93,7 +93,8 @@ export class PartnerListComponent implements OnInit {
     }
 
     this.partnerService.updatePartner(partner)
-      .then(() => {});
+      .then(() => {
+      });
   }
 
   updatePartnerPublication(partner: Partner, event: {source: any, value: boolean}) {

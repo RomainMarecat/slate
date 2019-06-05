@@ -106,27 +106,31 @@ export class AttributeEditComponent implements OnInit {
     });
     if (this.form.valid) {
       this.attribute = {...this.attribute, ...this.form.value};
-      if (this.attribute.key) {
-        this.attributeService.updateAttribute(this.attribute)
-          .then((doc) => {
-            this.alertService.toast(`attribute updated ${this.attribute.translations.fr}`);
-            this.reset();
-          }, (err) => {
-            this.alertService.toast(`attribute error ${err}`);
-          });
-        this.router.navigate([
-          this.localizeRouterService.translateRoute('/admin'),
-          'attribute'
-        ]);
-      } else {
-        this.attributeService.createAttribute(this.attribute)
-          .then((doc: DocumentReference) => {
-            this.alertService.toast(`attribute added ${doc.id}`);
-            this.reset();
-          }, (err) => {
-            this.alertService.toast(`attribute error ${err}`);
-          });
-      }
+      this.updateAttribute();
+    }
+  }
+
+  updateAttribute() {
+    if (this.attribute.key) {
+      this.attributeService.updateAttribute(this.attribute)
+        .then((doc) => {
+          this.alertService.toast(`attribute updated ${this.attribute.translations.fr}`);
+          this.reset();
+        }, (err) => {
+          this.alertService.toast(`attribute error ${err}`);
+        });
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('/admin'),
+        'attribute'
+      ]);
+    } else {
+      this.attributeService.createAttribute(this.attribute)
+        .then((doc: DocumentReference) => {
+          this.alertService.toast(`attribute added ${doc.id}`);
+          this.reset();
+        }, (err) => {
+          this.alertService.toast(`attribute error ${err}`);
+        });
     }
   }
 

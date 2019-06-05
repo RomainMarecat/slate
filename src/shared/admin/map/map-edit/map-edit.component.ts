@@ -103,26 +103,34 @@ export class MapEditComponent implements OnInit {
         if (this.map.published === true) {
           this.map.published_at = new Date();
         }
-        this.mapService.updateMap(this.map)
-          .then((doc) => {
-            this.alertService.toast(`map updated ${this.map.name}`);
-            this.reset();
-          }, (err) => {
-            this.alertService.toast(`map error ${err}`);
-          });
+        this.updateMap();
         this.router.navigate([
           '/admin/map'
         ]);
       } else {
-        this.mapService.createMap(this.map)
-          .then((doc: DocumentReference) => {
-            this.alertService.toast(`map added ${doc.id}`);
-            this.reset();
-          }, (err) => {
-            this.alertService.toast(`map error ${err}`);
-          });
+        this.createMap();
       }
     }
+  }
+
+  updateMap() {
+    this.mapService.updateMap(this.map)
+      .then((doc) => {
+        this.alertService.toast(`map updated ${this.map.name}`);
+        this.reset();
+      }, (err) => {
+        this.alertService.toast(`map error ${err}`);
+      });
+  }
+
+  createMap() {
+    this.mapService.createMap(this.map)
+      .then((doc: DocumentReference) => {
+        this.alertService.toast(`map added ${doc.id}`);
+        this.reset();
+      }, (err) => {
+        this.alertService.toast(`map error ${err}`);
+      });
   }
 
   createForm() {

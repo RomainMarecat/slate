@@ -26,20 +26,8 @@ export class ProductService extends VisitorService {
       this.getProduct(key)
         .pipe(take(1))
         .subscribe((product) => {
-          if (body.ordered) {
-            if (product.ordered) {
-              product.ordered += body.ordered;
-            } else {
-              product.ordered = body.ordered;
-            }
-            if (product.ordered_by_month && product.ordered_by_month[moment().format('YYYY-MM')]) {
-              product.ordered_by_month[moment().format('YYYY-MM')] += body.ordered;
-            } else {
-              product.ordered_by_month = {};
-              product.ordered_by_month[moment().format('YYYY-MM')] = body.ordered;
-            }
-          }
 
+          product = this.applyOrder(product, body);
           product = {...product, ...body};
 
           this.updateProduct(product)
@@ -52,6 +40,24 @@ export class ProductService extends VisitorService {
             });
         }, (err) => observer.error(err));
     });
+  }
+
+  applyOrder(product: Product, body: Product): Product {
+    if (body.ordered) {
+      if (product.ordered) {
+        product.ordered += body.ordered;
+      } else {
+        product.ordered = body.ordered;
+      }
+      if (product.ordered_by_month && product.ordered_by_month[moment().format('YYYY-MM')]) {
+        product.ordered_by_month[moment().format('YYYY-MM')] += body.ordered;
+      } else {
+        product.ordered_by_month = {};
+        product.ordered_by_month[moment().format('YYYY-MM')] = body.ordered;
+      }
+    }
+
+    return product;
   }
 
   getProducts(): Observable<Product[]> {

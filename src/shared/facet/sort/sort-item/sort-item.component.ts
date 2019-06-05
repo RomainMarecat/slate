@@ -22,10 +22,7 @@ export class SortItemComponent implements OnInit {
   onSort(sort: Sort, index: number) {
     this.sorted.emit(sort);
     this.facets = this.facets.map((facet, i) => {
-      facet.selected = false;
-      if (index === i) {
-        facet.selected = true;
-      }
+      facet.selected = index === i;
       return facet;
     });
     this.productService.filters$.next(null);
