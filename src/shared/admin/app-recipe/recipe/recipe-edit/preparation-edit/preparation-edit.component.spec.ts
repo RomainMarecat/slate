@@ -9,7 +9,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../../../../../app-recipe/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -36,7 +36,7 @@ describe('PreparationEditComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
         NgxDatatableModule,
-        NgxEditorModule,
+
         NgSelectModule,
         HttpClientTestingModule,
         RouterTestingModule,

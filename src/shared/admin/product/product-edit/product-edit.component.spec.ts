@@ -12,7 +12,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { Angulartics2Module } from 'angulartics2';
 import { Cloudinary } from 'cloudinary-core';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { environment } from '../../../../app-hockey/environments/environment';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { MockAttributeService } from '../../../attribute/mock-attribute.service';
@@ -66,7 +66,7 @@ describe('ProductEditComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
         NgxDatatableModule,
-        NgxEditorModule,
+
         HttpClientTestingModule,
         RouterTestingModule,
         SharedModule,

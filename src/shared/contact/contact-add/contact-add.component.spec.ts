@@ -12,7 +12,7 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Angulartics2Module } from 'angulartics2';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { SharedModule } from '../../shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -48,7 +48,7 @@ describe('ContactAddComponent', () => {
         SharedModule,
         ChatModule,
         LocalizeRouterModule,
-        NgxEditorModule,
+
         NgxDatatableModule,
         Angulartics2Module.forRoot({
           developerMode: true,

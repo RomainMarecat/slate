@@ -6,7 +6,7 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { SharedModule } from '../../shared.module';
 import { ArticleService } from '../../article/shared/article.service';
 import { MatIconRegistry } from '@angular/material';
@@ -26,7 +26,7 @@ export const TABLE_MEDIA = new InjectionToken<string>('media');
     FlexLayoutModule,
     NgxDatatableModule,
     SharedModule,
-    NgxEditorModule,
+
     ArticleRoutingModule,
     TranslateModule.forChild()
   ],

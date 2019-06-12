@@ -10,7 +10,7 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { ClipboardModule } from 'ngx-clipboard';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { environment } from '../../../../app-hockey/environments/environment';
 import { DeliveryService } from '../../../cart/shared/delivery.service';
 import { MockDeliveryService } from '../../../cart/shared/mock-delivery.service';
@@ -42,7 +42,7 @@ describe('OrderEditComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
         NgxDatatableModule,
-        NgxEditorModule,
+
         HttpClientTestingModule,
         RouterTestingModule,
         SharedModule,

@@ -8,7 +8,7 @@ import { ContactDetailComponent } from '../contact-detail/contact-detail.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SharedModule } from '../../../shared.module';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AlertService } from '../../../popup/alert.service';
@@ -52,7 +52,7 @@ describe('ContactListComponent', () => {
         NgxDatatableModule,
         SharedModule,
         ChatModule,
-        NgxEditorModule,
+
         HttpClientTestingModule,
         LocalizeRouterModule,
         RouterTestingModule,

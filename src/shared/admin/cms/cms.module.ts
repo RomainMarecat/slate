@@ -1,9 +1,7 @@
 import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
 
 import { SharedModule } from '../../shared.module';
 import { CmsRoutingModule } from './cms-routing.module';
@@ -21,8 +19,6 @@ const TABLE_CMS = new InjectionToken<string>('cms');
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule,
-    NgxEditorModule,
     ReactiveFormsModule,
     TranslateModule.forChild(),
     SharedModule,

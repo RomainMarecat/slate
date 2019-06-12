@@ -5,7 +5,7 @@ import { ContactService } from '../../../contact/shared/contact.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { SharedModule } from '../../../shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -37,7 +37,7 @@ describe('ContactDetailComponent', () => {
         RouterTestingModule,
         BrowserAnimationsModule,
         SharedModule,
-        NgxEditorModule,
+
         NgxDatatableModule,
         LocalizeRouterModule,
         Angulartics2Module.forRoot({

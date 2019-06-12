@@ -7,7 +7,7 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { ClipboardModule } from 'ngx-clipboard';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { CartService } from '../../../cart/shared/cart.service';
 import { DeliveryService } from '../../../cart/shared/delivery.service';
 import { MockCartService } from '../../../cart/shared/mock-cart.service';
@@ -39,7 +39,7 @@ describe('CartEditComponent', () => {
         CommonModule,
         ClipboardModule,
         NgxDatatableModule,
-        NgxEditorModule,
+
         MaterialModule,
         RouterTestingModule,
         LocalizeRouterModule,

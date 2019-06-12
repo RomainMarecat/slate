@@ -7,7 +7,7 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { TranslateModule } from '@ngx-translate/core';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { InstructionEditComponent } from './recipe-edit/instruction-edit/instruction-edit.component';
@@ -50,7 +50,7 @@ import { StorageModule } from '../../../media/storage/storage.module';
     StorageModule,
     FormModule,
     NgxDatatableModule,
-    NgxEditorModule,
+
     NgPipesModule,
     NgSelectModule,
     ReactiveFormsModule,

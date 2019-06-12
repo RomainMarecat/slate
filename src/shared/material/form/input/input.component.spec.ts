@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 
@@ -29,7 +29,7 @@ describe('InputComponent', () => {
         MatCardModule,
         MatIconModule,
         MatButtonModule,
-        NgxEditorModule,
+
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),

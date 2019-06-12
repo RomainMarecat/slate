@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticleListComponent } from './article-list.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { SharedModule } from '../../../shared.module';
 import { ArticleService } from '../../../article/shared/article.service';
 import { MockArticleService } from '../../../article/shared/mock-article.service';
@@ -49,7 +49,7 @@ describe('ArticleListComponent', () => {
         BrowserAnimationsModule,
         NgxDatatableModule,
         SharedModule,
-        NgxEditorModule,
+
         RouterTestingModule,
         LocalizeRouterModule,
         AngularFireStorageModule,

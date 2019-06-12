@@ -8,7 +8,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../../../../../app-recipe/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from '../../../../../shared.module';
@@ -47,7 +47,7 @@ describe('InstructionEditComponent', () => {
         FormModule,
         MediaModule,
         NgxDatatableModule,
-        NgxEditorModule,
+
         NgSelectModule,
         HttpClientTestingModule,
         RouterTestingModule,

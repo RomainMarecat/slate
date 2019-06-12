@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SharedModule } from '../../../shared.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
@@ -54,7 +54,7 @@ describe('SelectionEditComponent', () => {
         SharedModule,
         NgxDatatableModule,
         LocalizeRouterModule,
-        NgxEditorModule,
+
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
