@@ -1,7 +1,7 @@
 import { NgModule, InjectionToken } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { SharedModule } from '../../shared.module';
 import { AttributeService } from '../../attribute/attribute.service';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -19,7 +19,7 @@ const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
     CommonModule,
     NgxDatatableModule,
     SharedModule,
-    NgxEditorModule,
+
     LocalizeRouterModule,
     AttributeRoutingModule
   ],

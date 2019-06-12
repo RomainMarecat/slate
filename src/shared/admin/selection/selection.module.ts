@@ -1,6 +1,6 @@
 import { InjectionToken, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxEditorModule } from 'ngx-editor';
+
 
 import { SelectionRoutingModule } from './selection-routing.module';
 import { SelectionListComponent } from './selection-list/selection-list.component';
@@ -19,7 +19,7 @@ export const TABLE_PRODUCT = new InjectionToken<string>('product');
 @NgModule({
   imports: [
     CommonModule,
-    NgxEditorModule,
+
     SharedModule,
     NgxDatatableModule,
     TranslateModule,

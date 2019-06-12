@@ -4,7 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ClipboardModule } from 'ngx-clipboard';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { MaterialModule } from '../../material/material.module';
 import { CartEditComponent } from './cart-edit/cart-edit.component';
 import { CartListComponent } from './cart-list/cart-list.component';
@@ -25,7 +25,7 @@ import { CartComponent } from './cart/cart.component';
     NgxDatatableModule,
     MaterialModule,
     ClipboardModule,
-    NgxEditorModule,
+
     TranslateModule.forChild(),
   ]
 })

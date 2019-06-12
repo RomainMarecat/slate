@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from '../../../shared.module';
@@ -35,7 +34,6 @@ describe('BaseEditComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
         NgxDatatableModule,
-        NgxEditorModule,
         HttpClientTestingModule,
         RouterTestingModule,
         SharedModule,

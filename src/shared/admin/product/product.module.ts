@@ -6,7 +6,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { TranslateModule } from '@ngx-translate/core';
 import { CategoryService } from '../../category/category.service';
 import { SharedModule } from '../../shared.module';
@@ -31,7 +31,7 @@ export const TABLE_MEDIA = new InjectionToken<string>('media');
     CommonModule,
     NgxDatatableModule,
     SharedModule,
-    NgxEditorModule,
+
     TranslateModule.forChild(),
     ProductRoutingModule
   ],

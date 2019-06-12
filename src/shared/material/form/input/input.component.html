@@ -379,8 +379,9 @@
           <mat-card-content>
             <mat-form-field floatPlaceholder="always" class="mat-form-field mat-form-field--no-underline">
               <input matInput style="display: none;">
-              <app-ngx-editor [config]="editorConfig" formControlName="textarea-extension">
-              </app-ngx-editor>
+              <textarea matInput
+                        formControlName="textarea-extension">
+              </textarea>
               <mat-hint align="end">
                 {{ textareaExtension.value.length }} {{ '/1000'|translate }}
               </mat-hint>

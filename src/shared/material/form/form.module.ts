@@ -20,7 +20,7 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { StorageModule } from '../../media/storage/storage.module';
 
 @NgModule({
@@ -39,7 +39,7 @@ import { StorageModule } from '../../media/storage/storage.module';
     MatAutocompleteModule,
     StorageModule,
     MatInputModule,
-    NgxEditorModule,
+
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,

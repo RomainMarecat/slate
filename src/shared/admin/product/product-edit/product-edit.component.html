@@ -52,9 +52,9 @@
             <div class="d-block">
               <div class="mat-form-field editor mt-1">
                 <label class="mat-hint"><strong>Description :</strong></label>
-                <app-ngx-editor [config]="editorConfig"
-                                [formControl]="form.get('description')">
-                </app-ngx-editor>
+                <textarea matInput
+                          [formControl]="form.get('description')">
+                </textarea>
               </div>
             </div>
             <div class="d-block">
@@ -161,7 +161,7 @@
                     <mat-hint align="start"><strong
                       [innerHtml]="'Url du site web proposant le produit'|translate"></strong></mat-hint>
                     <mat-hint align="end">{{ offers.controls[i].controls.external_url.value.length }} {{
-                      '/255'|translate }}
+                        '/255'|translate }}
                     </mat-hint>
                     <mat-error
                       *ngIf="offers.controls[i].controls.external_url.invalid && offers.controls[i].controls.external_url.value.length === 0"

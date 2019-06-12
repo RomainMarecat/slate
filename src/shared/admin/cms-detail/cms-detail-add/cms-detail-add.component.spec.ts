@@ -15,7 +15,7 @@ import {
   MatCheckboxModule,
   MatListModule,
 } from '@angular/material';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -55,7 +55,7 @@ describe('CmsDetailAddComponent', () => {
         MatListModule,
         MatSelectModule,
         MatToolbarModule,
-        NgxEditorModule,
+
         NgPipesModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}

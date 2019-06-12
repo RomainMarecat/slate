@@ -8,7 +8,7 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { SharedModule } from '../../../shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MockArticleService } from '../../../article/shared/mock-article.service';
@@ -60,7 +60,7 @@ describe('ArticleEditComponent', () => {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         SharedModule,
-        NgxEditorModule,
+
         NgxDatatableModule,
         LocalizeRouterModule,
         Angulartics2Module.forRoot( {

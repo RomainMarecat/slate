@@ -5,7 +5,6 @@ import { BaseEditComponent } from './base-edit/base-edit.component';
 import { MatButtonModule, MatIconModule, MatRadioModule } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NgxEditorModule } from 'ngx-editor';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 
@@ -17,7 +16,6 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatRadioModule,
     NgxDatatableModule,
-    NgxEditorModule,
     RouterModule,
     TranslateModule.forChild(),
   ],

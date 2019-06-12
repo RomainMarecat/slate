@@ -24,7 +24,7 @@ import {
   MatStepperModule
 } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxEditorModule } from 'ngx-editor';
+
 
 import { SharedModule } from '../../shared.module';
 import { CategoryRoutingModule } from './category-routing.module';
@@ -63,7 +63,7 @@ export const TABLE_CATEGORY = new InjectionToken<string>('category');
     MatCommonModule,
     MatTooltipModule,
     MatStepperModule,
-    NgxEditorModule,
+
     ReactiveFormsModule,
     SharedModule,
     NgxDatatableModule,

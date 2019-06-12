@@ -49,9 +49,9 @@
         </mat-form-field>
         <div class="mat-form-field editor mt1">
           <label class="mat-hint"><strong>{{ 'admin.label.cms-detail.content'|translate }}</strong></label>
-          <app-ngx-editor [config]="editorConfig"
-                          [formControl]="form.get('content')">
-          </app-ngx-editor>
+          <textarea matInput
+                    [formControl]="form.get('content')">
+          </textarea>
         </div>
         <mat-form-field class="mat-form-field">
           <input matInput

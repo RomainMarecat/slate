@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { NgxEditorModule } from 'ngx-editor';
+
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -55,7 +55,7 @@ describe('AttributeEditComponent', () => {
         BrowserAnimationsModule,
         CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
         SharedModule,
-        NgxEditorModule,
+
         LocalizeRouterModule,
         NgxDatatableModule,
         Angulartics2Module.forRoot({
