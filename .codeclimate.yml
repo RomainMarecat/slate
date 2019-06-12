@@ -1,16 +1,23 @@
 ---
-engines:
+version: 2
+plugins:
   duplication:
     enabled: true
     config:
+      debug: true
       languages:
         - javascript
 exclude_paths:
-  - ".github/"
+  - ".idea/"
+  - ".git/"
+  - ".firebase/"
   - "release/"
   - "assets/"
+  - "node_modules/"
   - "config/"
   - "docs/"
+  - "projects/"
+  - "deploy/"
   - "hooks/"
   - "firebase/"
   - "App_Resources/"
@@ -18,6 +25,7 @@ exclude_paths:
   - "e2e/"
   - "functions/"
   - "public/"
+  - "platforms/"
   - "tools/"
   - "webpack.config.js"
   - "webpack.server.config.js"
@@ -26,6 +34,3 @@ exclude_paths:
   - "src/**/test.ts"
   - "server.ts"
   - "prerender.ts"
-ratings:
-  paths:
-    - "src/**/**.ts"
