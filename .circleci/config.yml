@@ -13,4 +13,4 @@ jobs:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-      - run: xvfb-run -a npm run test
+      - run: xvfb-run -a npm run test -- "--browsers=ChromeTravisCi"
