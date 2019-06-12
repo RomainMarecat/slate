@@ -80,7 +80,7 @@ export class FavoriteService extends VisitorService {
         });
     });
   }
-  
+
   setFavorite(user: User) {
     this.filters$.next([
       {
