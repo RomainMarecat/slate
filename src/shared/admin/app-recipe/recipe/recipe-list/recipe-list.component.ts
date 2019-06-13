@@ -17,11 +17,11 @@ import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
 })
 export class RecipeListComponent extends BaseListComponent<Recipe> implements OnInit {
 
-  @ViewChild('dataTableComponentTable') dataTableComponentTable: DatatableComponent;
-  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
-  @ViewChild('priceCell') priceCell: TemplateRef<any>;
-  @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
-  @ViewChild('desktopHeader') desktopHeader: TemplateRef<any>;
+  @ViewChild('dataTableComponentTable', {static: false}) dataTableComponentTable: DatatableComponent;
+  @ViewChild('actionsCell', {static: false}) actionsCell: TemplateRef<any>;
+  @ViewChild('priceCell', {static: false}) priceCell: TemplateRef<any>;
+  @ViewChild('desktopCell', {static: false}) desktopCell: TemplateRef<any>;
+  @ViewChild('desktopHeader', {static: false}) desktopHeader: TemplateRef<any>;
 
   constructor(protected menuService: MenuService,
               protected recipeService: RecipeService,

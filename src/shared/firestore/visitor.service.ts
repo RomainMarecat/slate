@@ -3,13 +3,18 @@ import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import { Document } from './document';
 import {
   CollectionReference,
-  DocumentReference,
-  DocumentSnapshot,
   OrderByDirection,
   Query,
   WhereFilterOp
 } from '@firebase/firestore-types';
-import { Action, AngularFirestore, AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
+import {
+  Action,
+  AngularFirestore,
+  AngularFirestoreCollection,
+  DocumentChangeAction,
+  DocumentReference,
+  DocumentSnapshot
+} from '@angular/fire/firestore';
 import { Filter } from '../facet/filter/shared/filter';
 import { Sort } from '../facet/sort/shared/sort';
 import { map, switchMap } from 'rxjs/operators';
@@ -40,7 +45,7 @@ export class VisitorService {
     ).pipe(
       switchMap(([filters, limit, orderBy, query]) => {
         return this.afs.collection(this.table, (ref) => {
-          this.query = ref;
+          this.query = ref as CollectionReference;
           this.createQuery(filters, limit, orderBy, query);
           return this.query;
         })
@@ -111,7 +116,7 @@ export class VisitorService {
       .doc(path)
       .snapshotChanges()
       .pipe(
-        map((action: Action<DocumentSnapshot>) => {
+        map((action: Action<DocumentSnapshot<DocumentReference>>) => {
           if (action.payload.exists) {
             const product = action.payload.data() as Document;
             product.key = action.payload.id;

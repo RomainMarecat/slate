@@ -11,7 +11,7 @@ export const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:
 export class Login1Component implements OnInit {
 
   form: FormGroup = Login1Component.getForm();
-   @ViewChild('inputEmail') inputEmail: ElementRef;
+   @ViewChild('inputEmail', {static: false}) inputEmail: ElementRef;
 
   static getForm(): FormGroup {
     return new FormGroup({

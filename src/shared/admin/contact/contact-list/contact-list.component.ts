@@ -22,8 +22,8 @@ export class ContactListComponent implements OnInit {
   contacts: Contact[];
   isLoading = false;
   selected: Contact[] = [];
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
-  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
+  @ViewChild('checkboxCell', {static: false}) checkboxCell: TemplateRef<any>;
+  @ViewChild('actionsCell', {static: false}) actionsCell: TemplateRef<any>;
 
   constructor(public dialog: MatDialog,
               private router: Router,

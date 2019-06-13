@@ -11,7 +11,7 @@ import { AreaDrawComponent } from '../area-draw/area-draw.component';
   styleUrls: [ './area.component.scss' ]
 })
 export class AreaComponent implements OnInit {
-  @ViewChild(AreaDrawComponent) areaDrawComponent: AreaDrawComponent;
+  @ViewChild(AreaDrawComponent, {static: false}) areaDrawComponent: AreaDrawComponent;
   areas: Area[] = [];
   _map: Map;
   @Input() mapConfig: any;

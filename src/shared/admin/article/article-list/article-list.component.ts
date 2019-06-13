@@ -22,10 +22,10 @@ export class ArticleListComponent implements OnInit {
   articles: Article[] = [];
   isLoading = false;
   selected: Article[] = [];
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
-  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
-  @ViewChild('publicationCell') publicationCell: TemplateRef<any>;
-  @ViewChild('headerTemplate') headerTemplate: TemplateRef<any>;
+  @ViewChild('checkboxCell', {static: false}) checkboxCell: TemplateRef<any>;
+  @ViewChild('actionsCell', {static: false}) actionsCell: TemplateRef<any>;
+  @ViewChild('publicationCell', {static: false}) publicationCell: TemplateRef<any>;
+  @ViewChild('headerTemplate', {static: false}) headerTemplate: TemplateRef<any>;
 
   constructor(public dialog: MatDialog,
               private router: Router,

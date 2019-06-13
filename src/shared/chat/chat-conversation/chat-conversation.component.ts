@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DocumentReference } from '@angular/fire/firestore';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from '@firebase/auth-types';
+import { User } from 'firebase/app';
 import { Subscription } from 'rxjs';
 import { Contact } from '../../contact/shared/contact';
 import { UserService } from '../../user/shared/user.service';

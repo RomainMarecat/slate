@@ -16,7 +16,7 @@ import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsen
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { AngularFirestoreModule, AngularFirestore } from '@angular/fire/firestore';
-import { ConversationService } from 'shared/chat/shared/conversation.service';
+import { ConversationService } from '../../shared/chat/shared/conversation.service';
 import { UserService } from '../../shared/user/shared/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
 import { ObjectService } from '../../shared/util/object.service';
@@ -65,7 +65,6 @@ export const app_name = new InjectionToken<string>('app_name');
 export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
 export const clientAdSense = new InjectionToken<string>('clientAdSense');
 export const slotAdSense = new InjectionToken<string>('slotAdSense');
-export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export const CONFIG_TOKEN = new InjectionToken<any>('Registered config');
@@ -151,7 +150,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     FileUploadModule,
     TranslateModule.forChild(),
     SharedModule.forRoot(CONFIG_TOKEN),
-    SlackModule.forRoot(slackToken),
+    SlackModule.forRoot(environment.slackToken),
     DashboardModule,
   ],
   exports: [

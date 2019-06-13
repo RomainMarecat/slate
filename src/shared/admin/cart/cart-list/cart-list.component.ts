@@ -17,15 +17,15 @@ import { BaseListComponent } from '../../base/base-list/base-list.component';
 })
 export class CartListComponent extends BaseListComponent<Cart> implements OnInit {
 
-  @ViewChild('dataTableComponentTable') dataTableComponentTable: DatatableComponent;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
-  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
-  @ViewChild('priceCell') priceCell: TemplateRef<any>;
-  @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
-  @ViewChild('desktopHeader') desktopHeader: TemplateRef<any>;
-  @ViewChild('dateTmpl') dateTmpl: TemplateRef<any>;
-  @ViewChild('statusTmpl') statusTmpl: TemplateRef<any>;
+  @ViewChild('dataTableComponentTable', {static: false}) dataTableComponentTable: DatatableComponent;
+  @ViewChild('checkboxHeader', {static: false}) checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell', {static: false}) checkboxCell: TemplateRef<any>;
+  @ViewChild('actionsCell', {static: false}) actionsCell: TemplateRef<any>;
+  @ViewChild('priceCell', {static: false}) priceCell: TemplateRef<any>;
+  @ViewChild('desktopCell', {static: false}) desktopCell: TemplateRef<any>;
+  @ViewChild('desktopHeader', {static: false}) desktopHeader: TemplateRef<any>;
+  @ViewChild('dateTmpl', {static: false}) dateTmpl: TemplateRef<any>;
+  @ViewChild('statusTmpl', {static: false}) statusTmpl: TemplateRef<any>;
 
   constructor(protected menuService: MenuService,
               protected cartService: CartService,

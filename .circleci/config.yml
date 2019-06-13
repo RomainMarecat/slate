@@ -3,14 +3,21 @@ jobs:
   build:
     working_directory: ~/src
     docker:
-      - image: circleci/node:8-browsers
+      - image: circleci/node:10-browsers
     steps:
       - checkout
       - restore_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
-      - run: npm ci
+      - run:
+          name: Install dependencies
+          command: |
+            if [ ! -d node_modules ]; then
+              sudo npm install -g nativescript
+              npm ci
+            fi
       - save_cache:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
+      - run: xvfb-run -a npm run lint
       - run: xvfb-run -a npm run test -- "--browsers=ChromeTravisCi"

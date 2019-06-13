@@ -22,7 +22,7 @@ export class ChatComponent implements OnInit {
 
   @Input() contacts: Contact[] = [];
 
-  @ViewChild('sidenavRight') sidenavRight: MatSidenav;
+  @ViewChild('sidenavRight', {static: false}) sidenavRight: MatSidenav;
 
   selectedContact: Contact;
 

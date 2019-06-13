@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { User } from '@firebase/auth-types';
+import { User } from 'firebase/app';
 import { UserService } from '../../user/shared/user.service';
 import { AlertService } from '../../popup/alert.service';
 

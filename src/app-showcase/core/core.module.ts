@@ -10,7 +10,7 @@ import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsen
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
-import { ConversationService } from 'shared/chat/shared/conversation.service';
+import { ConversationService } from '../../shared/chat/shared/conversation.service';
 import { UserService } from '../../shared/user/shared/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
 import { ObjectService } from '../../shared/util/object.service';
@@ -56,7 +56,6 @@ export const app_name = new InjectionToken<string>('app_name');
 export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
 export const clientAdSense = new InjectionToken<string>('clientAdSense');
 export const slotAdSense = new InjectionToken<string>('slotAdSense');
-export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export function createTranslateLoader(http: HttpClient, name: string) {
@@ -147,7 +146,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     ImageCropperModule,
     FileUploadModule,
     SharedModule.forRoot(CONFIG_TOKEN),
-    SlackModule.forRoot(slackToken),
+    SlackModule.forRoot(environment.slackToken),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

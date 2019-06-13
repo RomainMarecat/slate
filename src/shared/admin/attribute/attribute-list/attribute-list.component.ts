@@ -22,8 +22,8 @@ export class AttributeListComponent implements OnInit {
   attributes: Attribute[];
   isLoading = false;
   selected: Attribute[] = [];
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
-  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
+  @ViewChild('checkboxCell', {static: false}) checkboxCell: TemplateRef<any>;
+  @ViewChild('actionsCell', {static: false}) actionsCell: TemplateRef<any>;
 
   constructor(public dialog: MatDialog,
               private alertService: AlertService,

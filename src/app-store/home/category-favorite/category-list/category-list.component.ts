@@ -7,7 +7,7 @@ import { Favorite } from '../../../../shared/favorite/shared/favorite';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { UserService } from '../../../../shared/user/shared/user.service';
-import { User } from '@firebase/auth-types';
+import { User } from 'firebase/app';
 
 @Component({
   selector: 'app-category-favorite-list',

@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
   mediaBreakpoint: string;
   ingredients: Array<string>;
   form: FormGroup;
-  @ViewChild('search') search: ElementRef;
+  @ViewChild('search', {static: false}) search: ElementRef;
   query: {
     filters: Filter[],
     limit: number

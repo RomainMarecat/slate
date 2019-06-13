@@ -25,7 +25,7 @@ import { Recipe } from '../../../recipe/shared/recipe';
 })
 export class RecipeTitleComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('stepper') stepper: MatStepper;
+  @ViewChild('stepper', {static: false}) stepper: MatStepper;
 
   _recipe: Recipe;
 

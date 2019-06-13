@@ -16,8 +16,8 @@ export class CategoryListComponent implements OnInit {
   categories: Category[] = [];
   selected: Category[] = [];
   isLoading: boolean;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
+  @ViewChild('checkboxHeader', {static: false}) checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell', {static: false}) checkboxCell: TemplateRef<any>;
 
   constructor(private table: ElementRef,
               private categoryService: CategoryService,

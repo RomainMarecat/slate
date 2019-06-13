@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoaderService } from '../../loader/loader.service';
 import { UserService } from '../../user/shared/user.service';
 import { AlertService } from '../../popup/alert.service';
-import { User } from '@firebase/auth-types';
+import { User } from 'firebase/app';
 import { Favorite } from '../shared/favorite';
 import { FavoriteService } from '../shared/favorite.service';
 import { FirebaseError } from 'firebase';

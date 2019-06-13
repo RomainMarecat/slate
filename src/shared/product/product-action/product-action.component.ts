@@ -5,7 +5,6 @@ import { ScoreService } from '../../score/score.service';
 import { AlertService } from '../../popup/alert.service';
 import { Cart } from '../../cart/shared/cart';
 import { CartService } from '../../cart/shared/cart.service';
-import { Filter } from '../../facet/filter/shared/filter';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../loader/loader.service';
 import { LocalizeRouterService } from 'localize-router';
@@ -19,7 +18,7 @@ export class ProductActionComponent implements OnInit {
 
   isLoading: boolean;
 
-  @ViewChild('inputQuantity') inputQuantity: ElementRef<HTMLInputElement>;
+  @ViewChild('inputQuantity', {static: false}) inputQuantity: ElementRef<HTMLInputElement>;
 
   @Input() isProductSellable: boolean;
 

@@ -50,7 +50,6 @@ export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
 export const cloudinary = new InjectionToken<CloudinaryConfiguration>('cloudinary');
 export const clientAdSense = new InjectionToken<string>('clientAdSense');
 export const slotAdSense = new InjectionToken<string>('slotAdSense');
-export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export function createTranslateLoader(http: HttpClient, name: string) {
@@ -113,8 +112,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
     CommonModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
-    /*    AngularFirestoreModule,
-     */
     AngularFirestoreModule.enablePersistence(),
     Angulartics2Module.forRoot({
       developerMode: true,
@@ -133,7 +130,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     ImageCropperModule,
     FileUploadModule,
     SharedModule.forRoot(CONFIG_TOKEN),
-    SlackModule.forRoot(slackToken),
+    SlackModule.forRoot(environment.slackToken),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
