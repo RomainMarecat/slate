@@ -1,7 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormGroup } from '@angular/forms';
-import { off } from 'tns-core-modules/application';
 import { AlertService } from '../../../popup/alert.service';
 import { StringService } from '../../../util/string.service';
 import { Product } from '../../../product/shared/product';
@@ -41,9 +40,9 @@ export class ProductEditComponent implements OnInit {
   categories: Category[] = [];
   selected: Category[] = [];
   isLoading = false;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
-  @ViewChild(ImageProductComponent) ImageProductComponent: ImageProductComponent;
+  @ViewChild('checkboxHeader', {static: false}) checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell', {static: false}) checkboxCell: TemplateRef<any>;
+  @ViewChild(ImageProductComponent, {static: false}) ImageProductComponent: ImageProductComponent;
   imageStorageConfig: any;
   downloadURL: string;
   _attributesModel: any[] = [];

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'firebase';
+import { FormControl, FormGroup } from '@angular/forms';
+import { User } from 'firebase/app';
 import { UserService } from '../../user/shared/user.service';
 
 @Component({

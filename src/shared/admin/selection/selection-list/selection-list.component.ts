@@ -21,13 +21,13 @@ export class SelectionListComponent implements OnInit {
   selections: Selection[] = [];
   selected: Selection[] = [];
   isLoading: boolean;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
-  @ViewChild('productsCell') productsCell: TemplateRef<any>;
-  @ViewChild('publishedCell') publishedCell: TemplateRef<any>;
-  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
-  @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
-  @ViewChild('desktopHeader') desktopHeader: TemplateRef<any>;
+  @ViewChild('checkboxHeader', {static: false}) checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell', {static: false}) checkboxCell: TemplateRef<any>;
+  @ViewChild('productsCell', {static: false}) productsCell: TemplateRef<any>;
+  @ViewChild('publishedCell', {static: false}) publishedCell: TemplateRef<any>;
+  @ViewChild('actionsCell', {static: false}) actionsCell: TemplateRef<any>;
+  @ViewChild('desktopCell', {static: false}) desktopCell: TemplateRef<any>;
+  @ViewChild('desktopHeader', {static: false}) desktopHeader: TemplateRef<any>;
 
   constructor(private selectionService: SelectionService,
               private productService: ProductService,

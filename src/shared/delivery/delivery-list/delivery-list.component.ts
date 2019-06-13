@@ -4,7 +4,7 @@ import { AlertService } from '../../popup/alert.service';
 import { DeliveryService } from '../../cart/shared/delivery.service';
 import { Delivery } from '../../cart/shared/delivery';
 import { UserService } from '../../user/shared/user.service';
-import { User } from '@firebase/auth-types';
+import { User } from 'firebase/app';
 import { FirebaseError } from 'firebase';
 
 @Component({

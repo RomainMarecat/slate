@@ -13,7 +13,7 @@ declare var Path2D: Path2DConstructor;
   styleUrls: ['./area-draw.component.scss']
 })
 export class AreaDrawComponent implements OnInit {
-  @ViewChild('map') mapRef: ElementRef;
+  @ViewChild('map', {static: true}) mapRef: ElementRef;
   @Input() mapConfig: any;
 
   _areas: Area[];

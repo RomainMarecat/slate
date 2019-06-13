@@ -58,7 +58,6 @@ export const app_name = new InjectionToken<string>('app_name');
 export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
 export const clientAdSense = new InjectionToken<string>('clientAdSense');
 export const slotAdSense = new InjectionToken<string>('slotAdSense');
-export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export const CONFIG_TOKEN = new InjectionToken<any>('Registered config');

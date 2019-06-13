@@ -21,9 +21,9 @@ export class SelectionEditComponent implements OnInit {
   readonly headerHeight = 50;
   readonly rowHeight = 50;
 
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
-  @ViewChild('publicationCell') publicationCell: TemplateRef<any>;
+  @ViewChild('checkboxHeader', {static: false}) checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell', {static: false}) checkboxCell: TemplateRef<any>;
+  @ViewChild('publicationCell', {static: false}) publicationCell: TemplateRef<any>;
 
   columnsProduct: any;
   associatedProducts: Product[];

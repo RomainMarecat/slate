@@ -26,7 +26,7 @@ import { LoaderService } from '../../loader/loader.service';
 import { Delivery } from '../shared/delivery';
 import { DeliveryService } from '../shared/delivery.service';
 import { DocumentReference } from '@angular/fire/firestore';
-import { User } from '@firebase/auth-types';
+import { User } from 'firebase/app';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../../product/shared/product.service';
 import { Product } from '../../product/shared/product';
@@ -41,7 +41,7 @@ import { onlineStatus$ } from '../../util/online-status';
   styleUrls: ['./cart-payment.component.scss']
 })
 export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('cardInfo') cardInfo: ElementRef;
+  @ViewChild('cardInfo', {static: false}) cardInfo: ElementRef;
 
   _cart: Cart;
 
@@ -59,7 +59,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
 
   elements: Elements;
 
-  @ViewChild(StripeCardComponent) card: StripeCardComponent;
+  @ViewChild(StripeCardComponent, {static: false}) card: StripeCardComponent;
 
   elementsOptions: ElementsOptions = {
     locale: 'fr'

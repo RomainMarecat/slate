@@ -28,16 +28,16 @@ export class ProductListComponent implements OnInit {
   isLoading = false;
   selected: Product[];
   expanded: any = {};
-  @ViewChild('dataTableComponentTable') dataTableComponentTable: any;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
-  @ViewChild('actionsCell') actionsCell: TemplateRef<any>;
-  @ViewChild('imageCell') imageCell: TemplateRef<any>;
-  @ViewChild('priceCell') priceCell: TemplateRef<any>;
-  @ViewChild('desktopCell') desktopCell: TemplateRef<any>;
-  @ViewChild('desktopHeader') desktopHeader: TemplateRef<any>;
-  @ViewChild('translationsFrCell') translationsFrCell: TemplateRef<any>;
-  @ViewChild('publicationCell') publicationCell: TemplateRef<any>;
+  @ViewChild('dataTableComponentTable', {static: false}) dataTableComponentTable: any;
+  @ViewChild('checkboxHeader', {static: false}) checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell', {static: false}) checkboxCell: TemplateRef<any>;
+  @ViewChild('actionsCell', {static: false}) actionsCell: TemplateRef<any>;
+  @ViewChild('imageCell', {static: false}) imageCell: TemplateRef<any>;
+  @ViewChild('priceCell', {static: false}) priceCell: TemplateRef<any>;
+  @ViewChild('desktopCell', {static: false}) desktopCell: TemplateRef<any>;
+  @ViewChild('desktopHeader', {static: false}) desktopHeader: TemplateRef<any>;
+  @ViewChild('translationsFrCell', {static: false}) translationsFrCell: TemplateRef<any>;
+  @ViewChild('publicationCell', {static: false}) publicationCell: TemplateRef<any>;
   publications: Array<object>;
   cloudinary = false;
 

@@ -23,34 +23,25 @@ export const app_name = new InjectionToken<string>('app_name');
 export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
 export const clientAdSense = new InjectionToken<string>('clientAdSense');
 export const slotAdSense = new InjectionToken<string>('slotAdSense');
-export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export const CONFIG_TOKEN = new InjectionToken<any>('Registered config');
-export const TABLE_EVENT = new InjectionToken<string>('event');
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_AREA = new InjectionToken<string>('area');
-export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PRODUCT = new InjectionToken<string>('product');
 export const TABLE_CONTACT = new InjectionToken<string>('contact');
 export const TABLE_CONVERSATION = new InjectionToken<string>('conversation');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
 export const TABLE_SELECTION = new InjectionToken<string>('selection');
-export const TABLE_SESSION = new InjectionToken<string>('session');
 export const TABLE_SCORE = new InjectionToken<string>('score');
 export const TABLE_COMMENT = new InjectionToken<string>('comment');
 export const TABLE_CMS = new InjectionToken<string>('cms');
 export const TABLE_CMS_DETAIL = new InjectionToken<string>('cms-detail');
 export const TABLE_MEDIA = new InjectionToken<string>('media');
-export const TABLE_POST = new InjectionToken<string>('post');
 export const TABLE_ATTRIBUTE = new InjectionToken<string>('attribute');
 export const TABLE_MAP = new InjectionToken<string>('map');
 export const TABLE_OFFER = new InjectionToken<string>('offer');
-export const TABLE_ORDER = new InjectionToken<string>('order');
 export const TABLE_PARTNER = new InjectionToken<string>('partner');
-export const TABLE_PAYMENT = new InjectionToken<string>('payment');
-export const TABLE_RECIPE = new InjectionToken<string>('recipe');
-export const TABLE_INGREDIENT = new InjectionToken<string>('ingredient');
 
 @Injectable()
 export class ConfigService {

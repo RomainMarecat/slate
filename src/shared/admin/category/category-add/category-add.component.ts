@@ -25,8 +25,8 @@ export class CategoryAddComponent implements OnInit {
   categories$: Observable<Category[]> = of([]);
   selected: Category[] = [];
   isLoading: boolean;
-  @ViewChild('checkboxHeader') checkboxHeader: TemplateRef<any>;
-  @ViewChild('checkboxCell') checkboxCell: TemplateRef<any>;
+  @ViewChild('checkboxHeader', {static: false}) checkboxHeader: TemplateRef<any>;
+  @ViewChild('checkboxCell', {static: false}) checkboxCell: TemplateRef<any>;
 
   constructor(private categoryService: CategoryService, private alertService: AlertService) {
     this.createForm();

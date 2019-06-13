@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '@firebase/auth-types';
+import { User } from 'firebase/app';
 import { DocumentReference } from '@firebase/firestore-types';
 import { TranslateService } from '@ngx-translate/core';
 import { ChatConfiguration } from '../../chat/shared/chat-configuration';

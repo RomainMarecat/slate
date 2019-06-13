@@ -23,8 +23,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
   // @todo add button with cms
   cmsDetail: any;
   viewFilter: boolean;
-  @ViewChild('sidenavFilter') sidenavFilter: MatDrawer;
-  @ViewChild('sidenav') sidenav: MatDrawer;
+  @ViewChild('sidenavFilter', {static: false}) sidenavFilter: MatDrawer;
+  @ViewChild('sidenav', {static: false}) sidenav: MatDrawer;
 
   navLinks: {label: string, link: string}[] = [
     {link: '/admin/order', label: 'admin.cta.order'},

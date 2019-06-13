@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
 import { map, take, tap, timeout } from 'rxjs/operators';
 import { AlertService } from '../../popup/alert.service';
 import { BehaviorSubject, from, Observable, Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { User } from '@firebase/auth-types';
-import { Cart } from '../../cart/shared/cart';
+import { User, auth } from 'firebase/app';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
   authorized: string[] = [];
 

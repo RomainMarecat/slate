@@ -11,7 +11,7 @@ import { ImageProductComponent } from '../../../media/cloudinary/image-product/i
   styleUrls: ['./product-form.component.scss']
 })
 export class ProductFormComponent implements OnInit {
-  @ViewChild(ImageProductComponent) imageProductComponent: ImageProductComponent;
+  @ViewChild(ImageProductComponent, {static: false}) imageProductComponent: ImageProductComponent;
   form: FormGroup;
   formDetail: FormGroup;
   formMedia: FormGroup;

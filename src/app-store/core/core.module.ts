@@ -55,7 +55,6 @@ export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
 export const cloudinary = new InjectionToken<CloudinaryConfiguration>('cloudinary');
 export const clientAdSense = new InjectionToken<string>('clientAdSense');
 export const slotAdSense = new InjectionToken<string>('slotAdSense');
-export const slackToken = new InjectionToken<string>('slackToken');
 export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export function createTranslateLoader(http: HttpClient, name: string) {
