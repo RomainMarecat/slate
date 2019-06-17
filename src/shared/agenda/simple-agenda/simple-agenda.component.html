@@ -1,0 +1,7 @@
+<div class="calendar-wrapper"
+     fxLayout="row"
+     fxLayoutAlign="center stretch">
+  <ngx-calendar (sessionCreated)="onSessionCreated($event)"
+                [user]="user"
+                [sessionsEntries]="sessions"></ngx-calendar>
+</div>

@@ -1,29 +1,29 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgxCalendarModule } from '@romainmarecat/ngx-calendar';
+import { MockUserService } from '../../user/shared/mock-user.service';
+import { UserService } from '../../user/shared/user.service';
+import { MockEventService } from '../shared/mock-event.service';
+import { MockSessionService } from '../shared/mock-session.service';
+import { SessionService } from '../shared/session.service';
 
-import { AgendaComponent } from './agenda.component';
 import { SharedModule } from '../../shared.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { CalendarComponent } from '../calendar/calendar.component';
-import { MockEventService } from '../shared/mock-event.service';
 import { EventService } from '../shared/event.service';
 import { I18nService } from '../../i18n/i18n.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { CalendarHeaderComponent } from '../calendar/calendar-header/calendar-header.component';
-import { CalendarBodyComponent } from '../calendar/calendar-body/calendar-body.component';
 import { MockAlertService } from '../../popup/mock-alert.service';
 import { AlertService } from '../../popup/alert.service';
-import { SessionService } from '../../session/shared/session.service';
-import { MockSessionService } from '../../session/shared/mock-session.service';
 import { RoutingState } from '../../util/routing-state';
 import { LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { SeoModule } from '../../seo/seo.module';
+import { FirebaseAgendaComponent } from './firebase-agenda.component';
 
-describe('AgendaComponent', () => {
-  let component: AgendaComponent;
-  let fixture: ComponentFixture<AgendaComponent>;
+describe('FirebaseAgendaComponent', () => {
+  let component: FirebaseAgendaComponent;
+  let fixture: ComponentFixture<FirebaseAgendaComponent>;
 
   configureTestSuite();
 
@@ -34,20 +34,19 @@ describe('AgendaComponent', () => {
         RouterTestingModule,
         SharedModule,
         SeoModule,
+        NgxCalendarModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
       declarations: [
-        AgendaComponent,
-        CalendarComponent,
-        CalendarHeaderComponent,
-        CalendarBodyComponent
+        FirebaseAgendaComponent,
       ],
       providers: [
         RoutingState,
         {provide: EventService, useClass: MockEventService},
         {provide: AlertService, useClass: MockAlertService},
+        {provide: UserService, useClass: MockUserService},
         {provide: SessionService, useClass: MockSessionService},
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
         I18nService
@@ -57,7 +56,7 @@ describe('AgendaComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AgendaComponent);
+    fixture = TestBed.createComponent(FirebaseAgendaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

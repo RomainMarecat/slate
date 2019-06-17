@@ -1,26 +1,30 @@
-import { EventType } from '../../agenda/shared/event';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+import { EventType, Session } from '@romainmarecat/ngx-calendar';
 
-export const mockSession = {
+const moment = moment_;
+
+export const mockSession: Session = {
   details: {
     event_type: EventType.session,
     nb_persons: 1,
     booking: 1,
     info: 'test',
-    customers: ['test']
+    customers: ['test'],
+    duration: 15
   },
   start: new Date(),
   end: new Date(),
 };
 
-export const mockSessions = [
+export const mockSessions: Session[] = [
   {
     details: {
       event_type: EventType.session,
       nb_persons: 1,
       booking: 1,
       info: 'test1',
-      customers: ['test']
+      customers: ['test'],
+      duration: 15
     },
     start: moment().toDate(),
     end: moment().add('60', 'minute').toDate(),
@@ -31,7 +35,8 @@ export const mockSessions = [
       nb_persons: 1,
       booking: 2,
       info: 'test2',
-      customers: ['test']
+      customers: ['test'],
+      duration: 60
     },
     start: moment().toDate(),
     end: moment().add('1', 'day').toDate(),

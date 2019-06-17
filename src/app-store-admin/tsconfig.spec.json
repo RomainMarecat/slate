@@ -8,7 +8,15 @@
         "types": [
             "jasmine",
             "node"
-        ]
+        ],
+        "paths": {
+            "@romainmarecat/*": [
+                "./../../projects/*"
+            ],
+            "@romainmarecat/ngx-calendar": [
+                "./../../projects/ngx-calendar"
+            ]
+        }
     },
     "files": [
         "test.ts",

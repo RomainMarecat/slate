@@ -1,16 +1,16 @@
+import { Session } from '@romainmarecat/ngx-calendar';
 import { Filter } from '../../facet/filter/shared/filter';
 import { Sort } from '../../facet/sort/shared/sort';
 import { Observable, of } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { CollectionReference, Query } from '@firebase/firestore-types';
 import { AngularFirestoreCollection, DocumentChangeAction } from '@angular/fire/firestore';
-import { mockEvent } from './mock-event';
-import { Event } from '@romainmarecat/ngx-calendar';
+import { mockSessions } from './mock-session';
 
-export class MockEventService {
-  eventCollectionRef: AngularFirestoreCollection<Event>;
-  events$: Observable<DocumentChangeAction<Event>[]>;
-  event$: Observable<Event>;
+export class MockSessionService {
+  sessionCollectionRef: AngularFirestoreCollection<Session>;
+  sessions$: Observable<DocumentChangeAction<Session>[]>;
+  session$: Observable<Session>;
   query$: BehaviorSubject<any>;
   filters$: BehaviorSubject<Filter[]>;
   limit$: BehaviorSubject<number | null>;
@@ -28,7 +28,7 @@ export class MockEventService {
     this.orderBy$ = new BehaviorSubject({column: 'published_at', direction: 'desc'});
   }
 
-  getEvents(): Observable<Array<Event>> {
-    return of([mockEvent]);
+  getSessions(): Observable<Array<Session>> {
+    return of(mockSessions);
   }
 }

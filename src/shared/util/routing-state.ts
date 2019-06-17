@@ -2,7 +2,9 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { filter } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RoutingState {
   private history = [];
 
@@ -13,7 +15,7 @@ export class RoutingState {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(({urlAfterRedirects}: NavigationEnd) => {
-        this.history = [ ...this.history, urlAfterRedirects ];
+        this.history = [...this.history, urlAfterRedirects];
       });
   }
 
@@ -22,6 +24,6 @@ export class RoutingState {
   }
 
   public getPreviousUrl(): string {
-    return this.history[ this.history.length - 2 ] || '/';
+    return this.history[this.history.length - 2] || '/';
   }
 }

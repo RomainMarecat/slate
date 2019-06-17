@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AgendaComponent } from './agenda/agenda.component';
 import { LocalizeRouterModule } from 'localize-router';
+import { SimpleAgendaComponent } from './simple-agenda/simple-agenda.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AgendaComponent
+    component: SimpleAgendaComponent
   },
 ];
 
@@ -20,5 +20,5 @@ const routes: Routes = [
     LocalizeRouterModule
   ]
 })
-export class AgendaRoutingModule {
+export class SimpleAgendaRoutingModule {
 }

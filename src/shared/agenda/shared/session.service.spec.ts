@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { MockSessionService } from './mock-session.service';
 
 import { SessionService } from './session.service';
-import { MockSessionService } from './mock-session.service';
 
 describe('SessionService', () => {
   beforeEach(() => {
