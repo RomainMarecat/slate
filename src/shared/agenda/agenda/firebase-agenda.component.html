@@ -16,11 +16,12 @@
     </div>
 
     <div class="calendar-content">
-      <app-calendar [viewMode]="viewMode"
-                    [slotDuration]="slotDuration"
+      <ngx-calendar [viewMode]="viewMode"
+                    [user]="user"
+                    [sessionsEntries]="sessions"
                     (viewModeChanged)="onViewModeChanged($event)"
                     (sessionRemoved)="onSessionRemoved($event)"
-                    (sessionCreated)="onSessionAdded($event)"></app-calendar>
+                    (sessionCreated)="onSessionAdded($event)"></ngx-calendar>
     </div>
   </div>
 

@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LocalizeRouterModule } from 'localize-router';
+import { FirebaseAgendaComponent } from './agenda/firebase-agenda.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: FirebaseAgendaComponent
+  },
+];
 
 @NgModule({
   imports: [
@@ -14,5 +20,5 @@ const routes: Routes = [];
     LocalizeRouterModule
   ]
 })
-export class SessionRoutingModule {
+export class FirebaseAgendaRoutingModule {
 }

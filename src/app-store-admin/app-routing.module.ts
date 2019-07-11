@@ -19,18 +19,14 @@ const routes: Routes = [
     path: '',
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
-  // {
-  //   path: 'charts',
-  //   loadChildren: './../shared/chart/chart.module#ChartModule'
-  // },
-  // {
-  //   path: 'invoice',
-  //   loadChildren: './../shared/invoice/invoice.module#InvoiceModule'
-  // },
-  // {
-  //   path: 'users',
-  //   loadChildren: './../shared/user/user.module#UserModule'
-  // },
+  {
+    path: 'agenda/firebase-agenda',
+    loadChildren: () => import('./../shared/agenda/firebase-agenda.module').then(mod => mod.FirebaseAgendaModule)
+  },
+  {
+    path: 'agenda/simple-agenda',
+    loadChildren: () => import('./../shared/agenda/simple-agenda.module').then(mod => mod.SimpleAgendaModule)
+  },
   {
     path: 'contact',
     loadChildren: './../shared/contact/contact.module#ContactModule'
@@ -39,14 +35,6 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: './../shared/admin/admin.module#AdminModule'
   },
-  // {
-  //   path: 'cart',
-  //   loadChildren: './../shared/cart/cart.module#CartModule'
-  // },
-  // {
-  //   path: 'shipping',
-  //   loadChildren: './../shared/shipping/shipping.module#ShippingModule'
-  // },
   {
     path: '**',
     redirectTo: ''

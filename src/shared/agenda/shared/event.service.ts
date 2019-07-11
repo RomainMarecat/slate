@@ -2,9 +2,11 @@ import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { VisitorService } from '../../firestore/visitor.service';
-import { Event } from './event';
+import { Event } from '@romainmarecat/ngx-calendar';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class EventService extends VisitorService {
 
   constructor(afs: AngularFirestore, @Inject('TABLE_EVENT') table: string) {

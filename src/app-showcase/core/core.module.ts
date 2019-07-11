@@ -10,6 +10,7 @@ import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsen
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { SessionService } from '../../shared/agenda/shared/session.service';
 import { ConversationService } from '../../shared/chat/shared/conversation.service';
 import { UserService } from '../../shared/user/shared/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
@@ -42,7 +43,6 @@ import { ArticleService } from '../../shared/article/shared/article.service';
 import { ContactService } from '../../shared/contact/shared/contact.service';
 import { EventService } from '../../shared/agenda/shared/event.service';
 import { CartService } from '../../shared/cart/shared/cart.service';
-import { SessionService } from '../../shared/session/shared/session.service';
 import { PaymentService } from '../../shared/payment/shared/payment.service';
 import { RoutingState } from '../../shared/util/routing-state';
 import { OrderService } from '../../shared/order/shared/order.service';

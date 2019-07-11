@@ -1381,6 +1381,41 @@
                     }
                 }
             }
+        },
+        "calendar": {
+            "projectType": "library",
+            "root": "projects/ngx-calendar",
+            "sourceRoot": "projects/ngx-calendar/src",
+            "prefix": "ngx",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "tsConfig": "projects/ngx-calendar/tsconfig.lib.json",
+                        "project": "projects/ngx-calendar/ng-package.json"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/ngx-calendar/src/test.ts",
+                        "tsConfig": "projects/ngx-calendar/tsconfig.spec.json",
+                        "karmaConfig": "projects/ngx-calendar/karma.conf.js"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "projects/ngx-calendar/tsconfig.lib.json",
+                            "projects/ngx-calendar/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
         }
     },
     "schematics": {

@@ -3,7 +3,7 @@
     "compilerOptions": {
         "outDir": "./dist/out-tsc",
         "declaration": false,
-        "module": "es2015",
+        "module": "esnext",
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
@@ -19,8 +19,11 @@
             "es2015.iterable"
         ],
         "paths": {
-            "~/*": [
-                "src/app-recipe/*"
+            "@romainmarecat/*": [
+                "./../../projects/*"
+            ],
+            "@romainmarecat/ngx-calendar": [
+                "./../../projects/ngx-calendar"
             ]
         }
     }

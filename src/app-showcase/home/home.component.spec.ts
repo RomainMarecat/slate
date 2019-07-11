@@ -5,9 +5,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
-import { AgendaModule } from '../../shared/agenda/agenda.module';
+import { FirebaseAgendaModule } from '../../shared/agenda/firebase-agenda.module';
 import { EventService } from '../../shared/agenda/shared/event.service';
 import { MockEventService } from '../../shared/agenda/shared/mock-event.service';
+import { MockSessionService } from '../../shared/agenda/shared/mock-session.service';
+import { SessionService } from '../../shared/agenda/shared/session.service';
 import { ArticleService } from '../../shared/article/shared/article.service';
 import { MockArticleService } from '../../shared/article/shared/mock-article.service';
 import { CartService } from '../../shared/cart/shared/cart.service';
@@ -46,8 +48,6 @@ import { MockAlertService } from '../../shared/popup/mock-alert.service';
 import { MockProductService } from '../../shared/product/shared/mock-product.service';
 import { ProductService } from '../../shared/product/shared/product.service';
 import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
-import { MockSessionService } from '../../shared/session/shared/mock-session.service';
-import { SessionService } from '../../shared/session/shared/session.service';
 import { SharedModule } from '../../shared/shared.module';
 import { configureTestSuite } from '../../shared/unit-test/configure-test-suite';
 import { MockUserService } from '../../shared/user/shared/mock-user.service';
@@ -69,7 +69,7 @@ describe('HomeComponent', () => {
         AgmCoreModule.forRoot({
           apiKey: environment.googleMapApiKey
         }),
-        AgendaModule,
+        FirebaseAgendaModule,
         BrowserAnimationsModule,
         ContactModule,
         HttpClientTestingModule,

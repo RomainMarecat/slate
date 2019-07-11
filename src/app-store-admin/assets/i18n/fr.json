@@ -62,7 +62,7 @@
         "registers": "enregistrement",
         "user": "utilisateur",
         "users": "utilisateurs",
-        "calendar": "agenda",
+        "calendar": "calendrier",
         "admin": "administration",
         "article": "article",
         "map": "map",
@@ -626,6 +626,11 @@
             "summary": "récapitulatif",
             "total": "montant total"
         }
+    },
+    "session": {
+      "error": {
+          "save": "La création de la session a échouée"
+      }
     },
     "calendar": {
         "today": "aujourd'hui",

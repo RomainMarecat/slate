@@ -1,4 +1,4 @@
-export class Document {
-  key ?: string;
-  id ?: string;
+export interface Document {
+  key?: string;
+  id?: string;
 }

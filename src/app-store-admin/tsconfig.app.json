@@ -3,11 +3,13 @@
     "compilerOptions": {
         "outDir": "../../out-tsc/app",
         "baseUrl": "./",
-        "module": "es2015",
         "types": [],
         "paths": {
             "@romainmarecat/*": [
                 "./../../projects/*"
+            ],
+            "@romainmarecat/ngx-calendar": [
+                "./../../projects/ngx-calendar"
             ]
         }
     },
@@ -16,6 +18,7 @@
         "polyfills.ts",
         "dashboard/dashboard.module.ts",
         "../shared/admin/*",
+        "../shared/agenda/*",
         "../shared/contact/*",
         "../shared/admin/**/*"
     ],

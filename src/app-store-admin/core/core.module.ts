@@ -12,6 +12,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
 import { ImageCropperModule } from 'ngx-img-cropper';
 import { EventService } from '../../shared/agenda/shared/event.service';
+import { SessionService } from '../../shared/agenda/shared/session.service';
 import { ArticleService } from '../../shared/article/shared/article.service';
 import { AttributeService } from '../../shared/attribute/attribute.service';
 import { BoardService } from '../../shared/board/shared/board.service';
@@ -42,7 +43,6 @@ import { ProductService } from '../../shared/product/shared/product.service';
 import { ScoreService } from '../../shared/score/score.service';
 import { SelectionService } from '../../shared/selection/selection.service';
 import { SeoService } from '../../shared/seo/shared/seo.service';
-import { SessionService } from '../../shared/session/shared/session.service';
 import { SharedModule } from '../../shared/shared.module';
 import { SidenavService } from '../../shared/sidenav/sidenav.service';
 import { UserService } from '../../shared/user/shared/user.service';
@@ -70,7 +70,6 @@ export const TABLE_CONTACT = new InjectionToken<string>('contact');
 export const TABLE_CONVERSATION = new InjectionToken<string>('conversation');
 export const TABLE_CATEGORY = new InjectionToken<string>('category');
 export const TABLE_SELECTION = new InjectionToken<string>('selection');
-export const TABLE_SESSION = new InjectionToken<string>('session');
 export const TABLE_SCORE = new InjectionToken<string>('score');
 export const TABLE_COMMENT = new InjectionToken<string>('comment');
 export const TABLE_CMS = new InjectionToken<string>('cms');
@@ -88,6 +87,7 @@ export const TABLE_CARD = new InjectionToken<string>('card');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
 export const STRIPE_KEY = new InjectionToken<string>('');
 export const TABLE_DELIVERY = new InjectionToken<string>('delivery');
+export const TABLE_SESSION = new InjectionToken<string>('session');
 
 @Injectable()
 export class ConfigService {
@@ -175,12 +175,13 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: TABLE_PAYMENT, useValue: 'payment'},
     {provide: TABLE_PRODUCT, useValue: 'product'},
     {provide: TABLE_SELECTION, useValue: 'selection'},
-    {provide: TABLE_SESSION, useValue: 'session'},
     {provide: TABLE_SCORE, useValue: 'score'},
     {provide: TABLE_BOARD, useValue: 'board'},
     {provide: TABLE_COLUMN, useValue: 'column'},
     {provide: TABLE_CARD, useValue: 'card'},
     {provide: TABLE_DELIVERY, useValue: 'delivery'},
+    {provide: TABLE_SESSION, useValue: 'session'},
+    {provide: TABLE_EVENT, useValue: 'event'},
     {provide: STRIPE_KEY, useValue: environment.stripeKey},
     {provide: ArticleService, useClass: ArticleService, deps: [AngularFirestore, TABLE_ARTICLE]},
     {provide: AreaService, useClass: AreaService, deps: [AngularFirestore, TABLE_AREA]},
@@ -192,7 +193,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: CmsService, useClass: CmsService, deps: [AngularFirestore, TABLE_CMS]},
     {provide: CmsDetailService, useClass: CmsDetailService, deps: [AngularFirestore, TABLE_CMS_DETAIL]},
     {provide: CommentService, useClass: CommentService, deps: [AngularFirestore, TABLE_COMMENT]},
-    {provide: EventService, useClass: EventService, deps: [AngularFirestore, TABLE_EVENT]},
     {provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA]},
     {provide: DeliveryService, useClass: DeliveryService, deps: [AngularFirestore, TABLE_DELIVERY]},
     {provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER]},
@@ -206,6 +206,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
     {provide: BoardService, useClass: BoardService, deps: [AngularFirestore, TABLE_BOARD]},
     {provide: ColumnService, useClass: ColumnService, deps: [AngularFirestore, TABLE_COLUMN]},
     {provide: CardService, useClass: CardService, deps: [AngularFirestore, TABLE_CARD]},
+    {provide: EventService, useClass: EventService, deps: [AngularFirestore, TABLE_EVENT]},
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
     AlertService,
     DateService,

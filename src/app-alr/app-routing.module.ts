@@ -73,7 +73,7 @@ const routes: Routes = [
   },
   {
     path: 'agenda',
-    loadChildren: './../shared/agenda/agenda.module#AgendaModule'
+    loadChildren: './../shared/agenda/firebase-agenda.module#FirebaseAgendaModule'
   },
   {
     path: 'article',

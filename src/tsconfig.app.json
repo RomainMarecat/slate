@@ -1,17 +1,25 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../out-tsc/app",
-    "baseUrl": "./",
-    "types": []
-  },
-  "include": [
-    "shared/*"
-  ],
-  "exclude": [
-    "test.ts",
-    "./shared/i18n/translate-server-loader.service.ts",
-    "./shared/i18n/translates-server/*.ts",
-    "**/*.spec.ts"
-  ]
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../out-tsc/app",
+        "baseUrl": "./",
+        "types": [],
+        "paths": {
+            "@romainmarecat/*": [
+                "./../../projects/*"
+            ],
+            "@romainmarecat/ngx-calendar": [
+                "./../../projects/ngx-calendar"
+            ]
+        }
+    },
+    "include": [
+        "shared/*"
+    ],
+    "exclude": [
+        "test.ts",
+        "./shared/i18n/translate-server-loader.service.ts",
+        "./shared/i18n/translates-server/*.ts",
+        "**/*.spec.ts"
+    ]
 }
