@@ -12,14 +12,14 @@ const routes: Routes = [
     path: '',
     component: ProductComponent,
     data: {
-      breadcrumb: 'breadcrumb.product-list'
+      breadcrumb: 'breadcrumb.product.list'
     },
     children: [
       {
         path: 'detail/:slug',
         component: ProductDetailComponent,
         data: {
-          breadcrumb: 'breadcrumb.product-detail'
+          breadcrumb: 'breadcrumb.product.detail'
         }
       },
       {
@@ -34,7 +34,7 @@ const routes: Routes = [
         path: 'map/area/:key/products',
         component: ProductListComponent,
         data: {
-          breadcrumb: 'breadcrumb.product-list'
+          breadcrumb: 'breadcrumb.product.list'
         }
       },
     ]
@@ -44,7 +44,7 @@ const routes: Routes = [
     component: ProductAddComponent,
     canActivate: [UserGuard],
     data: {
-      breadcrumb: 'breadcrumb.product-add'
+      breadcrumb: 'breadcrumb.product.add'
     }
   }
 ];

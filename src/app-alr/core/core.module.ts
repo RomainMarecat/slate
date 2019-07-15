@@ -217,7 +217,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
     LoaderService,
     MenuService,
     ObjectService,
-    ScoreService,
     SeoService,
     SidenavService,
     UserGuard,

@@ -1,12 +1,19 @@
 @import '../../../node_modules/@angular/material/theming';
 @import '../../../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import "mixin";
+
+@include font-face(roboto_condensedregular, '/assets/fonts/robotocondensed-regular-webfont', normal, normal, woff2 woff ttf);
+@include font-face(roboto_condensedbold_italic, '/assets/fonts/robotocondensed-bolditalic-webfont', normal, normal, woff2 woff ttf);
+
+@include font-face(nunitoregular, '/assets/fonts/nunito-regular-webfont', normal, normal, woff2 woff ttf);
+@include font-face(nunitobold, '/assets/fonts/nunito-bold-webfont', normal, normal, woff2 woff ttf);
 
 // Plus imports for other components in your app.
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 $custom-typography: mat-typography-config(
-  $font-family: 'Nunito'
+        $font-family: 'nunitoregular'
 );
 @include mat-core($custom-typography);
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
@@ -127,11 +134,11 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @include custom-theme($theme);
 
 body {
-  font-family: 'Nunito', 'Open Sans', sans-serif;
+  font-family: 'nunitoregular', 'Open Sans', sans-serif;
   background-color: $color2;
 
   .title {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'roboto_condensedregular', sans-serif;
     font-weight: 500;
     letter-spacing: 1px;
   }
