@@ -640,6 +640,9 @@
     "booking": "réserver",
     "choose": "choisir",
     "delete": "supprimer",
+    "footer": {
+      "top-of-page": "Haut de page"
+    },
     "next-available-slot": "prochaines disponibilités",
     "home": "accueil",
     "import": "importer",
@@ -682,6 +685,8 @@
         "timeline": "timeline",
         "user": "utilisateur",
         "calendar": "agenda",
+        "simple-calendar": "exemple calendrier simple",
+        "firebase-calendar": "exemple calendrier firebase",
         "admin": "administration",
         "article": "article",
         "product": "produits",

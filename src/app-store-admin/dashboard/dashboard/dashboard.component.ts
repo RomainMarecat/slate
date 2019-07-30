@@ -20,8 +20,6 @@ export class DashboardComponent implements OnInit {
       {name: 'dashboard.features.name.order', img: '/assets/images/cart.jpg', url: '/admin/order'},
       {name: 'dashboard.features.name.cart', img: '/assets/images/cart.jpg', url: '/admin/cart'},
       {name: 'dashboard.features.name.contact', img: '/assets/images/contact.jpg', url: '/admin/contact'},
-      {name: 'dashboard.features.name.agenda', img: '/assets/images/agenda.jpg', url: '/agenda/simple-agenda'},
-      {name: 'dashboard.features.name.agenda', img: '/assets/images/agenda.jpg', url: '/agenda/firebase-agenda'},
     ];
   }
 

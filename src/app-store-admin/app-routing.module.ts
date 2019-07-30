@@ -20,14 +20,6 @@ const routes: Routes = [
     loadChildren: './dashboard/dashboard.module#DashboardModule'
   },
   {
-    path: 'agenda/firebase-agenda',
-    loadChildren: () => import('./../shared/agenda/firebase-agenda.module').then(mod => mod.FirebaseAgendaModule)
-  },
-  {
-    path: 'agenda/simple-agenda',
-    loadChildren: () => import('./../shared/agenda/simple-agenda.module').then(mod => mod.SimpleAgendaModule)
-  },
-  {
     path: 'contact',
     loadChildren: './../shared/contact/contact.module#ContactModule'
   },
