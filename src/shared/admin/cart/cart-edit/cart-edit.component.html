@@ -1,3 +1,125 @@
-<p>
-  cart-edit works!
-</p>
+<div class="container" *ngIf="document">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="form"
+            (ngSubmit)="saveDocument()"
+            class="form">
+        <mat-card class="mat-card mt-3">
+          <mat-card-header>
+            <mat-card-title class="mat-card-title text-ucfirst">
+              {{'admin.cart-edit.key'|translate}} {{ document.key }}
+            </mat-card-title>
+            <mat-card-title class="text-ucfirst">
+              <small>
+                {{'admin.cart-edit.created_at'|translate}} {{ document?.created_at?.seconds * 1000 | date : 'short'}}
+              </small>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content *ngIf="delivery">
+            <div class="addresses"
+                 fxLayout="row"
+                 fxLayoutAlign="center stretch"
+                 fxLayoutGap="20px">
+              <!-- adresse de livraison -->
+              <div class="delivery">
+                <h4 class="text-ucfirst">
+                  {{'admin.cart-edit.delivery_address'|translate}}
+                  <button type="button"
+                          class="btn btn-default btn-xs"
+                          ngxClipboard
+                          (click)="copied($event)"
+                          [cbContent]="deliveryAddress">
+                    <i class="fa fa-copy"></i>
+                  </button>
+                </h4>
+                <mat-list id="delivery-address-wrapper">
+                  <mat-list-item>
+                    {{ delivery.address.firstname }}&nbsp;
+                    {{ delivery.address.lastname }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    {{ delivery.address.address }}<br>
+                    {{ delivery.address.address_complement }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span>{{ delivery.address.zipcode }}
+                      {{ delivery.address.city }},&nbsp;</span>
+                    {{ delivery.address.country }}
+                  </mat-list-item>
+                </mat-list>
+              </div>
+              <!-- adresse de facturation -->
+              <div class="billing" *ngIf="delivery.billing">
+                <h4 class="text-ucfirst">
+                  {{'admin.cart-edit.billing'|translate}}
+                  <button type="button"
+                          class="btn btn-default btn-xs"
+                          ngxClipboard
+                          (click)="copied($event)"
+                          [cbContent]="billingAddress">
+                    <i class="fa fa-copy"></i>
+                  </button>
+                </h4>
+
+                <mat-list id="billing-address-wrapper">
+                  <mat-list-item>
+                    {{ delivery.billing.firstname }}&nbsp;
+                    {{ delivery.billing.lastname }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    {{ delivery.billing.address }}<br>
+                    {{ delivery.billing.address_complement }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span>{{ delivery.billing.zipcode }}
+                      {{ delivery.billing.city }},&nbsp;</span>
+                    {{ delivery.billing.country }}
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+
+            <hr>
+
+            <!-- email attaché à la commande -->
+            <div class="email-wrapper">
+              <b class="w-100 text-ucfirst">
+                {{'admin.cart-edit.contact_email'|translate}}
+              </b>
+              {{ delivery.address.email }}
+
+              <button type="button"
+                      class="btn btn-default btn-xs"
+                      ngxClipboard
+                      [cbContent]="delivery.address.email"
+                      (click)="copied($event)">
+                <i class="fa fa-copy"></i>
+              </button>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <div class="d-flex justify-content-around">
+              <button type="button"
+                      class="back text-uppercase"
+                      mat-raised-button
+                      role="button"
+                      [attr.aria-label]="'cta.cancel'|translate"
+                      [innerHtml]="'cta.cancel'|translate"
+                      (click)="cancel()"></button>
+
+              <button type="submit"
+                      class="validate text-uppercase"
+                      mat-raised-button
+                      role="button"
+                      [attr.aria-label]="'cta.save'|translate"
+                      color="primary">
+                {{ 'cta.save'|translate }}
+              </button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</div>

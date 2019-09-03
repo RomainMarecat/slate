@@ -166,6 +166,14 @@
             "billing": "adresse de facturation",
             "contact_email": "email de contact"
         },
+        "cart-edit": {
+            "key": "n° de panier",
+            "created_at": "date du panier",
+            "copied_text": "texte copié",
+            "delivery_address": "adresse d'expédition",
+            "billing": "adresse de facturation",
+            "contact_email": "email de contact"
+        },
         "partner": {
             "import": {
                 "nothing_to_import": "Aucun partenaire à importer",

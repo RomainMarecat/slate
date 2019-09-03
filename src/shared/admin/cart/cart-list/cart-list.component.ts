@@ -142,4 +142,17 @@ export class CartListComponent extends BaseListComponent<Cart> implements OnInit
         });
     });
   }
+
+  editDocument(document: Cart) {
+    this.router.navigate([
+      this.localizeRouterService.translateRoute('admin'),
+    ]).then(() => {
+      this.router.navigate([
+        this.localizeRouterService.translateRoute('admin'),
+        'cart',
+        'edit',
+        document['key']
+      ]);
+    });
+  }
 }
