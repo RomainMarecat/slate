@@ -1,0 +1,27 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "baseUrl": "./",
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
+    "paths": {
+      "@romainmarecat/*": [
+        "../projects/*"
+      ],
+      "@romainmarecat/ngx-calendar": [
+        "../projects/ngx-calendar"
+      ]
+    }
+  },
+  "exclude": [
+    "test.ts",
+    "app/app.server.module.ts",
+    "**/*.spec.ts",
+    "node_modules"
+  ]
+}

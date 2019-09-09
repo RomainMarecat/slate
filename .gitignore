@@ -1,7 +1,6 @@
 # NativeScriptnode_modules/
 src/app-recipe/**/*.js
 src/app-alr/**/*.js
-platforms/
 hooks/
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
@@ -61,3 +60,15 @@ firebase-debug.log
 
 #projects release
 projects/*
+
+#ionic
+www/
+dist/
+node_modules/
+tmp/
+temp/
+platforms/
+plugins/
+plugins/android.json
+plugins/ios.json
+$RECYCLE.BIN/

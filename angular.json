@@ -1325,6 +1325,160 @@
                 }
             }
         },
+        "recipe-ionic": {
+            "root": "",
+            "sourceRoot": "src/app-recipe",
+            "prefix": "app-recipe",
+            "projectType": "application",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "src/app-recipe/www",
+                        "index": "src/app-recipe/index.html",
+                        "main": "src/app-recipe/main.ts",
+                        "polyfills": "src/app-recipe/polyfills.ionic.ts",
+                        "tsConfig": "src/app-recipe/tsconfig.ionic.json",
+                        "assets": [
+                            "src/app-recipe/assets",
+                            "src/app-recipe/robots.txt",
+                            "src/app-recipe/sitemap.xml",
+                            "src/app-recipe/favicon.ico",
+                            "src/app-recipe/manifest.json"
+                        ],
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "node_modules/@ng-select/ng-select/themes/material.theme.css",
+                            "src/app-recipe/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-recipe/environments/environment.ts",
+                                    "with": "src/app-recipe/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ],
+                            "serviceWorker": true,
+                            "ngswConfigPath": "src/app-recipe/ngsw-config.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "recipe:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "recipe:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "recipe:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "src/test.ts",
+                        "polyfills": "src/app-recipe/polyfills.ts",
+                        "tsConfig": "src/tsconfig.spec.json",
+                        "karmaConfig": "src/karma.conf.js",
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/@swimlane/ngx-datatable/release/index.css",
+                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "src/app-recipe/styles.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js",
+                            "node_modules/crypto-js/crypto-js.js",
+                            "node_modules/cookieconsent/build/cookieconsent.min.js"
+                        ],
+                        "assets": [
+                            "src/app-recipe/favicon.ico",
+                            "src/app-recipe/assets",
+                            "src/app-recipe/manifest.json"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "src/app-recipe/tsconfig.app.json",
+                            "src/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "ionic-cordova-build": {
+                    "builder": "@ionic/angular-toolkit:cordova-build",
+                    "options": {
+                        "browserTarget": "recipe-ionic:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "recipe-ionic:build:production"
+                        }
+                    }
+                },
+                "ionic-cordova-serve": {
+                    "builder": "@ionic/angular-toolkit:cordova-serve",
+                    "options": {
+                        "cordovaBuildTarget": "recipe-ionic:ionic-cordova-build",
+                        "devServerTarget": "recipe-ionic:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "cordovaBuildTarget": "recipe-ionic:ionic-cordova-build:production",
+                            "devServerTarget": "recipe-ionic:serve:production"
+                        }
+                    }
+                }
+            }
+        },
         "recipe-e2e": {
             "root": "e2e/",
             "projectType": "application",
