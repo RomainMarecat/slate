@@ -1,0 +1,14 @@
+{
+  "defaultProject": "recipe-ionic",
+  "projects": {
+    "recipe-ionic": {
+      "name": "recipe-ionic",
+      "integrations": {
+        "cordova": {
+        }
+      },
+      "type": "angular",
+      "root": "src/app-recipe"
+    }
+  }
+}

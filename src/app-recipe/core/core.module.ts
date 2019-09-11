@@ -24,7 +24,6 @@ import { OfferService } from '../../shared/offer/offer.service';
 import { CommentService } from '../../shared/comment/shared/comment.service';
 import { environment } from '../environments/environment';
 import { OrderService } from '../../shared/order/shared/order.service';
-import { SessionService } from '../../shared/session/shared/session.service';
 import { MapService } from '../../shared/map/shared/map.service';
 import { CartService } from '../../shared/cart/shared/cart.service';
 import { CmsService } from '../../shared/cms/shared/cms.service';
@@ -42,6 +41,7 @@ import { MatSnackBarModule } from '@angular/material';
 import { FooterModule } from '../../shared/footer/footer.module';
 import { PopupModule } from '../../shared/popup/popup.module';
 import { StorageModule } from '../../shared/media/storage/storage.module';
+import { SessionService } from '../../shared/agenda/shared/session.service';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
