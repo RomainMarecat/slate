@@ -12,6 +12,7 @@ import { ImageCropperModule } from 'ngx-img-cropper';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { SessionService } from '../../shared/agenda/shared/session.service';
 import { ConversationService } from '../../shared/chat/shared/conversation.service';
+import { MapModule } from '../../shared/map/map.module';
 import { UserService } from '../../shared/user/shared/user.service';
 import { AlertService } from '../../shared/popup/alert.service';
 import { ObjectService } from '../../shared/util/object.service';
@@ -154,13 +155,12 @@ export const cookieConfig: NgcCookieConsentConfig = {
         deps: [HttpClient, app_name]
       }
     }),
-    HomeModule,
-    CmsModule
+    HomeModule
   ],
   exports: [
     AdsenseModule,
     TranslateModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [
     {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},

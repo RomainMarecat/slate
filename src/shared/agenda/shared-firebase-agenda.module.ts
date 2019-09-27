@@ -6,11 +6,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgxCalendarModule } from '@romainmarecat/ngx-calendar';
 import { FirebaseAgendaComponent } from './agenda/firebase-agenda.component';
 import { FirebaseAgendaRoutingModule } from './firebase-agenda-routing.module';
-import { SharedFirebaseAgendaModule } from './shared-firebase-agenda.module';
 
 @NgModule({
   imports: [
-    FirebaseAgendaRoutingModule,
     CommonModule,
     FlexLayoutModule,
     MatTooltipModule,
@@ -19,9 +17,14 @@ import { SharedFirebaseAgendaModule } from './shared-firebase-agenda.module';
     MatTableModule,
     MatIconModule,
     NgxCalendarModule,
-    TranslateModule.forChild(),
-    SharedFirebaseAgendaModule
+    TranslateModule.forChild()
   ],
+  exports: [
+    FirebaseAgendaComponent
+  ],
+  declarations: [
+    FirebaseAgendaComponent
+  ]
 })
-export class FirebaseAgendaModule {
+export class SharedFirebaseAgendaModule {
 }

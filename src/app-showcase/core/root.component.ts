@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgcCookieConsentService, NgcStatusChangeEvent, NgcInitializeEvent } from 'ngx-cookieconsent';
 import { Subscription } from 'rxjs';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { MenuConfiguration } from '../../shared/menu/shared/menu-configuration';
 import { UserService } from '../../shared/user/shared/user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
@@ -11,6 +12,25 @@ import { I18nService } from '../../shared/i18n/i18n.service';
   styleUrls: [ './root.component.scss' ]
 })
 export class AppRootComponent implements OnInit, OnDestroy {
+
+  configMenu: MenuConfiguration = {
+    displayLogo: false,
+    displayAdminRecipe: false,
+    show_page_title: true,
+    urlAdmin: [],
+    displayBurgerMenu: false,
+    displayButtonConnection: true,
+    displayIconButtonConnection: false,
+    displaySearchIcon: false,
+    customIconConnection: true,
+    underlineTitle: false,
+    displayCart: false,
+    connectionBtn: {
+      mat_color: 'primary',
+      color: '#fff',
+      background: '#90323d'
+    }
+  };
 
   // Keep refs to subscriptions to be able to unsubscribe later
   private popupOpenSubscription: Subscription;
