@@ -57,7 +57,7 @@ import { environment } from '../environments/environment';
 
 import { HomeComponent } from './home.component';
 
-describe('HomeComponent', () => {
+describe('Showcase HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 

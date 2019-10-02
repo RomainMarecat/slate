@@ -18,10 +18,12 @@ export class FooterComponent implements OnInit {
   links: CmsDetail[] = [];
 
   @Input() options: {
+    displayFooter: boolean,
     displayTopButton: boolean,
     displayLinks: boolean,
     displaySublinks: boolean
   } = {
+    displayFooter: true,
     displayTopButton: true,
     displayLinks: true,
     displaySublinks: true

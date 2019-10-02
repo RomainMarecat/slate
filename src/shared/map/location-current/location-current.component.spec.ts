@@ -1,17 +1,20 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { LocationCurrentComponent } from './location-current.component';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CommonModule } from '@angular/common';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MockMapsAPILoader } from '../shared/mock-maps-api-loader';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { environment } from '../../../app-blog/environments/environment';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MapService } from '../shared/map.service';
+import { MockMapService } from '../shared/mock-map.service';
+import { MockMapsAPILoader } from '../shared/mock-maps-api-loader';
+
+import { LocationCurrentComponent } from './location-current.component';
 
 describe('LocationCurrentComponent', () => {
   let component: LocationCurrentComponent;
@@ -29,6 +32,7 @@ describe('LocationCurrentComponent', () => {
         AngularFireStorageModule,
         CommonModule,
         HttpClientTestingModule,
+        LeafletModule.forRoot(),
         RouterTestingModule,
         BrowserAnimationsModule,
         TranslateModule.forRoot({
@@ -38,6 +42,7 @@ describe('LocationCurrentComponent', () => {
       declarations: [LocationCurrentComponent],
       providers: [
         {provide: MapsAPILoader, useClass: MockMapsAPILoader},
+        {provide: MapService, useClass: MockMapService},
       ]
     })
       .compileComponents();

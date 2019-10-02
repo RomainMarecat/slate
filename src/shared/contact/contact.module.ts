@@ -32,6 +32,9 @@ export const TABLE_CONTACT = new InjectionToken<string>('contact');
     TranslateModule,
     SharedContactModule
   ],
+  exports: [
+    SharedContactModule
+  ],
   providers: [
     {provide: TABLE_CONTACT, useValue: 'contact'},
     {provide: ContactService, useClass: ContactService, deps: [AngularFirestore, TABLE_CONTACT]},

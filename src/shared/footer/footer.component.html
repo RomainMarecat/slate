@@ -1,6 +1,7 @@
 <footer angulartics2On="mouseover"
         angularticsAction="HoveredOverFooter"
-        [angularticsCategory]="'footer.content'">
+        [angularticsCategory]="'footer.content'"
+        *ngIf="options?.displayFooter">
   <!-- Desktop -->
   <mat-toolbar class="mat-toolbar"
                fxShow.gt-sm="true"
@@ -9,7 +10,7 @@
                      fxLayout="row"
                      fxLayoutAlign="center stretch"
                      fxLayoutGap="20px"
-                     *ngIf="options.displayLinks">
+                     *ngIf="options?.displayLinks">
       <div class="links-wrapper mt-5"
            fxLayout="row wrap"
            fxLayoutAlign="center stretch"
@@ -44,14 +45,13 @@
            fxLayout="row"
            fxLayoutAlign="space-around stretch"
            fxLayoutGap="20px"
-           *ngIf="options.displayLinks">
-        routerLink
+           *ngIf="options?.displayLinks">
       </div>
     </mat-toolbar-row>
 
     <mat-toolbar-row fxShow.gt-sm="true"
                      fxHide.xs="true"
-                     *ngIf="options.displayTopButton">
+                     *ngIf="options?.displayTopButton">
       <div class="up-wrapper w-100"
            fxLayout="row"
            fxLayoutAlign="end stretch">
@@ -71,7 +71,7 @@
        fxLayoutGap.xs="20px"
        fxShow.xs="true"
        fxHide.gt-sm="true"
-       *ngIf="options.displaySublinks">
+       *ngIf="options?.displaySublinks">
     <div class="links-wrapper mt-5"
          fxLayout="column"
          fxLayoutAlign="start start"

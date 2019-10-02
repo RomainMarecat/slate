@@ -1,4 +1,4 @@
-<div class="agm-wrapper">
+<div class="agm-wrapper" *ngIf="type === 'google'">
   <agm-map
     class="agm-map"
     [latitude]="mapConfig.lat"
@@ -19,4 +19,12 @@
 
     </agm-marker>
   </agm-map>
+</div>
+
+<div style="height: 500px;"
+     leaflet
+     [leafletLayers]="markers"
+     (leafletMapReady)="onMapReady($event)"
+     [leafletOptions]="options"
+     *ngIf="type === 'leaflet' && options">
 </div>

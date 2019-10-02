@@ -1,12 +1,15 @@
-<app-header-style1></app-header-style1>
 
-<!--<app-pricing-style1></app-pricing-style1>-->
+<app-header-style1></app-header-style1>
+<!--<app-header-style2></app-header-style2>-->
+
+<app-pricing-style1></app-pricing-style1>
 
 <app-feature-style1></app-feature-style1>
 
-<app-firebase-agenda></app-firebase-agenda>
+<app-firebase-agenda [onlineSession]="onlineSession"></app-firebase-agenda>
+
+<app-map-location-current type="leaflet" [mapConfig]="mapConfig"></app-map-location-current>
 
 <app-contact-add></app-contact-add>
 
-<app-map-location-current [mapConfig]="mapConfig"></app-map-location-current>
 

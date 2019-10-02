@@ -24,7 +24,7 @@ import { MenuService } from '../../menu/menu.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 
-describe('HomeComponent', () => {
+describe('Shared Admin HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 

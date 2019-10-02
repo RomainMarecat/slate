@@ -23,7 +23,7 @@ import { MockMediaService } from '../../shared/media/mock-media.service';
 import { MediaService } from '../../shared/media/media.service';
 import { MediaModule } from '../../shared/media/media.module';
 
-describe('HomeComponent', () => {
+describe('Recipe HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 

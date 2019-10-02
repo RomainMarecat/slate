@@ -22,6 +22,8 @@ import { DeviceService } from '../../shared/device/device.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { MockLoaderService } from '../../shared/loader/mock-loader.service';
 import { MapModule } from '../../shared/map/map.module';
+import { MapService } from '../../shared/map/shared/map.service';
+import { MockMapService } from '../../shared/map/shared/mock-map.service';
 import { MockMapsAPILoader } from '../../shared/map/shared/mock-maps-api-loader';
 import { MediaService } from '../../shared/media/media.service';
 import { MockMediaService } from '../../shared/media/mock-media.service';
@@ -42,7 +44,7 @@ import { environment } from '../environments/environment';
 
 import { HomeComponent } from './home.component';
 
-describe('HomeComponent', () => {
+describe('Blog HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
@@ -83,6 +85,7 @@ describe('HomeComponent', () => {
         {provide: CommentService, useClass: MockCommentService},
         {provide: UserService, useClass: MockUserService},
         {provide: MapsAPILoader, useClass: MockMapsAPILoader},
+        {provide: MapService, useClass: MockMapService},
         DeviceService,
         MenuService
       ]

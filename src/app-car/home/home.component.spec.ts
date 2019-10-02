@@ -32,7 +32,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../shared/router/mock-localize-router.service';
 
-describe('HomeComponent', () => {
+describe('Car HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
