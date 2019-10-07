@@ -60,7 +60,6 @@ describe('ArticleEditComponent', () => {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         SharedModule,
-
         NgxDatatableModule,
         LocalizeRouterModule,
         Angulartics2Module.forRoot( {

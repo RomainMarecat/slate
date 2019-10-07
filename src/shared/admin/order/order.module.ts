@@ -22,7 +22,6 @@ import { OrderComponent } from './order/order.component';
     MaterialModule,
     ClipboardModule,
     SharedModule,
-
     TranslateModule.forChild(),
   ],
   declarations: [
