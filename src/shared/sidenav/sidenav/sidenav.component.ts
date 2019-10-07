@@ -61,6 +61,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
     }
   };
 
+  @Input() configFooter;
+
   private subscriptionSidenav: Subscription;
   private subscriptionSidenavFilter: Subscription;
   private subscriptionAuthState: Subscription;

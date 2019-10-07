@@ -10,8 +10,7 @@ export class I18nService {
   constructor(
     @Inject(LOCALE_ID) locale: string,
     private translateService: TranslateService,
-    @Inject(PLATFORM_ID) private platformId
-  ) {
+    @Inject(PLATFORM_ID) private platformId) {
     this.locale = locale.substring(0, locale.indexOf('-', 2));
     this.translateService.setDefaultLang(this.locale);
     const browserLanguage = this.translateService.getBrowserLang();

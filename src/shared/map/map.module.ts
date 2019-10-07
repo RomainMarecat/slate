@@ -1,21 +1,17 @@
-import { InjectionToken, NgModule } from '@angular/core';
+import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common';
-import { AreaComponent } from './area/area.component';
-import { MapComponent } from './map/map.component';
-import { MapService } from './shared/map.service';
-import { AreaService } from './shared/area.service';
+import { InjectionToken, NgModule } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { TranslateModule } from '@ngx-translate/core';
-import { AreaListComponent } from './area-list/area-list.component';
-import { AreaDrawComponent } from './area-draw/area-draw.component';
 import { MatListModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { GeocodeService } from './shared/geocode.service';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgArrayPipesModule } from 'ngx-pipes';
-import { LocationCurrentComponent } from './location-current/location-current.component';
-import { AgmCoreModule } from '@agm/core';
 import { MapRoutingModule } from './map-routing.module';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { SharedMapModule } from './shared-map.module';
+import { AreaService } from './shared/area.service';
+import { GeocodeService } from './shared/geocode.service';
+import { MapService } from './shared/map.service';
 
 export const TABLE_AREA = new InjectionToken<string>('area');
 export const TABLE_MAP = new InjectionToken<string>('map');
@@ -28,22 +24,12 @@ export const TABLE_MAP = new InjectionToken<string>('map');
     MatListModule,
     MapRoutingModule,
     NgArrayPipesModule,
+    SharedMapModule,
     TranslateModule.forChild(),
-    RouterModule,
-  ],
-  declarations: [
-    AreaComponent,
-    MapComponent,
-    AreaListComponent,
-    AreaDrawComponent,
-    LocationCurrentComponent
+    RouterModule
   ],
   exports: [
-    AreaComponent,
-    MapComponent,
-    AreaListComponent,
-    AreaDrawComponent,
-    LocationCurrentComponent
+    SharedMapModule,
   ],
   providers: [
     {provide: TABLE_AREA, useValue: 'area'},

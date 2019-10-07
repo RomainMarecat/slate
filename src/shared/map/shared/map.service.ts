@@ -1,16 +1,36 @@
-import { Inject, Injectable, Optional } from '@angular/core';
-import { Observable } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { skipWhile } from 'rxjs/operators';
 import { VisitorService } from '../../firestore/visitor.service';
 import { Map } from './map';
+import { Map as LeafletMap } from 'leaflet';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapService extends VisitorService {
 
-  constructor(afs: AngularFirestore, @Inject('TABLE_MAP') table: string) {
+  map$: BehaviorSubject<LeafletMap> = new BehaviorSubject<LeafletMap>(null);
+
+  constructor(afs: AngularFirestore,
+              @Inject('TABLE_MAP') table: string,
+              @Inject(PLATFORM_ID) private platformId) {
     super(afs, table);
+  }
+
+  onMapReady(map: LeafletMap) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.map$.next(map);
+    }
+  }
+
+  getLeafletMap(): Observable<LeafletMap> {
+    return this.map$.asObservable()
+      .pipe(
+        skipWhile((map) => !map)
+      );
   }
 
   getMaps(): Observable<Map[]> {

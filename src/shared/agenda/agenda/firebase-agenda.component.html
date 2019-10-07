@@ -18,6 +18,7 @@
     <div class="calendar-content">
       <ngx-calendar [viewMode]="viewMode"
                     [user]="user"
+                    [onlineSession]="onlineSession"
                     [sessionsEntries]="sessions"
                     (viewModeChanged)="onViewModeChanged($event)"
                     (sessionRemoved)="onSessionRemoved($event)"

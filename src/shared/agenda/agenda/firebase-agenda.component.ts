@@ -1,21 +1,21 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DocumentReference } from '@angular/fire/firestore';
-import { User } from '@firebase/auth-types';
-import { UserService } from '../../user/shared/user.service';
-import { SessionService } from '../shared/session.service';
-import { Session } from '@romainmarecat/ngx-calendar';
-import { Moment } from 'moment';
-import { I18nService } from '../../i18n/i18n.service';
-import * as moment from 'moment';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { User } from '@firebase/auth-types';
+import { Session } from '@romainmarecat/ngx-calendar';
+import { firestore } from 'firebase/app';
+import * as moment from 'moment';
+import { Moment } from 'moment';
 import 'moment/locale/en-gb';
 import 'moment/locale/fr';
+import { Subscription } from 'rxjs';
+import { I18nService } from '../../i18n/i18n.service';
 import { AlertService } from '../../popup/alert.service';
-import { Router } from '@angular/router';
-import { RoutingState } from '../../util/routing-state';
 import { SeoService } from '../../seo/shared/seo.service';
-import { firestore } from 'firebase/app';
+import { UserService } from '../../user/shared/user.service';
+import { RoutingState } from '../../util/routing-state';
+import { SessionService } from '../shared/session.service';
 import Timestamp = firestore.Timestamp;
 
 @Component({
@@ -29,6 +29,7 @@ export class FirebaseAgendaComponent implements OnInit, OnDestroy {
   watcher: Subscription;
   sessions: Session[] = [];
   user: User;
+  @Input() onlineSession;
 
   constructor(private seoService: SeoService,
               private router: Router,
@@ -38,7 +39,9 @@ export class FirebaseAgendaComponent implements OnInit, OnDestroy {
               private alertService: AlertService,
               private routingState: RoutingState,
               private userService: UserService) {
-    this.seoService.setSeo('agenda');
+    if (this.router.url.includes('agenda')) {
+      this.seoService.setSeo('agenda');
+    }
   }
 
   static betweenSmAndMd(change: MediaChange): boolean {
@@ -56,6 +59,13 @@ export class FirebaseAgendaComponent implements OnInit, OnDestroy {
     this.userService.getAuthStateUser()
       .subscribe((user) => {
         this.user = user;
+        if (!user) {
+          this.user = {
+            uid: null,
+            displayName: 'Anonyme',
+            email: ''
+          } as User;
+        }
         this.changeViewModeByMediaQuery();
       });
   }
@@ -81,12 +91,12 @@ export class FirebaseAgendaComponent implements OnInit, OnDestroy {
     if (change.length) {
       if (change[0].mqAlias === 'xs') {
         this.setViewMode('day');
+        return;
       }
       if (FirebaseAgendaComponent.betweenSmAndMd(change[0])) {
         this.setViewMode('three_days');
+        return;
       }
-
-      return;
     }
     this.setViewMode('week');
   }
@@ -107,6 +117,7 @@ export class FirebaseAgendaComponent implements OnInit, OnDestroy {
           session.end = moment((session.end as unknown as Timestamp).seconds * 1000).toDate();
           return session;
         });
+
         if (sessionSubscription) {
           sessionSubscription.unsubscribe();
         }

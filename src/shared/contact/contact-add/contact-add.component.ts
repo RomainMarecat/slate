@@ -46,7 +46,9 @@ export class ContactAddComponent {
               private router: Router,
               private translateService: TranslateService,
               private userService: UserService) {
-    this.seoService.setSeo('contact-add');
+    if (this.router.url.includes('contact')) {
+      this.seoService.setSeo('contact-add');
+    }
     this.getUser();
   }
 

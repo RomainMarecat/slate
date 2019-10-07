@@ -4,7 +4,7 @@ import { MenuService } from '../../shared/menu/menu.service';
 @Component({
   selector: 'app-blog-home',
   templateUrl: './home.component.html',
-  styleUrls: [ './home.component.scss' ]
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
@@ -16,6 +16,26 @@ export class HomeComponent implements OnInit {
     zoomControl: false,
     streetViewControl: true,
     markerDraggable: false
+  };
+
+  onlineSession = {
+    key: null,
+    session_type: {
+      name: '',
+      max_persons: 1,
+      booking_delay: 1,
+      duration: 60,
+      pause: 10,
+    },
+    prices: [10, 20],
+    date_range: {
+      start: '2019-10-01',
+      end: '2030-12-31',
+    },
+    time_range: {
+      start: '08:00',
+      end: '19:00',
+    }
   };
 
   constructor(private menuService: MenuService) {

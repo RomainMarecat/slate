@@ -22,6 +22,9 @@ import { SharedFirebaseAgendaModule } from './shared-firebase-agenda.module';
     TranslateModule.forChild(),
     SharedFirebaseAgendaModule
   ],
+  exports: [
+    SharedFirebaseAgendaModule
+  ]
 })
 export class FirebaseAgendaModule {
 }

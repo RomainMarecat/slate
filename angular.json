@@ -267,28 +267,6 @@
                 }
             }
         },
-        "alr-e2e": {
-            "root": "e2e/",
-            "projectType": "application",
-            "architect": {
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "alr:serve"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "e2e/tsconfig.e2e.json",
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                }
-            }
-        },
         "showcase": {
             "root": "src",
             "sourceRoot": "src/app-showcase",
@@ -309,7 +287,12 @@
                             "src/app-showcase/robots.txt",
                             "src/app-showcase/sitemap.xml",
                             "src/app-showcase/favicon.ico",
-                            "src/app-showcase/manifest.json"
+                            "src/app-showcase/manifest.json",
+                            {
+                                "glob": "**/*",
+                                "input": "./node_modules/leaflet/dist/images",
+                                "output": "assets/map"
+                            }
                         ],
                         "styles": [
                             "./node_modules/material-design-icons/iconfont/material-icons.css",
@@ -319,6 +302,7 @@
                             "./node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
                             "./node_modules/bootstrap/dist/css/bootstrap.css",
                             "./node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "./node_modules/leaflet/dist/leaflet.css",
                             "src/app-showcase/styles.scss"
                         ],
                         "scripts": [
@@ -405,28 +389,6 @@
                             "src/app-showcase/tsconfig.app.json",
                             "src/tsconfig.spec.json"
                         ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                }
-            }
-        },
-        "showcase-e2e": {
-            "root": "e2e/",
-            "projectType": "application",
-            "architect": {
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "showcase:serve"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "e2e/tsconfig.e2e.json",
                         "exclude": [
                             "**/node_modules/**"
                         ]
@@ -557,28 +519,6 @@
                 }
             }
         },
-        "car-e2e": {
-            "root": "e2e/",
-            "projectType": "application",
-            "architect": {
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "car:serve"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "e2e/tsconfig.e2e.json",
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                }
-            }
-        },
         "blog": {
             "root": "src",
             "sourceRoot": "src/app-blog",
@@ -695,28 +635,6 @@
                             "src/app-blog/tsconfig.app.json",
                             "src/tsconfig.spec.json"
                         ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                }
-            }
-        },
-        "blog-e2e": {
-            "root": "e2e/",
-            "projectType": "application",
-            "architect": {
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "blog:serve"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "e2e/tsconfig.e2e.json",
                         "exclude": [
                             "**/node_modules/**"
                         ]
@@ -847,28 +765,6 @@
                 }
             }
         },
-        "booking-e2e": {
-            "root": "e2e/",
-            "projectType": "application",
-            "architect": {
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "booking:serve"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "e2e/tsconfig.e2e.json",
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                }
-            }
-        },
         "hockey": {
             "root": "src",
             "sourceRoot": "src/app-hockey",
@@ -985,28 +881,6 @@
                             "src/app-hockey/tsconfig.app.json",
                             "src/tsconfig.spec.json"
                         ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                }
-            }
-        },
-        "hockey-e2e": {
-            "root": "e2e/",
-            "projectType": "application",
-            "architect": {
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "hockey:serve"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "e2e/tsconfig.e2e.json",
                         "exclude": [
                             "**/node_modules/**"
                         ]
@@ -1151,28 +1025,6 @@
                                 }
                             ]
                         }
-                    }
-                }
-            }
-        },
-        "store-e2e": {
-            "root": "e2e/",
-            "projectType": "application",
-            "architect": {
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "store:serve"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "e2e/tsconfig.e2e.json",
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
                     }
                 }
             }
@@ -1475,28 +1327,6 @@
                             "cordovaBuildTarget": "recipe-ionic:ionic-cordova-build:production",
                             "devServerTarget": "recipe-ionic:serve:production"
                         }
-                    }
-                }
-            }
-        },
-        "recipe-e2e": {
-            "root": "e2e/",
-            "projectType": "application",
-            "architect": {
-                "e2e": {
-                    "builder": "@angular-devkit/build-angular:protractor",
-                    "options": {
-                        "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "recipe:serve"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": "e2e/tsconfig.e2e.json",
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
                     }
                 }
             }
