@@ -55,29 +55,30 @@ export class LocationCurrentComponent implements OnInit {
   }
 
   @Input() set mapConfig(mapConfig) {
-    this._mapConfig = mapConfig;
-    this.onMapClick({
-      coords: {
-        lat: this.mapConfig.lat,
-        lng: this.mapConfig.lng
-      }
-    });
+    if (mapConfig) {
+      this._mapConfig = mapConfig;
+      this.onMapClick({
+        coords: {
+          lat: this.mapConfig.lat,
+          lng: this.mapConfig.lng
+        }
+      });
+      this.options = {
+        layers: [
+          tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              maxZoom: 18,
+              attribution: '...'
+            }
+          )
+        ],
+        minZoom: 10,
+        maxZoom: 18,
+        zoom: 12,
+        center: latLng(mapConfig.lat, mapConfig.lng)
+      };
 
-    this.options = {
-      layers: [
-        tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '...'
-          }
-        )
-      ],
-      minZoom: 10,
-      maxZoom: 18,
-      zoom: 12,
-      center: latLng(mapConfig.lat, mapConfig.lng)
-    };
-
-    this.addMarker(latLng(mapConfig.lat, mapConfig.lng));
+      this.addMarker(latLng(mapConfig.lat, mapConfig.lng));
+    }
   }
 
   addMarker(latLngLocation: LatLngExpression) {

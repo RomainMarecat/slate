@@ -102,6 +102,7 @@ export class FirebaseAgendaComponent implements OnInit, OnDestroy {
   }
 
   loadSessions(start: Moment) {
+    this.sessionService.limit$.next(100);
     this.sessionService.filters$.next([
       {
         column: 'start',
@@ -110,18 +111,18 @@ export class FirebaseAgendaComponent implements OnInit, OnDestroy {
       }
     ]);
 
-    const sessionSubscription: Subscription = this.sessionService.getSessions()
-      .subscribe((sessions: Session[]) => {
-        this.sessions = sessions.map((session) => {
-          session.start = moment((session.start as unknown as Timestamp).seconds * 1000).toDate();
-          session.end = moment((session.end as unknown as Timestamp).seconds * 1000).toDate();
-          return session;
-        });
-
-        if (sessionSubscription) {
-          sessionSubscription.unsubscribe();
-        }
-      });
+    //const sessionSubscription: Subscription = this.sessionService.getSessions()
+    //  .subscribe((sessions: Session[]) => {
+    //    this.sessions = sessions.map((session) => {
+    //      session.start = moment((session.start as unknown as Timestamp).seconds * 1000).toDate();
+    //      session.end = moment((session.end as unknown as Timestamp).seconds * 1000).toDate();
+    //      return session;
+    //    });
+    //
+    //    if (sessionSubscription) {
+    //      sessionSubscription.unsubscribe();
+    //    }
+    //  });
   }
 
   setViewMode(viewMode: String) {
