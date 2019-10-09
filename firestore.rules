@@ -66,8 +66,8 @@ service cloud.firestore {
       allow read: if true;
       allow get: if true;
       allow list: if true;
-      allow create: if request.auth.uid != null;
-      allow update: if request.auth.uid != null;
+      allow create: if true;
+      allow update: if true;
       allow delete: if false;
     }
     match /{conversation=**} {

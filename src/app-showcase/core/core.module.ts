@@ -1,55 +1,47 @@
-import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Angulartics2Module } from 'angulartics2';
-import { AdsenseModule } from 'ng2-adsense';
+import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
-
-import { FileUploadModule } from 'ng2-file-upload';
-import { ImageCropperModule } from 'ngx-img-cropper';
-import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { Angulartics2Module } from 'angulartics2';
+import { EventService } from '../../shared/agenda/shared/event.service';
 import { SessionService } from '../../shared/agenda/shared/session.service';
+import { ArticleService } from '../../shared/article/shared/article.service';
+import { AttributeService } from '../../shared/attribute/attribute.service';
+import { CartService } from '../../shared/cart/shared/cart.service';
+import { CategoryService } from '../../shared/category/category.service';
 import { ConversationService } from '../../shared/chat/shared/conversation.service';
-import { MapModule } from '../../shared/map/map.module';
-import { UserService } from '../../shared/user/shared/user.service';
-import { AlertService } from '../../shared/popup/alert.service';
-import { ObjectService } from '../../shared/util/object.service';
-import { DateService } from '../../shared/util/date.service';
-import { LoaderService } from '../../shared/loader/loader.service';
-import { MenuService } from '../../shared/menu/menu.service';
-import { ScoreService } from '../../shared/score/score.service';
-import { SidenavService } from '../../shared/sidenav/sidenav.service';
+import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
+import { CmsService } from '../../shared/cms/shared/cms.service';
+import { CommentService } from '../../shared/comment/shared/comment.service';
+import { ContactService } from '../../shared/contact/shared/contact.service';
+import { DeviceService } from '../../shared/device/device.service';
 import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
-import { DeviceService } from '../../shared/device/device.service';
-import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
-import { ProductService } from '../../shared/product/shared/product.service';
-import { MediaService } from '../../shared/media/media.service';
-import { SharedModule } from '../../shared/shared.module';
-import { environment } from '../environments/environment';
-import { SlackModule } from '@romainmarecat/ngx-slack-notification';
-import { AttributeService } from '../../shared/attribute/attribute.service';
-import { PartnerService } from '../../shared/partner/partner.service';
-import { OfferService } from '../../shared/offer/offer.service';
-import { CommentService } from '../../shared/comment/shared/comment.service';
-import { CmsService } from '../../shared/cms/shared/cms.service';
+import { LoaderService } from '../../shared/loader/loader.service';
 import { AreaService } from '../../shared/map/shared/area.service';
-import { CategoryService } from '../../shared/category/category.service';
-import { CmsDetailService } from '../../shared/cms-detail/shared/cms-detail.service';
 import { MapService } from '../../shared/map/shared/map.service';
-import { HomeModule } from '../home/home.module';
-import { ArticleService } from '../../shared/article/shared/article.service';
-import { ContactService } from '../../shared/contact/shared/contact.service';
-import { EventService } from '../../shared/agenda/shared/event.service';
-import { CartService } from '../../shared/cart/shared/cart.service';
-import { PaymentService } from '../../shared/payment/shared/payment.service';
-import { RoutingState } from '../../shared/util/routing-state';
+import { MediaService } from '../../shared/media/media.service';
+import { MenuService } from '../../shared/menu/menu.service';
+import { OfferService } from '../../shared/offer/offer.service';
 import { OrderService } from '../../shared/order/shared/order.service';
+import { PartnerService } from '../../shared/partner/partner.service';
+import { PaymentService } from '../../shared/payment/shared/payment.service';
+import { AlertService } from '../../shared/popup/alert.service';
+import { ProductService } from '../../shared/product/shared/product.service';
+import { ScoreService } from '../../shared/score/score.service';
 import { SelectionService } from '../../shared/selection/selection.service';
-import { CmsModule } from '../../shared/cms/cms.module';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SidenavModule } from '../../shared/sidenav/sidenav.module';
+import { SidenavService } from '../../shared/sidenav/sidenav.service';
+import { UserService } from '../../shared/user/shared/user.service';
+import { DateService } from '../../shared/util/date.service';
+import { ObjectService } from '../../shared/util/object.service';
+import { RoutingState } from '../../shared/util/routing-state';
+import { environment } from '../environments/environment';
+import { HomeModule } from '../home/home.module';
 
 export const production = new InjectionToken<string>('production');
 export const site_name = new InjectionToken<string>('site_name');
@@ -97,41 +89,12 @@ export class ConfigService {
   }
 }
 
-export const cookieConfig: NgcCookieConsentConfig = {
-  cookie: {
-    'domain': environment.cookie.domain
-  },
-  position: 'bottom',
-  theme: 'block',
-  palette: {
-    popup: {
-      background: '#131629',
-      text: '#ffffff',
-      link: '#ffffff'
-    },
-    button: {
-      background: '#af300b',
-      text: '#ffffff',
-      border: 'transparent'
-    }
-  },
-  type: 'info',
-  content: {
-    message: 'This website uses cookies to ensure you get the best experience on our website.',
-    dismiss: 'Got it !',
-    deny: 'Refuse cookies',
-    link: 'Learn more',
-    href: 'https://cookiesandyou.com'
-  }
-};
-
 @NgModule({
   imports: [
+    SidenavModule,
     CommonModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
-    /*    AngularFirestoreModule,
-     */
     AngularFirestoreModule.enablePersistence(),
     Angulartics2Module.forRoot({
       developerMode: true,
@@ -139,15 +102,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
         clearIds: true,
       },
     }),
-    AdsenseModule.forRoot({
-      adClient: environment.clientAdSense,
-      adSlot: environment.slotAdSense
-    }),
-    NgcCookieConsentModule.forRoot(cookieConfig),
-    ImageCropperModule,
-    FileUploadModule,
-    SharedModule.forRoot(CONFIG_TOKEN),
-    SlackModule.forRoot(environment.slackToken),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -156,11 +110,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
       }
     }),
     HomeModule
-  ],
-  exports: [
-    AdsenseModule,
-    TranslateModule,
-    SharedModule,
   ],
   providers: [
     {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},
@@ -220,6 +169,9 @@ export const cookieConfig: NgcCookieConsentConfig = {
     UserGuard,
     UserService,
     RoutingState
+  ],
+  exports: [
+    SidenavModule
   ]
 })
 export class CoreModule {
