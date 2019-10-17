@@ -70,6 +70,7 @@
         "bootstrap": "^4.3.1",
         "bufferutil": "^4.0.1",
         "chart.js": "^2.8.0",
+        "classlist.js": "^1.1.20150312",
         "cloudinary-core": "^2.6.3",
         "cookieconsent": "^3.1.1",
         "cordova": "9.0.0",
@@ -114,6 +115,7 @@
         "tslib": "^1.9.0",
         "twix": "^1.2.1",
         "utf-8-validate": "^5.0.2",
+        "web-animations-js": "^2.3.2",
         "xmlhttprequest": "^1.8.0",
         "zone.js": "^0.9.1"
     },

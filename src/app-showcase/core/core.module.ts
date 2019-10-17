@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { APP_INITIALIZER, Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
@@ -89,6 +89,10 @@ export class ConfigService {
   }
 }
 
+export function getLanguageFactory(i18nService: I18nService) {
+  return () => i18nService.addLanguage(true);
+}
+
 @NgModule({
   imports: [
     SidenavModule,
@@ -160,7 +164,12 @@ export class ConfigService {
     AlertService,
     DateService,
     DeviceService,
-    I18nService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: getLanguageFactory,
+      deps: [I18nService],
+      multi: true
+    },
     LoaderService,
     MenuService,
     ObjectService,
