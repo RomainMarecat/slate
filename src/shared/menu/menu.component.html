@@ -39,7 +39,30 @@
     <span class="pl-4" [innerHtml]="title|translate" *ngIf="title && title.length > 0"></span>
   </ng-container>
 
-  <span class="menu-spacer"></span>
+  <ng-container *ngIf="config.displayPhoneNumber">
+    <a [href]="'menu.phone.number'|translate"
+       class="phone-wrapper"
+       fxLayout="row"
+       fxLayoutAlign="center center"
+       fxFlex="100">
+      <span class="phone-title">{{ 'menu.phone.title' |translate }}</span> <strong>{{ 'menu.phone.number' |translate }}</strong>
+    </a>
+  </ng-container>
+
+  <ng-container *ngIf="config.displayBrand">
+    <div class="brand-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="start center">
+      <img src="/assets/images/logo_artisan.png" alt="artisan">
+      <img src="/assets/images/logo_devis_gratuit.png" alt="devis gratuit">
+      <img src="/assets/images/logo_gdecennale.png" alt="garantie décennale">
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="config.displaySpacer">
+    <span class="menu-spacer"></span>
+  </ng-container>
+
 
   <a [routerLink]="routerAdminUrl"
      fxShow

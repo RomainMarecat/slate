@@ -4,7 +4,6 @@ import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Router } from '@angular/router';
 import { User } from '@firebase/auth-types';
 import { Session } from '@romainmarecat/ngx-calendar';
-import { firestore } from 'firebase/app';
 import * as moment from 'moment';
 import { Moment } from 'moment';
 import 'moment/locale/en-gb';
@@ -16,7 +15,6 @@ import { SeoService } from '../../seo/shared/seo.service';
 import { UserService } from '../../user/shared/user.service';
 import { RoutingState } from '../../util/routing-state';
 import { SessionService } from '../shared/session.service';
-import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-firebase-agenda',
@@ -111,7 +109,7 @@ export class FirebaseAgendaComponent implements OnInit, OnDestroy {
       }
     ]);
 
-    //const sessionSubscription: Subscription = this.sessionService.getSessions()
+    // const sessionSubscription: Subscription = this.sessionService.getSessions()
     //  .subscribe((sessions: Session[]) => {
     //    this.sessions = sessions.map((session) => {
     //      session.start = moment((session.start as unknown as Timestamp).seconds * 1000).toDate();

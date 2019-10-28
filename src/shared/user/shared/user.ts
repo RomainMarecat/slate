@@ -4,4 +4,6 @@ export interface User {
   displayName?: string;
   email?: string;
   emailVerified?: boolean;
+  zipcode?: string;
+  phone?: string;
 }

@@ -9,6 +9,9 @@ import { MenuConfiguration } from '../../shared/menu/shared/menu-configuration';
 export class AppRootComponent {
 
   configMenu: MenuConfiguration = {
+    displayBrand: true,
+    displaySpacer: false,
+    displayPhoneNumber: true,
     displayLogo: false,
     displayAdminRecipe: false,
     show_page_title: true,
