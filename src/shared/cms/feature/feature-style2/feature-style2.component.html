@@ -1,0 +1,9 @@
+<div class="gallery-wrapper"
+     fxLayout="row wrap"
+     fxLayoutAlign="center start">
+  <ng-container *ngFor="let image of images">
+    <div class="image-wrapper" fxFlex="33">
+      <img [src]="image">
+    </div>
+  </ng-container>
+</div>

@@ -43,6 +43,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ];
 
   @Input() configMenu: MenuConfiguration = {
+    displayBrand: false,
+    displaySpacer: true,
+    displayPhoneNumber: false,
     displayLogo: false,
     displayAdminRecipe: false,
     show_page_title: true,

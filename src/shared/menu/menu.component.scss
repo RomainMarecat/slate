@@ -39,6 +39,25 @@
     flex: 1 1 auto;
   }
 
+  .phone-wrapper {
+    flex: 1 1 auto;
+    span {
+      padding: 0 10px;
+      font-size: 1.5rem;
+    }
+    strong {
+      font-size: 2rem;
+    }
+  }
+
+  .brand-wrapper {
+    img {
+      height: 60px;
+      width: auto;
+      line-height: 64px;
+    }
+  }
+
   .login-wrapper {
     overflow: hidden;
   }

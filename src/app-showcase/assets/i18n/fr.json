@@ -1,409 +1,472 @@
 {
-  "admin": {
-    "title": {
-      "article": {
-        "title": "les articles",
-        "selection": "sélectionné(s)"
-      },
-      "contact": {
-        "title": "tous les messages",
-        "selection": "sélectionné(s)"
-      },
-      "cms": {
-        "title": "tous les cms",
-        "add": "ajouter un cms",
-        "selection": "sélectionné(s)"
-      },
-      "cms-detail": {
-        "title": "tous les templates",
-        "selection": "sélectionné(s)"
-      },
-      "map": {
-        "title": "les cartes",
-        "selection": "sélectionné(s)"
-      },
-      "selection": {
-        "title": "les sélections",
-        "selection": "sélectionné(s)",
-        "products": "produits associés",
-        "parent": "associer une sélection parente"
-      }
+    "admin": {
+        "title": {
+            "article": {
+                "title": "les articles",
+                "selection": "sélectionné(s)"
+            },
+            "contact": {
+                "title": "tous les messages",
+                "selection": "sélectionné(s)"
+            },
+            "cms": {
+                "title": "tous les cms",
+                "add": "ajouter un cms",
+                "selection": "sélectionné(s)"
+            },
+            "cms-detail": {
+                "title": "tous les templates",
+                "selection": "sélectionné(s)"
+            },
+            "map": {
+                "title": "les cartes",
+                "selection": "sélectionné(s)"
+            },
+            "selection": {
+                "title": "les sélections",
+                "selection": "sélectionné(s)",
+                "products": "produits associés",
+                "parent": "associer une sélection parente"
+            }
+        },
+        "cta": {
+            "add": {
+                "attribute": "ajouter un attribut",
+                "contact": "ajouter un message",
+                "article": "ajouter un article",
+                "cms": "ajouter un cms"
+            },
+            "product": "produits",
+            "cms": "cms",
+            "attribute": "attributs",
+            "category": "categories",
+            "contact": "contacts",
+            "offer": "offres",
+            "partner": "partenaires",
+            "selection": "sélections",
+            "map": "cartes",
+            "material": "material",
+            "article": "articles"
+        },
+        "label": {
+            "attribute": {
+                "name": "nom",
+                "fr": "traduction française",
+                "radio": "bouton radio",
+                "checkbox": "checkbox",
+                "text": "texte",
+                "select": "menu déroulant",
+                "type": "Détermine avec quel composant choisir l'attribut",
+                "order_by": "Détermine comment sont triés les valeurs de cet attribut en front sur la page du produit"
+            },
+            "article": {
+                "name": "nom",
+                "description": "contenu de l'article",
+                "facebook": "publication facebook",
+                "unpublish": "brouillon",
+                "publish": "publier",
+                "unpublished": "dépublié",
+                "published": "publié"
+            },
+            "contact": {
+                "name": "nom",
+                "email": "email",
+                "message": "message"
+            },
+            "cms": {
+                "name": "nom",
+                "site_name": "nom valeur correspondante / clé",
+                "key": "clé"
+            },
+            "cms-detail": {
+                "title": "titre",
+                "content": "contenu",
+                "icon": "l'icône",
+                "parent": "le contenu parent"
+            },
+            "selection": {
+            }
+        },
+        "placeholder": {
+            "article": {
+                "name": "nom",
+                "description": "copier/coller ici le lien vers le post facebook"
+            },
+            "attribute": {
+                "name": "nom",
+                "fr": "traduction française",
+                "variantes": "variantes",
+                "term": "terme"
+            },
+            "cms": {
+                "name": "nom",
+                "site_name": "clé"
+            },
+            "cms-detail": {
+                "title": "titre",
+                "content": "entrer du contenu",
+                "icon": "l'icône"
+            },
+            "map": {
+                "name": "région",
+                "path": "points 2D"
+            },
+            "selection": {
+                "name": "nom de la sélection",
+                "description": "description",
+                "fr": "traduction française",
+                "keywords": "mots clés",
+                "level": "niveau",
+                "root": "racine"
+            }
+        },
+        "hint": {
+            "article": {
+                "name": "titre de l'article"
+            },
+            "attribute": {
+                "name": "nom de l'attribut",
+                "fr": "traduction française de l'attribut"
+            },
+            "cms": {
+                "name": "nom du cms",
+                "site_name": "clé du cms"
+            },
+            "cms-detail": {
+                "title": "titre",
+                "content": "contenu",
+                "icon": "icône"
+            },
+            "map": {
+                "name": "région de la carte",
+                "path": "points de la région"
+            },
+            "selection": {
+                "name": "nom de la sélection",
+                "description": "description",
+                "fr": "traduction française",
+                "keywords": "mots clés",
+                "level": "niveau",
+                "root": "racine"
+            }
+        },
+        "error": {
+            "required": {
+                "article": {
+                    "name": "le titre est obligatoire"
+                },
+                "attribute": {
+                    "name": "le nom est obligatoire",
+                    "fr": "la traduction française est obligatoire"
+                },
+                "cms": {
+                    "name": "le nom est obligatoire",
+                    "site_name": "la clé est obligatoire"
+                },
+                "cms-detail": {
+                    "title": "le titre est obligatoire",
+                    "content": "le contenu est obligatoire",
+                    "icon": "l'icône est obligatoire"
+                },
+                "map": {
+                    "name": "la région est obligatoire",
+                    "path": "les points sont obligatoires"
+                },
+                "selection": {
+                    "name": "le nom est obligatoire",
+                    "fr": "la traduction est obligatoire",
+                    "description": "la description est obligatoire",
+                    "keywords": "les mots clés sont obligatoires",
+                    "level": "le niveau est obligatoire"
+                }
+            },
+            "invalid": {
+                "article": {
+                    "name": "le titre est invalide"
+                },
+                "attribute": {
+                    "name": "le nom est invalide",
+                    "fr": "la traduction française est invalide"
+                },
+                "cms": {
+                    "name": "le nom est invalide",
+                    "site_name": "la clé est invalide"
+                },
+                "cms-detail": {
+                    "title": "le titre est invalide",
+                    "content": "le contenu est invalide",
+                    "icon": "l'icône est invalide"
+                },
+                "map": {
+                    "name": "la région est invalide",
+                    "path": "les points sont invalides"
+                },
+                "selection": {
+                    "name": "le nom est invalide",
+                    "fr": "la traduction est invalide",
+                    "description": "la description est invalide",
+                    "keywords": "les mots clés sont invalides",
+                    "level": "le niveau est invalide"
+                }
+            }
+        }
+    },
+    "meta": {
+        "title": {
+            "homepage": "showcase"
+        },
+        "description": {
+            "homepage": ""
+        }
     },
     "cta": {
-      "add": {
-        "attribute": "ajouter un attribut",
-        "contact": "ajouter un message",
-        "article": "ajouter un article",
-        "cms": "ajouter un cms"
-      },
-      "product": "produits",
-      "cms": "cms",
-      "attribute": "attributs",
-      "category": "categories",
-      "contact": "contacts",
-      "offer": "offres",
-      "partner": "partenaires",
-      "selection": "sélections",
-      "map": "cartes",
-      "material": "material",
-      "article": "articles"
-    },
-    "label": {
-      "attribute": {
-        "name": "nom",
-        "fr": "traduction française",
-        "radio": "bouton radio",
-        "checkbox": "checkbox",
-        "text": "texte",
-        "select": "menu déroulant",
-        "type": "Détermine avec quel composant choisir l'attribut",
-        "order_by": "Détermine comment sont triés les valeurs de cet attribut en front sur la page du produit"
-      },
-      "article": {
-        "name": "nom",
-        "description": "contenu de l'article",
-        "facebook": "publication facebook",
-        "unpublish": "brouillon",
+        "add": "ajouter",
+        "add_to_cart": "ajouter au panier",
+        "learn-more": "en savoir plus",
+        "back_to_home": "retour à la l'accueil",
+        "buy": "acheter",
+        "booking": "réserver",
+        "choose": "choisir",
+        "delete": "supprimer",
+        "next-available-slot": "prochaines disponibilités",
+        "home": "accueil",
+        "back": "retour",
+        "cancel": "annuler",
+        "pay": "payer",
         "publish": "publier",
+        "published": "publié",
+        "remove": "supprimer",
+        "recall": "rappeler",
+        "save": "enregistrer",
+        "send": "envoyer",
+        "take_meeting": "prendre rendez-vous",
+        "unpublish": "dépublier",
         "unpublished": "dépublié",
-        "published": "publié"
-      },
-      "contact": {
-        "name": "nom",
-        "email": "email",
-        "message": "message"
-      },
-      "cms": {
-        "name": "nom",
-        "site_name": "nom valeur correspondante / clé",
-        "key": "clé"
-      },
-      "cms-detail": {
-        "title": "titre",
-        "content": "contenu",
-        "icon": "l'icône",
-        "parent": "le contenu parent"
-      },
-      "selection": {
-
-      }
+        "footer": {
+            "top-of-page": "haut de page"
+        }
+    },
+    "faq": {
+        "shipping": "livraison",
+        "general-question": "questions générales",
+        "about-service": "a propos du service",
+        "privacyandpolicy": "politique de confidencialité",
+        "buyandsell": "acheter et vendre"
+    },
+    "menu": {
+        "phone": {
+            "title": "Bureau ",
+            "number": "0606060606"
+        },
+        "connection": {
+            "title": "Se connecter"
+        },
+        "title1": "Horizon",
+        "title2": "Paysage",
+        "sort": "Trier",
+        "filter": "Filtrer"
+    },
+    "cart": {
+        "title": {
+            "cart": "validation",
+            "login": "se connecter",
+            "payment": "paiement",
+            "confirmation": "confirmation"
+        }
+    },
+    "cart-add": {
+        "title": "réservation",
+        "subtitle": "",
+        "saved": "la réservation est sauvegardée"
+    },
+    "cart-payment": {
+        "errors": {
+            "cart": "Une erreur est survenue. Le montant du panier est incohérent."
+        }
+    },
+    "order-confirmation": {
+        "title": "La commande est confirmée",
+        "content": {
+            "waiting": "La commande est maintenant en cours de traitement.",
+            "key": "numéro de commande",
+            "summary": "récapitulatif",
+            "total": "montant total"
+        }
+    },
+    "calendar": {
+        "back-today": "revenir à la date d'aujourd'hui",
+        "day": "jour",
+        "3days": "3 jours",
+        "week": "semaine",
+        "title": "réserver votre créneau",
+        "subtitle": "toutes les disponibilités",
+        "availability": {
+            "empty": "Aucune disponibilité"
+        },
+        "session": {
+            "info": "Créneau vérrouillé"
+        }
+    },
+    "contact": {
+        "title": "Nous contacter",
+        "subtitle": "Envoyer un message"
+    },
+    "feature": {
+        "title1": "Entretien des sols et des plantes",
+        "title2": "Traitements",
+        "title3": "Gardiennage",
+        "title4": "Petit Bricolage",
+        "description1": "Tonte, Taille ( haies, arbuste...), Arrosage, Rempotage, Récoltes",
+        "description2": "Enlèvement des déchets végétaux, Refleurissement, déneigement, Désherbage",
+        "description3": "Rangement du bois de chauffe, Débroussaillage, Petit Bricolage",
+        "description4": "Gardiennage, Nettoyage intérieur et extérieur"
+    },
+    "header-style1": {
+        "title": "Horizon Paysage",
+        "subtitle": "Elagage, création parc et jardin, service à la personne"
+    },
+    "header-style2": {
+        "title": "Slate garden",
+        "subtitle": "pour un ouvrage soigné jusqu'au bout des branches",
+        "description": "Elagage, création parc et jardin, service à la personne"
+    },
+    "image": {
+        "bg-line-green": "image de fond ligne verte"
+    },
+    "location-current": {
+        "label": {
+            "meeting": "Siège social"
+        }
+    },
+    "payment": {
+        "number": "numéro de carte de crédit.",
+        "month": "mois d'expiration de carte de crédit",
+        "year": "l'année d'expiration de carte de crédit",
+        "cvv": "code de vérification de votre carte de crédit.",
+        "help": {
+            "cvv": {
+                "title": "code de vérification de votre carte de crédit.",
+                "description": "Pour votre sécurité, le code de vérification (CVV - card verification code) vous est demandé lors de chaque validation de commande. Pour les cartes VISA et MasterCard, vous trouverez le code CVV à 3 chiffres au verso de votre carte sur la zone de signature.",
+                "alt": "code de vérification de votre carte de crédit"
+            }
+        },
+        "label": {
+            "number": "carte",
+            "month": "mois",
+            "year": "année",
+            "cvv": "cvv"
+        }
     },
     "placeholder": {
-      "article": {
-        "name": "nom",
-        "description": "copier/coller ici le lien vers le post facebook"
-      },
-      "attribute": {
-        "name": "nom",
-        "fr": "traduction française",
-        "variantes": "variantes",
-        "term": "terme"
-      },
-      "cms": {
-        "name": "nom",
-        "site_name": "clé"
-      },
-      "cms-detail": {
-        "title": "titre",
-        "content": "entrer du contenu",
-        "icon": "l'icône"
-      },
-      "map": {
-        "name": "région",
-        "path": "points 2D"
-      },
-      "selection": {
-        "name": "nom de la sélection",
-        "description": "description",
-        "fr": "traduction française",
-        "keywords": "mots clés",
-        "level": "niveau",
-        "root": "racine"
-      }
-    },
-    "hint": {
-      "article": {
-        "name": "titre de l'article"
-      },
-      "attribute": {
-        "name": "nom de l'attribut",
-        "fr": "traduction française de l'attribut"
-      },
-      "cms": {
-        "name": "nom du cms",
-        "site_name": "clé du cms"
-      },
-      "cms-detail": {
-        "title": "titre",
-        "content": "contenu",
-        "icon": "icône"
-      },
-      "map": {
-        "name": "région de la carte",
-        "path": "points de la région"
-      },
-      "selection": {
-        "name": "nom de la sélection",
-        "description": "description",
-        "fr": "traduction française",
-        "keywords": "mots clés",
-        "level": "niveau",
-        "root": "racine"
-      }
-    },
-    "error": {
-      "required": {
-        "article": {
-          "name": "le titre est obligatoire"
-        },
-        "attribute": {
-          "name": "le nom est obligatoire",
-          "fr": "la traduction française est obligatoire"
-        },
-        "cms": {
-          "name": "le nom est obligatoire",
-          "site_name": "la clé est obligatoire"
-        },
-        "cms-detail": {
-          "title": "le titre est obligatoire",
-          "content": "le contenu est obligatoire",
-          "icon": "l'icône est obligatoire"
-        },
-        "map": {
-          "name": "la région est obligatoire",
-          "path": "les points sont obligatoires"
-        },
-        "selection": {
-          "name": "le nom est obligatoire",
-          "fr": "la traduction est obligatoire",
-          "description": "la description est obligatoire",
-          "keywords": "les mots clés sont obligatoires",
-          "level": "le niveau est obligatoire"
+        "reason": "Choisir le motif",
+        "cmsDetail": {
+            "title": "titre du détail cms"
         }
-      },
-      "invalid": {
-        "article": {
-          "name": "le titre est invalide"
-        },
-        "attribute": {
-          "name": "le nom est invalide",
-          "fr": "la traduction française est invalide"
-        },
-        "cms": {
-          "name": "le nom est invalide",
-          "site_name": "la clé est invalide"
-        },
-        "cms-detail": {
-          "title": "le titre est invalide",
-          "content": "le contenu est invalide",
-          "icon": "l'icône est invalide"
-        },
-        "map": {
-          "name": "la région est invalide",
-          "path": "les points sont invalides"
-        },
-        "selection": {
-          "name": "le nom est invalide",
-          "fr": "la traduction est invalide",
-          "description": "la description est invalide",
-          "keywords": "les mots clés sont invalides",
-          "level": "le niveau est invalide"
+    },
+    "pricing": {
+        "title": "choisir un abonnement",
+        "description": "économiser jusqu'à 10% en souscrivant à un abonnement annuel"
+    },
+    "pricing2": {
+        "title": "Demande de devis gratuit",
+        "subtitle": "économiser jusqu'à 10% demandant un devis en ligne",
+        "form": {
+            "error": "Une erreur est survenue pendant la sauvegarde du devis. Veuillez réessayer.",
+            "success": "Votre dossier est transmis. Nous vous contacterons dès que possible",
+            "placeholder": {
+                "lastname": "Nom",
+                "firstname": "Prénom",
+                "zipcode": "Code postal",
+                "email": "Email",
+                "phone": "Téléphone",
+                "message": "Message"
+            },
+            "required": {
+                "lastname": "Le champ Nom est requis",
+                "firstname": "Le champ Prénom est requis",
+                "zipcode": "Le champ Code est requis postal",
+                "email": "Le champ Email est requis",
+                "phone": "Le champ Téléphone est requis",
+                "message": "Le champ Message est requis"
+            },
+            "invalid": {
+                "lastname": "Le champ Nom est invalide",
+                "firstname": "Le champ Prénom est invalide",
+                "zipcode": "Le champ Code est invalide postal",
+                "email": "Le champ Email est invalide",
+                "phone": "Le champ Téléphone est invalide",
+                "message": "Le champ Message est invalide"
+            },
+            "label": {
+                "lastname": "Nom",
+                "firstname": "Prénom",
+                "zipcode": "Code postal",
+                "email": "Email",
+                "phone": "Téléphone",
+                "message": "Message"
+            }
         }
-      }
-    }
-  },
-  "meta": {
-    "title": {
-      "homepage": "showcase"
     },
-    "description": {
-      "homepage": ""
-    }
-  },
-  "cta": {
-    "add": "ajouter",
-    "add_to_cart": "ajouter au panier",
-    "learn-more": "en savoir plus",
-    "back_to_home": "retour à la l'accueil",
-    "buy": "acheter",
-    "booking": "réserver",
-    "choose": "choisir",
-    "delete": "supprimer",
-    "next-available-slot": "prochaines disponibilités",
-    "home": "accueil",
-    "back": "retour",
-    "cancel": "annuler",
-    "pay": "payer",
-    "publish": "publier",
-    "published": "publié",
-    "remove": "supprimer",
-    "save": "enregistrer",
-    "send": "envoyer",
-    "take_meeting": "prendre rendez-vous",
-    "unpublish": "dépublier",
-    "unpublished": "dépublié",
-    "footer": {
-      "top-of-page": "haut de page"
-    }
-  },
-  "faq": {
-    "shipping": "livraison",
-    "general-question": "questions générales",
-    "about-service": "a propos du service",
-    "privacyandpolicy": "politique de confidencialité",
-    "buyandsell": "acheter et vendre"
-  },
-  "menu": {
-    "connection": {
-      "title": "Se connecter"
-    },
-    "title1": "Horizon",
-    "title2": "Paysage",
-    "sort": "Trier",
-    "filter": "Filtrer"
-  },
-  "cart": {
-    "title": {
-      "cart": "validation",
-      "login": "se connecter",
-      "payment": "paiement",
-      "confirmation": "confirmation"
-    }
-  },
-  "cart-add": {
-    "title": "réservation",
-    "subtitle": "",
-    "saved": "la réservation est sauvegardée"
-  },
-  "cart-payment": {
-    "errors": {
-      "cart": "Une erreur est survenue. Le montant du panier est incohérent."
-    }
-  },
-  "order-confirmation": {
-    "title": "La commande est confirmée",
-    "content": {
-      "waiting": "La commande est maintenant en cours de traitement.",
-      "key": "numéro de commande",
-      "summary": "récapitulatif",
-      "total": "montant total"
-    }
-  },
-  "calendar": {
-    "back-today": "revenir à la date d'aujourd'hui",
-    "day": "jour",
-    "3days": "3 jours",
-    "week": "semaine",
-    "title": "réserver votre créneau",
-    "subtitle": "toutes les disponibilités",
-    "availability": {
-      "empty": "Aucune disponibilité"
-    },
-    "session": {
-      "info": "Créneau vérrouillé"
-    }
-  },
-  "contact": {
-    "title": "Nous contacter",
-    "subtitle": "Envoyer un message"
-  },
-  "feature": {
-    "title1": "Entretien des sols et des plantes",
-    "title2": "Traitements",
-    "title3": "Gardiennage",
-    "title4": "Petit Bricolage",
-    "description1": "Tonte, Taille ( haies, arbuste...), Arrosage, Rempotage, Récoltes",
-    "description2": "Enlèvement des déchets végétaux, Refleurissement, déneigement, Désherbage",
-    "description3": "Rangement du bois de chauffe, Débroussaillage, Petit Bricolage",
-    "description4": "Gardiennage, Nettoyage intérieur et extérieur"
-  },
-  "header-style1": {
-    "title": "Horizon Paysage",
-    "subtitle": "Elagage, création parc et jardin, service à la personne"
-  },
-  "header-style2": {
-    "title": "Slate garden",
-    "subtitle": "pour un ouvrage soigné jusqu'au bout des branches",
-    "description": "Elagage, création parc et jardin, service à la personne"
-  },
-  "image": {
-    "bg-line-green": "image de fond ligne verte"
-  },
-  "location-current": {
-    "label": {
-      "meeting": "Siège social"
-    }
-  },
-  "payment": {
-    "number": "numéro de carte de crédit.",
-    "month": "mois d'expiration de carte de crédit",
-    "year": "l'année d'expiration de carte de crédit",
-    "cvv": "code de vérification de votre carte de crédit.",
-    "help": {
-      "cvv": {
-        "title": "code de vérification de votre carte de crédit.",
-        "description": "Pour votre sécurité, le code de vérification (CVV - card verification code) vous est demandé lors de chaque validation de commande. Pour les cartes VISA et MasterCard, vous trouverez le code CVV à 3 chiffres au verso de votre carte sur la zone de signature.",
-        "alt": "code de vérification de votre carte de crédit"
-      }
-    },
-    "label": {
-      "number": "carte",
-      "month": "mois",
-      "year": "année",
-      "cvv": "cvv"
-    }
-  },
-  "placeholder": {
-    "reason": "Choisir le motif",
-    "cmsDetail": {
-      "title": "titre du détail cms"
-    }
-  },
-  "pricing": {
-    "title": "choisir un abonnement",
-    "description": "économiser jusqu'à 10% en souscrivant à un abonnement annuel"
-  },
-  "reason": {
-    "creation": "la création",
-    "prunning": "l'élagage",
-    "maintenance": "l'entretien",
-    "spray": "l'arrosage",
-    "planning": "l'aménagement"
-  },
-  "sidenav": {
-    "card": {
-      "list-item": {
-        "admin": {
-          "title": "Back Office"
-        },
-        "facebook": {
-          "title": "Se connecter avec Facebook"
-        },
-        "google": {
-          "title": "Se connecter avec Google"
-        },
-        "login": {
-          "title": "Connexion"
-        },
-        "logout": {
-          "title": "Déconnexion",
-          "aria-label": "Déconnexion"
+    "pricing3": {
+        "title": "ON VOUS RAPPEL GRATUITEMENT",
+        "form": {
+            "error": "Une erreur est survenue pendant la demande de rappel. Veuillez réessayer.",
+            "success": "Votre demande est transmise. Nous vous contacterons dès que possible",
+            "placeholder": {
+                "phone": "Nom"
+            },
+            "required": {
+                "phone": "Le champ Téléphone est requis"
+            },
+            "invalid": {
+                "phone": "Le champ Téléphone est invalide"
+            },
+            "label": {
+                "phone": "Téléphone"
+            }
         }
-      },
-      "image": {
-        "alt": "Image de fond du menu"
-      }
-    }
-  },
-  "user": {
-    "access_denied": {
-      "connect": "Il faut se connecter pour effectuer cette action"
-    }
-  },
-  "snackbar": {
-    "guard": {
-      "unauthenticated": "Connectez-vous avant d'accéder à cette page"
-    }
-  },
-  "euro": "€"
+    },
+    "reason": {
+        "creation": "la création",
+        "prunning": "l'élagage",
+        "maintenance": "l'entretien",
+        "spray": "l'arrosage",
+        "planning": "l'aménagement"
+    },
+    "sidenav": {
+        "card": {
+            "list-item": {
+                "admin": {
+                    "title": "Back Office"
+                },
+                "facebook": {
+                    "title": "Se connecter avec Facebook"
+                },
+                "google": {
+                    "title": "Se connecter avec Google"
+                },
+                "login": {
+                    "title": "Connexion"
+                },
+                "logout": {
+                    "title": "Déconnexion",
+                    "aria-label": "Déconnexion"
+                }
+            },
+            "image": {
+                "alt": "Image de fond du menu"
+            }
+        }
+    },
+    "user": {
+        "access_denied": {
+            "connect": "Il faut se connecter pour effectuer cette action"
+        }
+    },
+    "snackbar": {
+        "guard": {
+            "unauthenticated": "Connectez-vous avant d'accéder à cette page"
+        }
+    },
+    "euro": "€"
 }

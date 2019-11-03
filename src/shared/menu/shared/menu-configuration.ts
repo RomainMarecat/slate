@@ -1,4 +1,7 @@
 export interface MenuConfiguration {
+  displayBrand: boolean;
+  displaySpacer: boolean;
+  displayPhoneNumber: boolean;
   displayLogo: boolean;
   displayAdminRecipe: boolean;
   urlAdmin: string[];

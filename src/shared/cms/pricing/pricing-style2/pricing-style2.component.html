@@ -1,0 +1,82 @@
+<section class="pricing-section">
+  <div fxLayout="row" fxLayoutAlign="center stretch">
+    <form [formGroup]="form"
+          (ngSubmit)="save()">
+      <mat-card class="plan-pricing text-center p-0 mat-card">
+        <mat-card-title class="light-gray mat-card-title">
+          <div class="card-title-text">
+            <div class="cart-title-heading">{{ 'pricing2.title' |translate }}</div>
+            <div class="text-sm text-muted">{{ 'pricing2.subtitle'|translate }}</div>
+          </div>
+        </mat-card-title>
+        <mat-card-content class="mat-card-content">
+          <div fxLayout="row">
+            <mat-form-field appearance="outline" class="pr-1" fxFlex="50">
+              <mat-label>{{ 'pricing2.form.label.lastname'|translate }}</mat-label>
+              <input matInput
+                     [placeholder]="'pricing2.form.placeholder.lastname'|translate"
+                     formControlName="lastname">
+              <mat-error *ngIf="form.get('lastname').invalid && form.get('lastname').value.length === 0"
+                         [innerHtml]="'pricing2.form.required.lastname'|translate"></mat-error>
+              <mat-error *ngIf="form.get('lastname').invalid && form.get('lastname').value.length > 0"
+                         [innerHtml]="'pricing2.form.invalid.lastname'|translate"></mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="pl-1" fxFlex="50">
+              <mat-label>{{ 'pricing2.form.label.firstname'|translate }}</mat-label>
+              <input matInput
+                     [placeholder]="'pricing2.form.placeholder.firstname'|translate"
+                     formControlName="firstname">
+              <mat-error *ngIf="form.get('firstname').invalid && form.get('firstname').value.length === 0"
+                         [innerHtml]="'pricing2.form.required.firstname'|translate"></mat-error>
+              <mat-error *ngIf="form.get('firstname').invalid && form.get('firstname').value.length > 0"
+                         [innerHtml]="'pricing2.form.invalid.firstname'|translate"></mat-error>
+            </mat-form-field>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'pricing2.form.label.zipcode'|translate }}</mat-label>
+            <input matInput
+                   [placeholder]="'pricing2.form.placeholder.zipcode'|translate"
+                   formControlName="zipcode">
+            <mat-error *ngIf="form.get('zipcode').invalid && form.get('zipcode').value.length === 0"
+                       [innerHtml]="'pricing2.form.required.zipcode'|translate"></mat-error>
+            <mat-error *ngIf="form.get('zipcode').invalid && form.get('zipcode').value.length > 0"
+                       [innerHtml]="'pricing2.form.invalid.zipcode'|translate"></mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'pricing2.form.label.email'|translate }}</mat-label>
+            <input matInput
+                   [placeholder]="'pricing2.form.placeholder.email'|translate"
+                   formControlName="email">
+            <mat-error *ngIf="form.get('email').invalid && form.get('email').value.length === 0"
+                       [innerHtml]="'pricing2.form.required.email'|translate"></mat-error>
+            <mat-error *ngIf="form.get('email').invalid && form.get('email').value.length > 0"
+                       [innerHtml]="'pricing2.form.invalid.email'|translate"></mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'pricing2.form.label.message'|translate }}</mat-label>
+            <textarea
+              matInput
+              [placeholder]="'pricing2.form.placeholder.message'|translate"
+              formControlName="message"></textarea>
+            <mat-error *ngIf="form.get('message').invalid && form.get('message').value.length === 0"
+                       [innerHtml]="'pricing2.form.required.message'|translate"></mat-error>
+            <mat-error *ngIf="form.get('message').invalid && form.get('message').value.length > 0"
+                       [innerHtml]="'pricing2.form.invalid.message'|translate"></mat-error>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions class="mat-card-actions">
+          <mat-divider aria-orientation="horizontal"
+                       class="mat-divider"
+                       role="separator"></mat-divider>
+          <button class="text-uppercase"
+                  type="submit"
+                  [disabled]="isSaving"
+                  color="accent"
+                  mat-raised-button>
+            {{ 'cta.send'|translate }}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</section>

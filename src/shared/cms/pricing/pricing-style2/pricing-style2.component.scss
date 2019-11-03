@@ -1,0 +1,72 @@
+.pricing-section {
+  padding: 80px 0;
+
+  .mat-card {
+    margin: 10px;
+
+    &:hover {
+      box-shadow: 0 10px 16px rgba(0, 0, 0, .2);
+    }
+  }
+
+  .section-header {
+    margin: 0 0 2rem;
+  }
+
+  .section-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 16px;
+  }
+
+  .section-header p {
+    font-size: 16px;
+    max-width: 36rem;
+    margin: 0;
+  }
+
+  .pricing-section-action {
+    padding: 2.5rem 0 0;
+  }
+
+  .mat-card-title {
+    .card-title-text {
+      padding: 20px;
+
+      .cart-title-heading {
+        font-size: 1rem;
+      }
+
+      .text-sm {
+        font-size: 0.875rem;
+      }
+    }
+
+  }
+
+  .mat-card-content, .mat-card-actions {
+    padding-bottom: 20px;
+  }
+
+  .mat-card-content {
+    padding: 1rem;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .mat-card-actions {
+    button {
+      margin-top: 20px;
+    }
+  }
+
+  .mat-list-item-content {
+    text-align: center;
+    font-size: .875rem;
+  }
+
+}
+
+

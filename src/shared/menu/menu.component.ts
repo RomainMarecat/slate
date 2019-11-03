@@ -21,6 +21,9 @@ import { MenuConfiguration } from './shared/menu-configuration';
 export class MenuComponent implements OnInit, OnDestroy {
 
   _config: MenuConfiguration = {
+    displayBrand: false,
+    displaySpacer: true,
+    displayPhoneNumber: false,
     displayLogo: false,
     displayAdminRecipe: false,
     show_page_title: true,
