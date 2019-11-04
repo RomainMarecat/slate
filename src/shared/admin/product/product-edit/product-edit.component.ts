@@ -42,7 +42,7 @@ export class ProductEditComponent implements OnInit {
   isLoading = false;
   @ViewChild('checkboxHeader', {static: false}) checkboxHeader: TemplateRef<any>;
   @ViewChild('checkboxCell', {static: false}) checkboxCell: TemplateRef<any>;
-  @ViewChild(ImageProductComponent, {static: false}) ImageProductComponent: ImageProductComponent;
+  @ViewChild(ImageProductComponent, {static: false}) imageProductComponent: ImageProductComponent;
   imageStorageConfig: any;
   downloadURL: string;
   _attributesModel: any[] = [];
@@ -125,7 +125,7 @@ export class ProductEditComponent implements OnInit {
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
-          this.form.patchValue({name: value.name, slug: slug, alias: value.name});
+          this.form.patchValue({name: value.name, slug, alias: value.name});
         }
       });
   }
@@ -162,13 +162,13 @@ export class ProductEditComponent implements OnInit {
    */
   createEditorConfig() {
     this.editorConfig = {
-      'editable': true,
-      'spellcheck': false,
+      editable: true,
+      spellcheck: false,
       // 'height': '5rem',
-      'minHeight': '10rem',
-      'placeholder': 'Contenu de la description...',
-      'translate': 'no',
-      'toolbar': []
+      minHeight: '10rem',
+      placeholder: 'Contenu de la description...',
+      translate: 'no',
+      toolbar: []
     };
   }
 
@@ -177,7 +177,7 @@ export class ProductEditComponent implements OnInit {
    */
   onImagesChange(images: Array<string>) {
     this.form.patchValue({
-      images: images
+      images
     });
     this.alertService.toast('media order changed');
   }
@@ -208,7 +208,7 @@ export class ProductEditComponent implements OnInit {
   reset() {
     this.medias = [];
     this.selected = [];
-    this.ImageProductComponent.clearUpload();
+    this.imageProductComponent.clearUpload();
     this.form.reset({
       name: '',
       translations: {
@@ -392,7 +392,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   set name(name) {
-    this.form.patchValue({name: name});
+    this.form.patchValue({name});
   }
 
   get description() {
@@ -400,7 +400,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   set description(description) {
-    this.form.patchValue({description: description});
+    this.form.patchValue({description});
   }
 
   get category() {
@@ -408,7 +408,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   set category(category) {
-    this.form.patchValue({category: category});
+    this.form.patchValue({category});
   }
 
   get fr() {
@@ -416,7 +416,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   set fr(fr) {
-    this.form.get('translations').patchValue({fr: fr});
+    this.form.get('translations').patchValue({fr});
   }
 
   get published() {
@@ -424,7 +424,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   set published(published) {
-    this.form.patchValue({published: published});
+    this.form.patchValue({published});
   }
 
   get attributes() {
@@ -432,7 +432,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   set attributes(attributes) {
-    this.form.patchValue({attributes: attributes});
+    this.form.patchValue({attributes});
   }
 
   get attributesModel() {

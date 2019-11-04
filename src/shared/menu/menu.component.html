@@ -40,7 +40,7 @@
   </ng-container>
 
   <ng-container *ngIf="config.displayPhoneNumber">
-    <a [href]="'menu.phone.number'|translate"
+    <a [href]="'tel:' + ('menu.phone.number'|translate)"
        class="phone-wrapper"
        fxLayout="row"
        fxLayoutAlign="center center"

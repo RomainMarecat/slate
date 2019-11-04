@@ -1,20 +1,20 @@
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
-import { BaseEditComponent } from '../../../base/base-edit/base-edit.component';
-import { Recipe } from '../../../../../app-recipe/recipe/shared/recipe';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AlertService } from '../../../../popup/alert.service';
-import { LocalizeRouterService } from 'localize-router';
-import { RecipeService } from '../../../../../app-recipe/recipe/shared/recipe.service';
 import { DocumentReference } from '@angular/fire/firestore';
-import { RecipeFormType } from '../../../shared/recipe/form-recipe';
-import { Media } from '../../../../media/media';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
-import { StringService } from '../../../../util/string.service';
 import { AbstractControl, FormArray, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LocalizeRouterService } from 'localize-router';
 import { Ingredient } from '../../../../../app-recipe/ingredient/shared/ingredient';
 import { IngredientService } from '../../../../../app-recipe/ingredient/shared/ingredient.service';
+import { Recipe } from '../../../../../app-recipe/recipe/shared/recipe';
+import { RecipeService } from '../../../../../app-recipe/recipe/shared/recipe.service';
 import { ContrastService } from '../../../../contrast/contrast.service';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Media } from '../../../../media/media';
+import { AlertService } from '../../../../popup/alert.service';
+import { StringService } from '../../../../util/string.service';
+import { BaseEditComponent } from '../../../base/base-edit/base-edit.component';
+import { RecipeFormType } from '../../../shared/recipe/form-recipe';
 
 @Component({
   selector: 'app-admin-recipe-edit',
@@ -146,7 +146,7 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
 
   saveDocument() {
     const slug = StringService.slugify(this.form.get('name').value);
-    this.form.patchValue({slug: slug});
+    this.form.patchValue({slug});
 
     if (this.form.valid) {
       this.document = {
@@ -154,8 +154,8 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
         ...{search_ingredients: this.form.value.ingredients.map((i: Ingredient) => i.name)}
       } as Recipe;
 
-      if (this.document['published'] === true) {
-        this.document['published_at'] = new Date();
+      if ((this.document as Recipe).published === true) {
+        (this.document as Recipe).published_at = new Date();
       }
 
       if (this.document.key) {
@@ -258,6 +258,6 @@ export class RecipeEditComponent extends BaseEditComponent<Recipe> implements On
   }
 
   set color(color: string) {
-    this.form.patchValue({color: color, overlay_color: this.contrastService.getOverlayColor(color)});
+    this.form.patchValue({color, overlay_color: this.contrastService.getOverlayColor(color)});
   }
 }

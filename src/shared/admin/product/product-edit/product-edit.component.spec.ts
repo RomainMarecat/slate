@@ -61,7 +61,7 @@ describe('ProductEditComponent', () => {
         }),
         BrowserModule,
         BrowserAnimationsModule,
-        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        CloudinaryModule.forRoot({Cloudinary}, environment.cloudinary),
         CommonModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,

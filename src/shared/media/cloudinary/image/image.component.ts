@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { Media } from '../../media';
 import { MediaService } from '../../media.service';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-image',
@@ -9,8 +9,8 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./image.component.scss']
 })
 export class ImageComponent {
-  @Input() panelClass: string | Object;
-  @Input() panelStyle: string | Object;
+  @Input() panelClass: string | object;
+  @Input() panelStyle: string | object;
   @Input() matCardImage: boolean;
   _publicId: string;
   _key: string;
@@ -25,10 +25,6 @@ export class ImageComponent {
 
   get publicId(): string {
     return this._publicId;
-  }
-
-  get key(): string {
-    return this._key;
   }
 
   @Input()
@@ -49,6 +45,10 @@ export class ImageComponent {
           this.mediaErrored.emit(true);
         });
     }
+  }
+
+  get key(): string {
+    return this._key;
   }
 
   @Input()

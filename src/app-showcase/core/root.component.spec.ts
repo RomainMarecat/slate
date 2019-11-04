@@ -62,7 +62,7 @@ import { CategoryService } from '../../shared/category/category.service';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
-    'domain': environment.site_name
+    domain: environment.site_name
   },
   position: 'bottom',
   theme: 'block',

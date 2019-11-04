@@ -99,16 +99,16 @@ describe('Cloudinary service', () => {
       expect(transformKeyNamesFromKebabToSnakeCase([{
         'aaa-aaa': 'aaa-aaa',
         'bbb-bbb': 'bbb-bbb',
-        'ccc': 'ccc'
+        ccc: 'ccc'
       }, '{"xxx-xxx":"1", "yyy-yyy":"2", "zz": "zzz-zzz"}'])).toEqual([{
-          'aaa_aaa': 'aaa-aaa',
-          'bbb_bbb': 'bbb-bbb',
-          'ccc': 'ccc'
+          aaa_aaa: 'aaa-aaa',
+          bbb_bbb: 'bbb-bbb',
+          ccc: 'ccc'
         },
         {
-          'xxx_xxx': '1',
-          'yyy_yyy': '2',
-          'zz': 'zzz-zzz'
+          xxx_xxx: '1',
+          yyy_yyy: '2',
+          zz: 'zzz-zzz'
         }
       ]);
     });

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { DocumentReference } from '@angular/fire/firestore';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertService } from '../../../popup/alert.service';
 import { LocalizeRouterService } from 'localize-router';
 import { VisitorService } from '../../../firestore/visitor.service';
-import { FormGroup } from '@angular/forms';
-import { DocumentReference } from '@angular/fire/firestore';
+import { AlertService } from '../../../popup/alert.service';
 
 @Component({
   selector: 'app-base-edit',
@@ -77,13 +77,13 @@ export class BaseEditComponent<T> implements OnInit {
     if (this.form.valid) {
       this.document = this.form.getRawValue();
 
-      if (this.document['published'] === true) {
-        this.document['published_at'] = new Date();
+      if ((this.document as unknown as any).published === true) {
+        (this.document as unknown as any).published_at = new Date();
       }
-      if (this.document['key']) {
+      if ((this.document as unknown as any).key) {
         this.visitorService.updateDocument(this.document)
           .then((doc) => {
-            this.alertService.show(`document updated ${this.document['key']}`);
+            this.alertService.show(`document updated ${(this.document as unknown as any).key}`);
             this.reset();
             this.router.navigate([this.localizeRouterService.translateRoute('/admin/document')]);
           }, (err) => {

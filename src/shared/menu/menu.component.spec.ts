@@ -1,27 +1,30 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MenuComponent } from './menu.component';
-import { UserService } from '../user/shared/user.service';
-import { MockUserService } from '../user/shared/mock-user.service';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {
-  MatToolbarModule,
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIcon,
   MatIconModule,
-  MatButtonModule, MatDialogModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatMenuModule
+  MatInputModule,
+  MatMenuModule,
+  MatToolbarModule
 } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
-import { SidenavService } from '../sidenav/sidenav.service';
-import {
-  TranslateModule,
-  TranslateLoader,
-  TranslateFakeLoader
-} from '@ngx-translate/core';
-import { MenuService } from './menu.service';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
+import { MockMatIconComponent } from '../mock/mock-mat-icon.component';
 import { MockLocalizeRouterService } from '../router/mock-localize-router.service';
+import { SidenavService } from '../sidenav/sidenav.service';
+import { MockUserService } from '../user/shared/mock-user.service';
+import { UserService } from '../user/shared/user.service';
+import { MenuComponent } from './menu.component';
+import { MenuService } from './menu.service';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -42,6 +45,7 @@ describe('MenuComponent', () => {
         MatFormFieldModule,
         MatAutocompleteModule,
         MatIconModule,
+        NoopAnimationsModule,
         MatButtonModule,
         MatToolbarModule,
         Angulartics2Module.forRoot({
@@ -62,6 +66,16 @@ describe('MenuComponent', () => {
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
       ]
     })
+      .overrideModule(MatIconModule, {
+        remove: {
+          declarations: [MatIcon],
+          exports: [MatIcon]
+        },
+        add: {
+          declarations: [MockMatIconComponent],
+          exports: [MockMatIconComponent]
+        }
+      })
       .compileComponents();
   }));
 

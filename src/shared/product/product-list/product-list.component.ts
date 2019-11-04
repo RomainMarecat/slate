@@ -1,17 +1,16 @@
-import { Component, OnInit, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { ProductService } from '../shared/product.service';
-import { Observable } from 'rxjs';
-import { UserService } from '../../user/shared/user.service';
-import { AlertService } from '../../popup/alert.service';
-import { LoaderService } from '../../loader/loader.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Filter } from '../../facet/filter/shared/filter';
+import { Observable, of } from 'rxjs';
 import { environment } from '../../../app-store/environments/environment';
-import { Product } from '../shared/product';
-import { of } from 'rxjs';
+import { Filter } from '../../facet/filter/shared/filter';
+import { LoaderService } from '../../loader/loader.service';
+import { AlertService } from '../../popup/alert.service';
 import { SeoService } from '../../seo/shared/seo.service';
+import { UserService } from '../../user/shared/user.service';
+import { Product } from '../shared/product';
+import { ProductService } from '../shared/product.service';
 
 @Component({
   selector: 'app-shared-product-list',
@@ -33,7 +32,7 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService,
               private router: Router,
               private meta: Meta,
-              private ProductComponent: ElementRef,
+              private productComponent: ElementRef,
               private userService: UserService,
               public alertService: AlertService,
               private loaderService: LoaderService,

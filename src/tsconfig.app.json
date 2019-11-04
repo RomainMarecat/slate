@@ -19,6 +19,7 @@
     "exclude": [
         "test.ts",
         "shared/i18n/translate-server-loader.service.ts",
+        "shared/mock/mock-mat-icon.component.ts",
         "shared/i18n/translates-server/*.ts",
         "**/*.spec.ts"
     ]

@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockMatIconComponent } from '../../mock/mock-mat-icon.component';
 
 import { SearchDialogComponent } from './search-dialog.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -6,7 +7,7 @@ import {
   MAT_DIALOG_DATA,
   MatAutocompleteModule,
   MatDialogModule, MatDialogRef,
-  MatFormFieldModule,
+  MatFormFieldModule, MatIcon,
   MatIconModule,
   MatInputModule
 } from '@angular/material';
@@ -51,6 +52,16 @@ describe('SearchDialogComponent', () => {
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService},
       ]
     })
+      .overrideModule(MatIconModule, {
+        remove: {
+          declarations: [MatIcon],
+          exports: [MatIcon]
+        },
+        add: {
+          declarations: [MockMatIconComponent],
+          exports: [MockMatIconComponent]
+        }
+      })
       .compileComponents();
   }));
 

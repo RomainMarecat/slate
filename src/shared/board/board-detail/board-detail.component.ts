@@ -167,7 +167,7 @@ export class BoardDetailComponent implements OnInit {
       .getElementsByClassName('board-title')[0]
       .getElementsByTagName('input')[0];
 
-    setTimeout(function () {
+    setTimeout(() => {
       input.focus();
     }, 0);
   }
@@ -204,11 +204,11 @@ export class BoardDetailComponent implements OnInit {
   }
 
   addColumn() {
-    const column = <Column>{
+    const column = {
       title: this.addColumnText,
       order: (this.board.columns.length + 1) * 1000,
       boardId: this.board.key
-    };
+    } as Column;
     this.columnService.createColumn(column)
       .then((doc) => {
         column.key = doc.id;

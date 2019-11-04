@@ -12,10 +12,10 @@ export class SidenavService {
   }
 
   open(side ?: string, view ?: string) {
-    this.toggleSubject.next(<ToggleState>{open: true, side: side ? side : 'left', view: view ? view : ''});
+    this.toggleSubject.next({open: true, side: side ? side : 'left', view: view ? view : ''} as ToggleState);
   }
 
   toggle(side ?: string, view ?: string) {
-    this.toggleSubject.next(<ToggleState>{open: true, side: side ? side : 'left', view: view ? view : ''});
+    this.toggleSubject.next({open: true, side: side ? side : 'left', view: view ? view : ''} as ToggleState);
   }
 }

@@ -13,7 +13,7 @@ export class OrderService extends VisitorService {
   }
 
   getOrders(): Observable<Order[]> {
-    return <Observable<Order[]>>super.getDocuments();
+    return super.getDocuments() as Observable<Order[]>;
   }
 
   getOrder(key: string): Observable<Order> {

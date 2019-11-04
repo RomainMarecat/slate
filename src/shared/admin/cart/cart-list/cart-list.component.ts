@@ -151,7 +151,7 @@ export class CartListComponent extends BaseListComponent<Cart> implements OnInit
         this.localizeRouterService.translateRoute('admin'),
         'cart',
         'edit',
-        document['key']
+        document.key
       ]);
     });
   }

@@ -9,9 +9,9 @@ import { take } from 'rxjs/operators';
 })
 export class StorageDetailComponent implements OnInit {
 
-  @Input() panelClass: string | Object;
+  @Input() panelClass: string | object;
 
-  @Input() panelStyle: string | Object;
+  @Input() panelStyle: string | object;
 
   @Input() matCardImage = false;
 
@@ -39,20 +39,20 @@ export class StorageDetailComponent implements OnInit {
     this.getMetadata(path);
   }
 
-  @Input() set downloadURL(downloadURL) {
-    this._downloadURL = downloadURL;
+  get path(): string {
+    return this._path;
   }
 
-  @Input() set metadata(metadata) {
-    this._metadata = metadata;
+  @Input() set downloadURL(downloadURL) {
+    this._downloadURL = downloadURL;
   }
 
   get downloadURL() {
     return this._downloadURL;
   }
 
-  get path(): string {
-    return this._path;
+  @Input() set metadata(metadata) {
+    this._metadata = metadata;
   }
 
   get metadata() {

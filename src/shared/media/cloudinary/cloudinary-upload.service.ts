@@ -12,9 +12,9 @@ import { Product } from '../../product/shared/product';
 export class CloudinaryUploadService {
 
   constructor(private http: HttpClient,
-    private cloudinary: Cloudinary,
-    private productService: ProductService,
-    private mediaService: MediaService) {}
+              private cloudinary: Cloudinary,
+              private productService: ProductService,
+              private mediaService: MediaService) {}
 
   uploadImage(product: Product, url: string): void {
     const cloudinaryUrl = `https://api.cloudinary.com/v1_1/${this.cloudinary.config().cloud_name}/image/upload`;

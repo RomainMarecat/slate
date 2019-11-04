@@ -56,7 +56,7 @@ describe('ProductListComponent', () => {
         HttpClientModule,
         RouterTestingModule,
         BrowserAnimationsModule,
-        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        CloudinaryModule.forRoot({Cloudinary}, environment.cloudinary),
         LoaderModule,
         LocalizeRouterModule,
         MatCardModule,

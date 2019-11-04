@@ -52,13 +52,13 @@ export class ArticleEditComponent implements OnInit {
     this.getArticle();
     this.observeUpdate();
     this.editorConfig = {
-      'editable': true,
-      'spellcheck': false,
-      'height': '10rem',
-      'minHeight': '2rem',
-      'placeholder': 'Enter text content',
-      'translate': 'no',
-      'toolbar': []
+      editable: true,
+      spellcheck: false,
+      height: '10rem',
+      minHeight: '2rem',
+      placeholder: 'Enter text content',
+      translate: 'no',
+      toolbar: []
     };
   }
 
@@ -120,7 +120,7 @@ export class ArticleEditComponent implements OnInit {
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
-          this.form.patchValue({name: value.name, slug: slug});
+          this.form.patchValue({name: value.name, slug});
         }
       });
   }

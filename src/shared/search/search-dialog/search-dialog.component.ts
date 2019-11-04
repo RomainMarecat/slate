@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
+import { LocalizeRouterService } from 'localize-router';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Filter } from '../../facet/filter/shared/filter';
-import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { LocalizeRouterService } from 'localize-router';
 
 @Component({
   selector: 'app-search',
@@ -56,8 +56,8 @@ export class SearchDialogComponent implements OnInit {
    * val l'entrée utilisateur
    */
   filter(val: string): any[] {
-    return this.documents.filter((document) => {
-      return document['name'].toLowerCase().includes(val.toLowerCase());
+    return this.documents.filter((document: any) => {
+      return document.name.toLowerCase().includes(val.toLowerCase());
     });
   }
 

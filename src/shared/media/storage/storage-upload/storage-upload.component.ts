@@ -4,11 +4,9 @@ import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 import { DocumentReference } from '@firebase/firestore-types';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
-import { TouchAction } from 'tns-core-modules/ui/gestures';
 import { AlertService } from '../../../popup/alert.service';
 import { Media } from '../../media';
 import { MediaService } from '../../media.service';
-import down = TouchAction.down;
 
 @Component({
   selector: 'app-storage-upload',
@@ -137,6 +135,10 @@ export class StorageUploadComponent implements OnInit {
     }
   }
 
+  get media(): string {
+    return this._mediaId;
+  }
+
   getDownloadURL(path: string) {
     this.storageRef = this.storage.ref(path);
     this.storageRef.getDownloadURL()
@@ -147,10 +149,5 @@ export class StorageUploadComponent implements OnInit {
         this.downloadURL = downloadURL;
         this.uploadPercent = 100;
       });
-  }
-
-
-  get media(): string {
-    return this._mediaId;
   }
 }

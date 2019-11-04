@@ -13,11 +13,11 @@ export class CommentService extends VisitorService {
   }
 
   getComments(): Observable<Comment[]> {
-    return <Observable<Comment[]>>super.getDocuments();
+    return super.getDocuments() as Observable<Comment[]>;
   }
 
   getComment(key: string): Observable<Comment> {
-    return <Observable<Comment>>super.getDocument(key);
+    return super.getDocument(key) as Observable<Comment>;
   }
 
   createComment(comment: Comment): Observable<any> {

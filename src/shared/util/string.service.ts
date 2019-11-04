@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class StringService {
-
+  // tslint:disable
   static diacriticsMap = {
     '\u00C0': 'A',  // À => A
     '\u00C1': 'A',   // Á => A
@@ -78,6 +78,7 @@ export class StringService {
     '\uFB04': 'ffl',  // ﬄ => ffl
     '\uFB05': 'ft', // ﬅ => ft
     '\uFB06': 'st'  // ﬆ => st
+    // tslint:enable
   };
 
   /**
@@ -86,6 +87,7 @@ export class StringService {
   static replaceDiacritics(str: string) {
     let returnStr = '';
     if (str) {
+      // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < str.length; i++) {
         if (StringService.diacriticsMap[str[i]]) {
           returnStr += StringService.diacriticsMap[str[i]];
@@ -110,7 +112,7 @@ export class StringService {
    * Transforme une chaine de snake_case vers camelCase
    */
   static snakeToCamel(snakeCasedString: string): string {
-    return snakeCasedString.replace(/(_\w)/g, function (m) {
+    return snakeCasedString.replace(/(_\w)/g, (m) => {
       return m[1].toUpperCase();
     });
   }
@@ -118,8 +120,8 @@ export class StringService {
   /**
    * ucfirst php version JS
    */
-  static capitalize(string: string): string {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+  static capitalize(value: string): string {
+    return value.charAt(0).toUpperCase() + value.slice(1);
   }
 
   /**

@@ -111,7 +111,7 @@ export class CategoryDetailComponent implements OnInit {
   createFavorite(category: string, user: User) {
     this.favoriteService.createFavorite({
       key: null,
-      category: category,
+      category,
       user: user.uid,
       nb_view: 1
     }).subscribe(() => {

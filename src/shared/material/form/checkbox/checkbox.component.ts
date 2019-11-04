@@ -21,22 +21,22 @@ export class CheckboxComponent implements OnInit {
     'Green'
   ];
   form: FormGroup = new FormGroup({
-    'Red': new FormControl(false, [
+    Red: new FormControl(false, [
       Validators.required,
     ]),
-    'Blue': new FormControl(false, [
+    Blue: new FormControl(false, [
       Validators.required,
     ]),
-    'White': new FormControl(false, [
+    White: new FormControl(false, [
       Validators.required,
     ]),
-    'Black': new FormControl(false, [
+    Black: new FormControl(false, [
       Validators.required,
     ]),
-    'Yellow': new FormControl(false, [
+    Yellow: new FormControl(false, [
       Validators.required,
     ]),
-    'Green': new FormControl(false, [
+    Green: new FormControl(false, [
       Validators.required,
     ]),
   });

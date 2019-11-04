@@ -1,13 +1,13 @@
-export class Media {
-  key ?: string;
+export interface Media {
+  key?: string;
   public_id: string;
   url: string;
   alt: string;
   type?: string;
   public: boolean;
   extension: string;
-  position ?: number;
-  cropper ?: {
+  position?: number;
+  cropper?: {
     width: number;
     height: number;
     x: number;

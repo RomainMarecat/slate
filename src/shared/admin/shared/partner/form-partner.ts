@@ -10,13 +10,13 @@ export class PartnerFormType {
 
   createForm(partner: Partner) {
     this.form = new FormGroup({
-      'name': new FormControl(partner && partner.name ? partner.name : '', [
+      name: new FormControl(partner && partner.name ? partner.name : '', [
         Validators.required,
       ]),
-      'website': new FormControl(partner && partner.website ? partner.website : '', [
+      website: new FormControl(partner && partner.website ? partner.website : '', [
         Validators.required,
       ]),
-      'published': new FormControl(partner && partner.published ? partner.published : true, []),
+      published: new FormControl(partner && partner.published ? partner.published : true, []),
     });
   }
 

@@ -318,7 +318,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
 
   handleErrorResponse(err: HttpErrorResponse | FirebaseError | Error) {
     if (typeof err.message === 'string') {
-      this.error = <FirebaseError | Error>err;
+      this.error = err as FirebaseError | Error;
 
       this.alertService.openBottomSheetMessage(
         {title: '', message: err.message},

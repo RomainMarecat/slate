@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service';
-import { CmsDetail } from '../../../cms-detail/shared/cms-detail';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AlertService } from '../../../popup/alert.service';
-import { Filter } from '../../../facet/filter/shared/filter';
 import { TranslateService } from '@ngx-translate/core';
+import { CmsDetail } from '../../../cms-detail/shared/cms-detail';
+import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service';
 import { Cms } from '../../../cms/shared/cms';
 import { CmsService } from '../../../cms/shared/cms.service';
+import { Filter } from '../../../facet/filter/shared/filter';
+import { AlertService } from '../../../popup/alert.service';
 import { cmsDetailList } from './shared/cms-detail-list';
 
 @Component({
@@ -65,13 +65,13 @@ export class CmsDetailAddComponent implements OnInit {
       });
 
     this.editorConfig = {
-      'editable': true,
-      'spellcheck': false,
-      'height': '5rem',
-      'minHeight': '2rem',
-      'placeholder': this.translate.instant('admin.placeholder.cms-detail.content'),
-      'translate': 'no',
-      'toolbar': []
+      editable: true,
+      spellcheck: false,
+      height: '5rem',
+      minHeight: '2rem',
+      placeholder: this.translate.instant('admin.placeholder.cms-detail.content'),
+      translate: 'no',
+      toolbar: []
     };
   }
 
@@ -147,7 +147,7 @@ export class CmsDetailAddComponent implements OnInit {
         this.cmsDetail.key = doc.id;
         this.cmsDetailService.updateCmsDetail(this.cmsDetail)
           .then(() => {
-            this.alertService.toast(`Le contenu cms est ajoutée ${this.cmsDetail.title}`, 'info');
+            this.alertService.toast(`Le contenu cms est ajoutée ${this.cmsDetail.title}`, {panelClass: 'info'});
             this.reset();
             this.cmsUsedDisabled = false;
           });

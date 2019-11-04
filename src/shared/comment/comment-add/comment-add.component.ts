@@ -15,7 +15,7 @@ export class CommentAddComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      'commentText': new FormControl('', [
+      commentText: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(2000)

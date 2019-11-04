@@ -1,5 +1,5 @@
-export class Comment {
-  key ?: string;
+export interface Comment {
+  key?: string;
   commentText: string;
   commentTime: Date | string;
   creator: string;

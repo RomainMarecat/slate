@@ -12,15 +12,15 @@ export class ProductFormType {
 
   static newOffer(offer ?: Offer): FormGroup {
     return new FormGroup({
-      'key': new FormControl(offer && offer.key ? offer.key : '', []),
-      'product': new FormControl(offer && offer.product ? offer.product : '', []),
-      'partner': new FormControl(offer && offer.partner ? offer.partner : '', [
+      key: new FormControl(offer && offer.key ? offer.key : '', []),
+      product: new FormControl(offer && offer.product ? offer.product : '', []),
+      partner: new FormControl(offer && offer.partner ? offer.partner : '', [
         Validators.required,
       ]),
-      'external_url': new FormControl(offer && offer.external_url ? offer.external_url : '', [
+      external_url: new FormControl(offer && offer.external_url ? offer.external_url : '', [
         Validators.required,
       ]),
-      'price': new FormControl(offer && offer.price ? offer.price : 0, [
+      price: new FormControl(offer && offer.price ? offer.price : 0, [
         Validators.required,
       ]),
     });
@@ -36,17 +36,17 @@ export class ProductFormType {
     offers.forEach((offer: Offer) => {
       if (offers.includes(offer)) {
         offersForm.push(new FormGroup({
-          'key': new FormControl(offer.key ? offer.key : '', []),
-          'product': new FormControl(offer.product ? offer.product : '', [
+          key: new FormControl(offer.key ? offer.key : '', []),
+          product: new FormControl(offer.product ? offer.product : '', [
             Validators.required,
           ]),
-          'partner': new FormControl(offer.partner ? offer.partner : '', [
+          partner: new FormControl(offer.partner ? offer.partner : '', [
             Validators.required,
           ]),
-          'external_url': new FormControl(offer.external_url ? offer.external_url : '', [
+          external_url: new FormControl(offer.external_url ? offer.external_url : '', [
             Validators.required,
           ]),
-          'price': new FormControl(offer && offer.price ? offer.price : 0, [
+          price: new FormControl(offer && offer.price ? offer.price : 0, [
             Validators.required,
           ]),
         }));
@@ -58,34 +58,34 @@ export class ProductFormType {
 
   createForm(product: Product, offers: Array<Offer> = []): FormGroup {
     this.form = new FormGroup({
-      'name': new FormControl(product && product.name ? product.name : '', [
+      name: new FormControl(product && product.name ? product.name : '', [
         Validators.required,
       ]),
-      'slug': new FormControl(product && product.slug, []),
-      'alias': new FormControl(product && product.alias, []),
-      'translations': new FormGroup({
-        'fr': new FormControl(product && product.translations && product.translations.fr ?
+      slug: new FormControl(product && product.slug, []),
+      alias: new FormControl(product && product.alias, []),
+      translations: new FormGroup({
+        fr: new FormControl(product && product.translations && product.translations.fr ?
           product.translations.fr : '', [
           Validators.required
         ])
       }),
-      'description': new FormControl(
+      description: new FormControl(
         product && product.description ? product.description : '', []
       ),
-      'keywords': new FormControl(
+      keywords: new FormControl(
         product && product.keywords ? product.keywords : '', []
       ),
       // 'offers': ProductFormType.createOfferForm(product ? product : null, offers),
-      'offers': new FormArray([]),
-      'published': new FormControl(product && product.published ? product.published : true, []),
-      'price': new FormControl(product && product.price ? product.price : 0, [
+      offers: new FormArray([]),
+      published: new FormControl(product && product.published ? product.published : true, []),
+      price: new FormControl(product && product.price ? product.price : 0, [
         Validators.required,
       ]),
-      'images': new FormControl(product && product.images ? product.images : [], [
+      images: new FormControl(product && product.images ? product.images : [], [
         Validators.required,
       ]),
-      'category': new FormControl(product && product.category ? product.category : ''),
-      'attributes': new FormControl(product && product.attributes ? product.attributes : [], []),
+      category: new FormControl(product && product.category ? product.category : ''),
+      attributes: new FormControl(product && product.attributes ? product.attributes : [], []),
     });
 
     return this.form;

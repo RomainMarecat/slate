@@ -1,8 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { DocumentReference } from '@angular/fire/firestore';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Router } from '@angular/router';
-import { User } from '@firebase/auth-types';
 import { Session } from '@romainmarecat/ngx-calendar';
 import * as moment from 'moment';
 import { Moment } from 'moment';
@@ -12,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { I18nService } from '../../i18n/i18n.service';
 import { AlertService } from '../../popup/alert.service';
 import { SeoService } from '../../seo/shared/seo.service';
+import { User } from '../../user/shared/user';
 import { UserService } from '../../user/shared/user.service';
 import { RoutingState } from '../../util/routing-state';
 import { SessionService } from '../shared/session.service';
@@ -22,7 +21,7 @@ import { SessionService } from '../shared/session.service';
   styleUrls: ['./firebase-agenda.component.scss']
 })
 export class FirebaseAgendaComponent implements OnInit, OnDestroy {
-  viewMode: String;
+  viewMode: string;
   slotDuration: number;
   watcher: Subscription;
   sessions: Session[] = [];
@@ -123,7 +122,7 @@ export class FirebaseAgendaComponent implements OnInit, OnDestroy {
     //  });
   }
 
-  setViewMode(viewMode: String) {
+  setViewMode(viewMode: string) {
     this.viewMode = viewMode;
     this.loadSessions(moment());
   }
@@ -136,7 +135,7 @@ export class FirebaseAgendaComponent implements OnInit, OnDestroy {
     this.slotDuration = 60;
   }
 
-  onViewModeChanged(viewMode: String) {
+  onViewModeChanged(viewMode: string) {
     this.viewMode = viewMode;
   }
 
@@ -148,9 +147,9 @@ export class FirebaseAgendaComponent implements OnInit, OnDestroy {
 
   onSessionAdded(session: Session) {
     this.sessionService.createSession(session)
-      .subscribe((doc: DocumentReference) => {
-      }, (err) => {
-        this.alertService.show(err, 'session.error.save');
+      .subscribe(() => {
+      }, () => {
+        this.alertService.show('session.error.save');
       });
   }
 }

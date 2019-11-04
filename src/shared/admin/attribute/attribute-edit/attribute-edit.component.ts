@@ -75,7 +75,7 @@ export class AttributeEditComponent implements OnInit {
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
-          this.form.patchValue({name: value.name, slug: slug});
+          this.form.patchValue({name: value.name, slug});
         }
       });
   }
@@ -144,7 +144,7 @@ export class AttributeEditComponent implements OnInit {
   }
 
   set name(name) {
-    this.form.patchValue({name: name});
+    this.form.patchValue({name});
   }
 
   get slug() {
@@ -152,7 +152,7 @@ export class AttributeEditComponent implements OnInit {
   }
 
   set slug(slug) {
-    this.form.patchValue({slug: slug});
+    this.form.patchValue({slug});
   }
 
   get terms() {
@@ -160,7 +160,7 @@ export class AttributeEditComponent implements OnInit {
   }
 
   set terms(terms) {
-    this.form.patchValue({terms: terms});
+    this.form.patchValue({terms});
   }
 
   get fr() {
@@ -168,7 +168,7 @@ export class AttributeEditComponent implements OnInit {
   }
 
   set fr(fr) {
-    this.form.get('translations').patchValue({fr: fr});
+    this.form.get('translations').patchValue({fr});
   }
 
   get order_by() {

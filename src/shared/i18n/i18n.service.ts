@@ -39,8 +39,8 @@ export class CommonMissingTranslationHandler implements MissingTranslationHandle
   handle(params: MissingTranslationHandlerParams) {
     if (
       params.key.match(/\w+\.\w+/) &&
-      params.translateService.translations['fr'] &&
-      !params.translateService.translations['fr'][params.key]
+      params.translateService.translations.fr &&
+      !params.translateService.translations.fr[params.key]
     ) {
       console.log(`${params.key}`);
     }

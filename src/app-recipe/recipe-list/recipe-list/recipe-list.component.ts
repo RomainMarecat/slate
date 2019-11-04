@@ -25,7 +25,7 @@ export class RecipeListComponent implements OnInit {
 
   params: string;
 
-  schema: Object[] = [];
+  schema: object[] = [];
 
   constructor(private recipeService: RecipeService,
               private alertService: AlertService,
@@ -54,8 +54,8 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      if (typeof params['ingredients'] !== 'undefined') {
-        const ingredients: string[] = (params['ingredients'] as string).split(',');
+      if (typeof params.ingredients !== 'undefined') {
+        const ingredients: string[] = (params.ingredients as string).split(',');
 
         if (ingredients.length > 0) {
           this.query.filters = ingredients.map((i) => {
@@ -67,14 +67,14 @@ export class RecipeListComponent implements OnInit {
           });
         }
         this.getRecipes();
-        this.seoService.setSeo('recipe-list-ingredients', {ingredients: params['ingredients']});
+        this.seoService.setSeo('recipe-list-ingredients', {ingredients: params.ingredients});
       }
     });
 
     this.route.queryParams
       .subscribe((params: Params) => {
-        if (typeof params['r'] !== 'undefined') {
-          this.params = params['r'];
+        if (typeof params.r !== 'undefined') {
+          this.params = params.r;
         }
 
         this.getRecipes();

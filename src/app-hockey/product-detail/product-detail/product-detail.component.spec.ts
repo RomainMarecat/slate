@@ -57,7 +57,7 @@ describe('ProductDetailComponent', () => {
           },
         }),
         OfferModule,
-        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        CloudinaryModule.forRoot({Cloudinary}, environment.cloudinary),
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),

@@ -9,6 +9,6 @@ export class MenuService {
   constructor() {}
 
   nextTitle(title ?: string) {
-    this.menuSubject.next( < string > title);
+    this.menuSubject.next( title as string);
   }
 }

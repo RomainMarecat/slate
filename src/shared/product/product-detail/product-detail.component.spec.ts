@@ -53,7 +53,7 @@ describe('ProductDetailComponent', () => {
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
-        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        CloudinaryModule.forRoot({Cloudinary}, environment.cloudinary),
         FlexLayoutModule,
         HttpClientTestingModule,
         MatCardModule,

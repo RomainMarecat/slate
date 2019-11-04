@@ -14,8 +14,10 @@ export class ScrollService {
 
   scrollEvent: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   scrollEmitted$: Observable<boolean> = this.scrollEvent.asObservable();
+  // tslint:disable
   private _topOffset: number | null;
   private _topOfPageElement: HTMLElement;
+  // tslint:enable
 
   // Offset from the top of the document to bottom of any static elements
   // at the top (e.g. toolbar) + some margin

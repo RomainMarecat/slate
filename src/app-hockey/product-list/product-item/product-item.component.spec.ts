@@ -49,7 +49,7 @@ describe('ProductItemComponent', () => {
             clearIds: true,
           },
         }),
-        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        CloudinaryModule.forRoot({Cloudinary}, environment.cloudinary),
         MediaModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}

@@ -22,16 +22,16 @@ module.exports = function (config) {
                 pattern: '../node_modules/font-awesome/css/font-awesome.css'
             },
             {
-                pattern: '../node_modules/@swimlane/ngx-datatable/release/index.css'
+                pattern: '../node_modules/@swimlane/ngx-datatable/index.css'
             },
             {
-                pattern: '../node_modules/@swimlane/ngx-datatable/release/themes/material.css'
+                pattern: '../node_modules/@swimlane/ngx-datatable/themes/material.css'
             },
             {
                 pattern: '../node_modules/bootstrap/dist/css/bootstrap.css'
             },
             {
-                pattern: '../node_modules/@swimlane/ngx-datatable/release/assets/icons.css'
+                pattern: '../node_modules/@swimlane/ngx-datatable/assets/icons.css'
             },
             {
                 pattern: '../node_modules/font-awesome/fonts/fontawesome-webfont.woff2',
@@ -69,7 +69,7 @@ module.exports = function (config) {
                 included: false,
             },
             {
-                pattern: '../node_modules/@swimlane/ngx-datatable/release/assets/fonts/data-table.woff',
+                pattern: '../node_modules/@swimlane/ngx-datatable/assets/fonts/data-table.woff',
                 watched: false,
                 included: false,
             },
@@ -138,11 +138,6 @@ module.exports = function (config) {
             },
             {
                 pattern: '../node_modules/bootstrap/dist/css/bootstrap.css.map',
-                watched: false,
-                included: false,
-            },
-            {
-                pattern: '../node_modules/@swimlane/ngx-datatable/release/index.map',
                 watched: false,
                 included: false,
             }

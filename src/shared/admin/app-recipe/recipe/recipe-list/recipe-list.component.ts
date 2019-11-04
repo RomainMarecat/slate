@@ -1,14 +1,13 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { observe } from 'tns-core-modules/ui/gestures';
-import { BaseListComponent } from '../../../base/base-list/base-list.component';
-import { Recipe } from '../../../../../app-recipe/recipe/shared/recipe';
-import { MenuService } from '../../../../menu/menu.service';
-import { LocalizeRouterService } from 'localize-router';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { RecipeService } from '../../../../../app-recipe/recipe/shared/recipe.service';
+import { Router } from '@angular/router';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
+import { LocalizeRouterService } from 'localize-router';
+import { Observable } from 'rxjs';
+import { Recipe } from '../../../../../app-recipe/recipe/shared/recipe';
+import { RecipeService } from '../../../../../app-recipe/recipe/shared/recipe.service';
+import { MenuService } from '../../../../menu/menu.service';
+import { BaseListComponent } from '../../../base/base-list/base-list.component';
 
 @Component({
   selector: 'app-alr-recipe-list',
@@ -66,7 +65,7 @@ export class RecipeListComponent extends BaseListComponent<Recipe> implements On
         this.localizeRouterService.translateRoute('admin'),
         'recipe',
         'edit',
-        document['key']
+        document.key
       ]);
     });
   }

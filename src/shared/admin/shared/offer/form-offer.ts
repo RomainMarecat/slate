@@ -10,19 +10,19 @@ export class OfferFormType {
 
   createForm(offer: Offer) {
     this.form = new FormGroup({
-      'price': new FormControl(offer && offer.price ? offer.price : '', [
+      price: new FormControl(offer && offer.price ? offer.price : '', [
         Validators.required,
       ]),
-      'external_url': new FormControl(offer && offer.external_url ? offer.external_url : '', [
+      external_url: new FormControl(offer && offer.external_url ? offer.external_url : '', [
         Validators.required,
       ]),
-      'product': new FormControl(offer && offer.product ? offer.product : '', [
+      product: new FormControl(offer && offer.product ? offer.product : '', [
         Validators.required,
       ]),
-      'partner': new FormControl(offer && offer.partner ? offer.partner : '', [
+      partner: new FormControl(offer && offer.partner ? offer.partner : '', [
         Validators.required,
       ]),
-      'published': new FormControl(offer && offer.published ? offer.published : true, []),
+      published: new FormControl(offer && offer.published ? offer.published : true, []),
     });
   }
 

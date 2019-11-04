@@ -48,6 +48,14 @@ export class IngredientEditComponent implements OnInit {
     }
   }
 
+  get form(): FormGroup {
+    return this._form;
+  }
+
+  set color(color: string) {
+    this.form.patchValue({color});
+  }
+
   hasValidIngredient(ingredient: Ingredient): boolean {
     return (this.isAutoSave === false &&
       this.form.valid &&
@@ -88,14 +96,5 @@ export class IngredientEditComponent implements OnInit {
       }, (err) => {
         this.isAutoSave = false;
       });
-  }
-
-
-  get form(): FormGroup {
-    return this._form;
-  }
-
-  set color(color: string) {
-    this.form.patchValue({color: color});
   }
 }

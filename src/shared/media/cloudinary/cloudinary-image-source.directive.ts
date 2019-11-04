@@ -48,7 +48,7 @@ export class CloudinaryImageSourceDirective implements AfterViewInit {
 
   calculateIsSvg(): boolean {
     if (this.clHref &&
-      toString.call(this.el.nativeElement['href'] === '[object SVGAnimatedString]')) {
+      toString.call(this.el.nativeElement.href === '[object SVGAnimatedString]')) {
       this.el.nativeElement.setAttribute('xlinkHref', 'xlink:href');
       return true;
     }

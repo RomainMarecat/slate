@@ -44,7 +44,7 @@ export class InstructionEditComponent implements OnInit {
   }
 
   updateIngredients(ingredients: Ingredient[]) {
-    this.form.patchValue({ingredients: ingredients});
+    this.form.patchValue({ingredients});
   }
 
   /**

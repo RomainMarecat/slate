@@ -1,49 +1,48 @@
+import { Attribute } from '../../attribute/attribute';
 import { ClothingProduct } from './clothing-product';
 import { HockeyProduct } from './hockey-product';
-import * as moment from 'moment';
-import { Attribute } from '../../attribute/attribute';
 
-export class Product implements ClothingProduct, HockeyProduct {
+export interface Product {
   name: string;
-  slug ?: string;
-  alias ?: string;
-  keywords ?: string;
+  slug?: string;
+  alias?: string;
+  keywords?: string;
 
-  brand ?: string;
+  brand?: string;
   score: number;
 
   created_at: Date;
   published_at: any;
-  translations ?: {
+  translations?: {
     fr?: string;
   };
 
   url: string;
 
-  key ?: string;
+  key?: string;
   user: string;
-  creator ?: string;
+  creator?: string;
 
   is_new?: boolean;
-  description ?: string;
+  description?: string;
   short_description?: string;
-  external_url ?: string;
+  external_url?: string;
   thumbnail: string;
-  images ?: string[];
+  images?: string[];
   image1: string;
-  image2 ?: string;
-  image3 ?: string;
-  promo ?: number;
+  image2?: string;
+  image3?: string;
+  promo?: number;
   price: number;
-  old_price ?: number;
-  quantity ?: number;
-  size ?: Array<string>;
+  old_price?: number;
+  quantity?: number;
+  size?: Array<string>;
   published: boolean;
-  delivery_fee ?: number;
-  delivery_free ?: boolean;
-  reseller ?: string;
-  offers ?: string[];
-  category ?: string;
+  delivery_fee?: number;
+  delivery_free?: boolean;
+  reseller?: string;
+  offers?: string[];
+  category?: string;
   area?: string;
   viewed?: number;
   commented?: number;
@@ -57,11 +56,4 @@ export class Product implements ClothingProduct, HockeyProduct {
     // key represents Date Y-m-d with number of user ordered this product
     [key: string]: number;
   };
-
-  constructor() {
-    this.score = 0;
-    this.published = false;
-    this.created_at = new Date();
-    this.published_at = moment().unix();
-  }
 }

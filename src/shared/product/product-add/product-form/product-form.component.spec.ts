@@ -73,7 +73,7 @@ describe('ProductFormComponent', () => {
         MatExpansionModule,
         MatCheckboxModule,
         MediaModule,
-        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        CloudinaryModule.forRoot({Cloudinary}, environment.cloudinary),
         Angulartics2Module.forRoot({
           developerMode: true,
           pageTracking: {

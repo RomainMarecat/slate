@@ -16,30 +16,30 @@ export class RecipeService extends VisitorService {
   /**
    * Get detail schema from recipe data
    */
-  getDetailSchema(recipe: Recipe): Object {
+  getDetailSchema(recipe: Recipe): object {
     return {
       '@context': 'http://schema.org/',
       '@type': 'Recipe',
-      'name': recipe.name,
-      'author': recipe.creator,
-      'image': recipe.image,
-      'recipeType': recipe.cuisine_type,
-      'aggregateRating': {
+      name: recipe.name,
+      author: recipe.creator,
+      image: recipe.image,
+      recipeType: recipe.cuisine_type,
+      aggregateRating: {
         '@type': 'AggregateRating',
-        'ratingValue': recipe.rating.toString(10)
+        ratingValue: recipe.rating.toString(10)
       },
-      'cookTime':
+      cookTime:
         `PT${recipe.cook_time.substr(0, recipe.cook_time.indexOf(':'))}H${recipe
           .cook_time.substr(recipe.cook_time.indexOf(':'))}M`,
-      'prepTime':
+      prepTime:
         `PT${recipe.prep_time.substr(0, recipe.prep_time.indexOf(':'))}H${recipe
           .prep_time.substr(recipe.prep_time.indexOf(':'))}M`,
-      'totalTime':
+      totalTime:
         `PT${recipe.total_time.substr(0, recipe.total_time.indexOf(':'))}H${recipe
           .total_time.substr(recipe.total_time.indexOf(':'))}M`,
-      'recipeYield': recipe.yield.toString(10),
-      'recipeIngredient': recipe.ingredients.map(ingredient => ingredient.name),
-      'recipeInstructions': recipe.instructions.map(instruction => instruction.sentence)
+      recipeYield: recipe.yield.toString(10),
+      recipeIngredient: recipe.ingredients.map(ingredient => ingredient.name),
+      recipeInstructions: recipe.instructions.map(instruction => instruction.sentence)
     };
   }
 

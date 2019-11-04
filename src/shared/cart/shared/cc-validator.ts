@@ -4,25 +4,25 @@ export class CCValidator {
   public static MIN_LENGTH = 14;
 
   // information for various credit card types as a string map
-  private static _types: {[key: string]: Object} = {
-    'amex': {pattern: /^3[47]/, length: 15}
-    , 'disc': {pattern: /^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]|64[4-9])|65)/, length: 16}
-    , 'dine': {pattern: /^36/, length: 14}
-    , 'visa': {pattern: /^4/, length: 16}
-    , 'mast': {pattern: /^5[1-5]/, length: 16}
+  private static _types: {[key: string]: object} = {
+    amex: {pattern: /^3[47]/, length: 15}
+    , disc: {pattern: /^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]|64[4-9])|65)/, length: 16}
+    , dine: {pattern: /^36/, length: 14}
+    , visa: {pattern: /^4/, length: 16}
+    , mast: {pattern: /^5[1-5]/, length: 16}
   };
 
   /**
    * Return the credit card type based on the card number (provided the card is in the accepted list of cards)
    */
   public static getCardType(cardNumber: string): string {
-    let cardProps: Object;
+    let cardProps: object;
     const theCard: string = this.__preprocess(cardNumber);
 
     for (const key in this._types) {
       if (this._types[key]) {
         cardProps = this._types[key];
-        if (theCard.match(cardProps['pattern'])) {
+        if (theCard.match((cardProps as unknown as {pattern: string}).pattern)) {
           return key;
         }
       }
@@ -56,8 +56,8 @@ export class CCValidator {
 
   // check the length of the credit card number based on its type
   private static __lengthValid(cardNumber: string, cardType: string): boolean {
-    const cardProps: Object = this._types[cardType];
-    return cardProps ? cardNumber.length === cardProps['length'] : false;
+    const cardProps: object = this._types[cardType];
+    return cardProps ? cardNumber.length === (cardProps as unknown as []).length : false;
   }
 
   // check the credit card number with the Luhn algorithm

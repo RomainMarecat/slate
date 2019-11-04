@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProductService } from '../shared/product.service';
-import { CarProduct } from '../shared/car-product';
-import { Observable } from 'rxjs';
-import { Category } from '../../category/category';
-import { map, startWith, take } from 'rxjs/operators';
-import { CategoryService } from '../../category/category.service';
 import { Router } from '@angular/router';
 import { LocalizeRouterService } from 'localize-router';
+import { Observable } from 'rxjs';
+import { map, startWith, take } from 'rxjs/operators';
+import { Category } from '../../category/category';
+import { CategoryService } from '../../category/category.service';
+import { CarProduct } from '../shared/car-product';
+import { ProductService } from '../shared/product.service';
 
 @Component({
   selector: 'app-product-search',
@@ -17,9 +17,9 @@ import { LocalizeRouterService } from 'localize-router';
 export class ProductSearchComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
-    'search': new FormControl({value: '', disabled: true}),
-    'brand': new FormControl('', [Validators.required]),
-    'model': new FormControl('', [Validators.required]),
+    search: new FormControl({value: '', disabled: true}),
+    brand: new FormControl('', [Validators.required]),
+    model: new FormControl('', [Validators.required]),
   });
   showSearch = false;
   products: CarProduct[];

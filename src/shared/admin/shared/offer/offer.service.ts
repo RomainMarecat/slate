@@ -12,11 +12,11 @@ export class OfferService extends VisitorService {
   }
 
   getOffers(): Observable<Offer[]> {
-    return <Observable<Offer[]>> super.getDocuments();
+    return super.getDocuments() as Observable<Offer[]>;
   }
 
   getOffer(key: string): Observable<Offer> {
-    return <Observable<Offer> > super.getDocument(key);
+    return super.getDocument(key) as Observable<Offer>;
   }
 
   createOffer(offer: Offer): Promise<any> {

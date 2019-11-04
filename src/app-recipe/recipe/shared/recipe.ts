@@ -26,4 +26,6 @@ export interface Recipe {
   rating: number;
   on_homepage: boolean;
   associated_recipes: string[];
+  published?: boolean;
+  published_at?: Date;
 }

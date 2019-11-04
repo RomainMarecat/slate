@@ -53,7 +53,7 @@ describe('AttributeEditComponent', () => {
         RouterTestingModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
-        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        CloudinaryModule.forRoot({Cloudinary}, environment.cloudinary),
         SharedModule,
 
         LocalizeRouterModule,

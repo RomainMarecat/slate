@@ -89,9 +89,9 @@ export class CloudinaryImageComponent implements AfterViewInit, OnInit, OnDestro
     }
   }
 
-  setElementAttributes(element: HTMLElement, attributesLiteral: string[], lazyLoad: boolean) {
+  setElementAttributes(element: HTMLElement, attributesLiteral: any, lazyLoad: boolean) {
     if (lazyLoad) {
-      this.imageSource$ = of(attributesLiteral['src']);
+      this.imageSource$ = of(attributesLiteral.src);
       Object.keys(attributesLiteral).forEach(attrName => {
         if (attrName !== 'src') {
           element.setAttribute(attrName, attributesLiteral[attrName]);

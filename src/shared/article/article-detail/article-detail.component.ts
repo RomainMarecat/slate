@@ -30,7 +30,7 @@ export class ArticleDetailComponent implements OnInit {
           this.articleService.getArticle(key)
             .subscribe((article: Article) => {
               this.article = article;
-              this.seoService.setSeo('article', {article: article});
+              this.seoService.setSeo('article', {article});
             });
         }
       }

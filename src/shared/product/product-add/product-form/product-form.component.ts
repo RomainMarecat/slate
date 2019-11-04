@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { Product } from '../../shared/product';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ImageProductComponent } from '../../../media/cloudinary/image-product/image-product.component';
 import { Media } from '../../../media/media';
 import { UserService } from '../../../user/shared/user.service';
-import { ImageProductComponent } from '../../../media/cloudinary/image-product/image-product.component';
+import { Product } from '../../shared/product';
 
 @Component({
   selector: 'app-product-form',
@@ -18,12 +18,14 @@ export class ProductFormComponent implements OnInit {
   formAdditional: FormGroup;
   @Output() productChange: EventEmitter<Product> = new EventEmitter<Product>();
   product: Product;
+  // tslint:disable
   @Input() _user: any;
+  @Output() _submit: EventEmitter<Product> = new EventEmitter<Product>();
+  // tslint:enable
   disableDelivery: boolean;
   isLoading: boolean;
   isLinear: boolean;
   now: Date;
-  @Output() _submit: EventEmitter<Product> = new EventEmitter<Product>();
   image1: Media;
   image2: Media;
   image3: Media;
@@ -33,13 +35,13 @@ export class ProductFormComponent implements OnInit {
     this.isLinear = true;
     this.now = new Date();
     this.disableDelivery = false;
-    this.image1 = new Media();
+    this.image1 = {} as unknown as Media;
     this.image1.position = 1;
-    this.image2 = new Media();
+    this.image2 = {} as unknown as Media;
     this.image2.position = 2;
-    this.image3 = new Media();
+    this.image3 = {} as unknown as Media;
     this.image3.position = 3;
-    this.product = new Product();
+    this.product = {} as unknown as Product;
   }
 
   ngOnInit() {
@@ -71,7 +73,7 @@ export class ProductFormComponent implements OnInit {
 
   createForm() {
     this.formDetail = new FormGroup({
-      'name': new FormControl('', [
+      name: new FormControl('', [
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(50)
@@ -79,27 +81,27 @@ export class ProductFormComponent implements OnInit {
     });
 
     this.formAdditional = new FormGroup({
-      'description': new FormControl('', [
+      description: new FormControl('', [
         Validators.minLength(0),
         Validators.maxLength(2000)
       ]),
-      'external_url': new FormControl('', [
+      external_url: new FormControl('', [
         Validators.minLength(6),
         Validators.maxLength(250)
       ]),
-      'price': new FormControl('', [
+      price: new FormControl('', [
         Validators.min(0),
         Validators.max(9999)
       ]),
-      'delivery_fee': new FormControl('', [
+      delivery_fee: new FormControl('', [
         Validators.min(0),
         Validators.max(9999)
       ]),
-      'delivery_free': new FormControl(false, []),
+      delivery_free: new FormControl(false, []),
     });
 
     this.formMedia = new FormGroup({
-      'image1': new FormControl('', [
+      image1: new FormControl('', [
         Validators.required,
       ])
     });

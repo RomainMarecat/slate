@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter, NgZone, Optional } from '@angular/core';
-import { ImageCropperComponent, CropperSettings } from 'ngx-img-cropper';
-import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
-import { Media } from '../../media';
-import { SHA1 } from 'crypto-js';
-import { ObjectService } from '../../../util/object.service';
-import { MediaService } from '../../media.service';
-import { DeviceService } from '../../../device/device.service';
 import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Input, NgZone, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { DocumentReference } from '@firebase/firestore-types';
+import { SHA1 } from 'crypto-js';
+import { FileUploader, FileUploaderOptions, ParsedResponseHeaders } from 'ng2-file-upload';
+import { CropperSettings, ImageCropperComponent } from 'ngx-img-cropper';
+import { DeviceService } from '../../../device/device.service';
+import { ObjectService } from '../../../util/object.service';
+import { Media } from '../../media';
+import { MediaService } from '../../media.service';
 import { Cloudinary } from '../cloudinary.service';
 
 @Component({
@@ -42,7 +42,7 @@ export class ImageProductComponent implements OnInit {
               private deviceService: DeviceService) {
     this.cloudinaryActive = !!cloudinary;
     if (!this.media) {
-      this.media = new Media();
+      this.media = {} as Media;
     }
     this.displayValidation = false;
     this.progressData = 0;
@@ -244,10 +244,10 @@ export class ImageProductComponent implements OnInit {
     const x = this.cropper.cropper.getCropBounds().left;
     const y = this.cropper.cropper.getCropBounds().top;
     this.media.cropper = {
-      width: width,
-      height: height,
-      x: x,
-      y: y
+      width,
+      height,
+      x,
+      y
     };
     this.media.public_id = this.publicId;
     this.media.url = this.url;

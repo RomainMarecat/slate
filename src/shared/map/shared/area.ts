@@ -1,4 +1,4 @@
-export class Area {
+export interface Area {
   key?: string;
   map: string;
   path: string;

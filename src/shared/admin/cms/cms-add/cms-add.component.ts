@@ -34,10 +34,10 @@ export class CmsAddComponent implements OnInit {
    */
   static getForm(): FormGroup {
     return new FormGroup({
-      'name': new FormControl('', [
+      name: new FormControl('', [
         Validators.required,
       ]),
-      'site_name': new FormControl('', [
+      site_name: new FormControl('', [
         Validators.required,
       ])
     });
@@ -84,7 +84,7 @@ export class CmsAddComponent implements OnInit {
         this.cms.key = doc.id;
         this.cmsService.updateCms(this.cms)
           .then(() => {
-            this.alertService.toast(`Le cms est ajoutée ${this.cms.name}`, 'info');
+            this.alertService.toast(`Le cms est ajoutée ${this.cms.name}`, {panelClass: 'info'});
             this.reset();
           });
       });

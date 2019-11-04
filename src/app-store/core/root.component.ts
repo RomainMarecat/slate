@@ -18,6 +18,9 @@ import { MenuConfiguration } from '../../shared/menu/shared/menu-configuration';
 export class AppRootComponent implements OnInit {
 
   menuConfig: MenuConfiguration = {
+    displayBrand: false,
+    displaySpacer: true,
+    displayPhoneNumber: false,
     displayLogo: true,
     show_page_title: false,
     displayAdminRecipe: false,

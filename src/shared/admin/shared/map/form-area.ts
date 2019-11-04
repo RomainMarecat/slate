@@ -11,16 +11,16 @@ export class AreaFormType {
 
   createForm(map: Map) {
     this.form = new FormGroup({
-      'name': new FormControl( '', [
+      name: new FormControl( '', [
         Validators.required,
       ]),
-      'path': new FormControl('', [
+      path: new FormControl('', [
         Validators.required,
       ]),
-      'map': new FormControl(map && map.key ? map.key : '', [
+      map: new FormControl(map && map.key ? map.key : '', [
         Validators.required,
       ]),
-      'published': new FormControl(true, []),
+      published: new FormControl(true, []),
     });
   }
 

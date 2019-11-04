@@ -20,6 +20,9 @@ import { MenuConfiguration } from '../../shared/menu/shared/menu-configuration';
 })
 export class AppRootComponent implements OnInit, OnDestroy {
   menuConfig: MenuConfiguration = {
+    displayBrand: false,
+    displaySpacer: true,
+    displayPhoneNumber: false,
     displayLogo: false,
     show_page_title: true,
     displaySearchIcon: true,

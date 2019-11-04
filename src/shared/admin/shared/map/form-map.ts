@@ -10,10 +10,10 @@ export class MapFormType {
 
   createForm(map: Map) {
     this.form = new FormGroup({
-      'name': new FormControl(map && map.name ? map.name : '', [
+      name: new FormControl(map && map.name ? map.name : '', [
         Validators.required,
       ]),
-      'published': new FormControl(map && map.published ? map.published : true, []),
+      published: new FormControl(map && map.published ? map.published : true, []),
     });
   }
 

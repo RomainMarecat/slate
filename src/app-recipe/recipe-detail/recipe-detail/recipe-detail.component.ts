@@ -27,7 +27,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   constraints: Array<Constraint> = [];
   previousPosition: number;
   top: number;
-  schema: Object = {};
+  schema: object = {};
   total = 0;
   mqAlias: string;
 

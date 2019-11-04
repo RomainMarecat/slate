@@ -61,7 +61,7 @@ export class GeocodeService {
     return this.waitForMapsToLoad().pipe(
       switchMap(() => {
         return new Observable(observer => {
-          this.geocoder.geocode({'address': location}, (results, status) => {
+          this.geocoder.geocode({address: location}, (results, status) => {
             if (status === google.maps.GeocoderStatus.OK) {
               observer.next({
                 lat: results[0].geometry.location.lat(),
@@ -79,16 +79,16 @@ export class GeocodeService {
   }
 
   geocodeLatLng(lat: number, lng: number): Observable<any> {
-    const location: LatLngLiteral = {lat: lat, lng: lng};
+    const location: LatLngLiteral = {lat, lng};
     return this.waitForMapsToLoad().pipe(
       switchMap(() => {
         return new Observable(observer => {
-          this.geocoder.geocode({'location': location}, (results, status) => {
+          this.geocoder.geocode({location}, (results, status) => {
             if (status === google.maps.GeocoderStatus.OK) {
               observer.next(GeocodeService.parseGeocodeResponse(results));
             } else {
               console.error('Error - ', results, ' & Status - ', status);
-              observer.next({error: results, status: status});
+              observer.next({error: results, status});
             }
             observer.complete();
           });

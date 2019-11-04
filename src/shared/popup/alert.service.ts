@@ -5,22 +5,24 @@ import { TranslateService } from '@ngx-translate/core';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { Alert } from './alert';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AlertService {
   constructor(public snackBar: MatSnackBar,
               public matBottomSheet: MatBottomSheet,
               private translateService: TranslateService) {
   }
 
-  message(message: string, parameters: Object = {}) {
+  message(message: string, parameters: object = {}) {
     this.toast(message, parameters);
   }
 
-  show(message: string, parameters: Object = {}) {
+  show(message: string, parameters: object = {}) {
     this.toast(message, parameters);
   }
 
-  toast(message: string, parameters: Object = {}) {
+  toast(message: string, parameters: object = {}) {
     if (typeof message === 'string') {
       // Subscribe on message translation
       this.translateService.get(message, parameters)
@@ -34,7 +36,7 @@ export class AlertService {
     this.openAlertMessage(message, parameters);
   }
 
-  openAlertMessage(message: string, parameters: Object) {
+  openAlertMessage(message: string, parameters: object) {
     // Open Alert Component with a message
     const toastRef = this.snackBar.openFromComponent(AlertComponent, {
       data: message,

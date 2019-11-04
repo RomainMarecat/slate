@@ -41,7 +41,7 @@ export class PreparationEditComponent implements OnInit {
   }
 
   updateIngredient(ingredient: Ingredient) {
-    this.form.patchValue({ingredient: ingredient});
+    this.form.patchValue({ingredient});
   }
 
   removeItem() {

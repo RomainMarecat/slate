@@ -13,55 +13,55 @@ export class InputComponent implements OnInit {
 
   editorConfig: any;
   form: FormGroup = new FormGroup({
-    'date': new FormControl('', [
+    date: new FormControl('', [
       Validators.required,
     ]),
     'datetime-local': new FormControl('', [
       Validators.required,
     ]),
-    'email': new FormControl('', [
+    email: new FormControl('', [
       Validators.required,
       Validators.pattern(EMAIL_REGEX),
       Validators.minLength(5),
       Validators.maxLength(100)
     ]),
-    'month': new FormControl('', [
+    month: new FormControl('', [
       Validators.required,
     ]),
-    'number': new FormControl(0, [
-      Validators.required,
-      Validators.minLength(1)
-    ]),
-    'price': new FormControl(0, [
+    number: new FormControl(0, [
       Validators.required,
       Validators.minLength(1)
     ]),
-    'password': new FormControl('', [
+    price: new FormControl(0, [
+      Validators.required,
+      Validators.minLength(1)
+    ]),
+    password: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
       Validators.maxLength(50),
     ]),
-    'search': new FormControl('', [
+    search: new FormControl('', [
       Validators.required
     ]),
-    'tel': new FormControl('', [
+    tel: new FormControl('', [
       Validators.required,
       Validators.minLength(5),
       Validators.maxLength(16)
     ]),
-    'time': new FormControl('', [
+    time: new FormControl('', [
       Validators.required,
       Validators.minLength(1)
     ]),
-    'url': new FormControl('', [
+    url: new FormControl('', [
       Validators.required,
       Validators.minLength(1)
     ]),
-    'week': new FormControl('', [
+    week: new FormControl('', [
       Validators.required,
       Validators.minLength(1)
     ]),
-    'textarea': new FormControl('', [
+    textarea: new FormControl('', [
       Validators.required,
       Validators.minLength(1),
       Validators.maxLength(1000)
@@ -71,12 +71,12 @@ export class InputComponent implements OnInit {
       Validators.minLength(1),
       Validators.maxLength(1000)
     ]),
-    'firstname': new FormControl('', [
+    firstname: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(255)
     ]),
-    'lastname': new FormControl('', [
+    lastname: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(255)
@@ -95,13 +95,13 @@ export class InputComponent implements OnInit {
    */
   createEditorConfig() {
     this.editorConfig = {
-      'editable': true,
-      'spellcheck': false,
-      'height': '5rem',
-      'minHeight': '2rem',
-      'placeholder': 'Contenu...',
-      'translate': 'no',
-      'toolbar': []
+      editable: true,
+      spellcheck: false,
+      height: '5rem',
+      minHeight: '2rem',
+      placeholder: 'Contenu...',
+      translate: 'no',
+      toolbar: []
     };
   }
 
@@ -110,7 +110,7 @@ export class InputComponent implements OnInit {
   }
 
   set date(date) {
-    this.form.patchValue({date: date});
+    this.form.patchValue({date});
   }
 
   get datetimeLocal() {
@@ -126,7 +126,7 @@ export class InputComponent implements OnInit {
   }
 
   set email(email) {
-    this.form.patchValue({email: email});
+    this.form.patchValue({email});
   }
 
   get month() {
@@ -134,7 +134,7 @@ export class InputComponent implements OnInit {
   }
 
   set month(month) {
-    this.form.patchValue({month: month});
+    this.form.patchValue({month});
   }
 
   get number() {
@@ -142,7 +142,7 @@ export class InputComponent implements OnInit {
   }
 
   set number(number) {
-    this.form.patchValue({number: number});
+    this.form.patchValue({number});
   }
 
   get price() {
@@ -150,7 +150,7 @@ export class InputComponent implements OnInit {
   }
 
   set price(price) {
-    this.form.patchValue({price: price});
+    this.form.patchValue({price});
   }
 
   get password() {
@@ -158,7 +158,7 @@ export class InputComponent implements OnInit {
   }
 
   set password(password) {
-    this.form.patchValue({password: password});
+    this.form.patchValue({password});
   }
 
   get search() {
@@ -166,7 +166,7 @@ export class InputComponent implements OnInit {
   }
 
   set search(search) {
-    this.form.patchValue({search: search});
+    this.form.patchValue({search});
   }
 
   get tel() {
@@ -174,7 +174,7 @@ export class InputComponent implements OnInit {
   }
 
   set tel(tel) {
-    this.form.patchValue({tel: tel});
+    this.form.patchValue({tel});
   }
 
   get time() {
@@ -182,7 +182,7 @@ export class InputComponent implements OnInit {
   }
 
   set time(time) {
-    this.form.patchValue({time: time});
+    this.form.patchValue({time});
   }
 
   get url() {
@@ -190,7 +190,7 @@ export class InputComponent implements OnInit {
   }
 
   set url(url) {
-    this.form.patchValue({url: url});
+    this.form.patchValue({url});
   }
 
   get week() {
@@ -198,7 +198,7 @@ export class InputComponent implements OnInit {
   }
 
   set week(week) {
-    this.form.patchValue({week: week});
+    this.form.patchValue({week});
   }
 
   get textarea() {
@@ -206,7 +206,7 @@ export class InputComponent implements OnInit {
   }
 
   set textarea(textarea) {
-    this.form.patchValue({textarea: textarea});
+    this.form.patchValue({textarea});
   }
 
   get textareaExtension() {
@@ -222,7 +222,7 @@ export class InputComponent implements OnInit {
   }
 
   set firstname(firstname) {
-    this.form.patchValue({firstname: firstname});
+    this.form.patchValue({firstname});
   }
 
   get lastname() {
@@ -230,6 +230,6 @@ export class InputComponent implements OnInit {
   }
 
   set lastname(lastname) {
-    this.form.patchValue({lastname: lastname});
+    this.form.patchValue({lastname});
   }
 }

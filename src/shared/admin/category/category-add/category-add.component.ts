@@ -47,7 +47,7 @@ export class CategoryAddComponent implements OnInit {
           const slug = StringService.slugify(value.name);
           this.form.patchValue({
             name: value.name.trim(),
-            slug: slug,
+            slug,
             translations: {
               fr: value.translations.fr ? value.translations.fr : value.name.trim()
             },
@@ -87,32 +87,32 @@ export class CategoryAddComponent implements OnInit {
 
   createForm() {
     this.form = new FormGroup({
-      'name': new FormControl('', [
+      name: new FormControl('', [
         Validators.required,
       ]),
-      'translations': new FormGroup({
-        'fr': new FormControl('', [
+      translations: new FormGroup({
+        fr: new FormControl('', [
           Validators.required,
         ])
       }),
-      'description': new FormControl('', [
+      description: new FormControl('', [
         Validators.required,
       ]),
-      'slug': new FormControl('', [
+      slug: new FormControl('', [
         Validators.required,
       ]),
-      'alias': new FormControl('', [
+      alias: new FormControl('', [
         Validators.required,
       ]),
-      'keywords': new FormControl(''),
-      'level': new FormControl(1, [
+      keywords: new FormControl(''),
+      level: new FormControl(1, [
         Validators.required,
       ]),
-      'lft': new FormControl('', []),
-      'rgt': new FormControl('', []),
-      'root': new FormControl(false, []),
-      'parent': new FormControl(null, []),
-      'published': new FormControl(true, []),
+      lft: new FormControl('', []),
+      rgt: new FormControl('', []),
+      root: new FormControl(false, []),
+      parent: new FormControl(null, []),
+      published: new FormControl(true, []),
     });
   }
 
@@ -129,7 +129,7 @@ export class CategoryAddComponent implements OnInit {
           this.category.key = doc.id;
           this.categoryService.updateCategory(this.category)
             .then(() => {
-              this.alertService.toast(`La catégorie est ajoutée ${this.category.name}`, 'info');
+              this.alertService.toast(`La catégorie est ajoutée ${this.category.name}`, {panelClass: 'info'});
               this.reset();
               this.isLoading = false;
             }, (err) => {
@@ -198,7 +198,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set name(name) {
-    this.form.patchValue({name: name});
+    this.form.patchValue({name});
   }
 
   get description() {
@@ -206,7 +206,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set description(description) {
-    this.form.patchValue({description: description});
+    this.form.patchValue({description});
   }
 
   get fr() {
@@ -214,7 +214,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set fr(fr) {
-    this.form.get('translations').patchValue({fr: fr});
+    this.form.get('translations').patchValue({fr});
   }
 
   get slug() {
@@ -222,7 +222,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set slug(slug) {
-    this.form.patchValue({slug: slug});
+    this.form.patchValue({slug});
   }
 
   get alias() {
@@ -230,7 +230,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set alias(alias) {
-    this.form.patchValue({alias: alias});
+    this.form.patchValue({alias});
   }
 
   get keywords() {
@@ -238,7 +238,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set keywords(keywords) {
-    this.form.patchValue({keywords: keywords});
+    this.form.patchValue({keywords});
   }
 
   get level() {
@@ -246,7 +246,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set level(level) {
-    this.form.patchValue({level: level});
+    this.form.patchValue({level});
   }
 
   get lft() {
@@ -254,7 +254,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set lft(lft) {
-    this.form.patchValue({lft: lft});
+    this.form.patchValue({lft});
   }
 
   get rgt() {
@@ -262,7 +262,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set rgt(rgt) {
-    this.form.patchValue({rgt: rgt});
+    this.form.patchValue({rgt});
   }
 
   get root() {
@@ -270,7 +270,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set root(root) {
-    this.form.patchValue({root: root});
+    this.form.patchValue({root});
   }
 
   get parent() {
@@ -278,7 +278,7 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set parent(parent) {
-    this.form.patchValue({parent: parent});
+    this.form.patchValue({parent});
   }
 
   get published() {
@@ -286,6 +286,6 @@ export class CategoryAddComponent implements OnInit {
   }
 
   set published(published) {
-    this.form.patchValue({published: published});
+    this.form.patchValue({published});
   }
 }

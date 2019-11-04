@@ -1,13 +1,13 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Product } from '../shared/product';
-import { UserService } from '../../user/shared/user.service';
-import { ScoreService } from '../../score/score.service';
-import { AlertService } from '../../popup/alert.service';
+import { Router } from '@angular/router';
+import { LocalizeRouterService } from 'localize-router';
 import { Cart } from '../../cart/shared/cart';
 import { CartService } from '../../cart/shared/cart.service';
-import { Router } from '@angular/router';
 import { LoaderService } from '../../loader/loader.service';
-import { LocalizeRouterService } from 'localize-router';
+import { AlertService } from '../../popup/alert.service';
+import { ScoreService } from '../../score/score.service';
+import { UserService } from '../../user/shared/user.service';
+import { Product } from '../shared/product';
 
 @Component({
   selector: 'app-product-action',
@@ -68,16 +68,18 @@ export class ProductActionComponent implements OnInit {
           if (authorized) {
             this.updateProductScore(product, score);
           } else {
-            this.alertService.show('Vous avez déjà voté', 'error');
+            this.alertService.show('Vous avez déjà voté', {panelClass: 'error'});
           }
         }, () => {
-          this.alertService.show('Nous ne sommes pas en mesure de savoir si vous avez voté, veuillez recommencer.', 'error');
+          this.alertService.show(
+            'Nous ne sommes pas en mesure de savoir si vous avez voté, veuillez recommencer.',
+            {panelClass: 'error'});
         });
       } else {
-        this.alertService.show('Il faut se connecter pour pouvoir voter', 'error');
+        this.alertService.show('Il faut se connecter pour pouvoir voter', {panelClass: 'error'});
       }
     }, () => {
-      this.alertService.show('Vous n\'avons pas retrouvé votre utilisateur', 'error');
+      this.alertService.show('Vous n\'avons pas retrouvé votre utilisateur', {panelClass: 'error'});
     });
   }
 

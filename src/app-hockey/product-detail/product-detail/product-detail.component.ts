@@ -13,7 +13,7 @@ import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-hockey-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: [ './product-detail.component.scss' ]
+  styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
 
@@ -43,7 +43,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   getProduct() {
-    this.activatedRoute.params.subscribe((value: { key: string }) => {
+    this.activatedRoute.params.subscribe((value: {key: string}) => {
       if (value.key) {
         const key = value.key.substring(0, value.key.indexOf('-'));
         if (key) {
@@ -74,14 +74,14 @@ export class ProductDetailComponent implements OnInit {
     comment.entity_type = 'Product';
     comment.order = this.comments.length + 1;
     this.commentService.createComment(comment).subscribe((doc) => {
-      this.alertService.toast('Commentaire enregistré', 'success');
+      this.alertService.toast('Commentaire enregistré', {panelClass: 'success'});
     }, (err) => {
-      this.alertService.toast(err, 'error');
+      this.alertService.toast(err, {panelClass: 'error'});
     });
   }
 
   getComments() {
-    const filters: Filter[] = [ {
+    const filters: Filter[] = [{
       column: 'entity_key',
       operator: '==',
       value: this.product.key
@@ -89,7 +89,7 @@ export class ProductDetailComponent implements OnInit {
       column: 'entity_type',
       operator: '==',
       value: 'Product',
-    } ];
+    }];
     this.commentService.filters$.next(filters);
     this.commentService.getComments()
       .subscribe((comments: Comment[]) => {

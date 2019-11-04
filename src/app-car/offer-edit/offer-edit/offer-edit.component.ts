@@ -1,26 +1,26 @@
+import { Location } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryService } from '../../../shared/category/category.service';
-import { Category } from '../../../shared/category/category';
-import { Observable } from 'rxjs';
-import { RangePipe } from 'ngx-pipes';
-import { TranslateService } from '@ngx-translate/core';
 import { MatSelectChange } from '@angular/material';
-import { CarProduct, mileages } from '../../../shared/product/shared/car-product';
-import { Location } from '@angular/common';
-import { OfferService } from '../../../shared/offer/offer.service';
-import { CarOffer } from '../../../shared/offer/offer';
-import { AlertService } from '../../../shared/popup/alert.service';
-import { ProductService } from '../../../shared/product/shared/product.service';
-import { Marker } from '../../../shared/map/shared/map';
-import { GeocodeService } from '../../../shared/map/shared/geocode.service';
-import { Media } from '../../../shared/media/media';
-import { UploadTaskSnapshot } from '@firebase/storage-types';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
-import { DeviceService } from '../../../shared/device/device.service';
-import { take } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UploadTaskSnapshot } from '@firebase/storage-types';
+import { TranslateService } from '@ngx-translate/core';
 import { firestore } from 'firebase/app';
+import { RangePipe } from 'ngx-pipes';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { Category } from '../../../shared/category/category';
+import { CategoryService } from '../../../shared/category/category.service';
+import { DeviceService } from '../../../shared/device/device.service';
+import { GeocodeService } from '../../../shared/map/shared/geocode.service';
+import { Marker } from '../../../shared/map/shared/map';
+import { Media } from '../../../shared/media/media';
+import { CarOffer } from '../../../shared/offer/offer';
+import { OfferService } from '../../../shared/offer/offer.service';
+import { AlertService } from '../../../shared/popup/alert.service';
+import { CarProduct, mileages } from '../../../shared/product/shared/car-product';
+import { ProductService } from '../../../shared/product/shared/product.service';
 import Timestamp = firestore.Timestamp;
 
 @Component({
@@ -312,7 +312,7 @@ export class OfferEditComponent implements OnInit {
    * image change function of emitter
    */
   onImageChange(media: Media) {
-    const control = <FormArray>this.form.controls.images;
+    const control = this.form.controls.images as FormArray;
     // add new formControl
     control.push(this.createImage(media));
   }

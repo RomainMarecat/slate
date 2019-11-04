@@ -19,6 +19,9 @@ import { UserService } from '../../shared/user/shared/user.service';
 export class AppRootComponent implements OnInit, OnDestroy {
 
   configMenu: MenuConfiguration = {
+    displayBrand: false,
+    displaySpacer: true,
+    displayPhoneNumber: false,
     displayLogo: false,
     displayAdminRecipe: false,
     show_page_title: true,

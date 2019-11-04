@@ -1,9 +1,10 @@
 import { Observable, of, Subject } from 'rxjs';
 
 export class MockScrollService {
+  // tslint:disable
   private _topOffset: number | null;
   private _topOfPageElement: HTMLElement;
-
+  // tslint:enable
   // Offset from the top of the document to bottom of any static elements
   // at the top (e.g. toolbar) + some margin
   get topOffset() {

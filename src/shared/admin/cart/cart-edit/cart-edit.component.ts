@@ -75,8 +75,8 @@ export class CartEditComponent extends BaseEditComponent<Cart> implements OnInit
   }
 
   updatePublished() {
-    if (this.document['published'] === true) {
-      this.document['published_at'] = new Date();
+    if ((this.document as unknown as any).published === true) {
+      (this.document as unknown as any).published_at = new Date();
     }
   }
 

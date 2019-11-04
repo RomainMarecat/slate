@@ -1,8 +1,8 @@
 import { firestore } from 'firebase/app';
 import Timestamp = firestore.Timestamp;
 
-export class Offer {
-  key ?: string;
+export interface Offer {
+  key?: string;
   product: string;
   partner?: string;
   price: number;

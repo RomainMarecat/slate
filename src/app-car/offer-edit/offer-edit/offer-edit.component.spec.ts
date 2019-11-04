@@ -1,32 +1,32 @@
+import { AgmCoreModule, MapsAPILoader } from '@agm/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { OfferEditComponent } from './offer-edit.component';
-import { SharedModule } from '../../../shared/shared.module';
-import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { CommonModule } from '@angular/common';
-import { MockCategoryService } from '../../../shared/category/mock-category.service';
-import { CategoryService } from '../../../shared/category/category.service';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { RangePipe } from 'ngx-pipes';
-import { AlertService } from '../../../shared/popup/alert.service';
-import { MockAlertService } from '../../../shared/popup/mock-alert.service';
-import { OfferService } from '../../../shared/offer/offer.service';
-import { ProductService } from '../../../shared/product/shared/product.service';
-import { MockOfferService } from '../../../shared/offer/mock-offer.service';
-import { MockProductService } from '../../../shared/product/shared/mock-product.service';
-import { AgmCoreModule, MapsAPILoader } from '@agm/core';
+import { CategoryService } from '../../../shared/category/category.service';
+import { MockCategoryService } from '../../../shared/category/mock-category.service';
+import { DeviceService } from '../../../shared/device/device.service';
 import { GeocodeService } from '../../../shared/map/shared/geocode.service';
 import { MockGeocodeService } from '../../../shared/map/shared/mock-geocode.service';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireModule } from '@angular/fire';
-import { DeviceService } from '../../../shared/device/device.service';
 import { MockMapsAPILoader } from '../../../shared/map/shared/mock-maps-api-loader';
-import { environment } from '../../environments/environment';
-import { MockMediaService } from '../../../shared/media/mock-media.service';
 import { MediaService } from '../../../shared/media/media.service';
+import { MockMediaService } from '../../../shared/media/mock-media.service';
+import { MockOfferService } from '../../../shared/offer/mock-offer.service';
+import { OfferService } from '../../../shared/offer/offer.service';
+import { AlertService } from '../../../shared/popup/alert.service';
+import { MockAlertService } from '../../../shared/popup/mock-alert.service';
+import { MockProductService } from '../../../shared/product/shared/mock-product.service';
+import { ProductService } from '../../../shared/product/shared/product.service';
+import { SharedModule } from '../../../shared/shared.module';
 import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
+import { environment } from '../../environments/environment';
+
+import { OfferEditComponent } from './offer-edit.component';
 
 describe('OfferEditComponent', () => {
   let component: OfferEditComponent;
@@ -40,8 +40,8 @@ describe('OfferEditComponent', () => {
         AgmCoreModule.forRoot({
           apiKey: environment.googleMapApiKey
         }),
-        AngularFireModule.initializeApp(environment.firebase),
         AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebase),
         CommonModule,
         HttpClientTestingModule,
         RouterTestingModule,

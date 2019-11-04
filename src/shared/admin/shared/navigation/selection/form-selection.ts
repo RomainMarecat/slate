@@ -10,37 +10,37 @@ export class SelectionFormType {
 
   createForm(selection: Selection) {
     this.form = new FormGroup({
-      'name': new FormControl(selection && selection.name ? selection.name : '', [
+      name: new FormControl(selection && selection.name ? selection.name : '', [
         Validators.required,
       ]),
-      'translations': new FormGroup({
-        'fr': new FormControl(selection && selection.translations && selection.translations.fr ?
+      translations: new FormGroup({
+        fr: new FormControl(selection && selection.translations && selection.translations.fr ?
           selection.translations.fr : '', [
             Validators.required
           ])
       }),
-      'slug': new FormControl(selection && selection.slug, []),
-      'alias': new FormControl(selection && selection.alias, []),
-      'description': new FormControl(
+      slug: new FormControl(selection && selection.slug, []),
+      alias: new FormControl(selection && selection.alias, []),
+      description: new FormControl(
         selection && selection.description ? selection.description : '', []
       ),
-      'keywords': new FormControl(
+      keywords: new FormControl(
         selection && selection.keywords ? selection.keywords : '', []
       ),
-      'parent': new FormControl(
+      parent: new FormControl(
         selection && selection.parent ? selection.parent : null, []
       ),
-      'level': new FormControl(
+      level: new FormControl(
         selection && selection.level ? selection.level : 0, []),
-      'products': new FormControl(
+      products: new FormControl(
         selection && selection.products ? selection.products : [], []
       ),
-      'images': new FormControl(
+      images: new FormControl(
         selection && selection.images ? selection.images : [], []
       ),
-      'root': new FormControl(selection && selection.root ? selection.root : false, []),
-      'published': new FormControl(selection && selection.published ? selection.published : true, []),
-      'published_at': new FormControl(selection && selection.published_at ?
+      root: new FormControl(selection && selection.root ? selection.root : false, []),
+      published: new FormControl(selection && selection.published ? selection.published : true, []),
+      published_at: new FormControl(selection && selection.published_at ?
         selection.published_at : '', [])
     });
   }

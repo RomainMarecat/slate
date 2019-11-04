@@ -9,8 +9,8 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./storage-image.component.scss']
 })
 export class StorageImageComponent {
-  @Input() panelClass: string | Object;
-  @Input() panelStyle: string | Object;
+  @Input() panelClass: string | object;
+  @Input() panelStyle: string | object;
   @Input() matCardImage: boolean;
   @Input() downloadURL: string;
   @Input() type: string;
@@ -28,11 +28,6 @@ export class StorageImageComponent {
   get publicId(): string {
     return this._publicId;
   }
-
-  get key(): string {
-    return this._key;
-  }
-
   @Input()
   set publicId(publicId: string) {
     this._publicId = publicId;
@@ -77,5 +72,10 @@ export class StorageImageComponent {
           this.mediaErrored.emit(true);
         });
     }
+  }
+
+
+  get key(): string {
+    return this._key;
   }
 }

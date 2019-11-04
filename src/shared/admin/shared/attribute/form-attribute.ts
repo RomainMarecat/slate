@@ -10,28 +10,28 @@ export class AttributeFormType {
 
   createForm(attribute: Attribute) {
     this.form = new FormGroup({
-      'name': new FormControl(attribute && attribute.name ? attribute.name : '', [
+      name: new FormControl(attribute && attribute.name ? attribute.name : '', [
         Validators.required,
       ]),
-      'slug': new FormControl(attribute && attribute.slug, [
+      slug: new FormControl(attribute && attribute.slug, [
         Validators.required
       ]),
-      'translations': new FormGroup({
-        'fr': new FormControl(attribute && attribute.translations && attribute.translations.fr ?
+      translations: new FormGroup({
+        fr: new FormControl(attribute && attribute.translations && attribute.translations.fr ?
           attribute.translations.fr : '', [
             Validators.required
           ])
       }),
-      'type': new FormControl(attribute && attribute.type ? attribute.type : 'select', [
+      type: new FormControl(attribute && attribute.type ? attribute.type : 'select', [
         Validators.required
       ]),
-      'order_by': new FormControl(attribute && attribute.order_by ? attribute.order_by : 'name', [
+      order_by: new FormControl(attribute && attribute.order_by ? attribute.order_by : 'name', [
         Validators.required,
       ]),
-      'terms': new FormControl(attribute && attribute.terms ? attribute.terms : [], [
+      terms: new FormControl(attribute && attribute.terms ? attribute.terms : [], [
         Validators.required,
       ]),
-      'term': new FormControl('', [
+      term: new FormControl('', [
       ]),
     });
   }

@@ -40,7 +40,7 @@ export class OfferListComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private title: Title,
               private meta: Meta,
-              private ProductComponent: ElementRef,
+              private productComponent: ElementRef,
               private userService: UserService,
               private menuService: MenuService,
               public alertService: AlertService,

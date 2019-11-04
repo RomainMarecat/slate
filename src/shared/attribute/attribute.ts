@@ -1,5 +1,5 @@
-export class Attribute {
-  key ?: string;
+export interface Attribute {
+  key?: string;
   name: string;
   translations: {
     fr: string;

@@ -136,9 +136,9 @@ export class OfferDetailComponent implements OnInit {
     comment.entity_type = 'Offer';
     comment.order = this.comments.length + 1;
     this.commentService.createComment(comment).subscribe(() => {
-      this.alertService.toast(this.translate.instant('comments.added'), 'success');
+      this.alertService.toast(this.translate.instant('comments.added'), {panelClass: 'success'});
     }, (err) => {
-      this.alertService.toast(err, 'error');
+      this.alertService.toast(err, {panelClass: 'error'});
     });
   }
 

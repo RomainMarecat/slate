@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { MenuService } from '../../menu/menu.service';
 import { TranslateService } from '@ngx-translate/core';
+import { MenuService } from '../../menu/menu.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,7 @@ export class SeoService {
   /**
    * Seo's activation with entity type meta title and description
    */
-  setSeo(type: string, parameters: Object = {}) {
+  setSeo(type: string, parameters: object = {}) {
     this.translateService.get([`meta.title.${type}`, `meta.description.${type}`, `menu.title.${type}`], parameters)
       .subscribe((translations: string[]) => {
         this.meta.updateTag({name: 'description', content: translations[`meta.description.${type}`]});

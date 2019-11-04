@@ -21,7 +21,7 @@ describe('MediaViewerComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         NgPipesModule,
-        CloudinaryModule.forRoot({Cloudinary: Cloudinary}, environment.cloudinary),
+        CloudinaryModule.forRoot({Cloudinary}, environment.cloudinary),
         Angulartics2Module.forRoot( {
           developerMode: true,
           pageTracking: {

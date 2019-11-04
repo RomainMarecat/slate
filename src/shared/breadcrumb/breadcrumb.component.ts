@@ -83,12 +83,12 @@ export class BreadcrumbComponent {
   }
 
   addLabel(route: ActivatedRoute, breadcrumb: UriElement, nextUrl: string): UriElement {
-    if (route && route.routeConfig && route.routeConfig.data && route.routeConfig.data['breadcrumb']) {
-      const label = route.routeConfig.data['breadcrumb'];
+    if (route && route.routeConfig && route.routeConfig.data && route.routeConfig.data.breadcrumb) {
+      const label = route.routeConfig.data.breadcrumb;
       // In the routeConfig the complete path is not available,
       // so we rebuild it each time
       breadcrumb = {
-        label: label,
+        label,
         url: nextUrl
       };
       if (typeof this.notAllowedUrls[route.routeConfig.path] !== 'undefined') {
@@ -110,9 +110,9 @@ export class BreadcrumbComponent {
     if (route &&
       route.routeConfig &&
       route.routeConfig.data &&
-      route.routeConfig.data['breadcrumb'] &&
+      route.routeConfig.data.breadcrumb &&
       route.snapshot.params.slug &&
-      route.routeConfig.data['breadcrumb'] === this.notAllowedUrls[route.routeConfig.path].breadcrumb) {
+      route.routeConfig.data.breadcrumb === this.notAllowedUrls[route.routeConfig.path].breadcrumb) {
       this.product = null;
       this.category = null;
       this[this.notAllowedUrls[route.routeConfig.path].function](route.snapshot.params.slug);

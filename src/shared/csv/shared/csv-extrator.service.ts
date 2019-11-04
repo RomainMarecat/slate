@@ -52,7 +52,7 @@ export class CsvExtratorService {
   /**
    * Process values of object
    */
-  processData(object: Object, enclosedBy: string): Object {
+  processData(object: object, enclosedBy: string): object {
     Object.keys(object).forEach((index: string) => {
 
       // Supprime toutes les occurences de " en trop au début et à la fin

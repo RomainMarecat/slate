@@ -59,14 +59,6 @@ import { PaymentService } from '../../shared/payment/shared/payment.service';
 import { SeoService } from '../../shared/seo/shared/seo.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-export const production = new InjectionToken<string>('production');
-export const site_name = new InjectionToken<string>('site_name');
-export const app_name = new InjectionToken<string>('app_name');
-export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
-export const clientAdSense = new InjectionToken<string>('clientAdSense');
-export const slotAdSense = new InjectionToken<string>('slotAdSense');
-export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
-
 export const CONFIG_TOKEN = new InjectionToken<any>('Registered config');
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_EVENT = new InjectionToken<string>('event');
@@ -106,7 +98,7 @@ export class ConfigService {
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
-    'domain': environment.cookie.domain
+    domain: environment.cookie.domain
   },
   position: 'bottom',
   theme: 'block',
@@ -235,12 +227,6 @@ export class CoreModule {
   static forRoot(config: Environment): ModuleWithProviders {
     return {
       ngModule: CoreModule,
-      providers: [
-        {provide: production, useValue: config.production},
-        {provide: site_name, useValue: config.site_name},
-        {provide: app_name, useValue: config.app_name},
-        {provide: firebase, useValue: config.firebase},
-      ]
     };
   }
 }

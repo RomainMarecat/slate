@@ -37,12 +37,12 @@ export class VisitorService {
 
   constructor(public afs: AngularFirestore, @Inject('TABLE_NAME') table: string) {
     this.initializeBehaviour(table);
-    this.documents$ = combineLatest(
+    this.documents$ = combineLatest([
       this.filters$,
       this.limit$,
       this.orderBy$,
       this.query$
-    ).pipe(
+    ]).pipe(
       switchMap(([filters, limit, orderBy, query]) => {
         return this.afs.collection(this.table, (ref) => {
           this.query = ref as CollectionReference;

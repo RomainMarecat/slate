@@ -41,7 +41,7 @@ export class CardComponent implements OnInit {
 
     const textArea = this.el.nativeElement.getElementsByTagName('textarea')[0];
 
-    setTimeout(function () {
+    setTimeout(() => {
       textArea.focus();
     }, 0);
   }

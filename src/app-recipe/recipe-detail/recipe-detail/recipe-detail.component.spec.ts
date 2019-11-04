@@ -1,10 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockMatIconComponent } from '../../../shared/mock/mock-mat-icon.component';
 
 import { RecipeDetailComponent } from './recipe-detail.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
-import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule, MatStepperModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIcon, MatIconModule, MatProgressSpinnerModule, MatStepperModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgPipesModule } from 'ngx-pipes';
@@ -73,6 +74,16 @@ describe('RecipeDetailComponent', () => {
         {provide: LocalizeRouterService, useClass: MockLocalizeRouterService}
       ]
     })
+      .overrideModule(MatIconModule, {
+        remove: {
+          declarations: [MatIcon],
+          exports: [MatIcon]
+        },
+        add: {
+          declarations: [MockMatIconComponent],
+          exports: [MockMatIconComponent]
+        }
+      })
       .compileComponents();
   }));
 

@@ -45,14 +45,11 @@ import { environment } from '../environments/environment';
 import { HomeModule } from '../home/home.module';
 
 export const production = new InjectionToken<string>('production');
-export const site_name = new InjectionToken<string>('site_name');
-export const app_name = new InjectionToken<string>('app_name');
 export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
 export const clientAdSense = new InjectionToken<string>('clientAdSense');
 export const slotAdSense = new InjectionToken<string>('slotAdSense');
-export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
-export function createTranslateLoader(http: HttpClient, name: string) {
+export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
 }
 
@@ -86,7 +83,7 @@ export class ConfigService {
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
-    'domain': environment.cookie.domain
+    domain: environment.cookie.domain
   },
   position: 'bottom',
   theme: 'block',
@@ -117,8 +114,6 @@ export const cookieConfig: NgcCookieConsentConfig = {
     CommonModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
-    /*    AngularFirestoreModule,
-     */
     AngularFirestoreModule.enablePersistence(),
     Angulartics2Module.forRoot({
       developerMode: true,
@@ -139,7 +134,7 @@ export const cookieConfig: NgcCookieConsentConfig = {
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [HttpClient, app_name]
+        deps: [HttpClient]
       }
     }),
     HomeModule,
@@ -210,8 +205,6 @@ export class CoreModule {
       ngModule: CoreModule,
       providers: [
         {provide: production, useValue: config.production},
-        {provide: site_name, useValue: config.site_name},
-        {provide: app_name, useValue: config.app_name},
         {provide: firebase, useValue: config.firebase},
       ]
     };

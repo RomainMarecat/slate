@@ -1,6 +1,6 @@
 import { Address } from '../address/shared/address';
 
-export class Partner {
+export interface Partner {
   key: string;
   id?: string;
   name: string;

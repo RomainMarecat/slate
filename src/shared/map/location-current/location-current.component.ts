@@ -81,6 +81,10 @@ export class LocationCurrentComponent implements OnInit {
     }
   }
 
+  get mapConfig() {
+    return this._mapConfig;
+  }
+
   addMarker(latLngLocation: LatLngExpression) {
     const iconMarker: LeafletMarker = marker(
       latLngLocation,
@@ -96,9 +100,5 @@ export class LocationCurrentComponent implements OnInit {
     )
       .bindPopup(this.translateService.instant('location-current.label.meeting'));
     this.markers.push(iconMarker);
-  }
-
-  get mapConfig() {
-    return this._mapConfig;
   }
 }

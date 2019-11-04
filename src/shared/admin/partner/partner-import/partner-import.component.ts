@@ -93,7 +93,7 @@ export class PartnerImportComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: {columns: TableColumn[]}) => {
-      if (result['columns']) {
+      if (result.columns) {
         const columns: string[] = result.columns.map(i => i.prop.toString());
         const partnerToImport = this.partners.map((partner) => {
           const filters = {};

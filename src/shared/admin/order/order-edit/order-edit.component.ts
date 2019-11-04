@@ -67,10 +67,10 @@ export class OrderEditComponent extends BaseEditComponent<Order> implements OnIn
 
       this.document = {...this.document, ...this.form.value};
 
-      if (this.document['published'] === true) {
-        this.document['published_at'] = new Date();
+      if ((this.document as unknown as any).published === true) {
+        (this.document as unknown as any).published_at = new Date();
       }
-      if (this.document.key) {
+      if ((this.document as unknown as any).key) {
         this.updateDocument();
       } else {
         this.createDocument();
@@ -92,7 +92,7 @@ export class OrderEditComponent extends BaseEditComponent<Order> implements OnIn
   updateDocument() {
     this.orderService.updateDocument(this.document)
       .then((doc) => {
-        this.alertService.show(`document updated ${this.document.key}`);
+        this.alertService.show(`document updated ${(this.document as unknown as any).key}`);
         this.reset();
         this.router.navigate([this.localizeRouterService.translateRoute('/admin/order')]);
       }, (err) => {

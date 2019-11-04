@@ -102,12 +102,12 @@ export class ColumnComponent implements OnInit {
 
   addCard() {
     this.cards = this.cards || [];
-    const card = <Card>{
+    const card = {
       title: this.addCardText,
       order: (this.cards.length + 1) * 1000,
       columnId: this.column.key,
       boardId: this.column.boardId
-    };
+    } as Card;
     this.cardService.createCard(card)
       .then((doc) => {
         card.key = doc.id;
@@ -159,7 +159,7 @@ export class ColumnComponent implements OnInit {
       .getElementsByClassName('column-header')[0]
       .getElementsByTagName('input')[0];
 
-    setTimeout(function () {
+    setTimeout(() => {
       input.focus();
     }, 0);
   }
@@ -170,7 +170,7 @@ export class ColumnComponent implements OnInit {
       .getElementsByClassName('add-card')[0]
       .getElementsByTagName('input')[0];
 
-    setTimeout(function () {
+    setTimeout(() => {
       input.focus();
     }, 0);
   }

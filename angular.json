@@ -29,9 +29,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-alr/styles.scss"
@@ -101,9 +101,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-alr/styles.scss"
@@ -161,9 +161,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-store-admin/styles.scss"
@@ -233,9 +233,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-store-admin/styles.scss"
@@ -297,9 +297,9 @@
                         "styles": [
                             "./node_modules/material-design-icons/iconfont/material-icons.css",
                             "./node_modules/font-awesome/css/font-awesome.css",
-                            "./node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "./node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "./node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "./node_modules/@swimlane/ngx-datatable/index.css",
+                            "./node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "./node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "./node_modules/bootstrap/dist/css/bootstrap.css",
                             "./node_modules/cookieconsent/build/cookieconsent.min.css",
                             "./node_modules/leaflet/dist/leaflet.css",
@@ -407,9 +407,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngionicx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-showcase/styles.scss"
@@ -466,9 +466,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-car/styles.scss"
@@ -530,9 +530,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-car/styles.scss"
@@ -589,9 +589,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-blog/styles.scss"
@@ -653,9 +653,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-blog/styles.scss"
@@ -712,9 +712,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-booking/styles.scss"
@@ -776,9 +776,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-booking/styles.scss"
@@ -835,9 +835,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-hockey/styles.scss"
@@ -899,9 +899,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-hockey/styles.scss"
@@ -958,9 +958,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-store/styles.scss"
@@ -1022,9 +1022,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-store/styles.scss"
@@ -1099,9 +1099,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "node_modules/@ng-select/ng-select/themes/material.theme.css",
@@ -1196,9 +1196,9 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/@swimlane/ngx-datatable/release/index.css",
-                            "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
-                            "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/index.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/material.css",
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "src/app-recipe/styles.scss"

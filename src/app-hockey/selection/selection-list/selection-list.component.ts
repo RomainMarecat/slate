@@ -140,8 +140,8 @@ export class SelectionListComponent implements OnInit {
     if (object[column] === value) {
       return object;
     }
-    let result, property;
-    for (property in object) {
+    let result;
+    for (const property in object) {
       if (object.hasOwnProperty(property) && typeof object[property] === 'object') {
         result = this.findOneBy(object[property], column, value);
         if (result) {

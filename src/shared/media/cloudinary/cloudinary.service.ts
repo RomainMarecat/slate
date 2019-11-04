@@ -8,16 +8,16 @@ import { CloudinaryTransformationDirective } from './cloudinary-transformation.d
  *
  * this function does not validate the correctness of the string content other than the first and last character
  */
-const isJsonLikeString = function (str: any): boolean {
+const isJsonLikeString = (str: any): boolean => {
   // [\s\S] allows the string to contain new lines
   return str && typeof str === 'string' && (str.trim().match(/^{[\s\S]*?}$/) !== null);
 };
 
-const isNamedNodeMap = function (obj: any): boolean {
+const isNamedNodeMap = (obj: any): boolean => {
   return obj && (obj.constructor.name === 'NamedNodeMap' || obj instanceof NamedNodeMap);
 };
 
-const namedNodeMapToObject = function (source: NamedNodeMap): any {
+const namedNodeMapToObject = (source: NamedNodeMap): any => {
   const target = {};
   Object.keys(source).forEach(index => {
     const name = source[index].name;
@@ -27,7 +27,7 @@ const namedNodeMapToObject = function (source: NamedNodeMap): any {
   return target;
 };
 
-const transformKeyNamesFromKebabToSnakeCase = function (obj: any): any {
+const transformKeyNamesFromKebabToSnakeCase = (obj: any): any => {
   let _obj = obj;
   if (isJsonLikeString(obj)) {
     // Given attribute value is in the form of a JSON object -

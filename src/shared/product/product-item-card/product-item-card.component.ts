@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../shared/product';
-import { DateService } from '../../util/date.service';
 import { LocalizeRouterService } from 'localize-router';
 import { LoaderService } from '../../loader/loader.service';
+import { DateService } from '../../util/date.service';
+import { Product } from '../shared/product';
 
 @Component({
   selector: 'app-product-item-card',
@@ -12,7 +12,7 @@ import { LoaderService } from '../../loader/loader.service';
 })
 export class ProductItemCardComponent implements OnInit {
 
-  _product: Product;
+  private _product: Product;
   @Output() updatedProduct: EventEmitter<Product> = new EventEmitter<Product>();
   cols: number;
   resizedImage: any;

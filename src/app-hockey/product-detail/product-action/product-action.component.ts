@@ -14,12 +14,14 @@ import { AlertService } from '../../../shared/popup/alert.service';
 export class ProductActionComponent implements OnInit {
 
   @Input() product: HockeyProduct;
-  @Output() updateScore: EventEmitter < HockeyProduct > = new EventEmitter < HockeyProduct > ();
+  @Output() updateScore: EventEmitter<HockeyProduct> = new EventEmitter<HockeyProduct>();
 
   constructor(private userService: UserService, private scoreService: ScoreService,
-    private alertService: AlertService) {}
+              private alertService: AlertService) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   /**
    * Add +1 or -1 on current score
@@ -36,16 +38,16 @@ export class ProductActionComponent implements OnInit {
           if (authorized) {
             this.updateProductScore(product, score);
           } else {
-            this.alertService.toast('Vous avez déjà voté', 'error');
+            this.alertService.toast('Vous avez déjà voté', {panelClass: 'error'});
           }
         }, (err) => {
-          this.alertService.toast('Nous ne sommes pas en mesure de savoir si vous avez voté, veuillez recommencer.', 'error');
+          this.alertService.toast('Nous ne sommes pas en mesure de savoir si vous avez voté, veuillez recommencer.', {panelClass: 'error'});
         });
       } else {
-        this.alertService.toast('Il faut se connecter pour pouvoir voter', 'error');
+        this.alertService.toast('Il faut se connecter pour pouvoir voter', {panelClass: 'error'});
       }
     }, (err) => {
-      this.alertService.toast('Vous n\'avons pas retrouvé votre utilisateur', 'error');
+      this.alertService.toast('Vous n\'avons pas retrouvé votre utilisateur', {panelClass: 'error'});
     });
   }
 

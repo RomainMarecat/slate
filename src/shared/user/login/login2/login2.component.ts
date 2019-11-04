@@ -15,18 +15,18 @@ export class Login2Component implements OnInit {
 
   static getForm(): FormGroup {
     return new FormGroup({
-      'email': new FormControl('', [
+      email: new FormControl('', [
         Validators.required,
         Validators.pattern(EMAIL_REGEX),
         Validators.minLength(5),
         Validators.maxLength(100)
       ]),
-      'password': new FormControl('', [
+      password: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(50),
       ]),
-      'remember_me': new FormControl(false)
+      remember_me: new FormControl(false)
     });
   }
 

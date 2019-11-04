@@ -58,7 +58,7 @@ import { MenuModule } from '../../shared/menu/menu.module';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
-    'domain': environment.site_name
+    domain: environment.site_name
   },
   position: 'bottom',
   theme: 'block',

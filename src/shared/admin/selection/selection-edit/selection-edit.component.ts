@@ -155,7 +155,7 @@ export class SelectionEditComponent implements OnInit {
       .subscribe((value) => {
         if (value.name) {
           const slug = StringService.slugify(value.name);
-          this.form.patchValue({name: value.name, slug: slug, alias: value.name});
+          this.form.patchValue({name: value.name, slug, alias: value.name});
         }
       });
   }
@@ -203,7 +203,7 @@ export class SelectionEditComponent implements OnInit {
   createSelection() {
     this.selectionService.createSelection(this.selection)
       .then(() => {
-        this.alertService.show(`La selection ${this.selection.name} est crée`, 'info');
+        this.alertService.show(`La selection ${this.selection.name} est crée`, {panelClass: 'info'});
       }, (err) => {
         this.alertService.show(err);
       });
@@ -212,7 +212,7 @@ export class SelectionEditComponent implements OnInit {
   updateSelection() {
     this.selectionService.updateSelection(this.selection)
       .then(() => {
-        this.alertService.show(`La selection ${this.selection.name} est mise à jour`, 'info');
+        this.alertService.show(`La selection ${this.selection.name} est mise à jour`, {panelClass: 'info'});
       }, (err) => {
         this.alertService.show(err);
       });
@@ -228,7 +228,7 @@ export class SelectionEditComponent implements OnInit {
   }
 
   set products(products) {
-    this.form.patchValue({products: products});
+    this.form.patchValue({products});
   }
 
   /**

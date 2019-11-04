@@ -58,7 +58,7 @@ export class AreaDrawComponent implements OnInit {
       const path2D = new Path2D(area.path);
       this.drawPath(context, path2D);
 
-      this.paths.push({area: area, path2D: path2D});
+      this.paths.push({area, path2D});
     });
 
     /**

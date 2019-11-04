@@ -12,13 +12,13 @@ export class LoaderService {
    * Send a show action
    */
   show() {
-    this.loaderSubject.next( < LoaderState > { show: true });
+    this.loaderSubject.next( { show: true } as LoaderState);
   }
 
   /**
    * Send a hide action
    */
   hide() {
-    this.loaderSubject.next( < LoaderState > { show: false });
+    this.loaderSubject.next( { show: false } as LoaderState);
   }
 }

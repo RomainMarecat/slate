@@ -1,4 +1,4 @@
-export class Map {
+export interface Map {
   key: string;
   name: string;
   published: boolean;

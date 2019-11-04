@@ -14,7 +14,7 @@ export class A2hsService {
   // user agent
   isChrome = false;
   isExplorer = false;
-  isExplorer_11 = false;
+  isExplorer11 = false;
   isFirefox = false;
   isSafari = false;
   isOpera = false;
@@ -61,7 +61,7 @@ export class A2hsService {
   testUserAgent(userAgent: string) {
     this.isChrome = /chrome/.test(userAgent);
     this.isExplorer = /msie/.test(userAgent);
-    this.isExplorer_11 = /rv:11/.test(userAgent);
+    this.isExplorer11 = /rv:11/.test(userAgent);
     this.isFirefox = /firefox/.test(userAgent);
     this.isSafari = /safari/.test(userAgent);
     this.isOpera = /opr/.test(userAgent);

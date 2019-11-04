@@ -10,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RadioButtonComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
-    'season': new FormControl('', [
+    season: new FormControl('', [
       Validators.required,
     ]),
   });
@@ -32,6 +32,6 @@ export class RadioButtonComponent implements OnInit {
   }
 
   set season(season) {
-    this.form.patchValue({season: season});
+    this.form.patchValue({season});
   }
 }

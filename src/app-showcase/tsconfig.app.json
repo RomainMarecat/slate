@@ -15,6 +15,7 @@
     "test.ts",
     "../shared/i18n/translate-server-loader.service.ts",
     "../shared/i18n/translates-server/*.ts",
+    "shared/mock/mock-mat-icon.component.ts",
     "**/*.spec.ts",
     "../shared/*.spec.ts",
     "../shared/**/*.spec.ts"

@@ -49,13 +49,10 @@ import { PaymentService } from '../../shared/payment/shared/payment.service';
 import { ShippingService } from '../../shared/shipping/shared/shipping.service';
 
 export const production = new InjectionToken<string>('production');
-export const site_name = new InjectionToken<string>('site_name');
-export const app_name = new InjectionToken<string>('app_name');
 export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
 export const cloudinary = new InjectionToken<CloudinaryConfiguration>('cloudinary');
 export const clientAdSense = new InjectionToken<string>('clientAdSense');
 export const slotAdSense = new InjectionToken<string>('slotAdSense');
-export const facebook_app_id = new InjectionToken<string>('facebook_app_id');
 
 export function createTranslateLoader(http: HttpClient, name: string) {
   return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
@@ -101,7 +98,7 @@ export class ConfigService {
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
-    'domain': environment.cookie.domain
+    domain: environment.cookie.domain
   },
   position: 'bottom',
   theme: 'block',
@@ -225,8 +222,6 @@ export class CoreModule {
       providers: [
         {provide: STRIPE_KEY, useValue: config.stripeKey},
         {provide: production, useValue: config.production},
-        {provide: site_name, useValue: config.site_name},
-        {provide: app_name, useValue: config.app_name},
         {provide: firebase, useValue: config.firebase},
         {provide: cloudinary, useValue: config.cloudinary}
       ]

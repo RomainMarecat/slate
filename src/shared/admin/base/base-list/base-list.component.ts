@@ -1,12 +1,14 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
 import { Observable } from 'rxjs';
+import { DeviceOrientation } from 'tns-core-modules/ui/enums';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MenuService } from '../../../menu/menu.service';
 import { VisitorService } from '../../../firestore/visitor.service';
 import { MatDialog } from '@angular/material';
 import { LocalizeRouterService } from 'localize-router';
 import { Router } from '@angular/router';
+import unknown = DeviceOrientation.unknown;
 
 @Component({
   selector: 'app-base-list',
@@ -124,8 +126,8 @@ export class BaseListComponent<T> implements OnInit {
    */
   publish() {
     this.selected.forEach((document: T) => {
-      if (document['published'] === false) {
-        document['published'] = true;
+      if ((document as unknown as any).published === false) {
+        (document as unknown as any).published = true;
         this.updatePublication(document);
       }
     });
@@ -136,8 +138,8 @@ export class BaseListComponent<T> implements OnInit {
    */
   unpublish() {
     this.selected.forEach((document: T) => {
-      if (document['published'] === true) {
-        document['published'] = false;
+      if ((document as unknown as any).published === true) {
+        (document as unknown as any).published = false;
         this.updatePublication(document);
       }
     });
@@ -148,12 +150,12 @@ export class BaseListComponent<T> implements OnInit {
    * Update a publication
    */
   private updatePublication(document: T) {
-    if (document['published'] === true) {
-      if (!document['published_at']) {
-        document['published_at'] = new Date();
+    if ((document as unknown as any).published === true) {
+      if (!(document as unknown as any).published_at) {
+        (document as unknown as any).published_at = new Date();
       }
     } else {
-      document['published_at'] = null;
+      (document as unknown as any).published_at = null;
     }
 
     this.visitorService.updateDocument(document).then(() => {
@@ -164,7 +166,7 @@ export class BaseListComponent<T> implements OnInit {
    * set published value
    */
   updateDocumentPublication(document: T, event: {source: any, value: boolean}) {
-    document['published'] = event.value;
+    (document as unknown as any).published = event.value;
     this.updatePublication(document);
   }
 
@@ -209,7 +211,7 @@ export class BaseListComponent<T> implements OnInit {
    * route to show document preview
    */
   showDocument(document: T) {
-    if (!document['key']) {
+    if (!(document as unknown as any).key) {
       this.router.navigate(['/']);
     }
     this.router.navigate([
@@ -218,7 +220,7 @@ export class BaseListComponent<T> implements OnInit {
       this.router.navigate([
         this.localizeRouterService.translateRoute('admin'),
         'order',
-        document['key']
+        (document as unknown as any).key
       ]);
     });
   }
@@ -234,7 +236,7 @@ export class BaseListComponent<T> implements OnInit {
         this.localizeRouterService.translateRoute('admin'),
         'order',
         'edit',
-        document['key']
+        (document as unknown as any).key
       ]);
     });
   }

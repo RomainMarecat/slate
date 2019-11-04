@@ -33,7 +33,7 @@ export class CartService extends VisitorService {
     return {
       name: product.name,
       code: product.key,
-      quantity: quantity,
+      quantity,
       image: product.image1,
       price: product.price,
       created_at: new Date(),
