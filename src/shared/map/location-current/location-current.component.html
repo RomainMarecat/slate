@@ -21,10 +21,12 @@
   </agm-map>
 </div>
 
-<div style="height: 500px;"
-     leaflet
-     [leafletLayers]="markers"
-     (leafletMapReady)="onMapReady($event)"
-     [leafletOptions]="options"
-     *ngIf="type === 'leaflet' && options">
-</div>
+<ng-container *ngIf="universalService.isBrowser()">
+  <div style="height: 500px;"
+       leaflet
+       [leafletLayers]="markers"
+       (leafletMapReady)="onMapReady($event)"
+       [leafletOptions]="options"
+       *ngIf="type === 'leaflet' && options">
+  </div>
+</ng-container>

@@ -1,0 +1,27 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../out-tsc/app",
+        "baseUrl": "./",
+        "module": "commonjs",
+        "types": [
+            "node"
+        ]
+    },
+    "angularCompilerOptions": {
+        "entryModule": "app.server.module#AppServerModule"
+    },
+    "include": [
+        "main.server.ts",
+        "polyfills.ts",
+        "../shared/*",
+        "../shared/**/*.ts"
+    ],
+    "exclude": [
+        "test.ts",
+        "**/*.spec.ts",
+        "../shared/mock/mock-mat-icon.component.ts",
+        "../shared/*.spec.ts",
+        "../shared/**/*.spec.ts"
+    ]
+}

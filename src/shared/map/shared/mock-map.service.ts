@@ -1,4 +1,3 @@
-import { isPlatformBrowser } from '@angular/common';
 import { Map as LeafletMap } from 'leaflet';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { skipWhile } from 'rxjs/operators';

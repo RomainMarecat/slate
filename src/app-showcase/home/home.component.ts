@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../../shared/menu/menu.service';
+import { UniversalService } from '../../shared/universal/universal.service';
 
 @Component({
   selector: 'app-blog-home',
@@ -38,7 +39,8 @@ export class HomeComponent implements OnInit {
     }
   };
 
-  constructor(private menuService: MenuService) {
+  constructor(private menuService: MenuService,
+              public universalService: UniversalService) {
   }
 
   ngOnInit() {

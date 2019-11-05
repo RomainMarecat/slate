@@ -16,7 +16,9 @@
 
 <app-firebase-agenda [onlineSession]="onlineSession"></app-firebase-agenda>
 
-<app-map-location-current type="leaflet" [mapConfig]="mapConfig"></app-map-location-current>
+<ng-container *ngIf="universalService.isBrowser()">
+  <app-map-location-current type="leaflet" [mapConfig]="mapConfig"></app-map-location-current>
+</ng-container>
 
 <app-contact-add></app-contact-add>
 

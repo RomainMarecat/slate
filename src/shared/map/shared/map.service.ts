@@ -1,11 +1,11 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Map as LeafletMap } from 'leaflet';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { skipWhile } from 'rxjs/operators';
 import { VisitorService } from '../../firestore/visitor.service';
+import { UniversalService } from '../../universal/universal.service';
 import { Map } from './map';
-import { Map as LeafletMap } from 'leaflet';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +16,12 @@ export class MapService extends VisitorService {
 
   constructor(afs: AngularFirestore,
               @Inject('TABLE_MAP') table: string,
-              @Inject(PLATFORM_ID) private platformId) {
+              private universalService: UniversalService) {
     super(afs, table);
   }
 
   onMapReady(map: LeafletMap) {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.universalService.isBrowser()) {
       this.map$.next(map);
     }
   }

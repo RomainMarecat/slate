@@ -133,6 +133,24 @@
                             "**/node_modules/**"
                         ]
                     }
+                },
+                "server": {
+                    "builder": "@angular-devkit/build-angular:server",
+                    "options": {
+                        "outputPath": "functions/dist/server",
+                        "main": "src/app-alr/main.server.ts",
+                        "tsConfig": "src/app-alr/tsconfig.server.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-alr/environments/environment.ts",
+                                    "with": "src/app-alr/environments/environment.prod.ts"
+                                }
+                            ]
+                        }
+                    }
                 }
             }
         },
@@ -437,6 +455,24 @@
                         "exclude": [
                             "**/node_modules/**"
                         ]
+                    }
+                },
+                "server": {
+                    "builder": "@angular-devkit/build-angular:server",
+                    "options": {
+                        "outputPath": "functions/dist/server",
+                        "main": "src/app-showcase/main.server.ts",
+                        "tsConfig": "src/app-showcase/tsconfig.server.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/app-showcase/environments/environment.ts",
+                                    "with": "src/app-showcase/environments/environment.prod.ts"
+                                }
+                            ]
+                        }
                     }
                 }
             }

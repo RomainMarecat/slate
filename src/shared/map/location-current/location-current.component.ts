@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { icon, latLng, LatLngExpression, Map as LeafletMap, MapOptions, Marker as LeafletMarker, marker, tileLayer } from 'leaflet';
+import { UniversalService } from '../../universal/universal.service';
 import { Marker } from '../shared/map';
 import { MapService } from '../shared/map.service';
 
@@ -30,13 +31,13 @@ export class LocationCurrentComponent implements OnInit {
   @Input() type: 'google' | 'leaflet';
 
   constructor(private mapService: MapService,
+              public universalService: UniversalService,
               private translateService: TranslateService) {
     this.type = 'google';
   }
 
   ngOnInit() {
   }
-
 
   onMapReady(readyMap: LeafletMap) {
     this.mapService.onMapReady(readyMap);
@@ -55,7 +56,7 @@ export class LocationCurrentComponent implements OnInit {
   }
 
   @Input() set mapConfig(mapConfig) {
-    if (mapConfig) {
+    if (mapConfig && this.universalService.isBrowser()) {
       this._mapConfig = mapConfig;
       this.onMapClick({
         coords: {
