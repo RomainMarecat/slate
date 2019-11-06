@@ -1,27 +1,25 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FormArray, FormGroup } from '@angular/forms';
-import { AlertService } from '../../../popup/alert.service';
-import { StringService } from '../../../util/string.service';
-import { Product } from '../../../product/shared/product';
-import { Media } from '../../../media/media';
-import { CategoryService } from '../../../category/category.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentReference } from '@firebase/firestore-types';
-import { ImageProductComponent } from '../../../media/cloudinary/image-product/image-product.component';
-import { ProductFormType } from '../../shared/product/form-product';
-import { AttributeService } from '../../../attribute/attribute.service';
-import { Partner } from '../../../partner/partner';
-import { Category } from '../../../category/category';
-import { Offer } from '../../../offer/offer';
-import { Attribute } from '../../../attribute/attribute';
-import { OfferService } from '../../shared/offer/offer.service';
 import { UploadTaskSnapshot } from '@firebase/storage-types';
-import { ProductService } from '../../../product/shared/product.service';
-import { debounceTime, take } from 'rxjs/operators';
-import { PartnerService } from '../../../partner/partner.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
-import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
+import { debounceTime, take } from 'rxjs/operators';
+import { Attribute } from '../../../attribute/attribute';
+import { AttributeService } from '../../../attribute/attribute.service';
+import { Category } from '../../../category/category';
+import { CategoryService } from '../../../category/category.service';
+import { ImageProductComponent } from '../../../media/cloudinary/image-product/image-product.component';
+import { Media } from '../../../media/media';
+import { Offer } from '../../../offer/offer';
+import { Partner } from '../../../partner/partner';
+import { PartnerService } from '../../../partner/partner.service';
+import { AlertService } from '../../../popup/alert.service';
+import { Product } from '../../../product/shared/product';
+import { ProductService } from '../../../product/shared/product.service';
+import { StringService } from '../../../util/string.service';
+import { OfferService } from '../../shared/offer/offer.service';
+import { ProductFormType } from '../../shared/product/form-product';
 
 @Component({
   selector: 'app-product-edit',
@@ -241,7 +239,7 @@ export class ProductEditComponent implements OnInit {
   updateProduct(offers: Offer[]) {
     if (this.product.key) {
       if (this.product.published === true) {
-        this.product.published_at = Timestamp.now();
+        this.product.published_at = Math.floor(Date.now() / 1000) as unknown as any;
       }
       this.productService.updateProduct(this.product)
         .subscribe((doc) => {
@@ -276,7 +274,7 @@ export class ProductEditComponent implements OnInit {
           this.addFinally();
         }, (err) => this.addError(err));
       } else {
-        offer.published_at = Timestamp.now();
+        offer.published_at = Math.floor(Date.now() / 1000) as unknown as any;
         this.offerService.createOffer(offer).then((res) => {
           this.addProductOffer(res.id);
         }, (err) => this.addError(err));

@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  isServer: true,
   site_name: 'showcase.com',
   app_name: 'showcase',
   cookie: {

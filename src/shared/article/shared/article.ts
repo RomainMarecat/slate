@@ -1,5 +1,4 @@
-import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
+import { Timestamp } from '../../util/timestamp';
 
 export interface Article {
   key?: string;

@@ -1,20 +1,18 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 import { FormGroup } from '@angular/forms';
-import { AlertService } from '../../../popup/alert.service';
-import { StringService } from '../../../util/string.service';
+import { MatIconRegistry } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentReference } from '@firebase/firestore-types';
+import { TableColumn } from '@swimlane/ngx-datatable';
+import { LocalizeRouterService } from 'localize-router';
+import { debounceTime } from 'rxjs/operators';
 import { Article } from '../../../article/shared/article';
 import { ArticleService } from '../../../article/shared/article.service';
-import { ArticleFormType } from '../../shared/article/form-article';
-import { MatIconRegistry } from '@angular/material';
-import { debounceTime } from 'rxjs/operators';
-import { LocalizeRouterService } from 'localize-router';
 import { Media } from '../../../media/media';
-import { TableColumn } from '@swimlane/ngx-datatable';
-import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
-import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
+import { AlertService } from '../../../popup/alert.service';
+import { StringService } from '../../../util/string.service';
+import { ArticleFormType } from '../../shared/article/form-article';
 
 @Component({
   selector: 'app-admin-article-edit',
@@ -147,7 +145,7 @@ export class ArticleEditComponent implements OnInit {
       this.article = {...this.article, ...this.form.value};
 
       if (this.article.published === true) {
-        this.article.published_at = Timestamp.now();
+        this.article.published_at = Math.floor(Date.now() / 1000) as unknown as any;
       }
       if (this.article.key) {
         this.updateArticle();

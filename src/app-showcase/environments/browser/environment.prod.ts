@@ -1,10 +1,10 @@
 export const environment = {
-  production: false,
+  production: true,
   isServer: false,
-  site_name: 'showcase-384269.firebaseapp.com',
+  site_name: 'showcase.com',
   app_name: 'showcase',
   cookie: {
-    domain: 'localhost'
+    domain: 'showcase-384269.firebaseapp.com'
   },
   firebase: {
     apiKey: 'AIzaSyBk0O_WPy9bBwT3Z0fhPB-wp140DNrUk0g',
@@ -16,7 +16,7 @@ export const environment = {
   },
   googleMapApiKey: 'AIzaSyC5C7vR9IURAVWQHGFPdBSQJHSYdS6MzzM',
   clientAdSense: '',
-  slotAdSense: 123456,
+  slotAdSense: 0,
   slackToken: 'https://hooks.slack.com/services/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',
   facebook_app_id: '',
   stripeKey: 'pk_test_ZMBhVWlsAzGDErk8PFH28TWX'

@@ -8,12 +8,13 @@ import { CoreModule } from './core/core.module';
 import { AppRootComponent } from './core/root.component';
 import { environment } from './environments/environment';
 
+
 @NgModule({
   imports: [
     BrowserModule.withServerTransition({appId: environment.firebase.projectId}),
     BrowserAnimationsModule,
     TransferHttpCacheModule,
-    CoreModule.forRoot(environment),
+    CoreModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     AppRoutingModule
   ],

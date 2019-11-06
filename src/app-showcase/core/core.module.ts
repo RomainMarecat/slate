@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { APP_INITIALIZER, Inject, Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { AngularFireModule, FirebaseAppConfig } from '@angular/fire';
+import { APP_INITIALIZER, InjectionToken, NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MetaLoader, MetaModule, MetaStaticLoader, PageTitlePositioning } from '@ngx-meta/core';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Angulartics2Module } from 'angulartics2';
 import { EventService } from '../../shared/agenda/shared/event.service';
@@ -23,7 +24,6 @@ import { UserGuard } from '../../shared/guard/user.guard';
 import { I18nService } from '../../shared/i18n/i18n.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { AreaService } from '../../shared/map/shared/area.service';
-import { MapService } from '../../shared/map/shared/map.service';
 import { MediaService } from '../../shared/media/media.service';
 import { MenuService } from '../../shared/menu/menu.service';
 import { OfferService } from '../../shared/offer/offer.service';
@@ -43,16 +43,6 @@ import { RoutingState } from '../../shared/util/routing-state';
 import { environment } from '../environments/environment';
 import { HomeModule } from '../home/home.module';
 
-export const production = new InjectionToken<string>('production');
-export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');
-export const clientAdSense = new InjectionToken<string>('clientAdSense');
-export const slotAdSense = new InjectionToken<string>('slotAdSense');
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
-}
-
-export const CONFIG_TOKEN = new InjectionToken<any>('Registered config');
 export const TABLE_EVENT = new InjectionToken<string>('event');
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_AREA = new InjectionToken<string>('area');
@@ -77,13 +67,21 @@ export const TABLE_PARTNER = new InjectionToken<string>('partner');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');
 export const STRIPE_KEY = new InjectionToken<string>('');
 
-@Injectable()
-export class ConfigService {
-  configToken: any;
+export function metaFactory(translate: TranslateService): MetaLoader {
+  return new MetaStaticLoader({
+    callback: (key: string) => translate.get(key),
+    pageTitlePositioning: PageTitlePositioning.PrependPageTitle,
+    pageTitleSeparator: ' - ',
+    applicationName: 'meta.application_name',
+    defaults: {
+      title: 'meta.defaults.title',
+      description: 'meta.defaults.description',
+    }
+  });
+}
 
-  constructor(@Inject(CONFIG_TOKEN) configToken) {
-    this.configToken = configToken;
-  }
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
 }
 
 export function getLanguageFactory(i18nService: I18nService) {
@@ -110,10 +108,14 @@ export function getLanguageFactory(i18nService: I18nService) {
         deps: [HttpClient]
       }
     }),
+    MetaModule.forRoot({
+      provide: MetaLoader,
+      useFactory: (metaFactory),
+      deps: [TranslateService]
+    }),
     HomeModule
   ],
   providers: [
-    {provide: ConfigService, useClass: ConfigService, deps: [CONFIG_TOKEN]},
     {provide: TABLE_ARTICLE, useValue: 'article'},
     {provide: TABLE_AREA, useValue: 'area'},
     {provide: TABLE_ATTRIBUTE, useValue: 'attribute'},
@@ -151,7 +153,6 @@ export function getLanguageFactory(i18nService: I18nService) {
     {provide: MediaService, useClass: MediaService, deps: [AngularFirestore, TABLE_MEDIA]},
     {provide: OfferService, useClass: OfferService, deps: [AngularFirestore, TABLE_OFFER]},
     {provide: OrderService, useClass: OrderService, deps: [AngularFirestore, TABLE_ORDER]},
-    {provide: MapService, useClass: MapService, deps: [AngularFirestore, TABLE_MAP]},
     {provide: ScoreService, useClass: ScoreService, deps: [AngularFirestore, TABLE_SCORE]},
     {provide: PartnerService, useClass: PartnerService, deps: [AngularFirestore, TABLE_PARTNER]},
     {provide: PaymentService, useClass: PaymentService, deps: [AngularFirestore, TABLE_PAYMENT, STRIPE_KEY]},
@@ -181,21 +182,4 @@ export function getLanguageFactory(i18nService: I18nService) {
   ]
 })
 export class CoreModule {
-
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
-    if (parentModule) {
-      throw new Error(
-        'CoreModule is already loaded. Import it in the AppModule only');
-    }
-  }
-
-  static forRoot(config: any): ModuleWithProviders {
-    return {
-      ngModule: CoreModule,
-      providers: [
-        {provide: production, useValue: config.production},
-        {provide: firebase, useValue: config.firebase},
-      ]
-    };
-  }
 }

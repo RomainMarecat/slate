@@ -30,10 +30,13 @@ export class LocationCurrentComponent implements OnInit {
 
   @Input() type: 'google' | 'leaflet';
 
+  isBrowser: boolean;
+
   constructor(private mapService: MapService,
-              public universalService: UniversalService,
+              private universalService: UniversalService,
               private translateService: TranslateService) {
     this.type = 'google';
+    this.isBrowser = this.universalService.isBrowser();
   }
 
   ngOnInit() {

@@ -10,8 +10,6 @@ import { Filter } from '../../../facet/filter/shared/filter';
 import { ProductService } from '../../../product/shared/product.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from 'localize-router';
-import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-product-list',
@@ -71,7 +69,7 @@ export class ProductListComponent implements OnInit {
   private updatePublication(product: Product) {
     if (product.published === true) {
       if (!product.published_at) {
-        product.published_at = Timestamp.now();
+        product.published_at = Math.floor(Date.now() / 1000) as unknown as any;
       }
     } else {
       product.published_at = null;

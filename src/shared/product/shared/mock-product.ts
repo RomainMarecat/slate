@@ -1,13 +1,11 @@
 import { Product } from './product';
-import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
 
 export const mockProduct: Product = {
   name: 'Apple iPhone XS - 64 Go - Gris Sidéral',
   brand: 'Apple',
   score: 4,
   created_at: new Date(),
-  published_at: Timestamp.now(),
+  published_at: Math.floor(Date.now() / 1000) as unknown as any,
   url: 'key',
   thumbnail: '',
   images: ['https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/image/AppleInc/aos/published/images/i/' +
@@ -44,7 +42,7 @@ export const mockHomeProductNewer: Product[] = [
     brand: 'Apple',
     score: 1,
     created_at: new Date(),
-    published_at: Timestamp.now(),
+    published_at: Math.floor(Date.now() / 1000) as unknown as any,
     url: 'key',
     description: '',
     thumbnail: '',
@@ -72,7 +70,7 @@ export const mockHomeProductNewer: Product[] = [
     name: 'MacBook Pro 15 Touch Bar - 512 Go - Gris Sidéral',
     score: 1,
     created_at: new Date(),
-    published_at: Timestamp.now(),
+    published_at: Math.floor(Date.now() / 1000) as unknown as any,
     url: 'key',
     description: '',
     thumbnail: '',
@@ -98,7 +96,7 @@ export const mockHomeProductNewer: Product[] = [
     score: 5,
     brand: 'Apple',
     created_at: new Date(),
-    published_at: Timestamp.now(),
+    published_at: Math.floor(Date.now() / 1000) as unknown as any,
     url: 'product/a65F545dD485412REVD',
     description: 'Processeur Intel Core i5 bicœur de 8e génération à 1,6 GHz (Turbo Boost jusqu’à 3,6 GHz)\n' +
       'Écran Retina\n' +
@@ -135,7 +133,7 @@ export const mockInvoiceProducts: Product[] = [
     name: 'Apple Iphone 8 plus 64Go',
     score: 1,
     created_at: new Date(),
-    published_at: Timestamp.now(),
+    published_at: Math.floor(Date.now() / 1000) as unknown as any,
     url: 'key',
     description: '',
     thumbnail: '',
@@ -159,7 +157,7 @@ export const mockInvoiceProducts: Product[] = [
     name: 'Macbook Pro 15" 512Go',
     score: 1,
     created_at: new Date(),
-    published_at: Timestamp.now(),
+    published_at: Math.floor(Date.now() / 1000) as unknown as any,
     url: 'key',
     description: '',
     thumbnail: '',
