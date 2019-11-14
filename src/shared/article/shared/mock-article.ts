@@ -1,6 +1,4 @@
 import { Article } from './article';
-import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
 
 export const mockArticle: Article = {
   key: 'd4f32s',
@@ -11,5 +9,5 @@ export const mockArticle: Article = {
   slug: 'test',
   description: 'test',
   published: true,
-  published_at: Timestamp.now()
+  published_at: Math.floor(Date.now() / 1000) as unknown as any
 };

@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  isServer: false,
+  isServer: true,
   site_name: 'showcase-384269.firebaseapp.com',
   app_name: 'showcase',
   cookie: {

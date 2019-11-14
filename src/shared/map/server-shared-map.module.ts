@@ -2,11 +2,13 @@ import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common';
 import { InjectionToken, NgModule } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { UniversalService } from '../universal/universal.service';
-import { LocationCurrentModule } from './location-current/location-current.module';
+import { ServerLocationCurrentModule } from './location-current/server-location-current.module';
 import { MapAreaModule } from './map-area.module';
+import { ServerLeafletModule } from './server-leaflet.module';
 import { AreaService } from './shared/area.service';
 import { GeocodeService } from './shared/geocode.service';
 import { MapService } from './shared/map.service';
@@ -18,15 +20,17 @@ export const TABLE_MAP = new InjectionToken<string>('map');
   imports: [
     AgmCoreModule,
     CommonModule,
+    FlexLayoutModule,
     TranslateModule.forChild(),
     MapAreaModule,
-    LocationCurrentModule,
-    LeafletModule.forRoot(),
+    RouterModule,
+    ServerLocationCurrentModule,
+    ServerLeafletModule,
   ],
   exports: [
     MapAreaModule,
-    LocationCurrentModule,
-    LeafletModule,
+    ServerLocationCurrentModule,
+    ServerLeafletModule,
   ],
   providers: [
     {provide: TABLE_AREA, useValue: 'area'},
@@ -36,5 +40,5 @@ export const TABLE_MAP = new InjectionToken<string>('map');
     GeocodeService
   ]
 })
-export class SharedMapModule {
+export class ServerSharedMapModule {
 }

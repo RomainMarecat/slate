@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { SharedFirebaseAgendaModule } from '../../shared/agenda/shared-firebase-agenda.module';
 import { CmsModule } from '../../shared/cms/cms.module';
 import { SharedContactModule } from '../../shared/contact/shared.contact.module';
+import { ServerSharedMapModule } from '../../shared/map/server-shared-map.module';
 import { SharedMapModule } from '../../shared/map/shared-map.module';
 import { MenuService } from '../../shared/menu/menu.service';
 import { SharedModule } from '../../shared/shared.module';
@@ -18,7 +19,7 @@ import { HomeComponent } from './home.component';
     SharedFirebaseAgendaModule,
     CommonModule,
     SharedContactModule,
-    SharedMapModule,
+    environment.isServer ? ServerSharedMapModule : SharedMapModule,
     CmsModule,
     SharedModule,
   ],

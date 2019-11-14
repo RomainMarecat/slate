@@ -315,13 +315,9 @@
                         "styles": [
                             "./node_modules/material-design-icons/iconfont/material-icons.css",
                             "./node_modules/font-awesome/css/font-awesome.css",
-                            "./node_modules/@swimlane/ngx-datatable/index.css",
-                            "./node_modules/@swimlane/ngx-datatable/themes/material.css",
-                            "./node_modules/@swimlane/ngx-datatable/assets/icons.css",
                             "./node_modules/bootstrap/dist/css/bootstrap.css",
-                            "./node_modules/cookieconsent/build/cookieconsent.min.css",
                             "./node_modules/leaflet/dist/leaflet.css",
-                            "src/app-showcase/styles.scss"
+                            "./src/app-showcase/styles.scss"
                         ],
                         "scripts": [
                             "./node_modules/moment/min/moment.min.js",
@@ -336,7 +332,7 @@
                             "fileReplacements": [
                                 {
                                     "replace": "src/app-showcase/environments/environment.ts",
-                                    "with": "src/app-showcase/environments/environment.prod.ts"
+                                    "with": "src/app-showcase/environments/browser/environment.prod.ts"
                                 }
                             ],
                             "optimization": true,
@@ -356,7 +352,7 @@
                             "fileReplacements": [
                                 {
                                     "replace": "src/app-showcase/environments/environment.ts",
-                                    "with": "src/app-showcase/environments/environment.prod.ts"
+                                    "with": "src/app-showcase/environments/browser/environment.prod.ts"
                                 }
                             ],
                             "optimization": true,
@@ -465,11 +461,12 @@
                         "tsConfig": "src/app-showcase/tsconfig.server.json"
                     },
                     "configurations": {
+                        "serviceWorker": false,
                         "production": {
                             "fileReplacements": [
                                 {
                                     "replace": "src/app-showcase/environments/environment.ts",
-                                    "with": "src/app-showcase/environments/environment.prod.ts"
+                                    "with": "src/app-showcase/environments/server/environment.prod.ts"
                                 }
                             ]
                         }

@@ -17,10 +17,9 @@ export class TranslateServerLoader implements TranslateLoader {
   }
 
   getTranslation(lang: string): Observable<any> {
-
     return new Observable(observer => {
-      const assetsFolder = join(process.cwd(), 'dist', 'browser', this.prefix);
-      const languageFile = `${assetsFolder}/${lang}${this.suffix}`.replace('dist/dist', 'dist');
+      const assetsFolder = join(process.cwd(), 'functions', 'dist', 'browser', this.prefix);
+      const languageFile = `${assetsFolder}/${lang}${this.suffix}`;
 
       const jsonData = JSON.parse(fs.readFileSync(languageFile, 'utf8'));
 

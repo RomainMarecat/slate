@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from '../shared/article.service';
-import { Article } from '../shared/article';
-import { AlertService } from '../../popup/alert.service';
 import { LoaderService } from '../../loader/loader.service';
+import { AlertService } from '../../popup/alert.service';
 import { SeoService } from '../../seo/shared/seo.service';
-import { firestore } from 'firebase/app';
-import Timestamp = firestore.Timestamp;
+import { Timestamp } from '../../util/timestamp';
+import { Article } from '../shared/article';
+import { ArticleService } from '../shared/article.service';
 
 @Component({
   selector: 'app-article-list',

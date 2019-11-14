@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { MetaGuard } from '@ngx-meta/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings, ManualParserLoader } from 'localize-router';
 import { HomeComponent } from './home/home.component';
@@ -9,36 +10,41 @@ export function ManualLoaderFactory(translate: TranslateService, location: Locat
   return new ManualParserLoader(translate, location, settings, ['fr', 'en'], 'routes.');
 }
 
-const routes: Routes = [{
-  // On root we go to root. On other route we start with this route and go on children route
-  path: '',
-  redirectTo: '',
-  pathMatch: 'full',
-  children: [{
+const routes: Routes = [
+  {
     path: '',
-    pathMatch: 'full',
-    component: HomeComponent
-  }]
-},
-  {
-    path: 'admin',
-    loadChildren: './../shared/admin/admin.module#AdminModule'
-  },
-  {
-    path: 'contact',
-    loadChildren: './../shared/contact/contact.module#ContactModule'
-  },
-  {
-    path: 'agenda',
-    loadChildren: './../shared/agenda/firebase-agenda.module#FirebaseAgendaModule'
-  },
-  {
-    path: 'cart',
-    loadChildren: './../shared/cart/cart.module#CartModule'
-  },
-  {
-    path: 'faq',
-    loadChildren: './../shared/faq/faq.module#FaqModule'
+    canActivateChild: [MetaGuard],
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+        canActivate: [MetaGuard],
+        data: {
+          meta: {
+            title: 'meta.title.homepage'
+          }
+        }
+      },
+      {
+        path: 'admin',
+        loadChildren: './../shared/admin/admin.module#AdminModule'
+      },
+      {
+        path: 'contact',
+        loadChildren: './../shared/contact/contact.module#ContactModule'
+      },
+      {
+        path: 'agenda',
+        loadChildren: './../shared/agenda/firebase-agenda.module#FirebaseAgendaModule'
+      },
+      {
+        path: 'cart',
+        loadChildren: './../shared/cart/cart.module#CartModule'
+      },
+      {
+        path: 'faq',
+        loadChildren: './../shared/faq/faq.module#FaqModule'
+      }]
   }
 ];
 

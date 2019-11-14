@@ -212,11 +212,16 @@
         }
     },
     "meta": {
+        "application_name": "Horizon Paysage",
+        "defaults": {
+            "title": "Horizon Paysage - Au service de la nature",
+            "description": "Horizon Paysage vous propose ses services en Isère"
+        },
         "title": {
-            "homepage": "showcase"
+            "homepage": "Bienvenue sur l'acceuil"
         },
         "description": {
-            "homepage": ""
+            "homepage": "Horizon Paysage vous propose ses services en Isère"
         }
     },
     "cta": {

@@ -6,7 +6,6 @@ import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UploadTaskSnapshot } from '@firebase/storage-types';
 import { TranslateService } from '@ngx-translate/core';
-import { firestore } from 'firebase/app';
 import { RangePipe } from 'ngx-pipes';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -21,7 +20,6 @@ import { OfferService } from '../../../shared/offer/offer.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { CarProduct, mileages } from '../../../shared/product/shared/car-product';
 import { ProductService } from '../../../shared/product/shared/product.service';
-import Timestamp = firestore.Timestamp;
 
 @Component({
   selector: 'app-car-offer-edit',
@@ -272,7 +270,7 @@ export class OfferEditComponent implements OnInit {
       offer.model = this.form.value.model.key;
       offer.product = this.form.value.product.key;
       offer.published = true;
-      offer.published_at = Timestamp.now();
+      offer.published_at = Math.floor(Date.now() / 1000) as unknown as any;
       this.offerService.createOffer(offer)
         .then((doc) => {
           this.translate.get('offer-edit.message.offer.saved')
