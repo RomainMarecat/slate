@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "types": []
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/test.ts",
+    "src/main.server.ts",
+    "src/**/*.spec.ts",
+    "src/app/app.server.module.ts",
+    "../../src/shared/i18n/translate-server-loader.service.ts",
+    "../../src/shared/i18n/translates-server/*.ts",
+    "../../src/shared/mock/mock-mat-icon.component.ts",
+    "../../src/shared/*.spec.ts",
+    "../../src/shared/**/*.spec.ts"
+  ]
+}

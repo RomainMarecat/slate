@@ -59,7 +59,8 @@ functions/dist
 firebase-debug.log
 
 #projects release
-projects/*
+projects/ngx-calendar
+projects/ngx-slack-notification
 
 #ionic
 www/
