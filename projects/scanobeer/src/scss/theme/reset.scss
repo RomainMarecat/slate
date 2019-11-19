@@ -1,0 +1,17 @@
+html {
+  height: 100%;
+}
+
+//Sticky content header
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0; /*removes default style*/
+  display: flex; /*enables flex content for its children*/
+  box-sizing: border-box;
+
+  app-root {
+    height: 100%;
+    width: 100%;
+  }
+}

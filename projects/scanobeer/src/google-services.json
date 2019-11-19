@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "307402664363",
+    "firebase_url": "https://scanobeer-384269.firebaseio.com",
+    "project_id": "scanobeer-384269",
+    "storage_bucket": "scanobeer-384269.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307402664363:android:7cae0d61ed39c0ce710aee",
+        "android_client_info": {
+          "package_name": "com.slate.scanobeer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307402664363-ddvhvpdr4h2cd63k7u2j3mvhkohsemhp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC18v8x9966PhDNtZPQN1A4XaVl-xmqvLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307402664363-ddvhvpdr4h2cd63k7u2j3mvhkohsemhp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

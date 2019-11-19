@@ -1,5 +1,5 @@
 {
-  "defaultProject": "recipe-ionic",
+  "defaultProject": "scanobeer",
   "projects": {
     "recipe-ionic": {
       "name": "recipe-ionic",
@@ -18,6 +18,15 @@
       },
       "type": "angular",
       "root": "src/app-showcase"
+    },
+    "scanobeer": {
+      "name": "scanobeer",
+      "integrations": {
+        "cordova": {
+        }
+      },
+      "type": "angular",
+      "root": "projects/scanobeer/src"
     }
   }
 }

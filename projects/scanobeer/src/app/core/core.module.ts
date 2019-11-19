@@ -3,6 +3,8 @@ import { APP_INITIALIZER, InjectionToken, NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 import { MetaLoader, MetaModule, MetaStaticLoader, PageTitlePositioning } from '@ngx-meta/core';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -19,27 +21,24 @@ import { CmsService } from '../../../../../src/shared/cms/shared/cms.service';
 import { CommentService } from '../../../../../src/shared/comment/shared/comment.service';
 import { ContactService } from '../../../../../src/shared/contact/shared/contact.service';
 import { DeviceService } from '../../../../../src/shared/device/device.service';
-import { UserGuard } from '../../../../../src/shared/guard/user.guard';
 import { I18nService } from '../../../../../src/shared/i18n/i18n.service';
-import { LoaderService } from '../../../../../src/shared/loader/loader.service';
+import { iconFactory, ICONS } from '../../../../../src/shared/icon/icon.factory';
 import { AreaService } from '../../../../../src/shared/map/shared/area.service';
 import { MediaService } from '../../../../../src/shared/media/media.service';
-import { MenuService } from '../../../../../src/shared/menu/menu.service';
 import { OfferService } from '../../../../../src/shared/offer/offer.service';
 import { OrderService } from '../../../../../src/shared/order/shared/order.service';
 import { PartnerService } from '../../../../../src/shared/partner/partner.service';
 import { PaymentService } from '../../../../../src/shared/payment/shared/payment.service';
 import { AlertService } from '../../../../../src/shared/popup/alert.service';
+import { PopupModule } from '../../../../../src/shared/popup/popup.module';
 import { ProductService } from '../../../../../src/shared/product/shared/product.service';
 import { ScoreService } from '../../../../../src/shared/score/score.service';
 import { SelectionService } from '../../../../../src/shared/selection/selection.service';
 import { SidenavModule } from '../../../../../src/shared/sidenav/sidenav.module';
-import { SidenavService } from '../../../../../src/shared/sidenav/sidenav.service';
-import { UserService } from '../../../../../src/shared/user/shared/user.service';
 import { DateService } from '../../../../../src/shared/util/date.service';
-import { ObjectService } from '../../../../../src/shared/util/object.service';
 import { RoutingState } from '../../../../../src/shared/util/routing-state';
 import { environment } from '../../environments/environment';
+import { HomeModule } from '../home/home.module';
 
 export const TABLE_EVENT = new InjectionToken<string>('event');
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
@@ -97,6 +96,7 @@ export function getLanguageFactory(i18nService: I18nService) {
         clearIds: true,
       },
     }),
+    HomeModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -110,6 +110,11 @@ export function getLanguageFactory(i18nService: I18nService) {
       useFactory: (metaFactory),
       deps: [TranslateService]
     }),
+    SidenavModule,
+    PopupModule,
+  ],
+  exports: [
+    SidenavModule
   ],
   providers: [
     {provide: TABLE_ARTICLE, useValue: 'article'},
@@ -155,27 +160,29 @@ export function getLanguageFactory(i18nService: I18nService) {
     {provide: ProductService, useClass: ProductService, deps: [AngularFirestore, TABLE_PRODUCT]},
     {provide: SelectionService, useClass: SelectionService, deps: [AngularFirestore, TABLE_SELECTION]},
     {provide: SessionService, useClass: SessionService, deps: [AngularFirestore, TABLE_SESSION]},
-    AlertService,
     DateService,
+    AlertService,
     DeviceService,
+    {
+      provide: ICONS,
+      useValue: [
+        {url: 'assets/images/icons/logo.svg', name: 'logo'}
+      ]
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: iconFactory,
+      deps: [MatIconRegistry, DomSanitizer, ICONS],
+      multi: true
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: getLanguageFactory,
       deps: [I18nService],
       multi: true
     },
-    LoaderService,
-    MenuService,
-    ObjectService,
-    ScoreService,
-    SidenavService,
-    UserGuard,
-    UserService,
     RoutingState
   ],
-  exports: [
-    SidenavModule
-  ]
 })
 export class CoreModule {
 }

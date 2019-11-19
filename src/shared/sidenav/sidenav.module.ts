@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SidenavService } from './sidenav.service';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatSidenavModule } from '@angular/material';
+import {
+  MatBottomSheetModule,
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatListModule,
+  MatSidenavModule,
+  MatSnackBarModule
+} from '@angular/material';
 import { MenuModule } from '../menu/menu.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { FooterModule } from '../footer/footer.module';
@@ -24,6 +33,8 @@ import { LocalizeRouterModule } from 'localize-router';
     MatSidenavModule,
     MatCardModule,
     MatListModule,
+    MatSnackBarModule,
+    MatBottomSheetModule,
     MenuModule,
     RouterModule,
     TranslateModule,
@@ -33,6 +44,9 @@ import { LocalizeRouterModule } from 'localize-router';
   ],
   exports: [
     SidenavComponent,
+  ],
+  providers: [
+    SidenavService
   ]
 })
 export class SidenavModule {

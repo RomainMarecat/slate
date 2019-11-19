@@ -26,7 +26,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     displayPhoneNumber: false,
     displayLogo: false,
     displayAdminRecipe: false,
-    show_page_title: true,
+    showPageTitle: true,
     urlAdmin: [],
     displayBurgerMenu: true,
     displayButtonConnection: true,

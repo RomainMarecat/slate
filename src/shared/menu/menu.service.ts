@@ -3,12 +3,13 @@ import { Subject } from 'rxjs';
 
 @Injectable()
 export class MenuService {
-  private menuSubject = new Subject < string > ();
+  private menuSubject = new Subject<string>();
   menuState = this.menuSubject.asObservable();
 
-  constructor() {}
+  constructor() {
+  }
 
   nextTitle(title ?: string) {
-    this.menuSubject.next( title as string);
+    this.menuSubject.next(title as string);
   }
 }

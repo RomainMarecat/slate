@@ -3,10 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings, ManualParserLoader } from 'localize-router';
 import { TranslateService } from '@ngx-translate/core';
 import { Location } from '@angular/common';
-
-export function localizeLoaderFactory(translate: TranslateService, location: Location, settings: LocalizeRouterSettings) {
-  return new ManualParserLoader(translate, location, settings, ['fr', 'en'], 'routes.');
-}
+import { localizeLoaderFactory } from '../shared/router/localize.factory';
 
 const routes: Routes = [
   {

@@ -2,7 +2,7 @@
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
     "newProjectRoot": "projects",
-    "defaultProject": "showcase",
+    "defaultProject": "scanobeer",
     "projects": {
         "alr": {
             "root": "src",
@@ -1418,6 +1418,9 @@
                         ]
                     },
                     "configurations": {
+                        "dev-ionic": {
+                            "outputPath": "projects/scanobeer/src/www"
+                        },
                         "production": {
                             "fileReplacements": [
                                 {
@@ -1446,6 +1449,54 @@
                                     "maximumError": "10kb"
                                 }
                             ]
+                        },
+                        "production-ionic": {
+                            "outputPath": "projects/scanobeer/src/www",
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/scanobeer/src/environments/environment.ts",
+                                    "with": "projects/scanobeer/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "serviceWorker": true,
+                            "ngswConfigPath": "projects/scanobeer/src/ngsw-config.json"
+                        }
+                    }
+                },
+                "ionic-cordova-build": {
+                    "builder": "@ionic/angular-toolkit:cordova-build",
+                    "outputPath": "projects/scanobeer/src/www",
+                    "options": {
+                        "browserTarget": "scanobeer:build:dev-ionic"
+                    },
+                    "configurations": {
+                        "dev": {
+                            "browserTarget": "scanobeer:build:dev-ionic"
+                        },
+                        "production": {
+                            "browserTarget": "scanobeer:build:production-ionic"
+                        }
+                    }
+                },
+                "ionic-cordova-serve": {
+                    "builder": "@ionic/angular-toolkit:cordova-serve",
+                    "options": {
+                        "cordovaBuildTarget": "scanobeer:ionic-cordova-build",
+                        "devServerTarget": "scanobeer:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "cordovaBuildTarget": "scanobeer:ionic-cordova-build:production",
+                            "devServerTarget": "scanobeer:serve:production"
                         }
                     }
                 },

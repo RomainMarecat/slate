@@ -1,1 +1,38 @@
-{}
+{
+    "cta": {
+        "search": "rechercher",
+        "account": "mon compte",
+        "logout": "se déconnecter"
+    },
+    "home": {
+        "search": {
+            "placeholder": "Ipa, edelweiss, heineken"
+        },
+        "title": "rechercher une biere"
+    },
+    "meta": {
+        "application_name": "Scanobeer",
+        "title": {
+            "homepage": "Accueil"
+        }
+    },
+    "menu": {
+        "title1": "ScanoBeer",
+        "title2": ""
+    },
+    "sidenav": {
+        "card": {
+            "list-item": {
+                "login": {
+                    "title": "Connexion"
+                },
+                "google": {
+                    "title": "se connecter avec google"
+                },
+                "facebook": {
+                    "title": "se connecter avec facebook"
+                }
+            }
+        }
+    }
+}

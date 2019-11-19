@@ -7,7 +7,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateServerLoader } from '../../../../src/shared/i18n/translate-server-loader.service';
 
 import { AppModule } from './app.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './core/app.component';
 
 
 export function translateFactory(transferState: TransferState): TranslateServerLoader {

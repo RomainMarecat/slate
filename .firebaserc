@@ -8,10 +8,21 @@
     "car": "car-384269",
     "store": "store-384269",
     "store-admin": "store-admin-384269",
-    "recipe": "recipe-384269"
+    "recipe": "recipe-384269",
+    "scanobeer": "scanobeer-384269"
   },
   "targets": {
-      "showcase-384269": {
+    "scanobeer-384269": {
+          "hosting": {
+            "aot": [
+              "scanobeer-384269"
+            ],
+            "ssr": [
+              "scanobeer-384269"
+            ]
+          }
+        },
+     "showcase-384269": {
         "hosting": {
           "aot": [
             "showcase-384269"

@@ -5,7 +5,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './core/app.component';
 import { CoreModule } from './core/core.module';
 
 
@@ -16,7 +16,7 @@ import { CoreModule } from './core/core.module';
     TransferHttpCacheModule,
     CoreModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   declarations: [
     AppComponent

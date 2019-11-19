@@ -24,7 +24,7 @@ export class AppRootComponent implements OnInit, OnDestroy {
     displaySpacer: true,
     displayPhoneNumber: false,
     displayLogo: false,
-    show_page_title: true,
+    showPageTitle: true,
     displaySearchIcon: true,
     customIconConnection: true,
     connectionBtn: {

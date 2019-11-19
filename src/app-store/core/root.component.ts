@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { NgcCookieConsentService } from 'ngx-cookieconsent';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import { UserService } from '../../shared/user/shared/user.service';
-import { LoaderService } from '../../shared/loader/loader.service';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { NgcCookieConsentService } from 'ngx-cookieconsent';
 import { I18nService } from '../../shared/i18n/i18n.service';
+import { LoaderService } from '../../shared/loader/loader.service';
 import { MenuConfiguration } from '../../shared/menu/shared/menu-configuration';
+import { ScrollService } from '../../shared/scroll/shared/scroll.service';
+import { UserService } from '../../shared/user/shared/user.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +21,7 @@ export class AppRootComponent implements OnInit {
     displaySpacer: true,
     displayPhoneNumber: false,
     displayLogo: true,
-    show_page_title: false,
+    showPageTitle: false,
     displayAdminRecipe: false,
     urlAdmin: ['admin'],
     displayBurgerMenu: false,
@@ -46,9 +45,9 @@ export class AppRootComponent implements OnInit {
               private i18nService: I18nService,
               private ccService: NgcCookieConsentService,
               public matIconRegistry: MatIconRegistry,
-              private domSanitizer: DomSanitizer,
-              private router: Router) {
-    this.initScroll();
+              private scrollService: ScrollService,
+              private domSanitizer: DomSanitizer) {
+    this.scrollService.initScroll();
     this.registerIcons();
   }
 
@@ -72,47 +71,6 @@ export class AppRootComponent implements OnInit {
       this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/images/icons/logo.svg`)
     );
   }
-
-  /**
-   * Init reset croll when navigate on other route
-   */
-  initScroll() {
-    // previous url
-    let previousRoute = this.router.routerState.snapshot.url;
-    // Route subscriber
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((data: NavigationEnd) => {
-        // We want to reset the scroll position on navigation except when navigating within
-        // the page for a single component.
-        if (!isNavigationWithinComponentView(previousRoute, data.urlAfterRedirects)) {
-          resetScrollPosition();
-        }
-
-        previousRoute = data.urlAfterRedirects;
-      });
-  }
 }
 
-/**
- * If component is new component with a view
- */
-function isNavigationWithinComponentView(oldUrl: string, newUrl: string) {
-  const componentViewExpression = /components\/(\w+)/;
-  return oldUrl && newUrl
-    && componentViewExpression.test(oldUrl)
-    && componentViewExpression.test(newUrl)
-    && oldUrl.match(componentViewExpression)[1] === newUrl.match(componentViewExpression)[1];
-}
 
-/**
- * Reset scroll top 0 if side nav mat content exists
- */
-function resetScrollPosition() {
-  if (typeof document === 'object' && document) {
-    const sidenavContent = document.querySelector('.main-content');
-    if (sidenavContent) {
-      sidenavContent.scrollTop = 0;
-    }
-  }
-}

@@ -14,7 +14,7 @@ export class AppRootComponent {
     displayPhoneNumber: true,
     displayLogo: false,
     displayAdminRecipe: false,
-    show_page_title: true,
+    showPageTitle: true,
     urlAdmin: [],
     displayBurgerMenu: false,
     displayButtonConnection: false,

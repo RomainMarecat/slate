@@ -12,7 +12,7 @@ export interface MenuConfiguration {
   displaySearchIcon: boolean;
   underlineTitle: boolean;
   displayCart: boolean;
-  show_page_title: boolean;
+  showPageTitle: boolean;
   connectionBtn?: {
     color?: string;
     background?: string;
