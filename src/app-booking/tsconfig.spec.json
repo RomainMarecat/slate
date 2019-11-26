@@ -1,23 +1,23 @@
 {
-  "extends": "../tsconfig.spec.json",
-  "compilerOptions": {
-    "outDir": "../out-tsc/spec",
-    "baseUrl": "./",
-    "module": "commonjs",
-    "target": "es5",
-    "types": [
-      "jasmine",
-      "node"
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../out-tsc/spec",
+        "baseUrl": "./",
+        "module": "commonjs",
+        "target": "es5",
+        "types": [
+            "jasmine",
+            "node"
+        ]
+    },
+    "files": [
+        "./test.ts",
+        "./polyfills.ts"
+    ],
+    "include": [
+        "**/*.spec.ts",
+        "**/*.d.ts",
+        "../shared/*.spec.ts",
+        "../shared/**/*.spec.ts"
     ]
-  },
-  "files": [
-    "test.ts",
-    "polyfills.ts"
-  ],
-  "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts",
-    "../shared/*.spec.ts",
-    "../shared/**/*.spec.ts"
-  ]
 }

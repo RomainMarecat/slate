@@ -13,11 +13,20 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 script:
+  - npm run lint -- --project=scanobeer
+  - npm run lint -- --project=alr
+  - npm run lint -- --project=blog
+  - npm run lint -- --project=booking
+  - npm run lint -- --project=car
+  - npm run lint -- --project=hockey
+  - npm run lint -- --project=recipe
   - npm run lint -- --project=showcase
-  - npm run test -- --project=showcase
-  - npm run build -- --project=showcase
+  - npm run lint -- --project=store
+  - npm run lint -- --project=store-admin
+  - npm run test -- --project=scanobeer
+  - npm run build -- --project=scanobeer
 after_success:
-  - firebase use showcase --token $FIREBASE_TOKEN
+  - firebase use scanobeer --token $FIREBASE_TOKEN
   - firebase deploy --only hosting:aot --token $FIREBASE_TOKEN
 branches:
   only:

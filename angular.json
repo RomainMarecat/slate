@@ -94,10 +94,10 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "src/test.ts",
+                        "main": "src/app-alr/test.ts",
                         "polyfills": "src/app-alr/polyfills.ts",
-                        "tsConfig": "src/tsconfig.spec.json",
-                        "karmaConfig": "src/karma.conf.js",
+                        "tsConfig": "src/app-alr/tsconfig.spec.json",
+                        "karmaConfig": "src/app-alr/karma.conf.js",
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
@@ -127,7 +127,7 @@
                     "options": {
                         "tsConfig": [
                             "src/app-alr/tsconfig.app.json",
-                            "src/tsconfig.spec.json"
+                            "src/app-alr/tsconfig.spec.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
@@ -244,10 +244,10 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "src/test.ts",
+                        "main": "src/app-store-admin/test.ts",
                         "polyfills": "src/app-store-admin/polyfills.ts",
-                        "tsConfig": "src/tsconfig.spec.json",
-                        "karmaConfig": "src/karma.conf.js",
+                        "tsConfig": "src/app-store-admin/tsconfig.spec.json",
+                        "karmaConfig": "src/app-store-admin/karma.conf.js",
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
@@ -414,10 +414,10 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "src/test.ts",
+                        "main": "src/app-showcase/test.ts",
                         "polyfills": "src/app-showcase/polyfills.ts",
-                        "tsConfig": "src/tsconfig.spec.json",
-                        "karmaConfig": "src/karma.conf.js",
+                        "tsConfig": "src/app-showcase/tsconfig.spec.json",
+                        "karmaConfig": "src/app-showcase/karma.conf.js",
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
@@ -446,7 +446,7 @@
                     "options": {
                         "tsConfig": [
                             "src/app-showcase/tsconfig.app.json",
-                            "src/tsconfig.spec.json"
+                            "src/app-showcase/tsconfig.spec.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
@@ -556,10 +556,10 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "src/test.ts",
+                        "main": "src/app-car/test.ts",
                         "polyfills": "src/app-car/polyfills.ts",
-                        "tsConfig": "src/tsconfig.spec.json",
-                        "karmaConfig": "src/karma.conf.js",
+                        "tsConfig": "src/app-car/tsconfig.spec.json",
+                        "karmaConfig": "src/app-car/karma.conf.js",
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
@@ -588,7 +588,7 @@
                     "options": {
                         "tsConfig": [
                             "src/app-car/tsconfig.app.json",
-                            "src/tsconfig.spec.json"
+                            "src/app-car/tsconfig.spec.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
@@ -679,10 +679,10 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "src/test.ts",
+                        "main": "src/app-blog/test.ts",
                         "polyfills": "src/app-blog/polyfills.ts",
-                        "tsConfig": "src/tsconfig.spec.json",
-                        "karmaConfig": "src/karma.conf.js",
+                        "tsConfig": "src/app-blog/tsconfig.spec.json",
+                        "karmaConfig": "src/app-blog/karma.conf.js",
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
@@ -711,7 +711,7 @@
                     "options": {
                         "tsConfig": [
                             "src/app-blog/tsconfig.app.json",
-                            "src/tsconfig.spec.json"
+                            "src/app-blog/tsconfig.spec.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
@@ -802,10 +802,10 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "src/test.ts",
+                        "main": "src/app-booking/test.ts",
                         "polyfills": "src/app-booking/polyfills.ts",
-                        "tsConfig": "src/tsconfig.spec.json",
-                        "karmaConfig": "src/karma.conf.js",
+                        "tsConfig": "src/app-booking/tsconfig.spec.json",
+                        "karmaConfig": "src/app-booking/karma.conf.js",
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
@@ -834,7 +834,7 @@
                     "options": {
                         "tsConfig": [
                             "src/app-booking/tsconfig.app.json",
-                            "src/tsconfig.spec.json"
+                            "src/app-booking/tsconfig.spec.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
@@ -925,10 +925,10 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "src/test.ts",
+                        "main": "src/app-hockey/test.ts",
                         "polyfills": "src/app-hockey/polyfills.ts",
-                        "tsConfig": "src/tsconfig.spec.json",
-                        "karmaConfig": "src/karma.conf.js",
+                        "tsConfig": "src/app-hockey/tsconfig.spec.json",
+                        "karmaConfig": "src/app-hockey/karma.conf.js",
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
@@ -957,7 +957,7 @@
                     "options": {
                         "tsConfig": [
                             "src/app-hockey/tsconfig.app.json",
-                            "src/tsconfig.spec.json"
+                            "src/app-hockey/tsconfig.spec.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
@@ -1048,10 +1048,10 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "src/test.ts",
+                        "main": "src/app-store/test.ts",
                         "polyfills": "src/app-store/polyfills.ts",
-                        "tsConfig": "src/tsconfig.spec.json",
-                        "karmaConfig": "src/karma.conf.js",
+                        "tsConfig": "src/app-store/tsconfig.spec.json",
+                        "karmaConfig": "src/app-store/karma.conf.js",
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
@@ -1080,7 +1080,7 @@
                     "options": {
                         "tsConfig": [
                             "src/app-store/tsconfig.app.json",
-                            "src/tsconfig.spec.json"
+                            "src/app-store/tsconfig.spec.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
@@ -1222,10 +1222,10 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "src/test.ts",
+                        "main": "src/app-recipe/test.ts",
                         "polyfills": "src/app-recipe/polyfills.ts",
-                        "tsConfig": "src/tsconfig.spec.json",
-                        "karmaConfig": "src/karma.conf.js",
+                        "tsConfig": "src/app-recipe/tsconfig.spec.json",
+                        "karmaConfig": "src/app-recipe/karma.conf.js",
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
@@ -1255,7 +1255,7 @@
                     "options": {
                         "tsConfig": [
                             "src/app-recipe/tsconfig.app.json",
-                            "src/tsconfig.spec.json"
+                            "src/app-recipe/tsconfig.spec.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
