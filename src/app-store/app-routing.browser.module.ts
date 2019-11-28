@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: './../shared/account/account.module#AccountModule'
   },
   {
+    path: 'contact',
+    loadChildren: './../shared/contact/contact.module#ContactModule'
+  },
+  {
     path: '',
     loadChildren: './../shared/category/category.module#CategoryModule'
   },

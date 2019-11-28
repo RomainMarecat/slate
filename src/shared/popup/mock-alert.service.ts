@@ -1,5 +1,5 @@
-import { Alert } from './alert';
 import { MatBottomSheetConfig } from '@angular/material';
+import { Alert } from './alert';
 
 export class MockAlertService {
   toast(message: string, state: string = 'info') {
@@ -12,7 +12,7 @@ export class MockAlertService {
   /**
    * Ouvre une popup en bas de page pour afficher une alerte personnalisée
    */
-  openBottomSheetMessage(alert: Alert,
-                         customConfig: MatBottomSheetConfig<Alert> = {}) {
+  openAlertMessage(alert: Alert,
+                   customConfig: MatBottomSheetConfig<Alert> = {}) {
   }
 }

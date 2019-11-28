@@ -2101,7 +2101,7 @@ html {
     margin: 0 0 64px;
 }
 
-.mat-bottom-sheet-container {
+.mat-bottom-sheet-container, snack-bar-container {
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -3009,7 +3009,7 @@ textarea.cdk-textarea-autosize-measuring {
     left: -14px;
 }
 
-.mat-bottom-sheet-container {
+.mat-bottom-sheet-container, snack-bar-container {
     background: white;
     color: rgba(0, 0, 0, 0.87);
 }
@@ -4591,7 +4591,7 @@ body .title {
     left: -14px;
 }
 
-.mat-bottom-sheet-container {
+.mat-bottom-sheet-container, snack-bar-container {
     background: white;
     color: rgba(0, 0, 0, 0.87);
 }

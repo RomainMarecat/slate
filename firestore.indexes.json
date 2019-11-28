@@ -1,6 +1,13 @@
 {
   "indexes": [
     {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "is_new", "mode": "ASCENDING" },
+        { "fieldPath": "published_at", "mode": "DESCENDING" }
+      ]
+    },
+    {
       "collectionId": "conversation",
       "fields": [
         { "fieldPath": "contact", "mode": "ASCENDING" },

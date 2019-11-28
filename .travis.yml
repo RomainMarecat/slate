@@ -24,6 +24,13 @@ script:
   - npm run lint -- --project=store
   - npm run lint -- --project=store-admin
   - npm run test -- --project=scanobeer
+  - npm run test -- --project=blog
+  - npm run test -- --project=booking
+  - npm run test -- --project=car
+  - npm run test -- --project=hockey
+  - npm run test -- --project=showcase
+  - npm run test -- --project=store
+  - npm run test -- --project=store-admin
   - npm run build -- --project=scanobeer
 after_success:
   - firebase use scanobeer --token $FIREBASE_TOKEN

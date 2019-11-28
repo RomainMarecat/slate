@@ -1,5 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_SNACK_BAR_DATA } from '@angular/material';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_SNACK_BAR_DATA, MatSnackBarRef } from '@angular/material';
+import { Alert } from '../alert';
 
 @Component({
   selector: 'app-alert',
@@ -7,9 +8,22 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material';
   styleUrls: ['./alert.component.scss']
 })
 export class AlertComponent implements OnInit {
-  // Injection of snack data to display string message
-  constructor(@Inject(MAT_SNACK_BAR_DATA) public message: string) {}
+  timer: number;
 
-  ngOnInit() {}
+  constructor(private matSnackBarRef: MatSnackBarRef<AlertComponent>,
+              @Inject(MAT_SNACK_BAR_DATA) public data: Alert) {
+    this.timer = data.duration;
+  }
 
+  ngOnInit() {
+    if (this.timer) {
+      setTimeout(() => {
+        this.closeBottomSheet();
+      }, this.timer);
+    }
+  }
+
+  closeBottomSheet() {
+    this.matSnackBarRef.dismiss();
+  }
 }

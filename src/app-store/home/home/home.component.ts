@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
           observer.next();
           observer.complete();
         }, (err: FirebaseError) => {
-          this.alertService.openBottomSheetMessage(
+          this.alertService.openAlertMessage(
             {title: 'error.api.general', message: err.message},
             {panelClass: 'alert-danger'}
           );
@@ -121,7 +121,7 @@ export class HomeComponent implements OnInit {
           observer.next();
           observer.complete();
         }, (err: FirebaseError) => {
-          this.alertService.openBottomSheetMessage(
+          this.alertService.openAlertMessage(
             {title: 'error.api.general', message: err.message},
             {panelClass: 'alert-danger'}
           );
@@ -156,7 +156,7 @@ export class HomeComponent implements OnInit {
           observer.next();
           observer.complete();
         }, (err: FirebaseError) => {
-          this.alertService.openBottomSheetMessage(
+          this.alertService.openAlertMessage(
             {title: 'error.api.general', message: err.message},
             {panelClass: 'alert-danger'}
           );
@@ -191,7 +191,7 @@ export class HomeComponent implements OnInit {
           observer.next();
           observer.complete();
         }, (err: FirebaseError) => {
-          this.alertService.openBottomSheetMessage(
+          this.alertService.openAlertMessage(
             {title: 'error.api.general', message: err.message},
             {panelClass: 'alert-danger'}
           );
@@ -226,7 +226,7 @@ export class HomeComponent implements OnInit {
           observer.next();
           observer.complete();
         }, (err: FirebaseError) => {
-          this.alertService.openBottomSheetMessage(
+          this.alertService.openAlertMessage(
             {title: 'error.api.general', message: err.message},
             {panelClass: 'alert-danger'}
           );
@@ -261,7 +261,7 @@ export class HomeComponent implements OnInit {
           observer.next();
           observer.complete();
         }, (err: FirebaseError) => {
-          this.alertService.openBottomSheetMessage(
+          this.alertService.openAlertMessage(
             {title: 'error.api.general', message: err.message},
             {panelClass: 'alert-danger'}
           );
@@ -295,7 +295,7 @@ export class HomeComponent implements OnInit {
           this.productOptions.product_best.products = products;
           observer.next();
         }, (err: FirebaseError) => {
-          this.alertService.openBottomSheetMessage(
+          this.alertService.openAlertMessage(
             {title: 'error.api.general', message: err.message},
             {panelClass: 'alert-danger'}
           );

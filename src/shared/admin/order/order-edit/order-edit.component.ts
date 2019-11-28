@@ -159,6 +159,6 @@ export class OrderEditComponent extends BaseEditComponent<Order> implements OnIn
    * Symply alert user that the text was copied
    */
   copied() {
-    this.alertService.openBottomSheetMessage({title: '', message: 'admin.order-edit.copied_text'});
+    this.alertService.openAlertMessage({title: '', message: 'admin.order-edit.copied_text'});
   }
 }
