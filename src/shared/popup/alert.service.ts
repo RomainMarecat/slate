@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatBottomSheet, MatBottomSheetConfig, MatBottomSheetRef, MatSnackBar } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetConfig, MatBottomSheetRef, MatSnackBar, MatSnackBarConfig, MatSnackBarRef } from '@angular/material';
 import { AlertComponent } from './snackbar/alert.component';
 import { TranslateService } from '@ngx-translate/core';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
@@ -9,7 +9,7 @@ import { Alert } from './alert';
   providedIn: 'root'
 })
 export class AlertService {
-  constructor(public snackBar: MatSnackBar,
+  constructor(public matSnackBar: MatSnackBar,
               public matBottomSheet: MatBottomSheet,
               private translateService: TranslateService) {
   }
@@ -27,24 +27,42 @@ export class AlertService {
       // Subscribe on message translation
       this.translateService.get(message, parameters)
         .subscribe((translation: string) => {
-          this.openAlertMessage(translation, parameters);
+          this.openAlertMessage({message: translation} as Alert, parameters);
         }, (err) => {
-          this.openAlertMessage(message, parameters);
+          this.openAlertMessage({message} as Alert, parameters);
         });
       return;
     }
     this.openAlertMessage(message, parameters);
   }
 
-  openAlertMessage(message: string, parameters: object) {
-    // Open Alert Component with a message
-    const toastRef = this.snackBar.openFromComponent(AlertComponent, {
-      data: message,
-      // Add extra class to define custom css or background color
-      panelClass: ['snackbar'],
-      // Timeout duration in ms
-      duration: 8000
-    });
+  openAlertMessage(alert: Alert,
+                   customConfig: MatSnackBarConfig<Alert> = {}): MatSnackBarRef<AlertComponent> {
+    const defaultConfig: MatSnackBarConfig<Alert> = {
+      data: {
+        title: 'alert.bottom-sheet.default.title',
+        message: 'alert.bottom-sheet.default.message',
+        duration: 5000,
+      },
+      panelClass: null,
+    };
+
+    const config: MatSnackBarConfig<Alert> = {
+      ...defaultConfig,
+      ...customConfig,
+      ...{
+        data: {
+          title: alert.title,
+          message: alert.message,
+          duration: alert.duration ? alert.duration : defaultConfig.data.duration,
+        }
+      }
+    };
+
+    return this.matSnackBar.openFromComponent(
+      AlertComponent,
+      config
+    );
   }
 
   /**

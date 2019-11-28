@@ -82,6 +82,10 @@
             "delivery": "vos informations de livraison n'ont pas été récupéré. Veuillez revenir en arrière pour réessayer"
         }
     },
+    "contact": {
+        "title": "Contactez-nous",
+        "subtitle": "Formulaire de contact"
+    },
     "cta": {
         "account": "mon compte",
         "accept_delivery": "Valider la livraison",
@@ -102,6 +106,7 @@
         "cancel": "annuler",
         "pay": "payer",
         "save": "enregistrer",
+        "send": "envoyer",
         "footer": {
             "top-of-page": "haut de page"
         }
@@ -160,6 +165,11 @@
     },
     "favorite-list": {
         "title": "mes favoris"
+    },
+    "footer": {
+        "title": {
+            "contact": "L'équipe"
+        }
     },
     "label": {
         "product_added_to_favorite": "produit ajouté aux favoris"

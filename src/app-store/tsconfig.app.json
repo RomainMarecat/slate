@@ -12,6 +12,7 @@
         "../shared/product/product.module.ts",
         "../shared/account/account.module.ts",
         "../shared/cart/cart.module.ts",
+        "../shared/contact/contact.module.ts",
         "../shared/order/order.module.ts",
         "../shared/delivery/delivery.module.ts",
         "../shared/favorite/favorite.module.ts",

@@ -1,6 +1,8 @@
-import { Injectable, Inject } from '@angular/core';
-import { PlatformLocation, DOCUMENT } from '@angular/common';
+import { DOCUMENT, PlatformLocation } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, fromEvent, Observable, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 export const topMargin = 16;
 
@@ -37,6 +39,7 @@ export class ScrollService {
   }
 
   constructor(@Inject(DOCUMENT) private document: any,
+              private router: Router,
               private location: PlatformLocation) {
     // On resize, the toolbar might change height, so "invalidate" the top offset.
     fromEvent(window, 'resize').subscribe(() => this._topOffset = null);
@@ -150,5 +153,48 @@ export class ScrollService {
    */
   private getCurrentHash() {
     return decodeURIComponent(this.location.hash.replace(/^#/, ''));
+  }
+
+  /**
+   * Init reset croll when navigate on other route
+   */
+  initScroll() {
+    // previous url
+    let previousRoute = this.router.routerState.snapshot.url;
+    // Route subscriber
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((data: NavigationEnd) => {
+        // We want to reset the scroll position on navigation except when navigating within
+        // the page for a single component.
+        if (!this.isNavigationWithinComponentView(previousRoute, data.urlAfterRedirects)) {
+          this.resetScrollPosition();
+        }
+
+        previousRoute = data.urlAfterRedirects;
+      });
+  }
+
+  /**
+   * If component is new component with a view
+   */
+  isNavigationWithinComponentView(oldUrl: string, newUrl: string) {
+    const componentViewExpression = /components\/(\w+)/;
+    return oldUrl && newUrl
+      && componentViewExpression.test(oldUrl)
+      && componentViewExpression.test(newUrl)
+      && oldUrl.match(componentViewExpression)[1] === newUrl.match(componentViewExpression)[1];
+  }
+
+  /**
+   * Reset scroll top 0 if side nav mat content exists
+   */
+  resetScrollPosition() {
+    if (typeof document === 'object' && document) {
+      const sidenavContent = document.querySelector('.main-content');
+      if (sidenavContent) {
+        sidenavContent.scrollTop = 0;
+      }
+    }
   }
 }

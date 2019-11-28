@@ -1,7 +1,16 @@
-<div class="info-snackbar"
-     angulartics2On="mouseover"
-     angularticsAction="HoveredOverSnackbarMessage"
-     [angularticsCategory]="'snackbar.message'">
-  <mat-icon>error_outline</mat-icon>
-  <span *ngIf="message" [innerHTML]="message"></span>
-</div>
+<mat-list>
+  <!-- Pas forcement besoin d'un titre ou d'un message pour que la popup s'affiche  -->
+  <mat-list-item>
+    <!-- Ligne du titre -->
+    <span mat-line
+          *ngIf="data?.title"
+          class="text-title">
+      {{ data.title|translate }}
+    </span>
+    <!-- Ligne du message -->
+    <span mat-line *ngIf="data?.message"
+          class="text-message">
+      {{ data.message|translate }}
+    </span>
+  </mat-list-item>
+</mat-list>

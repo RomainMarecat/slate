@@ -1,4 +1,159 @@
 {
-  "indexes": [],
+  "indexes": [
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "is_new", "mode": "ASCENDING" },
+        { "fieldPath": "published_at", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "conversation",
+      "fields": [
+        { "fieldPath": "contact", "mode": "ASCENDING" },
+        { "fieldPath": "created_at", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "published", "mode": "ASCENDING" },
+        { "fieldPath": "score", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "published", "mode": "ASCENDING" },
+        { "fieldPath": "score", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "published", "mode": "ASCENDING" },
+        { "fieldPath": "commented", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "contact",
+      "fields": [
+        { "fieldPath": "user.uid", "mode": "ASCENDING" },
+        { "fieldPath": "created_at", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "published", "mode": "ASCENDING" },
+        { "fieldPath": "viewed", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "published", "mode": "ASCENDING" },
+        { "fieldPath": "viewed", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "published", "mode": "ASCENDING" },
+        { "fieldPath": "ordered", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "published", "mode": "ASCENDING" },
+        { "fieldPath": "published_at", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "favorite",
+      "fields": [
+        { "fieldPath": "user", "mode": "ASCENDING" },
+        { "fieldPath": "nb_view", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "conversation",
+      "fields": [
+        { "fieldPath": "contact", "mode": "ASCENDING" },
+        { "fieldPath": "created_at", "mode": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "published_at", "mode": "ASCENDING" },
+        { "fieldPath": "published", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "commented", "mode": "DESCENDING" },
+        { "fieldPath": "category", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "ordered_by_month.`2019-12`", "mode": "DESCENDING" },
+        { "fieldPath": "published", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "ordered_by_month.`2020-01`", "mode": "DESCENDING" },
+        { "fieldPath": "published", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "ordered_by_month.`2020-02`", "mode": "DESCENDING" },
+        { "fieldPath": "published", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "ordered_by_month.`2020-03`", "mode": "DESCENDING" },
+        { "fieldPath": "published", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "ordered_by_month.`2020-04`", "mode": "DESCENDING" },
+        { "fieldPath": "published", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "ordered_by_month.`2020-05`", "mode": "DESCENDING" },
+        { "fieldPath": "published", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "ordered_by_month.`2020-06`", "mode": "DESCENDING" },
+        { "fieldPath": "published", "mode": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionId": "product",
+      "fields": [
+        { "fieldPath": "ordered_by_month.`2020-07`", "mode": "DESCENDING" },
+        { "fieldPath": "published", "mode": "ASCENDING" }
+      ]
+    }
+  ],
   "fieldOverrides": []
 }

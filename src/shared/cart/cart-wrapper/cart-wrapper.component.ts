@@ -74,7 +74,7 @@ export class CartWrapperComponent implements OnInit {
         this.patchCart(carts);
       }, (err: HttpErrorResponse) => {
         if (err && err.error && err.error.message) {
-          this.alertService.openBottomSheetMessage(
+          this.alertService.openAlertMessage(
             {title: '', message: err.error.message},
             {panelClass: 'alert-danger'}
           );
@@ -163,7 +163,7 @@ export class CartWrapperComponent implements OnInit {
       .subscribe(() => {
         },
         (err: HttpErrorResponse) => {
-          this.alertService.openBottomSheetMessage(
+          this.alertService.openAlertMessage(
             {title: 'cart-add.error.update-cart-error', message: err.error.message},
             {panelClass: 'alert-danger'}
           );
@@ -213,7 +213,7 @@ export class CartWrapperComponent implements OnInit {
                 );
               }, 200);
             }, (err: HttpErrorResponse) => {
-              this.alertService.openBottomSheetMessage(
+              this.alertService.openAlertMessage(
                 {title: '', message: err.error.message},
                 {panelClass: 'alert-danger'}
               );
@@ -221,7 +221,7 @@ export class CartWrapperComponent implements OnInit {
         }
       }, (err: HttpErrorResponse) => {
         if (err && err.error && err.error.message) {
-          this.alertService.openBottomSheetMessage(
+          this.alertService.openAlertMessage(
             {title: '', message: err.error.message},
             {panelClass: 'alert-danger'}
           );

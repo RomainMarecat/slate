@@ -7,12 +7,14 @@ export const environment = {
   site_name: 'scanobeer',
   app_name: 'scanobeer',
   firebase: {
-    apiKey: 'AIzaSyDFMGdlDQ8jndrs3uz5lYCeI7Q3M63CU9I',
-    authDomain: 'scanobeer-admin-384269.firebaseapp.com',
+    apiKey: 'AIzaSyBPunkmCJ5gC7lloNLP68yxkVhxdv0FfxM',
+    authDomain: 'scanobeer-384269.firebaseapp.com',
     databaseURL: 'https://scanobeer-384269.firebaseio.com',
     projectId: 'scanobeer-384269',
     storageBucket: 'scanobeer-384269.appspot.com',
-    messagingSenderId: '37030328986'
+    messagingSenderId: '307402664363',
+    appId: '1:307402664363:web:682d16dd618c2854710aee',
+    measurementId: 'G-CZ62T41WB1'
   },
   cookie: {
     domain: 'localhost'

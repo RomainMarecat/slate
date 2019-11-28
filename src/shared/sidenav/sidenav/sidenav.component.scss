@@ -57,7 +57,7 @@ ng-adsense {
   overflow-y: auto;
   display: table-cell;
   display: flex;
-  min-height: 100vh;
+  min-height: calc(100% - 64px);
   flex-direction: column;
 
   .site {

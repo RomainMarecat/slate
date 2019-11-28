@@ -146,7 +146,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
           subscription.unsubscribe();
         }
       }, () => {
-        this.alertService.openBottomSheetMessage(
+        this.alertService.openAlertMessage(
           {title: '', message: 'cart-payment.errors.delivery'},
           {panelClass: 'alert-danger'}
         );
@@ -178,7 +178,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
       this.createToken();
     } else {
       // Undefined cart or undefined total
-      this.alertService.openBottomSheetMessage(
+      this.alertService.openAlertMessage(
         {title: '', message: 'cart-payment.errors.cart'},
         {panelClass: 'alert-danger'}
       );
@@ -320,13 +320,13 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
     if (typeof err.message === 'string') {
       this.error = err as FirebaseError | Error;
 
-      this.alertService.openBottomSheetMessage(
+      this.alertService.openAlertMessage(
         {title: '', message: err.message},
         {panelClass: 'alert-danger'}
       );
     }
     if (err instanceof HttpErrorResponse) {
-      this.alertService.openBottomSheetMessage(
+      this.alertService.openAlertMessage(
         {title: '', message: err.error.message},
         {panelClass: 'alert-danger'}
       );

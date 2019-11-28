@@ -48,7 +48,7 @@ export class FavoriteListComponent implements OnInit {
           this.favorites = favorites;
           this.isLoading = false;
         }, (err: FirebaseError) => {
-          this.alertService.openBottomSheetMessage({title: 'error.api.general', message: err.message});
+          this.alertService.openAlertMessage({title: 'error.api.general', message: err.message});
           this.loaderService.hide();
           this.isLoading = false;
         });

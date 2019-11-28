@@ -34,3 +34,5 @@ exclude_paths:
   - "src/**/test.ts"
   - "server.ts"
   - "prerender.ts"
+  - "karma.conf.js"
+  - "src/**/karma.conf.js"

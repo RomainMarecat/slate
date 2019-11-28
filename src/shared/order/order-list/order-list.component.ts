@@ -45,7 +45,7 @@ export class OrderListComponent implements OnInit {
           orderSubscription.unsubscribe();
         }
       }, (err: FirebaseError) => {
-        this.alertService.openBottomSheetMessage({title: 'error.api.general', message: err.message});
+        this.alertService.openAlertMessage({title: 'error.api.general', message: err.message});
         this.loaderService.hide();
         this.isLoading = false;
       });

@@ -264,14 +264,14 @@ export class CartDeliveryComponent {
     this.disableDeliveryButton = false;
 
     if (!navigator.onLine) {
-      this.alertService.openBottomSheetMessage(
+      this.alertService.openAlertMessage(
         {title: '', message: 'error.no-internet-connection'},
         {panelClass: 'alert-danger'}
       );
       return;
     }
 
-    this.alertService.openBottomSheetMessage(
+    this.alertService.openAlertMessage(
       {title: '', message: 'delivery.error.validate-delivery'},
       {panelClass: 'alert-danger'}
     );

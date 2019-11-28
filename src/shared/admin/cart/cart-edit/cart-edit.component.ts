@@ -171,6 +171,6 @@ export class CartEditComponent extends BaseEditComponent<Cart> implements OnInit
    * Symply alert user that the text was copied
    */
   copied() {
-    this.alertService.openBottomSheetMessage({title: '', message: 'admin.cart-edit.copied_text'});
+    this.alertService.openAlertMessage({title: '', message: 'admin.cart-edit.copied_text'});
   }
 }

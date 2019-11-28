@@ -26,7 +26,6 @@ import { RecipeSharedListModule } from '../recipe-list/recipe-list/recipe-shared
     TranslateModule.forChild()
   ],
   declarations: [HomeComponent],
-  providers: []
 })
 export class HomeModule {
 }

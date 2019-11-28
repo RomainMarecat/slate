@@ -19,8 +19,23 @@ jobs:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-      - run: xvfb-run -a npm run lint -- --project=showcase
+      - run: xvfb-run -a npm run lint -- --project=scanobeer
       - run: xvfb-run -a npm run lint -- --project=alr
+      - run: xvfb-run -a npm run lint -- --project=blog
+      - run: xvfb-run -a npm run lint -- --project=booking
+      - run: xvfb-run -a npm run lint -- --project=car
+      - run: xvfb-run -a npm run lint -- --project=hockey
+      - run: xvfb-run -a npm run lint -- --project=recipe
+      - run: xvfb-run -a npm run lint -- --project=showcase
       - run: xvfb-run -a npm run lint -- --project=store
       - run: xvfb-run -a npm run lint -- --project=store-admin
+      - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=scanobeer
+#      - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=alr
+      - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=blog
+      - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=booking
+      - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=car
+      - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=hockey
+#      - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=recipe
       - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=showcase
+      - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=store
+      - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=store-admin

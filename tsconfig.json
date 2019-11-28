@@ -24,9 +24,6 @@
             ],
             "@romainmarecat/ngx-calendar": [
                 "./../../projects/ngx-calendar"
-            ],
-            "~/*": [
-                "src/app-recipe/*"
             ]
         }
     }

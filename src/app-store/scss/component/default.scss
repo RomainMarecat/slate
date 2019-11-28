@@ -1,7 +1,9 @@
 .cdk-overlay-container {
 
   // Bottom sheet custom par rapport à bootstrap
-  mat-bottom-sheet-container {
+  mat-bottom-sheet-container, snack-bar-container {
+    max-width: 50vw;
+
     // Valeur par défaut sans niveau de précision de sur le panelClass du bottom sheet
     background: mat-color($white);
     color: mat-color($grey);
@@ -9,16 +11,21 @@
     // Ajout d'espace entre le titre et le descriptif de l'erreur
     mat-list.mat-list-base {
       mat-list-item.mat-list-item {
+        height: auto;
+        min-height: 72px;
+
         .mat-list-text {
           .mat-line, .mat-line:nth-child(n+2) {
             padding: 10px 0;
+            white-space: normal;
+            overflow: visible;
 
             &.text-title {
               font-size: 1rem;
             }
 
             &.text-message {
-              font-size: 1.5rem;
+              font-size: 1.2rem;
             }
           }
         }
