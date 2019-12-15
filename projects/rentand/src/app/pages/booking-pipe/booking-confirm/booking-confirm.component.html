@@ -1,0 +1,44 @@
+<div *ngIf="!booking || !events; else bookingDiv">
+  <p>No booking found</p>
+</div>
+<ng-template #bookingDiv>
+  <div class="row">
+    <h2 i18n="congrats" class="center-align page-title">Congrats !</h2>
+    <h3 class="center-align page-title">
+			<span i18n="your booking with mono">Your booking with</span>&nbsp;{{getBookingMonoTitle(booking)}}
+			<span i18n="is confirmed">is confirmed</span>
+		</h3>
+  </div>
+  <div class="row">
+    <div class="col s12 m9">
+      <app-booking-summary [booking]="booking" [events]="events"></app-booking-summary>
+    </div>
+    <div class="col s12 m3">
+      <app-booking-mono-card [booking]="booking"></app-booking-mono-card>
+      <div class="card">
+        <div class="card-content">
+          <p i18n="A confirmation email will be send to you with" class="card-title page-title">
+            A confirmation email will be send with:
+          </p>
+          <ul class="collection">
+            <li class="collection-item">
+              <span i18n>Confirmation of your order</span>
+            </li>
+            <li class="collection-item">
+              <span i18n>Coordinates of</span>&nbsp;{{getBookingMonoTitle(booking)}}
+            </li>
+          </ul>
+          <p i18n>
+            You will also receive meeting informations on your phone
+          </p>
+          <div class="row mt05 center-align hiddendiv">
+            <button type="button" class="btn btn-large orange">
+              <span i18n>Print my booking</span>
+              <i class="material-icons left">print</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

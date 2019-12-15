@@ -1,0 +1,21 @@
+<div *ngIf="isAuthenticated()">
+  <div class="row">
+    <div class="col s12 m9">
+      <app-booking-summary [booking]="booking" [events]="events"></app-booking-summary>
+    </div>
+    <div class="col s12 m3">
+      <app-booking-mono-card [booking]="booking"></app-booking-mono-card>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <button type="submit" class="btn btn-block waves-light waves-effect teal left" (click)="slideToInfosTab.emit()"
+              i18n="Booking pipe previous">Previous
+      </button>
+      <button type="submit" class="btn btn-large waves-light waves-effect orange right" (click)="stripePayement()"
+              i18n="Booking pipe payement">Pay
+      </button>
+    </div>
+  </div>
+  <app-stripe-form #stripeForm></app-stripe-form>
+</div>

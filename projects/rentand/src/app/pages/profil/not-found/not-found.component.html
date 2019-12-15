@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h1 class="center-align" i18n="Search anothers Instructors">Search anothers Instructors</h1>
+      <h2 class="center-align" i18n="Choose similar instructors">Choose similar instructors</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div (click)="showProfil(mono)" class="col s3 item-wrapper pa1" *ngFor="let mono of (monos ? monos.slice(0, 30): [])">
+      <mat-card class="item-card">
+        <mat-card-header>
+          <div mat-card-avatar class="item-header-image center"></div>
+          <mat-card-title>{{ mono?.user_metadata?.firstname }} {{ mono?.user_metadata?.lastname }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="assets/images/profil/shiba2.jpg">
+      </mat-card>
+    </div>
+  </div>
+</div>

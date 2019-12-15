@@ -4,16 +4,16 @@ const cloudinaryCore = require('cloudinary-core');
 import { Cloudinary, isJsonLikeString, isNamedNodeMap, transformKeyNamesFromKebabToSnakeCase } from './cloudinary.service';
 import CloudinaryConfiguration from './cloudinary-configuration.class';
 
-const cloudName = 'service-test';
+const cloudName = 'services-test';
 
-describe('Cloudinary service', () => {
+describe('Cloudinary services', () => {
 
   const config: CloudinaryConfiguration = {
     cloud_name: cloudName
   };
   const service: Cloudinary = new Cloudinary(cloudinaryCore, config);
 
-  it('Creates an instance of the service', () => {
+  it('Creates an instance of the services', () => {
     expect(service instanceof Cloudinary).toBe(true);
   });
 

@@ -1,0 +1,54 @@
+<div class="profil-card"
+     *ngIf="mono">
+  <mat-card-header>
+    <img mat-card-avatar
+         *ngIf="mono?.user_metadata?.media?.url"
+         class="profil-header-image"
+         [src]="mono?.user_metadata?.media?.url">
+    <mat-card-title>
+      <h3 class="page-title">{{ mono?.user_metadata?.firstname }} {{ mono?.user_metadata?.lastname }}</h3>
+    </mat-card-title>
+    <mat-card-subtitle class="mt-1 ml-1">
+      <app-profil-agenda-select-sport-teached [sportsTeached]="sportsTeached"
+                                              [sportTeached]="sportTeached"></app-profil-agenda-select-sport-teached>
+
+      <p class="" *ngIf="mono?.user_metadata?.languages && mono?.user_metadata?.languages.length> 0">
+        <span class="pr-1" *ngFor="let language of mono?.user_metadata?.languages">
+          <img class="flag-img" [src]="'/assets/images/flags/language/' + (language|lowercase|shorten: 2) + '.svg'"
+               *ngIf="language">
+        </span>
+      </p>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row mt05">
+      <div class="col-12 m-5 valign-wrapper" *ngIf="demonym">
+        <i class="material-icons left orange-text prefix">flag</i> {{demonym}}
+      </div>
+      <div class="col-12 m-5 valign-wrapper" *ngIf="mono && mono.age">
+        <i class="material-icons left orange-text prefix">cake</i>
+        <span> {{ mono?.age }}</span>&nbsp;<span i18n="profil $age years old ">years old</span>
+      </div>
+    </div>
+    <div class="row mt-1">
+      <div class="col-12 m-5" *ngIf="sportTeached && sportTeached.levels">
+        <mat-icon>stars</mat-icon>
+        <p>
+          <span i18n="teached levels">Teached levels :&nbsp;</span>
+          <span>
+            {{getLevelParametersTitle(sportTeached.levels)}}
+          </span>
+        </p>
+      </div>
+      <div class="col-12 m-5" *ngIf="sportTeached && sportTeached.ages">
+        <mat-icon>accessibility</mat-icon>
+        <p>
+          <span i18n="teached ages">Teached ages :&nbsp;</span>
+          <span>
+            {{getAgeParameterTitle(sportTeached.ages)}}
+          </span>
+        </p>
+      </div>
+    </div>
+  </mat-card-content>
+</div>

@@ -7,7 +7,7 @@ import { filter } from 'rxjs/operators';
 export const topMargin = 16;
 
 /**
- * A service that scrolls document elements into view
+ * A services that scrolls document elements into view
  */
 @Injectable({
   providedIn: 'root'

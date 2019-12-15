@@ -1,0 +1,85 @@
+<div class="section mt-3 d-flex align-items-center justify-content-center">
+  <div *ngIf="user && isAuthenticated()">
+    <div class="input-field col-12 m-5">
+      <div class="row mt-2 mb-2">
+        <img id="user-pic" *ngIf="user.user_metadata.media.url"
+             class="img-rounded img-fluid"
+             src="{{ user.user_metadata.media.url }}">
+      </div>
+      <div class="login-form-text col-12 p-0" *ngIf="user">
+        <div class="row d-flex justify-content-center">
+          <div class="col-12">
+            <span *ngIf="user.name">
+              <b>{{ user.name }}</b>
+            </span>
+          </div>
+          <div class="col-12">
+            <span *ngIf="user.email">
+            {{ user.email }}
+            </span>
+          </div>
+          <div class="col-12 mt-1">
+            <button type="button"
+                    mat-raised-button
+                    (click)="logout()"
+                    i18n="Logout btn page login">
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!(user && isAuthenticated())">
+    <div class="row d-flex justify-content-center m-0">
+      <div class="col-12">
+        <div class="card m-0 p-0">
+          <div class="card-content m-0 p-0 text-center">
+            <img class="img-fluid" src="../../../assets/images/logo_alone.png">
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="input-field col-12 d-flex justify-content-center">
+              <button id="login_with_google_btn"
+                      type="button"
+                      mat-raised-button
+                      class="px-5 bg-white"
+                      (click)="loginWithGoogle()"
+                      i18n="Log In With Google">
+                <div class="d-flex align-items-center">
+                  <span class="text-grey">
+                    Log In with Google
+                  </span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="row my-5">
+            <div class="col-12 d-flex justify-content-center">
+              <p i18n="Google or login classic">OR</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center m-0">
+      <div class="col-12">
+        <div class="card m-0 p-0">
+          <div class="card-content m-0 p-0">
+            <mat-tab-group dynamicHeight
+                           class="security-tab-group"
+                           [selectedIndex]="currentRoute === '/secure/login'? 0 : 1"
+                           (selectedTabChange)="changeRoute($event)">
+              <mat-tab label="Login" i18n-label="login">
+                <app-login></app-login>
+              </mat-tab>
+              <mat-tab label="Signup" i18n-label="signup">
+                <app-signup></app-signup>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

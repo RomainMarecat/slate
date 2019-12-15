@@ -1,0 +1,14 @@
+<mat-form-field>
+  <mat-select i18n-placeholder="Choose my sport in agenda component"
+              (change)="updateSportTeached($event)"
+              placeholder="Sport"
+              [(ngModel)]="selectedSportTeached"
+              name="sport">
+    <mat-option *ngFor="let sportTeached of sportsTeached"
+                [value]="sportTeached">
+    <span *ngIf="sportTeached?.sport?.translations && sportTeached?.sport?.translations[locale]">
+          {{ sportTeached?.sport?.translations[locale] }}
+    </span>
+    </mat-option>
+  </mat-select>
+</mat-form-field>

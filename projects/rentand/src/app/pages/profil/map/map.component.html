@@ -1,0 +1,19 @@
+<div>
+  <div class="row">
+    <div class="col-12">
+      <app-profil-agenda-select-city-teached [citiesTeached]="citiesTeached"
+                                             [cityTeached]="cityTeached"></app-profil-agenda-select-city-teached>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="citiesTeached; else loading">
+    <div class="col-12" *ngFor="let ct of citiesTeached; let i = index; ">
+      <div *ngIf="(!cityTeached && i === 0) || (cityTeached && ct.id === cityTeached.id)">
+        <img class="img-fluid" [src]="ct?.picture?.url">
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <app-loader></app-loader>
+  </ng-template>
+</div>

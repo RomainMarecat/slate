@@ -1,0 +1,73 @@
+<mat-list class="side_nav m-0 p-0 bg-white h-100">
+  <ng-container *ngIf="user?.user_metadata; else anonymeTemplate">
+    <a routerLink="/account"
+       class="user_view text-white">
+      <div class="background">
+        <img src="../../../assets/images/sidenav-bg.jpg">
+      </div>
+      <img class="img-rounded left mr-1" [src]="user?.user_metadata.media.url"/>
+      <div class="valign">
+        <span><b>{{user.user_metadata.firstname}} {{user.user_metadata.lastname}}</b></span>
+        <br/>
+        <span>{{user?.email}}</span>
+      </div>
+    </a>
+  </ng-container>
+
+  <ng-template #anonymeTemplate>
+    <div class="background">
+      <img src="../../../assets/images/sidenav-bg.jpg">
+    </div>
+  </ng-template>
+
+  <mat-list-item class="mt-2">
+    <a (click)="openCart()"
+       mat-raised-button
+       class="text-decoration-none"
+       [class.text-warning]="!isCartEmpty()">
+      <i class="material-icons left">shopping_cart</i>
+      <span *ngIf="!isCartEmpty()" class="badge m-0">{{getCartItemsNumber()}}</span>
+      <span i18n>My cart</span>
+    </a>
+  </mat-list-item>
+
+  <ng-container *ngIf="isAuthenticated(); else anonymeList">
+    <mat-list-item>
+      <a routerLink="/account"
+         mat-raised-button
+         class="text-decoration-none">
+        <mat-icon>face</mat-icon>
+        <span i18n="my account label">My account</span>
+      </a>
+    </mat-list-item>
+
+    <mat-list-item>
+      <a routerLink="/account"
+         mat-raised-button
+         class="text-decoration-none">
+        <mat-icon>attach_money</mat-icon>
+        <span i18n="my bookings label">My bookings</span>
+      </a>
+    </mat-list-item>
+
+    <mat-list-item>
+      <a (click)="logout()" mat-raised-button>
+        <mat-icon>lock_open</mat-icon>
+        <span i18n>Deconnexion</span>
+      </a>
+    </mat-list-item>
+  </ng-container>
+
+  <ng-template #anonymeList>
+
+    <mat-list-item>
+      <a routerLink="/secure/login"
+         class="text-decoration-none"
+         i18n="login label"
+         mat-raised-button>
+        Login
+      </a>
+    </mat-list-item>
+
+  </ng-template>
+</mat-list>

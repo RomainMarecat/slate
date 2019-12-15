@@ -1,0 +1,98 @@
+<h3 mat-dialog-title class="page-title">
+  <span i18n="your cart">Your Cart</span>
+  <a (click)="close()" class="right btn-close-modal"><i class="material-icons mat-36">close</i></a>
+</h3>
+<mat-dialog-content>
+  <!--   <div class="row">
+    <div class="col s12" *ngFor="let cartItem of cartItems | async">
+      <span>
+      {{ cartItem?.session?.start_date }} {{ cartItem?.session?.start_time }} - {{ cartItem?.session?.end_date }} {{ cartItem?.session?.end_time }}
+        <button mat-fab class="red" (click)="deleteCartItem(cartItem)"><mat-icon>delete</mat-icon></button>
+      </span>
+    </div>
+  </div> -->
+  <mat-tab-group dynamicHeight *ngIf="monoCarts | async; let monoCarts; else emptyCart" (selectedIndexChange)="selectedMonoChanged($event)">
+    <mat-tab label="empty cart" i18n-label="empty cart" *ngIf="!monoCarts || monoCarts.length <= 0">
+      <div class="card-panel blue white-text">
+        <span class="white-text" i18n="empty cart info">
+        Your cart is empty, you can fill your cart with sessions from mono's profile page.
+      </span>
+      </div>
+    </mat-tab>
+    <mat-tab *ngFor="let cartMono of monoCarts">
+      <ng-template mat-tab-label>
+        <div class="valign-wrapper">
+          <img class="circle responsive-img hide-on-small-only" [src]="cartMono?.mono?.user_metadata?.picture?.url" width="30px" /> {{monoCartTitle(cartMono)}}
+        </div>
+      </ng-template>
+      <div class="tab-content">
+        <ul class="collection">
+          <li class="collection-item avatar" *ngFor="let cartItem of cartMono.cart_items">
+            <i class="material-icons circle blue">add_shopping_cart</i>
+            <div class="title">
+              <span>{{sessionDurationDisplay(cartItem)}}</span>
+              <span i18n="of sport">of</span>
+              <span>{{sessionSport(cartItem)}}</span> -
+              <span>{{sessionCityWithMeetingPoint(cartItem)}}</span>
+            </div>
+            <div>
+              <strong>
+                <span>{{sessionStartDisplay(cartItem)}}</span>
+                <span i18n="at time">at</span>
+                <span>{{cartItem.session?.start_time}}</span>
+              </strong>
+              <br>
+              <span>{{cartItem.session?.details?.nb_persons}}</span>
+              <span i18n="people">people</span> -
+              <span>
+              {{cartItem.session?.details?.price}}€
+              </span>
+              <a style="cursor:pointer;" (click)="deleteCartItem(cartMono.mono, cartItem)" class="secondary-content red-text"><i class="material-icons">delete</i></a>
+            </div>
+          </li>
+        </ul>
+        <!--                 <div class="row">
+          <h5 class="page-title right-align">
+            <strong i18n="total price">Total price:</strong> {{totalPriceForMono(cartMono)}}€
+          </h5>
+        </div>
+        <div class="row">
+          <div class="col s12 right-align np">
+            <a class="btn btn-large orange white-text" routerLink="booking" (click)="dialogRef.close()">
+              <span i18n="book sessions with">Book sessions with</span> {{monoCartFirstName(cartMono)}}
+              <i class="material-icons right">send</i>
+            </a>
+          </div>
+        </div> -->
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <ng-template #emptyCart>
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel blue white-text">
+          <span class="white-text" i18n="empty cart info">
+            Your cart is empty, you can fill your cart with sessions from mono's profile page.
+          </span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</mat-dialog-content>
+<div class="row" *ngIf="monoCart && monoCart.mono && monoCart.cart_items && monoCart.cart_items.length > 0">
+  <h5 class="page-title right-align">
+    <strong i18n="total price">Total price:</strong> {{totalPriceForMono(monoCart)}}€
+  </h5>
+</div>
+<div mat-dialog-actions [attr.align]="'end'" class="dialog-actions-bottom">
+  <button mat-dialog-close mat-button i18n="cancel button" class="hide-on-small-only">Cancel</button>
+  <a mat-button class="orange white-text" (click)="navigateToBooking(monoCart); close()" *ngIf="monoCart && monoCart.mono && monoCart.cart_items && monoCart.cart_items.length > 0">
+    <span class="hide-on-small-and-down">
+      <span i18n="book sessions with">Book sessions with</span> {{monoCartFirstName(monoCart)}}
+    </span>
+    <span class="hide-on-med-and-up">
+      <span i18n="book">Book</span>
+    </span>
+    <i class="material-icons">send</i>
+  </a>
+</div>

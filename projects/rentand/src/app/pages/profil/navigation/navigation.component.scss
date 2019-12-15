@@ -1,0 +1,13 @@
+.breadcrumb-nav {
+    box-shadow: none;
+    line-height: 30px !important;
+    height: 30px !important;
+    .breadcrumb:before {
+        color: #2196F3 !important;
+    }
+    .breadcrumb {
+        font-size: inherit;
+        line-height: inherit;
+        cursor: pointer;
+    }
+}

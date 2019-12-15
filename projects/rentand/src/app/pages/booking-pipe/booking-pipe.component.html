@@ -1,0 +1,39 @@
+<div class="section mt1 np">
+  <div class="row center-align nm mb2">
+    <div class="col s12">
+      <div class="card nm np">
+        <div class="card-content nm np">
+          <mat-tab-group mat-stretch-tabs dynamicHeight class="security-tab-group" [selectedIndex]="selectedIndex">
+
+
+            <mat-tab [disabled]="bookingPipeService.accessAllowedToPaymentAndPrev()">
+              <ng-template mat-tab-label>
+                 <span class="blue  white-text pa0 pt025 pb025 pl05 pr05 mr025">1</span>
+                 <span i18n="Booking pipe tab login title">Login</span> 
+              </ng-template>
+              <app-pipe-login (slideToInfosTab)="slideToInfosTab()" (notifyUser)="openSnackBar($event)" ></app-pipe-login>    
+            </mat-tab>
+
+
+            <mat-tab [disabled]="!bookingPipeService.accessAllowedToInfosAndPrev() || bookingPipeService.accessAllowedToPaymentAndPrev()">
+               <ng-template mat-tab-label>
+                 <span class="blue  white-text pa0 pt025 pb025 pl05 pr05 mr025">2</span>
+                 <span i18n="Booking pipe tab infos title">Infos</span> 
+              </ng-template>
+              <app-pipe-infos (slideToLoginTab)="slideToLoginTab()" (slideToPaymentTab)="slideToPaymentTab()" (notifyUser)="openSnackBar($event)"></app-pipe-infos>
+            </mat-tab>
+
+            <mat-tab [disabled]="!bookingPipeService.accessAllowedToPaymentAndPrev()" i18n-label="Booking pipe payment title" (click)="slideToLoginTab()">
+              <ng-template mat-tab-label>
+                <span class="blue  white-text pa0 pt025 pb025 pl05 pr05 mr025">3</span>
+                <span i18n="Booking pipe payment title">Payment</span> 
+              </ng-template>
+              <app-pipe-payment (slideToInfosTab)="slideToInfosTab()" (notifyUser)="openSnackBar($event)"></app-pipe-payment>
+            </mat-tab>
+
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

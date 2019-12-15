@@ -1,0 +1,26 @@
+<div class="card" *ngIf="booking && booking.coach; else noMono">
+  <div class="card-image" *ngIf="!booking.coach || !booking.coach.user_metadata.media.url">
+    <img src="assets/images/anonymous.jpg" alt="{{getBookingMonoTitle(booking)}}">
+  </div>
+  <div class="card-image" *ngIf="booking.coach && booking.coach.user_metadata.media.url">
+    <img src="{{booking.coach.user_metadata.media.url}}" alt="{{getBookingMonoTitle(booking)}}">
+  </div>
+  <div class="card-content">
+    <div class="row nm">
+      <h4 class="col s12 center-align blue-text nm">
+        <span class="card-title blue-text">{{getBookingMonoTitle(booking)}}</span>
+      </h4>
+      <p class="col s12 center-align">
+        <a href="tel:{{booking.coach.user_metadata.phone}}">{{booking.coach.user_metadata.phone}}</a>
+      </p>
+      <p class="col s12 center-align">
+        <a href="mailto:{{booking.coach.email}}">{{booking.coach.email}}</a>
+      </p>
+    </div>
+  </div>
+</div>
+<ng-template #noMono>
+  <div class="card-panel">
+    <h5 i18n>No coach found</h5>
+  </div>
+</ng-template>
