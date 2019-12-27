@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-select i18n-placeholder="Participants number"
+              placeholder="Participants number"
+              [(ngModel)]="selectedNumberParticipant"
+              name="number-participant"
+              (selectionChange)="updateNumberParticipant($event)">
+    <mat-option *ngFor="let numberParticipant of numberParticipants" [value]="numberParticipant">
+      {{ numberParticipant }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

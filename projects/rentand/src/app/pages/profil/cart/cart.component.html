@@ -1,0 +1,25 @@
+<app-fab-speed-dial class="fixed-action-btn horizontal"
+                    [(open)]="open"
+                    [direction]="direction"
+                    [animationMode]="animationMode"
+                    [fixed]="fixed"
+                    (mouseenter)="open = true"
+                    (click)="toggleOpen()"
+                    (mouseleave)="open = false">
+  <!--  <app-fab-trigger>-->
+  <!--    <button mat-fab (click)="addToCart()" class="teal">-->
+  <!--      <i class="material-icons">shopping_cart</i>-->
+  <!--    </button>-->
+  <!--  </app-fab-trigger>-->
+  <!--  <app-fab-actions>-->
+  <!--    <button mat-mini-fab (click)="action1()" class="red">-->
+  <!--      <mat-icon>add</mat-icon>-->
+  <!--    </button>-->
+  <!--    <button mat-mini-fab (click)="action2()" class="orange">-->
+  <!--      <mat-icon>edit</mat-icon>-->
+  <!--    </button>-->
+  <!--    <button mat-mini-fab (click)="action3()" class="blue">-->
+  <!--      <mat-icon>menu</mat-icon>-->
+  <!--    </button>-->
+  <!--  </app-fab-actions>-->
+</app-fab-speed-dial>

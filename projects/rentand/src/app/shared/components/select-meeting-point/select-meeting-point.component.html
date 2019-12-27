@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-select i18n-placeholder="Meeting point"
+              [(ngModel)]="selectedMeetingPoint"
+              (selectionChange)="updateMeetingPoint($event)"
+              placeholder="Meeting point"
+              name="meetingPoint">
+    <mat-option *ngFor="let meetingPoint of meetingPoints" [value]="meetingPoint">
+      {{ meetingPoint?.title }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

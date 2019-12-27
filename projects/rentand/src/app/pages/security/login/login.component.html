@@ -1,0 +1,65 @@
+<div class="container"
+     *ngIf="!isAuthenticated()">
+  <div class="row">
+    <form class="col-12 d-flex justify-content-center"
+          [formGroup]="form">
+      <div class="row">
+        <div class="col-12 py-3 justify-content-center d-flex">
+          <div
+            *ngIf="(form.controls['email'].hasError('required') || form.controls['email'].hasError('email')) && form.controls['email'].touched"
+            class="text-danger"
+            i18n="login email error message">You must include a valid email address.
+          </div>
+
+          <div *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched"
+               class="text-danger"
+               i18n="login password error message">You must include a password.
+          </div>
+        </div>
+
+        <div class="col-12 justify-content-center d-flex">
+          <mat-form-field>
+            <input matInput
+                   [(ngModel)]="email"
+                   id="email"
+                   type="email"
+                   class="form-control"
+                   formControlName="email"
+                   i18-placeholder="Enter your email"
+                   placeholder="Enter your email">
+          </mat-form-field>
+        </div>
+        <div class="col-12 justify-content-center d-flex">
+          <mat-form-field>
+            <input matInput
+                   [(ngModel)]="password"
+                   type="password"
+                   class="form-control"
+                   formControlName="password"
+                   i18n-placeholder="Enter your password"
+                   placeholder="Enter your password">
+          </mat-form-field>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <button [disabled]="!form.valid"
+                  type="submit"
+                  mat-raised-button
+                  (click)="loginCheck()"
+                  i18n="Login">
+            Login
+          </button>
+        </div>
+        <div class="col-4 offset-8">
+          <a class="cursor-pointer text-grey mt-1"
+             style="font-size: 0.8em"
+             (click)="openPasswordResetDialog()"
+             i18n="login password forgot">
+            Forgot password ?
+          </a>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+

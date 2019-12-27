@@ -117,7 +117,7 @@ export class Cloudinary {
   }
 }
 
-/* Return a provider object that creates our configurable service */
+/* Return a provider object that creates our configurable services */
 export function provideCloudinary(cloudinaryJsLib: any, configuration: CloudinaryConfiguration) {
   return {provide: Cloudinary, useFactory: () => new Cloudinary(cloudinaryJsLib, configuration)};
 }

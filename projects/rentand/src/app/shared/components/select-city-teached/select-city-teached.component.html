@@ -1,0 +1,12 @@
+<mat-form-field>
+  <mat-select i18n-placeholder="Choose my city in agenda component"
+              placeholder="City"
+              [(ngModel)]="selectedCityTeached"
+              name="city"
+              (selectionChange)="updateCityTeached($event)">
+    <mat-option *ngFor="let cityTeached of citiesTeached"
+                [value]="cityTeached">
+      {{ cityTeached?.city?.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

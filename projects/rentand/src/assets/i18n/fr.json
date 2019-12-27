@@ -1,0 +1,94 @@
+{
+    "profil": {
+        "cities_teached": {
+            "error": {
+                "fr": "Connexion au serveur impossible. Veuillez vérifier l'état de votre connection, puis essayer de rafraîchir la page.",
+                "en": "Server internal error, Please reconnect."
+            }
+        },
+        "sports_teached": {
+            "error": {
+                "fr": "Connexion au serveur impossible. Veuillez vérifier l'état de votre connection, puis essayer de rafraîchir la page.",
+                "en": "Server internal error, Please reconnect."
+            }
+        },
+        "online_sessions": {
+            "error": {
+                "fr": "Connexion au serveur impossible. Veuillez vérifier l'état de votre connection, puis essayer de rafraîchir la page.",
+                "en": "Server internal error, Please reconnect."
+            }
+        },
+        "slug": {
+            "error": {
+                "fr": "Le moniteur est introuvable",
+                "en": "Instructor can not be found"
+            }
+        }
+    },
+    "login": {
+        "server_internal_error": {
+            "fr": "Connexion au serveur impossible. Veuillez vérifier l'état de votre connection, puis essayer de vous reconnecter à votre compte.",
+            "en": "Server internal error, Please reconnect."
+        },
+        "connection_error": {
+            "fr": "Vous êtes déja authentifié",
+            "en": "You are already connected"
+        },
+        "wrong_email_or_password": {
+            "fr": "Désolé, votre adresse email ou votre mot de passe est incorrect. Vérifiez bien l'orthographe de votre email. Si vous ne vous souvenez plus de votre mot de passe,",
+            "en": "Wrong email or password."
+        },
+        "password_email_sent" : {
+            "fr" : "Un email de réinitialisation de mot de passe vient de vous être envoyé",
+            "en" : "A password reset email has just been sent to you"
+        }
+    },
+    "guard": {
+        "access_denied_pro": {
+            "fr": "Vous n'êtes pas autorisé à accéder sur l'agenda",
+            "en": "Access denied to agenda"
+        },
+        "access_denied_structure": {
+            "fr": "Vous n'êtes pas autorisé à accéder à cette école",
+            "en": "Access denied to school"
+        },
+        "token_expired": {
+            "fr": "Votre session a expiré",
+            "en": "Session expired"
+        }
+    },
+    "signup": {
+        "redirected_to_signup": {
+            "fr" : "Nouveau sur rentand ? Creez votre compte !",
+            "en" : "New on rentand ? Create you account !"
+        },
+        "user_exists": {
+            "fr" : "Le compte existe déjà. Réinitialisez votre mot de passe si vous l'avez oublié.",
+            "en" : "The account is already existing. Reset you password if you forgot it"
+        },
+        "signup_succesful": {
+            "fr" : "Votre compte a été créé",
+            "en" : "Your account has been created succesfuly."
+        }
+    },
+    "booking_pipe": {
+        "payment_access_403_forbidden" : {
+            "fr" : "Oups, votre cours n'est plus disponible. Veuillez en choisir un autre.",
+            "en" : "Oops, your course is not available anymore. Please chose another one."
+        },
+        "session_unlocked": {
+            "fr": "Votre session n'est plus bloquée",
+            "en": "Your course is not locked anymore"
+        },
+        "session_locked": {
+            "fr": "Soyez tranquile, votre session est bloquée pour 10 minutes  ",
+            "en": "Be safe, your session is locked for 10 minutes"
+        }
+    },
+    "my_account": {
+        "profile_saved": {
+            "fr": "Informations sauvegardées",
+            "en": "Informations saved"
+        }
+    }
+}

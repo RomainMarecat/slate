@@ -1,0 +1,14 @@
+<div class="site_wrapper">
+  <!--<app-toast></app-toast>-->
+  <app-cart></app-cart>
+  <mat-sidenav-container>
+    <app-navbar (sideNavOpen)="sidenav.toggle()"></app-navbar>
+    <mat-sidenav #sidenav>
+      <app-sidenav-menu></app-sidenav-menu>
+    </mat-sidenav>
+    <div>
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+    </div>
+  </mat-sidenav-container>
+</div>

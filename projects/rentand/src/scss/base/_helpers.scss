@@ -1,0 +1,32 @@
+.row-tabs {
+  overflow-x: hidden;
+}
+
+.border-bottom-separator {
+  border-bottom: 1px solid #9e9e9e;
+}
+
+.zeechip {
+  background-color: #fafafa !important;
+  border: 1px solid #ef6c00 !important;
+  color: #ef6c00 !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  overflow: hidden !important;
+
+  i {
+    float: right !important;
+  }
+}
+
+.chip-squared {
+  border-radius: 2px !important;
+}
+
+.silver-border {
+  border: 1px solid silver !important;
+}
+
+.black-border {
+  border: 1px solid #575756 !important;
+}

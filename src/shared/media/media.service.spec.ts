@@ -11,7 +11,7 @@ import { Cloudinary } from './cloudinary/cloudinary.service';
 import CloudinaryConfiguration from './cloudinary/cloudinary-configuration.class';
 import { environment } from '../../app-hockey/environments/environment';
 
-const cloudName = 'service-test';
+const cloudName = 'services-test';
 describe('MediaService', () => {
   const config: CloudinaryConfiguration = {
     cloud_name: cloudName

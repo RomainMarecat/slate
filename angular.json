@@ -2,7 +2,7 @@
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
     "newProjectRoot": "projects",
-    "defaultProject": "scanobeer",
+    "defaultProject": "rentand",
     "projects": {
         "alr": {
             "root": "src",
@@ -1556,6 +1556,140 @@
                     "configurations": {
                         "production": {
                             "devServerTarget": "scanobeer:serve:production"
+                        }
+                    }
+                }
+            }
+        },
+        "rentand": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                }
+            },
+            "root": "projects/rentand",
+            "sourceRoot": "projects/rentand/src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/rentand",
+                        "index": "projects/rentand/src/index.html",
+                        "main": "projects/rentand/src/main.browser.ts",
+                        "polyfills": "projects/rentand/src/polyfills.ts",
+                        "tsConfig": "projects/rentand/tsconfig.app.json",
+                        "aot": false,
+                        "assets": [
+                            "projects/rentand/src/favicon.ico",
+                            "projects/rentand/src/assets",
+                            "projects/rentand/src/robots.txt",
+                            "projects/rentand/src/sitemap.xml",
+                            "projects/rentand/src/manifest.json"
+                        ],
+                        "styles": [
+                            "node_modules/material-design-icons/iconfont/material-icons.css",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/bootstrap/dist/css/bootstrap.css",
+                            "node_modules/cookieconsent/build/cookieconsent.min.css",
+                            "node_modules/@ng-select/ng-select/themes/material.theme.css",
+                            "projects/rentand/src/scss/main.scss"
+                        ],
+                        "scripts": [
+                            "node_modules/moment/min/moment.min.js",
+                            "node_modules/moment/locale/fr.js",
+                            "node_modules/twix/dist/twix.min.js"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/rentand/src/environments/environment.ts",
+                                    "with": "projects/rentand/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "rentand:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "rentand:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "rentand:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/rentand/src/test.ts",
+                        "polyfills": "projects/rentand/src/polyfills.ts",
+                        "tsConfig": "projects/rentand/tsconfig.spec.json",
+                        "karmaConfig": "projects/rentand/karma.conf.js",
+                        "assets": [
+                            "projects/rentand/src/favicon.ico",
+                            "projects/rentand/src/assets"
+                        ],
+                        "styles": [
+                            "projects/rentand/src/scss/main.scss"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "projects/rentand/tsconfig.app.json",
+                            "projects/rentand/tsconfig.spec.json",
+                            "projects/rentand/e2e/tsconfig.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "e2e": {
+                    "builder": "@angular-devkit/build-angular:protractor",
+                    "options": {
+                        "protractorConfig": "projects/rentand/e2e/protractor.conf.js",
+                        "devServerTarget": "rentand:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "rentand:serve:production"
                         }
                     }
                 }

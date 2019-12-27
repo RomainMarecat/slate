@@ -1,0 +1,20 @@
+.security-tab-group {
+	margin-bottom: 40px;
+	flex-grow: 1;
+	.mat-tab-header {
+		background: #f9f9f9;
+	}
+}
+
+#login_with_google_btn{
+	background-image: url('/assets/images/google_icon_color_48.png');
+	background-repeat: no-repeat;
+	background-size: 2em;
+	background-position: 5% center;
+}
+
+#user-pic{
+	max-height: 15em;
+	width: auto;
+	margin: 0 auto;
+}

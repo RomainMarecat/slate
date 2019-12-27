@@ -1,0 +1,142 @@
+<!-- @todo It looks like you're using ngModel on the same form field as formControlName.
+    Support for using the ngModel input property and ngModelChange event with
+    reactive form directives has been deprecated in Angular v6 and will be removed
+    in Angular v7.
+
+    For more information on this, see our API docs here:
+    https://angular.io/api/forms/FormControlName#use-with-ngmodel
+-->
+<div class="row" *ngIf="user && isAuthenticated()">
+  <div class="input-field col-12 m12">
+    <div class="row mt2 mb2">
+      <img *ngIf="user.user_metadata.media.url"
+           class="col-4 offset-4 img-rounded img-fluid"
+           src="{{ user.user_metadata.media.url }}">
+    </div>
+    <div class="login-form-text col-12 p-0" *ngIf="user">
+      <div class="row center-align">
+        <div class="col-12">
+          <span *ngIf="user.name">
+            <b>{{ user.name }}</b>
+          </span>
+        </div>
+        <div class="col-12">
+          <span *ngIf="user.email">
+          {{ user.email }}
+          </span>
+        </div>
+        <div class="col-12 mt-1">
+          <button type="button" class="btn btn-block waves-light waves-effect grey" (click)="logout()"
+                  i18n="Logout btn page login">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isAuthenticated()" class="my-3">
+  <div class="row">
+    <form [formGroup]="form" class="col-12 d-flex justify-content-center">
+      <div class="pt-1">
+        <div
+          *ngIf="(form.controls['email'].hasError('required') || form.controls['email'].hasError('email')) && form.controls['email'].touched"
+          class="text-danger"
+          i18n="signup email error message">You must include a valid email address.
+        </div>
+
+        <div *ngIf="form.controls['lastname'].hasError('required') && form.controls['lastname'].touched"
+             class="text-danger"
+             i18n="signup lastname error message">You must include a lastname.
+        </div>
+
+        <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="text-danger"
+             i18n="signup email error message">You must include a valid email address.
+        </div>
+
+        <div *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched"
+             class="text-danger"
+             i18n="signup password error message">You must include a password.
+        </div>
+
+        <div
+          *ngIf="form.controls['password'].touched && form.controls['passwordCheck'].touched && (passwordInput.value != passwordCheckInput.value)"
+          class="text-danger"
+          i18n="signup password error message">The passwords are differents.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field>
+            <input matInput
+                   [(ngModel)]="email"
+                   id="email"
+                   type="email"
+                   class="form-control"
+                   formControlName="email"
+                   i18-placeholder="Enter your email"
+                   placeholder="Email*">
+          </mat-form-field>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field>
+            <input matInput
+                   [(ngModel)]="firstname"
+                   id="firstname"
+                   type="text"
+                   class="form-control"
+                   formControlName="firstname"
+                   i18-placeholder="signup form firstname"
+                   placeholder="Firstname*">
+          </mat-form-field>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field>
+            <input matInput
+                   [(ngModel)]="lastname"
+                   id="lastname"
+                   type="text"
+                   class="form-control"
+                   formControlName="lastname"
+                   i18-placeholder="signup form lastname"
+                   placeholder="Lastname*">
+          </mat-form-field>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field>
+            <input matInput
+                   [(ngModel)]="password"
+                   type="password"
+                   class="form-control"
+                   #passwordInput
+                   formControlName="password"
+                   i18n-placeholder="Enter your password"
+                   placeholder="Enter your password*">
+          </mat-form-field>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <mat-form-field>
+            <input matInput
+                   [(ngModel)]="passwordCheck"
+                   type="password"
+                   class="form-control"
+                   #passwordCheckInput
+                   formControlName="passwordCheck"
+                   i18n-placeholder="Enter your password again"
+                   placeholder="Enter your password again*">
+          </mat-form-field>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <button type="submit"
+                  mat-raised-button
+                  [disabled]="!form.valid || (passwordInput.value != passwordCheckInput.value)"
+                  (click)="signUp()"
+                  i18n="Signup">
+            Signup
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

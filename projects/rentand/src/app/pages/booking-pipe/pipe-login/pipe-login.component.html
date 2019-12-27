@@ -1,0 +1,11 @@
+<h4 class="mb0 pb0" i18n="booking pipe login title">Is it you ?</h4>
+<app-security (userLoggedIn)="userLoggedIn()"
+              (userLoggedOut)="userLoggedOut()"></app-security>
+
+<div class="row">
+  <div class="col s12">
+    <button [disabled]="!accessAllowedToInfos" type="submit" class="btn btn-block waves-light waves-effect orange right"
+            (click)="slideToInfosTab.emit()" i18n="Booking pipe next">Next
+    </button>
+  </div>
+</div>

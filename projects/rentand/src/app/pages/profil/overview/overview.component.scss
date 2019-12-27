@@ -1,0 +1,61 @@
+.profil-header-image {
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+}
+
+.flag-img {
+    width: 32px;
+    height: 32px;
+}
+
+
+/* small */
+
+@media (max-width: 600px) {
+    .profil-header-image {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+
+/* medium*/
+
+@media (min-width: 601px) and (max-width: 992px) {}
+
+
+/* large */
+
+@media (min-width: 993px) {}
+
+.profil-card {
+    h1 {
+        @media screen and (max-width: 768px) {
+            font-size: 2rem;
+        }
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            font-size: 2rem;
+        }
+        @media screen and (min-width: 769px) {
+            font-size: 3rem;
+        }
+        @media screen and (min-width: 1025px) {
+            font-size: 5rem;
+        }
+    }
+    h2 {
+        @media screen and (max-width: 768px) {
+            font-size: 1.5rem;
+        }
+        @media screen and (min-width: 481px) {
+            font-size: 1.5rem;
+        }
+        @media screen and (min-width: 769px) {
+            font-size: 2rem;
+        }
+        @media screen and (min-width: 1025px) {
+            font-size: 4rem;
+        }
+    }
+}

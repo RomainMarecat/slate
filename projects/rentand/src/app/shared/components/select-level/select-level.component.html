@@ -1,0 +1,10 @@
+<mat-form-field>
+  <mat-select i18n-placeholder="My level"
+              (selectionChange)="updateLevel($event)"
+              placeholder="My level"
+              name="level">
+    <mat-option *ngFor="let level of levels" [value]="level">
+      {{ level?.translations[locale] }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

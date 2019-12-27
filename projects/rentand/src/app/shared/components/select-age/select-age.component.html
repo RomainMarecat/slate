@@ -1,0 +1,9 @@
+<mat-form-field>
+  <mat-select i18n-placeholder="My age"
+              (selectionChange)="updateAge($event)"
+              placeholder="My age" name="age">
+    <mat-option *ngFor="let age of ages" [value]="age">
+      {{ age?.translations[locale] }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

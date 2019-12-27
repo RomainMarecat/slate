@@ -14,7 +14,7 @@ export const cmsDetailList: CmsDetail[] = [
     icon: 'local_shipping',
   },
   {
-    title: 'faq.about-service',
+    title: 'faq.about-services',
     content: `<div>Know more about our features</div>`,
     cms: 'faq.links',
     icon: 'question_answer',

@@ -1,0 +1,20 @@
+<h3 mat-dialog-title class="page-title" *ngIf="booking">
+	<span i18n="your booking with">Your booking with</span>
+	{{getBookingMonoTitle(booking)}}
+	<a (click)="dialogRef.close()" class="right btn-close-modal"><i class="material-icons mat-36">close</i></a>
+</h3>
+<mat-dialog-content>
+  <div *ngIf="!booking || !events; else bookingDiv">
+    <p>No booking found</p>
+  </div>
+  <ng-template #bookingDiv>
+    <div class="row">
+      <div class="col s12 m9">
+        <app-booking-summary [booking]="booking" [events]="events"></app-booking-summary>
+      </div>
+      <div class="col s12 m3">
+        <app-booking-mono-card [booking]="booking"></app-booking-mono-card>
+      </div>
+    </div>
+  </ng-template>
+</mat-dialog-content>

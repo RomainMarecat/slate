@@ -1,0 +1,23 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb text-primary bg-transparent">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/']"
+         class="text-primary"
+         i18n="Home breadcrumb title">
+        Home
+      </a>
+    </li>
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/']"
+         class="text-primary">
+        {{ translatedSportTeached }}
+      </a>
+    </li>
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/profils/' + mono?.user_metadata?.slug]"
+         class="text-primary">
+        {{ mono?.user_metadata?.firstname }} {{ mono?.user_metadata?.lastname }}
+      </a>
+    </li>
+  </ol>
+</nav>

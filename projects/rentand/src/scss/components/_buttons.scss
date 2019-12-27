@@ -1,0 +1,14 @@
+.bottom-right-fabs {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 0.7em;
+    z-index: 1000;
+    max-width: 60px;
+    text-align: center;
+}
+
+.btn-close-modal {
+    cursor: pointer;
+    color: #4A6478;
+}

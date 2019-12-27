@@ -1,0 +1,24 @@
+#app-my-account {
+    td {
+        border-right: 1px solid #eeeeee;
+    }
+    #profile_pic {
+        height: 10em
+    }
+    .property-title {
+        font-weight: bolder;
+        padding-left: 1em;
+        padding-right: 2em;
+    }
+    .ngx-datatable.material.single-selection .datatable-body-row.active,
+    .ngx-datatable.material.single-selection .datatable-body-row.active .datatable-row-group,
+    .ngx-datatable.material.multi-selection .datatable-body-row.active,
+    .ngx-datatable.material.multi-selection .datatable-body-row.active .datatable-row-group,
+    .ngx-datatable.material.multi-click-selection .datatable-body-row.active,
+    .ngx-datatable.material.multi-click-selection .datatable-body-row.active .datatable-row-group {
+        background-color: #ffcc80 !important;
+        color: #424242 !important;
+        border-bottom: 1px solid white !important;
+        font-weight: bolder !important;
+    }
+}

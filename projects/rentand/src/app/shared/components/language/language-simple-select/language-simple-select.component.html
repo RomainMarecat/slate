@@ -1,0 +1,7 @@
+<mat-form-field>
+  <mat-select (change)="onLanguageChange($event)" name="language" [(ngModel)]="defaultLanguage">
+    <mat-option *ngFor="let language of languageList" [value]="language.ISO639_1">
+      <img src="/assets/images/flags/language/{{language.ISO639_1}}.svg" width="24px" alt="{{language.ISO639_1}} flag"/>&nbsp;{{language.translations[locale]}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -1,0 +1,12 @@
+<mat-form-field>
+  <mat-select i18n-placeholder="Choose my duration component"
+              placeholder="Choose my duration"
+              [(ngModel)]="selectedDuration"
+              name="duration"
+              (selectionChange)="updateDuration($event)">
+    <mat-option *ngFor="let duration of durations"
+                [value]="duration">
+      {{ duration }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -236,7 +236,7 @@ export class ImageProductComponent implements OnInit {
   }
 
   /**
-   * Validate a new Image and Cropped size
+   * Validate a new Media and Cropped size
    */
   validateImage() {
     const width = this.cropper.cropper.getCropBounds().width;

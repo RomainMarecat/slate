@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Theme, ThemeStorageService } from '..//shared/theme-storage.service';
 import { SeoService } from '../../seo/shared/seo.service';
 import { StyleService } from '../shared/style.service';
+import { Theme, ThemeStorageService } from '../shared/theme-storage.service';
 
 @Component({
   selector: 'app-alr-layout-builder-edit',
