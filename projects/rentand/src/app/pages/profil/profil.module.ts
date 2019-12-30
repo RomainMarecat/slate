@@ -28,7 +28,7 @@ import { CountryService } from '../../shared/services/country.service';
 import { DeviceService } from '../../shared/services/device.service';
 import { EventsService } from '../../shared/services/events.service';
 import { GoogleApisService } from '../../shared/services/google-apis.service';
-import { MonoService } from '../../shared/services/mono.service';
+import { UserService } from '../../shared/services/user.service';
 import { OnlineSessionService } from '../../shared/services/online-session.service';
 import { ProfilService } from '../../shared/services/profil.service';
 import { SportTeachedService } from '../../shared/services/sport-teached.service';
@@ -65,7 +65,7 @@ import { ProfilComponent } from './profil.component';
     CityService,
     SportTeachedService,
     OnlineSessionService,
-    MonoService,
+    UserService,
     ToastService,
     CartService,
     ProfilService,

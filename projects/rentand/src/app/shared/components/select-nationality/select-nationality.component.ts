@@ -1,26 +1,29 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { CountryService } from '../../../shared/services/country.service';
+import { Country } from '../../interfaces/country';
+import { CountryService } from '../../services/country.service';
 
 @Component({
-  selector: 'app-nationality-select',
-  templateUrl: './nationality-select.component.html',
-  styleUrls: ['./nationality-select.component.scss'],
+  selector: 'app-select-nationality',
+  templateUrl: './select-nationality.component.html',
+  styleUrls: ['./select-nationality.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NationalitySelectComponent),
+      useExisting: forwardRef(() => SelectNationalityComponent),
       multi: true
     }
   ]
 })
-export class NationalitySelectComponent implements OnInit {
+export class SelectNationalityComponent implements OnInit {
 
-  countryList: any[];
-  hasBeenInit = false;
-  mediumScreenAndDown = true;
+  @Input() placeholder = 'Enter your nationality';
+
+  countryList: Country[];
+
   locale = 'en';
+
   defaultNationality = 'fr';
 
   constructor(private countryService: CountryService,
@@ -29,9 +32,10 @@ export class NationalitySelectComponent implements OnInit {
 
   ngOnInit() {
     this.locale = this.translateService.getBrowserLang();
-    this.countryService.getCountries().subscribe((countries) => {
-      this.countryList = countries;
-    });
+    this.countryService.getCountries()
+      .subscribe((countries) => {
+        this.countryList = countries;
+      });
   }
 
   writeValue(value: any) {
@@ -40,6 +44,7 @@ export class NationalitySelectComponent implements OnInit {
 
   propagateChange = (_: any) => {
   }
+
   validateFn: any = () => {
   }
 
@@ -55,6 +60,4 @@ export class NationalitySelectComponent implements OnInit {
       this.propagateChange(event.value);
     }
   }
-
-
 }

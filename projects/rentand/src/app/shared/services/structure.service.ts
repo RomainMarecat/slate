@@ -4,10 +4,12 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Structure } from '../interfaces/structure';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class StructureService {
 
-  private secureStructureUrl = `${environment.middleware}/v1/secure/structures`;
+  private secureStructureUrl = `${environment.middleware}/v1/restricted/structures`;
 
   constructor(private http: HttpClient) {
   }

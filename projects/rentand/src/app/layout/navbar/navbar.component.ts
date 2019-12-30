@@ -1,7 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { skipWhile } from 'rxjs/operators';
 import { CartService } from '../../pages/cart/shared/cart.service';
 import { User } from '../../shared/interfaces/user';
-import { AuthService } from '../../shared/services/auth.service';
+import { AuthenticationService } from '../../shared/services/authentication.service';
+import { AppState } from '../../shared/store/app.state';
+import { selectLoggedIn, selectUser } from '../../shared/store/user/selectors/user.selector';
+import { UserState } from '../../shared/store/user/states/user.state';
 
 @Component({
   selector: 'app-navbar',
@@ -16,19 +22,26 @@ export class NavbarComponent implements OnInit {
 
   open: boolean;
 
+  authenticated$: Observable<boolean>;
+
   @Output() sideNavOpen: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private cartService: CartService,
-              private authService: AuthService) {
+              private authenticationService: AuthenticationService,
+              private store: Store<AppState>) {
     this.open = false;
   }
 
   ngOnInit() {
-    this.getUser();
-  }
+    this.store.select(selectUser)
+      .pipe(
+        skipWhile((userState: UserState) => !userState.user)
+      )
+      .subscribe((userState: UserState) => {
+        this.user = userState.user as User;
+      });
 
-  getUser() {
-    this.user = this.authService.getUser();
+    this.checkAuthenticated();
   }
 
   toggleSideNav() {
@@ -47,7 +60,7 @@ export class NavbarComponent implements OnInit {
     return this.cartService.getCartItemNumber();
   }
 
-  isAuthenticated() {
-    return this.authService.isAuthenticated();
+  checkAuthenticated() {
+    this.authenticated$ = this.store.select(selectLoggedIn);
   }
 }

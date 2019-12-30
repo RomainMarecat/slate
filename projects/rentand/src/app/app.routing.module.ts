@@ -16,6 +16,10 @@ export const appRoutes: Routes = [
     loadChildren: () => import('./pages/security/security.module').then(m => m.SecurityModule)
   },
   {
+    path: 'account',
+    loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountModule)
+  },
+  {
     path: '404',
     loadChildren: () => import('./pages/page-not-found/pagenotfound.module').then(m => m.PagenotfoundModule)
   },

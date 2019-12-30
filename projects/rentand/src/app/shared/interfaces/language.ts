@@ -1,10 +1,9 @@
 export interface Language {
-  _id?: any;
-  ISO639_1: string;
-  ISO639_2: string;
+  id: string;
+  _iso6391: string;
+  _iso6392: string;
   native_name: string;
-  trans: {
-    fr: string;
-    en: string;
+  translations: {
+    [key: string]: string;
   };
 }

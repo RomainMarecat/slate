@@ -1,9 +1,13 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 import { User } from '../../shared/interfaces/user';
-import { AuthService } from '../../shared/services/auth.service';
+import { AuthenticationService } from '../../shared/services/authentication.service';
+import { AppState } from '../../shared/store/app.state';
+import { selectLoggedIn, selectUser } from '../../shared/store/user/selectors/user.selector';
 import { SecurityMessage } from './security-message';
 
 @Component({
@@ -19,81 +23,35 @@ export class SecurityComponent implements OnInit {
 
   user: User;
   currentRoute = '/secure/login';
+  authenticated$: Observable<boolean>;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService,
+    private authenticationService: AuthenticationService,
     public snackBar: MatSnackBar,
-    private translateService: TranslateService) {
+    private translateService: TranslateService,
+    private store: Store<AppState>) {
+  }
 
-    this.user = this.authService.getUser() as User;
+  ngOnInit(): void {
+    this.getUser();
+    this.checkAuthenticated();
+  }
 
-    authService.redirectToSignup$.subscribe(
-      email => {
-        this.redirectToSignup(email);
+  getUser() {
+    this.store.select(selectUser)
+      .subscribe((userState) => {
+        this.user = userState.user as User;
       });
-
-    authService.authenticationStatus$.subscribe(
-      response => {
-        if (response) {
-          let msg = '';
-          if (response.code) { // if there is a code: it's an error (bad conception, the object should be defined as a specific class..).)
-            switch (response.code) {
-              case 'user_exists':
-                msg = this.translateService.instant('signup.user_exists');
-                break;
-              case 'invalid_user_password':
-                msg = this.translateService.instant('login.wrong_email_or_password');
-                break;
-              default:
-                msg = response.description;
-                break;
-            }
-            this.openSnackBar({
-              msg,
-              action: 'ok',
-              classes: ['red']
-            });
-          } else { // else, it's a good news ! We notify and redirect
-            this.openSnackBar({
-              msg: this.translateService.instant('signup.signup_succesful'),
-              action: 'OK',
-              classes: ['green']
-            });
-          }
-        }
-      }
-    );
-
-    authService.passwordResetStatus$.subscribe(
-      msg => {
-        this.openSnackBar({
-          msg: this.translateService.instant('login.password_email_sent'),
-          action: 'OK',
-          classes: ['green']
-        });
-      }
-    );
   }
 
-  ngOnInit() {
-  }
-
-  isAuthenticated(): boolean {
-    return this.authService.isAuthenticated();
-  }
-
-  loginWithGoogle() {
-    this.authService.loginWithGoogle({
-      redirectUri: this.router.url === ('/secure/login' || '/secure/signup') ? '/' :
-        this.router.url.substr(1, this.router.url.length)
-    });
-    this.userLoggedIn.emit();
+  checkAuthenticated() {
+    this.authenticated$ = this.store.select(selectLoggedIn);
   }
 
   logout() {
-    this.authService.logout();
+    this.authenticationService.logout();
     this.userLoggedOut.emit();
     window.location.href = this.router.url;
   }

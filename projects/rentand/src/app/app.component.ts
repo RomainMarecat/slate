@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from './shared/store/app.state';
+import { LoginCheck } from './shared/store/user/actions/login.action';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,11 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  constructor(private store: Store<AppState>) {
+    this.setupApplication();
+  }
+
+  setupApplication() {
+    this.store.dispatch(new LoginCheck());
+  }
 }

@@ -10,8 +10,8 @@ import { Event } from '../interfaces/event';
 })
 export class EventsService {
 
-  private publicEventsUrl = `${environment.middleware}/v1/events`;
-  private secureEventsUrl = `${environment.middleware}/v1/secure/events`;
+  private publicEventsUrl = `${environment.middleware}/v1/public/events`;
+  private secureEventsUrl = `${environment.middleware}/v1/restricted/events`;
 
   constructor(private http: HttpClient) {
   }

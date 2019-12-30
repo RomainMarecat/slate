@@ -4,11 +4,13 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { City } from '../interfaces/city';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CityService {
 
-  private citiesUrl = `${environment.middleware}/v1/cities`;
-  private secureCityUrl = `${environment.middleware}/v1/secure/cities`;
+  private citiesUrl = `${environment.middleware}/v1/public/cities`;
+  private secureCityUrl = `${environment.middleware}/v1/restricted/cities`;
 
   constructor(private http: HttpClient) {
   }

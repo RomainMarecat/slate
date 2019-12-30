@@ -1,4 +1,4 @@
-import { CartListState } from '../cart-list/reducer/cart-list.reducer';
+import { CartListState } from '../../../../pages/cart/cart-list/reducer/cart-list.reducer';
 
 export interface CartState {
   cart: CartListState;

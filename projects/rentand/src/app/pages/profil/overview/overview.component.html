@@ -22,10 +22,10 @@
   </mat-card-header>
   <mat-card-content>
     <div class="row mt05">
-      <div class="col-12 m-5 valign-wrapper" *ngIf="demonym">
+      <div class="col-12 m-5 d-flex align-items-center" *ngIf="demonym">
         <i class="material-icons left orange-text prefix">flag</i> {{demonym}}
       </div>
-      <div class="col-12 m-5 valign-wrapper" *ngIf="mono && mono.age">
+      <div class="col-12 m-5 d-flex align-items-center" *ngIf="mono && mono.age">
         <i class="material-icons left orange-text prefix">cake</i>
         <span> {{ mono?.age }}</span>&nbsp;<span i18n="profil $age years old ">years old</span>
       </div>

@@ -1,8 +1,11 @@
-<mat-form-field>
+<mat-form-field appearance="outline">
   <mat-select (selectionChange)="onNationalityChange($event)"
               name="nationality"
+              placeholder="Enter your nationality"
+              i18n-placeholder="Enter your nationality"
               [(ngModel)]="defaultNationality">
-    <mat-option *ngFor="let country of countryList" [value]="country.alpha2">
+    <mat-option *ngFor="let country of countryList"
+                [value]="country">
       <img src="/assets/images/flags/country/{{country.alpha2|lowercase}}.svg"
            width="24px"
            alt="{{country.alpha2}} flag">

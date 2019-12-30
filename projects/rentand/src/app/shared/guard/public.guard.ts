@@ -2,16 +2,18 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { ToastService } from '../services/toast.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class PublicGuard implements CanActivate {
 
   code: string;
   redirectRoute = '';
 
-  constructor(private authService: AuthService,
+  constructor(private authenticationService: AuthenticationService,
               private router: Router,
               private translateService: TranslateService,
               private activatedRoute: ActivatedRoute,
@@ -27,15 +29,15 @@ export class PublicGuard implements CanActivate {
     // }
     //
     //
-    // this.authService.loginrentand(this.code)
+    // this.authenticationService.loginrentand(this.code)
     //  .subscribe((objectToken) => {
     //      this.code = null;
-    //      this.authService.saveJwtToken(objectToken);
-    //      this.authService.setAuthenticationStatus(true);
+    //      this.authenticationService.saveJwtToken(objectToken);
+    //      this.authenticationService.setAuthenticationStatus(true);
     //      return this.accessToFavoriteRoute();
     //    },
     //    (error) => {
-    //      this.authService.setAuthenticationStatus(false);
+    //      this.authenticationService.setAuthenticationStatus(false);
     //
     //      if (typeof error.status !== 'undefined' && error.status === 0) {
     //        this.toastService.emitToast({

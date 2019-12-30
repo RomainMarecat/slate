@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MetaGuard } from '@ngx-meta/core';
 import { PublicGuard } from '../../shared/guard/public.guard';
 import { UserGuard } from '../../shared/guard/user.guard';
-import { AuthService } from '../../shared/services/auth.service';
+import { AuthenticationService } from '../../shared/services/authentication.service';
 import { SecurityComponent } from './security.component';
 
 const securityRoutes: Routes = [
@@ -39,7 +39,7 @@ const securityRoutes: Routes = [
   providers: [
     PublicGuard,
     UserGuard,
-    AuthService
+    AuthenticationService
   ]
 })
 export class SecurityRoutingModule {

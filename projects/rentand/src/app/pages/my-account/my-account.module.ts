@@ -10,15 +10,18 @@ import {
   MatRadioModule,
   MatSelectModule
 } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { LanguageSimpleSelectModule } from '../../shared/components/language/language-simple-select/language-simple-select.module';
+import { LanguageSimpleSelectModule } from '../../shared/components/select-language/language-simple-select.module';
+import { SelectNationalityModule } from '../../shared/components/select-nationality/select-nationality.module';
 import { MyAccountComponent } from './my-account.component';
 import { MyAccountRoutingModule } from './my-account.routing.module';
-import { NationalitySelectModule } from './nationality-select/nationality-select.module';
-
 
 @NgModule({
   imports: [
+    MatSnackBarModule,
     CommonModule,
     NgxDatatableModule,
     MatListModule,
@@ -31,8 +34,10 @@ import { NationalitySelectModule } from './nationality-select/nationality-select
     MatSelectModule,
     MatDatepickerModule,
     MatInputModule,
-    NationalitySelectModule,
+    SelectNationalityModule,
     LanguageSimpleSelectModule,
+    MatButtonModule,
+    MatCardModule,
   ],
   declarations: [
     MyAccountComponent,

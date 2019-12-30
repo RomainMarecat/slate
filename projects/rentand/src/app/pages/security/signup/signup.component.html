@@ -1,20 +1,12 @@
-<!-- @todo It looks like you're using ngModel on the same form field as formControlName.
-    Support for using the ngModel input property and ngModelChange event with
-    reactive form directives has been deprecated in Angular v6 and will be removed
-    in Angular v7.
-
-    For more information on this, see our API docs here:
-    https://angular.io/api/forms/FormControlName#use-with-ngmodel
--->
-<div class="row" *ngIf="user && isAuthenticated()">
-  <div class="input-field col-12 m12">
-    <div class="row mt2 mb2">
+<div class="row" *ngIf="authenticated$|async">
+  <div class="col-12">
+    <div class="row mt-2 mb-2">
       <img *ngIf="user.user_metadata.media.url"
            class="col-4 offset-4 img-rounded img-fluid"
            src="{{ user.user_metadata.media.url }}">
     </div>
     <div class="login-form-text col-12 p-0" *ngIf="user">
-      <div class="row center-align">
+      <div class="row">
         <div class="col-12">
           <span *ngIf="user.name">
             <b>{{ user.name }}</b>
@@ -36,107 +28,101 @@
   </div>
 </div>
 
-<div *ngIf="!isAuthenticated()" class="my-3">
-  <div class="row">
-    <form [formGroup]="form" class="col-12 d-flex justify-content-center">
-      <div class="pt-1">
-        <div
+<ng-container *ngIf="(authenticated$ | async) === false">
+  <form [formGroup]="form"
+        class="py-5"
+        (ngSubmit)="signUp()">
+    <div class="row">
+      <mat-form-field class="offset-3 col-6" appearance="outline">
+        <mat-label i18n="Enter your email">
+          Enter your email
+        </mat-label>
+        <input matInput
+               id="email"
+               type="email"
+               formControlName="email"
+               i18-placeholder="Enter your email"
+               placeholder="Email*">
+        <mat-error
           *ngIf="(form.controls['email'].hasError('required') || form.controls['email'].hasError('email')) && form.controls['email'].touched"
           class="text-danger"
-          i18n="signup email error message">You must include a valid email address.
-        </div>
-
-        <div *ngIf="form.controls['lastname'].hasError('required') && form.controls['lastname'].touched"
-             class="text-danger"
-             i18n="signup lastname error message">You must include a lastname.
-        </div>
-
-        <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="text-danger"
-             i18n="signup email error message">You must include a valid email address.
-        </div>
-
-        <div *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched"
-             class="text-danger"
-             i18n="signup password error message">You must include a password.
-        </div>
-
-        <div
+          i18n="signup email error message">
+          You must include a valid email address.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="offset-3 col-6" appearance="outline">
+        <mat-label i18n="Enter your firstname">
+          Enter your firstname
+        </mat-label>
+        <input matInput
+               id="firstname"
+               type="text"
+               formControlName="firstname"
+               i18-placeholder="signup form firstname"
+               placeholder="Firstname*">
+        <mat-error *ngIf="form.controls['firstname'].hasError('required') && form.controls['firstname'].touched"
+                   class="text-danger"
+                   i18n="signup firstname error message">
+          You must include a valid firstname.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="offset-3 col-6" appearance="outline">
+        <mat-label i18n="Enter your lastname">
+          Enter your lastname
+        </mat-label>
+        <input matInput
+               id="lastname"
+               type="text"
+               formControlName="lastname"
+               i18-placeholder="signup form lastname"
+               placeholder="Lastname*">
+        <mat-error *ngIf="form.controls['lastname'].hasError('required') && form.controls['lastname'].touched"
+                   class="text-danger"
+                   i18n="signup lastname error message">
+          You must include a valid lastname.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="offset-3 col-6" appearance="outline">
+        <mat-label i18n="Enter your password">
+          Enter your password
+        </mat-label>
+        <input matInput
+               type="password"
+               #passwordInput
+               formControlName="password"
+               i18n-placeholder="Enter your password"
+               placeholder="Enter your password*">
+        <mat-error *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched"
+                   class="text-danger"
+                   i18n="signup password error message">
+          You must include a valid password.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="offset-3 col-6" appearance="outline">
+        <mat-label i18n="Confirm your password">
+          Confirm your password
+        </mat-label>
+        <input matInput
+               type="password"
+               #passwordCheckInput
+               formControlName="passwordCheck"
+               i18n-placeholder="Enter your password again"
+               placeholder="Enter your password again*">
+        <mat-error
           *ngIf="form.controls['password'].touched && form.controls['passwordCheck'].touched && (passwordInput.value != passwordCheckInput.value)"
           class="text-danger"
-          i18n="signup password error message">The passwords are differents.
-        </div>
+          i18n="signup password error message">
+          The passwords are differents.
+        </mat-error>
+      </mat-form-field>
+      <div class="col-12 d-flex justify-content-center">
+        <button type="submit"
+                mat-raised-button
+                [disabled]="!form.valid || (passwordInput.value !== passwordCheckInput.value)"
+                i18n="Signup">
+          Signup
+        </button>
       </div>
-      <div class="row">
-        <div class="col-12 d-flex justify-content-center">
-          <mat-form-field>
-            <input matInput
-                   [(ngModel)]="email"
-                   id="email"
-                   type="email"
-                   class="form-control"
-                   formControlName="email"
-                   i18-placeholder="Enter your email"
-                   placeholder="Email*">
-          </mat-form-field>
-        </div>
-        <div class="col-12 d-flex justify-content-center">
-          <mat-form-field>
-            <input matInput
-                   [(ngModel)]="firstname"
-                   id="firstname"
-                   type="text"
-                   class="form-control"
-                   formControlName="firstname"
-                   i18-placeholder="signup form firstname"
-                   placeholder="Firstname*">
-          </mat-form-field>
-        </div>
-        <div class="col-12 d-flex justify-content-center">
-          <mat-form-field>
-            <input matInput
-                   [(ngModel)]="lastname"
-                   id="lastname"
-                   type="text"
-                   class="form-control"
-                   formControlName="lastname"
-                   i18-placeholder="signup form lastname"
-                   placeholder="Lastname*">
-          </mat-form-field>
-        </div>
-        <div class="col-12 d-flex justify-content-center">
-          <mat-form-field>
-            <input matInput
-                   [(ngModel)]="password"
-                   type="password"
-                   class="form-control"
-                   #passwordInput
-                   formControlName="password"
-                   i18n-placeholder="Enter your password"
-                   placeholder="Enter your password*">
-          </mat-form-field>
-        </div>
-        <div class="col-12 d-flex justify-content-center">
-          <mat-form-field>
-            <input matInput
-                   [(ngModel)]="passwordCheck"
-                   type="password"
-                   class="form-control"
-                   #passwordCheckInput
-                   formControlName="passwordCheck"
-                   i18n-placeholder="Enter your password again"
-                   placeholder="Enter your password again*">
-          </mat-form-field>
-        </div>
-        <div class="col-12 d-flex justify-content-center">
-          <button type="submit"
-                  mat-raised-button
-                  [disabled]="!form.valid || (passwordInput.value != passwordCheckInput.value)"
-                  (click)="signUp()"
-                  i18n="Signup">
-            Signup
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+    </div>
+  </form>
+</ng-container>

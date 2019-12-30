@@ -7,7 +7,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgxCalendarModule } from '@romainmarecat/ngx-calendar';
 import { ToastModule } from '../../../layout/toast/toast.module';
-import { AuthService } from '../../services/auth.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { OnlineSessionService } from '../../services/online-session.service';
 import { SportTeachedService } from '../../services/sport-teached.service';
 import { initialAppState } from '../../store/app.state';
@@ -54,7 +54,7 @@ describe('AgendaComponent', () => {
       providers: [
         OnlineSessionService,
         SportTeachedService,
-        AuthService
+        AuthenticationService
       ]
     })
       .compileComponents();

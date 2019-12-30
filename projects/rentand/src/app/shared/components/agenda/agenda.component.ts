@@ -11,7 +11,7 @@ import { OnlineSession } from '../../interfaces/online-session';
 import { Session } from '../../interfaces/session';
 import { SportTeached } from '../../interfaces/sport-teached';
 import { User } from '../../interfaces/user';
-import { AuthService } from '../../services/auth.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { CityTeachedService } from '../../services/city-teached.service';
 import { OnlineSessionService } from '../../services/online-session.service';
 import { ProfilService } from '../../services/profil.service';
@@ -60,7 +60,7 @@ export class AgendaComponent implements OnInit, OnChanges {
               public dialog: MatDialog,
               private toastService: ToastService,
               private cartService: CartService,
-              private authService: AuthService,
+              private authenticationService: AuthenticationService,
               private translateService: TranslateService,
               private cityTeachedService: CityTeachedService,
               private sportTeachedService: SportTeachedService,
@@ -74,8 +74,8 @@ export class AgendaComponent implements OnInit, OnChanges {
   }
 
   getUser() {
-    this.user = this.authService.getUser();
-
+    this.authenticationService.getUser()
+      .subscribe((user) => this.user = user);
   }
 
   getSportTeached() {

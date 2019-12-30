@@ -2,14 +2,21 @@
     td {
         border-right: 1px solid #eeeeee;
     }
+
+    .user_pic {
+        height: 1em
+    }
+
     #profile_pic {
         height: 10em
     }
+
     .property-title {
         font-weight: bolder;
         padding-left: 1em;
         padding-right: 2em;
     }
+
     .ngx-datatable.material.single-selection .datatable-body-row.active,
     .ngx-datatable.material.single-selection .datatable-body-row.active .datatable-row-group,
     .ngx-datatable.material.multi-selection .datatable-body-row.active,

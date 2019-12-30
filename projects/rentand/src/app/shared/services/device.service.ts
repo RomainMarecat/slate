@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DeviceService {
 
   private extraSmallScreenUp = 481;
@@ -14,7 +16,8 @@ export class DeviceService {
   private largeScreen = 1440;
   private extraLargeScreen = 2560;
 
-  constructor() { }
+  constructor() {
+  }
 
   isMaterializeSmallAndUp(): boolean {
     if (window && window.innerWidth) {

@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,10 +25,17 @@ import { BookingPipeService } from './pages/booking-pipe/booking-pipe.service';
 import { CartListEffect } from './pages/cart/cart-list/effect/cart-list.effect';
 import { CartModule } from './pages/cart/cart.module';
 import { jwtOptionsFactory } from './shared/factory/jwt-options.factory';
-import { AuthService } from './shared/services/auth.service';
-import { MonoService } from './shared/services/mono.service';
+import { InvalidJwtInterceptor } from './shared/interceptors/invalid-jwt.interceptor';
+import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
+import { AuthenticationService } from './shared/services/authentication.service';
+import { StorageService } from './shared/services/storage.service';
 import { ToastService } from './shared/services/toast.service';
+import { UserService } from './shared/services/user.service';
 import { APP_REDUCERS, appReducers } from './shared/store/app.reducer';
+import { GetUserEffect } from './shared/store/user/effects/get-user.effect';
+import { LoginEffect } from './shared/store/user/effects/login.effect';
+import { LogoutEffect } from './shared/store/user/effects/logout.effect';
+import { RegisterEffect } from './shared/store/user/effects/register.effect';
 
 @NgModule({
   imports: [
@@ -49,6 +56,10 @@ import { APP_REDUCERS, appReducers } from './shared/store/app.reducer';
     StoreModule.forRoot(APP_REDUCERS),
     EffectsModule.forRoot([
       CartListEffect,
+      LoginEffect,
+      RegisterEffect,
+      LogoutEffect,
+      GetUserEffect,
     ]),
     StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
@@ -59,7 +70,8 @@ import { APP_REDUCERS, appReducers } from './shared/store/app.reducer';
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory
+        useFactory: jwtOptionsFactory,
+        deps: [StorageService]
       }
     }),
   ],
@@ -68,9 +80,9 @@ import { APP_REDUCERS, appReducers } from './shared/store/app.reducer';
   ],
   providers: [
     BookingPipeService,
-    MonoService,
+    UserService,
     // UserService,
-    AuthService,
+    AuthenticationService,
     ToastService,
     // PublicGuard,
     // UserGuard,
@@ -78,7 +90,17 @@ import { APP_REDUCERS, appReducers } from './shared/store/app.reducer';
     {
       provide: APP_REDUCERS,
       useValue: appReducers
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InvalidJwtInterceptor,
+      multi: true
+    },
   ]
 })
 export class AppModule {

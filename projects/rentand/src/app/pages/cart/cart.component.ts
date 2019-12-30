@@ -7,7 +7,7 @@ import { AddCartItemAction, DeleteCartItemAction, InitCartAction } from './cart-
 import { Cart } from './shared/cart';
 import { CartItem } from './shared/cart-item';
 import { CartService } from './shared/cart.service';
-import { CartState } from './shared/cart.state';
+import { CartState } from '../../shared/store/cart/states/cart.state';
 
 @Component({
   selector: 'app-cart',

@@ -1,5 +1,5 @@
 <div class="section mt-3 d-flex align-items-center justify-content-center">
-  <div *ngIf="user && isAuthenticated()">
+  <div *ngIf="(authenticated$|async) && user">
     <div class="input-field col-12 m-5">
       <div class="row mt-2 mb-2">
         <img id="user-pic" *ngIf="user.user_metadata.media.url"
@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div *ngIf="!(user && isAuthenticated())">
+  <div *ngIf="(authenticated$ | async) === false">
     <div class="row d-flex justify-content-center m-0">
       <div class="col-12">
         <div class="card m-0 p-0">
@@ -42,9 +42,10 @@
             <div class="input-field col-12 d-flex justify-content-center">
               <button id="login_with_google_btn"
                       type="button"
+                      color="primary"
                       mat-raised-button
-                      class="px-5 bg-white"
-                      (click)="loginWithGoogle()"
+                      [disabled]="true"
+                      class="px-5"
                       i18n="Log In With Google">
                 <div class="d-flex align-items-center">
                   <span class="text-grey">

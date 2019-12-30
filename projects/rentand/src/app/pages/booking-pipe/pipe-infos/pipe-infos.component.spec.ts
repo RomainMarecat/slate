@@ -6,10 +6,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ToastModule } from '../../../layout/toast/toast.module';
-import { LanguageSimpleSelectModule } from '../../../shared/components/language/language-simple-select/language-simple-select.module';
+import { LanguageSimpleSelectModule } from '../../../shared/components/select-language/language-simple-select.module';
 import { SelectAgeModule } from '../../../shared/components/select-age/select-age.module';
 import { SelectLevelModule } from '../../../shared/components/select-level/select-level.module';
-import { AuthService } from '../../../shared/services/auth.service';
+import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { EventsService } from '../../../shared/services/events.service';
 import { ToastService } from '../../../shared/services/toast.service';
 import { UserService } from '../../../shared/services/user.service';
@@ -51,7 +51,7 @@ describe('PipeInfosComponent', () => {
       ],
       providers: [
         ToastService,
-        AuthService,
+        AuthenticationService,
         BookingPipeService,
         UserService,
         CartService,

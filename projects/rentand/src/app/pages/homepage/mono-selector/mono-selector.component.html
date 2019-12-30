@@ -13,7 +13,7 @@
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="handleChoice" class="blue">
         <mat-option *ngFor="let mono of filteredMonos | async"
                     [value]="mono"
-                    class="valign-wrapper"
+                    class="d-flex align-items-center"
                     (click)="onMonoSelected(mono)">
           <img class="circle img-fluid mono-select-item-img valign"
                [src]="mono.user_metadata?.picture?.url"/>

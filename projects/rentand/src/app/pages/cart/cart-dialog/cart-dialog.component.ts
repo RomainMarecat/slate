@@ -12,7 +12,7 @@ import { BookingPipeService } from '../../booking-pipe/booking-pipe.service';
 import * as action from '../cart-list/action/cart-list.action';
 import { MonoCart } from '../shared/cart';
 import { CartItem } from '../shared/cart-item';
-import { selectMonosCart } from '../shared/cart.selector';
+import { selectMonosCart } from '../../../shared/store/cart/selectors/cart.selector';
 
 const moment = moment_;
 

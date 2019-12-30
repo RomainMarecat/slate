@@ -2,7 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { MonoService } from '../../../shared/services/mono.service';
+import { UserService } from '../../../shared/services/user.service';
 import { ProfilService } from '../../../shared/services/profil.service';
 
 import { NavigationComponent } from './navigation.component';
@@ -23,7 +23,7 @@ describe('NavigationComponent', () => {
       ],
       providers: [
         ProfilService,
-        MonoService
+        UserService
       ]
     })
       .compileComponents();

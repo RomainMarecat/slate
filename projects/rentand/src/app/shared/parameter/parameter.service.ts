@@ -22,7 +22,7 @@ export class ParameterService {
   titleArray: Array<Parameter>;
   policyArray: Array<Parameter>;
 
-  publicParametersUrl = `${environment.middleware}/v1/parameters`;
+  publicParametersUrl = `${environment.middleware}/v1/public/parameters`;
 
   constructor(private http: HttpClient) {
     this.levelMap = new Map<number, Parameter>();

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { TranslateService } from '@ngx-translate/core';
 import { Mono } from '../../../shared/interfaces/mono';
 import { SportTeached } from '../../../shared/interfaces/sport-teached';
-import { MonoService } from '../../../shared/services/mono.service';
+import { UserService } from '../../../shared/services/user.service';
 import { ProfilService } from '../../../shared/services/profil.service';
 
 @Component({
@@ -19,13 +19,13 @@ export class NavigationComponent implements OnInit {
 
   constructor(private translateService: TranslateService,
               private profilService: ProfilService,
-              private monoService: MonoService,
+              private userService: UserService,
               private changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
     this.locale = this.translateService.getBrowserLang();
-    this.monoService.mono$.subscribe((mono) => {
+    this.userService.mono$.subscribe((mono) => {
       this.mono = mono;
       this.changeDetectorRef.detectChanges();
     });

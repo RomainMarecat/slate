@@ -5,8 +5,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { initialAppState } from '../../../shared/store/app.state';
+import { MockStoreModule } from '../../../shared/store/mock/mock-store.module';
 import { SecurityModule } from '../../security/security.module';
-import { AuthService } from '../../../shared/services/auth.service';
+import { AuthenticationService } from '../../../shared/services/authentication.service';
 
 import { PipeLoginComponent } from './pipe-login.component';
 
@@ -30,12 +32,13 @@ describe('PipeLoginComponent', () => {
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
+        MockStoreModule.forRoot('app', initialAppState),
         HttpClientTestingModule,
         RouterTestingModule,
         SecurityModule
       ],
       providers: [
-        AuthService
+        AuthenticationService
       ]
     })
       .compileComponents();
