@@ -4,15 +4,17 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Language } from '../interfaces/language';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LanguageService {
-  private rentandLanguagesUrl = `${environment.middleware}/v1/languages`;
+  private rentandLanguagesUrl = `${environment.middleware}/v1/public/languages`;
 
   constructor(private httpClient: HttpClient) {
   }
 
   getLanguages(): Observable<Language[]> {
-    return this.httpClient.get<Language[]>(this.rentandLanguagesUrl + '?sort_by={"ISO639_1":1}');
+    return this.httpClient.get<Language[]>(this.rentandLanguagesUrl + '?sort_by={"_iso6391":1}');
   }
 
   getLanguagesSortedBy(sortBy: string): Observable<Language[]> {

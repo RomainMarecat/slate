@@ -1,13 +1,14 @@
 import { Media } from './media';
+import { Phone } from './phone';
 
 export interface UserMetadata {
   media?: Media;
   slug: string;
   firstname: string;
   lastname: string;
-  phone: string;
+  phone: Phone;
   calling_code: string;
-  birthday: string;
+  birthday: Date;
   gender: string;
   nationality: string;
   address: {

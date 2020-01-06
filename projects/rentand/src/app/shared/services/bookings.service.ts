@@ -9,15 +9,11 @@ import { Booking, BookingPayment, BookingWithEvents } from '../interfaces/bookin
 })
 export class BookingsService {
 
-  secureBookingsUrl = `${environment.middleware}/v1/secure/bookings`;
+  secureBookingsUrl = `${environment.middleware}/v1/restricted/bookings`;
 
   bookingsChangedSource = new Subject<string>();
 
   constructor(private http: HttpClient) {
-  }
-
-  getAllUserBookings(): Observable<Booking[]> {
-    return this.http.get<Booking[]>(`${this.secureBookingsUrl}/customer`);
   }
 
   getUserBooking(id: string): Observable<Booking> {

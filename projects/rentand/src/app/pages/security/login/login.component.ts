@@ -1,11 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from '../../../shared/services/auth.service';
+import { Observable } from 'rxjs';
+import { User } from '../../../shared/interfaces/user';
+import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { ToastService } from '../../../shared/services/toast.service';
+import { AppState } from '../../../shared/store/app.state';
+import { Login } from '../../../shared/store/user/actions/login.action';
+import { selectLoggedIn } from '../../../shared/store/user/selectors/user.selector';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +26,11 @@ export class LoginComponent implements OnInit {
   @Output() userLoggedOut: EventEmitter<any> = new EventEmitter();
 
   form: FormGroup;
-  email: string;
-  password: string;
 
-  actionsAlignment: string;
+  authenticated$: Observable<boolean>;
+
+  user: User;
+
   config: {
     disableClose: false,
     panelClass: 'custom-overlay-pane-class',
@@ -40,17 +48,23 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
               private http: HttpClient,
-              private authService: AuthService,
+              private authenticationService: AuthenticationService,
               private toastService: ToastService,
               private translateService: TranslateService,
               private formBuilder: FormBuilder,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private store: Store<AppState>) {
+    this.form = this.getForm();
   }
 
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      email: ['', [
+    this.checkAuthenticated();
+  }
+
+  getForm(): FormGroup {
+    return this.formBuilder.group({
+      username: ['', [
         Validators.required,
         Validators.email,
         Validators.minLength(1),
@@ -64,25 +78,24 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  isAuthenticated(): boolean {
-    return this.authService.isAuthenticated();
+  checkAuthenticated() {
+    this.authenticated$ = this.store.select(selectLoggedIn);
   }
 
   logout() {
     this.userLoggedOut.emit();
-    this.authService.logout();
+    this.authenticationService.logout();
   }
 
   loginCheck() {
-    this.userLoggedIn.emit();
-    this.authService.loginCheck(this.email, this.password, {
-      redirectUri: this.router.url === ('/login' || '/signup') ? '' : this.router.url
-    });
+    if (this.form.valid) {
+      this.store.dispatch(new Login(this.form.getRawValue()));
+    }
   }
 
   openPasswordResetDialog() {
-    const dialogRef = this.dialog.open(PasswordResetDialogComponent, this.config);
-    dialogRef.componentInstance.email = this.email;
+    const dialogRef = this.dialog.open(PasswordResetDialogComponent,
+      {...this.config, ...{data: this.form.value.username}});
   }
 }
 
@@ -91,19 +104,19 @@ export class LoginComponent implements OnInit {
   templateUrl: './password-reset-form.html',
   styleUrls: ['./login.component.scss'],
 })
-export class PasswordResetDialogComponent implements OnInit {
-
-  email: string;
+export class PasswordResetDialogComponent {
   form: FormGroup;
 
-  constructor(private authService: AuthService,
+  constructor(private authenticationService: AuthenticationService,
               public dialog: MatDialog,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              @Inject(MAT_DIALOG_DATA) private username: string) {
+    this.form = this.getForm(this.username);
   }
 
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      email: ['', [
+  getForm(username?: string): FormGroup {
+    return this.formBuilder.group({
+      username: [(username || ''), [
         Validators.required,
         Validators.email,
         Validators.minLength(1),
@@ -113,9 +126,7 @@ export class PasswordResetDialogComponent implements OnInit {
   }
 
   changePassword() {
-    if (this.email) {
-      this.authService.changePassword(this.email);
-      this.dialog.closeAll();
-    }
+    // this.authenticationService.changePassword(this.form.value.email);
+    this.dialog.closeAll();
   }
 }

@@ -5,7 +5,7 @@ import { AppState } from '../../../shared/store/app.state';
 import { DeleteCartMonoAction } from '../cart-list/action/cart-list.action';
 import { Cart, MonoCart } from './cart';
 import { CartMonoItem } from './cart-item';
-import { selectCart } from './cart.selector';
+import { selectCart } from '../../../shared/store/cart/selectors/cart.selector';
 
 @Injectable({
   providedIn: 'root'

@@ -7,6 +7,7 @@ import { StateTransferInitializerModule } from '@nguniversal/common';
 import { ɵORIGIN_URL } from '@nguniversal/common/tokens';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 import { TranslateBrowserLoader } from './shared/services/translate-browser-loader.service';
@@ -36,7 +37,7 @@ export function exportTranslateStaticLoader(http: HttpClient, transferState: Tra
         deps: [HttpClient, TransferState]
       }
     }),
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: false}),
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
   ],
   providers: [
     {

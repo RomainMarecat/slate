@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
@@ -6,37 +5,36 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { LanguageService } from '../../../services/language.service';
+import { CountryService } from '../../services/country.service';
 
-import { LanguageSimpleSelectComponent } from './language-simple-select.component';
+import { SelectNationalityComponent } from './select-nationality.component';
 
-describe('LanguageSimpleSelectComponent', () => {
-  let component: LanguageSimpleSelectComponent;
-  let fixture: ComponentFixture<LanguageSimpleSelectComponent>;
+describe('SelectNationalityComponent', () => {
+  let component: SelectNationalityComponent;
+  let fixture: ComponentFixture<SelectNationalityComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LanguageSimpleSelectComponent],
+      declarations: [SelectNationalityComponent],
       imports: [
-        CommonModule,
-        FormsModule,
-        MatSelectModule,
         MatFormFieldModule,
-        NoopAnimationsModule,
+        MatSelectModule,
         HttpClientTestingModule,
+        NoopAnimationsModule,
+        FormsModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),
       ],
       providers: [
-        LanguageService
+        CountryService
       ]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LanguageSimpleSelectComponent);
+    fixture = TestBed.createComponent(SelectNationalityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

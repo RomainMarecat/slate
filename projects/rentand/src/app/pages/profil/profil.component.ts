@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { CityTeached } from '../../shared/interfaces/city-teached';
 import { Mono } from '../../shared/interfaces/mono';
 import { SportTeached } from '../../shared/interfaces/sport-teached';
-import { MonoService } from '../../shared/services/mono.service';
+import { UserService } from '../../shared/services/user.service';
 import { ProfilService } from '../../shared/services/profil.service';
 import { ToastService } from '../../shared/services/toast.service';
 import { Cart } from '../cart/shared/cart';
@@ -28,7 +28,7 @@ export class ProfilComponent implements OnInit {
 
   @ViewChild(AgendaComponent, {static: true}) agendaComponent: AgendaComponent;
 
-  constructor(private monoService: MonoService,
+  constructor(private userService: UserService,
               private route: ActivatedRoute,
               private toastService: ToastService,
               private translateService: TranslateService,
@@ -59,7 +59,7 @@ export class ProfilComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (!!paramMap.has('slug')) {
         const slug = paramMap.get('slug');
-        this.monoService.getMonoBySlug(slug)
+        this.userService.getMonoBySlug(slug)
           .subscribe((mono: Mono) => {
             this.mono = mono;
             this.checkCart();

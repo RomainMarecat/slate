@@ -4,10 +4,12 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { SportTeached } from '../interfaces/sport-teached';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SportTeachedService {
 
-  private sportTeachedUrl = `${environment.middleware}/v1/sports_teached`;
+  private sportTeachedUrl = `${environment.middleware}/v1/public/sports_teached`;
 
   constructor(private http: HttpClient) {
   }

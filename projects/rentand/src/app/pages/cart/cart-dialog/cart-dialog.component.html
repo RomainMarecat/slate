@@ -21,7 +21,7 @@
     </mat-tab>
     <mat-tab *ngFor="let cartMono of monoCarts">
       <ng-template mat-tab-label>
-        <div class="valign-wrapper">
+        <div class="d-flex align-items-center">
           <img class="circle responsive-img hide-on-small-only" [src]="cartMono?.mono?.user_metadata?.picture?.url" width="30px" /> {{monoCartTitle(cartMono)}}
         </div>
       </ng-template>
@@ -57,7 +57,7 @@
           </h5>
         </div>
         <div class="row">
-          <div class="col s12 right-align np">
+          <div class="col s12 right-align p-0">
             <a class="btn btn-large orange white-text" routerLink="booking" (click)="dialogRef.close()">
               <span i18n="book sessions with">Book sessions with</span> {{monoCartFirstName(cartMono)}}
               <i class="material-icons right">send</i>

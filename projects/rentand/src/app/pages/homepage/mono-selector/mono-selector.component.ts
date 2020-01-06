@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, startWith } from 'rxjs/operators';
 import { Mono } from '../../../shared/interfaces/mono';
-import { MonoService } from '../../../shared/services/mono.service';
+import { UserService } from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-mono-selector',
@@ -18,7 +18,7 @@ export class MonoSelectorComponent implements OnInit {
   monoList: Mono[] = [];
   auto: any;
 
-  constructor(private monoService: MonoService,
+  constructor(private userService: UserService,
               private router: Router) {
     this.monoListCtrl = new FormControl();
     this.filteredMonos = this.monoListCtrl.valueChanges
@@ -32,7 +32,7 @@ export class MonoSelectorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.monoService.getMonos()
+    this.userService.getMonos()
       .subscribe((users: Mono[]) => {
         this.monoList = users;
       });

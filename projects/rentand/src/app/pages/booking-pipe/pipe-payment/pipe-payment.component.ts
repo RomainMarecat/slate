@@ -1,7 +1,11 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { AuthService } from '../../../shared/services/auth.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Booking, BookingWithEvents } from '../../../shared/interfaces/booking';
 import { Event } from '../../../shared/interfaces/event';
+import { AuthenticationService } from '../../../shared/services/authentication.service';
+import { AppState } from '../../../shared/store/app.state';
+import { selectLoggedIn } from '../../../shared/store/user/selectors/user.selector';
 import { BookingPipeService } from '../booking-pipe.service';
 import { StripeFormComponent } from './stripe-form/stripe-form.component';
 
@@ -17,12 +21,15 @@ export class PipePaymentComponent implements OnInit {
 
   @ViewChild('stripeForm', {static: false}) stripeFormComponent: StripeFormComponent;
 
+  authenticated$: Observable<boolean>;
+
   booking: Booking;
   events: Event[];
   bookingId: string;
 
   constructor(private bookingPipeService: BookingPipeService,
-              private authService: AuthService) {
+              private authenticationService: AuthenticationService,
+              private store: Store<AppState>) {
     this.bookingPipeService.currentBookingId$.subscribe((bookingId: string) => {
       this.bookingId = bookingId;
     });
@@ -33,10 +40,11 @@ export class PipePaymentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.checkAuthenticated();
   }
 
-  isAuthenticated() {
-    return this.authService.isAuthenticated();
+  checkAuthenticated() {
+    return this.store.select(selectLoggedIn);
   }
 
   stripePayement() {

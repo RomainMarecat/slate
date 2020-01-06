@@ -1,13 +1,17 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 import { Booking, BookingWithEvents } from '../../../shared/interfaces/booking';
 import { Parameter } from '../../../shared/interfaces/parameter';
 import { User } from '../../../shared/interfaces/user';
-import { AuthService } from '../../../shared/services/auth.service';
+import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { EventsService } from '../../../shared/services/events.service';
 import { UserService } from '../../../shared/services/user.service';
+import { AppState } from '../../../shared/store/app.state';
+import { selectLoggedIn } from '../../../shared/store/user/selectors/user.selector';
 import { MonoCart } from '../../cart/shared/cart';
 import { CartService } from '../../cart/shared/cart.service';
 import { BookingPipeMessage } from '../booking-pipe-message';
@@ -36,26 +40,30 @@ export class PipeInfosComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private authService: AuthService,
+  authenticated$: Observable<boolean>;
+
+  constructor(private authenticationService: AuthenticationService,
               private router: Router,
               private translateService: TranslateService,
               private eventsService: EventsService,
               private userService: UserService,
               private bookingPipeService: BookingPipeService,
               private cartService: CartService,
+              private store: Store<AppState>,
               private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.authenticated$ = this.store.select(selectLoggedIn);
+
     this.bookingPipeService.currentCart$.subscribe((cart) => {
       this.currentCart = cart;
     });
     this.currentCart = this.bookingPipeService.getCurrentCart();
 
-    if (this.authService.getUser()) {
 
-      this.user = this.authService.getUser();
-
+    this.authenticationService.getUser().subscribe((user) => {
+      this.user = user;
 
       this.form = this.formBuilder.group({
         firstname: ['', [
@@ -79,11 +87,7 @@ export class PipeInfosComponent implements OnInit {
           Validators.maxLength(10),
         ]],
       });
-    }
-  }
-
-  isAuthenticated(): boolean {
-    return this.authService.isAuthenticated();
+    });
   }
 
   updateLevel($event) {
@@ -123,59 +127,62 @@ export class PipeInfosComponent implements OnInit {
       });
 
       fullPrice = parseFloat(fullPrice.toFixed(2));
-      const user = this.authService.getUser();
+      this.authenticationService.getUser()
+        .subscribe(user => {
+          this.user = user;
 
-      // filling up the booking
-      this.bookingWithEvents.booking = {
-        id: null,
-        coach: finalCart.mono as User,
-        stripe_pkey: finalCart.mono.app_metadata.stripe.pkey,
-        stripe_skey: finalCart.mono.app_metadata.stripe.skey,
-        customer: user,
-        addedByMono: false,
-        isPayed: false,
-        price: fullPrice
-      };
+          // filling up the booking
+          this.bookingWithEvents.booking = {
+            id: null,
+            coach: finalCart.mono as User,
+            stripe_pkey: finalCart.mono.app_metadata.stripe.pkey,
+            stripe_skey: finalCart.mono.app_metadata.stripe.skey,
+            customer: user,
+            addedByMono: false,
+            isPayed: false,
+            price: fullPrice
+          };
 
 
-      // updating user
-      const user_metadata = this.user.user_metadata;
-      this.user = null;
+          // updating user
+          const user_metadata = this.user.user_metadata;
+          this.user = null;
 
-      if (this.authService.updateUser(this.user)) {
-        this.eventsService.createBooking(this.bookingWithEvents).subscribe((booking) => {
-          this.bookingPipeService.setCurrentRequest(this.bookingWithEvents);
-          this.bookingPipeService.setCurrentBookingId(booking.id);
-          this.slideToPaymentTab.emit();
-        }, (error) => {
+          if (this.authenticationService.updateUser(this.user)) {
+            this.eventsService.createBooking(this.bookingWithEvents).subscribe((booking) => {
+              this.bookingPipeService.setCurrentRequest(this.bookingWithEvents);
+              this.bookingPipeService.setCurrentBookingId(booking.id);
+              this.slideToPaymentTab.emit();
+            }, (error) => {
 
-          let pipeMessage: BookingPipeMessage;
-          switch (error.status) {
-            case 403:
-              // Forbidden : the course in not available anymore. Notifying the user and deleting the cart
-              this.cartService.deleteMonoCart(finalCart.mono.user_id);
+              let pipeMessage: BookingPipeMessage;
+              switch (error.status) {
+                case 403:
+                  // Forbidden : the course in not available anymore. Notifying the user and deleting the cart
+                  this.cartService.deleteMonoCart(finalCart.mono.user_id);
 
-              pipeMessage = {
-                msg: this.translateService.instant('booking_pipe.payment_access_403_forbidden'),
-                action: 'ok',
-                classes: ['red'],
-                duration: 5000,
-                redirectTo: 'profils/' + finalCart.mono.user_metadata.slug
-              };
-              break;
-            default:
-              pipeMessage = {
-                msg: error.statusText,
-                action: 'ok',
-                classes: ['red'],
-                duration: 0
-              };
-              break;
+                  pipeMessage = {
+                    msg: this.translateService.instant('booking_pipe.payment_access_403_forbidden'),
+                    action: 'ok',
+                    classes: ['red'],
+                    duration: 5000,
+                    redirectTo: 'profils/' + finalCart.mono.user_metadata.slug
+                  };
+                  break;
+                default:
+                  pipeMessage = {
+                    msg: error.statusText,
+                    action: 'ok',
+                    classes: ['red'],
+                    duration: 0
+                  };
+                  break;
+              }
+
+              this.notifyUser.emit(pipeMessage);
+            });
           }
-
-          this.notifyUser.emit(pipeMessage);
         });
-      }
     }
   }
 }

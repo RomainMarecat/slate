@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
-import { AuthService } from '../services/auth.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { ToastService } from '../services/toast.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserGuard implements CanActivate {
 
   private code: string;
 
-  constructor(private authService: AuthService,
+  constructor(private authenticationService: AuthenticationService,
               private router: Router, private translateService: TranslateService,
               private toastService: ToastService) {
   }
@@ -22,10 +24,10 @@ export class UserGuard implements CanActivate {
     //  this.code = state.url.substr(state.url.lastIndexOf('=') + 1);
     // }
     // if (this.code) {
-    //  this.authService.loginrentand(this.code)
+    //  this.authenticationService.loginrentand(this.code)
     //    .subscribe((objectToken) => {
     //        this.code = null;
-    //        this.authService.saveJwtToken(objectToken);
+    //        this.authenticationService.saveJwtToken(objectToken);
     //        this.router.navigate(['/']);
     //        return true;
     //      },
@@ -44,8 +46,6 @@ export class UserGuard implements CanActivate {
     //        this.router.navigate(['/login']);
     //        return of(false);
     //      });
-    // } else if (this.authService.isAuthenticated()) {
-    //  return true;
     // } else {
     //  this.toastService.emitToast({
     //    message: this.translateService.instant('guard.token_expired'),

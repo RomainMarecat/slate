@@ -5,3 +5,16 @@ mat-sidenav {
 .account-toolbar-icon {
     height: 2em
 }
+
+mat-sidenav-container {
+    ::ng-deep mat-sidenav-content {
+        display: table-cell;
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+
+        .main-content {
+            flex: 1;
+        }
+    }
+}

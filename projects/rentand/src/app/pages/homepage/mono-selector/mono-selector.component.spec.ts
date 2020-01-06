@@ -8,7 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { MonoService } from '../../../shared/services/mono.service';
+import { UserService } from '../../../shared/services/user.service';
 
 import { MonoSelectorComponent } from './mono-selector.component';
 
@@ -34,7 +34,7 @@ describe('MonoSelectorComponent', () => {
         HttpClientTestingModule
       ],
       providers: [
-        MonoService
+        UserService
       ]
     })
       .compileComponents();

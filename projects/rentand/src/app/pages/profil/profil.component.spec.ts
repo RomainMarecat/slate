@@ -10,7 +10,7 @@ import { AgendaModule } from '../../shared/components/agenda/agenda.module';
 import { ParameterService } from '../../shared/parameter/parameter.service';
 import { CityTeachedService } from '../../shared/services/city-teached.service';
 import { CountryService } from '../../shared/services/country.service';
-import { MonoService } from '../../shared/services/mono.service';
+import { UserService } from '../../shared/services/user.service';
 import { OnlineSessionService } from '../../shared/services/online-session.service';
 import { ProfilService } from '../../shared/services/profil.service';
 import { SportTeachedService } from '../../shared/services/sport-teached.service';
@@ -58,7 +58,7 @@ describe('ProfilComponent', () => {
         }),
       ],
       providers: [
-        MonoService,
+        UserService,
         CartService,
         ParameterService,
         ProfilService,

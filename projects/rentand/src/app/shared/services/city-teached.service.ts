@@ -9,7 +9,7 @@ import { CityTeached } from '../interfaces/city-teached';
 })
 export class CityTeachedService {
 
-  private citiesTeachedUrl = `${environment.middleware}/v1/cities_teached`;
+  private citiesTeachedUrl = `${environment.middleware}/v1/public/cities_teached`;
   private cityTeachedChangedSource = new Subject<string>();
   cityTeachedChangeAnnounced$ = this.cityTeachedChangedSource.asObservable();
 

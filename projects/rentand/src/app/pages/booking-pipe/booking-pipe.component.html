@@ -1,34 +1,36 @@
-<div class="section mt1 np">
-  <div class="row center-align nm mb2">
+<div class="section mt1 p-0">
+  <div class="row center-align m-0 mb2">
     <div class="col s12">
-      <div class="card nm np">
-        <div class="card-content nm np">
+      <div class="card m-0 p-0">
+        <div class="card-content m-0 p-0">
           <mat-tab-group mat-stretch-tabs dynamicHeight class="security-tab-group" [selectedIndex]="selectedIndex">
 
 
-            <mat-tab [disabled]="bookingPipeService.accessAllowedToPaymentAndPrev()">
+            <mat-tab [disabled]="authenticated$|async">
               <ng-template mat-tab-label>
-                 <span class="blue  white-text pa0 pt025 pb025 pl05 pr05 mr025">1</span>
-                 <span i18n="Booking pipe tab login title">Login</span> 
+                <span class="blue  white-text pa0 pt025 pb025 pl05 pr05 mr025">1</span>
+                <span i18n="Booking pipe tab login title">Login</span>
               </ng-template>
-              <app-pipe-login (slideToInfosTab)="slideToInfosTab()" (notifyUser)="openSnackBar($event)" ></app-pipe-login>    
+              <app-pipe-login (slideToInfosTab)="slideToInfosTab()"></app-pipe-login>
             </mat-tab>
 
 
-            <mat-tab [disabled]="!bookingPipeService.accessAllowedToInfosAndPrev() || bookingPipeService.accessAllowedToPaymentAndPrev()">
-               <ng-template mat-tab-label>
-                 <span class="blue  white-text pa0 pt025 pb025 pl05 pr05 mr025">2</span>
-                 <span i18n="Booking pipe tab infos title">Infos</span> 
+            <mat-tab [disabled]="(authenticated$ | async) === false">
+              <ng-template mat-tab-label>
+                <span class="blue  white-text pa0 pt025 pb025 pl05 pr05 mr025">2</span>
+                <span i18n="Booking pipe tab infos title">Infos</span>
               </ng-template>
-              <app-pipe-infos (slideToLoginTab)="slideToLoginTab()" (slideToPaymentTab)="slideToPaymentTab()" (notifyUser)="openSnackBar($event)"></app-pipe-infos>
+              <app-pipe-infos (slideToLoginTab)="slideToLoginTab()" (slideToPaymentTab)="slideToPaymentTab()"
+                              (notifyUser)="openSnackBar($event)"></app-pipe-infos>
             </mat-tab>
 
-            <mat-tab [disabled]="!bookingPipeService.accessAllowedToPaymentAndPrev()" i18n-label="Booking pipe payment title" (click)="slideToLoginTab()">
+            <mat-tab [disabled]="(authenticated$ | async) === false" i18n-label="Booking pipe payment title"
+                     (click)="slideToLoginTab()">
               <ng-template mat-tab-label>
                 <span class="blue  white-text pa0 pt025 pb025 pl05 pr05 mr025">3</span>
-                <span i18n="Booking pipe payment title">Payment</span> 
+                <span i18n="Booking pipe payment title">Payment</span>
               </ng-template>
-              <app-pipe-payment (slideToInfosTab)="slideToInfosTab()" (notifyUser)="openSnackBar($event)"></app-pipe-payment>
+              <app-pipe-payment (slideToInfosTab)="slideToInfosTab()"></app-pipe-payment>
             </mat-tab>
 
           </mat-tab-group>

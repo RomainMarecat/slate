@@ -1,151 +1,222 @@
-<div *ngIf="user && user.user_metadata" id="app-my-account">
+<div class="app_my_account container mb-5">
   <div class="row">
-    <div class="col s12 m6">
-      <div class="card">
-        <div class="row valign-wrapper">
-          <div class="col s12">
-            <h4 class="valign-wrapper nm mt05">
-              <img id="user_pic" style="height: 1em" class="circle valign"
-                   [src]='user?.user_metadata?.media?.url'/>
-              <span class="valign ml025" i18n>My account</span>
+    <div class="col-12">
+      <mat-card class="my-5 px-0">
+        <div class="row">
+          <div class="col-12">
+            <h4 class="d-flex align-items-center mb-5">
+              <img class="user_pic circle valign"
+                   *ngIf="user?.user_metadata?.media?.url"
+                   [src]="user?.user_metadata?.media?.url">
+              <span class="d-flex align-items-center ml-1" i18n>My account</span>
             </h4>
           </div>
         </div>
-        <form>
-          <table class="striped">
-            <tbody>
-            <tr>
-              <td class="property-title" i18n="my account user email">Email</td>
-              <td class="np pt05 pr1 pl1">
-                <input disabled [ngModel]="email" name="email" type="text" class="form-control" #emailInput/>
-              </td>
-            </tr>
-            <tr>
-              <td class="property-title" i18n="my account user firstname">Firstname</td>
-              <td class="np pt05 pr1 pl1">
-                <input [(ngModel)]="user.user_metadata.firstname" name="firstname" type="text" class="form-control"
-                       #firstnameInput i18-placeholder="Enter your Firstname" placeholder="Enter your firstname"/>
-              </td>
-            </tr>
-            <tr>
-              <td class="property-title" i18n="my account user lastname">Lastname</td>
-              <td class="np pt05 pr1 pl1">
-                <input [(ngModel)]="user.user_metadata.lastname" name="lastname" type="text" class="form-control"
-                       #lastnameInput i18-placeholder="Enter your lastname" placeholder="Enter your lastname"/>
-              </td>
-            </tr>
-            <tr>
-              <td class="property-title" i18n="my account user phone">Phone</td>
-              <td class="np pt05 pr1 pl1">
-                <input [(ngModel)]="user.user_metadata.phone" name="phone" type="text" class="form-control"
-                       #emailInput i18-placeholder="Enter your phone" placeholder="Enter your phone"/>
-              </td>
-            </tr>
-            <tr>
-              <td class="property-title" i18n="my account user birthday">Birthday</td>
-              <td class="np pt05 pr1 pl1 row nm">
-                <div class="col s2 m1 pt1">
-                  <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
-
-                </div>
-                <div class="col s10 m11">
-                  <input class="form-control"
-                         name="birthday"
-                         type="hidden"
-                         disabled
-                         [matDatepicker]="picker"
-                         [(ngModel)]="datePicked"
-                         [max]="maxDate">
-                  <input class="form-control"
-                         name="birthday_formatted"
-                         type="text"
-                         disabled
-                         matInput
-                         [matDatepicker]="picker"
-                         [(ngModel)]="this.user.user_metadata.birthday"
-                         (dateChange)="birthdayChanged($event)">
-                  <mat-datepicker #picker [startAt]="startDate" [touchUi]="'true'"
-                  ></mat-datepicker>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="property-title" i18n="my account user gender">Gender</td>
-              <td class="np pt05 pr1 pl1">
-                <mat-radio-group [(ngModel)]="user.user_metadata.gender" name="gender" #genderInput>
-                  <mat-radio-button value="male" i18n="male label">Male</mat-radio-button>
-                  <mat-radio-button value="female" i18n="female label">Female</mat-radio-button>
-                </mat-radio-group>
-              </td>
-            </tr>
-            <tr>
-              <td class="property-title" i18n="my account user nationality">Nationality</td>
-              <td class="np pt05 pr1 pl1">
-                <img src="/assets/images/flags/country/{{user.user_metadata.nationality|lowercase}}.svg" width="24px"
-                     alt="{{user.user_metadata.nationality}} flag" style="vertical-align: middle;"/>
-                <app-nationality-select [(ngModel)]="user.user_metadata.nationality"
-                                        name="nationality"></app-nationality-select>
-              </td>
-            </tr>
-            <tr>
-              <td class="property-title" i18n="my account user language">Language</td>
-              <td class="np pt05 pr1 pl1">
-                <img src="/assets/images/flags/language/{{user.user_metadata.mother_lang|lowercase}}.svg"
-                     width="24px" alt="{{user.user_metadata.mother_lang}} flag" style="vertical-align: middle;"/>
-                <app-language-simple-select [(ngModel)]="user.user_metadata.mother_lang"
-                                            name="mother_lang"></app-language-simple-select>
-              </td>
-            </tr>
-            <tr>
-              <td class="property-title" i18n="my account user address">Adress</td>
-              <td class="np pt05 pr1 pl1">
-                <form>
-                  <div class="row">
-                    <div class="col s12">
-                      <input [(ngModel)]="user.user_metadata.address.street" name="street" type="text"
-                             class="form-control" #addressStreetInput i18-placeholder="Enter your Firstname"
-                             placeholder="Enter your address"/>
-                    </div>
-                    <div class="col s6">
-                      <input [(ngModel)]="user.user_metadata.address.zip_code" name="zip_code" type="text"
-                             class="form-control" #addressZipcodeInput i18-placeholder="Enter your zip code"
-                             placeholder="Enter your zip code"/>
-                    </div>
-                    <div class="col s6">
-                      <input [(ngModel)]="user.user_metadata.address.city" name="address" type="text"
-                             class="form-control" #addressCityInput i18-placeholder="Enter your city"
-                             placeholder="Enter your city"/>
-                    </div>
-                    <div class="col s6">
-                      <input [(ngModel)]="user.user_metadata.address.state" name="address" type="text"
-                             class="form-control" #addressStateInput i18-placeholder="Enter your state"
-                             placeholder="Enter your state"/>
-                    </div>
-                    <div class="col s6">
-                      <input [(ngModel)]="user.user_metadata.address.country" name="address" type="text"
-                             class="form-control" #addressCountryInput i18-placeholder="Enter your country"
-                             placeholder="Enter your country"/>
-                    </div>
-                  </div>
-                </form>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </form>
         <div class="row">
-          <div class="col s12">
-            <button (click)="saveProfile()" class=" right waves-effect waves-light btn valign ma1">Save</button>
+          <div class="col-12">
+            <form [formGroup]="form"
+                  (ngSubmit)="saveProfile()">
+              <table class="table table-striped">
+                <tbody>
+                <tr>
+                  <td class="property-title" i18n="my account user email">Email</td>
+                  <td class="pb-0 pt-1 pr-1 pl-1">
+                    <mat-form-field appearance="outline"
+                                    class="col-6">
+                      <input formControlName="email"
+                             matInput
+                             name="email"
+                             type="email">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr formGroupName="user_metadata">
+                  <td class="property-title" i18n="my account user firstname">Firstname</td>
+                  <td class="pb-0 pt-1 pr-1 pl-1">
+                    <mat-form-field appearance="outline"
+                                    class="col-6">
+                      <input formControlName="firstname"
+                             matInput
+                             name="firstname"
+                             type="text"
+                             i18-placeholder="Enter your firstname"
+                             placeholder="Enter your firstname">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr formGroupName="user_metadata">
+                  <td class="property-title" i18n="my account user lastname">Lastname</td>
+                  <td class="pb-0 pt-1 pr-1 pl-1">
+                    <mat-form-field appearance="outline"
+                                    class="col-6">
+                      <input formControlName="lastname"
+                             matInput
+                             name="lastname"
+                             type="text"
+                             i18-placeholder="Enter your lastname"
+                             placeholder="Enter your lastname">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr formGroupName="user_metadata">
+                  <td class="property-title" i18n="my account user phone">Phone</td>
+                  <td class="pb-0 pt-1 pr-1 pl-1">
+                    <mat-form-field appearance="outline"
+                                    formGroupName="phone"
+                                    class="col-6">
+                      <input formControlName="number"
+                             matInput
+                             name="phone"
+                             type="tel"
+                             i18-placeholder="Enter your phone"
+                             placeholder="Enter your phone">
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr formGroupName="user_metadata">
+                  <td class="property-title" i18n="my account user birthday">Birthday</td>
+                  <td class="pb-0 pt-1 pr-1 pl-1 row m-0">
+                    <div class="col-2 pt-1">
+                      <mat-datepicker-toggle [for]="birthdayPicker"></mat-datepicker-toggle>
+                    </div>
+                    <mat-form-field appearance="outline"
+                                    class="col-4">
+                      <input formControlName="birthday"
+                             name="birthday"
+                             placeholder="Enter your birthday"
+                             i18-placeholder="Enter your birthday"
+                             matInput
+                             [max]="maxDate"
+                             [matDatepicker]="birthdayPicker">
+                      <mat-datepicker #birthdayPicker
+                                      [startAt]="startDate"
+                                      [touchUi]="true">
+                      </mat-datepicker>
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr formGroupName="user_metadata">
+                  <td class="property-title" i18n="my account user gender">Gender</td>
+                  <td class="pb-0 pt-3 pr-1 pl-1">
+                    <div class="row">
+                      <div class="col-6">
+                        <mat-radio-group formControlName="gender"
+                                         name="gender">
+                          <mat-radio-button value="male"
+                                            class="px-2"
+                                            i18n="male label">
+                            Male
+                          </mat-radio-button>
+                          <mat-radio-button value="female"
+                                            class="px-2"
+                                            i18n="female label">
+                            Female
+                          </mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr formGroupName="user_metadata">
+                  <td class="property-title"
+                      i18n="my account user nationality">
+                    Nationality
+                  </td>
+                  <td class="pb-0 pt-1 pr-1 pl-1">
+                    <img src="/assets/images/flags/country/{{user.user_metadata.nationality|lowercase}}.svg"
+                         width="24px"
+                         alt="{{user.user_metadata.nationality}} flag"
+                         *ngIf="user?.user_metadata?.nationality">
+                    <app-select-nationality placeholder="Enter your nationality"
+                                            formControlName="nationality"></app-select-nationality>
+                  </td>
+                </tr>
+                <tr formGroupName="user_metadata">
+                  <td class="property-title"
+                      i18n="my account user language">
+                    Language
+                  </td>
+                  <td class="pb-0 pt-1 pr-1 pl-1">
+                    <img src="/assets/images/flags/language/{{user.user_metadata.mother_lang|lowercase}}.svg"
+                         width="24px"
+                         alt="{{user.user_metadata.mother_lang}} flag"
+                         *ngIf="user?.user_metadata?.mother_lang">
+                    <app-language-simple-select placeholder="Enter your lang"
+                                                formControlName="mother_lang"></app-language-simple-select>
+                  </td>
+                </tr>
+                <tr formGroupName="user_metadata">
+                  <td class="property-title"
+                      i18n="my account user address">
+                    Address
+                  </td>
+                  <td formGroupName="address"
+                      class="pb-0 pt-1 pr-1 pl-1">
+                    <div class="row">
+                      <mat-form-field class="col-6"
+                                      appearance="outline">
+                        <input formControlName="street"
+                               matInput
+                               name="street"
+                               type="text"
+                               i18-placeholder="Enter your street"
+                               placeholder="Enter your street">
+                      </mat-form-field>
+                    </div>
+                    <div class="row">
+                      <mat-form-field class="col-3"
+                                      appearance="outline">
+                        <input formControlName="zipcode"
+                               matInput
+                               name="zipcode"
+                               type="text"
+                               i18-placeholder="Enter your zip code"
+                               placeholder="Enter your zip code">
+                      </mat-form-field>
+                      <mat-form-field class="col-3"
+                                      appearance="outline">
+                        <input formControlName="city"
+                               matInput
+                               name="city"
+                               type="text"
+                               i18-placeholder="Enter your city"
+                               placeholder="Enter your city">
+                      </mat-form-field>
+                      <div class="col-6">
+                        <app-select-nationality placeholder="Enter your country"
+                                                formControlName="country"></app-select-nationality>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <div class="row">
+                <div class="offset-4 col-4">
+                  <button type="submit"
+                          [disabled]="form.invalid"
+                          i18n="Save"
+                          class="w-100"
+                          mat-raised-button
+                          color="primary"
+                          role="button">
+                    Save
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
+      </mat-card>
     </div>
     <div class="row">
-      <div class="col s12 m6" *ngIf="rows">
-        <div class="card" style="height: 100%">
-          <div class="row valign-wrapper">
-            <div class="col s12">
-              <h4 class="valign-wrapper nm mt05">
+      <div class="col-12"
+           *ngIf="rows">
+        <div class="card"
+             style="height: 100%">
+          <div class="row d-flex align-items-center">
+            <div class="col-12">
+              <h4 class="d-flex align-items-center m-0 mt05">
                 <i class="material-icons">payment</i>
                 <span class="valign ml025" i18n="my orders">My orders</span>
               </h4>
@@ -153,23 +224,44 @@
           </div>
           <ngx-datatable class="material fullscreen mb5" style="box-shadow: none !important;
             -moz-box-shadow: none !important;
-            -webkit-box-shadow: none !important;" #table [rows]="rows" [columns]="columns" [sortType]="'multi'"
-                         [columnMode]="'flex'" [footerHeight]="50" [rowHeight]="'auto'" [limit]="15"
-                         [selected]="selected" [selectionType]="'single'" (activate)="onActivate($event)"
+            -webkit-box-shadow: none !important;" #table
+                         [rows]="rows"
+                         [columns]="columns"
+                         [sortType]="'multi'"
+                         [columnMode]="'flex'"
+                         [footerHeight]="50"
+                         [rowHeight]="'auto'"
+                         [limit]="15"
+                         [selected]="selected"
+                         [selectionType]="'single'"
+                         (activate)="onActivate($event)"
                          (select)="onSelect($event)">
-            <ngx-datatable-column [flexGrow]="1" prop="createdAt" i18n-name="Booking payed on" name="Booking payed on">
-              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <ngx-datatable-column [flexGrow]="1"
+                                  prop="createdAt"
+                                  i18n-name="Booking payed on"
+                                  name="Booking payed on">
+              <ng-template let-row="row"
+                           let-value="value"
+                           ngx-datatable-cell-template>
                 <span class="chip chip-squared green lighten-2 silver-border" *ngIf="row.isPayed">{{value|date}}</span>
                 <span class="chip chip-squared orange lighten-2 silver-border" *ngIf="!row.isPayed"
                       i18n="booking pending">Booking pending</span>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column [flexGrow]="1" prop="mono" i18n-name="Mono" name="Mono">
-              <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <ngx-datatable-column [flexGrow]="1"
+                                  prop="mono"
+                                  i18n-name="Mono"
+                                  name="Mono">
+              <ng-template let-row="row"
+                           let-value="value"
+                           ngx-datatable-cell-template>
                 <span class="grey-text text-darken-1">{{value.firstname}} {{value.lastname}}</span>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column [flexGrow]="1" prop="price" i18n-name="Booking price" name="Price">
+            <ngx-datatable-column [flexGrow]="1"
+                                  prop="price"
+                                  i18n-name="Booking price"
+                                  name="Price">
               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
                 <span class="grey-text text-darken-1">{{value ? value : 0}}€</span>
               </ng-template>

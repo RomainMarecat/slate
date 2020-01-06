@@ -7,18 +7,20 @@ export class MockLanguageService {
     return new Observable<Language[]>((observer) => {
       observer.next(
         [{
-          ISO639_1: 'FR',
-          ISO639_2: 'FRA',
+          id: '',
+          _iso6391: 'FR',
+          _iso6392: 'FRA',
           native_name: 'Français',
-          trans: {
+          translations: {
             fr: 'Français',
             en: 'French'
           }
         }, {
-          ISO639_1: 'US',
-          ISO639_2: 'USA',
+          id: '',
+          _iso6391: 'US',
+          _iso6392: 'USA',
           native_name: 'American',
-          trans: {
+          translations: {
             fr: 'Américain',
             en: 'American'
           }

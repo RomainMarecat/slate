@@ -1,5 +1,5 @@
 export interface Country {
-  _id: any;
+  id: string;
   name: string;
   translations: string[];
   latlng: string;

@@ -1,4 +1,4 @@
-<div *ngIf="isAuthenticated()">
+<div *ngIf="authenticated$|async">
   <h3 class="left ml05" i18n="pipe info title">Your information</h3>
   <div class="row">
     <form [formGroup]="form" class="col s12">

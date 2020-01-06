@@ -12,22 +12,24 @@
     <img src="../../../assets/images/logo_blue.svg" alt="rentand.com">
   </a>
 
-  <ng-container *ngIf="!isAuthenticated()">
-    <a class="text-decoration-none"
-       mat-button
-       color="primary"
-       routerLink="/secure/login"
-       i18n="login label">
-      Login
-    </a>
-  </ng-container>
+  <div class="user_wrapper">
+    <ng-container *ngIf="(authenticated$ | async) === false">
+      <a class="text-decoration-none"
+         mat-button
+         color="primary"
+         routerLink="/secure/login"
+         i18n="login label">
+        Login
+      </a>
+    </ng-container>
 
-  <ng-container *ngIf="isAuthenticated()">
-    <div class="user_wrapper">
+    <ng-container *ngIf="(authenticated$|async) && user">
       <a mat-raised-button
-         routerLink="/account">
-          <span class="blue-text">
+         routerLink="/account"
+         *ngIf="user?.user_metadata?.firstname && user?.user_metadata?.lastname">
+          <span class="text-primary">
             <img class="img-rounded account-toolbar-icon"
+                 *ngIf="user?.user_metadata?.media?.url"
                  src="{{user?.user_metadata.media.url}}">
             <span class="ml-1">{{user.user_metadata?.firstname}} {{user.user_metadata?.lastname}}</span>
           </span>
@@ -39,7 +41,7 @@
         <mat-icon>shopping_cart</mat-icon>
         <span *ngIf="!isCartEmpty()" class="text-white cart-item-number">{{getCartItemsNumber()}}</span>
       </a>
-    </div>
-  </ng-container>
+    </ng-container>
+  </div>
 
 </mat-toolbar>

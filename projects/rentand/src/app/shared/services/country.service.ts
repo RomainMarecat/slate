@@ -4,9 +4,11 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Country } from '../interfaces/country';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CountryService {
-  private rentandCountriesUrl = `${environment.middleware}/v1/countries`;
+  private rentandCountriesUrl = `${environment.middleware}/v1/public/countries`;
 
   constructor(private http: HttpClient) {
   }

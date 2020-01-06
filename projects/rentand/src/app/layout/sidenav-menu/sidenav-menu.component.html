@@ -31,7 +31,7 @@
     </a>
   </mat-list-item>
 
-  <ng-container *ngIf="isAuthenticated(); else anonymeList">
+  <ng-container *ngIf="(authenticated$|async); else anonymeList">
     <mat-list-item>
       <a routerLink="/account"
          mat-raised-button

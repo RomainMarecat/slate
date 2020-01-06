@@ -1,7 +1,9 @@
-export function jwtOptionsFactory() {
+import { StorageService } from '../services/storage.service';
+
+export function jwtOptionsFactory(storageService: StorageService) {
   return {
     tokenGetter: () => {
-      return localStorage.getItem('token');
+      return storageService.getItem('id_token');
     },
     skipWhenExpired: true
   };

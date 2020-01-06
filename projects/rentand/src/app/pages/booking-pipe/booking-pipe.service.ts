@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { Subject } from 'rxjs';
-import { AuthService } from '../../shared/services/auth.service';
+import { Observable, Subject } from 'rxjs';
 import { BookingWithEvents } from '../../shared/interfaces/booking';
+import { AuthenticationService } from '../../shared/services/authentication.service';
+import { AppState } from '../../shared/store/app.state';
+import { selectLoggedIn } from '../../shared/store/user/selectors/user.selector';
 import { MonoCart } from '../cart/shared/cart';
 
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BookingPipeService {
 
   private currentCartObj: MonoCart;
@@ -22,9 +26,12 @@ export class BookingPipeService {
   private currentBookingIdSubject = new Subject<string>();
   currentBookingId$ = this.currentBookingIdSubject.asObservable();
 
-  constructor(
-    private translateService: TranslateService, private authService: AuthService
-  ) {
+  authenticated$: Observable<boolean>;
+
+  constructor(private translateService: TranslateService,
+              private authenticationService: AuthenticationService,
+              private store: Store<AppState>) {
+    this.accessAllowedToInfosAndPrev();
   }
 
   setCurrentCart(cart: MonoCart) {
@@ -55,10 +62,10 @@ export class BookingPipeService {
   }
 
   accessAllowedToInfosAndPrev() {
-    return this.authService.isAuthenticated();
+    this.authenticated$ = this.store.select(selectLoggedIn);
   }
 
   accessAllowedToPaymentAndPrev() {
-    return this.authService.isAuthenticated() && this.getCurrentBookingId();
+    return this.getCurrentBookingId();
   }
 }

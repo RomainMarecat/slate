@@ -4,7 +4,8 @@
 
 <div class="row">
   <div class="col s12">
-    <button [disabled]="!accessAllowedToInfos" type="submit" class="btn btn-block waves-light waves-effect orange right"
+    <button [disabled]="(authenticated$ | async) === false" type="submit"
+            class="btn btn-block waves-light waves-effect orange right"
             (click)="slideToInfosTab.emit()" i18n="Booking pipe next">Next
     </button>
   </div>

@@ -1,9 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from '../../shared/services/auth.service';
+import { Observable } from 'rxjs';
+import { AuthenticationService } from '../../shared/services/authentication.service';
 import { BookingsService } from '../../shared/services/bookings.service';
+import { AppState } from '../../shared/store/app.state';
+import { selectLoggedIn } from '../../shared/store/user/selectors/user.selector';
 import { CartService } from '../cart/shared/cart.service';
 import { BookingPipeMessage } from './booking-pipe-message';
 import { BookingPipeService } from './booking-pipe.service';
@@ -17,8 +21,9 @@ import { BookingPipeService } from './booking-pipe.service';
 export class BookingPipeComponent implements OnInit {
 
   selectedIndex = 0;
+  authenticated$: Observable<boolean>;
 
-  constructor(public authService: AuthService,
+  constructor(public authenticationService: AuthenticationService,
               public bookingPipeService: BookingPipeService,
               public bookingService: BookingsService,
               private router: Router,
@@ -26,15 +31,15 @@ export class BookingPipeComponent implements OnInit {
               private cartService: CartService,
               public snackBar: MatSnackBar,
               private translateService: TranslateService,
-  ) {
+              private store: Store<AppState>) {
     this.route.params.subscribe(params => {
       this.bookingPipeService.setCurrentCart(this.cartService.getMonoCart(params.id));
     });
   }
 
   ngOnInit() {
+    this.authenticated$ = this.store.select(selectLoggedIn);
   }
-
 
   slideToLoginTab() {
     const bookingId = this.bookingPipeService.getCurrentBookingId();

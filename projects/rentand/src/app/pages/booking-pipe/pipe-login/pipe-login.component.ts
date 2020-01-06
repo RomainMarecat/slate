@@ -1,6 +1,9 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../shared/services/auth.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from '../../../shared/store/app.state';
+import { selectLoggedIn } from '../../../shared/store/user/selectors/user.selector';
 
 
 @Component({
@@ -14,17 +17,14 @@ export class PipeLoginComponent implements OnInit {
   @Output()
   slideToInfosTab: EventEmitter<any> = new EventEmitter();
 
-  accessAllowedToInfos = false;
+  authenticated$: Observable<boolean>;
 
-  constructor(public authService: AuthService,
-              private router: Router) {
-    authService.isAuthenticated$.subscribe(access => {
-      this.accessAllowedToInfos = access;
-    });
+  constructor(private router: Router,
+              private store: Store<AppState>) {
   }
 
   ngOnInit() {
-    this.accessAllowedToInfos = this.authService.isAuthenticated();
+    this.authenticated$ = this.store.select(selectLoggedIn);
   }
 
   userLoggedIn() {

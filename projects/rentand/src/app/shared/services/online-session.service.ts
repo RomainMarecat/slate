@@ -4,10 +4,12 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { OnlineSession } from '../interfaces/online-session';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class OnlineSessionService {
 
-  private onlineSessionsUrl = `${environment.middleware}/v1/online_sessions`;
+  private onlineSessionsUrl = `${environment.middleware}/v1/public/online_sessions`;
 
   constructor(private http: HttpClient) {
   }

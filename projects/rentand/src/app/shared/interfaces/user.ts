@@ -1,4 +1,3 @@
-import { Media } from './media';
 import { Structure } from './structure';
 import { UserMetadata } from './user-metadata';
 

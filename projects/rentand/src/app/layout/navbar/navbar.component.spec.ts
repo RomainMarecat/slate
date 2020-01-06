@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CartService } from '../../pages/cart/shared/cart.service';
-import { AuthService } from '../../shared/services/auth.service';
+import { AuthenticationService } from '../../shared/services/authentication.service';
 import { initialAppState } from '../../shared/store/app.state';
 import { MockStoreModule } from '../../shared/store/mock/mock-store.module';
 
@@ -38,7 +38,7 @@ describe('NavbarComponent', () => {
       ],
       providers: [
         CartService,
-        AuthService
+        AuthenticationService
       ]
     })
       .compileComponents();

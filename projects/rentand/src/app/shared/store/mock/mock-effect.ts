@@ -3,7 +3,9 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
 import { MOCK_STREAM, MockAction, MockStream } from './mock-action';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MockEffect {
     @Effect()
     loadStream$ = this.actions$.pipe(
