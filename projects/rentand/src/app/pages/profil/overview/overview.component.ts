@@ -18,28 +18,10 @@ const moment = _moment;
 })
 export class OverviewComponent implements OnInit {
   locale: string;
-  _mono: Mono;
+  mono: Mono;
   sportsTeached: SportTeached[];
   demonym: string;
   sportTeached: SportTeached;
-
-  get mono(): Mono {
-    return this._mono;
-  }
-
-  @Input('mono')
-  set mono(mono: Mono) {
-    this._mono = mono;
-    if (this._mono && this._mono.sports_teached) {
-      this.sportsTeached = this._mono.sports_teached;
-    }
-    this.addAge();
-    if (this._mono && this._mono.user_metadata && this._mono.user_metadata.nationality) {
-      this.getCountryDemonym(this._mono.user_metadata.nationality);
-    }
-
-    this.changeDetectorRef.detectChanges();
-  }
 
   constructor(private translateService: TranslateService,
               private parameterService: ParameterService,
@@ -50,11 +32,38 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit() {
     this.locale = this.translateService.getBrowserLang();
+
     this.getSportTeached();
+
+    this.getSportsTeached();
+
+    this.getMono();
+  }
+
+  getSportsTeached() {
+    this.profilService.sportsTeached.asObservable()
+      .subscribe(sportsTeached => {
+        this.sportsTeached = sportsTeached;
+        this.changeDetectorRef.detectChanges();
+      });
+  }
+
+  getMono() {
+    this.profilService.mono.asObservable()
+      .subscribe(mono => {
+        this.mono = mono;
+
+        this.addAge();
+        if (this.mono && this.mono.user_metadata && this.mono.user_metadata.nationality) {
+          this.getCountryDemonym(this.mono.user_metadata.nationality);
+        }
+
+        this.changeDetectorRef.detectChanges();
+      });
   }
 
   getSportTeached() {
-    this.profilService.sportTeachedAnnounced$
+    this.profilService.sportTeached.asObservable()
       .subscribe((sportTeached: SportTeached) => {
         this.sportTeached = sportTeached;
         this.changeDetectorRef.detectChanges();
@@ -62,11 +71,11 @@ export class OverviewComponent implements OnInit {
   }
 
   addAge() {
-    if (!!this._mono &&
-      typeof this._mono.user_metadata !== 'undefined' &&
-      typeof this._mono.user_metadata.birthday !== 'undefined') {
-      const birth = moment(this._mono.user_metadata.birthday, 'DD/MM/YYYY');
-      this._mono.age = moment().diff(birth, 'years');
+    if (!!this.mono &&
+      typeof this.mono.user_metadata !== 'undefined' &&
+      typeof this.mono.user_metadata.birthday !== 'undefined') {
+      const birth = moment(this.mono.user_metadata.birthday, 'DD/MM/YYYY');
+      this.mono.age = moment().diff(birth, 'years');
       this.changeDetectorRef.detectChanges();
     }
   }

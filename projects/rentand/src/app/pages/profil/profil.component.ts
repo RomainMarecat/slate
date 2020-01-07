@@ -1,16 +1,16 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { AgendaComponent } from '../../shared/components/agenda/agenda.component';
 import { CityTeached } from '../../shared/interfaces/city-teached';
+import { MeetingPoint } from '../../shared/interfaces/meeting-point';
 import { Mono } from '../../shared/interfaces/mono';
 import { SportTeached } from '../../shared/interfaces/sport-teached';
-import { UserService } from '../../shared/services/user.service';
 import { ProfilService } from '../../shared/services/profil.service';
 import { ToastService } from '../../shared/services/toast.service';
+import { UserService } from '../../shared/services/user.service';
 import { Cart } from '../cart/shared/cart';
 import { CartService } from '../cart/shared/cart.service';
-import { AgendaComponent } from '../../shared/components/agenda/agenda.component';
 
 @Component({
   selector: 'app-profil',
@@ -20,10 +20,10 @@ import { AgendaComponent } from '../../shared/components/agenda/agenda.component
 export class ProfilComponent implements OnInit {
   mono: Mono;
   cart: Cart;
+
   sportTeached: SportTeached;
   cityTeached: CityTeached;
-  subscribeSportTeached: Subscription;
-  subscribeCityTeached: Subscription;
+
   isMonoCartEmpty: boolean;
 
   @ViewChild(AgendaComponent, {static: true}) agendaComponent: AgendaComponent;
@@ -45,13 +45,19 @@ export class ProfilComponent implements OnInit {
         this.checkCart();
       });
 
-    this.subscribeSportTeached = this.profilService.sportTeachedAnnounced$
+    this.profilService.mono
+      .subscribe((mono: Mono) => {
+        this.mono = mono;
+      });
+
+    this.profilService.sportTeached
       .subscribe((sportTeached: SportTeached) => {
         this.sportTeached = sportTeached;
       });
-    this.subscribeCityTeached = this.profilService.cityTeachedAnnounced$
+    this.profilService.cityTeached
       .subscribe((cityTeached: CityTeached) => {
         this.cityTeached = cityTeached;
+        this.spreadMeetingPoints(cityTeached);
       });
   }
 
@@ -61,11 +67,35 @@ export class ProfilComponent implements OnInit {
         const slug = paramMap.get('slug');
         this.userService.getMonoBySlug(slug)
           .subscribe((mono: Mono) => {
-            this.mono = mono;
-            this.checkCart();
+            if (mono) {
+              this.profilService.announceMonoChange(mono);
+              this.profilService.announceSportsTeachedChange(mono.sports_teached);
+              this.profilService.announceCitiesTeachedChange(mono.cities_teached);
+              if (mono.sports_teached && mono.sports_teached.length) {
+                this.profilService.announceSportTeachedChange(mono.sports_teached[0]);
+              }
+              if (mono.cities_teached && mono.cities_teached.length) {
+                const cityTeached = mono.cities_teached[0];
+                this.profilService.announceCityTeachedChange(cityTeached);
+              }
+              this.checkCart();
+            }
           });
       }
     });
+  }
+
+  spreadMeetingPoints(cityTeached: CityTeached) {
+    if (cityTeached && cityTeached.city && cityTeached.city.meeting_points) {
+      this.profilService.announceMeetingPointsChange(cityTeached.city.meeting_points);
+      this.spreadMeetingPoint(cityTeached.city.meeting_points[0]);
+    }
+  }
+
+  spreadMeetingPoint(meetingPoint: MeetingPoint) {
+    if (meetingPoint) {
+      this.profilService.announceMeetingPointChange(meetingPoint);
+    }
   }
 
   openCart() {
@@ -85,19 +115,6 @@ export class ProfilComponent implements OnInit {
     }
     this.isMonoCartEmpty = true;
     this.changeDetectorRef.markForCheck();
-  }
-
-  updateSelectedCityTeached(cityTeached: CityTeached) {
-    // this.agendaComponent.updateSelectedCityTeached(cityTeached);
-    this.cityTeached = cityTeached;
-  }
-
-  onSportTeachedChanged(sportTeached: SportTeached) {
-    this.sportTeached = sportTeached;
-  }
-
-  onCityTeachedChanged(cityTeached: CityTeached) {
-    this.cityTeached = cityTeached;
   }
 
   isCartMonoNotEmpty(): boolean {

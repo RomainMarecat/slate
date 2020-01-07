@@ -29,10 +29,6 @@ import { CartService } from './shared/cart.service';
     CartDialogComponent
   ],
   exports: [CartComponent],
-  providers: [
-    CartListService,
-    CartService
-  ]
 })
 export class CartModule {
 }

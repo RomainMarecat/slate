@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgxCalendarModule } from '@romainmarecat/ngx-calendar';
+import { LoginModule } from '../../../pages/security/login/login.module';
 import { SelectCityTeachedModule } from '../select-city-teached/select-city-teached.module';
 import { SelectMeetingPointModule } from '../select-meeting-point/select-meeting-point.module';
 import { SelectNumberParticipantModule } from '../select-number-participant/select-number-participant.module';
@@ -16,6 +17,7 @@ import { AgendaComponent } from './agenda.component';
   imports: [
     CommonModule,
     MatDialogModule,
+    LoginModule,
     SelectNumberParticipantModule,
     SelectOnlineSessionModule,
     SelectSportTeachedModule,

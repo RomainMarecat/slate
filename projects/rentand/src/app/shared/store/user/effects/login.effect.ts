@@ -1,7 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { from, Observable, of, throwError } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
@@ -71,7 +69,6 @@ export class LoginEffect {
       return this.authenticationService
         .saveJWT(loginResponse.token)
         .pipe(
-          tap(() => this.router.navigate([`/`])),
           switchMap(() => [
             new GetUser(),
           ])
@@ -137,8 +134,6 @@ export class LoginEffect {
   );
 
   constructor(private actions$: Actions,
-              private authenticationService: AuthenticationService,
-              private jwtHelperService: JwtHelperService,
-              private router: Router) {
+              private authenticationService: AuthenticationService) {
   }
 }

@@ -1586,7 +1586,12 @@
                             "projects/rentand/src/assets",
                             "projects/rentand/src/robots.txt",
                             "projects/rentand/src/sitemap.xml",
-                            "projects/rentand/src/manifest.json"
+                            "projects/rentand/src/manifest.json",
+                            {
+                                "glob": "**/*",
+                                "input": "node_modules/leaflet/dist/images",
+                                "output": "assets/map"
+                            }
                         ],
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
@@ -1594,6 +1599,7 @@
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "node_modules/@ng-select/ng-select/themes/material.theme.css",
+                            "node_modules/leaflet/dist/leaflet.css",
                             "projects/rentand/src/scss/main.scss"
                         ],
                         "scripts": [

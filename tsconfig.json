@@ -19,14 +19,11 @@
             "es2015.iterable"
         ],
         "paths": {
-            "@romainmarecat/*": [
-                "./../../projects/*"
+            "@romainmarecat/ngx-slack-notification": [
+                "projects/ngx-slack-notification/release"
             ],
             "@romainmarecat/ngx-calendar": [
-                "./../../projects/ngx-calendar"
-            ],
-            "~/*": [
-                "src/app-recipe/*"
+                "projects/ngx-calendar/release"
             ]
         }
     }

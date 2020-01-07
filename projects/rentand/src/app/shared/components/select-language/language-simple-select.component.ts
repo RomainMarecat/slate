@@ -1,6 +1,5 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatSelectChange } from '@angular/material/select';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from '../../interfaces/language';
 import { LanguageService } from '../../services/language.service';
@@ -8,21 +7,16 @@ import { LanguageService } from '../../services/language.service';
 @Component({
   selector: 'app-language-simple-select',
   templateUrl: './language-simple-select.component.html',
-  styleUrls: ['./language-simple-select.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => LanguageSimpleSelectComponent),
-      multi: true
-    }
-  ]
+  styleUrls: ['./language-simple-select.component.scss']
 })
 export class LanguageSimpleSelectComponent implements OnInit {
 
   @Input() placeholder = 'Enter your language';
   languageList: Language[];
-  locale = 'en';
-  defaultLanguage = 'fr';
+  locale = 'fr';
+
+  @Input() parentForm: FormGroup;
+  @Input() formInnerControlName: string;
 
   constructor(private languageService: LanguageService,
               private translateService: TranslateService) {
@@ -36,26 +30,8 @@ export class LanguageSimpleSelectComponent implements OnInit {
       });
   }
 
-  writeValue(value: any) {
-    this.defaultLanguage = value;
-  }
 
-  propagateChange = (_: any) => {
-  }
-
-  validateFn: any = () => {
-  }
-
-  registerOnChange(fn) {
-    this.propagateChange = fn;
-  }
-
-  registerOnTouched(fn) {
-  }
-
-  onLanguageChange(event: MatSelectChange) {
-    if (event && event.value) {
-      this.propagateChange(event.value);
-    }
+  isEqualTo(o1: Language, o2: Language): boolean {
+    return o1.id === o2.id;
   }
 }

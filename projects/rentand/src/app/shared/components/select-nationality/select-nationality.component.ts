@@ -1,5 +1,5 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Country } from '../../interfaces/country';
 import { CountryService } from '../../services/country.service';
@@ -8,23 +8,18 @@ import { CountryService } from '../../services/country.service';
   selector: 'app-select-nationality',
   templateUrl: './select-nationality.component.html',
   styleUrls: ['./select-nationality.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SelectNationalityComponent),
-      multi: true
-    }
-  ]
 })
 export class SelectNationalityComponent implements OnInit {
 
   @Input() placeholder = 'Enter your nationality';
 
+  @Input() parentForm: FormGroup;
+
+  @Input() formInnerControlName: string;
+
   countryList: Country[];
 
-  locale = 'en';
-
-  defaultNationality = 'fr';
+  locale = 'fr';
 
   constructor(private countryService: CountryService,
               private translateService: TranslateService) {
@@ -38,26 +33,7 @@ export class SelectNationalityComponent implements OnInit {
       });
   }
 
-  writeValue(value: any) {
-    this.defaultNationality = value;
-  }
-
-  propagateChange = (_: any) => {
-  }
-
-  validateFn: any = () => {
-  }
-
-  registerOnChange(fn) {
-    this.propagateChange = fn;
-  }
-
-  registerOnTouched(fn) {
-  }
-
-  onNationalityChange(event: any) {
-    if (event && event.value) {
-      this.propagateChange(event.value);
-    }
+  isEqualTo(o1: Country, o2: Country): boolean {
+    return o1.id === o2.id;
   }
 }

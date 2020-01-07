@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { OnlineSession } from '@romainmarecat/ngx-calendar';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { OnlineSession } from '../interfaces/online-session';
 
 @Injectable({
   providedIn: 'root'
@@ -15,20 +15,14 @@ export class OnlineSessionService {
   }
 
   getOnlineSessionsByCriteria(criteria: object): Observable<OnlineSession[]> {
-    let url = `${this.onlineSessionsUrl}`;
-    for (const c in criteria) {
-      if (c === 'user_id') {
-        url = url.concat('/user_id/', criteria[c].user_id);
-      } else if (c === 'sport_teached') {
-        url = url.concat('/sport_teached/', criteria[c]._id.$oid);
-      } else if (c === 'city_teached') {
-        url = url.concat('/city_teached/', criteria[c]._id.$oid);
-      } else if (c === 'start') {
-        url = url.concat('/start/', criteria[c]);
-      } else if (c === 'end') {
-        url = url.concat('/end/', criteria[c]);
+    Object.keys(criteria).forEach((key: string) => {
+      if (!criteria[key]) {
+        delete criteria[key];
       }
-    }
-    return this.http.get<OnlineSession[]>(url);
+    });
+
+    const httpParams: HttpParams = new HttpParams({fromObject: criteria as any});
+
+    return this.http.get<OnlineSession[]>(this.onlineSessionsUrl, {params: httpParams});
   }
 }

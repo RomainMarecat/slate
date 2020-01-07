@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Inject, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -13,6 +12,7 @@ import { ToastService } from '../../../shared/services/toast.service';
 import { AppState } from '../../../shared/store/app.state';
 import { Login } from '../../../shared/store/user/actions/login.action';
 import { selectLoggedIn } from '../../../shared/store/user/selectors/user.selector';
+import { PasswordResetFormComponent } from '../password-reset-form/password-reset-form.component';
 
 @Component({
   selector: 'app-login',
@@ -52,7 +52,8 @@ export class LoginComponent implements OnInit {
               private toastService: ToastService,
               private translateService: TranslateService,
               private formBuilder: FormBuilder,
-              public dialog: MatDialog,
+              private dialog: MatDialog,
+              private matDialogRef: MatDialogRef<LoginComponent>,
               private store: Store<AppState>) {
     this.form = this.getForm();
   }
@@ -80,6 +81,12 @@ export class LoginComponent implements OnInit {
 
   checkAuthenticated() {
     this.authenticated$ = this.store.select(selectLoggedIn);
+    this.authenticated$
+      .subscribe((authenticated) => {
+        if (!!authenticated) {
+          this.matDialogRef.close(authenticated);
+        }
+      });
   }
 
   logout() {
@@ -94,39 +101,7 @@ export class LoginComponent implements OnInit {
   }
 
   openPasswordResetDialog() {
-    const dialogRef = this.dialog.open(PasswordResetDialogComponent,
+    const dialogRef = this.dialog.open(PasswordResetFormComponent,
       {...this.config, ...{data: this.form.value.username}});
-  }
-}
-
-@Component({
-  selector: 'app-password-reset-dialog',
-  templateUrl: './password-reset-form.html',
-  styleUrls: ['./login.component.scss'],
-})
-export class PasswordResetDialogComponent {
-  form: FormGroup;
-
-  constructor(private authenticationService: AuthenticationService,
-              public dialog: MatDialog,
-              private formBuilder: FormBuilder,
-              @Inject(MAT_DIALOG_DATA) private username: string) {
-    this.form = this.getForm(this.username);
-  }
-
-  getForm(username?: string): FormGroup {
-    return this.formBuilder.group({
-      username: [(username || ''), [
-        Validators.required,
-        Validators.email,
-        Validators.minLength(1),
-        Validators.maxLength(150),
-      ]]
-    });
-  }
-
-  changePassword() {
-    // this.authenticationService.changePassword(this.form.value.email);
-    this.dialog.closeAll();
   }
 }

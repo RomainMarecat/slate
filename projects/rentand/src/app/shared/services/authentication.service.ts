@@ -182,29 +182,6 @@ export class AuthenticationService {
         this.authenticated$.next(false);
         observer.next();
         observer.complete();
-        location.reload(true);
-      });
-    });
-  }
-
-  isStructureAccount(): Observable<boolean> {
-    return new Observable<boolean>((observer) => {
-      this.getUser().subscribe((user) => {
-        observer.next(user && user.app_metadata
-          && user.app_metadata.rentand
-          && user.app_metadata.rentand.structure === true);
-        observer.complete();
-      });
-    });
-  }
-
-  isProAccount(): Observable<boolean> {
-    return new Observable<boolean>((observer) => {
-      this.getUser().subscribe((user) => {
-        observer.next(user && user.app_metadata
-          && user.app_metadata.rentand
-          && user.app_metadata.rentand.mono === true);
-        observer.complete();
       });
     });
   }

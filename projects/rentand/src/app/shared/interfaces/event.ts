@@ -7,6 +7,7 @@ export enum EventType {
 
 export interface Event {
   id: string;
+  event_type: EventType;
   user: User;
   start_date: string;
   end_date: string;

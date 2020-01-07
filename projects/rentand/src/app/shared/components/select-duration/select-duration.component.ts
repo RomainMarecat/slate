@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatSelectChange } from '@angular/material';
-import { OnlineSession } from '../../interfaces/online-session';
+import { OnlineSession } from '@romainmarecat/ngx-calendar';
 
 import * as _moment from 'moment';
 const moment = _moment;
@@ -36,11 +36,11 @@ export class SelectDurationComponent {
     this._onlineSessions
       .map((onlineSession: OnlineSession) => {
         this.durations.push(
-          onlineSession.session_type.name.concat(
+          onlineSession.comment.concat(
             ' - ',
             moment
               .duration(
-                onlineSession.session_type.duration,
+                onlineSession.duration,
                 'minutes'
               ).humanize()
           )

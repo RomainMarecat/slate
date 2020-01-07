@@ -1,4 +1,13 @@
-.map-card {
-    text-align: center;
-    img {}
+.city_teached_image_wrapper {
+    position: relative;
+
+    .city_teached_map_wrapper {
+        .city_teached_map {
+            height: 500px;
+        }
+    }
+
+    .city_teached_image {
+        height: 500px;
+    }
 }

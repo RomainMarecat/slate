@@ -13,7 +13,6 @@ import {
   MatSnackBarModule,
   MatToolbarModule
 } from '@angular/material';
-import { FabSpeedDialService } from '../../services/fab-speed-dial.service';
 import { FabSpeedDialActionComponent } from './fab-speed-dial-action/fab-speed-dial-action.component';
 import { FabSpeedDialTriggerComponent } from './fab-speed-dial-trigger/fab-speed-dial-trigger.component';
 import { FabSpeedDialComponent } from './fab-speed-dial/fab-speed-dial.component';
@@ -53,9 +52,6 @@ import { FabSpeedDialComponent } from './fab-speed-dial/fab-speed-dial.component
     FabSpeedDialActionComponent,
     FabSpeedDialTriggerComponent,
   ],
-  providers: [
-    FabSpeedDialService
-  ]
 })
 export class MaterialFactoryModule {
 }

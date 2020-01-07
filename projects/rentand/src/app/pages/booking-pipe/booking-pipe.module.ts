@@ -41,10 +41,6 @@ import { PipePaymentModule } from './pipe-payment/pipe-payment.module';
     BookingConfirmComponent,
     BookingConfirmModalComponent
   ],
-  providers: [
-    BookingPipeService,
-    BookingConfirmComponent
-  ],
   exports: [
     BookingConfirmModalComponent
   ],

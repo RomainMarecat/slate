@@ -1,25 +1,26 @@
 <!--<app-profil-not-found [monos]="(monos$ | async)" *ngIf="!mono && anyMono | async">-->
 <!--</app-profil-not-found>-->
-<div class="mono-wrapper section container-fluid">
+<div class="mono-wrapper section container">
   <app-profil-navigation></app-profil-navigation>
   <div class="row">
     <div class="col-12">
       <mat-card>
         <div class="row">
-          <div class="col-12 m-5">
-            <app-profil-overview [mono]="mono"></app-profil-overview>
+          <div class="col-6">
+            <app-profil-overview></app-profil-overview>
           </div>
-          <div class="col-12 m-4">
-            <app-profil-map [mono]="mono"
-                            [cityTeached]="cityTeached"></app-profil-map>
+          <div class="col-6">
+            <app-profil-map></app-profil-map>
           </div>
         </div>
       </mat-card>
     </div>
   </div>
-  <app-profil-agenda [mono]="mono"
-                     [cityTeached]="cityTeached"></app-profil-agenda>
 </div>
+
+<div class="container-fluid">
+    <app-profil-agenda></app-profil-agenda>
+  </div>
 <div class="bottom-right-fabs">
   <div class="row">
     <div class="col-12">

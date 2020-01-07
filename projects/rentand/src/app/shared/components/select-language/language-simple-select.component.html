@@ -1,9 +1,11 @@
-<mat-form-field appearance="outline">
-  <mat-select (selectionChange)="onLanguageChange($event)"
-              name="language"
+<mat-form-field appearance="outline"
+                [formGroup]="parentForm"
+                *ngIf="parentForm">
+  <mat-select name="language"
               [placeholder]="placeholder"
               [attr.i18n-placeholder]="placeholder"
-              [(ngModel)]="defaultLanguage">
+              [compareWith]="isEqualTo"
+              [formControlName]="formInnerControlName">
     <mat-option *ngFor="let language of languageList"
                 [value]="language">
       <img src="/assets/images/flags/language/{{language._iso6391}}.svg"
