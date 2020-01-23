@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { LanguageSimpleSelectComponent } from './language-simple-select.component';
@@ -13,7 +13,8 @@ import { LanguageSimpleSelectComponent } from './language-simple-select.componen
     CommonModule,
     MatSelectModule,
     MatOptionModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class LanguageSimpleSelectModule {

@@ -102,12 +102,12 @@
                       <div class="col-6">
                         <mat-radio-group formControlName="gender"
                                          name="gender">
-                          <mat-radio-button value="male"
+                          <mat-radio-button [value]="true"
                                             class="px-2"
                                             i18n="male label">
                             Male
                           </mat-radio-button>
-                          <mat-radio-button value="female"
+                          <mat-radio-button [value]="false"
                                             class="px-2"
                                             i18n="female label">
                             Female
@@ -117,7 +117,7 @@
                     </div>
                   </td>
                 </tr>
-                <tr formGroupName="user_metadata">
+                <tr>
                   <td class="property-title"
                       i18n="my account user nationality">
                     Nationality
@@ -128,7 +128,8 @@
                          alt="{{user.user_metadata.nationality}} flag"
                          *ngIf="user?.user_metadata?.nationality">
                     <app-select-nationality placeholder="Enter your nationality"
-                                            formControlName="nationality"></app-select-nationality>
+                                            [parentForm]="form?.get('user_metadata')"
+                                            formInnerControlName="nationality"></app-select-nationality>
                   </td>
                 </tr>
                 <tr formGroupName="user_metadata">
@@ -142,7 +143,8 @@
                          alt="{{user.user_metadata.mother_lang}} flag"
                          *ngIf="user?.user_metadata?.mother_lang">
                     <app-language-simple-select placeholder="Enter your lang"
-                                                formControlName="mother_lang"></app-language-simple-select>
+                                                [parentForm]="form?.get('user_metadata')"
+                                                formInnerControlName="mother_lang"></app-language-simple-select>
                   </td>
                 </tr>
                 <tr formGroupName="user_metadata">
@@ -184,7 +186,8 @@
                       </mat-form-field>
                       <div class="col-6">
                         <app-select-nationality placeholder="Enter your country"
-                                                formControlName="country"></app-select-nationality>
+                                                [parentForm]="form?.get('user_metadata').get('address')"
+                                                formInnerControlName="country"></app-select-nationality>
                       </div>
                     </div>
                   </td>

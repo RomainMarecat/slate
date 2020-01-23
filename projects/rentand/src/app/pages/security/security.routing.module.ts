@@ -36,11 +36,6 @@ const securityRoutes: Routes = [
     RouterModule.forChild(securityRoutes),
   ],
   exports: [RouterModule],
-  providers: [
-    PublicGuard,
-    UserGuard,
-    AuthenticationService
-  ]
 })
 export class SecurityRoutingModule {
 }

@@ -1,7 +1,7 @@
 <mat-form-field>
   <mat-select i18n-placeholder="Participants number"
               placeholder="Participants number"
-              [(ngModel)]="selectedNumberParticipant"
+              [(ngModel)]="numberParticipant"
               name="number-participant"
               (selectionChange)="updateNumberParticipant($event)">
     <mat-option *ngFor="let numberParticipant of numberParticipants" [value]="numberParticipant">

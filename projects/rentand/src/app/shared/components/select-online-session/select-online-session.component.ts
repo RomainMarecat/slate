@@ -1,66 +1,64 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material';
-import { OnlineSession } from '../../interfaces/online-session';
-
+import { OnlineSession } from '@romainmarecat/ngx-calendar';
 import * as _moment from 'moment';
+import { ProfilService } from '../../services/profil.service';
+
 const moment = _moment;
 
 @Component({
-  selector: 'app-profil-agenda-calendar-select-online-session',
+  selector: 'app-select-online-session',
   templateUrl: './select-online-session.component.html',
-  styleUrls: ['./select-online-session.component.scss']
+  styleUrls: ['./select-online-session.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SelectOnlineSessionComponent implements OnChanges {
+export class SelectOnlineSessionComponent implements OnInit {
 
-  _onlineSessions: OnlineSession[];
-  @Output() onlineSessionChange: EventEmitter<OnlineSession> = new EventEmitter<OnlineSession>();
-  selectedOnlineSession: OnlineSession;
+  onlineSessions: OnlineSession[] = [];
 
-  prettyOnlineSession: any[];
+  onlineSession: OnlineSession;
 
-  @Input() onlineSession: OnlineSession;
-
-  get onlineSessions(): OnlineSession[] {
-    return this._onlineSessions;
+  constructor(private profilService: ProfilService,
+              private changeDetectorRef: ChangeDetectorRef) {
   }
 
-  @Input('onlineSessions')
-  set onlineSessions(onlineSessions: OnlineSession[]) {
-    this._onlineSessions = onlineSessions;
-    if (this.onlineSessions !== null) {
-      this.loadDurations();
-    }
+  ngOnInit() {
+    this.getOnlineSessions();
+    this.getOnlineSession();
   }
 
-  ngOnChanges() {
-    if (this._onlineSessions && this._onlineSessions.length > 0) {
-      this.loadDurations();
-    }
-  }
-
-  loadDurations() {
-    this.prettyOnlineSession = [];
-    this._onlineSessions
-      .map((onlineSession: OnlineSession) => {
-        const prettyName = onlineSession.session_type.name.concat(
-          ' - ',
-          moment
-            .duration(
-              onlineSession.session_type.duration,
-              'minutes'
-            ).humanize()
-        );
-        this.prettyOnlineSession.push({
-          name: prettyName,
-          onlineSession
-        });
+  getOnlineSession() {
+    this.profilService.onlineSession
+      .subscribe((onlineSession: OnlineSession) => {
+        this.onlineSession = onlineSession;
       });
-    this.selectedOnlineSession = this._onlineSessions[0];
-    this.onlineSessionChange.emit(this.selectedOnlineSession);
+  }
+
+  getOnlineSessions() {
+    this.profilService.onlineSessions
+      .subscribe((onlineSessions: OnlineSession[]) => {
+        this.onlineSessions = onlineSessions
+          .filter((o) => o.name)
+          .map((onlineSession: OnlineSession) => {
+            onlineSession.name = onlineSession.name.concat(
+              ' - ',
+              moment.duration(
+                onlineSession.duration,
+                'minutes'
+              ).humanize()
+            );
+            return onlineSession;
+          });
+
+        this.changeDetectorRef.detectChanges();
+      });
+  }
+
+  isEqualTo(o1: OnlineSession, o2: OnlineSession): boolean {
+    return o1 && o2 && o1.id === o2.id;
   }
 
   updateOnlineSession(event: MatSelectChange) {
-    const onlineSession = event.value;
-    this.onlineSessionChange.emit(onlineSession);
+    this.profilService.announceOnlineSessionChange(event.value);
   }
 }

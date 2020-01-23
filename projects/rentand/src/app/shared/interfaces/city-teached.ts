@@ -7,4 +7,8 @@ export interface CityTeached {
   city?: City;
   personalMeetingPointAccepted?: boolean;
   picture?: Media;
+  /**
+   * Leaflet Map
+   */
+  map: any;
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { LoaderModule } from '../../../shared/components/loader/loader.module';
 import { SelectCityTeachedModule } from '../../../shared/components/select-city-teached/select-city-teached.module';
 import { MapComponent } from './map.component';
@@ -12,7 +13,8 @@ import { MapComponent } from './map.component';
   imports: [
     CommonModule,
     LoaderModule,
-    SelectCityTeachedModule
+    SelectCityTeachedModule,
+    LeafletModule
   ]
 })
 export class MapModule { }

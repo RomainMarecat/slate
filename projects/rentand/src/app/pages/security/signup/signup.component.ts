@@ -39,16 +39,18 @@ export class SignupComponent {
 
   getForm() {
     return this.formBuilder.group({
-      firstname: ['', [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(50),
-      ]],
-      lastname: ['', [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(50),
-      ]],
+      user_metadata: this.formBuilder.group({
+        firstname: ['', [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(50),
+        ]],
+        lastname: ['', [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(50),
+        ]]
+      }),
       email: ['', [
         Validators.required,
         Validators.email,

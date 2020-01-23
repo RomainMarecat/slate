@@ -33,7 +33,7 @@ export class NavigationComponent implements OnInit {
   }
 
   getSportTeached() {
-    this.profilService.sportTeachedAnnounced$
+    this.profilService.sportTeached.asObservable()
       .subscribe((sportTeached: SportTeached) => {
         this.translatedSportTeached = this.getTranslation(sportTeached);
         this.changeDetectorRef.detectChanges();

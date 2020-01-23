@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { SelectOnlineSessionComponent } from './select-online-session.component';
 
@@ -10,6 +11,7 @@ import { SelectOnlineSessionComponent } from './select-online-session.component'
   exports: [SelectOnlineSessionComponent],
   imports: [
     CommonModule,
+    MatFormFieldModule,
     MatSelectModule,
     ReactiveFormsModule,
     FormsModule,

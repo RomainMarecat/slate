@@ -1,46 +1,46 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material';
-import { OnlineSession } from '../../interfaces/online-session';
+import { OnlineSession } from '@romainmarecat/ngx-calendar';
+import { ProfilService } from '../../services/profil.service';
 
 @Component({
-  selector: 'app-profil-agenda-calendar-select-number-participant',
+  selector: 'app-select-number-participant',
   templateUrl: './select-number-participant.component.html',
   styleUrls: ['./select-number-participant.component.scss']
 })
-export class SelectNumberParticipantComponent {
+export class SelectNumberParticipantComponent implements OnInit {
 
-  _onlineSession: OnlineSession;
-  numberParticipants: Array<string> = [];
-  @Output() numberParticipantChange: EventEmitter<number> = new EventEmitter<number>();
-  selectedNumberParticipant: string;
+  numberParticipants: number[] = [];
+  numberParticipant: number;
 
-  get onlineSession(): OnlineSession {
-    return this._onlineSession;
+  constructor(private profilService: ProfilService) {
   }
 
-  @Input('onlineSession')
-  set onlineSession(onlineSession: OnlineSession) {
-    this._onlineSession = onlineSession;
-    if (this.onlineSession !== null) {
-      this.loadNumberParticipant();
-    }
+  ngOnInit(): void {
+    this.getOnlineSession();
   }
 
-  loadNumberParticipant() {
-    if (!this._onlineSession || !this._onlineSession.session_type) {
-      return;
-    }
-    this.numberParticipants = [];
-    for (let i = 1; i <= this._onlineSession.session_type.max_persons; i++) {
-      if (this.numberParticipants.indexOf(i.toString()) < 0) {
-        this.numberParticipants.push(i.toString());
+  getOnlineSession() {
+    this.profilService.onlineSession
+      .subscribe((onlineSession: OnlineSession) => {
+        this.getNumberParticipant(onlineSession);
+      });
+  }
+
+  getNumberParticipant(onlineSession: OnlineSession) {
+    if (!!onlineSession) {
+      this.numberParticipants = [];
+      for (let i = 1; i <= onlineSession.max_persons; i++) {
+        if (this.numberParticipants.indexOf(i) < 0) {
+          this.numberParticipants.push(i);
+        }
       }
+      this.numberParticipant = this.numberParticipants[0];
     }
-    this.selectedNumberParticipant = this.numberParticipants[0];
   }
 
   updateNumberParticipant(event: MatSelectChange) {
-    this.numberParticipantChange.emit(event.value);
+    this.profilService.announceNumberParticipantChange(event.value);
   }
 }
 

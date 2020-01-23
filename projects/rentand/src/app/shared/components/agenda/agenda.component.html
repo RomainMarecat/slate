@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
-    <h5 class="col-12 m-5 page-title" *ngIf="mono && mono.user_metadata && mono.user_metadata.firstname">
-      <span i18n="book a session with">Book a session with</span> {{mono.user_metadata?.firstname}}
+    <h5 class="col-12 m-5 page-title" *ngIf="mono?.user_metadata?.firstname">
+      <span i18n="book a session with">Book a session with</span> {{mono.user_metadata.firstname}}
     </h5>
   </div>
   <div class="row">
@@ -10,31 +10,25 @@
         <div class="col-12">
           <div class="bg-primary pa1 white-text m-0">
             <span i18n="session price">Session price</span>:
-            <strong>{{sessionPrice()}}</strong>
-            €
+            <strong>{{sessionPrice()}}</strong>€
           </div>
         </div>
         <div class="col-12 mt-2">
-          <app-profil-agenda-calendar-select-online-session [onlineSessions]="onlineSessions"
-                                                            (onlineSessionChange)="onlineSessionChanged($event)">
-          </app-profil-agenda-calendar-select-online-session>
+          <app-select-online-session>
+          </app-select-online-session>
         </div>
         <div class="col-12 mt-2">
-          <app-profil-agenda-calendar-select-number-participant [onlineSession]="onlineSession"
-                                                                (numberParticipantChange)="updateParticipantsNumber($event)">
-          </app-profil-agenda-calendar-select-number-participant>
+          <app-select-number-participant></app-select-number-participant>
         </div>
         <div class="col-12 mt-2">
           <app-profil-agenda-select-sport-teached [sportsTeached]="sportsTeached"
                                                   [sportTeached]="sportTeached"></app-profil-agenda-select-sport-teached>
         </div>
         <div class="col-12 mt-2">
-          <app-profil-agenda-select-city-teached [citiesTeached]="citiesTeached"
-                                                 [cityTeached]="cityTeached"></app-profil-agenda-select-city-teached>
+          <app-profil-agenda-select-city-teached></app-profil-agenda-select-city-teached>
         </div>
         <div class="col-12 my-2">
-          <app-select-meeting-point [meetingPoints]="cityTeached?.city.meeting_points"
-                                    (meetingPointChanged)="updateMeetingPoint($event)"></app-select-meeting-point>
+          <app-select-meeting-point></app-select-meeting-point>
         </div>
       </div>
     </div>
@@ -42,7 +36,7 @@
       <ngx-calendar [viewMode]="viewMode"
                     [user]="user"
                     [onlineSession]="onlineSession"
-                    [sessionsEntries]="onlineSessions"
+                    [sessionsEntries]="sessions"
                     (sessionRemoved)="onSessionRemoved($event)"
                     (sessionCreated)="onSessionAdded($event)"></ngx-calendar>
     </div>

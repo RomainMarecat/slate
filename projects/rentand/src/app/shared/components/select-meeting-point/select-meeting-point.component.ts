@@ -1,40 +1,48 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material';
-import { TranslateService } from '@ngx-translate/core';
 import { MeetingPoint } from '../../interfaces/meeting-point';
+import { ProfilService } from '../../services/profil.service';
 
 @Component({
   selector: 'app-select-meeting-point',
   templateUrl: './select-meeting-point.component.html',
   styleUrls: ['./select-meeting-point.component.scss']
 })
-export class SelectMeetingPointComponent implements OnInit, OnChanges {
+export class SelectMeetingPointComponent implements OnInit {
+  meetingPoints: MeetingPoint[];
+  meetingPoint: MeetingPoint;
 
-  @Output() meetingPointChanged: EventEmitter<MeetingPoint> = new EventEmitter<MeetingPoint>();
-  locale: string;
-
-  @Input() meetingPoints: MeetingPoint[];
-  selectedMeetingPoint: MeetingPoint;
-
-  constructor(private translateService: TranslateService) {
+  constructor(private profilService: ProfilService) {
   }
 
   ngOnInit() {
-    this.locale = this.translateService.getBrowserLang();
+    this.getMeetingPoints();
+    this.getMeetingPoint();
   }
 
-  ngOnChanges() {
-    if (this.meetingPoints && this.meetingPoints.length > 0) {
-      this.selectedMeetingPoint = this.meetingPoints[0];
-      this.meetingPointChanged.emit(this.selectedMeetingPoint);
-    } else {
-      this.selectedMeetingPoint = undefined;
-      this.meetingPointChanged.emit(this.selectedMeetingPoint);
-    }
+  getMeetingPoints() {
+    this.profilService.meetingPoints
+      .subscribe(meetingPoints => {
+        if (meetingPoints) {
+          this.meetingPoints = meetingPoints;
+        }
+      });
   }
 
-  updateMeetingPoint(event: MatSelectChange | any) {
-    const meetingPoint = event.value as MeetingPoint;
-    this.meetingPointChanged.emit(meetingPoint);
+  getMeetingPoint() {
+    this.profilService.meetingPoint
+      .subscribe(meetingPoint => {
+        if (meetingPoint) {
+          this.meetingPoint = meetingPoint;
+        }
+      });
+  }
+
+  isEqualTo(o1: MeetingPoint, o2: MeetingPoint): boolean {
+    return o1 && o2 && o1.id === o2.id;
+  }
+
+  updateMeetingPoint(event: MatSelectChange) {
+    this.profilService.announceMeetingPointChange(event.value as MeetingPoint);
   }
 }

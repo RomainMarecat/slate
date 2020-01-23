@@ -1,40 +1,75 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { OnlineSession } from '@romainmarecat/ngx-calendar';
+import { BehaviorSubject } from 'rxjs';
 import { CityTeached } from '../interfaces/city-teached';
+import { MeetingPoint } from '../interfaces/meeting-point';
+import { Mono } from '../interfaces/mono';
+import { Session } from '../interfaces/session';
 import { SportTeached } from '../interfaces/sport-teached';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfilService {
+  mono: BehaviorSubject<Mono> = new BehaviorSubject<Mono>(null);
 
-  /* Observable */
-  private sportTeachedSource = new Subject<SportTeached>();
-  private cityTeachedSource = new Subject<CityTeached>();
+  sportsTeached: BehaviorSubject<SportTeached[]> = new BehaviorSubject<SportTeached[]>([]);
+  sportTeached: BehaviorSubject<SportTeached> = new BehaviorSubject<SportTeached>(null);
 
-  sportTeachedAnnounced$ = this.sportTeachedSource.asObservable();
-  cityTeachedAnnounced$ = this.cityTeachedSource.asObservable();
+  cityTeached: BehaviorSubject<CityTeached> = new BehaviorSubject<CityTeached>(null);
+  citiesTeached: BehaviorSubject<CityTeached[]> = new BehaviorSubject<CityTeached[]>([]);
 
-  cityTeached: CityTeached;
-  sportTeached: SportTeached;
+  meetingPoints: BehaviorSubject<MeetingPoint[]> = new BehaviorSubject<MeetingPoint[]>([]);
+  meetingPoint: BehaviorSubject<MeetingPoint> = new BehaviorSubject<MeetingPoint>(null);
 
-  getCityTeached() {
-    return this.cityTeached;
-  }
+  onlineSessions: BehaviorSubject<OnlineSession[]> = new BehaviorSubject<OnlineSession[]>([]);
+  onlineSession: BehaviorSubject<OnlineSession> = new BehaviorSubject<OnlineSession>(null);
 
-  getSportTeached() {
-    return this.sportTeached;
-  }
+  numberParticipant: BehaviorSubject<number> = new BehaviorSubject<number>(null);
+
+  sessions: BehaviorSubject<Session[]> = new BehaviorSubject<Session[]>([]);
 
   announceCityTeachedChange(cityTeached: CityTeached) {
-    this.cityTeached = cityTeached;
-    this.cityTeachedSource.next(cityTeached);
+    this.cityTeached.next(cityTeached);
+  }
+
+  announceCitiesTeachedChange(citiesTeached: CityTeached[]) {
+    this.citiesTeached.next(citiesTeached);
   }
 
   announceSportTeachedChange(sportTeached: SportTeached) {
-    if (sportTeached !== this.sportTeached) {
-      this.sportTeached = sportTeached;
-      this.sportTeachedSource.next(sportTeached);
-    }
+    this.sportTeached.next(sportTeached);
+  }
+
+  announceSportsTeachedChange(sportsTeached: SportTeached[]) {
+    this.sportsTeached.next(sportsTeached);
+  }
+
+  announceOnlineSessionsChange(onlineSessions: OnlineSession[]) {
+    this.onlineSessions.next(onlineSessions);
+  }
+
+  announceOnlineSessionChange(onlineSession: OnlineSession) {
+    this.onlineSession.next(onlineSession);
+  }
+
+  announceMonoChange(mono: Mono) {
+    this.mono.next(mono);
+  }
+
+  announceSessionsChange(sessions: Session[]) {
+    this.sessions.next(sessions);
+  }
+
+  announceMeetingPointChange(meetingPoint: MeetingPoint) {
+    this.meetingPoint.next(meetingPoint);
+  }
+
+  announceMeetingPointsChange(meetingPoints: MeetingPoint[]) {
+    this.meetingPoints.next(meetingPoints);
+  }
+
+  announceNumberParticipantChange(meetingPoints: MeetingPoint[]) {
+    this.meetingPoints.next(meetingPoints);
   }
 }

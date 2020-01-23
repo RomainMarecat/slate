@@ -8,7 +8,7 @@ import { User } from '../../shared/interfaces/user';
 import { AuthenticationService } from '../../shared/services/authentication.service';
 import { AppState } from '../../shared/store/app.state';
 import { selectLoggedIn, selectUser } from '../../shared/store/user/selectors/user.selector';
-import { SecurityMessage } from './security-message';
+import { SecurityMessage } from '../../shared/interfaces/security-message';
 
 @Component({
   selector: 'app-security',

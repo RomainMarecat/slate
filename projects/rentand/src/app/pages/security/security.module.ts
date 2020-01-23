@@ -4,10 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatInputModule, MatTabsModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { LoginComponent, PasswordResetDialogComponent } from './login/login.component';
+import { LoginModule } from './login/login.module';
+import { PasswordResetFormModule } from './password-reset-form/password-reset-form.module';
 import { SecurityComponent } from './security.component';
 import { SecurityRoutingModule } from './security.routing.module';
-import { SignupComponent } from './signup/signup.component';
+import { SignupModule } from './signup/signup.module';
 
 
 @NgModule({
@@ -20,16 +21,13 @@ import { SignupComponent } from './signup/signup.component';
     MatTabsModule,
     MatInputModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    LoginModule,
+    SignupModule,
+    PasswordResetFormModule
   ],
   declarations: [
     SecurityComponent,
-    LoginComponent,
-    SignupComponent,
-    PasswordResetDialogComponent
-  ],
-  entryComponents: [
-    PasswordResetDialogComponent
   ],
   exports: [
     SecurityComponent

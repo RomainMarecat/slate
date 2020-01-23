@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material';
 import { CityTeached } from '../../interfaces/city-teached';
 import { ProfilService } from '../../services/profil.service';
@@ -8,32 +8,38 @@ import { ProfilService } from '../../services/profil.service';
   templateUrl: './select-city-teached.component.html',
   styleUrls: ['./select-city-teached.component.scss']
 })
-export class SelectCityTeachedComponent implements OnChanges {
+export class SelectCityTeachedComponent implements OnInit {
 
-  @Input() citiesTeached: CityTeached[];
-  @Input() cityTeached: CityTeached;
-
-  @Output() cityTeachedChange: EventEmitter<CityTeached> = new EventEmitter<CityTeached>();
-  selectedCityTeached: CityTeached;
+  citiesTeached: CityTeached[];
+  cityTeached: CityTeached;
 
   constructor(private profilService: ProfilService) {
   }
 
-  ngOnChanges() {
-    if (!!this.citiesTeached && this.citiesTeached.length > 0) {
-      this.selectedCityTeached = this.citiesTeached[0];
-      if (this.cityTeached) {
-        this.citiesTeached.forEach((cityT) => {
-          if (this.cityTeached.id === cityT.id) {
-            this.selectedCityTeached = cityT;
-          }
-        });
-      }
-    }
+  ngOnInit(): void {
+    this.getCitiesTeached();
+    this.getCityTeached();
+  }
+
+  getCityTeached() {
+    this.profilService.cityTeached
+      .subscribe((cityTeached: CityTeached) => {
+        this.cityTeached = cityTeached;
+      });
+  }
+
+  getCitiesTeached() {
+    this.profilService.citiesTeached
+      .subscribe((citiesTeached: CityTeached[]) => {
+        this.citiesTeached = citiesTeached;
+      });
+  }
+
+  isEqualTo(o1: CityTeached, o2: CityTeached): boolean {
+    return o1 && o2 && o1.id === o2.id;
   }
 
   updateCityTeached(event: MatSelectChange) {
-    this.cityTeachedChange.emit(event.value as CityTeached);
     this.profilService.announceCityTeachedChange(event.value as CityTeached);
   }
 }

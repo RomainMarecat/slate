@@ -44,13 +44,15 @@
                i18-placeholder="Enter your email"
                placeholder="Email*">
         <mat-error
-          *ngIf="(form.controls['email'].hasError('required') || form.controls['email'].hasError('email')) && form.controls['email'].touched"
+          *ngIf="(form.get('email').hasError('required') || form.get('email').hasError('email')) && form.get('email').touched"
           class="text-danger"
           i18n="signup email error message">
           You must include a valid email address.
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="offset-3 col-6" appearance="outline">
+      <mat-form-field class="offset-3 col-6"
+                      appearance="outline"
+                      formGroupName="user_metadata">
         <mat-label i18n="Enter your firstname">
           Enter your firstname
         </mat-label>
@@ -60,13 +62,15 @@
                formControlName="firstname"
                i18-placeholder="signup form firstname"
                placeholder="Firstname*">
-        <mat-error *ngIf="form.controls['firstname'].hasError('required') && form.controls['firstname'].touched"
+        <mat-error *ngIf="form.get('user_metadata').get('firstname').hasError('required') && form.get('user_metadata').get('firstname').touched"
                    class="text-danger"
                    i18n="signup firstname error message">
           You must include a valid firstname.
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="offset-3 col-6" appearance="outline">
+      <mat-form-field class="offset-3 col-6"
+                      appearance="outline"
+                      formGroupName="user_metadata">
         <mat-label i18n="Enter your lastname">
           Enter your lastname
         </mat-label>
@@ -76,7 +80,7 @@
                formControlName="lastname"
                i18-placeholder="signup form lastname"
                placeholder="Lastname*">
-        <mat-error *ngIf="form.controls['lastname'].hasError('required') && form.controls['lastname'].touched"
+        <mat-error *ngIf="form.get('user_metadata').get('lastname').hasError('required') && form.get('user_metadata').get('lastname').touched"
                    class="text-danger"
                    i18n="signup lastname error message">
           You must include a valid lastname.
@@ -92,7 +96,7 @@
                formControlName="password"
                i18n-placeholder="Enter your password"
                placeholder="Enter your password*">
-        <mat-error *ngIf="form.controls['password'].hasError('required') && form.controls['password'].touched"
+        <mat-error *ngIf="form.get('password').hasError('required') && form.get('password').touched"
                    class="text-danger"
                    i18n="signup password error message">
           You must include a valid password.
@@ -109,7 +113,7 @@
                i18n-placeholder="Enter your password again"
                placeholder="Enter your password again*">
         <mat-error
-          *ngIf="form.controls['password'].touched && form.controls['passwordCheck'].touched && (passwordInput.value != passwordCheckInput.value)"
+          *ngIf="form.get('password').touched && form.get('passwordCheck').touched && (passwordInput.value != passwordCheckInput.value)"
           class="text-danger"
           i18n="signup password error message">
           The passwords are differents.

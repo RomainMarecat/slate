@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MetaGuard } from '@ngx-meta/core';
-import { AuthenticationService } from '../../shared/services/authentication.service';
 import { PublicGuard } from '../../shared/guard/public.guard';
 import { UserGuard } from '../../shared/guard/user.guard';
 import { BookingConfirmComponent } from './booking-confirm/booking-confirm.component';
@@ -54,11 +53,6 @@ const bookingPipeRoutes: Routes = [
     RouterModule.forChild(bookingPipeRoutes),
   ],
   exports: [RouterModule],
-  providers: [
-    PublicGuard,
-    UserGuard,
-    AuthenticationService
-  ]
 })
 export class BookingPipeRoutingModule {
 }
