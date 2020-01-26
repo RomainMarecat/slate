@@ -227,8 +227,16 @@ export class AgendaComponent implements OnInit {
     }
   }
 
-  onSessionRemoved(event) {
-
+  onSessionRemoved(session: Session) {
+    if (!this.user) {
+      this.dialog.open(LoginComponent)
+        .afterClosed()
+        .subscribe((closed) => {
+          this.removeSession(session);
+        });
+      return;
+    }
+    this.removeSession(session);
   }
 
   onSessionAdded(session: Session) {
@@ -243,15 +251,25 @@ export class AgendaComponent implements OnInit {
     this.addSession(session);
   }
 
+  removeSession(session: Session) {
+    this.sessionService.removeSession(session).subscribe(() => {
+
+    });
+  }
+
   addSession(session: Session) {
-    console.log(session);
     session.city = this.cityTeached.city;
     session.sport = this.sportTeached.sport;
     session.speciality = null;
     session.meeting_point = this.meetingPoint;
     session.nb_persons = this.participantsNumber;
     session.online_session = this.onlineSession;
+    session.customers = null;
 
-    this.sessionService.addSession(session).subscribe();
+    this.sessionService.addSession(session).subscribe((session) => {
+      if (session && session.user && session.user.id) {
+        this.loadSessions(session.user);
+      }
+    });
   }
 }

@@ -20,6 +20,10 @@ export class SessionService {
     return this.http.get<Session[]>(`${this.url}/users/${user.id}`);
   }
 
+  removeSession(session: Session): Observable<void> {
+    return this.http.delete<void>(`${this.restictedUrl}/${session.id}`);
+  }
+
   addSession(session: Session): Observable<Session> {
     const formData = {
       ...session,

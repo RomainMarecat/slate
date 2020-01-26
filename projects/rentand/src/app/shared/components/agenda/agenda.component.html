@@ -34,7 +34,8 @@
     </div>
     <div class="col-8">
       <ngx-calendar [viewMode]="viewMode"
-                    [user]="user"
+                    [user]="mono"
+                    [customer]="user"
                     [onlineSession]="onlineSession"
                     [sessionsEntries]="sessions"
                     (sessionRemoved)="onSessionRemoved($event)"
