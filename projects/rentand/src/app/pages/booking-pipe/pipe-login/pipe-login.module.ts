@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SecurityModule } from '../../security/security.module';
 import { PipeLoginComponent } from './pipe-login.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { PipeLoginComponent } from './pipe-login.component';
   ],
   imports: [
     CommonModule,
+    MatDialogModule,
     SecurityModule,
   ]
 })

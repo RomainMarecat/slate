@@ -6,6 +6,7 @@ import { PasswordResetFormModule } from '../password-reset-form/password-reset-f
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { LoginComponent } from './login.component';
   entryComponents: [LoginComponent],
   imports: [
     CommonModule,
+    MatDialogModule,
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,

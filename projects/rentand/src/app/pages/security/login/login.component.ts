@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
@@ -18,7 +18,6 @@ import { PasswordResetFormComponent } from '../password-reset-form/password-rese
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 
@@ -53,7 +52,6 @@ export class LoginComponent implements OnInit {
               private translateService: TranslateService,
               private formBuilder: FormBuilder,
               private dialog: MatDialog,
-              private matDialogRef: MatDialogRef<LoginComponent>,
               private store: Store<AppState>) {
     this.form = this.getForm();
   }
@@ -84,7 +82,7 @@ export class LoginComponent implements OnInit {
     this.authenticated$
       .subscribe((authenticated) => {
         if (!!authenticated) {
-          this.matDialogRef.close(authenticated);
+          // this.matDialogRef.close(authenticated);
         }
       });
   }

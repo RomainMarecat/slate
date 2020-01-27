@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
 import { NgxCalendarModule } from '@romainmarecat/ngx-calendar';
 import { LoginModule } from '../../../pages/security/login/login.module';
 import { SelectCityTeachedModule } from '../select-city-teached/select-city-teached.module';
@@ -16,7 +15,6 @@ import { AgendaComponent } from './agenda.component';
   exports: [AgendaComponent],
   imports: [
     CommonModule,
-    MatDialogModule,
     LoginModule,
     SelectNumberParticipantModule,
     SelectOnlineSessionModule,
