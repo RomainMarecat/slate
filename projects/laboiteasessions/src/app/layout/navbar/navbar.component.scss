@@ -1,0 +1,25 @@
+.account-toolbar-icon {
+  height: 2em
+}
+
+.cart-item-number {
+  position: relative;
+  top: -5px;
+}
+
+.user_wrapper {
+  a {
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+}
+
+.mat-toolbar {
+  top: 0;
+  z-index: 1030;
+
+  > * {
+    flex: 1 1 100%;
+  }
+}

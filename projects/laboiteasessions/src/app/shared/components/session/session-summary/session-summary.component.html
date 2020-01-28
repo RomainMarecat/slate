@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h4 i18n>Participant number</h4>
+            <p>{{ session.nb_persons }} <span i18n>people</span></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h4 i18n>Sport</h4>
+            <p>{{ session.sport?.translations[locale] }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h4 i18n>Session ({{ getSessionDuration(session.duration) }})</h4>
+            <p>
+                <span i18n>from</span>
+                <span class="mx-1">{{ session.start }}</span>
+                <span i18n>to</span>
+                <span class="mx-1">{{ session.end }}</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h4 i18n>Price</h4>
+            <p>{{ session.price | currency: 'EUR' }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <button mat-dialog-close="true"
+                    i18n
+                    type="button"
+                    role="button"
+                    class="btn btn-primary">
+                Add to cart
+            </button>
+        </div>
+    </div>
+</div>

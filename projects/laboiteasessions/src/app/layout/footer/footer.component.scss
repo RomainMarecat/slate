@@ -1,0 +1,13 @@
+footer {
+    .logo_alone {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 6em;
+        margin-top: -2rem;
+    }
+
+    .footer-copyright {
+        text-align: center;
+    }
+}

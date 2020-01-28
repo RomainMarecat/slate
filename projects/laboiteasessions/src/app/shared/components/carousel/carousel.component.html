@@ -1,0 +1,25 @@
+<ng-container  *ngIf="sports$|async; let sports">
+    <ngu-carousel class="ngu-carousel" [inputs]="carouselMaterialComponents" [dataSource]="sports">
+        <ngu-tile NguCarouselItem *nguCarouselDef="let sport"
+                  class="ngu-tile">
+            <div class="wBg">
+                <h4>
+                    <a class="text-primary"
+                       [routerLink]="['/', sport.slug]">
+                        {{ sport?.translations[locale] }}
+                    </a>
+                </h4>
+                <a [routerLink]="sport.slug"
+                   [attr.title]="sport?.translations[locale]">
+                    <div class="tile" [style.background]="'url(' + sport?.media?.url + ')'"></div>
+                </a>
+            </div>
+        </ngu-tile>
+        <button NguCarouselPrev class="leftRs btn-primary">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button NguCarouselNext class="rightRs btn-primary">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </ngu-carousel>
+</ng-container>

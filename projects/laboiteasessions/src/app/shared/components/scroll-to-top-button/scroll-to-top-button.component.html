@@ -1,0 +1,10 @@
+<button (click)="topPage.emit(true)"
+        [@scrollState]="windowScrolled"
+        class="btn-primary btn-scroll"
+        #scrollTopButton
+        i18n-title="Go top"
+        title="Go Top">
+    <mat-icon fontSet="fa"
+              fontIcon="fa-chevron-up"></mat-icon>
+</button>
+

@@ -1,0 +1,20 @@
+mat-sidenav {
+  width: 300px;
+}
+
+.account-toolbar-icon {
+  height: 2em
+}
+
+mat-sidenav-container {
+  ::ng-deep mat-sidenav-content {
+    display: table-cell;
+    display: flex;
+    min-height: calc(100vh - 64px);
+    flex-direction: column;
+
+    .main-content {
+      flex: 1;
+    }
+  }
+}

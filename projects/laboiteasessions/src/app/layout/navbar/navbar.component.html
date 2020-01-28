@@ -1,0 +1,77 @@
+<mat-toolbar color="warn"
+             class="mat-toolbar position-fixed"
+             fxLayout="row"
+             fxLayoutAlign="center center">
+    <a (click)="toggleSideNav()"
+       mat-button
+       class="text-left text-primary"
+       id="burger-nav">
+        <mat-icon>menu</mat-icon>
+    </a>
+
+    <a [routerLink]="['/']"
+       class="brand-logo text-center cursor-pointer"
+       *ngIf="displayLogo">
+        <app-logo [panelClass]="'x1'"></app-logo>
+    </a>
+
+    <div class="user_wrapper d-flex justify-content-end align-items-center h-100">
+        <ng-container *ngIf="(authenticated$ | async) === false">
+            <a class="text-decoration-none"
+               mat-button
+               color="primary"
+               routerLink="/secure/login"
+               i18n="Login">
+                Login
+            </a>
+        </ng-container>
+
+        <a class="text-decoration-none"
+           mat-button
+           color="primary"
+           routerLink="/search"
+           i18n="Rechercher une session">
+            Rechercher une session
+        </a>
+
+        <a class="text-decoration-none"
+           mat-button
+           color="primary"
+           routerLink="/sports"
+           i18n="Tous les sports">
+            Tous les sports
+        </a>
+
+
+        <ng-container *ngIf="(authenticated$|async) && user">
+
+            <a class="text-decoration-none"
+               mat-button
+               color="primary"
+               routerLink="/account/orders"
+               i18n="Reservations">
+                Mes Réservations
+            </a>
+
+            <a mat-button
+               color="warn"
+               class="text-primary"
+               routerLink="/account"
+               *ngIf="user?.user_metadata?.firstname && user?.user_metadata?.lastname">
+                <span i18n="Mon compte">
+                    Mon compte
+                </span>
+            </a>
+            <a (click)="openCart()"
+               mat-button
+               color="warn"
+               class="text-primary"
+               [class.pulse]="!isCartEmpty()"
+               [class.orange]="!isCartEmpty()" [class.white-text]="!isCartEmpty()">
+                <mat-icon>shopping_cart</mat-icon>
+                <span *ngIf="!isCartEmpty()" class="text-white cart-item-number">{{getCartItemsNumber()}}</span>
+            </a>
+        </ng-container>
+    </div>
+
+</mat-toolbar>
