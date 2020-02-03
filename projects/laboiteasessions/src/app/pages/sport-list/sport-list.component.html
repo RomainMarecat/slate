@@ -1,0 +1,17 @@
+<div class="container-fluid bg-primary">
+    <div class="row">
+        <ng-container *ngIf="sports$|async; let sports">
+            <div class="col-4"
+                 *ngFor="let sport of sports">
+                <div class="card m-2 bg-secondary">
+                    <h2 class="card-title text-center">
+                        {{ sport?.translations[locale] }}
+                    </h2>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

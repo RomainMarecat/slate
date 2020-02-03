@@ -1,0 +1,18 @@
+.mono-select-item-img {
+  height: 80%;
+  max-height: 30px;
+  margin-right: 1rem;
+}
+
+.mono-select-title {
+  font-size: 3em;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+#mono-select-container {
+  margin: auto;
+
+  mat-form-field {
+    width: 60%;
+  }
+}

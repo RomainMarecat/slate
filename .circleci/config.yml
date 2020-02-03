@@ -29,6 +29,7 @@ jobs:
       - run: xvfb-run -a npm run lint -- --project=showcase
       - run: xvfb-run -a npm run lint -- --project=store
       - run: xvfb-run -a npm run lint -- --project=store-admin
+      - run: xvfb-run -a npm run lint -- --project=laboiteasessions
       - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=scanobeer
 #      - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=alr
       - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=blog
@@ -39,3 +40,4 @@ jobs:
       - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=showcase
       - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=store
       - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=store-admin
+      - run: xvfb-run -a npm run test -- --browsers=ChromeTravisCi --project=laboiteasessions

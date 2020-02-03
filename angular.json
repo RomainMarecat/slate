@@ -2,7 +2,7 @@
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
     "newProjectRoot": "projects",
-    "defaultProject": "rentand",
+    "defaultProject": "laboiteasessions",
     "projects": {
         "alr": {
             "root": "src",
@@ -1561,32 +1561,32 @@
                 }
             }
         },
-        "rentand": {
+        "laboiteasessions": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
                     "style": "scss"
                 }
             },
-            "root": "projects/rentand",
-            "sourceRoot": "projects/rentand/src",
+            "root": "projects/laboiteasessions",
+            "sourceRoot": "projects/laboiteasessions/src",
             "prefix": "app",
             "architect": {
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/rentand",
-                        "index": "projects/rentand/src/index.html",
-                        "main": "projects/rentand/src/main.browser.ts",
-                        "polyfills": "projects/rentand/src/polyfills.ts",
-                        "tsConfig": "projects/rentand/tsconfig.app.json",
+                        "outputPath": "dist/laboiteasessions",
+                        "index": "projects/laboiteasessions/src/index.html",
+                        "main": "projects/laboiteasessions/src/main.browser.ts",
+                        "polyfills": "projects/laboiteasessions/src/polyfills.ts",
+                        "tsConfig": "projects/laboiteasessions/tsconfig.app.json",
                         "aot": false,
                         "assets": [
-                            "projects/rentand/src/favicon.ico",
-                            "projects/rentand/src/assets",
-                            "projects/rentand/src/robots.txt",
-                            "projects/rentand/src/sitemap.xml",
-                            "projects/rentand/src/manifest.json",
+                            "projects/laboiteasessions/src/favicon.ico",
+                            "projects/laboiteasessions/src/assets",
+                            "projects/laboiteasessions/src/robots.txt",
+                            "projects/laboiteasessions/src/sitemap.xml",
+                            "projects/laboiteasessions/src/manifest.json",
                             {
                                 "glob": "**/*",
                                 "input": "node_modules/leaflet/dist/images",
@@ -1596,11 +1596,10 @@
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
-                            "node_modules/bootstrap/dist/css/bootstrap.css",
                             "node_modules/cookieconsent/build/cookieconsent.min.css",
                             "node_modules/@ng-select/ng-select/themes/material.theme.css",
                             "node_modules/leaflet/dist/leaflet.css",
-                            "projects/rentand/src/scss/main.scss"
+                            "projects/laboiteasessions/src/scss/main.scss"
                         ],
                         "scripts": [
                             "node_modules/moment/min/moment.min.js",
@@ -1612,8 +1611,8 @@
                         "production": {
                             "fileReplacements": [
                                 {
-                                    "replace": "projects/rentand/src/environments/environment.ts",
-                                    "with": "projects/rentand/src/environments/environment.prod.ts"
+                                    "replace": "projects/laboiteasessions/src/environments/environment.ts",
+                                    "with": "projects/laboiteasessions/src/environments/environment.prod.ts"
                                 }
                             ],
                             "optimization": true,
@@ -1643,33 +1642,33 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "rentand:build"
+                        "browserTarget": "laboiteasessions:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "rentand:build:production"
+                            "browserTarget": "laboiteasessions:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "rentand:build"
+                        "browserTarget": "laboiteasessions:build"
                     }
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/rentand/src/test.ts",
-                        "polyfills": "projects/rentand/src/polyfills.ts",
-                        "tsConfig": "projects/rentand/tsconfig.spec.json",
-                        "karmaConfig": "projects/rentand/karma.conf.js",
+                        "main": "projects/laboiteasessions/src/test.ts",
+                        "polyfills": "projects/laboiteasessions/src/polyfills.ts",
+                        "tsConfig": "projects/laboiteasessions/tsconfig.spec.json",
+                        "karmaConfig": "projects/laboiteasessions/karma.conf.js",
                         "assets": [
-                            "projects/rentand/src/favicon.ico",
-                            "projects/rentand/src/assets"
+                            "projects/laboiteasessions/src/favicon.ico",
+                            "projects/laboiteasessions/src/assets"
                         ],
                         "styles": [
-                            "projects/rentand/src/scss/main.scss"
+                            "projects/laboiteasessions/src/scss/main.scss"
                         ],
                         "scripts": []
                     }
@@ -1678,9 +1677,9 @@
                     "builder": "@angular-devkit/build-angular:tslint",
                     "options": {
                         "tsConfig": [
-                            "projects/rentand/tsconfig.app.json",
-                            "projects/rentand/tsconfig.spec.json",
-                            "projects/rentand/e2e/tsconfig.json"
+                            "projects/laboiteasessions/tsconfig.app.json",
+                            "projects/laboiteasessions/tsconfig.spec.json",
+                            "projects/laboiteasessions/e2e/tsconfig.json"
                         ],
                         "exclude": [
                             "**/node_modules/**"
@@ -1690,12 +1689,12 @@
                 "e2e": {
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
-                        "protractorConfig": "projects/rentand/e2e/protractor.conf.js",
-                        "devServerTarget": "rentand:serve"
+                        "protractorConfig": "projects/laboiteasessions/e2e/protractor.conf.js",
+                        "devServerTarget": "laboiteasessions:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "rentand:serve:production"
+                            "devServerTarget": "laboiteasessions:serve:production"
                         }
                     }
                 }

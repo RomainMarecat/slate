@@ -1,0 +1,17 @@
+.btn-scroll {
+    position: fixed;
+    bottom: 0;
+    right: 15vw;
+    z-index: 99;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 16px;
+    border-radius: 0;
+
+    mat-icon {
+        font-size: 36px;
+        width: 36px;
+        height: 36px;
+    }
+}

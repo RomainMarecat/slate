@@ -1,0 +1,26 @@
+<div class="mono_selector_wrapper col-12">
+  <h1 class="mono-select-title text-primary m-0 text-center" i18n="mono-selector title">
+    Rechercher un coach
+  </h1>
+  <div id="mono-select-container" class="bg-white d-flex justify-content-center">
+    <mat-form-field class="my-5">
+      <input #monoInput
+             matInput
+             placeholder="Type the name of your La boite à sessions here"
+             i18n-placeholder="mono selector placeholder"
+             [matAutocomplete]="auto"
+             [formControl]="monoListCtrl"
+             (ngModelChange)="onMonoSelected($event)">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="handleChoice" class="blue">
+        <mat-option *ngFor="let mono of filteredMonos | async"
+                    [value]="mono"
+                    class="d-flex align-items-center"
+                    (click)="onMonoSelected(mono)">
+          <img class="circle img-fluid mono-select-item-img valign"
+               [src]="mono.user_metadata?.picture?.url"/>
+          <span class="valign">{{ mono.user_metadata.firstname + ' ' + mono.user_metadata.lastname }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+@include font-face(BebasNeue-Bold, '/assets/fonts/bebasneue-bold-webfont', normal, normal, woff2 woff ttf);
+@include font-face(SourceSansPro-Regular, '/assets/fonts/sourcesanspro-regular-webfont', normal, normal, woff2 woff ttf);
+
+$primary-font: 'BebasNeue-Bold';
+$secondary-font: 'SourceSansPro-Regular';
