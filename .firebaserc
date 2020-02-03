@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default": "alr-384269",
+    "default": "laboiteasessions",
+    "laboiteasessions": "laboiteasessions",
     "blog": "blog-384269",
     "alr": "alr-384269",
     "showcase": "showcase-384269",
@@ -12,6 +13,16 @@
     "scanobeer": "scanobeer-384269"
   },
   "targets": {
+      "laboiteasessions": {
+            "hosting": {
+              "aot": [
+                "laboiteasessions"
+              ],
+              "ssr": [
+                "laboiteasessions"
+              ]
+            }
+          },
     "scanobeer-384269": {
           "hosting": {
             "aot": [

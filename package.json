@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "license": "MIT",
     "config": {
-        "site": "showcase"
+        "site": "laboiteasessions"
     },
     "scripts": {
         "android": "tns run android --bundle",
