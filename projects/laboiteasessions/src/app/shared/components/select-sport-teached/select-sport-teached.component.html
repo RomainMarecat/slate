@@ -1,6 +1,6 @@
 <mat-form-field class="w-auto">
   <mat-select i18n-placeholder="Choose my sport in agenda component"
-              (change)="updateSportTeached($event)"
+              (selectionChange)="updateSportTeached($event)"
               placeholder="Sport"
               [(ngModel)]="selectedSportTeached"
               name="sport">

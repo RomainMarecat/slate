@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Booking, BookingPayment } from '../../../../shared/interfaces/booking';
 import { BookingsService } from '../../../../shared/services/bookings.service';
-import { CartService } from '../../../cart/shared/cart.service';
 
 @Component({
   selector: 'app-stripe-form',
@@ -14,8 +13,7 @@ export class StripeFormComponent {
   handler: any;
 
   constructor(private bookingsService: BookingsService,
-              private router: Router,
-              private cartService: CartService) {
+              private router: Router) {
   }
 
   openCheckout(bookingId: string, booking: Booking) {
@@ -31,26 +29,25 @@ export class StripeFormComponent {
   configureStripe(bookingId: string, booking: Booking) {
     const pkey = booking.stripe_pkey;
     const skey = booking.stripe_skey;
+    const handleToken = (token) => {
+      const bookingPayment: BookingPayment = {
+        token: token.id,
+        booking_id: bookingId,
+        key: skey,
+        amount: booking.price * 100,
+        currency: 'EUR'
+      };
+      this.bookingsService.validateBookingPayment(bookingId, bookingPayment)
+        .subscribe((res) => {
+          this.router.navigate(['/booking/confirm/', bookingId]);
+        });
+    };
+
     this.handler = (window as any).StripeCheckout.configure({
       key: pkey,
       image: 'STRIPE API KEY',
       locale: 'auto',
-      token: (token) => {
-        const bookingPayment: BookingPayment = {
-          token: token.id,
-          booking_id: bookingId,
-          key: skey,
-          amount: booking.price * 100,
-          currency: 'EUR'
-        };
-        this.bookingsService.validateBookingPayment(bookingId, bookingPayment)
-          .subscribe((res) => {
-            this.cartService.deleteMonoCart(booking.coach.id);
-            this.router.navigate(['/booking/confirm/', bookingId]);
-          });
-      },
-      error: () => {
-      }
+      token: handleToken
     });
   }
 

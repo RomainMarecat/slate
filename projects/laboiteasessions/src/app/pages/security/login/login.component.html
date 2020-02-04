@@ -40,17 +40,24 @@
               type="submit"
               mat-raised-button
               i18n="Login">
-        Login
+        Se connecter
       </button>
     </div>
     <div class="col-4 offset-8">
       <a class="cursor-pointer text-grey mt-1"
-         style="font-size: 0.8em"
          (click)="openPasswordResetDialog()"
          i18n="login password forgot">
-        Forgot password ?
+        Mot de passe oublié ?
       </a>
     </div>
+    <div class="col-4 offset-8" *ngIf="showRegisterLink">
+      <a class="cursor-pointer text-grey mt-1"
+         routerLink="/secure/signup"
+         mat-dialog-close>
+        S'enregister
+      </a>
+    </div>
+
   </form>
 </div>
 

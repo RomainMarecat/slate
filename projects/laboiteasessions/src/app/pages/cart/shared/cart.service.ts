@@ -1,83 +1,147 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AppState } from '../../../shared/store/app.state';
-import { DeleteCartMonoAction } from '../cart-list/action/cart-list.action';
-import { Cart, MonoCart } from './cart';
-import { CartMonoItem } from './cart-item';
-import { selectCart } from '../../../shared/store/cart/selectors/cart.selector';
+import { Cart, CartItem } from '../../../shared/interfaces/cart';
+import { environment } from '../../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../../../shared/interfaces/user';
+import { Product } from '../../../shared/interfaces/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  cart$: BehaviorSubject<Cart> = new BehaviorSubject<Cart>(null);
 
-  emitAddSessionSource = new Subject<any>();
-  emitDeleteSessionSource = new Subject<any>();
-  emitDeleteSessionSuccessSource = new Subject<any>();
-  emitOpenCartSource = new Subject<any>();
-  // Observable string streams
-  addSessionEmitted$ = this.emitAddSessionSource.asObservable();
-  deleteSessionEmitted$ = this.emitDeleteSessionSource.asObservable();
-  openCartEmitted$ = this.emitOpenCartSource.asObservable();
-  deleteSessionSuccessEmitted$ = this.emitDeleteSessionSuccessSource.asObservable();
-
-  cart$ = this.store.select(selectCart);
-  cart: Cart;
   cartNumberItem = 0;
+  private secureUrl = `${environment.middleware}/v1/secure/cart`;
 
-  constructor(private store: Store<AppState>) {
-    this.cart$
-      .subscribe(cart => {
-        this.cart = cart.cart;
-        if (cart) {
-          let itemsNumber = 0;
-          for (const i in cart) {
-            if (cart[i] && cart[i].cart_items && cart[i].cart_items.length > 0) {
-              itemsNumber += cart[i].cart_items.length;
-            }
-          }
-          this.cartNumberItem = itemsNumber;
-        } else {
-          this.cartNumberItem = 0;
-        }
-      });
+  constructor(private store: Store<AppState>,
+              private http: HttpClient) {
   }
 
-  emitAddSession(cartMonoItem: CartMonoItem) {
-    this.emitAddSessionSource.next(cartMonoItem);
+  createCartObject(user: User): Cart {
+    return {
+      id: null,
+      status: 'current',
+      state: 'cart',
+      items: [],
+      total: 0,
+      created_at: new Date(),
+      updated_at: new Date(),
+      user: user.id
+    };
   }
 
-  emitDeleteSession(cartMonoItem: CartMonoItem) {
-    this.emitDeleteSessionSource.next(cartMonoItem);
+  createItemObject(product: Product, quantity: number): CartItem {
+    return {
+      id: null,
+      name: product.name,
+      code: product.id,
+      quantity,
+      image: product.image1,
+      price: product.price,
+      created_at: new Date(),
+      updated_at: new Date()
+    };
   }
 
-  emitDeleteSuccessSession(cartMonoItem: CartMonoItem) {
-    this.emitDeleteSessionSuccessSource.next(cartMonoItem);
-  }
+  processItem(cart: Cart, item: CartItem): Cart {
+    if (this.cart$.getValue()) {
+      const existingCart: Cart = this.cart$.getValue();
 
-  emitOpenCart() {
-    this.emitOpenCartSource.next();
-  }
+      cart.id = existingCart.id;
+      cart.created_at = existingCart.created_at;
+      cart.items = [...existingCart.items];
+      cart.total = 0;
+      cart = this.updateItems(cart, item);
 
-  getCartItemNumber(): number {
-    return this.cartNumberItem;
-  }
-
-  deleteMonoCart(userId: string) {
-    for (const i in this.cart) {
-      if (this.cart[i].mono && this.cart[i].mono.user_id === userId) {
-        return this.store.dispatch(new DeleteCartMonoAction(this.cart[i].mono));
+      if (cart && cart.items && cart.items.length === 0) {
+        cart.items.push(item);
+        cart.total += item.price * item.quantity;
       }
     }
+
+    return cart;
   }
 
-  getMonoCart(userId: string): MonoCart {
-    for (const i in this.cart) {
-      if (this.cart[i].mono && this.cart[i].mono.user_id === userId) {
-        return this.cart[i] as MonoCart;
+  updateItems(cart: Cart, item: CartItem): Cart {
+    let foundItem = false;
+
+    cart.items.forEach((cartItem, index) => {
+      if (cartItem.code === item.code) {
+        foundItem = true;
+        // update quantity
+        cart.items[index].quantity += item.quantity;
+        cartItem.quantity += item.quantity;
+        // Security with erase old price in cart
+        cart.items[index].price = item.price;
       }
+      cart.total += cartItem.price * cartItem.quantity;
+    });
+    if (foundItem === false) {
+      cart.items.push(item);
+      cart.total += item.price * item.quantity;
     }
-    return null;
+
+    return cart;
+  }
+
+  saveCart(cart: Cart): Observable<Cart> {
+    return new Observable<Cart>(observer => {
+      if (!cart.id) {
+        this.createCart(cart)
+          .subscribe((doc) => {
+            cart.id = doc.id;
+            this.updateCart(cart)
+              .subscribe(() => {
+                observer.next(cart);
+              }, (err) => {
+                observer.error(err);
+              });
+          }, (err) => {
+            observer.error(err);
+          });
+        return;
+      }
+      this.updateCart(cart)
+        .subscribe(() => {
+          observer.next(cart);
+        }, (err) => {
+          observer.error(err);
+        });
+    });
+  }
+
+  addToCart(product: Product, user: User, quantity: number = 1): Observable<Cart> {
+    let cart: Cart = this.createCartObject(user);
+    const item: CartItem = this.createItemObject(product, quantity);
+    cart = this.processItem(cart, item);
+    return this.saveCart(cart);
+  }
+
+  getCarts(): Observable<Cart[]> {
+    return this.http.get<Cart[]>(`${this.secureUrl}`);
+  }
+
+  getCart(key: string): Observable<Cart> {
+    return this.http.get<Cart>(`${this.secureUrl}/last`);
+  }
+
+  createCart(cart: Cart): Observable<Cart> {
+    return this.http.post<Cart>(`${this.secureUrl}`, cart);
+  }
+
+  /**
+   * Observable from promise update Cart
+   */
+  updateCart(cart: Cart): Observable<void> {
+    return this.http.put<void>(`${this.secureUrl}/${cart.id}`, cart);
+  }
+
+  deleteCart(cart: Cart): Observable<void> {
+    return this.http.delete<void>(`${this.secureUrl}/${cart.id}`);
+
   }
 }

@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ToastModule } from '../../../layout/toast/toast.module';
-import { LanguageSimpleSelectModule } from '../../../shared/components/select-language/language-simple-select.module';
+import { SelectLanguageModule } from '../../../shared/components/select-language/select-language.module';
 import { SelectAgeModule } from '../../../shared/components/select-age/select-age.module';
 import { SelectLevelModule } from '../../../shared/components/select-level/select-level.module';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
@@ -32,7 +32,7 @@ describe('PipeInfosComponent', () => {
         RouterTestingModule,
         FormsModule,
         ReactiveFormsModule,
-        LanguageSimpleSelectModule,
+        SelectLanguageModule,
         NoopAnimationsModule,
         SelectLevelModule,
         SelectAgeModule,

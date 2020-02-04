@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserTransferStateModule, TransferState } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 import { TranslateBrowserLoader } from './shared/services/translate-browser-loader.service';
+import { GraphQLModule } from './graphql.module';
 
 // the Request object only lives on the server
 export function getRequest(): any {
@@ -38,6 +39,8 @@ export function exportTranslateStaticLoader(http: HttpClient, transferState: Tra
       }
     }),
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    GraphQLModule,
+    HttpClientModule,
   ],
   providers: [
     {

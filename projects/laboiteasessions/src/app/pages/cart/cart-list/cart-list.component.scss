@@ -1,0 +1,32 @@
+.heading-wrapper {
+  .cart-total {
+    height: 3.75rem;
+    line-height: 3.75rem;
+    border-radius: 50px;
+    .text {
+      font-size: 0.9375rem;
+    }
+    .quantity {
+      font-size: 1.375rem;
+    }
+  }
+}
+
+.content-wrapper {
+  margin-top: 4.375rem;
+  .no-cart {
+    font-size: 1.125rem;
+    letter-spacing: -.5px;
+  }
+}
+
+.infos-total {
+  span {
+    &:first-child {
+      font-size: 1.375rem;
+    }
+    &:last-child {
+      font-size: 1.875rem;
+    }
+  }
+}

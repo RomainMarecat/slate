@@ -1,30 +1,31 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "outDir": "./dist/out-tsc",
-        "declaration": false,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "target": "es5",
-        "baseUrl": ".",
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "es2018",
-            "dom",
-            "es6",
-            "es2015.iterable"
-        ],
-        "paths": {
-            "@romainmarecat/ngx-slack-notification": [
-                "projects/ngx-slack-notification/release"
-            ],
-            "@romainmarecat/ngx-calendar": [
-                "projects/ngx-calendar/release"
-            ]
-        }
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "declaration": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "baseUrl": ".",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom",
+      "es6",
+      "es2015.iterable",
+      "esnext.asynciterable"
+    ],
+    "paths": {
+      "@romainmarecat/ngx-slack-notification": [
+        "projects/ngx-slack-notification/release"
+      ],
+      "@romainmarecat/ngx-calendar": [
+        "projects/ngx-calendar/release"
+      ]
     }
+  }
 }

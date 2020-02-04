@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       right: ''
     }
   };
+  showRegisterLink: boolean;
 
   constructor(private router: Router,
               private http: HttpClient,
@@ -53,12 +54,15 @@ export class LoginComponent implements OnInit {
               private formBuilder: FormBuilder,
               private dialog: MatDialog,
               private store: Store<AppState>) {
+    // @Inject(MAT_DIALOG_DATA) public data: {showRegisterLink: boolean}
     this.form = this.getForm();
   }
 
 
   ngOnInit() {
     this.checkAuthenticated();
+    // this.showRegisterLink = !!this.data.showRegisterLink;
+    this.showRegisterLink = true;
   }
 
   getForm(): FormGroup {

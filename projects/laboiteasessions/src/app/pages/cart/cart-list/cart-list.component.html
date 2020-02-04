@@ -1,0 +1,52 @@
+<div class="main-wrapper cart-list-component">
+  <div *ngIf="cart">
+
+    <!-- Quand le panier est editable -->
+    <div class="heading-wrapper" *ngIf="editable">
+      <div class="row">
+        <div class="col-lg-3 offset-lg-0 col-md-6 offset-md-0 col-10 offset-1">
+          <div class="cart-total text-center">
+            <span class="text">total</span> &nbsp;
+            <span class="quantity">{{ totalQuantity }} {{ articleWord }}</span>
+          </div>
+        </div>
+        <div class="d-none d-lg-block col-lg-4 offset-lg-5" *ngIf="cart?.items?.length > 0">
+          <button class="btn btn-shadow" type="button" (click)="onNextStep()">
+            valider le panier
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body du tableau des produits -->
+    <div class="content-wrapper">
+      <div class="products-container" *ngIf="cart?.items?.length === 0">
+        <div class="row py-3">
+          <span class="col-12 text-center no-cart">
+            panier vider
+          </span>
+        </div>
+      </div>
+
+      <div class="products-container" *ngIf="cart?.items?.length > 0">
+        <div class="content-cart" *ngFor="let item of cart.items">
+          <app-cart-item [cart]="cart"
+                         [item]="item"
+                         (cartItemUpdate)="onCartItemChange($event)"></app-cart-item>
+        </div>
+      </div>
+
+      <div class="row infos-total" *ngIf="cart.total > 0">
+        <span class="col-lg-3 offset-lg-6 col-4 text-left text-xs-center align-self-center align-items-center">
+          total
+        </span>
+        <span class="col-lg-2 col-8 text-center text-xs-right align-self-center align-items-center">
+          {{(cart.fees ? cart.total + cart.fees : cart.total) | currency:'EUR' }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #zeroPriceTemplate>
+  <span class="col-2 text-center">{{ '0'| currency:'EUR' }}</span>
+</ng-template>

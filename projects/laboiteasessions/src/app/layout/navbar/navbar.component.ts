@@ -61,18 +61,6 @@ export class NavbarComponent implements OnInit {
     this.sideNavOpen.emit(!this.open);
   }
 
-  openCart() {
-    this.cartService.emitOpenCart();
-  }
-
-  isCartEmpty(): boolean {
-    return this.cartService.getCartItemNumber() === 0;
-  }
-
-  getCartItemsNumber(): number {
-    return this.cartService.getCartItemNumber();
-  }
-
   checkAuthenticated() {
     this.authenticated$ = this.store.select(selectLoggedIn);
   }

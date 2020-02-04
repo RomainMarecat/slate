@@ -14,7 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { LanguageSimpleSelectModule } from '../../shared/components/select-language/language-simple-select.module';
+import { SelectLanguageModule } from '../../shared/components/select-language/select-language.module';
 import { SelectNationalityModule } from '../../shared/components/select-nationality/select-nationality.module';
 import { MyAccountComponent } from './my-account.component';
 import { MyAccountRoutingModule } from './my-account.routing.module';
@@ -35,7 +35,7 @@ import { MyAccountRoutingModule } from './my-account.routing.module';
     MatDatepickerModule,
     MatInputModule,
     SelectNationalityModule,
-    LanguageSimpleSelectModule,
+    SelectLanguageModule,
     MatButtonModule,
     MatCardModule,
   ],

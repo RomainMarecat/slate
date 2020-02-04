@@ -142,9 +142,9 @@
                          width="24px"
                          alt="{{user.user_metadata.mother_lang}} flag"
                          *ngIf="user?.user_metadata?.mother_lang">
-                    <app-language-simple-select placeholder="Enter your lang"
+                    <app-select-language placeholder="Enter your lang"
                                                 [parentForm]="form?.get('user_metadata')"
-                                                formInnerControlName="mother_lang"></app-language-simple-select>
+                                                formInnerControlName="mother_lang"></app-select-language>
                   </td>
                 </tr>
                 <tr formGroupName="user_metadata">

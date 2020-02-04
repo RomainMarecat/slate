@@ -25,6 +25,11 @@ export class CityService {
     return this.http.get<City>(url);
   }
 
+  getCityByName(keywords: string): Observable<City[]> {
+    const url = `${this.citiesUrl}/keywords/${keywords}`;
+    return this.http.get<City[]>(url);
+  }
+
   getAllUserCities(): Observable<City[]> {
     const url = this.secureCityUrl;
     return this.http.get<City[]>(url);

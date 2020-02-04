@@ -1,0 +1,45 @@
+<div class="container">
+  <mat-card class="cart-card my-5">
+    <div fxLayout="row"
+         fxLayoutAlign="center stretch">
+      <div class="cart-confirmation-wrapper">
+        <div class="cart-confirmation-header">
+
+          <h2 class="cart-confirmation-title">
+            {{ 'order-confirmation.title' }}
+          </h2>
+        </div>
+        <div class="cart-confirmation-content">
+          <p class="waiting">
+            {{ 'order-confirmation.content.waiting' }}
+          </p>
+
+          <h3 class="text-capitalize">
+            {{ 'order-confirmation.content.summary' }}
+          </h3>
+
+          <p>
+            <strong class="text-ucfirst">{{ 'order-confirmation.content.key' }} : </strong>
+            <span>{{ order?.id }}</span>
+          </p>
+
+          <p>
+            <strong class="text-capitalize">{{ 'order-confirmation.content.total' }} : </strong>
+            <span>{{ order?.total }} {{ 'euro' }}</span>
+          </p>
+
+        </div>
+        <div class="order-actions">
+          <a mat-raised-button
+             color="primary"
+             class="order-actions-link"
+             routerLink="/">
+            <mat-icon>home</mat-icon>
+            <span>{{ 'cta.back_to_home' }}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </mat-card>
+</div>

@@ -1,0 +1,82 @@
+@import '~@angular/material/theming';
+
+.cart-payment-wrapper {
+  .payment-form {
+    margin-top: 50px;
+
+    .card-errors {
+      font-size: 20px;
+      margin-top: 50px;
+      text-align: center;
+      color: #e25950;
+    }
+  }
+
+  .actions-wrapper {
+    margin-top: 50px;
+    button {
+      height: 40px;
+      margin: 40px 15px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+}
+
+//.visa {
+//  background-image: url('/assets/images/creditcards/visa.png');
+//  background-repeat: no-repeat;
+//  background-position: right center;
+//  background-origin: content-box;
+//  background-size: contain;
+//}
+//
+//.mastercard {
+//  background-image: url('/assets/images/creditcards/mastercard.png');
+//  background-repeat: no-repeat;
+//  background-position: right center;
+//  background-origin: content-box;
+//  background-size: contain;
+//}
+//
+//.american-express {
+//  background-image: url('/assets/images/creditcards/american-express.png');
+//  background-repeat: no-repeat;
+//  background-position: right center;
+//  background-origin: content-box;
+//  background-size: contain;
+//}
+//
+//.jcb {
+//  background-image: url('/assets/images/creditcards/jcb.png');
+//  background-repeat: no-repeat;
+//  background-position: right center;
+//  background-origin: content-box;
+//  background-size: contain;
+//}
+//
+//.discover {
+//  background-image: url('/assets/images/creditcards/discover.png');
+//  background-repeat: no-repeat;
+//  background-position: right center;
+//  background-origin: content-box;
+//  background-size: contain;
+//}
+//
+//.diners-club {
+//  background-image: url('/assets/images/creditcards/diners-club.png');
+//  background-repeat: no-repeat;
+//  background-position: right center;
+//  background-origin: content-box;
+//  background-size: contain;
+//}
+//
+//.cartebleue {
+//  background-image: url('/assets/images/creditcards/cartebleue.png');
+//  background-repeat: no-repeat;
+//  background-position: right center;
+//  background-origin: content-box;
+//  background-size: contain;
+//}

@@ -4,7 +4,7 @@ import { CityTeached } from '../../interfaces/city-teached';
 import { ProfilService } from '../../services/profil.service';
 
 @Component({
-  selector: 'app-profil-agenda-select-city-teached',
+  selector: 'app-select-city-teached',
   templateUrl: './select-city-teached.component.html',
   styleUrls: ['./select-city-teached.component.scss']
 })

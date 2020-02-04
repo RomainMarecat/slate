@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatSelectModule, MatTabsModule } from '@angular/material';
-import { LanguageSimpleSelectModule } from '../../shared/components/select-language/language-simple-select.module';
+import { SelectLanguageModule } from '../../shared/components/select-language/select-language.module';
 import { SelectAgeModule } from '../../shared/components/select-age/select-age.module';
 import { SelectLevelModule } from '../../shared/components/select-level/select-level.module';
 import { SecurityModule } from '../security/security.module';
@@ -32,7 +32,7 @@ import { PipePaymentModule } from './pipe-payment/pipe-payment.module';
     PipeLoginModule,
     PipeInfosModule,
     PipePaymentModule,
-    LanguageSimpleSelectModule,
+    SelectLanguageModule,
     SelectAgeModule,
     SelectLevelModule
   ],

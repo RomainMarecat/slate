@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
-  @Input() sports$: Observable<Sport[]> = this.sportService.getSports();
+  @Input() sports$: Observable<Sport[]> = this.sportService.getSports(0);
   locale: string = this.translateService.getBrowserLang();
 
 

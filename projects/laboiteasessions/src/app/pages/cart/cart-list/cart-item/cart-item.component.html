@@ -1,0 +1,102 @@
+<div class="col-12" *ngIf="item">
+  <div class="row d-flex">
+    <div class="col-lg-2 col-md-2 col-12 d-flex">
+      <a [attr.data-content]="item?.name"
+         [attr.title]="'cta.show-product'"
+         class="card-img-container"
+         fxLayout="row"
+         [routerLink]="['/products/detail', item.code]">
+        <div class="card-wrapper card-img-top"
+             fxFlex="100">
+<!--          <app-storage-image [panelStyle]="{height: '100px', width: 'auto'}"-->
+<!--                             [panelClass]="'scale'"-->
+<!--                             [matCardImage]="false"-->
+<!--                             [downloadURL]="item.image"></app-storage-image>-->
+        </div>
+      </a>
+    </div>
+
+    <div class="col-lg-2 col-md-2 col-12 d-flex">
+      <span class="cart-title w-100 text-uppercase align-self-center">
+        <a [routerLink]="'/products/' + item.id"
+           *ngIf="item.id; else itemNoLink">{{item.name}}</a>
+        <ng-template #itemNoLink>
+          <span>{{item.name}}</span>
+        </ng-template>
+      </span>
+      <!-- Uniquement mobile bloc SUPPRESSION -->
+      <div class="w-10 text-right d-block d-sm-none">
+        <span class="cart-delete pointer"
+              (click)="updateCartItemQuantity(item, '0')"
+              *ngIf="editable">
+          <mat-icon>close</mat-icon>
+        </span>
+      </div>
+    </div>
+    <div class="d-none d-lg-block d-md-block col-lg-2 col-md-3 text-center align-self-center">
+      <span class="cart-price">{{ item.price|currency: 'EUR' }}</span>
+    </div>
+    <div class="col-lg-2 col-md-1 col-4 text-lg-center text-md-center text-left align-self-center">
+      <div class="row">
+        <!-- Uniquement desktop -->
+        <div class="d-none d-lg-block text-center col-lg-4">
+          <button class="btn btn-icon"
+                  (click)="updateCartItemQuantity(item, (item.quantity-1).toString(10))"
+                  *ngIf="editable">-
+          </button>
+        </div>
+        <!-- Mobile et Desktop -->
+        <div class="col-12 col-md-3 col-lg-4 align-self-center align-content-start">
+          <!-- Uniquement en mobile -->
+          <span class="d-lg-none d-md-none">x</span>
+          <input class="cart-quantity number-override text-center" type="number" name="input"
+                 [(ngModel)]="item.quantity"
+                 (blur)="updateCartItemQuantity(item, item.quantity.toString(10))"
+                 min="0"
+                 [disabled]="!editable">
+        </div>
+        <!-- Uniquement desktop-->
+        <div class="d-none d-lg-block text-center col-lg-4">
+          <button class="btn btn-icon"
+                  (click)="updateCartItemQuantity(item, (item.quantity+1).toString(10))"
+                  *ngIf="editable">+
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-8 text-lg-center text-md-center text-right align-self-center">
+      <span class="cart-total-item text-right">{{item.price * item.quantity| currency: 'EUR'}}</span>
+    </div>
+
+    <!-- Uniquement desktop bloc SUPPRESSION -->
+    <div class="d-none d-sm-block col-1 text-center text-lg-right align-self-center align-items-center">
+      <span class="cart-delete pointer"
+            (click)="updateCartItemQuantity(item, '0')"
+            *ngIf="editable">
+        <mat-icon>close</mat-icon>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+<div class="items-infos col-12" *ngIf="cart">
+  <div class="row infos-total-item" *ngIf="!editable && cart?.total">
+    <span class="col-lg-3 offset-lg-6 col-5 text-left align-self-center">
+      {{ 'cart.total.total_item' }}</span>
+    <span class="col-lg-2 col-6 text-center">{{ cart.total | currency:'EUR' }}</span>
+  </div>
+
+  <div class="row infos-delivery" *ngIf="cart?.fees > 0">
+    <span class="col-lg-3 offset-lg-6 col-5 text-left">
+      {{ 'cart.total.delivery_fee' }}
+    </span>
+    <span class="col-lg-2 col-6 text-center" *ngIf="cart.fees; else zeroPriceTemplate">
+      {{ cart?.fees| currency:'EUR' }}
+    </span>
+  </div>
+</div>
+
+<ng-template #zeroPriceTemplate>
+  <span class="col-2 text-center">{{ '0'| currency:'EUR' }}</span>
+</ng-template>

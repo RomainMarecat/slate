@@ -1,0 +1,17 @@
+<mat-form-field appearance="standard"
+                [formGroup]="parentForm"
+                *ngIf="parentForm">
+  <input matInput
+         placeholder="Trouver votre ville"
+         i18n-placeholder="Find your city"
+         [matAutocomplete]="auto"
+         [formControlName]="formInnerControlName">
+  <mat-autocomplete #auto="matAutocomplete"
+                    [displayWith]="handleChoice">
+    <mat-option *ngFor="let city of filteredCities | async"
+                [value]="city"
+                class="d-flex align-items-center">
+      {{ city.name }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

@@ -1,0 +1,41 @@
+<form class="form"
+      [formGroup]="form">
+  <mat-card-header fxLayout="row"
+                   fxLayoutAlign="center stretch"
+                   fxHide.xs>
+    <mat-card-title class="text-capitalize">
+      {{ 'cart.title.start' }}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <app-cart-list [cart]="cart"
+                   (updateCart)="updateCart.emit($event)"></app-cart-list>
+
+  </mat-card-content>
+  <mat-card-actions class="mat-card-actions w-100">
+    <div fxLayout="row"
+         fxLayoutAlign="space-between stretch">
+
+      <button type="button"
+              class="text-uppercase"
+              (click)="cancel()"
+              mat-raised-button>
+        Annuler
+      </button>
+
+      <button type="button"
+              (click)="save()"
+              [disabled]="isSaving || cart?.items?.length === 0"
+              mat-raised-button
+              [color]="!isSaving && cart?.items?.length > 0 ? 'primary' : ''"
+              class="cart-actions text-uppercase">
+        <mat-icon *ngIf="isSaving">
+          autorenew
+        </mat-icon>
+        Valider
+      </button>
+    </div>
+  </mat-card-actions>
+</form>

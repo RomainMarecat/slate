@@ -1,0 +1,16 @@
+<mat-form-field [ngClass]="panelClass"
+                appearance="standard">
+  <mat-select i18n-placeholder="Choose my sport in agenda component"
+              (selectionChange)="updateSport($event)"
+              placeholder="Sport"
+              [(ngModel)]="selectedSport"
+              name="sport">
+    <mat-option *ngFor="let sport of sports$|async"
+                [value]="sport">
+      <img [src]="sport?.media?.url">
+      <span *ngIf="sport?.translations && sport?.translations[locale]">
+          {{ sport?.translations[locale] }}
+    </span>
+    </mat-option>
+  </mat-select>
+</mat-form-field>

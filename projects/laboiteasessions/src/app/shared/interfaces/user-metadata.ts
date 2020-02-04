@@ -1,5 +1,6 @@
 import { Media } from './media';
 import { Phone } from './phone';
+import { Language } from './language';
 
 export interface UserMetadata {
   media?: Media;
@@ -20,5 +21,5 @@ export interface UserMetadata {
   };
   mother_lang: string;
   avatar: string;
-  languages: string[];
+  languages: Language[];
 }

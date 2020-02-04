@@ -33,18 +33,6 @@ export class SidenavMenuComponent implements OnInit {
     this.authenticated$ = this.store.select(selectLoggedIn);
   }
 
-  openCart() {
-    this.cartService.emitOpenCart();
-  }
-
-  isCartEmpty(): boolean {
-    return this.cartService.getCartItemNumber() === 0;
-  }
-
-  getCartItemsNumber(): number {
-    return this.cartService.getCartItemNumber();
-  }
-
   logout() {
     this.authenticationService.logout().subscribe();
   }

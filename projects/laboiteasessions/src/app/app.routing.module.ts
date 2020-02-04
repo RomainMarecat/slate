@@ -8,8 +8,12 @@ export const appRoutes: Routes = [
     loadChildren: () => import('./pages/homepage/homepage.module').then(m => m.HomepageModule)
   },
   {
-    path: 'profils',
-    loadChildren: () => import('./pages/profil/profil.module').then(m => m.ProfilModule)
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profil.module').then(m => m.ProfilModule)
+  },
+  {
+    path: 'profiles',
+    loadChildren: () => import('./pages/profile-list/profile-list.module').then(m => m.ProfileListModule)
   },
   {
     path: 'secure',
@@ -20,12 +24,12 @@ export const appRoutes: Routes = [
     loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountModule)
   },
   {
-    path: 'sports',
-    loadChildren: () => import('./pages/sport-list/sport-list.module').then(m => m.SportListModule)
+    path: '',
+    loadChildren: () => import('./pages/cart/cart-edit/cart-edit.module').then(m => m.CartEditModule)
   },
   {
-    path: 'search',
-    loadChildren: () => import('./pages/search/search.module').then(m => m.SearchModule)
+    path: 'sports',
+    loadChildren: () => import('./pages/sport-list/sport-list.module').then(m => m.SportListModule)
   },
   {
     path: '404',

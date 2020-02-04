@@ -5,11 +5,11 @@
             <div class="wBg">
                 <h4>
                     <a class="text-primary"
-                       [routerLink]="['/', sport.slug]">
+                       [routerLink]="['/profiles', sport.slug]">
                         {{ sport?.translations[locale] }}
                     </a>
                 </h4>
-                <a [routerLink]="sport.slug"
+                <a [routerLink]="['/profiles', sport.slug]"
                    [attr.title]="sport?.translations[locale]">
                     <div class="tile" [style.background]="'url(' + sport?.media?.url + ')'"></div>
                 </a>

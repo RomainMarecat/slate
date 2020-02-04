@@ -14,7 +14,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { LanguageSimpleSelectModule } from '../../shared/components/select-language/language-simple-select.module';
+import { SelectLanguageModule } from '../../shared/components/select-language/select-language.module';
 import { SelectNationalityModule } from '../../shared/components/select-nationality/select-nationality.module';
 import { AuthenticationService } from '../../shared/services/authentication.service';
 import { BookingsService } from '../../shared/services/bookings.service';
@@ -44,7 +44,7 @@ describe('MyAccountComponent', () => {
         MatRadioModule,
         SelectNationalityModule,
         MatDatepickerModule,
-        LanguageSimpleSelectModule,
+        SelectLanguageModule,
         MockStoreModule.forRoot('app', initialAppState),
         JwtModule.forRoot({
           config: {

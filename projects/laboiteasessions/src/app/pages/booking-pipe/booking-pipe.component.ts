@@ -32,9 +32,6 @@ export class BookingPipeComponent implements OnInit {
               public snackBar: MatSnackBar,
               private translateService: TranslateService,
               private store: Store<AppState>) {
-    this.route.params.subscribe(params => {
-      this.bookingPipeService.setCurrentCart(this.cartService.getMonoCart(params.id));
-    });
   }
 
   ngOnInit() {

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import {
   AfterViewInit,
   ChangeDetectorRef,
@@ -10,30 +11,37 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
+import { DocumentReference } from '@angular/fire/firestore';
 import { FormGroup, NgForm } from '@angular/forms';
-import { PaymentService } from '../../payment/shared/payment.service';
-import { Payment } from '../../payment/shared/payment';
-import { Order, OrderItem } from '../../order/shared/order';
-import { Cart } from '../shared/cart';
-import { UserService } from '../../user/shared/user.service';
-import { AlertService } from '../../popup/alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CartService } from '../shared/cart.service';
-import { RoutingState } from '../../util/routing-state';
-import { OrderService } from '../../order/shared/order.service';
-import { ElementOptions, Elements, ElementsOptions, Error, StripeCardComponent, StripeService, TokenResult } from 'ngx-stripe';
+import { FirebaseError } from 'firebase';
+import { User } from 'firebase/app';
+import {
+  ElementOptions,
+  Elements,
+  ElementsOptions,
+  Error,
+  StripeCardComponent,
+  StripeService,
+  TokenResult
+} from 'ngx-stripe';
+import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { LoaderService } from '../../loader/loader.service';
+import { Order, OrderItem } from '../../order/shared/order';
+import { OrderService } from '../../order/shared/order.service';
+import { Payment } from '../../payment/shared/payment';
+import { PaymentService } from '../../payment/shared/payment.service';
+import { AlertService } from '../../popup/alert.service';
+import { Product } from '../../product/shared/product';
+import { ProductService } from '../../product/shared/product.service';
+import { UserService } from '../../user/shared/user.service';
+import { onlineStatus$ } from '../../util/online-status';
+import { RoutingState } from '../../util/routing-state';
+import { Cart } from '../shared/cart';
+import { CartService } from '../shared/cart.service';
 import { Delivery } from '../shared/delivery';
 import { DeliveryService } from '../shared/delivery.service';
-import { DocumentReference } from '@angular/fire/firestore';
-import { User } from 'firebase/app';
-import { Subscription } from 'rxjs';
-import { ProductService } from '../../product/shared/product.service';
-import { Product } from '../../product/shared/product';
-import { take } from 'rxjs/operators';
-import { FirebaseError } from 'firebase';
-import { HttpErrorResponse } from '@angular/common/http';
-import { onlineStatus$ } from '../../util/online-status';
 
 @Component({
   selector: 'app-cart-payment',

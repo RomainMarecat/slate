@@ -12,7 +12,6 @@ import { EventsService } from '../../../shared/services/events.service';
 import { UserService } from '../../../shared/services/user.service';
 import { AppState } from '../../../shared/store/app.state';
 import { selectLoggedIn } from '../../../shared/store/user/selectors/user.selector';
-import { MonoCart } from '../../cart/shared/cart';
 import { CartService } from '../../cart/shared/cart.service';
 import { BookingPipeMessage } from '../booking-pipe-message';
 import { BookingPipeService } from '../booking-pipe.service';
@@ -27,7 +26,6 @@ export class PipeInfosComponent implements OnInit {
   user: User;
   age: Parameter;
   level: Parameter;
-  currentCart: MonoCart;
   bookingWithEvents: BookingWithEvents;
 
   @Output()
@@ -55,13 +53,6 @@ export class PipeInfosComponent implements OnInit {
 
   ngOnInit() {
     this.authenticated$ = this.store.select(selectLoggedIn);
-
-    this.bookingPipeService.currentCart$.subscribe((cart) => {
-      this.currentCart = cart;
-    });
-    this.currentCart = this.bookingPipeService.getCurrentCart();
-
-
     this.authenticationService.getUser().subscribe((user) => {
       this.user = user;
       this.getForm();
