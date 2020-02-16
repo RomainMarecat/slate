@@ -21,12 +21,9 @@
   </ng-template>
 
   <mat-list-item class="mt-2">
-    <a (click)="openCart()"
-       mat-raised-button
-       class="text-decoration-none"
-       [class.text-warning]="!isCartEmpty()">
+    <a mat-raised-button
+       class="text-decoration-none">
       <i class="material-icons left">shopping_cart</i>
-      <span *ngIf="!isCartEmpty()" class="badge m-0">{{getCartItemsNumber()}}</span>
       <span i18n>My cart</span>
     </a>
   </mat-list-item>

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -20,8 +20,41 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  getMonos(): Observable<Mono[]> {
-    return this.http.get<Mono[]>(this.publicUsersUrl);
+  changeParams(rawValue) {
+    if (rawValue.language) {
+      rawValue.language = rawValue.language.id;
+    }
+    rawValue.start = this.formatDate(rawValue.start);
+    rawValue.end = this.formatDate(rawValue.end);
+
+    if (rawValue.city && typeof rawValue.city.id !== 'undefined') {
+      rawValue.city = rawValue.city.id;
+    } else {
+      delete rawValue.city;
+    }
+    return rawValue;
+  }
+
+  formatDate(momentDate): string {
+    if (momentDate) {
+      momentDate = momentDate.format('YYYY-MM-DD');
+    }
+    return momentDate;
+  }
+
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${this.publicUsersUrl}`);
+  }
+
+  getMonos(rawValue): Observable<Mono[]> {
+    rawValue = this.changeParams(rawValue);
+
+    const httpParams = new HttpParams({fromObject: rawValue});
+
+    if (rawValue && rawValue.sport) {
+      return this.http.get<Mono[]>(`${this.publicUsersUrl}/sports/${rawValue.sport}`, {params: httpParams});
+    }
+    return this.http.get<Mono[]>(this.publicUsersUrl, {params: httpParams});
   }
 
   getMonoBySlug(slug: string): Observable<Mono> {
@@ -37,12 +70,6 @@ export class UserService {
 
   updateUser(user: User): Observable<Response> {
     return this.http.patch<Response>(`${this.secureUsersUrl}`, user);
-  }
-
-  getMonoList(): Observable<object[]> {
-    const url = `${this.publicUsersUrl}/monos`;
-
-    return this.http.get<object[]>(url);
   }
 
   getAllUserBookings(): Observable<Booking[]> {

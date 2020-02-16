@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <h5 class="col-12 m-5 page-title" *ngIf="mono?.user_metadata?.firstname">
+    <h5 class="col-12 page-title" *ngIf="mono?.user_metadata?.firstname">
       <span i18n="book a session with">Book a session with</span> {{mono.user_metadata.firstname}}
     </h5>
   </div>
@@ -25,7 +25,7 @@
                                                   [sportTeached]="sportTeached"></app-profil-agenda-select-sport-teached>
         </div>
         <div class="col-12 mt-2">
-          <app-profil-agenda-select-city-teached></app-profil-agenda-select-city-teached>
+          <app-select-city-teached></app-select-city-teached>
         </div>
         <div class="col-12 my-2">
           <app-select-meeting-point></app-select-meeting-point>

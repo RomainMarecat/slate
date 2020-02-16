@@ -25,7 +25,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: [(process.env.TRAVIS) ? 'HeadlessChromeTravisCi' : 'HeadlessChrome'], // 'ChromeHeadless', 'MyHeadlessChrome'
+    browsers: [(process.env.TRAVIS) ? 'HeadlessChromeTravisCi' : 'CircleCiHeadlessChrome'],
     singleRun: false,
     customLaunchers: {
       ChromeTravisCi: {
@@ -36,9 +36,15 @@ module.exports = function (config) {
         base: 'ChromeHeadless',
         flags: ['--no-sandbox', '--disable-translate', '--headless', '--disable-extensions', '--remote-debugging-port=9223']
       },
-      HeadlessChrome: {
+      CircleCiHeadlessChrome: {
         base: 'ChromeHeadless',
-        flags: ['--disable-translate', '--disable-extensions', '--remote-debugging-port=9223']
+        flags: [
+          '--no-sandbox',
+          '--disable-gpu',
+          '--headless',
+          '--remote-debugging-port=0',
+          '--window-size=1440,900'
+        ]
       }
     },
     browserNoActivityTimeout: 90000,

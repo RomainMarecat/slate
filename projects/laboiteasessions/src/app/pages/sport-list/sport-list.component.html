@@ -1,17 +1,26 @@
-<div class="container-fluid bg-primary">
-    <div class="row">
-        <ng-container *ngIf="sports$|async; let sports">
-            <div class="col-4"
-                 *ngFor="let sport of sports">
-                <div class="card m-2 bg-secondary">
-                    <h2 class="card-title text-center">
-                        {{ sport?.translations[locale] }}
-                    </h2>
-                    <div class="card-body">
-
+<div class="bg-primary">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <ng-container *ngIf="sports$|async; let sports">
+                <div class="col-5"
+                     *ngFor="let sport of sports">
+                    <div class="card m-2 bg-white">
+                        <h2 class="card-title text-center">
+                            {{ sport?.translations[locale] }}
+                        </h2>
+                        <div class="card-img d-flex justify-content-center"
+                             *ngIf="sport.media">
+                            <img [src]="sport.media.url">
+                        </div>
+                        <div class="card-link d-flex justify-content-center" i18n>
+                            <a class="btn btn-outline-primary"
+                               [routerLink]="['/profiles/', sport.slug]">
+                                Voir les coachs
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </ng-container>
+            </ng-container>
+        </div>
     </div>
 </div>

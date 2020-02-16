@@ -1,0 +1,339 @@
+<div class="delivery-wrapper">
+
+  <form [formGroup]="form"
+        (ngSubmit)="saveDelivery()">
+
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-around stretch"
+         fxLayoutGap="30px"
+         fxLayoutGap.xs="0px"
+         fxLayout.xs="row wrap"
+         fxLayoutAlign.xs="center stretch">
+      <div formGroupName="address"
+           fxFlex="45"
+           fxFlex.xs="100"
+           fxLayout="column">
+        <div>
+          <h2 class="text-ucfirst delivery-title">
+            {{ 'delivery.address.title' }}
+          </h2>
+        </div>
+        <ng-container *ngIf="true then spacerTmpl">
+        </ng-container>
+
+        <ng-template #activableDeliveryFormTmpl>
+          <div class="form-delivery-wrapper"
+               fxLayout="column">
+            <mat-form-field *ngIf="myPreviousDeliveries.length">
+              <mat-select [attr.name]="'deliveries'"
+                          (selectionChange)="onDeliveryChange($event)"
+                          [placeholder]="'delivery.deliveries.select.type_to_search'">
+                <mat-option [value]="null">-</mat-option>
+                <mat-option [value]="delivery" *ngFor="let delivery of myPreviousDeliveries">
+                  {{ delivery.address.title }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <button type="button"
+                    color="primary"
+                    (click)="activeDeliveryAddress()"
+                    mat-raised-button
+                    [attr.role]="'cta.active_delivery_form'"
+                    *ngIf="deliveryConfig.display_add_address_button">
+              {{ 'cta.active_delivery_form' }}
+            </button>
+          </div>
+        </ng-template>
+
+        <div class="form-delivery-wrapper"
+             fxLayout="column"
+             fxLayout.xs="row wrap"
+             fxFlex.xs="100"
+             *ngIf="isDeliveryAddressFormActive; else activableDeliveryFormTmpl">
+          <button [title]="'cta.back_to_delivery_choice'"
+                  type="button"
+                  role="button"
+                  (click)="showDeliveryChoice()"
+                  mat-flat-button
+                  color="primary"
+                  fxLayout="row"
+                  fxLayoutAlign="start center">
+            <mat-icon style="line-height: 24px;" fontSet="fa" fontIcon="fa-undo"></mat-icon>
+            <span>{{ 'cta.back_to_delivery_choice' }}</span>
+          </button>
+
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
+            <input matInput
+                   formControlName="email"
+                   autocomplete="email"
+                   [placeholder]="'delivery.address.email'">
+          </mat-form-field>
+
+          <div fxLayout="row"
+               fxLayoutGap="10px"
+               fxFlex.xs="100">
+            <mat-form-field appearance="standard"
+                            fxFlex="50"
+                            fxFlex.xs="45">
+              <input matInput
+                     formControlName="lastname"
+                     autocomplete="lastname"
+                     [placeholder]="'delivery.address.lastname'">
+            </mat-form-field>
+            <mat-form-field appearance="standard"
+                            fxFlex="50"
+                            fxFlex.xs="45">
+              <input matInput
+                     formControlName="firstname"
+                     autocomplete="firstname"
+                     [placeholder]="'delivery.address.firstname'">
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
+            <input matInput
+                   formControlName="address"
+                   autocomplete="address"
+                   [placeholder]="'delivery.address.address'">
+          </mat-form-field>
+
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
+            <input matInput
+                   formControlName="address_complement"
+                   autocomplete="address_complement"
+                   [placeholder]="'delivery.address.address_complement'">
+          </mat-form-field>
+
+          <div fxLayout="row"
+               fxFlex.xs="100"
+               fxLayoutGap="10px">
+            <mat-form-field appearance="standard"
+                            fxFlex="30">
+              <input matInput
+                     formControlName="zipcode"
+                     autocomplete="zipcode"
+                     [placeholder]="'delivery.address.zipcode'">
+            </mat-form-field>
+
+            <mat-form-field appearance="standard"
+                            fxFlex="30">
+              <input matInput
+                     formControlName="city"
+                     autocomplete="city"
+                     [placeholder]="'delivery.address.city'">
+            </mat-form-field>
+
+            <mat-form-field appearance="standard"
+                            fxFlex="30">
+              <input matInput
+                     formControlName="country"
+                     autocomplete="country"
+                     [placeholder]="'delivery.address.country'">
+            </mat-form-field>
+          </div>
+        </div>
+
+
+        <div class="delivery-address-choice"
+             fxLayout="row"
+             fxLayoutAlign="center stretch"
+             *ngIf="deliveryConfig.display_address_resume">
+          <mat-list>
+            <mat-list-item>{{ form.value?.address?.lastname }} {{ form.value?.address?.firstname }}</mat-list-item>
+            <mat-list-item>{{ form.value?.address?.address }} {{ form.value?.address?.address_complement }}</mat-list-item>
+            <mat-list-item>{{ form.value?.address?.zipcode }} {{ form.value?.address?.city }}
+              , {{ form.value?.address?.country }}</mat-list-item>
+          </mat-list>
+        </div>
+
+      </div>
+
+
+      <div formGroupName="billing"
+           fxFlex="45"
+           fxFlex.xs="100"
+           fxLayout="column">
+        <div>
+          <h2 class="text-ucfirst delivery-title">
+            {{ 'delivery.billing.title' }}
+          </h2>
+        </div>
+
+        <ng-container *ngIf="isDeliveryCompleted(); else spacerTmpl">
+          <div class="duplicate-wrapper">
+            <button [title]="'cta.duplicate_same_delivery_as_billing'"
+                    *ngIf="isDeliveryCompleted()"
+                    type="button"
+                    role="button"
+                    (click)="copyDeliveryIntoBilling()"
+                    mat-flat-button
+                    color="primary"
+                    fxLayout="row"
+                    fxLayoutAlign="start center">
+              <mat-icon style="line-height: 24px;" fontSet="fa" fontIcon="fa-copy"></mat-icon>
+              <span>{{ 'cta.duplicate_same_delivery_as_billing' }}</span>
+            </button>
+          </div>
+        </ng-container>
+
+        <ng-template #spacerTmpl>
+          <div class="spacer-wrapper">
+          </div>
+        </ng-template>
+
+        <ng-template #activableBillingFormTmpl>
+          <div class="form-billing-wrapper"
+               fxLayout="column"
+               *ngIf="deliveryConfig.display_add_billing_button">
+            <button type="button"
+                    color="primary"
+                    (click)="activeBillingAddress()"
+                    mat-raised-button
+                    [attr.role]="'cta.active_billing_form'">
+              {{ 'cta.active_billing_form' }}
+            </button>
+          </div>
+        </ng-template>
+
+        <div class="form-delivery-wrapper"
+             fxLayout="column"
+             fxLayout.xs="row wrap"
+             *ngIf="isBillingActivable(); else activableBillingFormTmpl">
+          <button [title]="'cta.back_to_delivery_choice'"
+                  type="button"
+                  role="button"
+                  (click)="showBillingChoice()"
+                  mat-flat-button
+                  color="primary"
+                  fxLayout="row"
+                  fxLayoutAlign="start center">
+            <mat-icon style="line-height: 24px;" fontSet="fa" fontIcon="fa-undo"></mat-icon>
+            <span>{{ 'cta.back_to_delivery_choice' }}</span>
+          </button>
+
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
+            <input matInput
+                   formControlName="email"
+                   autocomplete="email"
+                   [placeholder]="'delivery.address.email'">
+          </mat-form-field>
+          <div fxLayout="row"
+               fxLayoutGap="10px"
+               fxFlex.xs="100">
+            <mat-form-field appearance="standard"
+                            fxFlex="50"
+                            fxFlex.xs="45">
+              <input matInput
+                     formControlName="lastname"
+                     autocomplete="lastname"
+                     [placeholder]="'delivery.billing.lastname'">
+            </mat-form-field>
+            <mat-form-field appearance="standard"
+                            fxFlex="50"
+                            fxFlex.xs="45">
+              <input matInput
+                     formControlName="firstname"
+                     autocomplete="firstname"
+                     [placeholder]="'delivery.billing.firstname'">
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
+            <input matInput
+                   formControlName="address"
+                   autocomplete="address"
+                   [placeholder]="'delivery.billing.address'">
+          </mat-form-field>
+
+          <mat-form-field appearance="standard"
+                          fxFlex.xs="100">
+            <input matInput
+                   formControlName="address_complement"
+                   autocomplete="address_complement"
+                   [placeholder]="'delivery.billing.address_complement'">
+          </mat-form-field>
+
+          <div fxLayout="row"
+               fxLayoutGap="10px"
+               fxFlex.xs="100">
+            <mat-form-field appearance="standard"
+                            fxFlex="30">
+              <input matInput
+                     formControlName="zipcode"
+                     autocomplete="zipcode"
+                     [placeholder]="'delivery.billing.zipcode'">
+            </mat-form-field>
+
+            <mat-form-field appearance="standard"
+                            fxFlex="40"
+                            fxFlex.xs="30">
+              <input matInput
+                     formControlName="city"
+                     autocomplete="city"
+                     [placeholder]="'delivery.billing.city'">
+            </mat-form-field>
+
+            <mat-form-field appearance="standard"
+                            fxFlex="30">
+              <input matInput
+                     formControlName="country"
+                     autocomplete="country"
+                     [placeholder]="'delivery.billing.country'">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="spacer-select-wrapper"
+             *ngIf="deliveryConfig.display_billing_resume">
+        </div>
+
+        <div class="delivery-billing-choice"
+             fxLayout="row"
+             fxLayoutAlign="center stretch"
+             *ngIf="deliveryConfig.display_billing_resume">
+          <mat-list>
+            <mat-list-item>{{ form.value?.billing?.lastname }} {{ form.value?.billing?.firstname }}</mat-list-item>
+            <mat-list-item>{{ form.value?.billing?.address }} {{ form.value?.billing?.address_complement }}</mat-list-item>
+            <mat-list-item>{{ form.value?.billing?.zipcode }} {{ form.value?.billing?.city }}
+              , {{ form.value?.billing?.country }}</mat-list-item>
+          </mat-list>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="actions-wrapper"
+         fxLayout="row"
+         fxLayoutAlign="space-around stretch">
+      <button type="button"
+              class="text-uppercase"
+              role="button"
+              mat-raised-button
+              title="cancel"
+              (click)="cancel()"
+              [disabled]="disableDeliveryButton">
+        {{ 'cta.cancel' }}
+      </button>
+      <button type="submit"
+              class="text-uppercase"
+              role="button"
+              [title]="'cta.accept_delivery'"
+              [color]="!disableDeliveryButton ? 'primary' : ''"
+              mat-button
+              mat-raised-button
+              [disabled]="disableDeliveryButton || form.invalid">
+        {{ 'cta.accept_delivery' }}
+      </button>
+    </div>
+  </form>
+
+
+</div>

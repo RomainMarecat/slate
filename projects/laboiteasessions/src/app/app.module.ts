@@ -21,8 +21,6 @@ import { AppRoutingModule } from './app.routing.module';
 import { FooterModule } from './layout/footer/footer.module';
 import { NavbarModule } from './layout/navbar/navbar.module';
 import { SidenavMenuModule } from './layout/sidenav-menu/sidenav-menu.module';
-import { CartListEffect } from './pages/cart/cart-list/effect/cart-list.effect';
-import { CartModule } from './pages/cart/cart.module';
 import { jwtOptionsFactory } from './shared/factory/jwt-options.factory';
 import { InvalidJwtInterceptor } from './shared/interceptors/invalid-jwt.interceptor';
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
@@ -47,7 +45,6 @@ registerLocaleData(localeFr);
     NavbarModule,
     SidenavMenuModule,
     FooterModule,
-    CartModule,
     // Browser modules
     BrowserModule.withServerTransition({appId: 'laboiteasessions'}),
     BrowserAnimationsModule,
@@ -58,7 +55,6 @@ registerLocaleData(localeFr);
     // Ngrx Store modules
     StoreModule.forRoot(APP_REDUCERS),
     EffectsModule.forRoot([
-      CartListEffect,
       LoginEffect,
       RegisterEffect,
       LogoutEffect,

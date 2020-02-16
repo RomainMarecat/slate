@@ -1,6 +1,8 @@
 .security-tab-group {
 	margin-bottom: 40px;
 	flex-grow: 1;
+  display: flex;
+  justify-content: center;
 	.mat-tab-header {
 		background: #f9f9f9;
 	}

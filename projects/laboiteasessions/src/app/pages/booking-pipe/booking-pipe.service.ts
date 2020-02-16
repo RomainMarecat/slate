@@ -6,19 +6,14 @@ import { BookingWithEvents } from '../../shared/interfaces/booking';
 import { AuthenticationService } from '../../shared/services/authentication.service';
 import { AppState } from '../../shared/store/app.state';
 import { selectLoggedIn } from '../../shared/store/user/selectors/user.selector';
-import { MonoCart } from '../cart/shared/cart';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingPipeService {
 
-  private currentCartObj: MonoCart;
   private currentRequestObj: BookingWithEvents;
   private currentBookingId: string;
-
-  private currentCart = new Subject<MonoCart>();
-  currentCart$ = this.currentCart.asObservable();
 
   private currentRequestSubject = new Subject<BookingWithEvents>();
   currentRequest$ = this.currentRequestSubject.asObservable();
@@ -32,15 +27,6 @@ export class BookingPipeService {
               private authenticationService: AuthenticationService,
               private store: Store<AppState>) {
     this.accessAllowedToInfosAndPrev();
-  }
-
-  setCurrentCart(cart: MonoCart) {
-    this.currentCartObj = cart;
-    this.currentCart.next(cart);
-  }
-
-  getCurrentCart(): MonoCart {
-    return this.currentCartObj;
   }
 
   setCurrentRequest(bookingWithEvents: BookingWithEvents) {

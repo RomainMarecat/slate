@@ -239,7 +239,6 @@ export class CartDeliveryComponent {
       delivery.updated_at = new Date();
 
       this.createDelivery(delivery);
-      return;
     }
   }
 

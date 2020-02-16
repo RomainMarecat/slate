@@ -1,0 +1,21 @@
+<mat-form-field [appearance]="appearance"
+                [ngClass]="panelClass"
+                [formGroup]="parentForm"
+                *ngIf="parentForm">
+  <mat-select name="language"
+              [placeholder]="placeholder"
+              [attr.i18n-placeholder]="placeholder"
+              [compareWith]="isEqualTo"
+              [formControlName]="formInnerControlName">
+    <mat-option *ngIf="nullable" [value]="null">
+      -
+    </mat-option>
+    <mat-option *ngFor="let language of languageList"
+                [value]="language">
+      <img src="/assets/images/flags/language/{{language._iso6391}}.svg"
+           width="24px"
+           alt="{{language._iso6391}}">
+      {{ language.translations[locale] }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -97,7 +97,7 @@
                         "main": "src/app-alr/test.ts",
                         "polyfills": "src/app-alr/polyfills.ts",
                         "tsConfig": "src/app-alr/tsconfig.spec.json",
-                        "karmaConfig": "src/app-alr/karma.conf.js",
+                        "karmaConfig": "src/karma.conf.js",
                         "styles": [
                             "node_modules/material-design-icons/iconfont/material-icons.css",
                             "node_modules/font-awesome/css/font-awesome.css",
@@ -1575,7 +1575,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/laboiteasessions",
+                        "outputPath": "functions/dist/browser",
                         "index": "projects/laboiteasessions/src/index.html",
                         "main": "projects/laboiteasessions/src/main.browser.ts",
                         "polyfills": "projects/laboiteasessions/src/polyfills.ts",
@@ -1624,6 +1624,8 @@
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
+                            "serviceWorker": true,
+                            "ngswConfigPath": "projects/laboiteasessions/src/ngsw-config.json",
                             "budgets": [
                                 {
                                     "type": "initial",

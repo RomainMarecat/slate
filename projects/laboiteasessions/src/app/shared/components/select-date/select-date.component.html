@@ -1,0 +1,11 @@
+<mat-form-field [appearance]="appearance"
+                [formGroup]="parentForm"
+                [ngClass]="panelClass"
+                *ngIf="parentForm">
+  <input matInput
+         [formControlName]="formInnerControlName"
+         [matDatepicker]="pickerSimple"
+         placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="pickerSimple"></mat-datepicker-toggle>
+  <mat-datepicker #pickerSimple></mat-datepicker>
+</mat-form-field>

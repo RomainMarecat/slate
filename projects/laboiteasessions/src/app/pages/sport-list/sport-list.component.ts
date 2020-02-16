@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SportListComponent implements OnInit {
 
-  sports$: Observable<Sport[]> = this.sportService.getSports();
+  sports$: Observable<Sport[]> = this.sportService.getSports(0);
   locale: string = this.translateService.getBrowserLang();
 
   constructor(private sportService: SportService,

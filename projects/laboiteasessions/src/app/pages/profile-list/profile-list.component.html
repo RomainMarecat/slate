@@ -1,0 +1,138 @@
+<div class="container py-5" *ngIf="isSearchView">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title text-center">
+            <h1>Rechercher une sessions</h1>
+          </div>
+        </div>
+        <div class="card-body d-flex justify-content-start align-items-center flex-wrap">
+          <app-select-sport appearance="standard"
+                            panelClass="w-100"
+                            [level]="0"></app-select-sport>
+          <app-select-sport appearance="standard"
+                            panelClass="w-100"
+                            [level]="1" *ngIf="(sportsLevels$.get(1)|async).length"></app-select-sport>
+          <app-select-sport appearance="standard"
+                            panelClass="w-100"
+                            [level]="2" *ngIf="(sportsLevels$.get(2)|async).length"></app-select-sport>
+          <app-select-language [parentForm]="form"
+                               nullable="true"
+                               placeholder="Je parle le ..."
+                               [formInnerControlName]="'language'"
+                               appearance="standard"></app-select-language>
+          <app-select-date appearance="standard"
+                           [parentForm]="form"
+                           [formInnerControlName]="'start'"
+                           panelClass="w-100"></app-select-date>
+          <app-select-date appearance="standard"
+                           [parentForm]="form"
+                           [formInnerControlName]="'end'"
+                           panelClass="w-100"></app-select-date>
+
+          <app-select-city [parentForm]="form"
+                           [formInnerControlName]="'city'"></app-select-city>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5" *ngIf="sport$|async; let sport">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-title text-center">
+          <h1>{{ sport?.translations[locale] }}</h1>
+        </div>
+        <div class="card-img d-flex justify-content-center"
+             *ngIf="sport.media">
+          <img [src]="sport.media.url">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="users$|async; let users">
+  <div class="row py-5"
+       *ngIf="sport$|async">
+    <div class="col-12">
+      <h2 class="text-center" i18n>Les coachs qui exercent ce sport</h2>
+    </div>
+  </div>
+
+  <div class="row pb-5" *ngIf="users.length; else noUser">
+    <div class="col-4" *ngFor="let user of users">
+      <div class="card my-2 py-2 text-decoration-none text-primary">
+        <div class="card-title text-center">
+          <h3>
+            {{ user.user_metadata.firstname }}
+            {{ user.user_metadata.lastname }}
+          </h3>
+        </div>
+        <div class="card-img d-flex justify-content-center" *ngIf="user?.user_metadata?.media?.url">
+          <a [routerLink]="['/profile/', user.user_metadata.slug]">
+            <img [src]="user.user_metadata.media.url">
+          </a>
+        </div>
+        <div class="card-body">
+          <p class="text-center">
+            {{ user.user_metadata.birthday | age }}
+            <span i18n>ans</span>
+          </p>
+          <p class="text-center">
+            <span i18n>Nationalité : </span>
+            <span class="badge badge-primary">
+                {{ user.user_metadata.mother_lang.translations[locale] }}
+            </span>
+          </p>
+          <div class="text-center d-flex flex-column">
+            <span i18n>
+                Langues courantes :
+            </span>
+            <div class="d-flex justify-content-center py-2">
+              <span class="badge badge-secondary"
+                    *ngFor="let language of user.user_metadata.languages">
+                  {{ language.translations[locale] }}
+              </span>
+            </div>
+          </div>
+          <ng-container *ngIf="user.sports_teached; let sportsTeached">
+            <div class="text-center d-flex justify-content-center py-2">
+              <ng-container *ngIf="(sport$|async); let sport; else allSportsTeached">
+                <ng-container *ngFor="let sportTeached of sportsTeached">
+                  <ng-container *ngIf="sportTeached.sport.id === sport.id">
+                    <span>
+                      {{ sportTeached.translations[locale] }}
+                    </span>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+              <ng-template #allSportsTeached>
+                <ng-container *ngFor="let sportTeached of sportsTeached| orderBy: ['orderNumber'] ; let i = index;">
+                    <span *ngIf="i === 0">
+                      {{ sportTeached.translations[locale] }}
+                    </span>
+                </ng-container>
+              </ng-template>
+            </div>
+          </ng-container>
+          <div class="card-link d-flex justify-content-center" i18n>
+            <a class="btn btn-outline-primary"
+               [routerLink]="['/profile/', user.user_metadata.slug]">
+              Voir les sessions
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noUser>
+    <div class="row">
+      <div class="col">
+        <h3 class="text-center">Aucun coach propose ce sport.</h3>
+      </div>
+    </div>
+  </ng-template>
+</div>

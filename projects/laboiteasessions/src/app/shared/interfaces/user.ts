@@ -2,8 +2,7 @@ import { Structure } from './structure';
 import { UserMetadata } from './user-metadata';
 
 export interface User {
-  user_id?: string | any;
-  id?: string | any;
+  id: string;
   email: string;
   email_verified?: boolean;
   password: string;

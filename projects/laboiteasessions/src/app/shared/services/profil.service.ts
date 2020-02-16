@@ -6,6 +6,7 @@ import { MeetingPoint } from '../interfaces/meeting-point';
 import { Mono } from '../interfaces/mono';
 import { Session } from '../interfaces/session';
 import { SportTeached } from '../interfaces/sport-teached';
+import { Sport } from '../interfaces/sport';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class ProfilService {
 
   sportsTeached: BehaviorSubject<SportTeached[]> = new BehaviorSubject<SportTeached[]>([]);
   sportTeached: BehaviorSubject<SportTeached> = new BehaviorSubject<SportTeached>(null);
+
+  sport: BehaviorSubject<Sport> = new BehaviorSubject<Sport>(null);
 
   cityTeached: BehaviorSubject<CityTeached> = new BehaviorSubject<CityTeached>(null);
   citiesTeached: BehaviorSubject<CityTeached[]> = new BehaviorSubject<CityTeached[]>([]);
@@ -39,6 +42,10 @@ export class ProfilService {
 
   announceSportTeachedChange(sportTeached: SportTeached) {
     this.sportTeached.next(sportTeached);
+  }
+
+  announceSportChange(sport: Sport) {
+    this.sport.next(sport);
   }
 
   announceSportsTeachedChange(sportsTeached: SportTeached[]) {

@@ -32,7 +32,7 @@ export class MonoSelectorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getMonos()
+    this.userService.getMonos({})
       .subscribe((users: Mono[]) => {
         this.monoList = users;
       });
@@ -40,7 +40,7 @@ export class MonoSelectorComponent implements OnInit {
 
   onMonoSelected(user: Mono) {
     if (user && user.user_metadata && user.user_metadata.slug) {
-      this.router.navigate(['/profils/' + user.user_metadata.slug]);
+      this.router.navigate(['/profile/' + user.user_metadata.slug]);
     }
   }
 

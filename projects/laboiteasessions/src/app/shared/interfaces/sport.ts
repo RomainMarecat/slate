@@ -1,5 +1,6 @@
 import { Family } from './family';
 import { SportTeached } from './sport-teached';
+import { Media } from './media';
 
 export interface Sport {
   id: string;
@@ -14,4 +15,5 @@ export interface Sport {
   sportTeachedSpecialites?: SportTeached[];
   children: Sport[];
   families: Family[];
+  media?: Media;
 }

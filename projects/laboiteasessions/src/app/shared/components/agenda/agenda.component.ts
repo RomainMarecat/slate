@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { OnlineSession } from '@romainmarecat/ngx-calendar';
-import { CartMonoItem } from '../../../pages/cart/shared/cart-item';
 import { CartService } from '../../../pages/cart/shared/cart.service';
 import { LoginComponent } from '../../../pages/security/login/login.component';
 import { CityTeached } from '../../interfaces/city-teached';
@@ -183,8 +182,9 @@ export class AgendaComponent implements OnInit {
         this.cityTeached,
         this.meetingPoint
       );
-      this.cartService.emitAddSession({mono: this.mono, item: session} as CartMonoItem);
     }
+
+    // Add cart update
   }
 
   onSessionRemoved(session: Session) {
@@ -201,7 +201,7 @@ export class AgendaComponent implements OnInit {
 
   onSessionAdded(session: Session) {
     if (!this.user) {
-      this.dialog.open(LoginComponent)
+      this.dialog.open(LoginComponent, {data: {showRegisterLink: true}})
         .afterClosed()
         .subscribe((closed) => {
           this.addSession(session);

@@ -1,0 +1,29 @@
+<div>
+  <div class="row">
+    <div class="col-12">
+      <app-select-city-teached></app-select-city-teached>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="citiesTeached; else loading">
+    <div class="col-12" *ngFor="let ct of citiesTeached; let i = index; ">
+      <div class="city_teached_image_wrapper"
+           *ngIf="(!cityTeached && i === 0) || (cityTeached && ct.id === cityTeached.id)">
+        <div class="city_teached_map_wrapper">
+          <div class="city_teached_map"
+               leaflet
+               [leafletOptions]="ct.map.options"
+               (leafletMapReady)="onMapReady($event, ct)"
+               *ngIf="ct.map.options && ct.map.display === true">
+          </div>
+        </div>
+        <img class="city_teached_image img-fluid"
+             [src]="ct.picture.url"
+             *ngIf="ct?.picture?.url">
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <app-loader></app-loader>
+  </ng-template>
+</div>

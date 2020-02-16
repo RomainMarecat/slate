@@ -1,0 +1,82 @@
+// BLOC CARD IMAGE
+.card-img-container {
+  height: 100px;
+
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  .card-wrapper {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    -ms-flex-line-pack: center;
+    -ms-flex-pack: center;
+    align-self: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.cart-price,
+.cart-quantity {
+  font-size: 1.125rem;
+}
+
+.cart-total-item {
+  font-size: 1.5rem;
+}
+
+.cart-delete {
+  cursor: pointer;
+}
+
+.items-infos {
+  margin-top: 1rem;
+
+  .infos-total-product, .infos-delivery, .infos-total {
+    height: 5rem;
+    line-height: 5rem;
+  }
+
+  .infos-total-product {
+    span {
+      &:first-child {
+        font-size: 1.125rem;
+      }
+
+      &:last-child {
+        font-size: 1.875rem;
+      }
+    }
+  }
+
+  .infos-delivery {
+    span {
+      &:first-child {
+        font-size: 0.9375rem;
+      }
+
+      &:last-child {
+        font-size: 1.875rem;
+      }
+    }
+  }
+}
+
+.number-override {
+  width: 30px;
+  -moz-appearance: textfield;
+  border: none;
+
+  &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

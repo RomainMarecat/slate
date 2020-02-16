@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange } from '@angular/core';
 import { MatSelectChange } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 import { SportTeached } from '../../interfaces/sport-teached';
@@ -26,8 +26,8 @@ export class SelectSportTeachedComponent implements OnInit, OnChanges {
     this.locale = this.translateService.getBrowserLang();
   }
 
-  ngOnChanges(changes: any) {
-    if (!!this.sportsTeached && this.sportsTeached.length > 0) {
+  ngOnChanges(changes: {sportsTeached: SimpleChange, sportTeached: SimpleChange}) {
+    if (!!changes.sportsTeached && !!changes.sportsTeached.currentValue && changes.sportsTeached.currentValue.length > 0) {
       this.selectSportTeached();
       this.changeSportTeached(this.selectedSportTeached);
     }
@@ -49,12 +49,13 @@ export class SelectSportTeachedComponent implements OnInit, OnChanges {
   }
 
   changeSportTeached(sportTeached: SportTeached) {
-    this.profilService.announceSportTeachedChange(this.selectedSportTeached);
+    this.profilService.announceSportTeachedChange(sportTeached);
   }
 
-  updateSportTeached(event: MatSelectChange | any) {
+  updateSportTeached(event: MatSelectChange) {
     const sportTeached = event.value as SportTeached;
-    this.profilService.announceSportTeachedChange(sportTeached);
+
+    this.changeSportTeached(sportTeached);
     this.sportTeachedChange.emit(sportTeached);
   }
 }
