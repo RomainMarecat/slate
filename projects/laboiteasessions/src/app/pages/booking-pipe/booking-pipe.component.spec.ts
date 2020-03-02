@@ -10,7 +10,7 @@ import { BookingsService } from '../../shared/services/bookings.service';
 import { UserService } from '../../shared/services/user.service';
 import { initialAppState } from '../../shared/store/app.state';
 import { MockStoreModule } from '../../shared/store/mock/mock-store.module';
-import { CartService } from '../cart/shared/cart.service';
+import { CartService } from '../../shared/services/cart.service';
 import { BookingMonoCardModule } from './booking-mono-card/booking-mono-card.module';
 
 import { BookingPipeComponent } from './booking-pipe.component';

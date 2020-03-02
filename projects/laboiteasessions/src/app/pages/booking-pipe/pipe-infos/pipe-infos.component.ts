@@ -12,7 +12,7 @@ import { EventsService } from '../../../shared/services/events.service';
 import { UserService } from '../../../shared/services/user.service';
 import { AppState } from '../../../shared/store/app.state';
 import { selectLoggedIn } from '../../../shared/store/user/selectors/user.selector';
-import { CartService } from '../../cart/shared/cart.service';
+import { CartService } from '../../../shared/services/cart.service';
 import { BookingPipeMessage } from '../booking-pipe-message';
 import { BookingPipeService } from '../booking-pipe.service';
 

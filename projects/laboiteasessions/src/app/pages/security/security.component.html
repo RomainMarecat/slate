@@ -2,7 +2,7 @@
   <div *ngIf="(authenticated$|async) && user">
     <div class="input-field col-12 m-5">
       <div class="row mt-2 mb-2">
-        <img id="user-pic" *ngIf="user.user_metadata.media.url"
+        <img id="user-pic" *ngIf="user?.user_metadata?.media?.url"
              class="img-rounded img-fluid"
              src="{{ user.user_metadata.media.url }}">
       </div>

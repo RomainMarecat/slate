@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../shared/services/authentication.serv
 import { BookingsService } from '../../shared/services/bookings.service';
 import { AppState } from '../../shared/store/app.state';
 import { selectLoggedIn } from '../../shared/store/user/selectors/user.selector';
-import { CartService } from '../cart/shared/cart.service';
+import { CartService } from '../../shared/services/cart.service';
 import { BookingPipeMessage } from './booking-pipe-message';
 import { BookingPipeService } from './booking-pipe.service';
 

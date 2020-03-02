@@ -2,25 +2,47 @@
   <div class="row d-flex">
     <div class="col-lg-2 col-md-2 col-12 d-flex">
       <a [attr.data-content]="item?.name"
-         [attr.title]="'cta.show-product'"
+         title="voir le produit"
+         i18n-title="voir le produit"
          class="card-img-container"
          fxLayout="row"
          [routerLink]="['/products/detail', item.code]">
         <div class="card-wrapper card-img-top"
              fxFlex="100">
-<!--          <app-storage-image [panelStyle]="{height: '100px', width: 'auto'}"-->
-<!--                             [panelClass]="'scale'"-->
-<!--                             [matCardImage]="false"-->
-<!--                             [downloadURL]="item.image"></app-storage-image>-->
+          <img loading="lazy"
+               [src]="item.product.media.url"
+               [alt]="item.name"
+               *ngIf="item?.product?.media?.url; else noImageAvailableIcon">
+          <ng-template #noImageAvailableIcon>
+            <img src="/assets/images/no-image-available.jpg">
+          </ng-template>
         </div>
       </a>
     </div>
 
     <div class="col-lg-2 col-md-2 col-12 d-flex">
       <span class="cart-title w-100 text-uppercase align-self-center">
-        <a [routerLink]="'/products/' + item.id"
+        <ng-container *ngIf="item?.session?.user?.user_metadata?.slug; else itemLink">
+          <a [routerLink]="'/profile/' + item.session.user.user_metadata.slug">
+            <span>
+              {{ item.product.translations[locale] }}
+            </span>
+            <span i18n class="px-1">
+              avec
+            </span>
+            <span>
+              {{ item.session.user.user_metadata.firstname }}
+              {{ item.session.user.user_metadata.lastname }}
+            </span>
+          </a>
+        </ng-container>
+
+        <ng-template #itemLink>
+        <a [routerLink]="'/products/details/' + item.code"
            *ngIf="item.id; else itemNoLink">{{item.name}}</a>
-        <ng-template #itemNoLink>
+        </ng-template>
+
+         <ng-template #itemNoLink>
           <span>{{item.name}}</span>
         </ng-template>
       </span>
@@ -83,13 +105,14 @@
 <div class="items-infos col-12" *ngIf="cart">
   <div class="row infos-total-item" *ngIf="!editable && cart?.total">
     <span class="col-lg-3 offset-lg-6 col-5 text-left align-self-center">
-      {{ 'cart.total.total_item' }}</span>
+      total produits
+    </span>
     <span class="col-lg-2 col-6 text-center">{{ cart.total | currency:'EUR' }}</span>
   </div>
 
   <div class="row infos-delivery" *ngIf="cart?.fees > 0">
     <span class="col-lg-3 offset-lg-6 col-5 text-left">
-      {{ 'cart.total.delivery_fee' }}
+      frais de livraison
     </span>
     <span class="col-lg-2 col-6 text-center" *ngIf="cart.fees; else zeroPriceTemplate">
       {{ cart?.fees| currency:'EUR' }}

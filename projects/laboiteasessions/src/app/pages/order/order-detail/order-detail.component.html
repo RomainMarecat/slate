@@ -1,0 +1,201 @@
+<div class="order-detail-wrapper"
+     fxLayout="row"
+     fxLayoutAlign="center stretch">
+  <div fxFlex="60"
+       fxLayout="column"
+       fxFlex.xs="95"
+       fxLayoutGap.xs="10px"
+       fxLayoutGap="30px"
+       *ngIf="order">
+    <div class="header-wrapper"
+         fxLayout="column">
+      <div fxLayout="row" class="title-wrapper">
+        <h1 class="title order-detail-title text-uppercase" i18n>
+          détail de ma commande
+        </h1>
+      </div>
+
+      <div fxLayout="row"
+           fxLayoutGap="30px"
+           fxLayoutGap.xs="10px"
+           fxLayout.xs="column"
+           class="subtitle-wrapper">
+
+        <div class="date-wrapper"
+             fxLayout="row"
+             fxLayoutAlign="start center"
+             fxLayoutGap="5px"
+             *ngIf="order.created_at">
+          <span class="text-label text-ucfirst">
+            commandé le
+          </span>
+          <span class="text-value">
+            {{ order?.created_at | date:'short' }}
+          </span>
+        </div>
+
+
+        <div class="key-wrapper"
+             fxLayout="row wrap"
+             fxLayoutAlign="start center"
+             fxLayoutGap="5px">
+          <span class="text-label text-ucfirst" i18n>
+            n° de commande
+          </span>
+          <span class="text-value">
+            {{ order.id }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <mat-card class="content-wrapper"
+              fxLayout="row"
+              fxLayoutGap="50px"
+              fxLayoutGap.xs="10px"
+              fxLayout.xs="column"
+              *ngIf="order?.delivery">
+      <div class="delivery-wrapper">
+        <mat-card-title i18n>
+          Adresse de livraison
+        </mat-card-title>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              {{ order.delivery.address?.lastname }} {{ order.delivery.address?.firstname }}
+            </mat-list-item>
+            <mat-list-item>{{ order.delivery.address.street }}</mat-list-item>
+            <mat-list-item
+              *ngIf="order.delivery.address.street_complement">{{ order.delivery.address.street_complement }}</mat-list-item>
+            <mat-list-item>{{ order.delivery.address.zipcode }} {{ order.delivery.address.city }}</mat-list-item>
+            <mat-list-item>{{ order.delivery.address.country }}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </div>
+
+      <div class="payment-mode-wrapper">
+        <mat-card-title i18n>
+          Mode de paiement
+        </mat-card-title>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <mat-icon style="line-height: 24px;" fontSet="fa"
+                        [fontIcon]="'fa-cc-' + (order.payment?.token?.card?.brand|lowercase)"></mat-icon>
+              ****{{ order.payment?.token?.card?.last4 }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </div>
+
+      <div class="resume-wrapper">
+        <mat-card-title i18n>
+          Récapitulatif de commande
+        </mat-card-title>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <div fxLayout="row"
+                   fxLayoutGap="50px"
+                   fxLayoutAlign="space-between stretch">
+                <span class="resume-title-wrapper" i18n>Articles</span>
+                <span>{{ totalArticles | currency: 'EUR' }}</span>
+              </div>
+            </mat-list-item>
+            <mat-list-item>
+              <div fxLayout="row"
+                   fxLayoutGap="50px"
+                   fxLayoutAlign="space-between stretch">
+                <span class="resume-title-wrapper" i18n>Livraison</span>
+                <span>{{ order.delivery_fee | currency: 'EUR' }}</span>
+              </div>
+            </mat-list-item>
+
+            <mat-list-item>
+              <div fxLayout="row"
+                   fxLayoutGap="50px"
+                   fxLayoutAlign="space-between stretch">
+                <span class="resume-title-wrapper" i18n>Total</span>
+                <span>{{ order.total | currency: 'EUR' }}</span>
+              </div>
+            </mat-list-item>
+
+            <mat-list-item>
+              <div fxLayout="row"
+                   fxLayoutGap="50px"
+                   fxLayoutAlign="space-between stretch">
+                <span class="resume-title-wrapper" i18n>Montant total TTC</span>
+                <span>{{ order.total | currency: 'EUR' }}</span>
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </div>
+    </mat-card>
+
+    <mat-card class="content-wrapper"
+              *ngIf="order?.order_items?.length">
+      <mat-card-header>
+        <mat-card-title>
+          <ng-container *ngIf="order && order?.shipping; else processingShipping">
+            <span i18n>Reçu le</span>
+            {{ order.created_at | date:'short' }}
+          </ng-container>
+          <ng-template #processingShipping>
+            <span i18n>Les articles n'ont pas encore été traités</span>
+          </ng-template>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div fxFlex="60"
+             fxFlex.md="70"
+             fxFlex.sm="80"
+             fxFlex.xs="100">
+          <div *ngFor="let item of order.order_items">
+            <div fxLayout="row">
+              <div class="card-wrapper card-img-top"
+                   fxFlex="30">
+                <img [src]="item.media.url"
+                     loading="lazy"
+                     [alt]="item.media?.alt"
+                     *ngIf="item?.media?.url else noImageAvailableIcon">
+                <ng-template #noImageAvailableIcon>
+                  <img src="/assets/images/no-image-available.jpg"
+                       alt="pas d'image disponible"
+                       i18-alt="pas d'image disponible">
+                </ng-template>
+              </div>
+
+              <div fxFlex="70">
+                <mat-list>
+                  <mat-list-item class="item-name"
+                                 fxLayout="row"
+                                 fxLayoutAlign="start center">
+                    {{ item.name }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span i18n>x</span> {{ item.quantity }}
+                  </mat-list-item>
+                  <mat-list-item>
+                    {{ item.quantity * item.price | currency : 'EUR' }}
+                  </mat-list-item>
+                  <mat-list-item class="my-2">
+                    <div class="py-2 my-2">
+                      <a mat-stroked-button
+                         color="primary"
+                         class="item-link"
+                         [routerLink]="['/products/detail', item.code]"
+                         i18n>
+                        Acheter à nouveau
+                      </a>
+                    </div>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

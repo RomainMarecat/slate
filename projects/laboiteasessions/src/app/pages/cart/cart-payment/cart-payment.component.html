@@ -1,44 +1,65 @@
-<div class="cart-payment-wrapper">
-  <form #checkout="ngForm"
-        (ngSubmit)="onSubmit(checkout)"
-        class="payment-form"
-        fxLayout="column"
-        fxLayoutAlign="start stretch">
-    <div class="payment-content">
-      <ngx-stripe-card (on)="onChange($event)"
-                       [options]="cardOptions"
-                       [elementsOptions]="elementsOptions"></ngx-stripe-card>
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="cart-payment-wrapper">
+        <form #checkout="ngForm"
+              (ngSubmit)="onSubmit(checkout)"
+              class="payment-form"
+              fxLayout="column"
+              fxLayoutAlign="start stretch">
+          <div class="payment-content">
+            <ngx-stripe-card (on)="onChange($event)"
+                             [options]="cardOptions"
+                             [elementsOptions]="elementsOptions"></ngx-stripe-card>
 
-      <mat-error id="card-errors"
-                 class="card-errors"
-                 role="alert"
-                 *ngIf="error && error?.message">
-        {{ error.message }}
-      </mat-error>
+            <mat-error id="card-errors"
+                       class="card-errors d-flex justify-content-center"
+                       role="alert"
+                       *ngIf="error && error?.message">
+              <ng-container [ngSwitch]="error?.message">
+                <span *ngSwitchCase="'form.invalid'"
+                      i18n>
+                  Le formulaire est invalide
+                </span>
+                <span *ngSwitchCase="'Timeout has occurred'"
+                      i18n>
+                  La demande de paiment a échoué
+                </span>
+                <span *ngSwitchDefault>
+                  {{ error.message }}
+                </span>
+              </ng-container>
+            </mat-error>
+          </div>
+          <div class="actions-wrapper"
+               fxLayout="row"
+               fxLayoutAlign="space-around stretch">
+            <button type="button"
+                    class="text-uppercase"
+                    role="button"
+                    mat-raised-button
+                    i18n-title="Annuler"
+                    title="Annuler"
+                    (click)="cancel()"
+                    [disabled]="disablePayButton"
+                    i18n>
+              Annuler
+            </button>
+            <button type="submit"
+                    class="text-uppercase"
+                    role="button"
+                    i18n-title="payer"
+                    title="Payer"
+                    [color]="!disablePayButton ? 'primary' : ''"
+                    mat-button
+                    mat-raised-button
+                    [disabled]="disablePayButton"
+                    i18n>
+              Payer
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="actions-wrapper"
-         fxLayout="row"
-         fxLayoutAlign="space-around stretch">
-      <button type="button"
-              class="text-uppercase"
-              role="button"
-              mat-raised-button
-              title="cancel"
-              (click)="cancel()"
-              [disabled]="disablePayButton">
-        Annuler
-      </button>
-      <button type="submit"
-              class="text-uppercase"
-              role="button"
-              title="pay"
-              [color]="onLine && !disablePayButton ? 'primary' : ''"
-              mat-button
-              mat-raised-button
-              [disabled]="!onLine || disablePayButton">
-        Payer
-      </button>
-    </div>
-  </form>
+  </div>
 </div>
-

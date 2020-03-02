@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class OrderService {
-  private secureUrl = `${environment.middleware}/v1/secure/orders`;
+  private secureUrl = `${environment.middleware}/v1/restricted/orders`;
 
   constructor(private http: HttpClient) {
   }

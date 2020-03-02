@@ -1,20 +1,24 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSelectChange } from '@angular/material';
-import { User } from 'firebase/app';
-import { Subscription } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { Delivery } from '../../../shared/interfaces/delivery';
 import { DeliveryService } from '../../../shared/services/delivery.service';
 import { Cart } from '../../../shared/interfaces/cart';
+import { take } from 'rxjs/operators';
+import { CartService } from '../../../shared/services/cart.service';
+import { AuthenticationService } from '../../../shared/services/authentication.service';
+import { User } from '../../../shared/interfaces/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-delivery',
   templateUrl: './cart-delivery.component.html',
   styleUrls: ['./cart-delivery.component.scss']
 })
-export class CartDeliveryComponent {
+export class CartDeliveryComponent implements OnInit {
 
-  _cart: Cart;
+  cart: Cart;
 
   @Output() acceptDelivery: EventEmitter<Cart> = new EventEmitter<Cart>();
 
@@ -42,22 +46,24 @@ export class CartDeliveryComponent {
     display_add_billing_button: true
   };
 
-  _user: User;
+  user: User;
 
   @Output() cancelled: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  static getForm(delivery: Delivery = null): FormGroup {
+  isMinimalForm = CartService.containsOnlySessions;
+
+  static getForm(delivery: Delivery = null, minimalForm: boolean = false): FormGroup {
     return new FormGroup({
       key: new FormControl(delivery && delivery.id ? delivery.id : null),
       user: new FormControl(delivery && delivery.user ? delivery.user : null),
-      cart: new FormControl(delivery && delivery.cart ? delivery.cart : []),
-      order: new FormControl(delivery && delivery.order ? delivery.order : []),
-      address: CartDeliveryComponent.getChildForm('address', delivery),
-      billing: CartDeliveryComponent.getChildForm('billing', delivery)
+      cart: new FormControl(delivery && delivery.carts ? delivery.carts : []),
+      orders: new FormControl(delivery && delivery.orders ? delivery.orders : []),
+      address: CartDeliveryComponent.getChildForm('address', minimalForm, delivery),
+      billing: CartDeliveryComponent.getChildForm('billing', minimalForm, delivery)
     });
   }
 
-  static getChildForm(type: string, delivery: Delivery = null): FormGroup {
+  static getChildForm(type: string, minimalForm: boolean, delivery: Delivery = null): FormGroup {
     return new FormGroup({
       email: new FormControl(delivery && delivery[type] && delivery[type].email ? delivery[type].email : '',
         [Validators.required, Validators.minLength(1), Validators.email]
@@ -70,97 +76,103 @@ export class CartDeliveryComponent {
         delivery && delivery[type] && delivery[type].lastname ? delivery[type].lastname : '',
         [Validators.required, Validators.minLength(1)]
       ),
-      address: new FormControl(
-        delivery && delivery[type] && delivery[type].address ? delivery[type].address : '',
-        [Validators.required, Validators.minLength(1)]
+      street: new FormControl(
+        delivery && delivery[type] && delivery[type].street ? delivery[type].street : '',
+        !minimalForm ? [Validators.required, Validators.minLength(1)] : []
       ),
-      address_complement: new FormControl(
-        delivery && delivery[type] && delivery[type].address_complement ?
-          delivery[type].address_complement : '',
+      street_complement: new FormControl(
+        delivery && delivery[type] && delivery[type].street_complement ?
+          delivery[type].street_complement : '',
         []
       ),
       zipcode: new FormControl(
         delivery && delivery[type] && delivery[type].zipcode ? delivery[type].zipcode : '',
-        [Validators.required, Validators.minLength(4)]
+        !minimalForm ? [Validators.required, Validators.minLength(4)] : []
       ),
       city: new FormControl(
         delivery && delivery[type] && delivery[type].city ? delivery[type].city : '',
-        [Validators.required, Validators.minLength(2)]
+        !minimalForm ? [Validators.required, Validators.minLength(2)] : []
       ),
       country: new FormControl(
         delivery && delivery[type] && delivery[type].country ? delivery[type].country : '',
-        [Validators.required, Validators.minLength(2)]
+        !minimalForm ? [Validators.required, Validators.minLength(2)] : []
       )
     });
   }
 
-  constructor(private deliveryService: DeliveryService) {
+  constructor(private deliveryService: DeliveryService,
+              private router: Router,
+              private authenticationService: AuthenticationService,
+              private cartService: CartService) {
+    this.disableDeliveryButton = false;
   }
 
-  @Input() set cart(cart: Cart) {
-    this._cart = cart;
+  ngOnInit() {
+    combineLatest([
+      this.getUser(),
+      this.getCart()
+    ]).subscribe(([user, cart]) => {
+      this.cart = cart;
+      this.user = user;
+      this.getPreviousDeliveries(user, cart);
+      // After get cart then get delivery associated to cart
+      this.getDelivery(cart);
+    });
   }
 
-  get cart(): Cart {
-    return this._cart;
+  getUser(): Observable<User> {
+    return this.authenticationService.getUser();
   }
 
-  @Input() set user(user: User) {
-    if (user) {
-      this._user = user;
-      this.getPreviousDeliveries(user);
-    }
+  getCart(): Observable<Cart> {
+    this.cartService.filters$.next([
+      {
+        column: 'status',
+        operator: '==',
+        value: 'current'
+      }
+    ]);
+    return this.cartService.getCurrentCart()
+      .pipe(
+        take(1)
+      );
   }
 
-  getPreviousDeliveries(user: User) {
-    // this.deliveryService.filters$.next([
-    //   {
-    //     column: 'user',
-    //     operator: '==',
-    //     value: user.uid
-    //   }
-    // ]);
 
-    const subscription: Subscription = this.deliveryService.getDeliveries()
+  getPreviousDeliveries(user: User, cart: Cart) {
+    this.deliveryService.getDeliveries()
+      .pipe(
+        take(1)
+      )
       .subscribe((deliveries: Delivery[]) => {
         this.myPreviousDeliveries = deliveries.map((delivery: Delivery) => {
-          delivery.address.title = `${delivery.address.lastname} ${delivery.address.firstname} ${delivery.address.address} ` +
-            `${delivery.address.zipcode} ${delivery.address.city} ${delivery.address.country}`;
+          delivery.address.title = `${delivery.address.lastname} ${delivery.address.firstname} ${delivery.address.street || ''} ` +
+            `${delivery.address.zipcode || ''} ${delivery.address.city || ''} ${delivery.address.country || ''}`;
 
           return delivery;
         });
-        if (subscription) {
-          subscription.unsubscribe();
-        }
 
-        if (this.cart) {
-          // After get cart then get delivery associated to cart
-          this.getDelivery();
-        }
       }, () => {
         this.myPreviousDeliveries = [];
       });
   }
 
-  getDelivery() {
-    // this.deliveryService.filters$.next([
-    //   {
-    //     column: 'cart',
-    //     operator: 'array-contains',
-    //     value: this.cart.id
-    //   }
-    // ]);
-
-    const subscription: Subscription = this.deliveryService.getDeliveries()
-      .subscribe((deliveries: Delivery[]) => {
-        if (deliveries[0]) {
+  getDelivery(cart: Cart) {
+    this.deliveryService.getDeliveryFromCart(cart)
+      .pipe(
+        take(1)
+      )
+      .subscribe((delivery: Delivery) => {
+        if (delivery) {
           this.isDeliveryAddressFormActive = true;
           this.deliveryConfig.display_billing_form = true;
-          this.form = CartDeliveryComponent.getForm(deliveries[0]);
+          this.form = CartDeliveryComponent.getForm(delivery, CartService.containsOnlySessions(cart));
+          return;
         }
-        if (subscription) {
-          subscription.unsubscribe();
-        }
+        const newDelivery = {} as unknown as Delivery;
+        newDelivery.carts = [cart];
+        newDelivery.user = cart.user;
+        this.form = CartDeliveryComponent.getForm(newDelivery, CartService.containsOnlySessions(cart));
       });
   }
 
@@ -223,11 +235,11 @@ export class CartDeliveryComponent {
     if (this.form.valid && this.cart && this.cart.id && this.cart.user) {
       this.disableDeliveryButton = true;
       const delivery: Delivery = {...this.form.value, ...{user: this.cart.user}};
-      if (!delivery.cart || !delivery.cart.length) {
-        delivery.cart = [];
+      if (!delivery.carts || !delivery.carts.length) {
+        delivery.carts = [];
       }
-      if (!delivery.cart.includes(this.cart.id)) {
-        delivery.cart.push(this.cart.id);
+      if (!delivery.carts.map((cart) => cart.id).includes(this.cart.id)) {
+        delivery.carts.push(this.cart);
       }
 
       if (!delivery.id) {
@@ -246,6 +258,13 @@ export class CartDeliveryComponent {
       .subscribe((createdDelivery: Delivery) => {
         this.form.patchValue(createdDelivery);
         this.acceptDelivery.emit(this.cart);
+        this.cart.state = 'payment';
+        this.cartService.updateCart(this.cart)
+          .subscribe((cart: Cart) => {
+            this.router.navigate(
+              ['/cart', cart.state]
+            );
+          });
         this.disableDeliveryButton = false;
       }, () => {
         this.handleError();
@@ -259,7 +278,21 @@ export class CartDeliveryComponent {
     // );
   }
 
+  isValid() {
+    return Object.keys(this.form.controls).map((k) => {
+      if (this.form.controls[k]) {
+        return `${k} - ${this.form.controls[k].valid}`;
+      }
+      return k;
+    });
+  }
+
   cancel() {
-    this.cancelled.emit(true);
+    this.cartService.updateCart(this.cart)
+      .subscribe(() => {
+        this.router.navigate(
+          ['/cart']
+        );
+      });
   }
 }

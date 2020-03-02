@@ -24,9 +24,12 @@ export class UserService {
     if (rawValue.language) {
       rawValue.language = rawValue.language.id;
     }
-    rawValue.start = this.formatDate(rawValue.start);
-    rawValue.end = this.formatDate(rawValue.end);
-
+    if (rawValue.start) {
+      rawValue.start = this.formatDate(rawValue.start);
+    }
+    if (rawValue.end) {
+      rawValue.end = this.formatDate(rawValue.end);
+    }
     if (rawValue.city && typeof rawValue.city.id !== 'undefined') {
       rawValue.city = rawValue.city.id;
     } else {

@@ -23,15 +23,11 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  updateProductByKey(key: string, body: Product): Observable<Product> {
+  updateProductByKey(key: string): Observable<Product> {
     return new Observable<Product>(observer => {
       this.getProduct(key)
         .pipe(take(1))
         .subscribe((product) => {
-
-          product = this.applyOrder(product, body);
-          product = {...product, ...body};
-
           this.updateProduct(product)
             .pipe(take(1))
             .subscribe(() => {
@@ -42,18 +38,6 @@ export class ProductService {
             });
         }, (err) => observer.error(err));
     });
-  }
-
-  applyOrder(product: Product, body: Product): Product {
-    if (body.ordered) {
-      if (product.ordered) {
-        product.ordered += body.ordered;
-      } else {
-        product.ordered = body.ordered;
-      }
-    }
-
-    return product;
   }
 
   getProducts(): Observable<Product[]> {

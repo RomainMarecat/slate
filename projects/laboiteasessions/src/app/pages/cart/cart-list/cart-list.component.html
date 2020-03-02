@@ -11,7 +11,11 @@
           </div>
         </div>
         <div class="d-none d-lg-block col-lg-4 offset-lg-5" *ngIf="cart?.items?.length > 0">
-          <button class="btn btn-shadow" type="button" (click)="onNextStep()">
+          <button class="btn btn-shadow"
+                  type="button"
+                  role="button"
+                  (click)="onNextStep()"
+                  i18n>
             valider le panier
           </button>
         </div>
@@ -22,8 +26,9 @@
     <div class="content-wrapper">
       <div class="products-container" *ngIf="cart?.items?.length === 0">
         <div class="row py-3">
-          <span class="col-12 text-center no-cart">
-            panier vider
+          <span class="col-12 text-center no-cart"
+                i18n>
+            panier vide
           </span>
         </div>
       </div>
@@ -37,7 +42,8 @@
       </div>
 
       <div class="row infos-total" *ngIf="cart.total > 0">
-        <span class="col-lg-3 offset-lg-6 col-4 text-left text-xs-center align-self-center align-items-center">
+        <span class="col-lg-3 offset-lg-6 col-4 text-left text-xs-center align-self-center align-items-center"
+              i18n>
           total
         </span>
         <span class="col-lg-2 col-8 text-center text-xs-right align-self-center align-items-center">

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { CartService } from '../shared/cart.service';
-import { Cart } from '../../../shared/interfaces/cart';
+import { ActivatedRoute } from '@angular/router';
 import { OrderService } from '../../../shared/services/order.service';
 import { Order } from '../../../shared/interfaces/order';
 import { Payment } from '../../../shared/interfaces/payment';
@@ -17,31 +15,18 @@ export class CartConfirmationComponent implements OnInit {
   order: Order;
 
   constructor(private orderService: OrderService,
-              private activatedRoute: ActivatedRoute,
-              private router: Router,
-              private cartService: CartService) {
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((value: {key: string}) => {
-      if (value.key) {
-        this.orderService.getOrder(value.key)
+    this.activatedRoute.params.subscribe((value: {id: string}) => {
+      if (value.id) {
+        this.orderService.getOrder(value.id)
           .subscribe((order) => {
             this.order = order;
-            this.getCart(order.cart);
           }, () => {
           });
       }
     });
-  }
-
-  getCart(id: string) {
-    this.cartService.getCart(id)
-      .subscribe((cart: Cart) => {
-        cart.status = 'finished';
-        this.cartService.updateCart(cart)
-          .subscribe(() => {
-          });
-      });
   }
 }

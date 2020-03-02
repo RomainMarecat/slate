@@ -1,5 +1,5 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { InjectionToken, LOCALE_ID, NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,6 +37,8 @@ import { ScrollToTopButtonModule } from './shared/components/scroll-to-top-butto
 
 registerLocaleData(localeEn);
 registerLocaleData(localeFr);
+
+export const STRIPE_KEY = new InjectionToken<string>('stripe_key');
 
 @NgModule({
   imports: [
@@ -79,6 +81,10 @@ registerLocaleData(localeFr);
     AppComponent
   ],
   providers: [
+    {
+      provide: STRIPE_KEY,
+      useValue: environment.stripeKey
+    },
     {
       provide: LOCALE_ID,
       useValue: 'fr-FR'

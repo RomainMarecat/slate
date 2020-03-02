@@ -1,24 +1,21 @@
+import { User } from './user';
+import { Media } from './media';
+
 export interface Product {
   name: string;
   slug?: string;
   alias?: string;
+  media?: Media;
   keywords?: string;
-
   brand?: string;
-  score: number;
-
   created_at: Date;
   published_at: any;
   translations?: {
     fr?: string;
   };
-
   url: string;
-
   id: string;
-  user: string;
-  creator?: string;
-
+  user: User;
   is_new?: boolean;
   description?: string;
   short_description?: string;
@@ -43,6 +40,4 @@ export interface Product {
   viewed?: number;
   commented?: number;
   specifications?: string[];
-  // Incrementation of number user ordered
-  ordered?: number;
 }
