@@ -14,22 +14,20 @@ import { ProductBestSellerComponent } from './product-best-seller/product-best-s
 import { ProductBestScoreComponent } from './product-best-score/product-best-score.component';
 import { ProductBrandComponent } from './product-brand/product-brand.component';
 import { FilterComponent } from './filter.component';
-import {
-  MatListModule,
-  MatButtonModule,
-  MatIconModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatInputModule,
-  MatSlideToggleModule,
-  MatCommonModule
-} from '@angular/material';
 import { ProductService } from '../../product/shared/product.service';
 import { MockProductService } from '../../product/shared/mock-product.service';
 import { SortModule } from '../sort/sort.module';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCommonModule } from '@angular/material/core';
 
 describe('FilterComponent', () => {
   let component: FilterComponent;

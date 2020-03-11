@@ -11,6 +11,9 @@
     "angularCompilerOptions": {
         "entryModule": "app.server.module#AppServerModule"
     },
+  "files": [
+    "main.server.ts"
+  ],
     "include": [
         "main.server.ts",
         "polyfills.ts",
@@ -19,11 +22,5 @@
         "../shared/cart/cart.module.ts",
         "../shared/admin/base/*/*.ts",
         "../shared/admin/base/*.ts"
-    ],
-    "exclude": [
-        "test.ts",
-        "**/*.spec.ts",
-        "../shared/*.spec.ts",
-        "../shared/**/*.spec.ts"
     ]
 }

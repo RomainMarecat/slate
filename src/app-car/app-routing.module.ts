@@ -16,23 +16,23 @@ const routes: Routes = [ {
 },
   {
     path: 'admin',
-    loadChildren: './../shared/admin/admin.module#AdminModule'
+    loadChildren: () => import('./../shared/admin/admin.module').then(m => m.AdminModule)
   }, {
     path: 'selection/:key/products',
-    loadChildren: './offer/car-offer-list.module#CarOfferListModule'
+    loadChildren: () => import('./offer/car-offer-list.module').then(m => m.CarOfferListModule)
   }, {
     path: 'area/:key/products',
-    loadChildren: './offer/car-offer-list.module#CarOfferListModule'
+    loadChildren: () => import('./offer/car-offer-list.module').then(m => m.CarOfferListModule)
   }, {
     path: 'product/add/new',
-    loadChildren: './offer-edit/car-offer-edit.module#CarOfferEditModule'
+    loadChildren: () => import('./offer-edit/car-offer-edit.module').then(m => m.CarOfferEditModule)
   }, {
     path: 'offer/:key',
-    loadChildren: './offer-detail/car-offer-detail.module#CarOfferDetailModule'
+    loadChildren: () => import('./offer-detail/car-offer-detail.module').then(m => m.CarOfferDetailModule)
   },
   {
     path: 'content/:title',
-    loadChildren: './../shared/cms-detail/cms-detail.module#CmsDetailModule'
+    loadChildren: () => import('./../shared/cms-detail/cms-detail.module').then(m => m.CmsDetailModule)
   },
   {
     path: '**',

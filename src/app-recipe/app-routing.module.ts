@@ -12,19 +12,19 @@ export function ManualLoaderFactory(translate: TranslateService, location: Locat
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './home/home.module#HomeModule'
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'recipes',
-    loadChildren: './recipe-list/recipe-list.module#RecipeListModule'
+    loadChildren: () => import('./recipe-list/recipe-list.module').then(m => m.RecipeListModule)
   },
   {
     path: 'recipe',
-    loadChildren: './recipe-detail/recipe-detail.module#RecipeDetailModule'
+    loadChildren: () => import('./recipe-detail/recipe-detail.module').then(m => m.RecipeDetailModule)
   },
   {
     path: 'admin',
-    loadChildren: './../shared/admin/app-recipe/app-recipe.module#AppRecipeModule'
+    loadChildren: () => import('./../shared/admin/app-recipe/app-recipe.module').then(m => m.AppRecipeModule)
   }
 ];
 

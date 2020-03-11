@@ -2,10 +2,10 @@ import { Component, OnInit, ElementRef, ViewChild, TemplateRef, ViewEncapsulatio
 import { Router } from '@angular/router';
 import { MenuService } from '../../../menu/menu.service';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
-import { MatDialog } from '@angular/material';
 import { AreaService } from '../../../map/shared/area.service';
 import { Area } from '../../../map/shared/area';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-map-areas',

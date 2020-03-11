@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialogModule, MatSelectModule, MatTabsModule } from '@angular/material';
 import { SelectLanguageModule } from '../../shared/components/select-language/select-language.module';
 import { SelectAgeModule } from '../../shared/components/select-age/select-age.module';
 import { SelectLevelModule } from '../../shared/components/select-level/select-level.module';
@@ -11,11 +10,13 @@ import { BookingConfirmComponent } from './booking-confirm/booking-confirm.compo
 import { BookingMonoCardModule } from './booking-mono-card/booking-mono-card.module';
 import { BookingPipeComponent } from './booking-pipe.component';
 import { BookingPipeRoutingModule } from './booking-pipe.routing.module';
-import { BookingPipeService } from './booking-pipe.service';
 import { BookingSummaryModule } from './booking-summary/booking-summary.module';
 import { PipeInfosModule } from './pipe-infos/pipe-infos.module';
 import { PipeLoginModule } from './pipe-login/pipe-login.module';
 import { PipePaymentModule } from './pipe-payment/pipe-payment.module';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports: [

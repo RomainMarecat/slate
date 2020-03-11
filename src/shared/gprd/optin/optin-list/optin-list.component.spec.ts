@@ -3,7 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { OptinListComponent } from './optin-list.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatCardModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OptinManagerComponent } from '../optin-manager/optin-manager.component';
@@ -14,6 +13,8 @@ import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 import { SharedModule } from '../../../shared.module';
 import { AlertService } from '../../../popup/alert.service';
 import { MockAlertService } from '../../../popup/mock-alert.service';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('OptinListComponent', () => {
   let component: OptinListComponent;

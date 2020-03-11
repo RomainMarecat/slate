@@ -4,20 +4,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatCardModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatSelectModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule,
-} from '@angular/material';
-
-import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service';
 import { MockCmsDetailService } from '../../../cms-detail/shared/mock-cms-detail.service';
@@ -29,6 +17,15 @@ import { NgPipesModule } from 'ngx-pipes';
 import { CmsService } from '../../../cms/shared/cms.service';
 import { MockCmsService } from '../../../cms/shared/mock-cms.service';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('CmsDetailAddComponent', () => {
   let component: CmsDetailAddComponent;
@@ -55,7 +52,6 @@ describe('CmsDetailAddComponent', () => {
         MatListModule,
         MatSelectModule,
         MatToolbarModule,
-
         NgPipesModule,
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}

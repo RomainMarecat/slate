@@ -2,8 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { A2hsBrowserPromptComponent } from './a2hs-browser-prompt.component';
 import { A2hsService } from '../shared/a2hs.service';
-import { MatButtonModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('A2hsBrowserPromptComponent', () => {
   let component: A2hsBrowserPromptComponent;

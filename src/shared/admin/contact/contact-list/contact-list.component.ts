@@ -2,12 +2,12 @@ import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/
 import { Router } from '@angular/router';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MenuService } from '../../../menu/menu.service';
-import { MatDialog } from '@angular/material';
 import { Contact } from '../../../contact/shared/contact';
 import { ContactService } from '../../../contact/shared/contact.service';
 import { AlertService } from '../../../popup/alert.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from 'localize-router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-contact-list',

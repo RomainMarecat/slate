@@ -37,11 +37,11 @@ import { RecipeService } from '../recipe/shared/recipe.service';
 import { IngredientService } from '../ingredient/shared/ingredient.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
-import { MatSnackBarModule } from '@angular/material';
 import { FooterModule } from '../../shared/footer/footer.module';
 import { PopupModule } from '../../shared/popup/popup.module';
 import { StorageModule } from '../../shared/media/storage/storage.module';
 import { SessionService } from '../../shared/agenda/shared/session.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export const production = new InjectionToken<string>('production');
 export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');

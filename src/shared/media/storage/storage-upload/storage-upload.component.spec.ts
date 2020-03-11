@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StorageUploadComponent } from './storage-upload.component';
-import { MatIconModule, MatInputModule, MatProgressBarModule } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockMediaService } from '../../mock-media.service';
@@ -13,6 +12,9 @@ import { environment } from '../../../../app-car/environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 describe('StorageUploadComponent', () => {
   let component: StorageUploadComponent;

@@ -4,7 +4,6 @@ import { RecipePreparationListComponent } from './recipe-preparation-list.compon
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
-import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { SeoModule } from '../../../../shared/seo/seo.module';
@@ -15,6 +14,10 @@ import { RecipeService } from '../../../recipe/shared/recipe.service';
 import { MockRecipeService } from '../../../recipe/shared/mock-recipe.service';
 import { SeoService } from '../../../../shared/seo/shared/seo.service';
 import { MockLocalizeRouterService } from '../../../../shared/router/mock-localize-router.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('RecipePreparationListComponent', () => {
   let component: RecipePreparationListComponent;

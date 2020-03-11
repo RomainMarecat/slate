@@ -4,8 +4,10 @@ import { CommonModule } from '@angular/common';
 import { TimelineRoutingModule } from './timeline-routing.module';
 import { TimelineComponent } from './timeline/timeline.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatCardModule, MatChipsModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   imports: [

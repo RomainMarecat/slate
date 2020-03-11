@@ -5,8 +5,9 @@ import { A2hsRoutingModule } from './a2hs-routing.module';
 import { A2hsBrowserPromptComponent } from './a2hs-browser-prompt/a2hs-browser-prompt.component';
 import { A2hsIosSafariHowComponent } from './a2hs-ios-safari-how/a2hs-ios-safari-how.component';
 import { A2hsComponent } from './a2hs/a2hs.component';
-import { MatButtonModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [

@@ -19,67 +19,67 @@ const routes: Routes = [
       {
         canActivate: [AdminGuard],
         path: 'article',
-        loadChildren: './article/article.module#ArticleModule'
+        loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'contact',
-        loadChildren: './contact/contact.module#ContactModule'
+        loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'attribute',
-        loadChildren: './attribute/attribute.module#AttributeModule'
+        loadChildren: () => import('./attribute/attribute.module').then(m => m.AttributeModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'category',
-        loadChildren: './category/category.module#CategoryModule'
+        loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'selection',
-        loadChildren: './selection/selection.module#SelectionModule'
+        loadChildren: () => import('./selection/selection.module').then(m => m.SelectionModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'cms',
-        loadChildren: './cms/cms.module#CmsModule'
+        loadChildren: () => import('./cms/cms.module').then(m => m.CmsModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'offer',
-        loadChildren: './offer/offer.module#OfferModule'
+        loadChildren: () => import('./offer/offer.module').then(m => m.OfferModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'cart',
-        loadChildren: './cart/cart.module#CartModule'
+        loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'order',
-        loadChildren: './order/order.module#OrderModule'
+        loadChildren: () => import('./order/order.module').then(m => m.OrderModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'map',
-        loadChildren: './map/map.module#MapModule'
+        loadChildren: () => import('./map/map.module').then(m => m.MapModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'partner',
-        loadChildren: './partner/partner.module#PartnerModule'
+        loadChildren: () => import('./partner/partner.module').then(m => m.PartnerModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'product',
-        loadChildren: './product/product.module#ProductModule'
+        loadChildren: () => import('./product/product.module').then(m => m.ProductModule)
       },
       {
         canActivate: [AdminGuard],
         path: 'app-recipe',
-        loadChildren: './app-recipe/app-recipe.module#AppRecipeModule'
+        loadChildren: () => import('./app-recipe/app-recipe.module').then(m => m.AppRecipeModule)
       }
     ]
   }

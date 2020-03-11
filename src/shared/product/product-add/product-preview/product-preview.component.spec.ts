@@ -6,15 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
-import {
-  MatCardModule,
-  MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule
-} from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { NgPipesModule } from 'ngx-pipes';
 import { Cloudinary } from 'cloudinary-core';
@@ -25,6 +16,13 @@ import { I18nService } from '../../../i18n/i18n.service';
 import { MediaModule } from '../../../media/media.module';
 import { environment } from '../../../../app-store/environments/environment';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('ProductPreviewComponent', () => {
   let component: ProductPreviewComponent;

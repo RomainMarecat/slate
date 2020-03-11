@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatIconModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgxCalendarModule } from '@romainmarecat/ngx-calendar';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { SimpleAgendaComponent } from './simple-agenda.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('SimpleAgendaComponent', () => {
   let component: SimpleAgendaComponent;

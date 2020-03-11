@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { HelpListComponent } from './help-list/help-list.component';
 import { HelpIconComponent } from './help-icon/help-icon.component';
 import { HelpDialogComponent } from './help-dialog/help-dialog.component';
-import { MatCardModule, MatDialogModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [

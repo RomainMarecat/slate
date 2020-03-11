@@ -21,42 +21,42 @@ const routes: Routes = [
       },
       {
         path: 'button-indicators',
-        loadChildren: './button/button.module#ButtonModule',
+        loadChildren: () => import('./button/button.module').then(m => m.ButtonModule),
         data: {
           breadcrumb: 'breadcrumb.material.button.title'
         }
       },
       {
         path: 'datatable',
-        loadChildren: './datatable/datatable.module#DatatableModule',
+        loadChildren: () => import('./datatable/datatable.module').then(m => m.DatatableModule),
         data: {
           breadcrumb: 'breadcrumb.material.datatable.title'
         }
       },
       {
         path: 'form',
-        loadChildren: './form/form.module#FormModule',
+        loadChildren: () => import('./form/form.module').then(m => m.FormModule),
         data: {
           breadcrumb: 'breadcrumb.material.form.title'
         }
       },
       {
         path: 'layout',
-        loadChildren: './layout/layout.module#LayoutModule',
+        loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule),
         data: {
           breadcrumb: 'breadcrumb.material.layout.title'
         }
       },
       {
         path: 'navigation',
-        loadChildren: './navigation/nav.module#NavModule',
+        loadChildren: () => import('./navigation/nav.module').then(m => m.NavModule),
         data: {
           breadcrumb: 'breadcrumb.material.navigation.title'
         }
       },
       {
         path: 'popup',
-        loadChildren: './popup/popup.module#PopupModule',
+        loadChildren: () => import('./popup/popup.module').then(m => m.PopupModule),
         data: {
           breadcrumb: 'breadcrumb.material.popup.title'
         }

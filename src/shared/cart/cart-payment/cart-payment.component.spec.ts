@@ -5,11 +5,6 @@ import { AlertService } from '../../popup/alert.service';
 import { PaymentService } from '../../payment/shared/payment.service';
 import { MockOrderService } from '../../order/shared/mock-order.service';
 import { CommonModule } from '@angular/common';
-import {
-  MatButtonModule,
-  MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, MatStepperModule,
-  MatTooltipModule
-} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -31,6 +26,14 @@ import { DeliveryService } from '../shared/delivery.service';
 import { MockDeliveryService } from '../shared/mock-delivery.service';
 import { ProductService } from '../../product/shared/product.service';
 import { MockProductService } from '../../product/shared/mock-product.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('CartPaymentComponent', () => {
   let component: CartPaymentComponent;

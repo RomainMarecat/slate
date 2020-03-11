@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatSelectChange } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 import { Parameter } from '../../interfaces/parameter';
 import { ParameterService } from '../../parameter/parameter.service';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-select-age',
@@ -29,7 +29,7 @@ export class SelectAgeComponent implements OnInit {
     this.ages = this.parameterService.getParameters('age');
   }
 
-  updateAge(event: MatSelectChange | any) {
+  updateAge(event: MatSelectChange) {
     const age = event.value as Parameter;
     this.ageChanged.emit(age);
   }

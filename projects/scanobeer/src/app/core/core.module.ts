@@ -3,7 +3,6 @@ import { APP_INITIALIZER, InjectionToken, NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
-import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MetaLoader, MetaModule, MetaStaticLoader, PageTitlePositioning } from '@ngx-meta/core';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -39,6 +38,7 @@ import { DateService } from '../../../../../src/shared/util/date.service';
 import { RoutingState } from '../../../../../src/shared/util/routing-state';
 import { environment } from '../../environments/environment';
 import { HomeModule } from '../home/home.module';
+import { MatIconRegistry } from '@angular/material/icon';
 
 export const TABLE_EVENT = new InjectionToken<string>('event');
 export const TABLE_ARTICLE = new InjectionToken<string>('article');

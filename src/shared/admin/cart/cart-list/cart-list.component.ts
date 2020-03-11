@@ -1,6 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from 'localize-router';
@@ -9,6 +8,7 @@ import { Cart } from '../../../cart/shared/cart';
 import { CartService } from '../../../cart/shared/cart.service';
 import { MenuService } from '../../../menu/menu.service';
 import { BaseListComponent } from '../../base/base-list/base-list.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cart-list',

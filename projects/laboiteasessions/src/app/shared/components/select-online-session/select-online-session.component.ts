@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewRef } from '@angular/core';
-import { MatSelectChange } from '@angular/material';
 import { OnlineSession } from '@romainmarecat/ngx-calendar';
 import * as _moment from 'moment';
 import { ProfilService } from '../../services/profil.service';
+import { MatSelectChange } from '@angular/material/select';
 
 const moment = _moment;
 

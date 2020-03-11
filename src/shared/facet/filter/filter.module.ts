@@ -1,17 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import {
-  MatListModule,
-  MatButtonModule,
-  MatIconModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatSelectModule,
-  MatRadioModule,
-  MatSlideToggleModule,
-} from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SortModule } from './../sort/sort.module';
@@ -26,6 +15,14 @@ import { ProductDescriptionComponent } from './product-description/product-descr
 import { ProductBestSellerComponent } from './product-best-seller/product-best-seller.component';
 import { ProductBrandComponent } from './product-brand/product-brand.component';
 import { ProductBestScoreComponent } from './product-best-score/product-best-score.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [

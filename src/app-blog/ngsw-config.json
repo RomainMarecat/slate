@@ -6,7 +6,8 @@
       "installMode": "prefetch",
       "resources": {
         "files": [
-          "/index.html"
+          "/index.html",
+          "/manifest.webmanifest"
         ],
         "versionedFiles": [
           "/*.bundle.css",

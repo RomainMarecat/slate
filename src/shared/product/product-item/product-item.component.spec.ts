@@ -16,7 +16,6 @@ import { MockAngularFireStorage } from '../../media/shared/mock-angular-fire-sto
 import { FavoriteService } from '../../favorite/shared/favorite.service';
 import { MockFavoriteService } from '../../favorite/shared/mock-favorite.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatBadgeModule, MatDialogModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { AlertService } from '../../popup/alert.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
@@ -28,6 +27,10 @@ import { NgPipesModule } from 'ngx-pipes';
 import { CommentModule } from '../../comment/comment.module';
 import { ProductService } from '../shared/product.service';
 import { MockProductService } from '../shared/mock-product.service';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;

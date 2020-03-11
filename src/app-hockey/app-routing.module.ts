@@ -15,15 +15,15 @@ const routes: Routes = [{
   },
   {
     path: 'selection/:key/products',
-    loadChildren: './product-list/product-list.module#ProductListModule'
+    loadChildren: () => import('./product-list/product-list.module').then(m => m.ProductListModule)
   },
   {
     path: 'product/:key',
-    loadChildren: './product-detail/product-detail.module#ProductDetailModule'
+    loadChildren: () => import('./product-detail/product-detail.module').then(m => m.ProductDetailModule)
   },
   {
     path: 'admin',
-    loadChildren: './../shared/admin/admin.module#AdminModule'
+    loadChildren: () => import('./../shared/admin/admin.module').then(m => m.AdminModule)
   }
 ];
 

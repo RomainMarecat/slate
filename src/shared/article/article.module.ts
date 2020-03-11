@@ -6,7 +6,6 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { ArticleService } from './shared/article.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCardModule } from '@angular/material';
 import { PipeModule } from '../pipe/pipe.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -15,6 +14,7 @@ import { MediaModule } from '../media/media.module';
 import { MediaService } from '../media/media.service';
 import { ArticleItemComponent } from './article-item/article-item.component';
 import { ArticleComponent } from './article/article.component';
+import { MatCardModule } from '@angular/material/card';
 
 const TABLE_ARTICLE = new InjectionToken<string>('article');
 const TABLE_MEDIA = new InjectionToken<string>('media');

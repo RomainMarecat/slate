@@ -3,16 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule, MatListModule, MatProgressSpinnerModule,
-  MatSelectModule,
-  MatStepperModule,
-  MatTooltipModule
-} from '@angular/material';
 import { NgxStripeModule, StripeService } from 'ngx-stripe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -45,6 +35,16 @@ import { DeliveryService } from '../shared/delivery.service';
 import { MockDeliveryService } from '../shared/mock-delivery.service';
 import { StorageModule } from '../../media/storage/storage.module';
 import { MediaModule } from '../../media/media.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('CartWrapperComponent', () => {
   let component: CartWrapperComponent;

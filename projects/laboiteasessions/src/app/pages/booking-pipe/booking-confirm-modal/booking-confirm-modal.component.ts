@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 import { Booking, BookingWithEvents } from '../../../shared/interfaces/booking';
 import { BookingsService } from '../../../shared/services/bookings.service';
 import { Event } from '../../../shared/interfaces/event';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-booking-confirm-modal',

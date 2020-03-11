@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,6 +10,7 @@ import { selectLoggedIn } from '../../shared/store/user/selectors/user.selector'
 import { CartService } from '../../shared/services/cart.service';
 import { BookingPipeMessage } from './booking-pipe-message';
 import { BookingPipeService } from './booking-pipe.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-booking-pipe',

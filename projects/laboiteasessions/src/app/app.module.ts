@@ -34,11 +34,17 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import localeEn from '@angular/common/locales/en';
 import { ScrollToTopButtonModule } from './shared/components/scroll-to-top-button/scroll-to-top-button.module';
+import { InstanceFactory, NgForage, NgForageConfig } from 'ngforage';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeFr);
 
 export const STRIPE_KEY = new InjectionToken<string>('stripe_key');
+
+export function ngForageFactory(ngForageConfig: NgForageConfig) {
+  // @ts-ignore
+  return new NgForage({}, new InstanceFactory(ngForageConfig));
+}
 
 @NgModule({
   imports: [
@@ -103,6 +109,13 @@ export const STRIPE_KEY = new InjectionToken<string>('stripe_key');
       useClass: InvalidJwtInterceptor,
       multi: true
     },
+    {
+      provide: NgForage,
+      useFactory: ngForageFactory,
+      deps: [
+        NgForageConfig
+      ]
+    }
   ]
 })
 export class AppModule {

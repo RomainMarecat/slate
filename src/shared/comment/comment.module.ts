@@ -6,17 +6,16 @@ import { CommentAddComponent } from './comment-add/comment-add.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentEditComponent } from './comment-edit/comment-edit.component';
 import { CommentDetailComponent } from './comment-detail/comment-detail.component';
-import {
-  MatCardModule,
-  MatIconModule,
-  MatButtonModule,
-  MatFormFieldModule,
-  MatInputModule, MatDialogModule,
-} from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatChipInputEvent } from '@angular/material';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-chips',

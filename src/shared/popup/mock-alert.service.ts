@@ -1,5 +1,5 @@
-import { MatBottomSheetConfig } from '@angular/material';
 import { Alert } from './alert';
+import { MatBottomSheetConfig } from '@angular/material/bottom-sheet';
 
 export class MockAlertService {
   toast(message: string, state: string = 'info') {

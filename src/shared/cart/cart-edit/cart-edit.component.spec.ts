@@ -2,22 +2,10 @@ import { CommonModule } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatSelectModule,
-  MatStepperModule,
-  MatTooltipModule
-} from '@angular/material';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
-import { CartItemComponent } from '../../cart/cart-item/cart-item.component';
-import { CartListComponent } from '../../cart/cart-list/cart-list.component';
 import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
 import { MediaModule } from '../../media/media.module';
@@ -36,6 +24,16 @@ import { RoutingState } from '../../util/routing-state';
 import { CartService } from '../shared/cart.service';
 import { MockCartService } from '../shared/mock-cart.service';
 import { CartEditComponent } from './cart-edit.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { CartListComponent } from '../cart-list/cart-list.component';
+import { CartItemComponent } from '../cart-item/cart-item.component';
 
 describe('CartEditComponent', () => {
   let component: CartEditComponent;

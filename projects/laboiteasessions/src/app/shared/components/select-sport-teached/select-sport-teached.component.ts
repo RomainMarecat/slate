@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange } from '@angular/core';
-import { MatSelectChange } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 import { SportTeached } from '../../interfaces/sport-teached';
 import { ProfilService } from '../../services/profil.service';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-profil-agenda-select-sport-teached',

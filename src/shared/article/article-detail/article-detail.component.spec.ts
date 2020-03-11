@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticleDetailComponent } from './article-detail.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCardModule } from '@angular/material';
 import { PipeModule } from '../../pipe/pipe.module';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
@@ -20,6 +19,7 @@ import { MockArticleService } from '../shared/mock-article.service';
 import { AlertService } from '../../popup/alert.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { MatCardModule } from '@angular/material/card';
 
 describe('ArticleDetailComponent', () => {
   let component: ArticleDetailComponent;

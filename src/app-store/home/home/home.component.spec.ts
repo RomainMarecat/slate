@@ -30,9 +30,9 @@ import { SeoService } from '../../../shared/seo/shared/seo.service';
 import { MenuService } from '../../../shared/menu/menu.service';
 import { CategoryFavoriteModule } from '../category-favorite/category-favorite.module';
 import { ProductModule } from '../product/product.module';
-import { MatDialogModule } from '@angular/material';
 import { mockHomeProductNewer } from '../../../shared/product/shared/mock-product';
 import { of, throwError } from 'rxjs';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('Store HomeComponent', () => {
   let component: HomeComponent;

@@ -5,7 +5,7 @@ import { CarouselConfig, CarouselModule } from 'ngx-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { LocalizeRouterModule } from 'localize-router';
-import { MatButtonModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [

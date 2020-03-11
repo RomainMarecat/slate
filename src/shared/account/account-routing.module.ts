@@ -18,19 +18,19 @@ const routes: Routes = [
       },
       {
         path: 'orders',
-        loadChildren: './../order/order.module#OrderModule',
+        loadChildren: () => import('./../order/order.module').then(m => m.OrderModule),
       },
       {
         path: 'preferences',
-        loadChildren: './../preference/preference.module#PreferenceModule'
+        loadChildren: () => import('./../preference/preference.module').then(m => m.PreferenceModule)
       },
       {
         path: 'deliveries',
-        loadChildren: './../delivery/delivery.module#DeliveryModule'
+        loadChildren: () => import('./../delivery/delivery.module').then(m => m.DeliveryModule)
       },
       {
         path: 'favorites',
-        loadChildren: './../favorite/favorite.module#FavoriteModule'
+        loadChildren: () => import('./../favorite/favorite.module').then(m => m.FavoriteModule)
       }
     ]
   }

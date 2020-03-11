@@ -1,7 +1,6 @@
 import { Location } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSelectChange } from '@angular/material';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UploadTaskSnapshot } from '@firebase/storage-types';
@@ -20,6 +19,7 @@ import { OfferService } from '../../../shared/offer/offer.service';
 import { AlertService } from '../../../shared/popup/alert.service';
 import { CarProduct, mileages } from '../../../shared/product/shared/car-product';
 import { ProductService } from '../../../shared/product/shared/product.service';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-car-offer-edit',

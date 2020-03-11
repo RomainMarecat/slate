@@ -3,10 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { LayoutBuilderRoutingModule } from './layout-builder-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatTooltipModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedLayoutBuilderModule } from './shared-layout-builder.module';
 import { ThemeStorageService } from './shared/theme-storage.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [

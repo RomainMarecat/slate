@@ -8,27 +8,27 @@ import { localizeLoaderFactory } from '../shared/router/localize.factory';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './home/home.module#HomeModule'
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'products',
-    loadChildren: './../shared/product/product.module#SharedProductWithRoutesModule'
+    loadChildren: () => import('./../shared/product/product.module').then(m => m.SharedProductWithRoutesModule)
   },
   {
     path: 'cart',
-    loadChildren: './../shared/cart/cart.module#CartModule'
+    loadChildren: () => import('./../shared/cart/cart.module').then(m => m.CartModule)
   },
   {
     path: 'account',
-    loadChildren: './../shared/account/account.module#AccountModule'
+    loadChildren: () => import('./../shared/account/account.module').then(m => m.AccountModule)
   },
   {
     path: 'contact',
-    loadChildren: './../shared/contact/contact.module#ContactModule'
+    loadChildren: () => import('./../shared/contact/contact.module').then(m => m.ContactModule)
   },
   {
     path: '',
-    loadChildren: './../shared/category/category.module#CategoryModule'
+    loadChildren: () => import('./../shared/category/category.module').then(m => m.CategoryModule)
   },
 ];
 

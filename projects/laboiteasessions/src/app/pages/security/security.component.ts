@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -9,6 +8,7 @@ import { AuthenticationService } from '../../shared/services/authentication.serv
 import { AppState } from '../../shared/store/app.state';
 import { selectLoggedIn, selectUser } from '../../shared/store/user/selectors/user.selector';
 import { SecurityMessage } from '../../shared/interfaces/security-message';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-security',

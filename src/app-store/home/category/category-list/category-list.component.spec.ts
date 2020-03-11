@@ -4,7 +4,6 @@ import { CategoryListComponent } from './category-list.component';
 import { CategoryItemComponent } from '../../../../shared/category/category-item/category-item.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MatIconModule } from '@angular/material';
 import { StorageModule } from '../../../../shared/media/storage/storage.module';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
@@ -14,6 +13,7 @@ import { CategoryService } from '../../../../shared/category/category.service';
 import { MockCategoryService } from '../../../../shared/category/mock-category.service';
 import { MediaService } from '../../../../shared/media/media.service';
 import { MockMediaService } from '../../../../shared/media/mock-media.service';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('CategoryListComponent', () => {
   let component: CategoryListComponent;

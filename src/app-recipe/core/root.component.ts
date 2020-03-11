@@ -1,17 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgcCookieConsentService } from 'ngx-cookieconsent';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { UserService } from '../../shared/user/shared/user.service';
 import { LoaderService } from '../../shared/loader/loader.service';
 import { I18nService } from '../../shared/i18n/i18n.service';
-import { MatIconRegistry } from '@angular/material';
 import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { Recipe } from '../recipe/shared/recipe';
 import { RecipeService } from '../recipe/shared/recipe.service';
 import { Filter } from '../../shared/facet/filter/shared/filter';
 import { MenuConfiguration } from '../../shared/menu/shared/menu-configuration';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',

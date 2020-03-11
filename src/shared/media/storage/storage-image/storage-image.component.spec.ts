@@ -8,9 +8,13 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { MediaService } from '../../media.service';
 import { MockMediaService } from '../../mock-media.service';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatProgressBarModule } from '@angular/material';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 import { StorageDetailComponent } from '../storage-detail/storage-detail.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('StorageImageComponent', () => {
   let component: StorageImageComponent;

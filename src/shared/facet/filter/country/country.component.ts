@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Filter } from './../shared/filter';
-import { MatSelectChange } from '@angular/material';
+import { Filter } from '../shared/filter';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-facet-country',

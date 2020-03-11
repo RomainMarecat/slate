@@ -4,10 +4,10 @@ import { StorageDetailComponent } from './storage-detail.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CommonModule } from '@angular/common';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { MatProgressBarModule } from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../../../app-car/environments/environment';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 describe('StorageDetailComponent', () => {
   let component: StorageDetailComponent;

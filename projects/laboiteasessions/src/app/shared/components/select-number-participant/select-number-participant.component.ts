@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSelectChange } from '@angular/material';
 import { OnlineSession } from '@romainmarecat/ngx-calendar';
 import { ProfilService } from '../../services/profil.service';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-select-number-participant',

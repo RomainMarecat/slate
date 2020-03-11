@@ -1,5 +1,4 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from 'localize-router';
@@ -8,6 +7,7 @@ import { Recipe } from '../../../../../app-recipe/recipe/shared/recipe';
 import { RecipeService } from '../../../../../app-recipe/recipe/shared/recipe.service';
 import { MenuService } from '../../../../menu/menu.service';
 import { BaseListComponent } from '../../../base/base-list/base-list.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-alr-recipe-list',

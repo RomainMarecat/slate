@@ -1,9 +1,9 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { MatSidenav } from '@angular/material';
 import { Contact } from '../../contact/shared/contact';
 import { ContactService } from '../../contact/shared/contact.service';
 import { ChatConfiguration } from '../shared/chat-configuration';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-chat',

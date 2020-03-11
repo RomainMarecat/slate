@@ -1,7 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces';
 import { FormGroup } from '@angular/forms';
-import { MatIconRegistry } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentReference } from '@firebase/firestore-types';
 import { TableColumn } from '@swimlane/ngx-datatable';
@@ -13,6 +12,7 @@ import { Media } from '../../../media/media';
 import { AlertService } from '../../../popup/alert.service';
 import { StringService } from '../../../util/string.service';
 import { ArticleFormType } from '../../shared/article/form-article';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-admin-article-edit',

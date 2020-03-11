@@ -1,9 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-
-import {
-  MatToolbarModule
-} from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
 import { FooterComponent } from './footer.component';
@@ -14,6 +10,7 @@ import { MockCmsDetailService } from '../cms-detail/shared/mock-cms-detail.servi
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../router/mock-localize-router.service';
 import { configureTestSuite } from '../unit-test/configure-test-suite';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;

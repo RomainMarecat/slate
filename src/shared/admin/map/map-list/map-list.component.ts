@@ -2,11 +2,11 @@ import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/
 import { Router } from '@angular/router';
 import { MenuService } from '../../../menu/menu.service';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
-import { MatDialog } from '@angular/material';
 import { MapService } from '../../../map/shared/map.service';
 import { Map } from '../../../map/shared/map';
 import { LocalizeRouterService } from 'localize-router';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-map-list',

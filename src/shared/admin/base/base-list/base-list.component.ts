@@ -1,14 +1,12 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
 import { Observable } from 'rxjs';
-import { DeviceOrientation } from 'tns-core-modules/ui/enums';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
 import { MenuService } from '../../../menu/menu.service';
 import { VisitorService } from '../../../firestore/visitor.service';
-import { MatDialog } from '@angular/material';
 import { LocalizeRouterService } from 'localize-router';
 import { Router } from '@angular/router';
-import unknown = DeviceOrientation.unknown;
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-base-list',

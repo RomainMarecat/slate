@@ -3,14 +3,6 @@ import { MockMatIconComponent } from '../../mock/mock-mat-icon.component';
 
 import { SearchDialogComponent } from './search-dialog.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import {
-  MAT_DIALOG_DATA,
-  MatAutocompleteModule,
-  MatDialogModule, MatDialogRef,
-  MatFormFieldModule, MatIcon,
-  MatIconModule,
-  MatInputModule
-} from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
@@ -20,6 +12,11 @@ import { MockLocalizeRouterService } from '../../router/mock-localize-router.ser
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
 
 describe('SearchDialogComponent', () => {
   let component: SearchDialogComponent;

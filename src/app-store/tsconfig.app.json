@@ -5,6 +5,10 @@
         "baseUrl": "./",
         "types": []
     },
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
     "include": [
         "main.ts",
         "polyfills.ts",
@@ -20,15 +24,5 @@
         "../shared/preference/preference.module.ts",
         "../shared/admin/base/*/*.ts",
         "../shared/admin/base/*.ts"
-    ],
-    "exclude": [
-        "test.ts",
-        "../shared/i18n/translate-server-loader.service.ts",
-        "**/*.spec.ts",
-        "../shared/*.spec.ts",
-        "../shared/**/*.spec.ts",
-        "**/*.tns.ts",
-        "**/*.android.ts",
-        "**/*.ios.ts"
     ]
 }

@@ -5,7 +5,6 @@ import { configureTestSuite } from '../../../../shared/unit-test/configure-test-
 import { CategoryItemComponent } from '../../../../shared/category/category-item/category-item.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
-import { MatIconModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StorageModule } from '../../../../shared/media/storage/storage.module';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -18,6 +17,7 @@ import { FavoriteService } from '../../../../shared/favorite/shared/favorite.ser
 import { MockFavoriteService } from '../../../../shared/favorite/shared/mock-favorite.service';
 import { MockUserService } from '../../../../shared/user/shared/mock-user.service';
 import { UserService } from '../../../../shared/user/shared/user.service';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('CategoryListComponent', () => {
   let component: CategoryListComponent;

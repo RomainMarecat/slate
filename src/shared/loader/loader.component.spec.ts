@@ -2,11 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { LoaderComponent } from './loader.component';
-import { MatProgressBarModule, MatProgressSpinnerModule } from '@angular/material';
 import { LoaderService } from './loader.service';
 import { MockLoaderService } from './mock-loader.service';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 describe('LoaderComponent', () => {
   let component: LoaderComponent;

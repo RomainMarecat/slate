@@ -54,7 +54,7 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
  *
  */
 import './zone-flags.js';
-
+import '@angular/localize/init';
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
