@@ -10,7 +10,7 @@ import { ProfilService } from '../../shared/services/profil.service';
 import { ToastService } from '../../shared/services/toast.service';
 import { UserService } from '../../shared/services/user.service';
 import { Cart } from '../../shared/interfaces/cart';
-import { CartService } from '../cart/shared/cart.service';
+import { CartService } from '../../shared/services/cart.service';
 
 @Component({
   selector: 'app-profil',

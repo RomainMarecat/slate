@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { OnlineSession } from '@romainmarecat/ngx-calendar';
-import { CartService } from '../../../pages/cart/shared/cart.service';
+import { CartService } from '../../services/cart.service';
 import { LoginComponent } from '../../../pages/security/login/login.component';
 import { CityTeached } from '../../interfaces/city-teached';
 import { MeetingPoint } from '../../interfaces/meeting-point';
@@ -24,6 +24,7 @@ import { SelectCityTeachedComponent } from '../select-city-teached/select-city-t
 import { SelectSportTeachedComponent } from '../select-sport-teached/select-sport-teached.component';
 import { SessionSummaryComponent } from '../session/session-summary/session-summary.component';
 import { Router } from '@angular/router';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-profil-agenda',
@@ -54,6 +55,7 @@ export class AgendaComponent implements OnInit {
               public dialog: MatDialog,
               private toastService: ToastService,
               private cartService: CartService,
+              private productService: ProductService,
               private authenticationService: AuthenticationService,
               private cityTeachedService: CityTeachedService,
               private sportTeachedService: SportTeachedService,
@@ -234,13 +236,23 @@ export class AgendaComponent implements OnInit {
           data: newSession
         });
 
-        this.matDialogRef.afterClosed()
-          .subscribe(result => {
-            if (result) {
-              this.router.navigate(['/cart']);
-            }
-          });
+        this.onCloseModal(newSession);
       }
     });
+  }
+
+  onCloseModal(session: Session) {
+    this.matDialogRef.afterClosed()
+      .subscribe(result => {
+        if (result) {
+          this.productService.getProduct('sport-session')
+            .subscribe((product) => {
+              this.cartService.addToCart(product, session, 1)
+                .subscribe(() => {
+                  this.router.navigate(['/cart']);
+                });
+            });
+        }
+      });
   }
 }

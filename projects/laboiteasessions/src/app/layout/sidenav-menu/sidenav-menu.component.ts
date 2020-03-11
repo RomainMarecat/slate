@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CartService } from '../../pages/cart/shared/cart.service';
+import { CartService } from '../../shared/services/cart.service';
 import { User } from '../../shared/interfaces/user';
 import { AuthenticationService } from '../../shared/services/authentication.service';
 import { AppState } from '../../shared/store/app.state';

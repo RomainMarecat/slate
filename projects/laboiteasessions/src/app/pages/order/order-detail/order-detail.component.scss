@@ -1,0 +1,45 @@
+.order-detail-wrapper {
+  margin-top: 5rem;
+
+  .header-wrapper {
+    .title-wrapper {
+      .order-detail-title {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .content-wrapper {
+    .card-wrapper {
+      &.card-img-top {
+        img {
+          width: 140px;
+          height: 140px;
+        }
+      }
+    }
+
+    mat-list-item {
+      height: 24px;
+
+      &.item-name {
+        height: 48px;
+
+        &.mat-list-item {
+          font-size: 14px;
+        }
+      }
+    }
+
+    mat-card-content {
+      .item-link {
+        text-decoration: none;
+      }
+    }
+
+    .resume-title-wrapper {
+      width: 130px;
+    }
+  }
+}
+

@@ -1,11 +1,18 @@
+import { Media } from './media';
+import { Cart } from './cart';
+import { User } from './user';
+import { Delivery } from './delivery';
+import { Payment } from './payment';
+
 export interface Order {
   id: string;
-  cart: string;
+  cart: Cart;
   total: number;
   delivery_fee: number;
-  user: string;
-  delivery?: string;
-  items: OrderItem[];
+  user: User;
+  payment: Payment;
+  delivery?: Delivery;
+  order_items: OrderItem[];
   created_at: Date;
   updated_at: Date;
   shipping?: string;
@@ -16,7 +23,7 @@ export interface OrderItem {
   id: string;
   name: string;
   code: string;
-  image: string;
+  media: Media;
   quantity: number;
   price: number;
   is_eticket?: boolean;

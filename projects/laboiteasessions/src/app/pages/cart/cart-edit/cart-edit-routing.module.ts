@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartEditComponent
+  },
+  {
+    path: 'cart/cart',
+    redirectTo: 'cart'
   }
 ];
 

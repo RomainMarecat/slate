@@ -20,6 +20,7 @@ import { NgxStripeModule, StripeService } from 'ngx-stripe';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockStoreModule } from '../../../shared/store/mock/mock-store.module';
 import { initialAppState } from '../../../shared/store/app.state';
+import { JwtModule } from '@auth0/angular-jwt';
 
 describe('CartPaymentComponent', () => {
   let component: CartPaymentComponent;
@@ -47,6 +48,13 @@ describe('CartPaymentComponent', () => {
         MockStoreModule.forRoot('app', initialAppState),
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
+        }),
+        JwtModule.forRoot({
+          config: {
+            tokenGetter: () => {
+              return 'mock.token';
+            }
+          }
         }),
       ],
       declarations: [

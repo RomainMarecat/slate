@@ -19,6 +19,7 @@ import { CartListModule } from '../cart-list/cart-list.module';
 import { MockStoreModule } from '../../../shared/store/mock/mock-store.module';
 import { initialAppState } from '../../../shared/store/app.state';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { JwtModule } from '@auth0/angular-jwt';
 
 describe('CartEditComponent', () => {
   let component: CartEditComponent;
@@ -43,6 +44,13 @@ describe('CartEditComponent', () => {
         CartListModule,
         FlexLayoutModule,
         RouterTestingModule,
+        JwtModule.forRoot({
+          config: {
+            tokenGetter: () => {
+              return 'mock.token';
+            }
+          }
+        }),
         MockStoreModule.forRoot('app', initialAppState),
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}

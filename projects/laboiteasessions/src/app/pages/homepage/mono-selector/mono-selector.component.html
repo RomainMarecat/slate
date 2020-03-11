@@ -1,13 +1,14 @@
 <div class="mono_selector_wrapper col-12">
-  <h1 class="mono-select-title text-primary m-0 text-center" i18n="mono-selector title">
+  <h1 class="mono-select-title text-primary m-0 text-center"
+      i18n>
     Rechercher un coach
   </h1>
   <div id="mono-select-container" class="bg-white d-flex justify-content-center">
     <mat-form-field class="my-5">
       <input #monoInput
              matInput
-             placeholder="Type the name of your La boite à sessions here"
-             i18n-placeholder="mono selector placeholder"
+             placeholder="entrer le nom de votre coach"
+             i18n-placeholder="entrer le nom de votre coach"
              [matAutocomplete]="auto"
              [formControl]="monoListCtrl"
              (ngModelChange)="onMonoSelected($event)">

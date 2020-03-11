@@ -1,18 +1,7 @@
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild
-} from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CartService } from '../shared/cart.service';
+import { CartService } from '../../../shared/services/cart.service';
 import {
   ElementOptions,
   Elements,
@@ -22,9 +11,8 @@ import {
   StripeService,
   TokenResult
 } from 'ngx-stripe';
-import { Subscription } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { FirebaseError } from 'firebase';
+import { Observable } from 'rxjs';
+import { take, timeout } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Cart } from '../../../shared/interfaces/cart';
 import { Delivery } from '../../../shared/interfaces/delivery';
@@ -32,29 +20,27 @@ import { Payment } from '../../../shared/interfaces/payment';
 import { UserService } from '../../../shared/services/user.service';
 import { OrderService } from '../../../shared/services/order.service';
 import { DeliveryService } from '../../../shared/services/delivery.service';
-import { Order, OrderItem } from '../../../shared/interfaces/order';
+import { Order } from '../../../shared/interfaces/order';
 import { ProductService } from '../../../shared/services/product.service';
-import { Product } from '../../../shared/interfaces/product';
 import { User } from '../../../shared/interfaces/user';
 import { PaymentService } from '../../../shared/services/payment.service';
+import { AuthenticationService } from '../../../shared/services/authentication.service';
 
 @Component({
   selector: 'app-cart-payment',
   templateUrl: './cart-payment.component.html',
   styleUrls: ['./cart-payment.component.scss']
 })
-export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
+export class CartPaymentComponent implements OnInit {
   @ViewChild('cardInfo', {static: false}) cardInfo: ElementRef;
 
-  _cart: Cart;
+  cart: Cart;
 
-  @Input() user: User;
+  user: User;
 
-  @Input() delivery: Delivery;
+  delivery: Delivery;
 
-  onLine: boolean;
-
-  error: Error | FirebaseError;
+  error: Error;
 
   @Output() paid: EventEmitter<any> = new EventEmitter<any>();
 
@@ -85,11 +71,7 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
 
   cardHandler = this.onChange.bind(this);
 
-  form: FormGroup = new FormGroup({});
   payment: Payment;
-
-  // Url
-  previousRoute: string;
 
   disablePayButton = false;
 
@@ -102,56 +84,53 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
               private cd: ChangeDetectorRef,
               private stripeService: StripeService,
               private productService: ProductService,
+              private authenticationService: AuthenticationService,
               private deliveryService: DeliveryService) {
   }
 
   ngOnInit() {
-    // this.previousRoute = this.routingState.getPreviousUrl() || '/cart';
+    this.getUser().subscribe((user) => this.user = user);
+    this.getCart()
+      .subscribe((cart) => {
+        if (cart.state !== 'payment') {
+          this.router.navigate([
+            '/cart',
+            cart.state
+          ]);
+          return;
+        }
+        this.cart = cart;
+        this.getDelivery(cart);
+      });
   }
 
-  ngAfterViewInit() {
+  getUser(): Observable<User> {
+    return this.authenticationService.getUser();
   }
 
-  ngOnDestroy() {
-  }
-
-  @Input() set cart(cart: Cart) {
-    if (cart) {
-      this._cart = cart;
-      this.getDelivery(cart);
-    }
-  }
-
-  get cart(): Cart {
-    return this._cart;
+  getCart(): Observable<Cart> {
+    this.cartService.filters$.next([
+      {
+        column: 'status',
+        operator: '==',
+        value: 'current'
+      }
+    ]);
+    return this.cartService.getCurrentCart()
+      .pipe(
+        take(1)
+      );
   }
 
   getDelivery(cart: Cart) {
-    // this.deliveryService.filters$.next([
-    //   {
-    //     column: 'cart',
-    //     operator: 'array-contains',
-    //     value: cart.id
-    //   }
-    // ]);
-    const subscription: Subscription = this.deliveryService.getDeliveries()
-      .subscribe((deliveries: Delivery[]) => {
-        if (deliveries && deliveries.length) {
-          this.delivery = deliveries[0];
-        }
-        if (subscription) {
-          subscription.unsubscribe();
-        }
-      }, () => {
-        // this.alertService.openAlertMessage(
-        //   {title: '', message: 'cart-payment.errors.delivery'},
-        //   {panelClass: 'alert-danger'}
-        // );
+    this.deliveryService.getDeliveryFromCart(cart)
+      .subscribe((delivery: Delivery) => {
+        this.delivery = delivery;
       });
   }
 
   cancel() {
-    this.router.navigate([this.previousRoute]);
+    this.router.navigate(['/cart/delivery']);
     this.cancelled.emit(true);
   }
 
@@ -165,46 +144,33 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onSubmit(form: NgForm) {
-    // this.loaderService.show();
+    this.error = null;
     this.togglePayButton();
-    this.userService.getUser()
-      .subscribe((user: User) => {
-        if (user &&
-          user.id &&
-          this.cart &&
-          this.delivery &&
-          this.cart.total) {
-          this.createToken();
-        } else {
-          // Undefined cart or undefined total
-          // this.alertService.openAlertMessage(
-          //   {title: '', message: 'cart-payment.errors.cart'},
-          //   {panelClass: 'alert-danger'}
-          // );
-          this.togglePayButton();
-          // this.loaderService.hide();
-        }
-      });
+    if (form.valid) {
+      this.createToken(this.user);
+      return;
+    }
 
+    // Undefined cart or undefined total
+    this.handleErrorResponse({message: 'form.invalid'} as HttpErrorResponse);
+    this.togglePayButton();
   }
 
-  createToken(): void {
-    this.userService.getUser()
-      .subscribe((user) => {
-        this.stripeService
-          .createToken(this.card.getCard(), {name: user.email})
-          .subscribe((result: TokenResult) => {
-            if (result.token) {
-              const order = this.createOrder(result);
-              this.saveOrder(order);
-            } else if (result.error) {
-              // Error creating the token
-              this.handleErrorResponse(result.error);
-              this.togglePayButton();
-            }
-          });
+  createToken(user: User): void {
+    this.stripeService
+      .createToken(this.card.getCard(), {name: user.email})
+      .pipe(timeout(5000))
+      .subscribe((result: TokenResult) => {
+        if (result.token) {
+          this.saveOrder(this.createOrder(result));
+        } else if (result.error) {
+          // Error creating the token
+          this.handleErrorResponse(result.error);
+          this.togglePayButton();
+        }
+      }, (err) => {
+        this.handleErrorResponse(err);
       });
-
   }
 
   saveOrder(order: Order) {
@@ -212,132 +178,61 @@ export class CartPaymentComponent implements OnInit, AfterViewInit, OnDestroy {
     // send the token to the your backend to process the charge
     this.orderService.createOrder(order)
       .subscribe((createdOrder) => {
-        order.id = createdOrder.id;
-        this.orderService.updateOrder(order)
-          .subscribe(() => {
-            this.payment.order = order.id;
-            this.savePayment(order);
-          }, (err) => {
-            this.handleErrorResponse(err);
-            this.togglePayButton();
-          });
+        this.onPaid(createdOrder);
       }, (err) => {
         this.handleErrorResponse(err);
         this.togglePayButton();
       });
   }
 
-  savePayment(order: Order) {
-    this.paymentService.createPayment(this.payment)
-      .subscribe((createdPayment: Payment) => {
-        this.payment.id = createdPayment.id;
-        this.paymentService.updatePayment(this.payment)
-          .subscribe(() => {
-            this.cart.state = 'confirmation';
-            this.cart.order = order.id;
-
-            this.updateCart(order);
-
-            this.togglePayButton();
-          }, (err) => {
-            this.handleErrorResponse(err);
-            this.togglePayButton();
-          });
-      }, (err) => {
-        this.handleErrorResponse(err);
-        this.togglePayButton();
-      });
-  }
-
-  updateCart(order: Order) {
-    this.cartService.updateCart(this.cart)
-      .subscribe(() => {
-        this.paid.emit(this.payment);
-        this.paymentService.payment$.next(this.payment);
-        this.updateDelivery(order);
-
-        this.updateOrderedProducts(order);
-
-        // this.loaderService.hide();
-      }, (err) => {
-        this.handleErrorResponse(err);
-        this.togglePayButton();
-      });
-  }
-
-  updateDelivery(order: Order) {
-    if (!this.delivery.order) {
-      this.delivery.order = [];
-    }
-    if (!this.delivery.order.includes(order.id)) {
-      this.delivery.order.push(order.id);
-    }
-    this.deliveryService.updateDelivery(this.delivery)
-      .subscribe(() => {
-          // async save delivery order id
-        },
-        (err) => {
-          this.handleErrorResponse(err);
-        });
+  /**
+   * On fill and validate payment
+   */
+  onPaid(order: Order) {
+    this.router.navigate(
+      [
+        '/order',
+        'confirmation',
+        order.id
+      ]
+    );
   }
 
   createOrder(result: TokenResult): Order {
     // Use the token to create a charge or a customer
     // https://stripe.com/docs/charges
-    const order: Order = {
-      id: null,
-      cart: this.cart.id,
-      total: this.cart.total,
-      user: this.cart.user,
-      items: this.cart.items,
-      status: 'capture_authorized',
-      delivery_fee: 0,
-      delivery: this.delivery.id,
-      created_at: new Date(),
-      updated_at: new Date(),
-    };
-
     this.payment = {
       id: null,
+      order: null,
       token: result.token,
       created_at: new Date(),
       updated_at: new Date(),
     };
 
-    return order;
+    return {
+      id: null,
+      cart: this.cart.id as unknown as Cart,
+      total: this.cart.total,
+      user: this.cart.user,
+      order_items: this.cart.items.map(i => {
+        return {...i, ...{media: i.product.media}};
+      }),
+      status: null,
+      delivery_fee: 0,
+      delivery: this.delivery.id as unknown as Delivery,
+      payment: this.payment,
+      created_at: new Date(),
+      updated_at: new Date(),
+    };
   }
-
-  updateOrderedProducts(order: Order) {
-    order.items.forEach((orderItem: OrderItem) => {
-      this.productService.updateProductByKey(orderItem.code, {ordered: orderItem.quantity} as Product)
-        .pipe(
-          take(1)
-        )
-        .subscribe(() => {
-        });
-    });
-  }
-
 
   togglePayButton() {
     this.disablePayButton = !this.disablePayButton;
   }
 
-  handleErrorResponse(err: HttpErrorResponse | FirebaseError | Error) {
+  handleErrorResponse(err: HttpErrorResponse | Error) {
     if (typeof err.message === 'string') {
-      this.error = err as FirebaseError | Error;
-
-      // this.alertService.openAlertMessage(
-      //   {title: '', message: err.message},
-      //   {panelClass: 'alert-danger'}
-      // );
+      this.error = err as Error;
     }
-    if (err instanceof HttpErrorResponse) {
-      // this.alertService.openAlertMessage(
-      //   {title: '', message: err.error.message},
-      //   {panelClass: 'alert-danger'}
-      // );
-    }
-    // this.loaderService.hide();
   }
 }

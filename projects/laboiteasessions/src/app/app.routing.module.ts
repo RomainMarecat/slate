@@ -28,13 +28,29 @@ export const appRoutes: Routes = [
     loadChildren: () => import('./pages/cart/cart-edit/cart-edit.module').then(m => m.CartEditModule)
   },
   {
+    path: '',
+    loadChildren: () => import('./pages/cart/cart-delivery/cart-delivery.module').then(m => m.CartDeliveryModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./pages/cart/cart-payment/cart-payment.module').then(m => m.CartPaymentModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./pages/cart/cart-confirmation/cart-confirmation.module').then(m => m.CartConfirmationModule)
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('./pages/order/order.module').then(m => m.OrderModule)
+  },
+  {
     path: 'sports',
     loadChildren: () => import('./pages/sport-list/sport-list.module').then(m => m.SportListModule)
   },
-  {
-    path: '404',
-    loadChildren: () => import('./pages/page-not-found/pagenotfound.module').then(m => m.PagenotfoundModule)
-  },
+  // {
+  //   path: '404',
+  //   loadChildren: () => import('./pages/page-not-found/pagenotfound.module').then(m => m.PagenotfoundModule)
+  // },
   {path: '**', redirectTo: '/404'}
 ];
 

@@ -1,10 +1,15 @@
+import { Session } from './session';
+import { Product } from './product';
+import { User } from './user';
+
 export interface CartItem {
   id: string;
   name: string;
   code: string;
   quantity: number;
-  image: string;
   price: number;
+  product: Product;
+  session: Session;
   created_at: Date;
   updated_at: Date;
 }
@@ -12,7 +17,7 @@ export interface CartItem {
 export interface Cart {
   id: string;
   total: number;
-  user: string;
+  user: User;
   status?: string;
   state?: 'cart' | 'connection' | 'delivery' | 'payment' | 'confirmation'; // current active route
   created_at: Date;

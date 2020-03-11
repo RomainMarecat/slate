@@ -4,30 +4,24 @@
          fxLayoutAlign="center stretch">
       <div class="cart-confirmation-wrapper">
         <div class="cart-confirmation-header">
-
-          <h2 class="cart-confirmation-title">
-            {{ 'order-confirmation.title' }}
+          <h2 class="cart-confirmation-title"
+              i18n>
+            Commande confirmée
           </h2>
         </div>
         <div class="cart-confirmation-content">
-          <p class="waiting">
-            {{ 'order-confirmation.content.waiting' }}
+          <p class="waiting" i18n>
+            votre commande sera bientôt validée
           </p>
-
-          <h3 class="text-capitalize">
-            {{ 'order-confirmation.content.summary' }}
-          </h3>
-
           <p>
-            <strong class="text-ucfirst">{{ 'order-confirmation.content.key' }} : </strong>
+            <strong class="text-ucfirst" i18n>n° de commande : </strong>
             <span>{{ order?.id }}</span>
           </p>
 
           <p>
-            <strong class="text-capitalize">{{ 'order-confirmation.content.total' }} : </strong>
-            <span>{{ order?.total }} {{ 'euro' }}</span>
+            <strong class="text-capitalize" i18n>total : </strong>
+            <span>{{ order?.total }} <span i18n>€</span></span>
           </p>
-
         </div>
         <div class="order-actions">
           <a mat-raised-button
@@ -35,7 +29,7 @@
              class="order-actions-link"
              routerLink="/">
             <mat-icon>home</mat-icon>
-            <span>{{ 'cta.back_to_home' }}</span>
+            <span i18n>Retour à l'accueil</span>
           </a>
         </div>
       </div>

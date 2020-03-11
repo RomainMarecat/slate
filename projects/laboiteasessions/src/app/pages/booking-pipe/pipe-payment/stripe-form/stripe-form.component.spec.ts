@@ -5,7 +5,7 @@ import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-tran
 import { BookingsService } from '../../../../shared/services/bookings.service';
 import { initialAppState } from '../../../../shared/store/app.state';
 import { MockStoreModule } from '../../../../shared/store/mock/mock-store.module';
-import { CartService } from '../../../cart/shared/cart.service';
+import { CartService } from '../../../../shared/services/cart.service';
 
 import { StripeFormComponent } from './stripe-form.component';
 

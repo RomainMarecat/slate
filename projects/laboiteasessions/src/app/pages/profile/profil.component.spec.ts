@@ -16,7 +16,7 @@ import { ProfilService } from '../../shared/services/profil.service';
 import { SportTeachedService } from '../../shared/services/sport-teached.service';
 import { initialAppState } from '../../shared/store/app.state';
 import { MockStoreModule } from '../../shared/store/mock/mock-store.module';
-import { CartService } from '../cart/shared/cart.service';
+import { CartService } from '../../shared/services/cart.service';
 import { CartModule } from './cart/cart.module';
 import { MapModule } from './map/map.module';
 import { NavigationModule } from './navigation/navigation.module';

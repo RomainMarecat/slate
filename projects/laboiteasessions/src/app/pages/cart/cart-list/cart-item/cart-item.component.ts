@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Cart, CartItem } from '../../../../shared/interfaces/cart';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart-item',
@@ -7,6 +8,8 @@ import { Cart, CartItem } from '../../../../shared/interfaces/cart';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent implements OnInit {
+
+  locale = this.translateService.getBrowserLang();
 
   totalQuantity = 0;
 
@@ -31,7 +34,7 @@ export class CartItemComponent implements OnInit {
     quantity: number
   }> = new EventEmitter<{cartItem: CartItem, quantity: number}>();
 
-  constructor() {
+  constructor(private translateService: TranslateService) {
   }
 
   ngOnInit() {

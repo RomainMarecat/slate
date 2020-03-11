@@ -10,7 +10,7 @@ import { Payment } from '../interfaces/payment';
 export class PaymentService {
 
   payment$: BehaviorSubject<Payment> = new BehaviorSubject<Payment>(null);
-  private secureUrl = `${environment.middleware}/v1/secure/payments`;
+  private secureUrl = `${environment.middleware}/v1/restricted/payments`;
 
   constructor(private http: HttpClient) {
   }

@@ -17,10 +17,12 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterTestingModule } from '@angular/router/testing';
-import { LocalizeRouterModule } from 'localize-router';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { StripeService } from 'ngx-stripe';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { JwtModule } from '@auth0/angular-jwt';
+import { MockStoreModule } from '../../../shared/store/mock/mock-store.module';
+import { initialAppState } from '../../../shared/store/app.state';
 
 describe('CartDeliveryComponent', () => {
   let component: CartDeliveryComponent;
@@ -45,7 +47,14 @@ describe('CartDeliveryComponent', () => {
         ReactiveFormsModule,
         FlexLayoutModule,
         RouterTestingModule,
-        LocalizeRouterModule,
+        MockStoreModule.forRoot('app', initialAppState),
+        JwtModule.forRoot({
+          config: {
+            tokenGetter: () => {
+              return 'mock.token';
+            }
+          }
+        }),
         TranslateModule.forRoot({
           loader: {provide: TranslateLoader, useClass: TranslateFakeLoader}
         }),

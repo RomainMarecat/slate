@@ -15,7 +15,7 @@ import { ToastService } from '../../../shared/services/toast.service';
 import { UserService } from '../../../shared/services/user.service';
 import { initialAppState } from '../../../shared/store/app.state';
 import { MockStoreModule } from '../../../shared/store/mock/mock-store.module';
-import { CartService } from '../../cart/shared/cart.service';
+import { CartService } from '../../../shared/services/cart.service';
 import { BookingPipeService } from '../booking-pipe.service';
 
 import { PipeInfosComponent } from './pipe-infos.component';
