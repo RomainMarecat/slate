@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { Product } from '../../../product/shared/product';
 import { MenuService } from '../../../menu/menu.service';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
-import { MatDialog } from '@angular/material';
 import { CloudinaryUploadService } from '../../../media/cloudinary/cloudinary-upload.service';
 import { StringService } from '../../../util/string.service';
 import { Filter } from '../../../facet/filter/shared/filter';
 import { ProductService } from '../../../product/shared/product.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from 'localize-router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-list',

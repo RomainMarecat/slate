@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -13,6 +12,7 @@ import { AppState } from '../../../shared/store/app.state';
 import { Login } from '../../../shared/store/user/actions/login.action';
 import { selectLoggedIn } from '../../../shared/store/user/selectors/user.selector';
 import { PasswordResetFormComponent } from '../password-reset-form/password-reset-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',

@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatSelectChange } from '@angular/material';
 import { OnlineSession } from '@romainmarecat/ngx-calendar';
 
 import * as _moment from 'moment';
+import { MatSelectChange } from '@angular/material/select';
 const moment = _moment;
 
 @Component({

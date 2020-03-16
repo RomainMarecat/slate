@@ -17,79 +17,79 @@ const routes: Routes = [
   {
     // On root we go to root. On other route we start with this route and go on children route
     path: '',
-    loadChildren: './dashboard/dashboard.module#DashboardModule'
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: 'a2hs',
-    loadChildren: './../shared/a2hs/a2hs.module#A2hsModule'
+    loadChildren: () => import('./../shared/a2hs/a2hs.module').then(m => m.A2hsModule)
   },
   {
     path: 'charts',
-    loadChildren: './../shared/chart/chart.module#ChartModule'
+    loadChildren: () => import('./../shared/chart/chart.module').then(m => m.ChartModule)
   },
   {
     path: 'products',
-    loadChildren: './../shared/product/product.module#SharedProductWithRoutesModule'
+    loadChildren: () => import('./../shared/product/product.module').then(m => m.SharedProductWithRoutesModule)
   },
   {
     path: 'gprd',
-    loadChildren: './../shared/gprd/gprd.module#GprdModule'
+    loadChildren: () => import('./../shared/gprd/gprd.module').then(m => m.GprdModule)
   },
   {
     path: 'boards',
-    loadChildren: './../shared/board/board.module#BoardModule'
+    loadChildren: () => import('./../shared/board/board.module').then(m => m.BoardModule)
   },
   {
     path: 'admin',
-    loadChildren: './../shared/admin/admin.module#AdminModule'
+    loadChildren: () => import('./../shared/admin/admin.module').then(m => m.AdminModule)
   },
   {
     path: 'timeline',
-    loadChildren: './../shared/timeline/timeline.module#TimelineModule'
+    loadChildren: () => import('./../shared/timeline/timeline.module').then(m => m.TimelineModule)
   },
   {
     path: 'layout-builder',
-    loadChildren: './../shared/layout-builder/layout-builder.module#LayoutBuilderModule'
+    loadChildren: () => import('./../shared/layout-builder/layout-builder.module').then(m => m.LayoutBuilderModule)
   },
   {
     path: 'invoices',
-    loadChildren: './../shared/invoice/invoice.module#InvoiceModule'
+    loadChildren: () => import('./../shared/invoice/invoice.module').then(m => m.InvoiceModule)
   },
   {
     path: 'users',
-    loadChildren: './../shared/user/user.module#UserModule'
+    loadChildren: () => import('./../shared/user/user.module').then(m => m.UserModule)
   },
   {
     path: 'material',
-    loadChildren: './../shared/material/example-material.module#ExampleMaterialModule'
+    loadChildren: () => import('./../shared/material/example-material.module').then(m => m.ExampleMaterialModule)
   },
   {
     path: 'contact-us',
-    loadChildren: './../shared/contact/contact.module#ContactModule'
+    loadChildren: () => import('./../shared/contact/contact.module').then(m => m.ContactModule)
   },
   {
     path: 'map',
-    loadChildren: './../shared/map/map.module#MapModule'
+    loadChildren: () => import('./../shared/map/map.module').then(m => m.MapModule)
   },
   {
     path: 'agenda',
-    loadChildren: './../shared/agenda/firebase-agenda.module#FirebaseAgendaModule'
+    loadChildren: () => import('./../shared/agenda/firebase-agenda.module').then(m => m.FirebaseAgendaModule)
   },
   {
     path: 'article',
-    loadChildren: './../shared/article/article.module#ArticleModule'
+    loadChildren: () => import('./../shared/article/article.module').then(m => m.ArticleModule)
   },
   {
     path: 'cart',
-    loadChildren: './../shared/cart/cart.module#CartModule'
+    loadChildren: () => import('./../shared/cart/cart.module').then(m => m.CartModule)
   },
   {
     path: 'faq',
-    loadChildren: './../shared/faq/faq.module#FaqModule'
+    loadChildren: () => import('./../shared/faq/faq.module').then(m => m.FaqModule)
   },
   {
     path: 'content',
-    loadChildren: './../shared/cms-detail/cms-detail.module#CmsDetailModule'
+    loadChildren: () => import('./../shared/cms-detail/cms-detail.module').then(m => m.CmsDetailModule)
   },
   {
     path: 'agenda/firebase-agenda',

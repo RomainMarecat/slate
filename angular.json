@@ -14,6 +14,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+            "aot": true,
                         "outputPath": "functions/dist/browser",
                         "index": "src/app-alr/index.html",
                         "main": "src/app-alr/main.ts",
@@ -67,7 +68,11 @@
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
-                                }
+                                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
                             ],
                             "serviceWorker": true,
                             "ngswConfigPath": "src/app-alr/ngsw-config.json"
@@ -149,7 +154,8 @@
                                     "with": "src/app-alr/environments/environment.prod.ts"
                                 }
                             ]
-                        }
+                        ,              "optimization": true
+}
                     }
                 }
             }
@@ -164,6 +170,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+            "aot": true,
                         "outputPath": "functions/dist/browser",
                         "index": "src/app-store-admin/index.html",
                         "main": "src/app-store-admin/main.ts",
@@ -217,7 +224,11 @@
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
-                                }
+                                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
                             ],
                             "serviceWorker": true,
                             "ngswConfigPath": "src/app-store-admin/ngsw-config.json"
@@ -295,6 +306,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+            "aot": true,
                         "outputPath": "functions/dist/browser",
                         "index": "src/app-showcase/index.html",
                         "main": "src/app-showcase/main.ts",
@@ -329,6 +341,12 @@
                     },
                     "configurations": {
                         "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/app-showcase/environments/environment.ts",
@@ -348,6 +366,12 @@
                             "ngswConfigPath": "src/app-showcase/ngsw-config.json"
                         },
                         "production-ionic": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
                             "outputPath": "src/app-showcase/www",
                             "fileReplacements": [
                                 {
@@ -469,7 +493,8 @@
                                     "with": "src/app-showcase/environments/server/environment.prod.ts"
                                 }
                             ]
-                        }
+                        ,              "optimization": true
+}
                     }
                 }
             }
@@ -484,6 +509,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+            "aot": true,
                         "outputPath": "functions/dist/browser",
                         "index": "src/app-car/index.html",
                         "main": "src/app-car/main.ts",
@@ -516,6 +542,12 @@
                     },
                     "configurations": {
                         "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/app-car/environments/environment.ts",
@@ -607,6 +639,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+            "aot": true,
                         "outputPath": "functions/dist/browser",
                         "index": "src/app-blog/index.html",
                         "main": "src/app-blog/main.ts",
@@ -639,6 +672,12 @@
                     },
                     "configurations": {
                         "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/app-blog/environments/environment.ts",
@@ -730,6 +769,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+            "aot": true,
                         "outputPath": "functions/dist/browser",
                         "index": "src/app-booking/index.html",
                         "main": "src/app-booking/main.ts",
@@ -762,6 +802,12 @@
                     },
                     "configurations": {
                         "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/app-booking/environments/environment.ts",
@@ -853,6 +899,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+            "aot": true,
                         "outputPath": "functions/dist/browser",
                         "index": "src/app-hockey/index.html",
                         "main": "src/app-hockey/main.ts",
@@ -885,6 +932,12 @@
                     },
                     "configurations": {
                         "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/app-hockey/environments/environment.ts",
@@ -976,6 +1029,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+            "aot": true,
                         "outputPath": "functions/dist/browser",
                         "index": "src/app-store/index.html",
                         "main": "src/app-store/main.ts",
@@ -1008,6 +1062,12 @@
                     },
                     "configurations": {
                         "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
                             "fileReplacements": [
                                 {
                                     "replace": "src/app-store/environments/environment.ts",
@@ -1102,7 +1162,8 @@
                                     "with": "src/app-store/environments/environment.prod.ts"
                                 }
                             ]
-                        }
+                        ,              "optimization": true
+}
                     }
                 }
             }
@@ -1117,6 +1178,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+            "aot": true,
                         "outputPath": "functions/dist/browser",
                         "index": "src/app-recipe/index.html",
                         "main": "src/app-recipe/main.ts",
@@ -1168,7 +1230,11 @@
                                     "type": "initial",
                                     "maximumWarning": "2mb",
                                     "maximumError": "5mb"
-                                }
+                                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
                             ],
                             "serviceWorker": true,
                             "ngswConfigPath": "src/app-recipe/ngsw-config.json"
@@ -1301,7 +1367,8 @@
                                     "with": "src/app-recipe/environments/environment.prod.ts"
                                 }
                             ]
-                        }
+                        ,              "optimization": true
+}
                     }
                 }
             }
@@ -1318,7 +1385,12 @@
                         "tsConfig": "projects/ngx-slack-notification/tsconfig.lib.json",
                         "project": "projects/ngx-slack-notification/ng-package.json"
                     }
-                },
+                ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-slack-notification/tsconfig.lib.prod.json"
+            }
+          }
+},
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
@@ -1353,7 +1425,12 @@
                         "tsConfig": "projects/ngx-calendar/tsconfig.lib.json",
                         "project": "projects/ngx-calendar/ng-package.json"
                     }
-                },
+                ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-calendar/tsconfig.lib.prod.json"
+            }
+          }
+},
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
@@ -1395,7 +1472,7 @@
                         "main": "projects/scanobeer/src/main.ts",
                         "polyfills": "projects/scanobeer/src/polyfills.ts",
                         "tsConfig": "projects/scanobeer/tsconfig.app.json",
-                        "aot": false,
+                        "aot": true,
                         "assets": [
                             "projects/scanobeer/src/assets",
                             "projects/scanobeer/src/robots.txt",
@@ -1419,6 +1496,12 @@
                     },
                     "configurations": {
                         "dev-ionic": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
                             "outputPath": "projects/scanobeer/src/www"
                         },
                         "production": {
@@ -1433,7 +1516,6 @@
                             "sourceMap": false,
                             "extractCss": true,
                             "namedChunks": false,
-                            "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
@@ -1451,6 +1533,12 @@
                             ]
                         },
                         "production-ionic": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
                             "outputPath": "projects/scanobeer/src/www",
                             "fileReplacements": [
                                 {
@@ -1463,7 +1551,6 @@
                             "sourceMap": false,
                             "extractCss": true,
                             "namedChunks": false,
-                            "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
@@ -1580,7 +1667,7 @@
                         "main": "projects/laboiteasessions/src/main.browser.ts",
                         "polyfills": "projects/laboiteasessions/src/polyfills.ts",
                         "tsConfig": "projects/laboiteasessions/tsconfig.app.json",
-                        "aot": false,
+                        "aot": true,
                         "assets": [
                             "projects/laboiteasessions/src/favicon.ico",
                             "projects/laboiteasessions/src/assets",
@@ -1620,7 +1707,6 @@
                             "sourceMap": false,
                             "extractCss": true,
                             "namedChunks": false,
-                            "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
                             "buildOptimizer": true,
@@ -1705,30 +1791,30 @@
     },
     "schematics": {
         "@schematics/angular:class": {
-            "spec": false
+            "skipTests": true
         },
         "@schematics/angular:component": {
-            "spec": true,
+            "skipTests": false,
             "inlineStyle": false,
             "inlineTemplate": false,
             "prefix": "app",
-            "styleext": "scss"
+            "style": "scss"
         },
         "@schematics/angular:directive": {
-            "spec": false,
+            "skipTests": true,
             "prefix": "app"
         },
         "@schematics/angular:guard": {
-            "spec": false
+            "skipTests": true
         },
         "@schematics/angular:module": {
-            "spec": false
+            "skipTests": true
         },
         "@schematics/angular:pipe": {
-            "spec": false
+            "skipTests": true
         },
         "@schematics/angular:service": {
-            "spec": false
+            "skipTests": true
         }
     },
     "cli": {}

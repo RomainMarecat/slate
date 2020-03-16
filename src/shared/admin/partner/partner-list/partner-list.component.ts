@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
-import { MatDialog } from '@angular/material';
 import { Partner } from '../../../partner/partner';
 import { PartnerService } from '../../../partner/partner.service';
 import { MenuService } from '../../../menu/menu.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from 'localize-router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-partner-list',

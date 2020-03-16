@@ -5,16 +5,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatCardModule,
-  MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule,
-  MatToolbarModule
-} from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HomeComponent } from './home.component';
 import { SharedModule } from '../../shared.module';
@@ -23,6 +13,14 @@ import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MenuService } from '../../menu/menu.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('Shared Admin HomeComponent', () => {
   let component: HomeComponent;

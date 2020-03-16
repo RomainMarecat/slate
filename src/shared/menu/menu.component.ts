@@ -4,7 +4,6 @@ import { SidenavService } from '../sidenav/sidenav.service';
 import { UserService } from '../user/shared/user.service';
 import { MenuService } from './menu.service';
 import { Subscription } from 'rxjs';
-import { MatDialog, MatDialogRef } from '@angular/material';
 import { SearchDialogComponent } from '../search/search-dialog/search-dialog.component';
 import { Filter } from '../facet/filter/shared/filter';
 import { LocalizeRouterService } from 'localize-router';
@@ -12,6 +11,7 @@ import { User } from '../user/shared/user';
 import { adminsID } from '../guard/admin';
 import { timeout } from 'rxjs/operators';
 import { MenuConfiguration } from './shared/menu-configuration';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-menu',

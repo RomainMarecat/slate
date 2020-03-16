@@ -4,9 +4,10 @@ import { SummaryComponent } from './summary/summary.component';
 import { MaterialRoutingModule } from './material-routing.module';
 import { NguCarouselModule } from '@ngu/carousel';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCardModule, MatIconModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { MaterialComponent } from './material/material.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [

@@ -4,7 +4,6 @@ import { CategoryComponent } from './category.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatIconModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
@@ -25,6 +24,8 @@ import { SharedProductModule } from '../../product/shared-product.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterTestingModule } from '@angular/router/testing';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('CategoryComponent', () => {
   let component: CategoryComponent;

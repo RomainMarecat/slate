@@ -2,13 +2,16 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToolbarComponent } from './toolbar.component';
 import { CommonModule } from '@angular/common';
-import {
-  MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatMenuModule, MatSidenavModule,
-  MatToolbarModule
-} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;

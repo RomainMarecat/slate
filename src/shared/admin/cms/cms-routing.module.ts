@@ -45,7 +45,7 @@ const routes: Routes = [
   {
     path: ':key/cms-details',
     canActivate: [AdminGuard],
-    loadChildren: './../cms-detail/cms-detail.module#CmsDetailModule'
+    loadChildren: () => import('./../cms-detail/cms-detail.module').then(m => m.CmsDetailModule)
   }
 ];
 

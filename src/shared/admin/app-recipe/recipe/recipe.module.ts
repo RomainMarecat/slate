@@ -19,19 +19,17 @@ import { ContrastService } from '../../../contrast/contrast.service';
 import { NgPipesModule } from 'ngx-pipes';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RecipeAssociatedComponent } from './recipe-edit/recipe-associated/recipe-associated.component';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatRadioModule,
-  MatSelectModule
-} from '@angular/material';
 import { FormModule } from '../../../material/form/form.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StorageModule } from '../../../media/storage/storage.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   imports: [

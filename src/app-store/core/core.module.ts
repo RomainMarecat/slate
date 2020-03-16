@@ -37,7 +37,6 @@ import { OrderService } from '../../shared/order/shared/order.service';
 import { CartService } from '../../shared/cart/shared/cart.service';
 import { ContactService } from '../../shared/contact/shared/contact.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { MatSnackBarModule } from '@angular/material';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
 import { FooterModule } from '../../shared/footer/footer.module';
 import { StorageModule } from '../../shared/media/storage/storage.module';
@@ -47,6 +46,7 @@ import { FavoriteService } from '../../shared/favorite/shared/favorite.service';
 import { BreadcrumbModule } from '../../shared/breadcrumb/breadcrumb.module';
 import { PaymentService } from '../../shared/payment/shared/payment.service';
 import { ShippingService } from '../../shared/shipping/shared/shipping.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export const production = new InjectionToken<string>('production');
 export const firebase = new InjectionToken<FirebaseAppConfig>('firebase');

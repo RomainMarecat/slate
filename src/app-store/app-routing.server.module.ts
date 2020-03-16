@@ -8,15 +8,15 @@ import { Observable } from 'rxjs';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './home/home.module#HomeModule'
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'products',
-    loadChildren: './../shared/product/product.module#SharedProductWithRoutesModule'
+    loadChildren: () => import('./../shared/product/product.module').then(m => m.SharedProductWithRoutesModule)
   },
   {
     path: 'cart',
-    loadChildren: './../shared/cart/cart.module#CartModule'
+    loadChildren: () => import('./../shared/cart/cart.module').then(m => m.CartModule)
   },
 ];
 

@@ -12,7 +12,6 @@ import { AreaService } from '../shared/area.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AreaListComponent } from '../area-list/area-list.component';
 import { AreaDrawComponent } from '../area-draw/area-draw.component';
-import { MatListModule } from '@angular/material';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgArrayPipesModule } from 'ngx-pipes';
@@ -20,6 +19,7 @@ import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { SeoModule } from '../../seo/seo.module';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { MatListModule } from '@angular/material/list';
 
 describe('MapComponent', () => {
   let component: MapComponent;

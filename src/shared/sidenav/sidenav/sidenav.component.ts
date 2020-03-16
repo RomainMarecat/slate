@@ -1,5 +1,4 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MatDrawer } from '@angular/material';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Subscription } from 'rxjs';
 import { I18nService } from '../../i18n/i18n.service';
@@ -10,6 +9,7 @@ import { User } from '../../user/shared/user';
 import { UserService } from '../../user/shared/user.service';
 import { SidenavService } from '../sidenav.service';
 import { ToggleState } from '../toggle';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-sidenav',

@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireStorage } from '@angular/fire/storage';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatBadgeModule, MatIconModule, MatTooltipModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
@@ -24,6 +23,9 @@ import { mockUser } from '../../../../../shared/user/shared/mock-user';
 import { MockUserService } from '../../../../../shared/user/shared/mock-user.service';
 import { UserService } from '../../../../../shared/user/shared/user.service';
 import { ProductListComponent } from './product-list.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;

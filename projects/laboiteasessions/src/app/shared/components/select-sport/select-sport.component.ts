@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import { MatSelectChange } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 import { Sport } from '../../interfaces/sport';
 import { ProfilService } from '../../services/profil.service';
 import { SportService } from '../../services/sport.service';
 import { Observable } from 'rxjs';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-select-sport',

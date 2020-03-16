@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
-import { MatCardModule, MatIconModule } from '@angular/material';
 import { NguCarouselModule } from '@ngu/carousel';
 
 import { SummaryComponent } from './summary.component';
@@ -11,6 +10,8 @@ import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { SeoModule } from '../../seo/seo.module';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 describe('SummaryComponent', () => {
   let component: SummaryComponent;

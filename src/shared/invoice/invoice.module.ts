@@ -5,17 +5,15 @@ import { InvoiceRoutingModule } from './invoice-routing.module';
 import { Invoice1Component } from './invoice1/invoice1.component';
 import { Invoice2Component } from './invoice2/invoice2.component';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatIconModule,
-  MatListModule,
-  MatTableModule,
-  MatTooltipModule
-} from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [

@@ -10,7 +10,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { MatCardModule } from '@angular/material';
 import { PipeModule } from '../../pipe/pipe.module';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
@@ -24,6 +23,7 @@ import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { ArticleItemComponent } from '../article-item/article-item.component';
+import { MatCardModule } from '@angular/material/card';
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;

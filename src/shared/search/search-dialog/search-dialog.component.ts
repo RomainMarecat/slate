@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { LocalizeRouterService } from 'localize-router';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Filter } from '../../facet/filter/shared/filter';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-search',

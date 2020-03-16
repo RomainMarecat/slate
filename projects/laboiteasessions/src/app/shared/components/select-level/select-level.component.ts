@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatSelectChange } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 import { Parameter } from '../../interfaces/parameter';
 import { ParameterService } from '../../parameter/parameter.service';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-select-level',
@@ -29,7 +29,7 @@ export class SelectLevelComponent implements OnInit {
     this.levels = this.parameterService.getParameters('level');
   }
 
-  updateLevel(event: MatSelectChange | any) {
+  updateLevel(event: MatSelectChange) {
     const level = event.value as Parameter;
     this.levelChanged.emit(level);
   }

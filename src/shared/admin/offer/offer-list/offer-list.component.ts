@@ -1,11 +1,11 @@
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuService } from '../../../menu/menu.service';
-import { MatDialog } from '@angular/material';
 import { Offer } from '../../../offer/offer';
 import { OfferService } from '../../shared/offer/offer.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from 'localize-router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-offer-list',

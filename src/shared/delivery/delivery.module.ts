@@ -6,10 +6,13 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { DeliveryListComponent } from './delivery-list/delivery-list.component';
 import { DeliveryItemComponent } from './delivery-item/delivery-item.component';
 import { LoaderModule } from '../loader/loader.module';
-import { MatButtonModule, MatCardModule, MatIconModule, MatListModule } from '@angular/material';
 import { NgPipesModule } from 'ngx-pipes';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [DeliveryComponent, DeliveryListComponent, DeliveryItemComponent],

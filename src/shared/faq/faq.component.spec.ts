@@ -8,16 +8,14 @@ import { MockCmsDetailService } from '../cms-detail/shared/mock-cms-detail.servi
 import { CmsDetailService } from '../cms-detail/shared/cms-detail.service';
 import { MockCmsService } from '../cms/shared/mock-cms.service';
 import { CmsService } from '../cms/shared/cms.service';
-import {
-  MatCardModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule
-} from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SeoModule } from '../seo/seo.module';
 import { configureTestSuite } from '../unit-test/configure-test-suite';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 describe('FaqComponent', () => {
   let component: FaqComponent;
@@ -28,7 +26,7 @@ describe('FaqComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        BrowserAnimationsModule,
+        NoopAnimationsModule,
         RouterTestingModule,
         MatCardModule,
         MatInputModule,

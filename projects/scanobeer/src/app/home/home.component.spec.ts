@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule, MatIconModule, MatInputModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
@@ -11,6 +10,9 @@ import { ProductService } from '../../../../../src/shared/product/shared/product
 import { MockLocalizeRouterService } from '../../../../../src/shared/router/mock-localize-router.service';
 
 import { HomeComponent } from './home.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;

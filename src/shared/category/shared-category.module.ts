@@ -4,9 +4,9 @@ import { CategoryItemComponent } from './category-item/category-item.component';
 import { LocalizeRouterModule } from 'localize-router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatIconModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { StorageModule } from '../media/storage/storage.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [

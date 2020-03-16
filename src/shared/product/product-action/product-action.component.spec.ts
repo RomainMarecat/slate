@@ -6,15 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
-import {
-  MatCardModule,
-  MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule
-} from '@angular/material';
 import { TranslateModule, TranslateLoader, TranslateFakeLoader } from '@ngx-translate/core';
 import { ProductActionComponent } from './product-action.component';
 import { MockUserService } from '../../user/shared/mock-user.service';
@@ -29,6 +20,13 @@ import { LoaderService } from '../../loader/loader.service';
 import { MockLoaderService } from '../../loader/mock-loader.service';
 import { LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('ProductActionComponent', () => {
   let component: ProductActionComponent;

@@ -5,7 +5,7 @@ import { LocalizeRouterModule } from 'localize-router';
 const routes: Routes = [
   {
     path: 'recipe',
-    loadChildren: './recipe/recipe.module#RecipeModule'
+    loadChildren: () => import('./recipe/recipe.module').then(m => m.RecipeModule)
   }
 ];
 

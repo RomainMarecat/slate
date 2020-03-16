@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { NgcCookieConsentService } from 'ngx-cookieconsent';
@@ -8,6 +7,7 @@ import { LoaderService } from '../../shared/loader/loader.service';
 import { MenuConfiguration } from '../../shared/menu/shared/menu-configuration';
 import { ScrollService } from '../../shared/scroll/shared/scroll.service';
 import { UserService } from '../../shared/user/shared/user.service';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',

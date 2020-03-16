@@ -4,11 +4,11 @@ import { Attribute } from '../../../attribute/attribute';
 import { AttributeService } from '../../../attribute/attribute.service';
 import { MenuService } from '../../../menu/menu.service';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
-import { MatDialog } from '@angular/material';
 import { take } from 'rxjs/operators';
 import { AlertService } from '../../../popup/alert.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from 'localize-router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-attribute-list',

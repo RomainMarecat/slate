@@ -4,17 +4,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatCardModule,
-  MatToolbarModule,
-  MatIconModule,
-  MatButtonModule,
-  MatGridListModule,
-  MatSelectModule,
-  MatInputModule,
-  MatCheckboxModule,
-  MatListModule, MatFormFieldModule,
-} from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CmsDetailService } from '../../../cms-detail/shared/cms-detail.service';
 import { MockCmsDetailService } from '../../../cms-detail/shared/mock-cms-detail.service';
@@ -29,6 +18,16 @@ import { CmsService } from '../../../cms/shared/cms.service';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { MockLocalizeRouterService } from '../../../router/mock-localize-router.service';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('CmsDetailListComponent', () => {
   let component: CmsDetailListComponent;

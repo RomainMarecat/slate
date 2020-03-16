@@ -6,9 +6,9 @@ import { Order } from '../../../order/shared/order';
 import { MenuService } from '../../../menu/menu.service';
 import { LocalizeRouterService } from 'localize-router';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
 import { OrderService } from '../../../order/shared/order.service';
 import { DatatableComponent, TableColumn } from '@swimlane/ngx-datatable';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-order-list',

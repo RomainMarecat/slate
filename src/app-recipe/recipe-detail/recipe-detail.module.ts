@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule, MatStepperModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RecipeInformationComponent } from './recipe-detail/recipe-information/recipe-information.component';
@@ -15,6 +14,11 @@ import { NgPipesModule } from 'ngx-pipes';
 import { RecipeDetailRoutingModule } from './recipe-detail-routing.module';
 import { ScrollModule } from '../../shared/scroll/scroll.module';
 import { StorageModule } from '../../shared/media/storage/storage.module';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [

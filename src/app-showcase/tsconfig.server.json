@@ -11,17 +11,13 @@
     "angularCompilerOptions": {
         "entryModule": "app.server.module#AppServerModule"
     },
+  "files": [
+    "main.server.ts"
+  ],
     "include": [
         "main.server.ts",
         "polyfills.ts",
         "../shared/*",
-        "../shared/**/*.ts"
-    ],
-    "exclude": [
-        "test.ts",
-        "**/*.spec.ts",
-        "../shared/mock/mock-mat-icon.component.ts",
-        "../shared/*.spec.ts",
-        "../shared/**/*.spec.ts"
+        "../shared/**/*.d.ts"
     ]
 }

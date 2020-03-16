@@ -4,12 +4,15 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { SharedProductModule } from '../../../../shared/product/shared-product.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule } from 'localize-router';
-import { MatButtonModule, MatIconModule, MatSnackBarModule, MatTooltipModule } from '@angular/material';
 import { NgPipesModule } from 'ngx-pipes';
 import { PopupModule } from '../../../../shared/popup/popup.module';
 import { RouterModule } from '@angular/router';
 import { StorageModule } from '../../../../shared/media/storage/storage.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [

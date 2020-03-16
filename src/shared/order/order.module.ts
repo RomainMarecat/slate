@@ -5,13 +5,16 @@ import { OrderRoutingModule } from './order-routing.module';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { OrderItemComponent } from './order-item/order-item.component';
-import { MatButtonModule, MatCardModule, MatIconModule, MatListModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OrderComponent } from './order/order.component';
 import { NgPipesModule } from 'ngx-pipes';
 import { LoaderModule } from '../loader/loader.module';
 import { StorageModule } from '../media/storage/storage.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [

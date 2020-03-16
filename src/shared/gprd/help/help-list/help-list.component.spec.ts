@@ -5,8 +5,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HelpIconComponent } from '../help-icon/help-icon.component';
-import { MatCardModule, MatDialogModule, MatIconModule } from '@angular/material';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 describe('HelpListComponent', () => {
   let component: HelpListComponent;

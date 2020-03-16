@@ -8,12 +8,14 @@ import { MockAlertService } from '../../popup/mock-alert.service';
 import { OfferService } from '../offer.service';
 import { MockOfferService } from '../mock-offer.service';
 import { OfferDetailComponent } from '../offer-detail/offer-detail.component';
-import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { PartnerModule } from '../../partner/partner.module';
 import { PartnerService } from '../../partner/partner.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
 import { MockPartnerService } from '../../partner/mock-partner.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;

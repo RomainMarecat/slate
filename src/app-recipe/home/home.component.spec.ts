@@ -5,7 +5,6 @@ import { HomeComponent } from './home.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
-import { MatButtonModule, MatCardModule, MatIcon, MatIconModule, MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AlertService } from '../../shared/popup/alert.service';
@@ -23,6 +22,11 @@ import { MenuService } from '../../shared/menu/menu.service';
 import { MockMediaService } from '../../shared/media/mock-media.service';
 import { MediaService } from '../../shared/media/media.service';
 import { MediaModule } from '../../shared/media/media.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('Recipe HomeComponent', () => {
   let component: HomeComponent;

@@ -4,7 +4,6 @@ import { RecipeInstructionListComponent } from './recipe-instruction-list.compon
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
-import { MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { NgPipesModule } from 'ngx-pipes';
@@ -19,6 +18,10 @@ import { MockLocalizeRouterService } from '../../../../shared/router/mock-locali
 import { MediaModule } from '../../../../shared/media/media.module';
 import { MediaService } from '../../../../shared/media/media.service';
 import { MockMediaService } from '../../../../shared/media/mock-media.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('RecipeInstructionListComponent', () => {
   let component: RecipeInstructionListComponent;

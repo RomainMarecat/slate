@@ -3,7 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArticleItemComponent } from './article-item.component';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCardModule } from '@angular/material';
 import { PipeModule } from '../../pipe/pipe.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -19,6 +18,7 @@ import { MockMediaService } from '../../media/mock-media.service';
 import { ArticleService } from '../shared/article.service';
 import { MockArticleService } from '../shared/mock-article.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MatCardModule } from '@angular/material/card';
 
 describe('ArticleItemComponent', () => {
   let component: ArticleItemComponent;

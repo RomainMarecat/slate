@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { OfferService } from './offer.service';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { OfferDetailComponent } from './offer-detail/offer-detail.component';
-import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PartnerModule } from '../partner/partner.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [

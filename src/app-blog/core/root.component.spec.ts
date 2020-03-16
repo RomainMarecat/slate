@@ -3,25 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatCommonModule,
-  MatFormFieldModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatLineModule,
-  MatListModule,
-  MatMenuModule,
-  MatProgressSpinnerModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSnackBarModule,
-  MatToolbarModule,
-  MatTooltipModule
-} from '@angular/material';
 import { NgcCookieConsentConfig, NgcCookieConsentModule, NgcCookieConsentService, WindowService } from 'ngx-cookieconsent';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Angulartics2Module } from 'angulartics2';
@@ -58,6 +39,22 @@ import { configureTestSuite } from '../../shared/unit-test/configure-test-suite'
 import { BreadcrumbModule } from '../../shared/breadcrumb/breadcrumb.module';
 import { CategoryService } from '../../shared/category/category.service';
 import { MockCategoryService } from '../../shared/category/mock-category.service';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCommonModule, MatLineModule } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 
 export const cookieConfig: NgcCookieConsentConfig = {
   cookie: {

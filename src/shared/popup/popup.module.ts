@@ -3,10 +3,15 @@ import { CommonModule } from '@angular/common';
 import { AlertComponent } from './snackbar/alert.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { Angulartics2Module } from 'angulartics2';
-import { MatIconModule, MatDialogModule, MatButtonModule, MatSnackBarModule, MatBottomSheetModule, MatListModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { AlertService } from './alert.service';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [

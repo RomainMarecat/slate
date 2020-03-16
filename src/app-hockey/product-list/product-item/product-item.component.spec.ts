@@ -1,12 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductItemComponent } from './product-item.component';
-import { ProductActionComponent } from './../product-action/product-action.component';
 import { CommonModule } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatCardModule, MatIconModule } from '@angular/material';
 import { NgPipesModule } from 'ngx-pipes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Angulartics2Module } from 'angulartics2';
@@ -22,6 +20,8 @@ import { UserService } from '../../../shared/user/shared/user.service';
 import { MediaModule } from '../../../shared/media/media.module';
 import { environment } from '../../environments/environment';
 import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 
 describe('ProductItemComponent', () => {

@@ -4,10 +4,10 @@ import { Partner } from '../../../partner/partner';
 import {
   PartnerImportPreviewComponent
 } from '../partner-import-preview/partner-import-preview.component';
-import { MatDialog } from '@angular/material';
 import { PartnerService } from '../../../partner/partner.service';
 import { AlertService } from '../../../popup/alert.service';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-partner-import',

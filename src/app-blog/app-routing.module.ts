@@ -15,11 +15,11 @@ const routes: Routes = [{
   },
   {
     path: 'admin',
-    loadChildren: './../shared/admin/admin.module#AdminModule'
+    loadChildren: () => import('./../shared/admin/admin.module').then(m => m.AdminModule)
   },
   {
     path: 'contact',
-    loadChildren: './../shared/contact/contact.module#ContactModule'
+    loadChildren: () => import('./../shared/contact/contact.module').then(m => m.ContactModule)
   }
 ];
 

@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { SelectionListComponent } from './selection-list/selection-list.component';
 import { SelectionItemComponent } from './selection-item/selection-item.component';
 import { SelectionSliderComponent } from './selection-slider/selection-slider.component';
-import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { CloudinaryModule } from '../../shared/media/cloudinary/cloudinary.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [

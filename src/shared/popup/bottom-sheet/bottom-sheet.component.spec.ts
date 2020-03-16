@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BottomSheetComponent } from './bottom-sheet.component';
-import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetModule, MatBottomSheetRef, MatListModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LocalizeRouterModule, LocalizeRouterService } from 'localize-router';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -9,6 +8,8 @@ import { AlertService } from '../alert.service';
 import { MockAlertService } from '../mock-alert.service';
 import { MockLocalizeRouterService } from '../../router/mock-localize-router.service';
 import { configureTestSuite } from '../../unit-test/configure-test-suite';
+import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetModule, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatListModule } from '@angular/material/list';
 
 describe('BottomSheetComponent', () => {
   let component: BottomSheetComponent;

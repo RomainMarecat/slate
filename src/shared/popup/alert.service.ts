@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { MatBottomSheet, MatBottomSheetConfig, MatBottomSheetRef, MatSnackBar, MatSnackBarConfig, MatSnackBarRef } from '@angular/material';
 import { AlertComponent } from './snackbar/alert.component';
 import { TranslateService } from '@ngx-translate/core';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { Alert } from './alert';
+import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef } from '@angular/material/snack-bar';
+import { MatBottomSheet, MatBottomSheetConfig, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 @Injectable({
   providedIn: 'root'

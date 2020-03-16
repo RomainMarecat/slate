@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-help-icon',

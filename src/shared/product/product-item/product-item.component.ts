@@ -11,10 +11,10 @@ import { CartService } from '../../cart/shared/cart.service';
 import { Cart } from '../../cart/shared/cart';
 import { Router } from '@angular/router';
 import { LocalizeRouterService } from 'localize-router';
-import { MatDialog } from '@angular/material';
 import { CommentDialogComponent } from '../../comment/comment-dialog/comment-dialog.component';
 import { ProductOption, SpecificProductOption } from '../shared/product-option';
 import * as moment from 'moment';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-item',

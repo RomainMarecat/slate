@@ -2,15 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OfferListComponent } from './offer-list.component';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule
-} from '@angular/material';
 import { Angulartics2Module } from 'angulartics2';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CloudinaryModule } from '../../../shared/media/cloudinary/cloudinary.module';
@@ -45,6 +36,13 @@ import { MockCategoryService } from '../../../shared/category/mock-category.serv
 import { CategoryService } from '../../../shared/category/category.service';
 import { environment } from '../../../app-hockey/environments/environment';
 import { configureTestSuite } from '../../../shared/unit-test/configure-test-suite';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('OfferListComponent', () => {
   let component: OfferListComponent;

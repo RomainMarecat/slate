@@ -9,13 +9,13 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { SharedModule } from '../../shared.module';
 import { ArticleService } from '../../article/shared/article.service';
-import { MatIconRegistry } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StringService } from '../../util/string.service';
 import { AlertService } from '../../popup/alert.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { MediaService } from '../../media/media.service';
 import { ArticleComponent } from './article/article.component';
+import { MatIconRegistry } from '@angular/material/icon';
 
 export const TABLE_ARTICLE = new InjectionToken<string>('article');
 export const TABLE_MEDIA = new InjectionToken<string>('media');

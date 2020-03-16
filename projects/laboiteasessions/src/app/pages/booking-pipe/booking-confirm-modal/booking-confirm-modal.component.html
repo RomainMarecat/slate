@@ -1,9 +1,9 @@
 <h3 mat-dialog-title class="page-title" *ngIf="booking">
-	<span i18n="your booking with">Your booking with</span>
-	{{getBookingMonoTitle(booking)}}
-	<a (click)="dialogRef.close()" class="right btn-close-modal"><i class="material-icons mat-36">close</i></a>
+  <span i18n="your booking with">Your booking with</span>
+  {{getBookingMonoTitle(booking)}}
+  <a (click)="dialogRef.close()" class="right btn-close-modal"><i class="material-icons mat-36">close</i></a>
 </h3>
-<mat-dialog-content>
+<div mat-dialog-content>
   <div *ngIf="!booking || !events; else bookingDiv">
     <p>No booking found</p>
   </div>
@@ -17,4 +17,4 @@
       </div>
     </div>
   </ng-template>
-</mat-dialog-content>
+</div>

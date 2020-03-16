@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BreadcrumbComponent } from './breadcrumb.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule, MatTooltipModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -13,6 +12,8 @@ import { LocalizeRouterModule } from 'localize-router';
 import { configureTestSuite } from '../unit-test/configure-test-suite';
 import { CategoryService } from '../category/category.service';
 import { MockCategoryService } from '../category/mock-category.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('BreadcrumbComponent', () => {
   let component: BreadcrumbComponent;

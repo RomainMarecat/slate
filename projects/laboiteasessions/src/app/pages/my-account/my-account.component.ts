@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,6 +13,8 @@ import { AppState } from '../../shared/store/app.state';
 import { selectUser } from '../../shared/store/user/selectors/user.selector';
 import { UserState } from '../../shared/store/user/states/user.state';
 import { BookingConfirmModalComponent } from '../booking-pipe/booking-confirm-modal/booking-confirm-modal.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 const moment = _moment;
 
@@ -91,7 +92,7 @@ export class MyAccountComponent implements OnInit {
     this.store.select(selectUser)
       .subscribe((userState: UserState) => {
         if (userState.user) {
-          this.form.patchValue(userState.user as {[key: string]: any; });
+          this.form.patchValue(userState.user as {[key: string]: any;});
         }
       });
     this.loadBookings();

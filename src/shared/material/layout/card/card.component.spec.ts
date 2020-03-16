@@ -3,11 +3,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardComponent } from './card.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule, MatListModule, MatRadioModule,
-  MatToolbarModule
-} from '@angular/material';
 import { configureTestSuite } from '../../../unit-test/configure-test-suite';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('CardComponent', () => {
   let component: CardComponent;

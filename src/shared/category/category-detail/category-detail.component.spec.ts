@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatFormFieldModule, MatIconModule } from '@angular/material';
 import { SharedProductModule } from '../../product/shared-product.module';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LocalizeRouterService } from 'localize-router';
@@ -29,6 +28,8 @@ import { MockMediaService } from '../../media/mock-media.service';
 import { FavoriteService } from '../../favorite/shared/favorite.service';
 import { MockFavoriteService } from '../../favorite/shared/mock-favorite.service';
 import { NgPipesModule } from 'ngx-pipes';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 describe('CategoryDetailComponent', () => {
   let component: CategoryDetailComponent;

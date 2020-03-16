@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { LocalizeRouterService } from 'localize-router';
@@ -8,6 +7,7 @@ import { ArticleService } from '../../../article/shared/article.service';
 import { MenuService } from '../../../menu/menu.service';
 import { AlertService } from '../../../popup/alert.service';
 import { DialogComponent } from '../../../popup/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-article-list',

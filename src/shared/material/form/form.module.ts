@@ -9,19 +9,23 @@ import { SliderComponent } from './slider/slider.component';
 import { FormRoutingModule } from './form-routing.module';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
-import {
-  MAT_DATE_LOCALE,
-  MatAutocompleteModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule, MatIconModule,
-  MatInputModule,
-  MatNativeDateModule,
-  MatRadioModule, MatSelectModule, MatSliderModule,
-  MatSlideToggleModule
-} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { StorageModule } from '../../media/storage/storage.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSliderModule } from '@angular/material/slider';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [

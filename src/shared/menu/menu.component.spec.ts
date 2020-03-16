@@ -1,17 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatIcon,
-  MatIconModule,
-  MatInputModule,
-  MatMenuModule,
-  MatToolbarModule
-} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -25,10 +14,21 @@ import { MockUserService } from '../user/shared/mock-user.service';
 import { UserService } from '../user/shared/user.service';
 import { MenuComponent } from './menu.component';
 import { MenuService } from './menu.service';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { configureTestSuite } from '../unit-test/configure-test-suite';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
   let fixture: ComponentFixture<MenuComponent>;
+
+  configureTestSuite();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

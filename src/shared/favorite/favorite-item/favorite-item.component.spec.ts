@@ -15,7 +15,6 @@ import { AlertService } from '../../popup/alert.service';
 import { MockAlertService } from '../../popup/mock-alert.service';
 import { FavoriteService } from '../shared/favorite.service';
 import { MockFavoriteService } from '../shared/mock-favorite.service';
-import { MatTooltipModule } from '@angular/material';
 import { StorageModule } from '../../media/storage/storage.module';
 import { UserService } from '../../user/shared/user.service';
 import { MockUserService } from '../../user/shared/mock-user.service';
@@ -25,6 +24,7 @@ import { LoaderModule } from '../../loader/loader.module';
 import { SharedProductModule } from '../../product/shared-product.module';
 import { CartService } from '../../cart/shared/cart.service';
 import { MockCartService } from '../../cart/shared/mock-cart.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('FavoriteItemComponent', () => {
   let component: FavoriteItemComponent;

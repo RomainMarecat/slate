@@ -10,17 +10,6 @@ import { CartService } from './shared/cart.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatProgressSpinnerModule,
-  MatSelectModule,
-  MatTooltipModule
-} from '@angular/material';
 import { PaymentService } from '../payment/shared/payment.service';
 import { CartEditComponent } from './cart-edit/cart-edit.component';
 import { CartComponent } from './cart/cart.component';
@@ -32,6 +21,15 @@ import { CartDeliveryComponent } from './cart-delivery/cart-delivery.component';
 import { StorageModule } from '../media/storage/storage.module';
 import { MediaModule } from '../media/media.module';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
 
 export const TABLE_CART = new InjectionToken<string>('cart');
 export const TABLE_PAYMENT = new InjectionToken<string>('payment');

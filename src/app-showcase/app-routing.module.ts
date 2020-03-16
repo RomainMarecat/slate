@@ -27,23 +27,23 @@ const routes: Routes = [
       },
       {
         path: 'admin',
-        loadChildren: './../shared/admin/admin.module#AdminModule'
+        loadChildren: () => import('./../shared/admin/admin.module').then(m => m.AdminModule)
       },
       {
         path: 'contact',
-        loadChildren: './../shared/contact/contact.module#ContactModule'
+        loadChildren: () => import('./../shared/contact/contact.module').then(m => m.ContactModule)
       },
       {
         path: 'agenda',
-        loadChildren: './../shared/agenda/firebase-agenda.module#FirebaseAgendaModule'
+        loadChildren: () => import('./../shared/agenda/firebase-agenda.module').then(m => m.FirebaseAgendaModule)
       },
       {
         path: 'cart',
-        loadChildren: './../shared/cart/cart.module#CartModule'
+        loadChildren: () => import('./../shared/cart/cart.module').then(m => m.CartModule)
       },
       {
         path: 'faq',
-        loadChildren: './../shared/faq/faq.module#FaqModule'
+        loadChildren: () => import('./../shared/faq/faq.module').then(m => m.FaqModule)
       }]
   }
 ];

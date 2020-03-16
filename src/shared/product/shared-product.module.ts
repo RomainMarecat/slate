@@ -4,20 +4,6 @@ import { Angulartics2Module } from 'angulartics2';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoaderModule } from '../loader/loader.module';
-import {
-  MatAutocompleteModule, MatBadgeModule,
-  MatButtonModule,
-  MatCardModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatSelectModule,
-  MatSnackBarModule,
-  MatStepperModule,
-  MatTooltipModule
-} from '@angular/material';
 import { MediaModule } from '../media/media.module';
 import { NgStringPipesModule } from 'ngx-pipes';
 import { TranslateModule } from '@ngx-translate/core';
@@ -34,6 +20,19 @@ import { ProductComponent } from './product/product.component';
 import { RouterModule } from '@angular/router';
 import { LocalizeRouterModule } from 'localize-router';
 import { CommentModule } from '../comment/comment.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
