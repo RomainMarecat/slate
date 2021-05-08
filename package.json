@@ -174,7 +174,7 @@
     "nativescript": "^6.4.1",
     "nativescript-dev-typescript": "^0.10.0",
     "nativescript-dev-webpack": "^1.5.1",
-    "ng-packagr": "^9.0.0",
+    "ng-packagr": "^10.1.1",
     "protobufjs": "git+https://github.com/danieldanielecki/protobufjs-angularfire.git",
     "protractor": "~5.4.3",
     "ts-loader": "^6.2.1",
