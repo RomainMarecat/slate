@@ -85,7 +85,7 @@
     "apollo-link": "^1.2.11",
     "bootstrap": "^4.4.1",
     "bufferutil": "^4.0.1",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "classlist.js": "^1.1.20150312",
     "cloudinary-core": "^2.8.1",
     "cookieconsent": "^3.1.1",
