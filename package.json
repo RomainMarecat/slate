@@ -182,7 +182,7 @@
     "tslint": "~6.0.0",
     "typescript": "~3.6.4",
     "webpack-cli": "^3.3.11",
-    "ws": "^7.2.3",
+    "ws": "^7.4.6",
     "xhr2": "^0.2.0"
   },
   "nativescript": {
