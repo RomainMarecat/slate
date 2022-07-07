@@ -115,7 +115,7 @@
     "material-design-icons": "^3.0.1",
     "materialize-css": "^1.0.0",
     "mdn-polyfills": "^5.20.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "nativescript-angular": "^8.21.0",
     "nativescript-plugin-firebase": "^10.5.0",
     "nativescript-theme-core": "~2.0.24",
